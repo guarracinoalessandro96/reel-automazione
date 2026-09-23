@@ -273,7 +273,7 @@ def main():
         state.setdefault(k, v)
 
     def save():
-        json.dump(state, open(STATE, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        json.dump(state, open(STATE, "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=str)
 
     if not ENV("DRY_RUN") == "1" and not ENV("GOOGLE_REFRESH_TOKEN"):
         print("Account non ancora collegati (Secrets mancanti): niente da fare.")

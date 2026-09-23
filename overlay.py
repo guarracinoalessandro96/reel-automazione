@@ -171,6 +171,6 @@ def make_video(src, hook, dst, preview=None, music=None):
         subprocess.run([FFMPEG, "-y", "-v", "error", "-ss", f"{length / 2:.2f}", "-i", dst, "-frames:v", "1",
                         "-vf", f"scale={W // 3}:-2", preview], capture_output=True)
     return {"testo": "alto" if y_frac < 0.4 else "basso", "volti": len(faces),
-            "tocca_viso": score > 0, "hdr": hdr, "risoluzione": f"{W}x{H}", "taglio": f"da {start:.1f}s a {start + length:.1f}s",
+            "tocca_viso": bool(score > 0), "hdr": hdr, "risoluzione": f"{W}x{H}", "taglio": f"da {start:.1f}s a {start + length:.1f}s",
             "durata": round(length, 2),
             "musica": os.path.basename(music) if music else None}
