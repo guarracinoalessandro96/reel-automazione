@@ -50,8 +50,14 @@ def log(*a):
     print(datetime.datetime.now().strftime("%H:%M:%S"), *a, flush=True)
 
 
+CREDENZIALI = {"instagram": "META_PAGE_TOKEN", "facebook": "META_PAGE_TOKEN",
+               "youtube": "GOOGLE_REFRESH_TOKEN", "tiktok": "TIKTOK_REFRESH_TOKEN"}
+
+
 def attive():
-    return [p for p in PLATFORMS if ENV(f"SALTA_{p.upper()}") != "1"]
+    """Piattaforme da usare: non saltate a mano (SALTA_X=1) e con le credenziali gia' collegate."""
+    return [p for p in PLATFORMS
+            if ENV(f"SALTA_{p.upper()}") != "1" and (DRY or ENV(CREDENZIALI[p]))]
 
 
 # ------------------------------------------------------------------ Google (Drive + YouTube)
