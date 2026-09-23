@@ -9,7 +9,7 @@ import json, os, secrets, urllib.parse, webbrowser
 import requests
 
 SEGRETI = os.path.join(os.path.expanduser("~"), "reel-segreti.json")
-SCOPES = "user.info.basic,user.info.stats,video.upload,video.publish"
+SCOPES = "user.info.basic,video.upload,video.publish"
 
 
 def main():
@@ -32,7 +32,7 @@ def main():
     s = json.load(open(SEGRETI, encoding="utf-8")) if os.path.exists(SEGRETI) else {}
     s.update(TIKTOK_CLIENT_KEY=key, TIKTOK_CLIENT_SECRET=secret, TIKTOK_REFRESH_TOKEN=r["refresh_token"])
     json.dump(s, open(SEGRETI, "w", encoding="utf-8"), indent=1)
-    me = requests.get("https://open.tiktokapis.com/v2/user/info/?fields=display_name,follower_count",
+    me = requests.get("https://open.tiktokapis.com/v2/user/info/?fields=display_name",
                       headers={"Authorization": f"Bearer {r['access_token']}"}).json()
     print("\nOK! TikTok collegato:", me.get("data", {}).get("user", {}).get("display_name"))
 
