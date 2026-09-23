@@ -4,6 +4,7 @@ import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 import imageio_ffmpeg
+import grade
 
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 FONTS = [
@@ -37,14 +38,18 @@ def has_audio(path):
     return "Audio:" in r.stderr
 
 
-def extract_frames(path, seconds, n=16, start=0.0):
+HDR_TO_SDR = ("zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,"
+              "tonemap=tonemap=hable:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p")
+
+
+def extract_frames(path, seconds, n=16, start=0.0, vf=None):
     """n fotogrammi presi SOLO dal pezzo che finira' nel reel (da start a start+seconds)."""
     tmp = tempfile.mkdtemp()
     frames = []
     for i in range(n):
         out = os.path.join(tmp, f"f{i:02d}.png")
         subprocess.run([FFMPEG, "-v", "error", "-ss", f"{start + seconds * (i + 0.5) / n:.2f}", "-i", path,
-                        "-frames:v", "1", out], capture_output=True)
+                        *(["-vf", vf] if vf else []), "-frames:v", "1", out], capture_output=True)
         img = cv2.imread(out)
         if img is not None:
             frames.append(img)
@@ -134,11 +139,11 @@ def segmento(seconds):
     return start, min(DURATA_MAX, seconds - start)
 
 
-def make_video(src, hook, dst, preview=None, music=None):
+def make_video(src, hook, dst, preview=None, music=None, colore=True, nome=""):
     """Crea dst (mp4 H.264 alta qualita') con il gancio e, se indicata, la musica in loop. Restituisce info."""
     seconds, hdr = probe(src)
     start, length = segmento(seconds)
-    frames = extract_frames(src, length, start=start)
+    frames = extract_frames(src, length, start=start, vf=HDR_TO_SDR if hdr else None)
     if not frames:
         raise RuntimeError("video illeggibile")
     H, W = frames[0].shape[:2]
@@ -147,10 +152,16 @@ def make_video(src, hook, dst, preview=None, music=None):
     png = os.path.join(tempfile.gettempdir(), "overlay_reel.png")
     overlay.save(png)
     cmd = [FFMPEG, "-y", "-v", "error", "-ss", f"{start:.3f}", "-i", src, "-i", png]
-    base = "[0:v]"
-    if hdr:   # video HDR dell'iPhone (HLG/PQ): conversione a colori normali, altrimenti esce grigio e sbiadito
-        base = ("[0:v]zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,"
-                "tonemap=tonemap=hable:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p[sdr];[sdr]")
+    chain = []
+    if hdr:     # video HDR dell'iPhone (HLG/PQ): conversione a colori normali, altrimenti esce grigio e sbiadito
+        chain.append(HDR_TO_SDR)
+    grade_info = None
+    if colore:  # color correction automatica in base alla scena (grade.py)
+        misure = grade.analizza(frames, faces)
+        tipo, motivo = grade.scena(misure, nome)
+        chain.append(grade.build_filter(misure, tipo))
+        grade_info = grade.descrivi(misure, tipo, motivo)
+    base = f"[0:v]{','.join(chain)}[base];[base]" if chain else "[0:v]"
     graph = base + "[1:v]overlay=0:0:format=auto,format=yuv420p[v]"
     amap = ["-map", "0:a?"]
     if music:
@@ -172,5 +183,5 @@ def make_video(src, hook, dst, preview=None, music=None):
                         "-vf", f"scale={W // 3}:-2", preview], capture_output=True)
     return {"testo": "alto" if y_frac < 0.4 else "basso", "volti": len(faces),
             "tocca_viso": bool(score > 0), "hdr": hdr, "risoluzione": f"{W}x{H}", "taglio": f"da {start:.1f}s a {start + length:.1f}s",
-            "durata": round(length, 2),
+            "durata": round(length, 2), "colore": grade_info,
             "musica": os.path.basename(music) if music else None}

@@ -316,7 +316,8 @@ def main():
     out = os.path.join(work, "reel.mp4")
     drive.download(video["id"], src)
     music = None if ENV("SENZA_MUSICA") == "1" else scegli_musica(cap["tema"], state["musica_recenti"])
-    info = overlay.make_video(src, cap["gancio"], out, preview=os.path.join(work, "anteprima.jpg"), music=music)
+    info = overlay.make_video(src, cap["gancio"], out, preview=os.path.join(work, "anteprima.jpg"), music=music,
+                              colore=ENV("SENZA_COLORE") != "1", nome=video["name"])
     log("Montato:", info)
 
     results = publish_all(out, cap, creds, attive())
