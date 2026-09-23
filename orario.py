@@ -25,6 +25,8 @@ def slot_da_fare(now=None):
 
 
 if __name__ == "__main__":
+    if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "PAUSA")):
+        sys.exit(0)          # file PAUSA presente: automazione ferma (nessuna pubblicazione)
     if os.environ.get("FORZA") == "1":
         print(datetime.datetime.now(ZoneInfo("Europe/Rome")).strftime("%Y-%m-%d %H") + " manuale")
         sys.exit(0)
