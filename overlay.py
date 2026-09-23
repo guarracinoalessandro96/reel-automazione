@@ -147,7 +147,11 @@ def make_video(src, hook, dst, preview=None, music=None):
     png = os.path.join(tempfile.gettempdir(), "overlay_reel.png")
     overlay.save(png)
     cmd = [FFMPEG, "-y", "-v", "error", "-ss", f"{start:.3f}", "-i", src, "-i", png]
-    graph = "[0:v][1:v]overlay=0:0:format=auto,format=yuv420p[v]"
+    base = "[0:v]"
+    if hdr:   # video HDR dell'iPhone (HLG/PQ): conversione a colori normali, altrimenti esce grigio e sbiadito
+        base = ("[0:v]zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,"
+                "tonemap=tonemap=hable:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p[sdr];[sdr]")
+    graph = base + "[1:v]overlay=0:0:format=auto,format=yuv420p[v]"
     amap = ["-map", "0:a?"]
     if music:
         cmd += ["-stream_loop", "-1", "-i", music]
@@ -163,10 +167,9 @@ def make_video(src, hook, dst, preview=None, music=None):
     r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore")
     if r.returncode != 0:
         raise RuntimeError("ffmpeg: " + r.stderr[-400:])
-    if preview:
-        im = Image.fromarray(cv2.cvtColor(frames[len(frames) // 2], cv2.COLOR_BGR2RGB)).convert("RGBA")
-        im.alpha_composite(overlay)
-        im.convert("RGB").resize((W // 3, H // 3)).save(preview)
+    if preview:   # anteprima presa dal reel finito (colori e testo come verranno pubblicati)
+        subprocess.run([FFMPEG, "-y", "-v", "error", "-ss", f"{length / 2:.2f}", "-i", dst, "-frames:v", "1",
+                        "-vf", f"scale={W // 3}:-2", preview], capture_output=True)
     return {"testo": "alto" if y_frac < 0.4 else "basso", "volti": len(faces),
             "tocca_viso": score > 0, "hdr": hdr, "risoluzione": f"{W}x{H}", "taglio": f"da {start:.1f}s a {start + length:.1f}s",
             "durata": round(length, 2),
