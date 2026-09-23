@@ -123,7 +123,7 @@ def youtube_upload(creds, path, cap):
     title = cap["gancio"]
     if len(title) > 90:
         title = title[:87].rsplit(" ", 1)[0] + "..."
-    privacy = ENV("YOUTUBE_PRIVACY", "private")
+    privacy = ENV("YOUTUBE_PRIVACY") or "public"
     body = {"snippet": {"title": title + " #shorts", "description": cap["descrizione"], "categoryId": "22",
                         "defaultLanguage": "it", "defaultAudioLanguage": "it"},
             "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": False}}
