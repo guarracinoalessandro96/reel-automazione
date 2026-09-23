@@ -1,0 +1,33 @@
+{
+ "usate": [
+  "0742"
+ ],
+ "storico": [
+  {
+   "quando": "2026-09-23T22:11",
+   "slot": "2026-09-23 22 manuale",
+   "video": "IMG_3127.MOV",
+   "caption": "0742",
+   "nota": "stato ricostruito a mano (bug salvataggio)",
+   "risultati": {
+    "instagram": {
+     "ok": true,
+     "id": "DdpIyCSiTJp"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1628412882320558"
+    },
+    "youtube": {
+     "ok": true
+    }
+   }
+  }
+ ],
+ "riprova": [],
+ "slot_fatti": [
+  "2026-09-23 21",
+  "2026-09-23 22 manuale"
+ ],
+ "musica_recenti": []
+}
