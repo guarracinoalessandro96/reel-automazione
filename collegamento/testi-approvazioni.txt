@@ -1,0 +1,47 @@
+TESTI PRONTI PER LE RICHIESTE DI APPROVAZIONE (in inglese, come chiedono le piattaforme)
+Sostituisci TUONOME con il tuo nome utente GitHub.
+
+
+=== YOUTUBE - "YouTube API Services Audit and Quota Extension Form" ===
+
+Why do you need an audit?
+  To remove the "private only" restriction on videos uploaded by my API project. The project is a personal
+  tool that uploads my own Shorts to my own YouTube channel.
+
+Describe your application:
+  A personal, non-commercial automation that runs on GitHub Actions. I record short videos (6 seconds)
+  with my phone and put them in my Google Drive. Five times a day the tool takes the next video, adds a
+  text overlay, and uploads it to MY OWN channel with videos.insert, using OAuth with my own account.
+  After upload it posts one comment under my own video (commentThreads.insert) and once a day reads my
+  own subscriber count (channels.list, mine=true). There are no other users, no public sign-up, and no
+  data about other people is stored.
+
+API data used / stored:
+  Only video IDs of my own uploads and my own daily subscriber count. Nothing else is stored.
+
+Expected daily usage:
+  5 uploads per day (about 8,000 units) + 5 comments + 1 channels.list. This fits the default 10,000 units.
+
+Links:
+  Privacy policy: https://TUONOME.github.io/reel-automazione/privacy.html
+  Terms:          https://TUONOME.github.io/reel-automazione/termini.html
+  Source code:    https://github.com/TUONOME/reel-automazione
+
+
+=== TIKTOK - "Submit for review" della app ===
+
+App description:
+  Personal tool that publishes my own short videos to my own TikTok account. I record 6-second videos
+  with my phone; the tool adds a text overlay and publishes them to my account 5 times a day using the
+  Content Posting API (Direct Post). Only my account is connected; there are no other users.
+
+Explain how each product and scope works:
+  - Login Kit / user.info.basic: to connect my own TikTok account once (OAuth).
+  - user.info.stats: to read my own follower count once a day for my personal progress page.
+  - video.upload + video.publish (Content Posting API, Direct Post): to publish my own videos to my account,
+    with the caption I wrote. Videos are published only after I upload them to my own folder.
+
+Demo video (TikTok lo chiede): registrazione dello schermo di circa 1 minuto che mostra:
+  1. la cartella Drive con un video, 2. il sito https://TUONOME.github.io/reel-automazione/,
+  3. su GitHub: Actions > Pubblica Reel > Run workflow, 4. il video che compare sul tuo profilo TikTok.
+  (Su Windows: tasti Win + G per registrare lo schermo.) Claude ti guida quando arrivi a questo punto.

@@ -1,0 +1,74 @@
+name: Pubblica Reel
+
+on:
+  schedule:
+    # GitHub usa l'ora UTC. Questi orari coprono sia l'ora legale che quella solare:
+    # orario.py controlla l'ora di Roma e pubblica solo alle 9, 12, 15, 18, 21.
+    - cron: "5 7,8,10,11,13,14,16,17,19,20 * * *"
+  workflow_dispatch:
+    inputs:
+      forza:
+        description: "Pubblica subito il prossimo video (ignora l'orario)"
+        type: boolean
+        default: true
+
+concurrency: pubblica
+
+permissions:
+  contents: write
+
+jobs:
+  pubblica:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tocca pubblicare adesso?
+        id: orario
+        env:
+          FORZA: ${{ github.event_name == 'workflow_dispatch' && inputs.forza && '1' || '0' }}
+        run: echo "slot=$(python3 orario.py)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-python@v5
+        if: steps.orario.outputs.slot != ''
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Installa
+        if: steps.orario.outputs.slot != ''
+        run: pip install -r requirements.txt
+
+      - name: Pubblica il prossimo video
+        if: steps.orario.outputs.slot != ''
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          DRIVE_FOLDER_DA_PUBBLICARE: ${{ secrets.DRIVE_FOLDER_DA_PUBBLICARE }}
+          DRIVE_FOLDER_PUBBLICATI: ${{ secrets.DRIVE_FOLDER_PUBBLICATI }}
+          DRIVE_FOLDER_PRONTI: ${{ secrets.DRIVE_FOLDER_PRONTI }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          YOUTUBE_PRIVACY: ${{ vars.YOUTUBE_PRIVACY || 'private' }}
+          TIKTOK_PRIVACY: ${{ vars.TIKTOK_PRIVACY || 'SELF_ONLY' }}
+          SALTA_INSTAGRAM: ${{ vars.SALTA_INSTAGRAM }}
+          SALTA_FACEBOOK: ${{ vars.SALTA_FACEBOOK }}
+          SALTA_YOUTUBE: ${{ vars.SALTA_YOUTUBE }}
+          SALTA_TIKTOK: ${{ vars.SALTA_TIKTOK }}
+          SENZA_MUSICA: ${{ vars.SENZA_MUSICA }}
+        run: python pubblica.py "${{ steps.orario.outputs.slot }}"
+
+      - name: Salva lo stato
+        if: always() && steps.orario.outputs.slot != ''
+        run: |
+          git config user.name "reel-bot"
+          git config user.email "reel-bot@users.noreply.github.com"
+          git add stato.json follower.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "Reel ${{ steps.orario.outputs.slot }}" && git pull --rebase && git push)

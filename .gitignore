@@ -1,0 +1,6 @@
+_lavoro/
+__pycache__/
+*.pyc
+collegamento/client_secret*.json
+input_video*
+reel.mp4
