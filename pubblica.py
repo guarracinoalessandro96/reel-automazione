@@ -27,16 +27,16 @@ MAX_TENTATIVI = 3
 
 
 # Umore della musica per ogni tema (cartelle in musica/, create da genera_musica.py)
-MOOD = {"Disciplina e costanza": "deciso", "Lavoro e ambizione": "deciso", "Persone e fiducia": "malinconico",
-        "Famiglia e gratitudine": "caldo", "I 30 anni e il tempo": "malinconico", "Salute e cura di sé": "calmo",
-        "Ripartire": "luminoso", "Soldi e libertà": "caldo", "Solitudine e percorso": "malinconico",
+MOOD = {"Disciplina e costanza": "deciso", "Lavoro e ambizione": "deciso", "Le persone giuste": "caldo",
+        "Famiglia e gratitudine": "caldo", "I 30 anni": "luminoso", "Salute e cura di sé": "calmo",
+        "Ripartire con energia": "luminoso", "Soldi e libertà": "caldo", "Stare bene con sé stessi": "calmo",
         "Positività ed energia": "luminoso", "Daily habits": "calmo"}
 
 
 def scegli_musica(tema, recenti):
     """Un brano dell'umore giusto, evitando quelli usati di recente (cosi' non si ripete nei video vicini)."""
     import random
-    d = os.path.join(HERE, "musica", MOOD.get(tema, "calmo"))
+    d = os.path.join(HERE, "musica", MOOD.get(tema, "luminoso"))
     if not os.path.isdir(d):
         return None
     brani = sorted(f for f in os.listdir(d) if f.endswith(".flac"))
