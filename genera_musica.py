@@ -45,6 +45,8 @@ MOODS = {
                     [("C", "min"), ("Ab", "maj")], [("G", "min"), ("Eb", "maj")], [("B", "min"), ("G", "maj")]],
     "malinconico": [[("A", "min9"), ("E", "min7")], [("D", "min7"), ("A", "min7")], [("F#", "min7"), ("D", "maj7")],
                     [("C", "min9"), ("Ab", "maj7")], [("E", "min9"), ("B", "min7")], [("G", "min9"), ("Eb", "maj7")]],
+    "energia":     [[("A", "min"), ("F", "maj")], [("E", "min"), ("C", "maj")], [("D", "min"), ("Bb", "maj")],
+                    [("G", "min"), ("Eb", "maj")], [("B", "min"), ("G", "maj")], [("C", "min"), ("Ab", "maj")]],
     "luminoso":    [[("D", "add9"), ("A", "sus2")], [("G", "maj7"), ("D", "add9")], [("E", "add9"), ("B", "sus2")],
                     [("C", "maj"), ("G", "maj")], [("A", "add9"), ("E", "sus2")], [("F", "add9"), ("C", "sus2")]],
 }
@@ -54,6 +56,8 @@ STYLE = {  # (volume pad, volume piano, arpeggio: note per battuta, batteria lo-
     "deciso":      (0.40, 0.35, 4, True, 3500),
     "malinconico": (0.55, 0.32, 1, False, 2200),
     "luminoso":    (0.40, 0.38, 4, False, 4500),
+    "energia":     (0.30, 0.40, 2, True, 6000),     # 120 BPM: 12 battiti = 6 s esatti
+
 }
 
 t = np.arange(N) / SR
@@ -125,7 +129,7 @@ def bass(m, start, length):
 
 def drums(rng):
     out = np.zeros((N, 2))
-    for b in range(8):
+    for b in range(int(round(LOOP / BEAT))):
         st = b * BEAT
         if b % 4 in (0, 2) or (b % 4 == 3 and rng.random() < 0.5):          # cassa morbida
             L = int(0.35 * SR)
@@ -151,7 +155,7 @@ def compose(mood, prog, seed):
         mix += bass(notes[0] - 12, i * half, half) * 0.35
         step = BEAT / arp
         pattern = rng.choice([[0, 1, 2, 3], [0, 2, 1, 3], [0, 2, 3, 2], [3, 2, 1, 0]])
-        for j in range(int(4 * arp)):
+        for j in range(int(round(half / BEAT * arp))):
             if arp == 1 and j % 2 and rng.random() < 0.5:
                 continue
             m = notes[pattern[j % 4]] + 12
@@ -181,9 +185,16 @@ def save(mix, path):
     os.remove(wav)
 
 
-def main():
+BPM_PER_UMORE = {"energia": 120}
+
+
+def main(solo=None):
+    global BEAT
     count = 0
     for mood, progs in MOODS.items():
+        if solo and mood != solo:
+            continue
+        BEAT = 60 / BPM_PER_UMORE.get(mood, 80)
         d = os.path.join(OUT, mood)
         os.makedirs(d, exist_ok=True)
         for f in os.listdir(d):
@@ -198,4 +209,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    main(sys.argv[1] if len(sys.argv) > 1 else None)

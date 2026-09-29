@@ -1,60 +1,82 @@
 """
-Pubblicazione automatica di un Reel (gira su GitHub Actions alle 9, 12, 15, 18, 21 ora italiana).
+Pubblicazione automatica dei Reel (GitHub Actions, alle 9, 12, 15, 18, 21 ora italiana).
 
 Ad ogni esecuzione:
   0. riprova le piattaforme fallite nelle esecuzioni precedenti (max 3 tentativi)
-  1. prende il video piu' vecchio dalla cartella Drive "Da pubblicare"
-  2. prende la prossima caption della coda (captions.json, gia' in ordine di calendario)
-  3. mette il gancio sul video senza coprire il viso (overlay.py)
-  4. pubblica su Instagram, Facebook, YouTube Shorts, TikTok + primo commento dove possibile
+  1. analizza i video nuovi della cartella Drive "Da pubblicare": scena (scena.py) e ora di registrazione
+     -> ogni video ha il suo orario: mattina alle 9, pranzo alle 12, palestra e uscite la sera...
+  2. prende il video che corrisponde a questo orario (se un video aspetta da piu' di 36 ore, esce comunque)
+  3. sceglie una frase adatta alla scena (frasi.json: cibo -> dieta, palestra -> fisico, pacchi -> imprenditore...)
+     alternando i temi, e una musica adatta al tema
+  4. monta il video (taglio, colore, testo, musica) e lo pubblica su Instagram, Facebook, YouTube, TikTok
+     con descrizione breve: la stessa frase + 3-4 hashtag
   5. archivia su Drive e aggiorna stato.json
 
-Ogni piattaforma e' indipendente: se una fallisce, le altre pubblicano comunque.
 Credenziali: variabili d'ambiente (GitHub Secrets). DRY_RUN=1 fa tutto tranne pubblicare.
 """
-import io, json, os, sys, time, datetime, traceback, subprocess, shutil
+import io, json, os, sys, time, datetime, random, traceback, subprocess, shutil
 import requests
 import overlay
+import scena as scene_mod
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CAPTIONS = os.path.join(HERE, "captions.json")
+FRASI = os.path.join(HERE, "frasi.json")
 STATE = os.path.join(HERE, "stato.json")
 GRAPH = "https://graph.facebook.com/v23.0"
 ENV = os.environ.get
 DRY = ENV("DRY_RUN") == "1"
 PLATFORMS = ["instagram", "facebook", "youtube", "tiktok"]
 MAX_TENTATIVI = 3
+ATTESA_MAX_ORE = 36          # oltre questa attesa un video esce al primo orario libero
+PRIMO_COMMENTO = False       # disattivato su richiesta: niente commento automatico sotto i reel
 
-
-# Umore della musica per ogni tema (cartelle in musica/, create da genera_musica.py)
-MOOD = {"Disciplina e costanza": "deciso", "Lavoro e ambizione": "deciso", "Le persone giuste": "caldo",
-        "Famiglia e gratitudine": "caldo", "I 30 anni": "luminoso", "Salute e cura di sé": "calmo",
-        "Ripartire con energia": "luminoso", "Soldi e libertà": "caldo", "Stare bene con sé stessi": "calmo",
-        "Positività ed energia": "luminoso", "Daily habits": "calmo"}
+# Temi preferiti per ogni scena (il primo e' il piu' adatto)
+TEMI_PER_SCENA = {
+    "cibo": ["dieta"],
+    "palestra": ["palestra", "disciplina", "imprenditore"],
+    "lavoro": ["imprenditore", "disciplina"],
+    "pacchi": ["imprenditore"],
+    "macchina": ["imprenditore", "positivita", "mentalita", "abitudini", "disciplina"],
+    "specchio": ["lifestyle", "positivita", "mentalita", "abitudini"],
+    "casa": ["famiglia", "abitudini", "mentalita", "positivita"],
+    "uscita": ["amicizia", "lifestyle", "positivita", "famiglia"],
+}
+# Umore della musica per tema (cartelle in musica/, create da genera_musica.py)
+MOOD = {"dieta": "luminoso", "palestra": "energia", "imprenditore": "deciso", "disciplina": "deciso",
+        "abitudini": "calmo", "positivita": "luminoso", "famiglia": "caldo", "amicizia": "caldo",
+        "mentalita": "calmo", "lifestyle": "luminoso"}
 
 
 def scegli_musica(tema, recenti):
-    """Un brano dell'umore giusto, evitando quelli usati di recente (cosi' non si ripete nei video vicini)."""
-    import random
-    d = os.path.join(HERE, "musica", MOOD.get(tema, "luminoso"))
-    if not os.path.isdir(d):
-        return None
-    brani = sorted(f for f in os.listdir(d) if f.endswith(".flac"))
-    if not brani:
-        return None
-    liberi = [b for b in brani if b not in recenti] or brani
-    return os.path.join(d, random.choice(liberi))
+    """Un brano dell'umore giusto, evitando quelli usati di recente."""
+    for mood in (MOOD.get(tema, "luminoso"), "deciso", "luminoso"):
+        d = os.path.join(HERE, "musica", mood)
+        brani = sorted(f for f in os.listdir(d) if f.endswith(".flac")) if os.path.isdir(d) else []
+        if brani:
+            liberi = [b for b in brani if b not in recenti] or brani
+            return os.path.join(d, random.choice(liberi))
+    return None
+
+
+def scegli_frase(frasi, scena, usate, temi_recenti):
+    """Frase non ancora usata, adatta alla scena, preferendo il tema giusto e alternando i temi."""
+    pref = TEMI_PER_SCENA.get(scena, [])
+    cand = [f for f in frasi if f["id"] not in usate and scena in f["scene"]]
+    if not cand:
+        cand = [f for f in frasi if f["id"] not in usate] or frasi     # scorta finita: si ricomincia
+
+    def punteggio(f):
+        s = 10 - 2 * pref.index(f["tema"]) if f["tema"] in pref else 0
+        if f["tema"] in temi_recenti[-2:]:
+            s -= 6                      # non lo stesso tema due volte di fila
+        return s + random.random() * 3  # un po' di varieta'
+    return max(cand, key=punteggio)
 
 
 def testo_breve(cap):
-    """Descrizione pubblicata: la stessa frase del video + 3-4 hashtag (niente testo lungo, niente dettagli personali)."""
-    righe = [r.strip() for r in cap["descrizione"].strip().splitlines() if r.strip()]
-    tags = [w for w in (righe[-1].split() if righe and righe[-1].startswith("#") else []) if w.startswith("#")]
-    tags = (tags + ["#vitavera", "#30anni"])[:4]
-    return cap["gancio"].rstrip(" .") + "\n\n" + " ".join(dict.fromkeys(tags))
-
-
-PRIMO_COMMENTO = False    # disattivato su richiesta: niente commento automatico sotto i reel
+    """Descrizione pubblicata: la stessa frase del video + 3-4 hashtag (niente dettagli personali)."""
+    tags = cap.get("hashtag") or ["#vitavera", "#30anni"]
+    return cap["gancio"].rstrip(" .") + "\n\n" + " ".join(dict.fromkeys(tags[:4]))
 
 
 def log(*a):
@@ -88,16 +110,19 @@ class Drive:
             from googleapiclient.discovery import build
             self.api = build("drive", "v3", credentials=creds, cache_discovery=False)
 
-    def next_video(self):
+    def list_videos(self):
+        """Tutti i video in coda: [{id, name, createdTime}], dal piu' vecchio."""
         if self.local:
-            vids = sorted(f for f in os.listdir(os.path.join(self.local, "Da pubblicare"))
-                          if f.lower().endswith((".mov", ".mp4", ".m4v")))
-            return {"id": vids[0], "name": vids[0]} if vids else None
+            d = os.path.join(self.local, "Da pubblicare")
+            vids = sorted((f for f in os.listdir(d) if f.lower().endswith((".mov", ".mp4", ".m4v"))),
+                          key=lambda f: os.path.getmtime(os.path.join(d, f)))
+            return [{"id": v, "name": v, "createdTime": datetime.datetime.fromtimestamp(
+                os.path.getmtime(os.path.join(d, v)), datetime.timezone.utc).isoformat()} for v in vids]
         q = (f"'{ENV('DRIVE_FOLDER_DA_PUBBLICARE')}' in parents and trashed = false "
              "and mimeType contains 'video/'")
-        res = self.api.files().list(q=q, orderBy="createdTime", pageSize=1, fields="files(id,name)").execute()
-        files = res.get("files", [])
-        return files[0] if files else None
+        res = self.api.files().list(q=q, orderBy="createdTime", pageSize=100,
+                                    fields="files(id,name,createdTime)").execute()
+        return res.get("files", [])
 
     def download(self, file_id, dest, folder="Da pubblicare"):
         if self.local:
@@ -275,19 +300,52 @@ def publish_all(path, cap, creds, only):
     return results
 
 
+def analizza_video(drive, v, work):
+    """Scarica il video, riconosce la scena e l'ora di registrazione, calcola l'orario di uscita."""
+    src = os.path.join(work, "analisi" + os.path.splitext(v["name"])[1])
+    drive.download(v["id"], src)
+    info = subprocess.run([overlay.FFMPEG, "-hide_banner", "-i", src], capture_output=True, text=True,
+                          errors="ignore").stderr
+    seconds, hdr = overlay.probe(src)
+    start, length = overlay.segmento(seconds)
+    frames = overlay.extract_frames(src, length, n=8, start=start, vf=overlay.HDR_TO_SDR if hdr else None)
+    sc, conf, motivo = scene_mod.riconosci(frames, v["name"])
+    quando = scene_mod.ora_registrazione(info)
+    os.remove(src)
+    return {"nome": v["name"], "scena": sc, "sicurezza": conf, "motivo": motivo,
+            "registrato": quando.isoformat(timespec="minutes") if quando else None,
+            "slot": scene_mod.slot_per(sc, quando), "caricato": v["createdTime"]}
+
+
+def scegli_video(videos, analisi, slot_ora):
+    """Il video giusto per questo orario; se nessuno, quello che aspetta da troppo."""
+    if not videos:
+        return None
+    if slot_ora is None:                       # esecuzione manuale: il piu' vecchio
+        return videos[0]
+    adatti = [v for v in videos if analisi[v["id"]]["slot"] == slot_ora]
+    if adatti:
+        return adatti[0]
+    ora = datetime.datetime.now(datetime.timezone.utc)
+    vecchi = [v for v in videos if (ora - datetime.datetime.fromisoformat(
+        v["createdTime"].replace("Z", "+00:00"))).total_seconds() > ATTESA_MAX_ORE * 3600]
+    return vecchi[0] if vecchi else None
+
+
 def main():
     slot = sys.argv[1] if len(sys.argv) > 1 else "manuale"
-    captions = json.load(open(CAPTIONS, encoding="utf-8"))
-    by_id = {c["id"]: c for c in captions}
+    slot_ora = None if "manuale" in slot else int(slot.split()[-1])
+    frasi = json.load(open(FRASI, encoding="utf-8"))
     state = json.load(open(STATE, encoding="utf-8")) if os.path.exists(STATE) else {}
-    for k, v in (("usate", []), ("storico", []), ("riprova", []), ("slot_fatti", []), ("musica_recenti", [])):
+    for k, v in (("usate", []), ("storico", []), ("riprova", []), ("slot_fatti", []), ("musica_recenti", []),
+                 ("frasi_usate", []), ("temi_recenti", []), ("analisi", {})):
         state.setdefault(k, v)
 
     def save():
         json.dump(state, open(STATE, "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=str)
 
-    if not ENV("DRY_RUN") == "1" and not ENV("GOOGLE_REFRESH_TOKEN"):
-        print("Account non ancora collegati (Secrets mancanti): niente da fare.")
+    if not DRY and not ENV("GOOGLE_REFRESH_TOKEN"):
+        log("Account non ancora collegati (Secrets mancanti): niente da fare.")
         return
     creds = None if DRY else google_creds()
     drive = Drive(creds)
@@ -296,57 +354,77 @@ def main():
 
     # 0. nuovi tentativi per le piattaforme fallite
     for job in list(state["riprova"]):
-        cap = by_id[job["caption"]]
+        if "frase" not in job:                 # formato vecchio: si scarta
+            state["riprova"].remove(job)
+            continue
         path = os.path.join(work, "riprova.mp4")
         try:
             drive.download(job["pronti_id"], path, folder="Pronti")
         except Exception as e:
             log("riprova: download fallito", e)
             continue
-        res = publish_all(path, cap, creds, job["piattaforme"])
+        res = publish_all(path, job["frase"], creds, job["piattaforme"])
         job["tentativi"] += 1
         job["piattaforme"] = [p for p, r in res.items() if not r["ok"]]
         state["storico"].append({"quando": datetime.datetime.now().isoformat(timespec="minutes"),
-                                 "riprova": job["caption"], "risultati": res})
+                                 "riprova": job["frase"]["id"], "risultati": res})
         if not job["piattaforme"] or job["tentativi"] >= MAX_TENTATIVI:
             state["riprova"].remove(job)
         save()
 
-    # 1-5. nuovo reel
-    cap = next((c for c in captions if c["id"] not in state["usate"]), None)
-    if cap is None:
-        log("Caption finite: aggiungere nuove caption a captions.json.")
-        return
-    video = drive.next_video()
-    if video is None:
-        log("Nessun video in coda: niente da pubblicare in questo slot.")
-        return
-    log(f"Slot {slot} | video {video['name']} | caption {cap['id']} ({cap['tema']})")
+    # 1. analisi dei video nuovi in coda
+    videos = drive.list_videos()
+    for v in videos:
+        if v["id"] not in state["analisi"]:
+            try:
+                state["analisi"][v["id"]] = analizza_video(drive, v, work)
+                log("Analizzato:", state["analisi"][v["id"]])
+            except Exception as e:
+                log("Analisi fallita per", v["name"], e)
+                state["analisi"][v["id"]] = {"nome": v["name"], "scena": "casa", "slot": 15,
+                                             "errore": str(e)[:200], "caricato": v["createdTime"]}
+    in_coda = {v["id"] for v in videos}
+    state["analisi"] = {k: a for k, a in state["analisi"].items() if k in in_coda}   # dimentica quelli usciti
+    save()
 
+    # 2. il video giusto per questo orario
+    video = scegli_video(videos, state["analisi"], slot_ora)
+    if video is None:
+        log(f"Nessun video per l'orario {slot} (in coda: {len(videos)}).")
+        return
+    an = state["analisi"][video["id"]]
+
+    # 3. frase e musica adatte
+    frase = scegli_frase(frasi, an["scena"], set(state["frasi_usate"]), state["temi_recenti"])
+    music = None if ENV("SENZA_MUSICA") == "1" else scegli_musica(frase["tema"], state["musica_recenti"])
+    log(f"Slot {slot} | {video['name']} | scena {an['scena']} | frase {frase['id']} ({frase['tema']}): {frase['gancio']}")
+
+    # 4. montaggio e pubblicazione
     src = os.path.join(work, "originale" + os.path.splitext(video["name"])[1])
     out = os.path.join(work, "reel.mp4")
     drive.download(video["id"], src)
-    music = None if ENV("SENZA_MUSICA") == "1" else scegli_musica(cap["tema"], state["musica_recenti"])
-    info = overlay.make_video(src, cap["gancio"], out, preview=os.path.join(work, "anteprima.jpg"), music=music,
+    info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"), music=music,
                               colore=ENV("SENZA_COLORE") != "1", nome=video["name"])
     log("Montato:", info)
-
-    results = publish_all(out, cap, creds, attive())
+    results = publish_all(out, frase, creds, attive())
     if not any(r["ok"] for r in results.values()):
-        log("Nessuna piattaforma ha funzionato: il video resta in coda per il prossimo slot.")
+        log("Nessuna piattaforma ha funzionato: il video resta in coda per il prossimo orario.")
         sys.exit(1)
 
-    pronti_id = drive.archive(video["id"], out, f"{cap['id']} - {os.path.splitext(video['name'])[0]}.mp4")
+    # 5. archivio e stato
+    pronti_id = drive.archive(video["id"], out, f"{frase['id']} - {os.path.splitext(video['name'])[0]}.mp4")
     failed = [p for p, r in results.items() if not r["ok"]]
     if failed:
-        state["riprova"].append({"caption": cap["id"], "pronti_id": pronti_id, "piattaforme": failed, "tentativi": 0})
-    state["usate"].append(cap["id"])
+        state["riprova"].append({"frase": frase, "pronti_id": pronti_id, "piattaforme": failed, "tentativi": 0})
+    state["frasi_usate"].append(frase["id"])
+    state["temi_recenti"] = (state["temi_recenti"] + [frase["tema"]])[-10:]
     if info.get("musica"):
         state["musica_recenti"] = (state["musica_recenti"] + [info["musica"]])[-8:]
-    state["slot_fatti"].append(slot)
-    state["slot_fatti"] = state["slot_fatti"][-60:]
+    state["slot_fatti"] = (state["slot_fatti"] + [slot])[-60:]
+    state["analisi"].pop(video["id"], None)
     state["storico"].append({"quando": datetime.datetime.now().isoformat(timespec="minutes"), "slot": slot,
-                             "video": video["name"], "caption": cap["id"], "montaggio": info, "risultati": results})
+                             "video": video["name"], "scena": an["scena"], "registrato": an.get("registrato"),
+                             "frase": frase["id"], "tema": frase["tema"], "montaggio": info, "risultati": results})
     save()
     shutil.rmtree(work, ignore_errors=True)
     log("Fatto." + (f" Da riprovare: {failed}" if failed else ""))
