@@ -46,6 +46,17 @@ def scegli_musica(tema, recenti):
     return os.path.join(d, random.choice(liberi))
 
 
+def testo_breve(cap):
+    """Descrizione pubblicata: la stessa frase del video + 3-4 hashtag (niente testo lungo, niente dettagli personali)."""
+    righe = [r.strip() for r in cap["descrizione"].strip().splitlines() if r.strip()]
+    tags = [w for w in (righe[-1].split() if righe and righe[-1].startswith("#") else []) if w.startswith("#")]
+    tags = (tags + ["#vitavera", "#30anni"])[:4]
+    return cap["gancio"].rstrip(" .") + "\n\n" + " ".join(dict.fromkeys(tags))
+
+
+PRIMO_COMMENTO = False    # disattivato su richiesta: niente commento automatico sotto i reel
+
+
 def log(*a):
     print(datetime.datetime.now().strftime("%H:%M:%S"), *a, flush=True)
 
@@ -124,7 +135,7 @@ def youtube_upload(creds, path, cap):
     if len(title) > 90:
         title = title[:87].rsplit(" ", 1)[0] + "..."
     privacy = ENV("YOUTUBE_PRIVACY") or "public"
-    body = {"snippet": {"title": title + " #shorts", "description": cap["descrizione"], "categoryId": "22",
+    body = {"snippet": {"title": title + " #shorts", "description": testo_breve(cap), "categoryId": "22",
                         "defaultLanguage": "it", "defaultAudioLanguage": "it"},
             "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": False}}
     req = yt.videos().insert(part="snippet,status", body=body,
@@ -133,7 +144,7 @@ def youtube_upload(creds, path, cap):
     while resp is None:
         _, resp = req.next_chunk()
     vid = resp["id"]
-    if cap.get("commento") and privacy == "public":
+    if PRIMO_COMMENTO and cap.get("commento") and privacy == "public":
         try:
             yt.commentThreads().insert(part="snippet", body={"snippet": {"videoId": vid, "topLevelComment": {
                 "snippet": {"textOriginal": cap["commento"]}}}}).execute()
@@ -153,7 +164,7 @@ def _rupload(url, token, path):
 def instagram_upload(path, cap):
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
     r = requests.post(f"{GRAPH}/{ig}/media", data={"media_type": "REELS", "upload_type": "resumable",
-                                                     "caption": cap["descrizione"], "share_to_feed": "true",
+                                                     "caption": testo_breve(cap), "share_to_feed": "true",
                                                      "access_token": token}).json()
     if "id" not in r:
         raise RuntimeError(r)
@@ -171,7 +182,7 @@ def instagram_upload(path, cap):
     pub = requests.post(f"{GRAPH}/{ig}/media_publish", data={"creation_id": cid, "access_token": token}).json()
     if "id" not in pub:
         raise RuntimeError(pub)
-    if cap.get("commento"):
+    if PRIMO_COMMENTO and cap.get("commento"):
         c = requests.post(f"{GRAPH}/{pub['id']}/comments", data={"message": cap["commento"], "access_token": token}).json()
         if "id" not in c:
             log("instagram: commento non pubblicato:", c)
@@ -189,10 +200,10 @@ def facebook_upload(path, cap):
         raise RuntimeError(up)
     fin = requests.post(f"{GRAPH}/{page}/video_reels",
                         data={"upload_phase": "finish", "video_id": vid, "video_state": "PUBLISHED",
-                              "description": cap["descrizione"], "access_token": token}).json()
+                              "description": testo_breve(cap), "access_token": token}).json()
     if not fin.get("success"):
         raise RuntimeError(fin)
-    if cap.get("commento"):
+    if PRIMO_COMMENTO and cap.get("commento"):
         for _ in range(12):                  # il reel deve finire l'elaborazione prima di accettare commenti
             c = requests.post(f"{GRAPH}/{vid}/comments", data={"message": cap["commento"], "access_token": token}).json()
             if "id" in c:
@@ -224,7 +235,7 @@ def tiktok_upload(path, cap):
     size = os.path.getsize(path)
     init = requests.post("https://open.tiktokapis.com/v2/post/publish/video/init/",
                          headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json; charset=UTF-8"},
-                         json={"post_info": {"title": cap["descrizione"][:2200],
+                         json={"post_info": {"title": testo_breve(cap)[:2200],
                                              "privacy_level": ENV("TIKTOK_PRIVACY", "SELF_ONLY"),
                                              "disable_comment": False, "disable_duet": False,
                                              "disable_stitch": False, "video_cover_timestamp_ms": 1000},
