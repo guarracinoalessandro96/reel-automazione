@@ -27,6 +27,7 @@ ENV = os.environ.get
 DRY = ENV("DRY_RUN") == "1"
 PLATFORMS = ["instagram", "facebook", "youtube", "tiktok"]
 MAX_TENTATIVI = 3
+GIORNI_PRONTI = 30            # i reel montati restano su Drive 30 giorni, poi vanno nel Cestino
 QUALITA_MINIMA = 720          # lato corto minimo (pixel): sotto l'HD il video non si pubblica
 CARTELLA_BASSA = "Da controllare - bassa qualità"
 ATTESA_MAX_ORE = 36          # oltre questa attesa un video esce al primo orario libero
@@ -185,20 +186,36 @@ class Drive:
         self.api.files().update(fileId=file_id, addParents=cartella, removeParents=origine, fields="id").execute()
 
     def archive(self, file_id, final_path, final_name):
-        """Sposta l'originale in Pubblicati e carica il montato in Pronti. Restituisce l'id del montato."""
+        """Dopo la pubblicazione: l'originale va nel Cestino (una copia resta nella galleria dell'iPhone)
+        e il reel montato va in Pronti, dove resta GIORNI_PRONTI giorni. Restituisce l'id del montato."""
         if self.local:
-            for d in ("Pubblicati", "Pronti"):
-                os.makedirs(os.path.join(self.local, d), exist_ok=True)
-            shutil.move(os.path.join(self.local, "Da pubblicare", file_id), os.path.join(self.local, "Pubblicati", file_id))
+            os.makedirs(os.path.join(self.local, "Pronti"), exist_ok=True)
+            os.remove(os.path.join(self.local, "Da pubblicare", file_id))
             shutil.copy(final_path, os.path.join(self.local, "Pronti", final_name))
             return final_name
         from googleapiclient.http import MediaFileUpload
-        self.api.files().update(fileId=file_id, addParents=ENV("DRIVE_FOLDER_PUBBLICATI"),
-                                removeParents=ENV("DRIVE_FOLDER_DA_PUBBLICARE"), fields="id").execute()
+        self.api.files().update(fileId=file_id, body={"trashed": True}, fields="id").execute()
         f = self.api.files().create(body={"name": final_name, "parents": [ENV("DRIVE_FOLDER_PRONTI")]},
                                     media_body=MediaFileUpload(final_path, mimetype="video/mp4"),
                                     fields="id").execute()
         return f["id"]
+
+    def pulisci_pronti(self, giorni):
+        """Mette nel Cestino i reel montati piu' vecchi di `giorni` (e gli eventuali vecchi originali in Pubblicati)."""
+        limite = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=giorni)
+        if self.local:
+            return 0
+        n = 0
+        for cartella, soglia in ((ENV("DRIVE_FOLDER_PRONTI"), limite),
+                                 (ENV("DRIVE_FOLDER_PUBBLICATI"), datetime.datetime.now(datetime.timezone.utc))):
+            if not cartella:
+                continue
+            q = f"'{cartella}' in parents and trashed = false and mimeType contains 'video/'"
+            for f in self.api.files().list(q=q, fields="files(id,createdTime)", pageSize=200).execute().get("files", []):
+                if datetime.datetime.fromisoformat(f["createdTime"].replace("Z", "+00:00")) < soglia:
+                    self.api.files().update(fileId=f["id"], body={"trashed": True}, fields="id").execute()
+                    n += 1
+        return n
 
 
 def youtube_upload(creds, path, cap):
@@ -458,6 +475,17 @@ def main():
                                  "riprova": job["frase"]["id"], "risultati": res})
         if not job["piattaforme"] or job["tentativi"] >= MAX_TENTATIVI:
             state["riprova"].remove(job)
+        save()
+
+    # pulizia di Drive (una volta al giorno, alla prima esecuzione della giornata)
+    oggi = datetime.date.today().isoformat()
+    if state.get("pulizia") != oggi and not DRY:
+        try:
+            n = drive.pulisci_pronti(GIORNI_PRONTI)
+            log(f"Pulizia Drive: {n} file nel cestino")
+        except Exception as e:
+            log("pulizia Drive non riuscita:", e)
+        state["pulizia"] = oggi
         save()
 
     # 1. analisi dei video nuovi in coda
