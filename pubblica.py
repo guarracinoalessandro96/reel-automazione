@@ -80,7 +80,12 @@ def scegli_frase(frasi, scena, usate, temi_recenti, pesi=None):
 def testo_breve(cap):
     """Descrizione pubblicata: la stessa frase del video + 3-4 hashtag (niente dettagli personali)."""
     tags = cap.get("hashtag") or ["#vitavera", "#30anni"]
-    return cap["gancio"].rstrip(" .") + "\n\n" + " ".join(dict.fromkeys(tags[:4]))
+    testo = cap["gancio"].strip()
+    if cap.get("autore"):
+        testo = "“" + testo.strip('"“”') + "” — " + cap["autore"]
+    else:
+        testo = testo.rstrip(" .")
+    return testo + "\n\n" + " ".join(dict.fromkeys(tags[:4]))
 
 
 def log(*a):
@@ -531,6 +536,7 @@ def main():
     out = os.path.join(work, "reel.mp4")
     drive.download(video["id"], src)
     info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"), music=music,
+                              autore=frase.get("autore"),
                               colore=ENV("SENZA_COLORE") != "1", nome=video["name"],
                               scena_rilevata=an["scena"])
     log("Montato:", info)

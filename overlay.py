@@ -129,20 +129,26 @@ def _a_capo(d, text, font, max_px):
     return lines
 
 
-def build_overlay(W, H, text, faces, stile=None):
+def build_overlay(W, H, text, faces, stile=None, autore=None):
     stile = stile or STILE
     fsize = int(W * (0.056 if stile == "contorno" else 0.050))
     font = ImageFont.truetype(FONT, fsize)
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
+    if autore:                                   # citazione: tra virgolette, con l'autore sotto
+        text = "“" + text.strip().strip('"“”') + "”"
     lines = _a_capo(d, text, font, W * TEXT_MAX_W)
     lh = int(fsize * (1.55 if stile == "evidenziato" else 1.28))
     pad_x, pad_y = int(fsize * 0.6), int(fsize * 0.45)
-    block_h = lh * len(lines) + pad_y * 2
+    font_a = ImageFont.truetype(FONT, int(fsize * 0.72))
+    riga_a = "— " + autore if autore else ""
+    ah = int(fsize * 1.25) if autore else 0      # spazio per la riga dell'autore
+    block_h = lh * len(lines) + pad_y * 2 + ah
     y_frac, score = choose_position(block_h / H, faces)
     y = int(y_frac * H)
     widths = [d.textlength(l, font=font) for l in lines]
-    bw = max(widths) + pad_x * 2
+    wa = d.textlength(riga_a, font=font_a) if autore else 0
+    bw = max(widths + [wa]) + pad_x * 2
     x0 = (W - bw) / 2
     ty = lambda i: y + pad_y + i * lh
 
@@ -172,6 +178,16 @@ def build_overlay(W, H, text, faces, stile=None):
         d.rounded_rectangle([x0, y, x0 + bw, y + block_h], radius=int(lh * 0.35), fill=(0, 0, 0, 150))
         for i, (l, w) in enumerate(zip(lines, widths)):
             d.text(((W - w) / 2, ty(i)), l, font=font, fill=(255, 255, 255, 255))
+    if autore:
+        d = ImageDraw.Draw(img)
+        ya = y + pad_y + len(lines) * lh + int(fsize * 0.2)
+        chiaro = stile in ("vetro", "evidenziato")
+        if stile == "evidenziato":
+            d.rounded_rectangle([(W - wa) / 2 - fsize * 0.3, ya - fsize * 0.1, (W + wa) / 2 + fsize * 0.3,
+                                 ya + fsize * 0.95], radius=int(fsize * 0.2), fill=(255, 255, 255, 240))
+        extra = {"stroke_width": max(1, int(fsize * 0.035)), "stroke_fill": (0, 0, 0, 200)} if stile == "contorno" else {}
+        d.text(((W - wa) / 2, ya), riga_a, font=font_a,
+               fill=(40, 40, 40, 255) if chiaro else (255, 255, 255, 215), **extra)
     return img, y_frac, score
 
 
@@ -206,7 +222,7 @@ def scegli_copertina(frames, length):
     return int(min(max(t, 0.3), max(length - 0.3, 0.3)) * 1000)
 
 
-def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", scena_rilevata=None):
+def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", scena_rilevata=None, autore=None):
     """Crea dst (mp4 H.264 alta qualita') con il gancio e, se indicata, la musica in loop. Restituisce info."""
     seconds, hdr = probe(src)
     start, length = segmento(seconds)
@@ -215,7 +231,7 @@ def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", s
         raise RuntimeError("video illeggibile")
     H, W = frames[0].shape[:2]
     faces = detect_faces(frames)
-    overlay, y_frac, score = build_overlay(W, H, hook, faces)
+    overlay, y_frac, score = build_overlay(W, H, hook, faces, autore=autore)
     png = os.path.join(tempfile.gettempdir(), "overlay_reel.png")
     overlay.save(png)
     cmd = [FFMPEG, "-y", "-v", "error", "-display_rotation", "0", "-ss", f"{start:.3f}", "-i", src, "-i", png]
