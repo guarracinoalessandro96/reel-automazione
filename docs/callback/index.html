@@ -21,6 +21,11 @@
 </main>
 <script>
   const q = new URLSearchParams(location.search);
+  // Accesso avviato dal TikTok Publisher sul computer: si torna da solo al programma locale
+  if ((q.get("state") || "").startsWith("local-") && q.get("code")) {
+    location.replace("http://localhost:8765/callback?code=" + encodeURIComponent(q.get("code")) +
+                     "&state=" + encodeURIComponent(q.get("state")));
+  }
   if (q.get("error")) document.getElementById("msg").textContent = "Errore: " + (q.get("error_description") || q.get("error"));
   document.getElementById("code").value = q.get("code") || "";
 </script>
