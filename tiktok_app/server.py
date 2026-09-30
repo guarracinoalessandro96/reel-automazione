@@ -122,6 +122,14 @@ class H(BaseHTTPRequestHandler):
         u = urllib.parse.urlparse(self.path)
         q = dict(urllib.parse.parse_qsl(u.query))
         try:
+            if u.path in ("/", "/app", "/app/"):           # stessa pagina del sito, servita in locale (riserva)
+                body = open(os.path.join(os.path.dirname(HERE), "docs", "app", "index.html"), "rb").read()
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.send_header("Content-Length", str(len(body)))
+                self.end_headers()
+                self.wfile.write(body)
+                return
             if u.path == "/api/status":
                 if not S["token"]:
                     return self.out({"logged_in": False})
@@ -198,7 +206,23 @@ class H(BaseHTTPRequestHandler):
             self.out({"ok": False, "error": {"message": str(e)[:300]}}, 500)
 
 
+def riprendi_sessione():
+    """Se l'account e' gia' stato collegato, si riparte collegati (si puo' sempre premere Disconnect)."""
+    try:
+        s = segreti()
+        r = requests.post(API + "/v2/oauth/token/", data={
+            "client_key": s["TIKTOK_CLIENT_KEY"], "client_secret": s["TIKTOK_CLIENT_SECRET"],
+            "grant_type": "refresh_token", "refresh_token": s["TIKTOK_REFRESH_TOKEN"]}, timeout=30).json()
+        if "access_token" in r:
+            S["token"] = r["access_token"]
+            salva_refresh(r.get("refresh_token"))
+    except Exception:
+        pass
+
+
 def main():
+    if "--nuovo-accesso" not in sys.argv:
+        riprendi_sessione()
     srv = ThreadingHTTPServer(("127.0.0.1", PORT), H)
     print(f"TikTok Publisher attivo su http://localhost:{PORT}")
     print("Cartella dei reel:", PRONTI)
