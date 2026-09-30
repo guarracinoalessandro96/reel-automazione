@@ -135,6 +135,27 @@ class Drive:
             while not done:
                 _, done = dl.next_chunk()
 
+    def testo_tiktok(self, testo, nome_video):
+        """Aggiunge in cima al file 'TIKTOK - testi da incollare.txt' (cartella Pronti) la frase del reel appena inviato."""
+        titolo = "TIKTOK - testi da incollare.txt"
+        riga = f"{datetime.datetime.now():%d/%m %H:%M}  |  {nome_video}\n{testo}\n\n{'-' * 40}\n\n"
+        if self.local:
+            path = os.path.join(self.local, "Pronti", titolo)
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            vecchio = open(path, encoding="utf-8").read() if os.path.exists(path) else ""
+            open(path, "w", encoding="utf-8").write(riga + vecchio)
+            return
+        from googleapiclient.http import MediaIoBaseUpload
+        folder = ENV("DRIVE_FOLDER_PRONTI")
+        q = f"'{folder}' in parents and trashed = false and name = '{titolo}'"
+        found = self.api.files().list(q=q, fields="files(id)").execute().get("files", [])
+        vecchio = self.api.files().get_media(fileId=found[0]["id"]).execute().decode("utf-8") if found else ""
+        media = MediaIoBaseUpload(io.BytesIO((riga + vecchio)[:200000].encode("utf-8")), mimetype="text/plain")
+        if found:
+            self.api.files().update(fileId=found[0]["id"], media_body=media).execute()
+        else:
+            self.api.files().create(body={"name": titolo, "parents": [folder]}, media_body=media).execute()
+
     def archive(self, file_id, final_path, final_name):
         """Sposta l'originale in Pubblicati e carica il montato in Pronti. Restituisce l'id del montato."""
         if self.local:
@@ -255,17 +276,24 @@ def tiktok_token():
 
 
 def tiktok_upload(path, cap):
-    """TikTok non permette commenti via API: la domanda resta in fondo alla descrizione."""
+    """Due modalita' (variabile TIKTOK_MODO):
+    - "bozze" (predefinita): il reel arriva nelle bozze/notifiche di TikTok e Alessandro lo pubblica con un tocco.
+      Serve finche' l'app TikTok non e' approvata: le bozze le pubblica lui, quindi escono PUBBLICHE.
+    - "diretto": pubblicazione diretta (privata finche' l'app non e' approvata; privacy da TIKTOK_PRIVACY)."""
     token = tiktok_token()
     size = os.path.getsize(path)
-    init = requests.post("https://open.tiktokapis.com/v2/post/publish/video/init/",
-                         headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json; charset=UTF-8"},
-                         json={"post_info": {"title": testo_breve(cap)[:2200],
-                                             "privacy_level": ENV("TIKTOK_PRIVACY", "SELF_ONLY"),
-                                             "disable_comment": False, "disable_duet": False,
-                                             "disable_stitch": False, "video_cover_timestamp_ms": 1000},
-                               "source_info": {"source": "FILE_UPLOAD", "video_size": size,
-                                               "chunk_size": size, "total_chunk_count": 1}}).json()
+    h = {"Authorization": f"Bearer {token}", "Content-Type": "application/json; charset=UTF-8"}
+    source = {"source": "FILE_UPLOAD", "video_size": size, "chunk_size": size, "total_chunk_count": 1}
+    if (ENV("TIKTOK_MODO") or "bozze") == "diretto":
+        init = requests.post("https://open.tiktokapis.com/v2/post/publish/video/init/", headers=h,
+                             json={"post_info": {"title": testo_breve(cap)[:2200],
+                                                 "privacy_level": ENV("TIKTOK_PRIVACY") or "SELF_ONLY",
+                                                 "disable_comment": False, "disable_duet": False,
+                                                 "disable_stitch": False, "video_cover_timestamp_ms": 1000},
+                                   "source_info": source}).json()
+    else:
+        init = requests.post("https://open.tiktokapis.com/v2/post/publish/inbox/video/init/", headers=h,
+                             json={"source_info": source}).json()
     data = init.get("data", {})
     if "upload_url" not in data:
         raise RuntimeError(init)
@@ -414,6 +442,11 @@ def main():
     # 5. archivio e stato
     pronti_id = drive.archive(video["id"], out, f"{frase['id']} - {os.path.splitext(video['name'])[0]}.mp4")
     failed = [p for p, r in results.items() if not r["ok"]]
+    if results.get("tiktok", {}).get("ok") and (ENV("TIKTOK_MODO") or "bozze") != "diretto":
+        try:                                  # la frase da incollare quando pubblica la bozza su TikTok
+            drive.testo_tiktok(testo_breve(frase), video["name"])
+        except Exception as e:
+            log("testo TikTok non salvato su Drive:", e)
     if failed:
         state["riprova"].append({"frase": frase, "pronti_id": pronti_id, "piattaforme": failed, "tentativi": 0})
     state["frasi_usate"].append(frase["id"])

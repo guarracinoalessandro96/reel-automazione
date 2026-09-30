@@ -67,6 +67,7 @@ jobs:
           GH_PAT: ${{ secrets.GH_PAT }}
           YOUTUBE_PRIVACY: ${{ vars.YOUTUBE_PRIVACY || 'public' }}
           TIKTOK_PRIVACY: ${{ vars.TIKTOK_PRIVACY || 'SELF_ONLY' }}
+          TIKTOK_MODO: ${{ vars.TIKTOK_MODO || 'bozze' }}
           SALTA_INSTAGRAM: ${{ vars.SALTA_INSTAGRAM }}
           SALTA_FACEBOOK: ${{ vars.SALTA_FACEBOOK }}
           SALTA_YOUTUBE: ${{ vars.SALTA_YOUTUBE }}
