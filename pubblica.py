@@ -27,6 +27,8 @@ ENV = os.environ.get
 DRY = ENV("DRY_RUN") == "1"
 PLATFORMS = ["instagram", "facebook", "youtube", "tiktok"]
 MAX_TENTATIVI = 3
+QUALITA_MINIMA = 720          # lato corto minimo (pixel): sotto l'HD il video non si pubblica
+CARTELLA_BASSA = "Da controllare - bassa qualità"
 ATTESA_MAX_ORE = 36          # oltre questa attesa un video esce al primo orario libero
 PRIMO_COMMENTO = False       # disattivato su richiesta: niente commento automatico sotto i reel
 
@@ -156,6 +158,24 @@ class Drive:
             self.api.files().update(fileId=found[0]["id"], media_body=media).execute()
         else:
             self.api.files().create(body={"name": titolo, "parents": [folder]}, media_body=media).execute()
+
+    def sposta_in_sottocartella(self, file_id, nome):
+        """Sposta un video da 'Da pubblicare' a una cartella accanto (creata se manca)."""
+        if self.local:
+            dest = os.path.join(self.local, nome)
+            os.makedirs(dest, exist_ok=True)
+            shutil.move(os.path.join(self.local, "Da pubblicare", file_id), os.path.join(dest, file_id))
+            return
+        origine = ENV("DRIVE_FOLDER_DA_PUBBLICARE")
+        padre = self.api.files().get(fileId=origine, fields="parents").execute()["parents"][0]
+        nome_q = nome.replace("'", "\\'")
+        q = (f"'{padre}' in parents and name = '{nome_q}' and trashed = false "
+             "and mimeType = 'application/vnd.google-apps.folder'")
+        found = self.api.files().list(q=q, fields="files(id)").execute().get("files", [])
+        cartella = found[0]["id"] if found else self.api.files().create(
+            body={"name": nome, "parents": [padre], "mimeType": "application/vnd.google-apps.folder"},
+            fields="id").execute()["id"]
+        self.api.files().update(fileId=file_id, addParents=cartella, removeParents=origine, fields="id").execute()
 
     def archive(self, file_id, final_path, final_name):
         """Sposta l'originale in Pubblicati e carica il montato in Pronti. Restituisce l'id del montato."""
@@ -372,7 +392,8 @@ def analizza_video(drive, v, work):
     sc, conf, motivo = scene_mod.riconosci(frames, v["name"])
     quando = scene_mod.ora_registrazione(info)
     os.remove(src)
-    return {"nome": v["name"], "scena": sc, "sicurezza": conf, "motivo": motivo,
+    lato_corto = min(frames[0].shape[:2]) if frames else 0
+    return {"nome": v["name"], "scena": sc, "sicurezza": conf, "motivo": motivo, "lato_corto": lato_corto,
             "registrato": quando.isoformat(timespec="minutes") if quando else None,
             "slot": scene_mod.slot_per(sc, quando), "caricato": v["createdTime"]}
 
@@ -443,6 +464,15 @@ def main():
                 log("Analisi fallita per", v["name"], e)
                 state["analisi"][v["id"]] = {"nome": v["name"], "scena": "casa", "slot": 15,
                                              "errore": str(e)[:200], "caricato": v["createdTime"]}
+    for v in list(videos):
+        a = state["analisi"].get(v["id"], {})
+        if 0 < a.get("lato_corto", 9999) < QUALITA_MINIMA:
+            log(f"{v['name']}: qualità troppo bassa ({a['lato_corto']}p), spostato in '{CARTELLA_BASSA}'")
+            try:
+                drive.sposta_in_sottocartella(v["id"], CARTELLA_BASSA)
+            except Exception as e:
+                log("spostamento non riuscito:", e)
+            videos.remove(v)
     in_coda = {v["id"] for v in videos}
     state["analisi"] = {k: a for k, a in state["analisi"].items() if k in in_coda}   # dimentica quelli usciti
     save()
