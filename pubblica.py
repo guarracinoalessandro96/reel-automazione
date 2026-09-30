@@ -61,18 +61,27 @@ def scegli_musica(tema, recenti):
     return None
 
 
-def scegli_frase(frasi, scena, usate, temi_recenti, pesi=None):
-    """Frase non ancora usata, adatta alla scena, preferendo il tema giusto e alternando i temi."""
+GIORNI_RIUSO = 150            # una citazione puo' tornare dopo 5 mesi (prima escono sempre quelle mai usate)
+
+
+def scegli_frase(frasi, scena, usi, temi_recenti, pesi=None):
+    """Citazione adatta alla scena. usi = {id: data ISO dell'ultimo utilizzo}.
+    Prima quelle mai uscite, poi quelle uscite da piu' di GIORNI_RIUSO giorni (le piu' vecchie per prime):
+    la scorta non finisce mai."""
     pref = TEMI_PER_SCENA.get(scena, [])
-    cand = [f for f in frasi if f["id"] not in usate and scena in f["scene"]]
-    if not cand:
-        cand = [f for f in frasi if f["id"] not in usate] or frasi     # scorta finita: si ricomincia
+    limite = (datetime.date.today() - datetime.timedelta(days=GIORNI_RIUSO)).isoformat()
+    libere = [f for f in frasi if f["id"] not in usi or usi[f["id"]] < limite]
+    cand = [f for f in libere if scena in f["scene"]] or libere
+    if not cand:                              # caso estremo: tutte usate di recente -> la meno recente
+        return min(frasi, key=lambda f: usi.get(f["id"], ""))
 
     def punteggio(f):
         s = 10 - 2 * pref.index(f["tema"]) if f["tema"] in pref else 0
         if f["tema"] in temi_recenti[-2:]:
             s -= 6                      # non lo stesso tema due volte di fila
         s += 5 * ((pesi or {}).get(f["tema"], 1.0) - 1)   # report settimanale: i temi che rendono di piu' salgono
+        if f["id"] not in usi:
+            s += 20                     # le citazioni mai uscite hanno sempre la precedenza
         return s + random.random() * 3  # un po' di varieta'
     return max(cand, key=punteggio)
 
@@ -527,7 +536,8 @@ def main():
     # 3. frase e musica adatte
     pesi_file = os.path.join(HERE, "pesi.json")
     pesi = json.load(open(pesi_file, encoding="utf-8")).get("temi", {}) if os.path.exists(pesi_file) else {}
-    frase = scegli_frase(frasi, an["scena"], set(state["frasi_usate"]), state["temi_recenti"], pesi)
+    usi = {h["frase"]: h["quando"][:10] for h in state["storico"] if h.get("frase") and h.get("quando")}
+    frase = scegli_frase(frasi, an["scena"], usi, state["temi_recenti"], pesi)
     music = None if ENV("SENZA_MUSICA") == "1" else scegli_musica(frase["tema"], state["musica_recenti"])
     log(f"Slot {slot} | {video['name']} | scena {an['scena']} | frase {frase['id']} ({frase['tema']}): {frase['gancio']}")
 
