@@ -342,24 +342,6 @@
   ]
  },
  {
-  "id": "QA020",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Ogni abitudine e ogni capacità si mantiene e cresce con le azioni corrispondenti.",
-  "autore": "Epitteto",
-  "fonte": "Diatribe II,18,1",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
   "id": "QA021",
   "tema": "abitudini",
   "scene": [
@@ -2738,63 +2720,6 @@
   ]
  },
  {
-  "id": "QB053",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Quando qualcosa è abbastanza importante, lo fai anche se le probabilità non sono a tuo favore.",
-  "autore": "Elon Musk",
-  "fonte": "Intervista a 60 Minutes (CBS), 2012",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB055",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Lavorate come dannati: dovete mettere dalle 80 alle 100 ore a settimana, ogni settimana.",
-  "autore": "Elon Musk",
-  "fonte": "Discorso ai laureati della USC, 2014",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB056",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Correte rischi adesso. Fate qualcosa di audace. Non ve ne pentirete.",
-  "autore": "Elon Musk",
-  "fonte": "Discorso ai laureati della USC, 2014",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QB057",
   "tema": "imprenditore",
   "scene": [
@@ -3015,25 +2940,6 @@
   "gancio": "Hai qualcosa da fare domani? Fallo oggi.",
   "autore": "Benjamin Franklin",
   "fonte": "Poor Richard's Almanack, 1742",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB078",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Nessun vento è favorevole per chi non sa in quale porto vuole approdare.",
-  "autore": "Seneca",
-  "fonte": "Epistulae morales ad Lucilium, 71, 3",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -3297,7 +3203,7 @@
    "pacchi",
    "macchina"
   ],
-  "gancio": "Fate qualcosa che la gente vuole davvero avere.",
+  "gancio": "Fate qualcosa che la gente vuole",
   "autore": "Paul Graham",
   "fonte": "Motto di Y Combinator, saggio Be Good, 2008",
   "hashtag": [
@@ -3338,25 +3244,6 @@
   "gancio": "Scegliamo di fare queste cose non perché siano facili, ma perché sono difficili.",
   "autore": "John F. Kennedy",
   "fonte": "Discorso alla Rice University, 12 settembre 1962",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB115",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "La fatica ostinata vinse ogni cosa, insieme al bisogno che incalza nelle difficoltà.",
-  "autore": "Virgilio",
-  "fonte": "Georgiche, I, 145-146",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -3697,22 +3584,6 @@
   "gancio": "L'importante nella vita non è il trionfo ma la lotta; l'essenziale non è aver vinto, ma essersi battuti bene.",
   "autore": "Pierre de Coubertin",
   "fonte": "Discorso a Londra durante i Giochi Olimpici, 24 luglio 1908",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QC045",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Voglio predicare non la dottrina dell'ozio ignobile, ma la dottrina della vita faticosa.",
-  "autore": "Theodore Roosevelt",
-  "fonte": "Discorso 'The Strenuous Life', Chicago, 10 aprile 1899",
   "hashtag": [
    "#citazioni",
    "#palestra",
@@ -4711,23 +4582,6 @@
   ]
  },
  {
-  "id": "QD015",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Il rispetto verso i genitori e verso i fratelli maggiori è la radice dell'umanità.",
-  "autore": "Confucio",
-  "fonte": "Dialoghi (Lunyu), I, 2 (detto di Youzi)",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
   "id": "QD016",
   "tema": "famiglia",
   "scene": [
@@ -4897,22 +4751,6 @@
   ]
  },
  {
-  "id": "QD027",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Ti mostrerò un filtro d'amore senza erbe né incantesimi: se vuoi essere amato, ama.",
-  "autore": "Seneca",
-  "fonte": "Lettere a Lucilio, 9, 6 (citando Ecatone)",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
   "id": "QD028",
   "tema": "amicizia",
   "scene": [
@@ -4937,22 +4775,6 @@
   "gancio": "L'amicizia rende più splendida la buona sorte e più leggera l'avversa, dividendola e condividendola.",
   "autore": "Cicerone",
   "fonte": "De amicitia (Laelius), 22",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QD030",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "L'amico sicuro si riconosce nella situazione incerta.",
-  "autore": "Cicerone",
-  "fonte": "De amicitia (Laelius), 64 (citando Ennio)",
   "hashtag": [
    "#citazioni",
    "#amicizia",
@@ -5767,7 +5589,7 @@
    "casa",
    "uscita"
   ],
-  "gancio": "L'autunno è una seconda primavera, in cui ogni foglia è un fiore.",
+  "gancio": "L'autunno? Una seconda primavera, in cui tutte le foglie sono come fiori",
   "autore": "Albert Camus",
   "fonte": "Il malinteso (1944), atto I",
   "hashtag": [
@@ -5881,7 +5703,7 @@
    "casa",
    "uscita"
   ],
-  "gancio": "Quello che conta di più è come attraversi il fuoco.",
+  "gancio": "Quello che conta di più è quanto bene attraversi il fuoco",
   "autore": "Charles Bukowski",
   "fonte": "How Is Your Heart?, in You Get So Alone at Times That It Just Makes Sense (1986)",
   "hashtag": [
@@ -6126,23 +5948,6 @@
   "gancio": "Conservati semplice, buono, integro, serio, senza affettazione, amico della giustizia.",
   "autore": "Marco Aurelio",
   "fonte": "Meditazioni (A se stesso), VI, 30",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QD110",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Quello che ho fatto, te lo giuro, nessuna bestia l'avrebbe mai fatto.",
-  "autore": "Antoine de Saint-Exupéry",
-  "fonte": "Terra degli uomini (1939), cap. II (parole di Henri Guillaumet)",
   "hashtag": [
    "#citazioni",
    "#lifestyle",
