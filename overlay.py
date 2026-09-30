@@ -33,6 +33,19 @@ def probe(path):
     return seconds, hdr
 
 
+def rotazione(path):
+    """Gradi di rotazione salvati nel file (i telefoni spesso salvano il video 'sdraiato' + un'indicazione)."""
+    r = subprocess.run([FFMPEG, "-hide_banner", "-i", path], capture_output=True, text=True, errors="ignore").stderr
+    m = re.search(r"displaymatrix: rotation of (-?[\d.]+) degrees", r) or re.search(r"rotate\s*:\s*(-?\d+)", r)
+    return int(round(float(m.group(1)))) % 360 if m else 0
+
+
+def raddrizza(gradi):
+    """Filtro ffmpeg che applica a mano la rotazione (con -noautorotate): risultato identico su ogni computer."""
+    # displaymatrix -90 (= 270) significa: ruotare di 90 gradi in senso orario per vederlo dritto
+    return {90: "transpose=2", 270: "transpose=1", 180: "hflip,vflip"}.get(gradi, "")
+
+
 def has_audio(path):
     r = subprocess.run([FFMPEG, "-hide_banner", "-i", path], capture_output=True, text=True, errors="ignore")
     return "Audio:" in r.stderr
@@ -155,7 +168,7 @@ def scegli_copertina(frames, length):
     return int(min(max(t, 0.3), max(length - 0.3, 0.3)) * 1000)
 
 
-def make_video(src, hook, dst, preview=None, music=None, colore=True, nome=""):
+def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", scena_rilevata=None):
     """Crea dst (mp4 H.264 alta qualita') con il gancio e, se indicata, la musica in loop. Restituisce info."""
     seconds, hdr = probe(src)
     start, length = segmento(seconds)
@@ -167,14 +180,16 @@ def make_video(src, hook, dst, preview=None, music=None, colore=True, nome=""):
     overlay, y_frac, score = build_overlay(W, H, hook, faces)
     png = os.path.join(tempfile.gettempdir(), "overlay_reel.png")
     overlay.save(png)
-    cmd = [FFMPEG, "-y", "-v", "error", "-ss", f"{start:.3f}", "-i", src, "-i", png]
-    chain = []
+    cmd = [FFMPEG, "-y", "-v", "error", "-display_rotation", "0", "-ss", f"{start:.3f}", "-i", src, "-i", png]
+    chain = [raddrizza(rotazione(src))] if raddrizza(rotazione(src)) else []
     if hdr:     # video HDR dell'iPhone (HLG/PQ): conversione a colori normali, altrimenti esce grigio e sbiadito
         chain.append(HDR_TO_SDR)
     grade_info = None
     if colore:  # color correction automatica in base alla scena (grade.py)
         misure = grade.analizza(frames, faces)
         tipo, motivo = grade.scena(misure, nome)
+        if scena_rilevata == "palestra" and tipo != "palestra":   # riconosciuta dalle immagini: profilo palestra
+            tipo, motivo = "palestra", "scena riconosciuta: palestra"
         chain.append(grade.build_filter(misure, tipo))
         grade_info = grade.descrivi(misure, tipo, motivo)
     base = f"[0:v]{','.join(chain)}[base];[base]" if chain else "[0:v]"

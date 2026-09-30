@@ -531,7 +531,8 @@ def main():
     out = os.path.join(work, "reel.mp4")
     drive.download(video["id"], src)
     info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"), music=music,
-                              colore=ENV("SENZA_COLORE") != "1", nome=video["name"])
+                              colore=ENV("SENZA_COLORE") != "1", nome=video["name"],
+                              scena_rilevata=an["scena"])
     log("Montato:", info)
     frase = dict(frase, copertina_ms=info.get("copertina_ms"))
     results = publish_all(out, frase, creds, attive())
