@@ -7,8 +7,9 @@ import imageio_ffmpeg
 import grade
 
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
+_DIR = os.path.dirname(os.path.abspath(__file__))
 FONTS = [
-    os.path.join(os.path.dirname(os.path.abspath(__file__)), "font.ttf"),
+    os.path.join(_DIR, "font", "Poppins-SemiBold.ttf"),        # carattere del profilo (Google Fonts, licenza OFL)
     r"C:\Windows\Fonts\segoeuib.ttf",
     "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
     "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
@@ -109,31 +110,68 @@ def choose_position(block_h, faces):
     return best, best_score
 
 
-def build_overlay(W, H, text, faces):
-    fsize = int(W * 0.052)
-    font = ImageFont.truetype(FONT, fsize)
-    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    d = ImageDraw.Draw(img)
+# Stile del testo sul video: "riquadro" (scuro semitrasparente), "contorno" (senza riquadro, ombra forte),
+# "evidenziato" (ogni riga su una fascia bianca, testo nero), "vetro" (riquadro chiaro, testo scuro)
+STILE = os.environ.get("STILE_TESTO") or "riquadro"
+
+
+def _a_capo(d, text, font, max_px):
     lines, cur = [], ""
     for wd in text.split():
         t = (cur + " " + wd).strip()
-        if d.textlength(t, font=font) <= W * TEXT_MAX_W:
+        if d.textlength(t, font=font) <= max_px:
             cur = t
         else:
             lines.append(cur)
             cur = wd
     if cur:
         lines.append(cur)
-    lh, pad_x, pad_y = int(fsize * 1.22), int(fsize * 0.55), int(fsize * 0.4)
+    return lines
+
+
+def build_overlay(W, H, text, faces, stile=None):
+    stile = stile or STILE
+    fsize = int(W * (0.056 if stile == "contorno" else 0.050))
+    font = ImageFont.truetype(FONT, fsize)
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    lines = _a_capo(d, text, font, W * TEXT_MAX_W)
+    lh = int(fsize * (1.55 if stile == "evidenziato" else 1.28))
+    pad_x, pad_y = int(fsize * 0.6), int(fsize * 0.45)
     block_h = lh * len(lines) + pad_y * 2
     y_frac, score = choose_position(block_h / H, faces)
     y = int(y_frac * H)
     widths = [d.textlength(l, font=font) for l in lines]
     bw = max(widths) + pad_x * 2
     x0 = (W - bw) / 2
-    d.rounded_rectangle([x0, y, x0 + bw, y + block_h], radius=int(lh * 0.35), fill=(0, 0, 0, 150))
-    for i, (l, w) in enumerate(zip(lines, widths)):
-        d.text(((W - w) / 2, y + pad_y + i * lh), l, font=font, fill=(255, 255, 255, 255))
+    ty = lambda i: y + pad_y + i * lh
+
+    if stile == "contorno":
+        ombra = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        do = ImageDraw.Draw(ombra)
+        for i, (l, w) in enumerate(zip(lines, widths)):
+            do.text(((W - w) / 2, ty(i) + fsize * 0.06), l, font=font, fill=(0, 0, 0, 170))
+        from PIL import ImageFilter
+        img.alpha_composite(ombra.filter(ImageFilter.GaussianBlur(fsize * 0.18)))
+        d = ImageDraw.Draw(img)
+        for i, (l, w) in enumerate(zip(lines, widths)):
+            d.text(((W - w) / 2, ty(i)), l, font=font, fill=(255, 255, 255, 255),
+                   stroke_width=max(2, int(fsize * 0.045)), stroke_fill=(0, 0, 0, 200))
+    elif stile == "evidenziato":
+        for i, (l, w) in enumerate(zip(lines, widths)):
+            px, py = fsize * 0.35, fsize * 0.12
+            d.rounded_rectangle([(W - w) / 2 - px, ty(i) - py, (W + w) / 2 + px, ty(i) + fsize * 1.25],
+                                radius=int(fsize * 0.25), fill=(255, 255, 255, 240))
+        for i, (l, w) in enumerate(zip(lines, widths)):
+            d.text(((W - w) / 2, ty(i)), l, font=font, fill=(17, 17, 17, 255))
+    elif stile == "vetro":
+        d.rounded_rectangle([x0, y, x0 + bw, y + block_h], radius=int(lh * 0.45), fill=(255, 255, 255, 205))
+        for i, (l, w) in enumerate(zip(lines, widths)):
+            d.text(((W - w) / 2, ty(i)), l, font=font, fill=(20, 20, 20, 255))
+    else:   # "riquadro"
+        d.rounded_rectangle([x0, y, x0 + bw, y + block_h], radius=int(lh * 0.35), fill=(0, 0, 0, 150))
+        for i, (l, w) in enumerate(zip(lines, widths)):
+            d.text(((W - w) / 2, ty(i)), l, font=font, fill=(255, 255, 255, 255))
     return img, y_frac, score
 
 
