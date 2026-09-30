@@ -58,7 +58,7 @@ def scegli_musica(tema, recenti):
     return None
 
 
-def scegli_frase(frasi, scena, usate, temi_recenti):
+def scegli_frase(frasi, scena, usate, temi_recenti, pesi=None):
     """Frase non ancora usata, adatta alla scena, preferendo il tema giusto e alternando i temi."""
     pref = TEMI_PER_SCENA.get(scena, [])
     cand = [f for f in frasi if f["id"] not in usate and scena in f["scene"]]
@@ -69,6 +69,7 @@ def scegli_frase(frasi, scena, usate, temi_recenti):
         s = 10 - 2 * pref.index(f["tema"]) if f["tema"] in pref else 0
         if f["tema"] in temi_recenti[-2:]:
             s -= 6                      # non lo stesso tema due volte di fila
+        s += 5 * ((pesi or {}).get(f["tema"], 1.0) - 1)   # report settimanale: i temi che rendono di piu' salgono
         return s + random.random() * 3  # un po' di varieta'
     return max(cand, key=punteggio)
 
@@ -207,10 +208,40 @@ def _rupload(url, token, path):
     return r.json()
 
 
+def _ig_carica_e_pubblica(path, dati):
+    """Crea il contenitore Instagram (reel o storia), carica il video, aspetta l'elaborazione e pubblica."""
+    token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
+    r = requests.post(f"{GRAPH}/{ig}/media", data={**dati, "upload_type": "resumable", "access_token": token}).json()
+    if "id" not in r:
+        raise RuntimeError(r)
+    cid = r["id"]
+    up = _rupload(r.get("uri", f"https://rupload.facebook.com/ig-api-upload/v23.0/{cid}"), token, path)
+    if up.get("success") is False or "error" in up:
+        raise RuntimeError(up)
+    for _ in range(60):                      # attende l'elaborazione (max ~10 minuti)
+        st = requests.get(f"{GRAPH}/{cid}", params={"fields": "status_code,status", "access_token": token}).json()
+        if st.get("status_code") == "FINISHED":
+            break
+        if st.get("status_code") == "ERROR":
+            raise RuntimeError(st)
+        time.sleep(10)
+    pub = requests.post(f"{GRAPH}/{ig}/media_publish", data={"creation_id": cid, "access_token": token}).json()
+    if "id" not in pub:
+        raise RuntimeError(pub)
+    return pub["id"]
+
+
+def instagram_storia(path):
+    """Lo stesso reel anche nelle Storie di Instagram: piu' persone lo vedono."""
+    return _ig_carica_e_pubblica(path, {"media_type": "STORIES"})
+
+
 def instagram_upload(path, cap):
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
-    r = requests.post(f"{GRAPH}/{ig}/media", data={"media_type": "REELS", "upload_type": "resumable",
-                                                     "caption": testo_breve(cap), "share_to_feed": "true",
+    dati = {"media_type": "REELS", "caption": testo_breve(cap), "share_to_feed": "true"}
+    if cap.get("copertina_ms") is not None:
+        dati["thumb_offset"] = str(cap["copertina_ms"])
+    r = requests.post(f"{GRAPH}/{ig}/media", data={**dati, "upload_type": "resumable",
                                                      "access_token": token}).json()
     if "id" not in r:
         raise RuntimeError(r)
@@ -289,7 +320,8 @@ def tiktok_upload(path, cap):
                              json={"post_info": {"title": testo_breve(cap)[:2200],
                                                  "privacy_level": ENV("TIKTOK_PRIVACY") or "SELF_ONLY",
                                                  "disable_comment": False, "disable_duet": False,
-                                                 "disable_stitch": False, "video_cover_timestamp_ms": 1000},
+                                                 "disable_stitch": False,
+                                                 "video_cover_timestamp_ms": cap.get("copertina_ms", 1000)},
                                    "source_info": source}).json()
     else:
         init = requests.post("https://open.tiktokapis.com/v2/post/publish/inbox/video/init/", headers=h,
@@ -423,7 +455,9 @@ def main():
     an = state["analisi"][video["id"]]
 
     # 3. frase e musica adatte
-    frase = scegli_frase(frasi, an["scena"], set(state["frasi_usate"]), state["temi_recenti"])
+    pesi_file = os.path.join(HERE, "pesi.json")
+    pesi = json.load(open(pesi_file, encoding="utf-8")).get("temi", {}) if os.path.exists(pesi_file) else {}
+    frase = scegli_frase(frasi, an["scena"], set(state["frasi_usate"]), state["temi_recenti"], pesi)
     music = None if ENV("SENZA_MUSICA") == "1" else scegli_musica(frase["tema"], state["musica_recenti"])
     log(f"Slot {slot} | {video['name']} | scena {an['scena']} | frase {frase['id']} ({frase['tema']}): {frase['gancio']}")
 
@@ -434,14 +468,22 @@ def main():
     info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"), music=music,
                               colore=ENV("SENZA_COLORE") != "1", nome=video["name"])
     log("Montato:", info)
+    frase = dict(frase, copertina_ms=info.get("copertina_ms"))
     results = publish_all(out, frase, creds, attive())
+    if results.get("instagram", {}).get("ok") and ENV("SENZA_STORIE") != "1" and not DRY:
+        try:
+            results["instagram_storia"] = {"ok": True, "id": instagram_storia(out)}
+            log("instagram storia pubblicata")
+        except Exception as e:
+            results["instagram_storia"] = {"ok": False, "errore": str(e)[:300]}
+            log("instagram storia non pubblicata:", e)
     if not any(r["ok"] for r in results.values()):
         log("Nessuna piattaforma ha funzionato: il video resta in coda per il prossimo orario.")
         sys.exit(1)
 
     # 5. archivio e stato
     pronti_id = drive.archive(video["id"], out, f"{frase['id']} - {os.path.splitext(video['name'])[0]}.mp4")
-    failed = [p for p, r in results.items() if not r["ok"]]
+    failed = [p for p, r in results.items() if not r["ok"] and p in PLATFORMS]
     if results.get("tiktok", {}).get("ok") and (ENV("TIKTOK_MODO") or "bozze") != "diretto":
         try:                                  # la frase da incollare quando pubblica la bozza su TikTok
             drive.testo_tiktok(testo_breve(frase), video["name"])

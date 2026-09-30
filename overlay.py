@@ -139,6 +139,22 @@ def segmento(seconds):
     return start, min(DURATA_MAX, seconds - start)
 
 
+def scegli_copertina(frames, length):
+    """Momento migliore per la copertina (ms dall'inizio del reel): nitido, ben esposto e con il viso visibile."""
+    best, best_s = 0, -1e9
+    for i, f in enumerate(frames):
+        small = cv2.resize(f, (360, int(360 * f.shape[0] / f.shape[1])))
+        gray = cv2.cvtColor(small, cv2.COLOR_BGR2GRAY)
+        nitidezza = min(cv2.Laplacian(gray, cv2.CV_64F).var() / 300.0, 3.0)
+        luce = 1.0 - abs(gray.mean() / 255.0 - 0.5) * 2          # 1 = esposizione media ideale
+        viso = 1.5 if detect_faces([f]) else 0.0
+        s = nitidezza + luce + viso
+        if s > best_s:
+            best, best_s = i, s
+    t = length * (best + 0.5) / len(frames)
+    return int(min(max(t, 0.3), max(length - 0.3, 0.3)) * 1000)
+
+
 def make_video(src, hook, dst, preview=None, music=None, colore=True, nome=""):
     """Crea dst (mp4 H.264 alta qualita') con il gancio e, se indicata, la musica in loop. Restituisce info."""
     seconds, hdr = probe(src)
@@ -183,5 +199,5 @@ def make_video(src, hook, dst, preview=None, music=None, colore=True, nome=""):
                         "-vf", f"scale={W // 3}:-2", preview], capture_output=True)
     return {"testo": "alto" if y_frac < 0.4 else "basso", "volti": len(faces),
             "tocca_viso": bool(score > 0), "hdr": hdr, "risoluzione": f"{W}x{H}", "taglio": f"da {start:.1f}s a {start + length:.1f}s",
-            "durata": round(length, 2), "colore": grade_info,
+            "durata": round(length, 2), "colore": grade_info, "copertina_ms": scegli_copertina(frames, length),
             "musica": os.path.basename(music) if music else None}

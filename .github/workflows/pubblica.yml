@@ -74,6 +74,7 @@ jobs:
           SALTA_TIKTOK: ${{ vars.SALTA_TIKTOK }}
           SENZA_MUSICA: ${{ vars.SENZA_MUSICA }}
           SENZA_COLORE: ${{ vars.SENZA_COLORE }}
+          SENZA_STORIE: ${{ vars.SENZA_STORIE }}
         run: python pubblica.py "${{ steps.orario.outputs.slot }}"
 
       - name: Salva lo stato

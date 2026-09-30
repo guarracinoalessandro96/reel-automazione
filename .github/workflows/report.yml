@@ -1,0 +1,33 @@
+name: Report settimanale
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"      # ogni lunedi' mattina
+  workflow_dispatch: {}
+
+concurrency: pubblica
+
+permissions:
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests google-api-python-client google-auth
+      - env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+        run: python report.py
+      - run: |
+          git config user.name "reel-bot"
+          git config user.email "reel-bot@users.noreply.github.com"
+          git add docs/report.json pesi.json 2>/dev/null || git add docs/report.json
+          git diff --cached --quiet || (git commit -m "Report $(date +%F)" && git pull --rebase && git push)
