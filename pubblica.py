@@ -159,6 +159,13 @@ class Drive:
         else:
             self.api.files().create(body={"name": titolo, "parents": [folder]}, media_body=media).execute()
 
+    def cestino(self, file_id):
+        """Mette il video nel Cestino di Drive (recuperabile per 30 giorni, poi Google lo elimina da solo)."""
+        if self.local:
+            os.remove(os.path.join(self.local, "Da pubblicare", file_id))
+            return
+        self.api.files().update(fileId=file_id, body={"trashed": True}, fields="id").execute()
+
     def sposta_in_sottocartella(self, file_id, nome):
         """Sposta un video da 'Da pubblicare' a una cartella accanto (creata se manca)."""
         if self.local:
@@ -467,11 +474,11 @@ def main():
     for v in list(videos):
         a = state["analisi"].get(v["id"], {})
         if 0 < a.get("lato_corto", 9999) < QUALITA_MINIMA:
-            log(f"{v['name']}: qualità troppo bassa ({a['lato_corto']}p), spostato in '{CARTELLA_BASSA}'")
+            log(f"{v['name']}: qualità troppo bassa ({a['lato_corto']}p), messo nel cestino di Drive")
             try:
-                drive.sposta_in_sottocartella(v["id"], CARTELLA_BASSA)
+                drive.cestino(v["id"])
             except Exception as e:
-                log("spostamento non riuscito:", e)
+                log("cestino non riuscito:", e)
             videos.remove(v)
     in_coda = {v["id"] for v in videos}
     state["analisi"] = {k: a for k, a in state["analisi"].items() if k in in_coda}   # dimentica quelli usciti
