@@ -191,7 +191,7 @@ def build_overlay(W, H, text, faces, stile=None, autore=None):
     return img, y_frac, score
 
 
-ZOOM = 0.12               # zoom lento fino al 12% a meta' reel e ritorno (0 = disattivato)
+ZOOM = 0.20               # zoom lento fino al 20% a meta' reel e ritorno (0 = disattivato)
 MUSIC_LOOP = 8.0          # i brani di musica/ durano esattamente 8 s e si ripetono senza stacchi
 MUSIC_VOL = 0.6           # musica di sottofondo: presente ma non invadente
 ORIG_VOL = 0.05           # audio originale dell'iPhone quasi azzerato (resta solo un filo di ambiente)
