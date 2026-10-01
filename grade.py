@@ -128,6 +128,8 @@ def build_filter(misure, tipo, intensita=INTENSITA):
     # 3. punto nero / punto bianco (stretching leggero)
     blk = _c(misure["p1"] * 0.6 * k, 0, 0.08)
     wht = _c(1 - (1 - min(misure["p99"], 1)) * 0.6 * k, 0.85, 1.0)
+    if misure["p99"] > 0.94:                      # ci sono gia' zone quasi bianche (sole, maglia bianca): non spingerle oltre
+        wht = 1.0
     f.append(f"colorlevels=rimin={blk:.3f}:gimin={blk:.3f}:bimin={blk:.3f}:rimax={wht:.3f}:gimax={wht:.3f}:bimax={wht:.3f}")
 
     # 4. esposizione: porta la luminosita' media verso l'obiettivo della scena (gamma)
@@ -147,6 +149,9 @@ def build_filter(misure, tipo, intensita=INTENSITA):
     if misure["sat"] > 0.45:                      # gia' molto saturo: non esagerare
         sat = min(sat, 1.0)
     f.append(f"eq=gamma={gamma:.3f}:contrast={con:.3f}:saturation={sat:.3f}")
+    # 5b. protezione delle luci: le zone piu' chiare vengono "arrotondate" invece di bruciarsi
+    if misure["p99"] > 0.9:
+        f.append("curves=m='0/0 0.70/0.70 0.85/0.82 0.95/0.90 1/0.95'")
 
     # 6. vividezza (satura di piu' i colori spenti, protegge la pelle)
     f.append(f"vibrance=intensity={p['vib'] * k:.2f}")
