@@ -191,6 +191,7 @@ def build_overlay(W, H, text, faces, stile=None, autore=None):
     return img, y_frac, score
 
 
+ZOOM = 0.05               # zoom lento fino al 5% a meta' reel e ritorno (0 = disattivato)
 MUSIC_LOOP = 8.0          # i brani di musica/ durano esattamente 8 s e si ripetono senza stacchi
 MUSIC_VOL = 0.6           # musica di sottofondo: presente ma non invadente
 ORIG_VOL = 0.05           # audio originale dell'iPhone quasi azzerato (resta solo un filo di ambiente)
@@ -246,6 +247,10 @@ def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", s
             tipo, motivo = "palestra", "scena riconosciuta: palestra"
         chain.append(grade.build_filter(misure, tipo))
         grade_info = grade.descrivi(misure, tipo, motivo)
+    if ZOOM > 0 and length > 1:     # zoom lentissimo avanti e indietro: il video sembra "vivo" e il loop resta continuo
+        z = f"(1+{ZOOM}*sin(PI*t/{length:.3f}))"     # sale e torna: inizio e fine identici, il loop non salta
+        chain.append(f"scale=w='trunc(iw*{z}/2)*2':h='trunc(ih*{z}/2)*2'"
+                     f":eval=frame:flags=lanczos,crop={W}:{H}:(in_w-{W})/2:(in_h-{H})/2")
     base = f"[0:v]{','.join(chain)}[base];[base]" if chain else "[0:v]"
     graph = base + "[1:v]overlay=0:0:format=auto,format=yuv420p[v]"
     amap = ["-map", "0:a?"]
