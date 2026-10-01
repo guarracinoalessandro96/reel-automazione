@@ -191,13 +191,13 @@ def build_overlay(W, H, text, faces, stile=None, autore=None):
     return img, y_frac, score
 
 
-MUSIC_LOOP = 6.0          # i brani di musica/ durano esattamente 6 s e si ripetono senza stacchi
+MUSIC_LOOP = 8.0          # i brani di musica/ durano esattamente 8 s e si ripetono senza stacchi
 MUSIC_VOL = 0.6           # musica di sottofondo: presente ma non invadente
 ORIG_VOL = 0.05           # audio originale dell'iPhone quasi azzerato (resta solo un filo di ambiente)
 
 
 TAGLIO_INIZIO = 2.0      # si tolgono sempre i primi 2 secondi (il momento in cui si preme "registra")
-DURATA_MAX = 6.0         # poi si tengono al massimo 6 secondi: es. video da 10 s -> si usa da 2 a 8
+DURATA_MAX = 8.0         # poi si tengono 8 secondi: es. video da 12 s -> si usa da 2 a 10 (reel e musica: 8 s)
 
 
 def segmento(seconds):

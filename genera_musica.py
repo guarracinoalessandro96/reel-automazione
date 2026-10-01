@@ -1,7 +1,7 @@
 """
 Compone la libreria musicale del profilo: loop strumentali ORIGINALI da 6 secondi (niente copyright).
 
-Ogni brano: 80 BPM, 2 battute = 6,0 s esatti, 2 accordi, pad morbido + piano leggero + basso,
+Ogni brano: 120 BPM, 4 battute = 8,0 s esatti (come i reel), 4 accordi, pad + piano + basso (+ melodia/batteria),
 riverbero calcolato "in cerchio" (convoluzione circolare) cosi' la fine si attacca all'inizio senza stacchi:
 chi legge la descrizione mentre il video gira in loop sente un sottofondo continuo.
 
@@ -13,9 +13,9 @@ import numpy as np
 import imageio_ffmpeg
 
 SR = 44100
-BPM = 80
+BPM = 120
 BEAT = 60 / BPM
-LOOP = 8 * BEAT                     # 6.0 s
+LOOP = 16 * BEAT                    # 8.0 s: stessa durata dei reel, cosi' video e musica ripartono insieme
 N = int(round(LOOP * SR))
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "musica")
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
@@ -36,29 +36,31 @@ def chord(root, kind, octave=4):
 
 
 # Progressioni di 2 accordi per umore (tutte suonano bene in loop)
-MOODS = {
-    "calmo":       [[("C", "maj7"), ("A", "min7")], [("F", "maj7"), ("C", "add9")], [("D", "min9"), ("G", "sus2")],
-                    [("E", "min7"), ("C", "maj7")], [("A", "min9"), ("F", "maj7")], [("G", "add9"), ("E", "min7")]],
-    "caldo":       [[("F", "maj7"), ("G", "add9")], [("C", "add9"), ("F", "maj7")], [("Bb", "maj7"), ("C", "sus2")],
-                    [("D", "maj7"), ("B", "min7")], [("Eb", "maj7"), ("F", "add9")], [("G", "maj7"), ("C", "maj7")]],
-    "deciso":      [[("A", "min"), ("F", "maj")], [("E", "min"), ("C", "maj")], [("D", "min"), ("Bb", "maj")],
-                    [("C", "min"), ("Ab", "maj")], [("G", "min"), ("Eb", "maj")], [("B", "min"), ("G", "maj")]],
-    "malinconico": [[("A", "min9"), ("E", "min7")], [("D", "min7"), ("A", "min7")], [("F#", "min7"), ("D", "maj7")],
-                    [("C", "min9"), ("Ab", "maj7")], [("E", "min9"), ("B", "min7")], [("G", "min9"), ("Eb", "maj7")]],
-    "energia":     [[("A", "min"), ("F", "maj")], [("E", "min"), ("C", "maj")], [("D", "min"), ("Bb", "maj")],
-                    [("G", "min"), ("Eb", "maj")], [("B", "min"), ("G", "maj")], [("C", "min"), ("Ab", "maj")]],
-    "luminoso":    [[("D", "add9"), ("A", "sus2")], [("G", "maj7"), ("D", "add9")], [("E", "add9"), ("B", "sus2")],
-                    [("C", "maj"), ("G", "maj")], [("A", "add9"), ("E", "sus2")], [("F", "add9"), ("C", "sus2")]],
+MOODS = {   # progressioni di 4 accordi (una battuta ciascuno), tutte pensate per ripartire senza stacco
+    "calmo":    [[("C", "maj7"), ("A", "min7"), ("F", "maj7"), ("G", "sus2")], [("D", "min9"), ("G", "sus2"), ("C", "maj7"), ("A", "min7")],
+                 [("F", "maj7"), ("G", "add9"), ("E", "min7"), ("A", "min9")], [("A", "min9"), ("F", "maj7"), ("C", "add9"), ("G", "sus2")],
+                 [("E", "min7"), ("C", "maj7"), ("G", "add9"), ("D", "sus2")], [("Bb", "maj7"), ("F", "add9"), ("G", "min7"), ("C", "sus2")]],
+    "caldo":    [[("F", "maj7"), ("G", "add9"), ("E", "min7"), ("A", "min7")], [("C", "add9"), ("A", "min7"), ("F", "maj7"), ("G", "sus2")],
+                 [("D", "maj7"), ("B", "min7"), ("G", "maj7"), ("A", "add9")], [("Eb", "maj7"), ("C", "min7"), ("Ab", "maj7"), ("Bb", "add9")],
+                 [("G", "maj7"), ("E", "min7"), ("C", "maj7"), ("D", "add9")], [("A", "maj7"), ("F#", "min7"), ("D", "maj7"), ("E", "add9")]],
+    "deciso":   [[("A", "min"), ("F", "maj"), ("C", "maj"), ("G", "maj")], [("E", "min"), ("C", "maj"), ("G", "maj"), ("D", "maj")],
+                 [("D", "min"), ("Bb", "maj"), ("F", "maj"), ("C", "maj")], [("C", "min"), ("Ab", "maj"), ("Eb", "maj"), ("Bb", "maj")],
+                 [("G", "min"), ("Eb", "maj"), ("Bb", "maj"), ("F", "maj")], [("B", "min"), ("G", "maj"), ("D", "maj"), ("A", "maj")]],
+    "luminoso": [[("D", "add9"), ("A", "sus2"), ("B", "min7"), ("G", "maj7")], [("G", "maj7"), ("D", "add9"), ("E", "min7"), ("C", "maj7")],
+                 [("C", "maj"), ("G", "maj"), ("A", "min"), ("F", "maj")], [("A", "add9"), ("E", "sus2"), ("F#", "min7"), ("D", "maj7")],
+                 [("F", "add9"), ("C", "sus2"), ("D", "min7"), ("Bb", "maj7")], [("E", "add9"), ("B", "sus2"), ("C#", "min7"), ("A", "maj7")]],
+    "energia":  [[("F#", "min"), ("D", "maj"), ("A", "maj"), ("E", "maj")], [("C#", "min"), ("A", "maj"), ("E", "maj"), ("B", "maj")],
+                 [("A", "min"), ("F", "maj"), ("G", "maj"), ("E", "min")], [("E", "min"), ("G", "maj"), ("D", "maj"), ("C", "maj")],
+                 [("D", "min"), ("F", "maj"), ("C", "maj"), ("Bb", "maj")], [("B", "min"), ("D", "maj"), ("A", "maj"), ("G", "maj")]],
 }
-STYLE = {  # (volume pad, volume piano, arpeggio: note per battuta, batteria lo-fi, filtro "calore")
-    "calmo":       (0.55, 0.30, 2, False, 2500),
-    "caldo":       (0.50, 0.35, 2, False, 3200),
-    "deciso":      (0.40, 0.35, 4, True, 3500),
-    "malinconico": (0.55, 0.32, 1, False, 2200),
-    "luminoso":    (0.40, 0.38, 4, False, 4500),
-    "energia":     (0.30, 0.40, 2, True, 6000),     # 120 BPM: 12 battiti = 6 s esatti
-
+STYLE = {  # (volume pad, volume piano, note di piano per battito, batteria, filtro "calore", melodia, "pompa" ritmica)
+    "calmo":    (0.55, 0.30, 0.5, False, 2600, False, False),
+    "caldo":    (0.50, 0.34, 1, False, 3200, True, False),
+    "deciso":   (0.40, 0.34, 2, True, 3800, False, True),
+    "luminoso": (0.42, 0.36, 2, False, 4800, True, False),
+    "energia":  (0.34, 0.38, 2, True, 6500, True, True),
 }
+VERSIONI = 2        # per ogni progressione 2 arrangiamenti diversi: 12 brani per umore, 60 in tutto
 
 t = np.arange(N) / SR
 
@@ -146,23 +148,35 @@ def drums(rng):
 def compose(mood, prog, seed):
     rng = random.Random(seed)
     nrng = np.random.default_rng(seed)
-    vpad, vpiano, arp, drum, warm = STYLE[mood]
+    vpad, vpiano, arp, drum, warm, melodia, pompa = STYLE[mood]
+    pads = np.zeros((N, 2))
     mix = np.zeros((N, 2))
-    half = LOOP / 2
+    seg = LOOP / len(prog)                      # durata di ogni accordo (una battuta)
+    pattern = rng.choice([[0, 1, 2, 3], [0, 2, 1, 3], [0, 2, 3, 2], [3, 2, 1, 0], [0, 3, 1, 2]])
+    ottava = rng.choice([0, 12])
     for i, (root, kind) in enumerate(prog):
         notes = chord(root, kind, 3 if NOTE[root] > 6 else 4)
-        mix += pad(notes, i * half, half + 0.9, nrng) * vpad            # si sovrappone un po' al successivo
-        mix += bass(notes[0] - 12, i * half, half) * 0.35
+        pads += pad(notes, i * seg, seg + 0.9, nrng) * vpad          # si sovrappone un po' al successivo
+        mix += bass(notes[0] - 12, i * seg, seg) * 0.38
         step = BEAT / arp
-        pattern = rng.choice([[0, 1, 2, 3], [0, 2, 1, 3], [0, 2, 3, 2], [3, 2, 1, 0]])
-        for j in range(int(round(half / BEAT * arp))):
-            if arp == 1 and j % 2 and rng.random() < 0.5:
+        for j in range(int(round(seg / BEAT * arp))):
+            if arp <= 1 and j % 2 and rng.random() < 0.4:
                 continue
-            m = notes[pattern[j % 4]] + 12
-            vel = (0.9 if j % arp == 0 else 0.6) * rng.uniform(0.8, 1.0)
-            mix += piano(m, i * half + j * step + rng.uniform(0, 0.012), vel) * vpiano
+            m = notes[pattern[j % 4]] + ottava
+            vel = (0.9 if j % max(1, int(arp)) == 0 else 0.6) * rng.uniform(0.8, 1.0)
+            mix += piano(m, i * seg + j * step + rng.uniform(0, 0.012), vel) * vpiano
+        if melodia:                             # piccola melodia sulle note dell'accordo, un'ottava sopra
+            for k in range(4):
+                if rng.random() < 0.55:
+                    m = notes[rng.choice([0, 1, 2, 3])] + 24
+                    mix += piano(m, i * seg + k * BEAT + BEAT * 0.5 * rng.choice([0, 1]), 0.45, 1.2) * vpiano * 0.7
+    if pompa:                                   # "sidechain": il pad respira sul battito, suono moderno
+        tt = (np.arange(N) / SR) % BEAT
+        env = 0.45 + 0.55 * np.minimum(1, tt / (BEAT * 0.55))
+        pads *= env[:, None]
+    mix += pads
     if drum:
-        mix += drums(nrng) * 0.5
+        mix += drums(nrng) * (0.6 if mood == "energia" else 0.45)
     mix = reverb(mix, nrng)
     mix = lowpass(mix, warm)
     mix += nrng.standard_normal((N, 2)) * 0.0015                       # un filo di "fruscio" lo-fi
@@ -185,26 +199,24 @@ def save(mix, path):
     os.remove(wav)
 
 
-BPM_PER_UMORE = {"energia": 120}
-
-
 def main(solo=None):
-    global BEAT
     count = 0
     for mood, progs in MOODS.items():
         if solo and mood != solo:
             continue
-        BEAT = 60 / BPM_PER_UMORE.get(mood, 80)
         d = os.path.join(OUT, mood)
         os.makedirs(d, exist_ok=True)
         for f in os.listdir(d):
             os.remove(os.path.join(d, f))
+        n = 0
         for i, prog in enumerate(progs):
-            mix = compose(mood, prog, seed=sum(map(ord, mood)) * 100 + i)
-            jump = np.abs(mix[0] - mix[-1]).max()          # controllo del loop: deve essere quasi zero
-            save(mix, os.path.join(d, f"{mood}_{i + 1:02d}.flac"))
-            count += 1
-            print(f"{mood}_{i + 1:02d}  loop {jump:.4f}")
+            for v in range(VERSIONI):
+                n += 1
+                mix = compose(mood, prog, seed=sum(map(ord, mood)) * 1000 + i * 10 + v)
+                jump = np.abs(mix[0] - mix[-1]).max()      # controllo del loop: deve essere quasi zero
+                save(mix, os.path.join(d, f"{mood}_{n:02d}.flac"))
+                count += 1
+                print(f"{mood}_{n:02d}  loop {jump:.4f}")
     print(count, "brani creati in", OUT)
 
 
