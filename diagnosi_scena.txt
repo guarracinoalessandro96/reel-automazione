@@ -1,4 +1,0 @@
-python 3.12.14
-torch 2.14.1+cpu | open_clip 3.3.0 | numpy 2.5.2
-riconosci: ('uscita', 0.33, 'riconosciuta dalle immagini')
-OK
