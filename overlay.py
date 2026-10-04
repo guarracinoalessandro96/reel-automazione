@@ -236,6 +236,8 @@ def scegli_copertina(frames, length):
 def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", scena_rilevata=None, autore=None):
     """Come _make_video, ma con piani di riserva: se ffmpeg fallisce si riprova togliendo, nell'ordine,
     lo zoom, la color correction e la musica. Cosi' un problema su un effetto non blocca mai la pubblicazione."""
+    if music and (not os.path.exists(music) or os.path.getsize(music) < 1000):   # brano mancante: niente musica,
+        music = None                                                              # ma zoom e colore restano
     prove = [dict(zoom=True, colore=colore, music=music), dict(zoom=False, colore=colore, music=music),
              dict(zoom=False, colore=False, music=music), dict(zoom=False, colore=False, music=None)]
     errori = []

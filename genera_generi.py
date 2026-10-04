@@ -14,7 +14,7 @@ import numpy as np
 import genera_musica as gm
 
 SR, N, LOOP = gm.SR, gm.N, gm.LOOP
-BRANI = 8           # brani per genere
+BRANI = 16          # brani per genere
 SCALA_MIN = [0, 3, 5, 7, 10]           # pentatonica minore
 SCALA_MAJ = [0, 2, 4, 7, 9]
 
