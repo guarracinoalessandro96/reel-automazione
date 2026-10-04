@@ -22,6 +22,8 @@ K = 5                  # "prudenza": con pochi reel su un tema, il suo peso rest
 def views_instagram(media_id):
     r = requests.get(f"{GRAPH}/{media_id}/insights", params={"metric": "views,reach,saved,shares",
                                                              "access_token": ENV("META_PAGE_TOKEN")}).json()
+    if "error" in r:            # es. manca il permesso instagram_manage_insights: dato non disponibile (non "0")
+        return None, {}
     out = {d["name"]: d["values"][0]["value"] for d in r.get("data", [])}
     return out.get("views", 0), out
 
@@ -55,9 +57,11 @@ def main():
             and h.get("risultati", {}).get("instagram", {}).get("ok")]
     yt = views_youtube([h["risultati"]["youtube"]["id"] for h in post
                         if h["risultati"].get("youtube", {}).get("ok") and h["risultati"]["youtube"].get("id")])
-    righe = []
+    righe, ig_mancante = [], False
     for h in post:
         v_ig, dettagli = views_instagram(h["risultati"]["instagram"]["id"])
+        if v_ig is None:
+            ig_mancante, v_ig = True, 0
         v_yt = yt.get(h["risultati"].get("youtube", {}).get("id"), 0)
         righe.append({"quando": h["quando"], "tema": h["tema"], "scena": h.get("scena"),
                       "orario": (h.get("slot") or "").split(" ")[-1], "instagram": v_ig, "youtube": v_yt,
@@ -82,7 +86,9 @@ def main():
     report = {"data": datetime.date.today().isoformat(), "reel_analizzati": len(righe),
               "media_views": round(media_tot), "per_tema": media(per["tema"]), "per_scena": media(per["scena"]),
               "per_orario": media(per["orario"]), "pesi_temi": pesi.get("temi", {}), "migliori": migliori,
-              "nota": "" if len(righe) >= MIN_POST else f"Servono almeno {MIN_POST} reel per ottimizzare: per ora pesi invariati."}
+              "nota": ("" if len(righe) >= MIN_POST else f"Servono almeno {MIN_POST} reel per ottimizzare: per ora pesi invariati.")
+              + (" Statistiche Instagram non disponibili (manca il permesso instagram_manage_insights): conteggi solo YouTube."
+                 if ig_mancante else "")}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     json.dump(report, open(OUT, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
     print(json.dumps({k: report[k] for k in ("reel_analizzati", "media_views", "pesi_temi", "nota")}, ensure_ascii=False))
