@@ -24,7 +24,8 @@ SCENE = {
     "palestra": ["a man lifting weights in a gym", "gym equipment and dumbbells", "a man training at the gym"],
     "casa": ["a cozy living room at home", "a man relaxing on a sofa at home", "a family dinner at home"],
     "uscita": ["people at a bar or cafe", "a football stadium", "a shopping mall", "a city street at night",
-               "friends having dinner at a restaurant", "a walk by the sea"],
+               "friends having dinner at a restaurant", "a walk by the sea",
+               "people sitting on a terrace or lounge bar in the evening", "a man sitting outdoors with family at night"],
 }
 PAROLE = {"palestra": "palestra", "gym": "palestra", "cibo": "cibo", "pranzo": "cibo", "cena": "cibo",
           "colazione": "cibo", "pacchi": "pacchi", "ordini": "pacchi", "ufficio": "lavoro", "lavoro": "lavoro",
@@ -75,7 +76,7 @@ def riconosci(frames_bgr, nome_file=""):
         best = max(punteggi, key=punteggi.get)
         return best, round(punteggi[best], 2), "riconosciuta dalle immagini"
     except Exception as e:   # senza modello: scena generica, la frase sara' "universale"
-        return "casa", 0.0, f"riconoscimento non disponibile ({e.__class__.__name__})"
+        return "casa", 0.0, f"riconoscimento non disponibile ({e.__class__.__name__}: {str(e)[:200]})"
 
 
 def ora_registrazione(info_ffmpeg):
