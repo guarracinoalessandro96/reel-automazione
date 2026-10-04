@@ -253,9 +253,9 @@ def youtube_upload(creds, path, cap):
     from googleapiclient.discovery import build
     from googleapiclient.http import MediaFileUpload
     yt = build("youtube", "v3", credentials=creds, cache_discovery=False)
-    title = cap["gancio"]
-    if len(title) > 90:
-        title = title[:87].rsplit(" ", 1)[0] + "..."
+    title = cap["gancio"].strip()
+    if len(title) > 92:     # limite YouTube 100 caratteri con " #shorts": taglio a parola intera + "…"
+        title = title[:90].rsplit(" ", 1)[0].rstrip(",;:") + "…"   # (mai solo la prima frase: cambierebbe il senso)
     privacy = ENV("YOUTUBE_PRIVACY") or "public"
     body = {"snippet": {"title": title + " #shorts", "description": testo_breve(cap), "categoryId": "22",
                         "defaultLanguage": "it", "defaultAudioLanguage": "it"},
