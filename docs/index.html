@@ -32,6 +32,7 @@
 <main>
   <h1>Gara ai 10.000 follower</h1>
   <p class="sub">Stessi video, stessi orari, 4 piattaforme. Chi arriva prima?</p>
+  <div class="card" id="coda"><div class="row"><span class="name">Video in coda</span><span class="num" id="codaNum">—</span></div><div id="codaBody" class="meta">Caricamento…</div></div>
   <div id="cards"></div>
   <div class="card"><div class="name">Andamento</div><div id="chart"></div></div>
   <div class="card" id="rep"><div class="name">Cosa funziona di piu'</div><div id="repBody" class="meta">Il report compare dopo il primo lunedi' con dei reel pubblicati.</div></div>
@@ -75,6 +76,22 @@ fetch("follower.json?" + Date.now()).then(r => r.ok ? r.json() : []).catch(() =>
         <text x="${W - pad}" y="${H - 10}" font-size="11" text-anchor="end" fill="${css("--mute")}">${data[data.length - 1].data}</text></svg>`;
   s += '<div class="meta">' + P.map(([k, n, c]) => `<span style="color:var(${c})">■</span> ${n}`).join(" &nbsp; ") + "</div>";
   document.getElementById("chart").innerHTML = s;
+});
+fetch("https://raw.githubusercontent.com/guarracinoalessandro96/reel-automazione/main/stato.json?" + Date.now())
+  .then(r => r.ok ? r.json() : null).catch(() => null).then(st => {
+  const body = document.getElementById("codaBody");
+  if (!st) { body.textContent = "Stato non disponibile."; return; }
+  const coda = Object.values(st.analisi || {}).sort((a, b) => (a.caricato || "").localeCompare(b.caricato || ""));
+  document.getElementById("codaNum").textContent = coda.length;
+  const giorni = coda.length / 5;
+  let h = coda.length
+    ? `Bastano per circa ${giorni < 1 ? "meno di un giorno" : Math.floor(giorni) + (Math.floor(giorni) === 1 ? " giorno" : " giorni")} a 5 reel al giorno.`
+    : "Nessun video in attesa: carica nuovi video nella cartella Da pubblicare.";
+  if (coda.length) h += "<br>" + coda.map(v => `${v.nome} · ${v.scena} · ore ${v.slot}`).join("<br>");
+  const pub = (st.storico || []).slice(-5).reverse();
+  if (pub.length) h += `<p style="margin:12px 0 2px;font-weight:600;color:var(--fg)">Ultimi pubblicati</p>` +
+    pub.map(p => `${p.slot ? p.slot + ":00" : (p.quando || "").replace("T", " ")} ·${p.scena || ""} ${p.tema ? "· " + p.tema : ""}`).join("<br>");
+  body.innerHTML = h;
 });
 fetch("report.json?" + Date.now()).then(r => r.ok ? r.json() : null).catch(() => null).then(rep => {
   if (!rep || !rep.reel_analizzati) return;
