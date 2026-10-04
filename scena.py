@@ -59,7 +59,7 @@ def riconosci(frames_bgr, nome_file=""):
     """Restituisce (scena, sicurezza 0-1, motivo)."""
     n = nome_file.lower()
     for parola, s in PAROLE.items():
-        if re.search(rf"\b{parola}\b", n):
+        if re.search(rf"(?<![a-z]){parola}(?![a-z])", n):     # anche "palestra_1", "cibo-pranzo", "IMG palestra"
             return s, 1.0, "dal nome del file"
     try:
         from PIL import Image

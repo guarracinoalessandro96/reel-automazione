@@ -141,12 +141,14 @@ class Drive:
             d = os.path.join(self.local, "Da pubblicare")
             vids = sorted((f for f in os.listdir(d) if f.lower().endswith((".mov", ".mp4", ".m4v"))),
                           key=lambda f: os.path.getmtime(os.path.join(d, f)))
+            import hashlib
             return [{"id": v, "name": v, "createdTime": datetime.datetime.fromtimestamp(
-                os.path.getmtime(os.path.join(d, v)), datetime.timezone.utc).isoformat()} for v in vids]
+                os.path.getmtime(os.path.join(d, v)), datetime.timezone.utc).isoformat(),
+                "md5Checksum": hashlib.md5(open(os.path.join(d, v), "rb").read()).hexdigest()} for v in vids]
         q = (f"'{ENV('DRIVE_FOLDER_DA_PUBBLICARE')}' in parents and trashed = false "
              "and mimeType contains 'video/'")
         res = self.api.files().list(q=q, orderBy="createdTime", pageSize=100,
-                                    fields="files(id,name,createdTime)").execute()
+                                    fields="files(id,name,createdTime,md5Checksum)").execute()
         return res.get("files", [])
 
     def download(self, file_id, dest, folder="Da pubblicare"):
@@ -529,6 +531,21 @@ def main():
             except Exception as e:
                 log("cestino non riuscito:", e)
             videos.remove(v)
+    # doppioni: stesso file caricato due volte (o gia' pubblicato) -> nel cestino, non esce due volte
+    visti = {h["md5"] for h in state["storico"] if h.get("md5")}
+    for v in list(videos):
+        md5 = v.get("md5Checksum")
+        if not md5:
+            continue
+        if md5 in visti:
+            log(f"{v['name']}: e' un doppione di un video gia' pubblicato o in coda, messo nel cestino di Drive")
+            try:
+                drive.cestino(v["id"])
+            except Exception as e:
+                log("cestino non riuscito:", e)
+            videos.remove(v)
+        else:
+            visti.add(md5)
     in_coda = {v["id"] for v in videos}
     state["analisi"] = {k: a for k, a in state["analisi"].items() if k in in_coda}   # dimentica quelli usciti
     save()
@@ -602,7 +619,8 @@ def main():
     state["slot_fatti"] = (state["slot_fatti"] + [slot])[-60:]
     state["analisi"].pop(video["id"], None)
     state["storico"].append({"quando": datetime.datetime.now().isoformat(timespec="minutes"), "slot": slot,
-                             "video": video["name"], "scena": an["scena"], "registrato": an.get("registrato"),
+                             "video": video["name"], "md5": video.get("md5Checksum"), "scena": an["scena"],
+                             "registrato": an.get("registrato"),
                              "frase": frase["id"], "tema": frase["tema"], "montaggio": info, "risultati": results})
     save()
     shutil.rmtree(work, ignore_errors=True)
