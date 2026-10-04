@@ -4,3 +4,4 @@ __pycache__/
 collegamento/client_secret*.json
 input_video*
 reel.mp4
+avvia_log.txt
