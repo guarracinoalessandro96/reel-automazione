@@ -95,7 +95,7 @@ def scegli_frase(frasi, scena, usi, temi_recenti, pesi=None):
 
 def testo_breve(cap):
     """Descrizione pubblicata: la stessa frase del video + 3-4 hashtag (niente dettagli personali)."""
-    tags = cap.get("hashtag") or ["#vitavera", "#30anni"]
+    tags = cap.get("hashtag") or ["#citazioni", "#motivazione"]
     testo = cap["gancio"].strip()
     if cap.get("autore"):
         testo = "“" + testo.strip('"“”') + "” — " + cap["autore"]
