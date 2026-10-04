@@ -15,3 +15,4 @@ except Exception:
     righe.append(traceback.format_exc())
 open("diagnosi_scena.txt", "w", encoding="utf-8").write("\n".join(righe) + "\n")
 print("\n".join(righe))
+# rif. 2

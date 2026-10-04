@@ -26,7 +26,7 @@ jobs:
           key: clip-vit-b-32-openai
       - name: Installa
         run: |
-          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
           pip install -r requirements.txt
       - name: Prova
         run: python test_scena.py

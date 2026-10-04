@@ -46,7 +46,7 @@ jobs:
       - name: Installa
         if: steps.orario.outputs.slot != ''
         run: |
-          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
           pip install -r requirements.txt
 
       - name: Pubblica il prossimo video
