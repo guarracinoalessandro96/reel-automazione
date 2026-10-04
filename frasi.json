@@ -90,24 +90,6 @@
   ]
  },
  {
-  "id": "QA006",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Tutto ci è estraneo, solo il tempo è davvero nostro.",
-  "autore": "Seneca",
-  "fonte": "Lettere a Lucilio 1,3",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
   "id": "QA007",
   "tema": "mentalita",
   "scene": [
@@ -123,24 +105,6 @@
    "#mentalita",
    "#crescitapersonale",
    "#motivazione"
-  ]
- },
- {
-  "id": "QA008",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Chi è dappertutto non è da nessuna parte.",
-  "autore": "Seneca",
-  "fonte": "Lettere a Lucilio 2,2",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
   ]
  },
  {
@@ -198,24 +162,6 @@
   ]
  },
  {
-  "id": "QA012",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Scava dentro di te: dentro c'è la fonte del bene, e può sempre zampillare, se scavi sempre.",
-  "autore": "Marco Aurelio",
-  "fonte": "Colloqui con se stesso VII,59",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
   "id": "QA013",
   "tema": "mentalita",
   "scene": [
@@ -270,24 +216,6 @@
   ]
  },
  {
-  "id": "QA016",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Alcune cose dipendono da noi, altre non dipendono da noi.",
-  "autore": "Epitteto",
-  "fonte": "Manuale (Enchiridion) 1",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
   "id": "QA017",
   "tema": "mentalita",
   "scene": [
@@ -303,24 +231,6 @@
    "#mentalita",
    "#crescitapersonale",
    "#motivazione"
-  ]
- },
- {
-  "id": "QA018",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Nessuna grande cosa nasce all'improvviso, neppure un grappolo d'uva o un fico.",
-  "autore": "Epitteto",
-  "fonte": "Diatribe I,15,7",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
   ]
  },
  {
@@ -370,42 +280,6 @@
   "gancio": "Prima di tutto di' a te stesso chi vuoi essere, poi fa' ciò che devi fare.",
   "autore": "Epitteto",
   "fonte": "Diatribe III,23,1",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
-  "id": "QA023",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Se vuoi progredire, accetta di sembrare sciocco e ingenuo riguardo alle cose esterne.",
-  "autore": "Epitteto",
-  "fonte": "Manuale (Enchiridion) 13",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QA024",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Quando non hai voglia di lavorare, sei troppo stanco, ma lo fai comunque: quello, in realtà, è il sogno.",
-  "autore": "Kobe Bryant",
-  "fonte": "Discorso al ritiro delle maglie, Staples Center, 18 dicembre 2017",
   "hashtag": [
    "#citazioni",
    "#disciplina",
@@ -666,24 +540,6 @@
   ]
  },
  {
-  "id": "QA060",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Se fallisce, almeno fallisce osando grandemente.",
-  "autore": "Theodore Roosevelt",
-  "fonte": "Discorso \"Citizenship in a Republic\", Sorbona, 23 aprile 1910",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
   "id": "QA061",
   "tema": "mentalita",
   "scene": [
@@ -720,24 +576,6 @@
   ]
  },
  {
-  "id": "QA063",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Non predico la dottrina della comoda pigrizia, ma quella della vita intensa e faticosa.",
-  "autore": "Theodore Roosevelt",
-  "fonte": "Discorso \"The Strenuous Life\", Chicago, 10 aprile 1899",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
   "id": "QA069",
   "tema": "mentalita",
   "scene": [
@@ -756,42 +594,6 @@
   ]
  },
  {
-  "id": "QA070",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Bisogna avere ancora un caos dentro di sé per partorire una stella danzante.",
-  "autore": "Friedrich Nietzsche",
-  "fonte": "Così parlò Zarathustra (1883), Prologo 5",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QA071",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Che cosa dice la tua coscienza? Devi diventare colui che sei.",
-  "autore": "Friedrich Nietzsche",
-  "fonte": "La gaia scienza (1882), aforisma 270",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
   "id": "QA072",
   "tema": "mentalita",
   "scene": [
@@ -802,24 +604,6 @@
   "gancio": "Vivete pericolosamente! Costruite le vostre città sulle pendici del Vesuvio!",
   "autore": "Friedrich Nietzsche",
   "fonte": "La gaia scienza (1882), aforisma 283",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QA073",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "L'uomo è qualcosa che deve essere superato.",
-  "autore": "Friedrich Nietzsche",
-  "fonte": "Così parlò Zarathustra (1883), Prologo 3",
   "hashtag": [
    "#citazioni",
    "#mentalita",
@@ -882,60 +666,6 @@
   ]
  },
  {
-  "id": "QA077",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Come la stella, senza fretta ma senza sosta, ognuno giri intorno al proprio compito.",
-  "autore": "Johann Wolfgang von Goethe",
-  "fonte": "Zahme Xenien II",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QA078",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Il talento si forma nella quiete, il carattere nella corrente del mondo.",
-  "autore": "Johann Wolfgang von Goethe",
-  "fonte": "Torquato Tasso (1790), atto I, scena 2",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QA079",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Bisogna essere qualcosa per fare qualcosa.",
-  "autore": "Johann Wolfgang von Goethe",
-  "fonte": "Conversazioni con Eckermann, 20 ottobre 1828",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
   "id": "QA080",
   "tema": "abitudini",
   "scene": [
@@ -951,24 +681,6 @@
    "#abitudini",
    "#costanza",
    "#crescitapersonale"
-  ]
- },
- {
-  "id": "QA081",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Non si può avere signoria né maggiore né minore di quella su se stessi.",
-  "autore": "Leonardo da Vinci",
-  "fonte": "Manoscritto H, f. 119r",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
   ]
  },
  {
@@ -1008,96 +720,6 @@
   ]
  },
  {
-  "id": "QA086",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Seggendo in piuma, in fama non si vien, né sotto coltre.",
-  "autore": "Dante Alighieri",
-  "fonte": "Inferno XXIV, 47-48",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
-  "id": "QA087",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "E però leva su: vinci l'ambascia con l'animo che vince ogne battaglia.",
-  "autore": "Dante Alighieri",
-  "fonte": "Inferno XXIV, 52-53",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QA088",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Sta come torre ferma, che non crolla già mai la cima per soffiar di venti.",
-  "autore": "Dante Alighieri",
-  "fonte": "Purgatorio V, 14-15",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QA090",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Perché tanta viltà nel core allette, perché ardire e franchezza non hai?",
-  "autore": "Dante Alighieri",
-  "fonte": "Inferno II, 122-123",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QA091",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "È stata tutta una vita di sacrifici e di gelo. Così si fa il teatro, così ho fatto.",
-  "autore": "Eduardo De Filippo",
-  "fonte": "Discorso al Teatro Antico di Taormina, 15 settembre 1984",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
   "id": "QA092",
   "tema": "abitudini",
   "scene": [
@@ -1108,60 +730,6 @@
   "gancio": "Diventiamo giusti compiendo azioni giuste, temperanti con azioni temperanti, coraggiosi con azioni coraggiose.",
   "autore": "Aristotele",
   "fonte": "Etica Nicomachea II,1, 1103a-b",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QA093",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Una sola rondine non fa primavera, né un solo giorno: così un breve tempo non rende felici.",
-  "autore": "Aristotele",
-  "fonte": "Etica Nicomachea I,7, 1098a",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QA094",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Le cose che bisogna fare dopo averle imparate, le impariamo facendole.",
-  "autore": "Aristotele",
-  "fonte": "Etica Nicomachea II,1, 1103a",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QA095",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Le virtù le acquistiamo esercitandole prima, come accade anche per le arti.",
-  "autore": "Aristotele",
-  "fonte": "Etica Nicomachea II,1, 1103a",
   "hashtag": [
    "#citazioni",
    "#abitudini",
@@ -1224,24 +792,6 @@
   ]
  },
  {
-  "id": "QA099",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Diventa ciò che sei, dopo averlo imparato.",
-  "autore": "Pindaro",
-  "fonte": "Pitica II, 72",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
   "id": "QA100",
   "tema": "disciplina",
   "scene": [
@@ -1252,24 +802,6 @@
   "gancio": "Tutte le cose eccellenti sono tanto difficili quanto rare.",
   "autore": "Baruch Spinoza",
   "fonte": "Etica (1677), parte V, scolio alla proposizione 42",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
-  "id": "QA101",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "È come costruire un monte: se mi fermo prima dell'ultimo cesto di terra, sono io che mi fermo.",
-  "autore": "Confucio",
-  "fonte": "Dialoghi (Lunyu) IX,19",
   "hashtag": [
    "#citazioni",
    "#disciplina",
@@ -1368,42 +900,6 @@
   ]
  },
  {
-  "id": "QA107",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Resistete, e conservatevi per giorni migliori.",
-  "autore": "Virgilio",
-  "fonte": "Eneide I, 207",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QA108",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "La goccia scava la pietra, e l'anello si consuma con l'uso.",
-  "autore": "Ovidio",
-  "fonte": "Epistulae ex Ponto IV,10,5",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
   "id": "QA109",
   "tema": "disciplina",
   "scene": [
@@ -1455,24 +951,6 @@
    "#mentalita",
    "#crescitapersonale",
    "#motivazione"
-  ]
- },
- {
-  "id": "QA113",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Il giorno che segue è allievo di quello che lo precede.",
-  "autore": "Publilio Siro",
-  "fonte": "Sententiae",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
   ]
  },
  {
@@ -1602,24 +1080,6 @@
   ]
  },
  {
-  "id": "QA124",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Il tempo perduto non si ritrova mai più.",
-  "autore": "Benjamin Franklin",
-  "fonte": "Poor Richard's Almanack (1748)",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
   "id": "QA125",
   "tema": "abitudini",
   "scene": [
@@ -1738,42 +1198,6 @@
   "gancio": "Tutto ciò che dobbiamo decidere è cosa fare con il tempo che ci viene concesso.",
   "autore": "J.R.R. Tolkien",
   "fonte": "La Compagnia dell'Anello (1954), libro I, cap. 2",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QA133",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Se riesci a sognare senza fare dei sogni i tuoi padroni.",
-  "autore": "Rudyard Kipling",
-  "fonte": "Poesia \"If-\" (1910)",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QA134",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Se sai incontrare il Trionfo e la Rovina e trattare allo stesso modo quei due impostori.",
-  "autore": "Rudyard Kipling",
-  "fonte": "Poesia \"If-\" (1910)",
   "hashtag": [
    "#citazioni",
    "#mentalita",
@@ -2017,25 +1441,6 @@
   ]
  },
  {
-  "id": "QB003",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Siate affamati. Siate folli. E io me lo sono sempre augurato per me stesso.",
-  "autore": "Steve Jobs",
-  "fonte": "Discorso ai laureati di Stanford, 2005",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QB004",
   "tema": "imprenditore",
   "scene": [
@@ -2064,44 +1469,6 @@
    "macchina"
   ],
   "gancio": "Abbiate il coraggio di seguire il vostro cuore e la vostra intuizione.",
-  "autore": "Steve Jobs",
-  "fonte": "Discorso ai laureati di Stanford, 2005",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB006",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Se non l'avete ancora trovato, continuate a cercare. Non accontentatevi.",
-  "autore": "Steve Jobs",
-  "fonte": "Discorso ai laureati di Stanford, 2005",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB007",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Essere licenziato da Apple è stata la cosa migliore che potesse capitarmi.",
   "autore": "Steve Jobs",
   "fonte": "Discorso ai laureati di Stanford, 2005",
   "hashtag": [
@@ -2188,44 +1555,6 @@
   ]
  },
  {
-  "id": "QB012",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "È tutto una questione di lungo termine.",
-  "autore": "Jeff Bezos",
-  "fonte": "Lettera agli azionisti Amazon, 1997",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB013",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "I clienti sono sempre meravigliosamente insoddisfatti, anche quando si dicono felici e gli affari vanno a gonfie vele.",
-  "autore": "Jeff Bezos",
-  "fonte": "Lettera agli azionisti Amazon, 2016",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QB014",
   "tema": "imprenditore",
   "scene": [
@@ -2264,44 +1593,6 @@
   ]
  },
  {
-  "id": "QB016",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Credo che siamo il posto migliore al mondo in cui fallire: abbiamo parecchia pratica!",
-  "autore": "Jeff Bezos",
-  "fonte": "Lettera agli azionisti Amazon, 2015",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB017",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Fate perdere soldi all'azienda e sarò comprensivo; fatele perdere un briciolo di reputazione e sarò spietato.",
-  "autore": "Warren Buffett",
-  "fonte": "Testimonianza al Congresso USA sul caso Salomon Brothers, 1991",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QB018",
   "tema": "imprenditore",
   "scene": [
@@ -2313,25 +1604,6 @@
   "gancio": "Sii timoroso quando gli altri sono avidi, e avido quando gli altri sono timorosi.",
   "autore": "Warren Buffett",
   "fonte": "Lettera agli azionisti Berkshire Hathaway, 1986",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB019",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "È molto meglio comprare un'azienda meravigliosa a un prezzo equo che un'azienda qualunque a un prezzo meraviglioso.",
-  "autore": "Warren Buffett",
-  "fonte": "Lettera agli azionisti Berkshire Hathaway, 1989",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -2359,25 +1631,6 @@
   ]
  },
  {
-  "id": "QB021",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Il nostro periodo di detenzione preferito è per sempre.",
-  "autore": "Warren Buffett",
-  "fonte": "Lettera agli azionisti Berkshire Hathaway, 1988",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QB024",
   "tema": "imprenditore",
   "scene": [
@@ -2389,63 +1642,6 @@
   "gancio": "Il fallimento è semplicemente l'occasione di ricominciare in modo più intelligente.",
   "autore": "Henry Ford",
   "fonte": "My Life and Work, 1922",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB025",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Qualunque cliente può avere un'auto verniciata del colore che preferisce, purché sia nero.",
-  "autore": "Henry Ford",
-  "fonte": "My Life and Work, 1922",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB026",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Non è il datore di lavoro a pagare i salari: lui maneggia soltanto il denaro. È il prodotto che paga i salari.",
-  "autore": "Henry Ford",
-  "fonte": "My Life and Work, 1922",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB031",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Può l'industria darsi dei fini? Si trovano questi semplicemente nell'indice dei profitti?",
-  "autore": "Adriano Olivetti",
-  "fonte": "Discorso ai lavoratori di Pozzuoli, 23 aprile 1955",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -2682,25 +1878,6 @@
   ]
  },
  {
-  "id": "QB049",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Controlla le spese meglio dei tuoi concorrenti: è lì che puoi sempre trovare il vantaggio competitivo.",
-  "autore": "Sam Walton",
-  "fonte": "Made in America, 1992 (le 10 regole)",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QB050",
   "tema": "imprenditore",
   "scene": [
@@ -2712,44 +1889,6 @@
   "gancio": "Finché sei acerbo cresci; appena sei maturo cominci a marcire.",
   "autore": "Ray Kroc",
   "fonte": "Grinding It Out, 1977",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB057",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Esiste una sola definizione valida dello scopo di un'impresa: creare un cliente.",
-  "autore": "Peter Drucker",
-  "fonte": "The Practice of Management, 1954",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB058",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "L'impresa ha due sole funzioni fondamentali: il marketing e l'innovazione.",
-  "autore": "Peter Drucker",
-  "fonte": "The Practice of Management, 1954",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -2910,25 +2049,6 @@
   ]
  },
  {
-  "id": "QB073",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Ara in profondità mentre i pigri dormono, e avrai grano da vendere e da tenere.",
-  "autore": "Benjamin Franklin",
-  "fonte": "The Way to Wealth, 1758",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QB074",
   "tema": "imprenditore",
   "scene": [
@@ -3005,25 +2125,6 @@
   ]
  },
  {
-  "id": "QB090",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "L'universo è trasformazione, la vita è il giudizio che ne dai.",
-  "autore": "Marco Aurelio",
-  "fonte": "Pensieri (Colloqui con se stesso), IV, 3",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QB091",
   "tema": "imprenditore",
   "scene": [
@@ -3073,63 +2174,6 @@
   "gancio": "Sopravvalutiamo sempre il cambiamento dei prossimi due anni e sottovalutiamo quello dei prossimi dieci.",
   "autore": "Bill Gates",
   "fonte": "The Road Ahead, 1995",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB098",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Non si volta chi a stella è fisso.",
-  "autore": "Leonardo da Vinci",
-  "fonte": "Disegno e motto, Royal Library di Windsor (RL 12701)",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB099",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "L'acqua che tocchi dei fiumi è l'ultima di quella che è passata e la prima di quella che arriva: così il tempo presente.",
-  "autore": "Leonardo da Vinci",
-  "fonte": "Codice Trivulziano",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB102",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Ricorda che per una persona il suo nome è il suono più dolce e importante in qualsiasi lingua.",
-  "autore": "Dale Carnegie",
-  "fonte": "How to Win Friends and Influence People, 1936",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -3195,44 +2239,6 @@
   ]
  },
  {
-  "id": "QB106",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Fate qualcosa che la gente vuole",
-  "autore": "Paul Graham",
-  "fonte": "Motto di Y Combinator, saggio Be Good, 2008",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB107",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Una startup è un'azienda progettata per crescere in fretta.",
-  "autore": "Paul Graham",
-  "fonte": "Saggio Startup = Growth, 2012",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QB112",
   "tema": "imprenditore",
   "scene": [
@@ -3263,25 +2269,6 @@
   "gancio": "Nulla di grande è mai stato realizzato senza entusiasmo.",
   "autore": "Ralph Waldo Emerson",
   "fonte": "Saggio Circles, 1841",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB118",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Abbi fiducia in te stesso: ogni cuore vibra a quella corda di ferro.",
-  "autore": "Ralph Waldo Emerson",
-  "fonte": "Saggio Self-Reliance, 1841",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -3337,44 +2324,6 @@
    "macchina"
   ],
   "gancio": "Il tempo è la tua risorsa più importante. In dieci minuti puoi fare moltissimo.",
-  "autore": "Ingvar Kamprad",
-  "fonte": "Testamento di un commerciante di mobili, 1976",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB123",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "La paura di sbagliare è la radice della burocrazia e il nemico dello sviluppo.",
-  "autore": "Ingvar Kamprad",
-  "fonte": "Testamento di un commerciante di mobili, 1976",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QB124",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "La maggior parte delle cose resta ancora da fare. Un futuro glorioso!",
   "autore": "Ingvar Kamprad",
   "fonte": "Testamento di un commerciante di mobili, 1976",
   "hashtag": [
@@ -3560,22 +2509,6 @@
   ]
  },
  {
-  "id": "QC038",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Ho vinto quasi l'80% delle partite giocate, ma solo il 54% dei punti.",
-  "autore": "Roger Federer",
-  "fonte": "Discorso ai laureati del Dartmouth College, 9 giugno 2024",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
   "id": "QC042",
   "tema": "palestra",
   "scene": [
@@ -3640,38 +2573,6 @@
   ]
  },
  {
-  "id": "QC056",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Non può scendere in gara con grande animo l'atleta che non è mai stato colpito.",
-  "autore": "Seneca",
-  "fonte": "Lettere a Lucilio, 13, 2",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QC060",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Non diventerò mai un Milone, eppure non trascuro il mio corpo.",
-  "autore": "Epitteto",
-  "fonte": "Diatribe (Discorsi), I, 2, 37",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
   "id": "QC061",
   "tema": "palestra",
   "scene": [
@@ -3696,22 +2597,6 @@
   "gancio": "Vuoi vincere a Olimpia? Allora devi seguire la disciplina, astenerti dai dolci, allenarti all'ora stabilita, col caldo e col freddo.",
   "autore": "Epitteto",
   "fonte": "Manuale (Enchiridion), 29",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QC064",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Se una cosa è possibile e conveniente per un uomo, pensa che sia alla tua portata.",
-  "autore": "Marco Aurelio",
-  "fonte": "Pensieri (Colloqui con se stesso), VI, 19",
   "hashtag": [
    "#citazioni",
    "#palestra",
@@ -3768,70 +2653,6 @@
   ]
  },
  {
-  "id": "QC070",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Non si deve muovere l'anima senza il corpo, né il corpo senza l'anima.",
-  "autore": "Platone",
-  "fonte": "Timeo, 88b",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QC071",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Bisogna chiedere che ci sia una mente sana in un corpo sano.",
-  "autore": "Giovenale",
-  "fonte": "Satire, X, 356",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QC072",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Chi vuole raggiungere di corsa la meta desiderata, da ragazzo ha sopportato e fatto molto, ha sudato e patito il freddo.",
-  "autore": "Orazio",
-  "fonte": "Ars poetica, vv. 412-413",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QC083",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "La forma fisica non è solo una delle chiavi di un corpo sano: è la base di un'attività intellettuale dinamica e creativa.",
-  "autore": "John F. Kennedy",
-  "fonte": "Articolo 'The Soft American', Sports Illustrated, 26 dicembre 1960",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
   "id": "QC084",
   "tema": "palestra",
   "scene": [
@@ -3864,86 +2685,6 @@
   ]
  },
  {
-  "id": "QC095",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Ti meravigli che le malattie siano innumerevoli? Conta i cuochi.",
-  "autore": "Seneca",
-  "fonte": "Lettere a Lucilio, 95, 23",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QC096",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Il cibo plachi la fame, la bevanda estingua la sete.",
-  "autore": "Seneca",
-  "fonte": "Lettere a Lucilio, 8, 5",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QC097",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Tenete questa regola di vita sana: concedete al corpo solo quanto basta alla buona salute.",
-  "autore": "Seneca",
-  "fonte": "Lettere a Lucilio, 8, 5",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QC098",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Per il corpo prendi solo quanto richiede il bisogno: cibo, bevanda, vestiti, casa.",
-  "autore": "Epitteto",
-  "fonte": "Manuale (Enchiridion), 33, 7",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QC099",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Il cibo e le bevande, in eccesso o in difetto, rovinano la salute; nella giusta misura la producono, accrescono e conservano.",
-  "autore": "Aristotele",
-  "fonte": "Etica Nicomachea, II, 2, 1104a",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
   "id": "QC100",
   "tema": "dieta",
   "scene": [
@@ -3968,54 +2709,6 @@
   "gancio": "Il corpo appesantito dagli eccessi del giorno prima appesantisce anche l'anima.",
   "autore": "Orazio",
   "fonte": "Satire, II, 2, 77-78",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QC102",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Ascolta quanti benefici porta con sé un vitto sobrio: anzitutto starai bene.",
-  "autore": "Orazio",
-  "fonte": "Satire, II, 2, 70-71",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QC103",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Bisogna aver cura della salute, fare esercizio moderato, mangiare e bere quanto basta a ristorare le forze, non a opprimerle.",
-  "autore": "Cicerone",
-  "fonte": "Cato Maior de senectute, XI, 36",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QC104",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "L'esercizio e la temperanza possono conservare, anche in vecchiaia, qualcosa del vigore di un tempo.",
-  "autore": "Cicerone",
-  "fonte": "Cato Maior de senectute, X, 34",
   "hashtag": [
    "#citazioni",
    "#salute",
@@ -4072,22 +2765,6 @@
   ]
  },
  {
-  "id": "QC113",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Mangia cibo. Non troppo. Soprattutto piante.",
-  "autore": "Michael Pollan",
-  "fonte": "In difesa del cibo (In Defense of Food), 2008",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
   "id": "QC114",
   "tema": "dieta",
   "scene": [
@@ -4120,86 +2797,6 @@
   ]
  },
  {
-  "id": "QC116",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Il banchetto sta tutto nel primo boccone.",
-  "autore": "Michael Pollan",
-  "fonte": "Food Rules (Il codice del cibo), 2009",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QC118",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Mangiare da solo non basta all'uomo per stare in salute: deve anche fare esercizio.",
-  "autore": "Ippocrate",
-  "fonte": "Corpus Hippocraticum, Sul regime (De diaeta), I, 2",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QC119",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "L'inizio e il fondamento della temperanza sta nel dominio di sé nel mangiare e nel bere.",
-  "autore": "Musonio Rufo",
-  "fonte": "Diatribe, XVIII A (Sul cibo)",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QC120",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Se vuoi star sano osserva questa norma: non mangiar senza voglia, e cena leve; mastica bene.",
-  "autore": "Leonardo da Vinci",
-  "fonte": "Codice Atlantico (precetti di salute in versi)",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QC121",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "L'unico modo per restare in salute è mangiare ciò che non vuoi, bere ciò che non ti piace e fare ciò che preferiresti evitare.",
-  "autore": "Mark Twain",
-  "fonte": "Following the Equator, 1897, cap. 49 (Pudd'nhead Wilson's New Calendar)",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
   "id": "QC122",
   "tema": "dieta",
   "scene": [
@@ -4224,22 +2821,6 @@
   "gancio": "Dimmi cosa mangi e ti dirò chi sei.",
   "autore": "Jean Anthelme Brillat-Savarin",
   "fonte": "Fisiologia del gusto, 1825, Aforisma IV",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QC124",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Il destino delle nazioni dipende dal modo in cui si nutrono.",
-  "autore": "Jean Anthelme Brillat-Savarin",
-  "fonte": "Fisiologia del gusto, 1825, Aforisma III",
   "hashtag": [
    "#citazioni",
    "#salute",
@@ -4296,54 +2877,6 @@
   ]
  },
  {
-  "id": "QC128",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "I cibi semplici danno lo stesso piacere di un pasto sontuoso, una volta tolto il dolore del bisogno.",
-  "autore": "Epicuro",
-  "fonte": "Lettera a Meneceo, 130",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QC129",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Abituarsi a un regime di vita semplice e poco costoso è ciò che dà piena salute.",
-  "autore": "Epicuro",
-  "fonte": "Lettera a Meneceo, 131",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QC130",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "La salute è una cosa preziosa, la sola che meriti che vi si impieghino tempo, sudore, fatica e beni.",
-  "autore": "Michel de Montaigne",
-  "fonte": "Saggi, II, 37",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
   "id": "QD001",
   "tema": "famiglia",
   "scene": [
@@ -4353,142 +2886,6 @@
   "gancio": "La gratitudine non è soltanto la più grande delle virtù, ma la madre di tutte le altre.",
   "autore": "Cicerone",
   "fonte": "Pro Plancio, 80 (54 a.C.)",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD002",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Chi riceve un beneficio con gratitudine ne ha già pagato la prima rata.",
-  "autore": "Seneca",
-  "fonte": "De beneficiis, II, 22",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD003",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Al primo posto vengano la patria e i genitori: a loro dobbiamo i benefici più grandi.",
-  "autore": "Cicerone",
-  "fonte": "De officiis, I, 58 (44 a.C.)",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD004",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Da mio nonno Vero: la bontà di carattere e il saper dominare l'ira.",
-  "autore": "Marco Aurelio",
-  "fonte": "Meditazioni (A se stesso), I, 1",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD005",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Dalla fama e dal ricordo di mio padre: la riservatezza e la virilità.",
-  "autore": "Marco Aurelio",
-  "fonte": "Meditazioni (A se stesso), I, 2",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD006",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Da mio padre: la mitezza e la fermezza incrollabile nelle decisioni prese dopo attento esame.",
-  "autore": "Marco Aurelio",
-  "fonte": "Meditazioni (A se stesso), I, 16",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD007",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "I genitori amano i figli come qualcosa di se stessi.",
-  "autore": "Aristotele",
-  "fonte": "Etica Nicomachea, VIII, 12, 1161b",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD008",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "I fratelli si vogliono bene perché nati dagli stessi genitori: l'identità d'origine li rende una cosa sola.",
-  "autore": "Aristotele",
-  "fonte": "Etica Nicomachea, VIII, 12, 1161b",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD009",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "I figli sono figli, e sono tutti uguali.",
-  "autore": "Eduardo De Filippo",
-  "fonte": "Filumena Marturano (1946), atto III",
   "hashtag": [
    "#citazioni",
    "#famiglia",
@@ -4514,108 +2911,6 @@
   ]
  },
  {
-  "id": "QD011",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Io appartengo alla mia infanzia come si appartiene a un paese.",
-  "autore": "Antoine de Saint-Exupéry",
-  "fonte": "Pilote de guerre (1942)",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD012",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Un paese vuol dire non essere soli, sapere che nella gente, nelle piante, nella terra c'è qualcosa di tuo.",
-  "autore": "Cesare Pavese",
-  "fonte": "La luna e i falò (1950), cap. I",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD013",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Finché i genitori sono in vita, non partire per viaggi lontani; se parti, fa' sapere dove vai.",
-  "autore": "Confucio",
-  "fonte": "Dialoghi (Lunyu), IV, 19",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD014",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "L'età dei genitori non va mai dimenticata: da una parte è motivo di gioia, dall'altra di apprensione.",
-  "autore": "Confucio",
-  "fonte": "Dialoghi (Lunyu), IV, 21",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD016",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Oggi pietà filiale significa mantenere i genitori; ma anche cani e cavalli sono mantenuti: senza rispetto, che differenza c'è?",
-  "autore": "Confucio",
-  "fonte": "Dialoghi (Lunyu), II, 7",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD017",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Voi siete gli archi dai quali i vostri figli, come frecce vive, sono scoccati in avanti.",
-  "autore": "Kahlil Gibran",
-  "fonte": "Il profeta (1923), \"Sui figli\"",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
   "id": "QD018",
   "tema": "famiglia",
   "scene": [
@@ -4625,91 +2920,6 @@
   "gancio": "Nulla è più dolce della propria terra e dei propri genitori.",
   "autore": "Omero",
   "fonte": "Odissea, IX, 34",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD019",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Non c'è nulla di più forte e più bello di quando marito e moglie governano la casa con un solo cuore.",
-  "autore": "Omero",
-  "fonte": "Odissea, VI, 182-184",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD020",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Su, caro padre, sali sulle mie spalle: ti porterò io, e questa fatica non mi peserà.",
-  "autore": "Virgilio",
-  "fonte": "Eneide, II, 707-708",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD021",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "È tuo padre? Il tuo dovere è prenderti cura di lui e cedergli in tutto.",
-  "autore": "Epitteto",
-  "fonte": "Manuale (Enchiridion), 30",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD022",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Siamo vivi davvero solo nei momenti in cui il cuore è consapevole dei suoi tesori.",
-  "autore": "Thornton Wilder",
-  "fonte": "The Woman of Andros (1930)",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD023",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Il ringraziamento è la forma più alta del pensiero, e la gratitudine è felicità raddoppiata dalla meraviglia.",
-  "autore": "G. K. Chesterton",
-  "fonte": "A Short History of England (1917)",
   "hashtag": [
    "#citazioni",
    "#famiglia",
@@ -4766,22 +2976,6 @@
   ]
  },
  {
-  "id": "QD031",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Chi guarda un vero amico guarda, per così dire, un'immagine di se stesso.",
-  "autore": "Cicerone",
-  "fonte": "De amicitia (Laelius), 23",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
   "id": "QD032",
   "tema": "amicizia",
   "scene": [
@@ -4798,22 +2992,6 @@
   ]
  },
  {
-  "id": "QD033",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Prima legge dell'amicizia: chiedere agli amici solo cose oneste, e fare per gli amici solo cose oneste.",
-  "autore": "Cicerone",
-  "fonte": "De amicitia (Laelius), 44",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
   "id": "QD034",
   "tema": "amicizia",
   "scene": [
@@ -4822,38 +3000,6 @@
   "gancio": "Senza amici nessuno sceglierebbe di vivere, anche se possedesse tutti gli altri beni.",
   "autore": "Aristotele",
   "fonte": "Etica Nicomachea, VIII, 1, 1155a",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QD035",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Perfetta è l'amicizia tra uomini buoni e simili nella virtù.",
-  "autore": "Aristotele",
-  "fonte": "Etica Nicomachea, VIII, 3, 1156b",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QD036",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Non ci si conosce davvero prima di aver mangiato insieme il sale di cui parla il proverbio.",
-  "autore": "Aristotele",
-  "fonte": "Etica Nicomachea, VIII, 3, 1156b",
   "hashtag": [
    "#citazioni",
    "#amicizia",
@@ -4894,38 +3040,6 @@
   ]
  },
  {
-  "id": "QD039",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "L'uomo felice ha dunque bisogno di amici di valore.",
-  "autore": "Aristotele",
-  "fonte": "Etica Nicomachea, IX, 9, 1170b",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QD040",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "L'amicizia danza intorno al mondo, annunciando a tutti noi di svegliarci alla felicità.",
-  "autore": "Epicuro",
-  "fonte": "Gnomologio Vaticano, 52",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
   "id": "QD041",
   "tema": "amicizia",
   "scene": [
@@ -4958,22 +3072,6 @@
   ]
  },
  {
-  "id": "QD043",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Un uomo non è mai abbastanza attento nella scelta dei propri nemici.",
-  "autore": "Oscar Wilde",
-  "fonte": "Il ritratto di Dorian Gray (1890), cap. 1",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
   "id": "QD044",
   "tema": "amicizia",
   "scene": [
@@ -4998,38 +3096,6 @@
   "gancio": "Una risata non è affatto un cattivo inizio per un'amicizia.",
   "autore": "Oscar Wilde",
   "fonte": "Il ritratto di Dorian Gray (1890), cap. 1",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QD046",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Il dolore sa badare a se stesso, ma per godere appieno una gioia devi avere qualcuno con cui dividerla.",
-  "autore": "Mark Twain",
-  "fonte": "Following the Equator (1897), Pudd'nhead Wilson's New Calendar",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QD047",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "La sacra passione dell'amicizia è così leale e duratura da durare una vita intera, se non le chiedi soldi in prestito.",
-  "autore": "Mark Twain",
-  "fonte": "Pudd'nhead Wilson (1894), cap. 8",
   "hashtag": [
    "#citazioni",
    "#amicizia",
@@ -5102,60 +3168,12 @@
   ]
  },
  {
-  "id": "QD052",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Se mi si chiede perché gli volevo bene, sento che posso solo rispondere: perché era lui, perché ero io.",
-  "autore": "Michel de Montaigne",
-  "fonte": "Saggi, I, 28 \"Dell'amicizia\" (1580)",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
   "id": "QD053",
   "tema": "amicizia",
   "scene": [
    "uscita"
   ],
   "gancio": "Non si vede bene che col cuore. L'essenziale è invisibile agli occhi.",
-  "autore": "Antoine de Saint-Exupéry",
-  "fonte": "Il Piccolo Principe (1943), cap. XXI",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QD054",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "È il tempo che hai perduto per la tua rosa che ha fatto la tua rosa così importante.",
-  "autore": "Antoine de Saint-Exupéry",
-  "fonte": "Il Piccolo Principe (1943), cap. XXI",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QD055",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Tu diventi responsabile per sempre di quello che hai addomesticato.",
   "autore": "Antoine de Saint-Exupéry",
   "fonte": "Il Piccolo Principe (1943), cap. XXI",
   "hashtag": [
@@ -5174,38 +3192,6 @@
   "gancio": "Amare non è guardarsi l'un l'altro, ma guardare insieme nella stessa direzione.",
   "autore": "Antoine de Saint-Exupéry",
   "fonte": "Terra degli uomini (1939), cap. VIII",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QD057",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Il vostro amico è la risposta ai vostri bisogni.",
-  "autore": "Kahlil Gibran",
-  "fonte": "Il profeta (1923), \"Sull'amicizia\"",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QD058",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Dimmi con chi vai e ti dirò chi sei; se so di cosa ti occupi, so cosa potrai diventare.",
-  "autore": "Johann Wolfgang von Goethe",
-  "fonte": "Massime e riflessioni",
   "hashtag": [
    "#citazioni",
    "#amicizia",
@@ -5279,44 +3265,6 @@
   ]
  },
  {
-  "id": "QD064",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Il più grande ostacolo al vivere è l'attesa, che dipende dal domani e perde l'oggi.",
-  "autore": "Seneca",
-  "fonte": "De brevitate vitae, 9, 1",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QD065",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Prima di tutto, Lucilio mio, fa' questo: impara a gioire.",
-  "autore": "Seneca",
-  "fonte": "Lettere a Lucilio, 23, 3",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
   "id": "QD068",
   "tema": "positivita",
   "scene": [
@@ -5328,25 +3276,6 @@
   "gancio": "Siamo tutti nel fango, ma alcuni di noi guardano le stelle.",
   "autore": "Oscar Wilde",
   "fonte": "Il ventaglio di Lady Windermere (1892), atto III",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QD069",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Con la libertà, i libri, i fiori e la luna, chi non potrebbe essere felice?",
-  "autore": "Oscar Wilde",
-  "fonte": "De profundis (1897)",
   "hashtag": [
    "#citazioni",
    "#positivita",
@@ -5402,25 +3331,6 @@
    "uscita"
   ],
   "gancio": "Non è il momento di pensare a quello che non hai. Pensa a cosa puoi fare con quello che c'è.",
-  "autore": "Ernest Hemingway",
-  "fonte": "Il vecchio e il mare (1952)",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QD073",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Ogni giorno è un giorno nuovo. È meglio avere fortuna. Ma io preferisco essere preciso.",
   "autore": "Ernest Hemingway",
   "fonte": "Il vecchio e il mare (1952)",
   "hashtag": [
@@ -5488,25 +3398,6 @@
   ]
  },
  {
-  "id": "QD080",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Il segreto è nel presente: se presti attenzione al presente, potrai migliorarlo.",
-  "autore": "Paulo Coelho",
-  "fonte": "L'Alchimista (1988)",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
   "id": "QD081",
   "tema": "positivita",
   "scene": [
@@ -5537,101 +3428,6 @@
   "gancio": "Nel cuore dell'inverno ho finalmente imparato che c'era in me un'invincibile estate.",
   "autore": "Albert Camus",
   "fonte": "Ritorno a Tipasa, in L'estate (1954)",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QD083",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "La lotta stessa verso la vetta basta a riempire il cuore di un uomo. Bisogna immaginare Sisifo felice.",
-  "autore": "Albert Camus",
-  "fonte": "Il mito di Sisifo (1942)",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QD084",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "L'autunno? Una seconda primavera, in cui tutte le foglie sono come fiori",
-  "autore": "Albert Camus",
-  "fonte": "Il malinteso (1944), atto I",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QD085",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Qui capisco che cosa chiamano gloria: il diritto di amare senza misura.",
-  "autore": "Albert Camus",
-  "fonte": "Nozze a Tipasa, in Nozze (1938)",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QD086",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "In ogni inizio abita un incanto che ci protegge e ci aiuta a vivere.",
-  "autore": "Hermann Hesse",
-  "fonte": "Stufen (Gradini), poesia (1941)",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QD089",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Quando ballo, ballo; quando dormo, dormo.",
-  "autore": "Michel de Montaigne",
-  "fonte": "Saggi, III, 13 \"Dell'esperienza\"",
   "hashtag": [
    "#citazioni",
    "#positivita",
@@ -5769,40 +3565,6 @@
   ]
  },
  {
-  "id": "QD098",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Una visione ampia e generosa degli uomini non si acquista vegetando tutta la vita in un angolino della terra.",
-  "autore": "Mark Twain",
-  "fonte": "Gli innocenti all'estero (The Innocents Abroad, 1869), conclusione",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QD099",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "L'abito fa l'uomo. Le persone nude hanno poca o nessuna influenza sulla società.",
-  "autore": "Mark Twain",
-  "fonte": "More Maxims of Mark (1927)",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
   "id": "QD100",
   "tema": "lifestyle",
   "scene": [
@@ -5812,57 +3574,6 @@
   "gancio": "Fai sempre la cosa giusta. Farà piacere a qualcuno e stupirà tutti gli altri.",
   "autore": "Mark Twain",
   "fonte": "Biglietto alla Young People's Society, Brooklyn, 16 febbraio 1901",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QD101",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Bisognerebbe sempre essere un po' improbabili.",
-  "autore": "Oscar Wilde",
-  "fonte": "Phrases and Philosophies for the Use of the Young (1894)",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QD102",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Le persone educate contraddicono gli altri. I saggi contraddicono se stessi.",
-  "autore": "Oscar Wilde",
-  "fonte": "Phrases and Philosophies for the Use of the Young (1894)",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QD103",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Ovunque tu vada per il resto della vita, Parigi resta con te, perché Parigi è una festa mobile.",
-  "autore": "Ernest Hemingway",
-  "fonte": "Lettera a un amico (1950), epigrafe di Festa mobile (1964)",
   "hashtag": [
    "#citazioni",
    "#lifestyle",
@@ -5888,108 +3599,6 @@
   ]
  },
  {
-  "id": "QD105",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "La toga non deve splendere, ma nemmeno essere sporca.",
-  "autore": "Seneca",
-  "fonte": "Lettere a Lucilio, 5, 3",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QD106",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Cambiano il cielo, non l'animo, quelli che corrono al di là del mare.",
-  "autore": "Orazio",
-  "fonte": "Epistole, I, 11, 27",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QD108",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Conservati semplice, buono, integro, serio, senza affettazione, amico della giustizia.",
-  "autore": "Marco Aurelio",
-  "fonte": "Meditazioni (A se stesso), VI, 30",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QD111",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Se accanto alla biblioteca hai un giardino, non ti mancherà nulla.",
-  "autore": "Cicerone",
-  "fonte": "Epistulae ad familiares, IX, 4 (a Varrone)",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QD112",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "So pensare. So aspettare. So digiunare.",
-  "autore": "Hermann Hesse",
-  "fonte": "Siddharta (1922)",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QD114",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "È una perfezione assoluta, e quasi divina, saper godere lealmente del proprio essere.",
-  "autore": "Michel de Montaigne",
-  "fonte": "Saggi, III, 13 \"Dell'esperienza\"",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
   "id": "QD115",
   "tema": "lifestyle",
   "scene": [
@@ -5999,23 +3608,6 @@
   "gancio": "Andai nei boschi perché volevo vivere con saggezza, affrontando solo i fatti essenziali della vita.",
   "autore": "Henry David Thoreau",
   "fonte": "Walden (1854), cap. 2",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QD119",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Considero un nuovo compleanno, una vera rinascita, il giorno in cui misi piede a Roma.",
-  "autore": "Johann Wolfgang von Goethe",
-  "fonte": "Viaggio in Italia, Roma, 3 dicembre 1786",
   "hashtag": [
    "#citazioni",
    "#lifestyle",
@@ -6041,23 +3633,6 @@
   ]
  },
  {
-  "id": "QD121",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Quando ti metterai in viaggio per Itaca, augurati che la strada sia lunga, piena di avventure e di scoperte.",
-  "autore": "Konstantinos Kavafis",
-  "fonte": "Itaca, poesia (1911)",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
   "id": "QD122",
   "tema": "lifestyle",
   "scene": [
@@ -6067,23 +3642,6 @@
   "gancio": "Il frutto più grande del bastare a se stessi è la libertà.",
   "autore": "Epicuro",
   "fonte": "Gnomologio Vaticano, 77",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QD124",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Dare stile al proprio carattere: un'arte grande e rara!",
-  "autore": "Friedrich Nietzsche",
-  "fonte": "La gaia scienza (1882), af. 290",
   "hashtag": [
    "#citazioni",
    "#lifestyle",
@@ -6125,56 +3683,6 @@
    "#positivita",
    "#motivazione",
    "#vita"
-  ]
- },
- {
-  "id": "QD129",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "E un giorno qualcuno dica di lui: è molto più forte di suo padre.",
-  "autore": "Omero",
-  "fonte": "Iliade, VI, 479 (preghiera di Ettore per il figlio)",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QD130",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Il giovane sia devoto ai genitori in casa e rispettoso fuori, serio e degno di fiducia.",
-  "autore": "Confucio",
-  "fonte": "Dialoghi (Lunyu), I, 6",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QG001",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Se non vai più a cercare un varco che esiste, non sei più un pilota.",
-  "autore": "Ayrton Senna",
-  "fonte": "Intervista con Jackie Stewart, 1990",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
   ]
  },
  {
@@ -6338,22 +3846,6 @@
   ]
  },
  {
-  "id": "QG017",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Non sono la prossima Usain Bolt o il prossimo Michael Phelps. Sono la prima Simone Biles.",
-  "autore": "Simone Biles",
-  "fonte": "Intervista, Olimpiadi di Rio, 2016",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
   "id": "QG018",
   "tema": "palestra",
   "scene": [
@@ -6378,38 +3870,6 @@
   "gancio": "Giocare a calcio è molto semplice, ma giocare un calcio semplice è la cosa più difficile che ci sia.",
   "autore": "Johan Cruyff",
   "fonte": "Interviste e autobiografia 'La mia rivoluzione', 2016",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QG020",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Siete nati per essere giocatori. Eravate destinati a essere qui. Questo momento è vostro.",
-  "autore": "Herb Brooks",
-  "fonte": "Discorso negli spogliatoi prima di USA-URSS, Lake Placid, 1980",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QG022",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Il primo tempo lo vince il miglior tecnico. Il secondo chi è più in forma. Il terzo chi ha più cuore.",
-  "autore": "Dan Gable",
-  "fonte": "Detto sulla lotta, riportato in interviste e biografie",
   "hashtag": [
    "#citazioni",
    "#palestra",
@@ -6506,22 +3966,6 @@
   "gancio": "Siamo tutti atleti. L'unica differenza è che alcuni di noi si allenano e altri no.",
   "autore": "George Sheehan",
   "fonte": "Scritti sulla corsa, anni '70-'80",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QG030",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Se stai perdendo la fiducia nella natura umana, esci e guarda una maratona.",
-  "autore": "Kathrine Switzer",
-  "fonte": "Marathon Woman, 2007",
   "hashtag": [
    "#citazioni",
    "#palestra",
@@ -6738,22 +4182,6 @@
   ]
  },
  {
-  "id": "QG050",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "C'è più ragione nel tuo corpo che nella tua migliore saggezza.",
-  "autore": "Friedrich Nietzsche",
-  "fonte": "Così parlò Zarathustra, 'Dei dispregiatori del corpo', 1883",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
   "id": "QG051",
   "tema": "palestra",
   "scene": [
@@ -6762,38 +4190,6 @@
   "gancio": "Ogni uomo è il costruttore di un tempio chiamato il suo corpo.",
   "autore": "Henry David Thoreau",
   "fonte": "Walden, 'Leggi superiori', 1854",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QG052",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Il metodo sviluppa il corpo in modo uniforme, corregge le posture sbagliate, restituisce vitalità fisica, rinvigorisce la mente ed eleva lo spirito.",
-  "autore": "Joseph Pilates",
-  "fonte": "Return to Life Through Contrology, 1945",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QG053",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Non vogliamo una nazione di spettatori. Vogliamo una nazione di partecipanti alla vita vigorosa.",
-  "autore": "John F. Kennedy",
-  "fonte": "Discorso alla National Football Foundation, 5 dicembre 1961",
   "hashtag": [
    "#citazioni",
    "#palestra",
@@ -6818,38 +4214,6 @@
   ]
  },
  {
-  "id": "QG056",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Ci sono esercizi facili e brevi che sciolgono il corpo in fretta e fanno risparmiare tempo.",
-  "autore": "Seneca",
-  "fonte": "Lettere a Lucilio, 15, 4",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QG057",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Il mio motto è sempre stato: continua a colpire.",
-  "autore": "Hank Aaron",
-  "fonte": "I Had a Hammer, 1991",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
   "id": "QG059",
   "tema": "palestra",
   "scene": [
@@ -6858,22 +4222,6 @@
   "gancio": "Non puoi mettere un limite a niente. Più sogni, più lontano arrivi.",
   "autore": "Michael Phelps",
   "fonte": "Intervista dopo le Olimpiadi di Pechino, 2008",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QG061",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "È dura alzarsi dal letto per correre alle cinque del mattino quando dormi in pigiami di seta.",
-  "autore": "Marvin Hagler",
-  "fonte": "Intervista, anni '80",
   "hashtag": [
    "#citazioni",
    "#palestra",
@@ -6930,22 +4278,6 @@
   ]
  },
  {
-  "id": "QG068",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Se l'ha fatto l'uomo, non mangiarlo.",
-  "autore": "Jack LaLanne",
-  "fonte": "Regola alimentare ripetuta nelle interviste",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
   "id": "QG069",
   "tema": "dieta",
   "scene": [
@@ -6994,38 +4326,6 @@
   ]
  },
  {
-  "id": "QG072",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Tutte le cose sono veleno e nulla è privo di veleno: solo la dose fa sì che una cosa non sia veleno.",
-  "autore": "Paracelso",
-  "fonte": "Septem Defensiones, 1538",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG073",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Mangia poco e cena ancora meno, perché la salute di tutto il corpo si forgia nell'officina dello stomaco.",
-  "autore": "Miguel de Cervantes",
-  "fonte": "Don Chisciotte, parte II, cap. 43, 1615",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
   "id": "QG075",
   "tema": "dieta",
   "scene": [
@@ -7034,86 +4334,6 @@
   "gancio": "Chi pensa di non avere tempo per l'esercizio fisico, prima o poi dovrà trovare il tempo per la malattia.",
   "autore": "Edward Stanley",
   "fonte": "Discorso al Liverpool College, 1873",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG077",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "La salute è una benedizione che il denaro non può comprare.",
-  "autore": "Izaak Walton",
-  "fonte": "Il perfetto pescatore (The Compleat Angler), 1653",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG078",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Gli uomini chiedono la salute agli dèi con le preghiere, e non sanno di averne il potere in se stessi.",
-  "autore": "Democrito",
-  "fonte": "Frammento DK 68 B 234",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG079",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Agli uomini la serenità viene dalla moderazione nel piacere e dalla misura nella vita.",
-  "autore": "Democrito",
-  "fonte": "Frammento DK 68 B 191",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG080",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Tutto il piacere della ragione, tutte le gioie dei sensi stanno in tre parole: salute, pace e sufficienza.",
-  "autore": "Alexander Pope",
-  "fonte": "Saggio sull'uomo, IV, 1734",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG081",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Quando manca la salute, la saggezza non può mostrarsi, la forza non può lottare e la ricchezza diventa inutile.",
-  "autore": "Erofilo",
-  "fonte": "Riportato da Sesto Empirico, Contro i matematici, XI",
   "hashtag": [
    "#citazioni",
    "#salute",
@@ -7138,118 +4358,6 @@
   ]
  },
  {
-  "id": "QG083",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Osservare ciò che ti fa bene e ciò che ti fa male è la miglior medicina per conservare la salute.",
-  "autore": "Francis Bacon",
-  "fonte": "Saggi, 'Del regime di salute', 1625",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG084",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Chi fa indigestione o si ubriaca non sa né bere né mangiare.",
-  "autore": "Jean Anthelme Brillat-Savarin",
-  "fonte": "Fisiologia del gusto, aforisma X, 1825",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG085",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Il medico del futuro non darà medicine, ma insegnerà ai pazienti la cura del corpo, l'alimentazione e la prevenzione delle malattie.",
-  "autore": "Thomas Edison",
-  "fonte": "The Newark Advocate, 1903",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG086",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Col tempo, negli uomini, l'abitudine si converte in natura, e li spinge a fare ciò che si usa, bene o male.",
-  "autore": "Luigi Cornaro",
-  "fonte": "Discorsi della vita sobria, 1558",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG087",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Sono così agile che posso ancora salire a cavallo e salire scale e pendii ripidi senza fatica.",
-  "autore": "Luigi Cornaro",
-  "fonte": "Discorsi della vita sobria, scritto a oltre ottant'anni",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG088",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "La salute non deve essere sacrificata allo studio.",
-  "autore": "Thomas Jefferson",
-  "fonte": "Lettera a Peter Carr, 19 agosto 1785",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG089",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Ho vissuto con temperanza, mangiando poca carne, più come condimento per le verdure che costituiscono il mio cibo principale.",
-  "autore": "Thomas Jefferson",
-  "fonte": "Lettera al dottor Vine Utley, 21 marzo 1819",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
   "id": "QG090",
   "tema": "dieta",
   "scene": [
@@ -7258,38 +4366,6 @@
   "gancio": "Prenditi cura del tuo corpo. È l'unico posto in cui devi vivere.",
   "autore": "Jim Rohn",
   "fonte": "Seminari e pagina ufficiale Jim Rohn",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG091",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Credo che l'acqua sia l'unica bevanda per un uomo saggio.",
-  "autore": "Henry David Thoreau",
-  "fonte": "Walden, 'Leggi superiori', 1854",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG092",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Il pane e l'acqua danno il piacere più alto quando li si porta alla bocca nel momento del bisogno.",
-  "autore": "Epicuro",
-  "fonte": "Lettera a Meneceo",
   "hashtag": [
    "#citazioni",
    "#salute",
@@ -7314,38 +4390,6 @@
   ]
  },
  {
-  "id": "QG094",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Ritengo che nella vita la cosa più utile di tutte sia questa: niente di troppo.",
-  "autore": "Terenzio",
-  "fonte": "Andria, v. 61",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG095",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "C'è una misura nelle cose; ci sono insomma confini precisi, oltre i quali e al di qua dei quali non può esistere il giusto.",
-  "autore": "Orazio",
-  "fonte": "Satire, I, 1, 106-107",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
   "id": "QG096",
   "tema": "dieta",
   "scene": [
@@ -7354,70 +4398,6 @@
   "gancio": "Se ti mancano i medici, siano per te medici queste tre cose: mente lieta, riposo e dieta moderata.",
   "autore": "Scuola Medica Salernitana",
   "fonte": "Regimen sanitatis Salernitanum, XII-XIII secolo",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG097",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "La cucina è una bricconcella: spesso e volentieri fa disperare, ma dà anche piacere.",
-  "autore": "Pellegrino Artusi",
-  "fonte": "La scienza in cucina e l'arte di mangiar bene, 1891",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG098",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Gli animali si nutrono, l'uomo mangia; solo l'uomo di spirito sa mangiare.",
-  "autore": "Jean Anthelme Brillat-Savarin",
-  "fonte": "Fisiologia del gusto, aforisma II, 1825",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG099",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "La salute dipende soltanto dalla temperanza.",
-  "autore": "Alexander Pope",
-  "fonte": "Saggio sull'uomo, IV, 1734",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QG100",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Mangia per far piacere a te stesso, ma vestiti per far piacere agli altri.",
-  "autore": "Benjamin Franklin",
-  "fonte": "Almanacco del povero Riccardo, 1738",
   "hashtag": [
    "#citazioni",
    "#salute",
@@ -7456,25 +4436,6 @@
   "gancio": "Il genio è per l'uno per cento ispirazione e per il novantanove per cento traspirazione.",
   "autore": "Thomas Edison",
   "fonte": "Dichiarazione del 1903 circa, riportata da Harper's Monthly, 1932",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH003",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Concentrate la vostra energia, il vostro pensiero e il vostro capitale esclusivamente sull'attività in cui siete impegnati.",
-  "autore": "Andrew Carnegie",
-  "fonte": "The Road to Business Success, discorso 1885, in The Empire of Business, 1902",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -7578,25 +4539,6 @@
   ]
  },
  {
-  "id": "QH011",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "L'efficacia è un'abitudine, cioè un insieme di pratiche. E le pratiche si possono sempre imparare.",
-  "autore": "Peter Drucker",
-  "fonte": "The Effective Executive, 1967",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QH012",
   "tema": "imprenditore",
   "scene": [
@@ -7608,44 +4550,6 @@
   "gancio": "Se esiste un segreto dell'efficacia, è la concentrazione: fare prima le cose più importanti, e una alla volta.",
   "autore": "Peter Drucker",
   "fonte": "The Effective Executive, 1967",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH013",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "L'imprenditore cerca sempre il cambiamento, vi risponde e lo sfrutta come un'opportunità.",
-  "autore": "Peter Drucker",
-  "fonte": "Innovation and Entrepreneurship, 1985",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH014",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "L'innovazione è lo strumento specifico dell'imprenditore, il mezzo con cui sfrutta il cambiamento come un'opportunità.",
-  "autore": "Peter Drucker",
-  "fonte": "Innovation and Entrepreneurship, 1985",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -7692,120 +4596,6 @@
   ]
  },
  {
-  "id": "QH017",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Disneyland non sarà mai finito. Continuerà a crescere finché ci sarà immaginazione nel mondo.",
-  "autore": "Walt Disney",
-  "fonte": "Dichiarazione all'apertura di Disneyland, 1955",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH018",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Spero solo che non perdiamo mai di vista una cosa: che tutto è cominciato con un topo.",
-  "autore": "Walt Disney",
-  "fonte": "Programma televisivo Disneyland, 1954",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH019",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Sono orgoglioso delle cose che non facciamo tanto quanto di quelle che facciamo.",
-  "autore": "Steve Jobs",
-  "fonte": "Intervista a BusinessWeek, 2004",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH020",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Il design non è solo come appare e come lo si percepisce. Il design è come funziona.",
-  "autore": "Steve Jobs",
-  "fonte": "Intervista al New York Times Magazine, 2003",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH021",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "La qualità è più importante della quantità. Un fuoricampo vale molto più di due doppi.",
-  "autore": "Steve Jobs",
-  "fonte": "Intervista a BusinessWeek, 2006",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH022",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Il modo in cui raccogli, gestisci e usi le informazioni determinerà se vincerai o perderai.",
-  "autore": "Bill Gates",
-  "fonte": "Business @ the Speed of Thought, 1999",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QH023",
   "tema": "imprenditore",
   "scene": [
@@ -7836,44 +4626,6 @@
   "gancio": "Se qualcuno ti offre un'opportunità straordinaria ma non sei sicuro di farcela, di' di sì: poi impara come fare.",
   "autore": "Richard Branson",
   "fonte": "Blog Virgin.com e profili social ufficiali",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH026",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Il problema principale dell'investitore, e persino il suo peggior nemico, è probabilmente se stesso.",
-  "autore": "Benjamin Graham",
-  "fonte": "The Intelligent Investor, 1949",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH028",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "L'investimento è più intelligente quando è condotto come un'attività d'impresa.",
-  "autore": "Benjamin Graham",
-  "fonte": "The Intelligent Investor, 1949",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -7958,44 +4710,6 @@
   ]
  },
  {
-  "id": "QH033",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Sappi che cosa possiedi, e sappi perché lo possiedi.",
-  "autore": "Peter Lynch",
-  "fonte": "One Up on Wall Street, 1989",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH034",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Dietro ogni azione c'è un'azienda. Scopri che cosa sta facendo.",
-  "autore": "Peter Lynch",
-  "fonte": "One Up on Wall Street, 1989",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QH035",
   "tema": "imprenditore",
   "scene": [
@@ -8024,44 +4738,6 @@
    "macchina"
   ],
   "gancio": "Non preoccuparti di fare bella figura: preoccupati di raggiungere i tuoi obiettivi.",
-  "autore": "Ray Dalio",
-  "fonte": "Principles, 2017",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH037",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Puoi avere praticamente qualsiasi cosa tu voglia, ma non puoi avere tutto ciò che vuoi.",
-  "autore": "Ray Dalio",
-  "fonte": "Principles, 2017",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH038",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "La verità, o meglio una comprensione accurata della realtà, è la base essenziale di qualsiasi buon risultato.",
   "autore": "Ray Dalio",
   "fonte": "Principles, 2017",
   "hashtag": [
@@ -8110,44 +4786,6 @@
   ]
  },
  {
-  "id": "QH041",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Se dovessi riassumere in una parola le qualità di un buon manager, direi che tutto si riduce alla decisione.",
-  "autore": "Lee Iacocca",
-  "fonte": "Iacocca: An Autobiography, 1984",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH042",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Il nostro piano è guidare il pubblico con prodotti nuovi, invece di chiedergli che tipo di prodotti desidera.",
-  "autore": "Akio Morita",
-  "fonte": "Made in Japan, 1986",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QH043",
   "tema": "imprenditore",
   "scene": [
@@ -8178,25 +4816,6 @@
   "gancio": "Se metti il cuore nel tuo lavoro, puoi realizzare sogni che altri ritengono impossibili.",
   "autore": "Howard Schultz",
   "fonte": "Pour Your Heart Into It, 1997",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH045",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "A cena mio padre ci chiedeva: in che cosa avete fallito questa settimana?",
-  "autore": "Sara Blakely",
-  "fonte": "Racconto ripetuto in numerose interviste (CNBC, Forbes)",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -8281,44 +4900,6 @@
   ]
  },
  {
-  "id": "QH050",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Prima fai salire sull'autobus le persone giuste e scendere quelle sbagliate, poi decidi dove guidarlo.",
-  "autore": "Jim Collins",
-  "fonte": "Good to Great, 2001",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH051",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "La vostra cultura aziendale è il vostro brand.",
-  "autore": "Tony Hsieh",
-  "fonte": "Your Culture Is Your Brand, blog Zappos 2009; Delivering Happiness, 2010",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QH052",
   "tema": "imprenditore",
   "scene": [
@@ -8330,25 +4911,6 @@
   "gancio": "Un imprenditore è qualcuno che si lancia da un dirupo e costruisce l'aereo mentre scende.",
   "autore": "Reid Hoffman",
   "fonte": "Frase ripetuta in interviste e conferenze",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH053",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Il modo per trovare idee per una startup non è sforzarsi di pensare a idee per una startup.",
-  "autore": "Paul Graham",
-  "fonte": "How to Get Startup Ideas, saggio 2012",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -8376,25 +4938,6 @@
   ]
  },
  {
-  "id": "QH055",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "La determinazione è la qualità più importante in un fondatore di startup.",
-  "autore": "Paul Graham",
-  "fonte": "The Anatomy of Determination, saggio 2009",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QH057",
   "tema": "imprenditore",
   "scene": [
@@ -8404,25 +4947,6 @@
    "macchina"
   ],
   "gancio": "Abbiate un sano disprezzo per l'impossibile.",
-  "autore": "Larry Page",
-  "fonte": "Discorso ai laureati della University of Michigan, 2009",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH058",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Spesso è più facile fare progressi su sogni enormemente ambiziosi: nessuno è abbastanza folle da provarci, quindi hai poca concorrenza.",
   "autore": "Larry Page",
   "fonte": "Discorso ai laureati della University of Michigan, 2009",
   "hashtag": [
@@ -8444,63 +4968,6 @@
   "gancio": "Dobbiamo smettere di essere quelli che sanno tutto e diventare quelli che imparano tutto.",
   "autore": "Satya Nadella",
   "fonte": "Hit Refresh, 2017",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH060",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Pensiamo, sbagliando, che il successo dipenda dalla quantità di tempo che dedichiamo al lavoro, invece che dalla sua qualità.",
-  "autore": "Arianna Huffington",
-  "fonte": "Thrive, 2014",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH061",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Per sopravvivere e avere successo, ogni organizzazione deve avere un solido insieme di convinzioni su cui fondare tutte le sue azioni.",
-  "autore": "Thomas J. Watson Jr.",
-  "fonte": "A Business and Its Beliefs, 1963",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH062",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "È più facile rispettare i propri principi il cento per cento delle volte che il novantotto per cento.",
-  "autore": "Clayton Christensen",
-  "fonte": "How Will You Measure Your Life?, Harvard Business Review, 2010",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -8623,25 +5090,6 @@
   ]
  },
  {
-  "id": "QH070",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Una startup è un'istituzione umana progettata per creare un nuovo prodotto o servizio in condizioni di estrema incertezza.",
-  "autore": "Eric Ries",
-  "fonte": "The Lean Startup, 2011",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QH071",
   "tema": "imprenditore",
   "scene": [
@@ -8680,25 +5128,6 @@
   ]
  },
  {
-  "id": "QH073",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Il tempo è amico dell'azienda meravigliosa e nemico di quella mediocre.",
-  "autore": "Warren Buffett",
-  "fonte": "Lettera agli azionisti Berkshire Hathaway, 1989",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QH074",
   "tema": "imprenditore",
   "scene": [
@@ -8729,25 +5158,6 @@
   "gancio": "Il rischio nasce dal non sapere che cosa si sta facendo.",
   "autore": "Warren Buffett",
   "fonte": "Citato in R. Hagstrom, The Warren Buffett Way, 1994",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH076",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Se non sei disposto a possedere un'azione per dieci anni, non pensare nemmeno di possederla per dieci minuti.",
-  "autore": "Warren Buffett",
-  "fonte": "Lettera agli azionisti Berkshire Hathaway, 1996",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -8813,25 +5223,6 @@
   ]
  },
  {
-  "id": "QH080",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Chiedetevi perché cinque volte, su ogni questione.",
-  "autore": "Taiichi Ohno",
-  "fonte": "Toyota Production System, 1978",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QH082",
   "tema": "imprenditore",
   "scene": [
@@ -8889,25 +5280,6 @@
   ]
  },
  {
-  "id": "QH085",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Non si può annoiare la gente fino a convincerla a comprare il tuo prodotto.",
-  "autore": "David Ogilvy",
-  "fonte": "Ogilvy on Advertising, 1983",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QH086",
   "tema": "imprenditore",
   "scene": [
@@ -8919,25 +5291,6 @@
   "gancio": "Se allunghi la mano verso le stelle forse non ne prenderai una, ma non tornerai con un pugno di fango.",
   "autore": "Leo Burnett",
   "fonte": "Motto della Leo Burnett Company, dal 1935",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH087",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Siamo una squadra, non una famiglia.",
-  "autore": "Reed Hastings",
-  "fonte": "Netflix Culture: Freedom & Responsibility, 2009; No Rules Rules, 2020",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -8974,25 +5327,6 @@
    "macchina"
   ],
   "gancio": "Noi diventiamo ciò a cui pensiamo.",
-  "autore": "Earl Nightingale",
-  "fonte": "The Strangest Secret, 1956",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH090",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Il successo è la realizzazione progressiva di un ideale degno.",
   "autore": "Earl Nightingale",
   "fonte": "The Strangest Secret, 1956",
   "hashtag": [
@@ -9117,63 +5451,6 @@
   ]
  },
  {
-  "id": "QH097",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "La leadership è un privilegio e una vocazione nobile.",
-  "autore": "Sergio Marchionne",
-  "fonte": "Discorso alla Bologna Business School",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH098",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Di fronte al golfo più singolare del mondo, questa fabbrica si è elevata affinché la bellezza fosse di conforto nel lavoro di ogni giorno.",
-  "autore": "Adriano Olivetti",
-  "fonte": "Ai lavoratori di Pozzuoli, discorso del 23 aprile 1955, in Città dell'uomo, 1959 (testo lievemente abbreviato)",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QH099",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Il contrario di notevole è: molto buono.",
-  "autore": "Seth Godin",
-  "fonte": "Purple Cow, 2003",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QH100",
   "tema": "imprenditore",
   "scene": [
@@ -9190,24 +5467,6 @@
    "#imprenditore",
    "#business",
    "#successo"
-  ]
- },
- {
-  "id": "QI001",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Rivendica il possesso di te stesso, Lucilio mio, e raccogli il tempo che finora ti veniva sottratto.",
-  "autore": "Seneca",
-  "fonte": "Lettere a Lucilio, 1,1",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
   ]
  },
  {
@@ -9247,24 +5506,6 @@
   ]
  },
  {
-  "id": "QI004",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Se vivrai secondo natura non sarai mai povero; se secondo le opinioni, non sarai mai ricco.",
-  "autore": "Epicuro",
-  "fonte": "Lettere a Lucilio, 16,7",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
   "id": "QI005",
   "tema": "disciplina",
   "scene": [
@@ -9280,24 +5521,6 @@
    "#disciplina",
    "#costanza",
    "#mentalita"
-  ]
- },
- {
-  "id": "QI006",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "In nessun luogo l'uomo si ritira più tranquillo e sereno che nella propria anima.",
-  "autore": "Marco Aurelio",
-  "fonte": "Pensieri (A se stesso), IV,3",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
   ]
  },
  {
@@ -9319,42 +5542,6 @@
   ]
  },
  {
-  "id": "QI008",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Non vergognarti di farti aiutare: devi compiere il tuo dovere come un soldato all'assalto delle mura.",
-  "autore": "Marco Aurelio",
-  "fonte": "Pensieri (A se stesso), VII,7",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QI009",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Fa' il necessario, e ciò che la ragione richiede: questo porta serenità, perché si fanno meno cose e meglio.",
-  "autore": "Marco Aurelio",
-  "fonte": "Pensieri (A se stesso), IV,24",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
   "id": "QI010",
   "tema": "mentalita",
   "scene": [
@@ -9370,150 +5557,6 @@
    "#mentalita",
    "#crescitapersonale",
    "#motivazione"
-  ]
- },
- {
-  "id": "QI011",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Se non vuoi essere collerico, non alimentare l'abitudine: non darle nulla che la faccia crescere.",
-  "autore": "Epitteto",
-  "fonte": "Diatribe (Discorsi), II,18",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QI012",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "La libertà non si ottiene soddisfacendo i desideri, ma eliminandoli.",
-  "autore": "Epitteto",
-  "fonte": "Diatribe (Discorsi), IV,1,175",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
-  "id": "QI013",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "La virtù etica deriva dall'abitudine, dalla quale ha preso anche il nome.",
-  "autore": "Aristotele",
-  "fonte": "Etica Nicomachea, II,1 (1103a)",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QI014",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Abituarsi in un modo o nell'altro fin da giovani non è poco importante: è importantissimo, anzi è tutto.",
-  "autore": "Aristotele",
-  "fonte": "Etica Nicomachea, II,1 (1103b)",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QI015",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Chi fugge ogni cosa, ha paura di tutto e non resiste a nulla, diventa vile.",
-  "autore": "Aristotele",
-  "fonte": "Etica Nicomachea, II,2 (1104a)",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QI016",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Il principio è la parte più importante di ogni opera.",
-  "autore": "Platone",
-  "fonte": "Repubblica, II, 377a",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
-  "id": "QI017",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Grande è la forza dell'abitudine: i cacciatori pernottano nella neve e sopportano di bruciarsi al sole sui monti.",
-  "autore": "Cicerone",
-  "fonte": "Tusculanae disputationes, II,40",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QI018",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Come un campo, per quanto fertile, senza coltivazione non può dare frutto, così l'animo senza insegnamento.",
-  "autore": "Cicerone",
-  "fonte": "Tusculanae disputationes, II,13",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
   ]
  },
  {
@@ -9571,42 +5614,6 @@
   ]
  },
  {
-  "id": "QI022",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Apelle aveva l'abitudine di non lasciar passare nessun giorno senza tracciare almeno una linea.",
-  "autore": "Plinio il Vecchio",
-  "fonte": "Naturalis historia, XXXV,84",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QI023",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Sono più numerosi quelli che diventano valenti per esercizio che per natura.",
-  "autore": "Democrito",
-  "fonte": "Frammento DK 68 B 242 (Stobeo)",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
   "id": "QI024",
   "tema": "disciplina",
   "scene": [
@@ -9622,42 +5629,6 @@
    "#disciplina",
    "#costanza",
    "#mentalita"
-  ]
- },
- {
-  "id": "QI025",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Resisti fin dall'inizio: tardi si prepara la medicina, quando i mali si sono rafforzati con lunghi indugi.",
-  "autore": "Ovidio",
-  "fonte": "Remedia amoris, vv. 91-92",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QI026",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Un albero che riempie le braccia nasce da un minuscolo germoglio; una torre di nove piani comincia da un mucchio di terra.",
-  "autore": "Lao Tzu",
-  "fonte": "Tao Te Ching, cap. 64",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
   ]
  },
  {
@@ -9733,60 +5704,6 @@
   ]
  },
  {
-  "id": "QI035",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Chi non ha per sé due terzi della sua giornata è uno schiavo, qualunque cosa sia: politico, mercante, funzionario, studioso.",
-  "autore": "Friedrich Nietzsche",
-  "fonte": "Umano, troppo umano, I, 283 (1878)",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QI036",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Sapere aude! Abbi il coraggio di servirti della tua propria intelligenza!",
-  "autore": "Immanuel Kant",
-  "fonte": "Risposta alla domanda: che cos'è l'illuminismo? (1784)",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QI038",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Il nostro grande e glorioso capolavoro è vivere come si deve.",
-  "autore": "Michel de Montaigne",
-  "fonte": "Saggi, III,13 (1588)",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
   "id": "QI039",
   "tema": "disciplina",
   "scene": [
@@ -9802,42 +5719,6 @@
    "#disciplina",
    "#costanza",
    "#mentalita"
-  ]
- },
- {
-  "id": "QI040",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Cercare sempre di vincere me stesso piuttosto che la fortuna, e di cambiare i miei desideri piuttosto che l'ordine del mondo.",
-  "autore": "René Descartes",
-  "fonte": "Discorso sul metodo, parte III (1637)",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
-  "id": "QI041",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Poiché l'abitudine è il magistrato principale della vita dell'uomo, ci si sforzi in ogni modo di acquisire buone abitudini.",
-  "autore": "Francis Bacon",
-  "fonte": "Saggi, Of Custom and Education (1625)",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
   ]
  },
  {
@@ -9895,78 +5776,6 @@
   ]
  },
  {
-  "id": "QI045",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Ciò che un uomo pensa di se stesso è ciò che determina, o meglio indica, il suo destino.",
-  "autore": "Henry David Thoreau",
-  "fonte": "Walden, Economia (1854)",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QI046",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Risolutezza: decidi di fare ciò che devi; fai senza fallo ciò che hai deciso.",
-  "autore": "Benjamin Franklin",
-  "fonte": "Autobiografia, le tredici virtù (1791)",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
-  "id": "QI047",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Ordine: ogni cosa abbia il suo posto; ogni parte del tuo lavoro abbia il suo tempo.",
-  "autore": "Benjamin Franklin",
-  "fonte": "Autobiografia, le tredici virtù (1791)",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QI048",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Operosità: non perdere tempo; sii sempre impegnato in qualcosa di utile; elimina ogni azione superflua.",
-  "autore": "Benjamin Franklin",
-  "fonte": "Autobiografia, le tredici virtù (1791)",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
   "id": "QI049",
   "tema": "disciplina",
   "scene": [
@@ -10003,24 +5812,6 @@
   ]
  },
  {
-  "id": "QI051",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Beato chi ha trovato il suo lavoro: non chieda altra beatitudine.",
-  "autore": "Thomas Carlyle",
-  "fonte": "Past and Present, III,11 (1843)",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
   "id": "QI052",
   "tema": "disciplina",
   "scene": [
@@ -10036,24 +5827,6 @@
    "#disciplina",
    "#costanza",
    "#mentalita"
-  ]
- },
- {
-  "id": "QI053",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Nel campo dell'osservazione, il caso favorisce soltanto le menti preparate.",
-  "autore": "Louis Pasteur",
-  "fonte": "Discorso all'Università di Lilla, 7 dicembre 1854",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
   ]
  },
  {
@@ -10165,78 +5938,6 @@
   ]
  },
  {
-  "id": "QI061",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "L'abitudine è l'enorme volano della società, il suo agente di conservazione più prezioso.",
-  "autore": "William James",
-  "fonte": "Principi di psicologia, cap. IV, L'abitudine (1890)",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QI062",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "La cosa più importante in ogni educazione è fare del nostro sistema nervoso un alleato invece che un nemico.",
-  "autore": "William James",
-  "fonte": "Principi di psicologia, cap. IV, L'abitudine (1890)",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QI063",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Tutta la nostra vita, in quanto ha una forma definita, non è che un insieme di abitudini.",
-  "autore": "William James",
-  "fonte": "Talks to Teachers on Psychology, cap. VIII (1899)",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QI064",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Mantieni viva in te la capacità di sforzo con un piccolo esercizio gratuito ogni giorno.",
-  "autore": "William James",
-  "fonte": "Principi di psicologia, cap. IV, L'abitudine (1890)",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
   "id": "QI065",
   "tema": "disciplina",
   "scene": [
@@ -10252,24 +5953,6 @@
    "#disciplina",
    "#costanza",
    "#mentalita"
-  ]
- },
- {
-  "id": "QI066",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "La passione di spingersi oltre e di insistere, soprattutto quando le cose non vanno bene, è il segno della mentalità di crescita.",
-  "autore": "Carol S. Dweck",
-  "fonte": "Mindset (2006)",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
   ]
  },
  {
@@ -10342,24 +6025,6 @@
    "#disciplina",
    "#costanza",
    "#mentalita"
-  ]
- },
- {
-  "id": "QI071",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Se vuoi fare lo scrittore devi fare due cose sopra ogni altra: leggere molto e scrivere molto.",
-  "autore": "Stephen King",
-  "fonte": "On Writing (2000)",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
   ]
  },
  {
@@ -10507,24 +6172,6 @@
   ]
  },
  {
-  "id": "QI083",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Ho dovuto essere diligente; chi sarà altrettanto diligente arriverà altrettanto lontano.",
-  "autore": "Johann Sebastian Bach",
-  "fonte": "Riferito da J. N. Forkel, Über Johann Sebastian Bachs Leben (1802)",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
   "id": "QI084",
   "tema": "mentalita",
   "scene": [
@@ -10540,78 +6187,6 @@
    "#mentalita",
    "#crescitapersonale",
    "#motivazione"
-  ]
- },
- {
-  "id": "QI085",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "La pratica significa ripetere, ancora e ancora, di fronte a ogni ostacolo, un atto di visione, di fede, di desiderio.",
-  "autore": "Martha Graham",
-  "fonte": "An Athlete of God, in This I Believe (1953)",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QI086",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "La creatività è un'abitudine, e la creatività migliore è il frutto di buone abitudini di lavoro.",
-  "autore": "Twyla Tharp",
-  "fonte": "The Creative Habit (2003)",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QI087",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Sii regolare e ordinato nella tua vita come un borghese, per poter essere violento e originale nelle tue opere.",
-  "autore": "Gustave Flaubert",
-  "fonte": "Lettera a Gertrude Tennant, 25 dicembre 1876",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
-  "id": "QI088",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Un piccolo compito quotidiano, se è davvero quotidiano, batte le fatiche di un Ercole a singhiozzo.",
-  "autore": "Anthony Trollope",
-  "fonte": "Autobiografia, cap. VII (1883)",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
   ]
  },
  {
@@ -10813,25 +6388,6 @@
   ]
  },
  {
-  "id": "QJ001",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Credimi, la vera gioia è una cosa seria.",
-  "autore": "Seneca",
-  "fonte": "Lettere a Lucilio, 23, 4",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
   "id": "QJ002",
   "tema": "positivita",
   "scene": [
@@ -10870,63 +6426,6 @@
   ]
  },
  {
-  "id": "QJ004",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Anche se il mondo è pieno di sofferenza, è pieno anche del suo superamento.",
-  "autore": "Helen Keller",
-  "fonte": "Optimism, 1903",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ005",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Credete che la vita valga la pena di essere vissuta, e la vostra convinzione aiuterà a crearne il fatto.",
-  "autore": "William James",
-  "fonte": "Is Life Worth Living?, 1895 (in The Will to Believe, 1897)",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ006",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Se vuoi goderti il tuo valore, devi dare valore al mondo.",
-  "autore": "Johann Wolfgang von Goethe",
-  "fonte": "Zahme Xenien",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
   "id": "QJ008",
   "tema": "positivita",
   "scene": [
@@ -10938,25 +6437,6 @@
   "gancio": "Il coraggio è resistenza alla paura, dominio della paura: non assenza di paura.",
   "autore": "Mark Twain",
   "fonte": "Pudd'nhead Wilson, 1894, cap. 12",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ011",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Voglio imparare sempre più a vedere il necessario nelle cose come il bello. Amor fati.",
-  "autore": "Friedrich Nietzsche",
-  "fonte": "La gaia scienza, 1882, af. 276",
   "hashtag": [
    "#citazioni",
    "#positivita",
@@ -10984,44 +6464,6 @@
   ]
  },
  {
-  "id": "QJ013",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Padrone di sé e lieto vivrà colui che ogni giorno può dire: ho vissuto.",
-  "autore": "Orazio",
-  "fonte": "Odi, III, 29",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ014",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Forse un giorno ci farà piacere ricordare anche queste cose.",
-  "autore": "Virgilio",
-  "fonte": "Eneide, I, 203",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
   "id": "QJ015",
   "tema": "positivita",
   "scene": [
@@ -11031,25 +6473,6 @@
    "uscita"
   ],
   "gancio": "Se riesci a non perdere la testa quando tutti intorno a te la perdono e ne danno la colpa a te.",
-  "autore": "Rudyard Kipling",
-  "fonte": "If—, 1910",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ016",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Se riesci a riempire l'inesorabile minuto con sessanta secondi di corsa, tua è la Terra e tutto ciò che contiene.",
   "autore": "Rudyard Kipling",
   "fonte": "If—, 1910",
   "hashtag": [
@@ -11071,25 +6494,6 @@
   "gancio": "Sotto i colpi della sorte il mio capo sanguina, ma non si piega.",
   "autore": "William Ernest Henley",
   "fonte": "Invictus, 1875",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ018",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Forti nella volontà di lottare, cercare, trovare, e non cedere.",
-  "autore": "Alfred Tennyson",
-  "fonte": "Ulysses, 1842",
   "hashtag": [
    "#citazioni",
    "#positivita",
@@ -11136,63 +6540,6 @@
   ]
  },
  {
-  "id": "QJ023",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Essere uomo significa sentire, posando la propria pietra, che si contribuisce a costruire il mondo.",
-  "autore": "Antoine de Saint-Exupéry",
-  "fonte": "Terra degli uomini, 1939",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ024",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "S'ha da aspettà, Ama'. Ha da passà 'a nuttata.",
-  "autore": "Eduardo De Filippo",
-  "fonte": "Napoli milionaria!, 1945, battuta finale",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ025",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Non ti turbino le cose future: le affronterai, se sarà necessario, con la stessa ragione che usi ora per le presenti.",
-  "autore": "Marco Aurelio",
-  "fonte": "Pensieri, VII, 8",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
   "id": "QJ027",
   "tema": "positivita",
   "scene": [
@@ -11212,95 +6559,6 @@
   ]
  },
  {
-  "id": "QJ028",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Credi in te stesso! Abbi fiducia nelle tue capacità!",
-  "autore": "Norman Vincent Peale",
-  "fonte": "Il potere del pensiero positivo, 1952, incipit",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ030",
-  "tema": "positivita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa",
-   "uscita"
-  ],
-  "gancio": "A piedi e col cuore leggero mi metto sulla strada aperta, sano, libero, il mondo davanti a me.",
-  "autore": "Walt Whitman",
-  "fonte": "Canto della strada aperta, Foglie d'erba, 1856",
-  "hashtag": [
-   "#citazioni",
-   "#positivita",
-   "#motivazione",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ031",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Quanto tempo guadagna chi non guarda a ciò che il vicino ha detto, fatto o pensato, ma solo a ciò che fa lui.",
-  "autore": "Marco Aurelio",
-  "fonte": "Pensieri, IV, 18",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ033",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Ogni giorno si dovrebbe ascoltare almeno una breve canzone, leggere una bella poesia, vedere un buon quadro e dire qualche parola sensata.",
-  "autore": "Johann Wolfgang von Goethe",
-  "fonte": "Gli anni di apprendistato di Wilhelm Meister, 1795-96, libro V, 1",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ034",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Solo si merita la libertà e la vita chi ogni giorno deve conquistarsele.",
-  "autore": "Johann Wolfgang von Goethe",
-  "fonte": "Faust, parte II, atto V",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
   "id": "QJ035",
   "tema": "lifestyle",
   "scene": [
@@ -11310,40 +6568,6 @@
   "gancio": "Insisti su te stesso; non imitare mai.",
   "autore": "Ralph Waldo Emerson",
   "fonte": "Self-Reliance, 1841",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ037",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Ciò che cerchi è qui, è anche a Ulubre, se non ti manca un animo equilibrato.",
-  "autore": "Orazio",
-  "fonte": "Epistole, I, 11",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ039",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Com'è noioso fermarsi, finire, arrugginire senza lustro, invece di splendere nell'uso!",
-  "autore": "Alfred Tennyson",
-  "fonte": "Ulysses, 1842",
   "hashtag": [
    "#citazioni",
    "#lifestyle",
@@ -11369,40 +6593,6 @@
   ]
  },
  {
-  "id": "QJ041",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Il mio mestiere e la mia arte è vivere.",
-  "autore": "Michel de Montaigne",
-  "fonte": "Saggi, II, 6",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ043",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Stabilisci fin d'ora un carattere e un modello per te stesso, da mantenere sia quando sei solo sia con gli altri.",
-  "autore": "Epitteto",
-  "fonte": "Manuale, 33",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
   "id": "QJ046",
   "tema": "lifestyle",
   "scene": [
@@ -11420,142 +6610,6 @@
   ]
  },
  {
-  "id": "QJ047",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Il costo di una cosa è la quantità di vita che bisogna dare in cambio, subito o a lungo andare.",
-  "autore": "Henry David Thoreau",
-  "fonte": "Walden, 1854",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ049",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Nulla è sufficiente per chi trova poco ciò che è sufficiente.",
-  "autore": "Epicuro",
-  "fonte": "Sentenze Vaticane, 68",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ050",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Gli uomini non capiscono quale grande rendita sia la parsimonia.",
-  "autore": "Cicerone",
-  "fonte": "Paradoxa Stoicorum, VI, 49",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ051",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Questo è ben detto, rispose Candido, ma bisogna coltivare il nostro giardino.",
-  "autore": "Voltaire",
-  "fonte": "Candido, 1759, finale",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ052",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Guardando la quantità di merci in vendita, diceva tra sé: di quante cose non ho bisogno!",
-  "autore": "Socrate",
-  "fonte": "riferito da Diogene Laerzio, Vite dei filosofi, II, 25",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ053",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Il segreto della felicità è questo: che i tuoi interessi siano il più ampi possibile.",
-  "autore": "Bertrand Russell",
-  "fonte": "La conquista della felicità, 1930, cap. 11",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ054",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Stare seduti il meno possibile; non credere a nessun pensiero che non sia nato all'aria aperta e in libero movimento.",
-  "autore": "Friedrich Nietzsche",
-  "fonte": "Ecce homo, 1888, Perché sono così accorto, 1",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ055",
-  "tema": "lifestyle",
-  "scene": [
-   "specchio",
-   "uscita"
-  ],
-  "gancio": "Soprattutto non perdere la voglia di camminare: ogni giorno cammino per raggiungere uno stato di benessere.",
-  "autore": "Søren Kierkegaard",
-  "fonte": "Lettera a Henriette Lund, 1847",
-  "hashtag": [
-   "#citazioni",
-   "#lifestyle",
-   "#stile",
-   "#vita"
-  ]
- },
- {
   "id": "QJ057",
   "tema": "amicizia",
   "scene": [
@@ -11564,118 +6618,6 @@
   "gancio": "Parla con l'amico con la stessa libertà con cui parli con te stesso.",
   "autore": "Seneca",
   "fonte": "Lettere a Lucilio, 3, 2",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ058",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Gli amici, anche assenti, sono presenti; anche poveri, sono ricchi; anche deboli, sono forti.",
-  "autore": "Cicerone",
-  "fonte": "De amicitia, 23",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ059",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Che cosa c'è di più dolce che avere qualcuno con cui osare parlare di tutto come con te stesso?",
-  "autore": "Cicerone",
-  "fonte": "De amicitia, 22",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ060",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "La natura non ama nulla di solitario e cerca sempre un appoggio, che è dolcissimo in un vero amico.",
-  "autore": "Cicerone",
-  "fonte": "De amicitia, 88",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ061",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "L'amico sicuro si riconosce nella sorte incerta.",
-  "autore": "Ennio",
-  "fonte": "citato da Cicerone, De amicitia, 64",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ062",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "L'amicizia è una virtù, o è accompagnata dalla virtù; ed è la cosa più necessaria alla vita.",
-  "autore": "Aristotele",
-  "fonte": "Etica Nicomachea, VIII, 1 (1155a)",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ064",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Non bisogna approvare né chi è troppo pronto all'amicizia né chi esita: per l'amicizia bisogna anche rischiare.",
-  "autore": "Epicuro",
-  "fonte": "Sentenze Vaticane, 28",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ065",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Prima di guardare cosa mangi e bevi, guarda con chi: mangiare senza un amico è vita da leone e da lupo.",
-  "autore": "Epicuro",
-  "fonte": "riportato da Seneca, Lettere a Lucilio, 19, 10",
   "hashtag": [
    "#citazioni",
    "#amicizia",
@@ -11708,54 +6650,6 @@
   "gancio": "Un amico è una persona con cui posso essere sincero. Davanti a lui posso pensare ad alta voce.",
   "autore": "Ralph Waldo Emerson",
   "fonte": "Friendship, Essays, 1841",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ068",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Nell'amicizia di cui parlo le anime si fondono in un'unione così totale da cancellare la cucitura che le ha unite.",
-  "autore": "Michel de Montaigne",
-  "fonte": "Saggi, I, 28",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ069",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Un uomo, signore, dovrebbe tenere le sue amicizie in costante riparazione.",
-  "autore": "Samuel Johnson",
-  "fonte": "James Boswell, Vita di Samuel Johnson (1755)",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QJ070",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Se un uomo non fa nuove conoscenze man mano che avanza nella vita, presto si ritroverà solo.",
-  "autore": "Samuel Johnson",
-  "fonte": "James Boswell, Vita di Samuel Johnson (1755)",
   "hashtag": [
    "#citazioni",
    "#amicizia",
@@ -11844,22 +6738,6 @@
   ]
  },
  {
-  "id": "QJ077",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Un solo amico fedele vale più di diecimila consanguinei.",
-  "autore": "Euripide",
-  "fonte": "Oreste, 805",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
   "id": "QJ080",
   "tema": "amicizia",
   "scene": [
@@ -11873,108 +6751,6 @@
    "#amicizia",
    "#valori",
    "#vita"
-  ]
- },
- {
-  "id": "QJ081",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Tua è la Terra e tutto ciò che contiene e, quel che più conta, sarai un Uomo, figlio mio!",
-  "autore": "Rudyard Kipling",
-  "fonte": "If—, 1910",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QJ082",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Il primo legame sta nel matrimonio, poi nei figli, poi in una sola casa dove tutto è in comune.",
-  "autore": "Cicerone",
-  "fonte": "De officiis, I, 54",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QJ083",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Impara da me, figlio, il valore e la vera fatica; la fortuna, da altri.",
-  "autore": "Virgilio",
-  "fonte": "Eneide, XII, 435-436",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QJ085",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Da mio fratello Severo: l'amore per la famiglia, per la verità, per la giustizia.",
-  "autore": "Marco Aurelio",
-  "fonte": "Pensieri, I, 14",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QJ086",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Da mia madre: la generosità e la semplicità del vivere, lontana dal lusso dei ricchi.",
-  "autore": "Marco Aurelio",
-  "fonte": "Pensieri, I, 3",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QJ089",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "I padri fanno svegliare presto i figli perché si dedichino ai loro impegni, e non li lasciano oziare nemmeno nei giorni di festa.",
-  "autore": "Seneca",
-  "fonte": "De providentia, 2, 5",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
   ]
  },
  {
@@ -12012,23 +6788,6 @@
   ]
  },
  {
-  "id": "QJ096",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "La famiglia è uno dei capolavori della natura.",
-  "autore": "George Santayana",
-  "fonte": "The Life of Reason, 1905",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
   "id": "QJ097",
   "tema": "famiglia",
   "scene": [
@@ -12038,23 +6797,6 @@
   "gancio": "Chiamalo clan, rete, tribù o famiglia: comunque lo chiami, chiunque tu sia, ne hai bisogno.",
   "autore": "Jane Howard",
   "fonte": "Families, 1978",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QJ099",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "È dovere del padre abituare il figlio a comportarsi bene di sua spontanea volontà, non per paura.",
-  "autore": "Terenzio",
-  "fonte": "Adelphoe, 74-75",
   "hashtag": [
    "#citazioni",
    "#famiglia",
@@ -12073,24 +6815,6 @@
   "gancio": "Non contare sulla motivazione. Conta sulla disciplina.",
   "autore": "Jocko Willink",
   "fonte": "Discipline Equals Freedom: Field Manual, 2017",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
-  "id": "QM202610002",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Il successo si costruisce un passo dopo l'altro: una cosa alla volta.",
-  "autore": "Gary Keller",
-  "fonte": "The ONE Thing, 2013",
   "hashtag": [
    "#citazioni",
    "#disciplina",
@@ -12171,24 +6895,6 @@
   ]
  },
  {
-  "id": "QM202610008",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "La grinta è passione e costanza per obiettivi molto lontani nel tempo.",
-  "autore": "Angela Duckworth",
-  "fonte": "TED Talk, 2013",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
   "id": "QM202610009",
   "tema": "disciplina",
   "scene": [
@@ -12199,24 +6905,6 @@
   "gancio": "I professionisti rispettano il programma. I dilettanti si lasciano fermare dagli imprevisti.",
   "autore": "James Clear",
   "fonte": "Atomic Habits, 2018",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
-  "id": "QM202610010",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "La parte difficile non è scrivere: è sedersi a farlo.",
-  "autore": "Steven Pressfield",
-  "fonte": "The War of Art, 2002",
   "hashtag": [
    "#citazioni",
    "#disciplina",
@@ -12325,42 +7013,6 @@
   "gancio": "Conta molto di più la direzione in cui stai andando che i risultati che hai oggi.",
   "autore": "James Clear",
   "fonte": "Atomic Habits, 2018",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QM202610017",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Cambiare non è sempre veloce né facile. Ma con tempo e impegno quasi ogni abitudine si può cambiare.",
-  "autore": "Charles Duhigg",
-  "fonte": "The Power of Habit, 2012",
-  "hashtag": [
-   "#citazioni",
-   "#abitudini",
-   "#costanza",
-   "#crescitapersonale"
-  ]
- },
- {
-  "id": "QM202610018",
-  "tema": "abitudini",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "La mente serve ad avere idee, non a tenerle a memoria.",
-  "autore": "David Allen",
-  "fonte": "Getting Things Done, ed. 2015",
   "hashtag": [
    "#citazioni",
    "#abitudini",
@@ -12513,24 +7165,6 @@
   ]
  },
  {
-  "id": "QM202610027",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Chi vuole guardare bene la terra deve tenersi alla distanza necessaria.",
-  "autore": "Italo Calvino",
-  "fonte": "Il barone rampante, 1957",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
   "id": "QM202610028",
   "tema": "mentalita",
   "scene": [
@@ -12595,24 +7229,6 @@
   "gancio": "Se ho visto più lontano, è perché stavo sulle spalle di giganti.",
   "autore": "Isaac Newton",
   "fonte": "Lettera a Robert Hooke, 1675",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QM202610032",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Il corpo faccia quello che vuole. Io non sono il corpo: io sono la mente.",
-  "autore": "Rita Levi-Montalcini",
-  "fonte": "Intervista di Paolo Giordano, Wired, 2009",
   "hashtag": [
    "#citazioni",
    "#mentalita",
@@ -12707,22 +7323,6 @@
   ]
  },
  {
-  "id": "QM202610039",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "La giusta misura è la cosa migliore.",
-  "autore": "Cleobulo",
-  "fonte": "Diogene Laerzio, Vite dei filosofi I, 93",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
   "id": "QM202610043",
   "tema": "mentalita",
   "scene": [
@@ -12738,22 +7338,6 @@
    "#mentalita",
    "#crescitapersonale",
    "#motivazione"
-  ]
- },
- {
-  "id": "QM202610044",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Gli esercizi migliori allenano il corpo e insieme mettono di buon umore.",
-  "autore": "Galeno",
-  "fonte": "Sull'esercizio con la piccola palla, cap. 1",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
   ]
  },
  {
@@ -12775,73 +7359,6 @@
   ]
  },
  {
-  "id": "QM202610046",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Le giornate sono lunghe, ma gli anni sono brevi.",
-  "autore": "Gretchen Rubin",
-  "fonte": "The Happiness Project, 2009",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QM202610047",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Con la concordia le piccole cose crescono, con la discordia anche le più grandi vanno in rovina.",
-  "autore": "Sallustio",
-  "fonte": "Bellum Iugurthinum 10, 6",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QM202610048",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Non c'è nessun posto come casa.",
-  "autore": "L. Frank Baum",
-  "fonte": "Il meraviglioso mago di Oz, cap. 4, 1900",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QM202610049",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "L'amicizia è l'amore senza le sue ali.",
-  "autore": "Lord Byron",
-  "fonte": "L'Amitié est l'Amour sans ailes, Hours of Idleness, 1807",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
   "id": "QM202610050",
   "tema": "amicizia",
   "scene": [
@@ -12858,24 +7375,6 @@
   ]
  },
  {
-  "id": "QM202610051",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Quello che un uomo può essere, deve esserlo.",
-  "autore": "Abraham Maslow",
-  "fonte": "Motivation and Personality, 1954",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
   "id": "QM202610052",
   "tema": "mentalita",
   "scene": [
@@ -12886,24 +7385,6 @@
   "gancio": "Dalla vulnerabilità nascono l'innovazione, la creatività e il cambiamento.",
   "autore": "Brené Brown",
   "fonte": "Daring Greatly, 2012",
-  "hashtag": [
-   "#citazioni",
-   "#mentalita",
-   "#crescitapersonale",
-   "#motivazione"
-  ]
- },
- {
-  "id": "QM202610053",
-  "tema": "mentalita",
-  "scene": [
-   "macchina",
-   "specchio",
-   "casa"
-  ],
-  "gancio": "Ne è valsa la pena? Tutto vale la pena se l'anima non è piccola.",
-  "autore": "Fernando Pessoa",
-  "fonte": "Mensagem, Mar Português, 1934",
   "hashtag": [
    "#citazioni",
    "#mentalita",
@@ -12960,25 +7441,6 @@
   "gancio": "Complicare è facile, semplificare è difficile. Per complicare basta aggiungere.",
   "autore": "Bruno Munari",
   "fonte": "Verbale scritto, 1992",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QM202610057",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Fare strategia vuol dire essere diversi: scegliere di fare cose diverse dagli altri.",
-  "autore": "Michael Porter",
-  "fonte": "What Is Strategy?, Harvard Business Review, 1996",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -13093,25 +7555,6 @@
   "gancio": "Il modo migliore per prevedere il futuro è inventarlo.",
   "autore": "Alan Kay",
   "fonte": "Xerox PARC, 1971",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QM202610065",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "È ovvio che la macchina bisogna prima sognarla, per poi chiedere ai propri collaboratori se si sentono in grado di realizzarla.",
-  "autore": "Enzo Ferrari",
-  "fonte": "Rosso Ferrari, documentario di G. Tescari, 1984",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -13554,25 +7997,6 @@
   ]
  },
  {
-  "id": "QM202610089",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Non smettere mai di fare test: la tua pubblicità continuerà a migliorare.",
-  "autore": "David Ogilvy",
-  "fonte": "Ogilvy on Advertising, 1983",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
   "id": "QM202610090",
   "tema": "imprenditore",
   "scene": [
@@ -13660,25 +8084,6 @@
   "gancio": "Se bastasse informarsi, saremmo tutti miliardari con gli addominali scolpiti.",
   "autore": "Derek Sivers",
   "fonte": "The Tim Ferriss Show, 2015; Tools of Titans, 2016",
-  "hashtag": [
-   "#citazioni",
-   "#imprenditore",
-   "#business",
-   "#successo"
-  ]
- },
- {
-  "id": "QM202610095",
-  "tema": "imprenditore",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "pacchi",
-   "macchina"
-  ],
-  "gancio": "Il buon design usa meno design possibile.",
-  "autore": "Dieter Rams",
-  "fonte": "Dieci principi del buon design",
   "hashtag": [
    "#citazioni",
    "#imprenditore",
@@ -14090,22 +8495,6 @@
   ]
  },
  {
-  "id": "QM202610120",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Gli schiacciatori non parlano dell'alzata: la risolvono.",
-  "autore": "Julio Velasco",
-  "fonte": "interventi sulla cultura degli alibi",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
   "id": "QM202610121",
   "tema": "palestra",
   "scene": [
@@ -14130,22 +8519,6 @@
   "gancio": "Mente sana in corpo sano: poche parole, ma descrivono perfettamente una vita felice.",
   "autore": "John Locke",
   "fonte": "Pensieri sull'educazione, 1693",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QM202610123",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "I campioni non fanno cose straordinarie: fanno cose normali, ma in automatico e così in fretta che l'avversario non fa in tempo a reagire.",
-  "autore": "Tony Dungy",
-  "fonte": "riportata in C. Duhigg, The Power of Habit, 2012",
   "hashtag": [
    "#citazioni",
    "#palestra",
@@ -14194,22 +8567,6 @@
   "gancio": "Un campione non si riconosce dalle vittorie, ma da come si rialza dopo una caduta.",
   "autore": "Serena Williams",
   "fonte": "intervista a The National, ripresa da TIME, 2016",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QM202610127",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "La mentalità non è inseguire il risultato: è il percorso che ti porta fin lì.",
-  "autore": "Kobe Bryant",
-  "fonte": "The Mamba Mentality, 2018",
   "hashtag": [
    "#citazioni",
    "#palestra",
@@ -14282,38 +8639,6 @@
   ]
  },
  {
-  "id": "QM202610132",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Tra tutti gli esercizi, camminare è il migliore.",
-  "autore": "Thomas Jefferson",
-  "fonte": "lettera a Thomas Mann Randolph Jr., 1786",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
-  "id": "QM202610133",
-  "tema": "palestra",
-  "scene": [
-   "palestra"
-  ],
-  "gancio": "Quasi tutto quello che so sulla scrittura l'ho imparato correndo ogni giorno.",
-  "autore": "Haruki Murakami",
-  "fonte": "L'arte di correre, 2007",
-  "hashtag": [
-   "#citazioni",
-   "#palestra",
-   "#allenamento",
-   "#disciplina"
-  ]
- },
- {
   "id": "QM202610134",
   "tema": "palestra",
   "scene": [
@@ -14330,22 +8655,6 @@
   ]
  },
  {
-  "id": "QM202610135",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Non fare il pieno dove lo fa la tua macchina.",
-  "autore": "Michael Pollan",
-  "fonte": "Food Rules, 2009",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
   "id": "QM202610136",
   "tema": "dieta",
   "scene": [
@@ -14354,102 +8663,6 @@
   "gancio": "Evita i cibi con ingredienti che un bambino delle elementari non saprebbe pronunciare.",
   "autore": "Michael Pollan",
   "fonte": "Food Rules, 2009",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610137",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Mangia carne di animali che a loro volta hanno mangiato bene.",
-  "autore": "Michael Pollan",
-  "fonte": "Food Rules, 2009",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610138",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Al supermercato compra lungo i banchi esterni e stai lontano dalle corsie centrali.",
-  "autore": "Michael Pollan",
-  "fonte": "Food Rules, 2009",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610139",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Fai tutti i tuoi pasti seduto a tavola.",
-  "autore": "Michael Pollan",
-  "fonte": "Food Rules, 2009",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610143",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Cibo e allenamento sono opposti, ma lavorano insieme per darti la salute.",
-  "autore": "Ippocrate",
-  "fonte": "Sul regime, libro I, cap. 2",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610145",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Molta aria aperta, esercizio e sonno; una dieta semplice, niente vino né bevande forti.",
-  "autore": "John Locke",
-  "fonte": "Pensieri sull'educazione, 1693, par. 30",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610146",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Il cibo più sano è quello semplice: troppi sapori fanno male, i condimenti ancora di più.",
-  "autore": "Plinio il Vecchio",
-  "fonte": "Naturalis historia, XI, 282",
   "hashtag": [
    "#citazioni",
    "#salute",
@@ -14471,71 +8684,6 @@
    "#salute",
    "#alimentazione",
    "#benessere"
-  ]
- },
- {
-  "id": "QM202610150",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Una cena breve o leggera raramente fa male.",
-  "autore": "Scuola Medica Salernitana",
-  "fonte": "Regimen sanitatis salernitanum",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610151",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Dopo cena resta in piedi, oppure cammina per mille passi.",
-  "autore": "Scuola Medica Salernitana",
-  "fonte": "Regimen sanitatis salernitanum",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610154",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "La vita sobria è vera madre della salute e della vita lunga.",
-  "autore": "Luigi Cornaro",
-  "fonte": "Discorsi della vita sobria, 1558",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610155",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Per quanto riguarda l'educazione dei figli, penso che si debbano insegnar loro non le piccole virtù, ma le grandi.",
-  "autore": "Natalia Ginzburg",
-  "fonte": "Le piccole virtù, 1962",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
   ]
  },
  {
@@ -14590,39 +8738,6 @@
   ]
  },
  {
-  "id": "QM202610159",
-  "tema": "famiglia",
-  "scene": [
-   "casa",
-   "uscita"
-  ],
-  "gancio": "Il bambino è una sorgente d'amore; quando lo si tocca, si tocca l'amore.",
-  "autore": "Maria Montessori",
-  "fonte": "La mente del bambino, 1949",
-  "hashtag": [
-   "#citazioni",
-   "#famiglia",
-   "#gratitudine",
-   "#valori"
-  ]
- },
- {
-  "id": "QM202610160",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Invitare qualcuno significa prendersi cura della sua felicità per tutto il tempo che passa sotto il nostro tetto.",
-  "autore": "Jean Anthelme Brillat-Savarin",
-  "fonte": "Fisiologia del gusto, 1825, aforisma XX",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
   "id": "QM202610161",
   "tema": "amicizia",
   "scene": [
@@ -14652,230 +8767,6 @@
    "#amicizia",
    "#valori",
    "#vita"
-  ]
- },
- {
-  "id": "QM202610163",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Ogni amico è un mondo dentro di noi, un mondo che forse nasce solo quando lui arriva.",
-  "autore": "Anaïs Nin",
-  "fonte": "Diario, vol. II, 1937",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QM202610164",
-  "tema": "amicizia",
-  "scene": [
-   "uscita"
-  ],
-  "gancio": "Le anime affini non sono poi così rare come pensavo.",
-  "autore": "Lucy Maud Montgomery",
-  "fonte": "Anna dai capelli rossi, 1908",
-  "hashtag": [
-   "#citazioni",
-   "#amicizia",
-   "#valori",
-   "#vita"
-  ]
- },
- {
-  "id": "QM202610201",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "La mia vita è cambiata quando ho iniziato a mangiare i cibi giusti per il mio corpo, come lui mi chiedeva.",
-  "autore": "Novak Djokovic",
-  "fonte": "Serve to Win, 2013",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610202",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "La mia alimentazione è semplicissima: verdure, legumi, carne bianca, pesce e frutta.",
-  "autore": "Novak Djokovic",
-  "fonte": "Serve to Win, 2013",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610203",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "A qualcuno il mio modo di mangiare può sembrare rigido, ma per me sarebbe innaturale mangiare diversamente.",
-  "autore": "Tom Brady",
-  "fonte": "The TB12 Method, 2017",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610204",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Quando i muscoli non crescono, quasi sempre il problema è nell'alimentazione.",
-  "autore": "Arnold Schwarzenegger",
-  "fonte": "The New Encyclopedia of Modern Bodybuilding, 1998",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610205",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Nella mezz'ora dopo l'allenamento il corpo è come una spugna: assorbe tutto quello che gli dai.",
-  "autore": "Mike Mancias",
-  "fonte": "The Tim Ferriss Show, puntata 349, 2018",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610206",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Sono sempre stato costante: allenare il corpo, recuperare, mangiare bene e tenerlo pulito.",
-  "autore": "LeBron James",
-  "fonte": "The Tim Ferriss Show, puntata 349, 2018",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610207",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Era il momento di cambiare: tante verdure, frutta, pesce e carni magre.",
-  "autore": "Kobe Bryant",
-  "fonte": "intervista a iVillage, 23 agosto 2012",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610208",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Credo in un'alimentazione sana, nell'allenamento e in una forma al top, di testa e di corpo.",
-  "autore": "Martina Navratilova",
-  "fonte": "One Can Make a Difference, 2008",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610209",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Allenamento e alimentazione non si possono separare: per dare il meglio devi curarli entrambi.",
-  "autore": "Chris Hoy",
-  "fonte": "intervista a Cycling Weekly, novembre 2014",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610210",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Né mangiare troppo né digiunare: niente fa bene quando va oltre la giusta misura.",
-  "autore": "Ippocrate",
-  "fonte": "Aforismi, II, 4",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610211",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Potevo correre meglio, mangiare meglio, vivere meglio.",
-  "autore": "Scott Jurek",
-  "fonte": "Eat & Run, 2012",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
-  ]
- },
- {
-  "id": "QM202610212",
-  "tema": "dieta",
-  "scene": [
-   "cibo"
-  ],
-  "gancio": "Mi sono innamorata dell'idea di dare al corpo il carburante migliore possibile.",
-  "autore": "Venus Williams",
-  "fonte": "intervista a Health, 12 gennaio 2017",
-  "hashtag": [
-   "#citazioni",
-   "#salute",
-   "#alimentazione",
-   "#benessere"
   ]
  }
 ]

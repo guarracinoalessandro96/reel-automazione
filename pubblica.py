@@ -50,9 +50,16 @@ MOOD = {"dieta": "luminoso", "palestra": "energia", "imprenditore": "deciso", "d
         "mentalita": "calmo", "lifestyle": "luminoso"}
 
 
-def scegli_musica(tema, recenti):
-    """Un brano dell'umore giusto, evitando quelli usati di recente."""
-    for mood in (MOOD.get(tema, "luminoso"), "deciso", "luminoso"):
+GENERE_PER_SCENA = {   # un genere diverso per ogni contesto (genera_generi.py)
+    "palestra": "phonk", "macchina": "drive", "lavoro": "house", "pacchi": "house",
+    "cibo": "lofi", "uscita": "tropical", "specchio": "trap", "casa": "caldo"}
+
+
+def scegli_musica(tema, recenti, scena=None):
+    """Un brano del genere della scena (o dell'umore del tema), evitando quelli usati di recente."""
+    for mood in (GENERE_PER_SCENA.get(scena), MOOD.get(tema, "luminoso"), "deciso", "luminoso"):
+        if not mood:
+            continue
         d = os.path.join(HERE, "musica", mood)
         brani = sorted(f for f in os.listdir(d) if f.endswith(".flac")) if os.path.isdir(d) else []
         if brani:
@@ -538,7 +545,7 @@ def main():
     pesi = json.load(open(pesi_file, encoding="utf-8")).get("temi", {}) if os.path.exists(pesi_file) else {}
     usi = {h["frase"]: h["quando"][:10] for h in state["storico"] if h.get("frase") and h.get("quando")}
     frase = scegli_frase(frasi, an["scena"], usi, state["temi_recenti"], pesi)
-    music = None if ENV("SENZA_MUSICA") == "1" else scegli_musica(frase["tema"], state["musica_recenti"])
+    music = None if ENV("SENZA_MUSICA") == "1" else scegli_musica(frase["tema"], state["musica_recenti"], an["scena"])
     log(f"Slot {slot} | {video['name']} | scena {an['scena']} | frase {frase['id']} ({frase['tema']}): {frase['gancio']}")
 
     # 4. montaggio e pubblicazione
