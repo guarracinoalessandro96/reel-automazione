@@ -2,9 +2,11 @@ name: Pubblica Reel
 
 on:
   schedule:
-    # GitHub usa l'ora UTC. Questi orari coprono sia l'ora legale che quella solare:
-    # orario.py controlla l'ora di Roma e pubblica solo alle 9, 12, 15, 18, 21.
-    - cron: "5 7,8,10,11,13,14,16,17,19,20 * * *"
+    # GitHub usa l'ora UTC e, quando e' carico, salta o ritarda molte esecuzioni programmate (dal 3/10/2026
+    # ne partivano 2-5 su 10). Per questo il controllo gira ogni 20 minuti (minuti "strani", meno affollati):
+    # orario.py guarda l'ora di Roma e pubblica una sola volta per slot (9, 12, 15, 18, 21; finestra di 3 ore).
+    # Le esecuzioni senza niente da fare durano pochi secondi (repository pubblico: minuti gratuiti).
+    - cron: "7,27,47 6-22 * * *"
   workflow_dispatch:
     inputs:
       forza:
@@ -26,9 +28,19 @@ jobs:
 
       - name: Tocca pubblicare adesso?
         id: orario
+        run: |
+          SLOT="$(python3 orario.py)"
+          if [ -n "$SLOT" ] && [ "$(python3 coda.py)" = "0" ] && ! grep -q '"riprova": \[[^]]' stato.json; then
+            echo "Nessun video in coda e niente da riprovare: mi fermo qui."
+            SLOT=""
+          fi
+          echo "slot=$SLOT" >> "$GITHUB_OUTPUT"
         env:
           FORZA: ${{ github.event_name == 'workflow_dispatch' && inputs.forza && '1' || '0' }}
-        run: echo "slot=$(python3 orario.py)" >> "$GITHUB_OUTPUT"
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          DRIVE_FOLDER_DA_PUBBLICARE: ${{ secrets.DRIVE_FOLDER_DA_PUBBLICARE }}
 
       - uses: actions/setup-python@v5
         if: steps.orario.outputs.slot != ''
