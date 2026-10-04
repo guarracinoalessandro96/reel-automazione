@@ -34,6 +34,13 @@ def probe(path):
     return seconds, hdr
 
 
+def fps(path):
+    """Fotogrammi al secondo del video (es. 30 o 60); 30 se non si legge."""
+    r = subprocess.run([FFMPEG, "-hide_banner", "-i", path], capture_output=True, text=True, errors="ignore").stderr
+    m = re.search(r"Video:.*?([\d.]+) fps", r)
+    return m.group(1) if m else "30"
+
+
 def rotazione(path):
     """Gradi di rotazione salvati nel file (i telefoni spesso salvano il video 'sdraiato' + un'indicazione)."""
     r = subprocess.run([FFMPEG, "-hide_banner", "-i", path], capture_output=True, text=True, errors="ignore").stderr
@@ -191,7 +198,8 @@ def build_overlay(W, H, text, faces, stile=None, autore=None):
     return img, y_frac, score
 
 
-ZOOM = 0.20               # zoom lento fino al 20% a meta' reel e ritorno (0 = disattivato)
+LATO_USCITA = 1080        # lato corto del reel finito (1080x1920, il massimo che usano Instagram e TikTok)
+ZOOM = 0.20              # zoom lento fino al 20% a meta' reel e ritorno (0 = disattivato)
 MUSIC_LOOP = 8.0          # i brani di musica/ durano esattamente 8 s e si ripetono senza stacchi
 MUSIC_VOL = 0.6           # musica di sottofondo: presente ma non invadente
 ORIG_VOL = 0.05           # audio originale dell'iPhone quasi azzerato (resta solo un filo di ambiente)
@@ -233,12 +241,24 @@ def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", s
     H, W = frames[0].shape[:2]
     faces = detect_faces(frames)
     overlay, y_frac, score = build_overlay(W, H, hook, faces, autore=autore)
+    W0, H0 = W, H
+    if min(W, H) > LATO_USCITA:     # 4K -> 1080x1920: le piattaforme non vanno oltre e il montaggio e' molto piu' veloce
+        f = LATO_USCITA / min(W, H)
+        W, H = int(round(W * f / 2)) * 2, int(round(H * f / 2)) * 2
+        overlay = overlay.resize((W, H), Image.LANCZOS)
     png = os.path.join(tempfile.gettempdir(), "overlay_reel.png")
     overlay.save(png)
     cmd = [FFMPEG, "-y", "-v", "error", "-display_rotation", "0", "-ss", f"{start:.3f}", "-i", src, "-i", png]
     chain = [raddrizza(rotazione(src))] if raddrizza(rotazione(src)) else []
     if hdr:     # video HDR dell'iPhone (HLG/PQ): conversione a colori normali, altrimenti esce grigio e sbiadito
         chain.append(HDR_TO_SDR)
+    if ZOOM > 0 and length > 1:     # zoom lentissimo avanti e indietro: il video sembra "vivo" e il loop resta continuo
+        # zoompan lavora sul video originale (4K) e restituisce gia' il formato finale: movimento fluido, niente
+        # "scale" a ogni fotogramma (era lentissimo e su alcuni video mandava ffmpeg in crash)
+        z = f"1+{ZOOM}*sin(PI*it/{length:.3f})"     # sale e torna: inizio e fine identici, il loop non salta
+        chain.append(f"zoompan=z='{z}':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=1:s={W}x{H}:fps={fps(src)}")
+    elif (W, H) != (W0, H0):
+        chain.append(f"scale={W}:{H}:flags=lanczos")
     grade_info = None
     if colore:  # color correction automatica in base alla scena (grade.py)
         misure = grade.analizza(frames, faces)
@@ -247,10 +267,6 @@ def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", s
             tipo, motivo = "palestra", "scena riconosciuta: palestra"
         chain.append(grade.build_filter(misure, tipo))
         grade_info = grade.descrivi(misure, tipo, motivo)
-    if ZOOM > 0 and length > 1:     # zoom lentissimo avanti e indietro: il video sembra "vivo" e il loop resta continuo
-        z = f"(1+{ZOOM}*sin(PI*t/{length:.3f}))"     # sale e torna: inizio e fine identici, il loop non salta
-        chain.append(f"scale=w='trunc(iw*{z}/2)*2':h='trunc(ih*{z}/2)*2'"
-                     f":eval=frame:flags=lanczos,crop={W}:{H}:(in_w-{W})/2:(in_h-{H})/2")
     base = f"[0:v]{','.join(chain)}[base];[base]" if chain else "[0:v]"
     graph = base + "[1:v]overlay=0:0:format=auto,format=yuv420p[v]"
     amap = ["-map", "0:a?"]
@@ -263,7 +279,7 @@ def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", s
             graph += f";[2:a]volume={MUSIC_VOL}[a]"
         amap = ["-map", "[a]"]
     cmd += ["-filter_complex", graph, "-map", "[v]", *amap, "-t", f"{length:.3f}",
-            "-c:v", "libx264", "-preset", "slow", "-crf", "16", "-profile:v", "high",
+            "-c:v", "libx264", "-preset", "medium", "-crf", "17", "-profile:v", "high",
             "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-movflags", "+faststart", dst]
     r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore")
     if r.returncode != 0:
