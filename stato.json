@@ -22,27 +22,73 @@
      "ok": true
     }
    }
+  },
+  {
+   "quando": "2026-10-04T19:05",
+   "slot": "2026-10-04 21",
+   "video": "IMG_3311.MOV",
+   "md5": "a1d29355627742991233008f7af9ed62",
+   "scena": "uscita",
+   "registrato": "2026-10-03T20:44+02:00",
+   "frase": "QJ080",
+   "tema": "amicizia",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 66,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "interno_caldo",
+     "motivo": "luce calda artificiale",
+     "luce": 0.4,
+     "dominante": "calda",
+     "rumore": 2.5
+    },
+    "copertina_ms": 7700,
+    "musica": "tropical_03.flac"
+   },
+   "risultati": {
+    "instagram": {
+     "ok": true,
+     "id": "17960930529227361"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1769965937554180"
+    },
+    "youtube": {
+     "ok": true,
+     "id": "ZoojzTtHya0"
+    },
+    "tiktok": {
+     "ok": true,
+     "id": "v_inbox_file~v2.7692890676066355222"
+    },
+    "instagram_storia": {
+     "ok": true,
+     "id": "17862744441692887"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
   "2026-09-23 21",
-  "2026-09-23 22 manuale"
+  "2026-09-23 22 manuale",
+  "2026-10-04 21"
  ],
- "musica_recenti": [],
- "frasi_usate": [],
- "temi_recenti": [],
- "analisi": {
-  "1G4EjMyRG-RYn2u3bYErg2GpsL_sFfQqE": {
-   "nome": "IMG_3311.MOV",
-   "scena": "uscita",
-   "sicurezza": 0.59,
-   "motivo": "riconosciuta dalle immagini (prova sul PC)",
-   "lato_corto": 2160,
-   "registrato": "2026-10-03T20:44+02:00",
-   "slot": 21,
-   "caricato": "2026-10-04T14:50:29.216Z"
-  }
- },
+ "musica_recenti": [
+  "tropical_03.flac"
+ ],
+ "frasi_usate": [
+  "QJ080"
+ ],
+ "temi_recenti": [
+  "amicizia"
+ ],
+ "analisi": {},
  "pulizia": "2026-10-04"
 }
