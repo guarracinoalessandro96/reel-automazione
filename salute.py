@@ -1,5 +1,6 @@
 """
-Controllo della salute (ogni lunedi', GitHub Actions).
+Controllo della salute (ogni mattina, GitHub Actions).
+Oltre ai collegamenti controlla che i reel escano davvero (coda ferma, video che non si montano, scorta citazioni).
 Verifica che tutti i collegamenti funzionino. Se qualcosa non va l'esecuzione FALLISCE
 e GitHub manda un'email ad Alessandro con il dettaglio: cosi' si sistema prima che i reel smettano di uscire.
 """
@@ -67,10 +68,37 @@ def tiktok():
     return f"ok (collegamento valido ancora {giorni:.0f} giorni)"
 
 
+def pubblicazioni():
+    """I reel escono davvero? Video fermi in coda, video che non si montano, scorta di citazioni."""
+    import json
+    here = os.path.dirname(os.path.abspath(__file__))
+    st = json.load(open(os.path.join(here, "stato.json"), encoding="utf-8"))
+    ora = datetime.datetime.now(datetime.timezone.utc)
+    def quando(s):
+        d = datetime.datetime.fromisoformat(s.replace("Z", "+00:00"))
+        return d if d.tzinfo else d.replace(tzinfo=datetime.timezone.utc)
+    ultima = max((quando(h["quando"]) for h in st.get("storico", []) if h.get("quando")), default=None)
+    coda = list(st.get("analisi", {}).values())
+    fermi = [a for a in coda if a.get("caricato") and (ora - quando(a["caricato"])).total_seconds() > 30 * 3600]
+    if fermi and (ultima is None or (ora - ultima).total_seconds() > 30 * 3600):
+        raise RuntimeError(f"{len(fermi)} video in coda da oltre 30 ore e nessun reel pubblicato: la pubblicazione e' ferma")
+    rotti = [a["nome"] for a in coda if a.get("fallimenti")]
+    if rotti:
+        raise RuntimeError(f"video che non si riescono a montare: {', '.join(rotti)} (vedi anche la cartella 'Da controllare')")
+    frasi = json.load(open(os.path.join(here, "frasi.json"), encoding="utf-8"))
+    usate = {h.get("frase") for h in st.get("storico", [])}
+    nuove = sum(1 for f in frasi if f["id"] not in usate)
+    if nuove < 60:
+        raise RuntimeError(f"restano solo {nuove} citazioni mai usate: controllare il task mensile delle citazioni")
+    giorni = (ora - ultima).days if ultima else None
+    return f"{len(coda)} video in coda, ultimo reel {'mai' if giorni is None else f'{giorni} giorni fa'}, {nuove} citazioni nuove disponibili"
+
+
 def main():
     if not ENV("META_PAGE_TOKEN"):
         print("Account non collegati: niente da controllare.")
         return
+    controlla("Pubblicazioni", pubblicazioni)
     controlla("Instagram e Facebook", meta)
     controlla("Google Drive e YouTube", google)
     if ENV("TIKTOK_REFRESH_TOKEN"):

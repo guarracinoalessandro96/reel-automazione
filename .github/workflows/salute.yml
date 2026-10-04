@@ -2,7 +2,7 @@ name: Controllo salute
 
 on:
   schedule:
-    - cron: "30 6 * * 1"     # ogni lunedi' mattina; se fallisce GitHub manda un'email
+    - cron: "37 6 * * *"     # ogni mattina; se qualcosa non va GitHub manda un'email
   workflow_dispatch: {}
 
 jobs:
