@@ -198,10 +198,12 @@ def build_overlay(W, H, text, faces, stile=None, autore=None):
     return img, y_frac, score
 
 
-LATO_USCITA = 1080        # lato corto del reel finito (1080x1920, il massimo che usano Instagram e TikTok)
+TEMPO_MAX_MONTAGGIO = 900  # 15 minuti al massimo per un montaggio (GitHub ferma tutto a 40)
+LATO_USCITA = 1080       # lato corto del reel finito (1080x1920, il massimo che usano Instagram e TikTok)
 ZOOM = 0.20              # zoom lento fino al 20% a meta' reel e ritorno (0 = disattivato)
 MUSIC_LOOP = 8.0          # i brani di musica/ durano esattamente 8 s e si ripetono senza stacchi
-MUSIC_VOL = 0.6           # musica di sottofondo: presente ma non invadente
+MUSIC_VOL = 0.9           # i brani sono gia' a -14 LUFS (normalizza_musica.py): il reel esce a circa -15 LUFS
+LIMITATORE = "alimiter=limit=0.89:level=disabled"   # picchi sotto -1 dB: niente distorsione dopo la compressione
 ORIG_VOL = 0.05           # audio originale dell'iPhone quasi azzerato (resta solo un filo di ambiente)
 
 
@@ -232,6 +234,26 @@ def scegli_copertina(frames, length):
 
 
 def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", scena_rilevata=None, autore=None):
+    """Come _make_video, ma con piani di riserva: se ffmpeg fallisce si riprova togliendo, nell'ordine,
+    lo zoom, la color correction e la musica. Cosi' un problema su un effetto non blocca mai la pubblicazione."""
+    prove = [dict(zoom=True, colore=colore, music=music), dict(zoom=False, colore=colore, music=music),
+             dict(zoom=False, colore=False, music=music), dict(zoom=False, colore=False, music=None)]
+    errori = []
+    for i, p in enumerate(prove):
+        if i and p == prove[i - 1]:
+            continue
+        try:
+            info = _make_video(src, hook, dst, preview, p["music"], p["colore"], nome, scena_rilevata, autore, p["zoom"])
+            if errori:
+                info["ripiego"] = {"senza": [k for k in ("zoom", "colore", "music") if not p[k]], "errori": errori}
+            return info
+        except Exception as e:
+            errori.append(str(e)[:300])
+    raise RuntimeError("montaggio fallito: " + " | ".join(errori))
+
+
+def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", scena_rilevata=None, autore=None,
+                zoom=True):
     """Crea dst (mp4 H.264 alta qualita') con il gancio e, se indicata, la musica in loop. Restituisce info."""
     seconds, hdr = probe(src)
     start, length = segmento(seconds)
@@ -240,23 +262,38 @@ def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", s
         raise RuntimeError("video illeggibile")
     H, W = frames[0].shape[:2]
     faces = detect_faces(frames)
-    overlay, y_frac, score = build_overlay(W, H, hook, faces, autore=autore)
+    taglio_x = None
+    if W / H > 9 / 16 + 0.02:       # video orizzontale o quadrato: si ritaglia un 9:16 verticale centrato sul viso
+        cw = int(H * 9 / 16) // 2 * 2
+        cx = float(np.median([(f[0] + f[2]) / 2 for f in faces])) * W if faces else W / 2
+        taglio_x = int(min(max(cx - cw / 2, 0), W - cw)) // 2 * 2
+        frames = [f[:, taglio_x:taglio_x + cw] for f in frames]
+        W = cw
+        faces = detect_faces(frames)
+    # formato finale sempre largo 1080 (1080x1920 per i video 9:16): 4K ridotto, 720p e ritagli ingranditi
     W0, H0 = W, H
-    if min(W, H) > LATO_USCITA:     # 4K -> 1080x1920: le piattaforme non vanno oltre e il montaggio e' molto piu' veloce
-        f = LATO_USCITA / min(W, H)
-        W, H = int(round(W * f / 2)) * 2, int(round(H * f / 2)) * 2
-        overlay = overlay.resize((W, H), Image.LANCZOS)
+    W, H = LATO_USCITA, int(round(LATO_USCITA * H0 / W0 / 2)) * 2
+    if abs(W0 / H0 - 9 / 16) < 0.03:     # quasi 9:16 (es. dopo il ritaglio): esattamente 1080x1920
+        H = LATO_USCITA * 16 // 9
+    overlay, y_frac, score = build_overlay(W, H, hook, faces, autore=autore)
     png = os.path.join(tempfile.gettempdir(), "overlay_reel.png")
     overlay.save(png)
     cmd = [FFMPEG, "-y", "-v", "error", "-display_rotation", "0", "-ss", f"{start:.3f}", "-i", src, "-i", png]
     chain = [raddrizza(rotazione(src))] if raddrizza(rotazione(src)) else []
     if hdr:     # video HDR dell'iPhone (HLG/PQ): conversione a colori normali, altrimenti esce grigio e sbiadito
         chain.append(HDR_TO_SDR)
-    if ZOOM > 0 and length > 1:     # zoom lentissimo avanti e indietro: il video sembra "vivo" e il loop resta continuo
+    if taglio_x is not None:
+        chain.append(f"crop={cw}:ih:{taglio_x}:0")
+    if zoom and ZOOM > 0 and length > 1:    # zoom lentissimo avanti e indietro: il video sembra "vivo" e il loop resta continuo
         # zoompan lavora sul video originale (4K) e restituisce gia' il formato finale: movimento fluido, niente
         # "scale" a ogni fotogramma (era lentissimo e su alcuni video mandava ffmpeg in crash)
-        z = f"1+{ZOOM}*sin(PI*it/{length:.3f})"     # sale e torna: inizio e fine identici, il loop non salta
-        chain.append(f"zoompan=z='{z}':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=1:s={W}x{H}:fps={fps(src)}")
+        # sale e torna: inizio e fine identici, il loop non salta. Si usa il numero del fotogramma (on): il tempo
+        # del video (it) su alcuni file non e' affidabile e lo zoom restava fermo
+        fr = fps(src)
+        if W0 < 2 * W:   # sotto il 4K: prima si raddoppia, cosi' lo zoom non fa micro-scatti (misurati: 2,5x piu' fluido)
+            chain.append(f"scale={2 * W}:{2 * H}:flags=lanczos")
+        z =f"1+{ZOOM}*sin(PI*on/{length * float(fr):.1f})"
+        chain.append(f"zoompan=z='{z}':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=1:s={W}x{H}:fps={fr}")
     elif (W, H) != (W0, H0):
         chain.append(f"scale={W}:{H}:flags=lanczos")
     grade_info = None
@@ -274,15 +311,18 @@ def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", s
         cmd += ["-stream_loop", "-1", "-i", music]
         if has_audio(src):
             graph += (f";[0:a]volume={ORIG_VOL}[a0];[2:a]volume={MUSIC_VOL}[a2];"
-                      "[a0][a2]amix=inputs=2:duration=longest:normalize=0[a]")
+                      f"[a0][a2]amix=inputs=2:duration=longest:normalize=0,{LIMITATORE}[a]")
         else:
-            graph += f";[2:a]volume={MUSIC_VOL}[a]"
+            graph += f";[2:a]volume={MUSIC_VOL},{LIMITATORE}[a]"
         amap = ["-map", "[a]"]
     cmd += ["-filter_complex", graph, "-map", "[v]", *amap, "-t", f"{length:.3f}",
             "-c:v", "libx264", "-preset", "medium", "-crf", "17", "-profile:v", "high",
             "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-movflags", "+faststart", dst]
-    r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore")
-    if r.returncode != 0:
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore", timeout=TEMPO_MAX_MONTAGGIO)
+    except subprocess.TimeoutExpired:
+        raise RuntimeError(f"ffmpeg: oltre {TEMPO_MAX_MONTAGGIO} s")
+    if r.returncode != 0 or not os.path.exists(dst) or os.path.getsize(dst) < 50_000:
         raise RuntimeError("ffmpeg: " + r.stderr[-400:])
     if preview:   # anteprima presa dal reel finito (colori e testo come verranno pubblicati)
         subprocess.run([FFMPEG, "-y", "-v", "error", "-ss", f"{length / 2:.2f}", "-i", dst, "-frames:v", "1",

@@ -551,11 +551,26 @@ def main():
     # 4. montaggio e pubblicazione
     src = os.path.join(work, "originale" + os.path.splitext(video["name"])[1])
     out = os.path.join(work, "reel.mp4")
-    drive.download(video["id"], src)
-    info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"), music=music,
-                              autore=frase.get("autore"),
-                              colore=ENV("SENZA_COLORE") != "1", nome=video["name"],
-                              scena_rilevata=an["scena"])
+    try:
+        drive.download(video["id"], src)
+        info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"), music=music,
+                                  autore=frase.get("autore"),
+                                  colore=ENV("SENZA_COLORE") != "1", nome=video["name"],
+                                  scena_rilevata=an["scena"])
+    except Exception as e:      # un video "rotto" non deve bloccare la coda: dopo 2 tentativi va in "Da controllare"
+        an["fallimenti"] = an.get("fallimenti", 0) + 1
+        an["errore"] = str(e)[:300]
+        log(f"Montaggio fallito per {video['name']} (tentativo {an['fallimenti']}): {e}")
+        if an["fallimenti"] >= 2:
+            try:
+                drive.sposta_in_sottocartella(video["id"], "Da controllare")
+                state["analisi"].pop(video["id"], None)
+                log(f"{video['name']} spostato in 'Da controllare': la coda prosegue con gli altri video.")
+            except Exception as e2:
+                log("spostamento non riuscito:", e2)
+        save()
+        shutil.rmtree(work, ignore_errors=True)
+        raise
     log("Montato:", info)
     frase = dict(frase, copertina_ms=info.get("copertina_ms"))
     results = publish_all(out, frase, creds, attive())

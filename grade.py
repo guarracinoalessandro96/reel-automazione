@@ -107,7 +107,7 @@ def build_filter(misure, tipo, intensita=INTENSITA):
 
     # 1. riduzione rumore (prima di tutto, prima di aumentare la nitidezza)
     noise = misure["noise"]
-    if tipo == "sera" or (misure["L"] < 0.40 and noise > 2.5):
+    if tipo == "sera" or (misure["L"] < 0.45 and noise > 2.2):
         s = _c((noise - 1.5) * 0.8, 0.8, 3.0) * k
         f.append(f"hqdn3d={s:.2f}:{s * 0.75:.2f}:{s * 1.5:.2f}:{s * 1.1:.2f}")
 
@@ -140,6 +140,8 @@ def build_filter(misure, tipo, intensita=INTENSITA):
     g = np.log(target) / np.log(L)                # esponente che porta L sul target
     g = _c(g, 0.75, 1.15)                         # schiarire fino a +, scurire al massimo un poco
     gamma = 1 + (1 / g - 1) * 0.6 * k             # eq: gamma > 1 schiarisce
+    if abs(L - target) < 0.08:                    # esposizione gia' buona: si tocca poco (il viso resta "vivo")
+        gamma = 1 + (gamma - 1) * 0.35
     # 5. luci e ombre + contrasto morbido (curva a S)
     sh, hl = p["sh"] * k, p["hl"] * k
     f.append("curves=m='0/0 0.12/%.3f 0.30/%.3f 0.50/0.50 0.72/%.3f 0.90/%.3f 1/0.985'"
@@ -151,7 +153,7 @@ def build_filter(misure, tipo, intensita=INTENSITA):
     f.append(f"eq=gamma={gamma:.3f}:contrast={con:.3f}:saturation={sat:.3f}")
     # 5b. protezione delle luci: le zone piu' chiare vengono "arrotondate" invece di bruciarsi
     if misure["p99"] > 0.9:
-        f.append("curves=m='0/0 0.70/0.70 0.85/0.82 0.95/0.90 1/0.95'")
+        f.append("curves=m='0/0 0.75/0.75 0.90/0.88 1/0.97'")   # piu' morbida: i bianchi restano bianchi
 
     # 6. vividezza (satura di piu' i colori spenti, protegge la pelle)
     f.append(f"vibrance=intensity={p['vib'] * k:.2f}")
@@ -161,8 +163,10 @@ def build_filter(misure, tipo, intensita=INTENSITA):
     f.append(f"colorbalance=rs={-lk:.3f}:bs={lk:.3f}:rh={lk * 0.8:.3f}:bh={-lk * 0.8:.3f}")
 
     # 8. definizione (contrasto locale ampio) e nitidezza (dettaglio fine)
-    f.append(f"unsharp=13:13:{p['cla'] * k:.2f}:13:13:0")
-    f.append(f"unsharp=5:5:{p['sha'] * k:.2f}:5:5:0")
+    # con poca luce il sensore fa "grana": la nitidezza si riduce, altrimenti la grana viene esaltata
+    pulito = _c(1.6 - noise * 0.4, 0.35, 1.0)     # rumore 1,5 -> 100%, 2,5 -> 60%, 3,1+ -> 35%
+    f.append(f"unsharp=13:13:{p['cla'] * k * (0.5 + 0.5 * pulito):.2f}:13:13:0")
+    f.append(f"unsharp=5:5:{p['sha'] * k * pulito:.2f}:5:5:0")
 
     # 9. vignettatura leggera
     f.append(f"vignette=angle={0.25 + p['vig'] * 0.6 * k:.2f}")
