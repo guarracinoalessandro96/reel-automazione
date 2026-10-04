@@ -200,11 +200,10 @@ def build_overlay(W, H, text, faces, stile=None, autore=None):
 
 TEMPO_MAX_MONTAGGIO = 900  # 15 minuti al massimo per un montaggio (GitHub ferma tutto a 40)
 LATO_USCITA = 1080       # lato corto del reel finito (1080x1920, il massimo che usano Instagram e TikTok)
-ZOOM = 0.20              # zoom lento fino al 20% a meta' reel e ritorno (0 = disattivato)
+ZOOM = 0                 # zoom lento avanti-indietro (es. 0.20); DISATTIVATO il 4/10/2026: ad Alessandro non piace
 MUSIC_LOOP = 8.0          # i brani di musica/ durano esattamente 8 s e si ripetono senza stacchi
 MUSIC_VOL = 0.9           # i brani sono gia' a -14 LUFS (normalizza_musica.py): il reel esce a circa -15 LUFS
 LIMITATORE = "alimiter=limit=0.89:level=disabled"   # picchi sotto -1 dB: niente distorsione dopo la compressione
-ORIG_VOL = 0.05           # audio originale dell'iPhone quasi azzerato (resta solo un filo di ambiente)
 
 
 TAGLIO_INIZIO = 2.0      # si tolgono sempre i primi 2 secondi (il momento in cui si preme "registra")
@@ -308,14 +307,12 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
         grade_info = grade.descrivi(misure, tipo, motivo)
     base = f"[0:v]{','.join(chain)}[base];[base]" if chain else "[0:v]"
     graph = base + "[1:v]overlay=0:0:format=auto,format=yuv420p[v]"
-    amap = ["-map", "0:a?"]
+    # audio: SOLO la nostra musica. L'audio originale del telefono (voci, rumori) non entra MAI nel reel
+    # (regola di Alessandro). Senza musica il reel esce muto, mai con l'audio originale.
+    amap = ["-an"]
     if music:
         cmd += ["-stream_loop", "-1", "-i", music]
-        if has_audio(src):
-            graph += (f";[0:a]volume={ORIG_VOL}[a0];[2:a]volume={MUSIC_VOL}[a2];"
-                      f"[a0][a2]amix=inputs=2:duration=longest:normalize=0,{LIMITATORE}[a]")
-        else:
-            graph += f";[2:a]volume={MUSIC_VOL},{LIMITATORE}[a]"
+        graph += f";[2:a]volume={MUSIC_VOL},{LIMITATORE}[a]"
         amap = ["-map", "[a]"]
     cmd += ["-filter_complex", graph, "-map", "[v]", *amap, "-t", f"{length:.3f}",
             "-c:v", "libx264", "-preset", "medium", "-crf", "17", "-profile:v", "high",
