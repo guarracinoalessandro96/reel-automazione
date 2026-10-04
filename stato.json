@@ -32,6 +32,17 @@
  "musica_recenti": [],
  "frasi_usate": [],
  "temi_recenti": [],
- "analisi": {},
- "pulizia": "2026-10-03"
+ "analisi": {
+  "1G4EjMyRG-RYn2u3bYErg2GpsL_sFfQqE": {
+   "nome": "IMG_3311.MOV",
+   "scena": "casa",
+   "sicurezza": 0.0,
+   "motivo": "riconoscimento non disponibile (RuntimeError)",
+   "lato_corto": 2160,
+   "registrato": "2026-10-03T20:44+02:00",
+   "slot": 21,
+   "caricato": "2026-10-04T14:50:29.216Z"
+  }
+ },
+ "pulizia": "2026-10-04"
 }
