@@ -79,6 +79,45 @@ def riconosci(frames_bgr, nome_file=""):
         return "casa", 0.0, f"riconoscimento non disponibile ({e.__class__.__name__}: {str(e)[:200]})"
 
 
+COMPAGNIA = {   # con chi e' Alessandro nel video: serve a scegliere citazioni su famiglia o amicizia solo quando hanno senso
+    "famiglia": ["a young man sitting with his mother", "a young man with his parents", "a family together at home",
+                 "a young man with an older woman", "a family dinner with parents"],
+    "amici": ["a group of young male friends", "young friends laughing together", "two young men hanging out",
+              "friends at a bar"],
+    "solo": ["a man alone", "a single young man by himself", "a man alone in a car", "a man training alone at the gym"],
+}
+_comp = None
+
+
+def compagnia(frames_bgr):
+    """('famiglia' | 'amici' | 'solo', sicurezza 0-1). In caso di problemi: (None, 0)."""
+    global _comp
+    try:
+        from PIL import Image
+        model, pre, _, _, torch = _clip()
+        if _comp is None:
+            import open_clip
+            tok = open_clip.get_tokenizer("ViT-B-32-quickgelu")
+            labels = [k for k, v in COMPAGNIA.items() for _ in v]
+            with torch.no_grad():
+                tf = model.encode_text(tok([f for v in COMPAGNIA.values() for f in v]))
+                tf = tf / tf.norm(dim=-1, keepdim=True)
+            _comp = (tf, labels)
+        tf, labels = _comp
+        scelti = frames_bgr[:: max(1, len(frames_bgr) // 6)][:6]
+        with torch.no_grad():
+            fi = model.encode_image(torch.stack([pre(Image.fromarray(f[:, :, ::-1])) for f in scelti]))
+            fi = fi / fi.norm(dim=-1, keepdim=True)
+            prob = (100 * fi @ tf.T).softmax(dim=-1).mean(dim=0)
+        tot = {k: 0.0 for k in COMPAGNIA}
+        for p, lab in zip(prob.tolist(), labels):
+            tot[lab] += p
+        best = max(tot, key=tot.get)
+        return best, round(tot[best], 2)
+    except Exception:
+        return None, 0.0
+
+
 def ora_registrazione(info_ffmpeg):
     """Data/ora locale di registrazione dai metadati iPhone; None se assente."""
     m = re.search(r"com\.apple\.quicktime\.creationdate\s*:\s*(\S+)", info_ffmpeg)

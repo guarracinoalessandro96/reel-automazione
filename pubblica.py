@@ -71,7 +71,14 @@ def scegli_musica(tema, recenti, scena=None):
 GIORNI_RIUSO = 150            # una citazione puo' tornare dopo 5 mesi (prima escono sempre quelle mai usate)
 
 
-def scegli_frase(frasi, scena, usi, temi_recenti, pesi=None):
+CON_CHI = {   # chi c'e' nel video (scena.compagnia) -> temi da preferire (+) o evitare (-)
+    "famiglia": {"famiglia": 12, "amicizia": -10},
+    "amici": {"amicizia": 12, "famiglia": -10},
+    "solo": {"famiglia": -8, "amicizia": -8},
+}
+
+
+def scegli_frase(frasi, scena, usi, temi_recenti, pesi=None, compagnia=None):
     """Citazione adatta alla scena. usi = {id: data ISO dell'ultimo utilizzo}.
     Prima quelle mai uscite, poi quelle uscite da piu' di GIORNI_RIUSO giorni (le piu' vecchie per prime):
     la scorta non finisce mai."""
@@ -87,6 +94,7 @@ def scegli_frase(frasi, scena, usi, temi_recenti, pesi=None):
         if f["tema"] in temi_recenti[-2:]:
             s -= 6                      # non lo stesso tema due volte di fila
         s += 5 * ((pesi or {}).get(f["tema"], 1.0) - 1)   # report settimanale: i temi che rendono di piu' salgono
+        s += CON_CHI.get(compagnia, {}).get(f["tema"], 0)  # es. video con la mamma -> famiglia, non amicizia
         if f["id"] not in usi:
             s += 20                     # le citazioni mai uscite hanno sempre la precedenza
         return s + random.random() * 3  # un po' di varieta'
@@ -437,10 +445,12 @@ def analizza_video(drive, v, work):
     start, length = overlay.segmento(seconds)
     frames = overlay.extract_frames(src, length, n=8, start=start, vf=overlay.HDR_TO_SDR if hdr else None)
     sc, conf, motivo = scene_mod.riconosci(frames, v["name"])
+    con_chi, conf_chi = scene_mod.compagnia(frames)
     quando = scene_mod.ora_registrazione(info)
     os.remove(src)
     lato_corto = min(frames[0].shape[:2]) if frames else 0
     return {"nome": v["name"], "scena": sc, "sicurezza": conf, "motivo": motivo, "lato_corto": lato_corto,
+            "compagnia": con_chi if conf_chi >= 0.5 else None,
             "registrato": quando.isoformat(timespec="minutes") if quando else None,
             "slot": scene_mod.slot_per(sc, quando), "caricato": v["createdTime"]}
 
@@ -561,7 +571,7 @@ def main():
     pesi_file = os.path.join(HERE, "pesi.json")
     pesi = json.load(open(pesi_file, encoding="utf-8")).get("temi", {}) if os.path.exists(pesi_file) else {}
     usi = {h["frase"]: h["quando"][:10] for h in state["storico"] if h.get("frase") and h.get("quando")}
-    frase = scegli_frase(frasi, an["scena"], usi, state["temi_recenti"], pesi)
+    frase = scegli_frase(frasi, an["scena"], usi, state["temi_recenti"], pesi, an.get("compagnia"))
     music = None if ENV("SENZA_MUSICA") == "1" else scegli_musica(frase["tema"], state["musica_recenti"], an["scena"])
     log(f"Slot {slot} | {video['name']} | scena {an['scena']} | frase {frase['id']} ({frase['tema']}): {frase['gancio']}")
 
