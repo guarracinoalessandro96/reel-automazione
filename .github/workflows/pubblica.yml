@@ -7,6 +7,8 @@ on:
     # orario.py guarda l'ora di Roma e pubblica una sola volta per slot (9, 12, 15, 18, 21; finestra di 3 ore).
     # Le esecuzioni senza niente da fare durano pochi secondi (repository pubblico: minuti gratuiti).
     - cron: "7,27,47 6-22 * * *"
+  push:              # avvio "di riserva": modificare avvia.txt (commit + push) fa partire il controllo subito,
+    paths: ["avvia.txt"]   # senza i ritardi delle esecuzioni programmate di GitHub
   workflow_dispatch:
     inputs:
       forza:

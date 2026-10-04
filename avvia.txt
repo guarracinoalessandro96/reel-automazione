@@ -1,0 +1,2 @@
+Modificare questo file (commit + push) fa partire subito il controllo di pubblicazione su GitHub.
+Ultimo avvio manuale: 2026-10-04 prova
