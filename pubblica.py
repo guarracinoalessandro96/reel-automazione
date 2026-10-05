@@ -59,14 +59,16 @@ MOOD = {"dieta": "luminoso", "palestra": "energia", "imprenditore": "deciso", "d
         "mentalita": "calmo", "lifestyle": "luminoso"}
 
 
-GENERE_PER_SCENA = {   # un genere diverso per ogni contesto (genera_generi.py)
-    "palestra": "phonk", "macchina": "drive", "lavoro": "house", "pacchi": "house",
-    "cibo": "lofi", "uscita": "tropical", "specchio": "trap", "casa": "caldo"}
+GENERE_PER_SCENA = {   # solo musica da motivazione (5/10/2026: le frasi sono tutte motivazionali; niente lofi,
+    # tropical, caldo, calmo o luminoso). Varia comunque con la scena.
+    "palestra": "phonk", "macchina": "drive", "lavoro": "deciso", "pacchi": "deciso",
+    "cibo": "drive", "uscita": "trap", "specchio": "trap", "casa": "deciso"}
+GENERI_MOTIVAZIONE = ("phonk", "drive", "trap", "deciso", "energia")
 
 
 def scegli_musica(tema, recenti, scena=None):
     """Un brano del genere della scena (o dell'umore del tema), evitando quelli usati di recente."""
-    for mood in (GENERE_PER_SCENA.get(scena), MOOD.get(tema, "luminoso"), "deciso", "luminoso"):
+    for mood in (GENERE_PER_SCENA.get(scena), *random.sample(GENERI_MOTIVAZIONE, len(GENERI_MOTIVAZIONE))):
         if not mood:
             continue
         d = os.path.join(HERE, "musica", mood)
