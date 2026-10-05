@@ -1,11 +1,38 @@
 {
- "data": "2026-09-30",
- "reel_analizzati": 0,
- "media_views": 0,
- "per_tema": {},
- "per_scena": {},
- "per_orario": {},
+ "data": "2026-10-05",
+ "reel_analizzati": 1,
+ "media_views": 1166,
+ "per_tema": {
+  "amicizia": {
+   "reel": 1,
+   "media_views": 1166
+  }
+ },
+ "per_scena": {
+  "uscita": {
+   "reel": 1,
+   "media_views": 1166
+  }
+ },
+ "per_orario": {
+  "21": {
+   "reel": 1,
+   "media_views": 1166
+  }
+ },
  "pesi_temi": {},
- "migliori": [],
- "nota": "Servono almeno 10 reel per ottimizzare: per ora pesi invariati."
+ "migliori": [
+  {
+   "quando": "2026-10-04T19:05",
+   "tema": "amicizia",
+   "scena": "uscita",
+   "orario": "21",
+   "instagram": 0,
+   "youtube": 1166,
+   "views": 1166,
+   "salvataggi": 0,
+   "condivisioni": 0
+  }
+ ],
+ "nota": "Servono almeno 10 reel per ottimizzare: per ora pesi invariati. Statistiche Instagram non disponibili (manca il permesso instagram_manage_insights): conteggi solo YouTube."
 }
