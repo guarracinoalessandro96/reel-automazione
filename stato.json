@@ -122,6 +122,56 @@
      "id": "17910640599545172"
     }
    }
+  },
+  {
+   "quando": "2026-10-05T17:00",
+   "slot": "2026-10-05 18",
+   "video": "IMG_3359.MOV",
+   "md5": "668c02ee8298dee4e7d7b1b49302eedb",
+   "scena": "lavoro",
+   "registrato": "2026-10-05T18:47+02:00",
+   "frase": "QI027",
+   "tema": "disciplina",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 26,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "interno_caldo",
+     "motivo": "luce calda artificiale",
+     "luce": 0.47,
+     "dominante": "calda",
+     "rumore": 2.4
+    },
+    "copertina_ms": 5750,
+    "musica": "house_04.flac"
+   },
+   "risultati": {
+    "instagram": {
+     "ok": true,
+     "id": "18132832423707674"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "3482913955224410"
+    },
+    "youtube": {
+     "ok": true,
+     "id": "8sKW2vqS210"
+    },
+    "tiktok": {
+     "ok": true,
+     "id": "v_inbox_file~v2.7693229697278380034"
+    },
+    "instagram_storia": {
+     "ok": true,
+     "id": "18083501792704701"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -129,19 +179,23 @@
   "2026-09-23 21",
   "2026-09-23 22 manuale",
   "2026-10-04 21",
-  "2026-10-05 12"
+  "2026-10-05 12",
+  "2026-10-05 18"
  ],
  "musica_recenti": [
   "tropical_03.flac",
-  "drive_06.flac"
+  "drive_06.flac",
+  "house_04.flac"
  ],
  "frasi_usate": [
   "QJ080",
-  "QM202610070"
+  "QM202610070",
+  "QI027"
  ],
  "temi_recenti": [
   "amicizia",
-  "imprenditore"
+  "imprenditore",
+  "disciplina"
  ],
  "analisi": {},
  "pulizia": "2026-10-05"
