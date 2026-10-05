@@ -601,7 +601,9 @@ def main():
         if not frasi:
             log(f"Nessuna citazione nuova in '{DOC_MIE}': il video aspetta (aggiungi frasi al documento su Drive).")
             return
-    frase = scegli_frase(frasi, an["scena"], usi, state["temi_recenti"], pesi, an.get("compagnia"))
+        frase = random.choice(frasi)     # a caso, senza legarla alla scena (scelta di Alessandro, 5/10/2026);
+    else:                                # la scena decide solo colori e musica
+        frase = scegli_frase(frasi, an["scena"], usi, state["temi_recenti"], pesi, an.get("compagnia"))
     music = None if ENV("SENZA_MUSICA") == "1" else scegli_musica(frase["tema"], state["musica_recenti"], an["scena"])
     log(f"Slot {slot} | {video['name']} | scena {an['scena']} | frase {frase['id']} ({frase['tema']}): {frase['gancio']}")
 
