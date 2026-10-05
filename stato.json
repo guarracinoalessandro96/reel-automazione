@@ -127,7 +127,6 @@
    "quando": "2026-10-05T17:00",
    "slot": "2026-10-05 18",
    "video": "IMG_3359.MOV",
-   "md5": "668c02ee8298dee4e7d7b1b49302eedb",
    "scena": "lavoro",
    "registrato": "2026-10-05T18:47+02:00",
    "frase": "QI027",
@@ -171,7 +170,8 @@
      "ok": true,
      "id": "18083501792704701"
     }
-   }
+   },
+   "nota": "post cancellato da Alessandro il 5/10, video ripubblicato"
   }
  ],
  "riprova": [],
@@ -197,6 +197,18 @@
   "imprenditore",
   "disciplina"
  ],
- "analisi": {},
+ "analisi": {
+  "11ym7I8TJlQJ2dpObJmg6yJpXKLsMP6Gz": {
+   "nome": "IMG_3359.MOV",
+   "scena": "lavoro",
+   "sicurezza": 1.0,
+   "motivo": "ripubblicazione (scena del 5/10)",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": null,
+   "slot": 21,
+   "caricato": "2026-10-05T19:59:05.283Z"
+  }
+ },
  "pulizia": "2026-10-05"
 }
