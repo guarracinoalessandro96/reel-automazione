@@ -5632,24 +5632,6 @@
   ]
  },
  {
-  "id": "QI027",
-  "tema": "disciplina",
-  "scene": [
-   "palestra",
-   "lavoro",
-   "macchina"
-  ],
-  "gancio": "Affronta il difficile finché è facile, compi il grande finché è piccolo.",
-  "autore": "Lao Tzu",
-  "fonte": "Tao Te Ching, cap. 63",
-  "hashtag": [
-   "#citazioni",
-   "#disciplina",
-   "#costanza",
-   "#mentalita"
-  ]
- },
- {
   "id": "QI029",
   "tema": "mentalita",
   "scene": [
@@ -9354,6 +9336,24 @@
    "#amicizia",
    "#valori",
    "#vita"
+  ]
+ },
+ {
+  "id": "QU001",
+  "tema": "mentalita",
+  "scene": [
+   "macchina",
+   "specchio",
+   "casa"
+  ],
+  "gancio": "Colpo di scena: chi vince perde più volte di chi perde. Solo che non molla mai.",
+  "autore": "Greg LaVecchia",
+  "fonte": "storia Instagram @greglav, 4/10/2026 (scelta da Alessandro)",
+  "hashtag": [
+   "#citazioni",
+   "#mentalita",
+   "#crescitapersonale",
+   "#motivazione"
   ]
  }
 ]

@@ -101,11 +101,14 @@ def scegli_frase(frasi, scena, usi, temi_recenti, pesi=None, compagnia=None):
     return max(cand, key=punteggio)
 
 
+MOSTRA_AUTORE = False   # dal 5/10/2026 Alessandro non vuole l'autore ne' sul video ne' nelle descrizioni
+
+
 def testo_breve(cap):
     """Descrizione pubblicata: la stessa frase del video + 3-4 hashtag (niente dettagli personali)."""
     tags = cap.get("hashtag") or ["#citazioni", "#motivazione"]
-    testo = cap["gancio"].strip()
-    if cap.get("autore"):
+    testo = cap["gancio"].strip().strip('"“”')
+    if MOSTRA_AUTORE and cap.get("autore"):
         testo = "“" + testo.strip('"“”') + "” — " + cap["autore"]
     else:
         testo = testo.rstrip(" .")
@@ -581,7 +584,7 @@ def main():
     try:
         drive.download(video["id"], src)
         info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"), music=music,
-                                  autore=frase.get("autore"),
+                                  autore=frase.get("autore") if MOSTRA_AUTORE else None,
                                   colore=ENV("SENZA_COLORE") != "1", nome=video["name"],
                                   scena_rilevata=an["scena"])
     except Exception as e:      # un video "rotto" non deve bloccare la coda: dopo 2 tentativi va in "Da controllare"
