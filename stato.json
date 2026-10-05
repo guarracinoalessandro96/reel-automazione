@@ -172,6 +172,56 @@
     }
    },
    "nota": "post cancellato da Alessandro il 5/10, video ripubblicato"
+  },
+  {
+   "quando": "2026-10-05T21:35",
+   "slot": "2026-10-05 21",
+   "video": "IMG_3359.MOV",
+   "md5": "a84f087ce0e6ed9bf212ad94334518b6",
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-2a9dd1f2",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 26,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "interno_caldo",
+     "motivo": "luce calda artificiale",
+     "luce": 0.47,
+     "dominante": "calda",
+     "rumore": 2.4
+    },
+    "copertina_ms": 5750,
+    "musica": "deciso_08.flac"
+   },
+   "risultati": {
+    "instagram": {
+     "ok": true,
+     "id": "18037727084836155"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1097948512624987"
+    },
+    "youtube": {
+     "ok": true,
+     "id": "FmyskYRyOjs"
+    },
+    "tiktok": {
+     "ok": true,
+     "id": "v_inbox_file~v2.7693300159795234838"
+    },
+    "instagram_storia": {
+     "ok": true,
+     "id": "18094642157403241"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -180,35 +230,27 @@
   "2026-09-23 22 manuale",
   "2026-10-04 21",
   "2026-10-05 12",
-  "2026-10-05 18"
+  "2026-10-05 18",
+  "2026-10-05 21"
  ],
  "musica_recenti": [
   "tropical_03.flac",
   "drive_06.flac",
-  "house_04.flac"
+  "house_04.flac",
+  "deciso_08.flac"
  ],
  "frasi_usate": [
   "QJ080",
   "QM202610070",
-  "QI027"
+  "QI027",
+  "MIE-2a9dd1f2"
  ],
  "temi_recenti": [
   "amicizia",
   "imprenditore",
-  "disciplina"
+  "disciplina",
+  "mentalita"
  ],
- "analisi": {
-  "11ym7I8TJlQJ2dpObJmg6yJpXKLsMP6Gz": {
-   "nome": "IMG_3359.MOV",
-   "scena": "lavoro",
-   "sicurezza": 1.0,
-   "motivo": "ripubblicazione (scena del 5/10)",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": null,
-   "slot": 21,
-   "caricato": "2026-10-05T19:59:05.283Z"
-  }
- },
+ "analisi": {},
  "pulizia": "2026-10-05"
 }
