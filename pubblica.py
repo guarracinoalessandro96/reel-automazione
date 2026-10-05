@@ -14,10 +14,11 @@ Ad ogni esecuzione:
 
 Credenziali: variabili d'ambiente (GitHub Secrets). DRY_RUN=1 fa tutto tranne pubblicare.
 """
-import io, json, os, sys, time, datetime, random, traceback, subprocess, shutil
+import io, json, os, re, sys, time, datetime, random, traceback, subprocess, shutil
 import requests
 import overlay
 import scena as scene_mod
+import mie_citazioni
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 FRASI = os.path.join(HERE, "frasi.json")
@@ -32,6 +33,14 @@ QUALITA_MINIMA = 720          # lato corto minimo (pixel): sotto l'HD il video n
 CARTELLA_BASSA = "Da controllare - bassa qualità"
 ATTESA_MAX_ORE = 36          # oltre questa attesa un video esce al primo orario libero
 PRIMO_COMMENTO = False       # disattivato su richiesta: niente commento automatico sotto i reel
+
+SOLO_MIE = True              # dal 5/10/2026 escono SOLO le citazioni scelte da Alessandro (Google Doc "Le mie citazioni")
+DOC_MIE = mie_citazioni.DOC
+
+
+def mie_frasi(testo):
+    return mie_citazioni.frasi(testo, TEMI_PER_SCENA)
+
 
 # Temi preferiti per ogni scena (il primo e' il piu' adatto)
 TEMI_PER_SCENA = {
@@ -193,6 +202,13 @@ class Drive:
             self.api.files().update(fileId=found[0]["id"], media_body=media).execute()
         else:
             self.api.files().create(body={"name": titolo, "parents": [folder]}, media_body=media).execute()
+
+    def testo_mie_citazioni(self):
+        """Testo del Google Doc 'Le mie citazioni' (cartella Reel Alessandro). None se non si trova."""
+        if self.local:
+            p = os.path.join(self.local, DOC_MIE + ".txt")
+            return open(p, encoding="utf-8").read() if os.path.exists(p) else None
+        return mie_citazioni.leggi(self.api, ENV("DRIVE_FOLDER_DA_PUBBLICARE"))
 
     def cestino(self, file_id):
         """Mette il video nel Cestino di Drive (recuperabile per 30 giorni, poi Google lo elimina da solo)."""
@@ -574,6 +590,17 @@ def main():
     pesi_file = os.path.join(HERE, "pesi.json")
     pesi = json.load(open(pesi_file, encoding="utf-8")).get("temi", {}) if os.path.exists(pesi_file) else {}
     usi = {h["frase"]: h["quando"][:10] for h in state["storico"] if h.get("frase") and h.get("quando")}
+    if SOLO_MIE:    # solo le citazioni del Google Doc di Alessandro, ognuna una volta sola
+        try:
+            mie = mie_frasi(drive.testo_mie_citazioni() or "")
+        except Exception as e:
+            log("Lettura di 'Le mie citazioni' non riuscita:", e)
+            mie = []
+        frasi = [f for f in mie if f["id"] not in usi]
+        log(f"'{DOC_MIE}': {len(mie)} citazioni, {len(frasi)} ancora da usare.")
+        if not frasi:
+            log(f"Nessuna citazione nuova in '{DOC_MIE}': il video aspetta (aggiungi frasi al documento su Drive).")
+            return
     frase = scegli_frase(frasi, an["scena"], usi, state["temi_recenti"], pesi, an.get("compagnia"))
     music = None if ENV("SENZA_MUSICA") == "1" else scegli_musica(frase["tema"], state["musica_recenti"], an["scena"])
     log(f"Slot {slot} | {video['name']} | scena {an['scena']} | frase {frase['id']} ({frase['tema']}): {frase['gancio']}")

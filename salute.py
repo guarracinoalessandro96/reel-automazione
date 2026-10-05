@@ -85,13 +85,20 @@ def pubblicazioni():
     rotti = [a["nome"] for a in coda if a.get("fallimenti")]
     if rotti:
         raise RuntimeError(f"video che non si riescono a montare: {', '.join(rotti)} (vedi anche la cartella 'Da controllare')")
-    frasi = json.load(open(os.path.join(here, "frasi.json"), encoding="utf-8"))
     usate = {h.get("frase") for h in st.get("storico", [])}
-    nuove = sum(1 for f in frasi if f["id"] not in usate)
-    if nuove < 60:
-        raise RuntimeError(f"restano solo {nuove} citazioni mai usate: controllare il task mensile delle citazioni")
+    import mie_citazioni                 # citazioni scelte da Alessandro (Google Doc "Le mie citazioni")
+    from google.oauth2.credentials import Credentials
+    from googleapiclient.discovery import build
+    c = Credentials(None, refresh_token=ENV("GOOGLE_REFRESH_TOKEN"), client_id=ENV("GOOGLE_CLIENT_ID"),
+                    client_secret=ENV("GOOGLE_CLIENT_SECRET"), token_uri="https://oauth2.googleapis.com/token")
+    api = build("drive", "v3", credentials=c, cache_discovery=False)
+    mie = mie_citazioni.frasi(mie_citazioni.leggi(api, ENV("DRIVE_FOLDER_DA_PUBBLICARE")))
+    nuove = sum(1 for f in mie if f["id"] not in usate)
+    if coda and nuove == 0:
+        raise RuntimeError("ci sono video in coda ma nessuna citazione nuova nel documento 'Le mie citazioni' su Drive: "
+                           "aggiungine qualcuna, altrimenti i video restano fermi")
     giorni = (ora - ultima).days if ultima else None
-    return f"{len(coda)} video in coda, ultimo reel {'mai' if giorni is None else f'{giorni} giorni fa'}, {nuove} citazioni nuove disponibili"
+    return f"{len(coda)} video in coda, ultimo reel {'mai' if giorni is None else f'{giorni} giorni fa'}, {nuove} citazioni nuove nel documento 'Le mie citazioni'"
 
 
 def main():
