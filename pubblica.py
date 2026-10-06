@@ -26,7 +26,7 @@ STATE = os.path.join(HERE, "stato.json")
 GRAPH = "https://graph.facebook.com/v23.0"
 ENV = os.environ.get
 DRY = ENV("DRY_RUN") == "1"
-PLATFORMS = ["instagram", "facebook", "youtube", "tiktok"]
+PLATFORMS = ["youtube"]      # dal 6/10/2026 SOLO YouTube (richiesta di Alessandro). Tutte: instagram, facebook, youtube, tiktok
 MAX_TENTATIVI = 3
 GIORNI_PRONTI = 30            # i reel montati restano su Drive 30 giorni, poi vanno nel Cestino
 QUALITA_MINIMA = 720          # lato corto minimo (pixel): sotto l'HD il video non si pubblica
