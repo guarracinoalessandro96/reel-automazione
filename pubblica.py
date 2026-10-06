@@ -522,6 +522,7 @@ def main():
         except Exception as e:
             log("riprova: download fallito", e)
             continue
+        job["piattaforme"] = [x for x in job["piattaforme"] if x in PLATFORMS]   # solo quelle ancora attive
         res = publish_all(path, job["frase"], creds, job["piattaforme"])
         job["tentativi"] += 1
         job["piattaforme"] = [p for p, r in res.items() if not r["ok"]]
