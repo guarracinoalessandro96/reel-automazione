@@ -485,10 +485,8 @@ def scegli_video(videos, analisi, slot_ora):
     adatti = [v for v in videos if analisi[v["id"]]["slot"] == slot_ora]
     if adatti:
         return adatti[0]
-    ora = datetime.datetime.now(datetime.timezone.utc)
-    vecchi = [v for v in videos if (ora - datetime.datetime.fromisoformat(
-        v["createdTime"].replace("Z", "+00:00"))).total_seconds() > ATTESA_MAX_ORE * 3600]
-    return vecchi[0] if vecchi else None
+    # dal 7/10/2026: nessun orario resta vuoto. Se non c'e' un video "di quell'ora", esce il piu' vecchio in coda
+    return videos[0]
 
 
 def main():
