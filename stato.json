@@ -324,6 +324,40 @@
      "id": "S3I0Ti82Jig"
     }
    }
+  },
+  {
+   "quando": "2026-10-07T19:04",
+   "slot": "2026-10-07 21",
+   "video": "IMG_3605.MOV",
+   "md5": "6552b8083e56b677eec34ab228e93e72",
+   "scena": "macchina",
+   "registrato": "2026-10-06T23:57+02:00",
+   "frase": "MIE-b48f986e",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 26,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.36,
+     "dominante": "neutra",
+     "rumore": 1.6
+    },
+    "copertina_ms": 5750,
+    "musica": "drive_10.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "0q3Y50PQJQs"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -336,7 +370,8 @@
   "2026-10-05 21",
   "2026-10-07 09",
   "2026-10-07 12",
-  "2026-10-07 18"
+  "2026-10-07 18",
+  "2026-10-07 21"
  ],
  "musica_recenti": [
   "tropical_03.flac",
@@ -345,7 +380,8 @@
   "deciso_08.flac",
   "drive_11.flac",
   "deciso_02.flac",
-  "phonk_15.flac"
+  "phonk_15.flac",
+  "drive_10.flac"
  ],
  "frasi_usate": [
   "QJ080",
@@ -354,7 +390,8 @@
   "MIE-2a9dd1f2",
   "MIE-fb841d9f",
   "MIE-f7b5f4a8",
-  "MIE-72a11d64"
+  "MIE-72a11d64",
+  "MIE-b48f986e"
  ],
  "temi_recenti": [
   "amicizia",
@@ -363,20 +400,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "1GR5bYWJt274eANKkKPQ3STS27BfrKsPi": {
-   "nome": "IMG_3605.MOV",
-   "scena": "macchina",
-   "sicurezza": 0.87,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-06T23:57+02:00",
-   "slot": 21,
-   "caricato": "2026-10-06T21:59:39.245Z"
-  },
   "1fsNibw9LEDsE15aA2TUEsDcWaNFGj1A4": {
    "nome": "IMG_3610.MOV",
    "scena": "specchio",
