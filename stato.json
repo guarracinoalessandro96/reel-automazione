@@ -290,6 +290,40 @@
      "id": "MIVgIOTreaw"
     }
    }
+  },
+  {
+   "quando": "2026-10-07T17:45",
+   "slot": "2026-10-07 18",
+   "video": "IMG_3604.MOV",
+   "md5": "56b630d49391ff9c341a0c813c3ea5a7",
+   "scena": "palestra",
+   "registrato": "2026-10-06T23:52+02:00",
+   "frase": "MIE-72a11d64",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 13,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.5,
+     "dominante": "calda",
+     "rumore": 1.3
+    },
+    "copertina_ms": 1750,
+    "musica": "phonk_15.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "S3I0Ti82Jig"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -301,7 +335,8 @@
   "2026-10-05 18",
   "2026-10-05 21",
   "2026-10-07 09",
-  "2026-10-07 12"
+  "2026-10-07 12",
+  "2026-10-07 18"
  ],
  "musica_recenti": [
   "tropical_03.flac",
@@ -309,7 +344,8 @@
   "house_04.flac",
   "deciso_08.flac",
   "drive_11.flac",
-  "deciso_02.flac"
+  "deciso_02.flac",
+  "phonk_15.flac"
  ],
  "frasi_usate": [
   "QJ080",
@@ -317,7 +353,8 @@
   "QI027",
   "MIE-2a9dd1f2",
   "MIE-fb841d9f",
-  "MIE-f7b5f4a8"
+  "MIE-f7b5f4a8",
+  "MIE-72a11d64"
  ],
  "temi_recenti": [
   "amicizia",
@@ -325,20 +362,10 @@
   "disciplina",
   "mentalita",
   "mentalita",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "19EHGae9LEBpH4XzaJ2d42rwuWYek8ili": {
-   "nome": "IMG_3604.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.55,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-06T23:52+02:00",
-   "slot": 21,
-   "caricato": "2026-10-06T21:55:01.952Z"
-  },
   "1GR5bYWJt274eANKkKPQ3STS27BfrKsPi": {
    "nome": "IMG_3605.MOV",
    "scena": "macchina",
