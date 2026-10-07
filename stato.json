@@ -222,6 +222,40 @@
      "id": "18094642157403241"
     }
    }
+  },
+  {
+   "quando": "2026-10-07T07:06",
+   "slot": "2026-10-07 09",
+   "video": "IMG_3606.MOV",
+   "md5": "88f69619dd127cf1a83bca0e9097dd8a",
+   "scena": "cibo",
+   "registrato": "2026-10-07T00:16+02:00",
+   "frase": "MIE-fb841d9f",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 2,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.53,
+     "dominante": "calda",
+     "rumore": 2.0
+    },
+    "copertina_ms": 7700,
+    "musica": "drive_11.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "9JBPJoPzllk"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -231,26 +265,53 @@
   "2026-10-04 21",
   "2026-10-05 12",
   "2026-10-05 18",
-  "2026-10-05 21"
+  "2026-10-05 21",
+  "2026-10-07 09"
  ],
  "musica_recenti": [
   "tropical_03.flac",
   "drive_06.flac",
   "house_04.flac",
-  "deciso_08.flac"
+  "deciso_08.flac",
+  "drive_11.flac"
  ],
  "frasi_usate": [
   "QJ080",
   "QM202610070",
   "QI027",
-  "MIE-2a9dd1f2"
+  "MIE-2a9dd1f2",
+  "MIE-fb841d9f"
  ],
  "temi_recenti": [
   "amicizia",
   "imprenditore",
   "disciplina",
+  "mentalita",
   "mentalita"
  ],
- "analisi": {},
- "pulizia": "2026-10-05"
+ "analisi": {
+  "19EHGae9LEBpH4XzaJ2d42rwuWYek8ili": {
+   "nome": "IMG_3604.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.55,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-06T23:52+02:00",
+   "slot": 21,
+   "caricato": "2026-10-06T21:55:01.952Z"
+  },
+  "1GR5bYWJt274eANKkKPQ3STS27BfrKsPi": {
+   "nome": "IMG_3605.MOV",
+   "scena": "macchina",
+   "sicurezza": 0.87,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-06T23:57+02:00",
+   "slot": 21,
+   "caricato": "2026-10-06T21:59:39.245Z"
+  }
+ },
+ "pulizia": "2026-10-07"
 }
