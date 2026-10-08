@@ -219,6 +219,8 @@ class Drive:
     def carica_archivio(self, path, nome, meta):
         """Salva la clip (qualita' originale) nella cartella Archivio, con scena/fascia/ora nelle proprieta' del file
         (cosi' l'elenco dell'archivio vive su Drive e non serve tenerlo in stato.json). Restituisce l'id."""
+        if os.path.getsize(path) < 200_000:
+            raise RuntimeError(f"clip d'archivio troppo piccola ({os.path.getsize(path)} byte): non caricata")
         meta = {k: str(v) for k, v in meta.items() if v not in (None, "")}
         if self.local:
             d = os.path.join(self.local, "Archivio")
