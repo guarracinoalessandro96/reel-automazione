@@ -563,6 +563,41 @@
      "id": "sOCdqCyIpYs"
     }
    }
+  },
+  {
+   "quando": "2026-10-08T21:48",
+   "slot": "2026-10-08 23:45",
+   "video": "IMG_3652.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-747c8ba5",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 34,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 0.0s a 8.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "sera",
+     "motivo": "poca luce",
+     "luce": 0.06,
+     "dominante": "neutra",
+     "rumore": 1.4
+    },
+    "copertina_ms": 750,
+    "musica": "taking_flight_2.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "pBcOq37T0CI"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -582,17 +617,18 @@
   "2026-10-08 15",
   "2026-10-08 18",
   "2026-10-08 21",
-  "2026-10-08 22:00"
+  "2026-10-08 22:00",
+  "2026-10-08 23:45"
  ],
  "musica_recenti": [
-  "phonk_15.flac",
   "drive_10.flac",
   "trap_02.flac",
   "drive_02.flac",
   "drive_08.flac",
   "phonk_13.flac",
   "phonk_10.flac",
-  "keep_it_movin_3.m4a"
+  "keep_it_movin_3.m4a",
+  "taking_flight_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -608,7 +644,8 @@
   "MIE-0fecdd42",
   "MIE-043e8cf1",
   "MIE-06d04058",
-  "MIE-b8b94c79"
+  "MIE-b8b94c79",
+  "MIE-747c8ba5"
  ],
  "temi_recenti": [
   "mentalita",
@@ -626,6 +663,10 @@
  "pulizia": "2026-10-08",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
+   "usi": 1,
+   "ultimo": "2026-10-08"
+  },
+  "1prxBAB3e2zYxgElc_5sFnFrc_3Lw6Snt": {
    "usi": 1,
    "ultimo": "2026-10-08"
   }
