@@ -83,14 +83,14 @@ fetch("https://raw.githubusercontent.com/guarracinoalessandro96/reel-automazione
   if (!st) { body.textContent = "Stato non disponibile."; return; }
   const coda = Object.values(st.analisi || {}).sort((a, b) => (a.caricato || "").localeCompare(b.caricato || ""));
   document.getElementById("codaNum").textContent = coda.length;
-  const giorni = coda.length / 5;
+  const giorni = coda.length / 10;
   let h = coda.length
-    ? `Bastano per circa ${giorni < 1 ? "meno di un giorno" : Math.floor(giorni) + (Math.floor(giorni) === 1 ? " giorno" : " giorni")} a 5 reel al giorno.`
-    : "Nessun video in attesa: carica nuovi video nella cartella Da pubblicare.";
-  if (coda.length) h += "<br>" + coda.map(v => `${v.nome} · ${v.scena} · ore ${v.slot}`).join("<br>");
-  const pub = (st.storico || []).slice(-5).reverse();
+    ? `Video nuovi per circa ${giorni < 1 ? "meno di un giorno" : Math.floor(giorni) + (Math.floor(giorni) === 1 ? " giorno" : " giorni")} a 10 reel al giorno. Poi si riusano quelli dell'archivio.`
+    : "Nessun video nuovo: si pubblica dall'archivio. Carica nuovi video nella cartella Da pubblicare.";
+  if (coda.length) h += "<br>" + coda.map(v => `${v.nome} · ${v.scena} · ${v.fascia || ""}`).join("<br>");
+  const pub = (st.storico || []).slice(-10).reverse();
   if (pub.length) h += `<p style="margin:12px 0 2px;font-weight:600;color:var(--fg)">Ultimi pubblicati</p>` +
-    pub.map(p => `${p.slot ? p.slot + ":00" : (p.quando || "").replace("T", " ")} ·${p.scena || ""} ${p.tema ? "· " + p.tema : ""}`).join("<br>");
+    pub.map(p => `${p.slot ? (String(p.slot).includes(":") ? p.slot : p.slot + ":00") : (p.quando || "").replace("T", " ")} · ${p.scena || ""}${p.da_archivio ? " · dall'archivio" : ""}`).join("<br>");
   body.innerHTML = h;
 });
 fetch("report.json?" + Date.now()).then(r => r.ok ? r.json() : null).catch(() => null).then(rep => {
