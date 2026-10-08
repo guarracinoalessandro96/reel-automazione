@@ -19,6 +19,7 @@ import requests
 import overlay
 import scena as scene_mod
 import mie_citazioni
+import orario
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 FRASI = os.path.join(HERE, "frasi.json")
@@ -205,6 +206,34 @@ class Drive:
         else:
             self.api.files().create(body={"name": titolo, "parents": [folder]}, media_body=media).execute()
 
+    def cartella(self, nome):
+        """Id della cartella 'nome' accanto a 'Da pubblicare' (la crea se manca)."""
+        padre = self.api.files().get(fileId=ENV("DRIVE_FOLDER_DA_PUBBLICARE"), fields="parents").execute()["parents"][0]
+        q = (f"'{padre}' in parents and name = '{nome}' and trashed = false "
+             "and mimeType = 'application/vnd.google-apps.folder'")
+        found = self.api.files().list(q=q, fields="files(id)").execute().get("files", [])
+        return found[0]["id"] if found else self.api.files().create(
+            body={"name": nome, "parents": [padre], "mimeType": "application/vnd.google-apps.folder"},
+            fields="id").execute()["id"]
+
+    def carica_archivio(self, path, nome):
+        """Salva la clip 'pulita' nella cartella Archivio. Restituisce l'id (in prova: il nome del file)."""
+        if self.local:
+            os.makedirs(os.path.join(self.local, "Archivio"), exist_ok=True)
+            shutil.copy(path, os.path.join(self.local, "Archivio", nome))
+            return nome
+        from googleapiclient.http import MediaFileUpload
+        return self.api.files().create(body={"name": nome, "parents": [self.cartella("Archivio")]},
+                                       media_body=MediaFileUpload(path, mimetype="video/mp4"), fields="id").execute()["id"]
+
+    def esiste(self, file_id):
+        if self.local:
+            return os.path.exists(os.path.join(self.local, "Archivio", file_id))
+        try:
+            return not self.api.files().get(fileId=file_id, fields="trashed").execute().get("trashed")
+        except Exception:
+            return False
+
     def testo_mie_citazioni(self):
         """Testo del Google Doc 'Le mie citazioni' (cartella Reel Alessandro). None se non si trova."""
         if self.local:
@@ -242,11 +271,13 @@ class Drive:
         e il reel montato va in Pronti, dove resta GIORNI_PRONTI giorni. Restituisce l'id del montato."""
         if self.local:
             os.makedirs(os.path.join(self.local, "Pronti"), exist_ok=True)
-            os.remove(os.path.join(self.local, "Da pubblicare", file_id))
+            if file_id:
+                os.remove(os.path.join(self.local, "Da pubblicare", file_id))
             shutil.copy(final_path, os.path.join(self.local, "Pronti", final_name))
             return final_name
         from googleapiclient.http import MediaFileUpload
-        self.api.files().update(fileId=file_id, body={"trashed": True}, fields="id").execute()
+        if file_id:              # None = reel da una clip d'archivio: la clip resta nell'archivio
+            self.api.files().update(fileId=file_id, body={"trashed": True}, fields="id").execute()
         f = self.api.files().create(body={"name": final_name, "parents": [ENV("DRIVE_FOLDER_PRONTI")]},
                                     media_body=MediaFileUpload(final_path, mimetype="video/mp4"),
                                     fields="id").execute()
@@ -473,29 +504,62 @@ def analizza_video(drive, v, work):
     return {"nome": v["name"], "scena": sc, "sicurezza": conf, "motivo": motivo, "lato_corto": lato_corto,
             "compagnia": con_chi if conf_chi >= 0.5 else None,
             "registrato": quando.isoformat(timespec="minutes") if quando else None,
-            "slot": scene_mod.slot_per(sc, quando), "caricato": v["createdTime"]}
+            "fascia": scene_mod.fascia_per(sc, quando), "caricato": v["createdTime"]}
+
+
+VICINE = {   # se manca un video della fascia giusta, si prova in queste (in ordine)
+    "mattina": ["pranzo", "sera", "notte"], "ufficio": ["pranzo"], "pranzo": ["mattina", "ufficio"],
+    "sera": ["notte", "pranzo", "mattina"], "palestra": ["notte"], "notte": ["palestra", "sera"]}
+
+
+def fascia_video(a):
+    """Fascia della giornata di un video analizzato (anche per analisi vecchie senza il campo)."""
+    if a.get("fascia"):
+        return a["fascia"]
+    q = None
+    if a.get("registrato"):
+        try:
+            q = datetime.datetime.fromisoformat(a["registrato"])
+        except ValueError:
+            pass
+    return scene_mod.fascia_per(a.get("scena"), q)
 
 
 def scegli_video(videos, analisi, slot_ora):
-    """Il video giusto per questo orario; se nessuno, quello che aspetta da troppo."""
+    """Il video NUOVO giusto per questo orario (stessa fascia della giornata, poi fasce vicine, poi il piu' vecchio).
+    I video nuovi hanno sempre la precedenza: l'archivio si usa solo se la coda e' vuota (vedi main)."""
     if not videos:
         return None
     if slot_ora is None:                       # esecuzione manuale: il piu' vecchio
         return videos[0]
-    adatti = [v for v in videos if analisi[v["id"]]["slot"] == slot_ora]
-    if adatti:
-        return adatti[0]
-    # dal 7/10/2026: nessun orario resta vuoto. Se non c'e' un video "di quell'ora", esce il piu' vecchio in coda
-    return videos[0]
+    f = orario.fascia(slot_ora)
+    for fascia in [f] + VICINE.get(f, []):
+        adatti = [v for v in videos if fascia_video(analisi.get(v["id"], {})) == fascia]
+        if adatti:
+            return adatti[0]
+    return videos[0]                           # nessun orario resta vuoto: il piu' vecchio in coda
+
+
+def scegli_archivio(archivio, slot_ora):
+    """Clip d'archivio da riusare quando non ci sono video nuovi: della fascia giusta se possibile,
+    tra quelle usate meno volte e da piu' tempo (cosi' non si ripetono a breve)."""
+    if not archivio:
+        return None
+    f = orario.fascia(slot_ora) if slot_ora else None
+    ordine = [f] + VICINE.get(f, []) if f else []
+    def chiave(c):
+        pos = ordine.index(c.get("fascia")) if c.get("fascia") in ordine else len(ordine)
+        return (c.get("usi", 0), pos, c.get("ultimo", ""))
+    return min(archivio, key=chiave)
 
 
 def main():
     slot = sys.argv[1] if len(sys.argv) > 1 else "manuale"
-    slot_ora = None if "manuale" in slot else int(slot.split()[-1])
+    slot_ora = None if "manuale" in slot else slot.split()[-1]     # es. "09:45"
     frasi = json.load(open(FRASI, encoding="utf-8"))
     state = json.load(open(STATE, encoding="utf-8")) if os.path.exists(STATE) else {}
     for k, v in (("usate", []), ("storico", []), ("riprova", []), ("slot_fatti", []), ("musica_recenti", []),
-                 ("frasi_usate", []), ("temi_recenti", []), ("analisi", {})):
+                 ("frasi_usate", []), ("temi_recenti", []), ("analisi", {}), ("archivio", [])):
         state.setdefault(k, v)
 
     def save():
@@ -550,7 +614,7 @@ def main():
                 log("Analizzato:", state["analisi"][v["id"]])
             except Exception as e:
                 log("Analisi fallita per", v["name"], e)
-                state["analisi"][v["id"]] = {"nome": v["name"], "scena": "casa", "slot": 15,
+                state["analisi"][v["id"]] = {"nome": v["name"], "scena": "casa", "fascia": "ufficio",
                                              "errore": str(e)[:200], "caricato": v["createdTime"]}
     for v in list(videos):
         a = state["analisi"].get(v["id"], {})
@@ -580,18 +644,27 @@ def main():
     state["analisi"] = {k: a for k, a in state["analisi"].items() if k in in_coda}   # dimentica quelli usciti
     save()
 
-    # 2. il video giusto per questo orario
+    # 2. il video giusto per questo orario: prima i video NUOVI, se la coda e' vuota una clip dall'archivio
     video = scegli_video(videos, state["analisi"], slot_ora)
+    clip = None
     if video is None:
-        log(f"Nessun video per l'orario {slot} (in coda: {len(videos)}).")
-        return
-    an = state["analisi"][video["id"]]
+        archivio = [c for c in state["archivio"] if c.get("fallimenti", 0) < 2]
+        clip = scegli_archivio(archivio, slot_ora)
+        if clip is None:
+            log(f"Nessun video nuovo e archivio vuoto per l'orario {slot}.")
+            return
+        log(f"Nessun video nuovo: riuso dall'archivio {clip['nome']} (usato {clip.get('usi', 0)} volte)")
+        an = {"scena": clip.get("scena"), "compagnia": clip.get("compagnia"), "fascia": clip.get("fascia")}
+        nome, fonte_id = clip["nome"], clip["id"]
+    else:
+        an = state["analisi"][video["id"]]
+        nome, fonte_id = video["name"], video["id"]
 
     # 3. frase e musica adatte
     pesi_file = os.path.join(HERE, "pesi.json")
     pesi = json.load(open(pesi_file, encoding="utf-8")).get("temi", {}) if os.path.exists(pesi_file) else {}
     usi = {h["frase"]: h["quando"][:10] for h in state["storico"] if h.get("frase") and h.get("quando")}
-    if SOLO_MIE:    # solo le citazioni del Google Doc di Alessandro, ognuna una volta sola
+    if SOLO_MIE:    # solo le citazioni del Google Doc di Alessandro: prima quelle mai uscite, a caso
         try:
             mie = mie_frasi(drive.testo_mie_citazioni() or "")
         except Exception as e:
@@ -599,35 +672,43 @@ def main():
             mie = []
         frasi = [f for f in mie if f["id"] not in usi]
         log(f"'{DOC_MIE}': {len(mie)} citazioni, {len(frasi)} ancora da usare.")
-        if not frasi:
-            log(f"Nessuna citazione nuova in '{DOC_MIE}': il video aspetta (aggiungi frasi al documento su Drive).")
+        if frasi:
+            frase = random.choice(frasi)
+        elif mie:            # finite: si riusa quella uscita da piu' tempo (mai fermarsi); salute.py avvisa
+            frase = min(mie, key=lambda f: usi.get(f["id"], ""))
+            log("Citazioni nuove finite: riuso la meno recente. Aggiungerne altre al documento!")
+        else:
+            log(f"Documento '{DOC_MIE}' vuoto o non leggibile: niente da pubblicare.")
             return
-        frase = random.choice(frasi)     # a caso, senza legarla alla scena (scelta di Alessandro, 5/10/2026);
-    else:                                # la scena decide solo colori e musica
+    else:
         frase = scegli_frase(frasi, an["scena"], usi, state["temi_recenti"], pesi, an.get("compagnia"))
     music = None if ENV("SENZA_MUSICA") == "1" else scegli_musica(frase["tema"], state["musica_recenti"], an["scena"])
-    log(f"Slot {slot} | {video['name']} | scena {an['scena']} | frase {frase['id']} ({frase['tema']}): {frase['gancio']}")
+    log(f"Slot {slot} | {nome} | scena {an['scena']} | frase {frase['id']}: {frase['gancio']}")
 
     # 4. montaggio e pubblicazione
-    src = os.path.join(work, "originale" + os.path.splitext(video["name"])[1])
+    src = os.path.join(work, "originale" + (os.path.splitext(nome)[1] or ".mov"))
     out = os.path.join(work, "reel.mp4")
     try:
-        drive.download(video["id"], src)
+        drive.download(fonte_id, src, folder="Archivio" if clip else "Da pubblicare")
         info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"), music=music,
                                   autore=frase.get("autore") if MOSTRA_AUTORE else None,
-                                  colore=ENV("SENZA_COLORE") != "1", nome=video["name"],
-                                  scena_rilevata=an["scena"])
-    except Exception as e:      # un video "rotto" non deve bloccare la coda: dopo 2 tentativi va in "Da controllare"
-        an["fallimenti"] = an.get("fallimenti", 0) + 1
-        an["errore"] = str(e)[:300]
-        log(f"Montaggio fallito per {video['name']} (tentativo {an['fallimenti']}): {e}")
-        if an["fallimenti"] >= 2:
-            try:
-                drive.sposta_in_sottocartella(video["id"], "Da controllare")
-                state["analisi"].pop(video["id"], None)
-                log(f"{video['name']} spostato in 'Da controllare': la coda prosegue con gli altri video.")
-            except Exception as e2:
-                log("spostamento non riuscito:", e2)
+                                  colore=ENV("SENZA_COLORE") != "1", nome=nome,
+                                  scena_rilevata=an["scena"], da_archivio=bool(clip))
+    except Exception as e:      # un video "rotto" non deve bloccare la coda
+        if clip:
+            clip["fallimenti"] = clip.get("fallimenti", 0) + 1
+            log(f"Montaggio fallito per la clip d'archivio {nome}: {e}")
+        else:
+            an["fallimenti"] = an.get("fallimenti", 0) + 1
+            an["errore"] = str(e)[:300]
+            log(f"Montaggio fallito per {nome} (tentativo {an['fallimenti']}): {e}")
+            if an["fallimenti"] >= 2:        # dopo 2 tentativi va in "Da controllare"
+                try:
+                    drive.sposta_in_sottocartella(video["id"], "Da controllare")
+                    state["analisi"].pop(video["id"], None)
+                    log(f"{nome} spostato in 'Da controllare': la coda prosegue con gli altri video.")
+                except Exception as e2:
+                    log("spostamento non riuscito:", e2)
         save()
         shutil.rmtree(work, ignore_errors=True)
         raise
@@ -646,11 +727,27 @@ def main():
         sys.exit(1)
 
     # 5. archivio e stato
-    pronti_id = drive.archive(video["id"], out, f"{frase['id']} - {os.path.splitext(video['name'])[0]}.mp4")
+    oggi = datetime.date.today().isoformat()
+    if clip:
+        clip["usi"] = clip.get("usi", 0) + 1
+        clip["ultimo"] = oggi
+    else:                    # video nuovo: se ne tiene una copia (qualita' originale) per riusarlo in futuro
+        try:
+            stem = os.path.splitext(nome)[0]
+            cpath = overlay.crea_clip_archivio(src, os.path.join(work, stem + "_archivio.mov"))
+            cid = drive.carica_archivio(cpath, f"{stem}.mov")
+            state["archivio"].append({"id": cid, "nome": f"{stem}.mov", "scena": an.get("scena"),
+                                      "fascia": fascia_video(an), "compagnia": an.get("compagnia"),
+                                      "registrato": an.get("registrato"), "usi": 1, "ultimo": oggi})
+            log(f"Copia salvata nell'archivio: {stem}.mov")
+        except Exception as e:
+            log("Copia d'archivio non riuscita (il reel e' comunque uscito):", e)
+    pronti_id = drive.archive(None if clip else video["id"], out,
+                              f"{frase['id']} - {os.path.splitext(nome)[0]}.mp4")
     failed = [p for p, r in results.items() if not r["ok"] and p in PLATFORMS]
     if results.get("tiktok", {}).get("ok") and (ENV("TIKTOK_MODO") or "bozze") != "diretto":
         try:                                  # la frase da incollare quando pubblica la bozza su TikTok
-            drive.testo_tiktok(testo_breve(frase), video["name"])
+            drive.testo_tiktok(testo_breve(frase), nome)
         except Exception as e:
             log("testo TikTok non salvato su Drive:", e)
     if failed:
@@ -659,16 +756,16 @@ def main():
     state["temi_recenti"] = (state["temi_recenti"] + [frase["tema"]])[-10:]
     if info.get("musica"):
         state["musica_recenti"] = (state["musica_recenti"] + [info["musica"]])[-8:]
-    state["slot_fatti"] = (state["slot_fatti"] + [slot])[-60:]
-    state["analisi"].pop(video["id"], None)
+    state["slot_fatti"] = (state["slot_fatti"] + [slot])[-80:]
+    if video:
+        state["analisi"].pop(video["id"], None)
     state["storico"].append({"quando": datetime.datetime.now().isoformat(timespec="minutes"), "slot": slot,
-                             "video": video["name"], "md5": video.get("md5Checksum"), "scena": an["scena"],
-                             "registrato": an.get("registrato"),
+                             "video": nome, "md5": video.get("md5Checksum") if video else None,
+                             "da_archivio": bool(clip), "scena": an["scena"], "registrato": an.get("registrato"),
                              "frase": frase["id"], "tema": frase["tema"], "montaggio": info, "risultati": results})
     save()
     shutil.rmtree(work, ignore_errors=True)
     log("Fatto." + (f" Da riprovare: {failed}" if failed else ""))
-
 
 if __name__ == "__main__":
     main()

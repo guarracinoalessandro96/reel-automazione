@@ -232,7 +232,22 @@ def scegli_copertina(frames, length):
     return int(min(max(t, 0.3), max(length - 0.3, 0.3)) * 1000)
 
 
-def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", scena_rilevata=None, autore=None):
+def crea_clip_archivio(src, dst):
+    """Copia per l'archivio alla MASSIMA qualita': il pezzo che si usa (8 s dopo i primi 2) copiato dall'originale
+    SENZA ricomprimere (stessa risoluzione 4K, stessi colori/HDR, stessa rotazione), senza audio (circa 20-30 MB).
+    Si potra' rimontare con una frase nuova (make_video da_archivio=True)."""
+    seconds, hdr = probe(src)
+    start, length = segmento(seconds)
+    r = subprocess.run([FFMPEG, "-y", "-v", "error", "-ss", f"{start:.3f}", "-i", src, "-t", f"{length:.3f}",
+                        "-map", "0:v:0", "-an", "-c", "copy", dst],
+                       capture_output=True, text=True, errors="ignore", timeout=TEMPO_MAX_MONTAGGIO)
+    if r.returncode != 0 or not os.path.exists(dst):
+        raise RuntimeError("clip archivio: " + r.stderr[-300:])
+    return dst
+
+
+def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", scena_rilevata=None, autore=None,
+               da_archivio=False):
     """Come _make_video, ma con piani di riserva: se ffmpeg fallisce si riprova togliendo, nell'ordine,
     lo zoom, la color correction e la musica. Cosi' un problema su un effetto non blocca mai la pubblicazione."""
     if music and (not os.path.exists(music) or os.path.getsize(music) < 1000):   # brano mancante: niente musica,
@@ -244,7 +259,8 @@ def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", s
         if i and p == prove[i - 1]:
             continue
         try:
-            info = _make_video(src, hook, dst, preview, p["music"], p["colore"], nome, scena_rilevata, autore, p["zoom"])
+            info = _make_video(src, hook, dst, preview, p["music"], p["colore"], nome, scena_rilevata, autore, p["zoom"],
+                               da_archivio)
             if errori:
                 info["ripiego"] = {"senza": [k for k in ("zoom", "colore", "music") if not p[k]], "errori": errori}
             return info
@@ -254,10 +270,10 @@ def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", s
 
 
 def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", scena_rilevata=None, autore=None,
-                zoom=True):
+                zoom=True, da_archivio=False):
     """Crea dst (mp4 H.264 alta qualita') con il gancio e, se indicata, la musica in loop. Restituisce info."""
     seconds, hdr = probe(src)
-    start, length = segmento(seconds)
+    start, length = (0.0, min(DURATA_MAX, seconds)) if da_archivio else segmento(seconds)   # clip d'archivio: gia' tagliata
     frames = extract_frames(src, length, start=start, vf=HDR_TO_SDR if hdr else None)
     if not frames:
         raise RuntimeError("video illeggibile")

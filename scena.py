@@ -135,6 +135,33 @@ def ora_registrazione(info_ffmpeg):
     return None
 
 
+def fascia_per(scena, quando):
+    """Fascia della giornata di Alessandro in cui il video sta meglio (dal 8/10/2026, 10 reel al giorno).
+    Giornata: 8-9 macchina, 9-13 ufficio, 13-14 pranzo a casa, 14-19 ufficio, 19 macchina verso casa,
+    21-23 palestra, 23 macchina verso casa. Fasce: mattina 8:00 | ufficio 9:45 11:30 15:00 16:45 |
+    pranzo 13:15 | sera 18:30 20:15 | palestra 22:00 | notte 23:45."""
+    h = quando.hour + quando.minute / 60 if quando else None
+    if scena == "palestra":
+        return "palestra"
+    if scena in ("lavoro", "pacchi", "specchio"):
+        return "ufficio"
+    if scena == "cibo":
+        return "pranzo"
+    if scena == "uscita":
+        return "sera"
+    if h is None:
+        return {"macchina": "mattina", "casa": "sera"}.get(scena, "ufficio")
+    if h >= 22.5 or h < 5:
+        return "notte"
+    if h < 10.5:
+        return "mattina" if scena == "macchina" else "ufficio"
+    if 12 <= h < 14.5:
+        return "pranzo"
+    if h >= 18:
+        return "sera"
+    return "pranzo" if scena == "casa" else ("sera" if scena == "macchina" and h >= 16 else "ufficio")
+
+
 def slot_per(scena, quando):
     """Orario di pubblicazione adatto al video."""
     if scena in ("palestra", "uscita"):
