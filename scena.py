@@ -155,7 +155,7 @@ def fascia_per(scena, quando):
         return "notte"
     if h < 10.5:
         return "mattina" if scena == "macchina" else "ufficio"
-    if 12 <= h < 14.5:
+    if 12 <= h < (15.5 if scena == "macchina" else 14.5):     # pausa pranzo a casa, andata e ritorno in macchina
         return "pranzo"
     if h >= 18:
         return "sera"

@@ -581,7 +581,7 @@ def scegli_archivio(archivio, slot_ora):
     ordine = [f] + VICINE.get(f, []) if f else []
     def chiave(c):
         pos = ordine.index(c.get("fascia")) if c.get("fascia") in ordine else len(ordine)
-        return (int(c.get("usi", 0)), pos, c.get("ultimo", ""))
+        return (int(c.get("usi", 0)), c.get("ultimo", ""), pos)       # meno usato, poi da piu' tempo, poi fascia
     return min(archivio, key=chiave)
 
 
@@ -687,7 +687,15 @@ def main():
             log("Lettura dell'archivio non riuscita:", e)
             archivio = []
         archivio = [c for c in archivio if c.get("fallimenti", 0) < 2]
-        clip = scegli_archivio(archivio, slot_ora)
+        # quante volte e quando ogni video e' gia' uscito (anche come video nuovo, prima di entrare in archivio)
+        stem = lambda n: os.path.splitext(n or "")[0].lower()
+        for c in archivio:
+            usciti = [h["quando"][:16] for h in state["storico"] if h.get("video") and stem(h["video"]) == stem(c["nome"])]
+            c["usi"] = max(int(c.get("usi", 0)), len(usciti))
+            c["ultimo"] = max([c.get("ultimo", "")] + usciti)
+        limite = (datetime.datetime.now() - datetime.timedelta(hours=48)).isoformat(timespec="minutes")
+        riposati = [c for c in archivio if c.get("ultimo", "") < limite]     # niente video usciti nelle ultime 48 ore
+        clip = scegli_archivio(riposati or archivio, slot_ora)
         if clip is None:
             log(f"Nessun video nuovo e archivio vuoto per l'orario {slot}.")
             return
