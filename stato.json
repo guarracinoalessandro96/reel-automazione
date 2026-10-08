@@ -494,6 +494,40 @@
      "id": "eVYA6ojiBUw"
     }
    }
+  },
+  {
+   "quando": "2026-10-08T19:04",
+   "slot": "2026-10-08 21",
+   "video": "IMG_3650.MOV",
+   "md5": "f9ffd70d315484e568d426b05c8ce7a1",
+   "scena": "palestra",
+   "registrato": "2026-10-07T22:58+02:00",
+   "frase": "MIE-06d04058",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 1,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.39,
+     "dominante": "calda",
+     "rumore": 1.7
+    },
+    "copertina_ms": 1750,
+    "musica": "phonk_10.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "pB-fvdIxm_0"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -511,17 +545,18 @@
   "2026-10-08 09",
   "2026-10-08 12",
   "2026-10-08 15",
-  "2026-10-08 18"
+  "2026-10-08 18",
+  "2026-10-08 21"
  ],
  "musica_recenti": [
-  "drive_11.flac",
   "deciso_02.flac",
   "phonk_15.flac",
   "drive_10.flac",
   "trap_02.flac",
   "drive_02.flac",
   "drive_08.flac",
-  "phonk_13.flac"
+  "phonk_13.flac",
+  "phonk_10.flac"
  ],
  "frasi_usate": [
   "QJ080",
@@ -535,10 +570,11 @@
   "MIE-bd40bf0d",
   "MIE-e78c74d0",
   "MIE-0fecdd42",
-  "MIE-043e8cf1"
+  "MIE-043e8cf1",
+  "MIE-06d04058"
  ],
  "temi_recenti": [
-  "disciplina",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -549,18 +585,6 @@
   "mentalita",
   "mentalita"
  ],
- "analisi": {
-  "1yzLaIChycu6BW13DjTm95X4AKJuoKtWr": {
-   "nome": "IMG_3650.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.68,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-07T22:58+02:00",
-   "slot": 21,
-   "caricato": "2026-10-07T22:22:56.186Z"
-  }
- },
+ "analisi": {},
  "pulizia": "2026-10-08"
 }
