@@ -426,6 +426,40 @@
      "id": "ZAtCGNgTd0o"
     }
    }
+  },
+  {
+   "quando": "2026-10-08T13:04",
+   "slot": "2026-10-08 15",
+   "video": "IMG_3633.MOV",
+   "md5": "e11bd14be474db584df79593137690a2",
+   "scena": "macchina",
+   "registrato": "2026-10-07T14:59+02:00",
+   "frase": "MIE-0fecdd42",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 47,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "esterno",
+     "motivo": "luce del giorno",
+     "luce": 0.58,
+     "dominante": "neutra",
+     "rumore": 3.1
+    },
+    "copertina_ms": 1750,
+    "musica": "drive_08.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "7bMJuNw0CNw"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -441,17 +475,18 @@
   "2026-10-07 18",
   "2026-10-07 21",
   "2026-10-08 09",
-  "2026-10-08 12"
+  "2026-10-08 12",
+  "2026-10-08 15"
  ],
  "musica_recenti": [
-  "house_04.flac",
   "deciso_08.flac",
   "drive_11.flac",
   "deciso_02.flac",
   "phonk_15.flac",
   "drive_10.flac",
   "trap_02.flac",
-  "drive_02.flac"
+  "drive_02.flac",
+  "drive_08.flac"
  ],
  "frasi_usate": [
   "QJ080",
@@ -463,12 +498,13 @@
   "MIE-72a11d64",
   "MIE-b48f986e",
   "MIE-bd40bf0d",
-  "MIE-e78c74d0"
+  "MIE-e78c74d0",
+  "MIE-0fecdd42"
  ],
  "temi_recenti": [
-  "amicizia",
   "imprenditore",
   "disciplina",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -510,17 +546,6 @@
    "registrato": "2026-10-07T22:58+02:00",
    "slot": 21,
    "caricato": "2026-10-07T22:22:56.186Z"
-  },
-  "1aYnM0kt0KvLFqhVC82fuQMPkDdD43Iwm": {
-   "nome": "IMG_3633.MOV",
-   "scena": "macchina",
-   "sicurezza": 0.8,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-07T14:59+02:00",
-   "slot": 15,
-   "caricato": "2026-10-07T22:25:07.959Z"
   }
  },
  "pulizia": "2026-10-08"
