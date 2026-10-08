@@ -65,15 +65,22 @@ GENERE_PER_SCENA = {   # solo musica da motivazione (5/10/2026: le frasi sono tu
     "palestra": "phonk", "macchina": "drive", "lavoro": "deciso", "pacchi": "deciso",
     "cibo": "drive", "uscita": "trap", "specchio": "trap", "casa": "deciso"}
 GENERI_MOTIVAZIONE = ("phonk", "drive", "trap", "deciso", "energia")
+# dal 8/10/2026: prima la musica vera della Raccolta audio di YouTube (prepara_libreria.py), poi quella generata
+YT_PER_SCENA = {"palestra": ["yt_carica"], "macchina": ["yt_carica", "yt_epica"], "lavoro": ["yt_epica", "yt_carica"],
+                "pacchi": ["yt_carica", "yt_epica"], "specchio": ["yt_carica"], "cibo": ["yt_epica"],
+                "casa": ["yt_epica"], "uscita": ["yt_carica", "yt_epica"]}
 
 
 def scegli_musica(tema, recenti, scena=None):
-    """Un brano del genere della scena (o dell'umore del tema), evitando quelli usati di recente."""
-    for mood in (GENERE_PER_SCENA.get(scena), *random.sample(GENERI_MOTIVAZIONE, len(GENERI_MOTIVAZIONE))):
+    """Un brano adatto alla scena, evitando quelli usati di recente: prima la Raccolta audio di YouTube, poi i loop
+    generati da motivazione."""
+    yt = list(YT_PER_SCENA.get(scena, ["yt_carica", "yt_epica"]))
+    random.shuffle(yt)
+    for mood in (*yt, GENERE_PER_SCENA.get(scena), *random.sample(GENERI_MOTIVAZIONE, len(GENERI_MOTIVAZIONE))):
         if not mood:
             continue
         d = os.path.join(HERE, "musica", mood)
-        brani = sorted(f for f in os.listdir(d) if f.endswith(".flac")) if os.path.isdir(d) else []
+        brani = sorted(f for f in os.listdir(d) if f.endswith((".flac", ".m4a"))) if os.path.isdir(d) else []
         if brani:
             liberi = [b for b in brani if b not in recenti] or brani
             return os.path.join(d, random.choice(liberi))
