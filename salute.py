@@ -82,6 +82,8 @@ def pubblicazioni():
     fermi = [a for a in coda if a.get("caricato") and (ora - quando(a["caricato"])).total_seconds() > 30 * 3600]
     if fermi and (ultima is None or (ora - ultima).total_seconds() > 30 * 3600):
         raise RuntimeError(f"{len(fermi)} video in coda da oltre 30 ore e nessun reel pubblicato: la pubblicazione e' ferma")
+    if ultima and (ora - ultima).total_seconds() > 26 * 3600:   # con l'archivio deve uscire qualcosa ogni giorno
+        raise RuntimeError(f"nessun reel pubblicato dal {ultima:%d/%m %H:%M}: la pubblicazione sembra ferma")
     rotti = [a["nome"] for a in coda if a.get("fallimenti")]
     if rotti:
         raise RuntimeError(f"video che non si riescono a montare: {', '.join(rotti)} (vedi anche la cartella 'Da controllare')")
