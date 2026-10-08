@@ -99,8 +99,68 @@ def _c(x, lo, hi):
     return max(lo, min(hi, x))
 
 
-def build_filter(misure, tipo, intensita=INTENSITA):
-    """Catena ffmpeg (senza etichette) calcolata dalle misure e dal profilo della scena."""
+import os
+# Look generale (8/10/2026: il vecchio "attuale" non piaceva ad Alessandro):
+#  "naturale"   = colori veri dell'iPhone, luce giusta sul viso, piu' definizione; niente tinte, niente vignetta
+#  "cinematico" = stile canali motivazionali: neri profondi, contrasto marcato, colori un po' spenti, vignetta leggera
+#  "attuale"    = il vecchio look (ombre fredde / luci calde, vignetta)
+STILE = os.environ.get("STILE_COLORE") or "naturale"
+
+
+def build_filter(misure, tipo, intensita=INTENSITA, stile=None):
+    stile = stile or STILE
+    if stile == "attuale":
+        return _build_attuale(misure, tipo, intensita)
+    k = intensita
+    cine = stile == "cinematico"
+    noise = misure["noise"]
+    f = []
+    # Regola d'oro (misurata sui video veri): l'iPhone fa gia' un buon lavoro, si ritocca poco e non si peggiora mai.
+    # 1. rumore (prima della nitidezza), solo con poca luce
+    if tipo == "sera" or (misure["L"] < 0.42 and noise > 2.4):
+        s = _c((noise - 1.5) * 0.6, 0.6, 2.2)
+        f.append(f"hqdn3d={s:.2f}:{s * 0.75:.2f}:{s * 1.5:.2f}:{s * 1.1:.2f}")
+    # 2. bianco: correzione leggerissima (la luce calda di casa/ufficio e' piacevole; spingere il blu rovinava i neri)
+    bgr = np.array(misure["gray"]) + 1e-3
+    gains = np.clip(1 + (bgr.mean() / bgr - 1) * (0.25 if (misure["b"] < -3 or misure["a"] < -3) else 0.10), 0.97, 1.03)
+    f.append(f"colorchannelmixer=rr={gains[2]:.3f}:gg={gains[1]:.3f}:bb={gains[0]:.3f}")
+    # 3. punto nero appena piu' profondo (senza schiacciare: i neri schiacciati diventavano blu)
+    blk = _c(misure["p1"] * (0.45 if cine else 0.3), 0, 0.04)
+    f.append(f"colorlevels=rimin={blk:.3f}:gimin={blk:.3f}:bimin={blk:.3f}")
+    # 4. esposizione: il naturale schiarisce solo se serve (mai scurire il viso); il cinematico puo' scurire un filo
+    if misure.get("viso"):
+        L, target = max(misure["viso"], 0.05), (0.50 if cine else 0.52)
+    else:
+        L, target = max(misure["L"], 0.05), (0.40 if cine else 0.45)
+    g = _c(np.log(target) / np.log(L), 0.85 if not cine else 0.85, 1.0 if not cine else 1.10)
+    gamma = 1 + (1 / g - 1) * 0.5 * k
+    if abs(L - target) < 0.05:
+        gamma = 1.0
+    # 5. contrasto e colore
+    if cine:
+        f.append("curves=m='0/0 0.15/0.10 0.35/0.30 0.50/0.50 0.65/0.70 0.85/0.88 1/1'")
+        sat = 0.84
+    else:
+        f.append("curves=m='0/0 0.25/0.235 0.50/0.50 0.75/0.765 1/1'")
+        sat = 1.0 if misure["sat"] > 0.45 else 1.03
+    if tipo == "palestra":
+        f.append("curves=m='0/0 0.30/0.285 0.70/0.715 1/1'")
+    f.append(f"eq=gamma={gamma:.3f}:saturation={sat:.3f}")
+    if misure["p99"] > 0.97:                                         # solo se ci sono davvero zone bruciate
+        f.append("curves=m='0/0 0.85/0.85 1/0.98'")
+    if not cine:
+        f.append(f"vibrance=intensity={0.08 * k:.2f}")
+    # 6. definizione e nitidezza moderate, ridotte con poca luce (niente grana)
+    pulito = _c(1.6 - noise * 0.4, 0.35, 1.0)
+    f.append(f"unsharp=13:13:{(0.22 if cine else 0.12) * pulito:.2f}:13:13:0")
+    f.append(f"unsharp=5:5:{(0.28 if cine else 0.22) * pulito:.2f}:5:5:0")
+    if cine:
+        f.append("vignette=angle=0.40")
+    return ",".join(f)
+
+
+def _build_attuale(misure, tipo, intensita=INTENSITA):
+    """Il look usato fino all'8/10/2026 (ombre fredde, luci calde, vignetta)."""
     p = PROFILI[tipo]
     k = intensita
     f = []
