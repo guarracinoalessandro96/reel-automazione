@@ -341,7 +341,11 @@ def youtube_upload(creds, path, cap):
     if len(title) > 92:     # limite YouTube 100 caratteri con " #shorts": taglio a parola intera + "…"
         title = title[:90].rsplit(" ", 1)[0].rstrip(",;:") + "…"   # (mai solo la prima frase: cambierebbe il senso)
     privacy = ENV("YOUTUBE_PRIVACY") or "public"
-    body = {"snippet": {"title": title + " #shorts", "description": testo_breve(cap), "categoryId": "22",
+    descr = (cap["gancio"].strip().strip('"“”') + "\n\n#shorts #motivazione #mentalita #disciplina #crescitapersonale "
+             "#frasimotivazionali #successo")
+    body = {"snippet": {"title": title + " #shorts", "description": descr, "categoryId": "22",
+                        "tags": ["motivazione", "mentalità", "disciplina", "frasi motivazionali", "crescita personale",
+                                 "successo", "imprenditore", "palestra", "mindset", "shorts"],
                         "defaultLanguage": "it", "defaultAudioLanguage": "it"},
             "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": False}}
     req = yt.videos().insert(part="snippet,status", body=body,
