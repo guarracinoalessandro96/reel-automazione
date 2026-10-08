@@ -216,15 +216,38 @@ class Drive:
             body={"name": nome, "parents": [padre], "mimeType": "application/vnd.google-apps.folder"},
             fields="id").execute()["id"]
 
-    def carica_archivio(self, path, nome):
-        """Salva la clip 'pulita' nella cartella Archivio. Restituisce l'id (in prova: il nome del file)."""
+    def carica_archivio(self, path, nome, meta):
+        """Salva la clip (qualita' originale) nella cartella Archivio, con scena/fascia/ora nelle proprieta' del file
+        (cosi' l'elenco dell'archivio vive su Drive e non serve tenerlo in stato.json). Restituisce l'id."""
+        meta = {k: str(v) for k, v in meta.items() if v not in (None, "")}
         if self.local:
-            os.makedirs(os.path.join(self.local, "Archivio"), exist_ok=True)
-            shutil.copy(path, os.path.join(self.local, "Archivio", nome))
+            d = os.path.join(self.local, "Archivio")
+            os.makedirs(d, exist_ok=True)
+            shutil.copy(path, os.path.join(d, nome))
+            json.dump(meta, open(os.path.join(d, nome + ".json"), "w"))
             return nome
         from googleapiclient.http import MediaFileUpload
-        return self.api.files().create(body={"name": nome, "parents": [self.cartella("Archivio")]},
-                                       media_body=MediaFileUpload(path, mimetype="video/mp4"), fields="id").execute()["id"]
+        return self.api.files().create(body={"name": nome, "parents": [self.cartella("Archivio")], "appProperties": meta},
+                                       media_body=MediaFileUpload(path, mimetype="video/quicktime"),
+                                       fields="id").execute()["id"]
+
+    def lista_archivio(self):
+        """Clip dell'archivio: [{id, nome, scena, fascia, compagnia, registrato}]."""
+        if self.local:
+            d = os.path.join(self.local, "Archivio")
+            if not os.path.isdir(d):
+                return []
+            return [dict(json.load(open(os.path.join(d, f + ".json"))), id=f, nome=f)
+                    for f in sorted(os.listdir(d)) if not f.endswith(".json") and os.path.exists(os.path.join(d, f + ".json"))]
+        q = f"'{self.cartella('Archivio')}' in parents and trashed = false and mimeType contains 'video/'"
+        out, token = [], None
+        while True:
+            res = self.api.files().list(q=q, fields="nextPageToken,files(id,name,appProperties)", pageSize=500,
+                                        pageToken=token).execute()
+            out += [dict(f.get("appProperties") or {}, id=f["id"], nome=f["name"]) for f in res.get("files", [])]
+            token = res.get("nextPageToken")
+            if not token:
+                return out
 
     def esiste(self, file_id):
         if self.local:
@@ -549,7 +572,7 @@ def scegli_archivio(archivio, slot_ora):
     ordine = [f] + VICINE.get(f, []) if f else []
     def chiave(c):
         pos = ordine.index(c.get("fascia")) if c.get("fascia") in ordine else len(ordine)
-        return (c.get("usi", 0), pos, c.get("ultimo", ""))
+        return (int(c.get("usi", 0)), pos, c.get("ultimo", ""))
     return min(archivio, key=chiave)
 
 
@@ -559,7 +582,7 @@ def main():
     frasi = json.load(open(FRASI, encoding="utf-8"))
     state = json.load(open(STATE, encoding="utf-8")) if os.path.exists(STATE) else {}
     for k, v in (("usate", []), ("storico", []), ("riprova", []), ("slot_fatti", []), ("musica_recenti", []),
-                 ("frasi_usate", []), ("temi_recenti", []), ("analisi", {}), ("archivio", [])):
+                 ("frasi_usate", []), ("temi_recenti", []), ("analisi", {}), ("archivio_usi", {})):
         state.setdefault(k, v)
 
     def save():
@@ -648,7 +671,13 @@ def main():
     video = scegli_video(videos, state["analisi"], slot_ora)
     clip = None
     if video is None:
-        archivio = [c for c in state["archivio"] if c.get("fallimenti", 0) < 2]
+        usi_arch = state.setdefault("archivio_usi", {})
+        try:
+            archivio = [dict(c, **usi_arch.get(c["id"], {})) for c in drive.lista_archivio()]
+        except Exception as e:
+            log("Lettura dell'archivio non riuscita:", e)
+            archivio = []
+        archivio = [c for c in archivio if c.get("fallimenti", 0) < 2]
         clip = scegli_archivio(archivio, slot_ora)
         if clip is None:
             log(f"Nessun video nuovo e archivio vuoto per l'orario {slot}.")
@@ -696,7 +725,8 @@ def main():
                                   scena_rilevata=an["scena"], da_archivio=bool(clip))
     except Exception as e:      # un video "rotto" non deve bloccare la coda
         if clip:
-            clip["fallimenti"] = clip.get("fallimenti", 0) + 1
+            u = state["archivio_usi"].setdefault(clip["id"], {})
+            u["fallimenti"] = u.get("fallimenti", 0) + 1
             log(f"Montaggio fallito per la clip d'archivio {nome}: {e}")
         else:
             an["fallimenti"] = an.get("fallimenti", 0) + 1
@@ -729,16 +759,17 @@ def main():
     # 5. archivio e stato
     oggi = datetime.date.today().isoformat()
     if clip:
-        clip["usi"] = clip.get("usi", 0) + 1
-        clip["ultimo"] = oggi
+        u = state["archivio_usi"].setdefault(clip["id"], {})
+        u["usi"] = u.get("usi", 0) + 1
+        u["ultimo"] = oggi
     else:                    # video nuovo: se ne tiene una copia (qualita' originale) per riusarlo in futuro
         try:
             stem = os.path.splitext(nome)[0]
             cpath = overlay.crea_clip_archivio(src, os.path.join(work, stem + "_archivio.mov"))
-            cid = drive.carica_archivio(cpath, f"{stem}.mov")
-            state["archivio"].append({"id": cid, "nome": f"{stem}.mov", "scena": an.get("scena"),
-                                      "fascia": fascia_video(an), "compagnia": an.get("compagnia"),
-                                      "registrato": an.get("registrato"), "usi": 1, "ultimo": oggi})
+            cid = drive.carica_archivio(cpath, f"{stem}.mov", {"scena": an.get("scena"), "fascia": fascia_video(an),
+                                                               "compagnia": an.get("compagnia"),
+                                                               "registrato": an.get("registrato")})
+            state.setdefault("archivio_usi", {})[cid] = {"usi": 1, "ultimo": oggi}
             log(f"Copia salvata nell'archivio: {stem}.mov")
         except Exception as e:
             log("Copia d'archivio non riuscita (il reel e' comunque uscito):", e)
