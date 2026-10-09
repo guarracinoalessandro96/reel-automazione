@@ -808,6 +808,41 @@
      "id": "jhxocgkieYU"
     }
    }
+  },
+  {
+   "quando": "2026-10-09T16:42",
+   "slot": "2026-10-09 18:30",
+   "video": "IMG_3787.mov",
+   "md5": "db55e8528bf396290040cc3da7d8644c",
+   "da_archivio": false,
+   "scena": "casa",
+   "registrato": "2026-10-09T18:20+02:00",
+   "frase": "MIE-bd41cc60",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 19,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.64,
+     "dominante": "calda",
+     "rumore": 3.2
+    },
+    "copertina_ms": 5750,
+    "musica": "turn_in_the_sun_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "lO1xY7JP8lk"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -834,7 +869,8 @@
   "2026-10-09 11:30",
   "2026-10-09 13:15",
   "2026-10-09 15:00",
-  "2026-10-09 16:45"
+  "2026-10-09 16:45",
+  "2026-10-09 18:30"
  ],
  "musica_recenti": [
   "drive_10.flac",
@@ -850,7 +886,8 @@
   "vibe_check_3.m4a",
   "way_back_home_1.m4a",
   "stake_out_3.m4a",
-  "ancient_civilisations_2.m4a"
+  "ancient_civilisations_2.m4a",
+  "turn_in_the_sun_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -873,15 +910,16 @@
   "MIE-c2cfd80e",
   "MIE-7e72f285",
   "MIE-53683e04",
-  "MIE-40a4765a"
+  "MIE-40a4765a",
+  "MIE-bd41cc60"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
   "palestra",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -920,6 +958,28 @@
    "registrato": "2026-10-09T11:00+02:00",
    "fascia": "ufficio",
    "caricato": "2026-10-09T09:06:00.177Z"
+  },
+  "1GS6pSzimhli97L2CMSZ9K_SHNyznaJ86": {
+   "nome": "IMG_3788.mov",
+   "scena": "lavoro",
+   "sicurezza": 0.5,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-09T18:24+02:00",
+   "fascia": "ufficio",
+   "caricato": "2026-10-09T16:26:59.643Z"
+  },
+  "1c_s-G9GCIJ-ufhOBbqASHDyeTAvhWuS1": {
+   "nome": "IMG_3790.MOV",
+   "scena": "lavoro",
+   "sicurezza": 0.9,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-09T18:27+02:00",
+   "fascia": "ufficio",
+   "caricato": "2026-10-09T16:29:10.834Z"
   }
  },
  "pulizia": "2026-10-09",
@@ -953,6 +1013,10 @@
    "ultimo": "2026-10-09"
   },
   "15jiV1pcQxInQYlwKdmhJ-oiXaPBuhCUQ": {
+   "usi": 1,
+   "ultimo": "2026-10-09"
+  },
+  "1NgsmHHGD9Qdq4lQ_cY7_qoozFPSuqtJ4": {
    "usi": 1,
    "ultimo": "2026-10-09"
   }
