@@ -1,8 +1,8 @@
-name: Report settimanale
+name: Report
 
 on:
   schedule:
-    - cron: "0 6 * * 1"      # ogni lunedi' mattina
+    - cron: "17 4 * * *"     # ogni mattina (alle 6:17 italiane)
   workflow_dispatch: {}
 
 concurrency: pubblica
@@ -24,7 +24,6 @@ jobs:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
-          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
         run: python report.py
       - run: |
           git config user.name "reel-bot"

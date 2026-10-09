@@ -99,7 +99,10 @@ fetch("report.json?" + Date.now()).then(r => r.ok ? r.json() : null).catch(() =>
     .map(([k, v]) => `<tr><td>${k}</td><td style="text-align:right">${v.media_views.toLocaleString("it-IT")}</td><td style="text-align:right;color:var(--mute)">${v.reel}</td></tr>`).join("");
   const tab = (tit, o) => `<p style="margin:14px 0 4px;font-weight:600">${tit}</p><table style="width:100%;border-collapse:collapse;font-size:14px"><tr style="color:var(--mute)"><td></td><td style="text-align:right">views medie</td><td style="text-align:right">reel</td></tr>${riga(o)}</table>`;
   document.getElementById("repBody").innerHTML = `<p class="meta">Aggiornato il ${rep.data} su ${rep.reel_analizzati} reel. ${rep.nota || ""}</p>` +
-    tab("Per tema", rep.per_tema) + tab("Per scena", rep.per_scena) + tab("Per orario", rep.per_orario);
+    tab("Per scena", rep.per_scena) + tab("Per orario", rep.per_orario) + (rep.per_musica ? tab("Per musica", rep.per_musica) : "") +
+    (rep.per_origine ? tab("Video nuovi o dall'archivio", rep.per_origine) : "") +
+    ((rep.migliori || []).length ? `<p style="margin:14px 0 4px;font-weight:600">I 5 migliori</p>` +
+      rep.migliori.map(m => `${(m.views || 0).toLocaleString("it-IT")} views · ${m.like || 0} like · ${m.frase || ""}`).join("<br>") : "");
 });
 </script>
 </body>

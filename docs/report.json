@@ -1,38 +1,120 @@
 {
- "data": "2026-10-05",
- "reel_analizzati": 1,
- "media_views": 1166,
+ "data": "2026-10-09",
+ "reel_analizzati": 4,
+ "media_views": 842,
+ "like_totali": 30,
  "per_tema": {
   "amicizia": {
    "reel": 1,
-   "media_views": 1166
+   "media_views": 1257
+  },
+  "imprenditore": {
+   "reel": 1,
+   "media_views": 569
+  },
+  "mentalita": {
+   "reel": 2,
+   "media_views": 770
   }
  },
  "per_scena": {
+  "cibo": {
+   "reel": 1,
+   "media_views": 1338
+  },
+  "lavoro": {
+   "reel": 1,
+   "media_views": 202
+  },
+  "macchina": {
+   "reel": 1,
+   "media_views": 569
+  },
   "uscita": {
    "reel": 1,
-   "media_views": 1166
+   "media_views": 1257
   }
  },
  "per_orario": {
-  "21": {
+  "09": {
    "reel": 1,
-   "media_views": 1166
+   "media_views": 1338
+  },
+  "12": {
+   "reel": 1,
+   "media_views": 569
+  },
+  "21": {
+   "reel": 2,
+   "media_views": 730
+  }
+ },
+ "per_musica": {
+  "deciso": {
+   "reel": 1,
+   "media_views": 202
+  },
+  "drive": {
+   "reel": 2,
+   "media_views": 954
+  },
+  "tropical": {
+   "reel": 1,
+   "media_views": 1257
+  }
+ },
+ "per_origine": {
+  "video nuovo": {
+   "reel": 4,
+   "media_views": 842
   }
  },
  "pesi_temi": {},
  "migliori": [
   {
+   "quando": "2026-10-07T07:06",
+   "frase": "MIE-fb841d9f",
+   "tema": "mentalita",
+   "scena": "cibo",
+   "orario": "09",
+   "musica": "drive",
+   "origine": "video nuovo",
+   "views": 1338,
+   "like": 9
+  },
+  {
    "quando": "2026-10-04T19:05",
+   "frase": "QJ080",
    "tema": "amicizia",
    "scena": "uscita",
    "orario": "21",
-   "instagram": 0,
-   "youtube": 1166,
-   "views": 1166,
-   "salvataggi": 0,
-   "condivisioni": 0
+   "musica": "tropical",
+   "origine": "video nuovo",
+   "views": 1257,
+   "like": 11
+  },
+  {
+   "quando": "2026-10-05T11:42",
+   "frase": "QM202610070",
+   "tema": "imprenditore",
+   "scena": "macchina",
+   "orario": "12",
+   "musica": "drive",
+   "origine": "video nuovo",
+   "views": 569,
+   "like": 5
+  },
+  {
+   "quando": "2026-10-05T21:35",
+   "frase": "MIE-2a9dd1f2",
+   "tema": "mentalita",
+   "scena": "lavoro",
+   "orario": "21",
+   "musica": "deciso",
+   "origine": "video nuovo",
+   "views": 202,
+   "like": 5
   }
  ],
- "nota": "Servono almeno 10 reel per ottimizzare: per ora pesi invariati. Statistiche Instagram non disponibili (manca il permesso instagram_manage_insights): conteggi solo YouTube."
+ "nota": "Solo YouTube; non contati gli Shorts usciti da meno di 2 giorni. Servono almeno 10 reel per conclusioni affidabili."
 }
