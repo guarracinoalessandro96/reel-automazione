@@ -773,6 +773,41 @@
      "id": "alZMKptZ6MA"
     }
    }
+  },
+  {
+   "quando": "2026-10-09T15:02",
+   "slot": "2026-10-09 16:45",
+   "video": "IMG_3762.MOV",
+   "md5": "8637f00c11a881b2c61189bc0f3ac3e5",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-10-09T08:59+02:00",
+   "frase": "MIE-40a4765a",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 31,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "esterno",
+     "motivo": "luce del giorno",
+     "luce": 0.57,
+     "dominante": "calda",
+     "rumore": 2.6
+    },
+    "copertina_ms": 7700,
+    "musica": "ancient_civilisations_2.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "jhxocgkieYU"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -798,7 +833,8 @@
   "2026-10-09 09:45",
   "2026-10-09 11:30",
   "2026-10-09 13:15",
-  "2026-10-09 15:00"
+  "2026-10-09 15:00",
+  "2026-10-09 16:45"
  ],
  "musica_recenti": [
   "drive_10.flac",
@@ -813,7 +849,8 @@
   "cutscene_crush_1.m4a",
   "vibe_check_3.m4a",
   "way_back_home_1.m4a",
-  "stake_out_3.m4a"
+  "stake_out_3.m4a",
+  "ancient_civilisations_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -835,16 +872,17 @@
   "MIE-6bd471d6",
   "MIE-c2cfd80e",
   "MIE-7e72f285",
-  "MIE-53683e04"
+  "MIE-53683e04",
+  "MIE-40a4765a"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
   "palestra",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -860,17 +898,6 @@
    "registrato": "2026-10-09T09:50+02:00",
    "fascia": "mattina",
    "caricato": "2026-10-09T07:54:02.666Z"
-  },
-  "1GxTKEI1dsjUjSLOwm80cDqCuXPm6_ji1": {
-   "nome": "IMG_3762.MOV",
-   "scena": "specchio",
-   "sicurezza": 0.72,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-09T08:59+02:00",
-   "fascia": "ufficio",
-   "caricato": "2026-10-09T08:01:41.737Z"
   },
   "1OD5ChwTZcdShK4JbB5HwOeYARplvl4n5": {
    "nome": "IMG_3766.MOV",
@@ -922,6 +949,10 @@
    "ultimo": "2026-10-09"
   },
   "1Eit9vgbQEwd_RXA_ujWUx9-QNboc7VIg": {
+   "usi": 1,
+   "ultimo": "2026-10-09"
+  },
+  "15jiV1pcQxInQYlwKdmhJ-oiXaPBuhCUQ": {
    "usi": 1,
    "ultimo": "2026-10-09"
   }
