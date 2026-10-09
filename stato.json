@@ -668,6 +668,41 @@
      "id": "YAinj9vbtGY"
     }
    }
+  },
+  {
+   "quando": "2026-10-09T09:33",
+   "slot": "2026-10-09 11:30",
+   "video": "IMG_3764.MOV",
+   "md5": "2de97494b8944608d31428e87d2eab52",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-10-09T09:10+02:00",
+   "frase": "MIE-c2cfd80e",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 37,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.51,
+     "dominante": "neutra",
+     "rumore": 2.7
+    },
+    "copertina_ms": 7700,
+    "musica": "vibe_check_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "IevMsBklKi8"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -690,7 +725,8 @@
   "2026-10-08 22:00",
   "2026-10-08 23:45",
   "2026-10-09 08:00",
-  "2026-10-09 09:45"
+  "2026-10-09 09:45",
+  "2026-10-09 11:30"
  ],
  "musica_recenti": [
   "drive_10.flac",
@@ -702,7 +738,8 @@
   "keep_it_movin_3.m4a",
   "taking_flight_2.m4a",
   "cutscene_crush_3.m4a",
-  "cutscene_crush_1.m4a"
+  "cutscene_crush_1.m4a",
+  "vibe_check_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -721,7 +758,8 @@
   "MIE-b8b94c79",
   "MIE-747c8ba5",
   "MIE-6e420549",
-  "MIE-6bd471d6"
+  "MIE-6bd471d6",
+  "MIE-c2cfd80e"
  ],
  "temi_recenti": [
   "mentalita",
@@ -731,11 +769,67 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
-  "palestra"
+  "palestra",
+  "mentalita"
  ],
- "analisi": {},
+ "analisi": {
+  "1Z9btmRc8WPXhIvu0TexUlPlarTdYCaNq": {
+   "nome": "IMG_3765.MOV",
+   "scena": "macchina",
+   "sicurezza": 0.75,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-09T09:50+02:00",
+   "fascia": "mattina",
+   "caricato": "2026-10-09T07:54:02.666Z"
+  },
+  "1p08VUtiYoyaxBoW-uj0UzvGq1BVmDirN": {
+   "nome": "IMG_3763.MOV",
+   "scena": "specchio",
+   "sicurezza": 0.91,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-09T09:09+02:00",
+   "fascia": "ufficio",
+   "caricato": "2026-10-09T08:00:47.443Z"
+  },
+  "1GxTKEI1dsjUjSLOwm80cDqCuXPm6_ji1": {
+   "nome": "IMG_3762.MOV",
+   "scena": "specchio",
+   "sicurezza": 0.72,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-09T08:59+02:00",
+   "fascia": "ufficio",
+   "caricato": "2026-10-09T08:01:41.737Z"
+  },
+  "1OD5ChwTZcdShK4JbB5HwOeYARplvl4n5": {
+   "nome": "IMG_3766.MOV",
+   "scena": "lavoro",
+   "sicurezza": 0.58,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-09T10:43+02:00",
+   "fascia": "ufficio",
+   "caricato": "2026-10-09T08:45:03.292Z"
+  },
+  "1wZl3sSfMw_7B0ADCvxc1Wa3E--Rl19kx": {
+   "nome": "IMG_3768.MOV",
+   "scena": "lavoro",
+   "sicurezza": 0.62,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-09T11:00+02:00",
+   "fascia": "ufficio",
+   "caricato": "2026-10-09T09:06:00.177Z"
+  }
+ },
  "pulizia": "2026-10-09",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -751,6 +845,10 @@
    "ultimo": "2026-10-09"
   },
   "1ssTZiPaSjGA63iZMxhUEOD6wWT-dqCLz": {
+   "usi": 1,
+   "ultimo": "2026-10-09"
+  },
+  "1HKv05Wh_t_gsHvCIkHBJFaKlY4mxyEy2": {
    "usi": 1,
    "ultimo": "2026-10-09"
   }
