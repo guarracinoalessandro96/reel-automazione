@@ -96,7 +96,7 @@ def pubblicazioni():
     api = build("drive", "v3", credentials=c, cache_discovery=False)
     mie = mie_citazioni.frasi(mie_citazioni.leggi(api, ENV("DRIVE_FOLDER_DA_PUBBLICARE")))
     nuove = sum(1 for f in mie if f["id"] not in usate)
-    if nuove < 30:     # con 10 reel al giorno sono 3 giorni: poi si riusano le meno recenti
+    if nuove < 70:     # con 10 reel al giorno e' una settimana di preavviso: poi si riusano le meno recenti
         raise RuntimeError(f"restano solo {nuove} citazioni nuove nel documento 'Le mie citazioni' su Drive: "
                            "aggiungine altre (dopo si ripetono quelle uscite da piu' tempo)")
     giorni = (ora - ultima).days if ultima else None
