@@ -598,6 +598,41 @@
      "id": "pBcOq37T0CI"
     }
    }
+  },
+  {
+   "quando": "2026-10-09T06:03",
+   "slot": "2026-10-09 08:00",
+   "video": "IMG_3311.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-6e420549",
+   "tema": "imprenditore",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 66,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 0.0s a 8.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "interno_caldo",
+     "motivo": "luce calda artificiale",
+     "luce": 0.4,
+     "dominante": "calda",
+     "rumore": 2.5
+    },
+    "copertina_ms": 7700,
+    "musica": "cutscene_crush_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "tHN2vPUB1wk"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -618,7 +653,8 @@
   "2026-10-08 18",
   "2026-10-08 21",
   "2026-10-08 22:00",
-  "2026-10-08 23:45"
+  "2026-10-08 23:45",
+  "2026-10-09 08:00"
  ],
  "musica_recenti": [
   "drive_10.flac",
@@ -628,7 +664,8 @@
   "phonk_13.flac",
   "phonk_10.flac",
   "keep_it_movin_3.m4a",
-  "taking_flight_2.m4a"
+  "taking_flight_2.m4a",
+  "cutscene_crush_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -645,7 +682,8 @@
   "MIE-043e8cf1",
   "MIE-06d04058",
   "MIE-b8b94c79",
-  "MIE-747c8ba5"
+  "MIE-747c8ba5",
+  "MIE-6e420549"
  ],
  "temi_recenti": [
   "mentalita",
@@ -657,10 +695,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "imprenditore"
  ],
  "analisi": {},
- "pulizia": "2026-10-08",
+ "pulizia": "2026-10-09",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 1,
@@ -669,6 +707,10 @@
   "1prxBAB3e2zYxgElc_5sFnFrc_3Lw6Snt": {
    "usi": 1,
    "ultimo": "2026-10-08"
+  },
+  "1QRloko-RTNUoZs6eVV1LYBLqTIhN7WDy": {
+   "usi": 1,
+   "ultimo": "2026-10-09"
   }
  }
 }
