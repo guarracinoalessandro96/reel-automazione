@@ -913,6 +913,41 @@
      "id": "VWIpl9BSRHA"
     }
    }
+  },
+  {
+   "quando": "2026-10-09T21:59",
+   "slot": "2026-10-09 23:45",
+   "video": "IMG_3792.mov",
+   "md5": "f3aaa77a86fa8e8bd9f54a41342f38ed",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-09T21:47+02:00",
+   "frase": "MIE-23a8255f",
+   "tema": "imprenditore",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 4,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.47,
+     "dominante": "neutra",
+     "rumore": 2.1
+    },
+    "copertina_ms": 3750,
+    "musica": "survival_mode_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "9hcn9LJgiIM"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -942,7 +977,8 @@
   "2026-10-09 16:45",
   "2026-10-09 18:30",
   "2026-10-09 20:15",
-  "2026-10-09 22:00"
+  "2026-10-09 22:00",
+  "2026-10-09 23:45"
  ],
  "musica_recenti": [
   "drive_10.flac",
@@ -961,7 +997,8 @@
   "ancient_civilisations_2.m4a",
   "turn_in_the_sun_3.m4a",
   "way_back_home_2.m4a",
-  "majestic_12_3.m4a"
+  "majestic_12_3.m4a",
+  "survival_mode_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -987,10 +1024,10 @@
   "MIE-40a4765a",
   "MIE-bd41cc60",
   "MIE-7214ec2b",
-  "MIE-cb1a01f5"
+  "MIE-cb1a01f5",
+  "MIE-23a8255f"
  ],
  "temi_recenti": [
-  "mentalita",
   "imprenditore",
   "palestra",
   "mentalita",
@@ -999,7 +1036,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "imprenditore"
  ],
  "analisi": {
   "1OD5ChwTZcdShK4JbB5HwOeYARplvl4n5": {
@@ -1045,6 +1083,50 @@
    "registrato": "2026-10-09T18:27+02:00",
    "fascia": "ufficio",
    "caricato": "2026-10-09T16:29:10.834Z"
+  },
+  "1BdVQcgrC5uWedL_tsS_sSF5lYkucXpsW": {
+   "nome": "IMG_3793.mov",
+   "scena": "palestra",
+   "sicurezza": 0.9,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-09T21:50+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-09T20:50:14.225Z"
+  },
+  "1kBUe-9bO-8R9gX_1dao0ueWu3X7Akj_P": {
+   "nome": "IMG_3794.mov",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-09T21:54+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-09T20:52:38.077Z"
+  },
+  "1aOLpYMcKgEbL6H6CsrysPJV6EEIKl9Dc": {
+   "nome": "IMG_3796.MOV",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-09T22:11+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-09T20:54:33.411Z"
+  },
+  "1-ETSbQv32z4REdkPimLGMjS_e_CGJbid": {
+   "nome": "IMG_3796.mov",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-09T22:11+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-09T20:58:26.443Z"
   }
  },
  "pulizia": "2026-10-09",
@@ -1090,6 +1172,10 @@
    "ultimo": "2026-10-09"
   },
   "1mOygaNSLk3zVyQOFm3atEW61_fUGn_3z": {
+   "usi": 1,
+   "ultimo": "2026-10-09"
+  },
+  "1mIxav-KbU3ZL_NU9MF4Z-Vcww6fOPwR4": {
    "usi": 1,
    "ultimo": "2026-10-09"
   }
