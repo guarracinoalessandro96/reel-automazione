@@ -843,6 +843,41 @@
      "id": "lO1xY7JP8lk"
     }
    }
+  },
+  {
+   "quando": "2026-10-09T18:25",
+   "slot": "2026-10-09 20:15",
+   "video": "IMG_3791.MOV",
+   "md5": "2bb568722d175589703f5b71f5100db0",
+   "da_archivio": false,
+   "scena": "macchina",
+   "registrato": "2026-10-09T19:16+02:00",
+   "frase": "MIE-7214ec2b",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 31,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "sera",
+     "motivo": "poca luce",
+     "luce": 0.18,
+     "dominante": "calda",
+     "rumore": 2.1
+    },
+    "copertina_ms": 4250,
+    "musica": "way_back_home_2.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "bZ-_CqCiNww"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -870,7 +905,8 @@
   "2026-10-09 13:15",
   "2026-10-09 15:00",
   "2026-10-09 16:45",
-  "2026-10-09 18:30"
+  "2026-10-09 18:30",
+  "2026-10-09 20:15"
  ],
  "musica_recenti": [
   "drive_10.flac",
@@ -887,7 +923,8 @@
   "way_back_home_1.m4a",
   "stake_out_3.m4a",
   "ancient_civilisations_2.m4a",
-  "turn_in_the_sun_3.m4a"
+  "turn_in_the_sun_3.m4a",
+  "way_back_home_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -911,14 +948,15 @@
   "MIE-7e72f285",
   "MIE-53683e04",
   "MIE-40a4765a",
-  "MIE-bd41cc60"
+  "MIE-bd41cc60",
+  "MIE-7214ec2b"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
   "palestra",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -1017,6 +1055,10 @@
    "ultimo": "2026-10-09"
   },
   "1NgsmHHGD9Qdq4lQ_cY7_qoozFPSuqtJ4": {
+   "usi": 1,
+   "ultimo": "2026-10-09"
+  },
+  "1iQ6-TvLD1lzHJvyT62JoJV1Irrcmlths": {
    "usi": 1,
    "ultimo": "2026-10-09"
   }
