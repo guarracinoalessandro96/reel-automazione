@@ -703,6 +703,41 @@
      "id": "IevMsBklKi8"
     }
    }
+  },
+  {
+   "quando": "2026-10-09T11:22",
+   "slot": "2026-10-09 13:15",
+   "video": "IMG_3770.MOV",
+   "md5": "a89c73282d60a581d77e13332495d43d",
+   "da_archivio": false,
+   "scena": "macchina",
+   "registrato": "2026-10-09T13:06+02:00",
+   "frase": "MIE-7e72f285",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 33,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.45,
+     "dominante": "neutra",
+     "rumore": 2.9
+    },
+    "copertina_ms": 750,
+    "musica": "way_back_home_1.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "meMBa2Sx-2M"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -726,7 +761,8 @@
   "2026-10-08 23:45",
   "2026-10-09 08:00",
   "2026-10-09 09:45",
-  "2026-10-09 11:30"
+  "2026-10-09 11:30",
+  "2026-10-09 13:15"
  ],
  "musica_recenti": [
   "drive_10.flac",
@@ -739,7 +775,8 @@
   "taking_flight_2.m4a",
   "cutscene_crush_3.m4a",
   "cutscene_crush_1.m4a",
-  "vibe_check_3.m4a"
+  "vibe_check_3.m4a",
+  "way_back_home_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -759,7 +796,8 @@
   "MIE-747c8ba5",
   "MIE-6e420549",
   "MIE-6bd471d6",
-  "MIE-c2cfd80e"
+  "MIE-c2cfd80e",
+  "MIE-7e72f285"
  ],
  "temi_recenti": [
   "mentalita",
@@ -768,9 +806,9 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
   "palestra",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
@@ -849,6 +887,10 @@
    "ultimo": "2026-10-09"
   },
   "1HKv05Wh_t_gsHvCIkHBJFaKlY4mxyEy2": {
+   "usi": 1,
+   "ultimo": "2026-10-09"
+  },
+  "1q_-2Z0Nxs0rzY0eRiS5kJ9hteaPWK_as": {
    "usi": 1,
    "ultimo": "2026-10-09"
   }
