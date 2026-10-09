@@ -807,7 +807,7 @@ def main():
     state["frasi_usate"].append(frase["id"])
     state["temi_recenti"] = (state["temi_recenti"] + [frase["tema"]])[-10:]
     if info.get("musica"):
-        state["musica_recenti"] = (state["musica_recenti"] + [info["musica"]])[-8:]
+        state["musica_recenti"] = (state["musica_recenti"] + [info["musica"]])[-20:]
     state["slot_fatti"] = (state["slot_fatti"] + [slot])[-80:]
     if video:
         state["analisi"].pop(video["id"], None)
