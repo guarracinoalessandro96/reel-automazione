@@ -82,7 +82,11 @@ def scegli_musica(tema, recenti, scena=None):
         d = os.path.join(HERE, "musica", mood)
         brani = sorted(f for f in os.listdir(d) if f.endswith((".flac", ".m4a"))) if os.path.isdir(d) else []
         if brani:
-            liberi = [b for b in brani if b not in recenti] or brani
+            # niente stesso pezzo tra gli ultimi 20 e niente stesso BRANO (pezzi diversi della stessa canzone) negli ultimi 8
+            brano = lambda f: re.sub(r"_\d+$", "", os.path.splitext(f)[0])
+            vicini = {brano(b) for b in recenti[-8:]}
+            liberi = ([b for b in brani if b not in recenti and brano(b) not in vicini]
+                      or [b for b in brani if b not in recenti] or brani)
             return os.path.join(d, random.choice(liberi))
     return None
 
