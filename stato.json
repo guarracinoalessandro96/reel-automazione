@@ -1193,6 +1193,41 @@
      "id": "IhP2G_S1Aq0"
     }
    }
+  },
+  {
+   "quando": "2026-10-10T18:23",
+   "slot": "2026-10-10 20:15",
+   "video": "IMG_3794.mov",
+   "md5": "900d4a6cd01d7ad94a173c43c1a7fb3f",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-09T21:54+02:00",
+   "frase": "MIE-b455cdd4",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 8,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.48,
+     "dominante": "calda",
+     "rumore": 2.5
+    },
+    "copertina_ms": 4250,
+    "musica": "kick_it_1.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "3tCkM1vN5Fo"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -1230,10 +1265,10 @@
   "2026-10-10 13:15",
   "2026-10-10 15:00",
   "2026-10-10 16:45",
-  "2026-10-10 18:30"
+  "2026-10-10 18:30",
+  "2026-10-10 20:15"
  ],
  "musica_recenti": [
-  "phonk_10.flac",
   "keep_it_movin_3.m4a",
   "taking_flight_2.m4a",
   "cutscene_crush_3.m4a",
@@ -1252,7 +1287,8 @@
   "taking_flight_1.m4a",
   "horizons_1.m4a",
   "visions_3.m4a",
-  "locked_in_3.m4a"
+  "locked_in_3.m4a",
+  "kick_it_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1286,10 +1322,10 @@
   "MIE-6c3e87e4",
   "MIE-697aec3c",
   "MIE-578492d5",
-  "MIE-238ada57"
+  "MIE-238ada57",
+  "MIE-b455cdd4"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "imprenditore",
   "mentalita",
@@ -1298,20 +1334,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "palestra"
+  "palestra",
+  "mentalita"
  ],
  "analisi": {
-  "1kBUe-9bO-8R9gX_1dao0ueWu3X7Akj_P": {
-   "nome": "IMG_3794.mov",
-   "scena": "palestra",
-   "sicurezza": 0.99,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-09T21:54+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-09T20:52:38.077Z"
-  },
   "1aOLpYMcKgEbL6H6CsrysPJV6EEIKl9Dc": {
    "nome": "IMG_3796.MOV",
    "scena": "palestra",
@@ -1417,6 +1443,10 @@
    "ultimo": "2026-10-10"
   },
   "1fr7r7gFPOa5mMg3NCHBo-KO8j4yxbprb": {
+   "usi": 1,
+   "ultimo": "2026-10-10"
+  },
+  "1fiTj8eVYumSNhYT3V8Few0omcOH62Olm": {
    "usi": 1,
    "ultimo": "2026-10-10"
   }
