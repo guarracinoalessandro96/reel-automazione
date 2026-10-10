@@ -1,72 +1,88 @@
 {
- "data": "2026-10-09",
- "reel_analizzati": 4,
- "media_views": 842,
- "like_totali": 30,
+ "data": "2026-10-10",
+ "reel_analizzati": 7,
+ "media_views": 726,
+ "like_totali": 53,
  "per_tema": {
   "amicizia": {
    "reel": 1,
-   "media_views": 1257
+   "media_views": 1259
   },
   "imprenditore": {
    "reel": 1,
-   "media_views": 569
+   "media_views": 571
   },
   "mentalita": {
-   "reel": 2,
-   "media_views": 770
+   "reel": 5,
+   "media_views": 650
   }
  },
  "per_scena": {
   "cibo": {
    "reel": 1,
-   "media_views": 1338
+   "media_views": 1363
   },
   "lavoro": {
    "reel": 1,
-   "media_views": 202
+   "media_views": 205
   },
   "macchina": {
+   "reel": 2,
+   "media_views": 330
+  },
+  "pacchi": {
    "reel": 1,
-   "media_views": 569
+   "media_views": 318
+  },
+  "palestra": {
+   "reel": 1,
+   "media_views": 1275
   },
   "uscita": {
    "reel": 1,
-   "media_views": 1257
+   "media_views": 1259
   }
  },
  "per_orario": {
   "09": {
    "reel": 1,
-   "media_views": 1338
+   "media_views": 1363
   },
   "12": {
+   "reel": 2,
+   "media_views": 444
+  },
+  "18": {
    "reel": 1,
-   "media_views": 569
+   "media_views": 1275
   },
   "21": {
-   "reel": 2,
-   "media_views": 730
+   "reel": 3,
+   "media_views": 517
   }
  },
  "per_musica": {
   "deciso": {
-   "reel": 1,
-   "media_views": 202
+   "reel": 2,
+   "media_views": 262
   },
   "drive": {
-   "reel": 2,
-   "media_views": 954
+   "reel": 3,
+   "media_views": 674
+  },
+  "phonk": {
+   "reel": 1,
+   "media_views": 1275
   },
   "tropical": {
    "reel": 1,
-   "media_views": 1257
+   "media_views": 1259
   }
  },
  "per_origine": {
   "video nuovo": {
-   "reel": 4,
-   "media_views": 842
+   "reel": 7,
+   "media_views": 726
   }
  },
  "pesi_temi": {},
@@ -79,8 +95,19 @@
    "orario": "09",
    "musica": "drive",
    "origine": "video nuovo",
-   "views": 1338,
+   "views": 1363,
    "like": 9
+  },
+  {
+   "quando": "2026-10-07T17:45",
+   "frase": "MIE-72a11d64",
+   "tema": "mentalita",
+   "scena": "palestra",
+   "orario": "18",
+   "musica": "phonk",
+   "origine": "video nuovo",
+   "views": 1275,
+   "like": 10
   },
   {
    "quando": "2026-10-04T19:05",
@@ -90,7 +117,7 @@
    "orario": "21",
    "musica": "tropical",
    "origine": "video nuovo",
-   "views": 1257,
+   "views": 1259,
    "like": 11
   },
   {
@@ -101,19 +128,19 @@
    "orario": "12",
    "musica": "drive",
    "origine": "video nuovo",
-   "views": 569,
+   "views": 571,
    "like": 5
   },
   {
-   "quando": "2026-10-05T21:35",
-   "frase": "MIE-2a9dd1f2",
+   "quando": "2026-10-07T10:24",
+   "frase": "MIE-f7b5f4a8",
    "tema": "mentalita",
-   "scena": "lavoro",
-   "orario": "21",
+   "scena": "pacchi",
+   "orario": "12",
    "musica": "deciso",
    "origine": "video nuovo",
-   "views": 202,
-   "like": 5
+   "views": 318,
+   "like": 7
   }
  ],
  "nota": "Solo YouTube; non contati gli Shorts usciti da meno di 2 giorni. Servono almeno 10 reel per conclusioni affidabili."
