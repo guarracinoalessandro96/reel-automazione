@@ -948,6 +948,41 @@
      "id": "9hcn9LJgiIM"
     }
    }
+  },
+  {
+   "quando": "2026-10-10T06:26",
+   "slot": "2026-10-10 08:00",
+   "video": "IMG_3766.MOV",
+   "md5": "a173b440bf99190a1d85e25c40a5188d",
+   "da_archivio": false,
+   "scena": "lavoro",
+   "registrato": "2026-10-09T10:43+02:00",
+   "frase": "MIE-86216122",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 47,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.64,
+     "dominante": "calda",
+     "rumore": 3.2
+    },
+    "copertina_ms": 5750,
+    "musica": "taking_flight_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "pwQnnA75CjU"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -978,7 +1013,8 @@
   "2026-10-09 18:30",
   "2026-10-09 20:15",
   "2026-10-09 22:00",
-  "2026-10-09 23:45"
+  "2026-10-09 23:45",
+  "2026-10-10 08:00"
  ],
  "musica_recenti": [
   "drive_10.flac",
@@ -998,7 +1034,8 @@
   "turn_in_the_sun_3.m4a",
   "way_back_home_2.m4a",
   "majestic_12_3.m4a",
-  "survival_mode_3.m4a"
+  "survival_mode_3.m4a",
+  "taking_flight_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1025,10 +1062,10 @@
   "MIE-bd41cc60",
   "MIE-7214ec2b",
   "MIE-cb1a01f5",
-  "MIE-23a8255f"
+  "MIE-23a8255f",
+  "MIE-86216122"
  ],
  "temi_recenti": [
-  "imprenditore",
   "palestra",
   "mentalita",
   "mentalita",
@@ -1037,20 +1074,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "imprenditore"
+  "imprenditore",
+  "mentalita"
  ],
  "analisi": {
-  "1OD5ChwTZcdShK4JbB5HwOeYARplvl4n5": {
-   "nome": "IMG_3766.MOV",
-   "scena": "lavoro",
-   "sicurezza": 0.58,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-09T10:43+02:00",
-   "fascia": "ufficio",
-   "caricato": "2026-10-09T08:45:03.292Z"
-  },
   "1wZl3sSfMw_7B0ADCvxc1Wa3E--Rl19kx": {
    "nome": "IMG_3768.MOV",
    "scena": "lavoro",
@@ -1129,7 +1156,7 @@
    "caricato": "2026-10-09T20:58:26.443Z"
   }
  },
- "pulizia": "2026-10-09",
+ "pulizia": "2026-10-10",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 1,
@@ -1178,6 +1205,10 @@
   "1mIxav-KbU3ZL_NU9MF4Z-Vcww6fOPwR4": {
    "usi": 1,
    "ultimo": "2026-10-09"
+  },
+  "1ehg1VD_Xtwd5ysGegtBXVLxxyo6vHs0U": {
+   "usi": 1,
+   "ultimo": "2026-10-10"
   }
  }
 }
