@@ -1263,6 +1263,41 @@
      "id": "EZW2P5d0QeU"
     }
    }
+  },
+  {
+   "quando": "2026-10-10T21:57",
+   "slot": "2026-10-10 23:45",
+   "video": "IMG_3796.mov",
+   "md5": "702df3d27239a9a46c245dcd4985f0d6",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-09T22:11+02:00",
+   "frase": "MIE-0a274410",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 5,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.45,
+     "dominante": "neutra",
+     "rumore": 3.4
+    },
+    "copertina_ms": 750,
+    "musica": "ten_1.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "XuknmRROzeA"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -1302,10 +1337,10 @@
   "2026-10-10 16:45",
   "2026-10-10 18:30",
   "2026-10-10 20:15",
-  "2026-10-10 22:00"
+  "2026-10-10 22:00",
+  "2026-10-10 23:45"
  ],
  "musica_recenti": [
-  "taking_flight_2.m4a",
   "cutscene_crush_3.m4a",
   "cutscene_crush_1.m4a",
   "vibe_check_3.m4a",
@@ -1324,7 +1359,8 @@
   "visions_3.m4a",
   "locked_in_3.m4a",
   "kick_it_1.m4a",
-  "the_light_3.m4a"
+  "the_light_3.m4a",
+  "ten_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1360,10 +1396,10 @@
   "MIE-578492d5",
   "MIE-238ada57",
   "MIE-b455cdd4",
-  "MIE-cda9129e"
+  "MIE-cda9129e",
+  "MIE-0a274410"
  ],
  "temi_recenti": [
-  "imprenditore",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -1372,20 +1408,10 @@
   "mentalita",
   "palestra",
   "mentalita",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "1-ETSbQv32z4REdkPimLGMjS_e_CGJbid": {
-   "nome": "IMG_3796.mov",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-09T22:11+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-09T20:58:26.443Z"
-  },
   "1S1pJfDIBWSCUBuIf7_RTu57Wl4AFVy5y": {
    "nome": "IMG_3801.mov",
    "scena": "lavoro",
@@ -1477,6 +1503,10 @@
    "ultimo": "2026-10-10"
   },
   "1PQ4fQcv7i5uxq-1id98LKGmYVNXmunzk": {
+   "usi": 1,
+   "ultimo": "2026-10-10"
+  },
+  "1bicrA3_wslB4doIghi4sFYoNaPd5lCyK": {
    "usi": 1,
    "ultimo": "2026-10-10"
   }
