@@ -1053,6 +1053,41 @@
      "id": "pPFvxTGJdnw"
     }
    }
+  },
+  {
+   "quando": "2026-10-10T11:20",
+   "slot": "2026-10-10 13:15",
+   "video": "IMG_3800.mov",
+   "md5": "1061ea7263fc8eabad1d2b70bff7408e",
+   "da_archivio": false,
+   "scena": "casa",
+   "registrato": "2026-10-10T12:30+02:00",
+   "frase": "MIE-6c3e87e4",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 70,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "esterno",
+     "motivo": "luce del giorno",
+     "luce": 0.66,
+     "dominante": "calda",
+     "rumore": 3.6
+    },
+    "copertina_ms": 750,
+    "musica": "taking_flight_1.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "onc5NaaFhrU"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -1086,10 +1121,10 @@
   "2026-10-09 23:45",
   "2026-10-10 08:00",
   "2026-10-10 09:45",
-  "2026-10-10 11:30"
+  "2026-10-10 11:30",
+  "2026-10-10 13:15"
  ],
  "musica_recenti": [
-  "trap_02.flac",
   "drive_02.flac",
   "drive_08.flac",
   "phonk_13.flac",
@@ -1108,7 +1143,8 @@
   "survival_mode_3.m4a",
   "taking_flight_3.m4a",
   "cutscene_crush_2.m4a",
-  "fire_in_the_sky_3.m4a"
+  "fire_in_the_sky_3.m4a",
+  "taking_flight_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1138,7 +1174,8 @@
   "MIE-23a8255f",
   "MIE-86216122",
   "MIE-280ba687",
-  "MIE-ad65438a"
+  "MIE-ad65438a",
+  "MIE-6c3e87e4"
  ],
  "temi_recenti": [
   "mentalita",
@@ -1146,8 +1183,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -1207,6 +1244,28 @@
    "registrato": "2026-10-09T22:11+02:00",
    "fascia": "palestra",
    "caricato": "2026-10-09T20:58:26.443Z"
+  },
+  "1X0apziP_pSlzwY4Ap0RBSMpgCD6Rnddc": {
+   "nome": "IMG_3801.mov",
+   "scena": "lavoro",
+   "sicurezza": 0.61,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-10T12:31+02:00",
+   "fascia": "ufficio",
+   "caricato": "2026-10-10T10:33:50.061Z"
+  },
+  "1S1pJfDIBWSCUBuIf7_RTu57Wl4AFVy5y": {
+   "nome": "IMG_3801.mov",
+   "scena": "lavoro",
+   "sicurezza": 0.61,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-10T12:31+02:00",
+   "fascia": "ufficio",
+   "caricato": "2026-10-10T10:42:35.708Z"
   }
  },
  "pulizia": "2026-10-10",
@@ -1264,6 +1323,10 @@
    "ultimo": "2026-10-10"
   },
   "1J6rUreSm_Mrsbua06uFjE1b4xu8-pRpL": {
+   "usi": 1,
+   "ultimo": "2026-10-10"
+  },
+  "1hvbjqvKs_ADW2bi_kJP0H1fxpKUzd-nq": {
    "usi": 1,
    "ultimo": "2026-10-10"
   }
