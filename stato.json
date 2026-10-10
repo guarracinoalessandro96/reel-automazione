@@ -1158,6 +1158,41 @@
      "id": "dV0XFMHCxQE"
     }
    }
+  },
+  {
+   "quando": "2026-10-10T16:39",
+   "slot": "2026-10-10 18:30",
+   "video": "IMG_3793.mov",
+   "md5": "ae0c3f8b82423251ac42b8e655204777",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-09T21:50+02:00",
+   "frase": "MIE-238ada57",
+   "tema": "palestra",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 11,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.44,
+     "dominante": "calda",
+     "rumore": 3.1
+    },
+    "copertina_ms": 3750,
+    "musica": "locked_in_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "IhP2G_S1Aq0"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -1194,10 +1229,10 @@
   "2026-10-10 11:30",
   "2026-10-10 13:15",
   "2026-10-10 15:00",
-  "2026-10-10 16:45"
+  "2026-10-10 16:45",
+  "2026-10-10 18:30"
  ],
  "musica_recenti": [
-  "phonk_13.flac",
   "phonk_10.flac",
   "keep_it_movin_3.m4a",
   "taking_flight_2.m4a",
@@ -1216,7 +1251,8 @@
   "fire_in_the_sky_3.m4a",
   "taking_flight_1.m4a",
   "horizons_1.m4a",
-  "visions_3.m4a"
+  "visions_3.m4a",
+  "locked_in_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1249,10 +1285,10 @@
   "MIE-ad65438a",
   "MIE-6c3e87e4",
   "MIE-697aec3c",
-  "MIE-578492d5"
+  "MIE-578492d5",
+  "MIE-238ada57"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "imprenditore",
@@ -1261,20 +1297,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "palestra"
  ],
  "analisi": {
-  "1BdVQcgrC5uWedL_tsS_sSF5lYkucXpsW": {
-   "nome": "IMG_3793.mov",
-   "scena": "palestra",
-   "sicurezza": 0.9,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-09T21:50+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-09T20:50:14.225Z"
-  },
   "1kBUe-9bO-8R9gX_1dao0ueWu3X7Akj_P": {
    "nome": "IMG_3794.mov",
    "scena": "palestra",
@@ -1387,6 +1413,10 @@
    "ultimo": "2026-10-10"
   },
   "1pehUAXM-ECFcfP-KX5ZvviOGvc64zvgA": {
+   "usi": 1,
+   "ultimo": "2026-10-10"
+  },
+  "1fr7r7gFPOa5mMg3NCHBo-KO8j4yxbprb": {
    "usi": 1,
    "ultimo": "2026-10-10"
   }
