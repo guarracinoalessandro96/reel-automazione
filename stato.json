@@ -983,6 +983,41 @@
      "id": "pwQnnA75CjU"
     }
    }
+  },
+  {
+   "quando": "2026-10-10T07:56",
+   "slot": "2026-10-10 09:45",
+   "video": "IMG_3768.MOV",
+   "md5": "2bb147610f01582dae3deb4984c93621",
+   "da_archivio": false,
+   "scena": "lavoro",
+   "registrato": "2026-10-09T11:00+02:00",
+   "frase": "MIE-280ba687",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 41,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.63,
+     "dominante": "calda",
+     "rumore": 3.5
+    },
+    "copertina_ms": 750,
+    "musica": "cutscene_crush_2.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "827QAa4eIgw"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -1014,7 +1049,8 @@
   "2026-10-09 20:15",
   "2026-10-09 22:00",
   "2026-10-09 23:45",
-  "2026-10-10 08:00"
+  "2026-10-10 08:00",
+  "2026-10-10 09:45"
  ],
  "musica_recenti": [
   "drive_10.flac",
@@ -1035,7 +1071,8 @@
   "way_back_home_2.m4a",
   "majestic_12_3.m4a",
   "survival_mode_3.m4a",
-  "taking_flight_3.m4a"
+  "taking_flight_3.m4a",
+  "cutscene_crush_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1063,10 +1100,10 @@
   "MIE-7214ec2b",
   "MIE-cb1a01f5",
   "MIE-23a8255f",
-  "MIE-86216122"
+  "MIE-86216122",
+  "MIE-280ba687"
  ],
  "temi_recenti": [
-  "palestra",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -1075,20 +1112,10 @@
   "mentalita",
   "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "1wZl3sSfMw_7B0ADCvxc1Wa3E--Rl19kx": {
-   "nome": "IMG_3768.MOV",
-   "scena": "lavoro",
-   "sicurezza": 0.62,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-09T11:00+02:00",
-   "fascia": "ufficio",
-   "caricato": "2026-10-09T09:06:00.177Z"
-  },
   "1GS6pSzimhli97L2CMSZ9K_SHNyznaJ86": {
    "nome": "IMG_3788.mov",
    "scena": "lavoro",
@@ -1207,6 +1234,10 @@
    "ultimo": "2026-10-09"
   },
   "1ehg1VD_Xtwd5ysGegtBXVLxxyo6vHs0U": {
+   "usi": 1,
+   "ultimo": "2026-10-10"
+  },
+  "1J6rUreSm_Mrsbua06uFjE1b4xu8-pRpL": {
    "usi": 1,
    "ultimo": "2026-10-10"
   }
