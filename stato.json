@@ -1123,6 +1123,41 @@
      "id": "ZoLm_n-MEVo"
     }
    }
+  },
+  {
+   "quando": "2026-10-10T14:56",
+   "slot": "2026-10-10 16:45",
+   "video": "IMG_3801.mov",
+   "md5": "c7034ad29520419d135045651c68e40d",
+   "da_archivio": false,
+   "scena": "lavoro",
+   "registrato": "2026-10-10T12:31+02:00",
+   "frase": "MIE-578492d5",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 28,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "esterno",
+     "motivo": "luce del giorno",
+     "luce": 0.64,
+     "dominante": "calda",
+     "rumore": 2.9
+    },
+    "copertina_ms": 1750,
+    "musica": "visions_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "dV0XFMHCxQE"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -1158,10 +1193,10 @@
   "2026-10-10 09:45",
   "2026-10-10 11:30",
   "2026-10-10 13:15",
-  "2026-10-10 15:00"
+  "2026-10-10 15:00",
+  "2026-10-10 16:45"
  ],
  "musica_recenti": [
-  "drive_08.flac",
   "phonk_13.flac",
   "phonk_10.flac",
   "keep_it_movin_3.m4a",
@@ -1180,7 +1215,8 @@
   "cutscene_crush_2.m4a",
   "fire_in_the_sky_3.m4a",
   "taking_flight_1.m4a",
-  "horizons_1.m4a"
+  "horizons_1.m4a",
+  "visions_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1212,14 +1248,15 @@
   "MIE-280ba687",
   "MIE-ad65438a",
   "MIE-6c3e87e4",
-  "MIE-697aec3c"
+  "MIE-697aec3c",
+  "MIE-578492d5"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -1270,17 +1307,6 @@
    "registrato": "2026-10-09T22:11+02:00",
    "fascia": "palestra",
    "caricato": "2026-10-09T20:58:26.443Z"
-  },
-  "1X0apziP_pSlzwY4Ap0RBSMpgCD6Rnddc": {
-   "nome": "IMG_3801.mov",
-   "scena": "lavoro",
-   "sicurezza": 0.61,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-10T12:31+02:00",
-   "fascia": "ufficio",
-   "caricato": "2026-10-10T10:33:50.061Z"
   },
   "1S1pJfDIBWSCUBuIf7_RTu57Wl4AFVy5y": {
    "nome": "IMG_3801.mov",
@@ -1357,6 +1383,10 @@
    "ultimo": "2026-10-10"
   },
   "1667Zix1tBrgfPEpOlI9dHiGVISZp0i8L": {
+   "usi": 1,
+   "ultimo": "2026-10-10"
+  },
+  "1pehUAXM-ECFcfP-KX5ZvviOGvc64zvgA": {
    "usi": 1,
    "ultimo": "2026-10-10"
   }
