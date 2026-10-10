@@ -1018,6 +1018,41 @@
      "id": "827QAa4eIgw"
     }
    }
+  },
+  {
+   "quando": "2026-10-10T09:40",
+   "slot": "2026-10-10 11:30",
+   "video": "IMG_3788.mov",
+   "md5": "e00277d56f2b1cd2829327c266112869",
+   "da_archivio": false,
+   "scena": "lavoro",
+   "registrato": "2026-10-09T18:24+02:00",
+   "frase": "MIE-ad65438a",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 22,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.66,
+     "dominante": "calda",
+     "rumore": 3.5
+    },
+    "copertina_ms": 4750,
+    "musica": "fire_in_the_sky_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "pPFvxTGJdnw"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -1050,10 +1085,10 @@
   "2026-10-09 22:00",
   "2026-10-09 23:45",
   "2026-10-10 08:00",
-  "2026-10-10 09:45"
+  "2026-10-10 09:45",
+  "2026-10-10 11:30"
  ],
  "musica_recenti": [
-  "drive_10.flac",
   "trap_02.flac",
   "drive_02.flac",
   "drive_08.flac",
@@ -1072,7 +1107,8 @@
   "majestic_12_3.m4a",
   "survival_mode_3.m4a",
   "taking_flight_3.m4a",
-  "cutscene_crush_2.m4a"
+  "cutscene_crush_2.m4a",
+  "fire_in_the_sky_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1101,7 +1137,8 @@
   "MIE-cb1a01f5",
   "MIE-23a8255f",
   "MIE-86216122",
-  "MIE-280ba687"
+  "MIE-280ba687",
+  "MIE-ad65438a"
  ],
  "temi_recenti": [
   "mentalita",
@@ -1110,23 +1147,12 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "1GS6pSzimhli97L2CMSZ9K_SHNyznaJ86": {
-   "nome": "IMG_3788.mov",
-   "scena": "lavoro",
-   "sicurezza": 0.5,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-09T18:24+02:00",
-   "fascia": "ufficio",
-   "caricato": "2026-10-09T16:26:59.643Z"
-  },
   "1c_s-G9GCIJ-ufhOBbqASHDyeTAvhWuS1": {
    "nome": "IMG_3790.MOV",
    "scena": "lavoro",
