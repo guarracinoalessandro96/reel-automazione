@@ -27,11 +27,16 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 40
     steps:
+      # 11/10/2026: ref main = lo stato PIU' RECENTE (senza, un controllo in coda dietro a un altro leggeva lo stato
+      # di quando era partito e ripubblicava lo stesso orario: alle 15:00 erano usciti 2 reel)
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Tocca pubblicare adesso?
         id: orario
         run: |
+          git pull -q --ff-only origin main || true
           SLOT="$(python3 orario.py)"
           if [ -n "$SLOT" ] && [ "$(python3 coda.py)" = "0" ] && ! grep -q '"riprova": \[[^]]' stato.json; then
             echo "Nessun video in coda e niente da riprovare: mi fermo qui."
