@@ -136,7 +136,7 @@ def ora_registrazione(info_ffmpeg):
 
 
 def fascia_per(scena, quando):
-    """Fascia della giornata di Alessandro in cui il video sta meglio (dal 8/10/2026, 10 reel al giorno).
+    """Fascia della giornata di Alessandro in cui il video sta meglio (dal 8/10/2026; dal 11/10 5 reel al giorno).
     Giornata: 8-9 macchina, 9-13 ufficio, 13-14 pranzo a casa, 14-19 ufficio, 19 macchina verso casa,
     21-23 palestra, 23 macchina verso casa. Fasce: mattina 8:00 | ufficio 9:45 11:30 15:00 16:45 |
     pranzo 13:15 | sera 18:30 20:15 | palestra 22:00 | notte 23:45."""

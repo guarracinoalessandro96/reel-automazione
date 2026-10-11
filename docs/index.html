@@ -83,9 +83,9 @@ fetch("https://raw.githubusercontent.com/guarracinoalessandro96/reel-automazione
   if (!st) { body.textContent = "Stato non disponibile."; return; }
   const coda = Object.values(st.analisi || {}).sort((a, b) => (a.caricato || "").localeCompare(b.caricato || ""));
   document.getElementById("codaNum").textContent = coda.length;
-  const giorni = coda.length / 10;
+  const giorni = coda.length / 5;
   let h = coda.length
-    ? `Video nuovi per circa ${giorni < 1 ? "meno di un giorno" : Math.floor(giorni) + (Math.floor(giorni) === 1 ? " giorno" : " giorni")} a 10 reel al giorno. Poi si riusano quelli dell'archivio.`
+    ? `Video nuovi per circa ${giorni < 1 ? "meno di un giorno" : Math.floor(giorni) + (Math.floor(giorni) === 1 ? " giorno" : " giorni")} a 5 reel al giorno. Poi si riusano quelli dell'archivio.`
     : "Nessun video nuovo: si pubblica dall'archivio. Carica nuovi video nella cartella Da pubblicare.";
   if (coda.length) h += "<br>" + coda.map(v => `${v.nome} · ${v.scena} · ${v.fascia || ""}`).join("<br>");
   const pub = (st.storico || []).slice(-10).reverse();

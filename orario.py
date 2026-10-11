@@ -1,4 +1,4 @@
-"""Decide se adesso tocca pubblicare. Dal 8/10/2026: 10 reel al giorno, dalle 8:00 alle 23:45 (ora di Roma).
+"""Decide se adesso tocca pubblicare. Dal 11/10/2026: 5 reel al giorno, dalle 8:00 alle 22:00 (ora di Roma). (8-11/10: 10 al giorno.)
 
 GitHub avvia il controllo ogni 10 minuti (e a volte con ritardo): qui si guarda l'ora di Roma e si pubblica
 se c'e' un orario scaduto (o che scade entro 10 minuti) e non ancora fatto, entro la sua finestra (fino all'orario successivo; l'ultimo
@@ -11,9 +11,8 @@ from zoneinfo import ZoneInfo
 # (ora, minuti, fascia della giornata di Alessandro)
 # giornata di Alessandro: 8-9 macchina, 9-13 ufficio, 13-14 pranzo a casa (in macchina), 14-19 ufficio,
 # 19 macchina verso casa, 21-23 palestra, 23 macchina verso casa
-SLOTS = [(8, 0, "mattina"), (9, 45, "ufficio"), (11, 30, "ufficio"), (13, 15, "pranzo"), (15, 0, "ufficio"),
-         (16, 45, "ufficio"), (18, 30, "sera"), (20, 15, "sera"), (22, 0, "palestra"), (23, 45, "notte")]
-FINE_ULTIMO = 25 * 60 + 30           # l'ultimo orario (23:45) resta valido fino all'01:30
+SLOTS = [(8, 0, "mattina"), (11, 30, "ufficio"), (13, 15, "pranzo"), (19, 0, "sera"), (22, 0, "palestra")]
+FINE_ULTIMO = 25 * 60 + 30           # l'ultimo orario (22:00) resta valido fino all'01:30
 ANTICIPO = 10                        # minuti: GitHub parte spesso in ritardo, quindi uno slot si puo' fare fino a 10' prima
 STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stato.json")
 
