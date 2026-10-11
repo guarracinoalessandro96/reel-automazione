@@ -1489,6 +1489,41 @@
      "id": "R7q0MYaa_mg"
     }
    }
+  },
+  {
+   "quando": "2026-10-11T14:38",
+   "slot": "2026-10-11 16:45",
+   "video": "IMG_3610.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "specchio",
+   "registrato": null,
+   "frase": "MIE-7ec0ba8f",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 4,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 0.0s a 8.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "interno_caldo",
+     "motivo": "luce calda artificiale",
+     "luce": 0.49,
+     "dominante": "calda",
+     "rumore": 1.5
+    },
+    "copertina_ms": 4250,
+    "musica": "delirium_2.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "CIlJ10bKSqk"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -1534,10 +1569,10 @@
   "2026-10-11 09:45",
   "2026-10-11 11:30",
   "2026-10-11 13:15",
-  "2026-10-11 15:00"
+  "2026-10-11 15:00",
+  "2026-10-11 16:45"
  ],
  "musica_recenti": [
-  "ancient_civilisations_2.m4a",
   "turn_in_the_sun_3.m4a",
   "way_back_home_2.m4a",
   "majestic_12_3.m4a",
@@ -1556,7 +1591,8 @@
   "way_back_home_3.m4a",
   "cutscene_crush_1.m4a",
   "intergalactic_1.m4a",
-  "mirror_mirror_2.m4a"
+  "mirror_mirror_2.m4a",
+  "delirium_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1598,15 +1634,16 @@
   "MIE-295fce20",
   "MIE-09bf893e",
   "MIE-86a8cdb9",
-  "MIE-8261fe14"
+  "MIE-8261fe14",
+  "MIE-7ec0ba8f"
  ],
  "temi_recenti": [
-  "mentalita",
   "palestra",
   "mentalita",
   "mentalita",
   "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -1716,6 +1753,10 @@
    "ultimo": "2026-10-11"
   },
   "1VcWPefu4x-3tDRSZ0FWdG27LeXQiy6FO": {
+   "usi": 1,
+   "ultimo": "2026-10-11"
+  },
+  "1X37GK_cN0RxuzC0UYRmVlSUUrJUgw0WY": {
    "usi": 1,
    "ultimo": "2026-10-11"
   }
