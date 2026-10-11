@@ -1333,6 +1333,41 @@
      "id": "2iz7MEy6RbI"
     }
    }
+  },
+  {
+   "quando": "2026-10-11T07:57",
+   "slot": "2026-10-11 09:45",
+   "video": "IMG_3606.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "cibo",
+   "registrato": null,
+   "frase": "MIE-295fce20",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 2,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 0.0s a 8.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.53,
+     "dominante": "calda",
+     "rumore": 2.0
+    },
+    "copertina_ms": 7700,
+    "musica": "way_back_home_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "5d3-vtUH3YY"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -1374,10 +1409,10 @@
   "2026-10-10 20:15",
   "2026-10-10 22:00",
   "2026-10-10 23:45",
-  "2026-10-11 08:00"
+  "2026-10-11 08:00",
+  "2026-10-11 09:45"
  ],
  "musica_recenti": [
-  "cutscene_crush_1.m4a",
   "vibe_check_3.m4a",
   "way_back_home_1.m4a",
   "stake_out_3.m4a",
@@ -1396,7 +1431,8 @@
   "kick_it_1.m4a",
   "the_light_3.m4a",
   "ten_1.m4a",
-  "turn_in_the_sun_2.m4a"
+  "turn_in_the_sun_2.m4a",
+  "way_back_home_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1434,10 +1470,10 @@
   "MIE-b455cdd4",
   "MIE-cda9129e",
   "MIE-0a274410",
-  "MIE-1c29fe87"
+  "MIE-1c29fe87",
+  "MIE-295fce20"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -1446,7 +1482,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "dieta"
+  "dieta",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-10-11",
@@ -1536,6 +1573,10 @@
    "ultimo": "2026-10-10"
   },
   "1USgV2-ogwqGZR55x19DmnjYTxCfEmms8": {
+   "usi": 1,
+   "ultimo": "2026-10-11"
+  },
+  "1evT1w3QaDK7AVRQtw_S2gz-hZLf5O6q_": {
    "usi": 1,
    "ultimo": "2026-10-11"
   }
