@@ -1594,6 +1594,41 @@
      "id": "4Vx8_4tTNMY"
     }
    }
+  },
+  {
+   "quando": "2026-10-11T19:54",
+   "slot": "2026-10-11 22:00",
+   "video": "IMG_3651.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-6ac2e2c0",
+   "tema": "dieta",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 15,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 0.0s a 8.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.33,
+     "dominante": "neutra",
+     "rumore": 1.6
+    },
+    "copertina_ms": 5250,
+    "musica": "kick_it_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "gBm5CfF0vkw"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -1642,10 +1677,10 @@
   "2026-10-11 15:00",
   "2026-10-11 16:45",
   "2026-10-11 18:30",
-  "2026-10-11 20:15"
+  "2026-10-11 20:15",
+  "2026-10-11 22:00"
  ],
  "musica_recenti": [
-  "majestic_12_3.m4a",
   "survival_mode_3.m4a",
   "taking_flight_3.m4a",
   "cutscene_crush_2.m4a",
@@ -1664,7 +1699,8 @@
   "mirror_mirror_2.m4a",
   "delirium_2.m4a",
   "taking_flight_2.m4a",
-  "vibe_check_2.m4a"
+  "vibe_check_2.m4a",
+  "kick_it_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1709,10 +1745,10 @@
   "MIE-8261fe14",
   "MIE-7ec0ba8f",
   "MIE-fa1c8ac3",
-  "MIE-79f323dd"
+  "MIE-79f323dd",
+  "MIE-6ac2e2c0"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "dieta",
   "mentalita",
@@ -1721,7 +1757,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "dieta"
  ],
  "analisi": {},
  "pulizia": "2026-10-11",
@@ -1839,6 +1876,10 @@
    "ultimo": "2026-10-11"
   },
   "1a3hFaj1fQm1AuYdIv6iY-TZDvDdPOmOp": {
+   "usi": 1,
+   "ultimo": "2026-10-11"
+  },
+  "1zEPNZ20n1YmvIYS5sehdWmtTFzLNT8lO": {
    "usi": 1,
    "ultimo": "2026-10-11"
   }
