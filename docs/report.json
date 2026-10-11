@@ -1,8 +1,8 @@
 {
- "data": "2026-10-10",
- "reel_analizzati": 7,
- "media_views": 726,
- "like_totali": 53,
+ "data": "2026-10-11",
+ "reel_analizzati": 14,
+ "media_views": 803,
+ "like_totali": 129,
  "per_tema": {
   "amicizia": {
    "reel": 1,
@@ -13,30 +13,34 @@
    "media_views": 571
   },
   "mentalita": {
-   "reel": 5,
-   "media_views": 650
+   "reel": 12,
+   "media_views": 784
   }
  },
  "per_scena": {
   "cibo": {
    "reel": 1,
-   "media_views": 1363
+   "media_views": 1392
   },
   "lavoro": {
    "reel": 1,
    "media_views": 205
   },
   "macchina": {
-   "reel": 2,
-   "media_views": 330
+   "reel": 5,
+   "media_views": 947
   },
   "pacchi": {
    "reel": 1,
-   "media_views": 318
+   "media_views": 319
   },
   "palestra": {
+   "reel": 4,
+   "media_views": 706
+  },
+  "specchio": {
    "reel": 1,
-   "media_views": 1275
+   "media_views": 503
   },
   "uscita": {
    "reel": 1,
@@ -45,34 +49,58 @@
  },
  "per_orario": {
   "09": {
-   "reel": 1,
-   "media_views": 1363
+   "reel": 2,
+   "media_views": 948
   },
   "12": {
-   "reel": 2,
-   "media_views": 444
+   "reel": 3,
+   "media_views": 759
+  },
+  "15": {
+   "reel": 1,
+   "media_views": 1260
   },
   "18": {
-   "reel": 1,
-   "media_views": 1275
+   "reel": 2,
+   "media_views": 1219
   },
   "21": {
-   "reel": 3,
-   "media_views": 517
+   "reel": 4,
+   "media_views": 458
+  },
+  "22": {
+   "reel": 1,
+   "media_views": 109
+  },
+  "23": {
+   "reel": 1,
+   "media_views": 1428
   }
  },
  "per_musica": {
+  "Keep It Movin": {
+   "reel": 1,
+   "media_views": 109
+  },
+  "Taking Flight": {
+   "reel": 1,
+   "media_views": 1428
+  },
   "deciso": {
    "reel": 2,
    "media_views": 262
   },
   "drive": {
-   "reel": 3,
-   "media_views": 674
+   "reel": 5,
+   "media_views": 940
   },
   "phonk": {
+   "reel": 3,
+   "media_views": 906
+  },
+  "trap": {
    "reel": 1,
-   "media_views": 1275
+   "media_views": 503
   },
   "tropical": {
    "reel": 1,
@@ -80,13 +108,32 @@
   }
  },
  "per_origine": {
+  "archivio": {
+   "reel": 2,
+   "media_views": 768
+  },
   "video nuovo": {
-   "reel": 7,
-   "media_views": 726
+   "reel": 12,
+   "media_views": 808
   }
  },
- "pesi_temi": {},
+ "pesi_temi": {
+  "amicizia": 1.09,
+  "imprenditore": 0.95,
+  "mentalita": 0.98
+ },
  "migliori": [
+  {
+   "quando": "2026-10-08T21:48",
+   "frase": "MIE-747c8ba5",
+   "tema": "mentalita",
+   "scena": "macchina",
+   "orario": "23",
+   "musica": "Taking Flight",
+   "origine": "archivio",
+   "views": 1428,
+   "like": 20
+  },
   {
    "quando": "2026-10-07T07:06",
    "frase": "MIE-fb841d9f",
@@ -95,8 +142,19 @@
    "orario": "09",
    "musica": "drive",
    "origine": "video nuovo",
-   "views": 1363,
+   "views": 1392,
    "like": 9
+  },
+  {
+   "quando": "2026-10-08T10:25",
+   "frase": "MIE-e78c74d0",
+   "tema": "mentalita",
+   "scena": "macchina",
+   "orario": "12",
+   "musica": "drive",
+   "origine": "video nuovo",
+   "views": 1387,
+   "like": 33
   },
   {
    "quando": "2026-10-07T17:45",
@@ -106,42 +164,20 @@
    "orario": "18",
    "musica": "phonk",
    "origine": "video nuovo",
-   "views": 1275,
+   "views": 1293,
    "like": 10
   },
   {
-   "quando": "2026-10-04T19:05",
-   "frase": "QJ080",
-   "tema": "amicizia",
-   "scena": "uscita",
-   "orario": "21",
-   "musica": "tropical",
-   "origine": "video nuovo",
-   "views": 1259,
-   "like": 11
-  },
-  {
-   "quando": "2026-10-05T11:42",
-   "frase": "QM202610070",
-   "tema": "imprenditore",
+   "quando": "2026-10-08T13:04",
+   "frase": "MIE-0fecdd42",
+   "tema": "mentalita",
    "scena": "macchina",
-   "orario": "12",
+   "orario": "15",
    "musica": "drive",
    "origine": "video nuovo",
-   "views": 571,
-   "like": 5
-  },
-  {
-   "quando": "2026-10-07T10:24",
-   "frase": "MIE-f7b5f4a8",
-   "tema": "mentalita",
-   "scena": "pacchi",
-   "orario": "12",
-   "musica": "deciso",
-   "origine": "video nuovo",
-   "views": 318,
-   "like": 7
+   "views": 1260,
+   "like": 8
   }
  ],
- "nota": "Solo YouTube; non contati gli Shorts usciti da meno di 2 giorni. Servono almeno 10 reel per conclusioni affidabili."
+ "nota": "Solo YouTube; non contati gli Shorts usciti da meno di 2 giorni."
 }
