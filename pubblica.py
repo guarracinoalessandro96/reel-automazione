@@ -666,12 +666,17 @@ def main():
                 log("cestino non riuscito:", e)
             videos.remove(v)
     # doppioni: stesso file caricato due volte (o gia' pubblicato) -> nel cestino, non esce due volte
+    # anche lo stesso video esportato due volte (file diversi, es. IMG_3796.MOV e IMG_3796.mov): stesso nome + stessa ora di ripresa
     visti = {h["md5"] for h in state["storico"] if h.get("md5")}
+    gemello = lambda nome, reg: (os.path.splitext(nome or "")[0].lower(), reg) if reg else None
+    visti |= {gemello(h.get("video"), h.get("registrato")) for h in state["storico"]
+              if not h.get("da_archivio") and gemello(h.get("video"), h.get("registrato"))}
     for v in list(videos):
         md5 = v.get("md5Checksum")
-        if not md5:
+        chiave = gemello(v["name"], state["analisi"].get(v["id"], {}).get("registrato"))
+        if not md5 and not chiave:
             continue
-        if md5 in visti:
+        if (md5 and md5 in visti) or (chiave and chiave in visti):
             log(f"{v['name']}: e' un doppione di un video gia' pubblicato o in coda, messo nel cestino di Drive")
             try:
                 drive.cestino(v["id"])
@@ -679,7 +684,7 @@ def main():
                 log("cestino non riuscito:", e)
             videos.remove(v)
         else:
-            visti.add(md5)
+            visti |= {x for x in (md5, chiave) if x}
     in_coda = {v["id"] for v in videos}
     state["analisi"] = {k: a for k, a in state["analisi"].items() if k in in_coda}   # dimentica quelli usciti
     save()

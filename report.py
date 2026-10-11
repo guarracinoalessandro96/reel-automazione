@@ -34,6 +34,21 @@ def stat_youtube(ids):
     return res
 
 
+def testi_citazioni():
+    """{id: testo} delle citazioni del Google Doc (nello storico c'e' solo l'id, es. MIE-1c29fe87)."""
+    try:
+        import mie_citazioni
+        from google.oauth2.credentials import Credentials
+        from googleapiclient.discovery import build
+        c = Credentials(None, refresh_token=ENV("GOOGLE_REFRESH_TOKEN"), client_id=ENV("GOOGLE_CLIENT_ID"),
+                        client_secret=ENV("GOOGLE_CLIENT_SECRET"), token_uri="https://oauth2.googleapis.com/token")
+        api = build("drive", "v3", credentials=c, cache_discovery=False)
+        return {f["id"]: f["gancio"] for f in mie_citazioni.frasi(mie_citazioni.leggi(api, ENV("DRIVE_FOLDER_DA_PUBBLICARE")))}
+    except Exception as e:
+        print("Testi delle citazioni non letti:", e)
+        return {}
+
+
 def genere(musica):
     """'phonk_13.flac' -> 'phonk' (generi creati da noi); 'taking_flight_2.m4a' -> 'Taking Flight' (Raccolta audio YouTube)."""
     if not musica:
@@ -80,6 +95,8 @@ def main():
         json.dump(pesi, open(PESI, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
 
     migliori = sorted(righe, key=lambda r: (-r["views"], -r["like"]))[:5]
+    testi = testi_citazioni() if migliori else {}
+    migliori = [dict(m, frase=testi.get(m["frase"], m["frase"])) for m in migliori]
     report = {"data": datetime.date.today().isoformat(), "reel_analizzati": len(righe),
               "media_views": round(media_tot), "like_totali": sum(r["like"] for r in righe),
               "per_tema": media(per["tema"]), "per_scena": media(per["scena"]), "per_orario": media(per["orario"]),

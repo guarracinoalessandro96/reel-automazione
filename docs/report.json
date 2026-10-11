@@ -1,34 +1,38 @@
 {
  "data": "2026-10-11",
- "reel_analizzati": 14,
- "media_views": 803,
- "like_totali": 129,
+ "reel_analizzati": 19,
+ "media_views": 902,
+ "like_totali": 183,
  "per_tema": {
   "amicizia": {
    "reel": 1,
    "media_views": 1259
   },
   "imprenditore": {
-   "reel": 1,
-   "media_views": 571
+   "reel": 2,
+   "media_views": 912
   },
   "mentalita": {
-   "reel": 12,
-   "media_views": 784
+   "reel": 15,
+   "media_views": 859
+  },
+  "palestra": {
+   "reel": 1,
+   "media_views": 1166
   }
  },
  "per_scena": {
   "cibo": {
    "reel": 1,
-   "media_views": 1392
+   "media_views": 1394
   },
   "lavoro": {
    "reel": 1,
    "media_views": 205
   },
   "macchina": {
-   "reel": 5,
-   "media_views": 947
+   "reel": 7,
+   "media_views": 1028
   },
   "pacchi": {
    "reel": 1,
@@ -36,33 +40,45 @@
   },
   "palestra": {
    "reel": 4,
-   "media_views": 706
+   "media_views": 708
   },
   "specchio": {
-   "reel": 1,
-   "media_views": 503
+   "reel": 3,
+   "media_views": 891
   },
   "uscita": {
-   "reel": 1,
-   "media_views": 1259
+   "reel": 2,
+   "media_views": 1256
   }
  },
  "per_orario": {
+  "08": {
+   "reel": 1,
+   "media_views": 1253
+  },
   "09": {
-   "reel": 2,
-   "media_views": 948
+   "reel": 3,
+   "media_views": 1021
+  },
+  "11": {
+   "reel": 1,
+   "media_views": 1153
   },
   "12": {
    "reel": 3,
    "media_views": 759
   },
-  "15": {
+  "13": {
    "reel": 1,
-   "media_views": 1260
+   "media_views": 1255
+  },
+  "15": {
+   "reel": 2,
+   "media_views": 1138
   },
   "18": {
    "reel": 2,
-   "media_views": 1219
+   "media_views": 1221
   },
   "21": {
    "reel": 4,
@@ -74,17 +90,33 @@
   },
   "23": {
    "reel": 1,
-   "media_views": 1428
+   "media_views": 1471
   }
  },
  "per_musica": {
+  "Cutscene Crush": {
+   "reel": 2,
+   "media_views": 1210
+  },
   "Keep It Movin": {
    "reel": 1,
    "media_views": 109
   },
+  "Stake Out": {
+   "reel": 1,
+   "media_views": 1016
+  },
   "Taking Flight": {
    "reel": 1,
-   "media_views": 1428
+   "media_views": 1471
+  },
+  "Vibe Check": {
+   "reel": 1,
+   "media_views": 1153
+  },
+  "Way Back Home": {
+   "reel": 1,
+   "media_views": 1255
   },
   "deciso": {
    "reel": 2,
@@ -96,7 +128,7 @@
   },
   "phonk": {
    "reel": 3,
-   "media_views": 906
+   "media_views": 907
   },
   "trap": {
    "reel": 1,
@@ -109,67 +141,68 @@
  },
  "per_origine": {
   "archivio": {
-   "reel": 2,
-   "media_views": 768
+   "reel": 4,
+   "media_views": 1000
   },
   "video nuovo": {
-   "reel": 12,
-   "media_views": 808
+   "reel": 15,
+   "media_views": 875
   }
  },
  "pesi_temi": {
-  "amicizia": 1.09,
-  "imprenditore": 0.95,
-  "mentalita": 0.98
+  "amicizia": 1.07,
+  "imprenditore": 1.0,
+  "mentalita": 0.96,
+  "palestra": 1.05
  },
  "migliori": [
   {
    "quando": "2026-10-08T21:48",
-   "frase": "MIE-747c8ba5",
+   "frase": "Nessuno lavora più duro di un uomo che sa che nessuno lo sostiene.",
    "tema": "mentalita",
    "scena": "macchina",
    "orario": "23",
    "musica": "Taking Flight",
    "origine": "archivio",
-   "views": 1428,
-   "like": 20
+   "views": 1471,
+   "like": 22
   },
   {
    "quando": "2026-10-07T07:06",
-   "frase": "MIE-fb841d9f",
+   "frase": "Soffriamo di più nell'immaginazione che nella realtà.",
    "tema": "mentalita",
    "scena": "cibo",
    "orario": "09",
    "musica": "drive",
    "origine": "video nuovo",
-   "views": 1392,
+   "views": 1394,
    "like": 9
   },
   {
    "quando": "2026-10-08T10:25",
-   "frase": "MIE-e78c74d0",
+   "frase": "Sorridi fra, ti sei svegliato.",
    "tema": "mentalita",
    "scena": "macchina",
    "orario": "12",
    "musica": "drive",
    "origine": "video nuovo",
-   "views": 1387,
+   "views": 1388,
    "like": 33
   },
   {
    "quando": "2026-10-07T17:45",
-   "frase": "MIE-72a11d64",
+   "frase": "Una persona che ti valorizza non si metterebbe mai nella posizione di perderti.",
    "tema": "mentalita",
    "scena": "palestra",
    "orario": "18",
    "musica": "phonk",
    "origine": "video nuovo",
-   "views": 1293,
+   "views": 1297,
    "like": 10
   },
   {
    "quando": "2026-10-08T13:04",
-   "frase": "MIE-0fecdd42",
+   "frase": "Tutti vogliono vincere finché non capiscono quante sconfitte servono.",
    "tema": "mentalita",
    "scena": "macchina",
    "orario": "15",
