@@ -1473,6 +1473,22 @@
      "id": "m_VOPUpgAkE"
     }
    }
+  },
+  {
+   "quando": "2026-10-11T13:05",
+   "slot": "2026-10-11 15:00 (doppio)",
+   "video": null,
+   "da_archivio": true,
+   "scena": null,
+   "frase": "MIE-8917fc6c",
+   "tema": "mentalita",
+   "nota": "reel in piu' per due controlli partiti insieme (stato non salvato)",
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "R7q0MYaa_mg"
+    }
+   }
   }
  ],
  "riprova": [],
