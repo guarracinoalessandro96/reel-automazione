@@ -1559,6 +1559,41 @@
      "id": "_75fbdLeR6Q"
     }
    }
+  },
+  {
+   "quando": "2026-10-11T18:19",
+   "slot": "2026-10-11 20:15",
+   "video": "IMG_3633.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-79f323dd",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 47,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 0.0s a 8.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "esterno",
+     "motivo": "luce del giorno",
+     "luce": 0.58,
+     "dominante": "neutra",
+     "rumore": 3.1
+    },
+    "copertina_ms": 1750,
+    "musica": "vibe_check_2.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "4Vx8_4tTNMY"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -1606,10 +1641,10 @@
   "2026-10-11 13:15",
   "2026-10-11 15:00",
   "2026-10-11 16:45",
-  "2026-10-11 18:30"
+  "2026-10-11 18:30",
+  "2026-10-11 20:15"
  ],
  "musica_recenti": [
-  "way_back_home_2.m4a",
   "majestic_12_3.m4a",
   "survival_mode_3.m4a",
   "taking_flight_3.m4a",
@@ -1628,7 +1663,8 @@
   "intergalactic_1.m4a",
   "mirror_mirror_2.m4a",
   "delirium_2.m4a",
-  "taking_flight_2.m4a"
+  "taking_flight_2.m4a",
+  "vibe_check_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1672,13 +1708,14 @@
   "MIE-86a8cdb9",
   "MIE-8261fe14",
   "MIE-7ec0ba8f",
-  "MIE-fa1c8ac3"
+  "MIE-fa1c8ac3",
+  "MIE-79f323dd"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -1798,6 +1835,10 @@
    "ultimo": "2026-10-11"
   },
   "1cws0l3N3pW2EVUmkD-GxH5nLIIh0UE-c": {
+   "usi": 1,
+   "ultimo": "2026-10-11"
+  },
+  "1a3hFaj1fQm1AuYdIv6iY-TZDvDdPOmOp": {
    "usi": 1,
    "ultimo": "2026-10-11"
   }
