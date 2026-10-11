@@ -1298,6 +1298,41 @@
      "id": "XuknmRROzeA"
     }
    }
+  },
+  {
+   "quando": "2026-10-11T06:26",
+   "slot": "2026-10-11 08:00",
+   "video": "IMG_3801.mov",
+   "md5": "82fc8780e6c67a30f76bca456694873f",
+   "da_archivio": false,
+   "scena": "lavoro",
+   "registrato": "2026-10-10T12:31+02:00",
+   "frase": "MIE-1c29fe87",
+   "tema": "dieta",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 28,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "esterno",
+     "motivo": "luce del giorno",
+     "luce": 0.64,
+     "dominante": "calda",
+     "rumore": 2.9
+    },
+    "copertina_ms": 1750,
+    "musica": "turn_in_the_sun_2.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "2iz7MEy6RbI"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -1338,10 +1373,10 @@
   "2026-10-10 18:30",
   "2026-10-10 20:15",
   "2026-10-10 22:00",
-  "2026-10-10 23:45"
+  "2026-10-10 23:45",
+  "2026-10-11 08:00"
  ],
  "musica_recenti": [
-  "cutscene_crush_3.m4a",
   "cutscene_crush_1.m4a",
   "vibe_check_3.m4a",
   "way_back_home_1.m4a",
@@ -1360,7 +1395,8 @@
   "locked_in_3.m4a",
   "kick_it_1.m4a",
   "the_light_3.m4a",
-  "ten_1.m4a"
+  "ten_1.m4a",
+  "turn_in_the_sun_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1397,10 +1433,10 @@
   "MIE-238ada57",
   "MIE-b455cdd4",
   "MIE-cda9129e",
-  "MIE-0a274410"
+  "MIE-0a274410",
+  "MIE-1c29fe87"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -1409,22 +1445,11 @@
   "palestra",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "dieta"
  ],
- "analisi": {
-  "1S1pJfDIBWSCUBuIf7_RTu57Wl4AFVy5y": {
-   "nome": "IMG_3801.mov",
-   "scena": "lavoro",
-   "sicurezza": 0.61,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-10T12:31+02:00",
-   "fascia": "ufficio",
-   "caricato": "2026-10-10T10:42:35.708Z"
-  }
- },
- "pulizia": "2026-10-10",
+ "analisi": {},
+ "pulizia": "2026-10-11",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 1,
@@ -1509,6 +1534,10 @@
   "1bicrA3_wslB4doIghi4sFYoNaPd5lCyK": {
    "usi": 1,
    "ultimo": "2026-10-10"
+  },
+  "1USgV2-ogwqGZR55x19DmnjYTxCfEmms8": {
+   "usi": 1,
+   "ultimo": "2026-10-11"
   }
  }
 }
