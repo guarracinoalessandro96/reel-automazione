@@ -1699,6 +1699,41 @@
      "id": "e8lr1s1YLrQ"
     }
    }
+  },
+  {
+   "quando": "2026-10-12T11:10",
+   "slot": "2026-10-12 13:15",
+   "video": "IMG_3815.MOV",
+   "md5": "e931c7fc21cc1fe9a1ba382f056b8446",
+   "da_archivio": false,
+   "scena": "macchina",
+   "registrato": "2026-10-12T09:10+02:00",
+   "frase": "MIE-3532228a",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 36,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "esterno",
+     "motivo": "luce del giorno",
+     "luce": 0.55,
+     "dominante": "neutra",
+     "rumore": 3.3
+    },
+    "copertina_ms": 4750,
+    "musica": "turn_in_the_sun_1.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "9ID5iArgwMI"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -1750,10 +1785,10 @@
   "2026-10-11 20:15",
   "2026-10-11 22:00",
   "2026-10-12 08:00",
-  "2026-10-12 11:30"
+  "2026-10-12 11:30",
+  "2026-10-12 13:15"
  ],
  "musica_recenti": [
-  "cutscene_crush_2.m4a",
   "fire_in_the_sky_3.m4a",
   "taking_flight_1.m4a",
   "horizons_1.m4a",
@@ -1772,7 +1807,8 @@
   "vibe_check_2.m4a",
   "kick_it_3.m4a",
   "moon_vision_1.m4a",
-  "whoop_2.m4a"
+  "whoop_2.m4a",
+  "turn_in_the_sun_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1820,7 +1856,8 @@
   "MIE-79f323dd",
   "MIE-6ac2e2c0",
   "MIE-ee2f351d",
-  "MIE-18c05f35"
+  "MIE-18c05f35",
+  "MIE-3532228a"
  ],
  "temi_recenti": [
   "mentalita",
@@ -1829,8 +1866,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -1956,6 +1993,10 @@
   "1zEPNZ20n1YmvIYS5sehdWmtTFzLNT8lO": {
    "usi": 1,
    "ultimo": "2026-10-11"
+  },
+  "1vOgmkuZ-zKENaS1fagQc3J6w_396E-JX": {
+   "usi": 1,
+   "ultimo": "2026-10-12"
   }
  }
 }
