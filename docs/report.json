@@ -1,27 +1,31 @@
 {
- "data": "2026-10-11",
- "reel_analizzati": 19,
- "media_views": 902,
- "like_totali": 183,
+ "data": "2026-10-12",
+ "reel_analizzati": 24,
+ "media_views": 894,
+ "like_totali": 216,
  "per_tema": {
   "amicizia": {
    "reel": 1,
    "media_views": 1259
   },
   "imprenditore": {
-   "reel": 2,
-   "media_views": 912
+   "reel": 3,
+   "media_views": 938
   },
   "mentalita": {
-   "reel": 15,
-   "media_views": 859
+   "reel": 19,
+   "media_views": 854
   },
   "palestra": {
    "reel": 1,
-   "media_views": 1166
+   "media_views": 1167
   }
  },
  "per_scena": {
+  "casa": {
+   "reel": 1,
+   "media_views": 1023
+  },
   "cibo": {
    "reel": 1,
    "media_views": 1394
@@ -31,20 +35,20 @@
    "media_views": 205
   },
   "macchina": {
-   "reel": 7,
-   "media_views": 1028
+   "reel": 9,
+   "media_views": 945
   },
   "pacchi": {
    "reel": 1,
    "media_views": 319
   },
   "palestra": {
-   "reel": 4,
-   "media_views": 708
+   "reel": 5,
+   "media_views": 767
   },
   "specchio": {
-   "reel": 3,
-   "media_views": 891
+   "reel": 4,
+   "media_views": 920
   },
   "uscita": {
    "reel": 2,
@@ -54,11 +58,11 @@
  "per_orario": {
   "08": {
    "reel": 1,
-   "media_views": 1253
+   "media_views": 1252
   },
   "09": {
    "reel": 3,
-   "media_views": 1021
+   "media_views": 1022
   },
   "11": {
    "reel": 1,
@@ -66,34 +70,46 @@
   },
   "12": {
    "reel": 3,
-   "media_views": 759
+   "media_views": 784
   },
   "13": {
    "reel": 1,
-   "media_views": 1255
+   "media_views": 1280
   },
   "15": {
    "reel": 2,
-   "media_views": 1138
+   "media_views": 1139
+  },
+  "16": {
+   "reel": 1,
+   "media_views": 1005
   },
   "18": {
-   "reel": 2,
-   "media_views": 1221
+   "reel": 3,
+   "media_views": 1159
+  },
+  "20": {
+   "reel": 1,
+   "media_views": 1006
   },
   "21": {
    "reel": 4,
    "media_views": 458
   },
   "22": {
-   "reel": 1,
-   "media_views": 109
+   "reel": 2,
+   "media_views": 114
   },
   "23": {
-   "reel": 1,
-   "media_views": 1471
+   "reel": 2,
+   "media_views": 1270
   }
  },
  "per_musica": {
+  "Ancient Civilisations": {
+   "reel": 1,
+   "media_views": 1005
+  },
   "Cutscene Crush": {
    "reel": 2,
    "media_views": 1210
@@ -102,21 +118,33 @@
    "reel": 1,
    "media_views": 109
   },
+  "Majestic 12": {
+   "reel": 1,
+   "media_views": 118
+  },
   "Stake Out": {
    "reel": 1,
    "media_views": 1016
   },
+  "Survival Mode": {
+   "reel": 1,
+   "media_views": 992
+  },
   "Taking Flight": {
    "reel": 1,
-   "media_views": 1471
+   "media_views": 1547
+  },
+  "Turn In The Sun": {
+   "reel": 1,
+   "media_views": 1023
   },
   "Vibe Check": {
    "reel": 1,
    "media_views": 1153
   },
   "Way Back Home": {
-   "reel": 1,
-   "media_views": 1255
+   "reel": 2,
+   "media_views": 1143
   },
   "deciso": {
    "reel": 2,
@@ -124,15 +152,15 @@
   },
   "drive": {
    "reel": 5,
-   "media_views": 940
+   "media_views": 955
   },
   "phonk": {
    "reel": 3,
-   "media_views": 907
+   "media_views": 911
   },
   "trap": {
    "reel": 1,
-   "media_views": 503
+   "media_views": 504
   },
   "tropical": {
    "reel": 1,
@@ -142,16 +170,16 @@
  "per_origine": {
   "archivio": {
    "reel": 4,
-   "media_views": 1000
+   "media_views": 1019
   },
   "video nuovo": {
-   "reel": 15,
-   "media_views": 875
+   "reel": 20,
+   "media_views": 870
   }
  },
  "pesi_temi": {
   "amicizia": 1.07,
-  "imprenditore": 1.0,
+  "imprenditore": 1.02,
   "mentalita": 0.96,
   "palestra": 1.05
  },
@@ -164,8 +192,19 @@
    "orario": "23",
    "musica": "Taking Flight",
    "origine": "archivio",
-   "views": 1471,
-   "like": 22
+   "views": 1547,
+   "like": 24
+  },
+  {
+   "quando": "2026-10-08T10:25",
+   "frase": "Sorridi fra, ti sei svegliato.",
+   "tema": "mentalita",
+   "scena": "macchina",
+   "orario": "12",
+   "musica": "drive",
+   "origine": "video nuovo",
+   "views": 1461,
+   "like": 35
   },
   {
    "quando": "2026-10-07T07:06",
@@ -179,17 +218,6 @@
    "like": 9
   },
   {
-   "quando": "2026-10-08T10:25",
-   "frase": "Sorridi fra, ti sei svegliato.",
-   "tema": "mentalita",
-   "scena": "macchina",
-   "orario": "12",
-   "musica": "drive",
-   "origine": "video nuovo",
-   "views": 1388,
-   "like": 33
-  },
-  {
    "quando": "2026-10-07T17:45",
    "frase": "Una persona che ti valorizza non si metterebbe mai nella posizione di perderti.",
    "tema": "mentalita",
@@ -197,19 +225,19 @@
    "orario": "18",
    "musica": "phonk",
    "origine": "video nuovo",
-   "views": 1297,
+   "views": 1310,
    "like": 10
   },
   {
-   "quando": "2026-10-08T13:04",
-   "frase": "Tutti vogliono vincere finché non capiscono quante sconfitte servono.",
+   "quando": "2026-10-09T11:22",
+   "frase": "Se il tuo telefono non squilla quando sei in difficoltà, non rispondere quando stai vincendo.",
    "tema": "mentalita",
    "scena": "macchina",
-   "orario": "15",
-   "musica": "drive",
+   "orario": "13",
+   "musica": "Way Back Home",
    "origine": "video nuovo",
-   "views": 1260,
-   "like": 8
+   "views": 1280,
+   "like": 27
   }
  ],
  "nota": "Solo YouTube; non contati gli Shorts usciti da meno di 2 giorni."
