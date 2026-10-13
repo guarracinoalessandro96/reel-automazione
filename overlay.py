@@ -1,5 +1,5 @@
 """Mette il testo-gancio sul video in una zona senza viso (viso in alto -> testo in basso e viceversa)."""
-import os, re, shutil, subprocess, tempfile
+import os, random, re, shutil, subprocess, tempfile
 import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
@@ -207,13 +207,21 @@ LIMITATORE = "alimiter=limit=0.89:level=disabled"   # picchi sotto -1 dB: niente
 
 
 TAGLIO_INIZIO = 2.0      # si tolgono sempre i primi 2 secondi (il momento in cui si preme "registra")
-DURATA_MAX = 8.0         # poi si tengono 8 secondi: es. video da 12 s -> si usa da 2 a 10 (reel e musica: 8 s)
+DURATA_MAX = 5.0         # dal 13/10/2026 reel da 5 secondi (prima 8): es. video da 12 s -> si usa da 2 a 7
+DURATA_ARCHIVIO = 8.0    # all'archivio si salvano comunque 8 s: a ogni riuso si prende un pezzo da 5 s diverso
 
 
-def segmento(seconds):
+def segmento(seconds, durata=None):
     """(inizio, durata) del pezzo da usare. Se il video e' troppo corto per togliere 2 s, non si taglia l'inizio."""
     start = TAGLIO_INIZIO if seconds > TAGLIO_INIZIO + 1.0 else 0.0
-    return start, min(DURATA_MAX, seconds - start)
+    return start, min(durata or DURATA_MAX, seconds - start)
+
+
+def segmento_archivio(seconds):
+    """Clip d'archivio (gia' tagliata, di solito 8 s): un pezzo da DURATA_MAX preso in un punto a caso,
+    cosi' lo stesso video riusato non e' mai identico."""
+    length = min(DURATA_MAX, seconds)
+    return round(random.uniform(0, max(0.0, seconds - length)), 2), length
 
 
 def scegli_copertina(frames, length):
@@ -233,16 +241,31 @@ def scegli_copertina(frames, length):
 
 
 def crea_clip_archivio(src, dst):
-    """Copia per l'archivio alla MASSIMA qualita': il pezzo che si usa (8 s dopo i primi 2) copiato dall'originale
+    """Copia per l'archivio alla MASSIMA qualita': 8 s dopo i primi 2 (il reel ne usa 5) copiato dall'originale
     SENZA ricomprimere (stessa risoluzione 4K, stessi colori/HDR, stessa rotazione), senza audio (circa 20-30 MB).
     Si potra' rimontare con una frase nuova (make_video da_archivio=True)."""
     seconds, hdr = probe(src)
-    start, length = segmento(seconds)
+    start, length = segmento(seconds, DURATA_ARCHIVIO)
     r = subprocess.run([FFMPEG, "-y", "-v", "error", "-ss", f"{start:.3f}", "-i", src, "-t", f"{length:.3f}",
                         "-map", "0:v:0", "-an", "-c", "copy", dst],
                        capture_output=True, text=True, errors="ignore", timeout=TEMPO_MAX_MONTAGGIO)
     if r.returncode != 0 or not os.path.exists(dst):
         raise RuntimeError("clip archivio: " + r.stderr[-300:])
+    return dst
+
+
+def cambia_musica(src, music, dst):
+    """Stesso reel (video copiato, senza ricomprimere) con un'altra musica: es. la versione per Facebook/Instagram
+    con i nostri brani al posto di quelli della Raccolta audio di YouTube."""
+    length, _ = probe(src)
+    r = subprocess.run([FFMPEG, "-y", "-v", "error", "-i", src, "-stream_loop", "-1", "-i", music,
+                        "-filter_complex", f"[1:a]volume={MUSIC_VOL},{LIMITATORE},"
+                        f"afade=t=out:st={max(0.0, length - 0.3):.2f}:d=0.3[a]",
+                        "-map", "0:v:0", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
+                        "-t", f"{length:.3f}", "-movflags", "+faststart", dst],
+                       capture_output=True, text=True, errors="ignore", timeout=TEMPO_MAX_MONTAGGIO)
+    if r.returncode != 0 or not os.path.exists(dst) or os.path.getsize(dst) < 50_000:
+        raise RuntimeError("cambio musica: " + r.stderr[-300:])
     return dst
 
 
@@ -273,7 +296,7 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
                 zoom=True, da_archivio=False):
     """Crea dst (mp4 H.264 alta qualita') con il gancio e, se indicata, la musica in loop. Restituisce info."""
     seconds, hdr = probe(src)
-    start, length = (0.0, min(DURATA_MAX, seconds)) if da_archivio else segmento(seconds)   # clip d'archivio: gia' tagliata
+    start, length = segmento_archivio(seconds) if da_archivio else segmento(seconds)   # clip d'archivio: gia' tagliata
     frames = extract_frames(src, length, start=start, vf=HDR_TO_SDR if hdr else None)
     if not frames:
         raise RuntimeError("video illeggibile")
@@ -328,7 +351,7 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     amap = ["-an"]
     if music:
         cmd += ["-stream_loop", "-1", "-i", music]
-        graph += f";[2:a]volume={MUSIC_VOL},{LIMITATORE}[a]"
+        graph += f";[2:a]volume={MUSIC_VOL},{LIMITATORE},afade=t=out:st={max(0.0, length - 0.3):.2f}:d=0.3[a]"
         amap = ["-map", "[a]"]
     cmd += ["-filter_complex", graph, "-map", "[v]", *amap, "-t", f"{length:.3f}",
             "-c:v", "libx264", "-preset", "medium", "-crf", "17", "-profile:v", "high",

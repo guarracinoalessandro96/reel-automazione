@@ -45,9 +45,10 @@ def misura(path):
 
 def main():
     musica = sorted(glob.glob(os.path.join(HERE, "musica", "phonk", "*.flac")))[0]
-    casi = [("orizzontale", 1280, 720, 30, 11, True, 8.0), ("quadrato", 720, 720, 30, 11, True, 8.0),
-            ("verticale_60fps_muto", 720, 1280, 60, 11, False, 8.0), ("cortissimo", 720, 1280, 30, 2.5, True, 2.5),
-            ("verticale_720p", 720, 1280, 30, 12, True, 8.0)]
+    D_ = overlay.DURATA_MAX        # 5 s dal 13/10/2026
+    casi = [("orizzontale", 1280, 720, 30, 11, True, D_), ("quadrato", 720, 720, 30, 11, True, D_),
+            ("verticale_60fps_muto", 720, 1280, 60, 11, False, D_), ("cortissimo", 720, 1280, 30, 2.5, True, 2.5),
+            ("verticale_720p", 720, 1280, 30, 12, True, D_)]
     if "--veloce" in sys.argv:      # PC lento: un solo caso di montaggio + tutti gli altri controlli
         casi = casi[:1]
     for nome, w, h, fps, sec, audio, durata in casi:
@@ -63,6 +64,23 @@ def main():
             check("ripiego" not in info, f"{nome}: nessun piano di riserva usato")
         except Exception as e:
             check(False, f"{nome}: montaggio fallito ({e})")
+    # versione per Facebook/Instagram: stesso video, musica nostra (mai la Raccolta YouTube fuori da YouTube)
+    yt = sorted(glob.glob(os.path.join(HERE, "musica", "yt_carica", "*.m4a")))
+    try:
+        src_yt = os.path.join(D, "yt_reel.mp4")
+        overlay.make_video(sorgente("orizzontale", 1280, 720, 30, 11, True), "Prova versione Facebook.", src_yt,
+                           music=yt[0] if yt else musica)
+        meta = overlay.cambia_musica(src_yt, musica, os.path.join(D, "yt_reel_meta.mp4"))
+        dim, dur, lufs, tp, ha_audio = misura(meta)
+        check(dim == (1080, 1920) and abs(dur - overlay.DURATA_MAX) < 0.15 and ha_audio and -17.5 < lufs < -12.5,
+              f"versione Facebook: {dim}, {dur:.2f}s, {lufs:.1f} LUFS")
+    except Exception as e:
+        check(False, f"versione Facebook: non riuscita ({e})")
+    check(len(yt) >= 60, f"musica YouTube 5 s: {len(yt)} pezzi carica")
+    # clip d'archivio da 8 s: il reel ne prende 5 in un punto a caso
+    st = [overlay.segmento_archivio(8.0) for _ in range(20)]
+    check(all(0 <= a <= 3.0 and l == overlay.DURATA_MAX for a, l in st) and len({a for a, _ in st}) > 3,
+          "archivio: pezzo da 5 s in un punto diverso a ogni riuso")
     # piano di riserva: musica inesistente -> deve uscire lo stesso, senza musica
     dst = os.path.join(D, "riserva_reel.mp4")
     try:

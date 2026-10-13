@@ -27,7 +27,7 @@ STATE = os.path.join(HERE, "stato.json")
 GRAPH = "https://graph.facebook.com/v23.0"
 ENV = os.environ.get
 DRY = ENV("DRY_RUN") == "1"
-PLATFORMS = ["youtube"]      # dal 6/10/2026 SOLO YouTube (richiesta di Alessandro). Tutte: instagram, facebook, youtube, tiktok
+PLATFORMS = ["youtube", "facebook"]   # 13/10/2026: YouTube + Facebook (Instagram in pausa). Tutte: instagram, facebook, youtube, tiktok
 MAX_TENTATIVI = 3
 GIORNI_PRONTI = 30            # i reel montati restano su Drive 30 giorni, poi vanno nel Cestino
 QUALITA_MINIMA = 720          # lato corto minimo (pixel): sotto l'HD il video non si pubblica
@@ -71,10 +71,13 @@ YT_PER_SCENA = {"palestra": ["yt_carica"], "macchina": ["yt_carica", "yt_epica"]
                 "casa": ["yt_epica"], "uscita": ["yt_carica", "yt_epica"]}
 
 
-def scegli_musica(tema, recenti, scena=None):
+MUSICA_NOSTRA = {"facebook", "instagram"}   # qui NON la Raccolta audio di YouTube (pensata per YouTube): i nostri brani
+
+
+def scegli_musica(tema, recenti, scena=None, nostra=False):
     """Un brano adatto alla scena, evitando quelli usati di recente: prima la Raccolta audio di YouTube, poi i loop
-    generati da motivazione."""
-    yt = list(YT_PER_SCENA.get(scena, ["yt_carica", "yt_epica"]))
+    generati da motivazione. nostra=True: solo i nostri brani (versione per Facebook/Instagram)."""
+    yt = [] if nostra else list(YT_PER_SCENA.get(scena, ["yt_carica", "yt_epica"]))
     random.shuffle(yt)
     for mood in (*yt, GENERE_PER_SCENA.get(scena), *random.sample(GENERI_MOTIVAZIONE, len(GENERI_MOTIVAZIONE))):
         if not mood:
@@ -506,13 +509,31 @@ def tiktok_upload(path, cap):
 
 
 # ------------------------------------------------------------------ orchestrazione
-def publish_all(path, cap, creds, only):
-    fns = {"instagram": lambda: instagram_upload(path, cap),
-           "facebook": lambda: facebook_upload(path, cap),
+def versione_meta(path, recenti, scena=None):
+    """La versione del reel per Facebook/Instagram: stessa immagine, musica nostra. None se non riesce
+    (allora su quelle piattaforme non si pubblica: mai la musica della Raccolta YouTube fuori da YouTube)."""
+    try:
+        m = scegli_musica(None, recenti, scena, nostra=True)
+        if not m:
+            return None, None
+        dst = os.path.splitext(path)[0] + "_meta.mp4"
+        return overlay.cambia_musica(path, m, dst), os.path.basename(m)
+    except Exception as e:
+        log("versione per Facebook/Instagram non riuscita:", e)
+        return None, None
+
+
+def publish_all(path, cap, creds, only, path_meta=None):
+    fns = {"instagram": lambda: instagram_upload(path_meta, cap),
+           "facebook": lambda: facebook_upload(path_meta, cap),
            "youtube": lambda: youtube_upload(creds, path, cap),
            "tiktok": lambda: tiktok_upload(path, cap)}
     results = {}
     for name in only:
+        if name in MUSICA_NOSTRA and not path_meta:
+            results[name] = {"ok": False, "errore": "manca la versione con la nostra musica"}
+            log(name, "saltato: manca la versione con la nostra musica")
+            continue
         if DRY:
             results[name] = {"ok": True, "id": "prova"}
             log(name, "(prova) ok")
@@ -625,7 +646,10 @@ def main():
             log("riprova: download fallito", e)
             continue
         job["piattaforme"] = [x for x in job["piattaforme"] if x in PLATFORMS]   # solo quelle ancora attive
-        res = publish_all(path, job["frase"], creds, job["piattaforme"])
+        path_meta = None
+        if MUSICA_NOSTRA & set(job["piattaforme"]):
+            path_meta, _ = versione_meta(path, state.get("musica_recenti_meta", []))
+        res = publish_all(path, job["frase"], creds, job["piattaforme"], path_meta)
         job["tentativi"] += 1
         job["piattaforme"] = [p for p, r in res.items() if not r["ok"]]
         state["storico"].append({"quando": datetime.datetime.now().isoformat(timespec="minutes"),
@@ -731,6 +755,8 @@ def main():
             mie = []
         frasi = [f for f in mie if f["id"] not in usi]
         log(f"'{DOC_MIE}': {len(mie)} citazioni, {len(frasi)} ancora da usare.")
+        # reel da 5 s: anche le frasi lunghe (scelta di Alessandro 13/10/2026: se non si fa in tempo a leggere,
+        # si riguarda il video -> piu' visualizzazioni). Nessun filtro sulla lunghezza.
         if frasi:
             frase = random.choice(frasi)
         elif mie:            # finite: si riusa quella uscita da piu' tempo (mai fermarsi); salute.py avvisa
@@ -774,10 +800,13 @@ def main():
         raise
     log("Montato:", info)
     frase = dict(frase, copertina_ms=info.get("copertina_ms"))
-    results = publish_all(out, frase, creds, attive())
+    out_meta = None
+    if MUSICA_NOSTRA & set(attive()):
+        out_meta, info["musica_meta"] = versione_meta(out, state.get("musica_recenti_meta", []), an["scena"])
+    results = publish_all(out, frase, creds, attive(), out_meta)
     if results.get("instagram", {}).get("ok") and ENV("SENZA_STORIE") != "1" and not DRY:
         try:
-            results["instagram_storia"] = {"ok": True, "id": instagram_storia(out)}
+            results["instagram_storia"] = {"ok": True, "id": instagram_storia(out_meta)}
             log("instagram storia pubblicata")
         except Exception as e:
             results["instagram_storia"] = {"ok": False, "errore": str(e)[:300]}
@@ -817,6 +846,8 @@ def main():
     state["temi_recenti"] = (state["temi_recenti"] + [frase["tema"]])[-10:]
     if info.get("musica"):
         state["musica_recenti"] = (state["musica_recenti"] + [info["musica"]])[-20:]
+    if info.get("musica_meta"):
+        state["musica_recenti_meta"] = (state.get("musica_recenti_meta", []) + [info["musica_meta"]])[-20:]
     state["slot_fatti"] = (state["slot_fatti"] + [slot])[-80:]
     if video:
         state["analisi"].pop(video["id"], None)

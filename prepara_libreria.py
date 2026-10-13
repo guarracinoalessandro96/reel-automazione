@@ -13,7 +13,7 @@ import imageio_ffmpeg
 F = imageio_ffmpeg.get_ffmpeg_exe()
 HERE = os.path.dirname(os.path.abspath(__file__))
 ORIG = os.path.join(HERE, "musica_youtube_originali")
-DUR, PEZZI = 8.0, 3
+DUR, PEZZI = 5.0, 4      # dal 13/10/2026 reel da 5 s: 4 pezzi da 5 s per brano
 
 
 def categoria(info):
@@ -47,7 +47,21 @@ def migliori_inizi(x, sr=8000):
             scelti.append(s)
         if len(scelti) == PEZZI:
             break
-    return sorted(scelti)
+    return sorted(sul_colpo(x, s, sr) for s in scelti)
+
+
+def sul_colpo(x, s, sr=8000, cerca=0.6):
+    """Sposta l'inizio sul colpo (attacco) piu' forte entro +-0.6 s: il reel parte su un beat, non a meta' nota."""
+    hop = sr // 100                                                       # 10 ms
+    a, b = max(0, int((s - cerca) * sr)), min(len(x), int((s + cerca) * sr))
+    seg = x[a:b]
+    if len(seg) < hop * 4:
+        return s
+    e = np.sqrt(np.convolve(seg ** 2, np.ones(hop) / hop, "valid")[::hop])  # energia ogni 10 ms
+    flux = np.maximum(np.diff(e), 0)                                        # quanto sale: attacchi
+    if not len(flux) or flux.max() <= 0:
+        return s
+    return max(0.0, a / sr + (int(flux.argmax()) + 1) * hop / sr - 0.02)
 
 
 def guadagno(path, s):
