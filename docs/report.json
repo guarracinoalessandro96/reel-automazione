@@ -1,8 +1,8 @@
 {
- "data": "2026-10-12",
- "reel_analizzati": 24,
- "media_views": 894,
- "like_totali": 216,
+ "data": "2026-10-13",
+ "reel_analizzati": 34,
+ "media_views": 782,
+ "like_totali": 267,
  "per_tema": {
   "amicizia": {
    "reel": 1,
@@ -13,38 +13,38 @@
    "media_views": 938
   },
   "mentalita": {
-   "reel": 19,
-   "media_views": 854
+   "reel": 28,
+   "media_views": 749
   },
   "palestra": {
-   "reel": 1,
-   "media_views": 1167
+   "reel": 2,
+   "media_views": 771
   }
  },
  "per_scena": {
   "casa": {
-   "reel": 1,
-   "media_views": 1023
+   "reel": 2,
+   "media_views": 738
   },
   "cibo": {
    "reel": 1,
    "media_views": 1394
   },
   "lavoro": {
-   "reel": 1,
-   "media_views": 205
+   "reel": 6,
+   "media_views": 436
   },
   "macchina": {
    "reel": 9,
-   "media_views": 945
+   "media_views": 946
   },
   "pacchi": {
    "reel": 1,
    "media_views": 319
   },
   "palestra": {
-   "reel": 5,
-   "media_views": 767
+   "reel": 9,
+   "media_views": 676
   },
   "specchio": {
    "reel": 4,
@@ -52,57 +52,57 @@
   },
   "uscita": {
    "reel": 2,
-   "media_views": 1256
+   "media_views": 1255
   }
  },
  "per_orario": {
   "08": {
-   "reel": 1,
-   "media_views": 1252
+   "reel": 2,
+   "media_views": 748
   },
   "09": {
-   "reel": 3,
-   "media_views": 1022
+   "reel": 4,
+   "media_views": 820
   },
   "11": {
-   "reel": 1,
-   "media_views": 1153
+   "reel": 2,
+   "media_views": 860
   },
   "12": {
    "reel": 3,
-   "media_views": 784
+   "media_views": 786
   },
   "13": {
-   "reel": 1,
-   "media_views": 1280
+   "reel": 2,
+   "media_views": 867
   },
   "15": {
-   "reel": 2,
-   "media_views": 1139
+   "reel": 3,
+   "media_views": 872
   },
   "16": {
-   "reel": 1,
-   "media_views": 1005
+   "reel": 2,
+   "media_views": 1024
   },
   "18": {
-   "reel": 3,
-   "media_views": 1159
+   "reel": 4,
+   "media_views": 963
   },
   "20": {
-   "reel": 1,
-   "media_views": 1006
+   "reel": 2,
+   "media_views": 745
   },
   "21": {
    "reel": 4,
    "media_views": 458
   },
   "22": {
-   "reel": 2,
-   "media_views": 114
+   "reel": 3,
+   "media_views": 311
   },
   "23": {
-   "reel": 2,
-   "media_views": 1270
+   "reel": 3,
+   "media_views": 1078
   }
  },
  "per_musica": {
@@ -111,40 +111,68 @@
    "media_views": 1005
   },
   "Cutscene Crush": {
-   "reel": 2,
-   "media_views": 1210
+   "reel": 3,
+   "media_views": 878
+  },
+  "Fire In The Sky": {
+   "reel": 1,
+   "media_views": 568
+  },
+  "Horizons": {
+   "reel": 1,
+   "media_views": 337
   },
   "Keep It Movin": {
    "reel": 1,
-   "media_views": 109
+   "media_views": 108
+  },
+  "Kick It": {
+   "reel": 1,
+   "media_views": 483
+  },
+  "Locked In": {
+   "reel": 1,
+   "media_views": 375
   },
   "Majestic 12": {
    "reel": 1,
-   "media_views": 118
+   "media_views": 119
   },
   "Stake Out": {
    "reel": 1,
-   "media_views": 1016
+   "media_views": 1017
   },
   "Survival Mode": {
    "reel": 1,
-   "media_views": 992
+   "media_views": 993
   },
   "Taking Flight": {
+   "reel": 3,
+   "media_views": 750
+  },
+  "Ten": {
    "reel": 1,
-   "media_views": 1547
+   "media_views": 689
+  },
+  "The Light": {
+   "reel": 1,
+   "media_views": 706
   },
   "Turn In The Sun": {
    "reel": 1,
-   "media_views": 1023
+   "media_views": 1024
   },
   "Vibe Check": {
    "reel": 1,
    "media_views": 1153
   },
+  "Visions": {
+   "reel": 1,
+   "media_views": 1044
+  },
   "Way Back Home": {
    "reel": 2,
-   "media_views": 1143
+   "media_views": 1144
   },
   "deciso": {
    "reel": 2,
@@ -152,7 +180,7 @@
   },
   "drive": {
    "reel": 5,
-   "media_views": 955
+   "media_views": 957
   },
   "phonk": {
    "reel": 3,
@@ -160,7 +188,7 @@
   },
   "trap": {
    "reel": 1,
-   "media_views": 504
+   "media_views": 503
   },
   "tropical": {
    "reel": 1,
@@ -170,18 +198,18 @@
  "per_origine": {
   "archivio": {
    "reel": 4,
-   "media_views": 1019
+   "media_views": 1020
   },
   "video nuovo": {
-   "reel": 20,
-   "media_views": 870
+   "reel": 30,
+   "media_views": 751
   }
  },
  "pesi_temi": {
-  "amicizia": 1.07,
-  "imprenditore": 1.02,
+  "amicizia": 1.1,
+  "imprenditore": 1.07,
   "mentalita": 0.96,
-  "palestra": 1.05
+  "palestra": 1.0
  },
  "migliori": [
   {
@@ -192,8 +220,8 @@
    "orario": "23",
    "musica": "Taking Flight",
    "origine": "archivio",
-   "views": 1547,
-   "like": 24
+   "views": 1552,
+   "like": 25
   },
   {
    "quando": "2026-10-08T10:25",
@@ -203,7 +231,7 @@
    "orario": "12",
    "musica": "drive",
    "origine": "video nuovo",
-   "views": 1461,
+   "views": 1467,
    "like": 35
   },
   {
@@ -236,7 +264,7 @@
    "orario": "13",
    "musica": "Way Back Home",
    "origine": "video nuovo",
-   "views": 1280,
+   "views": 1282,
    "like": 27
   }
  ],
