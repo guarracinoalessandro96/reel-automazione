@@ -144,6 +144,11 @@ def testo_breve(cap):
     return testo + "\n\n" + " ".join(dict.fromkeys(tags[:4]))
 
 
+def ora_roma():
+    from zoneinfo import ZoneInfo
+    return datetime.datetime.now(ZoneInfo("Europe/Rome"))
+
+
 def log(*a):
     print(datetime.datetime.now().strftime("%H:%M:%S"), *a, flush=True)
 
@@ -225,7 +230,7 @@ class Drive:
 
     def salva_per_dopo(self, path, nome, testo):
         """Reel pronto per Instagram/TikTok (non ancora attivi): video + testo da incollare in CARTELLA_DOPO."""
-        riga = f"{datetime.datetime.now():%d/%m %H:%M}  |  {nome}\n{testo}\n\n{'-' * 40}\n\n"
+        riga = f"{ora_roma():%d/%m %H:%M}  |  {nome}\n{testo}\n\n{'-' * 40}\n\n"
         titolo = "TESTI da incollare.txt"
         if self.local:
             d = os.path.join(self.local, CARTELLA_DOPO)
@@ -841,7 +846,7 @@ def main():
     results = publish_all(out, frase, creds, attive(), out_meta)
     if per_dopo and out_meta:
         try:
-            nome_dopo = f"{datetime.datetime.now():%Y-%m-%d %H%M} - {frase['id']}.mp4"
+            nome_dopo = f"{ora_roma():%Y-%m-%d %H%M} - {frase['id']}.mp4"
             drive.salva_per_dopo(out_meta, nome_dopo, testo_breve(frase))
             log(f"Pronto per {' e '.join(per_dopo)} (da attivare): {CARTELLA_DOPO}/{nome_dopo}")
         except Exception as e:
