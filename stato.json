@@ -1839,6 +1839,46 @@
      "id": "A7Mv0x_Ijb8"
     }
    }
+  },
+  {
+   "quando": "2026-10-13T11:06",
+   "slot": "2026-10-13 13:00",
+   "video": "IMG_3834.mov",
+   "md5": "794989c4022e7f2706717d9dadee5d0f",
+   "da_archivio": false,
+   "scena": "lavoro",
+   "registrato": "2026-10-13T09:33+02:00",
+   "frase": "MIE-c747ad88",
+   "tema": "imprenditore",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 32,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 7.0s",
+    "durata": 5.0,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.51,
+     "dominante": "calda",
+     "rumore": 3.2
+    },
+    "copertina_ms": 2343,
+    "musica": "duty_calls_3.m4a",
+    "musica_meta": "deciso_02.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "3WGQi1Byer8"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "910273448682977"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -1895,10 +1935,10 @@
   "2026-10-12 19:00",
   "2026-10-12 22:00",
   "2026-10-13 08:00",
-  "2026-10-13 09:00"
+  "2026-10-13 09:00",
+  "2026-10-13 13:00"
  ],
  "musica_recenti": [
-  "visions_3.m4a",
   "locked_in_3.m4a",
   "kick_it_1.m4a",
   "the_light_3.m4a",
@@ -1917,7 +1957,8 @@
   "turn_in_the_sun_1.m4a",
   "horizons_3.m4a",
   "cartier_2.m4a",
-  "survival_mode_3.m4a"
+  "survival_mode_3.m4a",
+  "duty_calls_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1969,10 +2010,10 @@
   "MIE-3532228a",
   "MIE-cc805afe",
   "MIE-98f390fa",
-  "MIE-b35a112e"
+  "MIE-b35a112e",
+  "MIE-c747ad88"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "dieta",
@@ -1981,7 +2022,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "imprenditore"
  ],
  "analisi": {
   "1Irs8vZYNWrtgVef0yY09VyZHeCGLN12O": {
@@ -2180,6 +2222,13 @@
   "1fKbWVgrVrxr5Ecx1pZo_uFBf-CoX_0G5": {
    "usi": 1,
    "ultimo": "2026-10-13"
+  },
+  "1HrgxYw6jMJ5qXxx8j5ZWOVhPdqD7b1fH": {
+   "usi": 1,
+   "ultimo": "2026-10-13"
   }
- }
+ },
+ "musica_recenti_meta": [
+  "deciso_02.flac"
+ ]
 }
