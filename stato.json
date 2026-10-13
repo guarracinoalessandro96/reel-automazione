@@ -1804,6 +1804,41 @@
      "id": "39aPtFgQxxE"
     }
    }
+  },
+  {
+   "quando": "2026-10-13T06:01",
+   "slot": "2026-10-13 08:00",
+   "video": "IMG_3824.mov",
+   "md5": "9eaf8215204e92493fd87e99c53b107f",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-12T22:05+02:00",
+   "frase": "MIE-b35a112e",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 23,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 10.0s",
+    "durata": 8.0,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.38,
+     "dominante": "calda",
+     "rumore": 3.6
+    },
+    "copertina_ms": 6250,
+    "musica": "survival_mode_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "A7Mv0x_Ijb8"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -1858,10 +1893,10 @@
   "2026-10-12 11:30",
   "2026-10-12 13:15",
   "2026-10-12 19:00",
-  "2026-10-12 22:00"
+  "2026-10-12 22:00",
+  "2026-10-13 08:00"
  ],
  "musica_recenti": [
-  "horizons_1.m4a",
   "visions_3.m4a",
   "locked_in_3.m4a",
   "kick_it_1.m4a",
@@ -1880,7 +1915,8 @@
   "whoop_2.m4a",
   "turn_in_the_sun_1.m4a",
   "horizons_3.m4a",
-  "cartier_2.m4a"
+  "cartier_2.m4a",
+  "survival_mode_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -1931,10 +1967,10 @@
   "MIE-18c05f35",
   "MIE-3532228a",
   "MIE-cc805afe",
-  "MIE-98f390fa"
+  "MIE-98f390fa",
+  "MIE-b35a112e"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -1943,10 +1979,78 @@
   "mentalita",
   "mentalita",
   "mentalita",
+  "mentalita",
   "mentalita"
  ],
- "analisi": {},
- "pulizia": "2026-10-12",
+ "analisi": {
+  "1Irs8vZYNWrtgVef0yY09VyZHeCGLN12O": {
+   "nome": "IMG_3827.mov",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-12T22:14+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-12T21:17:46.939Z"
+  },
+  "1pipT-nB06y-KJahlEzWeOLtQFahi_SdF": {
+   "nome": "IMG_3828.mov",
+   "scena": "palestra",
+   "sicurezza": 0.98,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-12T22:19+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-12T21:20:07.226Z"
+  },
+  "1hbWDlZCmzr1moALG9eE99bXCYhMBgZjv": {
+   "nome": "IMG_3830.mov",
+   "scena": "palestra",
+   "sicurezza": 0.97,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-12T22:22+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-12T21:37:09.237Z"
+  },
+  "1RmO5991LBsbPNNOq5uE6zLdJeLCLsdJI": {
+   "nome": "IMG_3831.mov",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-12T22:31+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-12T21:39:04.566Z"
+  },
+  "13CVtpSB_zs8A2TGfA59fiqrHehbxQfWi": {
+   "nome": "IMG_3832.mov",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-12T22:39+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-12T21:40:49.291Z"
+  },
+  "1tkHlS-HT1rzlK8aT59nBY7P7PqIv00_t": {
+   "nome": "IMG_3833.mov",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-12T22:55+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-12T21:42:41.411Z"
+  }
+ },
+ "pulizia": "2026-10-13",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 1,
@@ -2071,6 +2175,10 @@
   "1vOgmkuZ-zKENaS1fagQc3J6w_396E-JX": {
    "usi": 1,
    "ultimo": "2026-10-12"
+  },
+  "1fKbWVgrVrxr5Ecx1pZo_uFBf-CoX_0G5": {
+   "usi": 1,
+   "ultimo": "2026-10-13"
   }
  }
 }
