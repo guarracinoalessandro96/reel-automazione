@@ -71,7 +71,10 @@ YT_PER_SCENA = {"palestra": ["yt_carica"], "macchina": ["yt_carica", "yt_epica"]
                 "casa": ["yt_epica"], "uscita": ["yt_carica", "yt_epica"]}
 
 
-MUSICA_NOSTRA = {"facebook", "instagram"}   # qui NON la Raccolta audio di YouTube (pensata per YouTube): i nostri brani
+MUSICA_NOSTRA = {"facebook", "instagram", "tiktok"}   # qui NON la Raccolta audio di YouTube (pensata per YouTube): i nostri brani
+PREPARA_PER_DOPO = ["instagram", "tiktok"]   # non ancora attive: ogni reel (versione con musica nostra) va su Drive
+CARTELLA_DOPO = "Pronti per Instagram e TikTok"   # ... in questa cartella, con il testo da incollare
+GIORNI_DOPO = 60              # ... e ci resta 60 giorni
 
 
 def scegli_musica(tema, recenti, scena=None, nostra=False):
@@ -220,6 +223,32 @@ class Drive:
         else:
             self.api.files().create(body={"name": titolo, "parents": [folder]}, media_body=media).execute()
 
+    def salva_per_dopo(self, path, nome, testo):
+        """Reel pronto per Instagram/TikTok (non ancora attivi): video + testo da incollare in CARTELLA_DOPO."""
+        riga = f"{datetime.datetime.now():%d/%m %H:%M}  |  {nome}\n{testo}\n\n{'-' * 40}\n\n"
+        titolo = "TESTI da incollare.txt"
+        if self.local:
+            d = os.path.join(self.local, CARTELLA_DOPO)
+            os.makedirs(d, exist_ok=True)
+            shutil.copy(path, os.path.join(d, nome))
+            t = os.path.join(d, titolo)
+            vecchio = open(t, encoding="utf-8").read() if os.path.exists(t) else ""
+            open(t, "w", encoding="utf-8").write(riga + vecchio)
+            return nome
+        from googleapiclient.http import MediaFileUpload, MediaIoBaseUpload
+        folder = self.cartella(CARTELLA_DOPO)
+        fid = self.api.files().create(body={"name": nome, "parents": [folder]},
+                                      media_body=MediaFileUpload(path, mimetype="video/mp4"), fields="id").execute()["id"]
+        q = f"'{folder}' in parents and trashed = false and name = '{titolo}'"
+        found = self.api.files().list(q=q, fields="files(id)").execute().get("files", [])
+        vecchio = self.api.files().get_media(fileId=found[0]["id"]).execute().decode("utf-8") if found else ""
+        media = MediaIoBaseUpload(io.BytesIO((riga + vecchio)[:200000].encode("utf-8")), mimetype="text/plain")
+        if found:
+            self.api.files().update(fileId=found[0]["id"], media_body=media).execute()
+        else:
+            self.api.files().create(body={"name": titolo, "parents": [folder]}, media_body=media).execute()
+        return fid
+
     def cartella(self, nome):
         """Id della cartella 'nome' accanto a 'Da pubblicare' (la crea se manca)."""
         padre = self.api.files().get(fileId=ENV("DRIVE_FOLDER_DA_PUBBLICARE"), fields="parents").execute()["parents"][0]
@@ -328,8 +357,13 @@ class Drive:
         if self.local:
             return 0
         n = 0
+        try:
+            dopo = self.cartella(CARTELLA_DOPO)
+        except Exception:
+            dopo = None
         for cartella, soglia in ((ENV("DRIVE_FOLDER_PRONTI"), limite),
-                                 (ENV("DRIVE_FOLDER_PUBBLICATI"), datetime.datetime.now(datetime.timezone.utc))):
+                                 (ENV("DRIVE_FOLDER_PUBBLICATI"), datetime.datetime.now(datetime.timezone.utc)),
+                                 (dopo, datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=GIORNI_DOPO))):
             if not cartella:
                 continue
             q = f"'{cartella}' in parents and trashed = false and mimeType contains 'video/'"
@@ -527,7 +561,7 @@ def publish_all(path, cap, creds, only, path_meta=None):
     fns = {"instagram": lambda: instagram_upload(path_meta, cap),
            "facebook": lambda: facebook_upload(path_meta, cap),
            "youtube": lambda: youtube_upload(creds, path, cap),
-           "tiktok": lambda: tiktok_upload(path, cap)}
+           "tiktok": lambda: tiktok_upload(path_meta, cap)}
     results = {}
     for name in only:
         if name in MUSICA_NOSTRA and not path_meta:
@@ -801,9 +835,17 @@ def main():
     log("Montato:", info)
     frase = dict(frase, copertina_ms=info.get("copertina_ms"))
     out_meta = None
-    if MUSICA_NOSTRA & set(attive()):
+    per_dopo = [p for p in PREPARA_PER_DOPO if p not in attive()]
+    if MUSICA_NOSTRA & set(attive()) or per_dopo:
         out_meta, info["musica_meta"] = versione_meta(out, state.get("musica_recenti_meta", []), an["scena"])
     results = publish_all(out, frase, creds, attive(), out_meta)
+    if per_dopo and out_meta:
+        try:
+            nome_dopo = f"{datetime.datetime.now():%Y-%m-%d %H%M} - {frase['id']}.mp4"
+            drive.salva_per_dopo(out_meta, nome_dopo, testo_breve(frase))
+            log(f"Pronto per {' e '.join(per_dopo)} (da attivare): {CARTELLA_DOPO}/{nome_dopo}")
+        except Exception as e:
+            log("Versione per Instagram/TikTok non salvata su Drive:", e)
     if results.get("instagram", {}).get("ok") and ENV("SENZA_STORIE") != "1" and not DRY:
         try:
             results["instagram_storia"] = {"ok": True, "id": instagram_storia(out_meta)}
