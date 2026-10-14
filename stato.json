@@ -1999,6 +1999,46 @@
      "id": "1429021246033744"
     }
    }
+  },
+  {
+   "quando": "2026-10-14T11:18",
+   "slot": "2026-10-14 13:00",
+   "video": "DJI_20261013_175341_505_video.MOV",
+   "md5": "b865065e2fceef69eba72eecd24bec06",
+   "da_archivio": false,
+   "scena": "lavoro",
+   "registrato": "2026-10-13T17:53+02:00",
+   "frase": "MIE-1f097e9f",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 34,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 7.0s",
+    "durata": 5.0,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.57,
+     "dominante": "calda",
+     "rumore": 4.2
+    },
+    "copertina_ms": 2968,
+    "musica": "sweaty_staredown_1.m4a",
+    "musica_meta": "deciso_12.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "soSx_uxlxaQ"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "4573376932946954"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2059,10 +2099,10 @@
   "2026-10-13 13:00",
   "2026-10-13 17:00",
   "2026-10-13 21:00",
-  "2026-10-14 09:00"
+  "2026-10-14 09:00",
+  "2026-10-14 13:00"
  ],
  "musica_recenti": [
-  "ten_1.m4a",
   "turn_in_the_sun_2.m4a",
   "way_back_home_3.m4a",
   "cutscene_crush_1.m4a",
@@ -2081,7 +2121,8 @@
   "duty_calls_3.m4a",
   "ego_chall_4.m4a",
   "delirium_4.m4a",
-  "final_boss_battle_3.m4a"
+  "final_boss_battle_3.m4a",
+  "sweaty_staredown_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2137,10 +2178,10 @@
   "MIE-c747ad88",
   "MIE-63c77b58",
   "MIE-b0cb6aca",
-  "MIE-d00235b6"
+  "MIE-d00235b6",
+  "MIE-1f097e9f"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -2149,6 +2190,7 @@
   "imprenditore",
   "mentalita",
   "palestra",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
@@ -2185,16 +2227,27 @@
    "fascia": "palestra",
    "caricato": "2026-10-12T21:42:41.411Z"
   },
-  "1FddZ1N5Dvh3J3J0vKQld_iqMCKQ77VXV": {
-   "nome": "DJI_20261013_175341_505_video.MOV",
+  "1F-iyvGRyuQ4JUeYh7yq9CQeTBJzWvNJz": {
+   "nome": "IMG_3903.MOV",
    "scena": "lavoro",
-   "sicurezza": 0.92,
+   "sicurezza": 0.34,
    "motivo": "riconosciuta dalle immagini",
    "lato_corto": 2160,
    "compagnia": "solo",
-   "registrato": "2026-10-13T17:53+02:00",
+   "registrato": "2026-10-14T09:34+02:00",
    "fascia": "ufficio",
-   "caricato": "2026-10-13T17:28:02.535Z"
+   "caricato": "2026-10-14T07:56:23.585Z"
+  },
+  "1ooeflO5P2gn1GxxB7BsjIi4vLEfOmhIZ": {
+   "nome": "IMG_3904.MOV",
+   "scena": "lavoro",
+   "sicurezza": 0.43,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-14T09:35+02:00",
+   "fascia": "ufficio",
+   "caricato": "2026-10-14T07:57:00.828Z"
   }
  },
  "pulizia": "2026-10-14",
@@ -2342,12 +2395,17 @@
   "1xaei2HIO4jSmSPuSxzKQ0VLbkh-c4iJO": {
    "usi": 1,
    "ultimo": "2026-10-14"
+  },
+  "10Y6I2Km1UMianq9Mqd4A_PibNK36A1KR": {
+   "usi": 1,
+   "ultimo": "2026-10-14"
   }
  },
  "musica_recenti_meta": [
   "deciso_02.flac",
   "phonk_14.flac",
   "phonk_15.flac",
-  "phonk_10.flac"
+  "phonk_10.flac",
+  "deciso_12.flac"
  ]
 }
