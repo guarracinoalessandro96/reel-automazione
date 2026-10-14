@@ -1,20 +1,24 @@
 {
- "data": "2026-10-13",
- "reel_analizzati": 34,
- "media_views": 782,
- "like_totali": 267,
+ "data": "2026-10-14",
+ "reel_analizzati": 44,
+ "media_views": 771,
+ "like_totali": 345,
  "per_tema": {
   "amicizia": {
    "reel": 1,
    "media_views": 1259
   },
+  "dieta": {
+   "reel": 2,
+   "media_views": 520
+  },
   "imprenditore": {
    "reel": 3,
-   "media_views": 938
+   "media_views": 939
   },
   "mentalita": {
-   "reel": 28,
-   "media_views": 749
+   "reel": 36,
+   "media_views": 758
   },
   "palestra": {
    "reel": 2,
@@ -22,83 +26,87 @@
   }
  },
  "per_scena": {
+  "?": {
+   "reel": 1,
+   "media_views": 1290
+  },
   "casa": {
    "reel": 2,
    "media_views": 738
   },
   "cibo": {
-   "reel": 1,
-   "media_views": 1394
+   "reel": 2,
+   "media_views": 1399
   },
   "lavoro": {
-   "reel": 6,
-   "media_views": 436
+   "reel": 7,
+   "media_views": 377
   },
   "macchina": {
-   "reel": 9,
-   "media_views": 946
+   "reel": 12,
+   "media_views": 804
   },
   "pacchi": {
-   "reel": 1,
-   "media_views": 319
+   "reel": 2,
+   "media_views": 654
   },
   "palestra": {
-   "reel": 9,
-   "media_views": 676
+   "reel": 11,
+   "media_views": 749
   },
   "specchio": {
-   "reel": 4,
-   "media_views": 920
+   "reel": 5,
+   "media_views": 803
   },
   "uscita": {
    "reel": 2,
-   "media_views": 1255
+   "media_views": 1256
   }
  },
  "per_orario": {
   "08": {
-   "reel": 2,
-   "media_views": 748
+   "reel": 3,
+   "media_views": 506
   },
   "09": {
-   "reel": 4,
-   "media_views": 820
+   "reel": 5,
+   "media_views": 937
   },
   "11": {
-   "reel": 2,
-   "media_views": 860
+   "reel": 3,
+   "media_views": 903
   },
   "12": {
    "reel": 3,
    "media_views": 786
   },
   "13": {
-   "reel": 2,
-   "media_views": 867
+   "reel": 3,
+   "media_views": 955
   },
   "15": {
-   "reel": 3,
-   "media_views": 872
+   "reel": 5,
+   "media_views": 800
   },
   "16": {
-   "reel": 2,
-   "media_views": 1024
+   "reel": 3,
+   "media_views": 795
   },
   "18": {
-   "reel": 4,
-   "media_views": 963
+   "reel": 5,
+   "media_views": 776
   },
   "20": {
-   "reel": 2,
-   "media_views": 745
+   "reel": 3,
+   "media_views": 837
   },
   "21": {
    "reel": 4,
    "media_views": 458
   },
   "22": {
-   "reel": 3,
-   "media_views": 311
+   "reel": 4,
+   "media_views": 488
   },
   "23": {
    "reel": 3,
@@ -111,8 +119,12 @@
    "media_views": 1005
   },
   "Cutscene Crush": {
-   "reel": 3,
-   "media_views": 878
+   "reel": 4,
+   "media_views": 906
+  },
+  "Delirium": {
+   "reel": 1,
+   "media_views": 335
   },
   "Fire In The Sky": {
    "reel": 1,
@@ -122,13 +134,17 @@
    "reel": 1,
    "media_views": 337
   },
+  "Intergalactic": {
+   "reel": 1,
+   "media_views": 1127
+  },
   "Keep It Movin": {
    "reel": 1,
    "media_views": 108
   },
   "Kick It": {
-   "reel": 1,
-   "media_views": 483
+   "reel": 2,
+   "media_views": 752
   },
   "Locked In": {
    "reel": 1,
@@ -137,6 +153,10 @@
   "Majestic 12": {
    "reel": 1,
    "media_views": 119
+  },
+  "Mirror Mirror": {
+   "reel": 1,
+   "media_views": 92
   },
   "Stake Out": {
    "reel": 1,
@@ -147,32 +167,32 @@
    "media_views": 993
   },
   "Taking Flight": {
-   "reel": 3,
-   "media_views": 750
+   "reel": 4,
+   "media_views": 567
   },
   "Ten": {
    "reel": 1,
-   "media_views": 689
+   "media_views": 690
   },
   "The Light": {
    "reel": 1,
-   "media_views": 706
+   "media_views": 707
   },
   "Turn In The Sun": {
-   "reel": 1,
-   "media_views": 1024
+   "reel": 2,
+   "media_views": 522
   },
   "Vibe Check": {
-   "reel": 1,
-   "media_views": 1153
+   "reel": 2,
+   "media_views": 1086
   },
   "Visions": {
    "reel": 1,
-   "media_views": 1044
+   "media_views": 1045
   },
   "Way Back Home": {
-   "reel": 2,
-   "media_views": 1144
+   "reel": 3,
+   "media_views": 1229
   },
   "deciso": {
    "reel": 2,
@@ -180,11 +200,15 @@
   },
   "drive": {
    "reel": 5,
-   "media_views": 957
+   "media_views": 958
   },
   "phonk": {
    "reel": 3,
-   "media_views": 911
+   "media_views": 913
+  },
+  "senza musica": {
+   "reel": 1,
+   "media_views": 1290
   },
   "trap": {
    "reel": 1,
@@ -197,19 +221,20 @@
  },
  "per_origine": {
   "archivio": {
-   "reel": 4,
-   "media_views": 1020
+   "reel": 13,
+   "media_views": 874
   },
   "video nuovo": {
-   "reel": 30,
-   "media_views": 751
+   "reel": 31,
+   "media_views": 728
   }
  },
  "pesi_temi": {
-  "amicizia": 1.1,
-  "imprenditore": 1.07,
-  "mentalita": 0.96,
-  "palestra": 1.0
+  "amicizia": 1.11,
+  "imprenditore": 1.08,
+  "mentalita": 0.98,
+  "palestra": 1.0,
+  "dieta": 0.91
  },
  "migliori": [
   {
@@ -231,7 +256,7 @@
    "orario": "12",
    "musica": "drive",
    "origine": "video nuovo",
-   "views": 1467,
+   "views": 1468,
    "like": 35
   },
   {
@@ -242,8 +267,19 @@
    "orario": "09",
    "musica": "drive",
    "origine": "video nuovo",
-   "views": 1394,
+   "views": 1402,
    "like": 9
+  },
+  {
+   "quando": "2026-10-11T07:57",
+   "frase": "Ogni persona leale alla fine si fa male.",
+   "tema": "mentalita",
+   "scena": "cibo",
+   "orario": "09",
+   "musica": "Way Back Home",
+   "origine": "archivio",
+   "views": 1396,
+   "like": 17
   },
   {
    "quando": "2026-10-07T17:45",
@@ -253,19 +289,8 @@
    "orario": "18",
    "musica": "phonk",
    "origine": "video nuovo",
-   "views": 1310,
-   "like": 10
-  },
-  {
-   "quando": "2026-10-09T11:22",
-   "frase": "Se il tuo telefono non squilla quando sei in difficoltà, non rispondere quando stai vincendo.",
-   "tema": "mentalita",
-   "scena": "macchina",
-   "orario": "13",
-   "musica": "Way Back Home",
-   "origine": "video nuovo",
-   "views": 1282,
-   "like": 27
+   "views": 1316,
+   "like": 9
   }
  ],
  "nota": "Solo YouTube; non contati gli Shorts usciti da meno di 2 giorni."

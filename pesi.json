@@ -1,9 +1,10 @@
 {
  "temi": {
-  "amicizia": 1.1,
-  "imprenditore": 1.07,
-  "mentalita": 0.96,
-  "palestra": 1.0
+  "amicizia": 1.11,
+  "imprenditore": 1.08,
+  "mentalita": 0.98,
+  "palestra": 1.0,
+  "dieta": 0.91
  },
- "aggiornato": "2026-10-13"
+ "aggiornato": "2026-10-14"
 }
