@@ -2079,6 +2079,46 @@
      "id": "1135391189244933"
     }
    }
+  },
+  {
+   "quando": "2026-10-14T19:22",
+   "slot": "2026-10-14 21:00",
+   "video": "IMG_3831.mov",
+   "md5": "12647a5151e06f890728febeaa1e8eac",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-12T22:31+02:00",
+   "frase": "MIE-9b789797",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 1,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 7.0s",
+    "durata": 5.0,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.47,
+     "dominante": "calda",
+     "rumore": 2.9
+    },
+    "copertina_ms": 3906,
+    "musica": "break_ya_neck_3.m4a",
+    "musica_meta": "phonk_04.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "aUCvf8k2OcA"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1105526925661865"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2141,10 +2181,10 @@
   "2026-10-13 21:00",
   "2026-10-14 09:00",
   "2026-10-14 13:00",
-  "2026-10-14 17:00"
+  "2026-10-14 17:00",
+  "2026-10-14 21:00"
  ],
  "musica_recenti": [
-  "way_back_home_3.m4a",
   "cutscene_crush_1.m4a",
   "intergalactic_1.m4a",
   "mirror_mirror_2.m4a",
@@ -2163,7 +2203,8 @@
   "delirium_4.m4a",
   "final_boss_battle_3.m4a",
   "sweaty_staredown_1.m4a",
-  "van_life_rager_2.m4a"
+  "van_life_rager_2.m4a",
+  "break_ya_neck_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2221,10 +2262,10 @@
   "MIE-b0cb6aca",
   "MIE-d00235b6",
   "MIE-1f097e9f",
-  "MIE-f894b513"
+  "MIE-f894b513",
+  "MIE-9b789797"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -2233,20 +2274,10 @@
   "palestra",
   "mentalita",
   "mentalita",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "1RmO5991LBsbPNNOq5uE6zLdJeLCLsdJI": {
-   "nome": "IMG_3831.mov",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-12T22:31+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-12T21:39:04.566Z"
-  },
   "13CVtpSB_zs8A2TGfA59fiqrHehbxQfWi": {
    "nome": "IMG_3832.mov",
    "scena": "palestra",
@@ -2445,6 +2476,10 @@
   "17a5fFwJj8p33vlSv-Y6jRBPmRGJLzC1Q": {
    "usi": 1,
    "ultimo": "2026-10-14"
+  },
+  "1Me9XwPdk7-kx_j_4Y_9YpSyy48oLrBIM": {
+   "usi": 1,
+   "ultimo": "2026-10-14"
   }
  },
  "musica_recenti_meta": [
@@ -2453,6 +2488,7 @@
   "phonk_15.flac",
   "phonk_10.flac",
   "deciso_12.flac",
-  "deciso_06.flac"
+  "deciso_06.flac",
+  "phonk_04.flac"
  ]
 }
