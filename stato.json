@@ -2119,6 +2119,46 @@
      "id": "1105526925661865"
     }
    }
+  },
+  {
+   "quando": "2026-10-15T07:23",
+   "slot": "2026-10-15 09:00",
+   "video": "IMG_3905.MOV",
+   "md5": "09d480a8ae2cee1c26b523302704ebef",
+   "da_archivio": false,
+   "scena": "macchina",
+   "registrato": "2026-10-14T15:13+02:00",
+   "frase": "MIE-e7d7dd0c",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 46,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 7.0s",
+    "durata": 5.0,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.54,
+     "dominante": "neutra",
+     "rumore": 1.3
+    },
+    "copertina_ms": 468,
+    "musica": "kick_it_4.m4a",
+    "musica_meta": "drive_02.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "ccOClWLPJyM"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1672003677614903"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2182,10 +2222,10 @@
   "2026-10-14 09:00",
   "2026-10-14 13:00",
   "2026-10-14 17:00",
-  "2026-10-14 21:00"
+  "2026-10-14 21:00",
+  "2026-10-15 09:00"
  ],
  "musica_recenti": [
-  "cutscene_crush_1.m4a",
   "intergalactic_1.m4a",
   "mirror_mirror_2.m4a",
   "delirium_2.m4a",
@@ -2204,7 +2244,8 @@
   "final_boss_battle_3.m4a",
   "sweaty_staredown_1.m4a",
   "van_life_rager_2.m4a",
-  "break_ya_neck_3.m4a"
+  "break_ya_neck_3.m4a",
+  "kick_it_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2263,15 +2304,16 @@
   "MIE-d00235b6",
   "MIE-1f097e9f",
   "MIE-f894b513",
-  "MIE-9b789797"
+  "MIE-9b789797",
+  "MIE-e7d7dd0c"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "imprenditore",
   "mentalita",
   "palestra",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -2310,20 +2352,9 @@
    "registrato": "2026-10-14T09:35+02:00",
    "fascia": "ufficio",
    "caricato": "2026-10-14T07:57:00.828Z"
-  },
-  "1MiekU5QJTozqctY-kJzk6wPEoGVltbDX": {
-   "nome": "IMG_3905.MOV",
-   "scena": "macchina",
-   "sicurezza": 0.83,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-14T15:13+02:00",
-   "fascia": "pranzo",
-   "caricato": "2026-10-14T13:17:35.409Z"
   }
  },
- "pulizia": "2026-10-14",
+ "pulizia": "2026-10-15",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 1,
@@ -2480,6 +2511,10 @@
   "1Me9XwPdk7-kx_j_4Y_9YpSyy48oLrBIM": {
    "usi": 1,
    "ultimo": "2026-10-14"
+  },
+  "1Pnwa-lAv7b6BxxAB-L0Kp3azuB15R43F": {
+   "usi": 1,
+   "ultimo": "2026-10-15"
   }
  },
  "musica_recenti_meta": [
@@ -2489,6 +2524,7 @@
   "phonk_10.flac",
   "deciso_12.flac",
   "deciso_06.flac",
-  "phonk_04.flac"
+  "phonk_04.flac",
+  "drive_02.flac"
  ]
 }
