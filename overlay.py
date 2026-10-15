@@ -254,6 +254,17 @@ def crea_clip_archivio(src, dst):
     return dst
 
 
+def senza_audio(src, dst):
+    """Stesso reel senza traccia audio (video copiato, nessuna perdita): per TikTok, dove Alessandro aggiunge
+    a mano un audio di tendenza dall'app."""
+    r = subprocess.run([FFMPEG, "-y", "-v", "error", "-i", src, "-map", "0:v:0", "-c:v", "copy", "-an",
+                        "-movflags", "+faststart", dst], capture_output=True, text=True, errors="ignore",
+                       timeout=TEMPO_MAX_MONTAGGIO)
+    if r.returncode != 0 or not os.path.exists(dst) or os.path.getsize(dst) < 50_000:
+        raise RuntimeError("versione senza audio: " + r.stderr[-300:])
+    return dst
+
+
 def cambia_musica(src, music, dst):
     """Stesso reel (video copiato, senza ricomprimere) con un'altra musica: es. la versione per Facebook/Instagram
     con i nostri brani al posto di quelli della Raccolta audio di YouTube."""

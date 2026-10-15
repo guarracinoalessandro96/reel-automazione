@@ -72,8 +72,11 @@ YT_PER_SCENA = {"palestra": ["yt_carica"], "macchina": ["yt_carica", "yt_epica"]
 
 
 MUSICA_NOSTRA = {"facebook", "instagram", "tiktok"}   # qui NON la Raccolta audio di YouTube (pensata per YouTube): i nostri brani
-PREPARA_PER_DOPO = ["instagram", "tiktok"]   # non ancora attive: ogni reel (versione con musica nostra) va su Drive
-CARTELLA_DOPO = "Pronti per Instagram e TikTok"   # ... in questa cartella, con il testo da incollare
+PREPARA_PER_DOPO = ["instagram"]   # non ancora attiva: ogni reel (versione con musica nostra) va su Drive
+CARTELLA_DOPO = "Pronti per Instagram"   # ... in questa cartella, con il testo da incollare
+# TikTok (15/10/2026): Alessandro pubblica a mano dal telefono con un AUDIO DI TENDENZA (non usabile via API):
+# ogni reel va su Drive con la frase sopra ma SENZA musica, piu' il testo da incollare
+CARTELLA_TIKTOK = "TikTok - da pubblicare"
 GIORNI_DOPO = 60              # ... e ci resta 60 giorni
 
 
@@ -228,12 +231,12 @@ class Drive:
         else:
             self.api.files().create(body={"name": titolo, "parents": [folder]}, media_body=media).execute()
 
-    def salva_per_dopo(self, path, nome, testo):
-        """Reel pronto per Instagram/TikTok (non ancora attivi): video + testo da incollare in CARTELLA_DOPO."""
+    def salva_per_dopo(self, path, nome, testo, cartella_nome=CARTELLA_DOPO):
+        """Reel pronto da pubblicare a mano (Instagram, TikTok): video + testo da incollare in cartella_nome."""
         riga = f"{ora_roma():%d/%m %H:%M}  |  {nome}\n{testo}\n\n{'-' * 40}\n\n"
         titolo = "TESTI da incollare.txt"
         if self.local:
-            d = os.path.join(self.local, CARTELLA_DOPO)
+            d = os.path.join(self.local, cartella_nome)
             os.makedirs(d, exist_ok=True)
             shutil.copy(path, os.path.join(d, nome))
             t = os.path.join(d, titolo)
@@ -241,7 +244,7 @@ class Drive:
             open(t, "w", encoding="utf-8").write(riga + vecchio)
             return nome
         from googleapiclient.http import MediaFileUpload, MediaIoBaseUpload
-        folder = self.cartella(CARTELLA_DOPO)
+        folder = self.cartella(cartella_nome)
         fid = self.api.files().create(body={"name": nome, "parents": [folder]},
                                       media_body=MediaFileUpload(path, mimetype="video/mp4"), fields="id").execute()["id"]
         q = f"'{folder}' in parents and trashed = false and name = '{titolo}'"
@@ -362,13 +365,16 @@ class Drive:
         if self.local:
             return 0
         n = 0
-        try:
-            dopo = self.cartella(CARTELLA_DOPO)
-        except Exception:
-            dopo = None
+        cartelle_dopo = []
+        for nome_c in (CARTELLA_DOPO, CARTELLA_TIKTOK):
+            try:
+                cartelle_dopo.append((self.cartella(nome_c),
+                                      datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=GIORNI_DOPO)))
+            except Exception:
+                pass
         for cartella, soglia in ((ENV("DRIVE_FOLDER_PRONTI"), limite),
                                  (ENV("DRIVE_FOLDER_PUBBLICATI"), datetime.datetime.now(datetime.timezone.utc)),
-                                 (dopo, datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=GIORNI_DOPO))):
+                                 *cartelle_dopo):
             if not cartella:
                 continue
             q = f"'{cartella}' in parents and trashed = false and mimeType contains 'video/'"
@@ -848,9 +854,17 @@ def main():
         try:
             nome_dopo = f"{ora_roma():%Y-%m-%d %H%M} - {frase['id']}.mp4"
             drive.salva_per_dopo(out_meta, nome_dopo, testo_breve(frase))
-            log(f"Pronto per {' e '.join(per_dopo)} (da attivare): {CARTELLA_DOPO}/{nome_dopo}")
+            log(f"Pronto per {' e '.join(per_dopo)}: {CARTELLA_DOPO}/{nome_dopo}")
         except Exception as e:
-            log("Versione per Instagram/TikTok non salvata su Drive:", e)
+            log("Versione per Instagram non salvata su Drive:", e)
+    if "tiktok" not in attive():           # TikTok a mano con un audio di tendenza: versione SENZA musica
+        try:
+            muto = overlay.senza_audio(out, os.path.join(work, "reel_tiktok.mp4"))
+            nome_tt = f"{ora_roma():%Y-%m-%d %H%M} - {frase['id']}.mp4"
+            drive.salva_per_dopo(muto, nome_tt, testo_breve(frase), CARTELLA_TIKTOK)
+            log(f"Pronto per TikTok (senza musica): {CARTELLA_TIKTOK}/{nome_tt}")
+        except Exception as e:
+            log("Versione per TikTok non salvata su Drive:", e)
     if results.get("instagram", {}).get("ok") and ENV("SENZA_STORIE") != "1" and not DRY:
         try:
             results["instagram_storia"] = {"ok": True, "id": instagram_storia(out_meta)}
