@@ -552,11 +552,15 @@ def manda_telegram(path, testo, slot=None):
     import html
     base = f"https://api.telegram.org/bot{ENV('TELEGRAM_BOT_TOKEN')}"
     with open(path, "rb") as f:
+        # width/height: senza, Telegram mostra il video verticale come un quadrato con le bande nere
         r = requests.post(f"{base}/sendVideo", data={"chat_id": ENV("TELEGRAM_CHAT_ID"), "supports_streaming": "true",
-                                                     "caption": (f"Reel delle {slot.split()[-1]}" if slot and ":" in slot
-                                                                 else "Nuovo reel") + " per TikTok: pubblicalo adesso. "
-                                                                "Salva il video, aggiungi un suono di tendenza e incolla "
-                                                                "il testo qui sotto."},
+                                                     "width": 1080, "height": 1920,
+                                                     "caption": (f"REEL DELLE {slot.split()[-1]}" if slot and ":" in slot
+                                                                 else "NUOVO REEL") + " PER TIKTOK\n"
+                                                                "Pubblicalo adesso:\n"
+                                                                "1. Salva il video\n"
+                                                                "2. Aggiungi un suono di tendenza\n"
+                                                                "3. Incolla il testo qui sotto"},
                           files={"video": ("reel.mp4", f, "video/mp4")}, timeout=120).json()
     if not r.get("ok"):
         raise RuntimeError(r)
@@ -1023,7 +1027,7 @@ if __name__ == "__main__":
         if not isinstance(e, KeyboardInterrupt) and not (isinstance(e, SystemExit) and e.code in (0, None)) and not DRY:
             import avvisi
             orario_slot = sys.argv[1] if len(sys.argv) > 1 else ""
-            avvisi.manda(f"Attenzione: il reel delle {orario_slot.split()[-1] if orario_slot else '?'} NON e' uscito "
-                         f"({str(e)[:300] or 'nessuna piattaforma ha funzionato'}). Al prossimo orario riprovo "
-                         "da solo; se si ripete scrivi a Claude.")
+            avvisi.manda(f"ATTENZIONE\nIl reel delle {orario_slot.split()[-1] if orario_slot else '?'} NON e' uscito\n"
+                         f"Motivo: {str(e)[:300] or 'nessuna piattaforma ha funzionato'}\n\n"
+                         "Al prossimo orario riprovo da solo\nSe si ripete scrivi a Claude")
         raise

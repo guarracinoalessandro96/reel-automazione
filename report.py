@@ -97,19 +97,31 @@ def riassunto_settimana(state):
     except Exception:
         pass
     def follower(rete):
+        """(totale oggi, differenza rispetto a 7 giorni fa) oppure None."""
         valori = [(f["data"], f.get(rete)) for f in fol if f.get(rete) is not None]
         if not valori:
-            return ""
+            return None
         ora = valori[-1][1]
         prima = next((v for d, v in reversed(valori) if d <= (da.date().isoformat())), valori[0][1])
-        return f"{ora} ({ora - prima:+d} in una settimana)"
-    t = [f"Riassunto della settimana ({da:%d/%m} - {datetime.date.today():%d/%m})", "",
-         f"YouTube: {len(post)} reel, {num(sum(r[0] for r in righe))} visualizzazioni, {sum(r[1] for r in righe)} like",
-         f"Iscritti YouTube: {follower('youtube')}" if follower("youtube") else "", "", "I 3 migliori:"]
-    t += [f"{num(v)} views, {l} like - {f}" for v, l, f in righe[:3]]
+        return ora, ora - prima
+    # Un dato per riga, titoli in maiuscolo (richiesta di Alessandro: messaggi "che vanno sempre daccapo")
+    t = ["RIASSUNTO DELLA SETTIMANA", f"{da:%d/%m} - {datetime.date.today():%d/%m}", "",
+         "YOUTUBE", f"{len(post)} reel", f"{num(sum(r[0] for r in righe))} visualizzazioni",
+         f"{sum(r[1] for r in righe)} like"]
+    iscritti = follower("youtube")
+    if iscritti:
+        t += [f"{num(iscritti[0])} iscritti", f"{iscritti[1]:+d} iscritti in una settimana"]
+    t += ["", "I 3 MIGLIORI"]
+    for i, (v, l, f) in enumerate(righe[:3], 1):
+        t += ["", f"{i}) {f}", f"{num(v)} visualizzazioni", f"{l} like"]
+    t += ["", "FACEBOOK"]
     if fb:
-        t += ["", f"Facebook: {fb['reel']} reel, {fb['riproduzioni']} riproduzioni (ultimi 30 giorni)"]
-    return "\n".join(x for x in t if x is not None)
+        t += [f"{fb['reel']} reel", f"{num(fb['riproduzioni'])} riproduzioni"]
+    fbf = follower("facebook")
+    if fbf:
+        t += [f"{num(fbf[0])} follower"]
+    t += ["", "TIKTOK", "Pubblicazione a mano dal telefono", "I numeri li trovi nell'app TikTok"]
+    return "\n".join(t)
 
 
 def genere(musica):

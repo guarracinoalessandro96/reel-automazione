@@ -122,12 +122,12 @@ def main():
     for r in problemi:
         print("PROBLEMA", r)
     if VIDEO_IN_CODA is not None and VIDEO_IN_CODA < VIDEO_MINIMI:
-        avvisi.manda(f"Promemoria: in 'Da pubblicare' ci sono solo {VIDEO_IN_CODA} video nuovi "
-                     "(ne escono 4 al giorno). Carica qualche video su Drive, altrimenti riuso quelli vecchi "
-                     "dell'archivio.")
+        avvisi.manda(f"PROMEMORIA\nIn 'Da pubblicare' ci sono solo {VIDEO_IN_CODA} video nuovi\n"
+                     "Ne escono 4 al giorno\nCarica qualche video su Drive\n"
+                     "Altrimenti riuso quelli vecchi dell'archivio")
     if problemi:
-        avvisi.manda("Controllo del sistema reel: c'e' qualcosa da sistemare.\n\n" + "\n".join(problemi) +
-                     "\n\nScrivi a Claude: 'il controllo della salute ha trovato un problema'.")
+        avvisi.manda("ATTENZIONE: SISTEMA REEL\nC'e' qualcosa da sistemare:\n\n" + "\n\n".join(problemi) +
+                     "\n\nScrivi a Claude:\n'il controllo della salute ha trovato un problema'")
         print("\nScrivi a Claude: 'il controllo della salute ha trovato un problema' e incolla queste righe.")
         sys.exit(1)
     print("\nTutto a posto.")
