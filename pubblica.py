@@ -506,6 +506,24 @@ def facebook_upload(path, cap):
     return vid
 
 
+# ------------------------------------------------------------------ Telegram (TikTok a mano)
+def manda_telegram(path, testo):
+    """Manda ad Alessandro il video per TikTok (senza musica) e, sotto, il testo: toccandolo si copia."""
+    import html
+    base = f"https://api.telegram.org/bot{ENV('TELEGRAM_BOT_TOKEN')}"
+    with open(path, "rb") as f:
+        r = requests.post(f"{base}/sendVideo", data={"chat_id": ENV("TELEGRAM_CHAT_ID"), "supports_streaming": "true",
+                                                     "caption": "Nuovo reel per TikTok: salva il video, aggiungi un "
+                                                                "suono di tendenza e incolla il testo qui sotto."},
+                          files={"video": ("reel.mp4", f, "video/mp4")}, timeout=120).json()
+    if not r.get("ok"):
+        raise RuntimeError(r)
+    r = requests.post(f"{base}/sendMessage", data={"chat_id": ENV("TELEGRAM_CHAT_ID"), "parse_mode": "HTML",
+                                                   "text": f"<code>{html.escape(testo)}</code>"}, timeout=60).json()
+    if not r.get("ok"):
+        raise RuntimeError(r)
+
+
 # ------------------------------------------------------------------ TikTok
 def tiktok_token():
     r = requests.post("https://open.tiktokapis.com/v2/oauth/token/",
@@ -863,6 +881,9 @@ def main():
             nome_tt = f"{ora_roma():%Y-%m-%d %H%M} - {frase['id']}.mp4"
             drive.salva_per_dopo(muto, nome_tt, testo_breve(frase), CARTELLA_TIKTOK)
             log(f"Pronto per TikTok (senza musica): {CARTELLA_TIKTOK}/{nome_tt}")
+            if ENV("TELEGRAM_BOT_TOKEN") and ENV("TELEGRAM_CHAT_ID") and not DRY:
+                manda_telegram(muto, testo_breve(frase))
+                log("TikTok: video e testo mandati su Telegram")
         except Exception as e:
             log("Versione per TikTok non salvata su Drive:", e)
     if results.get("instagram", {}).get("ok") and ENV("SENZA_STORIE") != "1" and not DRY:
