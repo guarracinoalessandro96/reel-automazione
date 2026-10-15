@@ -507,14 +507,16 @@ def facebook_upload(path, cap):
 
 
 # ------------------------------------------------------------------ Telegram (TikTok a mano)
-def manda_telegram(path, testo):
+def manda_telegram(path, testo, slot=None):
     """Manda ad Alessandro il video per TikTok (senza musica) e, sotto, il testo: toccandolo si copia."""
     import html
     base = f"https://api.telegram.org/bot{ENV('TELEGRAM_BOT_TOKEN')}"
     with open(path, "rb") as f:
         r = requests.post(f"{base}/sendVideo", data={"chat_id": ENV("TELEGRAM_CHAT_ID"), "supports_streaming": "true",
-                                                     "caption": "Nuovo reel per TikTok: salva il video, aggiungi un "
-                                                                "suono di tendenza e incolla il testo qui sotto."},
+                                                     "caption": (f"Reel delle {slot.split()[-1]}" if slot and ":" in slot
+                                                                 else "Nuovo reel") + " per TikTok: pubblicalo adesso. "
+                                                                "Salva il video, aggiungi un suono di tendenza e incolla "
+                                                                "il testo qui sotto."},
                           files={"video": ("reel.mp4", f, "video/mp4")}, timeout=120).json()
     if not r.get("ok"):
         raise RuntimeError(r)
@@ -882,7 +884,7 @@ def main():
             drive.salva_per_dopo(muto, nome_tt, testo_breve(frase), CARTELLA_TIKTOK)
             log(f"Pronto per TikTok (senza musica): {CARTELLA_TIKTOK}/{nome_tt}")
             if ENV("TELEGRAM_BOT_TOKEN") and ENV("TELEGRAM_CHAT_ID") and not DRY:
-                manda_telegram(muto, testo_breve(frase))
+                manda_telegram(muto, testo_breve(frase), slot)
                 log("TikTok: video e testo mandati su Telegram")
         except Exception as e:
             log("Versione per TikTok non salvata su Drive:", e)
