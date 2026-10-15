@@ -428,6 +428,33 @@ def youtube_upload(creds, path, cap, publish_at=None):
     return vid
 
 
+PLAYLIST_TUTTE = "Frasi motivazionali"
+PLAYLIST_SCENA = {"palestra": "Mentalità da palestra", "macchina": "Pensieri in macchina",
+                  "lavoro": "Lavoro e disciplina", "pacchi": "Lavoro e disciplina", "specchio": "Lavoro e disciplina",
+                  "casa": "Lavoro e disciplina", "cibo": "Disciplina ogni giorno", "uscita": "Vita e persone"}
+
+
+def aggiungi_playlist(creds, video_id, scena, state):
+    """Ogni Short in 2 playlist pubbliche (tutte + quella della scena): YouTube fa guardare piu' video di fila."""
+    from googleapiclient.discovery import build
+    yt = build("youtube", "v3", credentials=creds, cache_discovery=False)
+    ids = state.setdefault("playlist", {})
+    for titolo in dict.fromkeys([PLAYLIST_TUTTE, PLAYLIST_SCENA.get(scena)]):
+        if not titolo:
+            continue
+        if titolo not in ids:
+            pl = yt.playlists().insert(part="snippet,status", body={
+                "snippet": {"title": titolo, "description": "Frasi motivazionali da 5 secondi: mentalità, disciplina, "
+                                                            "lavoro. Una nuova ogni giorno alle 9, 13, 17 e 21.",
+                            "defaultLanguage": "it"},
+                "status": {"privacyStatus": "public"}}).execute()
+            ids[titolo] = pl["id"]
+            log(f"Playlist creata: {titolo}")
+        yt.playlistItems().insert(part="snippet", body={"snippet": {
+            "playlistId": ids[titolo], "position": 0,
+            "resourceId": {"kind": "youtube#video", "videoId": video_id}}}).execute()
+
+
 # ------------------------------------------------------------------ Meta (Instagram + Facebook)
 def _rupload(url, token, path):
     with open(path, "rb") as f:
@@ -927,6 +954,11 @@ def main():
         except Exception as e:
             log("Telegram non riuscito:", e)
     results.update(publish_all(out, frase, creds, [p for p in attive() if p not in results], out_meta))
+    if results.get("youtube", {}).get("ok") and not DRY:
+        try:
+            aggiungi_playlist(creds, results["youtube"]["id"], an["scena"], state)
+        except Exception as e:
+            log("Playlist YouTube non aggiornata:", e)
     if results.get("instagram", {}).get("ok") and ENV("SENZA_STORIE") != "1" and not DRY:
         try:
             results["instagram_storia"] = {"ok": True, "id": instagram_storia(out_meta)}
