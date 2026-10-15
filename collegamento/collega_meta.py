@@ -44,6 +44,9 @@ def main():
     dbg = requests.get(f"{GRAPH}/debug_token", params={"input_token": page["access_token"],
                                                         "access_token": f"{app_id}|{app_secret}"}).json()
     scade = dbg.get("data", {}).get("expires_at")
+    permessi = set(dbg.get("data", {}).get("scopes", []))
+    for perm in ("instagram_content_publish", "pages_manage_posts", "read_insights", "instagram_manage_insights"):
+        print(f"  permesso {perm}: {'OK' if perm in permessi else 'MANCA (rifai il token spuntandolo)'}")
 
     s = json.load(open(SEGRETI, encoding="utf-8")) if os.path.exists(SEGRETI) else {}
     s.update(META_PAGE_TOKEN=page["access_token"], FB_PAGE_ID=page["id"], IG_USER_ID=ig)
