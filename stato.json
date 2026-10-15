@@ -2159,6 +2159,46 @@
      "id": "1672003677614903"
     }
    }
+  },
+  {
+   "quando": "2026-10-15T11:16",
+   "slot": "2026-10-15 13:00",
+   "video": "IMG_3904.MOV",
+   "md5": "2cde8832d6939aabf9b1d169398172b4",
+   "da_archivio": false,
+   "scena": "lavoro",
+   "registrato": "2026-10-14T09:35+02:00",
+   "frase": "MIE-e68e1bd0",
+   "tema": "palestra",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 22,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 7.0s",
+    "durata": 5.0,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.54,
+     "dominante": "calda",
+     "rumore": 2.4
+    },
+    "copertina_ms": 4700,
+    "musica": "way_back_home_3.m4a",
+    "musica_meta": "deciso_10.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "N2XfmKRRDi8"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1123468420024071"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2223,10 +2263,10 @@
   "2026-10-14 13:00",
   "2026-10-14 17:00",
   "2026-10-14 21:00",
-  "2026-10-15 09:00"
+  "2026-10-15 09:00",
+  "2026-10-15 13:00"
  ],
  "musica_recenti": [
-  "intergalactic_1.m4a",
   "mirror_mirror_2.m4a",
   "delirium_2.m4a",
   "taking_flight_2.m4a",
@@ -2245,7 +2285,8 @@
   "sweaty_staredown_1.m4a",
   "van_life_rager_2.m4a",
   "break_ya_neck_3.m4a",
-  "kick_it_4.m4a"
+  "kick_it_4.m4a",
+  "way_back_home_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2305,10 +2346,10 @@
   "MIE-1f097e9f",
   "MIE-f894b513",
   "MIE-9b789797",
-  "MIE-e7d7dd0c"
+  "MIE-e7d7dd0c",
+  "MIE-e68e1bd0"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "imprenditore",
   "mentalita",
@@ -2317,7 +2358,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "palestra"
  ],
  "analisi": {
   "13CVtpSB_zs8A2TGfA59fiqrHehbxQfWi": {
@@ -2341,17 +2383,6 @@
    "registrato": "2026-10-12T22:55+02:00",
    "fascia": "palestra",
    "caricato": "2026-10-12T21:42:41.411Z"
-  },
-  "1ooeflO5P2gn1GxxB7BsjIi4vLEfOmhIZ": {
-   "nome": "IMG_3904.MOV",
-   "scena": "lavoro",
-   "sicurezza": 0.43,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-14T09:35+02:00",
-   "fascia": "ufficio",
-   "caricato": "2026-10-14T07:57:00.828Z"
   }
  },
  "pulizia": "2026-10-15",
@@ -2515,6 +2546,10 @@
   "1Pnwa-lAv7b6BxxAB-L0Kp3azuB15R43F": {
    "usi": 1,
    "ultimo": "2026-10-15"
+  },
+  "1H_I6VC3vZgQwOjIWlcuhjr4OiNQ3Fpvl": {
+   "usi": 1,
+   "ultimo": "2026-10-15"
   }
  },
  "musica_recenti_meta": [
@@ -2525,6 +2560,7 @@
   "deciso_12.flac",
   "deciso_06.flac",
   "phonk_04.flac",
-  "drive_02.flac"
+  "drive_02.flac",
+  "deciso_10.flac"
  ]
 }
