@@ -26,6 +26,8 @@ jobs:
           GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
           DRIVE_FOLDER_DA_PUBBLICARE: ${{ secrets.DRIVE_FOLDER_DA_PUBBLICARE }}
           META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python report.py
       - run: |
           git config user.name "reel-bot"

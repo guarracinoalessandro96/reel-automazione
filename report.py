@@ -74,6 +74,44 @@ def stat_facebook(post):
     return {"reel": len(righe), "riproduzioni": tot, "media": round(tot / len(righe), 1), "ultimi": righe[-10:]}
 
 
+def num(n):
+    return f"{n:,}".replace(",", ".")
+
+
+def riassunto_settimana(state):
+    """Testo del riassunto del lunedi' (su Telegram): reel della settimana, visualizzazioni, migliori, follower."""
+    da = datetime.datetime.now() - datetime.timedelta(days=7)
+    post = [h for h in state.get("storico", []) if h.get("slot") and h.get("quando", "") >= da.isoformat()]
+    yt = stat_youtube([h["risultati"]["youtube"]["id"] for h in post
+                       if h.get("risultati", {}).get("youtube", {}).get("ok") and h["risultati"]["youtube"].get("id")])
+    testi = testi_citazioni()
+    righe = []
+    for h in post:
+        v, l = yt.get(h.get("risultati", {}).get("youtube", {}).get("id"), (0, 0))
+        righe.append((v, l, testi.get(h.get("frase"), "")))
+    righe.sort(reverse=True)
+    fb = stat_facebook(post)
+    fol = []
+    try:
+        fol = json.load(open(os.path.join(HERE, "docs", "follower.json"), encoding="utf-8"))
+    except Exception:
+        pass
+    def follower(rete):
+        valori = [(f["data"], f.get(rete)) for f in fol if f.get(rete) is not None]
+        if not valori:
+            return ""
+        ora = valori[-1][1]
+        prima = next((v for d, v in reversed(valori) if d <= (da.date().isoformat())), valori[0][1])
+        return f"{ora} ({ora - prima:+d} in una settimana)"
+    t = [f"Riassunto della settimana ({da:%d/%m} - {datetime.date.today():%d/%m})", "",
+         f"YouTube: {len(post)} reel, {num(sum(r[0] for r in righe))} visualizzazioni, {sum(r[1] for r in righe)} like",
+         f"Iscritti YouTube: {follower('youtube')}" if follower("youtube") else "", "", "I 3 migliori:"]
+    t += [f"{num(v)} views, {l} like - {f}" for v, l, f in righe[:3]]
+    if fb:
+        t += ["", f"Facebook: {fb['reel']} reel, {fb['riproduzioni']} riproduzioni (ultimi 30 giorni)"]
+    return "\n".join(x for x in t if x is not None)
+
+
 def genere(musica):
     """'phonk_13.flac' -> 'phonk' (generi creati da noi); 'taking_flight_2.m4a' -> 'Taking Flight' (Raccolta audio YouTube)."""
     if not musica:
@@ -133,6 +171,11 @@ def main():
               + ("" if len(righe) >= MIN_POST else f" Servono almeno {MIN_POST} reel per conclusioni affidabili.")}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     json.dump(report, open(OUT, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+    if datetime.date.today().weekday() == 0 or ENV("FORZA_RIASSUNTO") == "1":   # lunedi': riassunto su Telegram
+        import avvisi
+        testo = riassunto_settimana(state)
+        print(testo)
+        avvisi.manda(testo)
     print(json.dumps({k: report[k] for k in ("reel_analizzati", "media_views", "like_totali", "nota")}, ensure_ascii=False))
 
 

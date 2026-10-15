@@ -2,54 +2,54 @@
  "data": "2026-10-15",
  "reel_analizzati": 53,
  "facebook": {
-  "reel": 15,
-  "riproduzioni": 24,
-  "media": 1.6,
+  "reel": 16,
+  "riproduzioni": 53,
+  "media": 3.3,
   "ultimi": [
    {
-    "quando": "2026-10-13T11:06",
-    "riproduzioni": 2
-   },
-   {
     "quando": "2026-10-13T14:55",
-    "riproduzioni": 0
+    "riproduzioni": 5
    },
    {
     "quando": "2026-10-13T19:12",
-    "riproduzioni": 0
+    "riproduzioni": 2
    },
    {
     "quando": "2026-10-14T07:23",
-    "riproduzioni": 0
+    "riproduzioni": 2
    },
    {
     "quando": "2026-10-14T11:18",
-    "riproduzioni": 0
+    "riproduzioni": 2
    },
    {
     "quando": "2026-10-14T15:06",
-    "riproduzioni": 0
+    "riproduzioni": 2
    },
    {
     "quando": "2026-10-14T19:22",
-    "riproduzioni": 7
+    "riproduzioni": 12
    },
    {
     "quando": "2026-10-15T07:23",
-    "riproduzioni": 0
+    "riproduzioni": 2
    },
    {
     "quando": "2026-10-15T11:16",
-    "riproduzioni": 0
+    "riproduzioni": 2
    },
    {
     "quando": "2026-10-15T14:54",
+    "riproduzioni": 2
+   },
+   {
+    "quando": "2026-10-15T18:55",
     "riproduzioni": 0
    }
   ]
  },
  "media_views": 738,
- "like_totali": 398,
+ "like_totali": 399,
  "per_tema": {
   "amicizia": {
    "reel": 1,
@@ -175,7 +175,7 @@
   },
   "Cartier": {
    "reel": 1,
-   "media_views": 1033
+   "media_views": 1034
   },
   "Cutscene Crush": {
    "reel": 4,
@@ -297,7 +297,7 @@
  "per_origine": {
   "archivio": {
    "reel": 17,
-   "media_views": 813
+   "media_views": 814
   },
   "video nuovo": {
    "reel": 36,

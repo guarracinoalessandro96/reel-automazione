@@ -10,6 +10,8 @@ import requests
 ENV = os.environ.get
 GRAPH = "https://graph.facebook.com/v23.0"
 problemi, ok = [], []
+VIDEO_IN_CODA = None
+VIDEO_MINIMI = 4               # sotto questo numero (1 giorno di reel) promemoria su Telegram: "carica video"
 
 
 def controlla(nome, fn):
@@ -99,8 +101,11 @@ def pubblicazioni():
     if nuove < 40:     # con 5 reel al giorno e' piu' di una settimana di preavviso: poi si riusano le meno recenti
         raise RuntimeError(f"restano solo {nuove} citazioni nuove nel documento 'Le mie citazioni' su Drive: "
                            "aggiungine altre (dopo si ripetono quelle uscite da piu' tempo)")
+    q = (f"'{ENV('DRIVE_FOLDER_DA_PUBBLICARE')}' in parents and trashed = false and mimeType contains 'video/'")
+    global VIDEO_IN_CODA
+    VIDEO_IN_CODA = len(api.files().list(q=q, fields="files(id)", pageSize=100).execute().get("files", []))
     giorni = (ora - ultima).days if ultima else None
-    return f"{len(coda)} video in coda, ultimo reel {'mai' if giorni is None else f'{giorni} giorni fa'}, {nuove} citazioni nuove nel documento 'Le mie citazioni'"
+    return f"{VIDEO_IN_CODA} video nuovi in coda, ultimo reel {'mai' if giorni is None else f'{giorni} giorni fa'}, {nuove} citazioni nuove nel documento 'Le mie citazioni'"
 
 
 def main():
@@ -110,13 +115,19 @@ def main():
     controlla("Pubblicazioni", pubblicazioni)
     controlla("Instagram e Facebook", meta)
     controlla("Google Drive e YouTube", google)
-    if ENV("TIKTOK_REFRESH_TOKEN"):
-        controlla("TikTok", tiktok)
+    # TikTok dal 15/10/2026 si pubblica a mano (video su Telegram): il vecchio collegamento API non si controlla piu'
+    import avvisi
     for r in ok:
         print("OK      ", r)
     for r in problemi:
         print("PROBLEMA", r)
+    if VIDEO_IN_CODA is not None and VIDEO_IN_CODA < VIDEO_MINIMI:
+        avvisi.manda(f"Promemoria: in 'Da pubblicare' ci sono solo {VIDEO_IN_CODA} video nuovi "
+                     "(ne escono 4 al giorno). Carica qualche video su Drive, altrimenti riuso quelli vecchi "
+                     "dell'archivio.")
     if problemi:
+        avvisi.manda("Controllo del sistema reel: c'e' qualcosa da sistemare.\n\n" + "\n".join(problemi) +
+                     "\n\nScrivi a Claude: 'il controllo della salute ha trovato un problema'.")
         print("\nScrivi a Claude: 'il controllo della salute ha trovato un problema' e incolla queste righe.")
         sys.exit(1)
     print("\nTutto a posto.")

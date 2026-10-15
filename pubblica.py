@@ -1017,4 +1017,13 @@ def main():
     log("Fatto." + (f" Da riprovare: {failed}" if failed else ""))
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except BaseException as e:            # anche sys.exit(1): avviso subito su Telegram (non per Ctrl+C)
+        if not isinstance(e, KeyboardInterrupt) and not (isinstance(e, SystemExit) and e.code in (0, None)) and not DRY:
+            import avvisi
+            orario_slot = sys.argv[1] if len(sys.argv) > 1 else ""
+            avvisi.manda(f"Attenzione: il reel delle {orario_slot.split()[-1] if orario_slot else '?'} NON e' uscito "
+                         f"({str(e)[:300] or 'nessuna piattaforma ha funzionato'}). Al prossimo orario riprovo "
+                         "da solo; se si ripete scrivi a Claude.")
+        raise
