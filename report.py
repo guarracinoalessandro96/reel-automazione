@@ -49,6 +49,31 @@ def testi_citazioni():
         return {}
 
 
+def stat_facebook(post):
+    """Riproduzioni dei reel Facebook (ultimi 30 giorni): {"reel": n, "riproduzioni": tot, "media": m, "ultimi": [...]}."""
+    import requests
+    token = ENV("META_PAGE_TOKEN")
+    if not token:
+        return None
+    limite = (datetime.datetime.now() - datetime.timedelta(days=30)).isoformat()
+    righe = []
+    for h in post:
+        fid = h.get("risultati", {}).get("facebook", {}).get("id")
+        if not fid or not h.get("risultati", {}).get("facebook", {}).get("ok") or h.get("quando", "") < limite:
+            continue
+        try:
+            r = requests.get(f"https://graph.facebook.com/v23.0/{fid}/video_insights",
+                             params={"metric": "fb_reels_total_plays", "access_token": token}, timeout=30).json()
+            v = sum(d["values"][0]["value"] for d in r.get("data", []))
+        except Exception:
+            continue
+        righe.append({"quando": h["quando"], "riproduzioni": int(v)})
+    if not righe:
+        return None
+    tot = sum(r["riproduzioni"] for r in righe)
+    return {"reel": len(righe), "riproduzioni": tot, "media": round(tot / len(righe), 1), "ultimi": righe[-10:]}
+
+
 def genere(musica):
     """'phonk_13.flac' -> 'phonk' (generi creati da noi); 'taking_flight_2.m4a' -> 'Taking Flight' (Raccolta audio YouTube)."""
     if not musica:
@@ -97,7 +122,9 @@ def main():
     migliori = sorted(righe, key=lambda r: (-r["views"], -r["like"]))[:5]
     testi = testi_citazioni() if migliori else {}
     migliori = [dict(m, frase=testi.get(m["frase"], m["frase"])) for m in migliori]
+    tutti = [h for h in state.get("storico", []) if h.get("slot")]
     report = {"data": datetime.date.today().isoformat(), "reel_analizzati": len(righe),
+              "facebook": stat_facebook(tutti),
               "media_views": round(media_tot), "like_totali": sum(r["like"] for r in righe),
               "per_tema": media(per["tema"]), "per_scena": media(per["scena"]), "per_orario": media(per["orario"]),
               "per_musica": media(per["musica"]), "per_origine": media(per["origine"]),
