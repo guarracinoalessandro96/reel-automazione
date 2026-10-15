@@ -25,7 +25,7 @@ permissions:
 jobs:
   pubblica:
     runs-on: ubuntu-24.04
-    timeout-minutes: 40
+    timeout-minutes: 100   # puo' aspettare fino a ~50 minuti l'ora esatta dello slot
     steps:
       # 11/10/2026: ref main = lo stato PIU' RECENTE (senza, un controllo in coda dietro a un altro leggeva lo stato
       # di quando era partito e ripubblicava lo stesso orario: alle 15:00 erano usciti 2 reel)

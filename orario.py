@@ -13,7 +13,7 @@ from zoneinfo import ZoneInfo
 # 19 macchina verso casa, 21-23 palestra, 23 macchina verso casa
 SLOTS = [(9, 0, "mattina"), (13, 0, "pranzo"), (17, 0, "ufficio"), (21, 0, "palestra")]   # dal 13/10/2026: dalle 9 ogni 4 ore
 FINE_ULTIMO = 25 * 60 + 30           # l'ultimo orario (21:00) resta valido fino all'01:30
-ANTICIPO = 10                        # minuti: GitHub parte spesso in ritardo, quindi uno slot si puo' fare fino a 10' prima
+ANTICIPO = 50                        # minuti (16/10/2026): si prepara tutto prima, poi si pubblica all'ora ESATTA
 STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stato.json")
 
 

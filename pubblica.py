@@ -152,6 +152,15 @@ def ora_roma():
     return datetime.datetime.now(ZoneInfo("Europe/Rome"))
 
 
+def ora_slot(slot):
+    """'2026-10-16 09:00' -> datetime (ora di Roma). None per le esecuzioni manuali."""
+    from zoneinfo import ZoneInfo
+    try:
+        return datetime.datetime.strptime(slot, "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo("Europe/Rome"))
+    except (TypeError, ValueError):
+        return None
+
+
 def log(*a):
     print(datetime.datetime.now().strftime("%H:%M:%S"), *a, flush=True)
 
@@ -385,7 +394,8 @@ class Drive:
         return n
 
 
-def youtube_upload(creds, path, cap):
+def youtube_upload(creds, path, cap, publish_at=None):
+    """publish_at (datetime): caricato subito come privato e PROGRAMMATO: YouTube lo pubblica all'ora esatta."""
     from googleapiclient.discovery import build
     from googleapiclient.http import MediaFileUpload
     yt = build("youtube", "v3", credentials=creds, cache_discovery=False)
@@ -400,6 +410,9 @@ def youtube_upload(creds, path, cap):
                                  "successo", "imprenditore", "palestra", "mindset", "shorts"],
                         "defaultLanguage": "it", "defaultAudioLanguage": "it"},
             "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": False}}
+    if publish_at and privacy == "public":
+        body["status"].update(privacyStatus="private",
+                              publishAt=publish_at.astimezone(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
     req = yt.videos().insert(part="snippet,status", body=body,
                              media_body=MediaFileUpload(path, mimetype="video/mp4", resumable=True))
     resp = None
@@ -588,10 +601,10 @@ def versione_meta(path, recenti, scena=None):
         return None, None
 
 
-def publish_all(path, cap, creds, only, path_meta=None):
+def publish_all(path, cap, creds, only, path_meta=None, publish_at=None):
     fns = {"instagram": lambda: instagram_upload(path_meta, cap),
            "facebook": lambda: facebook_upload(path_meta, cap),
-           "youtube": lambda: youtube_upload(creds, path, cap),
+           "youtube": lambda: youtube_upload(creds, path, cap, publish_at),
            "tiktok": lambda: tiktok_upload(path_meta, cap)}
     results = {}
     for name in only:
@@ -869,7 +882,22 @@ def main():
     per_dopo = [p for p in PREPARA_PER_DOPO if p not in attive()]
     if MUSICA_NOSTRA & set(attive()) or per_dopo:
         out_meta, info["musica_meta"] = versione_meta(out, state.get("musica_recenti_meta", []), an["scena"])
-    results = publish_all(out, frase, creds, attive(), out_meta)
+    # PUNTUALITA' (16/10/2026): si parte ~45' prima dello slot. YouTube viene caricato subito e PROGRAMMATO all'ora
+    # esatta; poi si aspetta l'ora esatta per Telegram (TikTok) e Facebook.
+    target = ora_slot(slot)
+    anticipo = (target - ora_roma()).total_seconds() if target else 0
+    yt_prima = "youtube" in attive() and anticipo > 10 * 60
+    results = publish_all(out, frase, creds, ["youtube"], out_meta, target) if yt_prima else {}
+    if yt_prima:
+        log(f"YouTube programmato per le {target:%H:%M}" if results["youtube"]["ok"] else "YouTube: errore")
+    if results.get("youtube", {}).get("ok"):    # se il lavoro si interrompesse, l'orario non si ripubblica
+        state["slot_fatti"] = (state["slot_fatti"] + [slot])[-80:]
+        state["storico"].append({"quando": datetime.datetime.now().isoformat(timespec="minutes"), "slot": slot,
+                                 "video": nome, "md5": video.get("md5Checksum") if video else None,
+                                 "da_archivio": bool(clip), "scena": an["scena"], "registrato": an.get("registrato"),
+                                 "frase": frase["id"], "tema": frase["tema"], "montaggio": info, "risultati": results,
+                                 "in_corso": True})
+        save()
     if per_dopo and out_meta:
         try:
             nome_dopo = f"{ora_roma():%Y-%m-%d %H%M} - {frase['id']}.mp4"
@@ -883,11 +911,22 @@ def main():
             nome_tt = f"{ora_roma():%Y-%m-%d %H%M} - {frase['id']}.mp4"
             drive.salva_per_dopo(muto, nome_tt, testo_breve(frase), CARTELLA_TIKTOK)
             log(f"Pronto per TikTok (senza musica): {CARTELLA_TIKTOK}/{nome_tt}")
-            if ENV("TELEGRAM_BOT_TOKEN") and ENV("TELEGRAM_CHAT_ID") and not DRY:
-                manda_telegram(muto, testo_breve(frase), slot)
-                log("TikTok: video e testo mandati su Telegram")
         except Exception as e:
+            muto = None
             log("Versione per TikTok non salvata su Drive:", e)
+    else:
+        muto = None
+    attesa = (target - ora_roma()).total_seconds() if target else 0
+    if 0 < attesa < 70 * 60 and not DRY:
+        log(f"Aspetto le {target:%H:%M} per pubblicare puntuale ({attesa / 60:.0f} minuti)")
+        time.sleep(attesa)
+    if muto and ENV("TELEGRAM_BOT_TOKEN") and ENV("TELEGRAM_CHAT_ID") and not DRY:
+        try:
+            manda_telegram(muto, testo_breve(frase), slot)
+            log("TikTok: video e testo mandati su Telegram")
+        except Exception as e:
+            log("Telegram non riuscito:", e)
+    results.update(publish_all(out, frase, creds, [p for p in attive() if p not in results], out_meta))
     if results.get("instagram", {}).get("ok") and ENV("SENZA_STORIE") != "1" and not DRY:
         try:
             results["instagram_storia"] = {"ok": True, "id": instagram_storia(out_meta)}
@@ -932,9 +971,11 @@ def main():
         state["musica_recenti"] = (state["musica_recenti"] + [info["musica"]])[-20:]
     if info.get("musica_meta"):
         state["musica_recenti_meta"] = (state.get("musica_recenti_meta", []) + [info["musica_meta"]])[-20:]
-    state["slot_fatti"] = (state["slot_fatti"] + [slot])[-80:]
+    if slot not in state["slot_fatti"]:
+        state["slot_fatti"] = (state["slot_fatti"] + [slot])[-80:]
     if video:
         state["analisi"].pop(video["id"], None)
+    state["storico"] = [h for h in state["storico"] if not (h.get("in_corso") and h.get("slot") == slot)]
     state["storico"].append({"quando": datetime.datetime.now().isoformat(timespec="minutes"), "slot": slot,
                              "video": nome, "md5": video.get("md5Checksum") if video else None,
                              "da_archivio": bool(clip), "scena": an["scena"], "registrato": an.get("registrato"),
