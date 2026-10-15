@@ -1,8 +1,8 @@
 {
- "data": "2026-10-14",
- "reel_analizzati": 44,
- "media_views": 771,
- "like_totali": 345,
+ "data": "2026-10-15",
+ "reel_analizzati": 49,
+ "media_views": 763,
+ "like_totali": 371,
  "per_tema": {
   "amicizia": {
    "reel": 1,
@@ -17,8 +17,8 @@
    "media_views": 939
   },
   "mentalita": {
-   "reel": 36,
-   "media_views": 758
+   "reel": 41,
+   "media_views": 749
   },
   "palestra": {
    "reel": 2,
@@ -36,15 +36,15 @@
   },
   "cibo": {
    "reel": 2,
-   "media_views": 1399
+   "media_views": 1410
   },
   "lavoro": {
    "reel": 7,
    "media_views": 377
   },
   "macchina": {
-   "reel": 12,
-   "media_views": 804
+   "reel": 15,
+   "media_views": 800
   },
   "pacchi": {
    "reel": 2,
@@ -52,11 +52,11 @@
   },
   "palestra": {
    "reel": 11,
-   "media_views": 749
+   "media_views": 750
   },
   "specchio": {
-   "reel": 5,
-   "media_views": 803
+   "reel": 7,
+   "media_views": 725
   },
   "uscita": {
    "reel": 2,
@@ -65,24 +65,24 @@
  },
  "per_orario": {
   "08": {
-   "reel": 3,
-   "media_views": 506
+   "reel": 4,
+   "media_views": 622
   },
   "09": {
    "reel": 5,
-   "media_views": 937
+   "media_views": 942
   },
   "11": {
-   "reel": 3,
-   "media_views": 903
+   "reel": 4,
+   "media_views": 682
   },
   "12": {
    "reel": 3,
    "media_views": 786
   },
   "13": {
-   "reel": 3,
-   "media_views": 955
+   "reel": 4,
+   "media_views": 964
   },
   "15": {
    "reel": 5,
@@ -96,17 +96,21 @@
    "reel": 5,
    "media_views": 776
   },
+  "19": {
+   "reel": 1,
+   "media_views": 387
+  },
   "20": {
    "reel": 3,
-   "media_views": 837
+   "media_views": 838
   },
   "21": {
    "reel": 4,
    "media_views": 458
   },
   "22": {
-   "reel": 4,
-   "media_views": 488
+   "reel": 5,
+   "media_views": 598
   },
   "23": {
    "reel": 3,
@@ -116,7 +120,11 @@
  "per_musica": {
   "Ancient Civilisations": {
    "reel": 1,
-   "media_views": 1005
+   "media_views": 1006
+  },
+  "Cartier": {
+   "reel": 1,
+   "media_views": 1033
   },
   "Cutscene Crush": {
    "reel": 4,
@@ -128,15 +136,15 @@
   },
   "Fire In The Sky": {
    "reel": 1,
-   "media_views": 568
+   "media_views": 567
   },
   "Horizons": {
-   "reel": 1,
-   "media_views": 337
+   "reel": 2,
+   "media_views": 364
   },
   "Intergalactic": {
    "reel": 1,
-   "media_views": 1127
+   "media_views": 1130
   },
   "Keep It Movin": {
    "reel": 1,
@@ -158,9 +166,13 @@
    "reel": 1,
    "media_views": 92
   },
+  "Moon Vision": {
+   "reel": 1,
+   "media_views": 972
+  },
   "Stake Out": {
    "reel": 1,
-   "media_views": 1017
+   "media_views": 1018
   },
   "Survival Mode": {
    "reel": 1,
@@ -176,15 +188,15 @@
   },
   "The Light": {
    "reel": 1,
-   "media_views": 707
+   "media_views": 708
   },
   "Turn In The Sun": {
-   "reel": 2,
-   "media_views": 522
+   "reel": 3,
+   "media_views": 678
   },
   "Vibe Check": {
    "reel": 2,
-   "media_views": 1086
+   "media_views": 1088
   },
   "Visions": {
    "reel": 1,
@@ -192,7 +204,11 @@
   },
   "Way Back Home": {
    "reel": 3,
-   "media_views": 1229
+   "media_views": 1237
+  },
+  "Whoop": {
+   "reel": 1,
+   "media_views": 22
   },
   "deciso": {
    "reel": 2,
@@ -212,7 +228,7 @@
   },
   "trap": {
    "reel": 1,
-   "media_views": 503
+   "media_views": 506
   },
   "tropical": {
    "reel": 1,
@@ -221,17 +237,17 @@
  },
  "per_origine": {
   "archivio": {
-   "reel": 13,
-   "media_views": 874
+   "reel": 17,
+   "media_views": 812
   },
   "video nuovo": {
-   "reel": 31,
-   "media_views": 728
+   "reel": 32,
+   "media_views": 736
   }
  },
  "pesi_temi": {
   "amicizia": 1.11,
-  "imprenditore": 1.08,
+  "imprenditore": 1.09,
   "mentalita": 0.98,
   "palestra": 1.0,
   "dieta": 0.91
@@ -260,6 +276,17 @@
    "like": 35
   },
   {
+   "quando": "2026-10-11T07:57",
+   "frase": "Ogni persona leale alla fine si fa male.",
+   "tema": "mentalita",
+   "scena": "cibo",
+   "orario": "09",
+   "musica": "Way Back Home",
+   "origine": "archivio",
+   "views": 1419,
+   "like": 17
+  },
+  {
    "quando": "2026-10-07T07:06",
    "frase": "Soffriamo di più nell'immaginazione che nella realtà.",
    "tema": "mentalita",
@@ -269,17 +296,6 @@
    "origine": "video nuovo",
    "views": 1402,
    "like": 9
-  },
-  {
-   "quando": "2026-10-11T07:57",
-   "frase": "Ogni persona leale alla fine si fa male.",
-   "tema": "mentalita",
-   "scena": "cibo",
-   "orario": "09",
-   "musica": "Way Back Home",
-   "origine": "archivio",
-   "views": 1396,
-   "like": 17
   },
   {
    "quando": "2026-10-07T17:45",
