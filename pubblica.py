@@ -71,6 +71,7 @@ YT_PER_SCENA = {"palestra": ["yt_carica"], "macchina": ["yt_carica", "yt_epica"]
                 "casa": ["yt_epica"], "uscita": ["yt_carica", "yt_epica"]}
 
 
+MIN_PAROLE = 7               # frasi piu' corte rendono meno (vedi scelta della frase in main)
 MUSICA_NOSTRA = {"facebook", "instagram", "tiktok"}   # qui NON la Raccolta audio di YouTube (pensata per YouTube): i nostri brani
 PREPARA_PER_DOPO = ["instagram"]   # non ancora attiva: ogni reel (versione con musica nostra) va su Drive
 CARTELLA_DOPO = "Pronti per Instagram"   # ... in questa cartella, con il testo da incollare
@@ -491,13 +492,43 @@ def instagram_storia(path):
     return _ig_carica_e_pubblica(path, {"media_type": "STORIES"})
 
 
-def instagram_upload(path, cap):
+# Instagram con MUSICA NATIVA (16/10/2026): l'API audio di Meta (/ig_audio, Graph v25+) da' i brani di Instagram
+# autorizzati per le app; si carica il reel SENZA musica e si attacca il brano scelto (audio_configuration).
+GRAPH_AUDIO = "https://graph.facebook.com/v25.0"
+IG_RICERCHE = {"palestra": ["phonk", "workout", "gym"], "macchina": ["drive", "phonk", "night drive"],
+               "lavoro": ["motivational", "epic", "hustle"], "pacchi": ["motivational", "hustle"],
+               "specchio": ["motivational", "phonk"], "casa": ["motivational", "epic"],
+               "cibo": ["motivational", "epic"], "uscita": ["epic", "motivational"]}
+IG_DA_EVITARE = re.compile(r"love|amore|romantic|lullaby|sleep|relax|432hz|christmas|natale|baby|happy|domenica",
+                           re.I)
+
+
+def scegli_audio_instagram(scena, recenti=()):
+    """(audio_id, titolo) di un brano Instagram motivazionale per la scena, evitando i recenti. None se nessuno."""
+    token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
+    ricerche = list(IG_RICERCHE.get(scena, ["motivational", "phonk", "epic"]))
+    random.shuffle(ricerche)
+    for q in ricerche:
+        r = requests.get(f"{GRAPH_AUDIO}/ig_audio", params={"audio_type": "music", "search_query": q, "user_id": ig,
+                                                             "access_token": token}, timeout=30).json()
+        brani = [a for a in r.get("audio", []) if a.get("audio_id") and not IG_DA_EVITARE.search(
+                 f"{a.get('title', '')} {a.get('display_artist', '')}") and a["audio_id"] not in recenti]
+        if brani:
+            a = random.choice(brani[:8])
+            return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')}"
+    return None
+
+
+def instagram_upload(path, cap, audio_id=None):
+    """audio_id: brano nativo di Instagram (allora path e' il video SENZA musica)."""
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
     dati = {"media_type": "REELS", "caption": testo_breve(cap), "share_to_feed": "true"}
+    if audio_id:
+        dati["audio_configuration"] = json.dumps({"audio_id": audio_id, "audio_volume": 100, "video_volume": 0})
     if cap.get("copertina_ms") is not None:
         dati["thumb_offset"] = str(cap["copertina_ms"])
-    r = requests.post(f"{GRAPH}/{ig}/media", data={**dati, "upload_type": "resumable",
-                                                     "access_token": token}).json()
+    r = requests.post(f"{GRAPH_AUDIO if audio_id else GRAPH}/{ig}/media", data={**dati, "upload_type": "resumable",
+                                                                            "access_token": token}).json()
     if "id" not in r:
         raise RuntimeError(r)
     cid = r["id"]
@@ -866,8 +897,11 @@ def main():
         log(f"'{DOC_MIE}': {len(mie)} citazioni, {len(frasi)} ancora da usare.")
         # reel da 5 s: anche le frasi lunghe (scelta di Alessandro 13/10/2026: se non si fa in tempo a leggere,
         # si riguarda il video -> piu' visualizzazioni). Nessun filtro sulla lunghezza.
+        # dati YouTube 16/10/2026 (53 Shorts): frasi fino a 6 parole ~340 views mediane, 7-10 parole ~1.020,
+        # 11-15 parole ~1.255 -> 9 volte su 10 si sceglie una frase di almeno 7 parole (1 su 10 resta "esperimento")
+        lunghe = [f for f in frasi if len(f["gancio"].split()) >= MIN_PAROLE]
         if frasi:
-            frase = random.choice(frasi)
+            frase = random.choice(lunghe if lunghe and random.random() < 0.9 else frasi)
         elif mie:            # finite: si riusa quella uscita da piu' tempo (mai fermarsi); salute.py avvisa
             frase = min(mie, key=lambda f: usi.get(f["id"], ""))
             log("Citazioni nuove finite: riuso la meno recente. Aggiungerne altre al documento!")

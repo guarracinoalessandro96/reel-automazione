@@ -208,6 +208,7 @@ LIMITATORE = "alimiter=limit=0.89:level=disabled"   # picchi sotto -1 dB: niente
 
 TAGLIO_INIZIO = 2.0      # si tolgono sempre i primi 2 secondi (il momento in cui si preme "registra")
 DURATA_MAX = 5.0         # dal 13/10/2026 reel da 5 secondi (prima 8): es. video da 12 s -> si usa da 2 a 7
+LOOP_SFUMATURA = 0.3     # secondi di sfumatura fine -> inizio (loop senza stacco)
 DURATA_ARCHIVIO = 8.0    # all'archivio si salvano comunque 8 s: a ogni riuso si prende un pezzo da 5 s diverso
 
 
@@ -221,7 +222,7 @@ def segmento_archivio(seconds):
     """Clip d'archivio (gia' tagliata, di solito 8 s): un pezzo da DURATA_MAX preso in un punto a caso,
     cosi' lo stesso video riusato non e' mai identico."""
     length = min(DURATA_MAX, seconds)
-    return round(random.uniform(0, max(0.0, seconds - length)), 2), length
+    return round(random.uniform(0, max(0.0, seconds - length - LOOP_SFUMATURA)), 2), length   # spazio per il loop
 
 
 def scegli_copertina(frames, length):
@@ -283,7 +284,7 @@ def cambia_musica(src, music, dst):
 def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", scena_rilevata=None, autore=None,
                da_archivio=False):
     """Come _make_video, ma con piani di riserva: se ffmpeg fallisce si riprova togliendo, nell'ordine,
-    lo zoom, la color correction e la musica. Cosi' un problema su un effetto non blocca mai la pubblicazione."""
+    zoom e loop, la color correction e la musica. Cosi' un problema su un effetto non blocca mai la pubblicazione."""
     if music and (not os.path.exists(music) or os.path.getsize(music) < 1000):   # brano mancante: niente musica,
         music = None                                                              # ma zoom e colore restano
     prove = [dict(zoom=True, colore=colore, music=music), dict(zoom=False, colore=colore, music=music),
@@ -356,7 +357,20 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
         chain.append(grade.build_filter(misure, tipo))
         grade_info = grade.descrivi(misure, tipo, motivo)
     base = f"[0:v]{','.join(chain)}[base];[base]" if chain else "[0:v]"
-    graph = base + "[1:v]overlay=0:0:format=auto,format=yuv420p[v]"
+    # LOOP PERFETTO (16/10/2026): si usa il pezzo da X a length+X e negli ultimi X secondi ci si sfuma sopra l'inizio
+    # (fotogrammi 0..X): l'ultimo fotogramma coincide con il primo, quando lo Short ricomincia non si vede lo stacco.
+    # L'inizio si legge con un SECONDO ingresso dello stesso file (con "split" ffmpeg 7.1 si bloccava). Durata invariata.
+    # (solo al primo tentativo: se ffmpeg fallisce, il piano di riserva riprova SENZA loop, poi senza colore...)
+    X = LOOP_SFUMATURA if zoom and seconds - start >= length + LOOP_SFUMATURA and length > 2 else 0
+    filtri = ",".join(chain)
+    if X:
+        graph = (f"[0:v]{filtri + ',' if filtri else ''}trim=start={X}:end={length + X},setpts=PTS-STARTPTS[mn];"
+                 f"[LOOPIN:v]{filtri + ',' if filtri else ''}trim=start=0:end={X},"
+                 f"setpts=PTS-STARTPTS+{length - X:.3f}/TB,format=yuva420p,"
+                 f"fade=t=in:st={length - X:.3f}:d={X}:alpha=1[hd];"
+                 "[mn][hd]overlay=eof_action=pass[mx];[mx][1:v]overlay=0:0:format=auto,format=yuv420p[v]")
+    else:
+        graph = base + "[1:v]overlay=0:0:format=auto,format=yuv420p[v]"
     # audio: SOLO la nostra musica. L'audio originale del telefono (voci, rumori) non entra MAI nel reel
     # (regola di Alessandro). Senza musica il reel esce muto, mai con l'audio originale.
     amap = ["-an"]
@@ -364,6 +378,9 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
         cmd += ["-stream_loop", "-1", "-i", music]
         graph += f";[2:a]volume={MUSIC_VOL},{LIMITATORE},afade=t=out:st={max(0.0, length - 0.3):.2f}:d=0.3[a]"
         amap = ["-map", "[a]"]
+    if X:      # secondo ingresso: solo l'inizio del pezzo, per la sfumatura del loop
+        cmd += ["-display_rotation", "0", "-ss", f"{start:.3f}", "-t", f"{X + 0.2:.3f}", "-i", src]
+        graph = graph.replace("[LOOPIN:v]", f"[{3 if music else 2}:v]")
     cmd += ["-filter_complex", graph, "-map", "[v]", *amap, "-t", f"{length:.3f}",
             "-c:v", "libx264", "-preset", "medium", "-crf", "17", "-profile:v", "high",
             "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-movflags", "+faststart", dst]
