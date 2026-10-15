@@ -2239,6 +2239,46 @@
      "id": "1125782866666086"
     }
    }
+  },
+  {
+   "quando": "2026-10-15T18:55",
+   "slot": "2026-10-15 21:00",
+   "video": "IMG_3833.mov",
+   "md5": "aeb3c9dd16fe998d44b13adf5e20e0b8",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-12T22:55+02:00",
+   "frase": "MIE-51b80f60",
+   "tema": "palestra",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 40,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 7.0s",
+    "durata": 5.0,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.44,
+     "dominante": "neutra",
+     "rumore": 3.7
+    },
+    "copertina_ms": 1718,
+    "musica": "mirror_mirror_2.m4a",
+    "musica_meta": "phonk_02.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "ygzxur15Z-Y"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1732712587817813"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2305,10 +2345,10 @@
   "2026-10-14 21:00",
   "2026-10-15 09:00",
   "2026-10-15 13:00",
-  "2026-10-15 17:00"
+  "2026-10-15 17:00",
+  "2026-10-15 21:00"
  ],
  "musica_recenti": [
-  "delirium_2.m4a",
   "taking_flight_2.m4a",
   "vibe_check_2.m4a",
   "kick_it_3.m4a",
@@ -2327,7 +2367,8 @@
   "break_ya_neck_3.m4a",
   "kick_it_4.m4a",
   "way_back_home_3.m4a",
-  "horizons_1.m4a"
+  "horizons_1.m4a",
+  "mirror_mirror_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2389,10 +2430,10 @@
   "MIE-9b789797",
   "MIE-e7d7dd0c",
   "MIE-e68e1bd0",
-  "MIE-96cb5cca"
+  "MIE-96cb5cca",
+  "MIE-51b80f60"
  ],
  "temi_recenti": [
-  "imprenditore",
   "mentalita",
   "palestra",
   "mentalita",
@@ -2401,19 +2442,20 @@
   "mentalita",
   "mentalita",
   "palestra",
-  "mentalita"
+  "mentalita",
+  "palestra"
  ],
  "analisi": {
-  "1tkHlS-HT1rzlK8aT59nBY7P7PqIv00_t": {
-   "nome": "IMG_3833.mov",
-   "scena": "palestra",
-   "sicurezza": 0.99,
+  "1qIseSFc6KKhmjiJhjBehHpq_j-7jFnqk": {
+   "nome": "IMG_3918.MOV",
+   "scena": "casa",
+   "sicurezza": 0.75,
    "motivo": "riconosciuta dalle immagini",
    "lato_corto": 2160,
    "compagnia": "solo",
-   "registrato": "2026-10-12T22:55+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-12T21:42:41.411Z"
+   "registrato": "2026-10-15T19:47+02:00",
+   "fascia": "sera",
+   "caricato": "2026-10-15T17:49:29.437Z"
   }
  },
  "pulizia": "2026-10-15",
@@ -2585,6 +2627,10 @@
   "12Fo5vh8JbpmRDWSzG5Ro-KcD-bCBRZH_": {
    "usi": 1,
    "ultimo": "2026-10-15"
+  },
+  "1dS3dJuren-0gwioBQEQ4MkMFmJH5kMNx": {
+   "usi": 1,
+   "ultimo": "2026-10-15"
   }
  },
  "musica_recenti_meta": [
@@ -2597,6 +2643,7 @@
   "phonk_04.flac",
   "drive_02.flac",
   "deciso_10.flac",
-  "phonk_16.flac"
+  "phonk_16.flac",
+  "phonk_02.flac"
  ]
 }
