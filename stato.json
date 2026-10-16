@@ -2319,6 +2319,47 @@
      "id": "2553202718519580"
     }
    }
+  },
+  {
+   "quando": "2026-10-16T11:00",
+   "slot": "2026-10-16 13:00",
+   "video": "IMG_3932.MOV",
+   "md5": "3007463b465c3ae9640ef5341f2c23f1",
+   "da_archivio": false,
+   "scena": "macchina",
+   "registrato": "2026-10-16T09:12+02:00",
+   "frase": "MIE-d8f3e08c",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 50,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 0.8s a 5.8s",
+    "durata": 5.0,
+    "inizio": 0.8,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.47,
+     "dominante": "neutra",
+     "rumore": 2.1
+    },
+    "copertina_ms": 300,
+    "musica": "cartier_3.m4a",
+    "musica_meta": "drive_15.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "KFrzS0PoXiE"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1056976503391855"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2387,10 +2428,10 @@
   "2026-10-15 13:00",
   "2026-10-15 17:00",
   "2026-10-15 21:00",
-  "2026-10-16 09:00"
+  "2026-10-16 09:00",
+  "2026-10-16 13:00"
  ],
  "musica_recenti": [
-  "vibe_check_2.m4a",
   "kick_it_3.m4a",
   "moon_vision_1.m4a",
   "whoop_2.m4a",
@@ -2409,7 +2450,8 @@
   "way_back_home_3.m4a",
   "horizons_1.m4a",
   "mirror_mirror_2.m4a",
-  "the_road_to_mordor_2.m4a"
+  "the_road_to_mordor_2.m4a",
+  "cartier_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2473,10 +2515,10 @@
   "MIE-e68e1bd0",
   "MIE-96cb5cca",
   "MIE-51b80f60",
-  "MIE-9dd49640"
+  "MIE-9dd49640",
+  "MIE-d8f3e08c"
  ],
  "temi_recenti": [
-  "palestra",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -2485,9 +2527,55 @@
   "palestra",
   "mentalita",
   "palestra",
+  "mentalita",
   "mentalita"
  ],
- "analisi": {},
+ "analisi": {
+  "1sYzUsrTeymTPfHdCHItFgjGBF9hx7b0g": {
+   "nome": "IMG_3935.MOV",
+   "scena": "lavoro",
+   "sicurezza": 0.46,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-16T09:58+02:00",
+   "fascia": "ufficio",
+   "caricato": "2026-10-16T09:30:05.539Z"
+  },
+  "1-CgPhyIPtA1HFO-HZIEPyRU4RA_O04Aa": {
+   "nome": "IMG_3936.MOV",
+   "scena": "specchio",
+   "sicurezza": 0.8,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-16T10:39+02:00",
+   "fascia": "ufficio",
+   "caricato": "2026-10-16T09:30:09.114Z"
+  },
+  "1qy4E3LrhvYwBNgA95Io07YMyJQN4z-Qw": {
+   "nome": "IMG_3933.MOV",
+   "scena": "macchina",
+   "sicurezza": 0.75,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-16T09:14+02:00",
+   "fascia": "mattina",
+   "caricato": "2026-10-16T09:30:17.931Z"
+  },
+  "1z5F-shRQS4bP0Vng9aEnarAVVHhVHPMY": {
+   "nome": "IMG_3937.MOV",
+   "scena": "specchio",
+   "sicurezza": 0.45,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-16T10:48+02:00",
+   "fascia": "ufficio",
+   "caricato": "2026-10-16T09:30:42.501Z"
+  }
+ },
  "pulizia": "2026-10-16",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -2675,7 +2763,8 @@
   "deciso_10.flac",
   "phonk_16.flac",
   "phonk_02.flac",
-  "deciso_03.flac"
+  "deciso_03.flac",
+  "drive_15.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
