@@ -916,8 +916,9 @@ def main():
         # dati YouTube 16/10/2026 (53 Shorts): frasi fino a 6 parole ~340 views mediane, 7-10 parole ~1.020,
         # 11-15 parole ~1.255 -> 9 volte su 10 si sceglie una frase di almeno 7 parole (1 su 10 resta "esperimento")
         lunghe = [f for f in frasi if len(f["gancio"].split()) >= MIN_PAROLE]
+        virali = [f for f in frasi if f.get("virale")]       # prima quelle andate virali in altri video
         if frasi:
-            frase = random.choice(lunghe if lunghe and random.random() < 0.9 else frasi)
+            frase = random.choice(virali or (lunghe if lunghe and random.random() < 0.9 else frasi))
         elif mie:            # finite: si riusa quella uscita da piu' tempo (mai fermarsi); salute.py avvisa
             frase = min(mie, key=lambda f: usi.get(f["id"], ""))
             log("Citazioni nuove finite: riuso la meno recente. Aggiungerne altre al documento!")

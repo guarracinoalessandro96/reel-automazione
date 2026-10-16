@@ -17,7 +17,10 @@ VIETATE = re.compile(r"uccid|suicid|\bdio\b|diavol|sangue|droga|politic", re.I)
 
 
 def pulisci(r):
-    r = r.strip().strip('"“”«»').strip()
+    tag = re.match(r"\s*(\[\w+\])\s*(.+)", r)          # etichetta facoltativa, es. [virale]
+    if tag:
+        return tag.group(1) + " " + pulisci(tag.group(2))
+    r = r.strip().strip('"“”').strip()
     r = re.sub(r"\s+[-–—]\s*[A-Z][\w .']+$", "", r)          # niente " - Autore" in fondo
     return re.sub(r"\s+", " ", r)
 
@@ -33,17 +36,17 @@ def main():
     viste = [f["gancio"].lower() for f in mie_citazioni.frasi(testo)]
     buone = []
     for r in righe:
-        n = len(r.split())
+        n = len(re.sub(r"^\[\w+\]\s*", "", r).split())
         motivo = ("meno di 7 parole" if n < 7 else "piu' di 22 parole" if n > 22 else "parla di eta'" if ETA.search(r)
                   else "parola vietata" if VIETATE.search(r) else None)
         if not motivo:
-            simile = difflib.get_close_matches(r.lower(), viste, n=1, cutoff=0.82)
+            simile = difflib.get_close_matches(re.sub(r"^\[\w+\]\s*", "", r).lower(), viste, n=1, cutoff=0.82)
             motivo = f"doppione di: {simile[0]}" if simile else None
         if motivo:
             print("SCARTATA", f"({motivo}):", r)
             continue
         buone.append(r)
-        viste.append(r.lower())
+        viste.append(re.sub(r"^\[\w+\]\s*", "", r).lower())
     if not buone:
         print("Niente da aggiungere.")
         return

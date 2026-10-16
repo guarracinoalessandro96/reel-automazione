@@ -35,9 +35,10 @@ def frasi(testo, temi_per_scena=None):
         r = riga.strip().lstrip("﻿").strip()
         if not r or r.startswith("#"):
             continue
-        tema = None
+        tema, virale = None, False
         m = re.match(r"\[(\w+)\]\s*(.+)", r)
-        if m:
+        if m:     # [virale] = frase andata virale in altri video (ricerca del 16/10/2026): esce prima delle altre
+            virale = m.group(1).lower() == "virale"
             tema, r = ETICHETTE.get(m.group(1).lower()), m.group(2).strip()
         r = r.strip('"“”').strip()
         if len(r) < 8:
@@ -48,5 +49,5 @@ def frasi(testo, temi_per_scena=None):
         scene = ([s for s, temi in temi_per_scena.items() if tema in temi] if tema != "mentalita" else []) \
             or list(temi_per_scena)
         out.append({"id": "MIE-" + hashlib.md5(r.lower().encode()).hexdigest()[:8], "tema": tema, "scene": scene,
-                    "gancio": r, "autore": "", "hashtag": ["#citazioni", "#motivazione", "#mentalita"]})
+                    "gancio": r, "autore": "", "hashtag": ["#citazioni", "#motivazione", "#mentalita"], "virale": virale})
     return out
