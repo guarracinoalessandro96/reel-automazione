@@ -136,7 +136,8 @@ def _a_capo(d, text, font, max_px):
     return lines
 
 
-def build_overlay(W, H, text, faces, stile=None, autore=None):
+def build_overlay(W, H, text, faces, stile=None, autore=None, serie=None):
+    """serie: piccola etichetta sopra la frase (es. "GIORNO 12 / 365"), la "serie" che da' un motivo per seguire."""
     stile = stile or STILE
     fsize = int(W * (0.056 if stile == "contorno" else 0.050))
     font = ImageFont.truetype(FONT, fsize)
@@ -151,8 +152,17 @@ def build_overlay(W, H, text, faces, stile=None, autore=None):
     riga_a = "— " + autore if autore else ""
     ah = int(fsize * 1.25) if autore else 0      # spazio per la riga dell'autore
     block_h = lh * len(lines) + pad_y * 2 + ah
-    y_frac, score = choose_position(block_h / H, faces)
+    fs = int(fsize * 0.6)
+    eh = int(fs * 1.7) + int(fsize * 0.3) if serie else 0      # altezza etichetta della serie + spazio
+    y_frac, score = choose_position((block_h + eh) / H, faces)
     y = int(y_frac * H)
+    if serie:      # etichetta sopra il riquadro, poi la frase subito sotto
+        font_s = ImageFont.truetype(FONT, fs)
+        ws = d.textlength(serie, font=font_s)
+        d.rounded_rectangle([(W - ws) / 2 - fs * 0.7, y, (W + ws) / 2 + fs * 0.7, y + int(fs * 1.7)],
+                            radius=int(fs * 0.85), fill=(255, 255, 255, 235))
+        d.text(((W - ws) / 2, y + int(fs * 0.3)), serie, font=font_s, fill=(15, 15, 15, 255))
+        y += eh
     widths = [d.textlength(l, font=font) for l in lines]
     wa = d.textlength(riga_a, font=font_a) if autore else 0
     bw = max(widths + [wa]) + pad_x * 2
@@ -218,6 +228,35 @@ def segmento(seconds, durata=None):
     return start, min(durata or DURATA_MAX, seconds - start)
 
 
+def segmento_migliore(src, seconds, vf=None):
+    """(inizio, durata) dei 5 secondi PIU' FORTI del video (16/10/2026): viso visibile, movimento, immagine nitida,
+    niente primo secondo (quando si preme "registra"). Video corti: come segmento()."""
+    if seconds < DURATA_MAX + LOOP_SFUMATURA + 2.5:
+        return segmento(seconds)
+    n = int(min(24, max(10, seconds * 2)))
+    frames = extract_frames(src, seconds, n, 0.0, vf)
+    if len(frames) < 6:
+        return segmento(seconds)
+    tempi = [seconds * (i + 0.5) / len(frames) for i in range(len(frames))]
+    piccoli = [cv2.cvtColor(cv2.resize(f, (90, 160)), cv2.COLOR_BGR2GRAY).astype(np.float32) for f in frames]
+    viso = [1.0 if detect_faces([f]) else 0.0 for f in frames]
+    nitido = [float(cv2.Laplacian(g, cv2.CV_32F).var()) for g in piccoli]
+    moto = [0.0] + [float(np.abs(piccoli[i] - piccoli[i - 1]).mean()) for i in range(1, len(piccoli))]
+    norm = lambda v: [x / (max(v) or 1) for x in v]
+    nitido, moto = norm(nitido), norm(moto)
+    punti = [viso[i] + 0.6 * moto[i] + 0.4 * nitido[i] - (1.0 if tempi[i] < 1.0 else 0.0) for i in range(len(frames))]
+    migliore, inizio = None, None
+    s = 0.8
+    while s + DURATA_MAX + LOOP_SFUMATURA <= seconds:
+        dentro = [p for t, p in zip(tempi, punti) if s <= t <= s + DURATA_MAX]
+        if dentro:
+            v = sum(dentro) / len(dentro)
+            if migliore is None or v > migliore + 0.02:      # a parita' resta il pezzo piu' vicino all'inizio
+                migliore, inizio = v, s
+        s += 0.5
+    return (round(inizio, 2), DURATA_MAX) if inizio is not None else segmento(seconds)
+
+
 def segmento_archivio(seconds):
     """Clip d'archivio (gia' tagliata, di solito 8 s): un pezzo da DURATA_MAX preso in un punto a caso,
     cosi' lo stesso video riusato non e' mai identico."""
@@ -241,12 +280,15 @@ def scegli_copertina(frames, length):
     return int(min(max(t, 0.3), max(length - 0.3, 0.3)) * 1000)
 
 
-def crea_clip_archivio(src, dst):
+def crea_clip_archivio(src, dst, inizio=None):
     """Copia per l'archivio alla MASSIMA qualita': 8 s dopo i primi 2 (il reel ne usa 5) copiato dall'originale
     SENZA ricomprimere (stessa risoluzione 4K, stessi colori/HDR, stessa rotazione), senza audio (circa 20-30 MB).
     Si potra' rimontare con una frase nuova (make_video da_archivio=True)."""
     seconds, hdr = probe(src)
     start, length = segmento(seconds, DURATA_ARCHIVIO)
+    if inizio is not None:          # intorno al pezzo usato nel reel (il migliore)
+        start = max(0.0, min(inizio - 1.5, seconds - DURATA_ARCHIVIO))
+        length = min(DURATA_ARCHIVIO, seconds - start)
     r = subprocess.run([FFMPEG, "-y", "-v", "error", "-ss", f"{start:.3f}", "-i", src, "-t", f"{length:.3f}",
                         "-map", "0:v:0", "-an", "-c", "copy", dst],
                        capture_output=True, text=True, errors="ignore", timeout=TEMPO_MAX_MONTAGGIO)
@@ -282,7 +324,7 @@ def cambia_musica(src, music, dst):
 
 
 def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", scena_rilevata=None, autore=None,
-               da_archivio=False):
+               da_archivio=False, serie=None):
     """Come _make_video, ma con piani di riserva: se ffmpeg fallisce si riprova togliendo, nell'ordine,
     zoom e loop, la color correction e la musica. Cosi' un problema su un effetto non blocca mai la pubblicazione."""
     if music and (not os.path.exists(music) or os.path.getsize(music) < 1000):   # brano mancante: niente musica,
@@ -295,7 +337,7 @@ def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", s
             continue
         try:
             info = _make_video(src, hook, dst, preview, p["music"], p["colore"], nome, scena_rilevata, autore, p["zoom"],
-                               da_archivio)
+                               da_archivio, serie)
             if errori:
                 info["ripiego"] = {"senza": [k for k in ("zoom", "colore", "music") if not p[k]], "errori": errori}
             return info
@@ -305,10 +347,13 @@ def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", s
 
 
 def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", scena_rilevata=None, autore=None,
-                zoom=True, da_archivio=False):
+                zoom=True, da_archivio=False, serie=None):
     """Crea dst (mp4 H.264 alta qualita') con il gancio e, se indicata, la musica in loop. Restituisce info."""
     seconds, hdr = probe(src)
-    start, length = segmento_archivio(seconds) if da_archivio else segmento(seconds)   # clip d'archivio: gia' tagliata
+    if da_archivio:                     # clip d'archivio: gia' tagliata, pezzo a caso
+        start, length = segmento_archivio(seconds)
+    else:                               # video nuovo: i 5 secondi migliori
+        start, length = segmento_migliore(src, seconds, HDR_TO_SDR if hdr else None)
     frames = extract_frames(src, length, start=start, vf=HDR_TO_SDR if hdr else None)
     if not frames:
         raise RuntimeError("video illeggibile")
@@ -327,7 +372,7 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     W, H = LATO_USCITA, int(round(LATO_USCITA * H0 / W0 / 2)) * 2
     if abs(W0 / H0 - 9 / 16) < 0.03:     # quasi 9:16 (es. dopo il ritaglio): esattamente 1080x1920
         H = LATO_USCITA * 16 // 9
-    overlay, y_frac, score = build_overlay(W, H, hook, faces, autore=autore)
+    overlay, y_frac, score = build_overlay(W, H, hook, faces, autore=autore, serie=serie)
     png = os.path.join(tempfile.gettempdir(), "overlay_reel.png")
     overlay.save(png)
     cmd = [FFMPEG, "-y", "-v", "error", "-display_rotation", "0", "-ss", f"{start:.3f}", "-i", src, "-i", png]
@@ -395,5 +440,5 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
                         "-vf", f"scale={W // 3}:-2", preview], capture_output=True)
     return {"testo": "alto" if y_frac < 0.4 else "basso", "volti": len(faces),
             "tocca_viso": bool(score > 0), "hdr": hdr, "risoluzione": f"{W}x{H}", "taglio": f"da {start:.1f}s a {start + length:.1f}s",
-            "durata": round(length, 2), "colore": grade_info, "copertina_ms": scegli_copertina(frames, length),
+            "durata": round(length, 2), "inizio": round(start, 2), "colore": grade_info, "copertina_ms": scegli_copertina(frames, length),
             "musica": os.path.basename(music) if music else None}

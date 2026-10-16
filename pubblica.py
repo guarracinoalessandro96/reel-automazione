@@ -71,6 +71,7 @@ YT_PER_SCENA = {"palestra": ["yt_carica"], "macchina": ["yt_carica", "yt_epica"]
                 "casa": ["yt_epica"], "uscita": ["yt_carica", "yt_epica"]}
 
 
+SERIE_INIZIO = datetime.date(2026, 10, 16)   # "GIORNO 1 / 365": serie riconoscibile = un motivo per seguire
 MIN_PAROLE = 7               # frasi piu' corte rendono meno (vedi scelta della frase in main)
 MUSICA_NOSTRA = {"facebook", "instagram", "tiktok"}   # qui NON la Raccolta audio di YouTube (pensata per YouTube): i nostri brani
 PREPARA_PER_DOPO = ["instagram"]   # non ancora attiva: ogni reel (versione con musica nostra) va su Drive
@@ -137,6 +138,11 @@ def scegli_frase(frasi, scena, usi, temi_recenti, pesi=None, compagnia=None):
 MOSTRA_AUTORE = False   # dal 5/10/2026 Alessandro non vuole l'autore ne' sul video ne' nelle descrizioni
 
 
+def serie_testo(cap):
+    """'Giorno 12/365' per descrizioni e testi (vuoto se non c'e' la serie)."""
+    return (cap.get("serie") or "").replace("GIORNO", "Giorno").replace(" / ", "/")
+
+
 def testo_breve(cap):
     """Descrizione pubblicata: la stessa frase del video + 3-4 hashtag (niente dettagli personali)."""
     tags = cap.get("hashtag") or ["#citazioni", "#motivazione"]
@@ -145,12 +151,20 @@ def testo_breve(cap):
         testo = "“" + testo.strip('"“”') + "” — " + cap["autore"]
     else:
         testo = testo.rstrip(" .")
-    return testo + "\n\n" + " ".join(dict.fromkeys(tags[:4]))
+    serie = serie_testo(cap)
+    return (serie + "\n" if serie else "") + testo + "\n\n" + " ".join(dict.fromkeys(tags[:4]))
 
 
 def ora_roma():
     from zoneinfo import ZoneInfo
     return datetime.datetime.now(ZoneInfo("Europe/Rome"))
+
+
+def etichetta_serie(slot):
+    """'GIORNO 12 / 365' in base alla data dello slot (manuale: oggi)."""
+    giorno = (ora_slot(slot) or ora_roma()).date()
+    n = (giorno - SERIE_INIZIO).days + 1
+    return f"GIORNO {n} / 365" if n >= 1 else None
 
 
 def ora_slot(slot):
@@ -406,6 +420,8 @@ def youtube_upload(creds, path, cap, publish_at=None):
     privacy = ENV("YOUTUBE_PRIVACY") or "public"
     descr = (cap["gancio"].strip().strip('"“”') + "\n\n#shorts #motivazione #mentalita #disciplina #crescitapersonale "
              "#frasimotivazionali #successo")
+    if serie_testo(cap):    # la serie in prima riga: "Giorno 12/365 - una frase al giorno"
+        descr = f"{serie_testo(cap)} - una frase al giorno, iscriviti per non perderne una.\n\n" + descr
     body = {"snippet": {"title": title + " #shorts", "description": descr, "categoryId": "22",
                         "tags": ["motivazione", "mentalità", "disciplina", "frasi motivazionali", "crescita personale",
                                  "successo", "imprenditore", "palestra", "mindset", "shorts"],
@@ -918,7 +934,10 @@ def main():
     out = os.path.join(work, "reel.mp4")
     try:
         drive.download(fonte_id, src, folder="Archivio" if clip else "Da pubblicare")
+        serie = etichetta_serie(slot)
+        frase = dict(frase, serie=serie)
         info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"), music=music,
+                                  serie=serie,
                                   autore=frase.get("autore") if MOSTRA_AUTORE else None,
                                   colore=ENV("SENZA_COLORE") != "1", nome=nome,
                                   scena_rilevata=an["scena"], da_archivio=bool(clip))
@@ -1017,7 +1036,7 @@ def main():
     else:                    # video nuovo: se ne tiene una copia (qualita' originale) per riusarlo in futuro
         try:
             stem = os.path.splitext(nome)[0]
-            cpath = overlay.crea_clip_archivio(src, os.path.join(work, stem + "_archivio.mov"))
+            cpath = overlay.crea_clip_archivio(src, os.path.join(work, stem + "_archivio.mov"), info.get("inizio"))
             cid = drive.carica_archivio(cpath, f"{stem}.mov", {"scena": an.get("scena"), "fascia": fascia_video(an),
                                                                "compagnia": an.get("compagnia"),
                                                                "registrato": an.get("registrato")})
