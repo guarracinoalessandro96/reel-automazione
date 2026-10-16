@@ -33,6 +33,17 @@ jobs:
         with:
           ref: main
 
+      # 16/10/2026: i video mandati al bot Telegram finiscono in "Da pubblicare" (piu' veloce che caricarli su Drive)
+      - name: Video arrivati su Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          DRIVE_FOLDER_DA_PUBBLICARE: ${{ secrets.DRIVE_FOLDER_DA_PUBBLICARE }}
+        run: python3 ricevi_telegram.py || true
+
       - name: Tocca pubblicare adesso?
         id: orario
         run: |
