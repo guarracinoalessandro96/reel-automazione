@@ -2401,6 +2401,47 @@
      "id": "959215223912444"
     }
    }
+  },
+  {
+   "quando": "2026-10-16T19:00",
+   "slot": "2026-10-16 21:00",
+   "video": "IMG_3936.MOV",
+   "md5": "63391b4bb3e91383785d5487a5a75ffd",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-10-16T10:39+02:00",
+   "frase": "MIE-c5d2900d",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 7,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 4.3s a 9.3s",
+    "durata": 5.0,
+    "inizio": 4.3,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.48,
+     "dominante": "calda",
+     "rumore": 1.0
+    },
+    "copertina_ms": 468,
+    "musica": "i_might_be_late_1.m4a",
+    "musica_meta": "trap_10.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "KASATztJ3m4"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "925859277071871"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2471,10 +2512,10 @@
   "2026-10-15 21:00",
   "2026-10-16 09:00",
   "2026-10-16 13:00",
-  "2026-10-16 17:00"
+  "2026-10-16 17:00",
+  "2026-10-16 21:00"
  ],
  "musica_recenti": [
-  "moon_vision_1.m4a",
   "whoop_2.m4a",
   "turn_in_the_sun_1.m4a",
   "horizons_3.m4a",
@@ -2493,7 +2534,8 @@
   "mirror_mirror_2.m4a",
   "the_road_to_mordor_2.m4a",
   "cartier_3.m4a",
-  "the_light_2.m4a"
+  "the_light_2.m4a",
+  "i_might_be_late_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2559,32 +2601,22 @@
   "MIE-51b80f60",
   "MIE-9dd49640",
   "MIE-d8f3e08c",
-  "MIE-48a56ab6"
+  "MIE-48a56ab6",
+  "MIE-c5d2900d"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "palestra",
   "mentalita",
   "palestra",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "1-CgPhyIPtA1HFO-HZIEPyRU4RA_O04Aa": {
-   "nome": "IMG_3936.MOV",
-   "scena": "specchio",
-   "sicurezza": 0.8,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-16T10:39+02:00",
-   "fascia": "ufficio",
-   "caricato": "2026-10-16T09:30:09.114Z"
-  },
   "1qy4E3LrhvYwBNgA95Io07YMyJQN4z-Qw": {
    "nome": "IMG_3933.MOV",
    "scena": "macchina",
@@ -2801,7 +2833,8 @@
   "phonk_02.flac",
   "deciso_03.flac",
   "drive_15.flac",
-  "deciso_01.flac"
+  "deciso_01.flac",
+  "trap_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
