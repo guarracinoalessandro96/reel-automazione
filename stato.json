@@ -2279,6 +2279,46 @@
      "id": "1732712587817813"
     }
    }
+  },
+  {
+   "quando": "2026-10-16T07:00",
+   "slot": "2026-10-16 09:00",
+   "video": "IMG_3918.MOV",
+   "md5": "e4ba981b7447a224ef2b452ace4780ee",
+   "da_archivio": false,
+   "scena": "casa",
+   "registrato": "2026-10-15T19:47+02:00",
+   "frase": "MIE-9dd49640",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 1,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.0s a 7.0s",
+    "durata": 5.0,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.65,
+     "dominante": "calda",
+     "rumore": 4.1
+    },
+    "copertina_ms": 4700,
+    "musica": "the_road_to_mordor_2.m4a",
+    "musica_meta": "deciso_03.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "jsyjsJ1JAeg"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "2553202718519580"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2346,10 +2386,10 @@
   "2026-10-15 09:00",
   "2026-10-15 13:00",
   "2026-10-15 17:00",
-  "2026-10-15 21:00"
+  "2026-10-15 21:00",
+  "2026-10-16 09:00"
  ],
  "musica_recenti": [
-  "taking_flight_2.m4a",
   "vibe_check_2.m4a",
   "kick_it_3.m4a",
   "moon_vision_1.m4a",
@@ -2368,7 +2408,8 @@
   "kick_it_4.m4a",
   "way_back_home_3.m4a",
   "horizons_1.m4a",
-  "mirror_mirror_2.m4a"
+  "mirror_mirror_2.m4a",
+  "the_road_to_mordor_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2431,10 +2472,10 @@
   "MIE-e7d7dd0c",
   "MIE-e68e1bd0",
   "MIE-96cb5cca",
-  "MIE-51b80f60"
+  "MIE-51b80f60",
+  "MIE-9dd49640"
  ],
  "temi_recenti": [
-  "mentalita",
   "palestra",
   "mentalita",
   "mentalita",
@@ -2443,22 +2484,11 @@
   "mentalita",
   "palestra",
   "mentalita",
-  "palestra"
+  "palestra",
+  "mentalita"
  ],
- "analisi": {
-  "1qIseSFc6KKhmjiJhjBehHpq_j-7jFnqk": {
-   "nome": "IMG_3918.MOV",
-   "scena": "casa",
-   "sicurezza": 0.75,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-15T19:47+02:00",
-   "fascia": "sera",
-   "caricato": "2026-10-15T17:49:29.437Z"
-  }
- },
- "pulizia": "2026-10-15",
+ "analisi": {},
+ "pulizia": "2026-10-16",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 1,
@@ -2644,7 +2674,8 @@
   "drive_02.flac",
   "deciso_10.flac",
   "phonk_16.flac",
-  "phonk_02.flac"
+  "phonk_02.flac",
+  "deciso_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
