@@ -1,5 +1,5 @@
 {
- "data": "2026-10-15",
+ "data": "2026-10-16",
  "reel_analizzati": 53,
  "facebook": {
   "reel": 16,
@@ -48,7 +48,7 @@
    }
   ]
  },
- "media_views": 738,
+ "media_views": 739,
  "like_totali": 399,
  "per_tema": {
   "amicizia": {
@@ -61,7 +61,7 @@
   },
   "imprenditore": {
    "reel": 4,
-   "media_views": 776
+   "media_views": 778
   },
   "mentalita": {
    "reel": 43,
@@ -69,7 +69,7 @@
   },
   "palestra": {
    "reel": 3,
-   "media_views": 837
+   "media_views": 838
   }
  },
  "per_scena": {
@@ -91,7 +91,7 @@
   },
   "macchina": {
    "reel": 15,
-   "media_views": 800
+   "media_views": 801
   },
   "pacchi": {
    "reel": 2,
@@ -103,17 +103,17 @@
   },
   "specchio": {
    "reel": 7,
-   "media_views": 725
+   "media_views": 726
   },
   "uscita": {
    "reel": 2,
-   "media_views": 1258
+   "media_views": 1261
   }
  },
  "per_orario": {
   "08": {
    "reel": 5,
-   "media_views": 533
+   "media_views": 534
   },
   "09": {
    "reel": 5,
@@ -125,7 +125,7 @@
   },
   "12": {
    "reel": 3,
-   "media_views": 786
+   "media_views": 787
   },
   "13": {
    "reel": 5,
@@ -141,7 +141,7 @@
   },
   "17": {
    "reel": 1,
-   "media_views": 308
+   "media_views": 309
   },
   "18": {
    "reel": 5,
@@ -161,7 +161,7 @@
   },
   "22": {
    "reel": 5,
-   "media_views": 598
+   "media_views": 599
   },
   "23": {
    "reel": 3,
@@ -175,23 +175,23 @@
   },
   "Cartier": {
    "reel": 1,
-   "media_views": 1034
+   "media_views": 1039
   },
   "Cutscene Crush": {
    "reel": 4,
-   "media_views": 907
+   "media_views": 908
   },
   "Delirium": {
    "reel": 2,
-   "media_views": 652
+   "media_views": 654
   },
   "Duty Calls": {
    "reel": 1,
-   "media_views": 286
+   "media_views": 287
   },
   "Ego Chall": {
    "reel": 1,
-   "media_views": 308
+   "media_views": 309
   },
   "Fire In The Sky": {
    "reel": 1,
@@ -235,7 +235,7 @@
   },
   "Survival Mode": {
    "reel": 2,
-   "media_views": 583
+   "media_views": 584
   },
   "Taking Flight": {
    "reel": 4,
@@ -247,7 +247,7 @@
   },
   "The Light": {
    "reel": 1,
-   "media_views": 708
+   "media_views": 710
   },
   "Turn In The Sun": {
    "reel": 3,
@@ -275,7 +275,7 @@
   },
   "drive": {
    "reel": 5,
-   "media_views": 958
+   "media_views": 959
   },
   "phonk": {
    "reel": 3,
@@ -331,7 +331,7 @@
    "orario": "12",
    "musica": "drive",
    "origine": "video nuovo",
-   "views": 1468,
+   "views": 1470,
    "like": 35
   },
   {
