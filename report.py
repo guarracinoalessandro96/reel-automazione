@@ -34,6 +34,9 @@ def stat_youtube(ids):
     return res
 
 
+VIRALI = set()      # id delle frasi [virale] (riempito da testi_citazioni)
+
+
 def testi_citazioni():
     """{id: testo} delle citazioni del Google Doc (nello storico c'e' solo l'id, es. MIE-1c29fe87)."""
     try:
@@ -43,7 +46,9 @@ def testi_citazioni():
         c = Credentials(None, refresh_token=ENV("GOOGLE_REFRESH_TOKEN"), client_id=ENV("GOOGLE_CLIENT_ID"),
                         client_secret=ENV("GOOGLE_CLIENT_SECRET"), token_uri="https://oauth2.googleapis.com/token")
         api = build("drive", "v3", credentials=c, cache_discovery=False)
-        return {f["id"]: f["gancio"] for f in mie_citazioni.frasi(mie_citazioni.leggi(api, ENV("DRIVE_FOLDER_DA_PUBBLICARE")))}
+        frasi = mie_citazioni.frasi(mie_citazioni.leggi(api, ENV("DRIVE_FOLDER_DA_PUBBLICARE")))
+        VIRALI.update(f["id"] for f in frasi if f.get("virale"))
+        return {f["id"]: f["gancio"] for f in frasi}
     except Exception as e:
         print("Testi delle citazioni non letti:", e)
         return {}
@@ -146,15 +151,17 @@ def main():
     post = [h for h in post if h["quando"] < maturi]
     yt = stat_youtube([h["risultati"]["youtube"]["id"] for h in post])
     righe = []
+    testi_citazioni()                                         # riempie VIRALI
     for h in post:
         if h["risultati"]["youtube"]["id"] not in yt:        # Short cancellato da YouTube: non conta
             continue
         v, l = yt[h["risultati"]["youtube"]["id"]]
         righe.append({"quando": h["quando"], "frase": h.get("frase"), "tema": h.get("tema"), "scena": h.get("scena"),
                       "orario": (h.get("slot") or "").split(" ")[-1][:2], "musica": genere((h.get("montaggio") or {}).get("musica")),
-                      "origine": "archivio" if h.get("da_archivio") else "video nuovo", "views": v, "like": l})
+                      "origine": "archivio" if h.get("da_archivio") else "video nuovo",
+                      "frase_virale": "frase virale" if h.get("frase") in VIRALI else "frase normale", "views": v, "like": l})
 
-    per = {"tema": {}, "scena": {}, "orario": {}, "musica": {}, "origine": {}}
+    per = {"tema": {}, "scena": {}, "orario": {}, "musica": {}, "origine": {}, "frase_virale": {}}
     for r in righe:
         for k in per:
             per[k].setdefault(r[k] or "?", []).append(r["views"])
@@ -177,7 +184,7 @@ def main():
               "facebook": stat_facebook(tutti),
               "media_views": round(media_tot), "like_totali": sum(r["like"] for r in righe),
               "per_tema": media(per["tema"]), "per_scena": media(per["scena"]), "per_orario": media(per["orario"]),
-              "per_musica": media(per["musica"]), "per_origine": media(per["origine"]),
+              "per_musica": media(per["musica"]), "per_origine": media(per["origine"]), "per_frase_virale": media(per["frase_virale"]),
               "pesi_temi": pesi.get("temi", {}), "migliori": migliori,
               "nota": "Solo YouTube; non contati gli Shorts usciti da meno di 2 giorni."
               + ("" if len(righe) >= MIN_POST else f" Servono almeno {MIN_POST} reel per conclusioni affidabili.")}

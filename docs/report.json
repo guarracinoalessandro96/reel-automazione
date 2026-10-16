@@ -1,19 +1,11 @@
 {
  "data": "2026-10-16",
- "reel_analizzati": 53,
+ "reel_analizzati": 56,
  "facebook": {
-  "reel": 16,
+  "reel": 18,
   "riproduzioni": 53,
-  "media": 3.3,
+  "media": 2.9,
   "ultimi": [
-   {
-    "quando": "2026-10-13T14:55",
-    "riproduzioni": 5
-   },
-   {
-    "quando": "2026-10-13T19:12",
-    "riproduzioni": 2
-   },
    {
     "quando": "2026-10-14T07:23",
     "riproduzioni": 2
@@ -45,11 +37,19 @@
    {
     "quando": "2026-10-15T18:55",
     "riproduzioni": 0
+   },
+   {
+    "quando": "2026-10-16T07:00",
+    "riproduzioni": 0
+   },
+   {
+    "quando": "2026-10-16T11:00",
+    "riproduzioni": 0
    }
   ]
  },
- "media_views": 739,
- "like_totali": 399,
+ "media_views": 734,
+ "like_totali": 411,
  "per_tema": {
   "amicizia": {
    "reel": 1,
@@ -57,15 +57,15 @@
   },
   "dieta": {
    "reel": 2,
-   "media_views": 520
+   "media_views": 522
   },
   "imprenditore": {
    "reel": 4,
    "media_views": 778
   },
   "mentalita": {
-   "reel": 43,
-   "media_views": 726
+   "reel": 46,
+   "media_views": 721
   },
   "palestra": {
    "reel": 3,
@@ -75,7 +75,7 @@
  "per_scena": {
   "?": {
    "reel": 1,
-   "media_views": 1290
+   "media_views": 1295
   },
   "casa": {
    "reel": 2,
@@ -86,8 +86,8 @@
    "media_views": 1416
   },
   "lavoro": {
-   "reel": 8,
-   "media_views": 366
+   "reel": 10,
+   "media_views": 476
   },
   "macchina": {
    "reel": 15,
@@ -98,8 +98,8 @@
    "media_views": 654
   },
   "palestra": {
-   "reel": 14,
-   "media_views": 693
+   "reel": 15,
+   "media_views": 654
   },
   "specchio": {
    "reel": 7,
@@ -116,8 +116,8 @@
    "media_views": 534
   },
   "09": {
-   "reel": 5,
-   "media_views": 945
+   "reel": 6,
+   "media_views": 806
   },
   "11": {
    "reel": 4,
@@ -128,20 +128,20 @@
    "media_views": 787
   },
   "13": {
-   "reel": 5,
-   "media_views": 829
+   "reel": 6,
+   "media_views": 864
   },
   "15": {
    "reel": 5,
-   "media_views": 801
+   "media_views": 802
   },
   "16": {
    "reel": 3,
    "media_views": 796
   },
   "17": {
-   "reel": 1,
-   "media_views": 309
+   "reel": 2,
+   "media_views": 552
   },
   "18": {
    "reel": 5,
@@ -149,7 +149,7 @@
   },
   "19": {
    "reel": 1,
-   "media_views": 387
+   "media_views": 386
   },
   "20": {
    "reel": 3,
@@ -161,7 +161,7 @@
   },
   "22": {
    "reel": 5,
-   "media_views": 599
+   "media_views": 600
   },
   "23": {
    "reel": 3,
@@ -175,7 +175,7 @@
   },
   "Cartier": {
    "reel": 1,
-   "media_views": 1039
+   "media_views": 1042
   },
   "Cutscene Crush": {
    "reel": 4,
@@ -193,13 +193,17 @@
    "reel": 1,
    "media_views": 309
   },
+  "Final Boss Battle": {
+   "reel": 1,
+   "media_views": 109
+  },
   "Fire In The Sky": {
    "reel": 1,
    "media_views": 567
   },
   "Horizons": {
    "reel": 2,
-   "media_views": 364
+   "media_views": 363
   },
   "Intergalactic": {
    "reel": 1,
@@ -211,11 +215,11 @@
   },
   "Kick It": {
    "reel": 2,
-   "media_views": 752
+   "media_views": 753
   },
   "Locked In": {
    "reel": 1,
-   "media_views": 375
+   "media_views": 376
   },
   "Majestic 12": {
    "reel": 1,
@@ -227,7 +231,7 @@
   },
   "Moon Vision": {
    "reel": 1,
-   "media_views": 972
+   "media_views": 971
   },
   "Stake Out": {
    "reel": 1,
@@ -236,6 +240,10 @@
   "Survival Mode": {
    "reel": 2,
    "media_views": 584
+  },
+  "Sweaty Staredown": {
+   "reel": 1,
+   "media_views": 1035
   },
   "Taking Flight": {
    "reel": 4,
@@ -251,7 +259,11 @@
   },
   "Turn In The Sun": {
    "reel": 3,
-   "media_views": 678
+   "media_views": 679
+  },
+  "Van Life Rager": {
+   "reel": 1,
+   "media_views": 794
   },
   "Vibe Check": {
    "reel": 2,
@@ -283,7 +295,7 @@
   },
   "senza musica": {
    "reel": 1,
-   "media_views": 1290
+   "media_views": 1295
   },
   "trap": {
    "reel": 1,
@@ -297,16 +309,22 @@
  "per_origine": {
   "archivio": {
    "reel": 17,
-   "media_views": 814
+   "media_views": 815
   },
   "video nuovo": {
-   "reel": 36,
-   "media_views": 703
+   "reel": 39,
+   "media_views": 699
+  }
+ },
+ "per_frase_virale": {
+  "frase normale": {
+   "reel": 56,
+   "media_views": 734
   }
  },
  "pesi_temi": {
   "amicizia": 1.12,
-  "imprenditore": 1.02,
+  "imprenditore": 1.03,
   "mentalita": 0.98,
   "palestra": 1.05,
   "dieta": 0.92
@@ -320,6 +338,7 @@
    "orario": "23",
    "musica": "Taking Flight",
    "origine": "archivio",
+   "frase_virale": "frase normale",
    "views": 1553,
    "like": 25
   },
@@ -331,6 +350,7 @@
    "orario": "12",
    "musica": "drive",
    "origine": "video nuovo",
+   "frase_virale": "frase normale",
    "views": 1470,
    "like": 35
   },
@@ -342,6 +362,7 @@
    "orario": "09",
    "musica": "Way Back Home",
    "origine": "archivio",
+   "frase_virale": "frase normale",
    "views": 1430,
    "like": 17
   },
@@ -353,6 +374,7 @@
    "orario": "09",
    "musica": "drive",
    "origine": "video nuovo",
+   "frase_virale": "frase normale",
    "views": 1402,
    "like": 9
   },
@@ -364,6 +386,7 @@
    "orario": "18",
    "musica": "phonk",
    "origine": "video nuovo",
+   "frase_virale": "frase normale",
    "views": 1316,
    "like": 9
   }
