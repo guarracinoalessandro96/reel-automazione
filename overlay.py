@@ -442,3 +442,86 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
             "tocca_viso": bool(score > 0), "hdr": hdr, "risoluzione": f"{W}x{H}", "taglio": f"da {start:.1f}s a {start + length:.1f}s",
             "durata": round(length, 2), "inizio": round(start, 2), "colore": grade_info, "copertina_ms": scegli_copertina(frames, length),
             "musica": os.path.basename(music) if music else None}
+
+
+# ------------------------------------------------------------------ formato "REGOLE" (esperimento dal 17/10/2026)
+REGOLE_DURATA = 13.0
+REGOLE_TEMPI = (2.2, 5.6, 9.0)     # quando compare ognuna delle 3 righe (titolo subito, dal primo fotogramma)
+
+
+def _tavola_regole(titolo, righe, n, serie=None):
+    """Immagine trasparente 1080x1920 con il titolo (e la serie) e le prime n righe."""
+    W, H = LATO_USCITA, int(LATO_USCITA * 16 / 9)
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    font_t, font_r, font_s = (ImageFont.truetype(FONT, s) for s in (62, 50, 34))
+    y = int(H * 0.13)
+    if serie:
+        ws = d.textlength(serie, font=font_s)
+        d.rounded_rectangle([(W - ws) / 2 - 24, y, (W + ws) / 2 + 24, y + 58], radius=29, fill=(255, 255, 255, 235))
+        d.text(((W - ws) / 2, y + 10), serie, font=font_s, fill=(15, 15, 15, 255))
+        y += 80
+    righe_t = _a_capo(d, titolo, font_t, W * 0.84)
+    bw = max(d.textlength(x, font=font_t) for x in righe_t) + 64
+    th = len(righe_t) * 76 + 30
+    d.rounded_rectangle([(W - bw) / 2, y, (W + bw) / 2, y + th], radius=28, fill=(255, 255, 255, 240))
+    for i, x in enumerate(righe_t):
+        d.text(((W - d.textlength(x, font=font_t)) / 2, y + 14 + i * 76), x, font=font_t, fill=(15, 15, 15, 255))
+    y += th + 34
+    for k, r in enumerate(righe[:n], 1):
+        rr = _a_capo(d, f"{k}. {r}", font_r, W * 0.80)
+        h = len(rr) * 64 + 36
+        bw = max(d.textlength(x, font=font_r) for x in rr) + 56
+        d.rounded_rectangle([(W - bw) / 2, y, (W + bw) / 2, y + h], radius=24, fill=(0, 0, 0, 165))
+        for i, x in enumerate(rr):
+            d.text(((W - d.textlength(x, font=font_r)) / 2, y + 18 + i * 64), x, font=font_r, fill=(255, 255, 255, 255))
+        y += h + 26
+    return img
+
+
+def make_regole(clips, titolo, righe, dst, musiche=(), serie=None):
+    """Reel "REGOLE": 3 clip (o meno, ripetute) di ~4.5 s con dissolvenza, titolo subito e 3 righe che compaiono
+    una alla volta (REGOLE_TEMPI). musiche: 1-3 pezzi da 5 s (stesso brano) uniti con sfumatura."""
+    W, H, DUR = LATO_USCITA, int(LATO_USCITA * 16 / 9), REGOLE_DURATA
+    clips = (list(clips) * 3)[:3]
+    seg, X = DUR / 3, 0.4
+    tmp = tempfile.mkdtemp()
+    cmd, catena = [FFMPEG, "-y", "-v", "error"], []
+    for i, c in enumerate(clips):
+        secondi, hdr = probe(c)
+        inizio = max(0.0, min(1.0, secondi - seg - X))
+        cmd += ["-display_rotation", "0", "-ss", f"{inizio:.2f}", "-t", f"{seg + X:.2f}", "-i", c]
+        f = [x for x in (raddrizza(rotazione(c)), HDR_TO_SDR if hdr else "") if x]
+        f += [f"scale={W}:{H}:force_original_aspect_ratio=increase", f"crop={W}:{H}", "setsar=1", "fps=30",
+              f"trim=0:{seg + X:.2f}", "setpts=PTS-STARTPTS", "format=yuv420p", "settb=AVTB", "fps=30",
+              "tpad=stop_mode=clone:stop_duration=1"]       # clip un po' corta: si allunga l'ultimo fotogramma
+        catena.append(f"[{i}:v]{','.join(f)},trim=0:{seg + X:.2f}[c{i}]")
+    for n in range(4):
+        p = os.path.join(tmp, f"t{n}.png")
+        _tavola_regole(titolo, righe, n, serie).save(p)
+        cmd += ["-i", p]
+    g = ";".join(catena)
+    g += (f";[c0][c1]xfade=transition=fade:duration={X}:offset={seg - X / 2:.2f}[x1]"
+          f";[x1][c2]xfade=transition=fade:duration={X}:offset={2 * seg - X:.2f}[bg]")
+    fasi, cur = (0.0,) + REGOLE_TEMPI + (DUR,), "bg"
+    for n in range(4):
+        g += f";[{cur}][{3 + n}:v]overlay=0:0:enable='between(t,{fasi[n]},{fasi[n + 1]})'[o{n}]"
+        cur = f"o{n}"
+    g += f";[{cur}]format=yuv420p[v]"
+    amap = ["-an"]
+    musiche = [m for m in musiche if m and os.path.exists(m)]
+    if musiche:
+        musiche = (musiche * 3)[:3]
+        for m in musiche:
+            cmd += ["-i", m]
+        a0 = 7
+        g += (f";[{a0}:a][{a0 + 1}:a]acrossfade=d=0.3[m1];[m1][{a0 + 2}:a]acrossfade=d=0.3,"
+              f"volume={MUSIC_VOL},{LIMITATORE},apad,atrim=0:{DUR},afade=t=out:st={DUR - 0.5}:d=0.5[a]")
+        amap = ["-map", "[a]"]
+    cmd += ["-filter_complex", g, "-map", "[v]", *amap, "-t", f"{DUR}", "-c:v", "libx264", "-preset", "medium",
+            "-crf", "18", "-profile:v", "high", "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-movflags", "+faststart", dst]
+    r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore", timeout=TEMPO_MAX_MONTAGGIO)
+    shutil.rmtree(tmp, ignore_errors=True)
+    if r.returncode != 0 or not os.path.exists(dst) or os.path.getsize(dst) < 50_000:
+        raise RuntimeError("regole: " + r.stderr[-400:])
+    return {"formato": "regole", "durata": DUR, "titolo": titolo, "musica": os.path.basename(musiche[0]) if musiche else None}

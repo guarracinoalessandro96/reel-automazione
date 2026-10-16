@@ -159,9 +159,10 @@ def main():
         righe.append({"quando": h["quando"], "frase": h.get("frase"), "tema": h.get("tema"), "scena": h.get("scena"),
                       "orario": (h.get("slot") or "").split(" ")[-1][:2], "musica": genere((h.get("montaggio") or {}).get("musica")),
                       "origine": "archivio" if h.get("da_archivio") else "video nuovo",
-                      "frase_virale": "frase virale" if h.get("frase") in VIRALI else "frase normale", "views": v, "like": l})
+                      "frase_virale": "frase virale" if h.get("frase") in VIRALI else "frase normale",
+                      "formato": (h.get("montaggio") or {}).get("formato") or f"frase {round((h.get('montaggio') or {}).get('durata') or 8)} s", "views": v, "like": l})
 
-    per = {"tema": {}, "scena": {}, "orario": {}, "musica": {}, "origine": {}, "frase_virale": {}}
+    per = {"tema": {}, "scena": {}, "orario": {}, "musica": {}, "origine": {}, "frase_virale": {}, "formato": {}}
     for r in righe:
         for k in per:
             per[k].setdefault(r[k] or "?", []).append(r["views"])
@@ -185,6 +186,7 @@ def main():
               "media_views": round(media_tot), "like_totali": sum(r["like"] for r in righe),
               "per_tema": media(per["tema"]), "per_scena": media(per["scena"]), "per_orario": media(per["orario"]),
               "per_musica": media(per["musica"]), "per_origine": media(per["origine"]), "per_frase_virale": media(per["frase_virale"]),
+              "per_formato": media(per["formato"]),
               "pesi_temi": pesi.get("temi", {}), "migliori": migliori,
               "nota": "Solo YouTube; non contati gli Shorts usciti da meno di 2 giorni."
               + ("" if len(righe) >= MIN_POST else f" Servono almeno {MIN_POST} reel per conclusioni affidabili.")}

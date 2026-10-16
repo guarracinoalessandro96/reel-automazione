@@ -71,6 +71,9 @@ YT_PER_SCENA = {"palestra": ["yt_carica"], "macchina": ["yt_carica", "yt_epica"]
                 "casa": ["yt_epica"], "uscita": ["yt_carica", "yt_epica"]}
 
 
+# ESPERIMENTO "REGOLE" (17/10/2026): al reel delle 21 un titolo + 3 regole che compaiono una alla volta (13 s),
+# fino al 31/10; il report confronta i formati (per_formato). Liste in liste.json, ognuna usata una volta.
+REGOLE_SLOT, REGOLE_FINO = "21:00", datetime.date(2026, 10, 31)
 SERIE_INIZIO = datetime.date(2026, 10, 16)   # "GIORNO 1 / 365": serie riconoscibile = un motivo per seguire
 MIN_PAROLE = 7               # frasi piu' corte rendono meno (vedi scelta della frase in main)
 MUSICA_NOSTRA = {"facebook", "instagram", "tiktok"}   # qui NON la Raccolta audio di YouTube (pensata per YouTube): i nostri brani
@@ -151,6 +154,8 @@ def testo_breve(cap):
         testo = "“" + testo.strip('"“”') + "” — " + cap["autore"]
     else:
         testo = testo.rstrip(" .")
+    if cap.get("righe"):          # formato REGOLE: titolo + regole numerate
+        testo = cap["gancio"] + "\n" + "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1))
     serie = serie_testo(cap)
     return (serie + "\n" if serie else "") + testo + "\n\n" + " ".join(dict.fromkeys(tags[:4]))
 
@@ -158,6 +163,45 @@ def testo_breve(cap):
 def ora_roma():
     from zoneinfo import ZoneInfo
     return datetime.datetime.now(ZoneInfo("Europe/Rome"))
+
+
+def lista_regole(slot, state):
+    """La lista per il formato REGOLE se tocca (reel delle 21 fino a REGOLE_FINO), altrimenti None."""
+    if ENV("SENZA_REGOLE") == "1" or not (slot or "").endswith(REGOLE_SLOT):
+        return None
+    if (ora_slot(slot) or ora_roma()).date() > REGOLE_FINO:
+        return None
+    try:
+        liste = json.load(open(os.path.join(HERE, "liste.json"), encoding="utf-8"))
+    except Exception:
+        return None
+    libere = [l for l in liste if l["id"] not in state.get("liste_usate", [])]
+    return libere[0] if libere else None
+
+
+def monta_regole(lista, src, out, music, serie, drive, work, clip):
+    """Reel REGOLE con il video dell'orario + 2 clip dell'archivio. Restituisce (frase, info)."""
+    clips = [src]
+    try:
+        altre = [c for c in drive.lista_archivio() if not clip or c["id"] != clip["id"]]
+        random.shuffle(altre)
+        for i, c in enumerate(altre[:2]):
+            p = os.path.join(work, f"regole_{i}{os.path.splitext(c['nome'])[1] or '.mov'}")
+            drive.download(c["id"], p, folder="Archivio")
+            clips.append(p)
+    except Exception as e:
+        log("Clip extra per REGOLE non scaricate (uso solo il video dell'orario):", e)
+    musiche = []
+    if music:
+        base = re.sub(r"_\d+$", "", os.path.splitext(os.path.basename(music))[0])
+        d = os.path.dirname(music)
+        musiche = sorted(os.path.join(d, f) for f in os.listdir(d)
+                         if re.fullmatch(re.escape(base) + r"_\d+\.m4a", f))[:3]
+    info = overlay.make_regole(clips, lista["titolo"], lista["righe"], out, musiche or [music], serie)
+    info["musica"] = os.path.basename(music) if music else None
+    frase = {"id": lista["id"], "tema": "regole", "gancio": lista["titolo"], "righe": lista["righe"], "autore": "",
+             "hashtag": ["#regole", "#mentalita", "#motivazione"], "serie": serie}
+    return frase, info
 
 
 def etichetta_serie(slot):
@@ -420,6 +464,8 @@ def youtube_upload(creds, path, cap, publish_at=None):
     privacy = ENV("YOUTUBE_PRIVACY") or "public"
     descr = (cap["gancio"].strip().strip('"“”') + "\n\n#shorts #motivazione #mentalita #disciplina #crescitapersonale "
              "#frasimotivazionali #successo")
+    if cap.get("righe"):    # formato REGOLE: le regole in descrizione
+        descr = "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1)) + "\n\n" + descr
     if serie_testo(cap):    # la serie in prima riga: "Giorno 12/365 - una frase al giorno"
         descr = f"{serie_testo(cap)} - una frase al giorno, iscriviti per non perderne una.\n\n" + descr
     body = {"snippet": {"title": title + " #shorts", "description": descr, "categoryId": "22",
@@ -937,11 +983,19 @@ def main():
         drive.download(fonte_id, src, folder="Archivio" if clip else "Da pubblicare")
         serie = etichetta_serie(slot)
         frase = dict(frase, serie=serie)
-        info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"), music=music,
-                                  serie=serie,
-                                  autore=frase.get("autore") if MOSTRA_AUTORE else None,
-                                  colore=ENV("SENZA_COLORE") != "1", nome=nome,
-                                  scena_rilevata=an["scena"], da_archivio=bool(clip))
+        info, lista = None, lista_regole(slot, state)
+        if lista:
+            try:
+                frase, info = monta_regole(lista, src, out, music, serie, drive, work, clip)
+            except Exception as e:      # se il nuovo formato non riesce esce il reel normale
+                log("Formato REGOLE non riuscito, faccio il reel normale:", e)
+                lista, info = None, None
+        if info is None:
+            info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"),
+                                      music=music, serie=serie,
+                                      autore=frase.get("autore") if MOSTRA_AUTORE else None,
+                                      colore=ENV("SENZA_COLORE") != "1", nome=nome,
+                                      scena_rilevata=an["scena"], da_archivio=bool(clip))
     except Exception as e:      # un video "rotto" non deve bloccare la coda
         if clip:
             u = state["archivio_usi"].setdefault(clip["id"], {})
@@ -1056,6 +1110,8 @@ def main():
     if failed:
         state["riprova"].append({"frase": frase, "pronti_id": pronti_id, "piattaforme": failed, "tentativi": 0})
     state["frasi_usate"].append(frase["id"])
+    if frase.get("righe"):
+        state.setdefault("liste_usate", []).append(frase["id"])
     state["temi_recenti"] = (state["temi_recenti"] + [frase["tema"]])[-10:]
     if info.get("musica"):
         state["musica_recenti"] = (state["musica_recenti"] + [info["musica"]])[-20:]
