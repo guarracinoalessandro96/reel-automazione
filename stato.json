@@ -2360,6 +2360,47 @@
      "id": "1056976503391855"
     }
    }
+  },
+  {
+   "quando": "2026-10-16T15:00",
+   "slot": "2026-10-16 17:00",
+   "video": "IMG_3935.MOV",
+   "md5": "bb9c21e025f46ba7ac608311a5f20821",
+   "da_archivio": false,
+   "scena": "lavoro",
+   "registrato": "2026-10-16T09:58+02:00",
+   "frase": "MIE-48a56ab6",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 32,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 0.8s a 5.8s",
+    "durata": 5.0,
+    "inizio": 0.8,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.47,
+     "dominante": "calda",
+     "rumore": 2.9
+    },
+    "copertina_ms": 2031,
+    "musica": "the_light_2.m4a",
+    "musica_meta": "deciso_01.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "hX7DtCZ_4bQ"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "959215223912444"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2429,10 +2470,10 @@
   "2026-10-15 17:00",
   "2026-10-15 21:00",
   "2026-10-16 09:00",
-  "2026-10-16 13:00"
+  "2026-10-16 13:00",
+  "2026-10-16 17:00"
  ],
  "musica_recenti": [
-  "kick_it_3.m4a",
   "moon_vision_1.m4a",
   "whoop_2.m4a",
   "turn_in_the_sun_1.m4a",
@@ -2451,7 +2492,8 @@
   "horizons_1.m4a",
   "mirror_mirror_2.m4a",
   "the_road_to_mordor_2.m4a",
-  "cartier_3.m4a"
+  "cartier_3.m4a",
+  "the_light_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2516,32 +2558,22 @@
   "MIE-96cb5cca",
   "MIE-51b80f60",
   "MIE-9dd49640",
-  "MIE-d8f3e08c"
+  "MIE-d8f3e08c",
+  "MIE-48a56ab6"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "palestra",
   "mentalita",
   "palestra",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "1sYzUsrTeymTPfHdCHItFgjGBF9hx7b0g": {
-   "nome": "IMG_3935.MOV",
-   "scena": "lavoro",
-   "sicurezza": 0.46,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-16T09:58+02:00",
-   "fascia": "ufficio",
-   "caricato": "2026-10-16T09:30:05.539Z"
-  },
   "1-CgPhyIPtA1HFO-HZIEPyRU4RA_O04Aa": {
    "nome": "IMG_3936.MOV",
    "scena": "specchio",
@@ -2749,6 +2781,10 @@
   "1dS3dJuren-0gwioBQEQ4MkMFmJH5kMNx": {
    "usi": 1,
    "ultimo": "2026-10-15"
+  },
+  "1a2POnx-7OaYCvRXrpkTO6Qw_dTZ4CN-d": {
+   "usi": 1,
+   "ultimo": "2026-10-16"
   }
  },
  "musica_recenti_meta": [
@@ -2764,7 +2800,8 @@
   "phonk_16.flac",
   "phonk_02.flac",
   "deciso_03.flac",
-  "drive_15.flac"
+  "drive_15.flac",
+  "deciso_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
