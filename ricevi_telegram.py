@@ -6,8 +6,18 @@ Gira a ogni controllo di GitHub (ogni 10 minuti), prima di tutto il resto. Solo 
 Limite di Telegram per i bot: file fino a 20 MB. I video mandati "normalmente" (non come file) vengono
 compressi da Telegram in HD e stanno quasi sempre sotto; se uno e' troppo grande il bot lo dice.
 Accetta solo messaggi dalla chat di Alessandro (TELEGRAM_CHAT_ID).
+
+COMANDI (scritti al bot, maiuscolo o minuscolo, anche con /): STATO, PAUSA, RIPRENDI, AIUTO.
+Risposta entro ~10 minuti (al prossimo controllo di GitHub).
 """
-import json, os, time, urllib.parse, urllib.request, uuid
+import datetime, json, os, subprocess, time, urllib.parse, urllib.request, uuid
+
+QUI = os.path.dirname(os.path.abspath(__file__))
+AIUTO = ("COMANDI DEL BOT\n\n"
+         "STATO\nquanti video in coda, ultimo e prossimo reel\n\n"
+         "PAUSA\nferma le pubblicazioni\n\n"
+         "RIPRENDI\nriparte con le pubblicazioni\n\n"
+         "Per mettere video in coda: mandali qui come video normali")
 
 ENV = os.environ.get
 LIMITE = 20 * 1024 * 1024
@@ -43,6 +53,46 @@ def carica_su_drive(token, nome, contenuto, mime):
     return json.load(urllib.request.urlopen(req, timeout=300))["id"]
 
 
+def video_in_coda(token):
+    q = f"'{ENV('DRIVE_FOLDER_DA_PUBBLICARE')}' in parents and trashed = false and mimeType contains 'video/'"
+    url = "https://www.googleapis.com/drive/v3/files?" + urllib.parse.urlencode({"q": q, "fields": "files(id)",
+                                                                               "pageSize": 200})
+    req = urllib.request.Request(url, headers={"Authorization": "Bearer " + token})
+    return len(json.load(urllib.request.urlopen(req, timeout=30)).get("files", []))
+
+
+def testo_stato(token):
+    import orario
+    st = json.load(open(os.path.join(QUI, "stato.json"), encoding="utf-8"))
+    ultimi = [h for h in st.get("storico", []) if h.get("slot") and not h.get("in_corso")]
+    righe = ["STATO DEL SISTEMA", "In pausa" if os.path.exists(os.path.join(QUI, "PAUSA")) else "Attivo", ""]
+    righe += ["VIDEO NUOVI IN CODA", str(video_in_coda(token)), ""]
+    if ultimi:
+        h = ultimi[-1]
+        esiti = ", ".join(f"{p} {'ok' if r.get('ok') else 'ERRORE'}" for p, r in h.get("risultati", {}).items())
+        righe += ["ULTIMO REEL", h["slot"], esiti, ""]
+    from zoneinfo import ZoneInfo
+    adesso = datetime.datetime.now(ZoneInfo("Europe/Rome"))
+    prossimi = [f"{o:02d}:{m:02d}" for o, m, _ in orario.SLOTS if (o, m) > (adesso.hour, adesso.minute)]
+    righe += ["PROSSIMO REEL", prossimi[0] if prossimi else f"domani alle {orario.SLOTS[0][0]:02d}:{orario.SLOTS[0][1]:02d}"]
+    return "\n".join(righe)
+
+
+def pausa(attiva):
+    """Crea o toglie il file PAUSA nel repository (solo su GitHub)."""
+    f = os.path.join(QUI, "PAUSA")
+    if attiva == os.path.exists(f) or not ENV("GITHUB_ACTIONS"):
+        return
+    if attiva:
+        open(f, "w").write("Pausa chiesta su Telegram\n")
+    else:
+        os.remove(f)
+    for c in (["git", "config", "user.name", "reel-bot"], ["git", "config", "user.email", "reel-bot@users.noreply.github.com"],
+              ["git", "add", "-A", "PAUSA"], ["git", "commit", "-m", "Pausa da Telegram" if attiva else "Ripresa da Telegram"],
+              ["git", "pull", "--rebase", "-q"], ["git", "push", "-q"]):
+        subprocess.run(c, cwd=QUI, capture_output=True)
+
+
 def main():
     if not (ENV("TELEGRAM_BOT_TOKEN") and ENV("TELEGRAM_CHAT_ID") and ENV("DRIVE_FOLDER_DA_PUBBLICARE")):
         return
@@ -53,6 +103,23 @@ def main():
     for u in agg:
         m = u.get("message") or {}
         if str(m.get("chat", {}).get("id")) != str(ENV("TELEGRAM_CHAT_ID")):
+            continue
+        comando = (m.get("text") or "").strip().lstrip("/").split(" ")[0].lower()
+        if comando in ("stato", "pausa", "riprendi", "aiuto", "start", "help"):
+            try:
+                if comando == "pausa":
+                    pausa(True)
+                    scrivi("PAUSA ATTIVA\nNessun reel uscira' finche' non scrivi RIPRENDI")
+                elif comando == "riprendi":
+                    pausa(False)
+                    scrivi("RIPARTITO\nI reel tornano a uscire agli orari normali")
+                elif comando == "stato":
+                    token = token or token_google()
+                    scrivi(testo_stato(token))
+                else:
+                    scrivi(AIUTO)
+            except Exception as e:
+                scrivi(f"ATTENZIONE\nComando non riuscito: {str(e)[:150]}")
             continue
         f = m.get("video") or (m.get("document") if (m.get("document") or {}).get("mime_type", "").startswith("video/")
                                else None)
