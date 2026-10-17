@@ -2442,6 +2442,47 @@
      "id": "925859277071871"
     }
    }
+  },
+  {
+   "quando": "2026-10-17T07:00",
+   "slot": "2026-10-17 09:00",
+   "video": "IMG_3933.MOV",
+   "md5": "ab11fb52bdf8e5f1d23881ed8275e890",
+   "da_archivio": false,
+   "scena": "macchina",
+   "registrato": "2026-10-16T09:14+02:00",
+   "frase": "MIE-d7cc734e",
+   "tema": "imprenditore",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 44,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 0.8s a 5.8s",
+    "durata": 5.0,
+    "inizio": 0.8,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.52,
+     "dominante": "neutra",
+     "rumore": 2.5
+    },
+    "copertina_ms": 2343,
+    "musica": "wrangle_the_crazy_3.m4a",
+    "musica_meta": "drive_04.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "gtpt6Q1cIWA"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1075936501948313"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2513,10 +2554,10 @@
   "2026-10-16 09:00",
   "2026-10-16 13:00",
   "2026-10-16 17:00",
-  "2026-10-16 21:00"
+  "2026-10-16 21:00",
+  "2026-10-17 09:00"
  ],
  "musica_recenti": [
-  "whoop_2.m4a",
   "turn_in_the_sun_1.m4a",
   "horizons_3.m4a",
   "cartier_2.m4a",
@@ -2535,7 +2576,8 @@
   "the_road_to_mordor_2.m4a",
   "cartier_3.m4a",
   "the_light_2.m4a",
-  "i_might_be_late_1.m4a"
+  "i_might_be_late_1.m4a",
+  "wrangle_the_crazy_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2602,32 +2644,22 @@
   "MIE-9dd49640",
   "MIE-d8f3e08c",
   "MIE-48a56ab6",
-  "MIE-c5d2900d"
+  "MIE-c5d2900d",
+  "MIE-d7cc734e"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
-  "mentalita",
   "palestra",
   "mentalita",
   "palestra",
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "imprenditore"
  ],
  "analisi": {
-  "1qy4E3LrhvYwBNgA95Io07YMyJQN4z-Qw": {
-   "nome": "IMG_3933.MOV",
-   "scena": "macchina",
-   "sicurezza": 0.75,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-16T09:14+02:00",
-   "fascia": "mattina",
-   "caricato": "2026-10-16T09:30:17.931Z"
-  },
   "1z5F-shRQS4bP0Vng9aEnarAVVHhVHPMY": {
    "nome": "IMG_3937.MOV",
    "scena": "specchio",
@@ -2640,7 +2672,7 @@
    "caricato": "2026-10-16T09:30:42.501Z"
   }
  },
- "pulizia": "2026-10-16",
+ "pulizia": "2026-10-17",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 1,
@@ -2834,7 +2866,8 @@
   "deciso_03.flac",
   "drive_15.flac",
   "deciso_01.flac",
-  "trap_10.flac"
+  "trap_10.flac",
+  "drive_04.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
