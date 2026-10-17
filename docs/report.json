@@ -1,19 +1,11 @@
 {
- "data": "2026-10-16",
- "reel_analizzati": 56,
+ "data": "2026-10-17",
+ "reel_analizzati": 57,
  "facebook": {
-  "reel": 18,
+  "reel": 20,
   "riproduzioni": 53,
-  "media": 2.9,
+  "media": 2.6,
   "ultimi": [
-   {
-    "quando": "2026-10-14T07:23",
-    "riproduzioni": 2
-   },
-   {
-    "quando": "2026-10-14T11:18",
-    "riproduzioni": 2
-   },
    {
     "quando": "2026-10-14T15:06",
     "riproduzioni": 2
@@ -45,11 +37,19 @@
    {
     "quando": "2026-10-16T11:00",
     "riproduzioni": 0
+   },
+   {
+    "quando": "2026-10-16T15:00",
+    "riproduzioni": 0
+   },
+   {
+    "quando": "2026-10-16T19:00",
+    "riproduzioni": 0
    }
   ]
  },
- "media_views": 734,
- "like_totali": 411,
+ "media_views": 740,
+ "like_totali": 418,
  "per_tema": {
   "amicizia": {
    "reel": 1,
@@ -64,18 +64,18 @@
    "media_views": 778
   },
   "mentalita": {
-   "reel": 46,
-   "media_views": 721
+   "reel": 47,
+   "media_views": 729
   },
   "palestra": {
    "reel": 3,
-   "media_views": 838
+   "media_views": 839
   }
  },
  "per_scena": {
   "?": {
    "reel": 1,
-   "media_views": 1295
+   "media_views": 1296
   },
   "casa": {
    "reel": 2,
@@ -87,7 +87,7 @@
   },
   "lavoro": {
    "reel": 10,
-   "media_views": 476
+   "media_views": 479
   },
   "macchina": {
    "reel": 15,
@@ -98,12 +98,12 @@
    "media_views": 654
   },
   "palestra": {
-   "reel": 15,
-   "media_views": 654
+   "reel": 16,
+   "media_views": 678
   },
   "specchio": {
    "reel": 7,
-   "media_views": 726
+   "media_views": 729
   },
   "uscita": {
    "reel": 2,
@@ -113,7 +113,7 @@
  "per_orario": {
   "08": {
    "reel": 5,
-   "media_views": 534
+   "media_views": 535
   },
   "09": {
    "reel": 6,
@@ -129,7 +129,7 @@
   },
   "13": {
    "reel": 6,
-   "media_views": 864
+   "media_views": 865
   },
   "15": {
    "reel": 5,
@@ -141,7 +141,7 @@
   },
   "17": {
    "reel": 2,
-   "media_views": 552
+   "media_views": 564
   },
   "18": {
    "reel": 5,
@@ -149,19 +149,19 @@
   },
   "19": {
    "reel": 1,
-   "media_views": 386
+   "media_views": 387
   },
   "20": {
    "reel": 3,
    "media_views": 838
   },
   "21": {
-   "reel": 5,
-   "media_views": 561
+   "reel": 6,
+   "media_views": 638
   },
   "22": {
    "reel": 5,
-   "media_views": 600
+   "media_views": 604
   },
   "23": {
    "reel": 3,
@@ -173,9 +173,13 @@
    "reel": 1,
    "media_views": 1006
   },
+  "Break Ya Neck": {
+   "reel": 1,
+   "media_views": 1017
+  },
   "Cartier": {
    "reel": 1,
-   "media_views": 1042
+   "media_views": 1060
   },
   "Cutscene Crush": {
    "reel": 4,
@@ -187,11 +191,11 @@
   },
   "Duty Calls": {
    "reel": 1,
-   "media_views": 287
+   "media_views": 288
   },
   "Ego Chall": {
    "reel": 1,
-   "media_views": 309
+   "media_views": 308
   },
   "Final Boss Battle": {
    "reel": 1,
@@ -203,11 +207,11 @@
   },
   "Horizons": {
    "reel": 2,
-   "media_views": 363
+   "media_views": 364
   },
   "Intergalactic": {
    "reel": 1,
-   "media_views": 1131
+   "media_views": 1132
   },
   "Keep It Movin": {
    "reel": 1,
@@ -215,7 +219,7 @@
   },
   "Kick It": {
    "reel": 2,
-   "media_views": 753
+   "media_views": 754
   },
   "Locked In": {
    "reel": 1,
@@ -231,7 +235,7 @@
   },
   "Moon Vision": {
    "reel": 1,
-   "media_views": 971
+   "media_views": 972
   },
   "Stake Out": {
    "reel": 1,
@@ -239,11 +243,11 @@
   },
   "Survival Mode": {
    "reel": 2,
-   "media_views": 584
+   "media_views": 586
   },
   "Sweaty Staredown": {
    "reel": 1,
-   "media_views": 1035
+   "media_views": 1042
   },
   "Taking Flight": {
    "reel": 4,
@@ -263,7 +267,7 @@
   },
   "Van Life Rager": {
    "reel": 1,
-   "media_views": 794
+   "media_views": 819
   },
   "Vibe Check": {
    "reel": 2,
@@ -279,7 +283,7 @@
   },
   "Whoop": {
    "reel": 1,
-   "media_views": 22
+   "media_views": 23
   },
   "deciso": {
    "reel": 2,
@@ -295,7 +299,7 @@
   },
   "senza musica": {
    "reel": 1,
-   "media_views": 1295
+   "media_views": 1296
   },
   "trap": {
    "reel": 1,
@@ -309,23 +313,33 @@
  "per_origine": {
   "archivio": {
    "reel": 17,
-   "media_views": 815
+   "media_views": 816
   },
   "video nuovo": {
-   "reel": 39,
-   "media_views": 699
+   "reel": 40,
+   "media_views": 708
   }
  },
  "per_frase_virale": {
   "frase normale": {
-   "reel": 56,
-   "media_views": 734
+   "reel": 57,
+   "media_views": 740
+  }
+ },
+ "per_formato": {
+  "frase 5 s": {
+   "reel": 7,
+   "media_views": 651
+  },
+  "frase 8 s": {
+   "reel": 50,
+   "media_views": 753
   }
  },
  "pesi_temi": {
   "amicizia": 1.12,
-  "imprenditore": 1.03,
-  "mentalita": 0.98,
+  "imprenditore": 1.02,
+  "mentalita": 0.99,
   "palestra": 1.05,
   "dieta": 0.92
  },
@@ -339,6 +353,7 @@
    "musica": "Taking Flight",
    "origine": "archivio",
    "frase_virale": "frase normale",
+   "formato": "frase 8 s",
    "views": 1553,
    "like": 25
   },
@@ -351,7 +366,8 @@
    "musica": "drive",
    "origine": "video nuovo",
    "frase_virale": "frase normale",
-   "views": 1470,
+   "formato": "frase 8 s",
+   "views": 1471,
    "like": 35
   },
   {
@@ -363,6 +379,7 @@
    "musica": "Way Back Home",
    "origine": "archivio",
    "frase_virale": "frase normale",
+   "formato": "frase 8 s",
    "views": 1430,
    "like": 17
   },
@@ -375,6 +392,7 @@
    "musica": "drive",
    "origine": "video nuovo",
    "frase_virale": "frase normale",
+   "formato": "frase 8 s",
    "views": 1402,
    "like": 9
   },
@@ -387,6 +405,7 @@
    "musica": "phonk",
    "origine": "video nuovo",
    "frase_virale": "frase normale",
+   "formato": "frase 8 s",
    "views": 1316,
    "like": 9
   }
