@@ -2565,6 +2565,34 @@
      "id": "4499359850343428"
     }
    }
+  },
+  {
+   "quando": "2026-10-17T19:00",
+   "slot": "2026-10-17 21:00",
+   "video": "IMG_3938.MOV",
+   "md5": "12f6d3a5ab058c3a851b43defd63f93d",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-16T22:35+02:00",
+   "frase": "L01",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 regole per farti rispettare",
+    "musica": "rubberband_3.m4a",
+    "musica_meta": "phonk_01.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "gA5HFjcNMQk"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1643338327430247"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2639,10 +2667,10 @@
   "2026-10-16 21:00",
   "2026-10-17 09:00",
   "2026-10-17 13:00",
-  "2026-10-17 17:00"
+  "2026-10-17 17:00",
+  "2026-10-17 21:00"
  ],
  "musica_recenti": [
-  "cartier_2.m4a",
   "survival_mode_3.m4a",
   "duty_calls_3.m4a",
   "ego_chall_4.m4a",
@@ -2661,7 +2689,8 @@
   "i_might_be_late_1.m4a",
   "wrangle_the_crazy_3.m4a",
   "whoop_4.m4a",
-  "ancient_civilisations_4.m4a"
+  "ancient_civilisations_4.m4a",
+  "rubberband_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2731,10 +2760,10 @@
   "MIE-c5d2900d",
   "MIE-d7cc734e",
   "MIE-8274de1a",
-  "MIE-95e45457"
+  "MIE-95e45457",
+  "L01"
  ],
  "temi_recenti": [
-  "palestra",
   "mentalita",
   "palestra",
   "mentalita",
@@ -2743,20 +2772,10 @@
   "mentalita",
   "imprenditore",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "regole"
  ],
  "analisi": {
-  "1ArN14qUiJaO4Dn_dBwDluMjdX39e3aX8": {
-   "nome": "IMG_3938.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.86,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-16T22:35+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-17T10:41:25.071Z"
-  },
   "1epnKHuxLVIu3EGqy2MQvW7k-wWHCOjdY": {
    "nome": "IMG_3939.MOV",
    "scena": "macchina",
@@ -2977,12 +2996,16 @@
   "trap_10.flac",
   "drive_04.flac",
   "trap_06.flac",
-  "trap_11.flac"
+  "trap_11.flac",
+  "phonk_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
   "Pensieri in macchina": "PLM_wpEf-_YHM",
   "Lavoro e disciplina": "PLTzuBB07bRmQ",
   "Mentalità da palestra": "PLb-MgHwDrFLg"
- }
+ },
+ "liste_usate": [
+  "L01"
+ ]
 }
