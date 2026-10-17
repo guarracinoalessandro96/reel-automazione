@@ -2524,6 +2524,47 @@
      "id": "1090105773609963"
     }
    }
+  },
+  {
+   "quando": "2026-10-17T15:00",
+   "slot": "2026-10-17 17:00",
+   "video": "IMG_3953.MOV",
+   "md5": "6a003c84ecfbe26b06b966712fb81f0a",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-10-16T23:10+02:00",
+   "frase": "MIE-95e45457",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 33,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 0.8s a 5.8s",
+    "durata": 5.0,
+    "inizio": 0.8,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.46,
+     "dominante": "neutra",
+     "rumore": 3.0
+    },
+    "copertina_ms": 300,
+    "musica": "ancient_civilisations_4.m4a",
+    "musica_meta": "trap_11.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "BI4rtnte7Rg"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "4499359850343428"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2597,10 +2638,10 @@
   "2026-10-16 17:00",
   "2026-10-16 21:00",
   "2026-10-17 09:00",
-  "2026-10-17 13:00"
+  "2026-10-17 13:00",
+  "2026-10-17 17:00"
  ],
  "musica_recenti": [
-  "horizons_3.m4a",
   "cartier_2.m4a",
   "survival_mode_3.m4a",
   "duty_calls_3.m4a",
@@ -2619,7 +2660,8 @@
   "the_light_2.m4a",
   "i_might_be_late_1.m4a",
   "wrangle_the_crazy_3.m4a",
-  "whoop_4.m4a"
+  "whoop_4.m4a",
+  "ancient_civilisations_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2688,10 +2730,10 @@
   "MIE-48a56ab6",
   "MIE-c5d2900d",
   "MIE-d7cc734e",
-  "MIE-8274de1a"
+  "MIE-8274de1a",
+  "MIE-95e45457"
  ],
  "temi_recenti": [
-  "mentalita",
   "palestra",
   "mentalita",
   "palestra",
@@ -2700,9 +2742,44 @@
   "mentalita",
   "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita"
  ],
- "analisi": {},
+ "analisi": {
+  "1ArN14qUiJaO4Dn_dBwDluMjdX39e3aX8": {
+   "nome": "IMG_3938.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.86,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-16T22:35+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-17T10:41:25.071Z"
+  },
+  "1epnKHuxLVIu3EGqy2MQvW7k-wWHCOjdY": {
+   "nome": "IMG_3939.MOV",
+   "scena": "macchina",
+   "sicurezza": 0.53,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-16T22:36+02:00",
+   "fascia": "notte",
+   "caricato": "2026-10-17T10:41:30.695Z"
+  },
+  "1ADb2e8rdWPu1_1jKmXae3BU2dTWdLqfp": {
+   "nome": "IMG_3952.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.98,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-16T23:10+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-17T10:41:35.168Z"
+  }
+ },
  "pulizia": "2026-10-17",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -2899,7 +2976,8 @@
   "deciso_01.flac",
   "trap_10.flac",
   "drive_04.flac",
-  "trap_06.flac"
+  "trap_06.flac",
+  "trap_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
