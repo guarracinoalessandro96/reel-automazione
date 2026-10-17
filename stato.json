@@ -2483,6 +2483,47 @@
      "id": "1075936501948313"
     }
    }
+  },
+  {
+   "quando": "2026-10-17T11:00",
+   "slot": "2026-10-17 13:00",
+   "video": "IMG_3937.MOV",
+   "md5": "19e8d429afda1f93f21d6c502b824e8d",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-10-16T10:48+02:00",
+   "frase": "MIE-8274de1a",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 25,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 5.3s a 10.3s",
+    "durata": 5.0,
+    "inizio": 5.3,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.4,
+     "dominante": "calda",
+     "rumore": 1.4
+    },
+    "copertina_ms": 3906,
+    "musica": "whoop_4.m4a",
+    "musica_meta": "trap_06.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "-wpyydC7myU"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1090105773609963"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2555,10 +2596,10 @@
   "2026-10-16 13:00",
   "2026-10-16 17:00",
   "2026-10-16 21:00",
-  "2026-10-17 09:00"
+  "2026-10-17 09:00",
+  "2026-10-17 13:00"
  ],
  "musica_recenti": [
-  "turn_in_the_sun_1.m4a",
   "horizons_3.m4a",
   "cartier_2.m4a",
   "survival_mode_3.m4a",
@@ -2577,7 +2618,8 @@
   "cartier_3.m4a",
   "the_light_2.m4a",
   "i_might_be_late_1.m4a",
-  "wrangle_the_crazy_3.m4a"
+  "wrangle_the_crazy_3.m4a",
+  "whoop_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2645,11 +2687,11 @@
   "MIE-d8f3e08c",
   "MIE-48a56ab6",
   "MIE-c5d2900d",
-  "MIE-d7cc734e"
+  "MIE-d7cc734e",
+  "MIE-8274de1a"
  ],
  "temi_recenti": [
   "mentalita",
-  "mentalita",
   "palestra",
   "mentalita",
   "palestra",
@@ -2657,21 +2699,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "imprenditore"
+  "imprenditore",
+  "mentalita"
  ],
- "analisi": {
-  "1z5F-shRQS4bP0Vng9aEnarAVVHhVHPMY": {
-   "nome": "IMG_3937.MOV",
-   "scena": "specchio",
-   "sicurezza": 0.45,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-16T10:48+02:00",
-   "fascia": "ufficio",
-   "caricato": "2026-10-16T09:30:42.501Z"
-  }
- },
+ "analisi": {},
  "pulizia": "2026-10-17",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -2867,7 +2898,8 @@
   "drive_15.flac",
   "deciso_01.flac",
   "trap_10.flac",
-  "drive_04.flac"
+  "drive_04.flac",
+  "trap_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
