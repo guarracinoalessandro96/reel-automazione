@@ -2675,6 +2675,44 @@
      "id": "1506797644624128"
     }
    }
+  },
+  {
+   "quando": "2026-10-18T14:29",
+   "slot": "2026-10-18 17:00",
+   "video": "IMG_3762.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "specchio",
+   "registrato": null,
+   "frase": "MIE-4cca3569",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 29,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 1.1s a 6.1s",
+    "durata": 5.0,
+    "inizio": 1.09,
+    "colore": {
+     "scena": "esterno",
+     "motivo": "luce del giorno",
+     "luce": 0.57,
+     "dominante": "calda",
+     "rumore": 2.5
+    },
+    "copertina_ms": 300,
+    "musica": "horizons_2.m4a",
+    "musica_meta": "trap_14.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "-nbvOYuZ7Lk"
+    }
+   },
+   "in_corso": true
   }
  ],
  "riprova": [],
@@ -2752,7 +2790,8 @@
   "2026-10-17 17:00",
   "2026-10-17 21:00",
   "2026-10-18 09:00",
-  "2026-10-18 13:00"
+  "2026-10-18 13:00",
+  "2026-10-18 17:00"
  ],
  "musica_recenti": [
   "ego_chall_4.m4a",
