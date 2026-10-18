@@ -35,6 +35,69 @@ def stat_youtube(ids):
     return res
 
 
+def bloccati_youtube(ids):
+    """Shorts bloccati da YouTube (diritti d'autore, Content ID) o rifiutati: {id: motivo}."""
+    if not ids or not ENV("GOOGLE_REFRESH_TOKEN"):
+        return {}
+    from google.oauth2.credentials import Credentials
+    from googleapiclient.discovery import build
+    c = Credentials(None, refresh_token=ENV("GOOGLE_REFRESH_TOKEN"), client_id=ENV("GOOGLE_CLIENT_ID"),
+                    client_secret=ENV("GOOGLE_CLIENT_SECRET"), token_uri="https://oauth2.googleapis.com/token")
+    yt = build("youtube", "v3", credentials=c, cache_discovery=False)
+    out = {}
+    for i in range(0, len(ids), 50):
+        for it in yt.videos().list(part="status,contentDetails", id=",".join(ids[i:i + 50])).execute().get("items", []):
+            st, rr = it["status"], (it.get("contentDetails") or {}).get("regionRestriction") or {}
+            if st.get("uploadStatus") == "rejected":
+                out[it["id"]] = "rifiutato (" + str(st.get("rejectionReason") or "?") + ")"
+            elif rr.get("blocked") or "allowed" in rr:
+                out[it["id"]] = "bloccato in " + (f"{len(rr['blocked'])} paesi" if rr.get("blocked") else "quasi tutto il mondo")
+    return out
+
+
+# formati con l'audio ORIGINALE (musica della palestra, voci): se YouTube ne blocca uno, il formato si spegne da solo
+FORMATI_AUDIO_ORIGINALE = {"ambiente"}
+
+
+def controlla_blocchi(state, pesi):
+    """Ogni mattina: Shorts degli ultimi 60 giorni bloccati per diritti d'autore? Avviso su Telegram (una volta per
+    video) e, se il formato usa l'audio originale, il formato si spegne (peso 0)."""
+    limite = (datetime.datetime.now() - datetime.timedelta(days=60)).isoformat()
+    recenti = {h["risultati"]["youtube"]["id"]: h for h in state.get("storico", []) if h.get("quando", "") >= limite
+               and (h.get("risultati") or {}).get("youtube", {}).get("ok") and h["risultati"]["youtube"].get("id")}
+    try:
+        blocchi = bloccati_youtube(list(recenti))
+    except Exception as e:
+        print("Controllo blocchi YouTube non riuscito:", e)
+        return False
+    visti = set(pesi.get("blocchi_visti", []))
+    nuovi = {i: m for i, m in blocchi.items() if i not in visti}
+    if not nuovi:
+        return False
+    spenti = set()
+    righe = ["ATTENZIONE", f"YOUTUBE HA BLOCCATO {len(nuovi)} SHORT"]
+    for i, motivo in nuovi.items():
+        h = recenti[i]
+        f = (h.get("montaggio") or {}).get("formato") or "frase"
+        righe += ["", f"Reel delle {(h.get('slot') or '?').split(' ')[-1]} del {(h.get('slot') or h['quando'])[:10]}",
+                  f"Formato: {f}", f"Motivo: {motivo}"]
+        if f in FORMATI_AUDIO_ORIGINALE:
+            spenti.add(f)
+    for f in spenti:
+        pesi.setdefault("formati_spenti", [])
+        if f not in pesi["formati_spenti"]:
+            pesi["formati_spenti"].append(f)
+    if spenti:
+        righe += ["", "Formato spento in automatico", ", ".join(sorted(spenti))]
+    pesi["blocchi_visti"] = sorted(visti | set(nuovi))
+    try:
+        import avvisi
+        avvisi.manda("\n".join(righe))
+    except Exception as e:
+        print("Avviso Telegram non mandato:", e)
+    return True
+
+
 VIRALI = set()      # id delle frasi [virale] (riempito da testi_citazioni)
 
 
@@ -219,6 +282,8 @@ def main():
         pesi["formati"] = {f: round(min(max(statistics.median(v) / med, 0.4), 2.5), 2)
                            for f, v in per_f.items() if len(v) >= 6}
         pesi["aggiornato"] = datetime.date.today().isoformat()
+        json.dump(pesi, open(PESI, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+    if controlla_blocchi(state, pesi):       # Short bloccati per diritti d'autore: avviso + formato spento
         json.dump(pesi, open(PESI, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
 
     migliori = sorted(righe, key=lambda r: (-r["views"], -r["like"]))[:5]

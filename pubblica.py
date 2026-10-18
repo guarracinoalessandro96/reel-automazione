@@ -237,7 +237,10 @@ def scegli_formato(slot, state, frase, an):
         return "parlato"
     pesi = dict(FORMATI)
     try:
-        pesi.update(json.load(open(os.path.join(HERE, "pesi.json"), encoding="utf-8")).get("formati", {}))
+        dati = json.load(open(os.path.join(HERE, "pesi.json"), encoding="utf-8"))
+        pesi.update(dati.get("formati", {}))
+        for f in dati.get("formati_spenti", []):    # bloccato da YouTube per diritti d'autore (report.py)
+            pesi.pop(f, None)
     except Exception:
         pass
     ok = {"frase": True, "gancio": bool(overlay.dividi_frase(frase["gancio"])), "montaggio": True,
