@@ -247,9 +247,15 @@ class Drive:
 
     def __init__(self, creds):
         self.local = ENV("DRY_DIR") if DRY else None
+        self.creds = creds
+        self.riconnetti()
+
+    def riconnetti(self):
+        """Connessione nuova a Drive: dopo l'attesa dell'ora esatta (fino a 50') quella vecchia e' chiusa
+        (18/10/2026: SSLEOFError salvando in Pronti, stato non salvato)."""
         if not self.local:
             from googleapiclient.discovery import build
-            self.api = build("drive", "v3", credentials=creds, cache_discovery=False)
+            self.api = build("drive", "v3", credentials=self.creds, cache_discovery=False)
 
     def list_videos(self):
         """Tutti i video in coda: [{id, name, createdTime}], dal piu' vecchio."""
@@ -1059,6 +1065,7 @@ def main():
     if 0 < attesa < 70 * 60 and not DRY:
         log(f"Aspetto le {target:%H:%M} per pubblicare puntuale ({attesa / 60:.0f} minuti)")
         time.sleep(attesa)
+        drive.riconnetti()
     if muto and ENV("TELEGRAM_BOT_TOKEN") and ENV("TELEGRAM_CHAT_ID") and not DRY:
         try:
             manda_telegram(muto, testo_breve(frase), slot)
@@ -1099,8 +1106,15 @@ def main():
             log(f"Copia salvata nell'archivio: {stem}.mov")
         except Exception as e:
             log("Copia d'archivio non riuscita (il reel e' comunque uscito):", e)
-    pronti_id = drive.archive(None if clip else video["id"], out,
-                              f"{frase['id']} - {os.path.splitext(nome)[0]}.mp4")
+    pronti_id = None
+    for tentativo in range(2):          # il reel e' gia' uscito: un errore qui non deve far perdere lo stato
+        try:
+            pronti_id = drive.archive(None if clip else video["id"], out,
+                                      f"{frase['id']} - {os.path.splitext(nome)[0]}.mp4")
+            break
+        except Exception as e:
+            log("Copia in Pronti non riuscita" + (", riprovo" if not tentativo else "") + ":", e)
+            drive.riconnetti()
     failed = [p for p, r in results.items() if not r["ok"] and p in PLATFORMS]
     if results.get("tiktok", {}).get("ok") and (ENV("TIKTOK_MODO") or "bozze") != "diretto":
         try:                                  # la frase da incollare quando pubblica la bozza su TikTok

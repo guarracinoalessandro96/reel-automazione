@@ -2710,9 +2710,13 @@
     "youtube": {
      "ok": true,
      "id": "-nbvOYuZ7Lk"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1600254594332416"
     }
    },
-   "in_corso": true
+   "nota": "stato completato a mano: il lavoro si era interrotto dopo la pubblicazione (SSLEOFError su Drive)"
   }
  ],
  "riprova": [],
@@ -2886,7 +2890,8 @@
   "MIE-95e45457",
   "L01",
   "MIE-cd7ff40e",
-  "MIE-22f623e2"
+  "MIE-22f623e2",
+  "MIE-4cca3569"
  ],
  "temi_recenti": [
   "mentalita",
