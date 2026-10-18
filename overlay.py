@@ -169,6 +169,21 @@ def build_overlay_2tempi(W, H, prima, seconda, faces, serie=None):
     return immagini[0], immagini[1], y_frac, score
 
 
+def build_overlay_serie(W, H, serie):
+    """Solo l'etichetta della serie in alto (formato PARLATO: il testo sono i sottotitoli)."""
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    if serie:
+        d = ImageDraw.Draw(img)
+        fs = int(W * 0.050 * 0.6)
+        font_s = ImageFont.truetype(FONT, fs)
+        ws = d.textlength(serie, font=font_s)
+        y = int(H * 0.08)
+        d.rounded_rectangle([(W - ws) / 2 - fs * 0.7, y, (W + ws) / 2 + fs * 0.7, y + int(fs * 1.7)],
+                            radius=int(fs * 0.85), fill=(255, 255, 255, 235))
+        d.text(((W - ws) / 2, y + int(fs * 0.3)), serie, font=font_s, fill=(15, 15, 15, 255))
+    return img
+
+
 def dividi_frase(testo):
     """('prima parte', 'seconda parte') per il formato GANCIO, oppure None se la frase non si divide bene."""
     t = testo.strip()
@@ -407,7 +422,11 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     seconds, hdr = probe(src)
     formato = formato or {}
     durata = formato.get("durata")
-    if da_archivio:                     # clip d'archivio: gia' tagliata, pezzo a caso
+    parlato = formato.get("nome") == "parlato"
+    if parlato:                         # PARLATO: dalla prima all'ultima parola (deciso da parlato.taglio)
+        start = max(0.0, min(float(formato.get("inizio", 0)), seconds - 1))
+        length = max(1.0, min(float(durata or seconds), seconds - start))
+    elif da_archivio:                   # clip d'archivio: gia' tagliata, pezzo a caso
         start, length = segmento_archivio(seconds, durata)
     else:                               # video nuovo: i secondi migliori
         start, length = segmento_migliore(src, seconds, HDR_TO_SDR if hdr else None, durata)
@@ -430,7 +449,9 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     if abs(W0 / H0 - 9 / 16) < 0.03:     # quasi 9:16 (es. dopo il ritaglio): esattamente 1080x1920
         H = LATO_USCITA * 16 // 9
     png2, t2 = None, None
-    if formato.get("seconda"):      # GANCIO: prima parte subito, la seconda compare dopo t secondi
+    if parlato:                     # il testo sono i sottotitoli: in alto solo la serie
+        overlay, y_frac, score = build_overlay_serie(W, H, serie), 0.08, 0
+    elif formato.get("seconda"):      # GANCIO: prima parte subito, la seconda compare dopo t secondi
         ov1, ov2, y_frac, score = build_overlay_2tempi(W, H, hook, formato["seconda"], faces, serie)
         png2 = os.path.join(tempfile.gettempdir(), "overlay_reel_2.png")
         ov2.save(png2)
@@ -474,7 +495,7 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     # (fotogrammi 0..X): l'ultimo fotogramma coincide con il primo, quando lo Short ricomincia non si vede lo stacco.
     # L'inizio si legge con un SECONDO ingresso dello stesso file (con "split" ffmpeg 7.1 si bloccava). Durata invariata.
     # (solo al primo tentativo: se ffmpeg fallisce, il piano di riserva riprova SENZA loop, poi senza colore...)
-    X = LOOP_SFUMATURA if zoom and seconds - start >= length + LOOP_SFUMATURA and length > 2 else 0
+    X = LOOP_SFUMATURA if zoom and not parlato and seconds - start >= length + LOOP_SFUMATURA and length > 2 else 0
     filtri = ",".join(chain)
     if X:
         graph = (f"[0:v]{filtri + ',' if filtri else ''}trim=start={X}:end={length + X},setpts=PTS-STARTPTS[mn];"
@@ -499,7 +520,8 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
         graph += f";[{n_in}:a]volume={MUSIC_VOL * (0.8 if vol_orig else 1):.2f}[mu]"
         n_in += 1
     if vol_orig:
-        graph += (f";[0:a]atrim=start={X}:end={length + X},asetpts=PTS-STARTPTS,volume={vol_orig:.2f},"
+        norm = "loudnorm=I=-16:TP=-1.5:LRA=11," if parlato else ""     # voce sempre allo stesso volume
+        graph += (f";[0:a]atrim=start={X}:end={length + X},asetpts=PTS-STARTPTS,volume={vol_orig:.2f},{norm}"
                   "aresample=44100,aformat=channel_layouts=stereo[ao]")
         graph += (f";[mu][ao]amix=inputs=2:normalize=0:duration=first,{LIMITATORE},{fade}[a]" if music
                   else f";[ao]{LIMITATORE},{fade}[a]")
@@ -510,11 +532,20 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     if X:      # secondo ingresso: solo l'inizio del pezzo, per la sfumatura del loop
         cmd += ["-display_rotation", "0", "-ss", f"{start:.3f}", "-t", f"{X + 0.2:.3f}", "-i", src]
         graph = graph.replace("[LOOPIN:v]", f"[{n_in}:v]")
+    cartella_sub = None
+    if formato.get("sottotitoli"):      # PARLATO: sottotitoli bruciati nel video (file .ass + font nella stessa cartella)
+        import parlato as parlato_mod
+        cartella_sub = tempfile.mkdtemp()
+        parlato_mod.file_ass(formato["sottotitoli"], start, os.path.join(cartella_sub, "sub.ass"), W, H)
+        shutil.copy(FONT, os.path.join(cartella_sub, os.path.basename(FONT)))
+        i = graph.rfind("format=yuv420p[v]")
+        graph = graph[:i] + "format=yuv420p,subtitles=sub.ass:fontsdir=.[v]" + graph[i + len("format=yuv420p[v]"):]
     cmd += ["-filter_complex", graph, "-map", "[v]", *amap, "-t", f"{length:.3f}",
             "-c:v", "libx264", "-preset", "medium", "-crf", "17", "-profile:v", "high",
             "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-movflags", "+faststart", dst]
     try:
-        r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore", timeout=TEMPO_MAX_MONTAGGIO)
+        r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore", timeout=TEMPO_MAX_MONTAGGIO,
+                           cwd=cartella_sub)
     except subprocess.TimeoutExpired:
         raise RuntimeError(f"ffmpeg: oltre {TEMPO_MAX_MONTAGGIO} s")
     if r.returncode != 0 or not os.path.exists(dst) or os.path.getsize(dst) < 50_000:

@@ -81,6 +81,24 @@ def main():
     st = [overlay.segmento_archivio(8.0) for _ in range(20)]
     check(all(0 <= a <= 3.0 and l == overlay.DURATA_MAX for a, l in st) and len({a for a, _ in st}) > 3,
           "archivio: pezzo da 5 s in un punto diverso a ogni riuso")
+    # PARLATO (18/10/2026): la sua voce (qui un tono) con i sottotitoli e la serie in alto, niente musica
+    try:
+        import parlato
+        testo = "Oggi voglio dirvi una cosa che ho capito lavorando ogni giorno. Nessuno verra' a salvarti."
+        parole = [{"w": w, "s": 0.5 + i * 0.4, "e": 0.8 + i * 0.4, "p": 0.9} for i, w in enumerate(testo.split())]
+        check(parlato.e_parlato(parole, 8.0) and not parlato.e_parlato(parole[:5], 8.0),
+              "parlato: riconosce quando si parla davvero")
+        inizio, durata = parlato.taglio(parole, 11.0)
+        dst = os.path.join(D, "parlato_reel.mp4")
+        info = overlay.make_video(sorgente("orizzontale", 1280, 720, 30, 11, True), "", dst, music=None,
+                                  serie="GIORNO 1 / 365",
+                                  formato={"nome": "parlato", "inizio": inizio, "durata": durata, "audio_originale": 1.0,
+                                           "sottotitoli": parlato.blocchi(parole)})
+        dim, dur, lufs, tp, ha_audio = misura(dst)
+        check(dim == (1080, 1920) and abs(dur - durata) < 0.2 and ha_audio and -18 < lufs < -14 and tp < 0
+              and info.get("formato") == "parlato", f"parlato: {dim}, {dur:.2f}s (attesa {durata}), {lufs:.1f} LUFS")
+    except Exception as e:
+        check(False, f"parlato: non riuscito ({e})")
     # piano di riserva: musica inesistente -> deve uscire lo stesso, senza musica
     dst = os.path.join(D, "riserva_reel.mp4")
     try:

@@ -232,6 +232,8 @@ def scegli_formato(slot, state, frase, an):
     se si puo'. FORMATO=nome forza un formato (prove)."""
     if ENV("FORMATO"):
         return ENV("FORMATO")
+    if an.get("parlato"):            # video in cui parla: sempre con la sua voce e i sottotitoli
+        return "parlato"
     pesi = dict(FORMATI)
     try:
         pesi.update(json.load(open(os.path.join(HERE, "pesi.json"), encoding="utf-8")).get("formati", {}))
@@ -270,6 +272,25 @@ def musiche_brano(music, n=3):
     d = os.path.dirname(music)
     pezzi = sorted(os.path.join(d, f) for f in os.listdir(d) if re.fullmatch(re.escape(base) + r"_\d+\.m4a", f))
     return pezzi[:n] or [music]
+
+
+def monta_parlato(an, src, out, serie, nome):
+    """Reel PARLATO: la sua voce (niente musica) con i sottotitoli; titolo = la prima frase che dice."""
+    import hashlib
+    import parlato
+    parole = an["parlato"]["parole"]
+    secondi, _ = overlay.probe(src)
+    inizio, durata = parlato.taglio(parole, secondi)
+    dentro = [w for w in parole if inizio <= w["s"] < inizio + durata]
+    info = overlay.make_video(src, "", out, music=None, serie=serie, colore=ENV("SENZA_COLORE") != "1", nome=nome,
+                              scena_rilevata=an.get("scena"),
+                              formato={"nome": "parlato", "inizio": inizio, "durata": durata, "audio_originale": 1.0,
+                                       "sottotitoli": parlato.blocchi(dentro)})
+    t = parlato.testo(dentro)
+    prima = re.split(r"(?<=[.!?])\s", t)[0][:90]
+    frase = {"id": "PARL-" + hashlib.md5(t.encode()).hexdigest()[:8], "tema": "parlato", "gancio": prima or t[:90],
+             "autore": "", "hashtag": ["#vitavera", "#mentalita", "#imprenditore"], "serie": serie}
+    return frase, info
 
 
 def monta_montaggio(frase, src, out, music, serie, drive, work, clip, giorno=None):
@@ -775,7 +796,7 @@ def manda_tiktok_della_giornata(state, drive, work, muto, slot, salva):
             else:
                 path = os.path.join(work, f"tiktok_{i}.mp4")
                 drive.download(item["id"], path, folder=CARTELLA_TIKTOK)
-            manda_telegram(path, item["testo"], n=i, tot=len(coda))
+            manda_telegram(path, item["testo"], n=i, tot=len(coda), parlato=item.get("parlato", False))
             inviati.append(item)
         except Exception as e:
             log("TikTok su Telegram non riuscito per un video:", e)
@@ -784,7 +805,7 @@ def manda_tiktok_della_giornata(state, drive, work, muto, slot, salva):
     salva()
 
 
-def manda_telegram(path, testo, slot=None, n=None, tot=None):
+def manda_telegram(path, testo, slot=None, n=None, tot=None, parlato=False):
     """Manda ad Alessandro il video per TikTok (senza musica) e, sotto, il testo: toccandolo si copia.
     n/tot: invio serale di tutti i TikTok del giorno ("TIKTOK 2 DI 4")."""
     import html
@@ -793,8 +814,9 @@ def manda_telegram(path, testo, slot=None, n=None, tot=None):
         titolo = f"TIKTOK {n} DI {tot}\n"
     else:
         titolo = (f"REEL DELLE {slot.split()[-1]}" if slot and ":" in slot else "NUOVO REEL") + " PER TIKTOK\n"
-    didascalia = (titolo + "Pubblicalo o programmalo:\n1. Salva il video\n2. Aggiungi un suono di tendenza\n"
-                  "3. Incolla il testo qui sotto")
+    suono = ("2. C'e' la tua voce: se aggiungi un suono di tendenza, mettilo al volume piu' basso\n" if parlato
+             else "2. Aggiungi un suono di tendenza\n")
+    didascalia = titolo + "Pubblicalo o programmalo:\n1. Salva il video\n" + suono + "3. Incolla il testo qui sotto"
     with open(path, "rb") as f:
         # width/height: senza, Telegram mostra il video verticale come un quadrato con le bande nere
         r = requests.post(f"{base}/sendVideo", data={"chat_id": ENV("TELEGRAM_CHAT_ID"), "supports_streaming": "true",
@@ -909,12 +931,23 @@ def analizza_video(drive, v, work):
     sc, conf, motivo = scene_mod.riconosci(frames, v["name"])
     con_chi, conf_chi = scene_mod.compagnia(frames)
     quando = scene_mod.ora_registrazione(info)
+    parlato_info = None
+    # PARLATO (18/10/2026): solo video in cui c'e' lui da solo (mai voci di parenti) e con l'audio
+    if con_chi == "solo" and conf_chi >= 0.5 and overlay.ha_audio(src) and ENV("SENZA_PARLATO") != "1":
+        try:
+            import parlato
+            parole = parlato.trascrivi(src)
+            if parlato.e_parlato(parole, seconds):
+                parlato_info = {"parole": parole[:500]}
+                log(f"{v['name']}: video PARLATO ({len(parole)} parole): {parlato.testo(parole)[:80]}")
+        except Exception as e:
+            log("Riconoscimento della voce non riuscito (resta un reel normale):", e)
     os.remove(src)
     lato_corto = min(frames[0].shape[:2]) if frames else 0
     return {"nome": v["name"], "scena": sc, "sicurezza": conf, "motivo": motivo, "lato_corto": lato_corto,
             "compagnia": con_chi if conf_chi >= 0.5 else None,
             "registrato": quando.isoformat(timespec="minutes") if quando else None,
-            "fascia": scene_mod.fascia_per(sc, quando), "caricato": v["createdTime"]}
+            "fascia": scene_mod.fascia_per(sc, quando), "caricato": v["createdTime"], "parlato": parlato_info}
 
 
 VICINE = {   # se manca un video della fascia giusta, si prova in queste (in ordine)
@@ -997,7 +1030,9 @@ def main():
         job["piattaforme"] = [x for x in job["piattaforme"] if x in PLATFORMS   # solo quelle ancora attive
                               and not fermo(state, x)]
         path_meta = None
-        if MUSICA_NOSTRA & set(job["piattaforme"]):
+        if job["frase"].get("tema") == "parlato":        # reel parlato: la sua voce, niente musica da cambiare
+            path_meta = path
+        elif MUSICA_NOSTRA & set(job["piattaforme"]):
             path_meta, _ = versione_meta(path, state.get("musica_recenti_meta", []))
         res = publish_all(path, job["frase"], creds, job["piattaforme"], path_meta)
         job["tentativi"] += 1
@@ -1149,7 +1184,9 @@ def main():
         info, formato = None, scegli_formato(slot, state, frase, an)
         log(f"Formato: {formato}")
         try:                            # se un formato non riesce esce il reel normale (frase da 5 s)
-            if formato == "regole":
+            if formato == "parlato":
+                frase, info = monta_parlato(an, src, out, serie, nome)
+            elif formato == "regole":
                 frase, info = monta_regole(lista_regole(slot, state), src, out, music, serie, drive, work, clip)
             elif formato == "montaggio":
                 info = monta_montaggio(frase, src, out, music, serie, drive, work, clip,
@@ -1196,7 +1233,10 @@ def main():
     out_meta = None
     piatt = piattaforme_slot(slot, state)
     per_dopo = [p for p in PREPARA_PER_DOPO if p not in attive()] if principale(slot) else []
-    if MUSICA_NOSTRA & set(piatt) or per_dopo:
+    parla = info.get("formato") == "parlato"    # PARLATO: la sua voce ovunque, mai musica al suo posto
+    if parla:
+        out_meta = out
+    elif MUSICA_NOSTRA & set(piatt) or per_dopo:
         out_meta, info["musica_meta"] = versione_meta(out, state.get("musica_recenti_meta", []), an["scena"])
     # PUNTUALITA' (16/10/2026): si parte ~45' prima dello slot. YouTube viene caricato subito e PROGRAMMATO all'ora
     # esatta; poi si aspetta l'ora esatta per Telegram (TikTok) e Facebook.
@@ -1223,10 +1263,11 @@ def main():
             log("Versione per Instagram non salvata su Drive:", e)
     if "tiktok" not in attive() and principale(slot):   # TikTok a mano con audio di tendenza: versione SENZA musica
         try:
-            muto = overlay.senza_audio(out, os.path.join(work, "reel_tiktok.mp4"))
+            muto = out if parla else overlay.senza_audio(out, os.path.join(work, "reel_tiktok.mp4"))
             nome_tt = f"{ora_roma():%Y-%m-%d %H%M} - {frase['id']}.mp4"
             fid_tt = drive.salva_per_dopo(muto, nome_tt, testo_breve(frase), CARTELLA_TIKTOK)
-            state.setdefault("tiktok_coda", []).append({"id": fid_tt, "testo": testo_breve(frase), "slot": slot})
+            state.setdefault("tiktok_coda", []).append({"id": fid_tt, "testo": testo_breve(frase), "slot": slot,
+                                                        "parlato": parla})
             save()
             log(f"Pronto per TikTok (senza musica): {CARTELLA_TIKTOK}/{nome_tt}")
         except Exception as e:
@@ -1235,7 +1276,7 @@ def main():
     else:
         muto = None
     ig_nativo = None
-    if "instagram" in piatt:            # Instagram: video senza musica + brano nativo di Instagram scelto per la scena
+    if "instagram" in piatt and not parla:   # Instagram: video senza musica + brano nativo scelto per la scena
         try:
             muto_ig = muto or overlay.senza_audio(out, os.path.join(work, "reel_ig.mp4"))
             scelto = scegli_audio_instagram(an["scena"], state.get("ig_audio_recenti", []))

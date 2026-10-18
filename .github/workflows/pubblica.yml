@@ -81,6 +81,15 @@ jobs:
           pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
           pip install -r requirements.txt
 
+      # PARLATO (18/10/2026): modello della voce per i video in cui Alessandro parla. La libreria si installa da sola
+      # (parlato.py) solo quando arriva un video parlato; se non riesce, il video resta un reel normale.
+      - name: Memoria del modello della voce
+        if: steps.orario.outputs.slot != ''
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/whisper
+          key: whisper-small-v1
+
       - name: Pubblica il prossimo video
         if: steps.orario.outputs.slot != ''
         env:
