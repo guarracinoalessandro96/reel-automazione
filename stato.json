@@ -2767,6 +2767,33 @@
      "id": "G0Nej3v7eSY"
     }
    }
+  },
+  {
+   "quando": "2026-10-18T21:00",
+   "slot": "2026-10-18 23:00",
+   "video": "IMG_4030.MOV",
+   "md5": "41b686e0f60a2e9d72d99e7016240b7f",
+   "da_archivio": false,
+   "scena": "uscita",
+   "registrato": "2026-10-18T14:47+02:00",
+   "frase": "MIE-2b7afb66",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "locked_in_1.m4a",
+    "musica_meta": "trap_09.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "ILMX_v1-Kso"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "2270436640522258"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2847,10 +2874,10 @@
   "2026-10-18 13:00",
   "2026-10-18 17:00",
   "2026-10-18 21:00",
-  "2026-10-18 22:00"
+  "2026-10-18 22:00",
+  "2026-10-18 23:00"
  ],
  "musica_recenti": [
-  "final_boss_battle_3.m4a",
   "sweaty_staredown_1.m4a",
   "van_life_rager_2.m4a",
   "break_ya_neck_3.m4a",
@@ -2869,7 +2896,8 @@
   "dusty_road_magic_4.m4a",
   "van_life_rager_3.m4a",
   "way_back_home_2.m4a",
-  "intergalactic_3.m4a"
+  "intergalactic_3.m4a",
+  "locked_in_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2945,10 +2973,10 @@
   "MIE-22f623e2",
   "MIE-4cca3569",
   "L02",
-  "MIE-373e069a"
+  "MIE-373e069a",
+  "MIE-2b7afb66"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "imprenditore",
   "mentalita",
@@ -2957,20 +2985,10 @@
   "mentalita",
   "mentalita",
   "regole",
-  "imprenditore"
+  "imprenditore",
+  "mentalita"
  ],
  "analisi": {
-  "1gsbR0t4WbGx68YpuUH-LiqfvFqNVVPqW": {
-   "nome": "IMG_4030.MOV",
-   "scena": "uscita",
-   "sicurezza": 0.95,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "famiglia",
-   "registrato": "2026-10-18T14:47+02:00",
-   "fascia": "sera",
-   "caricato": "2026-10-18T18:13:01.692Z"
-  },
   "1NfvRrrvtikqSvJNkOOpi9sOBXs09blgz": {
    "nome": "IMG_3971.MOV",
    "scena": "uscita",
@@ -3260,10 +3278,13 @@
   "1C7dPpnBEXAtEz6B37kjIeLNrl5vyMEeb": {
    "usi": 1,
    "ultimo": "2026-10-18"
+  },
+  "1gsbR0t4WbGx68YpuUH-LiqfvFqNVVPqW": {
+   "usi": 1,
+   "ultimo": "2026-10-18"
   }
  },
  "musica_recenti_meta": [
-  "phonk_15.flac",
   "phonk_10.flac",
   "deciso_12.flac",
   "deciso_06.flac",
@@ -3282,17 +3303,23 @@
   "phonk_01.flac",
   "drive_16.flac",
   "phonk_12.flac",
-  "drive_08.flac"
+  "drive_08.flac",
+  "trap_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
   "Pensieri in macchina": "PLM_wpEf-_YHM",
   "Lavoro e disciplina": "PLTzuBB07bRmQ",
-  "Mentalità da palestra": "PLb-MgHwDrFLg"
+  "Mentalità da palestra": "PLb-MgHwDrFLg",
+  "Vita e persone": "PLL64qug_Rkxw"
  },
  "liste_usate": [
   "L01",
   "L02"
  ],
- "formato_ultimo": "montaggio"
+ "formato_ultimo": "montaggio",
+ "errori_di_fila": {
+  "youtube": 0,
+  "facebook": 0
+ }
 }
