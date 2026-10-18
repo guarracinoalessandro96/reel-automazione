@@ -160,7 +160,10 @@ def riassunto_settimana(state):
         righe.append((v, l, testi.get(h.get("frase"), "")))
     righe.sort(reverse=True)
     formati = {}
+    ieri = (datetime.datetime.now() - datetime.timedelta(days=1)).isoformat()
     for h in post:
+        if h.get("quando", "") >= ieri:      # usciti da meno di 24 ore: ancora nel primo test di YouTube, falserebbero
+            continue
         v, _ = yt.get(h.get("risultati", {}).get("youtube", {}).get("id"), (0, 0))
         formati.setdefault((h.get("montaggio") or {}).get("formato") or "frase", []).append(v)
     fb = stat_facebook(post)
@@ -188,19 +191,22 @@ def riassunto_settimana(state):
                  f"Visualizzazioni: {num(v_ora)} (prima {num(v_prima)})"]
     if v_prima:
         confronto.append(f"Variazione: {(v_ora - v_prima) * 100 / v_prima:+.0f}%")
+        confronto.append("I reel di questa settimana sono piu' giovani: stanno ancora crescendo")
     t = ["RIASSUNTO DELLA SETTIMANA", f"{da:%d/%m} - {datetime.date.today():%d/%m}", "",
          "YOUTUBE", f"{len(post)} reel", f"{num(sum(r[0] for r in righe))} visualizzazioni",
          f"{sum(r[1] for r in righe)} like"]
     iscritti = follower("youtube")
     if iscritti:
         t += [f"{num(iscritti[0])} iscritti", f"{iscritti[1]:+d} iscritti in una settimana"]
+        if iscritti[0] >= 1000:          # sopra 1.000 YouTube mostra gli iscritti arrotondati (3 cifre)
+            t += ["YouTube arrotonda gli iscritti alle decine"]
     t += confronto
     t += ["", "I 3 MIGLIORI"]
     for i, (v, l, f) in enumerate(righe[:3], 1):
         t += ["", f"{i}) {f}", f"{num(v)} visualizzazioni", f"{l} like"]
     if formati:
         import statistics
-        t += ["", "FORMATI (visualizzazioni a meta' classifica)"]
+        t += ["", "FORMATI (visualizzazioni a meta' classifica)", "Solo reel usciti da almeno 24 ore"]
         for f, v in sorted(formati.items(), key=lambda x: -statistics.median(x[1])):
             t += [f"{f}: {num(int(statistics.median(v)))} ({len(v)} reel)"]
     t += ["", "FACEBOOK"]
