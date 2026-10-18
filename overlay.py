@@ -295,9 +295,10 @@ def segmento(seconds, durata=None):
     return start, min(durata or DURATA_MAX, seconds - start)
 
 
-def segmento_migliore(src, seconds, vf=None, durata=None):
+def segmento_migliore(src, seconds, vf=None, durata=None, a_caso=False):
     """(inizio, durata) dei 5 secondi PIU' FORTI del video (16/10/2026): viso visibile, movimento, immagine nitida,
-    niente primo secondo (quando si preme "registra"). Video corti: come segmento()."""
+    niente primo secondo (quando si preme "registra"). Video corti: come segmento().
+    a_caso=True (riuso dall'archivio): uno dei pezzi migliori scelto a caso, cosi' ogni riuso e' diverso."""
     durata = durata or DURATA_MAX
     if seconds < durata + LOOP_SFUMATURA + 2.5:
         return segmento(seconds, durata)
@@ -314,14 +315,19 @@ def segmento_migliore(src, seconds, vf=None, durata=None):
     nitido, moto = norm(nitido), norm(moto)
     punti = [viso[i] + 0.6 * moto[i] + 0.4 * nitido[i] - (1.0 if tempi[i] < 1.0 else 0.0) for i in range(len(frames))]
     migliore, inizio = None, None
+    finestre = []
     s = 0.8
     while s + durata + LOOP_SFUMATURA <= seconds:
         dentro = [p for t, p in zip(tempi, punti) if s <= t <= s + durata]
         if dentro:
             v = sum(dentro) / len(dentro)
+            finestre.append((v, s))
             if migliore is None or v > migliore + 0.02:      # a parita' resta il pezzo piu' vicino all'inizio
                 migliore, inizio = v, s
         s += 0.5
+    if a_caso and finestre:
+        buone = [x for v, x in finestre if v >= migliore - 0.25]
+        inizio = random.choice(buone)
     return (round(inizio, 2), durata) if inizio is not None else segmento(seconds, durata)
 
 
@@ -427,7 +433,10 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
         start = max(0.0, min(float(formato.get("inizio", 0)), seconds - 1))
         length = max(1.0, min(float(durata or seconds), seconds - start))
     elif da_archivio:                   # clip d'archivio: gia' tagliata, pezzo a caso
-        start, length = segmento_archivio(seconds, durata)
+        if seconds > 20:                # originale intero (archivio dal 18/10): uno dei pezzi migliori, a caso
+            start, length = segmento_migliore(src, seconds, HDR_TO_SDR if hdr else None, durata, a_caso=True)
+        else:                           # clip gia' tagliata (8-15 s): un punto a caso
+            start, length = segmento_archivio(seconds, durata)
     else:                               # video nuovo: i secondi migliori
         start, length = segmento_migliore(src, seconds, HDR_TO_SDR if hdr else None, durata)
     frames = extract_frames(src, length, start=start, vf=HDR_TO_SDR if hdr else None)
@@ -595,6 +604,17 @@ def _tavola_regole(titolo, righe, n, serie=None):
     return img
 
 
+def inizio_bello(c, secondi, hdr, durata, riserva):
+    """Formati a piu' clip: nei video lunghi (es. originali interi dell'archivio) uno dei pezzi migliori, a caso;
+    nei video corti (o se il calcolo non riesce) il punto di riserva."""
+    if secondi <= 12:
+        return riserva
+    try:
+        return segmento_migliore(c, secondi, HDR_TO_SDR if hdr else None, durata, a_caso=True)[0]
+    except Exception:
+        return riserva
+
+
 def make_regole(clips, titolo, righe, dst, musiche=(), serie=None):
     """Reel "REGOLE": 3 clip (o meno, ripetute) di ~4.5 s con dissolvenza, titolo subito e 3 righe che compaiono
     una alla volta (REGOLE_TEMPI). musiche: 1-3 pezzi da 5 s (stesso brano) uniti con sfumatura."""
@@ -605,7 +625,7 @@ def make_regole(clips, titolo, righe, dst, musiche=(), serie=None):
     cmd, catena = [FFMPEG, "-y", "-v", "error"], []
     for i, c in enumerate(clips):
         secondi, hdr = probe(c)
-        inizio = max(0.0, min(1.0, secondi - seg - X))
+        inizio = inizio_bello(c, secondi, hdr, seg + X, max(0.0, min(1.0, secondi - seg - X)))
         cmd += ["-display_rotation", "0", "-ss", f"{inizio:.2f}", "-t", f"{seg + X:.2f}", "-i", c]
         f = [x for x in (raddrizza(rotazione(c)), HDR_TO_SDR if hdr else "") if x]
         f += [f"scale={W}:{H}:force_original_aspect_ratio=increase", f"crop={W}:{H}", "setsar=1", "fps=30",
@@ -656,7 +676,7 @@ def make_montaggio(clips, frase, dst, musiche=(), serie=None):
     cmd, catena = [FFMPEG, "-y", "-v", "error"], []
     for i, c in enumerate(clips):
         secondi, hdr = probe(c)
-        inizio = max(0.0, min(1.0 + i * 0.7, secondi - seg - 0.2))
+        inizio = inizio_bello(c, secondi, hdr, seg + 0.2, max(0.0, min(1.0 + i * 0.7, secondi - seg - 0.2)))
         cmd += ["-display_rotation", "0", "-ss", f"{inizio:.2f}", "-t", f"{seg + 0.2:.2f}", "-i", c]
         f = [x for x in (raddrizza(rotazione(c)), HDR_TO_SDR if hdr else "") if x]
         f += [f"scale={W}:{H}:force_original_aspect_ratio=increase", f"crop={W}:{H}", "setsar=1", "fps=30",

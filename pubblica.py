@@ -30,7 +30,7 @@ DRY = ENV("DRY_RUN") == "1"
 PLATFORMS = ["youtube", "facebook"]   # 13/10/2026: YouTube + Facebook (Instagram in pausa). Tutte: instagram, facebook, youtube, tiktok
 MAX_TENTATIVI = 3
 GIORNI_PRONTI = 7             # reel montati (solo quelli da riprovare) tenuti 7 giorni, poi nel Cestino
-MAX_ORIGINALE_MB = 400        # originali piu' grandi: nell'archivio va solo un pezzo da 15 s (non il file intero)
+MAX_ORIGINALE_MB = 150        # originali piu' grandi (video lunghi, es. parlati): nell'archivio solo un pezzo da 15 s
 QUALITA_MINIMA = 720          # lato corto minimo (pixel): sotto l'HD il video non si pubblica
 CARTELLA_BASSA = "Da controllare - bassa qualità"
 ATTESA_MAX_ORE = 36          # oltre questa attesa un video esce al primo orario libero
@@ -169,6 +169,7 @@ def testo_breve(cap):
     if cap.get("righe"):          # formato REGOLE: titolo + regole numerate
         testo = cap["gancio"] + "\n" + "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1))
     serie = serie_testo(cap)
+    serie = serie + " · seguimi per vedere dove arrivo" if serie else ""     # il personaggio: un viaggio da seguire
     return (serie + "\n" if serie else "") + testo + "\n\n" + " ".join(dict.fromkeys(tags[:4]))
 
 
@@ -251,7 +252,7 @@ def clip_extra(drive, work, clip, n=2, giorno=None):
     giorno (es. la domenica delle castagne: un piccolo racconto della giornata), poi a caso."""
     out = []
     try:
-        altre = [c for c in drive.lista_archivio() if not clip or c["id"] != clip["id"]]
+        altre = [c for c in drive.lista_archivio() if (not clip or c["id"] != clip["id"]) and c.get("parlato") != "1"]
         random.shuffle(altre)
         if giorno:
             altre.sort(key=lambda c: 0 if str(c.get("registrato") or "")[:10] == giorno else 1)
@@ -609,8 +610,8 @@ def youtube_upload(creds, path, cap, publish_at=None):
              "#frasimotivazionali #successo")
     if cap.get("righe"):    # formato REGOLE: le regole in descrizione
         descr = "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1)) + "\n\n" + descr
-    if serie_testo(cap):    # la serie in prima riga: "Giorno 12/365 - una frase al giorno"
-        descr = f"{serie_testo(cap)} - una frase al giorno, iscriviti per non perderne una.\n\n" + descr
+    if serie_testo(cap):    # la serie in prima riga + invito a seguire il viaggio (il personaggio, non solo le frasi)
+        descr = f"{serie_testo(cap)} - il mio viaggio di 365 giorni, iscriviti per vedere dove arrivo.\n\n" + descr
     body = {"snippet": {"title": title + " #shorts", "description": descr, "categoryId": "22",
                         "tags": ["motivazione", "mentalità", "disciplina", "frasi motivazionali", "crescita personale",
                                  "successo", "imprenditore", "palestra", "mindset", "shorts"],
@@ -932,8 +933,10 @@ def analizza_video(drive, v, work):
     con_chi, conf_chi = scene_mod.compagnia(frames)
     quando = scene_mod.ora_registrazione(info)
     parlato_info = None
-    # PARLATO (18/10/2026): solo video in cui c'e' lui da solo (mai voci di parenti) e con l'audio
-    if con_chi == "solo" and conf_chi >= 0.5 and overlay.ha_audio(src) and ENV("SENZA_PARLATO") != "1":
+    # PARLATO (18/10/2026): solo video in cui c'e' lui da solo (mai voci di parenti) e con l'audio. Mai in palestra:
+    # la musica della palestra (con le parole) verrebbe scambiata per lui e porterebbe brani protetti nel reel
+    if (con_chi == "solo" and conf_chi >= 0.5 and sc != "palestra" and overlay.ha_audio(src)
+            and ENV("SENZA_PARLATO") != "1"):
         try:
             import parlato
             parole = parlato.trascrivi(src)
@@ -1112,7 +1115,8 @@ def main():
         except Exception as e:
             log("Lettura dell'archivio non riuscita:", e)
             archivio = []
-        archivio = [c for c in archivio if c.get("fallimenti", 0) < 2]
+        # i video PARLATI non si riusano con la musica sopra (si vedrebbe la bocca muoversi senza voce)
+        archivio = [c for c in archivio if c.get("fallimenti", 0) < 2 and c.get("parlato") != "1"]
         # quante volte e quando ogni video e' gia' uscito (anche come video nuovo, prima di entrare in archivio)
         stem = lambda n: os.path.splitext(n or "")[0].lower()
         for c in archivio:
@@ -1326,7 +1330,7 @@ def main():
     spostato = False
     if not clip:             # video nuovo: si tiene per riusarlo in futuro
         meta_arch = {"scena": an.get("scena"), "fascia": fascia_video(an), "compagnia": an.get("compagnia"),
-                     "registrato": an.get("registrato")}
+                     "registrato": an.get("registrato"), "parlato": "1" if an.get("parlato") else None}
         stem = os.path.splitext(nome)[0]
         try:
             if os.path.getsize(src) <= MAX_ORIGINALE_MB * 1024 * 1024:   # l'originale intero va nell'archivio
