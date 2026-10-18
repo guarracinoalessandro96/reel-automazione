@@ -2634,6 +2634,47 @@
      "id": "1109125041824419"
     }
    }
+  },
+  {
+   "quando": "2026-10-18T11:00",
+   "slot": "2026-10-18 13:00",
+   "video": "IMG_3952.MOV",
+   "md5": "99ddd70562f702211351efe3803c167d",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-16T23:10+02:00",
+   "frase": "MIE-22f623e2",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 40,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 1.3s a 6.3s",
+    "durata": 5.0,
+    "inizio": 1.3,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.47,
+     "dominante": "calda",
+     "rumore": 3.6
+    },
+    "copertina_ms": 3593,
+    "musica": "van_life_rager_3.m4a",
+    "musica_meta": "phonk_12.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "gvB45UqB6ak"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1506797644624128"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2710,10 +2751,10 @@
   "2026-10-17 13:00",
   "2026-10-17 17:00",
   "2026-10-17 21:00",
-  "2026-10-18 09:00"
+  "2026-10-18 09:00",
+  "2026-10-18 13:00"
  ],
  "musica_recenti": [
-  "duty_calls_3.m4a",
   "ego_chall_4.m4a",
   "delirium_4.m4a",
   "final_boss_battle_3.m4a",
@@ -2732,7 +2773,8 @@
   "whoop_4.m4a",
   "ancient_civilisations_4.m4a",
   "rubberband_3.m4a",
-  "dusty_road_magic_4.m4a"
+  "dusty_road_magic_4.m4a",
+  "van_life_rager_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2804,10 +2846,10 @@
   "MIE-8274de1a",
   "MIE-95e45457",
   "L01",
-  "MIE-cd7ff40e"
+  "MIE-cd7ff40e",
+  "MIE-22f623e2"
  ],
  "temi_recenti": [
-  "palestra",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -2816,21 +2858,10 @@
   "mentalita",
   "mentalita",
   "regole",
+  "mentalita",
   "mentalita"
  ],
- "analisi": {
-  "1ADb2e8rdWPu1_1jKmXae3BU2dTWdLqfp": {
-   "nome": "IMG_3952.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.98,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-16T23:10+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-17T10:41:35.168Z"
-  }
- },
+ "analisi": {},
  "pulizia": "2026-10-18",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -3008,10 +3039,13 @@
   "1a2POnx-7OaYCvRXrpkTO6Qw_dTZ4CN-d": {
    "usi": 1,
    "ultimo": "2026-10-16"
+  },
+  "1psghsoVp3I-dU4RMW8CuX7jIIkUpjvLc": {
+   "usi": 1,
+   "ultimo": "2026-10-18"
   }
  },
  "musica_recenti_meta": [
-  "deciso_02.flac",
   "phonk_14.flac",
   "phonk_15.flac",
   "phonk_10.flac",
@@ -3030,7 +3064,8 @@
   "trap_06.flac",
   "trap_11.flac",
   "phonk_01.flac",
-  "drive_16.flac"
+  "drive_16.flac",
+  "phonk_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
