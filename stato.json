@@ -2717,6 +2717,34 @@
     }
    },
    "nota": "stato completato a mano: il lavoro si era interrotto dopo la pubblicazione (SSLEOFError su Drive)"
+  },
+  {
+   "quando": "2026-10-18T19:00",
+   "slot": "2026-10-18 21:00",
+   "video": "IMG_3968.MOV",
+   "md5": "7d2d108fa060210777d7b7c9a3b997ff",
+   "da_archivio": false,
+   "scena": "macchina",
+   "registrato": "2026-10-18T10:58+02:00",
+   "frase": "L02",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 cose che ho capito sulle persone",
+    "musica": "way_back_home_2.m4a",
+    "musica_meta": "drive_08.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "uND9-nGgZQA"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1609494231218354"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2795,10 +2823,10 @@
   "2026-10-17 21:00",
   "2026-10-18 09:00",
   "2026-10-18 13:00",
-  "2026-10-18 17:00"
+  "2026-10-18 17:00",
+  "2026-10-18 21:00"
  ],
  "musica_recenti": [
-  "ego_chall_4.m4a",
   "delirium_4.m4a",
   "final_boss_battle_3.m4a",
   "sweaty_staredown_1.m4a",
@@ -2817,7 +2845,8 @@
   "ancient_civilisations_4.m4a",
   "rubberband_3.m4a",
   "dusty_road_magic_4.m4a",
-  "van_life_rager_3.m4a"
+  "van_life_rager_3.m4a",
+  "way_back_home_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2891,10 +2920,10 @@
   "L01",
   "MIE-cd7ff40e",
   "MIE-22f623e2",
-  "MIE-4cca3569"
+  "MIE-4cca3569",
+  "L02"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -2903,9 +2932,132 @@
   "mentalita",
   "regole",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "regole"
  ],
- "analisi": {},
+ "analisi": {
+  "1RwzzvflJ0svRe4_FDpinMboYBoGM8BPB": {
+   "nome": "IMG_3969.MOV",
+   "scena": "macchina",
+   "sicurezza": 0.73,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-18T11:00+02:00",
+   "fascia": "ufficio",
+   "caricato": "2026-10-18T18:12:18.293Z"
+  },
+  "1gsbR0t4WbGx68YpuUH-LiqfvFqNVVPqW": {
+   "nome": "IMG_4030.MOV",
+   "scena": "uscita",
+   "sicurezza": 0.95,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "famiglia",
+   "registrato": "2026-10-18T14:47+02:00",
+   "fascia": "sera",
+   "caricato": "2026-10-18T18:13:01.692Z"
+  },
+  "1NfvRrrvtikqSvJNkOOpi9sOBXs09blgz": {
+   "nome": "IMG_3971.MOV",
+   "scena": "uscita",
+   "sicurezza": 0.83,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "amici",
+   "registrato": "2026-10-18T13:38+02:00",
+   "fascia": "sera",
+   "caricato": "2026-10-18T18:14:03.756Z"
+  },
+  "1uc6eTA1H5KSzsqTsVNgk6Rzto2V2Wq3y": {
+   "nome": "IMG_4029.MOV",
+   "scena": "uscita",
+   "sicurezza": 0.85,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "famiglia",
+   "registrato": "2026-10-18T14:35+02:00",
+   "fascia": "sera",
+   "caricato": "2026-10-18T18:14:07.190Z"
+  },
+  "1SViXJGWyrXZIxEMyHGwykElbvGkiJSxW": {
+   "nome": "IMG_4037.MOV",
+   "scena": "uscita",
+   "sicurezza": 0.77,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "amici",
+   "registrato": "2026-10-18T16:09+02:00",
+   "fascia": "sera",
+   "caricato": "2026-10-18T18:14:22.689Z"
+  },
+  "1NqfCjngnUsLcNgPGLaYs302aM3bRveLK": {
+   "nome": "IMG_3972.MOV",
+   "scena": "uscita",
+   "sicurezza": 0.5,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "famiglia",
+   "registrato": "2026-10-18T13:39+02:00",
+   "fascia": "sera",
+   "caricato": "2026-10-18T18:15:26.814Z"
+  },
+  "1I2nAz0Ao_a1cbEPktFKRTPpswByM6NKZ": {
+   "nome": "IMG_3974.MOV",
+   "scena": "casa",
+   "sicurezza": 0.58,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "famiglia",
+   "registrato": "2026-10-18T13:40+02:00",
+   "fascia": "pranzo",
+   "caricato": "2026-10-18T18:15:28.183Z"
+  },
+  "1zw12S9166ROtTo6gXbB8osWAiBXUjT0Q": {
+   "nome": "IMG_3975.MOV",
+   "scena": "casa",
+   "sicurezza": 0.88,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "famiglia",
+   "registrato": "2026-10-18T13:41+02:00",
+   "fascia": "pranzo",
+   "caricato": "2026-10-18T18:15:30.558Z"
+  },
+  "1UoUWHyHwCuON4BVs4SSdx-6x-4H6CKw9": {
+   "nome": "IMG_4032.MOV",
+   "scena": "casa",
+   "sicurezza": 0.59,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "famiglia",
+   "registrato": "2026-10-18T14:49+02:00",
+   "fascia": "pranzo",
+   "caricato": "2026-10-18T18:16:22.817Z"
+  },
+  "1O5XL-iS65p-rWSE6IHKTNDsSp1HIG9a1": {
+   "nome": "IMG_4043.MOV",
+   "scena": "uscita",
+   "sicurezza": 0.57,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "amici",
+   "registrato": "2026-10-18T16:18+02:00",
+   "fascia": "sera",
+   "caricato": "2026-10-18T18:16:57.783Z"
+  },
+  "1KWHsB3C0gOYpMsl2sVukkzMm7VQeRgh5": {
+   "nome": "IMG_4044.MOV",
+   "scena": "uscita",
+   "sicurezza": 0.89,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "famiglia",
+   "registrato": "2026-10-18T16:19+02:00",
+   "fascia": "sera",
+   "caricato": "2026-10-18T18:17:16.971Z"
+  }
+ },
  "pulizia": "2026-10-18",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -3087,10 +3239,13 @@
   "1psghsoVp3I-dU4RMW8CuX7jIIkUpjvLc": {
    "usi": 1,
    "ultimo": "2026-10-18"
+  },
+  "1KrAS_uFNheClKfLJbtUvGGJ16dNqCs2z": {
+   "usi": 1,
+   "ultimo": "2026-10-18"
   }
  },
  "musica_recenti_meta": [
-  "phonk_14.flac",
   "phonk_15.flac",
   "phonk_10.flac",
   "deciso_12.flac",
@@ -3109,7 +3264,8 @@
   "trap_11.flac",
   "phonk_01.flac",
   "drive_16.flac",
-  "phonk_12.flac"
+  "phonk_12.flac",
+  "drive_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -3118,6 +3274,7 @@
   "Mentalità da palestra": "PLb-MgHwDrFLg"
  },
  "liste_usate": [
-  "L01"
+  "L01",
+  "L02"
  ]
 }
