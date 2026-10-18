@@ -1,20 +1,36 @@
-"""Decide se adesso tocca pubblicare. Dal 13/10/2026: 4 reel al giorno, alle 9, 13, 17 e 21 (ora di Roma). (8-11/10: 10 al giorno; 11-13/10: 5.)
+"""Decide se adesso tocca pubblicare. Dal 18/10/2026: UNO SHORT OGNI ORA, 24 al giorno (come MoreMozi), ora di Roma.
+(8-11/10: 10 al giorno; 11-13/10: 5; 13-18/10: 4 alle 9, 13, 17, 21.)
 
-GitHub avvia il controllo ogni 10 minuti (e a volte con ritardo): qui si guarda l'ora di Roma e si pubblica
-se c'e' un orario scaduto (o che scade entro 10 minuti) e non ancora fatto, entro la sua finestra (fino all'orario successivo; l'ultimo
-dura fino all'01:30). Stampa lo slot (es. "2026-10-08 09:45") oppure niente.
+GitHub avvia il controllo ogni 10 minuti (a volte in ritardo). Uno slot (es. "2026-10-18 22:00") si prepara fino a
+ANTICIPO minuti prima (YouTube lo programma all'ora esatta, poi si aspetta l'ora esatta per il resto) e si accetta
+ancora fino a RITARDO_MAX minuti dopo. Stampa lo slot da fare oppure niente.
 Solo libreria standard: gira in un secondo, prima di installare qualsiasi cosa.
 """
 import datetime, json, os, sys
 from zoneinfo import ZoneInfo
 
-# (ora, minuti, fascia della giornata di Alessandro)
-# giornata di Alessandro: 8-9 macchina, 9-13 ufficio, 13-14 pranzo a casa (in macchina), 14-19 ufficio,
-# 19 macchina verso casa, 21-23 palestra, 23 macchina verso casa
-SLOTS = [(9, 0, "mattina"), (13, 0, "pranzo"), (17, 0, "ufficio"), (21, 0, "palestra")]   # dal 13/10/2026: dalle 9 ogni 4 ore
-FINE_ULTIMO = 25 * 60 + 30           # l'ultimo orario (21:00) resta valido fino all'01:30
-ANTICIPO = 50                        # minuti (16/10/2026): si prepara tutto prima, poi si pubblica all'ora ESATTA
+ANTICIPO = 50                        # minuti: si prepara tutto prima, poi si pubblica all'ora ESATTA
+RITARDO_MAX = 10                     # minuti: oltre, lo slot si salta e si prepara il successivo
 STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stato.json")
+
+
+def fascia_ora(h):
+    """Momento della giornata di Alessandro a quell'ora (per scegliere un video che c'entri):
+    8-9 macchina, 9-13 ufficio, 13-14 pranzo, 14-19 ufficio, 19 rientro, 21-23 palestra, poi notte."""
+    if 5 <= h <= 8:
+        return "mattina"
+    if 9 <= h <= 12 or 14 <= h <= 18:
+        return "ufficio"
+    if h == 13:
+        return "pranzo"
+    if 19 <= h <= 20:
+        return "sera"
+    if 21 <= h <= 22:
+        return "palestra"
+    return "notte"
+
+
+SLOTS = [(h, 0, fascia_ora(h)) for h in range(24)]      # (ora, minuti, fascia): uno ogni ora
 
 
 def etichetta(h, m):
@@ -22,8 +38,11 @@ def etichetta(h, m):
 
 
 def fascia(ora_slot):
-    """'08:00' -> 'mattina' ecc. None se l'orario non e' uno slot."""
-    return next((f for h, m, f in SLOTS if etichetta(h, m) == ora_slot), None)
+    """'08:00' -> 'mattina' ecc. None se non e' un orario valido."""
+    try:
+        return fascia_ora(int(str(ora_slot)[:2]))
+    except ValueError:
+        return None
 
 
 def slot_da_fare(now=None):
@@ -31,16 +50,17 @@ def slot_da_fare(now=None):
     fatti = set()
     if os.path.exists(STATE):
         fatti = set(json.load(open(STATE, encoding="utf-8")).get("slot_fatti", []))
-    minuti, giorno = now.hour * 60 + now.minute, now.date()
-    if minuti < FINE_ULTIMO - 24 * 60:            # tra mezzanotte e l'01:30 vale ancora l'ultimo orario di ieri
-        minuti += 24 * 60
-        giorno -= datetime.timedelta(days=1)
-    inizi = [h * 60 + m - ANTICIPO for h, m, _ in SLOTS]
-    for i in reversed(range(len(SLOTS))):
-        fine = inizi[i + 1] if i + 1 < len(SLOTS) else FINE_ULTIMO
-        if inizi[i] <= minuti < fine:
-            key = f"{giorno:%Y-%m-%d} {etichetta(*SLOTS[i][:2])}"
-            return None if key in fatti else key
+    questa = now.replace(minute=0, second=0, microsecond=0)
+    prossima = questa + datetime.timedelta(hours=1)
+    candidati = []
+    if now - questa <= datetime.timedelta(minutes=RITARDO_MAX):      # appena passata: si fa subito
+        candidati.append(questa)
+    if prossima - now <= datetime.timedelta(minutes=ANTICIPO):       # in arrivo: si prepara e si aspetta
+        candidati.append(prossima)
+    for c in candidati:
+        key = f"{c:%Y-%m-%d %H:%M}"
+        if key not in fatti:
+            return key
     return None
 
 

@@ -7,7 +7,8 @@ on:
     # orario.py guarda l'ora di Roma e pubblica una sola volta per slot (9, 12, 15, 18, 21; finestra di 3 ore).
     # Le esecuzioni senza niente da fare durano pochi secondi (repository pubblico: minuti gratuiti).
     # 11/10/2026: ogni 10 minuti (e orario.py accetta uno slot fino a 10' prima) -> reel quasi in orario anche a PC spento
-    - cron: "3,13,23,33,43,53 5-23 * * *"     # 8:00-01:30 ora di Roma, sia con l'ora legale che con quella solare
+    # 18/10/2026: uno Short ogni ora, 24 ore su 24 -> controllo ogni 10 minuti a tutte le ore
+    - cron: "3,13,23,33,43,53 * * * *"
   push:              # avvio "di riserva": modificare avvia.txt (commit + push) fa partire il controllo subito,
     paths: ["avvia.txt"]   # senza i ritardi delle esecuzioni programmate di GitHub
   workflow_dispatch:

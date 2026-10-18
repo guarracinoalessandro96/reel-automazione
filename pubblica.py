@@ -73,7 +73,15 @@ YT_PER_SCENA = {"palestra": ["yt_carica"], "macchina": ["yt_carica", "yt_epica"]
 
 # ESPERIMENTO "REGOLE" (17/10/2026): al reel delle 21 un titolo + 3 regole che compaiono una alla volta (13 s),
 # fino al 31/10; il report confronta i formati (per_formato). Liste in liste.json, ognuna usata una volta.
-REGOLE_SLOT, REGOLE_FINO = "21:00", datetime.date(2026, 10, 31)
+REGOLE_SLOT, REGOLE_FINO = "", datetime.date(2099, 1, 1)   # dal 18/10 e' uno dei formati a rotazione
+# UNO SHORT OGNI ORA (18/10/2026, richiesta di Alessandro, come MoreMozi): YouTube ogni ora; Facebook, TikTok (Telegram)
+# e Instagram (cartella) solo alle ORE_PRINCIPALI, per non intasare la pagina e non dargli 24 TikTok da fare a mano.
+ORE_PRINCIPALI = (9, 13, 17, 21)
+# FORMATI provati a rotazione; pesi iniziali, poi report.py li aggiorna (pesi.json "formati") dai risultati veri.
+FORMATI = {"frase": 1.0, "gancio": 1.0, "montaggio": 0.8, "regole": 0.7, "ambiente": 0.6}
+GANCIO = {"nome": "gancio", "durata": 8.0, "t": 3.0}          # frase in 2 tempi: la seconda parte dopo 3 s
+AMBIENTE = {"nome": "ambiente", "durata": 6.0, "audio_originale": 0.35}   # suono vero della palestra sotto la musica
+LIMITE_YT = re.compile(r"uploadLimitExceeded|quotaExceeded|dailyLimitExceeded|exceeded the number of videos", re.I)
 SERIE_INIZIO = datetime.date(2026, 10, 16)   # "GIORNO 1 / 365": serie riconoscibile = un motivo per seguire
 MIN_PAROLE = 7               # frasi piu' corte rendono meno (vedi scelta della frase in main)
 MUSICA_NOSTRA = {"facebook", "instagram", "tiktok"}   # qui NON la Raccolta audio di YouTube (pensata per YouTube): i nostri brani
@@ -165,11 +173,77 @@ def ora_roma():
     return datetime.datetime.now(ZoneInfo("Europe/Rome"))
 
 
+def principale(slot):
+    """True alle ore principali (Facebook, TikTok, Instagram) e nelle esecuzioni manuali."""
+    t = ora_slot(slot)
+    return t is None or t.hour in ORE_PRINCIPALI
+
+
+def youtube_fermo(state):
+    return state.get("youtube_fermo_fino", "") > datetime.datetime.now().isoformat(timespec="minutes")
+
+
+def piattaforme_slot(slot, state):
+    """Piattaforme di questo orario: ogni ora YouTube, alle ore principali anche le altre."""
+    a = attive() if principale(slot) else [p for p in attive() if p == "youtube"]
+    return [p for p in a if not (p == "youtube" and youtube_fermo(state))]
+
+
+def scegli_formato(slot, state, frase, an):
+    """Formato del reel: a caso con i pesi (FORMATI, aggiornati da report.py), mai due volte di fila lo stesso
+    se si puo'. FORMATO=nome forza un formato (prove)."""
+    if ENV("FORMATO"):
+        return ENV("FORMATO")
+    pesi = dict(FORMATI)
+    try:
+        pesi.update(json.load(open(os.path.join(HERE, "pesi.json"), encoding="utf-8")).get("formati", {}))
+    except Exception:
+        pass
+    ok = {"frase": True, "gancio": bool(overlay.dividi_frase(frase["gancio"])), "montaggio": True,
+          "regole": lista_regole(slot, state) is not None, "ambiente": an.get("scena") == "palestra"}
+    pesi = {f: max(float(w), 0.05) * (0.3 if f == state.get("formato_ultimo") else 1)
+            for f, w in pesi.items() if ok.get(f)}
+    return random.choices(list(pesi), weights=list(pesi.values()))[0] if pesi else "frase"
+
+
+def clip_extra(drive, work, clip, n=2, giorno=None):
+    """n clip dall'archivio (diverse da quella dell'orario), scaricate in locale: PRIMA quelle girate lo stesso
+    giorno (es. la domenica delle castagne: un piccolo racconto della giornata), poi a caso."""
+    out = []
+    try:
+        altre = [c for c in drive.lista_archivio() if not clip or c["id"] != clip["id"]]
+        random.shuffle(altre)
+        if giorno:
+            altre.sort(key=lambda c: 0 if str(c.get("registrato") or "")[:10] == giorno else 1)
+        for i, c in enumerate(altre[:n]):
+            p = os.path.join(work, f"extra_{i}{os.path.splitext(c['nome'])[1] or '.mov'}")
+            drive.download(c["id"], p, folder="Archivio")
+            out.append(p)
+    except Exception as e:
+        log("Clip extra non scaricate (uso solo il video dell'orario):", e)
+    return out
+
+
+def musiche_brano(music, n=3):
+    """Fino a n pezzi da 5 s dello stesso brano (per i formati piu' lunghi di 5 s)."""
+    if not music:
+        return []
+    base = re.sub(r"_\d+$", "", os.path.splitext(os.path.basename(music))[0])
+    d = os.path.dirname(music)
+    pezzi = sorted(os.path.join(d, f) for f in os.listdir(d) if re.fullmatch(re.escape(base) + r"_\d+\.m4a", f))
+    return pezzi[:n] or [music]
+
+
+def monta_montaggio(frase, src, out, music, serie, drive, work, clip, giorno=None):
+    clips = [src] + clip_extra(drive, work, clip, 2, giorno)
+    info = overlay.make_montaggio(clips, frase["gancio"], out, musiche_brano(music, 2), serie)
+    info["musica"] = os.path.basename(music) if music else None
+    return info
+
+
 def lista_regole(slot, state):
-    """La lista per il formato REGOLE se tocca (reel delle 21 fino a REGOLE_FINO), altrimenti None."""
-    if ENV("SENZA_REGOLE") == "1" or not (slot or "").endswith(REGOLE_SLOT):
-        return None
-    if (ora_slot(slot) or ora_roma()).date() > REGOLE_FINO:
+    """La prossima lista per il formato REGOLE (None se finite o spento con SENZA_REGOLE=1)."""
+    if ENV("SENZA_REGOLE") == "1":
         return None
     try:
         liste = json.load(open(os.path.join(HERE, "liste.json"), encoding="utf-8"))
@@ -181,23 +255,8 @@ def lista_regole(slot, state):
 
 def monta_regole(lista, src, out, music, serie, drive, work, clip):
     """Reel REGOLE con il video dell'orario + 2 clip dell'archivio. Restituisce (frase, info)."""
-    clips = [src]
-    try:
-        altre = [c for c in drive.lista_archivio() if not clip or c["id"] != clip["id"]]
-        random.shuffle(altre)
-        for i, c in enumerate(altre[:2]):
-            p = os.path.join(work, f"regole_{i}{os.path.splitext(c['nome'])[1] or '.mov'}")
-            drive.download(c["id"], p, folder="Archivio")
-            clips.append(p)
-    except Exception as e:
-        log("Clip extra per REGOLE non scaricate (uso solo il video dell'orario):", e)
-    musiche = []
-    if music:
-        base = re.sub(r"_\d+$", "", os.path.splitext(os.path.basename(music))[0])
-        d = os.path.dirname(music)
-        musiche = sorted(os.path.join(d, f) for f in os.listdir(d)
-                         if re.fullmatch(re.escape(base) + r"_\d+\.m4a", f))[:3]
-    info = overlay.make_regole(clips, lista["titolo"], lista["righe"], out, musiche or [music], serie)
+    clips = [src] + clip_extra(drive, work, clip, 2)
+    info = overlay.make_regole(clips, lista["titolo"], lista["righe"], out, musiche_brano(music, 3), serie)
     info["musica"] = os.path.basename(music) if music else None
     frase = {"id": lista["id"], "tema": "regole", "gancio": lista["titolo"], "righe": lista["righe"], "autore": "",
              "hashtag": ["#regole", "#mentalita", "#motivazione"], "serie": serie}
@@ -731,8 +790,10 @@ def versione_meta(path, recenti, scena=None):
         return None, None
 
 
-def publish_all(path, cap, creds, only, path_meta=None, publish_at=None):
-    fns = {"instagram": lambda: instagram_upload(path_meta, cap),
+def publish_all(path, cap, creds, only, path_meta=None, publish_at=None, ig_nativo=None):
+    """ig_nativo = (video senza musica, audio_id): Instagram con un brano NATIVO di Instagram (pronto dal 18/10)."""
+    fns = {"instagram": lambda: (instagram_upload(ig_nativo[0], cap, ig_nativo[1]) if ig_nativo
+                                 else instagram_upload(path_meta, cap)),
            "facebook": lambda: facebook_upload(path_meta, cap),
            "youtube": lambda: youtube_upload(creds, path, cap, publish_at),
            "tiktok": lambda: tiktok_upload(path_meta, cap)}
@@ -853,7 +914,8 @@ def main():
         except Exception as e:
             log("riprova: download fallito", e)
             continue
-        job["piattaforme"] = [x for x in job["piattaforme"] if x in PLATFORMS]   # solo quelle ancora attive
+        job["piattaforme"] = [x for x in job["piattaforme"] if x in PLATFORMS   # solo quelle ancora attive
+                              and not (x == "youtube" and youtube_fermo(state))]
         path_meta = None
         if MUSICA_NOSTRA & set(job["piattaforme"]):
             path_meta, _ = versione_meta(path, state.get("musica_recenti_meta", []))
@@ -921,6 +983,10 @@ def main():
     state["analisi"] = {k: a for k, a in state["analisi"].items() if k in in_coda}   # dimentica quelli usciti
     save()
 
+    if slot != "manuale" and "manuale" not in slot and not piattaforme_slot(slot, state):
+        log(f"Orario {slot}: nessuna piattaforma attiva in questo momento (YouTube fermo?), salto.")
+        return
+
     # 2. il video giusto per questo orario: prima i video NUOVI, se la coda e' vuota una clip dall'archivio
     video = scegli_video(videos, state["analisi"], slot_ora)
     clip = None
@@ -938,8 +1004,8 @@ def main():
             usciti = [h["quando"][:16] for h in state["storico"] if h.get("video") and stem(h["video"]) == stem(c["nome"])]
             c["usi"] = max(int(c.get("usi", 0)), len(usciti))
             c["ultimo"] = max([c.get("ultimo", "")] + usciti)
-        limite = (datetime.datetime.now() - datetime.timedelta(hours=48)).isoformat(timespec="minutes")
-        riposati = [c for c in archivio if c.get("ultimo", "") < limite]     # niente video usciti nelle ultime 48 ore
+        limite = (datetime.datetime.now() - datetime.timedelta(hours=12)).isoformat(timespec="minutes")
+        riposati = [c for c in archivio if c.get("ultimo", "") < limite]     # niente video usciti nelle ultime 12 ore
         clip = scegli_archivio(riposati or archivio, slot_ora)
         if clip is None:
             log(f"Nessun video nuovo e archivio vuoto per l'orario {slot}.")
@@ -969,7 +1035,18 @@ def main():
         # 11-15 parole ~1.255 -> 9 volte su 10 si sceglie una frase di almeno 7 parole (1 su 10 resta "esperimento")
         lunghe = [f for f in frasi if len(f["gancio"].split()) >= MIN_PAROLE]
         virali = [f for f in frasi if f.get("virale")]       # prima quelle andate virali in altri video
-        if frasi:
+        # come MoreMozi (18/10/2026): 1 volta su 4 si ripropone su un altro video una frase che ha gia' funzionato
+        # (frasi_vincenti da report.py, ferma da almeno 7 giorni)
+        try:
+            vinc_id = set(json.load(open(pesi_file, encoding="utf-8")).get("frasi_vincenti", []))
+        except Exception:
+            vinc_id = set()
+        sette = (datetime.date.today() - datetime.timedelta(days=7)).isoformat()
+        vincenti = [f for f in mie if f["id"] in vinc_id and usi.get(f["id"], "") < sette]
+        if vincenti and random.random() < 0.25:
+            frase = random.choice(vincenti)
+            log("Ripropongo una frase che ha gia' funzionato:", frase["gancio"])
+        elif frasi:
             frase = random.choice(virali or (lunghe if lunghe and random.random() < 0.9 else frasi))
         elif mie:            # finite: si riusa quella uscita da piu' tempo (mai fermarsi); salute.py avvisa
             frase = min(mie, key=lambda f: usi.get(f["id"], ""))
@@ -989,13 +1066,26 @@ def main():
         drive.download(fonte_id, src, folder="Archivio" if clip else "Da pubblicare")
         serie = etichetta_serie(slot)
         frase = dict(frase, serie=serie)
-        info, lista = None, lista_regole(slot, state)
-        if lista:
-            try:
-                frase, info = monta_regole(lista, src, out, music, serie, drive, work, clip)
-            except Exception as e:      # se il nuovo formato non riesce esce il reel normale
-                log("Formato REGOLE non riuscito, faccio il reel normale:", e)
-                lista, info = None, None
+        info, formato = None, scegli_formato(slot, state, frase, an)
+        log(f"Formato: {formato}")
+        try:                            # se un formato non riesce esce il reel normale (frase da 5 s)
+            if formato == "regole":
+                frase, info = monta_regole(lista_regole(slot, state), src, out, music, serie, drive, work, clip)
+            elif formato == "montaggio":
+                info = monta_montaggio(frase, src, out, music, serie, drive, work, clip,
+                                       str(an.get("registrato") or (clip or {}).get("registrato") or "")[:10] or None)
+            elif formato == "gancio" and overlay.dividi_frase(frase["gancio"]):
+                prima, seconda = overlay.dividi_frase(frase["gancio"])
+                info = overlay.make_video(src, prima, out, music=music, serie=serie,
+                                          colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
+                                          da_archivio=bool(clip), formato=dict(GANCIO, seconda=seconda))
+            elif formato == "ambiente":
+                info = overlay.make_video(src, frase["gancio"], out, music=music, serie=serie,
+                                          colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
+                                          da_archivio=bool(clip), formato=dict(AMBIENTE))
+        except Exception as e:
+            log(f"Formato {formato} non riuscito, faccio il reel normale:", e)
+            info = None
         if info is None:
             info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"),
                                       music=music, serie=serie,
@@ -1024,14 +1114,15 @@ def main():
     log("Montato:", info)
     frase = dict(frase, copertina_ms=info.get("copertina_ms"))
     out_meta = None
-    per_dopo = [p for p in PREPARA_PER_DOPO if p not in attive()]
-    if MUSICA_NOSTRA & set(attive()) or per_dopo:
+    piatt = piattaforme_slot(slot, state)
+    per_dopo = [p for p in PREPARA_PER_DOPO if p not in attive()] if principale(slot) else []
+    if MUSICA_NOSTRA & set(piatt) or per_dopo:
         out_meta, info["musica_meta"] = versione_meta(out, state.get("musica_recenti_meta", []), an["scena"])
     # PUNTUALITA' (16/10/2026): si parte ~45' prima dello slot. YouTube viene caricato subito e PROGRAMMATO all'ora
     # esatta; poi si aspetta l'ora esatta per Telegram (TikTok) e Facebook.
     target = ora_slot(slot)
     anticipo = (target - ora_roma()).total_seconds() if target else 0
-    yt_prima = "youtube" in attive() and anticipo > 10 * 60
+    yt_prima = "youtube" in piatt and anticipo > 10 * 60
     results = publish_all(out, frase, creds, ["youtube"], out_meta, target) if yt_prima else {}
     if yt_prima:
         log(f"YouTube programmato per le {target:%H:%M}" if results["youtube"]["ok"] else "YouTube: errore")
@@ -1050,7 +1141,7 @@ def main():
             log(f"Pronto per {' e '.join(per_dopo)}: {CARTELLA_DOPO}/{nome_dopo}")
         except Exception as e:
             log("Versione per Instagram non salvata su Drive:", e)
-    if "tiktok" not in attive():           # TikTok a mano con un audio di tendenza: versione SENZA musica
+    if "tiktok" not in attive() and principale(slot):   # TikTok a mano con audio di tendenza: versione SENZA musica
         try:
             muto = overlay.senza_audio(out, os.path.join(work, "reel_tiktok.mp4"))
             nome_tt = f"{ora_roma():%Y-%m-%d %H%M} - {frase['id']}.mp4"
@@ -1061,6 +1152,17 @@ def main():
             log("Versione per TikTok non salvata su Drive:", e)
     else:
         muto = None
+    ig_nativo = None
+    if "instagram" in piatt:            # Instagram: video senza musica + brano nativo di Instagram scelto per la scena
+        try:
+            muto_ig = muto or overlay.senza_audio(out, os.path.join(work, "reel_ig.mp4"))
+            scelto = scegli_audio_instagram(an["scena"], state.get("ig_audio_recenti", []))
+            if scelto:
+                ig_nativo = (muto_ig, scelto[0])
+                info["musica_instagram"] = scelto[1]
+                state["ig_audio_recenti"] = (state.get("ig_audio_recenti", []) + [scelto[0]])[-30:]
+        except Exception as e:
+            log("Brano nativo Instagram non scelto (uso la nostra musica):", e)
     attesa = (target - ora_roma()).total_seconds() if target else 0
     if 0 < attesa < 70 * 60 and not DRY:
         log(f"Aspetto le {target:%H:%M} per pubblicare puntuale ({attesa / 60:.0f} minuti)")
@@ -1072,7 +1174,17 @@ def main():
             log("TikTok: video e testo mandati su Telegram")
         except Exception as e:
             log("Telegram non riuscito:", e)
-    results.update(publish_all(out, frase, creds, [p for p in attive() if p not in results], out_meta))
+    results.update(publish_all(out, frase, creds, [p for p in piatt if p not in results], out_meta,
+                               ig_nativo=ig_nativo))
+    errore_yt = str(results.get("youtube", {}).get("errore", ""))
+    if LIMITE_YT.search(errore_yt):      # YouTube limita i caricamenti: stop per 12 ore e avviso (una volta)
+        state["youtube_fermo_fino"] = (datetime.datetime.now() + datetime.timedelta(hours=12)).isoformat(timespec="minutes")
+        try:
+            import avvisi
+            avvisi.manda("ATTENZIONE\nYouTube ha limitato i caricamenti\nRiprovo tra 12 ore da solo\n"
+                         "Facebook e TikTok continuano alle ore principali")
+        except Exception:
+            pass
     if results.get("youtube", {}).get("ok") and not DRY:
         try:
             aggiungi_playlist(creds, results["youtube"]["id"], an["scena"], state)
@@ -1124,6 +1236,7 @@ def main():
     if failed:
         state["riprova"].append({"frase": frase, "pronti_id": pronti_id, "piattaforme": failed, "tentativi": 0})
     state["frasi_usate"].append(frase["id"])
+    state["formato_ultimo"] = info.get("formato") or "frase"
     if frase.get("righe"):
         state.setdefault("liste_usate", []).append(frase["id"])
     state["temi_recenti"] = (state["temi_recenti"] + [frase["tema"]])[-10:]

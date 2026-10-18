@@ -95,6 +95,10 @@ def riassunto_settimana(state):
         v, l = yt.get(h.get("risultati", {}).get("youtube", {}).get("id"), (0, 0))
         righe.append((v, l, testi.get(h.get("frase"), "")))
     righe.sort(reverse=True)
+    formati = {}
+    for h in post:
+        v, _ = yt.get(h.get("risultati", {}).get("youtube", {}).get("id"), (0, 0))
+        formati.setdefault((h.get("montaggio") or {}).get("formato") or "frase", []).append(v)
     fb = stat_facebook(post)
     fol = []
     try:
@@ -119,6 +123,11 @@ def riassunto_settimana(state):
     t += ["", "I 3 MIGLIORI"]
     for i, (v, l, f) in enumerate(righe[:3], 1):
         t += ["", f"{i}) {f}", f"{num(v)} visualizzazioni", f"{l} like"]
+    if formati:
+        import statistics
+        t += ["", "FORMATI (visualizzazioni a meta' classifica)"]
+        for f, v in sorted(formati.items(), key=lambda x: -statistics.median(x[1])):
+            t += [f"{f}: {num(int(statistics.median(v)))} ({len(v)} reel)"]
     t += ["", "FACEBOOK"]
     if fb:
         t += [f"{fb['reel']} reel", f"{num(fb['riproduzioni'])} riproduzioni"]
@@ -177,6 +186,26 @@ def main():
         pesi["aggiornato"] = datetime.date.today().isoformat()
         json.dump(pesi, open(PESI, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
 
+    # FORMATI (18/10/2026): piu' spazio ai formati che rendono di piu' (mediana delle views rispetto a quella di tutti),
+    # da 6 reel in su per formato; mai sotto 0,4 (si continua a provarli) e mai sopra 2,5.
+    import statistics
+    per_f = {}
+    for r in righe:
+        nome_f = "frase" if r["formato"].startswith("frase") else r["formato"]
+        per_f.setdefault(nome_f, []).append(r["views"])
+    tutte = [r["views"] for r in righe]
+    # frasi "vincenti" (sopra 900 views e sopra il 60% degli altri): pubblica.py le ripropone su un altro video
+    if tutte:
+        soglia = max(900, sorted(tutte)[int(len(tutte) * 0.6)])
+        pesi["frasi_vincenti"] = sorted({r["frase"] for r in righe if r["views"] >= soglia
+                                         and r.get("frase") and not str(r["frase"]).startswith("L")})
+    if tutte:
+        med = statistics.median(tutte) or 1
+        pesi["formati"] = {f: round(min(max(statistics.median(v) / med, 0.4), 2.5), 2)
+                           for f, v in per_f.items() if len(v) >= 6}
+        pesi["aggiornato"] = datetime.date.today().isoformat()
+        json.dump(pesi, open(PESI, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+
     migliori = sorted(righe, key=lambda r: (-r["views"], -r["like"]))[:5]
     testi = testi_citazioni() if migliori else {}
     migliori = [dict(m, frase=testi.get(m["frase"], m["frase"])) for m in migliori]
@@ -187,7 +216,7 @@ def main():
               "per_tema": media(per["tema"]), "per_scena": media(per["scena"]), "per_orario": media(per["orario"]),
               "per_musica": media(per["musica"]), "per_origine": media(per["origine"]), "per_frase_virale": media(per["frase_virale"]),
               "per_formato": media(per["formato"]),
-              "pesi_temi": pesi.get("temi", {}), "migliori": migliori,
+              "pesi_temi": pesi.get("temi", {}), "pesi_formati": pesi.get("formati", {}), "migliori": migliori,
               "nota": "Solo YouTube; non contati gli Shorts usciti da meno di 2 giorni."
               + ("" if len(righe) >= MIN_POST else f" Servono almeno {MIN_POST} reel per conclusioni affidabili.")}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)

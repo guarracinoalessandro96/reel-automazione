@@ -2,7 +2,7 @@ name: Controllo salute
 
 on:
   schedule:
-    - cron: "37 6 * * *"     # ogni mattina; se qualcosa non va GitHub manda un'email
+    - cron: "37 */3 * * *"   # ogni 3 ore (dal 18/10/2026, uno Short ogni ora): se qualcosa non va avviso su Telegram
   workflow_dispatch: {}
 
 jobs:

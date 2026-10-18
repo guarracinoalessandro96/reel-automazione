@@ -11,7 +11,7 @@ ENV = os.environ.get
 GRAPH = "https://graph.facebook.com/v23.0"
 problemi, ok = [], []
 VIDEO_IN_CODA = None
-VIDEO_MINIMI = 4               # sotto questo numero (1 giorno di reel) promemoria su Telegram: "carica video"
+VIDEO_MINIMI = 6               # sotto questo numero promemoria su Telegram: "carica video"
 
 
 def controlla(nome, fn):
@@ -84,7 +84,8 @@ def pubblicazioni():
     fermi = [a for a in coda if a.get("caricato") and (ora - quando(a["caricato"])).total_seconds() > 30 * 3600]
     if fermi and (ultima is None or (ora - ultima).total_seconds() > 30 * 3600):
         raise RuntimeError(f"{len(fermi)} video in coda da oltre 30 ore e nessun reel pubblicato: la pubblicazione e' ferma")
-    if ultima and (ora - ultima).total_seconds() > 26 * 3600:   # con l'archivio deve uscire qualcosa ogni giorno
+    pausa = os.path.exists(os.path.join(here, "PAUSA"))
+    if ultima and not pausa and (ora - ultima).total_seconds() > 3 * 3600:   # dal 18/10 ne esce uno ogni ora
         raise RuntimeError(f"nessun reel pubblicato dal {ultima:%d/%m %H:%M}: la pubblicazione sembra ferma")
     rotti = [a["nome"] for a in coda if a.get("fallimenti")]
     if rotti:
@@ -121,9 +122,10 @@ def main():
         print("OK      ", r)
     for r in problemi:
         print("PROBLEMA", r)
-    if VIDEO_IN_CODA is not None and VIDEO_IN_CODA < VIDEO_MINIMI:
+    # promemoria coda solo una volta al giorno (il controllo gira ogni 3 ore): al giro delle 6:37 UTC
+    if VIDEO_IN_CODA is not None and VIDEO_IN_CODA < VIDEO_MINIMI and datetime.datetime.utcnow().hour == 6:
         avvisi.manda(f"PROMEMORIA\nIn 'Da pubblicare' ci sono solo {VIDEO_IN_CODA} video nuovi\n"
-                     "Ne escono 4 al giorno\nCarica qualche video su Drive\n"
+                     "Ne esce uno ogni ora\nMandane qualcuno al bot Telegram\n"
                      "Altrimenti riuso quelli vecchi dell'archivio")
     if problemi:
         avvisi.manda("ATTENZIONE: SISTEMA REEL\nC'e' qualcosa da sistemare:\n\n" + "\n\n".join(problemi) +
