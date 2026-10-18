@@ -114,12 +114,23 @@ def riassunto_settimana(state):
         prima = next((v for d, v in reversed(valori) if d <= (da.date().isoformat())), valori[0][1])
         return ora, ora - prima
     # Un dato per riga, titoli in maiuscolo (richiesta di Alessandro: messaggi "che vanno sempre daccapo")
+    # settimana precedente (dal 18/10/2026: esperimento uno Short ogni ora -> confronto settimana su settimana)
+    da2 = da - datetime.timedelta(days=7)
+    prima = [h for h in state.get("storico", []) if h.get("slot") and da2.isoformat() <= h.get("quando", "") < da.isoformat()]
+    yt2 = stat_youtube([h["risultati"]["youtube"]["id"] for h in prima
+                        if h.get("risultati", {}).get("youtube", {}).get("ok") and h["risultati"]["youtube"].get("id")])
+    v_ora, v_prima = sum(r[0] for r in righe), sum(v for v, _ in yt2.values())
+    confronto = ["", "RISPETTO ALLA SETTIMANA PRIMA", f"Reel: {len(post)} (prima {len(prima)})",
+                 f"Visualizzazioni: {num(v_ora)} (prima {num(v_prima)})"]
+    if v_prima:
+        confronto.append(f"Variazione: {(v_ora - v_prima) * 100 / v_prima:+.0f}%")
     t = ["RIASSUNTO DELLA SETTIMANA", f"{da:%d/%m} - {datetime.date.today():%d/%m}", "",
          "YOUTUBE", f"{len(post)} reel", f"{num(sum(r[0] for r in righe))} visualizzazioni",
          f"{sum(r[1] for r in righe)} like"]
     iscritti = follower("youtube")
     if iscritti:
         t += [f"{num(iscritti[0])} iscritti", f"{iscritti[1]:+d} iscritti in una settimana"]
+    t += confronto
     t += ["", "I 3 MIGLIORI"]
     for i, (v, l, f) in enumerate(righe[:3], 1):
         t += ["", f"{i}) {f}", f"{num(v)} visualizzazioni", f"{l} like"]
