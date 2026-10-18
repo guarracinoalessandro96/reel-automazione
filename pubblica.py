@@ -74,9 +74,11 @@ YT_PER_SCENA = {"palestra": ["yt_carica"], "macchina": ["yt_carica", "yt_epica"]
 # ESPERIMENTO "REGOLE" (17/10/2026): al reel delle 21 un titolo + 3 regole che compaiono una alla volta (13 s),
 # fino al 31/10; il report confronta i formati (per_formato). Liste in liste.json, ognuna usata una volta.
 REGOLE_SLOT, REGOLE_FINO = "", datetime.date(2099, 1, 1)   # dal 18/10 e' uno dei formati a rotazione
-# UNO SHORT OGNI ORA (18/10/2026, richiesta di Alessandro, come MoreMozi): YouTube ogni ora; Facebook, TikTok (Telegram)
-# e Instagram (cartella) solo alle ORE_PRINCIPALI, per non intasare la pagina e non dargli 24 TikTok da fare a mano.
+# UNO SHORT OGNI ORA (18/10/2026, richiesta di Alessandro, come MoreMozi) su YouTube e Facebook (e Instagram quando
+# lo accende). Solo la versione TikTok (a mano, via Telegram) e la cartella Instagram restano alle ORE_PRINCIPALI.
 ORE_PRINCIPALI = (9, 13, 17, 21)
+PAUSA_ERRORI = 3          # errori di fila su una piattaforma -> pausa automatica (le altre continuano)
+PAUSA_ORE = 6
 ORA_TIKTOK = 21          # i video TikTok della giornata arrivano su Telegram tutti insieme a quest'ora
 # FORMATI provati a rotazione; pesi iniziali, poi report.py li aggiorna (pesi.json "formati") dai risultati veri.
 FORMATI = {"frase": 1.0, "gancio": 1.0, "montaggio": 0.8, "regole": 0.7, "ambiente": 0.6}
@@ -181,13 +183,47 @@ def principale(slot):
 
 
 def youtube_fermo(state):
-    return state.get("youtube_fermo_fino", "") > datetime.datetime.now().isoformat(timespec="minutes")
+    return fermo(state, "youtube")
+
+
+def fermo(state, piattaforma):
+    """True se la piattaforma e' in pausa automatica (limite raggiunto o errori ripetuti)."""
+    adesso = datetime.datetime.now().isoformat(timespec="minutes")
+    fino = state.get("fermo", {}).get(piattaforma, "")
+    if piattaforma == "youtube":
+        fino = max(fino, state.get("youtube_fermo_fino", ""))
+    return fino > adesso
 
 
 def piattaforme_slot(slot, state):
-    """Piattaforme di questo orario: ogni ora YouTube, alle ore principali anche le altre."""
-    a = attive() if principale(slot) else [p for p in attive() if p == "youtube"]
-    return [p for p in a if not (p == "youtube" and youtube_fermo(state))]
+    """Piattaforme di questo orario: tutte quelle attive (ogni ora), tranne quelle in pausa automatica."""
+    return [p for p in attive() if not fermo(state, p)]
+
+
+def controlla_errori(state, results):
+    """Dopo ogni pubblicazione: una piattaforma con PAUSA_ERRORI errori di fila (o con un limite raggiunto) va in
+    pausa per qualche ora, con avviso su Telegram. Cosi' un problema su una piattaforma non blocca le altre."""
+    errori = state.setdefault("errori_di_fila", {})
+    for p, r in results.items():
+        if p not in PLATFORMS:
+            continue
+        if r.get("ok"):
+            errori[p] = 0
+            continue
+        errori[p] = errori.get(p, 0) + 1
+        limite = bool(LIMITE_YT.search(str(r.get("errore", ""))))
+        if limite or errori[p] >= PAUSA_ERRORI:
+            ore = 12 if limite else PAUSA_ORE
+            state.setdefault("fermo", {})[p] = (datetime.datetime.now() + datetime.timedelta(hours=ore)).isoformat(
+                timespec="minutes")
+            errori[p] = 0
+            try:
+                import avvisi
+                avvisi.manda(f"ATTENZIONE\n{p.upper()} in pausa per {ore} ore\n"
+                             + ("Ha limitato i caricamenti" if limite else f"{PAUSA_ERRORI} errori di fila") +
+                             f"\nUltimo errore: {str(r.get('errore', ''))[:150]}\nLe altre piattaforme continuano")
+            except Exception:
+                pass
 
 
 def scegli_formato(slot, state, frase, an):
@@ -939,7 +975,7 @@ def main():
             log("riprova: download fallito", e)
             continue
         job["piattaforme"] = [x for x in job["piattaforme"] if x in PLATFORMS   # solo quelle ancora attive
-                              and not (x == "youtube" and youtube_fermo(state))]
+                              and not fermo(state, x)]
         path_meta = None
         if MUSICA_NOSTRA & set(job["piattaforme"]):
             path_meta, _ = versione_meta(path, state.get("musica_recenti_meta", []))
@@ -1008,7 +1044,7 @@ def main():
     save()
 
     if slot != "manuale" and "manuale" not in slot and not piattaforme_slot(slot, state):
-        log(f"Orario {slot}: nessuna piattaforma attiva in questo momento (YouTube fermo?), salto.")
+        log(f"Orario {slot}: nessuna piattaforma attiva in questo momento (tutte in pausa?), salto.")
         return
 
     # 2. il video giusto per questo orario: prima i video NUOVI, se la coda e' vuota una clip dall'archivio
@@ -1203,15 +1239,7 @@ def main():
             log("Invio serale TikTok su Telegram non riuscito:", e)
     results.update(publish_all(out, frase, creds, [p for p in piatt if p not in results], out_meta,
                                ig_nativo=ig_nativo))
-    errore_yt = str(results.get("youtube", {}).get("errore", ""))
-    if LIMITE_YT.search(errore_yt):      # YouTube limita i caricamenti: stop per 12 ore e avviso (una volta)
-        state["youtube_fermo_fino"] = (datetime.datetime.now() + datetime.timedelta(hours=12)).isoformat(timespec="minutes")
-        try:
-            import avvisi
-            avvisi.manda("ATTENZIONE\nYouTube ha limitato i caricamenti\nRiprovo tra 12 ore da solo\n"
-                         "Facebook e TikTok continuano alle ore principali")
-        except Exception:
-            pass
+    controlla_errori(state, results)
     if results.get("youtube", {}).get("ok") and not DRY:
         try:
             aggiungi_playlist(creds, results["youtube"]["id"], an["scena"], state)
