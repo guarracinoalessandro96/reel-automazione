@@ -5,7 +5,9 @@ on:
     - cron: "17 4 * * *"     # ogni mattina (alle 6:17 italiane)
   workflow_dispatch: {}
 
-concurrency: pubblica
+# fila propria (18/10/2026): con uno Short ogni ora la fila 'pubblica' e' quasi sempre occupata e questo lavoro
+# in attesa veniva annullato dal controllo successivo
+concurrency: report
 
 permissions:
   contents: write
