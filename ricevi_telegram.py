@@ -88,9 +88,15 @@ def pausa(attiva):
     else:
         os.remove(f)
     for c in (["git", "config", "user.name", "reel-bot"], ["git", "config", "user.email", "reel-bot@users.noreply.github.com"],
-              ["git", "add", "-A", "PAUSA"], ["git", "commit", "-m", "Pausa da Telegram" if attiva else "Ripresa da Telegram"],
-              ["git", "pull", "--rebase", "-q"], ["git", "push", "-q"]):
+              ["git", "add", "-A", "PAUSA"], ["git", "commit", "-m", "Pausa da Telegram" if attiva else "Ripresa da Telegram"]):
         subprocess.run(c, cwd=QUI, capture_output=True)
+    for i in range(5):          # 18/10/2026: con un reel ogni ora i push sono tanti, uno puo' arrivare insieme
+        if (subprocess.run(["git", "pull", "--rebase", "-q"], cwd=QUI, capture_output=True).returncode == 0
+                and subprocess.run(["git", "push", "-q"], cwd=QUI, capture_output=True).returncode == 0):
+            return
+        subprocess.run(["git", "rebase", "--abort"], cwd=QUI, capture_output=True)
+        time.sleep(5 * (i + 1))
+    raise RuntimeError("non sono riuscito a salvare su GitHub, riprova tra qualche minuto")
 
 
 def main():
