@@ -2745,6 +2745,28 @@
      "id": "1609494231218354"
     }
    }
+  },
+  {
+   "quando": "2026-10-18T20:00",
+   "slot": "2026-10-18 22:00",
+   "video": "IMG_3969.MOV",
+   "md5": "4186fbb9cff8b4457df65b7c5c0fb27d",
+   "da_archivio": false,
+   "scena": "macchina",
+   "registrato": "2026-10-18T11:00+02:00",
+   "frase": "MIE-373e069a",
+   "tema": "imprenditore",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "intergalactic_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "G0Nej3v7eSY"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2824,10 +2846,10 @@
   "2026-10-18 09:00",
   "2026-10-18 13:00",
   "2026-10-18 17:00",
-  "2026-10-18 21:00"
+  "2026-10-18 21:00",
+  "2026-10-18 22:00"
  ],
  "musica_recenti": [
-  "delirium_4.m4a",
   "final_boss_battle_3.m4a",
   "sweaty_staredown_1.m4a",
   "van_life_rager_2.m4a",
@@ -2846,7 +2868,8 @@
   "rubberband_3.m4a",
   "dusty_road_magic_4.m4a",
   "van_life_rager_3.m4a",
-  "way_back_home_2.m4a"
+  "way_back_home_2.m4a",
+  "intergalactic_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2921,10 +2944,10 @@
   "MIE-cd7ff40e",
   "MIE-22f623e2",
   "MIE-4cca3569",
-  "L02"
+  "L02",
+  "MIE-373e069a"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "imprenditore",
@@ -2933,20 +2956,10 @@
   "regole",
   "mentalita",
   "mentalita",
-  "regole"
+  "regole",
+  "imprenditore"
  ],
  "analisi": {
-  "1RwzzvflJ0svRe4_FDpinMboYBoGM8BPB": {
-   "nome": "IMG_3969.MOV",
-   "scena": "macchina",
-   "sicurezza": 0.73,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-18T11:00+02:00",
-   "fascia": "ufficio",
-   "caricato": "2026-10-18T18:12:18.293Z"
-  },
   "1gsbR0t4WbGx68YpuUH-LiqfvFqNVVPqW": {
    "nome": "IMG_4030.MOV",
    "scena": "uscita",
@@ -3243,6 +3256,10 @@
   "1KrAS_uFNheClKfLJbtUvGGJ16dNqCs2z": {
    "usi": 1,
    "ultimo": "2026-10-18"
+  },
+  "1C7dPpnBEXAtEz6B37kjIeLNrl5vyMEeb": {
+   "usi": 1,
+   "ultimo": "2026-10-18"
   }
  },
  "musica_recenti_meta": [
@@ -3276,5 +3293,6 @@
  "liste_usate": [
   "L01",
   "L02"
- ]
+ ],
+ "formato_ultimo": "montaggio"
 }
