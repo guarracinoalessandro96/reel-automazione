@@ -29,7 +29,8 @@ ENV = os.environ.get
 DRY = ENV("DRY_RUN") == "1"
 PLATFORMS = ["youtube", "facebook"]   # 13/10/2026: YouTube + Facebook (Instagram in pausa). Tutte: instagram, facebook, youtube, tiktok
 MAX_TENTATIVI = 3
-GIORNI_PRONTI = 30            # i reel montati restano su Drive 30 giorni, poi vanno nel Cestino
+GIORNI_PRONTI = 7             # reel montati (solo quelli da riprovare) tenuti 7 giorni, poi nel Cestino
+MAX_ORIGINALE_MB = 400        # originali piu' grandi: nell'archivio va solo un pezzo da 15 s (non il file intero)
 QUALITA_MINIMA = 720          # lato corto minimo (pixel): sotto l'HD il video non si pubblica
 CARTELLA_BASSA = "Da controllare - bassa qualità"
 ATTESA_MAX_ORE = 36          # oltre questa attesa un video esce al primo orario libero
@@ -454,6 +455,21 @@ class Drive:
                                        media_body=MediaFileUpload(path, mimetype="video/quicktime"),
                                        fields="id").execute()["id"]
 
+    def sposta_in_archivio(self, file_id, nome, meta):
+        """L'originale passa da 'Da pubblicare' all'Archivio (stesso file, niente copia): restano scena/fascia/ora
+        nelle proprieta'. Restituisce l'id (uguale a quello di prima)."""
+        meta = {k: str(v) for k, v in meta.items() if v not in (None, "")}
+        if self.local:
+            d = os.path.join(self.local, "Archivio")
+            os.makedirs(d, exist_ok=True)
+            shutil.move(os.path.join(self.local, "Da pubblicare", file_id), os.path.join(d, nome))
+            json.dump(meta, open(os.path.join(d, nome + ".json"), "w"))
+            return nome
+        self.api.files().update(fileId=file_id, addParents=self.cartella("Archivio"),
+                                removeParents=ENV("DRIVE_FOLDER_DA_PUBBLICARE"), body={"appProperties": meta},
+                                fields="id").execute()
+        return file_id
+
     def lista_archivio(self):
         """Clip dell'archivio: [{id, nome, scena, fascia, compagnia, registrato}]."""
         if self.local:
@@ -512,18 +528,22 @@ class Drive:
             fields="id").execute()["id"]
         self.api.files().update(fileId=file_id, addParents=cartella, removeParents=origine, fields="id").execute()
 
-    def archive(self, file_id, final_path, final_name):
-        """Dopo la pubblicazione: l'originale va nel Cestino (una copia resta nella galleria dell'iPhone)
-        e il reel montato va in Pronti, dove resta GIORNI_PRONTI giorni. Restituisce l'id del montato."""
+    def archive(self, file_id, final_path, final_name, carica=True):
+        """Dopo la pubblicazione: l'originale (se c'e' ancora in coda) va nel Cestino e, solo se serve riprovare
+        qualche piattaforma (carica=True), il reel montato va in Pronti per GIORNI_PRONTI giorni.
+        Restituisce l'id del montato (None se non caricato)."""
         if self.local:
             os.makedirs(os.path.join(self.local, "Pronti"), exist_ok=True)
             if file_id:
                 os.remove(os.path.join(self.local, "Da pubblicare", file_id))
-            shutil.copy(final_path, os.path.join(self.local, "Pronti", final_name))
-            return final_name
+            if carica:
+                shutil.copy(final_path, os.path.join(self.local, "Pronti", final_name))
+            return final_name if carica else None
         from googleapiclient.http import MediaFileUpload
-        if file_id:              # None = reel da una clip d'archivio: la clip resta nell'archivio
+        if file_id:              # None = originale gia' spostato nell'archivio (o reel da una clip d'archivio)
             self.api.files().update(fileId=file_id, body={"trashed": True}, fields="id").execute()
+        if not carica:
+            return None
         f = self.api.files().create(body={"name": final_name, "parents": [ENV("DRIVE_FOLDER_PRONTI")]},
                                     media_body=MediaFileUpload(final_path, mimetype="video/mp4"),
                                     fields="id").execute()
@@ -1245,7 +1265,7 @@ def main():
             aggiungi_playlist(creds, results["youtube"]["id"], an["scena"], state)
         except Exception as e:
             log("Playlist YouTube non aggiornata:", e)
-    if results.get("instagram", {}).get("ok") and ENV("SENZA_STORIE") != "1" and not DRY:
+    if results.get("instagram", {}).get("ok") and ENV("SENZA_STORIE") != "1" and principale(slot) and not DRY:
         try:
             results["instagram_storia"] = {"ok": True, "id": instagram_storia(out_meta)}
             log("instagram storia pubblicata")
@@ -1262,27 +1282,33 @@ def main():
         u = state["archivio_usi"].setdefault(clip["id"], {})
         u["usi"] = u.get("usi", 0) + 1
         u["ultimo"] = oggi
-    else:                    # video nuovo: se ne tiene una copia (qualita' originale) per riusarlo in futuro
+    spostato = False
+    if not clip:             # video nuovo: si tiene per riusarlo in futuro
+        meta_arch = {"scena": an.get("scena"), "fascia": fascia_video(an), "compagnia": an.get("compagnia"),
+                     "registrato": an.get("registrato")}
+        stem = os.path.splitext(nome)[0]
         try:
-            stem = os.path.splitext(nome)[0]
-            cpath = overlay.crea_clip_archivio(src, os.path.join(work, stem + "_archivio.mov"), info.get("inizio"))
-            cid = drive.carica_archivio(cpath, f"{stem}.mov", {"scena": an.get("scena"), "fascia": fascia_video(an),
-                                                               "compagnia": an.get("compagnia"),
-                                                               "registrato": an.get("registrato")})
+            if os.path.getsize(src) <= MAX_ORIGINALE_MB * 1024 * 1024:   # l'originale intero va nell'archivio
+                cid = drive.sposta_in_archivio(video["id"], nome, meta_arch)
+                spostato = True
+                log(f"Originale spostato nell'archivio: {nome}")
+            else:                                                       # troppo grande: un pezzo da 15 s
+                cpath = overlay.crea_clip_archivio(src, os.path.join(work, stem + "_archivio.mov"), info.get("inizio"))
+                cid = drive.carica_archivio(cpath, f"{stem}.mov", meta_arch)
+                log(f"Copia (15 s) salvata nell'archivio: {stem}.mov")
             state.setdefault("archivio_usi", {})[cid] = {"usi": 1, "ultimo": oggi}
-            log(f"Copia salvata nell'archivio: {stem}.mov")
         except Exception as e:
-            log("Copia d'archivio non riuscita (il reel e' comunque uscito):", e)
+            log("Archivio non aggiornato (il reel e' comunque uscito):", e)
+    failed = [p for p, r in results.items() if not r["ok"] and p in PLATFORMS]
     pronti_id = None
     for tentativo in range(2):          # il reel e' gia' uscito: un errore qui non deve far perdere lo stato
         try:
-            pronti_id = drive.archive(None if clip else video["id"], out,
-                                      f"{frase['id']} - {os.path.splitext(nome)[0]}.mp4")
+            pronti_id = drive.archive(None if (clip or spostato) else video["id"], out,
+                                      f"{frase['id']} - {os.path.splitext(nome)[0]}.mp4", carica=bool(failed))
             break
         except Exception as e:
             log("Copia in Pronti non riuscita" + (", riprovo" if not tentativo else "") + ":", e)
             drive.riconnetti()
-    failed = [p for p, r in results.items() if not r["ok"] and p in PLATFORMS]
     if results.get("tiktok", {}).get("ok") and (ENV("TIKTOK_MODO") or "bozze") != "diretto":
         try:                                  # la frase da incollare quando pubblica la bozza su TikTok
             drive.testo_tiktok(testo_breve(frase), nome)

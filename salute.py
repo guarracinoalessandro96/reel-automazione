@@ -49,8 +49,8 @@ def google():
             raise RuntimeError(f"la cartella Drive '{f['name']}' e' nel cestino")
     quota = d.about().get(fields="storageQuota").execute()["storageQuota"]
     libero = (int(quota.get("limit", 0)) - int(quota.get("usage", 0))) / 1e9 if quota.get("limit") else None
-    if libero is not None and libero < 2:
-        raise RuntimeError(f"spazio Drive quasi finito: {libero:.1f} GB liberi")
+    if libero is not None and libero < 8:     # dal 18/10 l'archivio cresce di piu' (uno Short ogni ora): avviso presto
+        raise RuntimeError(f"spazio Drive in esaurimento: {libero:.1f} GB liberi (svuotare il cestino o liberare spazio)")
     yt = build("youtube", "v3", credentials=c, cache_discovery=False)
     ch = yt.channels().list(part="snippet", mine=True).execute().get("items", [])
     if not ch:
