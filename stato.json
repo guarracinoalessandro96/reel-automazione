@@ -2794,6 +2794,34 @@
      "id": "2270436640522258"
     }
    }
+  },
+  {
+   "quando": "2026-10-18T22:00",
+   "slot": "2026-10-19 00:00",
+   "video": "IMG_3971.MOV",
+   "md5": "cbc1a2b3a9eea61b1d1a26e2d6e1b2f2",
+   "da_archivio": false,
+   "scena": "uscita",
+   "registrato": "2026-10-18T13:38+02:00",
+   "frase": "L03",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 regole sulla lealtà",
+    "musica": "death_duel_4.m4a",
+    "musica_meta": "trap_14.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "gpUbotVBeV4"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1429840561859507"
+    }
+   }
   }
  ],
  "riprova": [],
@@ -2875,10 +2903,10 @@
   "2026-10-18 17:00",
   "2026-10-18 21:00",
   "2026-10-18 22:00",
-  "2026-10-18 23:00"
+  "2026-10-18 23:00",
+  "2026-10-19 00:00"
  ],
  "musica_recenti": [
-  "sweaty_staredown_1.m4a",
   "van_life_rager_2.m4a",
   "break_ya_neck_3.m4a",
   "kick_it_4.m4a",
@@ -2897,7 +2925,8 @@
   "van_life_rager_3.m4a",
   "way_back_home_2.m4a",
   "intergalactic_3.m4a",
-  "locked_in_1.m4a"
+  "locked_in_1.m4a",
+  "death_duel_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -2974,10 +3003,10 @@
   "MIE-4cca3569",
   "L02",
   "MIE-373e069a",
-  "MIE-2b7afb66"
+  "MIE-2b7afb66",
+  "L03"
  ],
  "temi_recenti": [
-  "mentalita",
   "imprenditore",
   "mentalita",
   "mentalita",
@@ -2986,20 +3015,10 @@
   "mentalita",
   "regole",
   "imprenditore",
-  "mentalita"
+  "mentalita",
+  "regole"
  ],
  "analisi": {
-  "1NfvRrrvtikqSvJNkOOpi9sOBXs09blgz": {
-   "nome": "IMG_3971.MOV",
-   "scena": "uscita",
-   "sicurezza": 0.83,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "amici",
-   "registrato": "2026-10-18T13:38+02:00",
-   "fascia": "sera",
-   "caricato": "2026-10-18T18:14:03.756Z"
-  },
   "1uc6eTA1H5KSzsqTsVNgk6Rzto2V2Wq3y": {
    "nome": "IMG_4029.MOV",
    "scena": "uscita",
@@ -3282,10 +3301,13 @@
   "1gsbR0t4WbGx68YpuUH-LiqfvFqNVVPqW": {
    "usi": 1,
    "ultimo": "2026-10-18"
+  },
+  "1NfvRrrvtikqSvJNkOOpi9sOBXs09blgz": {
+   "usi": 1,
+   "ultimo": "2026-10-18"
   }
  },
  "musica_recenti_meta": [
-  "phonk_10.flac",
   "deciso_12.flac",
   "deciso_06.flac",
   "phonk_04.flac",
@@ -3304,7 +3326,8 @@
   "drive_16.flac",
   "phonk_12.flac",
   "drive_08.flac",
-  "trap_09.flac"
+  "trap_09.flac",
+  "trap_14.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -3315,9 +3338,10 @@
  },
  "liste_usate": [
   "L01",
-  "L02"
+  "L02",
+  "L03"
  ],
- "formato_ultimo": "montaggio",
+ "formato_ultimo": "regole",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
