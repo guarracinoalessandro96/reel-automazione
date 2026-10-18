@@ -15,6 +15,7 @@ OUT = os.path.join(HERE, "docs", "report.json")
 ENV = os.environ.get
 MIN_POST = 10          # sotto questo numero di reel i dati sono troppo pochi per cambiare i pesi
 K = 5                  # "prudenza": con pochi reel su un tema, il suo peso resta vicino alla media
+FORMATI_DAL = "2026-10-18"   # gara dei formati: solo reel dello stesso periodo (uno ogni ora, 5 s), confronto alla pari
 
 
 def stat_youtube(ids):
@@ -202,6 +203,8 @@ def main():
     import statistics
     per_f = {}
     for r in righe:
+        if r["quando"] < FORMATI_DAL:      # i reel di prima (8 s, 4-5 al giorno) falserebbero il confronto
+            continue
         nome_f = "frase" if r["formato"].startswith("frase") else r["formato"]
         per_f.setdefault(nome_f, []).append(r["views"])
     tutte = [r["views"] for r in righe]
@@ -209,9 +212,10 @@ def main():
     if tutte:
         soglia = max(900, sorted(tutte)[int(len(tutte) * 0.6)])
         pesi["frasi_vincenti"] = sorted({r["frase"] for r in righe if r["views"] >= soglia
-                                         and r.get("frase") and not str(r["frase"]).startswith("L")})
-    if tutte:
-        med = statistics.median(tutte) or 1
+                                         and r.get("frase") and not str(r["frase"]).startswith(("L", "PARL"))})
+    nuove = [x for v in per_f.values() for x in v]       # base del confronto: la mediana dello stesso periodo
+    if nuove:
+        med = statistics.median(nuove) or 1
         pesi["formati"] = {f: round(min(max(statistics.median(v) / med, 0.4), 2.5), 2)
                            for f, v in per_f.items() if len(v) >= 6}
         pesi["aggiornato"] = datetime.date.today().isoformat()
