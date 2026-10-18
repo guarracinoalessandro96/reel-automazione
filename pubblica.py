@@ -77,6 +77,7 @@ REGOLE_SLOT, REGOLE_FINO = "", datetime.date(2099, 1, 1)   # dal 18/10 e' uno de
 # UNO SHORT OGNI ORA (18/10/2026, richiesta di Alessandro, come MoreMozi): YouTube ogni ora; Facebook, TikTok (Telegram)
 # e Instagram (cartella) solo alle ORE_PRINCIPALI, per non intasare la pagina e non dargli 24 TikTok da fare a mano.
 ORE_PRINCIPALI = (9, 13, 17, 21)
+ORA_TIKTOK = 21          # i video TikTok della giornata arrivano su Telegram tutti insieme a quest'ora
 # FORMATI provati a rotazione; pesi iniziali, poi report.py li aggiorna (pesi.json "formati") dai risultati veri.
 FORMATI = {"frase": 1.0, "gancio": 1.0, "montaggio": 0.8, "regole": 0.7, "ambiente": 0.6}
 GANCIO = {"nome": "gancio", "durata": 8.0, "t": 3.0}          # frase in 2 tempi: la seconda parte dopo 3 s
@@ -705,20 +706,43 @@ def facebook_upload(path, cap):
 
 
 # ------------------------------------------------------------------ Telegram (TikTok a mano)
-def manda_telegram(path, testo, slot=None):
-    """Manda ad Alessandro il video per TikTok (senza musica) e, sotto, il testo: toccandolo si copia."""
+def manda_tiktok_della_giornata(state, drive, work, muto, slot, salva):
+    """Alle 21: tutti i video TikTok del giorno su Telegram, uno dopo l'altro (al massimo gli ultimi 6)."""
+    import avvisi
+    coda = state.get("tiktok_coda", [])[-6:]
+    avvisi.manda(f"TIKTOK DI OGGI\n{len(coda)} video da pubblicare stasera\nPuoi anche programmarli nell'app TikTok")
+    inviati = []
+    for i, item in enumerate(coda, 1):
+        try:
+            if item.get("slot") == slot and muto:
+                path = muto
+            else:
+                path = os.path.join(work, f"tiktok_{i}.mp4")
+                drive.download(item["id"], path, folder=CARTELLA_TIKTOK)
+            manda_telegram(path, item["testo"], n=i, tot=len(coda))
+            inviati.append(item)
+        except Exception as e:
+            log("TikTok su Telegram non riuscito per un video:", e)
+    state["tiktok_coda"] = [x for x in state.get("tiktok_coda", []) if x not in inviati]
+    log(f"TikTok: {len(inviati)} video della giornata mandati su Telegram")
+    salva()
+
+
+def manda_telegram(path, testo, slot=None, n=None, tot=None):
+    """Manda ad Alessandro il video per TikTok (senza musica) e, sotto, il testo: toccandolo si copia.
+    n/tot: invio serale di tutti i TikTok del giorno ("TIKTOK 2 DI 4")."""
     import html
     base = f"https://api.telegram.org/bot{ENV('TELEGRAM_BOT_TOKEN')}"
+    if n:
+        titolo = f"TIKTOK {n} DI {tot}\n"
+    else:
+        titolo = (f"REEL DELLE {slot.split()[-1]}" if slot and ":" in slot else "NUOVO REEL") + " PER TIKTOK\n"
+    didascalia = (titolo + "Pubblicalo o programmalo:\n1. Salva il video\n2. Aggiungi un suono di tendenza\n"
+                  "3. Incolla il testo qui sotto")
     with open(path, "rb") as f:
         # width/height: senza, Telegram mostra il video verticale come un quadrato con le bande nere
         r = requests.post(f"{base}/sendVideo", data={"chat_id": ENV("TELEGRAM_CHAT_ID"), "supports_streaming": "true",
-                                                     "width": 1080, "height": 1920,
-                                                     "caption": (f"REEL DELLE {slot.split()[-1]}" if slot and ":" in slot
-                                                                 else "NUOVO REEL") + " PER TIKTOK\n"
-                                                                "Pubblicalo adesso:\n"
-                                                                "1. Salva il video\n"
-                                                                "2. Aggiungi un suono di tendenza\n"
-                                                                "3. Incolla il testo qui sotto"},
+                                                     "width": 1080, "height": 1920, "caption": didascalia},
                           files={"video": ("reel.mp4", f, "video/mp4")}, timeout=120).json()
     if not r.get("ok"):
         raise RuntimeError(r)
@@ -1145,7 +1169,9 @@ def main():
         try:
             muto = overlay.senza_audio(out, os.path.join(work, "reel_tiktok.mp4"))
             nome_tt = f"{ora_roma():%Y-%m-%d %H%M} - {frase['id']}.mp4"
-            drive.salva_per_dopo(muto, nome_tt, testo_breve(frase), CARTELLA_TIKTOK)
+            fid_tt = drive.salva_per_dopo(muto, nome_tt, testo_breve(frase), CARTELLA_TIKTOK)
+            state.setdefault("tiktok_coda", []).append({"id": fid_tt, "testo": testo_breve(frase), "slot": slot})
+            save()
             log(f"Pronto per TikTok (senza musica): {CARTELLA_TIKTOK}/{nome_tt}")
         except Exception as e:
             muto = None
@@ -1168,12 +1194,13 @@ def main():
         log(f"Aspetto le {target:%H:%M} per pubblicare puntuale ({attesa / 60:.0f} minuti)")
         time.sleep(attesa)
         drive.riconnetti()
-    if muto and ENV("TELEGRAM_BOT_TOKEN") and ENV("TELEGRAM_CHAT_ID") and not DRY:
-        try:
-            manda_telegram(muto, testo_breve(frase), slot)
-            log("TikTok: video e testo mandati su Telegram")
+    t_slot = ora_slot(slot)
+    if (t_slot and t_slot.hour == ORA_TIKTOK and state.get("tiktok_coda") and ENV("TELEGRAM_BOT_TOKEN")
+            and ENV("TELEGRAM_CHAT_ID") and not DRY):
+        try:          # un problema con Telegram non deve mai fermare la pubblicazione
+            manda_tiktok_della_giornata(state, drive, work, muto, slot, save)
         except Exception as e:
-            log("Telegram non riuscito:", e)
+            log("Invio serale TikTok su Telegram non riuscito:", e)
     results.update(publish_all(out, frase, creds, [p for p in piatt if p not in results], out_meta,
                                ig_nativo=ig_nativo))
     errore_yt = str(results.get("youtube", {}).get("errore", ""))
