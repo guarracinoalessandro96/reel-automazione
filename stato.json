@@ -3072,11 +3072,53 @@
      "id": "1735787447531244"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T07:00",
+   "slot": "2026-10-19 09:00",
+   "video": "IMG_3787.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "MIE-7405ec39",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 21,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 0.4s a 5.4s",
+    "durata": 5.0,
+    "inizio": 0.38,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.64,
+     "dominante": "calda",
+     "rumore": 3.2
+    },
+    "copertina_ms": 1718,
+    "musica": "the_road_to_mordor_4.m4a",
+    "formato": "frase",
+    "audio_originale": null,
+    "musica_meta": "deciso_05.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "bESs2neJ4Uc"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1121923193556069"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-07 12",
   "2026-10-07 18",
   "2026-10-07 21",
   "2026-10-08 09",
@@ -3155,10 +3197,10 @@
   "2026-10-19 05:00",
   "2026-10-19 06:00",
   "2026-10-19 07:00",
-  "2026-10-19 08:00"
+  "2026-10-19 08:00",
+  "2026-10-19 09:00"
  ],
  "musica_recenti": [
-  "the_light_2.m4a",
   "i_might_be_late_1.m4a",
   "wrangle_the_crazy_3.m4a",
   "whoop_4.m4a",
@@ -3177,7 +3219,8 @@
   "taking_flight_1.m4a",
   "cutscene_crush_4.m4a",
   "moon_vision_3.m4a",
-  "visions_3.m4a"
+  "visions_3.m4a",
+  "the_road_to_mordor_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3263,10 +3306,10 @@
   "MIE-1cba4cc4",
   "MIE-be160ed8",
   "L05",
-  "MIE-2c14114f"
+  "MIE-2c14114f",
+  "MIE-7405ec39"
  ],
  "temi_recenti": [
-  "mentalita",
   "regole",
   "mentalita",
   "regole",
@@ -3275,6 +3318,7 @@
   "mentalita",
   "mentalita",
   "regole",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -3313,8 +3357,8 @@
    "ultimo": "2026-10-09"
   },
   "1NgsmHHGD9Qdq4lQ_cY7_qoozFPSuqtJ4": {
-   "usi": 1,
-   "ultimo": "2026-10-09"
+   "usi": 2,
+   "ultimo": "2026-10-19"
   },
   "1iQ6-TvLD1lzHJvyT62JoJV1Irrcmlths": {
    "usi": 1,
@@ -3510,7 +3554,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_15.flac",
   "deciso_01.flac",
   "trap_10.flac",
   "drive_04.flac",
@@ -3529,7 +3572,8 @@
   "deciso_06.flac",
   "deciso_02.flac",
   "deciso_10.flac",
-  "trap_16.flac"
+  "trap_16.flac",
+  "deciso_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -3545,9 +3589,17 @@
   "L04",
   "L05"
  ],
- "formato_ultimo": "gancio",
+ "formato_ultimo": "frase",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
- }
+ },
+ "tiktok_coda": [
+  {
+   "id": "177t1cTAqA9bcfGTtOHexkzO5jN-VtRtY",
+   "testo": "Giorno 4/365 · seguimi per vedere dove arrivo\nLa miglior vendetta è il successo. Niente parole, solo risultati\n\n#citazioni #motivazione #mentalita",
+   "slot": "2026-10-19 09:00",
+   "parlato": false
+  }
+ ]
 }
