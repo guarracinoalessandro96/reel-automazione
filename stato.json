@@ -2849,11 +2849,38 @@
      "id": "1813997069786152"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T00:00",
+   "slot": "2026-10-19 02:00",
+   "video": "IMG_4037.MOV",
+   "md5": "3f1acc4024bdf6da4ffc85c9ee66c581",
+   "da_archivio": false,
+   "scena": "uscita",
+   "registrato": "2026-10-18T16:09+02:00",
+   "frase": "L04",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 cose che fanno i forti in silenzio",
+    "musica": "fire_in_the_sky_1.m4a",
+    "musica_meta": "trap_12.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "6muqTuj3pkY"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1604036198186948"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-09-23 21",
   "2026-09-23 22 manuale",
   "2026-10-04 21",
   "2026-10-05 12",
@@ -2932,10 +2959,10 @@
   "2026-10-18 22:00",
   "2026-10-18 23:00",
   "2026-10-19 00:00",
-  "2026-10-19 01:00"
+  "2026-10-19 01:00",
+  "2026-10-19 02:00"
  ],
  "musica_recenti": [
-  "break_ya_neck_3.m4a",
   "kick_it_4.m4a",
   "way_back_home_3.m4a",
   "horizons_1.m4a",
@@ -2954,7 +2981,8 @@
   "intergalactic_3.m4a",
   "locked_in_1.m4a",
   "death_duel_4.m4a",
-  "survival_mode_2.m4a"
+  "survival_mode_2.m4a",
+  "fire_in_the_sky_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3033,10 +3061,10 @@
   "MIE-373e069a",
   "MIE-2b7afb66",
   "L03",
-  "MIE-02d87ee7"
+  "MIE-02d87ee7",
+  "L04"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "regole",
   "mentalita",
@@ -3045,20 +3073,10 @@
   "imprenditore",
   "mentalita",
   "regole",
-  "mentalita"
+  "mentalita",
+  "regole"
  ],
  "analisi": {
-  "1SViXJGWyrXZIxEMyHGwykElbvGkiJSxW": {
-   "nome": "IMG_4037.MOV",
-   "scena": "uscita",
-   "sicurezza": 0.77,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "amici",
-   "registrato": "2026-10-18T16:09+02:00",
-   "fascia": "sera",
-   "caricato": "2026-10-18T18:14:22.689Z"
-  },
   "1NqfCjngnUsLcNgPGLaYs302aM3bRveLK": {
    "nome": "IMG_3972.MOV",
    "scena": "uscita",
@@ -3327,10 +3345,13 @@
   "1uc6eTA1H5KSzsqTsVNgk6Rzto2V2Wq3y": {
    "usi": 1,
    "ultimo": "2026-10-18"
+  },
+  "1SViXJGWyrXZIxEMyHGwykElbvGkiJSxW": {
+   "usi": 1,
+   "ultimo": "2026-10-19"
   }
  },
  "musica_recenti_meta": [
-  "deciso_06.flac",
   "phonk_04.flac",
   "drive_02.flac",
   "deciso_10.flac",
@@ -3349,7 +3370,8 @@
   "drive_08.flac",
   "trap_09.flac",
   "trap_14.flac",
-  "trap_03.flac"
+  "trap_03.flac",
+  "trap_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -3361,9 +3383,10 @@
  "liste_usate": [
   "L01",
   "L02",
-  "L03"
+  "L03",
+  "L04"
  ],
- "formato_ultimo": "montaggio",
+ "formato_ultimo": "regole",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
