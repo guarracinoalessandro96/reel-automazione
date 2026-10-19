@@ -3029,11 +3029,53 @@
      "id": "1485388523652194"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T06:00",
+   "slot": "2026-10-19 08:00",
+   "video": "IMG_4044.MOV",
+   "md5": "ff9edb4e608d08e5e7914ebbce313d96",
+   "da_archivio": false,
+   "scena": "uscita",
+   "registrato": "2026-10-18T16:19+02:00",
+   "frase": "MIE-2c14114f",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 32,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 7.8s a 15.8s",
+    "durata": 8.0,
+    "inizio": 7.8,
+    "colore": {
+     "scena": "esterno",
+     "motivo": "cielo visibile",
+     "luce": 0.55,
+     "dominante": "calda",
+     "rumore": 3.0
+    },
+    "copertina_ms": 3750,
+    "musica": "visions_3.m4a",
+    "formato": "gancio",
+    "audio_originale": null,
+    "musica_meta": "trap_16.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "YI8FqY7qHm4"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1735787447531244"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-07 09",
   "2026-10-07 12",
   "2026-10-07 18",
   "2026-10-07 21",
@@ -3112,10 +3154,10 @@
   "2026-10-19 04:00",
   "2026-10-19 05:00",
   "2026-10-19 06:00",
-  "2026-10-19 07:00"
+  "2026-10-19 07:00",
+  "2026-10-19 08:00"
  ],
  "musica_recenti": [
-  "cartier_3.m4a",
   "the_light_2.m4a",
   "i_might_be_late_1.m4a",
   "wrangle_the_crazy_3.m4a",
@@ -3134,7 +3176,8 @@
   "sweaty_staredown_2.m4a",
   "taking_flight_1.m4a",
   "cutscene_crush_4.m4a",
-  "moon_vision_3.m4a"
+  "moon_vision_3.m4a",
+  "visions_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3219,10 +3262,10 @@
   "MIE-8b8aa442",
   "MIE-1cba4cc4",
   "MIE-be160ed8",
-  "L05"
+  "L05",
+  "MIE-2c14114f"
  ],
  "temi_recenti": [
-  "imprenditore",
   "mentalita",
   "regole",
   "mentalita",
@@ -3231,21 +3274,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "regole"
+  "regole",
+  "mentalita"
  ],
- "analisi": {
-  "1KWHsB3C0gOYpMsl2sVukkzMm7VQeRgh5": {
-   "nome": "IMG_4044.MOV",
-   "scena": "uscita",
-   "sicurezza": 0.89,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "famiglia",
-   "registrato": "2026-10-18T16:19+02:00",
-   "fascia": "sera",
-   "caricato": "2026-10-18T18:17:16.971Z"
-  }
- },
+ "analisi": {},
  "pulizia": "2026-10-19",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -3471,10 +3503,13 @@
   "1UoUWHyHwCuON4BVs4SSdx-6x-4H6CKw9": {
    "usi": 1,
    "ultimo": "2026-10-19"
+  },
+  "1KWHsB3C0gOYpMsl2sVukkzMm7VQeRgh5": {
+   "usi": 1,
+   "ultimo": "2026-10-19"
   }
  },
  "musica_recenti_meta": [
-  "deciso_03.flac",
   "drive_15.flac",
   "deciso_01.flac",
   "trap_10.flac",
@@ -3493,7 +3528,8 @@
   "trap_08.flac",
   "deciso_06.flac",
   "deciso_02.flac",
-  "deciso_10.flac"
+  "deciso_10.flac",
+  "trap_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -3509,7 +3545,7 @@
   "L04",
   "L05"
  ],
- "formato_ultimo": "regole",
+ "formato_ultimo": "gancio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
