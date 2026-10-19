@@ -3274,11 +3274,33 @@
      "id": "ERU3nkLQqWI"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T13:00",
+   "slot": "2026-10-19 15:00",
+   "video": "IMG_3800.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "L07",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 segnali che devi allontanarti da qualcuno",
+    "musica": "turn_in_the_sun_4.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Cyrcb9HahJQ"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-08 18",
   "2026-10-08 21",
   "2026-10-08 22:00",
   "2026-10-08 23:45",
@@ -3357,10 +3379,10 @@
   "2026-10-19 11:00",
   "2026-10-19 12:00",
   "2026-10-19 13:00",
-  "2026-10-19 14:00"
+  "2026-10-19 14:00",
+  "2026-10-19 15:00"
  ],
  "musica_recenti": [
-  "dusty_road_magic_4.m4a",
   "van_life_rager_3.m4a",
   "way_back_home_2.m4a",
   "intergalactic_3.m4a",
@@ -3379,7 +3401,8 @@
   "the_light_3.m4a",
   "vibe_check_4.m4a",
   "duty_calls_3.m4a",
-  "survival_mode_4.m4a"
+  "survival_mode_4.m4a",
+  "turn_in_the_sun_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3471,11 +3494,11 @@
   "MIE-74576475",
   "L06",
   "MIE-42eb308d",
-  "MIE-d27d26e5"
+  "MIE-d27d26e5",
+  "L07"
  ],
  "temi_recenti": [
   "mentalita",
-  "mentalita",
   "regole",
   "mentalita",
   "mentalita",
@@ -3483,7 +3506,8 @@
   "mentalita",
   "regole",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "regole"
  ],
  "analisi": {},
  "pulizia": "2026-10-19",
@@ -3545,8 +3569,8 @@
    "ultimo": "2026-10-19"
   },
   "1hvbjqvKs_ADW2bi_kJP0H1fxpKUzd-nq": {
-   "usi": 1,
-   "ultimo": "2026-10-10"
+   "usi": 2,
+   "ultimo": "2026-10-19"
   },
   "1667Zix1tBrgfPEpOlI9dHiGVISZp0i8L": {
    "usi": 1,
@@ -3752,9 +3776,10 @@
   "L03",
   "L04",
   "L05",
-  "L06"
+  "L06",
+  "L07"
  ],
- "formato_ultimo": "montaggio",
+ "formato_ultimo": "regole",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
