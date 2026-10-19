@@ -1382,6 +1382,14 @@ def main():
                              "video": nome, "md5": video.get("md5Checksum") if video else None,
                              "da_archivio": bool(clip), "scena": an["scena"], "registrato": an.get("registrato"),
                              "frase": frase["id"], "tema": frase["tema"], "montaggio": info, "risultati": results})
+    if not DRY:              # la sera: i commenti nuovi su Telegram, per rispondere di persona (mai bloccare il reel)
+        try:
+            import commenti
+            n = commenti.forse_manda(state, ora_roma())
+            if n is not None:
+                log(f"Commenti nuovi mandati su Telegram: {n}")
+        except Exception as e:
+            log("Riassunto dei commenti non mandato:", e)
     save()
     shutil.rmtree(work, ignore_errors=True)
     log("Fatto." + (f" Da riprovare: {failed}" if failed else ""))
