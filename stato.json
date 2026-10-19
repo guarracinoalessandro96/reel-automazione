@@ -3402,11 +3402,48 @@
      "id": "hUCaU8jdVNM"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T18:00",
+   "slot": "2026-10-19 20:00",
+   "video": "IMG_3824.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-8b7cacf0",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 24,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.4s a 7.4s",
+    "durata": 5.0,
+    "inizio": 2.41,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.38,
+     "dominante": "calda",
+     "rumore": 3.6
+    },
+    "copertina_ms": 3906,
+    "musica": "final_boss_battle_2.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "HziXHt-08FE"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-09 09:45",
   "2026-10-09 11:30",
   "2026-10-09 13:15",
   "2026-10-09 15:00",
@@ -3485,10 +3522,10 @@
   "2026-10-19 16:00",
   "2026-10-19 17:00",
   "2026-10-19 18:00",
-  "2026-10-19 19:00"
+  "2026-10-19 19:00",
+  "2026-10-19 20:00"
  ],
  "musica_recenti": [
-  "death_duel_4.m4a",
   "survival_mode_2.m4a",
   "fire_in_the_sky_1.m4a",
   "delirium_4.m4a",
@@ -3507,7 +3544,8 @@
   "taking_flight_3.m4a",
   "whoop_1.m4a",
   "sweaty_staredown_1.m4a",
-  "way_back_home_3.m4a"
+  "way_back_home_3.m4a",
+  "final_boss_battle_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3604,11 +3642,11 @@
   "MIE-7a55ef7d",
   "MIE-f9aea254",
   "L08",
-  "MIE-fee53f11"
+  "MIE-fee53f11",
+  "MIE-8b7cacf0"
  ],
  "temi_recenti": [
   "mentalita",
-  "mentalita",
   "regole",
   "mentalita",
   "mentalita",
@@ -3616,6 +3654,7 @@
   "mentalita",
   "mentalita",
   "regole",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -3746,8 +3785,8 @@
    "ultimo": "2026-10-19"
   },
   "1fKbWVgrVrxr5Ecx1pZo_uFBf-CoX_0G5": {
-   "usi": 1,
-   "ultimo": "2026-10-13"
+   "usi": 2,
+   "ultimo": "2026-10-19"
   },
   "1HrgxYw6jMJ5qXxx8j5ZWOVhPdqD7b1fH": {
    "usi": 1,
@@ -3889,7 +3928,7 @@
   "L07",
   "L08"
  ],
- "formato_ultimo": "montaggio",
+ "formato_ultimo": "frase",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
@@ -3901,5 +3940,6 @@
    "slot": "2026-10-19 09:00",
    "parlato": false
   }
- ]
+ ],
+ "commenti_fino": "2026-10-19T18:00:01Z"
 }
