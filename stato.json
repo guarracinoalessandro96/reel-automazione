@@ -3252,11 +3252,32 @@
      "id": "I89lXTw0_gI"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T12:00",
+   "slot": "2026-10-19 14:00",
+   "video": "IMG_3768.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-d27d26e5",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "survival_mode_4.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "ERU3nkLQqWI"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-08 15",
   "2026-10-08 18",
   "2026-10-08 21",
   "2026-10-08 22:00",
@@ -3335,10 +3356,10 @@
   "2026-10-19 10:00",
   "2026-10-19 11:00",
   "2026-10-19 12:00",
-  "2026-10-19 13:00"
+  "2026-10-19 13:00",
+  "2026-10-19 14:00"
  ],
  "musica_recenti": [
-  "rubberband_3.m4a",
   "dusty_road_magic_4.m4a",
   "van_life_rager_3.m4a",
   "way_back_home_2.m4a",
@@ -3357,7 +3378,8 @@
   "way_back_home_4.m4a",
   "the_light_3.m4a",
   "vibe_check_4.m4a",
-  "duty_calls_3.m4a"
+  "duty_calls_3.m4a",
+  "survival_mode_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3448,18 +3470,19 @@
   "MIE-93d891c5",
   "MIE-74576475",
   "L06",
-  "MIE-42eb308d"
+  "MIE-42eb308d",
+  "MIE-d27d26e5"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
   "regole",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -3518,8 +3541,8 @@
    "ultimo": "2026-10-19"
   },
   "1J6rUreSm_Mrsbua06uFjE1b4xu8-pRpL": {
-   "usi": 1,
-   "ultimo": "2026-10-10"
+   "usi": 2,
+   "ultimo": "2026-10-19"
   },
   "1hvbjqvKs_ADW2bi_kJP0H1fxpKUzd-nq": {
    "usi": 1,
@@ -3731,7 +3754,7 @@
   "L05",
   "L06"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "montaggio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
