@@ -27,7 +27,9 @@ STATE = os.path.join(HERE, "stato.json")
 GRAPH = "https://graph.facebook.com/v23.0"
 ENV = os.environ.get
 DRY = ENV("DRY_RUN") == "1"
-PLATFORMS = ["youtube", "facebook"]   # 13/10/2026: YouTube + Facebook (Instagram in pausa). Tutte: instagram, facebook, youtube, tiktok
+# 19/10/2026: SOLO YOUTUBE (scelta di Alessandro: "cresciamo solo li'"; Facebook, TikTok e Instagram in futuro).
+# Per riaccendere Facebook: ["youtube", "facebook"]. Tutte: instagram, facebook, youtube, tiktok
+PLATFORMS = ["youtube"]
 MAX_TENTATIVI = 3
 GIORNI_PRONTI = 7             # reel montati (solo quelli da riprovare) tenuti 7 giorni, poi nel Cestino
 MAX_ORIGINALE_MB = 150        # originali piu' grandi (video lunghi, es. parlati): nell'archivio solo un pezzo da 15 s
@@ -89,11 +91,12 @@ LIMITE_YT = re.compile(r"uploadLimitExceeded|quotaExceeded|dailyLimitExceeded|ex
 SERIE_INIZIO = datetime.date(2026, 10, 16)   # "GIORNO 1 / 365": serie riconoscibile = un motivo per seguire
 MIN_PAROLE = 7               # frasi piu' corte rendono meno (vedi scelta della frase in main)
 MUSICA_NOSTRA = {"facebook", "instagram", "tiktok"}   # qui NON la Raccolta audio di YouTube (pensata per YouTube): i nostri brani
-PREPARA_PER_DOPO = ["instagram"]   # non ancora attiva: ogni reel (versione con musica nostra) va su Drive
+PREPARA_PER_DOPO = []        # es. ["instagram"]: versione con musica nostra salvata su Drive (spento dal 19/10/2026)
 CARTELLA_DOPO = "Pronti per Instagram"   # ... in questa cartella, con il testo da incollare
 # TikTok (15/10/2026): Alessandro pubblica a mano dal telefono con un AUDIO DI TENDENZA (non usabile via API):
 # ogni reel va su Drive con la frase sopra ma SENZA musica, piu' il testo da incollare
 CARTELLA_TIKTOK = "TikTok - da pubblicare"
+TIKTOK_A_MANO = False         # 19/10/2026: spento (solo YouTube). True = versioni TikTok su Telegram alle 21
 GIORNI_DOPO = 60              # ... e ci resta 60 giorni
 
 
@@ -1268,7 +1271,7 @@ def main():
             log(f"Pronto per {' e '.join(per_dopo)}: {CARTELLA_DOPO}/{nome_dopo}")
         except Exception as e:
             log("Versione per Instagram non salvata su Drive:", e)
-    if "tiktok" not in attive() and principale(slot):   # TikTok a mano con audio di tendenza: versione SENZA musica
+    if TIKTOK_A_MANO and "tiktok" not in attive() and principale(slot):   # TikTok a mano: versione SENZA musica
         try:
             muto = out if parla else overlay.senza_audio(out, os.path.join(work, "reel_tiktok.mp4"))
             nome_tt = f"{ora_roma():%Y-%m-%d %H%M} - {frase['id']}.mp4"
@@ -1299,7 +1302,7 @@ def main():
         time.sleep(attesa)
         drive.riconnetti()
     t_slot = ora_slot(slot)
-    if (t_slot and t_slot.hour == ORA_TIKTOK and state.get("tiktok_coda") and ENV("TELEGRAM_BOT_TOKEN")
+    if (TIKTOK_A_MANO and t_slot and t_slot.hour == ORA_TIKTOK and state.get("tiktok_coda") and ENV("TELEGRAM_BOT_TOKEN")
             and ENV("TELEGRAM_CHAT_ID") and not DRY):
         try:          # un problema con Telegram non deve mai fermare la pubblicazione
             manda_tiktok_della_giornata(state, drive, work, muto, slot, save)
