@@ -3319,11 +3319,48 @@
      "id": "-MXnRbNiiSs"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T15:00",
+   "slot": "2026-10-19 17:00",
+   "video": "IMG_3793.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-f9aea254",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 10,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 1.5s a 7.5s",
+    "durata": 6.0,
+    "inizio": 1.51,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.43,
+     "dominante": "calda",
+     "rumore": 3.2
+    },
+    "copertina_ms": 2062,
+    "musica": "whoop_1.m4a",
+    "formato": "ambiente",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "YaDQwFOvdIE"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-08 22:00",
   "2026-10-08 23:45",
   "2026-10-09 08:00",
   "2026-10-09 09:45",
@@ -3402,10 +3439,10 @@
   "2026-10-19 13:00",
   "2026-10-19 14:00",
   "2026-10-19 15:00",
-  "2026-10-19 16:00"
+  "2026-10-19 16:00",
+  "2026-10-19 17:00"
  ],
  "musica_recenti": [
-  "way_back_home_2.m4a",
   "intergalactic_3.m4a",
   "locked_in_1.m4a",
   "death_duel_4.m4a",
@@ -3424,7 +3461,8 @@
   "duty_calls_3.m4a",
   "survival_mode_4.m4a",
   "turn_in_the_sun_4.m4a",
-  "taking_flight_3.m4a"
+  "taking_flight_3.m4a",
+  "whoop_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3518,10 +3556,10 @@
   "MIE-42eb308d",
   "MIE-d27d26e5",
   "L07",
-  "MIE-7a55ef7d"
+  "MIE-7a55ef7d",
+  "MIE-f9aea254"
  ],
  "temi_recenti": [
-  "regole",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -3530,6 +3568,7 @@
   "mentalita",
   "mentalita",
   "regole",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -3604,8 +3643,8 @@
    "ultimo": "2026-10-10"
   },
   "1fr7r7gFPOa5mMg3NCHBo-KO8j4yxbprb": {
-   "usi": 1,
-   "ultimo": "2026-10-10"
+   "usi": 2,
+   "ultimo": "2026-10-19"
   },
   "1fiTj8eVYumSNhYT3V8Few0omcOH62Olm": {
    "usi": 1,
@@ -3802,7 +3841,7 @@
   "L06",
   "L07"
  ],
- "formato_ultimo": "montaggio",
+ "formato_ultimo": "ambiente",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
