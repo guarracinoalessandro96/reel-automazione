@@ -3001,11 +3001,38 @@
      "id": "2894695150925415"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T05:00",
+   "slot": "2026-10-19 07:00",
+   "video": "IMG_4032.MOV",
+   "md5": "26985962d79120e516775e1eda68c2e3",
+   "da_archivio": false,
+   "scena": "casa",
+   "registrato": "2026-10-18T14:49+02:00",
+   "frase": "L05",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 verità sulla disciplina",
+    "musica": "moon_vision_3.m4a",
+    "musica_meta": "deciso_10.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "5CDBtZg5dkU"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1485388523652194"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-05 21",
   "2026-10-07 09",
   "2026-10-07 12",
   "2026-10-07 18",
@@ -3084,10 +3111,10 @@
   "2026-10-19 03:00",
   "2026-10-19 04:00",
   "2026-10-19 05:00",
-  "2026-10-19 06:00"
+  "2026-10-19 06:00",
+  "2026-10-19 07:00"
  ],
  "musica_recenti": [
-  "the_road_to_mordor_2.m4a",
   "cartier_3.m4a",
   "the_light_2.m4a",
   "i_might_be_late_1.m4a",
@@ -3106,7 +3133,8 @@
   "delirium_4.m4a",
   "sweaty_staredown_2.m4a",
   "taking_flight_1.m4a",
-  "cutscene_crush_4.m4a"
+  "cutscene_crush_4.m4a",
+  "moon_vision_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3190,10 +3218,10 @@
   "MIE-f080e6e1",
   "MIE-8b8aa442",
   "MIE-1cba4cc4",
-  "MIE-be160ed8"
+  "MIE-be160ed8",
+  "L05"
  ],
  "temi_recenti": [
-  "regole",
   "imprenditore",
   "mentalita",
   "regole",
@@ -3202,20 +3230,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "regole"
  ],
  "analisi": {
-  "1UoUWHyHwCuON4BVs4SSdx-6x-4H6CKw9": {
-   "nome": "IMG_4032.MOV",
-   "scena": "casa",
-   "sicurezza": 0.59,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "famiglia",
-   "registrato": "2026-10-18T14:49+02:00",
-   "fascia": "pranzo",
-   "caricato": "2026-10-18T18:16:22.817Z"
-  },
   "1KWHsB3C0gOYpMsl2sVukkzMm7VQeRgh5": {
    "nome": "IMG_4044.MOV",
    "scena": "uscita",
@@ -3449,10 +3467,13 @@
   "1zw12S9166ROtTo6gXbB8osWAiBXUjT0Q": {
    "usi": 1,
    "ultimo": "2026-10-19"
+  },
+  "1UoUWHyHwCuON4BVs4SSdx-6x-4H6CKw9": {
+   "usi": 1,
+   "ultimo": "2026-10-19"
   }
  },
  "musica_recenti_meta": [
-  "phonk_02.flac",
   "deciso_03.flac",
   "drive_15.flac",
   "deciso_01.flac",
@@ -3471,7 +3492,8 @@
   "trap_07.flac",
   "trap_08.flac",
   "deciso_06.flac",
-  "deciso_02.flac"
+  "deciso_02.flac",
+  "deciso_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -3484,9 +3506,10 @@
   "L01",
   "L02",
   "L03",
-  "L04"
+  "L04",
+  "L05"
  ],
- "formato_ultimo": "montaggio",
+ "formato_ultimo": "regole",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
