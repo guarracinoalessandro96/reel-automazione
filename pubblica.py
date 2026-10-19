@@ -233,6 +233,8 @@ def scegli_formato(slot, state, frase, an):
     se si puo'. FORMATO=nome forza un formato (prove)."""
     if ENV("FORMATO"):
         return ENV("FORMATO")
+    if an.get("momento"):            # video mandato con il suo titolo: il momento com'e'
+        return "momento"
     if an.get("parlato"):            # video in cui parla: sempre con la sua voce e i sottotitoli
         return "parlato"
     pesi = dict(FORMATI)
@@ -276,6 +278,26 @@ def musiche_brano(music, n=3):
     d = os.path.dirname(music)
     pezzi = sorted(os.path.join(d, f) for f in os.listdir(d) if re.fullmatch(re.escape(base) + r"_\d+\.m4a", f))
     return pezzi[:n] or [music]
+
+
+MOMENTO_MAX = 45.0          # secondi (i suoi momenti piu' visti duravano 9-50 s)
+
+
+def monta_momento(an, src, out, music, serie, nome):
+    """Reel MOMENTO: il video come l'ha girato lui (dall'inizio, fino a MOMENTO_MAX), il SUO titolo sopra e come
+    titolo YouTube, il suono vero della ripresa. Con la famiglia: musica (mai voci di parenti) e al massimo 15 s."""
+    import hashlib
+    titolo = an["momento"]["titolo"]
+    secondi, _ = overlay.probe(src)
+    famiglia = an.get("compagnia") == "famiglia"
+    durata = round(min(secondi, 15.0 if famiglia else MOMENTO_MAX), 2)
+    info = overlay.make_video(src, titolo, out, music=music if famiglia else None, serie=serie,
+                              colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an.get("scena"),
+                              formato={"nome": "momento", "inizio": 0.0, "durata": durata,
+                                       "audio_originale": 0 if famiglia else 1.0})
+    frase = {"id": "MOM-" + hashlib.md5(titolo.encode()).hexdigest()[:8], "tema": "momento", "gancio": titolo,
+             "autore": "", "hashtag": ["#vitavera", "#momenti", "#italia"], "serie": serie}
+    return frase, info
 
 
 def monta_parlato(an, src, out, serie, nome):
@@ -392,7 +414,7 @@ class Drive:
         q = (f"'{ENV('DRIVE_FOLDER_DA_PUBBLICARE')}' in parents and trashed = false "
              "and mimeType contains 'video/'")
         res = self.api.files().list(q=q, orderBy="createdTime", pageSize=100,
-                                    fields="files(id,name,createdTime,md5Checksum)").execute()
+                                    fields="files(id,name,createdTime,md5Checksum,description,appProperties)").execute()
         return res.get("files", [])
 
     def download(self, file_id, dest, folder="Da pubblicare"):
@@ -609,15 +631,17 @@ def youtube_upload(creds, path, cap, publish_at=None):
     if len(title) > 92:     # limite YouTube 100 caratteri con " #shorts": taglio a parola intera + "…"
         title = title[:90].rsplit(" ", 1)[0].rstrip(",;:") + "…"   # (mai solo la prima frase: cambierebbe il senso)
     privacy = ENV("YOUTUBE_PRIVACY") or "public"
-    descr = (cap["gancio"].strip().strip('"“”') + "\n\n#shorts #motivazione #mentalita #disciplina #crescitapersonale "
-             "#frasimotivazionali #successo")
+    momento = cap.get("tema") == "momento"
+    descr = (cap["gancio"].strip().strip('"“”') + ("\n\n#shorts " + " ".join(cap.get("hashtag") or []) if momento else
+             "\n\n#shorts #motivazione #mentalita #disciplina #crescitapersonale #frasimotivazionali #successo"))
     if cap.get("righe"):    # formato REGOLE: le regole in descrizione
         descr = "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1)) + "\n\n" + descr
     if serie_testo(cap):    # la serie in prima riga + invito a seguire il viaggio (il personaggio, non solo le frasi)
         descr = f"{serie_testo(cap)} - il mio viaggio di 365 giorni, iscriviti per vedere dove arrivo.\n\n" + descr
     body = {"snippet": {"title": title + " #shorts", "description": descr, "categoryId": "22",
-                        "tags": ["motivazione", "mentalità", "disciplina", "frasi motivazionali", "crescita personale",
-                                 "successo", "imprenditore", "palestra", "mindset", "shorts"],
+                        "tags": (["vita vera", "momenti", "oggi", "italia", "shorts"] if momento else
+                                 ["motivazione", "mentalità", "disciplina", "frasi motivazionali", "crescita personale",
+                                  "successo", "imprenditore", "palestra", "mindset", "shorts"]),
                         "defaultLanguage": "it", "defaultAudioLanguage": "it"},
             "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": False}}
     if publish_at and privacy == "public":
@@ -953,7 +977,11 @@ def analizza_video(drive, v, work):
     return {"nome": v["name"], "scena": sc, "sicurezza": conf, "motivo": motivo, "lato_corto": lato_corto,
             "compagnia": con_chi if conf_chi >= 0.5 else None,
             "registrato": quando.isoformat(timespec="minutes") if quando else None,
-            "fascia": scene_mod.fascia_per(sc, quando), "caricato": v["createdTime"], "parlato": parlato_info}
+            "fascia": scene_mod.fascia_per(sc, quando), "caricato": v["createdTime"], "parlato": parlato_info,
+            # MOMENTO (19/10/2026): video mandato al bot con una scritta sotto (ricevi_telegram.py)
+            "momento": ({"titolo": " ".join(v["description"].split())[:200]}
+                        if (v.get("appProperties") or {}).get("momento") == "1" and (v.get("description") or "").strip()
+                        else None)}
 
 
 VICINE = {   # se manca un video della fascia giusta, si prova in queste (in ordine)
@@ -979,6 +1007,9 @@ def scegli_video(videos, analisi, slot_ora):
     I video nuovi hanno sempre la precedenza: l'archivio si usa solo se la coda e' vuota (vedi main)."""
     if not videos:
         return None
+    momenti = [v for v in videos if analisi.get(v["id"], {}).get("momento")]
+    if momenti:                                # MOMENTO: e' una cosa di oggi, esce al primo orario
+        return momenti[0]
     if slot_ora is None:                       # esecuzione manuale: il piu' vecchio
         return videos[0]
     f = orario.fascia(slot_ora)
@@ -1191,7 +1222,9 @@ def main():
         info, formato = None, scegli_formato(slot, state, frase, an)
         log(f"Formato: {formato}")
         try:                            # se un formato non riesce esce il reel normale (frase da 5 s)
-            if formato == "parlato":
+            if formato == "momento":
+                frase, info = monta_momento(an, src, out, music, serie, nome)
+            elif formato == "parlato":
                 frase, info = monta_parlato(an, src, out, serie, nome)
             elif formato == "regole":
                 frase, info = monta_regole(lista_regole(slot, state), src, out, music, serie, drive, work, clip)

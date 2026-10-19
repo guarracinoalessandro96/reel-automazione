@@ -450,7 +450,8 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     formato = formato or {}
     durata = formato.get("durata")
     parlato = formato.get("nome") == "parlato"
-    if parlato:                         # PARLATO: dalla prima all'ultima parola (deciso da parlato.taglio)
+    momento = formato.get("nome") == "momento"
+    if parlato or momento:              # PARLATO: dalla prima all'ultima parola; MOMENTO: il video come l'ha girato lui
         start = max(0.0, min(float(formato.get("inizio", 0)), seconds - 1))
         length = max(1.0, min(float(durata or seconds), seconds - start))
     elif da_archivio:                   # clip d'archivio: gia' tagliata, pezzo a caso
@@ -525,7 +526,8 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     # (fotogrammi 0..X): l'ultimo fotogramma coincide con il primo, quando lo Short ricomincia non si vede lo stacco.
     # L'inizio si legge con un SECONDO ingresso dello stesso file (con "split" ffmpeg 7.1 si bloccava). Durata invariata.
     # (solo al primo tentativo: se ffmpeg fallisce, il piano di riserva riprova SENZA loop, poi senza colore...)
-    X = LOOP_SFUMATURA if zoom and not parlato and seconds - start >= length + LOOP_SFUMATURA and length > 2 else 0
+    X = (LOOP_SFUMATURA if zoom and not (parlato or momento) and seconds - start >= length + LOOP_SFUMATURA
+         and length > 2 else 0)
     filtri = ",".join(chain)
     if X:
         graph = (f"[0:v]{filtri + ',' if filtri else ''}trim=start={X}:end={length + X},setpts=PTS-STARTPTS[mn];"
@@ -550,7 +552,7 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
         graph += f";[{n_in}:a]volume={MUSIC_VOL * (0.8 if vol_orig else 1):.2f}[mu]"
         n_in += 1
     if vol_orig:
-        norm = "loudnorm=I=-16:TP=-1.5:LRA=11," if parlato else ""     # voce sempre allo stesso volume
+        norm = "loudnorm=I=-16:TP=-1.5:LRA=11," if parlato or momento else ""   # sempre allo stesso volume
         graph += (f";[0:a]atrim=start={X}:end={length + X},asetpts=PTS-STARTPTS,volume={vol_orig:.2f},{norm}"
                   "aresample=44100,aformat=channel_layouts=stereo[ao]")
         graph += (f";[mu][ao]amix=inputs=2:normalize=0:duration=first,{LIMITATORE},{fade}[a]" if music

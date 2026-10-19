@@ -17,7 +17,9 @@ AIUTO = ("COMANDI DEL BOT\n\n"
          "STATO\nquanti video in coda, ultimo e prossimo reel\n\n"
          "PAUSA\nferma le pubblicazioni\n\n"
          "RIPRENDI\nriparte con le pubblicazioni\n\n"
-         "Per mettere video in coda: mandali qui come video normali")
+         "Per mettere video in coda: mandali qui come video normali\n\n"
+         "MOMENTO\nse sotto il video scrivi cosa sta succedendo (es. 'Roccaraso oggi, 500 persone in fila'), "
+         "esce al prossimo orario con il tuo titolo e il suono vero")
 
 ENV = os.environ.get
 LIMITE = 20 * 1024 * 1024
@@ -42,9 +44,13 @@ def token_google():
     return json.load(urllib.request.urlopen("https://oauth2.googleapis.com/token", dati, timeout=30))["access_token"]
 
 
-def carica_su_drive(token, nome, contenuto, mime):
+def carica_su_drive(token, nome, contenuto, mime, titolo=""):
+    """titolo = la scritta sotto il video su Telegram: il video diventa un MOMENTO (pubblica.monta_momento)."""
     confine = uuid.uuid4().hex
-    meta = json.dumps({"name": nome, "parents": [ENV("DRIVE_FOLDER_DA_PUBBLICARE")]}).encode()
+    dati_file = {"name": nome, "parents": [ENV("DRIVE_FOLDER_DA_PUBBLICARE")]}
+    if titolo:
+        dati_file.update(description=titolo, appProperties={"momento": "1"})
+    meta = json.dumps(dati_file).encode()
     corpo = (f"--{confine}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n".encode() + meta +
              f"\r\n--{confine}\r\nContent-Type: {mime}\r\n\r\n".encode() + contenuto + f"\r\n--{confine}--".encode())
     req = urllib.request.Request("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id",
@@ -105,7 +111,7 @@ def main():
     agg = tg("getUpdates", timeout=0).get("result", [])
     if not agg:
         return
-    token, caricati, problemi = None, [], []
+    token, caricati, problemi, momenti = None, [], [], []
     for u in agg:
         m = u.get("message") or {}
         if str(m.get("chat", {}).get("id")) != str(ENV("TELEGRAM_CHAT_ID")):
@@ -141,8 +147,11 @@ def main():
             token = token or token_google()
             est = os.path.splitext(f.get("file_name") or path)[1] or ".mp4"
             nome = f"TG_{time.strftime('%Y%m%d_%H%M%S', time.gmtime(m.get('date', time.time())))}_{m['message_id']}{est}"
-            carica_su_drive(token, nome, dati, f.get("mime_type") or "video/mp4")
+            titolo = " ".join((m.get("caption") or "").split())
+            carica_su_drive(token, nome, dati, f.get("mime_type") or "video/mp4", titolo)
             caricati.append(nome)
+            if titolo:
+                momenti.append(titolo)
         except Exception as e:
             problemi.append(f"un video non e' stato salvato ({str(e)[:120]})")
     tg("getUpdates", offset=agg[-1]["update_id"] + 1, timeout=0)      # messaggi letti: non si rielaborano
@@ -150,6 +159,8 @@ def main():
         righe = ["VIDEO RICEVUTI"] if caricati else ["ATTENZIONE"]
         if caricati:
             righe += [f"{len(caricati)} video messi in coda", "Usciranno nei prossimi orari"]
+        for t in momenti:
+            righe += ["", "MOMENTO", "Esce al prossimo orario con il tuo titolo:", t]
         righe += problemi
         scrivi("\n".join(righe))
     print(f"Telegram: {len(caricati)} video in coda, {len(problemi)} problemi")
