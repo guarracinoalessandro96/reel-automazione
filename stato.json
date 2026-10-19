@@ -3115,11 +3115,48 @@
      "id": "1121923193556069"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T08:00",
+   "slot": "2026-10-19 10:00",
+   "video": "IMG_3791.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-93d891c5",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 28,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 1.8s a 6.8s",
+    "durata": 5.0,
+    "inizio": 1.8,
+    "colore": {
+     "scena": "sera",
+     "motivo": "poca luce",
+     "luce": 0.18,
+     "dominante": "calda",
+     "rumore": 2.3
+    },
+    "copertina_ms": 4700,
+    "musica": "way_back_home_4.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "C7otN0oXr1U"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-07 18",
   "2026-10-07 21",
   "2026-10-08 09",
   "2026-10-08 12",
@@ -3198,10 +3235,10 @@
   "2026-10-19 06:00",
   "2026-10-19 07:00",
   "2026-10-19 08:00",
-  "2026-10-19 09:00"
+  "2026-10-19 09:00",
+  "2026-10-19 10:00"
  ],
  "musica_recenti": [
-  "i_might_be_late_1.m4a",
   "wrangle_the_crazy_3.m4a",
   "whoop_4.m4a",
   "ancient_civilisations_4.m4a",
@@ -3220,7 +3257,8 @@
   "cutscene_crush_4.m4a",
   "moon_vision_3.m4a",
   "visions_3.m4a",
-  "the_road_to_mordor_4.m4a"
+  "the_road_to_mordor_4.m4a",
+  "way_back_home_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3307,10 +3345,10 @@
   "MIE-be160ed8",
   "L05",
   "MIE-2c14114f",
-  "MIE-7405ec39"
+  "MIE-7405ec39",
+  "MIE-93d891c5"
  ],
  "temi_recenti": [
-  "regole",
   "mentalita",
   "regole",
   "mentalita",
@@ -3318,6 +3356,7 @@
   "mentalita",
   "mentalita",
   "regole",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -3361,8 +3400,8 @@
    "ultimo": "2026-10-19"
   },
   "1iQ6-TvLD1lzHJvyT62JoJV1Irrcmlths": {
-   "usi": 1,
-   "ultimo": "2026-10-09"
+   "usi": 2,
+   "ultimo": "2026-10-19"
   },
   "1mOygaNSLk3zVyQOFm3atEW61_fUGn_3z": {
    "usi": 1,
