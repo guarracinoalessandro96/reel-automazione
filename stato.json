@@ -2904,11 +2904,53 @@
      "id": "2184990142422926"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T02:00",
+   "slot": "2026-10-19 04:00",
+   "video": "IMG_4043.MOV",
+   "md5": "36a4140adb76640d8ef4e5adb139b525",
+   "da_archivio": false,
+   "scena": "uscita",
+   "registrato": "2026-10-18T16:18+02:00",
+   "frase": "MIE-8b8aa442",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 1,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 1.8s a 6.8s",
+    "durata": 5.0,
+    "inizio": 1.8,
+    "colore": {
+     "scena": "esterno",
+     "motivo": "cielo visibile",
+     "luce": 0.41,
+     "dominante": "calda",
+     "rumore": 16.2
+    },
+    "copertina_ms": 2656,
+    "musica": "sweaty_staredown_2.m4a",
+    "formato": "frase",
+    "audio_originale": null,
+    "musica_meta": "trap_08.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "d83PcBLGUME"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1120858037262102"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-04 21",
   "2026-10-05 12",
   "2026-10-05 18",
   "2026-10-05 21",
@@ -2987,10 +3029,10 @@
   "2026-10-19 00:00",
   "2026-10-19 01:00",
   "2026-10-19 02:00",
-  "2026-10-19 03:00"
+  "2026-10-19 03:00",
+  "2026-10-19 04:00"
  ],
  "musica_recenti": [
-  "way_back_home_3.m4a",
   "horizons_1.m4a",
   "mirror_mirror_2.m4a",
   "the_road_to_mordor_2.m4a",
@@ -3009,7 +3051,8 @@
   "death_duel_4.m4a",
   "survival_mode_2.m4a",
   "fire_in_the_sky_1.m4a",
-  "delirium_4.m4a"
+  "delirium_4.m4a",
+  "sweaty_staredown_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3090,10 +3133,10 @@
   "L03",
   "MIE-02d87ee7",
   "L04",
-  "MIE-f080e6e1"
+  "MIE-f080e6e1",
+  "MIE-8b8aa442"
  ],
  "temi_recenti": [
-  "regole",
   "mentalita",
   "mentalita",
   "regole",
@@ -3102,6 +3145,7 @@
   "regole",
   "mentalita",
   "regole",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
@@ -3137,17 +3181,6 @@
    "registrato": "2026-10-18T14:49+02:00",
    "fascia": "pranzo",
    "caricato": "2026-10-18T18:16:22.817Z"
-  },
-  "1O5XL-iS65p-rWSE6IHKTNDsSp1HIG9a1": {
-   "nome": "IMG_4043.MOV",
-   "scena": "uscita",
-   "sicurezza": 0.57,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "amici",
-   "registrato": "2026-10-18T16:18+02:00",
-   "fascia": "sera",
-   "caricato": "2026-10-18T18:16:57.783Z"
   },
   "1KWHsB3C0gOYpMsl2sVukkzMm7VQeRgh5": {
    "nome": "IMG_4044.MOV",
@@ -3370,10 +3403,13 @@
   "1NqfCjngnUsLcNgPGLaYs302aM3bRveLK": {
    "usi": 1,
    "ultimo": "2026-10-19"
+  },
+  "1O5XL-iS65p-rWSE6IHKTNDsSp1HIG9a1": {
+   "usi": 1,
+   "ultimo": "2026-10-19"
   }
  },
  "musica_recenti_meta": [
-  "drive_02.flac",
   "deciso_10.flac",
   "phonk_16.flac",
   "phonk_02.flac",
@@ -3392,7 +3428,8 @@
   "trap_14.flac",
   "trap_03.flac",
   "trap_12.flac",
-  "trap_07.flac"
+  "trap_07.flac",
+  "trap_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -3407,7 +3444,7 @@
   "L03",
   "L04"
  ],
- "formato_ultimo": "montaggio",
+ "formato_ultimo": "frase",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
