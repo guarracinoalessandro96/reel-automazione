@@ -3561,11 +3561,33 @@
      "id": "_w2P-3VK7_A"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T23:00",
+   "slot": "2026-10-20 01:00",
+   "video": "DJI_20261013_175341_505_video.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "L10",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 cose che ho capito lavorando in proprio",
+    "musica": "horizons_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Jh3W4awEBFY"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-09 18:30",
   "2026-10-09 20:15",
   "2026-10-09 22:00",
   "2026-10-09 23:45",
@@ -3644,10 +3666,10 @@
   "2026-10-19 21:00",
   "2026-10-19 22:00",
   "2026-10-19 23:00",
-  "2026-10-20 00:00"
+  "2026-10-20 00:00",
+  "2026-10-20 01:00"
  ],
  "musica_recenti": [
-  "taking_flight_1.m4a",
   "cutscene_crush_4.m4a",
   "moon_vision_3.m4a",
   "visions_3.m4a",
@@ -3666,7 +3688,8 @@
   "locked_in_3.m4a",
   "intergalactic_2.m4a",
   "cartier_3.m4a",
-  "van_life_rager_2.m4a"
+  "van_life_rager_2.m4a",
+  "horizons_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3768,10 +3791,10 @@
   "L09",
   "MIE-4cf3277c",
   "MIE-60cee534",
-  "MIE-ca4626a5"
+  "MIE-ca4626a5",
+  "L10"
  ],
  "temi_recenti": [
-  "regole",
   "mentalita",
   "mentalita",
   "regole",
@@ -3780,7 +3803,8 @@
   "regole",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "regole"
  ],
  "analisi": {},
  "pulizia": "2026-10-19",
@@ -3930,8 +3954,8 @@
    "ultimo": "2026-10-19"
   },
   "10Y6I2Km1UMianq9Mqd4A_PibNK36A1KR": {
-   "usi": 1,
-   "ultimo": "2026-10-14"
+   "usi": 2,
+   "ultimo": "2026-10-19"
   },
   "17a5fFwJj8p33vlSv-Y6jRBPmRGJLzC1Q": {
    "usi": 1,
@@ -4052,9 +4076,10 @@
   "L06",
   "L07",
   "L08",
-  "L09"
+  "L09",
+  "L10"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "regole",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
