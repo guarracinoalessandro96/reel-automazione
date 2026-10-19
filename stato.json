@@ -3380,11 +3380,32 @@
      "id": "OOOwIQI0KPI"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T17:00",
+   "slot": "2026-10-19 19:00",
+   "video": "IMG_3815.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-fee53f11",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "way_back_home_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "hUCaU8jdVNM"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-09 08:00",
   "2026-10-09 09:45",
   "2026-10-09 11:30",
   "2026-10-09 13:15",
@@ -3463,10 +3484,10 @@
   "2026-10-19 15:00",
   "2026-10-19 16:00",
   "2026-10-19 17:00",
-  "2026-10-19 18:00"
+  "2026-10-19 18:00",
+  "2026-10-19 19:00"
  ],
  "musica_recenti": [
-  "locked_in_1.m4a",
   "death_duel_4.m4a",
   "survival_mode_2.m4a",
   "fire_in_the_sky_1.m4a",
@@ -3485,7 +3506,8 @@
   "turn_in_the_sun_4.m4a",
   "taking_flight_3.m4a",
   "whoop_1.m4a",
-  "sweaty_staredown_1.m4a"
+  "sweaty_staredown_1.m4a",
+  "way_back_home_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3581,19 +3603,20 @@
   "L07",
   "MIE-7a55ef7d",
   "MIE-f9aea254",
-  "L08"
+  "L08",
+  "MIE-fee53f11"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
   "mentalita",
   "mentalita",
   "regole",
   "mentalita",
   "mentalita",
-  "regole"
+  "regole",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-10-19",
@@ -3719,8 +3742,8 @@
    "ultimo": "2026-10-11"
   },
   "1vOgmkuZ-zKENaS1fagQc3J6w_396E-JX": {
-   "usi": 1,
-   "ultimo": "2026-10-12"
+   "usi": 2,
+   "ultimo": "2026-10-19"
   },
   "1fKbWVgrVrxr5Ecx1pZo_uFBf-CoX_0G5": {
    "usi": 1,
@@ -3866,7 +3889,7 @@
   "L07",
   "L08"
  ],
- "formato_ultimo": "regole",
+ "formato_ultimo": "montaggio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
