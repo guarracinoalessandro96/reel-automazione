@@ -2877,11 +2877,37 @@
      "id": "1604036198186948"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T01:00",
+   "slot": "2026-10-19 03:00",
+   "video": "IMG_3972.MOV",
+   "md5": "18c03e1ad002141af34882cf3769b3d5",
+   "da_archivio": false,
+   "scena": "uscita",
+   "registrato": "2026-10-18T13:39+02:00",
+   "frase": "MIE-f080e6e1",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "delirium_4.m4a",
+    "musica_meta": "trap_07.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "5dWWQmCoalM"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "2184990142422926"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-09-23 22 manuale",
   "2026-10-04 21",
   "2026-10-05 12",
   "2026-10-05 18",
@@ -2960,10 +2986,10 @@
   "2026-10-18 23:00",
   "2026-10-19 00:00",
   "2026-10-19 01:00",
-  "2026-10-19 02:00"
+  "2026-10-19 02:00",
+  "2026-10-19 03:00"
  ],
  "musica_recenti": [
-  "kick_it_4.m4a",
   "way_back_home_3.m4a",
   "horizons_1.m4a",
   "mirror_mirror_2.m4a",
@@ -2982,7 +3008,8 @@
   "locked_in_1.m4a",
   "death_duel_4.m4a",
   "survival_mode_2.m4a",
-  "fire_in_the_sky_1.m4a"
+  "fire_in_the_sky_1.m4a",
+  "delirium_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3062,10 +3089,10 @@
   "MIE-2b7afb66",
   "L03",
   "MIE-02d87ee7",
-  "L04"
+  "L04",
+  "MIE-f080e6e1"
  ],
  "temi_recenti": [
-  "mentalita",
   "regole",
   "mentalita",
   "mentalita",
@@ -3074,20 +3101,10 @@
   "mentalita",
   "regole",
   "mentalita",
-  "regole"
+  "regole",
+  "mentalita"
  ],
  "analisi": {
-  "1NqfCjngnUsLcNgPGLaYs302aM3bRveLK": {
-   "nome": "IMG_3972.MOV",
-   "scena": "uscita",
-   "sicurezza": 0.5,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "famiglia",
-   "registrato": "2026-10-18T13:39+02:00",
-   "fascia": "sera",
-   "caricato": "2026-10-18T18:15:26.814Z"
-  },
   "1I2nAz0Ao_a1cbEPktFKRTPpswByM6NKZ": {
    "nome": "IMG_3974.MOV",
    "scena": "casa",
@@ -3144,7 +3161,7 @@
    "caricato": "2026-10-18T18:17:16.971Z"
   }
  },
- "pulizia": "2026-10-18",
+ "pulizia": "2026-10-19",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 1,
@@ -3349,10 +3366,13 @@
   "1SViXJGWyrXZIxEMyHGwykElbvGkiJSxW": {
    "usi": 1,
    "ultimo": "2026-10-19"
+  },
+  "1NqfCjngnUsLcNgPGLaYs302aM3bRveLK": {
+   "usi": 1,
+   "ultimo": "2026-10-19"
   }
  },
  "musica_recenti_meta": [
-  "phonk_04.flac",
   "drive_02.flac",
   "deciso_10.flac",
   "phonk_16.flac",
@@ -3371,7 +3391,8 @@
   "trap_09.flac",
   "trap_14.flac",
   "trap_03.flac",
-  "trap_12.flac"
+  "trap_12.flac",
+  "trap_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -3386,7 +3407,7 @@
   "L03",
   "L04"
  ],
- "formato_ultimo": "regole",
+ "formato_ultimo": "montaggio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
