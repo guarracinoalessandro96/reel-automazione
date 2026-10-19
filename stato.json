@@ -3440,11 +3440,33 @@
      "id": "HziXHt-08FE"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T19:00",
+   "slot": "2026-10-19 21:00",
+   "video": "IMG_3834.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "L09",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 regole che mi ha insegnato la palestra",
+    "musica": "locked_in_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "qt8H0bnte90"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-09 11:30",
   "2026-10-09 13:15",
   "2026-10-09 15:00",
   "2026-10-09 16:45",
@@ -3523,10 +3545,10 @@
   "2026-10-19 17:00",
   "2026-10-19 18:00",
   "2026-10-19 19:00",
-  "2026-10-19 20:00"
+  "2026-10-19 20:00",
+  "2026-10-19 21:00"
  ],
  "musica_recenti": [
-  "survival_mode_2.m4a",
   "fire_in_the_sky_1.m4a",
   "delirium_4.m4a",
   "sweaty_staredown_2.m4a",
@@ -3545,7 +3567,8 @@
   "whoop_1.m4a",
   "sweaty_staredown_1.m4a",
   "way_back_home_3.m4a",
-  "final_boss_battle_2.m4a"
+  "final_boss_battle_2.m4a",
+  "locked_in_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3643,10 +3666,10 @@
   "MIE-f9aea254",
   "L08",
   "MIE-fee53f11",
-  "MIE-8b7cacf0"
+  "MIE-8b7cacf0",
+  "L09"
  ],
  "temi_recenti": [
-  "mentalita",
   "regole",
   "mentalita",
   "mentalita",
@@ -3655,7 +3678,8 @@
   "mentalita",
   "regole",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "regole"
  ],
  "analisi": {},
  "pulizia": "2026-10-19",
@@ -3789,8 +3813,8 @@
    "ultimo": "2026-10-19"
   },
   "1HrgxYw6jMJ5qXxx8j5ZWOVhPdqD7b1fH": {
-   "usi": 1,
-   "ultimo": "2026-10-13"
+   "usi": 2,
+   "ultimo": "2026-10-19"
   },
   "1MGwGXNeSO9_CxJf-b3fdJUiJRRsBRTMw": {
    "usi": 1,
@@ -3926,9 +3950,10 @@
   "L05",
   "L06",
   "L07",
-  "L08"
+  "L08",
+  "L09"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "regole",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
