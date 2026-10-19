@@ -2974,11 +2974,37 @@
      "id": "2296718004509649"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T04:00",
+   "slot": "2026-10-19 06:00",
+   "video": "IMG_3975.MOV",
+   "md5": "87db9a1e38830b90842cbef0b1629445",
+   "da_archivio": false,
+   "scena": "casa",
+   "registrato": "2026-10-18T13:41+02:00",
+   "frase": "MIE-be160ed8",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "cutscene_crush_4.m4a",
+    "musica_meta": "deciso_02.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "4Wer4MQ3D5A"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "2894695150925415"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-05 18",
   "2026-10-05 21",
   "2026-10-07 09",
   "2026-10-07 12",
@@ -3057,10 +3083,10 @@
   "2026-10-19 02:00",
   "2026-10-19 03:00",
   "2026-10-19 04:00",
-  "2026-10-19 05:00"
+  "2026-10-19 05:00",
+  "2026-10-19 06:00"
  ],
  "musica_recenti": [
-  "mirror_mirror_2.m4a",
   "the_road_to_mordor_2.m4a",
   "cartier_3.m4a",
   "the_light_2.m4a",
@@ -3079,7 +3105,8 @@
   "fire_in_the_sky_1.m4a",
   "delirium_4.m4a",
   "sweaty_staredown_2.m4a",
-  "taking_flight_1.m4a"
+  "taking_flight_1.m4a",
+  "cutscene_crush_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3162,10 +3189,10 @@
   "L04",
   "MIE-f080e6e1",
   "MIE-8b8aa442",
-  "MIE-1cba4cc4"
+  "MIE-1cba4cc4",
+  "MIE-be160ed8"
  ],
  "temi_recenti": [
-  "mentalita",
   "regole",
   "imprenditore",
   "mentalita",
@@ -3174,20 +3201,10 @@
   "regole",
   "mentalita",
   "mentalita",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "1zw12S9166ROtTo6gXbB8osWAiBXUjT0Q": {
-   "nome": "IMG_3975.MOV",
-   "scena": "casa",
-   "sicurezza": 0.88,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "famiglia",
-   "registrato": "2026-10-18T13:41+02:00",
-   "fascia": "pranzo",
-   "caricato": "2026-10-18T18:15:30.558Z"
-  },
   "1UoUWHyHwCuON4BVs4SSdx-6x-4H6CKw9": {
    "nome": "IMG_4032.MOV",
    "scena": "casa",
@@ -3428,10 +3445,13 @@
   "1I2nAz0Ao_a1cbEPktFKRTPpswByM6NKZ": {
    "usi": 1,
    "ultimo": "2026-10-19"
+  },
+  "1zw12S9166ROtTo6gXbB8osWAiBXUjT0Q": {
+   "usi": 1,
+   "ultimo": "2026-10-19"
   }
  },
  "musica_recenti_meta": [
-  "phonk_16.flac",
   "phonk_02.flac",
   "deciso_03.flac",
   "drive_15.flac",
@@ -3450,7 +3470,8 @@
   "trap_12.flac",
   "trap_07.flac",
   "trap_08.flac",
-  "deciso_06.flac"
+  "deciso_06.flac",
+  "deciso_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
