@@ -408,9 +408,14 @@ class Drive:
             vids = sorted((f for f in os.listdir(d) if f.lower().endswith((".mov", ".mp4", ".m4v"))),
                           key=lambda f: os.path.getmtime(os.path.join(d, f)))
             import hashlib
-            return [{"id": v, "name": v, "createdTime": datetime.datetime.fromtimestamp(
+            out = [{"id": v, "name": v, "createdTime": datetime.datetime.fromtimestamp(
                 os.path.getmtime(os.path.join(d, v)), datetime.timezone.utc).isoformat(),
                 "md5Checksum": hashlib.md5(open(os.path.join(d, v), "rb").read()).hexdigest()} for v in vids]
+            for v in out:       # prove: description/appProperties da "<video>.meta.json" (es. un MOMENTO da Telegram)
+                extra = os.path.join(d, v["id"] + ".meta.json")
+                if os.path.exists(extra):
+                    v.update(json.load(open(extra, encoding="utf-8")))
+            return out
         q = (f"'{ENV('DRIVE_FOLDER_DA_PUBBLICARE')}' in parents and trashed = false "
              "and mimeType contains 'video/'")
         res = self.api.files().list(q=q, orderBy="createdTime", pageSize=100,
