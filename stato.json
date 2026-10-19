@@ -3501,11 +3501,32 @@
      "id": "FHFOmvS6jU4"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T21:00",
+   "slot": "2026-10-19 23:00",
+   "video": "IMG_3828.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-60cee534",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "cartier_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "YemSDxu3k4s"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-09 15:00",
   "2026-10-09 16:45",
   "2026-10-09 18:30",
   "2026-10-09 20:15",
@@ -3584,10 +3605,10 @@
   "2026-10-19 19:00",
   "2026-10-19 20:00",
   "2026-10-19 21:00",
-  "2026-10-19 22:00"
+  "2026-10-19 22:00",
+  "2026-10-19 23:00"
  ],
  "musica_recenti": [
-  "delirium_4.m4a",
   "sweaty_staredown_2.m4a",
   "taking_flight_1.m4a",
   "cutscene_crush_4.m4a",
@@ -3606,7 +3627,8 @@
   "way_back_home_3.m4a",
   "final_boss_battle_2.m4a",
   "locked_in_3.m4a",
-  "intergalactic_2.m4a"
+  "intergalactic_2.m4a",
+  "cartier_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3706,11 +3728,11 @@
   "MIE-fee53f11",
   "MIE-8b7cacf0",
   "L09",
-  "MIE-4cf3277c"
+  "MIE-4cf3277c",
+  "MIE-60cee534"
  ],
  "temi_recenti": [
   "mentalita",
-  "mentalita",
   "regole",
   "mentalita",
   "mentalita",
@@ -3718,6 +3740,7 @@
   "mentalita",
   "mentalita",
   "regole",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -3860,8 +3883,8 @@
    "ultimo": "2026-10-19"
   },
   "1dwrjfUDcgUEtMKQ_1I0bVcET8o1a2N_E": {
-   "usi": 1,
-   "ultimo": "2026-10-13"
+   "usi": 2,
+   "ultimo": "2026-10-19"
   },
   "1xaei2HIO4jSmSPuSxzKQ0VLbkh-c4iJO": {
    "usi": 1,
@@ -3992,7 +4015,7 @@
   "L08",
   "L09"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "montaggio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
