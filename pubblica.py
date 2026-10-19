@@ -27,9 +27,7 @@ STATE = os.path.join(HERE, "stato.json")
 GRAPH = "https://graph.facebook.com/v23.0"
 ENV = os.environ.get
 DRY = ENV("DRY_RUN") == "1"
-# 19/10/2026: SOLO YOUTUBE (scelta di Alessandro: "cresciamo solo li'"; Facebook, TikTok e Instagram in futuro).
-# Per riaccendere Facebook: ["youtube", "facebook"]. Tutte: instagram, facebook, youtube, tiktok
-PLATFORMS = ["youtube"]
+from piattaforme import PLATFORMS, TIKTOK_A_MANO   # 19/10/2026: SOLO YOUTUBE (si cambia in piattaforme.py)
 MAX_TENTATIVI = 3
 GIORNI_PRONTI = 7             # reel montati (solo quelli da riprovare) tenuti 7 giorni, poi nel Cestino
 MAX_ORIGINALE_MB = 150        # originali piu' grandi (video lunghi, es. parlati): nell'archivio solo un pezzo da 15 s
@@ -96,7 +94,6 @@ CARTELLA_DOPO = "Pronti per Instagram"   # ... in questa cartella, con il testo 
 # TikTok (15/10/2026): Alessandro pubblica a mano dal telefono con un AUDIO DI TENDENZA (non usabile via API):
 # ogni reel va su Drive con la frase sopra ma SENZA musica, piu' il testo da incollare
 CARTELLA_TIKTOK = "TikTok - da pubblicare"
-TIKTOK_A_MANO = False         # 19/10/2026: spento (solo YouTube). True = versioni TikTok su Telegram alle 21
 GIORNI_DOPO = 60              # ... e ci resta 60 giorni
 
 

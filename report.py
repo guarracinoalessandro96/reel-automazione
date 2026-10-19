@@ -209,13 +209,16 @@ def riassunto_settimana(state):
         t += ["", "FORMATI (visualizzazioni a meta' classifica)", "Solo reel usciti da almeno 24 ore"]
         for f, v in sorted(formati.items(), key=lambda x: -statistics.median(x[1])):
             t += [f"{f}: {num(int(statistics.median(v)))} ({len(v)} reel)"]
-    t += ["", "FACEBOOK"]
-    if fb:
-        t += [f"{fb['reel']} reel", f"{num(fb['riproduzioni'])} riproduzioni"]
-    fbf = follower("facebook")
-    if fbf:
-        t += [f"{num(fbf[0])} follower"]
-    t += ["", "TIKTOK", "Pubblicazione a mano dal telefono", "I numeri li trovi nell'app TikTok"]
+    from piattaforme import PLATFORMS, TIKTOK_A_MANO     # solo le piattaforme accese (dal 19/10/2026: YouTube)
+    if "facebook" in PLATFORMS:
+        t += ["", "FACEBOOK"]
+        if fb:
+            t += [f"{fb['reel']} reel", f"{num(fb['riproduzioni'])} riproduzioni"]
+        fbf = follower("facebook")
+        if fbf:
+            t += [f"{num(fbf[0])} follower"]
+    if TIKTOK_A_MANO:
+        t += ["", "TIKTOK", "Pubblicazione a mano dal telefono", "I numeri li trovi nell'app TikTok"]
     return "\n".join(t)
 
 

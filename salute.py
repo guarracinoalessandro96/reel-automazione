@@ -114,7 +114,9 @@ def main():
         print("Account non collegati: niente da controllare.")
         return
     controlla("Pubblicazioni", pubblicazioni)
-    controlla("Instagram e Facebook", meta)
+    from piattaforme import PLATFORMS
+    if {"facebook", "instagram"} & set(PLATFORMS):     # dal 19/10/2026 solo YouTube: Meta non si controlla
+        controlla("Instagram e Facebook", meta)
     controlla("Google Drive e YouTube", google)
     # TikTok dal 15/10/2026 si pubblica a mano (video su Telegram): il vecchio collegamento API non si controlla piu'
     import avvisi

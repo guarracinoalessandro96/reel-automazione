@@ -18,6 +18,10 @@ FONT = next((f for f in FONTS if os.path.exists(f)), None)
 
 SAFE_TOP, SAFE_BOTTOM = 0.10, 0.76   # sopra: nome utente; sotto: descrizione e pulsanti
 TEXT_MAX_W = 0.72                    # resta lontano dalla colonna di icone a destra
+DIM_TESTO = 0.043     # grandezza della frase rispetto alla larghezza del video (0,050 fino al 18/10/2026; dal 19/10
+                      # un po' piu' piccola, richiesta di Alessandro: si vede di piu' la scena)
+DIM_SERIE = 0.030     # etichetta "GIORNO X / 365" (stessa grandezza di prima)
+RIDUZIONE_REGOLE = 0.87   # formato REGOLE: titolo e righe ridotti nella stessa proporzione
 TOP_FIRST = [0.13, 0.22, 0.32, 0.58, 0.48]
 BOTTOM_FIRST = [0.58, 0.50, 0.42, 0.13, 0.22]
 
@@ -122,29 +126,46 @@ def choose_position(block_h, faces):
 STILE = os.environ.get("STILE_TESTO") or "riquadro"
 
 
-def _a_capo(d, text, font, max_px):
+def _a_capo_semplice(d, text, font, max_px):
     lines, cur = [], ""
     for wd in text.split():
         t = (cur + " " + wd).strip()
         if d.textlength(t, font=font) <= max_px:
             cur = t
         else:
-            lines.append(cur)
+            if cur:
+                lines.append(cur)
             cur = wd
     if cur:
         lines.append(cur)
     return lines
 
 
+def _a_capo(d, text, font, max_px):
+    """Righe EQUILIBRATE (19/10/2026): stesso numero di righe ma la larghezza piu' stretta possibile, cosi' l'ultima
+    riga non resta con una parola sola (es. "...tra lui e la tua / pace.")."""
+    lines = _a_capo_semplice(d, text, font, max_px)
+    if len(lines) < 2:
+        return lines
+    lo, hi = max_px * 0.4, max_px
+    for _ in range(12):
+        mid = (lo + hi) / 2
+        if len(_a_capo_semplice(d, text, font, mid)) <= len(lines):
+            hi = mid
+        else:
+            lo = mid
+    return _a_capo_semplice(d, text, font, hi)
+
+
 def build_overlay_2tempi(W, H, prima, seconda, faces, serie=None):
     """Formato GANCIO: (immagine con solo la prima parte, immagine con tutto, y_frac, score). Stesso stile del
     riquadro normale; la seconda parte va a capo sotto la prima e il riquadro si allunga."""
-    fsize = int(W * 0.050)
+    fsize = int(W * DIM_TESTO)
     font = ImageFont.truetype(FONT, fsize)
     tmp = ImageDraw.Draw(Image.new("RGBA", (W, H)))
     la, lb = _a_capo(tmp, prima, font, W * TEXT_MAX_W), _a_capo(tmp, seconda, font, W * TEXT_MAX_W)
     lh, pad_x, pad_y = int(fsize * 1.28), int(fsize * 0.6), int(fsize * 0.45)
-    fs = int(fsize * 0.6)
+    fs = int(W * DIM_SERIE)
     eh = int(fs * 1.7) + int(fsize * 0.3) if serie else 0
     y_frac, score = choose_position((lh * (len(la) + len(lb)) + pad_y * 2 + eh) / H, faces)
     immagini = []
@@ -174,7 +195,7 @@ def build_overlay_serie(W, H, serie):
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     if serie:
         d = ImageDraw.Draw(img)
-        fs = int(W * 0.050 * 0.6)
+        fs = int(W * DIM_SERIE)
         font_s = ImageFont.truetype(FONT, fs)
         ws = d.textlength(serie, font=font_s)
         y = int(H * 0.08)
@@ -206,7 +227,7 @@ def ha_audio(path):
 def build_overlay(W, H, text, faces, stile=None, autore=None, serie=None):
     """serie: piccola etichetta sopra la frase (es. "GIORNO 12 / 365"), la "serie" che da' un motivo per seguire."""
     stile = stile or STILE
-    fsize = int(W * (0.056 if stile == "contorno" else 0.050))
+    fsize = int(W * DIM_TESTO * (1.12 if stile == "contorno" else 1.0))
     font = ImageFont.truetype(FONT, fsize)
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
@@ -219,7 +240,7 @@ def build_overlay(W, H, text, faces, stile=None, autore=None, serie=None):
     riga_a = "— " + autore if autore else ""
     ah = int(fsize * 1.25) if autore else 0      # spazio per la riga dell'autore
     block_h = lh * len(lines) + pad_y * 2 + ah
-    fs = int(fsize * 0.6)
+    fs = int(W * DIM_SERIE)
     eh = int(fs * 1.7) + int(fsize * 0.3) if serie else 0      # altezza etichetta della serie + spazio
     y_frac, score = choose_position((block_h + eh) / H, faces)
     y = int(y_frac * H)
@@ -579,7 +600,9 @@ def _tavola_regole(titolo, righe, n, serie=None):
     W, H = LATO_USCITA, int(LATO_USCITA * 16 / 9)
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    font_t, font_r, font_s = (ImageFont.truetype(FONT, s) for s in (62, 50, 34))
+    k = RIDUZIONE_REGOLE
+    font_t, font_r, font_s = (ImageFont.truetype(FONT, s) for s in (int(62 * k), int(50 * k), 34))
+    lt, lr = int(76 * k), int(64 * k)            # interlinea del titolo e delle righe
     y = int(H * 0.13)
     if serie:
         ws = d.textlength(serie, font=font_s)
@@ -587,19 +610,20 @@ def _tavola_regole(titolo, righe, n, serie=None):
         d.text(((W - ws) / 2, y + 10), serie, font=font_s, fill=(15, 15, 15, 255))
         y += 80
     righe_t = _a_capo(d, titolo, font_t, W * 0.84)
-    bw = max(d.textlength(x, font=font_t) for x in righe_t) + 64
-    th = len(righe_t) * 76 + 30
+    bw = max(d.textlength(x, font=font_t) for x in righe_t) + int(64 * k)
+    th = len(righe_t) * lt + int(30 * k)
     d.rounded_rectangle([(W - bw) / 2, y, (W + bw) / 2, y + th], radius=28, fill=(255, 255, 255, 240))
     for i, x in enumerate(righe_t):
-        d.text(((W - d.textlength(x, font=font_t)) / 2, y + 14 + i * 76), x, font=font_t, fill=(15, 15, 15, 255))
+        d.text(((W - d.textlength(x, font=font_t)) / 2, y + int(14 * k) + i * lt), x, font=font_t, fill=(15, 15, 15, 255))
     y += th + 34
     for k, r in enumerate(righe[:n], 1):
         rr = _a_capo(d, f"{k}. {r}", font_r, W * 0.80)
-        h = len(rr) * 64 + 36
-        bw = max(d.textlength(x, font=font_r) for x in rr) + 56
+        h = len(rr) * lr + int(36 * k)
+        bw = max(d.textlength(x, font=font_r) for x in rr) + int(56 * k)
         d.rounded_rectangle([(W - bw) / 2, y, (W + bw) / 2, y + h], radius=24, fill=(0, 0, 0, 165))
         for i, x in enumerate(rr):
-            d.text(((W - d.textlength(x, font=font_r)) / 2, y + 18 + i * 64), x, font=font_r, fill=(255, 255, 255, 255))
+            d.text(((W - d.textlength(x, font=font_r)) / 2, y + int(18 * k) + i * lr), x, font=font_r,
+                   fill=(255, 255, 255, 255))
         y += h + 26
     return img
 
