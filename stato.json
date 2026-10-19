@@ -3214,11 +3214,48 @@
      "id": "_BU8v8TvgB0"
     }
    }
+  },
+  {
+   "quando": "2026-10-19T11:00",
+   "slot": "2026-10-19 13:00",
+   "video": "IMG_3766.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-42eb308d",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 47,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.1s a 7.2s",
+    "durata": 5.0,
+    "inizio": 2.15,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.64,
+     "dominante": "calda",
+     "rumore": 3.2
+    },
+    "copertina_ms": 468,
+    "musica": "duty_calls_3.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "I89lXTw0_gI"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-08 12",
   "2026-10-08 15",
   "2026-10-08 18",
   "2026-10-08 21",
@@ -3297,10 +3334,10 @@
   "2026-10-19 09:00",
   "2026-10-19 10:00",
   "2026-10-19 11:00",
-  "2026-10-19 12:00"
+  "2026-10-19 12:00",
+  "2026-10-19 13:00"
  ],
  "musica_recenti": [
-  "ancient_civilisations_4.m4a",
   "rubberband_3.m4a",
   "dusty_road_magic_4.m4a",
   "van_life_rager_3.m4a",
@@ -3319,7 +3356,8 @@
   "the_road_to_mordor_4.m4a",
   "way_back_home_4.m4a",
   "the_light_3.m4a",
-  "vibe_check_4.m4a"
+  "vibe_check_4.m4a",
+  "duty_calls_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3409,10 +3447,10 @@
   "MIE-7405ec39",
   "MIE-93d891c5",
   "MIE-74576475",
-  "L06"
+  "L06",
+  "MIE-42eb308d"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -3421,7 +3459,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "regole"
+  "regole",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-10-19",
@@ -3475,8 +3514,8 @@
    "ultimo": "2026-10-19"
   },
   "1ehg1VD_Xtwd5ysGegtBXVLxxyo6vHs0U": {
-   "usi": 1,
-   "ultimo": "2026-10-10"
+   "usi": 2,
+   "ultimo": "2026-10-19"
   },
   "1J6rUreSm_Mrsbua06uFjE1b4xu8-pRpL": {
    "usi": 1,
@@ -3692,7 +3731,7 @@
   "L05",
   "L06"
  ],
- "formato_ultimo": "regole",
+ "formato_ultimo": "frase",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
