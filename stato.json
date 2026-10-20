@@ -3953,11 +3953,48 @@
      "id": "PgGt9lPYwi4"
     }
    }
+  },
+  {
+   "quando": "2026-10-20T13:00",
+   "slot": "2026-10-20 15:00",
+   "video": "IMG_4053.MOV",
+   "md5": "e884ddc37865fa6788d54730c7eb77f7",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-19T23:27+02:00",
+   "frase": "MIE-7b1416ce",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 5,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 1.3s a 9.3s",
+    "durata": 8.0,
+    "inizio": 1.3,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.52,
+     "dominante": "calda",
+     "rumore": 2.1
+    },
+    "copertina_ms": 5750,
+    "musica": "horizons_1.m4a",
+    "formato": "gancio",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "pvK1DensnSE"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-11 08:00",
   "2026-10-11 09:45",
   "2026-10-11 11:30",
   "2026-10-11 13:15",
@@ -4036,10 +4073,10 @@
   "2026-10-20 11:00",
   "2026-10-20 12:00",
   "2026-10-20 13:00",
-  "2026-10-20 14:00"
+  "2026-10-20 14:00",
+  "2026-10-20 15:00"
  ],
  "musica_recenti": [
-  "way_back_home_3.m4a",
   "final_boss_battle_2.m4a",
   "locked_in_3.m4a",
   "intergalactic_2.m4a",
@@ -4058,7 +4095,8 @@
   "rubberband_1.m4a",
   "way_back_home_4.m4a",
   "the_road_to_mordor_4.m4a",
-  "stake_out_3.m4a"
+  "stake_out_3.m4a",
+  "horizons_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4174,34 +4212,22 @@
   "MIE-239a782a",
   "MIE-33cb53e4",
   "MIE-b1469eb6",
-  "MIE-fe64b814"
+  "MIE-fe64b814",
+  "MIE-7b1416ce"
  ],
  "temi_recenti": [
-  "mentalita",
   "regole",
   "mentalita",
   "mentalita",
   "mentalita",
   "regole",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "1KaHiAluAS6DIJTt3B_LLDCN2bg1rzJuY": {
-   "nome": "IMG_4053.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.98,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-19T23:27+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-20T11:22:34.391Z",
-   "parlato": null,
-   "momento": null
-  },
   "1qbgTlMrIHBpRnqAh5LXyIKJqFLTLdazY": {
    "nome": "IMG_4054.MOV",
    "scena": "palestra",
@@ -4277,6 +4303,84 @@
    "registrato": "2026-10-19T23:47+02:00",
    "fascia": "palestra",
    "caricato": "2026-10-20T11:37:52.791Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1120zEipzyBfScy4IMkZ_264cYRRj4_wC": {
+   "nome": "IMG_4061.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.94,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-19T23:48+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-20T11:39:02.862Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1XTunZ_nsI8hMeIkBwZWRSeW4cSBZblat": {
+   "nome": "IMG_4062.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-19T23:50+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-20T11:41:33.822Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1pRzrCnxNrpVE44ol_vENtqhmbuRc2YAN": {
+   "nome": "IMG_4063.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.85,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-19T23:52+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-20T11:46:34.672Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1-8l0XRIILDaDnZ8kCKIggZ02DARGuJLr": {
+   "nome": "IMG_4064.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.98,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-19T23:52+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-20T11:51:07.326Z",
+   "parlato": null,
+   "momento": null
+  },
+  "18Z0Lff_i33zQ07A04hf34JvQuf665Hi3": {
+   "nome": "IMG_4065.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.93,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-19T23:55+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-20T11:56:43.385Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1VGIwrp39sFSVCsz_Rb-sxUFFdCwWFcIm": {
+   "nome": "IMG_4066.MOV",
+   "scena": "macchina",
+   "sicurezza": 0.71,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-20T00:04+02:00",
+   "fascia": "notte",
+   "caricato": "2026-10-20T11:59:34.477Z",
    "parlato": null,
    "momento": null
   }
@@ -4514,6 +4618,10 @@
   "1PMBub0TfO5ny81j1Z7XXxvf01HLU8e9j": {
    "usi": 1,
    "ultimo": "2026-10-20"
+  },
+  "1SGGMjRnx6n1zbId63P80hrjMQDvxV6E7": {
+   "usi": 1,
+   "ultimo": "2026-10-20"
   }
  },
  "musica_recenti_meta": [
@@ -4560,7 +4668,7 @@
   "L12",
   "L13"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "gancio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
