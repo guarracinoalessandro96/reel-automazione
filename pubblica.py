@@ -82,7 +82,9 @@ PAUSA_ERRORI = 3          # errori di fila su una piattaforma -> pausa automatic
 PAUSA_ORE = 6
 ORA_TIKTOK = 21          # i video TikTok della giornata arrivano su Telegram tutti insieme a quest'ora
 # FORMATI provati a rotazione; pesi iniziali, poi report.py li aggiorna (pesi.json "formati") dai risultati veri.
-FORMATI = {"frase": 1.0, "gancio": 1.0, "montaggio": 0.8, "regole": 0.7, "ambiente": 0.6}
+FORMATI = {"frase": 1.0, "frase8": 1.0, "gancio": 1.0, "montaggio": 0.8, "regole": 0.7, "ambiente": 0.6}
+# frase8 (21/10/2026): la frase da 8 s. Tra gli Short spinti da YouTube, quelli da 8 s hanno superato 1.200 views
+# 10 volte su 47, quelli da 5 s 0 su 24 (stessa mediana ~1.000): si rimette in gara contro il 5 s
 GANCIO = {"nome": "gancio", "durata": 8.0, "t": 3.0}          # frase in 2 tempi: la seconda parte dopo 3 s
 AMBIENTE = {"nome": "ambiente", "durata": 6.0, "audio_originale": 0.35}   # suono vero della palestra sotto la musica
 LIMITE_YT = re.compile(r"uploadLimitExceeded|quotaExceeded|dailyLimitExceeded|exceeded the number of videos", re.I)
@@ -282,7 +284,7 @@ def scegli_formato(slot, state, frase, an, spinto=True):
     except Exception:
         pass
     ok = {"frase": True, "gancio": bool(overlay.dividi_frase(frase["gancio"])), "montaggio": True,
-          "regole": lista_regole(slot, state) is not None, "ambiente": an.get("scena") == "palestra"}
+          "regole": lista_regole(slot, state) is not None, "ambiente": an.get("scena") == "palestra", "frase8": True}
     pesi = {f: max(float(w), 0.05) * (0.3 if f == state.get("formato_ultimo") else 1)
             for f, w in pesi.items() if ok.get(f)}
     return random.choices(list(pesi), weights=list(pesi.values()))[0] if pesi else "frase"
@@ -1297,6 +1299,10 @@ def main():
                 info = overlay.make_video(src, prima, out, music=music, serie=serie,
                                           colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
                                           da_archivio=bool(clip), formato=dict(GANCIO, seconda=seconda))
+            elif formato == "frase8":
+                info = overlay.make_video(src, frase["gancio"], out, music=music, serie=serie,
+                                          colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
+                                          da_archivio=bool(clip), formato={"nome": "frase8", "durata": 8.0})
             elif formato == "ambiente":
                 info = overlay.make_video(src, frase["gancio"], out, music=music, serie=serie,
                                           colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],

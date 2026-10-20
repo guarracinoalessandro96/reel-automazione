@@ -289,7 +289,7 @@ def main():
     for r in test:
         if r["quando"] < FORMATI_DAL:      # i reel di prima (8 s, 4-5 al giorno) falserebbero il confronto
             continue
-        nome_f = "frase" if r["formato"].startswith("frase") else r["formato"]
+        nome_f = "frase" if r["formato"] == "frase" or r["formato"].startswith("frase ") else r["formato"]
         per_f.setdefault(nome_f, []).append(r["views"])
     tutte = [r["views"] for r in test]
     # frasi "vincenti" (sopra 900 views e sopra il 60% degli altri): pubblica.py le ripropone su un altro video
