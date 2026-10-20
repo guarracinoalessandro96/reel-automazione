@@ -3833,11 +3833,48 @@
      "id": "O_mlrnqA-P8"
     }
    }
+  },
+  {
+   "quando": "2026-10-20T09:00",
+   "slot": "2026-10-20 11:00",
+   "video": "IMG_3969.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-239a782a",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 33,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.6s a 10.6s",
+    "durata": 8.0,
+    "inizio": 2.57,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.41,
+     "dominante": "neutra",
+     "rumore": 1.8
+    },
+    "copertina_ms": 4750,
+    "musica": "rubberband_1.m4a",
+    "formato": "gancio",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "13ybe-kEprY"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-10 18:30",
   "2026-10-10 20:15",
   "2026-10-10 22:00",
   "2026-10-10 23:45",
@@ -3916,10 +3953,10 @@
   "2026-10-20 07:00",
   "2026-10-20 08:00",
   "2026-10-20 09:00",
-  "2026-10-20 10:00"
+  "2026-10-20 10:00",
+  "2026-10-20 11:00"
  ],
  "musica_recenti": [
-  "turn_in_the_sun_4.m4a",
   "taking_flight_3.m4a",
   "whoop_1.m4a",
   "sweaty_staredown_1.m4a",
@@ -3938,7 +3975,8 @@
   "death_duel_3.m4a",
   "dusty_road_magic_1.m4a",
   "the_light_4.m4a",
-  "sweaty_staredown_4.m4a"
+  "sweaty_staredown_4.m4a",
+  "rubberband_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4050,10 +4088,10 @@
   "MIE-34586b77",
   "MIE-ccb02932",
   "MIE-58af46e5",
-  "L13"
+  "L13",
+  "MIE-239a782a"
  ],
  "temi_recenti": [
-  "regole",
   "amicizia",
   "regole",
   "mentalita",
@@ -4062,7 +4100,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "regole"
+  "regole",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-10-20",
@@ -4252,8 +4291,8 @@
    "ultimo": "2026-10-20"
   },
   "1C7dPpnBEXAtEz6B37kjIeLNrl5vyMEeb": {
-   "usi": 1,
-   "ultimo": "2026-10-18"
+   "usi": 2,
+   "ultimo": "2026-10-20"
   },
   "1gsbR0t4WbGx68YpuUH-LiqfvFqNVVPqW": {
    "usi": 1,
@@ -4340,7 +4379,7 @@
   "L12",
   "L13"
  ],
- "formato_ultimo": "regole",
+ "formato_ultimo": "gancio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
