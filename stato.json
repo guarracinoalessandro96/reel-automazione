@@ -3629,11 +3629,32 @@
      "id": "_LYSQhLN0_8"
     }
    }
+  },
+  {
+   "quando": "2026-10-20T02:00",
+   "slot": "2026-10-20 04:00",
+   "video": "IMG_3905.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-c003cf5c",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "delirium_1.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "srCry5yLYMc"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-09 23:45",
   "2026-10-10 08:00",
   "2026-10-10 09:45",
   "2026-10-10 11:30",
@@ -3712,10 +3733,10 @@
   "2026-10-20 00:00",
   "2026-10-20 01:00",
   "2026-10-20 02:00",
-  "2026-10-20 03:00"
+  "2026-10-20 03:00",
+  "2026-10-20 04:00"
  ],
  "musica_recenti": [
-  "visions_3.m4a",
   "the_road_to_mordor_4.m4a",
   "way_back_home_4.m4a",
   "the_light_3.m4a",
@@ -3734,7 +3755,8 @@
   "van_life_rager_2.m4a",
   "horizons_3.m4a",
   "duty_calls_4.m4a",
-  "ego_chall_4.m4a"
+  "ego_chall_4.m4a",
+  "delirium_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3839,10 +3861,10 @@
   "MIE-ca4626a5",
   "L10",
   "MIE-6ab824f2",
-  "L11"
+  "L11",
+  "MIE-c003cf5c"
  ],
  "temi_recenti": [
-  "regole",
   "mentalita",
   "mentalita",
   "regole",
@@ -3851,7 +3873,8 @@
   "mentalita",
   "regole",
   "amicizia",
-  "regole"
+  "regole",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-10-20",
@@ -4013,8 +4036,8 @@
    "ultimo": "2026-10-20"
   },
   "1Pnwa-lAv7b6BxxAB-L0Kp3azuB15R43F": {
-   "usi": 1,
-   "ultimo": "2026-10-15"
+   "usi": 2,
+   "ultimo": "2026-10-20"
   },
   "1H_I6VC3vZgQwOjIWlcuhjr4OiNQ3Fpvl": {
    "usi": 1,
@@ -4127,7 +4150,7 @@
   "L10",
   "L11"
  ],
- "formato_ultimo": "regole",
+ "formato_ultimo": "montaggio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
