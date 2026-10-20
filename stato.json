@@ -4241,11 +4241,50 @@
      "id": "lGZw4JUr7Ks"
     }
    }
+  },
+  {
+   "quando": "2026-10-20T21:00",
+   "slot": "2026-10-20 23:00",
+   "video": "IMG_4029.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-2a9dd1f2",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 18,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 6.5s a 11.4s",
+    "durata": 5.0,
+    "inizio": 6.45,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.45,
+     "dominante": "neutra",
+     "rumore": 10.4
+    },
+    "copertina_ms": 468,
+    "musica": "van_life_rager_4.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "B59M2Ie9FdE"
+    }
+   },
+   "spinto": false,
+   "testo": "Avrai più gusto nello scegliere le persone quando inizierai ad amare te stesso."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-11 22:00",
   "2026-10-12 08:00",
   "2026-10-12 11:30",
   "2026-10-12 13:15",
@@ -4324,10 +4363,10 @@
   "2026-10-20 19:00",
   "2026-10-20 20:00",
   "2026-10-20 21:00",
-  "2026-10-20 22:00"
+  "2026-10-20 22:00",
+  "2026-10-20 23:00"
  ],
  "musica_recenti": [
-  "ego_chall_4.m4a",
   "delirium_1.m4a",
   "cutscene_crush_1.m4a",
   "kick_it_4.m4a",
@@ -4346,7 +4385,8 @@
   "locked_in_4.m4a",
   "cutscene_crush_3.m4a",
   "i_might_be_late_4.m4a",
-  "cartier_4.m4a"
+  "cartier_4.m4a",
+  "van_life_rager_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4470,10 +4510,10 @@
   "MIE-a809e22b",
   "MIE-8f56c6f7",
   "MIE-4f7e8b73",
-  "MIE-13edb45d"
+  "MIE-13edb45d",
+  "MIE-2a9dd1f2"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -4482,6 +4522,7 @@
   "mentalita",
   "mentalita",
   "amicizia",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
@@ -4802,8 +4843,8 @@
    "ultimo": "2026-10-20"
   },
   "1uc6eTA1H5KSzsqTsVNgk6Rzto2V2Wq3y": {
-   "usi": 1,
-   "ultimo": "2026-10-18"
+   "usi": 2,
+   "ultimo": "2026-10-20"
   },
   "1SViXJGWyrXZIxEMyHGwykElbvGkiJSxW": {
    "usi": 1,
@@ -4914,7 +4955,7 @@
   "L12",
   "L13"
  ],
- "formato_ultimo": "ambiente",
+ "formato_ultimo": "frase",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
