@@ -4127,11 +4127,48 @@
      "id": "iF_vOOGd6Kc"
     }
    }
+  },
+  {
+   "quando": "2026-10-20T18:00",
+   "slot": "2026-10-20 20:00",
+   "video": "IMG_4070.MOV",
+   "md5": "24a5585723a5b975c01d38fddb1718bd",
+   "da_archivio": false,
+   "scena": "macchina",
+   "registrato": "2026-10-20T00:09+02:00",
+   "frase": "MIE-8f56c6f7",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 51,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 6.3s a 14.3s",
+    "durata": 8.0,
+    "inizio": 6.3,
+    "colore": {
+     "scena": "sera",
+     "motivo": "poca luce",
+     "luce": 0.14,
+     "dominante": "neutra",
+     "rumore": 1.6
+    },
+    "copertina_ms": 6250,
+    "musica": "cutscene_crush_3.m4a",
+    "formato": "gancio",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "iQu2rOoILxI"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-11 16:45",
   "2026-10-11 18:30",
   "2026-10-11 20:15",
   "2026-10-11 22:00",
@@ -4210,10 +4247,10 @@
   "2026-10-20 16:00",
   "2026-10-20 17:00",
   "2026-10-20 18:00",
-  "2026-10-20 19:00"
+  "2026-10-20 19:00",
+  "2026-10-20 20:00"
  ],
  "musica_recenti": [
-  "van_life_rager_2.m4a",
   "horizons_3.m4a",
   "duty_calls_4.m4a",
   "ego_chall_4.m4a",
@@ -4232,7 +4269,8 @@
   "survival_mode_2.m4a",
   "fire_in_the_sky_3.m4a",
   "majestic_12_2.m4a",
-  "locked_in_4.m4a"
+  "locked_in_4.m4a",
+  "cutscene_crush_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4353,10 +4391,10 @@
   "MIE-72bb55c2",
   "MIE-a9ffa1e4",
   "MIE-d9da9ecd",
-  "MIE-a809e22b"
+  "MIE-a809e22b",
+  "MIE-8f56c6f7"
  ],
  "temi_recenti": [
-  "regole",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -4365,6 +4403,7 @@
   "mentalita",
   "mentalita",
   "dieta",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
@@ -4469,19 +4508,6 @@
    "registrato": "2026-10-19T23:55+02:00",
    "fascia": "palestra",
    "caricato": "2026-10-20T11:56:43.385Z",
-   "parlato": null,
-   "momento": null
-  },
-  "1WfGQj2VXwfUWv0d78qRVLBFKST3HL38H": {
-   "nome": "IMG_4070.MOV",
-   "scena": "macchina",
-   "sicurezza": 0.72,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-20T00:09+02:00",
-   "fascia": "notte",
-   "caricato": "2026-10-20T15:08:10.427Z",
    "parlato": null,
    "momento": null
   },
@@ -4778,6 +4804,10 @@
   "1ebzNdlPG-0cLcESWwbpn2LI0c4WUOM7P": {
    "usi": 1,
    "ultimo": "2026-10-20"
+  },
+  "1fNkyh45gyqcWbr7dNtwE-jOutIxNjGFj": {
+   "usi": 1,
+   "ultimo": "2026-10-20"
   }
  },
  "musica_recenti_meta": [
@@ -4824,7 +4854,7 @@
   "L12",
   "L13"
  ],
- "formato_ultimo": "montaggio",
+ "formato_ultimo": "gancio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
@@ -4837,5 +4867,5 @@
    "parlato": false
   }
  ],
- "commenti_fino": "2026-10-19T18:00:01Z"
+ "commenti_fino": "2026-10-20T18:00:05Z"
 }
