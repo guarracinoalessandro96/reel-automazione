@@ -4105,11 +4105,32 @@
      "id": "9aZ3SScmMKs"
     }
    }
+  },
+  {
+   "quando": "2026-10-20T17:00",
+   "slot": "2026-10-20 19:00",
+   "video": "IMG_4066.MOV",
+   "md5": "7247ca76f65506fe7e6f37f287746ef5",
+   "da_archivio": false,
+   "scena": "macchina",
+   "registrato": "2026-10-20T00:04+02:00",
+   "frase": "MIE-a809e22b",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "locked_in_4.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "iF_vOOGd6Kc"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-11 15:00",
   "2026-10-11 16:45",
   "2026-10-11 18:30",
   "2026-10-11 20:15",
@@ -4188,10 +4209,10 @@
   "2026-10-20 15:00",
   "2026-10-20 16:00",
   "2026-10-20 17:00",
-  "2026-10-20 18:00"
+  "2026-10-20 18:00",
+  "2026-10-20 19:00"
  ],
  "musica_recenti": [
-  "cartier_3.m4a",
   "van_life_rager_2.m4a",
   "horizons_3.m4a",
   "duty_calls_4.m4a",
@@ -4210,7 +4231,8 @@
   "horizons_1.m4a",
   "survival_mode_2.m4a",
   "fire_in_the_sky_3.m4a",
-  "majestic_12_2.m4a"
+  "majestic_12_2.m4a",
+  "locked_in_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4330,10 +4352,10 @@
   "MIE-7b1416ce",
   "MIE-72bb55c2",
   "MIE-a9ffa1e4",
-  "MIE-d9da9ecd"
+  "MIE-d9da9ecd",
+  "MIE-a809e22b"
  ],
  "temi_recenti": [
-  "mentalita",
   "regole",
   "mentalita",
   "mentalita",
@@ -4342,7 +4364,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "dieta"
+  "dieta",
+  "mentalita"
  ],
  "analisi": {
   "112bCGRrBtSA3jyS_KaaNUBApv7FXWYWp": {
@@ -4446,19 +4469,6 @@
    "registrato": "2026-10-19T23:55+02:00",
    "fascia": "palestra",
    "caricato": "2026-10-20T11:56:43.385Z",
-   "parlato": null,
-   "momento": null
-  },
-  "1VGIwrp39sFSVCsz_Rb-sxUFFdCwWFcIm": {
-   "nome": "IMG_4066.MOV",
-   "scena": "macchina",
-   "sicurezza": 0.71,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-20T00:04+02:00",
-   "fascia": "notte",
-   "caricato": "2026-10-20T11:59:34.477Z",
    "parlato": null,
    "momento": null
   },
@@ -4764,6 +4774,10 @@
   "1a6QgtIzJRhmtmWHx-62JQcB90PeF3vKz": {
    "usi": 1,
    "ultimo": "2026-10-20"
+  },
+  "1ebzNdlPG-0cLcESWwbpn2LI0c4WUOM7P": {
+   "usi": 1,
+   "ultimo": "2026-10-20"
   }
  },
  "musica_recenti_meta": [
@@ -4810,7 +4824,7 @@
   "L12",
   "L13"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "montaggio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
