@@ -3750,11 +3750,32 @@
      "id": "xfQGhzLpZV8"
     }
    }
+  },
+  {
+   "quando": "2026-10-20T06:00",
+   "slot": "2026-10-20 08:00",
+   "video": "IMG_3935.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-ccb02932",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "dusty_road_magic_1.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "aNw7AUHpiUE"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-10 13:15",
   "2026-10-10 15:00",
   "2026-10-10 16:45",
   "2026-10-10 18:30",
@@ -3833,10 +3854,10 @@
   "2026-10-20 04:00",
   "2026-10-20 05:00",
   "2026-10-20 06:00",
-  "2026-10-20 07:00"
+  "2026-10-20 07:00",
+  "2026-10-20 08:00"
  ],
  "musica_recenti": [
-  "vibe_check_4.m4a",
   "duty_calls_3.m4a",
   "survival_mode_4.m4a",
   "turn_in_the_sun_4.m4a",
@@ -3855,7 +3876,8 @@
   "delirium_1.m4a",
   "cutscene_crush_1.m4a",
   "kick_it_4.m4a",
-  "death_duel_3.m4a"
+  "death_duel_3.m4a",
+  "dusty_road_magic_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3964,10 +3986,10 @@
   "MIE-c003cf5c",
   "MIE-c743e73f",
   "L12",
-  "MIE-34586b77"
+  "MIE-34586b77",
+  "MIE-ccb02932"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "regole",
@@ -3976,6 +3998,7 @@
   "mentalita",
   "mentalita",
   "regole",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -4154,8 +4177,8 @@
    "ultimo": "2026-10-20"
   },
   "1a2POnx-7OaYCvRXrpkTO6Qw_dTZ4CN-d": {
-   "usi": 1,
-   "ultimo": "2026-10-16"
+   "usi": 2,
+   "ultimo": "2026-10-20"
   },
   "1psghsoVp3I-dU4RMW8CuX7jIIkUpjvLc": {
    "usi": 1,
@@ -4253,7 +4276,7 @@
   "L11",
   "L12"
  ],
- "formato_ultimo": "ambiente",
+ "formato_ultimo": "montaggio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
