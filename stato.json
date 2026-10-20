@@ -3772,11 +3772,48 @@
      "id": "aNw7AUHpiUE"
     }
    }
+  },
+  {
+   "quando": "2026-10-20T07:00",
+   "slot": "2026-10-20 09:00",
+   "video": "IMG_3952.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-58af46e5",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 38,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 0.7s a 6.7s",
+    "durata": 6.0,
+    "inizio": 0.72,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.46,
+     "dominante": "calda",
+     "rumore": 3.7
+    },
+    "copertina_ms": 3937,
+    "musica": "the_light_4.m4a",
+    "formato": "ambiente",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "TZO7nmuZi54"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-10 15:00",
   "2026-10-10 16:45",
   "2026-10-10 18:30",
   "2026-10-10 20:15",
@@ -3855,10 +3892,10 @@
   "2026-10-20 05:00",
   "2026-10-20 06:00",
   "2026-10-20 07:00",
-  "2026-10-20 08:00"
+  "2026-10-20 08:00",
+  "2026-10-20 09:00"
  ],
  "musica_recenti": [
-  "duty_calls_3.m4a",
   "survival_mode_4.m4a",
   "turn_in_the_sun_4.m4a",
   "taking_flight_3.m4a",
@@ -3877,7 +3914,8 @@
   "cutscene_crush_1.m4a",
   "kick_it_4.m4a",
   "death_duel_3.m4a",
-  "dusty_road_magic_1.m4a"
+  "dusty_road_magic_1.m4a",
+  "the_light_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3987,10 +4025,10 @@
   "MIE-c743e73f",
   "L12",
   "MIE-34586b77",
-  "MIE-ccb02932"
+  "MIE-ccb02932",
+  "MIE-58af46e5"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "regole",
   "amicizia",
@@ -3998,6 +4036,7 @@
   "mentalita",
   "mentalita",
   "regole",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -4181,8 +4220,8 @@
    "ultimo": "2026-10-20"
   },
   "1psghsoVp3I-dU4RMW8CuX7jIIkUpjvLc": {
-   "usi": 1,
-   "ultimo": "2026-10-18"
+   "usi": 2,
+   "ultimo": "2026-10-20"
   },
   "1KrAS_uFNheClKfLJbtUvGGJ16dNqCs2z": {
    "usi": 1,
@@ -4276,7 +4315,7 @@
   "L11",
   "L12"
  ],
- "formato_ultimo": "montaggio",
+ "formato_ultimo": "ambiente",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
