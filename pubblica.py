@@ -14,7 +14,7 @@ Ad ogni esecuzione:
 
 Credenziali: variabili d'ambiente (GitHub Secrets). DRY_RUN=1 fa tutto tranne pubblicare.
 """
-import io, json, os, re, sys, time, datetime, random, traceback, subprocess, shutil
+import calendar, io, json, os, re, sys, time, datetime, random, traceback, subprocess, shutil
 import requests
 import overlay
 import scena as scene_mod
@@ -387,10 +387,11 @@ def monta_regole(lista, src, out, music, serie, drive, work, clip):
 
 
 def etichetta_serie(slot):
-    """'GIORNO 12 / 365' in base alla data dello slot (manuale: oggi)."""
+    """'GIORNO 294 / 365': il giorno dell'ANNO (dal 21/10/2026, scelta di Alessandro: si insiste sulla fine
+    dell'anno; prima si contava da SERIE_INIZIO). Data dello slot (manuale: oggi)."""
     giorno = (ora_slot(slot) or ora_roma()).date()
-    n = (giorno - SERIE_INIZIO).days + 1
-    return f"GIORNO {n} / 365" if n >= 1 else None
+    totale = 366 if calendar.isleap(giorno.year) else 365
+    return f"GIORNO {giorno.timetuple().tm_yday} / {totale}"
 
 
 def ora_slot(slot):
@@ -680,7 +681,7 @@ def youtube_upload(creds, path, cap, publish_at=None):
     if cap.get("righe"):    # formato REGOLE: le regole in descrizione
         descr = "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1)) + "\n\n" + descr
     if serie_testo(cap):    # la serie in prima riga + invito a seguire il viaggio (il personaggio, non solo le frasi)
-        descr = f"{serie_testo(cap)} - il mio viaggio di 365 giorni, iscriviti per vedere dove arrivo.\n\n" + descr
+        descr = f"{serie_testo(cap)} - giorno dopo giorno fino alla fine dell'anno, iscriviti per vedere dove arrivo.\n\n" + descr
     body = {"snippet": {"title": title + " #shorts", "description": descr, "categoryId": "22",
                         "tags": (["vita vera", "momenti", "oggi", "italia", "shorts"] if momento else
                                  ["motivazione", "mentalità", "disciplina", "frasi motivazionali", "crescita personale",
