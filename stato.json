@@ -4281,11 +4281,50 @@
    },
    "spinto": false,
    "testo": "Avrai più gusto nello scegliere le persone quando inizierai ad amare te stesso."
+  },
+  {
+   "quando": "2026-10-20T22:00",
+   "slot": "2026-10-21 00:00",
+   "video": "IMG_4069.MOV",
+   "md5": "8bdb024d4d96772d56a81fd9a076422d",
+   "da_archivio": false,
+   "scena": "macchina",
+   "registrato": "2026-10-20T00:08+02:00",
+   "frase": "MIE-f0d2e909",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 46,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 43.3s a 51.3s",
+    "durata": 8.0,
+    "inizio": 43.3,
+    "colore": {
+     "scena": "sera",
+     "motivo": "poca luce",
+     "luce": 0.09,
+     "dominante": "calda",
+     "rumore": 1.4
+    },
+    "copertina_ms": 2250,
+    "musica": "the_road_to_mordor_1.m4a",
+    "formato": "frase8",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "W6dlqrVJURE"
+    }
+   },
+   "spinto": true,
+   "testo": "Smetti di spiegarti con chi ha già deciso di non capirti."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-12 08:00",
   "2026-10-12 11:30",
   "2026-10-12 13:15",
   "2026-10-12 19:00",
@@ -4364,10 +4403,10 @@
   "2026-10-20 20:00",
   "2026-10-20 21:00",
   "2026-10-20 22:00",
-  "2026-10-20 23:00"
+  "2026-10-20 23:00",
+  "2026-10-21 00:00"
  ],
  "musica_recenti": [
-  "delirium_1.m4a",
   "cutscene_crush_1.m4a",
   "kick_it_4.m4a",
   "death_duel_3.m4a",
@@ -4386,7 +4425,8 @@
   "cutscene_crush_3.m4a",
   "i_might_be_late_4.m4a",
   "cartier_4.m4a",
-  "van_life_rager_4.m4a"
+  "van_life_rager_4.m4a",
+  "the_road_to_mordor_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4511,10 +4551,10 @@
   "MIE-8f56c6f7",
   "MIE-4f7e8b73",
   "MIE-13edb45d",
-  "MIE-2a9dd1f2"
+  "MIE-2a9dd1f2",
+  "MIE-f0d2e909"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -4522,6 +4562,7 @@
   "mentalita",
   "mentalita",
   "amicizia",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -4601,19 +4642,6 @@
    "registrato": "2026-10-19T23:55+02:00",
    "fascia": "palestra",
    "caricato": "2026-10-20T11:56:43.385Z",
-   "parlato": null,
-   "momento": null
-  },
-  "1VGZf2d6SShnq-cjjoWQxnGMEdaEw7QWZ": {
-   "nome": "IMG_4069.MOV",
-   "scena": "macchina",
-   "sicurezza": 0.71,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-20T00:08+02:00",
-   "fascia": "notte",
-   "caricato": "2026-10-20T15:11:58.339Z",
    "parlato": null,
    "momento": null
   },
@@ -4909,6 +4937,10 @@
   "17EZ3mbgpyShyxZFPCxPm2FHj5T7EgG15": {
    "usi": 1,
    "ultimo": "2026-10-20"
+  },
+  "13IatOKGxW0HeJxXmCvNHIy5Aw-Y-MIwQ": {
+   "usi": 1,
+   "ultimo": "2026-10-20"
   }
  },
  "musica_recenti_meta": [
@@ -4955,7 +4987,7 @@
   "L12",
   "L13"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "frase8",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
