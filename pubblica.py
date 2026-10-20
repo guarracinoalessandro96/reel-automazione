@@ -228,6 +228,7 @@ def controlla_errori(state, results):
                 pass
 
 
+CADENZA_DAL = "2026-10-21 00:00"   # dal 21/10/2026 uno Short ogni 2 ore (orario.OGNI_ORE)
 SPINTA_MIN_VIEWS = 100      # lo Short di ieri alla stessa ora sopra questa soglia = orario spinto da YouTube
 VIDEO_DA_TENERE = 12        # con piu' video nuovi in coda si pubblicano comunque (non si accumulano)
 GIORNI_RIUSO_FRASE = 14     # negli orari fermi si riusa una frase uscita almeno 14 giorni fa
@@ -243,6 +244,8 @@ def orario_spinto(state, slot, creds):
     if t is None or DRY or not creds:
         return True
     ieri = f"{t - datetime.timedelta(days=1):%Y-%m-%d %H:%M}"
+    if ieri < CADENZA_DAL:          # ieri c'era un'altra cadenza (uno ogni ora): non dice niente su oggi
+        return True
     h = next((x for x in reversed(state["storico"]) if x.get("slot") == ieri), None)
     vid = ((h or {}).get("risultati") or {}).get("youtube", {}).get("id")
     if not vid:

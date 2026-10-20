@@ -85,7 +85,7 @@ def pubblicazioni():
     if fermi and (ultima is None or (ora - ultima).total_seconds() > 30 * 3600):
         raise RuntimeError(f"{len(fermi)} video in coda da oltre 30 ore e nessun reel pubblicato: la pubblicazione e' ferma")
     pausa = os.path.exists(os.path.join(here, "PAUSA"))
-    if ultima and not pausa and (ora - ultima).total_seconds() > 3 * 3600:   # dal 18/10 ne esce uno ogni ora
+    if ultima and not pausa and (ora - ultima).total_seconds() > 4 * 3600:   # dal 21/10 ne esce uno ogni 2 ore
         raise RuntimeError(f"nessun reel pubblicato dal {ultima:%d/%m %H:%M}: la pubblicazione sembra ferma")
     rotti = [a["nome"] for a in coda if a.get("fallimenti")]
     if rotti:

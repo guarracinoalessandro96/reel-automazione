@@ -1,4 +1,5 @@
-"""Decide se adesso tocca pubblicare. Dal 18/10/2026: UNO SHORT OGNI ORA, 24 al giorno (come MoreMozi), ora di Roma.
+"""Decide se adesso tocca pubblicare. Dal 21/10/2026: UNO SHORT OGNI 2 ORE, 12 al giorno (00, 02, ... 22), ora di Roma.
+(18-21/10: uno ogni ora, ma YouTube ne faceva vedere solo ~10-14 al giorno: gli altri restavano sotto 25 views.)
 (8-11/10: 10 al giorno; 11-13/10: 5; 13-18/10: 4 alle 9, 13, 17, 21.)
 
 GitHub avvia il controllo ogni 10 minuti (a volte in ritardo). Uno slot (es. "2026-10-18 22:00") si prepara fino a
@@ -11,6 +12,7 @@ from zoneinfo import ZoneInfo
 
 ANTICIPO = 50                        # minuti: si prepara tutto prima, poi si pubblica all'ora ESATTA
 RITARDO_MAX = 10                     # minuti: oltre, lo slot si salta e si prepara il successivo
+OGNI_ORE = 2                         # 21/10/2026: scelta di Alessandro (12 al giorno, tutti spinti da YouTube)
 STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stato.json")
 
 
@@ -30,7 +32,7 @@ def fascia_ora(h):
     return "notte"
 
 
-SLOTS = [(h, 0, fascia_ora(h)) for h in range(24)]      # (ora, minuti, fascia): uno ogni ora
+SLOTS = [(h, 0, fascia_ora(h)) for h in range(0, 24, OGNI_ORE)]      # (ora, minuti, fascia): uno ogni 2 ore
 
 
 def etichetta(h, m):
@@ -58,6 +60,8 @@ def slot_da_fare(now=None):
     if prossima - now <= datetime.timedelta(minutes=ANTICIPO):       # in arrivo: si prepara e si aspetta
         candidati.append(prossima)
     for c in candidati:
+        if c.hour % OGNI_ORE:                                         # solo le ore pari
+            continue
         key = f"{c:%Y-%m-%d %H:%M}"
         if key not in fatti:
             return key
