@@ -3606,11 +3606,33 @@
      "id": "V8SFQS6IMVU"
     }
    }
+  },
+  {
+   "quando": "2026-10-20T01:00",
+   "slot": "2026-10-20 03:00",
+   "video": "IMG_3831.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "L11",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 regole per proteggere la tua energia",
+    "musica": "ego_chall_4.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "_LYSQhLN0_8"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-09 22:00",
   "2026-10-09 23:45",
   "2026-10-10 08:00",
   "2026-10-10 09:45",
@@ -3689,10 +3711,10 @@
   "2026-10-19 23:00",
   "2026-10-20 00:00",
   "2026-10-20 01:00",
-  "2026-10-20 02:00"
+  "2026-10-20 02:00",
+  "2026-10-20 03:00"
  ],
  "musica_recenti": [
-  "moon_vision_3.m4a",
   "visions_3.m4a",
   "the_road_to_mordor_4.m4a",
   "way_back_home_4.m4a",
@@ -3711,7 +3733,8 @@
   "cartier_3.m4a",
   "van_life_rager_2.m4a",
   "horizons_3.m4a",
-  "duty_calls_4.m4a"
+  "duty_calls_4.m4a",
+  "ego_chall_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3815,10 +3838,10 @@
   "MIE-60cee534",
   "MIE-ca4626a5",
   "L10",
-  "MIE-6ab824f2"
+  "MIE-6ab824f2",
+  "L11"
  ],
  "temi_recenti": [
-  "mentalita",
   "regole",
   "mentalita",
   "mentalita",
@@ -3827,10 +3850,11 @@
   "mentalita",
   "mentalita",
   "regole",
-  "amicizia"
+  "amicizia",
+  "regole"
  ],
  "analisi": {},
- "pulizia": "2026-10-19",
+ "pulizia": "2026-10-20",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 1,
@@ -3985,8 +4009,8 @@
    "ultimo": "2026-10-20"
   },
   "1Me9XwPdk7-kx_j_4Y_9YpSyy48oLrBIM": {
-   "usi": 1,
-   "ultimo": "2026-10-14"
+   "usi": 2,
+   "ultimo": "2026-10-20"
   },
   "1Pnwa-lAv7b6BxxAB-L0Kp3azuB15R43F": {
    "usi": 1,
@@ -4100,9 +4124,10 @@
   "L07",
   "L08",
   "L09",
-  "L10"
+  "L10",
+  "L11"
  ],
- "formato_ultimo": "montaggio",
+ "formato_ultimo": "regole",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
