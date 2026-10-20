@@ -127,7 +127,7 @@ def main():
     # promemoria coda solo una volta al giorno (il controllo gira ogni 3 ore): al giro delle 6:37 UTC
     if VIDEO_IN_CODA is not None and VIDEO_IN_CODA < VIDEO_MINIMI and datetime.datetime.utcnow().hour == 6:
         avvisi.manda(f"PROMEMORIA\nIn 'Da pubblicare' ci sono solo {VIDEO_IN_CODA} video nuovi\n"
-                     "Ne esce uno ogni ora\nMandane qualcuno al bot Telegram\n"
+                     "Ne esce uno ogni 2 ore\nMandane qualcuno al bot Telegram\n"
                      "Altrimenti riuso quelli vecchi dell'archivio")
     if problemi:
         avvisi.manda("ATTENZIONE: SISTEMA REEL\nC'e' qualcosa da sistemare:\n\n" + "\n\n".join(problemi) +
