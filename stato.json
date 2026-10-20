@@ -4067,11 +4067,48 @@
      "id": "X21BtKZ9BOs"
     }
    }
+  },
+  {
+   "quando": "2026-10-20T16:00",
+   "slot": "2026-10-20 18:00",
+   "video": "IMG_4057.MOV",
+   "md5": "1e056fb005b8863667d37f4cd184c9e1",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-19T23:39+02:00",
+   "frase": "MIE-d9da9ecd",
+   "tema": "dieta",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 3,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 4.3s a 9.3s",
+    "durata": 5.0,
+    "inizio": 4.3,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.49,
+     "dominante": "neutra",
+     "rumore": 3.5
+    },
+    "copertina_ms": 300,
+    "musica": "majestic_12_2.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "9aZ3SScmMKs"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-11 13:15",
   "2026-10-11 15:00",
   "2026-10-11 16:45",
   "2026-10-11 18:30",
@@ -4150,10 +4187,10 @@
   "2026-10-20 14:00",
   "2026-10-20 15:00",
   "2026-10-20 16:00",
-  "2026-10-20 17:00"
+  "2026-10-20 17:00",
+  "2026-10-20 18:00"
  ],
  "musica_recenti": [
-  "intergalactic_2.m4a",
   "cartier_3.m4a",
   "van_life_rager_2.m4a",
   "horizons_3.m4a",
@@ -4172,7 +4209,8 @@
   "stake_out_3.m4a",
   "horizons_1.m4a",
   "survival_mode_2.m4a",
-  "fire_in_the_sky_3.m4a"
+  "fire_in_the_sky_3.m4a",
+  "majestic_12_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4291,10 +4329,10 @@
   "MIE-fe64b814",
   "MIE-7b1416ce",
   "MIE-72bb55c2",
-  "MIE-a9ffa1e4"
+  "MIE-a9ffa1e4",
+  "MIE-d9da9ecd"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "regole",
   "mentalita",
@@ -4303,22 +4341,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "dieta"
  ],
  "analisi": {
-  "170xi1M_WuUQYtmR51sp29fYcTm6TNRWC": {
-   "nome": "IMG_4057.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.98,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-19T23:39+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-20T11:30:22.810Z",
-   "parlato": null,
-   "momento": null
-  },
   "112bCGRrBtSA3jyS_KaaNUBApv7FXWYWp": {
    "nome": "IMG_4058.MOV",
    "scena": "palestra",
@@ -4433,6 +4459,58 @@
    "registrato": "2026-10-20T00:04+02:00",
    "fascia": "notte",
    "caricato": "2026-10-20T11:59:34.477Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1WfGQj2VXwfUWv0d78qRVLBFKST3HL38H": {
+   "nome": "IMG_4070.MOV",
+   "scena": "macchina",
+   "sicurezza": 0.72,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-20T00:09+02:00",
+   "fascia": "notte",
+   "caricato": "2026-10-20T15:08:10.427Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1VGZf2d6SShnq-cjjoWQxnGMEdaEw7QWZ": {
+   "nome": "IMG_4069.MOV",
+   "scena": "macchina",
+   "sicurezza": 0.71,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-20T00:08+02:00",
+   "fascia": "notte",
+   "caricato": "2026-10-20T15:11:58.339Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1i2yj9ikGkIntLcdtilgrF0B12Zgkc5Ic": {
+   "nome": "IMG_4067.MOV",
+   "scena": "macchina",
+   "sicurezza": 0.84,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-20T00:05+02:00",
+   "fascia": "notte",
+   "caricato": "2026-10-20T15:12:11.135Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1OdFL1x4NHaKHP5hWKHcdcKchSP_OkCE3": {
+   "nome": "IMG_4068.MOV",
+   "scena": "macchina",
+   "sicurezza": 0.75,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-20T00:06+02:00",
+   "fascia": "notte",
+   "caricato": "2026-10-20T15:12:38.623Z",
    "parlato": null,
    "momento": null
   }
@@ -4682,6 +4760,10 @@
   "13Mbzphz708QlBEv9Bq_CNQzZaM4WplJL": {
    "usi": 1,
    "ultimo": "2026-10-20"
+  },
+  "1a6QgtIzJRhmtmWHx-62JQcB90PeF3vKz": {
+   "usi": 1,
+   "ultimo": "2026-10-20"
   }
  },
  "musica_recenti_meta": [
@@ -4728,7 +4810,7 @@
   "L12",
   "L13"
  ],
- "formato_ultimo": "ambiente",
+ "formato_ultimo": "frase",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
