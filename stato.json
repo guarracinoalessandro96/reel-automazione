@@ -3810,11 +3810,33 @@
      "id": "TZO7nmuZi54"
     }
    }
+  },
+  {
+   "quando": "2026-10-20T08:00",
+   "slot": "2026-10-20 10:00",
+   "video": "IMG_3968.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "L13",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 cose che ho imparato dal tradimento",
+    "musica": "sweaty_staredown_4.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "O_mlrnqA-P8"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-10 16:45",
   "2026-10-10 18:30",
   "2026-10-10 20:15",
   "2026-10-10 22:00",
@@ -3893,10 +3915,10 @@
   "2026-10-20 06:00",
   "2026-10-20 07:00",
   "2026-10-20 08:00",
-  "2026-10-20 09:00"
+  "2026-10-20 09:00",
+  "2026-10-20 10:00"
  ],
  "musica_recenti": [
-  "survival_mode_4.m4a",
   "turn_in_the_sun_4.m4a",
   "taking_flight_3.m4a",
   "whoop_1.m4a",
@@ -3915,7 +3937,8 @@
   "kick_it_4.m4a",
   "death_duel_3.m4a",
   "dusty_road_magic_1.m4a",
-  "the_light_4.m4a"
+  "the_light_4.m4a",
+  "sweaty_staredown_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4026,10 +4049,10 @@
   "L12",
   "MIE-34586b77",
   "MIE-ccb02932",
-  "MIE-58af46e5"
+  "MIE-58af46e5",
+  "L13"
  ],
  "temi_recenti": [
-  "mentalita",
   "regole",
   "amicizia",
   "regole",
@@ -4038,7 +4061,8 @@
   "regole",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "regole"
  ],
  "analisi": {},
  "pulizia": "2026-10-20",
@@ -4224,8 +4248,8 @@
    "ultimo": "2026-10-20"
   },
   "1KrAS_uFNheClKfLJbtUvGGJ16dNqCs2z": {
-   "usi": 1,
-   "ultimo": "2026-10-18"
+   "usi": 2,
+   "ultimo": "2026-10-20"
   },
   "1C7dPpnBEXAtEz6B37kjIeLNrl5vyMEeb": {
    "usi": 1,
@@ -4313,9 +4337,10 @@
   "L09",
   "L10",
   "L11",
-  "L12"
+  "L12",
+  "L13"
  ],
- "formato_ultimo": "ambiente",
+ "formato_ultimo": "regole",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
