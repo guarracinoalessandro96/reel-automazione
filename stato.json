@@ -3712,11 +3712,48 @@
      "id": "b4YkkZpUN_A"
     }
    }
+  },
+  {
+   "quando": "2026-10-20T05:00",
+   "slot": "2026-10-20 07:00",
+   "video": "IMG_3833.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-34586b77",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 38,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 1.6s a 7.6s",
+    "durata": 6.0,
+    "inizio": 1.57,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.44,
+     "dominante": "neutra",
+     "rumore": 3.7
+    },
+    "copertina_ms": 3937,
+    "musica": "death_duel_3.m4a",
+    "formato": "ambiente",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "xfQGhzLpZV8"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-10 11:30",
   "2026-10-10 13:15",
   "2026-10-10 15:00",
   "2026-10-10 16:45",
@@ -3795,10 +3832,10 @@
   "2026-10-20 03:00",
   "2026-10-20 04:00",
   "2026-10-20 05:00",
-  "2026-10-20 06:00"
+  "2026-10-20 06:00",
+  "2026-10-20 07:00"
  ],
  "musica_recenti": [
-  "the_light_3.m4a",
   "vibe_check_4.m4a",
   "duty_calls_3.m4a",
   "survival_mode_4.m4a",
@@ -3817,7 +3854,8 @@
   "ego_chall_4.m4a",
   "delirium_1.m4a",
   "cutscene_crush_1.m4a",
-  "kick_it_4.m4a"
+  "kick_it_4.m4a",
+  "death_duel_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3925,10 +3963,10 @@
   "L11",
   "MIE-c003cf5c",
   "MIE-c743e73f",
-  "L12"
+  "L12",
+  "MIE-34586b77"
  ],
  "temi_recenti": [
-  "regole",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -3937,7 +3975,8 @@
   "regole",
   "mentalita",
   "mentalita",
-  "regole"
+  "regole",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-10-20",
@@ -4111,8 +4150,8 @@
    "ultimo": "2026-10-20"
   },
   "1dS3dJuren-0gwioBQEQ4MkMFmJH5kMNx": {
-   "usi": 1,
-   "ultimo": "2026-10-15"
+   "usi": 2,
+   "ultimo": "2026-10-20"
   },
   "1a2POnx-7OaYCvRXrpkTO6Qw_dTZ4CN-d": {
    "usi": 1,
@@ -4214,7 +4253,7 @@
   "L11",
   "L12"
  ],
- "formato_ultimo": "regole",
+ "formato_ultimo": "ambiente",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
