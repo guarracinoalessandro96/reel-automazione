@@ -106,10 +106,11 @@ def _overlap(a, b):
 
 
 def choose_position(block_h, faces):
+    # 20/10/2026: SEMPRE prima in alto (dati di 98 Short: testo in alto mediana 988 views, in basso 485). Prima, con il
+    # viso nella meta' alta si partiva dal basso anche quando sopra il viso c'era spazio. Il viso non si copre mai:
+    # se in alto non c'e' posto si scende (posizioni di TOP_FIRST in ordine).
     left, right = 0.5 - TEXT_MAX_W / 2 - 0.03, 0.5 + TEXT_MAX_W / 2 + 0.03
     order = TOP_FIRST
-    if faces and float(np.median([(f[1] + f[3]) / 2 for f in faces])) < 0.5:
-        order = BOTTOM_FIRST
     best, best_score = None, None
     for y in order:
         y = min(max(y, SAFE_TOP), SAFE_BOTTOM - block_h)

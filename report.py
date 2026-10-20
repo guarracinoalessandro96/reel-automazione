@@ -15,6 +15,7 @@ OUT = os.path.join(HERE, "docs", "report.json")
 ENV = os.environ.get
 MIN_POST = 10          # sotto questo numero di reel i dati sono troppo pochi per cambiare i pesi
 K = 5                  # "prudenza": con pochi reel su un tema, il suo peso resta vicino alla media
+NON_SPINTO = 50        # sotto queste views (dopo 2 giorni) YouTube non ha mai fatto vedere lo Short: fuori dai confronti
 FORMATI_DAL = "2026-10-18"   # gara dei formati: solo reel dello stesso periodo (uno ogni ora, 5 s), confronto alla pari
 
 
@@ -157,14 +158,19 @@ def riassunto_settimana(state):
     righe = []
     for h in post:
         v, l = yt.get(h.get("risultati", {}).get("youtube", {}).get("id"), (0, 0))
-        righe.append((v, l, testi.get(h.get("frase"), "")))
+        righe.append((v, l, testi.get(h.get("frase")) or h.get("testo") or (h.get("montaggio") or {}).get("titolo") or ""))
     righe.sort(reverse=True)
     formati = {}
     ieri = (datetime.datetime.now() - datetime.timedelta(days=1)).isoformat()
+    maturi = spinti = 0
     for h in post:
         if h.get("quando", "") >= ieri:      # usciti da meno di 24 ore: ancora nel primo test di YouTube, falserebbero
             continue
         v, _ = yt.get(h.get("risultati", {}).get("youtube", {}).get("id"), (0, 0))
+        maturi += 1
+        if v < NON_SPINTO:                   # mai fatto vedere da YouTube: fermo per l'orario, non per il formato
+            continue
+        spinti += 1
         formati.setdefault((h.get("montaggio") or {}).get("formato") or "frase", []).append(v)
     fb = stat_facebook(post)
     fol = []
@@ -195,6 +201,8 @@ def riassunto_settimana(state):
     t = ["RIASSUNTO DELLA SETTIMANA", f"{da:%d/%m} - {datetime.date.today():%d/%m}", "",
          "YOUTUBE", f"{len(post)} reel", f"{num(sum(r[0] for r in righe))} visualizzazioni",
          f"{sum(r[1] for r in righe)} like"]
+    if maturi:      # dal 20/10/2026: con uno Short ogni ora YouTube ne fa vedere solo una parte
+        t += [f"{spinti} reel su {maturi} fatti vedere da YouTube", f"{maturi - spinti} fermi sotto {NON_SPINTO} visualizzazioni"]
     iscritti = follower("youtube")
     if iscritti:
         t += [f"{num(iscritti[0])} iscritti", f"{iscritti[1]:+d} iscritti in una settimana"]
@@ -206,7 +214,7 @@ def riassunto_settimana(state):
         t += ["", f"{i}) {f}", f"{num(v)} visualizzazioni", f"{l} like"]
     if formati:
         import statistics
-        t += ["", "FORMATI (visualizzazioni a meta' classifica)", "Solo reel usciti da almeno 24 ore"]
+        t += ["", "FORMATI (visualizzazioni a meta' classifica)", "Solo reel fatti vedere da YouTube"]
         for f, v in sorted(formati.items(), key=lambda x: -statistics.median(x[1])):
             t += [f"{f}: {num(int(statistics.median(v)))} ({len(v)} reel)"]
     from piattaforme import PLATFORMS, TIKTOK_A_MANO     # solo le piattaforme accese (dal 19/10/2026: YouTube)
@@ -255,14 +263,18 @@ def main():
                       "frase_virale": "frase virale" if h.get("frase") in VIRALI else "frase normale",
                       "formato": (h.get("montaggio") or {}).get("formato") or f"frase {round((h.get('montaggio') or {}).get('durata') or 8)} s", "views": v, "like": l})
 
+    # 20/10/2026: con uno Short ogni ora YouTube ne fa vedere solo ~10-14 al giorno; quelli mai spinti (fermi per
+    # l'orario, non per il contenuto) non dicono niente su temi, formati e frasi: nei confronti si usano solo gli altri
+    test = [r for r in righe if r["views"] >= NON_SPINTO]
+    media_tutti = sum(r["views"] for r in righe) / len(righe) if righe else 0
     per = {"tema": {}, "scena": {}, "orario": {}, "musica": {}, "origine": {}, "frase_virale": {}, "formato": {}}
-    for r in righe:
+    for r in test:
         for k in per:
             per[k].setdefault(r[k] or "?", []).append(r["views"])
-    media_tot = sum(r["views"] for r in righe) / len(righe) if righe else 0
+    media_tot = sum(r["views"] for r in test) / len(test) if test else 0
 
     pesi = json.load(open(PESI, encoding="utf-8")) if os.path.exists(PESI) else {"temi": {}}
-    if len(righe) >= MIN_POST and media_tot > 0:
+    if len(test) >= MIN_POST and media_tot > 0:
         pesi["temi"] = {}
         for tema, v in per["tema"].items():
             stima = (sum(v) + K * media_tot) / (len(v) + K)          # media "prudente"
@@ -274,16 +286,16 @@ def main():
     # da 6 reel in su per formato; mai sotto 0,4 (si continua a provarli) e mai sopra 2,5.
     import statistics
     per_f = {}
-    for r in righe:
+    for r in test:
         if r["quando"] < FORMATI_DAL:      # i reel di prima (8 s, 4-5 al giorno) falserebbero il confronto
             continue
         nome_f = "frase" if r["formato"].startswith("frase") else r["formato"]
         per_f.setdefault(nome_f, []).append(r["views"])
-    tutte = [r["views"] for r in righe]
+    tutte = [r["views"] for r in test]
     # frasi "vincenti" (sopra 900 views e sopra il 60% degli altri): pubblica.py le ripropone su un altro video
     if tutte:
         soglia = max(900, sorted(tutte)[int(len(tutte) * 0.6)])
-        pesi["frasi_vincenti"] = sorted({r["frase"] for r in righe if r["views"] >= soglia
+        pesi["frasi_vincenti"] = sorted({r["frase"] for r in test if r["views"] >= soglia
                                          and r.get("frase") and not str(r["frase"]).startswith(("L", "PARL"))})
     nuove = [x for v in per_f.values() for x in v]       # base del confronto: la mediana dello stesso periodo
     if nuove:
@@ -301,7 +313,7 @@ def main():
     tutti = [h for h in state.get("storico", []) if h.get("slot")]
     report = {"data": datetime.date.today().isoformat(), "reel_analizzati": len(righe),
               "facebook": stat_facebook(tutti),
-              "media_views": round(media_tot), "like_totali": sum(r["like"] for r in righe),
+              "media_views": round(media_tutti), "spinti": len(test), "like_totali": sum(r["like"] for r in righe),
               "per_tema": media(per["tema"]), "per_scena": media(per["scena"]), "per_orario": media(per["orario"]),
               "per_musica": media(per["musica"]), "per_origine": media(per["origine"]), "per_frase_virale": media(per["frase_virale"]),
               "per_formato": media(per["formato"]),

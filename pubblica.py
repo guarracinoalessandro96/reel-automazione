@@ -228,7 +228,38 @@ def controlla_errori(state, results):
                 pass
 
 
-def scegli_formato(slot, state, frase, an):
+SPINTA_MIN_VIEWS = 100      # lo Short di ieri alla stessa ora sopra questa soglia = orario spinto da YouTube
+VIDEO_DA_TENERE = 12        # con piu' video nuovi in coda si pubblicano comunque (non si accumulano)
+GIORNI_RIUSO_FRASE = 14     # negli orari fermi si riusa una frase uscita almeno 14 giorni fa
+
+
+def orario_spinto(state, slot, creds):
+    """True se probabilmente YouTube spingera' lo Short di quest'ora (o se non si sa). Dati 19-20/10/2026: con uno Short
+    ogni ora YouTube ne spinge ~10-14 al giorno, sempre nelle stesse ore (dalle 2 alle 11; dalle 12 all'1 restano a
+    10-25 views): se lo Short di IERI a quest'ora e' stato spinto, lo sara' probabilmente anche questo."""
+    if ENV("PROVA_ORARIO_FERMO") == "1":     # solo per le prove a vuoto
+        return False
+    t = ora_slot(slot)
+    if t is None or DRY or not creds:
+        return True
+    ieri = f"{t - datetime.timedelta(days=1):%Y-%m-%d %H:%M}"
+    h = next((x for x in reversed(state["storico"]) if x.get("slot") == ieri), None)
+    vid = ((h or {}).get("risultati") or {}).get("youtube", {}).get("id")
+    if not vid:
+        return True
+    try:
+        from googleapiclient.discovery import build
+        it = build("youtube", "v3", credentials=creds, cache_discovery=False).videos().list(
+            part="statistics", id=vid).execute().get("items", [])
+        views = int(it[0]["statistics"].get("viewCount", 0)) if it else None
+    except Exception as e:
+        log("Views dello Short di ieri non lette (vado normale):", e)
+        return True
+    log(f"Short di ieri alle {ieri[-5:]}: {views} views -> orario {'spinto' if views is None or views >= SPINTA_MIN_VIEWS else 'FERMO'}")
+    return views is None or views >= SPINTA_MIN_VIEWS
+
+
+def scegli_formato(slot, state, frase, an, spinto=True):
     """Formato del reel: a caso con i pesi (FORMATI, aggiornati da report.py), mai due volte di fila lo stesso
     se si puo'. FORMATO=nome forza un formato (prove)."""
     if ENV("FORMATO"):
@@ -237,6 +268,8 @@ def scegli_formato(slot, state, frase, an):
         return "momento"
     if an.get("parlato"):            # video in cui parla: sempre con la sua voce e i sottotitoli
         return "parlato"
+    if not spinto:                   # orario fermo: il formato piu' semplice (liste e montaggi restano per gli altri)
+        return "frase"
     pesi = dict(FORMATI)
     try:
         dati = json.load(open(os.path.join(HERE, "pesi.json"), encoding="utf-8"))
@@ -1144,8 +1177,14 @@ def main():
         log(f"Orario {slot}: nessuna piattaforma attiva in questo momento (tutte in pausa?), salto.")
         return
 
-    # 2. il video giusto per questo orario: prima i video NUOVI, se la coda e' vuota una clip dall'archivio
+    # 2. il video giusto per questo orario: prima i video NUOVI, se la coda e' vuota una clip dall'archivio.
+    # Orario FERMO (20/10/2026): il video nuovo aspetta un orario che YouTube spinge (MOMENTO no: esce subito)
+    spinto = orario_spinto(state, slot, creds)
     video = scegli_video(videos, state["analisi"], slot_ora)
+    tenuto = None
+    if (video and not spinto and len(videos) <= VIDEO_DA_TENERE
+            and not state["analisi"].get(video["id"], {}).get("momento")):
+        tenuto, video = video, None
     clip = None
     if video is None:
         usi_arch = state.setdefault("archivio_usi", {})
@@ -1165,10 +1204,16 @@ def main():
         limite = (datetime.datetime.now() - datetime.timedelta(hours=12)).isoformat(timespec="minutes")
         riposati = [c for c in archivio if c.get("ultimo", "") < limite]     # niente video usciti nelle ultime 12 ore
         clip = scegli_archivio(riposati or archivio, slot_ora)
-        if clip is None:
+        if clip is None and tenuto:           # archivio vuoto: esce comunque il video nuovo
+            video, tenuto = tenuto, None
+        elif clip is None:
             log(f"Nessun video nuovo e archivio vuoto per l'orario {slot}.")
             return
-        log(f"Nessun video nuovo: riuso dall'archivio {clip['nome']} (usato {clip.get('usi', 0)} volte)")
+    if clip:
+        if tenuto:
+            log(f"Orario fermo: {tenuto['name']} aspetta un orario spinto, adesso riuso dall'archivio {clip['nome']}")
+        else:
+            log(f"Nessun video nuovo: riuso dall'archivio {clip['nome']} (usato {clip.get('usi', 0)} volte)")
         an = {"scena": clip.get("scena"), "compagnia": clip.get("compagnia"), "fascia": clip.get("fascia")}
         nome, fonte_id = clip["nome"], clip["id"]
     else:
@@ -1201,11 +1246,19 @@ def main():
             vinc_id = set()
         sette = (datetime.date.today() - datetime.timedelta(days=7)).isoformat()
         vincenti = [f for f in mie if f["id"] in vinc_id and usi.get(f["id"], "") < sette]
-        if vincenti and random.random() < 0.25:
+        vecchie_lim = (datetime.date.today() - datetime.timedelta(days=GIORNI_RIUSO_FRASE)).isoformat()
+        vecchie = [f for f in mie if f["id"] in usi and usi[f["id"]] < vecchie_lim]
+        if not spinto and vecchie:           # orario fermo: si riusa la frase uscita da piu' tempo
+            frase = min(vecchie, key=lambda f: usi[f["id"]])
+            log("Orario fermo: riuso una frase uscita il", usi[frase["id"]])
+        elif vincenti and random.random() < 0.25:
             frase = random.choice(vincenti)
             log("Ripropongo una frase che ha gia' funzionato:", frase["gancio"])
         elif frasi:
-            frase = random.choice(virali or (lunghe if lunghe and random.random() < 0.9 else frasi))
+            gruppo = virali or (lunghe if lunghe and random.random() < 0.9 else frasi)
+            # 20/10/2026 (98 Short): 11-15 parole mediana 1.014 views, 7-10 parole 862, fino a 6 parole 443
+            ideali = [f for f in gruppo if 10 <= len(f["gancio"].split()) <= 16]
+            frase = random.choice(ideali if ideali and random.random() < 0.7 else gruppo)
         elif mie:            # finite: si riusa quella uscita da piu' tempo (mai fermarsi); salute.py avvisa
             frase = min(mie, key=lambda f: usi.get(f["id"], ""))
             log("Citazioni nuove finite: riuso la meno recente. Aggiungerne altre al documento!")
@@ -1224,7 +1277,7 @@ def main():
         drive.download(fonte_id, src, folder="Archivio" if clip else "Da pubblicare")
         serie = etichetta_serie(slot)
         frase = dict(frase, serie=serie)
-        info, formato = None, scegli_formato(slot, state, frase, an)
+        info, formato = None, scegli_formato(slot, state, frase, an, spinto)
         log(f"Formato: {formato}")
         try:                            # se un formato non riesce esce il reel normale (frase da 5 s)
             if formato == "momento":
@@ -1419,7 +1472,8 @@ def main():
     state["storico"].append({"quando": datetime.datetime.now().isoformat(timespec="minutes"), "slot": slot,
                              "video": nome, "md5": video.get("md5Checksum") if video else None,
                              "da_archivio": bool(clip), "scena": an["scena"], "registrato": an.get("registrato"),
-                             "frase": frase["id"], "tema": frase["tema"], "montaggio": info, "risultati": results})
+                             "frase": frase["id"], "tema": frase["tema"], "montaggio": info, "risultati": results,
+                             "spinto": spinto, "testo": frase["gancio"][:120]})
     if not DRY:              # la sera: i commenti nuovi su Telegram, per rispondere di persona (mai bloccare il reel)
         try:
             import commenti
