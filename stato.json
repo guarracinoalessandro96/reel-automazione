@@ -3871,11 +3871,32 @@
      "id": "13ybe-kEprY"
     }
    }
+  },
+  {
+   "quando": "2026-10-20T10:00",
+   "slot": "2026-10-20 12:00",
+   "video": "IMG_4030.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-33cb53e4",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "way_back_home_4.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "EdMnY1AgJnY"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-10 20:15",
   "2026-10-10 22:00",
   "2026-10-10 23:45",
   "2026-10-11 08:00",
@@ -3954,10 +3975,10 @@
   "2026-10-20 08:00",
   "2026-10-20 09:00",
   "2026-10-20 10:00",
-  "2026-10-20 11:00"
+  "2026-10-20 11:00",
+  "2026-10-20 12:00"
  ],
  "musica_recenti": [
-  "taking_flight_3.m4a",
   "whoop_1.m4a",
   "sweaty_staredown_1.m4a",
   "way_back_home_3.m4a",
@@ -3976,7 +3997,8 @@
   "dusty_road_magic_1.m4a",
   "the_light_4.m4a",
   "sweaty_staredown_4.m4a",
-  "rubberband_1.m4a"
+  "rubberband_1.m4a",
+  "way_back_home_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4089,10 +4111,10 @@
   "MIE-ccb02932",
   "MIE-58af46e5",
   "L13",
-  "MIE-239a782a"
+  "MIE-239a782a",
+  "MIE-33cb53e4"
  ],
  "temi_recenti": [
-  "amicizia",
   "regole",
   "mentalita",
   "mentalita",
@@ -4101,6 +4123,7 @@
   "mentalita",
   "mentalita",
   "regole",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -4295,8 +4318,8 @@
    "ultimo": "2026-10-20"
   },
   "1gsbR0t4WbGx68YpuUH-LiqfvFqNVVPqW": {
-   "usi": 1,
-   "ultimo": "2026-10-18"
+   "usi": 2,
+   "ultimo": "2026-10-20"
   },
   "1NfvRrrvtikqSvJNkOOpi9sOBXs09blgz": {
    "usi": 1,
@@ -4379,7 +4402,7 @@
   "L12",
   "L13"
  ],
- "formato_ultimo": "gancio",
+ "formato_ultimo": "montaggio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
