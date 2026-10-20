@@ -3689,11 +3689,33 @@
      "id": "lpb3j7EhvSY"
     }
    }
+  },
+  {
+   "quando": "2026-10-20T04:00",
+   "slot": "2026-10-20 06:00",
+   "video": "IMG_3832.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "L12",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 errori che ti tengono nella media",
+    "musica": "kick_it_4.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "b4YkkZpUN_A"
+    }
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-10 09:45",
   "2026-10-10 11:30",
   "2026-10-10 13:15",
   "2026-10-10 15:00",
@@ -3772,10 +3794,10 @@
   "2026-10-20 02:00",
   "2026-10-20 03:00",
   "2026-10-20 04:00",
-  "2026-10-20 05:00"
+  "2026-10-20 05:00",
+  "2026-10-20 06:00"
  ],
  "musica_recenti": [
-  "way_back_home_4.m4a",
   "the_light_3.m4a",
   "vibe_check_4.m4a",
   "duty_calls_3.m4a",
@@ -3794,7 +3816,8 @@
   "duty_calls_4.m4a",
   "ego_chall_4.m4a",
   "delirium_1.m4a",
-  "cutscene_crush_1.m4a"
+  "cutscene_crush_1.m4a",
+  "kick_it_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -3901,10 +3924,10 @@
   "MIE-6ab824f2",
   "L11",
   "MIE-c003cf5c",
-  "MIE-c743e73f"
+  "MIE-c743e73f",
+  "L12"
  ],
  "temi_recenti": [
-  "mentalita",
   "regole",
   "mentalita",
   "mentalita",
@@ -3913,7 +3936,8 @@
   "amicizia",
   "regole",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "regole"
  ],
  "analisi": {},
  "pulizia": "2026-10-20",
@@ -4083,8 +4107,8 @@
    "ultimo": "2026-10-20"
   },
   "12Fo5vh8JbpmRDWSzG5Ro-KcD-bCBRZH_": {
-   "usi": 1,
-   "ultimo": "2026-10-15"
+   "usi": 2,
+   "ultimo": "2026-10-20"
   },
   "1dS3dJuren-0gwioBQEQ4MkMFmJH5kMNx": {
    "usi": 1,
@@ -4187,9 +4211,10 @@
   "L08",
   "L09",
   "L10",
-  "L11"
+  "L11",
+  "L12"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "regole",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
