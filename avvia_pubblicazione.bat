@@ -1,13 +1,7 @@
 @echo off
-rem "Sveglia" della pubblicazione: la lancia l'Utilita' di pianificazione di Windows alle 9:02, 12:02, 15:02, 18:02, 21:02
-rem (attivita' "Reel Alessandro - avvio pubblicazione"). Aggiorna avvia.txt e fa push: GitHub parte subito
-rem (le esecuzioni programmate di GitHub da sole a volte saltano). Registro in avvia_log.txt (non va su GitHub).
+rem "Sveglia" della pubblicazione: la lancia ogni ora l'Utilita' di pianificazione di Windows
+rem (attivita' "Reel Alessandro - avvio pubblicazione"). Chiede a GitHub di fare subito il controllo
+rem (le esecuzioni programmate di GitHub a volte ritardano). Dal 20/10/2026 non tocca piu' la cartella
+rem del progetto (niente pull/commit/push): vedi avvia_pubblicazione.py. Registro in avvia_log.txt.
 cd /d "%~dp0"
-echo %date% %time% avvio >> avvia_log.txt
-git pull -q --rebase --autostash >> avvia_log.txt 2>&1
-> avvia.txt echo Modificare questo file (commit + push) fa partire subito il controllo di pubblicazione su GitHub.
->> avvia.txt echo Ultimo avvio dal PC: %date% %time%
-git add avvia.txt
-git commit -q -m "Avvio pubblicazione dal PC" avvia.txt >> avvia_log.txt 2>&1
-git push -q >> avvia_log.txt 2>&1 || (git pull -q --rebase --autostash && git push -q) >> avvia_log.txt 2>&1
-echo %date% %time% fatto >> avvia_log.txt
+python avvia_pubblicazione.py >> avvia_log.txt 2>&1
