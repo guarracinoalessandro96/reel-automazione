@@ -4401,11 +4401,50 @@
    },
    "spinto": true,
    "testo": "Se perdi i soldi non perdi niente. Se perdi la faccia, perdi tutto."
+  },
+  {
+   "quando": "2026-10-21T04:00",
+   "slot": "2026-10-21 06:00",
+   "video": "IMG_4060.MOV",
+   "md5": "f8155a9fc69d4754476cda7b80abc8bd",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-19T23:47+02:00",
+   "frase": "MIE-fb782374",
+   "tema": "amicizia",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 15,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 36.3s a 44.3s",
+    "durata": 8.0,
+    "inizio": 36.3,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.45,
+     "dominante": "neutra",
+     "rumore": 3.3
+    },
+    "copertina_ms": 6250,
+    "musica": "whoop_4.m4a",
+    "formato": "frase8",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "ORHMlkFVnLk"
+    }
+   },
+   "spinto": true,
+   "testo": "Pochi amici, testa tranquilla. La mia cerchia è piccola e va bene così."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-12 19:00",
   "2026-10-12 22:00",
   "2026-10-13 08:00",
   "2026-10-13 09:00",
@@ -4484,10 +4523,10 @@
   "2026-10-20 23:00",
   "2026-10-21 00:00",
   "2026-10-21 02:00",
-  "2026-10-21 04:00"
+  "2026-10-21 04:00",
+  "2026-10-21 06:00"
  ],
  "musica_recenti": [
-  "death_duel_3.m4a",
   "dusty_road_magic_1.m4a",
   "the_light_4.m4a",
   "sweaty_staredown_4.m4a",
@@ -4506,7 +4545,8 @@
   "van_life_rager_4.m4a",
   "the_road_to_mordor_1.m4a",
   "final_boss_battle_3.m4a",
-  "duty_calls_2.m4a"
+  "duty_calls_2.m4a",
+  "whoop_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4634,10 +4674,10 @@
   "MIE-2a9dd1f2",
   "MIE-f0d2e909",
   "MIE-68b9fc8e",
-  "MIE-a56f1caf"
+  "MIE-a56f1caf",
+  "MIE-fb782374"
  ],
  "temi_recenti": [
-  "mentalita",
   "dieta",
   "mentalita",
   "mentalita",
@@ -4646,22 +4686,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "imprenditore"
+  "imprenditore",
+  "amicizia"
  ],
  "analisi": {
-  "160CsC_a2Uob5QOIsuo8LleGfo5flVhZV": {
-   "nome": "IMG_4060.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.99,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-19T23:47+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-20T11:37:52.791Z",
-   "parlato": null,
-   "momento": null
-  },
   "1120zEipzyBfScy4IMkZ_264cYRRj4_wC": {
    "nome": "IMG_4061.MOV",
    "scena": "palestra",
@@ -5005,6 +5033,10 @@
   "1bWl3dJYdM96InBjDiVmdmRMF52U91gvK": {
    "usi": 1,
    "ultimo": "2026-10-21"
+  },
+  "160CsC_a2Uob5QOIsuo8LleGfo5flVhZV": {
+   "usi": 1,
+   "ultimo": "2026-10-21"
   }
  },
  "musica_recenti_meta": [
@@ -5051,7 +5083,7 @@
   "L12",
   "L13"
  ],
- "formato_ultimo": "gancio",
+ "formato_ultimo": "frase8",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
