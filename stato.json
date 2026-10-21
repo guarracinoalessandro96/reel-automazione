@@ -4361,11 +4361,50 @@
    },
    "spinto": true,
    "testo": "La gente vuole vederti stare bene, ma mai meglio di loro."
+  },
+  {
+   "quando": "2026-10-21T02:00",
+   "slot": "2026-10-21 04:00",
+   "video": "IMG_4068.MOV",
+   "md5": "e590b7aff761e9fbecc0210c0c76f50a",
+   "da_archivio": false,
+   "scena": "macchina",
+   "registrato": "2026-10-20T00:06+02:00",
+   "frase": "MIE-a56f1caf",
+   "tema": "imprenditore",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 43,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 28.3s a 36.3s",
+    "durata": 8.0,
+    "inizio": 28.3,
+    "colore": {
+     "scena": "sera",
+     "motivo": "poca luce",
+     "luce": 0.12,
+     "dominante": "calda",
+     "rumore": 1.5
+    },
+    "copertina_ms": 2750,
+    "musica": "duty_calls_2.m4a",
+    "formato": "gancio",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "5IR9mqAoH2w"
+    }
+   },
+   "spinto": true,
+   "testo": "Se perdi i soldi non perdi niente. Se perdi la faccia, perdi tutto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-12 13:15",
   "2026-10-12 19:00",
   "2026-10-12 22:00",
   "2026-10-13 08:00",
@@ -4444,10 +4483,10 @@
   "2026-10-20 22:00",
   "2026-10-20 23:00",
   "2026-10-21 00:00",
-  "2026-10-21 02:00"
+  "2026-10-21 02:00",
+  "2026-10-21 04:00"
  ],
  "musica_recenti": [
-  "kick_it_4.m4a",
   "death_duel_3.m4a",
   "dusty_road_magic_1.m4a",
   "the_light_4.m4a",
@@ -4466,7 +4505,8 @@
   "cartier_4.m4a",
   "van_life_rager_4.m4a",
   "the_road_to_mordor_1.m4a",
-  "final_boss_battle_3.m4a"
+  "final_boss_battle_3.m4a",
+  "duty_calls_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4593,10 +4633,10 @@
   "MIE-13edb45d",
   "MIE-2a9dd1f2",
   "MIE-f0d2e909",
-  "MIE-68b9fc8e"
+  "MIE-68b9fc8e",
+  "MIE-a56f1caf"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "dieta",
   "mentalita",
@@ -4605,7 +4645,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "imprenditore"
  ],
  "analisi": {
   "160CsC_a2Uob5QOIsuo8LleGfo5flVhZV": {
@@ -4685,22 +4726,9 @@
    "caricato": "2026-10-20T11:56:43.385Z",
    "parlato": null,
    "momento": null
-  },
-  "1OdFL1x4NHaKHP5hWKHcdcKchSP_OkCE3": {
-   "nome": "IMG_4068.MOV",
-   "scena": "macchina",
-   "sicurezza": 0.75,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-20T00:06+02:00",
-   "fascia": "notte",
-   "caricato": "2026-10-20T15:12:38.623Z",
-   "parlato": null,
-   "momento": null
   }
  },
- "pulizia": "2026-10-20",
+ "pulizia": "2026-10-21",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 1,
@@ -4973,6 +5001,10 @@
   "1DZL18CieQkswHol6kNuSGv_Xs1MM7rGP": {
    "usi": 1,
    "ultimo": "2026-10-21"
+  },
+  "1bWl3dJYdM96InBjDiVmdmRMF52U91gvK": {
+   "usi": 1,
+   "ultimo": "2026-10-21"
   }
  },
  "musica_recenti_meta": [
@@ -5019,7 +5051,7 @@
   "L12",
   "L13"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "gancio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
