@@ -4321,11 +4321,50 @@
    },
    "spinto": true,
    "testo": "Smetti di spiegarti con chi ha già deciso di non capirti."
+  },
+  {
+   "quando": "2026-10-21T00:00",
+   "slot": "2026-10-21 02:00",
+   "video": "IMG_4067.MOV",
+   "md5": "77111c06bd4921815103cc12d4052c53",
+   "da_archivio": false,
+   "scena": "macchina",
+   "registrato": "2026-10-20T00:05+02:00",
+   "frase": "MIE-68b9fc8e",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 43,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 39.8s a 44.8s",
+    "durata": 5.0,
+    "inizio": 39.8,
+    "colore": {
+     "scena": "sera",
+     "motivo": "poca luce",
+     "luce": 0.13,
+     "dominante": "calda",
+     "rumore": 1.5
+    },
+    "copertina_ms": 2968,
+    "musica": "final_boss_battle_3.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "P6idEZUFTTM"
+    }
+   },
+   "spinto": true,
+   "testo": "La gente vuole vederti stare bene, ma mai meglio di loro."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-12 11:30",
   "2026-10-12 13:15",
   "2026-10-12 19:00",
   "2026-10-12 22:00",
@@ -4404,10 +4443,10 @@
   "2026-10-20 21:00",
   "2026-10-20 22:00",
   "2026-10-20 23:00",
-  "2026-10-21 00:00"
+  "2026-10-21 00:00",
+  "2026-10-21 02:00"
  ],
  "musica_recenti": [
-  "cutscene_crush_1.m4a",
   "kick_it_4.m4a",
   "death_duel_3.m4a",
   "dusty_road_magic_1.m4a",
@@ -4426,7 +4465,8 @@
   "i_might_be_late_4.m4a",
   "cartier_4.m4a",
   "van_life_rager_4.m4a",
-  "the_road_to_mordor_1.m4a"
+  "the_road_to_mordor_1.m4a",
+  "final_boss_battle_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4552,16 +4592,17 @@
   "MIE-4f7e8b73",
   "MIE-13edb45d",
   "MIE-2a9dd1f2",
-  "MIE-f0d2e909"
+  "MIE-f0d2e909",
+  "MIE-68b9fc8e"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "dieta",
   "mentalita",
   "mentalita",
   "amicizia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -4642,19 +4683,6 @@
    "registrato": "2026-10-19T23:55+02:00",
    "fascia": "palestra",
    "caricato": "2026-10-20T11:56:43.385Z",
-   "parlato": null,
-   "momento": null
-  },
-  "1i2yj9ikGkIntLcdtilgrF0B12Zgkc5Ic": {
-   "nome": "IMG_4067.MOV",
-   "scena": "macchina",
-   "sicurezza": 0.84,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-20T00:05+02:00",
-   "fascia": "notte",
-   "caricato": "2026-10-20T15:12:11.135Z",
    "parlato": null,
    "momento": null
   },
@@ -4941,6 +4969,10 @@
   "13IatOKGxW0HeJxXmCvNHIy5Aw-Y-MIwQ": {
    "usi": 1,
    "ultimo": "2026-10-20"
+  },
+  "1DZL18CieQkswHol6kNuSGv_Xs1MM7rGP": {
+   "usi": 1,
+   "ultimo": "2026-10-21"
   }
  },
  "musica_recenti_meta": [
@@ -4987,7 +5019,7 @@
   "L12",
   "L13"
  ],
- "formato_ultimo": "frase8",
+ "formato_ultimo": "frase",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
