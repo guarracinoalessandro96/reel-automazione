@@ -4506,11 +4506,50 @@
    },
    "spinto": true,
    "testo": "Il successo ha un altro sapore quando nessuno credeva in te."
+  },
+  {
+   "quando": "2026-10-21T10:00",
+   "slot": "2026-10-21 12:00",
+   "video": "IMG_4063.MOV",
+   "md5": "97a4f6cdf1e87d9b6a427dec338adbb7",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-19T23:52+02:00",
+   "frase": "MIE-73dbd0df",
+   "tema": "palestra",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 34,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 0.8s a 8.8s",
+    "durata": 8.0,
+    "inizio": 0.8,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.45,
+     "dominante": "neutra",
+     "rumore": 3.1
+    },
+    "copertina_ms": 4250,
+    "musica": "ancient_civilisations_4.m4a",
+    "formato": "frase8",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "IXVM0qpCkSY"
+    }
+   },
+   "spinto": true,
+   "testo": "Non puoi recuperare in palestra quello che sbagli a tavola."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-13 09:00",
   "2026-10-13 13:00",
   "2026-10-13 17:00",
   "2026-10-13 21:00",
@@ -4589,10 +4628,10 @@
   "2026-10-21 04:00",
   "2026-10-21 06:00",
   "2026-10-21 08:00",
-  "2026-10-21 10:00"
+  "2026-10-21 10:00",
+  "2026-10-21 12:00"
  ],
  "musica_recenti": [
-  "sweaty_staredown_4.m4a",
   "rubberband_1.m4a",
   "way_back_home_4.m4a",
   "the_road_to_mordor_4.m4a",
@@ -4611,7 +4650,8 @@
   "duty_calls_2.m4a",
   "whoop_4.m4a",
   "ego_chall_1.m4a",
-  "keep_it_movin_1.m4a"
+  "keep_it_movin_1.m4a",
+  "ancient_civilisations_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4742,10 +4782,10 @@
   "MIE-a56f1caf",
   "MIE-fb782374",
   "L14",
-  "MIE-c9b521c4"
+  "MIE-c9b521c4",
+  "MIE-73dbd0df"
  ],
  "temi_recenti": [
-  "mentalita",
   "amicizia",
   "mentalita",
   "mentalita",
@@ -4754,22 +4794,10 @@
   "imprenditore",
   "amicizia",
   "regole",
-  "mentalita"
+  "mentalita",
+  "palestra"
  ],
  "analisi": {
-  "1pRzrCnxNrpVE44ol_vENtqhmbuRc2YAN": {
-   "nome": "IMG_4063.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.85,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-19T23:52+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-20T11:46:34.672Z",
-   "parlato": null,
-   "momento": null
-  },
   "1-8l0XRIILDaDnZ8kCKIggZ02DARGuJLr": {
    "nome": "IMG_4064.MOV",
    "scena": "palestra",
@@ -5086,6 +5114,10 @@
   "1Ysgny_QvDeVi4Yc1fvcAP2jh-Qv2xZgx": {
    "usi": 1,
    "ultimo": "2026-10-21"
+  },
+  "1pRzrCnxNrpVE44ol_vENtqhmbuRc2YAN": {
+   "usi": 1,
+   "ultimo": "2026-10-21"
   }
  },
  "musica_recenti_meta": [
@@ -5133,7 +5165,7 @@
   "L13",
   "L14"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "frase8",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
