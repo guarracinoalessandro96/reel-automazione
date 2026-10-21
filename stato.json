@@ -4706,11 +4706,50 @@
    },
    "spinto": true,
    "testo": "Non puoi essere ambizioso e pigro nello stesso momento."
+  },
+  {
+   "quando": "2026-10-21T20:00",
+   "slot": "2026-10-21 22:00",
+   "video": "IMG_4043.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-e9e0dade",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 0,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 6.0s a 14.0s",
+    "durata": 8.0,
+    "inizio": 6.01,
+    "colore": {
+     "scena": "esterno",
+     "motivo": "cielo visibile",
+     "luce": 0.41,
+     "dominante": "calda",
+     "rumore": 16.7
+    },
+    "copertina_ms": 3250,
+    "musica": "survival_mode_3.m4a",
+    "formato": "gancio",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "DzAAd5yu3Rs"
+    }
+   },
+   "spinto": true,
+   "testo": "O diventi ossessionato, o resti nella media."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-14 13:00",
   "2026-10-14 17:00",
   "2026-10-14 21:00",
   "2026-10-15 09:00",
@@ -4789,10 +4828,10 @@
   "2026-10-21 14:00",
   "2026-10-21 16:00",
   "2026-10-21 18:00",
-  "2026-10-21 20:00"
+  "2026-10-21 20:00",
+  "2026-10-21 22:00"
  ],
  "musica_recenti": [
-  "horizons_1.m4a",
   "survival_mode_2.m4a",
   "fire_in_the_sky_3.m4a",
   "majestic_12_2.m4a",
@@ -4811,7 +4850,8 @@
   "kick_it_2.m4a",
   "fire_in_the_sky_1.m4a",
   "wrangle_the_crazy_2.m4a",
-  "way_back_home_3.m4a"
+  "way_back_home_3.m4a",
+  "survival_mode_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4947,10 +4987,10 @@
   "MIE-d65660ed",
   "MIE-c42d8782",
   "MIE-95c3c510",
-  "MIE-f9129a4d"
+  "MIE-f9129a4d",
+  "MIE-e9e0dade"
  ],
  "temi_recenti": [
-  "mentalita",
   "imprenditore",
   "amicizia",
   "regole",
@@ -4958,6 +4998,7 @@
   "palestra",
   "mentalita",
   "palestra",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -5173,8 +5214,8 @@
    "ultimo": "2026-10-21"
   },
   "1O5XL-iS65p-rWSE6IHKTNDsSp1HIG9a1": {
-   "usi": 1,
-   "ultimo": "2026-10-19"
+   "usi": 2,
+   "ultimo": "2026-10-21"
   },
   "1I2nAz0Ao_a1cbEPktFKRTPpswByM6NKZ": {
    "usi": 1,
@@ -5310,7 +5351,7 @@
   "L13",
   "L14"
  ],
- "formato_ultimo": "frase8",
+ "formato_ultimo": "gancio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
