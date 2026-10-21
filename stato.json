@@ -4586,11 +4586,50 @@
    },
    "spinto": true,
    "testo": "Non tutti quelli che ti applaudono sono davvero contenti per te."
+  },
+  {
+   "quando": "2026-10-21T14:00",
+   "slot": "2026-10-21 16:00",
+   "video": "IMG_4065.MOV",
+   "md5": "cd22d816c326df3c89fb901c1e57df66",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-19T23:55+02:00",
+   "frase": "MIE-c42d8782",
+   "tema": "palestra",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 18,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 51.8s a 59.8s",
+    "durata": 8.0,
+    "inizio": 51.8,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.47,
+     "dominante": "neutra",
+     "rumore": 3.0
+    },
+    "copertina_ms": 4250,
+    "musica": "fire_in_the_sky_1.m4a",
+    "formato": "gancio",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "WrUMB78lFJE"
+    }
+   },
+   "spinto": true,
+   "testo": "La palestra è la mia terapia. Entro nervoso, esco lucido."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-13 17:00",
   "2026-10-13 21:00",
   "2026-10-14 09:00",
   "2026-10-14 13:00",
@@ -4669,10 +4708,10 @@
   "2026-10-21 08:00",
   "2026-10-21 10:00",
   "2026-10-21 12:00",
-  "2026-10-21 14:00"
+  "2026-10-21 14:00",
+  "2026-10-21 16:00"
  ],
  "musica_recenti": [
-  "way_back_home_4.m4a",
   "the_road_to_mordor_4.m4a",
   "stake_out_3.m4a",
   "horizons_1.m4a",
@@ -4691,7 +4730,8 @@
   "ego_chall_1.m4a",
   "keep_it_movin_1.m4a",
   "ancient_civilisations_4.m4a",
-  "kick_it_2.m4a"
+  "kick_it_2.m4a",
+  "fire_in_the_sky_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4824,10 +4864,10 @@
   "L14",
   "MIE-c9b521c4",
   "MIE-73dbd0df",
-  "MIE-d65660ed"
+  "MIE-d65660ed",
+  "MIE-c42d8782"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -4836,23 +4876,10 @@
   "regole",
   "mentalita",
   "palestra",
-  "mentalita"
+  "mentalita",
+  "palestra"
  ],
- "analisi": {
-  "18Z0Lff_i33zQ07A04hf34JvQuf665Hi3": {
-   "nome": "IMG_4065.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.93,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-19T23:55+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-20T11:56:43.385Z",
-   "parlato": null,
-   "momento": null
-  }
- },
+ "analisi": {},
  "pulizia": "2026-10-21",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -5150,6 +5177,10 @@
   "1gE_FyJzF7yg-nilpN_tgldcTInZcTmkA": {
    "usi": 1,
    "ultimo": "2026-10-21"
+  },
+  "19lxUacEH3cLJ4agkgVgo3o7ErjaxO3My": {
+   "usi": 1,
+   "ultimo": "2026-10-21"
   }
  },
  "musica_recenti_meta": [
@@ -5197,7 +5228,7 @@
   "L13",
   "L14"
  ],
- "formato_ultimo": "ambiente",
+ "formato_ultimo": "gancio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
