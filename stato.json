@@ -4746,11 +4746,50 @@
    },
    "spinto": true,
    "testo": "O diventi ossessionato, o resti nella media."
+  },
+  {
+   "quando": "2026-10-21T22:00",
+   "slot": "2026-10-22 00:00",
+   "video": "IMG_3974.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "MIE-043e8cf1",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 30,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 12.9s a 17.9s",
+    "durata": 5.0,
+    "inizio": 12.88,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.42,
+     "dominante": "calda",
+     "rumore": 4.6
+    },
+    "copertina_ms": 300,
+    "musica": "moon_vision_2.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "YInrADifGQY"
+    }
+   },
+   "spinto": false,
+   "testo": "Tutto è reale, ma non tutti sono veri."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-14 17:00",
   "2026-10-14 21:00",
   "2026-10-15 09:00",
   "2026-10-15 13:00",
@@ -4829,10 +4868,10 @@
   "2026-10-21 16:00",
   "2026-10-21 18:00",
   "2026-10-21 20:00",
-  "2026-10-21 22:00"
+  "2026-10-21 22:00",
+  "2026-10-22 00:00"
  ],
  "musica_recenti": [
-  "survival_mode_2.m4a",
   "fire_in_the_sky_3.m4a",
   "majestic_12_2.m4a",
   "locked_in_4.m4a",
@@ -4851,7 +4890,8 @@
   "fire_in_the_sky_1.m4a",
   "wrangle_the_crazy_2.m4a",
   "way_back_home_3.m4a",
-  "survival_mode_3.m4a"
+  "survival_mode_3.m4a",
+  "moon_vision_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4988,16 +5028,17 @@
   "MIE-c42d8782",
   "MIE-95c3c510",
   "MIE-f9129a4d",
-  "MIE-e9e0dade"
+  "MIE-e9e0dade",
+  "MIE-043e8cf1"
  ],
  "temi_recenti": [
-  "imprenditore",
   "amicizia",
   "regole",
   "mentalita",
   "palestra",
   "mentalita",
   "palestra",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -5218,8 +5259,8 @@
    "ultimo": "2026-10-21"
   },
   "1I2nAz0Ao_a1cbEPktFKRTPpswByM6NKZ": {
-   "usi": 1,
-   "ultimo": "2026-10-19"
+   "usi": 2,
+   "ultimo": "2026-10-21"
   },
   "1zw12S9166ROtTo6gXbB8osWAiBXUjT0Q": {
    "usi": 1,
@@ -5351,7 +5392,7 @@
   "L13",
   "L14"
  ],
- "formato_ultimo": "gancio",
+ "formato_ultimo": "frase",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
