@@ -4546,11 +4546,50 @@
    },
    "spinto": true,
    "testo": "Non puoi recuperare in palestra quello che sbagli a tavola."
+  },
+  {
+   "quando": "2026-10-21T12:00",
+   "slot": "2026-10-21 14:00",
+   "video": "IMG_4064.MOV",
+   "md5": "2c91517fea4d9b2bad220a0a14dfb4ba",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-19T23:52+02:00",
+   "frase": "MIE-d65660ed",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 8,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 3.8s a 9.8s",
+    "durata": 6.0,
+    "inizio": 3.8,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.47,
+     "dominante": "neutra",
+     "rumore": 3.5
+    },
+    "copertina_ms": 3937,
+    "musica": "kick_it_2.m4a",
+    "formato": "ambiente",
+    "audio_originale": 0.35
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "nWHCFKVCohk"
+    }
+   },
+   "spinto": true,
+   "testo": "Non tutti quelli che ti applaudono sono davvero contenti per te."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-13 13:00",
   "2026-10-13 17:00",
   "2026-10-13 21:00",
   "2026-10-14 09:00",
@@ -4629,10 +4668,10 @@
   "2026-10-21 06:00",
   "2026-10-21 08:00",
   "2026-10-21 10:00",
-  "2026-10-21 12:00"
+  "2026-10-21 12:00",
+  "2026-10-21 14:00"
  ],
  "musica_recenti": [
-  "rubberband_1.m4a",
   "way_back_home_4.m4a",
   "the_road_to_mordor_4.m4a",
   "stake_out_3.m4a",
@@ -4651,7 +4690,8 @@
   "whoop_4.m4a",
   "ego_chall_1.m4a",
   "keep_it_movin_1.m4a",
-  "ancient_civilisations_4.m4a"
+  "ancient_civilisations_4.m4a",
+  "kick_it_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4783,10 +4823,10 @@
   "MIE-fb782374",
   "L14",
   "MIE-c9b521c4",
-  "MIE-73dbd0df"
+  "MIE-73dbd0df",
+  "MIE-d65660ed"
  ],
  "temi_recenti": [
-  "amicizia",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -4795,22 +4835,10 @@
   "amicizia",
   "regole",
   "mentalita",
-  "palestra"
+  "palestra",
+  "mentalita"
  ],
  "analisi": {
-  "1-8l0XRIILDaDnZ8kCKIggZ02DARGuJLr": {
-   "nome": "IMG_4064.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.98,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-19T23:52+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-20T11:51:07.326Z",
-   "parlato": null,
-   "momento": null
-  },
   "18Z0Lff_i33zQ07A04hf34JvQuf665Hi3": {
    "nome": "IMG_4065.MOV",
    "scena": "palestra",
@@ -5118,6 +5146,10 @@
   "1pRzrCnxNrpVE44ol_vENtqhmbuRc2YAN": {
    "usi": 1,
    "ultimo": "2026-10-21"
+  },
+  "1gE_FyJzF7yg-nilpN_tgldcTInZcTmkA": {
+   "usi": 1,
+   "ultimo": "2026-10-21"
   }
  },
  "musica_recenti_meta": [
@@ -5165,7 +5197,7 @@
   "L13",
   "L14"
  ],
- "formato_ultimo": "frase8",
+ "formato_ultimo": "ambiente",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
