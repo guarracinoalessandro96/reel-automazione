@@ -4441,11 +4441,35 @@
    },
    "spinto": true,
    "testo": "Pochi amici, testa tranquilla. La mia cerchia è piccola e va bene così."
+  },
+  {
+   "quando": "2026-10-21T06:00",
+   "slot": "2026-10-21 08:00",
+   "video": "IMG_4061.MOV",
+   "md5": "72dc464fda05265da9afec1d6701957e",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-19T23:48+02:00",
+   "frase": "L14",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 regole per non restare deluso",
+    "musica": "ego_chall_1.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "VKc-6tWwUkI"
+    }
+   },
+   "spinto": true,
+   "testo": "3 regole per non restare deluso"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-12 22:00",
   "2026-10-13 08:00",
   "2026-10-13 09:00",
   "2026-10-13 13:00",
@@ -4524,10 +4548,10 @@
   "2026-10-21 00:00",
   "2026-10-21 02:00",
   "2026-10-21 04:00",
-  "2026-10-21 06:00"
+  "2026-10-21 06:00",
+  "2026-10-21 08:00"
  ],
  "musica_recenti": [
-  "dusty_road_magic_1.m4a",
   "the_light_4.m4a",
   "sweaty_staredown_4.m4a",
   "rubberband_1.m4a",
@@ -4546,7 +4570,8 @@
   "the_road_to_mordor_1.m4a",
   "final_boss_battle_3.m4a",
   "duty_calls_2.m4a",
-  "whoop_4.m4a"
+  "whoop_4.m4a",
+  "ego_chall_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4675,10 +4700,10 @@
   "MIE-f0d2e909",
   "MIE-68b9fc8e",
   "MIE-a56f1caf",
-  "MIE-fb782374"
+  "MIE-fb782374",
+  "L14"
  ],
  "temi_recenti": [
-  "dieta",
   "mentalita",
   "mentalita",
   "amicizia",
@@ -4687,22 +4712,10 @@
   "mentalita",
   "mentalita",
   "imprenditore",
-  "amicizia"
+  "amicizia",
+  "regole"
  ],
  "analisi": {
-  "1120zEipzyBfScy4IMkZ_264cYRRj4_wC": {
-   "nome": "IMG_4061.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.94,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-19T23:48+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-20T11:39:02.862Z",
-   "parlato": null,
-   "momento": null
-  },
   "1XTunZ_nsI8hMeIkBwZWRSeW4cSBZblat": {
    "nome": "IMG_4062.MOV",
    "scena": "palestra",
@@ -5037,6 +5050,10 @@
   "160CsC_a2Uob5QOIsuo8LleGfo5flVhZV": {
    "usi": 1,
    "ultimo": "2026-10-21"
+  },
+  "1120zEipzyBfScy4IMkZ_264cYRRj4_wC": {
+   "usi": 1,
+   "ultimo": "2026-10-21"
   }
  },
  "musica_recenti_meta": [
@@ -5081,9 +5098,10 @@
   "L10",
   "L11",
   "L12",
-  "L13"
+  "L13",
+  "L14"
  ],
- "formato_ultimo": "frase8",
+ "formato_ultimo": "regole",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
