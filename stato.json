@@ -4666,11 +4666,50 @@
    },
    "spinto": true,
    "testo": "I sogni non funzionano se non lavori tu."
+  },
+  {
+   "quando": "2026-10-21T18:00",
+   "slot": "2026-10-21 20:00",
+   "video": "IMG_3972.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-f9129a4d",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 70,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 11.2s a 19.2s",
+    "durata": 8.0,
+    "inizio": 11.18,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.53,
+     "dominante": "neutra",
+     "rumore": 5.9
+    },
+    "copertina_ms": 5250,
+    "musica": "way_back_home_3.m4a",
+    "formato": "frase8",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "rVE9Z-64yGo"
+    }
+   },
+   "spinto": true,
+   "testo": "Non puoi essere ambizioso e pigro nello stesso momento."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-14 09:00",
   "2026-10-14 13:00",
   "2026-10-14 17:00",
   "2026-10-14 21:00",
@@ -4749,10 +4788,10 @@
   "2026-10-21 12:00",
   "2026-10-21 14:00",
   "2026-10-21 16:00",
-  "2026-10-21 18:00"
+  "2026-10-21 18:00",
+  "2026-10-21 20:00"
  ],
  "musica_recenti": [
-  "stake_out_3.m4a",
   "horizons_1.m4a",
   "survival_mode_2.m4a",
   "fire_in_the_sky_3.m4a",
@@ -4771,7 +4810,8 @@
   "ancient_civilisations_4.m4a",
   "kick_it_2.m4a",
   "fire_in_the_sky_1.m4a",
-  "wrangle_the_crazy_2.m4a"
+  "wrangle_the_crazy_2.m4a",
+  "way_back_home_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4906,10 +4946,10 @@
   "MIE-73dbd0df",
   "MIE-d65660ed",
   "MIE-c42d8782",
-  "MIE-95c3c510"
+  "MIE-95c3c510",
+  "MIE-f9129a4d"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "imprenditore",
   "amicizia",
@@ -4918,6 +4958,7 @@
   "palestra",
   "mentalita",
   "palestra",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -5128,8 +5169,8 @@
    "ultimo": "2026-10-21"
   },
   "1NqfCjngnUsLcNgPGLaYs302aM3bRveLK": {
-   "usi": 1,
-   "ultimo": "2026-10-19"
+   "usi": 2,
+   "ultimo": "2026-10-21"
   },
   "1O5XL-iS65p-rWSE6IHKTNDsSp1HIG9a1": {
    "usi": 1,
@@ -5269,7 +5310,7 @@
   "L13",
   "L14"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "frase8",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
@@ -5282,5 +5323,5 @@
    "parlato": false
   }
  ],
- "commenti_fino": "2026-10-20T18:00:05Z"
+ "commenti_fino": "2026-10-21T18:00:01Z"
 }
