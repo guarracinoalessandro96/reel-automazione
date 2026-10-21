@@ -4626,11 +4626,50 @@
    },
    "spinto": true,
    "testo": "La palestra è la mia terapia. Entro nervoso, esco lucido."
+  },
+  {
+   "quando": "2026-10-21T16:00",
+   "slot": "2026-10-21 18:00",
+   "video": "IMG_4037.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-95c3c510",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 84,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 1.8s a 6.8s",
+    "durata": 5.0,
+    "inizio": 1.8,
+    "colore": {
+     "scena": "esterno",
+     "motivo": "cielo visibile",
+     "luce": 0.45,
+     "dominante": "calda",
+     "rumore": 20.5
+    },
+    "copertina_ms": 2343,
+    "musica": "wrangle_the_crazy_2.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "gPSOPwcfI0g"
+    }
+   },
+   "spinto": true,
+   "testo": "I sogni non funzionano se non lavori tu."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-13 21:00",
   "2026-10-14 09:00",
   "2026-10-14 13:00",
   "2026-10-14 17:00",
@@ -4709,10 +4748,10 @@
   "2026-10-21 10:00",
   "2026-10-21 12:00",
   "2026-10-21 14:00",
-  "2026-10-21 16:00"
+  "2026-10-21 16:00",
+  "2026-10-21 18:00"
  ],
  "musica_recenti": [
-  "the_road_to_mordor_4.m4a",
   "stake_out_3.m4a",
   "horizons_1.m4a",
   "survival_mode_2.m4a",
@@ -4731,7 +4770,8 @@
   "keep_it_movin_1.m4a",
   "ancient_civilisations_4.m4a",
   "kick_it_2.m4a",
-  "fire_in_the_sky_1.m4a"
+  "fire_in_the_sky_1.m4a",
+  "wrangle_the_crazy_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -4865,10 +4905,10 @@
   "MIE-c9b521c4",
   "MIE-73dbd0df",
   "MIE-d65660ed",
-  "MIE-c42d8782"
+  "MIE-c42d8782",
+  "MIE-95c3c510"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "imprenditore",
@@ -4877,7 +4917,8 @@
   "mentalita",
   "palestra",
   "mentalita",
-  "palestra"
+  "palestra",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-10-21",
@@ -5083,8 +5124,8 @@
    "ultimo": "2026-10-20"
   },
   "1SViXJGWyrXZIxEMyHGwykElbvGkiJSxW": {
-   "usi": 1,
-   "ultimo": "2026-10-19"
+   "usi": 2,
+   "ultimo": "2026-10-21"
   },
   "1NqfCjngnUsLcNgPGLaYs302aM3bRveLK": {
    "usi": 1,
@@ -5228,7 +5269,7 @@
   "L13",
   "L14"
  ],
- "formato_ultimo": "gancio",
+ "formato_ultimo": "frase",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
