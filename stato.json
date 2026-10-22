@@ -4980,11 +4980,50 @@
    },
    "spinto": true,
    "testo": "Tutti vogliono vincere finché non capiscono quante sconfitte servono."
+  },
+  {
+   "quando": "2026-10-22T12:00",
+   "slot": "2026-10-22 14:00",
+   "video": "IMG_4055.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-fb841d9f",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 3,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 7.8s a 12.8s",
+    "durata": 5.0,
+    "inizio": 7.84,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.42,
+     "dominante": "calda",
+     "rumore": 2.9
+    },
+    "copertina_ms": 2968,
+    "musica": "stake_out_2.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "SaxdSXeB5QI"
+    }
+   },
+   "spinto": false,
+   "testo": "Soffriamo di più nell'immaginazione che nella realtà."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-16 13:00",
   "2026-10-16 17:00",
   "2026-10-16 21:00",
   "2026-10-17 09:00",
@@ -5063,10 +5102,10 @@
   "2026-10-22 06:00",
   "2026-10-22 08:00",
   "2026-10-22 10:00",
-  "2026-10-22 12:00"
+  "2026-10-22 12:00",
+  "2026-10-22 14:00"
  ],
  "musica_recenti": [
-  "van_life_rager_4.m4a",
   "the_road_to_mordor_1.m4a",
   "final_boss_battle_3.m4a",
   "duty_calls_2.m4a",
@@ -5085,7 +5124,8 @@
   "cutscene_crush_2.m4a",
   "the_light_1.m4a",
   "rubberband_2.m4a",
-  "majestic_12_1.m4a"
+  "majestic_12_1.m4a",
+  "stake_out_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5229,17 +5269,18 @@
   "MIE-578492d5",
   "L16",
   "MIE-b0eff17e",
-  "MIE-0fecdd42"
+  "MIE-0fecdd42",
+  "MIE-fb841d9f"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
   "mentalita",
   "mentalita",
   "regole",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -5487,8 +5528,8 @@
    "ultimo": "2026-10-22"
   },
   "13Mbzphz708QlBEv9Bq_CNQzZaM4WplJL": {
-   "usi": 1,
-   "ultimo": "2026-10-20"
+   "usi": 2,
+   "ultimo": "2026-10-22"
   },
   "1a6QgtIzJRhmtmWHx-62JQcB90PeF3vKz": {
    "usi": 1,
@@ -5594,7 +5635,7 @@
   "L15",
   "L16"
  ],
- "formato_ultimo": "montaggio",
+ "formato_ultimo": "frase",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
