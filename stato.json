@@ -4786,11 +4786,35 @@
    },
    "spinto": false,
    "testo": "Tutto è reale, ma non tutti sono veri."
+  },
+  {
+   "quando": "2026-10-22T00:00",
+   "slot": "2026-10-22 02:00",
+   "video": "IMG_3975.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "L15",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 cose che fanno i campioni",
+    "musica": "monthaholic_4.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Mwu2XmnzCXE"
+    }
+   },
+   "spinto": true,
+   "testo": "3 cose che fanno i campioni"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-14 21:00",
   "2026-10-15 09:00",
   "2026-10-15 13:00",
   "2026-10-15 17:00",
@@ -4869,10 +4893,10 @@
   "2026-10-21 18:00",
   "2026-10-21 20:00",
   "2026-10-21 22:00",
-  "2026-10-22 00:00"
+  "2026-10-22 00:00",
+  "2026-10-22 02:00"
  ],
  "musica_recenti": [
-  "fire_in_the_sky_3.m4a",
   "majestic_12_2.m4a",
   "locked_in_4.m4a",
   "cutscene_crush_3.m4a",
@@ -4891,7 +4915,8 @@
   "wrangle_the_crazy_2.m4a",
   "way_back_home_3.m4a",
   "survival_mode_3.m4a",
-  "moon_vision_2.m4a"
+  "moon_vision_2.m4a",
+  "monthaholic_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5029,10 +5054,10 @@
   "MIE-95c3c510",
   "MIE-f9129a4d",
   "MIE-e9e0dade",
-  "MIE-043e8cf1"
+  "MIE-043e8cf1",
+  "L15"
  ],
  "temi_recenti": [
-  "amicizia",
   "regole",
   "mentalita",
   "palestra",
@@ -5041,7 +5066,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "regole"
  ],
  "analisi": {},
  "pulizia": "2026-10-21",
@@ -5263,8 +5289,8 @@
    "ultimo": "2026-10-21"
   },
   "1zw12S9166ROtTo6gXbB8osWAiBXUjT0Q": {
-   "usi": 1,
-   "ultimo": "2026-10-19"
+   "usi": 2,
+   "ultimo": "2026-10-22"
   },
   "1UoUWHyHwCuON4BVs4SSdx-6x-4H6CKw9": {
    "usi": 1,
@@ -5390,9 +5416,10 @@
   "L11",
   "L12",
   "L13",
-  "L14"
+  "L14",
+  "L15"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "regole",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
