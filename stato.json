@@ -5045,11 +5045,35 @@
    },
    "spinto": true,
    "testo": "3 regole sulla tua cerchia"
+  },
+  {
+   "quando": "2026-10-22T16:00",
+   "slot": "2026-10-22 18:00",
+   "video": "IMG_4066.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "L18",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 cose che ho capito sull'invidia",
+    "musica": "wrangle_the_crazy_4.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "1xzky3vykyg"
+    }
+   },
+   "spinto": true,
+   "testo": "3 cose che ho capito sull'invidia"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-16 21:00",
   "2026-10-17 09:00",
   "2026-10-17 13:00",
   "2026-10-17 17:00",
@@ -5128,10 +5152,10 @@
   "2026-10-22 10:00",
   "2026-10-22 12:00",
   "2026-10-22 14:00",
-  "2026-10-22 16:00"
+  "2026-10-22 16:00",
+  "2026-10-22 18:00"
  ],
  "musica_recenti": [
-  "final_boss_battle_3.m4a",
   "duty_calls_2.m4a",
   "whoop_4.m4a",
   "ego_chall_1.m4a",
@@ -5150,7 +5174,8 @@
   "rubberband_2.m4a",
   "majestic_12_1.m4a",
   "stake_out_2.m4a",
-  "death_duel_4.m4a"
+  "death_duel_4.m4a",
+  "wrangle_the_crazy_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5296,11 +5321,11 @@
   "MIE-b0eff17e",
   "MIE-0fecdd42",
   "MIE-fb841d9f",
-  "L17"
+  "L17",
+  "L18"
  ],
  "temi_recenti": [
   "mentalita",
-  "mentalita",
   "regole",
   "mentalita",
   "mentalita",
@@ -5308,6 +5333,7 @@
   "mentalita",
   "mentalita",
   "mentalita",
+  "regole",
   "regole"
  ],
  "analisi": {},
@@ -5562,8 +5588,8 @@
    "ultimo": "2026-10-22"
   },
   "1ebzNdlPG-0cLcESWwbpn2LI0c4WUOM7P": {
-   "usi": 1,
-   "ultimo": "2026-10-20"
+   "usi": 2,
+   "ultimo": "2026-10-22"
   },
   "1fNkyh45gyqcWbr7dNtwE-jOutIxNjGFj": {
    "usi": 1,
@@ -5660,7 +5686,8 @@
   "L14",
   "L15",
   "L16",
-  "L17"
+  "L17",
+  "L18"
  ],
  "formato_ultimo": "regole",
  "errori_di_fila": {
