@@ -5110,11 +5110,50 @@
    },
    "spinto": true,
    "testo": "Se il tuo telefono non squilla quando sei in difficoltà, non rispondere quando stai vincendo."
+  },
+  {
+   "quando": "2026-10-22T20:00",
+   "slot": "2026-10-22 22:00",
+   "video": "IMG_4058.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-b48f986e",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 3,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 1.5s a 6.5s",
+    "durata": 5.0,
+    "inizio": 1.46,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.52,
+     "dominante": "neutra",
+     "rumore": 3.6
+    },
+    "copertina_ms": 4218,
+    "musica": "break_ya_neck_1.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "FRJvd72YQL8"
+    }
+   },
+   "spinto": false,
+   "testo": "Vivi una vita che ricorderai."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-17 13:00",
   "2026-10-17 17:00",
   "2026-10-17 21:00",
   "2026-10-18 09:00",
@@ -5193,10 +5232,10 @@
   "2026-10-22 14:00",
   "2026-10-22 16:00",
   "2026-10-22 18:00",
-  "2026-10-22 20:00"
+  "2026-10-22 20:00",
+  "2026-10-22 22:00"
  ],
  "musica_recenti": [
-  "whoop_4.m4a",
   "ego_chall_1.m4a",
   "keep_it_movin_1.m4a",
   "ancient_civilisations_4.m4a",
@@ -5215,7 +5254,8 @@
   "stake_out_2.m4a",
   "death_duel_4.m4a",
   "wrangle_the_crazy_4.m4a",
-  "moon_vision_4.m4a"
+  "moon_vision_4.m4a",
+  "break_ya_neck_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5363,10 +5403,10 @@
   "MIE-fb841d9f",
   "L17",
   "L18",
-  "MIE-7e72f285"
+  "MIE-7e72f285",
+  "MIE-b48f986e"
  ],
  "temi_recenti": [
-  "regole",
   "mentalita",
   "mentalita",
   "regole",
@@ -5375,6 +5415,7 @@
   "mentalita",
   "regole",
   "regole",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -5637,8 +5678,8 @@
    "ultimo": "2026-10-22"
   },
   "1rvQrANwghfIXVfOFT05EVv2HadSlUl__": {
-   "usi": 1,
-   "ultimo": "2026-10-20"
+   "usi": 2,
+   "ultimo": "2026-10-22"
   },
   "17EZ3mbgpyShyxZFPCxPm2FHj5T7EgG15": {
    "usi": 1,
