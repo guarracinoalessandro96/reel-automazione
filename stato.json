@@ -5020,11 +5020,35 @@
    },
    "spinto": false,
    "testo": "Soffriamo di più nell'immaginazione che nella realtà."
+  },
+  {
+   "quando": "2026-10-22T14:00",
+   "slot": "2026-10-22 16:00",
+   "video": "IMG_4057.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "L17",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 regole sulla tua cerchia",
+    "musica": "death_duel_4.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "7L6_sEY4SjM"
+    }
+   },
+   "spinto": true,
+   "testo": "3 regole sulla tua cerchia"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-16 17:00",
   "2026-10-16 21:00",
   "2026-10-17 09:00",
   "2026-10-17 13:00",
@@ -5103,10 +5127,10 @@
   "2026-10-22 08:00",
   "2026-10-22 10:00",
   "2026-10-22 12:00",
-  "2026-10-22 14:00"
+  "2026-10-22 14:00",
+  "2026-10-22 16:00"
  ],
  "musica_recenti": [
-  "the_road_to_mordor_1.m4a",
   "final_boss_battle_3.m4a",
   "duty_calls_2.m4a",
   "whoop_4.m4a",
@@ -5125,7 +5149,8 @@
   "the_light_1.m4a",
   "rubberband_2.m4a",
   "majestic_12_1.m4a",
-  "stake_out_2.m4a"
+  "stake_out_2.m4a",
+  "death_duel_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5270,19 +5295,20 @@
   "L16",
   "MIE-b0eff17e",
   "MIE-0fecdd42",
-  "MIE-fb841d9f"
+  "MIE-fb841d9f",
+  "L17"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
   "mentalita",
   "mentalita",
   "regole",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "regole"
  ],
  "analisi": {},
  "pulizia": "2026-10-22",
@@ -5532,8 +5558,8 @@
    "ultimo": "2026-10-22"
   },
   "1a6QgtIzJRhmtmWHx-62JQcB90PeF3vKz": {
-   "usi": 1,
-   "ultimo": "2026-10-20"
+   "usi": 2,
+   "ultimo": "2026-10-22"
   },
   "1ebzNdlPG-0cLcESWwbpn2LI0c4WUOM7P": {
    "usi": 1,
@@ -5633,9 +5659,10 @@
   "L13",
   "L14",
   "L15",
-  "L16"
+  "L16",
+  "L17"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "regole",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
