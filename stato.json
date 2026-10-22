@@ -4916,11 +4916,50 @@
    },
    "spinto": true,
    "testo": "3 frasi da ricordare quando vuoi mollare"
+  },
+  {
+   "quando": "2026-10-22T08:00",
+   "slot": "2026-10-22 10:00",
+   "video": "IMG_4053.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-b0eff17e",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 0,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 8.1s a 14.1s",
+    "durata": 6.0,
+    "inizio": 8.13,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.45,
+     "dominante": "calda",
+     "rumore": 1.8
+    },
+    "copertina_ms": 3937,
+    "musica": "rubberband_2.m4a",
+    "formato": "ambiente",
+    "audio_originale": 0.35
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "b4meyG6QPk8"
+    }
+   },
+   "spinto": true,
+   "testo": "Il tuo tempo vale. Non regalarlo a chi non lo merita."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-15 21:00",
   "2026-10-16 09:00",
   "2026-10-16 13:00",
   "2026-10-16 17:00",
@@ -4999,10 +5038,10 @@
   "2026-10-22 02:00",
   "2026-10-22 04:00",
   "2026-10-22 06:00",
-  "2026-10-22 08:00"
+  "2026-10-22 08:00",
+  "2026-10-22 10:00"
  ],
  "musica_recenti": [
-  "i_might_be_late_4.m4a",
   "cartier_4.m4a",
   "van_life_rager_4.m4a",
   "the_road_to_mordor_1.m4a",
@@ -5021,7 +5060,8 @@
   "monthaholic_4.m4a",
   "taking_flight_1.m4a",
   "cutscene_crush_2.m4a",
-  "the_light_1.m4a"
+  "the_light_1.m4a",
+  "rubberband_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5163,10 +5203,10 @@
   "L15",
   "MIE-8a2c841c",
   "MIE-578492d5",
-  "L16"
+  "L16",
+  "MIE-b0eff17e"
  ],
  "temi_recenti": [
-  "mentalita",
   "palestra",
   "mentalita",
   "mentalita",
@@ -5175,7 +5215,8 @@
   "regole",
   "mentalita",
   "mentalita",
-  "regole"
+  "regole",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-10-22",
@@ -5413,8 +5454,8 @@
    "ultimo": "2026-10-22"
   },
   "1SGGMjRnx6n1zbId63P80hrjMQDvxV6E7": {
-   "usi": 1,
-   "ultimo": "2026-10-20"
+   "usi": 2,
+   "ultimo": "2026-10-22"
   },
   "1_YtfVKfv3LHrn3h-627VTGjeZMlzcU1b": {
    "usi": 1,
@@ -5528,7 +5569,7 @@
   "L15",
   "L16"
  ],
- "formato_ultimo": "regole",
+ "formato_ultimo": "ambiente",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
