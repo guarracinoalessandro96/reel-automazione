@@ -5359,11 +5359,34 @@
    },
    "spinto": true,
    "testo": "3 regole per diventare la versione migliore di te"
+  },
+  {
+   "quando": "2026-10-23T10:00",
+   "slot": "2026-10-23 12:00",
+   "video": "IMG_4062.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-3d86a685",
+   "tema": "imprenditore",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "delirium_2.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "wcIQLh9EGLs"
+    }
+   },
+   "spinto": true,
+   "testo": "Ho bisogno di soldi, non di sentimenti."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-18 22:00",
   "2026-10-18 23:00",
   "2026-10-19 00:00",
   "2026-10-19 01:00",
@@ -5442,10 +5465,10 @@
   "2026-10-23 04:00",
   "2026-10-23 06:00",
   "2026-10-23 08:00",
-  "2026-10-23 10:00"
+  "2026-10-23 10:00",
+  "2026-10-23 12:00"
  ],
  "musica_recenti": [
-  "way_back_home_3.m4a",
   "survival_mode_3.m4a",
   "moon_vision_2.m4a",
   "monthaholic_4.m4a",
@@ -5464,7 +5487,8 @@
   "final_boss_battle_1.m4a",
   "mirror_mirror_2.m4a",
   "ancient_civilisations_1.m4a",
-  "locked_in_3.m4a"
+  "locked_in_3.m4a",
+  "delirium_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5619,19 +5643,20 @@
   "MIE-6bd471d6",
   "MIE-e7ea8391",
   "MIE-aa2c3dbd",
-  "L19"
+  "L19",
+  "MIE-3d86a685"
  ],
  "temi_recenti": [
   "regole",
+  "mentalita",
+  "mentalita",
+  "mentalita",
+  "mentalita",
+  "palestra",
+  "palestra",
+  "mentalita",
   "regole",
-  "mentalita",
-  "mentalita",
-  "mentalita",
-  "mentalita",
-  "palestra",
-  "palestra",
-  "mentalita",
-  "regole"
+  "imprenditore"
  ],
  "analisi": {},
  "pulizia": "2026-10-23",
@@ -5921,8 +5946,8 @@
    "ultimo": "2026-10-23"
   },
   "1Ysgny_QvDeVi4Yc1fvcAP2jh-Qv2xZgx": {
-   "usi": 1,
-   "ultimo": "2026-10-21"
+   "usi": 2,
+   "ultimo": "2026-10-23"
   },
   "1pRzrCnxNrpVE44ol_vENtqhmbuRc2YAN": {
    "usi": 1,
@@ -5987,7 +6012,7 @@
   "L18",
   "L19"
  ],
- "formato_ultimo": "regole",
+ "formato_ultimo": "montaggio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
