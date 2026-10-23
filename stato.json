@@ -5294,11 +5294,50 @@
    },
    "spinto": true,
    "testo": "Il fisico si costruisce in palestra e si rivela in cucina."
+  },
+  {
+   "quando": "2026-10-23T06:00",
+   "slot": "2026-10-23 08:00",
+   "video": "IMG_4060.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-aa2c3dbd",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 20,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 39.3s a 44.3s",
+    "durata": 5.0,
+    "inizio": 39.3,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.43,
+     "dominante": "neutra",
+     "rumore": 3.2
+    },
+    "copertina_ms": 2343,
+    "musica": "ancient_civilisations_1.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "eGoJp-eUz6U"
+    }
+   },
+   "spinto": true,
+   "testo": "Una chiacchierata con le persone giuste può sistemare molte cose."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-18 17:00",
   "2026-10-18 21:00",
   "2026-10-18 22:00",
   "2026-10-18 23:00",
@@ -5377,10 +5416,10 @@
   "2026-10-23 00:00",
   "2026-10-23 02:00",
   "2026-10-23 04:00",
-  "2026-10-23 06:00"
+  "2026-10-23 06:00",
+  "2026-10-23 08:00"
  ],
  "musica_recenti": [
-  "fire_in_the_sky_1.m4a",
   "wrangle_the_crazy_2.m4a",
   "way_back_home_3.m4a",
   "survival_mode_3.m4a",
@@ -5399,7 +5438,8 @@
   "ten_4.m4a",
   "the_road_to_mordor_1.m4a",
   "final_boss_battle_1.m4a",
-  "mirror_mirror_2.m4a"
+  "mirror_mirror_2.m4a",
+  "ancient_civilisations_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5552,10 +5592,10 @@
   "MIE-72a11d64",
   "MIE-f7b5f4a8",
   "MIE-6bd471d6",
-  "MIE-e7ea8391"
+  "MIE-e7ea8391",
+  "MIE-aa2c3dbd"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "regole",
   "regole",
@@ -5564,7 +5604,8 @@
   "mentalita",
   "mentalita",
   "palestra",
-  "palestra"
+  "palestra",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-10-23",
@@ -5846,8 +5887,8 @@
    "ultimo": "2026-10-23"
   },
   "160CsC_a2Uob5QOIsuo8LleGfo5flVhZV": {
-   "usi": 1,
-   "ultimo": "2026-10-21"
+   "usi": 2,
+   "ultimo": "2026-10-23"
   },
   "1120zEipzyBfScy4IMkZ_264cYRRj4_wC": {
    "usi": 1,
@@ -5919,7 +5960,7 @@
   "L17",
   "L18"
  ],
- "formato_ultimo": "frase8",
+ "formato_ultimo": "frase",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
