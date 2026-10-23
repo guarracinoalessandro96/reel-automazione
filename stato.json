@@ -5535,11 +5535,50 @@
    },
    "spinto": false,
    "testo": "Sì! Puoi farlo."
+  },
+  {
+   "quando": "2026-10-23T22:00",
+   "slot": "2026-10-24 00:00",
+   "video": "IMG_4064.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-e78c74d0",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 7,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 3.4s a 8.4s",
+    "durata": 5.0,
+    "inizio": 3.4,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.47,
+     "dominante": "neutra",
+     "rumore": 3.5
+    },
+    "copertina_ms": 1093,
+    "musica": "van_life_rager_3.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "1wh_d4teiEY"
+    }
+   },
+   "spinto": false,
+   "testo": "Sorridi fra, ti sei svegliato."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 04:00",
   "2026-10-19 05:00",
   "2026-10-19 06:00",
   "2026-10-19 07:00",
@@ -5618,10 +5657,10 @@
   "2026-10-23 16:00",
   "2026-10-23 18:00",
   "2026-10-23 20:00",
-  "2026-10-23 22:00"
+  "2026-10-23 22:00",
+  "2026-10-24 00:00"
  ],
  "musica_recenti": [
-  "the_light_1.m4a",
   "rubberband_2.m4a",
   "majestic_12_1.m4a",
   "stake_out_2.m4a",
@@ -5640,7 +5679,8 @@
   "kick_it_1.m4a",
   "horizons_4.m4a",
   "wrangle_the_crazy_1.m4a",
-  "vibe_check_4.m4a"
+  "vibe_check_4.m4a",
+  "van_life_rager_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5801,15 +5841,16 @@
   "MIE-ee59e209",
   "MIE-96cb5cca",
   "MIE-79f323dd",
-  "MIE-06d04058"
+  "MIE-06d04058",
+  "MIE-e78c74d0"
  ],
  "temi_recenti": [
-  "palestra",
   "palestra",
   "mentalita",
   "regole",
   "imprenditore",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -6216,8 +6257,8 @@
    "ultimo": "2026-10-23"
   },
   "1gE_FyJzF7yg-nilpN_tgldcTInZcTmkA": {
-   "usi": 1,
-   "ultimo": "2026-10-21"
+   "usi": 2,
+   "ultimo": "2026-10-23"
   },
   "19lxUacEH3cLJ4agkgVgo3o7ErjaxO3My": {
    "usi": 1,
