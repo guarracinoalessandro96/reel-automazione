@@ -5254,11 +5254,50 @@
    },
    "spinto": true,
    "testo": "Una sola ripetizione in più. Sempre."
+  },
+  {
+   "quando": "2026-10-23T04:00",
+   "slot": "2026-10-23 06:00",
+   "video": "IMG_4068.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-e7ea8391",
+   "tema": "palestra",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 47,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.3s a 10.3s",
+    "durata": 8.0,
+    "inizio": 2.3,
+    "colore": {
+     "scena": "sera",
+     "motivo": "poca luce",
+     "luce": 0.12,
+     "dominante": "calda",
+     "rumore": 1.5
+    },
+    "copertina_ms": 1750,
+    "musica": "mirror_mirror_2.m4a",
+    "formato": "frase8",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "wIgs0h83IFk"
+    }
+   },
+   "spinto": true,
+   "testo": "Il fisico si costruisce in palestra e si rivela in cucina."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-18 13:00",
   "2026-10-18 17:00",
   "2026-10-18 21:00",
   "2026-10-18 22:00",
@@ -5337,10 +5376,10 @@
   "2026-10-22 22:00",
   "2026-10-23 00:00",
   "2026-10-23 02:00",
-  "2026-10-23 04:00"
+  "2026-10-23 04:00",
+  "2026-10-23 06:00"
  ],
  "musica_recenti": [
-  "kick_it_2.m4a",
   "fire_in_the_sky_1.m4a",
   "wrangle_the_crazy_2.m4a",
   "way_back_home_3.m4a",
@@ -5359,7 +5398,8 @@
   "break_ya_neck_1.m4a",
   "ten_4.m4a",
   "the_road_to_mordor_1.m4a",
-  "final_boss_battle_1.m4a"
+  "final_boss_battle_1.m4a",
+  "mirror_mirror_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5511,18 +5551,19 @@
   "MIE-b48f986e",
   "MIE-72a11d64",
   "MIE-f7b5f4a8",
-  "MIE-6bd471d6"
+  "MIE-6bd471d6",
+  "MIE-e7ea8391"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
   "regole",
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
+  "palestra",
   "palestra"
  ],
  "analisi": {},
@@ -5801,8 +5842,8 @@
    "ultimo": "2026-10-23"
   },
   "1bWl3dJYdM96InBjDiVmdmRMF52U91gvK": {
-   "usi": 1,
-   "ultimo": "2026-10-21"
+   "usi": 2,
+   "ultimo": "2026-10-23"
   },
   "160CsC_a2Uob5QOIsuo8LleGfo5flVhZV": {
    "usi": 1,
@@ -5878,7 +5919,7 @@
   "L17",
   "L18"
  ],
- "formato_ultimo": "montaggio",
+ "formato_ultimo": "frase8",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
