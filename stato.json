@@ -5407,11 +5407,34 @@
    },
    "spinto": true,
    "testo": "Non è fortuna. È lavoro che nessuno ha visto."
+  },
+  {
+   "quando": "2026-10-23T14:00",
+   "slot": "2026-10-23 16:00",
+   "video": "Alessandro Guarracino sta trasmettendo dal vivo..MOV",
+   "md5": "19f663e799453f97e67737fe0dc34f68",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-10-23T14:19+02:00",
+   "frase": "MIE-ee59e209",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "kick_it_1.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "ugbVMtOWAGM"
+    }
+   },
+   "spinto": true,
+   "testo": "Il problema non è la motivazione. È che non hai un sistema."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 00:00",
   "2026-10-19 01:00",
   "2026-10-19 02:00",
   "2026-10-19 03:00",
@@ -5490,10 +5513,10 @@
   "2026-10-23 08:00",
   "2026-10-23 10:00",
   "2026-10-23 12:00",
-  "2026-10-23 14:00"
+  "2026-10-23 14:00",
+  "2026-10-23 16:00"
  ],
  "musica_recenti": [
-  "moon_vision_2.m4a",
   "monthaholic_4.m4a",
   "taking_flight_1.m4a",
   "cutscene_crush_2.m4a",
@@ -5512,7 +5535,8 @@
   "ancient_civilisations_1.m4a",
   "locked_in_3.m4a",
   "delirium_2.m4a",
-  "ego_chall_1.m4a"
+  "ego_chall_1.m4a",
+  "kick_it_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5669,10 +5693,10 @@
   "MIE-aa2c3dbd",
   "L19",
   "MIE-3d86a685",
-  "MIE-ca048705"
+  "MIE-ca048705",
+  "MIE-ee59e209"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -5681,7 +5705,8 @@
   "mentalita",
   "regole",
   "imprenditore",
-  "imprenditore"
+  "imprenditore",
+  "mentalita"
  ],
  "analisi": {
   "1ZZgncbVPQHiv9tKG2288B6r-_fqRErgF": {
@@ -6118,6 +6143,10 @@
    "ultimo": "2026-10-21"
   },
   "1UqKiP8I1uDBOGIlQ6FOiFV8glkTIPDqY": {
+   "usi": 1,
+   "ultimo": "2026-10-23"
+  },
+  "1y59kJ0xjsyIN9aCTP_yAw2eVeS32oQwv": {
    "usi": 1,
    "ultimo": "2026-10-23"
   }
