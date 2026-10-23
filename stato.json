@@ -5383,11 +5383,34 @@
    },
    "spinto": true,
    "testo": "Ho bisogno di soldi, non di sentimenti."
+  },
+  {
+   "quando": "2026-10-23T12:00",
+   "slot": "2026-10-23 14:00",
+   "video": "IMG_4118.mov",
+   "md5": "3d7f07bc7d3dcff186345fdc94464cae",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-22T21:51+02:00",
+   "frase": "MIE-ca048705",
+   "tema": "imprenditore",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "ego_chall_1.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "__a4mWkJufg"
+    }
+   },
+   "spinto": true,
+   "testo": "Non è fortuna. È lavoro che nessuno ha visto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-18 23:00",
   "2026-10-19 00:00",
   "2026-10-19 01:00",
   "2026-10-19 02:00",
@@ -5466,10 +5489,10 @@
   "2026-10-23 06:00",
   "2026-10-23 08:00",
   "2026-10-23 10:00",
-  "2026-10-23 12:00"
+  "2026-10-23 12:00",
+  "2026-10-23 14:00"
  ],
  "musica_recenti": [
-  "survival_mode_3.m4a",
   "moon_vision_2.m4a",
   "monthaholic_4.m4a",
   "taking_flight_1.m4a",
@@ -5488,7 +5511,8 @@
   "mirror_mirror_2.m4a",
   "ancient_civilisations_1.m4a",
   "locked_in_3.m4a",
-  "delirium_2.m4a"
+  "delirium_2.m4a",
+  "ego_chall_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5644,10 +5668,10 @@
   "MIE-e7ea8391",
   "MIE-aa2c3dbd",
   "L19",
-  "MIE-3d86a685"
+  "MIE-3d86a685",
+  "MIE-ca048705"
  ],
  "temi_recenti": [
-  "regole",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -5656,9 +5680,141 @@
   "palestra",
   "mentalita",
   "regole",
+  "imprenditore",
   "imprenditore"
  ],
- "analisi": {},
+ "analisi": {
+  "1ZZgncbVPQHiv9tKG2288B6r-_fqRErgF": {
+   "nome": "IMG_4116.mov",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-22T21:47+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-23T10:52:01.784Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1vHJTxAdddWxyJvz15zU2QH2E-yB5gRcG": {
+   "nome": "IMG_4135.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.86,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-22T22:33+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-23T10:52:17.126Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1xGtjfwOwpVqqVSC7jP30bAqF6vdT1ius": {
+   "nome": "IMG_4131.mov",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-22T22:23+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-23T10:52:31.441Z",
+   "parlato": null,
+   "momento": null
+  },
+  "171BctY0qlc7ZUgO-RUO5-XIvJE3UxC54": {
+   "nome": "IMG_4129.mov",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-22T22:18+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-23T10:52:43.351Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1cPrXhrMq3P9nOXnwLbmmw7MauB7Jw6p2": {
+   "nome": "IMG_4140.mov",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-22T22:56+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-23T10:52:58.992Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1UdAVJSdFXkwQiMLKO3_UNmoNKQugBiO4": {
+   "nome": "IMG_4128.MOV",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-22T22:13+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-23T10:53:20.608Z",
+   "parlato": null,
+   "momento": null
+  },
+  "16q6j7JSTamwuNHkIZxaU3cZ4LFGSgDIm": {
+   "nome": "IMG_4139.mov",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-22T22:48+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-23T10:53:38.227Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1Ec9__ctnSkN9Cj2-_GnGAOPpY6a3V57S": {
+   "nome": "IMG_4121.mov",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-22T22:03+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-23T10:53:58.464Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1-ciPqgzhDOKWA7FElGzwRc9htypB_2u3": {
+   "nome": "IMG_4126.MOV",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-22T22:08+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-23T10:54:24.092Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1Tyefc-vEJZrdzNqOTaUh2yXtSQjsP7fg": {
+   "nome": "IMG_4120.mov",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-22T21:59+02:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-23T10:54:47.982Z",
+   "parlato": null,
+   "momento": null
+  }
+ },
  "pulizia": "2026-10-23",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -5960,6 +6116,10 @@
   "19lxUacEH3cLJ4agkgVgo3o7ErjaxO3My": {
    "usi": 1,
    "ultimo": "2026-10-21"
+  },
+  "1UqKiP8I1uDBOGIlQ6FOiFV8glkTIPDqY": {
+   "usi": 1,
+   "ultimo": "2026-10-23"
   }
  },
  "musica_recenti_meta": [
