@@ -5471,11 +5471,34 @@
    },
    "spinto": true,
    "testo": "Come sistemare qualcuno: 1. Non puoi."
+  },
+  {
+   "quando": "2026-10-23T18:00",
+   "slot": "2026-10-23 20:00",
+   "video": "IMG_4135.MOV",
+   "md5": "db4b445a6bd955c09d3538d9aa2e85fc",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-22T22:33+02:00",
+   "frase": "MIE-79f323dd",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "wrangle_the_crazy_1.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "UEFKh78A3V4"
+    }
+   },
+   "spinto": true,
+   "testo": "Chi ti critica oggi ti chiederà consigli domani."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 02:00",
   "2026-10-19 03:00",
   "2026-10-19 04:00",
   "2026-10-19 05:00",
@@ -5554,10 +5577,10 @@
   "2026-10-23 12:00",
   "2026-10-23 14:00",
   "2026-10-23 16:00",
-  "2026-10-23 18:00"
+  "2026-10-23 18:00",
+  "2026-10-23 20:00"
  ],
  "musica_recenti": [
-  "taking_flight_1.m4a",
   "cutscene_crush_2.m4a",
   "the_light_1.m4a",
   "rubberband_2.m4a",
@@ -5576,7 +5599,8 @@
   "delirium_2.m4a",
   "ego_chall_1.m4a",
   "kick_it_1.m4a",
-  "horizons_4.m4a"
+  "horizons_4.m4a",
+  "wrangle_the_crazy_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5735,10 +5759,10 @@
   "MIE-3d86a685",
   "MIE-ca048705",
   "MIE-ee59e209",
-  "MIE-96cb5cca"
+  "MIE-96cb5cca",
+  "MIE-79f323dd"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "palestra",
   "palestra",
@@ -5747,22 +5771,10 @@
   "imprenditore",
   "imprenditore",
   "mentalita",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "1vHJTxAdddWxyJvz15zU2QH2E-yB5gRcG": {
-   "nome": "IMG_4135.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.86,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-22T22:33+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-23T10:52:17.126Z",
-   "parlato": null,
-   "momento": null
-  },
   "1xGtjfwOwpVqqVSC7jP30bAqF6vdT1ius": {
    "nome": "IMG_4131.mov",
    "scena": "palestra",
@@ -6181,6 +6193,10 @@
   "1RffuiBvFRbbbwuF-Qy2QfHTSEOUDPE8a": {
    "usi": 1,
    "ultimo": "2026-10-23"
+  },
+  "1EIkrvNWHYfhUXhSzzqvvdiEFEPhXxmSi": {
+   "usi": 1,
+   "ultimo": "2026-10-23"
   }
  },
  "musica_recenti_meta": [
@@ -6233,7 +6249,7 @@
   "L18",
   "L19"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "montaggio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
@@ -6246,5 +6262,5 @@
    "parlato": false
   }
  ],
- "commenti_fino": "2026-10-22T18:00:01Z"
+ "commenti_fino": "2026-10-23T18:00:08Z"
 }
