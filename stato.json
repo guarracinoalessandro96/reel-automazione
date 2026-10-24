@@ -5784,11 +5784,50 @@
    },
    "spinto": false,
    "testo": "Oggi dolore. Domani forza."
+  },
+  {
+   "quando": "2026-10-24T22:00",
+   "slot": "2026-10-25 00:00",
+   "video": "IMG_4116.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-cb1a01f5",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 9,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 0.6s a 5.6s",
+    "durata": 5.0,
+    "inizio": 0.63,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.44,
+     "dominante": "calda",
+     "rumore": 4.3
+    },
+    "copertina_ms": 3281,
+    "musica": "ego_chall_4.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "xNY9F9WkiZg"
+    }
+   },
+   "spinto": false,
+   "testo": "Il successo è una decisione."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 11:00",
   "2026-10-19 12:00",
   "2026-10-19 13:00",
   "2026-10-19 14:00",
@@ -5867,10 +5906,10 @@
   "2026-10-24 16:00",
   "2026-10-24 18:00",
   "2026-10-24 20:00",
-  "2026-10-24 22:00"
+  "2026-10-24 22:00",
+  "2026-10-25 00:00"
  ],
  "musica_recenti": [
-  "break_ya_neck_1.m4a",
   "ten_4.m4a",
   "the_road_to_mordor_1.m4a",
   "final_boss_battle_1.m4a",
@@ -5889,7 +5928,8 @@
   "majestic_12_1.m4a",
   "rubberband_4.m4a",
   "ten_3.m4a",
-  "death_duel_4.m4a"
+  "death_duel_4.m4a",
+  "ego_chall_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6057,15 +6097,16 @@
   "MIE-78e1f178",
   "MIE-bd40bf0d",
   "MIE-747c8ba5",
-  "MIE-b8b94c79"
+  "MIE-b8b94c79",
+  "MIE-cb1a01f5"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -6449,8 +6490,8 @@
    "ultimo": "2026-10-24"
   },
   "1RffuiBvFRbbbwuF-Qy2QfHTSEOUDPE8a": {
-   "usi": 1,
-   "ultimo": "2026-10-23"
+   "usi": 2,
+   "ultimo": "2026-10-24"
   },
   "1EIkrvNWHYfhUXhSzzqvvdiEFEPhXxmSi": {
    "usi": 1,
