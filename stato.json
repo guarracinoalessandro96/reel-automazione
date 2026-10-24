@@ -5744,11 +5744,50 @@
    },
    "spinto": false,
    "testo": "Nessuno lavora più duro di un uomo che sa che nessuno lo sostiene."
+  },
+  {
+   "quando": "2026-10-24T20:00",
+   "slot": "2026-10-24 22:00",
+   "video": "Alessandro Guarracino sta trasmettendo dal vivo..MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "specchio",
+   "registrato": null,
+   "frase": "MIE-b8b94c79",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 10,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 0.2s a 5.2s",
+    "durata": 5.0,
+    "inizio": 0.23,
+    "colore": {
+     "scena": "interno",
+     "motivo": "luce neutra",
+     "luce": 0.51,
+     "dominante": "calda",
+     "rumore": 1.5
+    },
+    "copertina_ms": 4700,
+    "musica": "death_duel_4.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "_7t2NY4Cajg"
+    }
+   },
+   "spinto": false,
+   "testo": "Oggi dolore. Domani forza."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 10:00",
   "2026-10-19 11:00",
   "2026-10-19 12:00",
   "2026-10-19 13:00",
@@ -5827,10 +5866,10 @@
   "2026-10-24 06:00",
   "2026-10-24 16:00",
   "2026-10-24 18:00",
-  "2026-10-24 20:00"
+  "2026-10-24 20:00",
+  "2026-10-24 22:00"
  ],
  "musica_recenti": [
-  "moon_vision_4.m4a",
   "break_ya_neck_1.m4a",
   "ten_4.m4a",
   "the_road_to_mordor_1.m4a",
@@ -5849,7 +5888,8 @@
   "fire_in_the_sky_2.m4a",
   "majestic_12_1.m4a",
   "rubberband_4.m4a",
-  "ten_3.m4a"
+  "ten_3.m4a",
+  "death_duel_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6016,7 +6056,8 @@
   "L20",
   "MIE-78e1f178",
   "MIE-bd40bf0d",
-  "MIE-747c8ba5"
+  "MIE-747c8ba5",
+  "MIE-b8b94c79"
  ],
  "temi_recenti": [
   "mentalita",
@@ -6024,8 +6065,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -6404,8 +6445,8 @@
    "ultimo": "2026-10-24"
   },
   "1y59kJ0xjsyIN9aCTP_yAw2eVeS32oQwv": {
-   "usi": 1,
-   "ultimo": "2026-10-23"
+   "usi": 2,
+   "ultimo": "2026-10-24"
   },
   "1RffuiBvFRbbbwuF-Qy2QfHTSEOUDPE8a": {
    "usi": 1,
