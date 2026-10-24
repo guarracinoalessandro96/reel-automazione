@@ -5615,11 +5615,35 @@
    },
    "spinto": true,
    "testo": "A volte non saprai mai il valore di un momento finché non diventa un ricordo."
+  },
+  {
+   "quando": "2026-10-24T04:00",
+   "slot": "2026-10-24 06:00",
+   "video": "IMG_4129.mov",
+   "md5": "bd0ac55327afab82f56ef74046870e59",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-22T22:18+02:00",
+   "frase": "L20",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 verità che fanno male ma servono",
+    "musica": "fire_in_the_sky_2.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "D69DrvWcNMk"
+    }
+   },
+   "spinto": true,
+   "testo": "3 verità che fanno male ma servono"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 06:00",
   "2026-10-19 07:00",
   "2026-10-19 08:00",
   "2026-10-19 09:00",
@@ -5698,10 +5722,10 @@
   "2026-10-23 20:00",
   "2026-10-23 22:00",
   "2026-10-24 00:00",
-  "2026-10-24 02:00"
+  "2026-10-24 02:00",
+  "2026-10-24 06:00"
  ],
  "musica_recenti": [
-  "majestic_12_1.m4a",
   "stake_out_2.m4a",
   "death_duel_4.m4a",
   "wrangle_the_crazy_4.m4a",
@@ -5720,7 +5744,8 @@
   "wrangle_the_crazy_1.m4a",
   "vibe_check_4.m4a",
   "van_life_rager_3.m4a",
-  "whoop_2.m4a"
+  "whoop_2.m4a",
+  "fire_in_the_sky_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5883,10 +5908,10 @@
   "MIE-79f323dd",
   "MIE-06d04058",
   "MIE-e78c74d0",
-  "MIE-ba146521"
+  "MIE-ba146521",
+  "L20"
  ],
  "temi_recenti": [
-  "mentalita",
   "regole",
   "imprenditore",
   "imprenditore",
@@ -5895,22 +5920,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "regole"
  ],
  "analisi": {
-  "171BctY0qlc7ZUgO-RUO5-XIvJE3UxC54": {
-   "nome": "IMG_4129.mov",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-22T22:18+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-23T10:52:43.351Z",
-   "parlato": null,
-   "momento": null
-  },
   "1cPrXhrMq3P9nOXnwLbmmw7MauB7Jw6p2": {
    "nome": "IMG_4140.mov",
    "scena": "palestra",
@@ -5990,7 +6003,7 @@
    "momento": null
   }
  },
- "pulizia": "2026-10-23",
+ "pulizia": "2026-10-24",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 1,
@@ -6311,6 +6324,10 @@
   "1eFsX23f-gEnVKC5myas7iJmwUvbgQ-AX": {
    "usi": 1,
    "ultimo": "2026-10-24"
+  },
+  "1t2HdsGs2qhC9CeBp31JACRAZz9LjJwdV": {
+   "usi": 1,
+   "ultimo": "2026-10-24"
   }
  },
  "musica_recenti_meta": [
@@ -6361,9 +6378,10 @@
   "L16",
   "L17",
   "L18",
-  "L19"
+  "L19",
+  "L20"
  ],
- "formato_ultimo": "frase8",
+ "formato_ultimo": "regole",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
