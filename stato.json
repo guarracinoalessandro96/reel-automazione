@@ -5664,11 +5664,50 @@
    },
    "spinto": true,
    "testo": "Il tuo network vale il tuo patrimonio."
+  },
+  {
+   "quando": "2026-10-24T16:00",
+   "slot": "2026-10-24 18:00",
+   "video": "IMG_4065.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-bd40bf0d",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 17,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 2.6s a 7.6s",
+    "durata": 5.0,
+    "inizio": 2.57,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.46,
+     "dominante": "neutra",
+     "rumore": 3.0
+    },
+    "copertina_ms": 4218,
+    "musica": "rubberband_4.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "dI2vWNrJXcw"
+    }
+   },
+   "spinto": false,
+   "testo": "Meglio tardi che mai."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 08:00",
   "2026-10-19 09:00",
   "2026-10-19 10:00",
   "2026-10-19 11:00",
@@ -5747,10 +5786,10 @@
   "2026-10-24 00:00",
   "2026-10-24 02:00",
   "2026-10-24 06:00",
-  "2026-10-24 16:00"
+  "2026-10-24 16:00",
+  "2026-10-24 18:00"
  ],
  "musica_recenti": [
-  "death_duel_4.m4a",
   "wrangle_the_crazy_4.m4a",
   "moon_vision_4.m4a",
   "break_ya_neck_1.m4a",
@@ -5769,7 +5808,8 @@
   "van_life_rager_3.m4a",
   "whoop_2.m4a",
   "fire_in_the_sky_2.m4a",
-  "majestic_12_1.m4a"
+  "majestic_12_1.m4a",
+  "rubberband_4.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5934,10 +5974,10 @@
   "MIE-e78c74d0",
   "MIE-ba146521",
   "L20",
-  "MIE-78e1f178"
+  "MIE-78e1f178",
+  "MIE-bd40bf0d"
  ],
  "temi_recenti": [
-  "imprenditore",
   "imprenditore",
   "mentalita",
   "mentalita",
@@ -5946,6 +5986,7 @@
   "mentalita",
   "mentalita",
   "regole",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
@@ -6314,8 +6355,8 @@
    "ultimo": "2026-10-23"
   },
   "19lxUacEH3cLJ4agkgVgo3o7ErjaxO3My": {
-   "usi": 1,
-   "ultimo": "2026-10-21"
+   "usi": 2,
+   "ultimo": "2026-10-24"
   },
   "1UqKiP8I1uDBOGIlQ6FOiFV8glkTIPDqY": {
    "usi": 1,
@@ -6397,7 +6438,7 @@
   "L19",
   "L20"
  ],
- "formato_ultimo": "montaggio",
+ "formato_ultimo": "frase",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
