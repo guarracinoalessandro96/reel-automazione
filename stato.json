@@ -5640,11 +5640,34 @@
    },
    "spinto": true,
    "testo": "3 verità che fanno male ma servono"
+  },
+  {
+   "quando": "2026-10-24T14:00",
+   "slot": "2026-10-24 16:00",
+   "video": "IMG_4140.mov",
+   "md5": "001e1f76b8a03b96b43f8d046c3fd435",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-22T22:56+02:00",
+   "frase": "MIE-78e1f178",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "montaggio",
+    "durata": 8.0,
+    "musica": "majestic_12_1.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "v1Jnh4KJZ3M"
+    }
+   },
+   "spinto": true,
+   "testo": "Il tuo network vale il tuo patrimonio."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 07:00",
   "2026-10-19 08:00",
   "2026-10-19 09:00",
   "2026-10-19 10:00",
@@ -5723,10 +5746,10 @@
   "2026-10-23 22:00",
   "2026-10-24 00:00",
   "2026-10-24 02:00",
-  "2026-10-24 06:00"
+  "2026-10-24 06:00",
+  "2026-10-24 16:00"
  ],
  "musica_recenti": [
-  "stake_out_2.m4a",
   "death_duel_4.m4a",
   "wrangle_the_crazy_4.m4a",
   "moon_vision_4.m4a",
@@ -5745,7 +5768,8 @@
   "vibe_check_4.m4a",
   "van_life_rager_3.m4a",
   "whoop_2.m4a",
-  "fire_in_the_sky_2.m4a"
+  "fire_in_the_sky_2.m4a",
+  "majestic_12_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5909,34 +5933,22 @@
   "MIE-06d04058",
   "MIE-e78c74d0",
   "MIE-ba146521",
-  "L20"
+  "L20",
+  "MIE-78e1f178"
  ],
  "temi_recenti": [
+  "imprenditore",
+  "imprenditore",
+  "mentalita",
+  "mentalita",
+  "mentalita",
+  "mentalita",
+  "mentalita",
+  "mentalita",
   "regole",
-  "imprenditore",
-  "imprenditore",
-  "mentalita",
-  "mentalita",
-  "mentalita",
-  "mentalita",
-  "mentalita",
-  "mentalita",
-  "regole"
+  "mentalita"
  ],
  "analisi": {
-  "1cPrXhrMq3P9nOXnwLbmmw7MauB7Jw6p2": {
-   "nome": "IMG_4140.mov",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-22T22:56+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-23T10:52:58.992Z",
-   "parlato": null,
-   "momento": null
-  },
   "1UdAVJSdFXkwQiMLKO3_UNmoNKQugBiO4": {
    "nome": "IMG_4128.MOV",
    "scena": "palestra",
@@ -6328,6 +6340,10 @@
   "1t2HdsGs2qhC9CeBp31JACRAZz9LjJwdV": {
    "usi": 1,
    "ultimo": "2026-10-24"
+  },
+  "1wIAA5bkWDLakZogTG-ehlMTtvzDMKN7q": {
+   "usi": 1,
+   "ultimo": "2026-10-24"
   }
  },
  "musica_recenti_meta": [
@@ -6381,7 +6397,7 @@
   "L19",
   "L20"
  ],
- "formato_ultimo": "regole",
+ "formato_ultimo": "montaggio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
