@@ -5704,11 +5704,50 @@
    },
    "spinto": false,
    "testo": "Meglio tardi che mai."
+  },
+  {
+   "quando": "2026-10-24T18:00",
+   "slot": "2026-10-24 20:00",
+   "video": "IMG_4118.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-747c8ba5",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 1,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 1.8s a 6.8s",
+    "durata": 5.0,
+    "inizio": 1.8,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.43,
+     "dominante": "calda",
+     "rumore": 3.6
+    },
+    "copertina_ms": 3281,
+    "musica": "ten_3.m4a",
+    "formato": "frase",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "YE0AIYQHBJo"
+    }
+   },
+   "spinto": false,
+   "testo": "Nessuno lavora più duro di un uomo che sa che nessuno lo sostiene."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 09:00",
   "2026-10-19 10:00",
   "2026-10-19 11:00",
   "2026-10-19 12:00",
@@ -5787,10 +5826,10 @@
   "2026-10-24 02:00",
   "2026-10-24 06:00",
   "2026-10-24 16:00",
-  "2026-10-24 18:00"
+  "2026-10-24 18:00",
+  "2026-10-24 20:00"
  ],
  "musica_recenti": [
-  "wrangle_the_crazy_4.m4a",
   "moon_vision_4.m4a",
   "break_ya_neck_1.m4a",
   "ten_4.m4a",
@@ -5809,7 +5848,8 @@
   "whoop_2.m4a",
   "fire_in_the_sky_2.m4a",
   "majestic_12_1.m4a",
-  "rubberband_4.m4a"
+  "rubberband_4.m4a",
+  "ten_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5975,10 +6015,10 @@
   "MIE-ba146521",
   "L20",
   "MIE-78e1f178",
-  "MIE-bd40bf0d"
+  "MIE-bd40bf0d",
+  "MIE-747c8ba5"
  ],
  "temi_recenti": [
-  "imprenditore",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -5986,6 +6026,7 @@
   "mentalita",
   "mentalita",
   "regole",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -6359,8 +6400,8 @@
    "ultimo": "2026-10-24"
   },
   "1UqKiP8I1uDBOGIlQ6FOiFV8glkTIPDqY": {
-   "usi": 1,
-   "ultimo": "2026-10-23"
+   "usi": 2,
+   "ultimo": "2026-10-24"
   },
   "1y59kJ0xjsyIN9aCTP_yAw2eVeS32oQwv": {
    "usi": 1,
@@ -6451,5 +6492,5 @@
    "parlato": false
   }
  ],
- "commenti_fino": "2026-10-23T18:00:08Z"
+ "commenti_fino": "2026-10-24T18:00:03Z"
 }
