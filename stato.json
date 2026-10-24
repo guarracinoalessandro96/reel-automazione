@@ -5575,11 +5575,50 @@
    },
    "spinto": false,
    "testo": "Sorridi fra, ti sei svegliato."
+  },
+  {
+   "quando": "2026-10-24T00:01",
+   "slot": "2026-10-24 02:00",
+   "video": "IMG_4131.mov",
+   "md5": "921a1e443dd66244c8498e3e28c68554",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-22T22:23+02:00",
+   "frase": "MIE-ba146521",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 5,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 17.3s a 25.3s",
+    "durata": 8.0,
+    "inizio": 17.3,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.4,
+     "dominante": "calda",
+     "rumore": 4.0
+    },
+    "copertina_ms": 7250,
+    "musica": "whoop_2.m4a",
+    "formato": "frase8",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "sI-WWJv-fHo"
+    }
+   },
+   "spinto": true,
+   "testo": "A volte non saprai mai il valore di un momento finché non diventa un ricordo."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 05:00",
   "2026-10-19 06:00",
   "2026-10-19 07:00",
   "2026-10-19 08:00",
@@ -5658,10 +5697,10 @@
   "2026-10-23 18:00",
   "2026-10-23 20:00",
   "2026-10-23 22:00",
-  "2026-10-24 00:00"
+  "2026-10-24 00:00",
+  "2026-10-24 02:00"
  ],
  "musica_recenti": [
-  "rubberband_2.m4a",
   "majestic_12_1.m4a",
   "stake_out_2.m4a",
   "death_duel_4.m4a",
@@ -5680,7 +5719,8 @@
   "horizons_4.m4a",
   "wrangle_the_crazy_1.m4a",
   "vibe_check_4.m4a",
-  "van_life_rager_3.m4a"
+  "van_life_rager_3.m4a",
+  "whoop_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -5842,10 +5882,10 @@
   "MIE-96cb5cca",
   "MIE-79f323dd",
   "MIE-06d04058",
-  "MIE-e78c74d0"
+  "MIE-e78c74d0",
+  "MIE-ba146521"
  ],
  "temi_recenti": [
-  "palestra",
   "mentalita",
   "regole",
   "imprenditore",
@@ -5854,22 +5894,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "1xGtjfwOwpVqqVSC7jP30bAqF6vdT1ius": {
-   "nome": "IMG_4131.mov",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-22T22:23+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-23T10:52:31.441Z",
-   "parlato": null,
-   "momento": null
-  },
   "171BctY0qlc7ZUgO-RUO5-XIvJE3UxC54": {
    "nome": "IMG_4129.mov",
    "scena": "palestra",
@@ -6279,6 +6307,10 @@
   "1EIkrvNWHYfhUXhSzzqvvdiEFEPhXxmSi": {
    "usi": 1,
    "ultimo": "2026-10-23"
+  },
+  "1eFsX23f-gEnVKC5myas7iJmwUvbgQ-AX": {
+   "usi": 1,
+   "ultimo": "2026-10-24"
   }
  },
  "musica_recenti_meta": [
@@ -6331,7 +6363,7 @@
   "L18",
   "L19"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "frase8",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
