@@ -85,7 +85,8 @@ PAUSA_ERRORI = 3          # errori di fila su una piattaforma -> pausa automatic
 PAUSA_ORE = 6
 ORA_TIKTOK = 21          # i video TikTok della giornata arrivano su Telegram tutti insieme a quest'ora
 # FORMATI provati a rotazione; pesi iniziali, poi report.py li aggiorna (pesi.json "formati") dai risultati veri.
-FORMATI = {"frase": 1.0, "frase8": 1.0, "gancio": 1.0, "montaggio": 0.8, "regole": 0.7, "ambiente": 0.6}
+FORMATI = {"frase": 1.0, "frase8": 1.0, "gancio": 1.0, "montaggio": 0.8, "regole": 0.7, "ambiente": 0.6,
+           "broll1": 1.0, "broll2": 1.0, "broll3": 1.0, "storia": 1.0}   # 25/10: formati_nuovi.py
 # frase8 (21/10/2026): la frase da 8 s. Tra gli Short spinti da YouTube, quelli da 8 s hanno superato 1.200 views
 # 10 volte su 47, quelli da 5 s 0 su 24 (stessa mediana ~1.000): si rimette in gara contro il 5 s
 GANCIO = {"nome": "gancio", "durata": 8.0, "t": 3.0}          # frase in 2 tempi: la seconda parte dopo 3 s
@@ -282,13 +283,25 @@ def scegli_formato(slot, state, frase, an, spinto=True):
     try:
         dati = json.load(open(os.path.join(HERE, "pesi.json"), encoding="utf-8"))
         pesi.update(dati.get("formati", {}))
+        for f, x in dati.get("esperimento_formati", {}).items():    # AGENTE (dal 25/10/2026): esperimento con
+            if f in pesi:                                           # data di verifica, report.py non lo tocca
+                pesi[f] = float(pesi[f]) * float(x)
         for f in dati.get("formati_spenti", []):    # bloccato da YouTube per diritti d'autore (report.py)
             pesi.pop(f, None)
     except Exception:
         pass
     ok = {"frase": True, "gancio": bool(overlay.dividi_frase(frase["gancio"])), "montaggio": True,
-          "regole": lista_regole(slot, state) is not None, "ambiente": an.get("scena") == "palestra", "frase8": True}
-    pesi = {f: max(float(w), 0.05) * (0.3 if f == state.get("formato_ultimo") else 1)
+          "regole": lista_regole(slot, state) is not None, "ambiente": an.get("scena") == "palestra", "frase8": True,
+          "broll1": True, "broll2": True, "broll3": True, "storia": lista_regole(slot, state) is not None}
+    tre = (datetime.datetime.now() - datetime.timedelta(days=3)).isoformat()
+    usati = {}
+    for h in state.get("storico", []):
+        if h.get("quando", "") >= tre:
+            f = (h.get("montaggio") or {}).get("formato") or "frase"
+            usati[f] = usati.get(f, 0) + 1
+    # 25/10/2026: ESPLORAZIONE (Alessandro: "voglio capire il prima possibile quale format funziona"): un formato
+    # provato poche volte negli ultimi 3 giorni pesa fino a 3 volte di piu'
+    pesi = {f: max(float(w), 0.05) * (0.3 if f == state.get("formato_ultimo") else 1) * (1 + 2 / (1 + usati.get(f, 0)))
             for f, w in pesi.items() if ok.get(f)}
     return random.choices(list(pesi), weights=list(pesi.values()))[0] if pesi else "frase"
 
@@ -380,6 +393,19 @@ def lista_regole(slot, state):
     if random.random() >= TRADIMENTO_QUOTA:     # 25/10/2026: il tradimento solo di rado
         libere = [l for l in libere if not tema(l)] or libere
     return libere[0] if libere else None
+
+
+def monta_nuovo(formato, frase, src, out, music, serie, drive, work, clip, slot, state):
+    """Formati nuovi (formati_nuovi.py): b-roll da 1/2/3 s e storia a schermate. Restituisce (frase, info)."""
+    import formati_nuovi
+    clips = [src] + clip_extra(drive, work, clip, 3)
+    if formato == "storia":
+        lista = lista_regole(slot, state)
+        info = formati_nuovi.make_storia(clips, lista["titolo"], lista["righe"], out, musiche_brano(music, 6), serie)
+        frase = {"id": lista["id"], "tema": "regole", "gancio": lista["titolo"], "righe": lista["righe"], "autore": "",
+                 "hashtag": ["#storia", "#mentalita", "#motivazione"], "serie": serie}
+        return frase, info
+    return frase, formati_nuovi.make_broll(formato, clips, frase["gancio"], out, musiche_brano(music, 3), serie)
 
 
 def monta_regole(lista, src, out, music, serie, drive, work, clip):
@@ -979,7 +1005,7 @@ def publish_all(path, cap, creds, only, path_meta=None, publish_at=None, ig_nati
            "tiktok": lambda: tiktok_upload(path_meta, cap)}
     results = {}
     for name in only:
-        if name in MUSICA_NOSTRA and not path_meta:
+        if name in MUSICA_NOSTRA and not path_meta and not (name == "instagram" and ig_nativo):
             results[name] = {"ok": False, "errore": "manca la versione con la nostra musica"}
             log(name, "saltato: manca la versione con la nostra musica")
             continue
@@ -1308,6 +1334,8 @@ def main():
                 info = overlay.make_video(src, prima, out, music=music, serie=serie,
                                           colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
                                           da_archivio=bool(clip), formato=dict(GANCIO, seconda=seconda))
+            elif formato in ("broll1", "broll2", "broll3", "storia"):
+                frase, info = monta_nuovo(formato, frase, src, out, music, serie, drive, work, clip, slot, state)
             elif formato == "frase8":
                 info = overlay.make_video(src, frase["gancio"], out, music=music, serie=serie,
                                           colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
@@ -1350,10 +1378,14 @@ def main():
     piatt = piattaforme_slot(slot, state)
     per_dopo = [p for p in PREPARA_PER_DOPO if p not in attive()] if principale(slot) else []
     parla = info.get("formato") == "parlato"    # PARLATO: la sua voce ovunque, mai musica al suo posto
-    if parla:
+    voce = parla or (info.get("formato") == "momento" and info.get("audio_originale"))   # suono vero da tenere
+    if voce and MUSICA_NOSTRA & set(piatt):     # 25/10: Instagram/Facebook non accettano il 4K -> versione 1080p
+        out_meta = overlay.versione_social(out, os.path.join(work, "reel_social.mp4"), audio=True)
+    elif voce:
         out_meta = out
     elif MUSICA_NOSTRA & set(piatt) or per_dopo:
-        out_meta, info["musica_meta"] = versione_meta(out, state.get("musica_recenti_meta", []), an["scena"])
+        base_social = overlay.versione_social(out, os.path.join(work, "reel_social.mp4"), audio=False)
+        out_meta, info["musica_meta"] = versione_meta(base_social, state.get("musica_recenti_meta", []), an["scena"])
     # PUNTUALITA' (16/10/2026): si parte ~45' prima dello slot. YouTube viene caricato subito e PROGRAMMATO all'ora
     # esatta; poi si aspetta l'ora esatta per Telegram (TikTok) e Facebook.
     target = ora_slot(slot)
@@ -1392,9 +1424,9 @@ def main():
     else:
         muto = None
     ig_nativo = None
-    if "instagram" in piatt and not parla:   # Instagram: video senza musica + brano nativo scelto per la scena
+    if "instagram" in piatt and not voce:   # Instagram: video 1080p senza musica + brano NATIVO scelto per la scena
         try:
-            muto_ig = muto or overlay.senza_audio(out, os.path.join(work, "reel_ig.mp4"))
+            muto_ig = overlay.versione_social(out, os.path.join(work, "reel_ig.mp4"), audio=False)
             scelto = scegli_audio_instagram(an["scena"], state.get("ig_audio_recenti", []))
             if scelto:
                 ig_nativo = (muto_ig, scelto[0])
@@ -1424,7 +1456,7 @@ def main():
             log("Playlist YouTube non aggiornata:", e)
     if results.get("instagram", {}).get("ok") and ENV("SENZA_STORIE") != "1" and principale(slot) and not DRY:
         try:
-            results["instagram_storia"] = {"ok": True, "id": instagram_storia(out_meta)}
+            results["instagram_storia"] = {"ok": True, "id": instagram_storia(out_meta or (ig_nativo or [None])[0])}
             log("instagram storia pubblicata")
         except Exception as e:
             results["instagram_storia"] = {"ok": False, "errore": str(e)[:300]}

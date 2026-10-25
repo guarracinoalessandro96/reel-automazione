@@ -298,7 +298,7 @@ def build_overlay(W, H, text, faces, stile=None, autore=None, serie=None):
 
 
 TEMPO_MAX_MONTAGGIO = 1800  # 30 minuti al massimo per un montaggio (4K 60 dal 25/10; il lavoro GitHub dura fino a 100')
-LATO_USCITA = 2160       # 25/10/2026: 4K (2160x3840), scelta di Alessandro: massima risoluzione su YouTube
+LATO_USCITA = int(os.environ.get("LATO_USCITA_PROVA") or 2160)  # (prove sul PC: LATO_USCITA_PROVA=1080)       # 25/10/2026: 4K (2160x3840), scelta di Alessandro: massima risoluzione su YouTube
 LATO_MINIMO = 1080       # video piu' piccoli del 4K: si esce alla loro risoluzione (mai sotto 1080, niente ingrandimenti inutili)
 FPS_MULTI = 60           # regole/montaggio: 60 fotogrammi al secondo come i suoi video
 ZOOM = 0                 # zoom lento avanti-indietro (es. 0.20); DISATTIVATO il 4/10/2026: ad Alessandro non piace
@@ -392,6 +392,19 @@ def crea_clip_archivio(src, dst, inizio=None):
                        capture_output=True, text=True, errors="ignore", timeout=TEMPO_MAX_MONTAGGIO)
     if r.returncode != 0 or not os.path.exists(dst):
         raise RuntimeError("clip archivio: " + r.stderr[-300:])
+    return dst
+
+
+def versione_social(src, dst, audio=True):
+    """Versione 1080x1920 (Instagram e Facebook non accettano il 4K) dallo stesso reel, stessi fotogrammi al secondo
+    (massimo 60). audio=False: senza traccia audio (ci si mette la musica nativa della piattaforma)."""
+    cmd = [FFMPEG, "-y", "-v", "error", "-i", src, "-map", "0:v:0", "-vf", "scale=1080:-2:flags=lanczos,fps='min(60,source_fps)'",
+           "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-profile:v", "high", "-pix_fmt", "yuv420p"]
+    cmd += ["-map", "0:a:0?", "-c:a", "aac", "-b:a", "192k"] if audio else ["-an"]
+    r = subprocess.run(cmd + ["-movflags", "+faststart", dst], capture_output=True, text=True, errors="ignore",
+                       timeout=TEMPO_MAX_MONTAGGIO)
+    if r.returncode != 0 or not os.path.exists(dst) or os.path.getsize(dst) < 50_000:
+        raise RuntimeError("versione social: " + r.stderr[-300:])
     return dst
 
 

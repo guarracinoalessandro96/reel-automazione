@@ -26,7 +26,7 @@ permissions:
 jobs:
   pubblica:
     runs-on: ubuntu-24.04
-    timeout-minutes: 100   # puo' aspettare fino a ~50 minuti l'ora esatta dello slot
+    timeout-minutes: 330   # 25/10/2026: resta acceso fino a ~4,5 ore e fa da solo gli orari successivi
     steps:
       # 11/10/2026: ref main = lo stato PIU' RECENTE (senza, un controllo in coda dietro a un altro leggeva lo stato
       # di quando era partito e ripubblicava lo stesso orario: alle 15:00 erano usciti 2 reel)
@@ -118,7 +118,32 @@ jobs:
           SENZA_MUSICA: ${{ vars.SENZA_MUSICA }}
           SENZA_COLORE: ${{ vars.SENZA_COLORE }}
           SENZA_STORIE: ${{ vars.SENZA_STORIE }}
-        run: python pubblica.py "${{ steps.orario.outputs.slot }}"
+        # 25/10/2026: le esecuzioni programmate di GitHub partono a singhiozzo (il 25/10 solo 12 in 19 ore) e la
+        # sveglia del PC a volte non ha rete: una volta partito, il lavoro resta acceso fino a ~4,5 ore e fa da solo
+        # anche gli orari successivi (salva lo stato dopo ognuno). Il lavoro dopo riparte appena questo finisce.
+        run: |
+          salva() {
+            git config user.name "reel-bot"; git config user.email "reel-bot@users.noreply.github.com"
+            git add stato.json; git diff --cached --quiet && return 0
+            git commit -q -m "Reel $1"
+            for i in 1 2 3 4 5; do
+              git pull --rebase -q && git push -q && return 0
+              git rebase --abort 2>/dev/null || true; sleep $((i * 5))
+            done
+          }
+          SLOT="${{ steps.orario.outputs.slot }}"
+          FINE=$((SECONDS + 270 * 60))
+          while [ -n "$SLOT" ]; do
+            python pubblica.py "$SLOT" || echo "Orario $SLOT: pubblicazione non riuscita"
+            salva "$SLOT"
+            SLOT=""
+            while [ -z "$SLOT" ] && [ $SECONDS -lt $FINE ]; do
+              sleep 240
+              git pull -q --rebase || git rebase --abort 2>/dev/null || true
+              python3 ricevi_telegram.py > /dev/null 2>&1 || true
+              [ -f PAUSA ] || SLOT="$(python3 orario.py)"
+            done
+          done
 
       - name: Salva lo stato
         if: always() && steps.orario.outputs.slot != ''

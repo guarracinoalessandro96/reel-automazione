@@ -33,11 +33,16 @@ def avvia():
 
 
 if __name__ == "__main__":
-    try:
-        avvia()
-        esito = "avviato"
-    except Exception as e:
-        esito = f"NON avviato: {e}"
+    import time
+    esito = ""
+    for tentativo in range(4):       # 25/10/2026: a volte la rete del PC non risponde (DNS): si riprova 4 volte
+        try:
+            avvia()
+            esito = "avviato" + (f" (al tentativo {tentativo + 1})" if tentativo else "")
+            break
+        except Exception as e:
+            esito = f"NON avviato: {str(e)[:200]}"
+            time.sleep(90)
     try:            # 25/10/2026: i video tolti dall'archivio di Drive (pieno) scendono sul disco del PC
         import sposta_su_pc
         n, gb, liberi = sposta_su_pc.sposta()

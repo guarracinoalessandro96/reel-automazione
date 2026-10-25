@@ -56,5 +56,9 @@
   "frase": 1.0,
   "regole": 1.0,
   "montaggio": 0.82
- }
+ },
+ "esperimento_formati": {
+  "regole": 1.6
+ },
+ "esperimento_nota": "Agente 25/10/2026: regole x1,6 (12 Short dal 18/10: mediana 954, 2 sopra 1.200; frase 935 e 0 su 13; montaggio 770 e 1 su 14). Verifica 1/11/2026: se le regole rendono meno della mediana degli altri formati si toglie."
 }
