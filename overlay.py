@@ -408,6 +408,24 @@ def versione_social(src, dst, audio=True):
     return dst
 
 
+def versione_tiktok(src, dst, audio=False, max_mb=9.5):
+    """Versione per TikTok Studio (25/10/2026): 1080x1920 come versione_social ma SOTTO i 10 MB, il massimo che il
+    giro serale in Chrome riesce a caricare in un colpo. Il suono lo sceglie poi TikTok (suoni nativi), quindi di
+    norma senza audio; audio=True per parlato/momento con la loro voce."""
+    durata = max(1.0, probe(src)[0])
+    kbit = int(max_mb * 8 * 1024 / durata) - (128 if audio else 0) - 50        # margine per il contenitore
+    kbit = max(800, min(kbit, 12000))
+    cmd = [FFMPEG, "-y", "-v", "error", "-i", src, "-map", "0:v:0", "-vf", "scale=1080:-2:flags=lanczos,fps='min(60,source_fps)'",
+           "-c:v", "libx264", "-preset", "medium", "-b:v", f"{kbit}k", "-maxrate", f"{int(kbit * 1.2)}k",
+           "-bufsize", f"{kbit * 2}k", "-profile:v", "high", "-pix_fmt", "yuv420p"]
+    cmd += ["-map", "0:a:0?", "-c:a", "aac", "-b:a", "128k"] if audio else ["-an"]
+    r = subprocess.run(cmd + ["-movflags", "+faststart", dst], capture_output=True, text=True, errors="ignore",
+                       timeout=TEMPO_MAX_MONTAGGIO)
+    if r.returncode != 0 or not os.path.exists(dst) or os.path.getsize(dst) < 50_000:
+        raise RuntimeError("versione tiktok: " + r.stderr[-300:])
+    return dst
+
+
 def senza_audio(src, dst):
     """Stesso reel senza traccia audio (video copiato, nessuna perdita): per TikTok, dove Alessandro aggiunge
     a mano un audio di tendenza dall'app."""

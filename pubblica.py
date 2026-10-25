@@ -27,7 +27,7 @@ STATE = os.path.join(HERE, "stato.json")
 GRAPH = "https://graph.facebook.com/v23.0"
 ENV = os.environ.get
 DRY = ENV("DRY_RUN") == "1"
-from piattaforme import PLATFORMS, TIKTOK_A_MANO   # 19/10/2026: SOLO YOUTUBE (si cambia in piattaforme.py)
+from piattaforme import PLATFORMS, TIKTOK_A_MANO, TIKTOK_STUDIO  # 19/10/2026: SOLO YOUTUBE (si cambia in piattaforme.py)
 MAX_TENTATIVI = 3
 GIORNI_PRONTI = 7             # reel montati (solo quelli da riprovare) tenuti 7 giorni, poi nel Cestino
 MAX_ORIGINALE_MB = 100000     # 25/10/2026: l'originale va SEMPRE intero nell'archivio (massima risoluzione, niente cestino)
@@ -550,6 +550,22 @@ class Drive:
         else:
             self.api.files().create(body={"name": titolo, "parents": [folder]}, media_body=media).execute()
         return fid
+
+    def salva_tiktok(self, path, nome, testo, slot, voce):
+        """Versione per TikTok Studio: video in CARTELLA_TIKTOK con la didascalia nella descrizione del file e
+        l'orario in appProperties (lo legge tiktok_prepara.py sul PC per programmarla alla stessa ora)."""
+        props = {"tiktok_slot": slot, "tiktok_voce": "1" if voce else "0"}
+        if self.local:
+            d = os.path.join(self.local, CARTELLA_TIKTOK)
+            os.makedirs(d, exist_ok=True)
+            shutil.copy(path, os.path.join(d, nome))
+            json.dump(dict(props, testo=testo), open(os.path.join(d, nome + ".json"), "w", encoding="utf-8"),
+                      ensure_ascii=False)
+            return nome
+        from googleapiclient.http import MediaFileUpload
+        return self.api.files().create(body={"name": nome, "parents": [self.cartella(CARTELLA_TIKTOK)],
+                                             "description": testo, "appProperties": props},
+                                       media_body=MediaFileUpload(path, mimetype="video/mp4"), fields="id").execute()["id"]
 
     def cartella(self, nome):
         """Id della cartella 'nome' accanto a 'Da pubblicare' (la crea se manca)."""
@@ -1423,6 +1439,14 @@ def main():
             log("Versione per TikTok non salvata su Drive:", e)
     else:
         muto = None
+    if TIKTOK_STUDIO and target:     # 25/10/2026: versione per TikTok Studio, programmata la sera prima dal PC
+        try:
+            tt = overlay.versione_tiktok(out, os.path.join(work, "reel_tt.mp4"), audio=bool(voce))
+            nome_tt = f"{target:%Y-%m-%d %H%M} - {frase['id']}.mp4"
+            drive.salva_tiktok(tt, nome_tt, testo_breve(frase), f"{target:%Y-%m-%d %H:%M}", voce)
+            log(f"Pronto per TikTok Studio ({os.path.getsize(tt) / 1e6:.1f} MB): {CARTELLA_TIKTOK}/{nome_tt}")
+        except Exception as e:
+            log("Versione per TikTok Studio non salvata su Drive:", e)
     ig_nativo = None
     if "instagram" in piatt and not voce:   # Instagram: video 1080p senza musica + brano NATIVO scelto per la scena
         try:
