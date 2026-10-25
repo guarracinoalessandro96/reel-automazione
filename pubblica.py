@@ -31,6 +31,12 @@ from piattaforme import PLATFORMS, TIKTOK_A_MANO, TIKTOK_STUDIO  # 19/10/2026: S
 MAX_TENTATIVI = 3
 GIORNI_PRONTI = 7             # reel montati (solo quelli da riprovare) tenuti 7 giorni, poi nel Cestino
 MAX_ORIGINALE_MB = 100000     # 25/10/2026: l'originale va SEMPRE intero nell'archivio (massima risoluzione, niente cestino)
+# 25/10/2026 notte: Drive (100 GB) mai pieno. Sotto i 6 GB liberi le clip d'archivio meno utili scendono sul PC
+# (Drive.libera_spazio + sposta_su_pc.py) fino a tornare a 10 GB liberi; su Drive restano almeno 40 clip.
+DRIVE_LIBERO_MIN_GB = 6
+DRIVE_LIBERO_OBIETTIVO_GB = 10
+ARCHIVIO_MIN = 40
+VERSO_PC = "Archivio - verso il PC"
 QUALITA_MINIMA = 720          # lato corto minimo (pixel): sotto l'HD il video non si pubblica
 CARTELLA_BASSA = "Da controllare - bassa qualità"
 ATTESA_MAX_ORE = 36          # oltre questa attesa un video esce al primo orario libero
@@ -626,6 +632,42 @@ class Drive:
             token = res.get("nextPageToken")
             if not token:
                 return out
+
+    def libera_spazio(self, usi):
+        """25/10/2026: Drive 100 GB. Se lo spazio libero scende sotto DRIVE_LIBERO_MIN_GB, le clip d'archivio meno
+        utili (piu' usate e usate da piu' tempo) passano nella cartella "Archivio - verso il PC": sposta_su_pc.py (sul
+        PC, ogni ora) le scarica intere in 4K e solo dopo le toglie da Drive. Si tengono almeno ARCHIVIO_MIN clip.
+        Restituisce [(nome, GB)] delle clip spostate."""
+        if self.local:
+            return []
+        q = self.api.about().get(fields="storageQuota").execute()["storageQuota"]
+        libero = (int(q.get("limit", 0)) - int(q.get("usage", 0))) / 1024 ** 3
+        if not q.get("limit") or libero >= DRIVE_LIBERO_MIN_GB:
+            return []
+        arch = []
+        q2 = f"'{self.cartella('Archivio')}' in parents and trashed = false and mimeType contains 'video/'"
+        token = None
+        while True:
+            res = self.api.files().list(q=q2, fields="nextPageToken,files(id,name,size,appProperties)", pageSize=500,
+                                        pageToken=token).execute()
+            arch += res.get("files", [])
+            token = res.get("nextPageToken")
+            if not token:
+                break
+        recente = (datetime.date.today() - datetime.timedelta(days=2)).isoformat()
+        candidati = [f for f in arch if usi.get(f["id"], {}).get("ultimo", "") < recente]
+        candidati.sort(key=lambda f: (-usi.get(f["id"], {}).get("fallimenti", 0), -usi.get(f["id"], {}).get("usi", 0),
+                                      usi.get(f["id"], {}).get("ultimo", "")))
+        verso_pc, spostati = self.cartella(VERSO_PC), []
+        for f in candidati:
+            if libero >= DRIVE_LIBERO_OBIETTIVO_GB or len(arch) - len(spostati) <= ARCHIVIO_MIN:
+                break
+            self.api.files().update(fileId=f["id"], addParents=verso_pc, removeParents=self.cartella("Archivio"),
+                                    fields="id").execute()
+            gb = int(f.get("size", 0)) / 1024 ** 3
+            libero += gb
+            spostati.append((f["name"], round(gb, 2)))
+        return spostati
 
     def esiste(self, file_id):
         if self.local:
@@ -1512,7 +1554,12 @@ def main():
             state.setdefault("archivio_usi", {})[cid] = {"usi": 1, "ultimo": oggi}
         except Exception as e:
             log("Archivio non aggiornato (il reel e' comunque uscito):", e)
-    failed = [p for p, r in results.items() if not r["ok"] and p in PLATFORMS]
+    try:
+        for n_pc, gb_pc in drive.libera_spazio(state.get("archivio_usi", {})):
+            log(f"Drive quasi pieno: {n_pc} ({gb_pc} GB) va sul PC (Archivio - verso il PC)")
+    except Exception as e:
+        log("Controllo dello spazio su Drive non riuscito:", e)
+    failed =[p for p, r in results.items() if not r["ok"] and p in PLATFORMS]
     pronti_id = None
     for tentativo in range(2):          # il reel e' gia' uscito: un errore qui non deve far perdere lo stato
         try:
