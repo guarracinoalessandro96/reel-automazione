@@ -5864,11 +5864,50 @@
    },
    "spinto": true,
    "testo": "Il lunedì non è un problema se ami quello che stai costruendo."
+  },
+  {
+   "quando": "2026-10-25T07:00",
+   "slot": "2026-10-25 08:00",
+   "video": "IMG_4139.mov",
+   "md5": "d10d3e579bc123620f32f9d3ebcc57a8",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-22T22:48+02:00",
+   "frase": "MIE-fa944c62",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 0,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 25.8s a 33.8s",
+    "durata": 8.0,
+    "inizio": 25.8,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.32,
+     "dominante": "neutra",
+     "rumore": 3.7
+    },
+    "copertina_ms": 7700,
+    "musica": "i_might_be_late_1.m4a",
+    "formato": "frase8",
+    "audio_originale": null
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "ydtWKL5FKnU"
+    }
+   },
+   "spinto": true,
+   "testo": "Non ogni porta chiusa è anche chiusa a chiave. Spingi."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 13:00",
   "2026-10-19 14:00",
   "2026-10-19 15:00",
   "2026-10-19 16:00",
@@ -5947,10 +5986,10 @@
   "2026-10-24 20:00",
   "2026-10-24 22:00",
   "2026-10-25 00:00",
-  "2026-10-25 02:00"
+  "2026-10-25 02:00",
+  "2026-10-25 08:00"
  ],
  "musica_recenti": [
-  "the_road_to_mordor_1.m4a",
   "final_boss_battle_1.m4a",
   "mirror_mirror_2.m4a",
   "ancient_civilisations_1.m4a",
@@ -5969,7 +6008,8 @@
   "ten_3.m4a",
   "death_duel_4.m4a",
   "ego_chall_4.m4a",
-  "locked_in_1.m4a"
+  "locked_in_1.m4a",
+  "i_might_be_late_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6139,10 +6179,10 @@
   "MIE-747c8ba5",
   "MIE-b8b94c79",
   "MIE-cb1a01f5",
-  "MIE-e0cf1888"
+  "MIE-e0cf1888",
+  "MIE-fa944c62"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "regole",
@@ -6151,22 +6191,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "16q6j7JSTamwuNHkIZxaU3cZ4LFGSgDIm": {
-   "nome": "IMG_4139.mov",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-22T22:48+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-23T10:53:38.227Z",
-   "parlato": null,
-   "momento": null
-  },
   "1Ec9__ctnSkN9Cj2-_GnGAOPpY6a3V57S": {
    "nome": "IMG_4121.mov",
    "scena": "palestra",
@@ -6207,7 +6235,7 @@
    "momento": null
   }
  },
- "pulizia": "2026-10-24",
+ "pulizia": "2026-10-25",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 1,
@@ -6540,6 +6568,10 @@
   "1zN8Z8tm-MHGF2QAUVDkJhfrJRmzsDJJA": {
    "usi": 1,
    "ultimo": "2026-10-25"
+  },
+  "1LF3ayV3vS4UH3FBYXMximD-HK1MgOLKU": {
+   "usi": 1,
+   "ultimo": "2026-10-25"
   }
  },
  "musica_recenti_meta": [
@@ -6593,7 +6625,7 @@
   "L19",
   "L20"
  ],
- "formato_ultimo": "ambiente",
+ "formato_ultimo": "frase8",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
