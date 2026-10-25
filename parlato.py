@@ -91,12 +91,14 @@ def _tempo(t):
 
 def file_ass(blocchi_, inizio, path, larghezza=1080, altezza=1920):
     """Scrive il file .ass: testo bianco grassetto con contorno nero, centrato nel terzo basso."""
+    f = larghezza / 1080                     # misure pensate per 1080 (4K dal 25/10/2026)
     righe = ["[Script Info]", "ScriptType: v4.00+", f"PlayResX: {larghezza}", f"PlayResY: {altezza}", "",
              "[V4+ Styles]",
              "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, "
              "Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, "
              "MarginR, MarginV, Encoding",
-             "Style: Sub,Poppins,86,&H00FFFFFF,&H000000FF,&H00000000,&H78000000,-1,0,0,0,100,100,0,0,1,6,2,2,70,70,560,1",
+             f"Style: Sub,Poppins,{round(86 * f)},&H00FFFFFF,&H000000FF,&H00000000,&H78000000,-1,0,0,0,100,100,0,0,1,"
+             f"{round(6 * f)},{round(2 * f)},2,{round(70 * f)},{round(70 * f)},{round(560 * f)},1",
              "", "[Events]", "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text"]
     for a, b, t in blocchi_:
         t = re.sub(r"[{}\\]", "", t)

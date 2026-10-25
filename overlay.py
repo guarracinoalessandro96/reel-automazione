@@ -297,8 +297,10 @@ def build_overlay(W, H, text, faces, stile=None, autore=None, serie=None):
     return img, y_frac, score
 
 
-TEMPO_MAX_MONTAGGIO = 900  # 15 minuti al massimo per un montaggio (GitHub ferma tutto a 40)
-LATO_USCITA = 1080       # lato corto del reel finito (1080x1920, il massimo che usano Instagram e TikTok)
+TEMPO_MAX_MONTAGGIO = 1800  # 30 minuti al massimo per un montaggio (4K 60 dal 25/10; il lavoro GitHub dura fino a 100')
+LATO_USCITA = 2160       # 25/10/2026: 4K (2160x3840), scelta di Alessandro: massima risoluzione su YouTube
+LATO_MINIMO = 1080       # video piu' piccoli del 4K: si esce alla loro risoluzione (mai sotto 1080, niente ingrandimenti inutili)
+FPS_MULTI = 60           # regole/montaggio: 60 fotogrammi al secondo come i suoi video
 ZOOM = 0                 # zoom lento avanti-indietro (es. 0.20); DISATTIVATO il 4/10/2026: ad Alessandro non piace
 MUSIC_LOOP = 8.0          # i brani di musica/ durano esattamente 8 s e si ripetono senza stacchi
 MUSIC_VOL = 0.9           # i brani sono gia' a -14 LUFS (normalizza_musica.py): il reel esce a circa -15 LUFS
@@ -477,9 +479,10 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
         faces = detect_faces(frames)
     # formato finale sempre largo 1080 (1080x1920 per i video 9:16): 4K ridotto, 720p e ritagli ingranditi
     W0, H0 = W, H
-    W, H = LATO_USCITA, int(round(LATO_USCITA * H0 / W0 / 2)) * 2
-    if abs(W0 / H0 - 9 / 16) < 0.03:     # quasi 9:16 (es. dopo il ritaglio): esattamente 1080x1920
-        H = LATO_USCITA * 16 // 9
+    lato = max(LATO_MINIMO, min(LATO_USCITA, W0 // 2 * 2))   # 4K se il video e' 4K, altrimenti la sua risoluzione
+    W, H = lato, int(round(lato * H0 / W0 / 2)) * 2
+    if abs(W0 / H0 - 9 / 16) < 0.03:     # quasi 9:16 (es. dopo il ritaglio): esattamente 9:16
+        H = lato * 16 // 9
     png2, t2 = None, None
     if parlato:                     # il testo sono i sottotitoli: in alto solo la serie
         overlay, y_frac, score = build_overlay_serie(W, H, serie), 0.08, 0
@@ -574,7 +577,7 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
         i = graph.rfind("format=yuv420p[v]")
         graph = graph[:i] + "format=yuv420p,subtitles=sub.ass:fontsdir=.[v]" + graph[i + len("format=yuv420p[v]"):]
     cmd += ["-filter_complex", graph, "-map", "[v]", *amap, "-t", f"{length:.3f}",
-            "-c:v", "libx264", "-preset", "medium", "-crf", "17", "-profile:v", "high",
+            "-c:v", "libx264", "-preset", "medium" if length <= 10 else "veryfast", "-crf", "17", "-profile:v", "high",
             "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-movflags", "+faststart", dst]
     try:
         r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore", timeout=TEMPO_MAX_MONTAGGIO,
@@ -599,35 +602,39 @@ REGOLE_TEMPI = (2.2, 5.6, 9.0)     # quando compare ognuna delle 3 righe (titolo
 
 
 def _tavola_regole(titolo, righe, n, serie=None):
-    """Immagine trasparente 1080x1920 con il titolo (e la serie) e le prime n righe."""
+    """Immagine trasparente (LATO_USCITA x 16/9) con il titolo (e la serie) e le prime n righe. Misure pensate per
+    1080 di larghezza e moltiplicate per LATO_USCITA/1080 (4K dal 25/10/2026)."""
     W, H = LATO_USCITA, int(LATO_USCITA * 16 / 9)
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    k = RIDUZIONE_REGOLE
-    font_t, font_r, font_s = (ImageFont.truetype(FONT, s) for s in (int(62 * k), int(50 * k), 34))
+    f = W / 1080                                  # scala rispetto al 1080
+    k = RIDUZIONE_REGOLE * f
+    px = lambda v: int(v * f)
+    font_t, font_r, font_s = (ImageFont.truetype(FONT, s) for s in (int(62 * k), int(50 * k), px(34)))
     lt, lr = int(76 * k), int(64 * k)            # interlinea del titolo e delle righe
     y = int(H * 0.13)
     if serie:
         ws = d.textlength(serie, font=font_s)
-        d.rounded_rectangle([(W - ws) / 2 - 24, y, (W + ws) / 2 + 24, y + 58], radius=29, fill=(255, 255, 255, 235))
-        d.text(((W - ws) / 2, y + 10), serie, font=font_s, fill=(15, 15, 15, 255))
-        y += 80
+        d.rounded_rectangle([(W - ws) / 2 - px(24), y, (W + ws) / 2 + px(24), y + px(58)], radius=px(29),
+                            fill=(255, 255, 255, 235))
+        d.text(((W - ws) / 2, y + px(10)), serie, font=font_s, fill=(15, 15, 15, 255))
+        y += px(80)
     righe_t = _a_capo(d, titolo, font_t, W * 0.84)
     bw = max(d.textlength(x, font=font_t) for x in righe_t) + int(64 * k)
     th = len(righe_t) * lt + int(30 * k)
-    d.rounded_rectangle([(W - bw) / 2, y, (W + bw) / 2, y + th], radius=28, fill=(255, 255, 255, 240))
+    d.rounded_rectangle([(W - bw) / 2, y, (W + bw) / 2, y + th], radius=px(28), fill=(255, 255, 255, 240))
     for i, x in enumerate(righe_t):
         d.text(((W - d.textlength(x, font=font_t)) / 2, y + int(14 * k) + i * lt), x, font=font_t, fill=(15, 15, 15, 255))
-    y += th + 34
-    for k, r in enumerate(righe[:n], 1):
-        rr = _a_capo(d, f"{k}. {r}", font_r, W * 0.80)
+    y += th + px(34)
+    for num, r in enumerate(righe[:n], 1):       # (25/10: prima "k" veniva sovrascritto dal numero della riga)
+        rr = _a_capo(d, f"{num}. {r}", font_r, W * 0.80)
         h = len(rr) * lr + int(36 * k)
         bw = max(d.textlength(x, font=font_r) for x in rr) + int(56 * k)
-        d.rounded_rectangle([(W - bw) / 2, y, (W + bw) / 2, y + h], radius=24, fill=(0, 0, 0, 165))
+        d.rounded_rectangle([(W - bw) / 2, y, (W + bw) / 2, y + h], radius=px(24), fill=(0, 0, 0, 165))
         for i, x in enumerate(rr):
             d.text(((W - d.textlength(x, font=font_r)) / 2, y + int(18 * k) + i * lr), x, font=font_r,
                    fill=(255, 255, 255, 255))
-        y += h + 26
+        y += h + px(26)
     return img
 
 
@@ -655,8 +662,8 @@ def make_regole(clips, titolo, righe, dst, musiche=(), serie=None):
         inizio = inizio_bello(c, secondi, hdr, seg + X, max(0.0, min(1.0, secondi - seg - X)))
         cmd += ["-display_rotation", "0", "-ss", f"{inizio:.2f}", "-t", f"{seg + X:.2f}", "-i", c]
         f = [x for x in (raddrizza(rotazione(c)), HDR_TO_SDR if hdr else "") if x]
-        f += [f"scale={W}:{H}:force_original_aspect_ratio=increase", f"crop={W}:{H}", "setsar=1", "fps=30",
-              f"trim=0:{seg + X:.2f}", "setpts=PTS-STARTPTS", "format=yuv420p", "settb=AVTB", "fps=30",
+        f += [f"scale={W}:{H}:force_original_aspect_ratio=increase", f"crop={W}:{H}", "setsar=1", f"fps={FPS_MULTI}",
+              f"trim=0:{seg + X:.2f}", "setpts=PTS-STARTPTS", "format=yuv420p", "settb=AVTB", f"fps={FPS_MULTI}",
               "tpad=stop_mode=clone:stop_duration=1"]       # clip un po' corta: si allunga l'ultimo fotogramma
         catena.append(f"[{i}:v]{','.join(f)},trim=0:{seg + X:.2f}[c{i}]")
     for n in range(4):
@@ -706,8 +713,8 @@ def make_montaggio(clips, frase, dst, musiche=(), serie=None):
         inizio = inizio_bello(c, secondi, hdr, seg + 0.2, max(0.0, min(1.0 + i * 0.7, secondi - seg - 0.2)))
         cmd += ["-display_rotation", "0", "-ss", f"{inizio:.2f}", "-t", f"{seg + 0.2:.2f}", "-i", c]
         f = [x for x in (raddrizza(rotazione(c)), HDR_TO_SDR if hdr else "") if x]
-        f += [f"scale={W}:{H}:force_original_aspect_ratio=increase", f"crop={W}:{H}", "setsar=1", "fps=30",
-              "format=yuv420p", "settb=AVTB", "fps=30", "tpad=stop_mode=clone:stop_duration=1",
+        f += [f"scale={W}:{H}:force_original_aspect_ratio=increase", f"crop={W}:{H}", "setsar=1", f"fps={FPS_MULTI}",
+              "format=yuv420p", "settb=AVTB", f"fps={FPS_MULTI}", "tpad=stop_mode=clone:stop_duration=1",
               f"trim=0:{seg:.3f}", "setpts=PTS-STARTPTS"]
         catena.append(f"[{i}:v]{','.join(f)}[c{i}]")
     ov, _, _ = build_overlay(W, H, frase, [], serie=serie)

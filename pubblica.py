@@ -30,11 +30,14 @@ DRY = ENV("DRY_RUN") == "1"
 from piattaforme import PLATFORMS, TIKTOK_A_MANO   # 19/10/2026: SOLO YOUTUBE (si cambia in piattaforme.py)
 MAX_TENTATIVI = 3
 GIORNI_PRONTI = 7             # reel montati (solo quelli da riprovare) tenuti 7 giorni, poi nel Cestino
-MAX_ORIGINALE_MB = 150        # originali piu' grandi (video lunghi, es. parlati): nell'archivio solo un pezzo da 15 s
+MAX_ORIGINALE_MB = 100000     # 25/10/2026: l'originale va SEMPRE intero nell'archivio (massima risoluzione, niente cestino)
 QUALITA_MINIMA = 720          # lato corto minimo (pixel): sotto l'HD il video non si pubblica
 CARTELLA_BASSA = "Da controllare - bassa qualità"
 ATTESA_MAX_ORE = 36          # oltre questa attesa un video esce al primo orario libero
 PRIMO_COMMENTO = False       # disattivato su richiesta: niente commento automatico sotto i reel
+
+TRADIMENTO = re.compile(r"tradi(t|m|sc|re|rai|rei)", re.I)   # 25/10: argomento che non gli piace
+TRADIMENTO_QUOTA = 0.1      # ... esce al massimo 1 volta su 10
 
 SOLO_MIE = True              # dal 5/10/2026 escono SOLO le citazioni scelte da Alessandro (Google Doc "Le mie citazioni")
 DOC_MIE = mie_citazioni.DOC
@@ -373,6 +376,9 @@ def lista_regole(slot, state):
     except Exception:
         return None
     libere = [l for l in liste if l["id"] not in state.get("liste_usate", [])]
+    tema = lambda l: TRADIMENTO.search(l.get("titolo", "") + " " + " ".join(l.get("righe", [])))
+    if random.random() >= TRADIMENTO_QUOTA:     # 25/10/2026: il tradimento solo di rado
+        libere = [l for l in libere if not tema(l)] or libere
     return libere[0] if libere else None
 
 
@@ -1236,6 +1242,8 @@ def main():
         except Exception as e:
             log("Lettura di 'Le mie citazioni' non riuscita:", e)
             mie = []
+        if random.random() >= TRADIMENTO_QUOTA:   # 25/10/2026: di tradimento si parla poco (1 volta su 10)
+            mie = [f for f in mie if not TRADIMENTO.search(f["gancio"])] or mie
         frasi = [f for f in mie if f["id"] not in usi]
         log(f"'{DOC_MIE}': {len(mie)} citazioni, {len(frasi)} ancora da usare.")
         # reel da 5 s: anche le frasi lunghe (scelta di Alessandro 13/10/2026: se non si fa in tempo a leggere,
