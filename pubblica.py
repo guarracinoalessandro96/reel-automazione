@@ -1353,11 +1353,15 @@ def main():
             frase = random.choice(vincenti)
             log("Ripropongo una frase che ha gia' funzionato:", frase["gancio"])
         elif frasi:
-            gruppo = virali or (lunghe if lunghe and random.random() < 0.9 else frasi)
             # 20/10/2026 (98 Short): 11-15 parole mediana 1.014 views, 7-10 parole 862, fino a 6 parole 443
-            # 26/10/2026 (Alessandro): frasi piu' lunghe, la gente si ferma a leggere -> 8 volte su 10 da 12 a 26 parole
-            ideali = [f for f in gruppo if 12 <= len(f["gancio"].split()) <= 26]
-            frase = random.choice(ideali if ideali and random.random() < 0.8 else gruppo)
+            # 26/10/2026 (Alessandro): frasi piu' lunghe (la gente si ferma a leggere) e PRIMA quelle che pensiamo
+            # vadano piu' virali: classifica_frasi.json (0-100, 50 se manca; lunghezza, temi sulle persone, [virale],
+            # giudizio di Claude). Si sceglie a caso tra le prime 3, cosi' i reel vicini non sono sempre uguali.
+            import classifica_frasi
+            punti = classifica_frasi.carica()
+            ordinate = sorted(frasi, key=lambda f: -punti.get(f["id"], classifica_frasi.stima(f["gancio"], f.get("virale"))))
+            frase = random.choice(ordinate[:3])
+            log(f"Frase dalla classifica ({punti.get(frase['id'], 'stima')}):", frase["gancio"])
         elif mie:            # finite: si riusa quella uscita da piu' tempo (mai fermarsi); salute.py avvisa
             frase = min(mie, key=lambda f: usi.get(f["id"], ""))
             log("Citazioni nuove finite: riuso la meno recente. Aggiungerne altre al documento!")
