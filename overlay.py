@@ -305,7 +305,7 @@ MUSIC_VOL = 0.9           # i brani sono gia' a -14 LUFS (normalizza_musica.py):
 LIMITATORE = "alimiter=limit=0.89:level=disabled"   # picchi sotto -1 dB: niente distorsione dopo la compressione
 
 
-TAGLIO_INIZIO = 2.0      # si tolgono sempre i primi 2 secondi (il momento in cui si preme "registra")
+TAGLIO_INIZIO = 0.0      # 25/10/2026: niente piu' taglio automatico dell'inizio: i video li taglia gia' Alessandro
 DURATA_MAX = 5.0         # dal 13/10/2026 reel da 5 secondi (prima 8): es. video da 12 s -> si usa da 2 a 7
 LOOP_SFUMATURA = 0.3     # secondi di sfumatura fine -> inizio (loop senza stacco)
 DURATA_ARCHIVIO = 15.0   # 18/10: all'archivio 15 s (prima 8): con uno Short ogni ora servono piu' pezzi diversi per video
@@ -335,10 +335,10 @@ def segmento_migliore(src, seconds, vf=None, durata=None, a_caso=False):
     moto = [0.0] + [float(np.abs(piccoli[i] - piccoli[i - 1]).mean()) for i in range(1, len(piccoli))]
     norm = lambda v: [x / (max(v) or 1) for x in v]
     nitido, moto = norm(nitido), norm(moto)
-    punti = [viso[i] + 0.6 * moto[i] + 0.4 * nitido[i] - (1.0 if tempi[i] < 1.0 else 0.0) for i in range(len(frames))]
+    punti = [viso[i] + 0.6 * moto[i] + 0.4 * nitido[i] for i in range(len(frames))]   # 25/10: inizio non penalizzato
     migliore, inizio = None, None
     finestre = []
-    s = 0.8
+    s = 0.0
     while s + durata + LOOP_SFUMATURA <= seconds:
         dentro = [p for t, p in zip(tempi, punti) if s <= t <= s + durata]
         if dentro:
