@@ -5985,11 +5985,60 @@
    },
    "spinto": true,
    "testo": "Sogni grandi richiedono sveglie presto."
+  },
+  {
+   "quando": "2026-10-25T23:00",
+   "slot": "2026-10-26 00:00",
+   "video": "IMG_4135.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-bd41cc60",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 4,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "2160x3840",
+    "taglio": "da 0.8s a 5.8s",
+    "durata": 5.0,
+    "inizio": 0.84,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.5,
+     "dominante": "calda",
+     "rumore": 4.2
+    },
+    "copertina_ms": 468,
+    "musica": "survival_mode_2.m4a",
+    "formato": "frase",
+    "audio_originale": null,
+    "musica_meta": "phonk_16.flac",
+    "musica_instagram": "Que Te Guaye - Reijy"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "xx2SticR-1Y"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18074185901488113"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1535984201697589"
+    }
+   },
+   "spinto": false,
+   "testo": "Stai creando problemi nella tua testa di nuovo. Smettila."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 17:00",
   "2026-10-19 18:00",
   "2026-10-19 19:00",
   "2026-10-19 20:00",
@@ -6068,10 +6117,10 @@
   "2026-10-25 08:00",
   "2026-10-25 16:00",
   "2026-10-25 20:00",
-  "2026-10-25 22:00"
+  "2026-10-25 22:00",
+  "2026-10-26 00:00"
  ],
  "musica_recenti": [
-  "locked_in_3.m4a",
   "delirium_2.m4a",
   "ego_chall_1.m4a",
   "kick_it_1.m4a",
@@ -6090,7 +6139,8 @@
   "i_might_be_late_1.m4a",
   "cartier_1.m4a",
   "keep_it_movin_3.m4a",
-  "van_life_rager_1.m4a"
+  "van_life_rager_1.m4a",
+  "survival_mode_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6264,7 +6314,8 @@
   "MIE-fa944c62",
   "MIE-d932904b",
   "L21",
-  "MIE-dc30b71c"
+  "MIE-dc30b71c",
+  "MIE-bd41cc60"
  ],
  "temi_recenti": [
   "mentalita",
@@ -6274,8 +6325,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -6594,8 +6645,8 @@
    "ultimo": "2026-10-24"
   },
   "1EIkrvNWHYfhUXhSzzqvvdiEFEPhXxmSi": {
-   "usi": 1,
-   "ultimo": "2026-10-23"
+   "usi": 2,
+   "ultimo": "2026-10-25"
   },
   "1eFsX23f-gEnVKC5myas7iJmwUvbgQ-AX": {
    "usi": 1,
@@ -6631,7 +6682,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_10.flac",
   "drive_04.flac",
   "trap_06.flac",
   "trap_11.flac",
@@ -6650,7 +6700,8 @@
   "deciso_10.flac",
   "trap_16.flac",
   "deciso_05.flac",
-  "phonk_10.flac"
+  "phonk_10.flac",
+  "phonk_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -6682,7 +6733,7 @@
   "L20",
   "L21"
  ],
- "formato_ultimo": "broll3",
+ "formato_ultimo": "frase",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -6698,6 +6749,7 @@
  ],
  "commenti_fino": "2026-10-25T19:00:01Z",
  "ig_audio_recenti": [
-  "1230234233801424"
+  "1230234233801424",
+  "827252278567806"
  ]
 }
