@@ -15,7 +15,9 @@ SEGRETI = os.path.join(os.path.expanduser("~"), "reel-segreti.json")
 SCOPES = ["https://www.googleapis.com/auth/drive",
           "https://www.googleapis.com/auth/youtube.upload",
           "https://www.googleapis.com/auth/youtube.force-ssl",
-          "https://www.googleapis.com/auth/youtube.readonly"]
+          "https://www.googleapis.com/auth/youtube.readonly",
+          # 25/10/2026: statistiche di visione (quanto guardano, dove smettono): servono all'agente per migliorare
+          "https://www.googleapis.com/auth/yt-analytics.readonly"]
 
 
 def carica():

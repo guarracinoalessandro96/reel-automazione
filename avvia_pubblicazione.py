@@ -38,6 +38,13 @@ if __name__ == "__main__":
         esito = "avviato"
     except Exception as e:
         esito = f"NON avviato: {e}"
+    try:            # 25/10/2026: i video tolti dall'archivio di Drive (pieno) scendono sul disco del PC
+        import sposta_su_pc
+        n, gb, liberi = sposta_su_pc.sposta()
+        if n:
+            esito += f" | spostati sul PC: {n} video ({gb} GB), liberi sul disco {liberi} GB"
+    except Exception as e:
+        esito += f" | spostamento sul PC non riuscito: {str(e)[:150]}"
     with open(os.path.join(QUI, "avvia_log.txt"), "a", encoding="utf-8") as f:
         f.write(f"{datetime.datetime.now():%d/%m/%Y %H:%M:%S} {esito}\n")
     print(esito)
