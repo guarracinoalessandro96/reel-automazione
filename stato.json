@@ -5824,11 +5824,50 @@
    },
    "spinto": false,
    "testo": "Il successo è una decisione."
+  },
+  {
+   "quando": "2026-10-25T00:00",
+   "slot": "2026-10-25 02:00",
+   "video": "IMG_4128.MOV",
+   "md5": "22f8e093c99e44ec985045e9da9579cf",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-22T22:13+02:00",
+   "frase": "MIE-e0cf1888",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 0,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "1080x1920",
+    "taglio": "da 1.3s a 7.3s",
+    "durata": 6.0,
+    "inizio": 1.3,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.38,
+     "dominante": "calda",
+     "rumore": 2.9
+    },
+    "copertina_ms": 300,
+    "musica": "locked_in_1.m4a",
+    "formato": "ambiente",
+    "audio_originale": 0.35
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "HC97m8N8L3o"
+    }
+   },
+   "spinto": true,
+   "testo": "Il lunedì non è un problema se ami quello che stai costruendo."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 12:00",
   "2026-10-19 13:00",
   "2026-10-19 14:00",
   "2026-10-19 15:00",
@@ -5907,10 +5946,10 @@
   "2026-10-24 18:00",
   "2026-10-24 20:00",
   "2026-10-24 22:00",
-  "2026-10-25 00:00"
+  "2026-10-25 00:00",
+  "2026-10-25 02:00"
  ],
  "musica_recenti": [
-  "ten_4.m4a",
   "the_road_to_mordor_1.m4a",
   "final_boss_battle_1.m4a",
   "mirror_mirror_2.m4a",
@@ -5929,7 +5968,8 @@
   "rubberband_4.m4a",
   "ten_3.m4a",
   "death_duel_4.m4a",
-  "ego_chall_4.m4a"
+  "ego_chall_4.m4a",
+  "locked_in_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6098,10 +6138,10 @@
   "MIE-bd40bf0d",
   "MIE-747c8ba5",
   "MIE-b8b94c79",
-  "MIE-cb1a01f5"
+  "MIE-cb1a01f5",
+  "MIE-e0cf1888"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -6110,22 +6150,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "1UdAVJSdFXkwQiMLKO3_UNmoNKQugBiO4": {
-   "nome": "IMG_4128.MOV",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-22T22:13+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-23T10:53:20.608Z",
-   "parlato": null,
-   "momento": null
-  },
   "16q6j7JSTamwuNHkIZxaU3cZ4LFGSgDIm": {
    "nome": "IMG_4139.mov",
    "scena": "palestra",
@@ -6508,6 +6536,10 @@
   "1wIAA5bkWDLakZogTG-ehlMTtvzDMKN7q": {
    "usi": 1,
    "ultimo": "2026-10-24"
+  },
+  "1zN8Z8tm-MHGF2QAUVDkJhfrJRmzsDJJA": {
+   "usi": 1,
+   "ultimo": "2026-10-25"
   }
  },
  "musica_recenti_meta": [
@@ -6561,7 +6593,7 @@
   "L19",
   "L20"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "ambiente",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
