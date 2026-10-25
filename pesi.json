@@ -1,13 +1,13 @@
 {
  "temi": {
-  "amicizia": 0.93,
-  "imprenditore": 1.07,
+  "amicizia": 0.94,
+  "imprenditore": 1.09,
   "mentalita": 0.96,
   "palestra": 1.01,
   "dieta": 1.05,
-  "regole": 1.2
+  "regole": 1.16
  },
- "aggiornato": "2026-10-24",
+ "aggiornato": "2026-10-25",
  "frasi_vincenti": [
   "MIE-02d87ee7",
   "MIE-043e8cf1",
@@ -36,6 +36,7 @@
   "MIE-8b8aa442",
   "MIE-93d891c5",
   "MIE-95c3c510",
+  "MIE-95e45457",
   "MIE-96cb5cca",
   "MIE-98f390fa",
   "MIE-9b789797",
@@ -54,6 +55,6 @@
  "formati": {
   "frase": 1.0,
   "regole": 1.0,
-  "montaggio": 0.99
+  "montaggio": 0.82
  }
 }
