@@ -2,7 +2,7 @@
 Aggiunge frasi nuove in fondo al Google Doc "Le mie citazioni" (quelle che escono nei reel), in sicurezza.
 Uso: python aggiungi_mie.py nuove.txt "nota della sezione"     (una frase per riga)
 
-Tiene solo frasi da 7 a 22 parole (le corte rendono meno: dati YouTube 16/10/2026), senza eta' ("30 anni"),
+Tiene solo frasi da 7 a 30 parole (le corte rendono meno: dati YouTube 16/10/2026; dal 26/10 anche lunghe, fino a 30), senza eta' ("30 anni"),
 senza autori/virgolette, senza doppioni (anche quasi uguali) rispetto al documento. Stampa cosa scarta e perche'.
 Le credenziali le legge da ~/reel-segreti.json (solo su questo PC).
 """
@@ -37,7 +37,7 @@ def main():
     buone = []
     for r in righe:
         n = len(re.sub(r"^\[\w+\]\s*", "", r).split())
-        motivo = ("meno di 7 parole" if n < 7 else "piu' di 22 parole" if n > 22 else "parla di eta'" if ETA.search(r)
+        motivo = ("meno di 7 parole" if n < 7 else "piu' di 30 parole" if n > 30 else "parla di eta'" if ETA.search(r)
                   else "parola vietata" if VIETATE.search(r) else None)
         if not motivo:
             simile = difflib.get_close_matches(re.sub(r"^\[\w+\]\s*", "", r).lower(), viste, n=1, cutoff=0.82)
