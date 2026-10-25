@@ -11,7 +11,9 @@ import datetime, json, os, sys
 from zoneinfo import ZoneInfo
 
 ANTICIPO = 50                        # minuti: si prepara tutto prima, poi si pubblica all'ora ESATTA
-RITARDO_MAX = 10                     # minuti: oltre, lo slot si salta e si prepara il successivo
+RITARDO_MAX = 40                     # minuti: oltre, lo slot si salta e si prepara il successivo. 25/10/2026: era 10,
+                                     # ma col PC che si sveglia alle :12 e GitHub in ritardo di ore lo slot si perdeva
+                                     # (12:00 saltato per 2 minuti); in ritardo esce subito, mai due volte (slot_fatti)
 OGNI_ORE = 2                         # 21/10/2026: scelta di Alessandro (12 al giorno, tutti spinti da YouTube)
 STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stato.json")
 
