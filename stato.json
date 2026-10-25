@@ -5928,11 +5928,35 @@
    },
    "spinto": true,
    "testo": "Se non investi in te stesso, perché dovrebbe farlo qualcun altro?"
+  },
+  {
+   "quando": "2026-10-25T19:00",
+   "slot": "2026-10-25 20:00",
+   "video": "IMG_4126.MOV",
+   "md5": "e0523cd1d0a31225bd0351012b1942a3",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-22T22:08+02:00",
+   "frase": "L21",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "regole",
+    "durata": 13.0,
+    "titolo": "3 regole per restare concentrato",
+    "musica": "keep_it_movin_3.m4a"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "WYekaJpb2IE"
+    }
+   },
+   "spinto": true,
+   "testo": "3 regole per restare concentrato"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 15:00",
   "2026-10-19 16:00",
   "2026-10-19 17:00",
   "2026-10-19 18:00",
@@ -6011,10 +6035,10 @@
   "2026-10-25 00:00",
   "2026-10-25 02:00",
   "2026-10-25 08:00",
-  "2026-10-25 16:00"
+  "2026-10-25 16:00",
+  "2026-10-25 20:00"
  ],
  "musica_recenti": [
-  "mirror_mirror_2.m4a",
   "ancient_civilisations_1.m4a",
   "locked_in_3.m4a",
   "delirium_2.m4a",
@@ -6033,7 +6057,8 @@
   "ego_chall_4.m4a",
   "locked_in_1.m4a",
   "i_might_be_late_1.m4a",
-  "cartier_1.m4a"
+  "cartier_1.m4a",
+  "keep_it_movin_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6205,10 +6230,10 @@
   "MIE-cb1a01f5",
   "MIE-e0cf1888",
   "MIE-fa944c62",
-  "MIE-d932904b"
+  "MIE-d932904b",
+  "L21"
  ],
  "temi_recenti": [
-  "mentalita",
   "regole",
   "mentalita",
   "mentalita",
@@ -6217,22 +6242,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "regole"
  ],
  "analisi": {
-  "1-ciPqgzhDOKWA7FElGzwRc9htypB_2u3": {
-   "nome": "IMG_4126.MOV",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-22T22:08+02:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-23T10:54:24.092Z",
-   "parlato": null,
-   "momento": null
-  },
   "1Tyefc-vEJZrdzNqOTaUh2yXtSQjsP7fg": {
    "nome": "IMG_4120.mov",
    "scena": "palestra",
@@ -6588,6 +6601,10 @@
   "1Ec9__ctnSkN9Cj2-_GnGAOPpY6a3V57S": {
    "usi": 1,
    "ultimo": "2026-10-25"
+  },
+  "1-ciPqgzhDOKWA7FElGzwRc9htypB_2u3": {
+   "usi": 1,
+   "ultimo": "2026-10-25"
   }
  },
  "musica_recenti_meta": [
@@ -6639,9 +6656,10 @@
   "L17",
   "L18",
   "L19",
-  "L20"
+  "L20",
+  "L21"
  ],
- "formato_ultimo": "montaggio",
+ "formato_ultimo": "regole",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0
@@ -6654,5 +6672,5 @@
    "parlato": false
   }
  ],
- "commenti_fino": "2026-10-24T18:00:03Z"
+ "commenti_fino": "2026-10-25T19:00:01Z"
 }
