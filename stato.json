@@ -6365,11 +6365,46 @@
    },
    "spinto": true,
    "testo": "Non mancare mai di rispetto alle persone silenziose: osservano tutto e ricordano tutto."
+  },
+  {
+   "quando": "2026-10-26T21:00",
+   "slot": "2026-10-26 22:00",
+   "video": "IMG_4120.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "L22",
+   "tema": "regole",
+   "montaggio": {
+    "formato": "storia",
+    "durata": 22.0,
+    "musica": "final_boss_battle_1.m4a",
+    "stacchi": 4,
+    "testi": 4,
+    "musica_meta": "phonk_01.flac",
+    "musica_instagram": "Long Way Home - Mani Draper"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "uZq13imAtag"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18650138989062347"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "2548967192278489"
+    }
+   },
+   "spinto": true,
+   "testo": "3 cose che ho smesso di fare"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 02:00",
   "2026-10-20 03:00",
   "2026-10-20 04:00",
   "2026-10-20 05:00",
@@ -6448,10 +6483,10 @@
   "2026-10-26 14:00",
   "2026-10-26 16:00",
   "2026-10-26 18:00",
-  "2026-10-26 20:00"
+  "2026-10-26 20:00",
+  "2026-10-26 22:00"
  ],
  "musica_recenti": [
-  "fire_in_the_sky_2.m4a",
   "majestic_12_1.m4a",
   "rubberband_4.m4a",
   "ten_3.m4a",
@@ -6470,7 +6505,8 @@
   "i_might_be_late_2.m4a",
   "sweaty_staredown_1.m4a",
   "cartier_2.m4a",
-  "majestic_12_1.m4a"
+  "majestic_12_1.m4a",
+  "final_boss_battle_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6653,7 +6689,8 @@
   "MIE-df8f8b3f",
   "MIE-53683e04",
   "MIE-72340eb4",
-  "MIE-52be73bb"
+  "MIE-52be73bb",
+  "L22"
  ],
  "temi_recenti": [
   "mentalita",
@@ -6665,7 +6702,7 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "regole"
  ],
  "analisi": {},
  "pulizia": "2026-10-26",
@@ -7015,8 +7052,8 @@
    "ultimo": "2026-10-26"
   },
   "1Tyefc-vEJZrdzNqOTaUh2yXtSQjsP7fg": {
-   "usi": 1,
-   "ultimo": "2026-10-25"
+   "usi": 2,
+   "ultimo": "2026-10-26"
   },
   "1pDAftR96LYxUz7ZfUjOC4rrX4qrn3DF5": {
    "usi": 1,
@@ -7024,7 +7061,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_14.flac",
   "trap_03.flac",
   "trap_12.flac",
   "trap_07.flac",
@@ -7043,7 +7079,8 @@
   "phonk_07.flac",
   "phonk_09.flac",
   "phonk_14.flac",
-  "phonk_11.flac"
+  "phonk_11.flac",
+  "phonk_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7073,9 +7110,10 @@
   "L18",
   "L19",
   "L20",
-  "L21"
+  "L21",
+  "L22"
  ],
- "formato_ultimo": "broll2",
+ "formato_ultimo": "storia",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -7100,6 +7138,7 @@
   "1089503399371323",
   "233950192789940",
   "1039098790480932",
-  "1423487866229281"
+  "1423487866229281",
+  "341745901246038"
  ]
 }
