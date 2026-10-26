@@ -6143,11 +6143,60 @@
    },
    "spinto": true,
    "testo": "Tra lealtà e lusso, scegli sempre la lealtà."
+  },
+  {
+   "quando": "2026-10-26T07:00",
+   "slot": "2026-10-26 08:00",
+   "video": "IMG_4140.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-a4b3c8eb",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "basso",
+    "volti": 14,
+    "tocca_viso": true,
+    "hdr": false,
+    "risoluzione": "2160x3840",
+    "taglio": "da 6.5s a 11.5s",
+    "durata": 5.0,
+    "inizio": 6.49,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.35,
+     "dominante": "calda",
+     "rumore": 3.7
+    },
+    "copertina_ms": 1093,
+    "musica": "death_duel_2.m4a",
+    "formato": "frase",
+    "audio_originale": null,
+    "musica_meta": "phonk_03.flac",
+    "musica_instagram": "Hypnotized (Instrumental) - Company Money"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "VHgVBPT7S2I"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18091177919242438"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1110420345038530"
+    }
+   },
+   "spinto": true,
+   "testo": "Alcune persone non vedono quanto fai per loro. Vedono solo quello che non fai. Non soddisferai mai una persona ingrata."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 21:00",
   "2026-10-19 22:00",
   "2026-10-19 23:00",
   "2026-10-20 00:00",
@@ -6226,10 +6275,10 @@
   "2026-10-26 00:00",
   "2026-10-26 02:00",
   "2026-10-26 04:00",
-  "2026-10-26 06:00"
+  "2026-10-26 06:00",
+  "2026-10-26 08:00"
  ],
  "musica_recenti": [
-  "horizons_4.m4a",
   "wrangle_the_crazy_1.m4a",
   "vibe_check_4.m4a",
   "van_life_rager_3.m4a",
@@ -6248,7 +6297,8 @@
   "survival_mode_2.m4a",
   "kick_it_1.m4a",
   "intergalactic_1.m4a",
-  "fire_in_the_sky_1.m4a"
+  "fire_in_the_sky_1.m4a",
+  "death_duel_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6426,14 +6476,15 @@
   "MIE-bd41cc60",
   "MIE-fda879c8",
   "MIE-8fe96039",
-  "MIE-95e45457"
+  "MIE-95e45457",
+  "MIE-a4b3c8eb"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -6768,8 +6819,8 @@
    "ultimo": "2026-10-26"
   },
   "1wIAA5bkWDLakZogTG-ehlMTtvzDMKN7q": {
-   "usi": 1,
-   "ultimo": "2026-10-24"
+   "usi": 2,
+   "ultimo": "2026-10-26"
   },
   "1zN8Z8tm-MHGF2QAUVDkJhfrJRmzsDJJA": {
    "usi": 1,
@@ -6797,7 +6848,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_01.flac",
   "drive_16.flac",
   "phonk_12.flac",
   "drive_08.flac",
@@ -6816,7 +6866,8 @@
   "phonk_16.flac",
   "trap_04.flac",
   "phonk_15.flac",
-  "phonk_06.flac"
+  "phonk_06.flac",
+  "phonk_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -6848,7 +6899,7 @@
   "L20",
   "L21"
  ],
- "formato_ultimo": "broll2",
+ "formato_ultimo": "frase",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -6868,6 +6919,7 @@
   "827252278567806",
   "969600794596390",
   "2037081536566008",
-  "1108285910189784"
+  "1108285910189784",
+  "1852688158814799"
  ]
 }
