@@ -6329,11 +6329,46 @@
    },
    "spinto": true,
    "testo": "La fiducia è come il vetro: una volta rotta, le crepe si vedono sempre."
+  },
+  {
+   "quando": "2026-10-26T19:00",
+   "slot": "2026-10-26 20:00",
+   "video": "IMG_4126.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-52be73bb",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "broll2",
+    "durata": 10.0,
+    "musica": "majestic_12_1.m4a",
+    "stacchi": 5,
+    "testi": 3,
+    "musica_meta": "phonk_11.flac",
+    "musica_instagram": "Shopped Til I Dropped (Reels Sound - Photo Dump) - Haysen Cheng"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "mfJMhva3xmo"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17963593473226540"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1533117211954089"
+    }
+   },
+   "spinto": true,
+   "testo": "Non mancare mai di rispetto alle persone silenziose: osservano tutto e ricordano tutto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 01:00",
   "2026-10-20 02:00",
   "2026-10-20 03:00",
   "2026-10-20 04:00",
@@ -6412,10 +6447,10 @@
   "2026-10-26 08:00",
   "2026-10-26 14:00",
   "2026-10-26 16:00",
-  "2026-10-26 18:00"
+  "2026-10-26 18:00",
+  "2026-10-26 20:00"
  ],
  "musica_recenti": [
-  "whoop_2.m4a",
   "fire_in_the_sky_2.m4a",
   "majestic_12_1.m4a",
   "rubberband_4.m4a",
@@ -6434,7 +6469,8 @@
   "death_duel_2.m4a",
   "i_might_be_late_2.m4a",
   "sweaty_staredown_1.m4a",
-  "cartier_2.m4a"
+  "cartier_2.m4a",
+  "majestic_12_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6616,10 +6652,11 @@
   "MIE-a4b3c8eb",
   "MIE-df8f8b3f",
   "MIE-53683e04",
-  "MIE-72340eb4"
+  "MIE-72340eb4",
+  "MIE-52be73bb"
  ],
  "temi_recenti": [
-  "regole",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -6974,8 +7011,8 @@
    "ultimo": "2026-10-26"
   },
   "1-ciPqgzhDOKWA7FElGzwRc9htypB_2u3": {
-   "usi": 1,
-   "ultimo": "2026-10-25"
+   "usi": 2,
+   "ultimo": "2026-10-26"
   },
   "1Tyefc-vEJZrdzNqOTaUh2yXtSQjsP7fg": {
    "usi": 1,
@@ -6987,7 +7024,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_09.flac",
   "trap_14.flac",
   "trap_03.flac",
   "trap_12.flac",
@@ -7006,7 +7042,8 @@
   "phonk_03.flac",
   "phonk_07.flac",
   "phonk_09.flac",
-  "phonk_14.flac"
+  "phonk_14.flac",
+  "phonk_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7038,7 +7075,7 @@
   "L20",
   "L21"
  ],
- "formato_ultimo": "ambiente",
+ "formato_ultimo": "broll2",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -7052,7 +7089,7 @@
    "parlato": false
   }
  ],
- "commenti_fino": "2026-10-25T19:00:01Z",
+ "commenti_fino": "2026-10-26T19:00:43Z",
  "ig_audio_recenti": [
   "1230234233801424",
   "827252278567806",
@@ -7062,6 +7099,7 @@
   "1852688158814799",
   "1089503399371323",
   "233950192789940",
-  "1039098790480932"
+  "1039098790480932",
+  "1423487866229281"
  ]
 }
