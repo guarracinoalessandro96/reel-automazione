@@ -43,7 +43,8 @@ ATTESA_MAX_ORE = 36          # oltre questa attesa un video esce al primo orario
 PRIMO_COMMENTO = False       # disattivato su richiesta: niente commento automatico sotto i reel
 
 TRADIMENTO = re.compile(r"tradi(t|m|sc|re|rai|rei)", re.I)   # 25/10: argomento che non gli piace
-TRADIMENTO_QUOTA = 0.1      # ... esce al massimo 1 volta su 10
+TRADIMENTO_QUOTA = 0.0      # ... 26/10/2026: "non parlare di tradimento" -> mai
+DONNE = re.compile(r"\b(donn[ae]|ragazz[ae]|fidanzat[ae]|moglie|lei ti|la tua ex|una ex|innamorat)", re.I)   # 26/10: mai
 
 SOLO_MIE = True              # dal 5/10/2026 escono SOLO le citazioni scelte da Alessandro (Google Doc "Le mie citazioni")
 DOC_MIE = mie_citazioni.DOC
@@ -283,6 +284,9 @@ def scegli_formato(slot, state, frase, an, spinto=True):
         return "momento"
     if an.get("parlato"):            # video in cui parla: sempre con la sua voce e i sottotitoli
         return "parlato"
+    if TUTTO_30S:                    # 26/10/2026: tutti da 30 s, i 3 formati a turno (mai lo stesso due volte di fila)
+        scelte = [f for f in FORMATI_30 if f != state.get("formato_ultimo")] or list(FORMATI_30)
+        return random.choice(scelte)
     if not spinto:                   # orario fermo: il formato piu' semplice (liste e montaggi restano per gli altri)
         return "frase"
     pesi = dict(FORMATI)
@@ -340,7 +344,11 @@ def musiche_brano(music, n=3):
     return pezzi[:n] or [music]
 
 
-MOMENTO_MAX = 45.0          # secondi (i suoi momenti piu' visti duravano 9-50 s)
+MOMENTO_MAX = 30.0          # secondi (i suoi momenti piu' visti duravano 9-50 s; dal 26/10/2026 tutti i reel 30 s)
+# 26/10/2026 (Alessandro): prova di 7 giorni, TUTTI i reel da 30 s che raccontano una storia (storie.json), formati a
+# rotazione con e senza b-roll (formati_nuovi.py). Momento e parlato restano: sono i suoi video veri.
+TUTTO_30S = True
+FORMATI_30 = ("racconto", "racconto_broll", "racconto_lento")
 
 
 def monta_momento(an, src, out, music, serie, nome):
@@ -412,6 +420,34 @@ def monta_nuovo(formato, frase, src, out, music, serie, drive, work, clip, slot,
                  "hashtag": ["#storia", "#mentalita", "#motivazione"], "serie": serie}
         return frase, info
     return frase, formati_nuovi.make_broll(formato, clips, frase["gancio"], out, musiche_brano(music, 3), serie)
+
+
+def scegli_storia(state):
+    """Racconto da storie.json non ancora uscito: si sceglie a caso tra i 3 con il punteggio piu' alto."""
+    dati = json.load(open(os.path.join(HERE, "storie.json"), encoding="utf-8"))["storie"]
+    usate = {h.get("frase") for h in state.get("storico", [])}
+    libere = [x for x in dati if x["id"] not in usate and not TRADIMENTO.search(" ".join(x["righe"]))
+              and not DONNE.search(" ".join(x["righe"]))]
+    if not libere:          # finite: si riusa quella uscita da piu' tempo (salute/agente avvisano di scriverne altre)
+        ultime = {h.get("frase"): h.get("quando", "") for h in state.get("storico", [])}
+        libere = sorted(dati, key=lambda x: ultime.get(x["id"], ""))[:3]
+        log("Racconti nuovi finiti: ne riuso uno vecchio. Aggiungerne altri a storie.json!")
+    libere.sort(key=lambda x: -x.get("punteggio", 50))
+    return random.choice(libere[:3])
+
+
+def monta_racconto(formato, src, out, music, serie, drive, work, clip, state):
+    """Reel da 30 s che racconta una storia (6 righe, una ogni 5 s). racconto_lento = senza b-roll: solo il video
+    dell'orario, se e' abbastanza lungo (altrimenti racconto con b-roll). Restituisce (frase, info)."""
+    import formati_nuovi
+    storia = scegli_storia(state)
+    if formato == "racconto_lento" and overlay.probe(src)[0] < 20:
+        formato = "racconto"
+    clips = [src] if formato == "racconto_lento" else [src] + clip_extra(drive, work, clip, 5)
+    info = formati_nuovi.make_racconto(formato, clips, storia["righe"], out, musiche_brano(music, 7), serie)
+    frase = {"id": storia["id"], "tema": "storia", "gancio": storia["righe"][0], "autore": "",
+             "hashtag": ["#storia", "#mentalita", "#motivazione"], "serie": serie, "testo_completo": storia["righe"]}
+    return frase, info
 
 
 def monta_regole(lista, src, out, music, serie, drive, work, clip):
@@ -875,6 +911,7 @@ def scegli_audio_instagram(scena, recenti=()):
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
     ricerche = list(IG_RICERCHE.get(scena, ["motivational", "phonk", "epic"]))
     random.shuffle(ricerche)
+    ricerche = ["trending", "viral"] + ricerche     # 26/10/2026: prima i brani di tendenza (richiesta di Alessandro)
     for q in ricerche:
         r = requests.get(f"{GRAPH_AUDIO}/ig_audio", params={"audio_type": "music", "search_query": q, "user_id": ig,
                                                              "access_token": token}, timeout=30).json()
@@ -1328,6 +1365,7 @@ def main():
             mie = []
         if random.random() >= TRADIMENTO_QUOTA:   # 25/10/2026: di tradimento si parla poco (1 volta su 10)
             mie = [f for f in mie if not TRADIMENTO.search(f["gancio"])] or mie
+        mie = [f for f in mie if not DONNE.search(f["gancio"])] or mie       # 26/10/2026: mai frasi sulle donne
         frasi = [f for f in mie if f["id"] not in usi]
         log(f"'{DOC_MIE}': {len(mie)} citazioni, {len(frasi)} ancora da usare.")
         # reel da 5 s: anche le frasi lunghe (scelta di Alessandro 13/10/2026: se non si fa in tempo a leggere,
@@ -1397,6 +1435,8 @@ def main():
                 info = overlay.make_video(src, prima, out, music=music, serie=serie,
                                           colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
                                           da_archivio=bool(clip), formato=dict(GANCIO, seconda=seconda))
+            elif formato in FORMATI_30:
+                frase, info = monta_racconto(formato, src, out, music, serie, drive, work, clip, state)
             elif formato in ("broll1", "broll2", "broll3", "storia"):
                 frase, info = monta_nuovo(formato, frase, src, out, music, serie, drive, work, clip, slot, state)
             elif formato == "frase8":

@@ -17,7 +17,13 @@ FORMATI = {
     "broll2": {"stacchi": [2.0] * 5, "testo": "a_pezzi"},
     "broll3": {"stacchi": [3.0] * 4, "testo": "a_pezzi"},
     "storia": {"schermate": [4.0, 6.0, 6.0, 6.0]},
+    # 26/10/2026 (Alessandro: "tutti video da 30 secondi editati bene ... che raccontano una storia", prova di 7 giorni,
+    # "scegli tu se mettere i b-roll o senza"): un racconto di 6 righe da storie.json, una riga ogni 5 s
+    "racconto": {"stacchi": [5.0] * 6},              # uno stacco a ogni riga del racconto
+    "racconto_broll": {"stacchi": [2.0] * 15},       # b-roll veloce (stacchi da 2 s), la riga cambia ogni 5 s
+    "racconto_lento": {"stacchi": [10.0] * 3},       # SENZA b-roll: solo il video del giorno, 3 inquadrature lunghe
 }
+DURATA_RACCONTO = 30.0
 
 
 def dividi_in(testo, n):
@@ -120,6 +126,14 @@ def make_broll(nome, clips, frase, dst, musiche=(), serie=None):
             b = tot if i == len(pezzi) - 1 else tagli[round((i + 1) * len(durate) / len(pezzi))]
             testi.append((a, b, p))
     return make_sequenza(clips, durate, testi, dst, musiche, serie, nome)
+
+
+def make_racconto(nome, clips, righe, dst, musiche=(), serie=None):
+    """racconto / racconto_broll / racconto_lento: 30 s, le 6 righe del racconto una dopo l'altra (5 s l'una)."""
+    righe = [r for r in righe if r.strip()][:6]
+    passo = DURATA_RACCONTO / len(righe)
+    testi = [(i * passo, (i + 1) * passo, r) for i, r in enumerate(righe)]
+    return make_sequenza(clips, FORMATI[nome]["stacchi"], testi, dst, musiche, serie, nome)
 
 
 def make_storia(clips, titolo, righe, dst, musiche=(), serie=None):
