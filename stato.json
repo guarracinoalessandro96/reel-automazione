@@ -6193,11 +6193,60 @@
    },
    "spinto": true,
    "testo": "Alcune persone non vedono quanto fai per loro. Vedono solo quello che non fai. Non soddisferai mai una persona ingrata."
+  },
+  {
+   "quando": "2026-10-26T13:00",
+   "slot": "2026-10-26 14:00",
+   "video": "IMG_4128.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-df8f8b3f",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 0,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "2160x3840",
+    "taglio": "da 4.8s a 12.8s",
+    "durata": 8.0,
+    "inizio": 4.79,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.38,
+     "dominante": "calda",
+     "rumore": 3.0
+    },
+    "copertina_ms": 7700,
+    "musica": "i_might_be_late_2.m4a",
+    "formato": "gancio",
+    "audio_originale": null,
+    "musica_meta": "phonk_07.flac",
+    "musica_instagram": "Lifetime - Beni Haze"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "9d-xzgbaHGU"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18357779632173932"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "3691671427649007"
+    }
+   },
+   "spinto": true,
+   "testo": "A nessuno importa di te finché non sei ricco, bello o morto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 22:00",
   "2026-10-19 23:00",
   "2026-10-20 00:00",
   "2026-10-20 01:00",
@@ -6276,10 +6325,10 @@
   "2026-10-26 02:00",
   "2026-10-26 04:00",
   "2026-10-26 06:00",
-  "2026-10-26 08:00"
+  "2026-10-26 08:00",
+  "2026-10-26 14:00"
  ],
  "musica_recenti": [
-  "wrangle_the_crazy_1.m4a",
   "vibe_check_4.m4a",
   "van_life_rager_3.m4a",
   "whoop_2.m4a",
@@ -6298,7 +6347,8 @@
   "kick_it_1.m4a",
   "intergalactic_1.m4a",
   "fire_in_the_sky_1.m4a",
-  "death_duel_2.m4a"
+  "death_duel_2.m4a",
+  "i_might_be_late_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6477,13 +6527,14 @@
   "MIE-fda879c8",
   "MIE-8fe96039",
   "MIE-95e45457",
-  "MIE-a4b3c8eb"
+  "MIE-a4b3c8eb",
+  "MIE-df8f8b3f"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -6823,8 +6874,8 @@
    "ultimo": "2026-10-26"
   },
   "1zN8Z8tm-MHGF2QAUVDkJhfrJRmzsDJJA": {
-   "usi": 1,
-   "ultimo": "2026-10-25"
+   "usi": 2,
+   "ultimo": "2026-10-26"
   },
   "1LF3ayV3vS4UH3FBYXMximD-HK1MgOLKU": {
    "usi": 1,
@@ -6848,7 +6899,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_16.flac",
   "phonk_12.flac",
   "drive_08.flac",
   "trap_09.flac",
@@ -6867,7 +6917,8 @@
   "trap_04.flac",
   "phonk_15.flac",
   "phonk_06.flac",
-  "phonk_03.flac"
+  "phonk_03.flac",
+  "phonk_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -6899,7 +6950,7 @@
   "L20",
   "L21"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "gancio",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -6920,6 +6971,7 @@
   "969600794596390",
   "2037081536566008",
   "1108285910189784",
-  "1852688158814799"
+  "1852688158814799",
+  "1089503399371323"
  ]
 }
