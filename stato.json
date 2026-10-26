@@ -6279,11 +6279,60 @@
    },
    "spinto": true,
    "testo": "Chi lavora non ha tempo per criticare."
+  },
+  {
+   "quando": "2026-10-26T17:00",
+   "slot": "2026-10-26 18:00",
+   "video": "IMG_4121.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-72340eb4",
+   "tema": "mentalita",
+   "montaggio": {
+    "testo": "alto",
+    "volti": 45,
+    "tocca_viso": false,
+    "hdr": false,
+    "risoluzione": "2160x3840",
+    "taglio": "da 19.5s a 25.5s",
+    "durata": 6.0,
+    "inizio": 19.5,
+    "colore": {
+     "scena": "palestra",
+     "motivo": "scena riconosciuta: palestra",
+     "luce": 0.56,
+     "dominante": "calda",
+     "rumore": 3.5
+    },
+    "copertina_ms": 3562,
+    "musica": "cartier_2.m4a",
+    "formato": "ambiente",
+    "audio_originale": 0.35,
+    "musica_meta": "phonk_14.flac",
+    "musica_instagram": "Drift Skunk - Company Money"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "SdUzddrfMn0"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18395985133201816"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1760511922333961"
+    }
+   },
+   "spinto": true,
+   "testo": "La fiducia è come il vetro: una volta rotta, le crepe si vedono sempre."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 00:00",
   "2026-10-20 01:00",
   "2026-10-20 02:00",
   "2026-10-20 03:00",
@@ -6362,10 +6411,10 @@
   "2026-10-26 06:00",
   "2026-10-26 08:00",
   "2026-10-26 14:00",
-  "2026-10-26 16:00"
+  "2026-10-26 16:00",
+  "2026-10-26 18:00"
  ],
  "musica_recenti": [
-  "van_life_rager_3.m4a",
   "whoop_2.m4a",
   "fire_in_the_sky_2.m4a",
   "majestic_12_1.m4a",
@@ -6384,7 +6433,8 @@
   "fire_in_the_sky_1.m4a",
   "death_duel_2.m4a",
   "i_might_be_late_2.m4a",
-  "sweaty_staredown_1.m4a"
+  "sweaty_staredown_1.m4a",
+  "cartier_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6565,11 +6615,12 @@
   "MIE-95e45457",
   "MIE-a4b3c8eb",
   "MIE-df8f8b3f",
-  "MIE-53683e04"
+  "MIE-53683e04",
+  "MIE-72340eb4"
  ],
  "temi_recenti": [
-  "mentalita",
   "regole",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -6919,8 +6970,8 @@
    "ultimo": "2026-10-26"
   },
   "1Ec9__ctnSkN9Cj2-_GnGAOPpY6a3V57S": {
-   "usi": 1,
-   "ultimo": "2026-10-25"
+   "usi": 2,
+   "ultimo": "2026-10-26"
   },
   "1-ciPqgzhDOKWA7FElGzwRc9htypB_2u3": {
    "usi": 1,
@@ -6936,7 +6987,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_08.flac",
   "trap_09.flac",
   "trap_14.flac",
   "trap_03.flac",
@@ -6955,7 +7005,8 @@
   "phonk_06.flac",
   "phonk_03.flac",
   "phonk_07.flac",
-  "phonk_09.flac"
+  "phonk_09.flac",
+  "phonk_14.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -6987,7 +7038,7 @@
   "L20",
   "L21"
  ],
- "formato_ultimo": "broll1",
+ "formato_ultimo": "ambiente",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -7010,6 +7061,7 @@
   "1108285910189784",
   "1852688158814799",
   "1089503399371323",
-  "233950192789940"
+  "233950192789940",
+  "1039098790480932"
  ]
 }
