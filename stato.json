@@ -6071,11 +6071,46 @@
    },
    "spinto": true,
    "testo": "Se qualcuno ti tratta come un'opzione, smetti di trattarlo come una priorità."
+  },
+  {
+   "quando": "2026-10-26T03:00",
+   "slot": "2026-10-26 04:00",
+   "video": "IMG_4131.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-8fe96039",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "broll1",
+    "durata": 8.0,
+    "musica": "intergalactic_1.m4a",
+    "stacchi": 8,
+    "testi": 1,
+    "musica_meta": "phonk_15.flac",
+    "musica_instagram": "Good Mornin' - Jumbo"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "K_Tp1ZEiSf0"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18028645028698960"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1665952688488181"
+    }
+   },
+   "spinto": true,
+   "testo": "Il modo in cui le persone ti trattano mostra le loro ferite, non il tuo valore."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 19:00",
   "2026-10-19 20:00",
   "2026-10-19 21:00",
   "2026-10-19 22:00",
@@ -6154,10 +6189,10 @@
   "2026-10-25 20:00",
   "2026-10-25 22:00",
   "2026-10-26 00:00",
-  "2026-10-26 02:00"
+  "2026-10-26 02:00",
+  "2026-10-26 04:00"
  ],
  "musica_recenti": [
-  "ego_chall_1.m4a",
   "kick_it_1.m4a",
   "horizons_4.m4a",
   "wrangle_the_crazy_1.m4a",
@@ -6176,7 +6211,8 @@
   "keep_it_movin_3.m4a",
   "van_life_rager_1.m4a",
   "survival_mode_2.m4a",
-  "kick_it_1.m4a"
+  "kick_it_1.m4a",
+  "intergalactic_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6352,7 +6388,8 @@
   "L21",
   "MIE-dc30b71c",
   "MIE-bd41cc60",
-  "MIE-fda879c8"
+  "MIE-fda879c8",
+  "MIE-8fe96039"
  ],
  "temi_recenti": [
   "mentalita",
@@ -6360,8 +6397,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -6686,8 +6723,8 @@
    "ultimo": "2026-10-25"
   },
   "1eFsX23f-gEnVKC5myas7iJmwUvbgQ-AX": {
-   "usi": 1,
-   "ultimo": "2026-10-24"
+   "usi": 2,
+   "ultimo": "2026-10-26"
   },
   "1t2HdsGs2qhC9CeBp31JACRAZz9LjJwdV": {
    "usi": 1,
@@ -6723,7 +6760,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_06.flac",
   "trap_11.flac",
   "phonk_01.flac",
   "drive_16.flac",
@@ -6742,7 +6778,8 @@
   "deciso_05.flac",
   "phonk_10.flac",
   "phonk_16.flac",
-  "trap_04.flac"
+  "trap_04.flac",
+  "phonk_15.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -6774,7 +6811,7 @@
   "L20",
   "L21"
  ],
- "formato_ultimo": "broll3",
+ "formato_ultimo": "broll1",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -6792,6 +6829,7 @@
  "ig_audio_recenti": [
   "1230234233801424",
   "827252278567806",
-  "969600794596390"
+  "969600794596390",
+  "2037081536566008"
  ]
 }
