@@ -6035,11 +6035,46 @@
    },
    "spinto": false,
    "testo": "Stai creando problemi nella tua testa di nuovo. Smettila."
+  },
+  {
+   "quando": "2026-10-26T01:00",
+   "slot": "2026-10-26 02:00",
+   "video": "IMG_4259.MOV",
+   "md5": "495aad0453e8bbbd0943ce698e9ae669",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-10-26T00:12+01:00",
+   "frase": "MIE-fda879c8",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "broll3",
+    "durata": 12.0,
+    "musica": "kick_it_1.m4a",
+    "stacchi": 4,
+    "testi": 2,
+    "musica_meta": "trap_04.flac",
+    "musica_instagram": "Sitaron Ke Pass - Rik Basu"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "LjkcgqNTv-I"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17979794630918108"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1102058512714028"
+    }
+   },
+   "spinto": true,
+   "testo": "Se qualcuno ti tratta come un'opzione, smetti di trattarlo come una priorità."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-19 18:00",
   "2026-10-19 19:00",
   "2026-10-19 20:00",
   "2026-10-19 21:00",
@@ -6118,10 +6153,10 @@
   "2026-10-25 16:00",
   "2026-10-25 20:00",
   "2026-10-25 22:00",
-  "2026-10-26 00:00"
+  "2026-10-26 00:00",
+  "2026-10-26 02:00"
  ],
  "musica_recenti": [
-  "delirium_2.m4a",
   "ego_chall_1.m4a",
   "kick_it_1.m4a",
   "horizons_4.m4a",
@@ -6140,7 +6175,8 @@
   "cartier_1.m4a",
   "keep_it_movin_3.m4a",
   "van_life_rager_1.m4a",
-  "survival_mode_2.m4a"
+  "survival_mode_2.m4a",
+  "kick_it_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6315,7 +6351,8 @@
   "MIE-d932904b",
   "L21",
   "MIE-dc30b71c",
-  "MIE-bd41cc60"
+  "MIE-bd41cc60",
+  "MIE-fda879c8"
  ],
  "temi_recenti": [
   "mentalita",
@@ -6324,13 +6361,13 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-10-25",
+ "pulizia": "2026-10-26",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 1,
@@ -6679,10 +6716,13 @@
   "1Tyefc-vEJZrdzNqOTaUh2yXtSQjsP7fg": {
    "usi": 1,
    "ultimo": "2026-10-25"
+  },
+  "1pDAftR96LYxUz7ZfUjOC4rrX4qrn3DF5": {
+   "usi": 1,
+   "ultimo": "2026-10-26"
   }
  },
  "musica_recenti_meta": [
-  "drive_04.flac",
   "trap_06.flac",
   "trap_11.flac",
   "phonk_01.flac",
@@ -6701,7 +6741,8 @@
   "trap_16.flac",
   "deciso_05.flac",
   "phonk_10.flac",
-  "phonk_16.flac"
+  "phonk_16.flac",
+  "trap_04.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -6733,7 +6774,7 @@
   "L20",
   "L21"
  ],
- "formato_ultimo": "frase",
+ "formato_ultimo": "broll3",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -6750,6 +6791,7 @@
  "commenti_fino": "2026-10-25T19:00:01Z",
  "ig_audio_recenti": [
   "1230234233801424",
-  "827252278567806"
+  "827252278567806",
+  "969600794596390"
  ]
 }
