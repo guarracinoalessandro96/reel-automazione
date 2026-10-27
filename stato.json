@@ -6703,6 +6703,52 @@
    },
    "spinto": true,
    "testo": "Mio padre non mi ha mai detto \"sono fiero di te\"."
+  },
+  {
+   "quando": "2026-10-27T14:24",
+   "riprova": "STO-07",
+   "risultati": {
+    "instagram": {
+     "ok": false,
+     "errore": "{'error': {'message': 'Media ID is not available', 'type': 'OAuthException', 'code': 9007, 'error_subcode': 2207027, 'is_transient': False, 'error_user_title': 'Impossibile pubblicare', 'error_user_msg': 'Il contenuto multimediale non è pronto per la pubblicazione, attendi un momento', 'fbtrace_id': 'AZ85_Ti12Eb7MNS7H81X7yA'}}"
+    }
+   }
+  },
+  {
+   "quando": "2026-10-27T15:00",
+   "slot": "2026-10-27 16:00",
+   "video": "IMG_4285.MOV",
+   "md5": "0e364e6b87bb605d9bd7f825accca3b2",
+   "da_archivio": false,
+   "scena": "lavoro",
+   "registrato": "2026-10-27T13:46+01:00",
+   "frase": "STO-10",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto",
+    "durata": 30.0,
+    "musica": "vibe_check_1.m4a",
+    "stacchi": 6,
+    "testi": 6,
+    "musica_meta": "deciso_04.flac",
+    "musica_instagram": "You Can Do It Too (Instrumental) - Jennah Bell"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "obGbXD3KYWc"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18213902263364530"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "2267262647467209"
+    }
+   },
+   "spinto": true,
+   "testo": "C'è stato un periodo in cui non credeva in me nessuno."
   }
  ],
  "riprova": [
@@ -6732,11 +6778,10 @@
    "piattaforme": [
     "instagram"
    ],
-   "tentativi": 0
+   "tentativi": 1
   }
  ],
  "slot_fatti": [
-  "2026-10-20 11:00",
   "2026-10-20 12:00",
   "2026-10-20 13:00",
   "2026-10-20 14:00",
@@ -6815,10 +6860,10 @@
   "2026-10-27 08:00",
   "2026-10-27 10:00",
   "2026-10-27 12:00",
-  "2026-10-27 14:00"
+  "2026-10-27 14:00",
+  "2026-10-27 16:00"
  ],
  "musica_recenti": [
-  "keep_it_movin_3.m4a",
   "van_life_rager_1.m4a",
   "survival_mode_2.m4a",
   "kick_it_1.m4a",
@@ -6837,7 +6882,8 @@
   "moon_vision_1.m4a",
   "delirium_1.m4a",
   "van_life_rager_1.m4a",
-  "death_duel_1.m4a"
+  "death_duel_1.m4a",
+  "vibe_check_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7029,12 +7075,13 @@
   "STO-05",
   "STO-06",
   "STO-02",
-  "STO-07"
+  "STO-07",
+  "STO-10"
  ],
  "temi_recenti": [
-  "mentalita",
   "regole",
   "mentalita",
+  "storia",
   "storia",
   "storia",
   "storia",
@@ -7427,10 +7474,13 @@
   "1b6jLZrzSs8YwKhy4QEb382s6yYZIdhzZ": {
    "usi": 1,
    "ultimo": "2026-10-27"
+  },
+  "1OKyRxbpEUPABWJM5Ey1cGm-BG7E-Rv9h": {
+   "usi": 1,
+   "ultimo": "2026-10-27"
   }
  },
  "musica_recenti_meta": [
-  "deciso_05.flac",
   "phonk_10.flac",
   "phonk_16.flac",
   "trap_04.flac",
@@ -7449,7 +7499,8 @@
   "drive_07.flac",
   "phonk_05.flac",
   "phonk_04.flac",
-  "phonk_08.flac"
+  "phonk_08.flac",
+  "deciso_04.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7482,11 +7533,11 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto_lento",
+ "formato_ultimo": "racconto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
-  "instagram": 1
+  "instagram": 0
  },
  "tiktok_coda": [
   {
@@ -7516,6 +7567,7 @@
   "226065877006928",
   "2417589738319876",
   "458742983134920",
-  "1718120844886611"
+  "1718120844886611",
+  "973266493758189"
  ]
 }
