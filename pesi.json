@@ -7,7 +7,7 @@
   "dieta": 1.06,
   "regole": 1.18
  },
- "aggiornato": "2026-10-26",
+ "aggiornato": "2026-10-27",
  "frasi_vincenti": [
   "MIE-02d87ee7",
   "MIE-043e8cf1",
@@ -43,6 +43,8 @@
   "MIE-9b789797",
   "MIE-9dd49640",
   "MIE-a56f1caf",
+  "MIE-b8b94c79",
+  "MIE-bd40bf0d",
   "MIE-bd41cc60",
   "MIE-be160ed8",
   "MIE-c2cfd80e",
@@ -55,9 +57,9 @@
   "QJ080"
  ],
  "formati": {
-  "frase": 0.46,
+  "frase": 0.73,
   "regole": 1.03,
-  "montaggio": 0.84,
+  "montaggio": 0.83,
   "frase8": 1.04
  },
  "esperimento_formati": {
