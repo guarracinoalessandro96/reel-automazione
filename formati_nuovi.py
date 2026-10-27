@@ -20,7 +20,7 @@ FORMATI = {
     # 26/10/2026 (Alessandro: "tutti video da 30 secondi editati bene ... che raccontano una storia", prova di 7 giorni,
     # "scegli tu se mettere i b-roll o senza"): un racconto di 6 righe da storie.json, una riga ogni 5 s
     "racconto": {"stacchi": [5.0] * 6},              # uno stacco a ogni riga del racconto
-    "racconto_broll": {"stacchi": [2.0] * 15},       # b-roll veloce (stacchi da 2 s), la riga cambia ogni 5 s
+    "racconto_broll": {"stacchi": [3.0] * 10},       # b-roll (stacchi da 3 s; da 2 s era troppo pesante in 4K), riga ogni 5 s
     "racconto_lento": {"stacchi": [10.0] * 3},       # SENZA b-roll: solo il video del giorno, 3 inquadrature lunghe
 }
 DURATA_RACCONTO = 30.0
