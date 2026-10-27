@@ -6559,11 +6559,46 @@
    },
    "spinto": false,
    "testo": "Nessuno sa cosa ho promesso a me stesso quella notte."
+  },
+  {
+   "quando": "2026-10-27T07:00",
+   "slot": "2026-10-27 08:00",
+   "video": "IMG_3330.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "STO-05",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto",
+    "durata": 30.0,
+    "musica": "moon_vision_1.m4a",
+    "stacchi": 6,
+    "testi": 6,
+    "musica_meta": "drive_07.flac",
+    "musica_instagram": "Vayam - Satish Raghunathan"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "DIjgwRvQ0Vg"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18080503085446104"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1799501197952688"
+    }
+   },
+   "spinto": true,
+   "testo": "Una volta mi sono guardato allo specchio e non mi sono piaciuto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 07:00",
   "2026-10-20 08:00",
   "2026-10-20 09:00",
   "2026-10-20 10:00",
@@ -6642,10 +6677,10 @@
   "2026-10-27 00:00",
   "2026-10-27 02:00",
   "2026-10-27 04:00",
-  "2026-10-27 06:00"
+  "2026-10-27 06:00",
+  "2026-10-27 08:00"
  ],
  "musica_recenti": [
-  "ego_chall_4.m4a",
   "locked_in_1.m4a",
   "i_might_be_late_1.m4a",
   "cartier_1.m4a",
@@ -6664,7 +6699,8 @@
   "break_ya_neck_4.m4a",
   "duty_calls_1.m4a",
   "horizons_1.m4a",
-  "dusty_road_magic_1.m4a"
+  "dusty_road_magic_1.m4a",
+  "moon_vision_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6852,16 +6888,17 @@
   "MIE-9d86edf0",
   "STO-03",
   "STO-04",
-  "STO-01"
+  "STO-01",
+  "STO-05"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
   "mentalita",
+  "storia",
   "storia",
   "storia",
   "storia"
@@ -6882,8 +6919,8 @@
    "ultimo": "2026-10-27"
   },
   "1ssTZiPaSjGA63iZMxhUEOD6wWT-dqCLz": {
-   "usi": 1,
-   "ultimo": "2026-10-09"
+   "usi": 2,
+   "ultimo": "2026-10-27"
   },
   "1HKv05Wh_t_gsHvCIkHBJFaKlY4mxyEy2": {
    "usi": 2,
@@ -7227,7 +7264,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_06.flac",
   "deciso_02.flac",
   "deciso_10.flac",
   "trap_16.flac",
@@ -7246,7 +7282,8 @@
   "trap_06.flac",
   "deciso_08.flac",
   "phonk_02.flac",
-  "trap_02.flac"
+  "trap_02.flac",
+  "drive_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7279,7 +7316,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto_broll",
+ "formato_ultimo": "racconto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -7309,6 +7346,7 @@
   "732596883977972",
   "2603949126473975",
   "1032171746983079",
-  "2477944699150252"
+  "2477944699150252",
+  "226065877006928"
  ]
 }
