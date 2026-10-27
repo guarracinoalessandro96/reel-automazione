@@ -6451,11 +6451,46 @@
    },
    "spinto": true,
    "testo": "Stai rimuginando di nuovo. Respira. Va bene, capirai come gestirla. E anche se non ci riesci, va bene lo stesso."
+  },
+  {
+   "quando": "2026-10-27T01:20",
+   "slot": "2026-10-27 02:00",
+   "video": "IMG_3359.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "STO-03",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto",
+    "durata": 30.0,
+    "musica": "duty_calls_1.m4a",
+    "stacchi": 6,
+    "testi": 6,
+    "musica_meta": "deciso_08.flac",
+    "musica_instagram": "Dark (Slowed) - Tony Dark Eyes"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "aVZV9jJQzLQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18129099176511563"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1738660450528290"
+    }
+   },
+   "spinto": true,
+   "testo": "Il giorno in cui ho smesso di spiegarmi, è cambiato tutto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 04:00",
   "2026-10-20 05:00",
   "2026-10-20 06:00",
   "2026-10-20 07:00",
@@ -6534,10 +6569,10 @@
   "2026-10-26 18:00",
   "2026-10-26 20:00",
   "2026-10-26 22:00",
-  "2026-10-27 00:00"
+  "2026-10-27 00:00",
+  "2026-10-27 02:00"
  ],
  "musica_recenti": [
-  "rubberband_4.m4a",
   "ten_3.m4a",
   "death_duel_4.m4a",
   "ego_chall_4.m4a",
@@ -6556,7 +6591,8 @@
   "cartier_2.m4a",
   "majestic_12_1.m4a",
   "final_boss_battle_1.m4a",
-  "break_ya_neck_4.m4a"
+  "break_ya_neck_4.m4a",
+  "duty_calls_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6741,7 +6777,8 @@
   "MIE-72340eb4",
   "MIE-52be73bb",
   "L22",
-  "MIE-9d86edf0"
+  "MIE-9d86edf0",
+  "STO-03"
  ],
  "temi_recenti": [
   "mentalita",
@@ -6751,12 +6788,12 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
-  "mentalita"
+  "mentalita",
+  "storia"
  ],
  "analisi": {},
- "pulizia": "2026-10-26",
+ "pulizia": "2026-10-27",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 1,
@@ -7109,10 +7146,13 @@
   "1pDAftR96LYxUz7ZfUjOC4rrX4qrn3DF5": {
    "usi": 2,
    "ultimo": "2026-10-26"
+  },
+  "154DEQH3JaEBg95Z01YeNC0Bu_KyTq1XR": {
+   "usi": 1,
+   "ultimo": "2026-10-27"
   }
  },
  "musica_recenti_meta": [
-  "trap_12.flac",
   "trap_07.flac",
   "trap_08.flac",
   "deciso_06.flac",
@@ -7131,7 +7171,8 @@
   "phonk_14.flac",
   "phonk_11.flac",
   "phonk_01.flac",
-  "trap_06.flac"
+  "trap_06.flac",
+  "deciso_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7164,7 +7205,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "gancio",
+ "formato_ultimo": "racconto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -7191,6 +7232,7 @@
   "1039098790480932",
   "1423487866229281",
   "341745901246038",
-  "732596883977972"
+  "732596883977972",
+  "2603949126473975"
  ]
 }
