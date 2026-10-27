@@ -6749,40 +6749,56 @@
    },
    "spinto": true,
    "testo": "C'è stato un periodo in cui non credeva in me nessuno."
-  }
- ],
- "riprova": [
+  },
   {
-   "frase": {
-    "id": "STO-07",
-    "tema": "storia",
-    "gancio": "Mio padre non mi ha mai detto \"sono fiero di te\".",
-    "autore": "",
-    "hashtag": [
-     "#storia",
-     "#mentalita",
-     "#motivazione"
-    ],
-    "serie": "GIORNO 300 / 365",
-    "testo_completo": [
-     "Mio padre non mi ha mai detto \"sono fiero di te\".",
-     "Però l'ho visto lavorare ogni giorno, senza lamentarsi mai.",
-     "Non servivano parole. Bastava guardarlo.",
-     "Ho capito che il rispetto si insegna con l'esempio.",
-     "Oggi faccio lo stesso, in silenzio.",
-     "Un giorno spero che qualcuno guardi me allo stesso modo."
-    ],
-    "copertina_ms": null
+   "quando": "2026-10-27T16:14",
+   "riprova": "STO-07",
+   "risultati": {
+    "instagram": {
+     "ok": true,
+     "id": "18112451987157285"
+    }
+   }
+  },
+  {
+   "quando": "2026-10-27T17:00",
+   "slot": "2026-10-27 18:00",
+   "video": "IMG_4269.MOV",
+   "md5": "6572a98b26f4f1e1f6c3c57cacce727d",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-26T21:50+01:00",
+   "frase": "STO-08",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto_broll",
+    "durata": 30.0,
+    "musica": "majestic_12_1.m4a",
+    "stacchi": 10,
+    "testi": 6,
+    "musica_meta": "phonk_13.flac",
+    "musica_instagram": "Viral Camera - Sugartapes"
    },
-   "pronti_id": "11CTSaxGC8XHi_0wQtX6d2X6H-bVaPiiL",
-   "piattaforme": [
-    "instagram"
-   ],
-   "tentativi": 1
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "rx9e2KPKqcs"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18075937919564732"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "2109410439667915"
+    }
+   },
+   "spinto": true,
+   "testo": "Un giorno ho fatto un errore che mi è costato tanto."
   }
  ],
+ "riprova": [],
  "slot_fatti": [
-  "2026-10-20 12:00",
   "2026-10-20 13:00",
   "2026-10-20 14:00",
   "2026-10-20 15:00",
@@ -6861,10 +6877,10 @@
   "2026-10-27 10:00",
   "2026-10-27 12:00",
   "2026-10-27 14:00",
-  "2026-10-27 16:00"
+  "2026-10-27 16:00",
+  "2026-10-27 18:00"
  ],
  "musica_recenti": [
-  "van_life_rager_1.m4a",
   "survival_mode_2.m4a",
   "kick_it_1.m4a",
   "intergalactic_1.m4a",
@@ -6883,7 +6899,8 @@
   "delirium_1.m4a",
   "van_life_rager_1.m4a",
   "death_duel_1.m4a",
-  "vibe_check_1.m4a"
+  "vibe_check_1.m4a",
+  "majestic_12_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7076,11 +7093,12 @@
   "STO-06",
   "STO-02",
   "STO-07",
-  "STO-10"
+  "STO-10",
+  "STO-08"
  ],
  "temi_recenti": [
-  "regole",
   "mentalita",
+  "storia",
   "storia",
   "storia",
   "storia",
@@ -7090,21 +7108,7 @@
   "storia",
   "storia"
  ],
- "analisi": {
-  "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW": {
-   "nome": "IMG_4269.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.98,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-26T21:50+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-27T07:12:43.220Z",
-   "parlato": null,
-   "momento": null
-  }
- },
+ "analisi": {},
  "pulizia": "2026-10-27",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -7478,10 +7482,13 @@
   "1OKyRxbpEUPABWJM5Ey1cGm-BG7E-Rv9h": {
    "usi": 1,
    "ultimo": "2026-10-27"
+  },
+  "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW": {
+   "usi": 1,
+   "ultimo": "2026-10-27"
   }
  },
  "musica_recenti_meta": [
-  "phonk_10.flac",
   "phonk_16.flac",
   "trap_04.flac",
   "phonk_15.flac",
@@ -7500,7 +7507,8 @@
   "phonk_05.flac",
   "phonk_04.flac",
   "phonk_08.flac",
-  "deciso_04.flac"
+  "deciso_04.flac",
+  "phonk_13.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7533,7 +7541,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto",
+ "formato_ultimo": "racconto_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -7568,6 +7576,7 @@
   "2417589738319876",
   "458742983134920",
   "1718120844886611",
-  "973266493758189"
+  "973266493758189",
+  "475612031187222"
  ]
 }
