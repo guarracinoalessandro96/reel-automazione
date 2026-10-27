@@ -6595,11 +6595,46 @@
    },
    "spinto": true,
    "testo": "Una volta mi sono guardato allo specchio e non mi sono piaciuto."
+  },
+  {
+   "quando": "2026-10-27T09:00",
+   "slot": "2026-10-27 10:00",
+   "video": "IMG_4274.MOV",
+   "md5": "52543594ef2768d24ae8f1a949867600",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-26T21:57+01:00",
+   "frase": "STO-06",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto_lento",
+    "durata": 30.0,
+    "musica": "delirium_1.m4a",
+    "stacchi": 3,
+    "testi": 6,
+    "musica_meta": "phonk_05.flac",
+    "musica_instagram": "Kannan Kuzhal - Dhruv Goel"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "lUxGsGTdY0s"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18145632970582642"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1641223880744643"
+    }
+   },
+   "spinto": true,
+   "testo": "Ho perso amici mentre provavo a migliorarmi."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 08:00",
   "2026-10-20 09:00",
   "2026-10-20 10:00",
   "2026-10-20 11:00",
@@ -6678,10 +6713,10 @@
   "2026-10-27 02:00",
   "2026-10-27 04:00",
   "2026-10-27 06:00",
-  "2026-10-27 08:00"
+  "2026-10-27 08:00",
+  "2026-10-27 10:00"
  ],
  "musica_recenti": [
-  "locked_in_1.m4a",
   "i_might_be_late_1.m4a",
   "cartier_1.m4a",
   "keep_it_movin_3.m4a",
@@ -6700,7 +6735,8 @@
   "duty_calls_1.m4a",
   "horizons_1.m4a",
   "dusty_road_magic_1.m4a",
-  "moon_vision_1.m4a"
+  "moon_vision_1.m4a",
+  "delirium_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6889,10 +6925,10 @@
   "STO-03",
   "STO-04",
   "STO-01",
-  "STO-05"
+  "STO-05",
+  "STO-06"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -6901,9 +6937,50 @@
   "storia",
   "storia",
   "storia",
+  "storia",
   "storia"
  ],
- "analisi": {},
+ "analisi": {
+  "1ihXK6xEsYtfnFtAgP15kNGGE71G07W-f": {
+   "nome": "IMG_4271.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-26T21:52+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-27T07:12:28.994Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1b6jLZrzSs8YwKhy4QEb382s6yYZIdhzZ": {
+   "nome": "IMG_4272.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.97,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-26T21:54+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-27T07:12:42.008Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW": {
+   "nome": "IMG_4269.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.98,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-26T21:50+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-27T07:12:43.220Z",
+   "parlato": null,
+   "momento": null
+  }
+ },
  "pulizia": "2026-10-27",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -7261,10 +7338,13 @@
   "154DEQH3JaEBg95Z01YeNC0Bu_KyTq1XR": {
    "usi": 1,
    "ultimo": "2026-10-27"
+  },
+  "1VEPb54Y1oSgn1WwoX7EtQNTsLCC7CB4u": {
+   "usi": 1,
+   "ultimo": "2026-10-27"
   }
  },
  "musica_recenti_meta": [
-  "deciso_02.flac",
   "deciso_10.flac",
   "trap_16.flac",
   "deciso_05.flac",
@@ -7283,7 +7363,8 @@
   "deciso_08.flac",
   "phonk_02.flac",
   "trap_02.flac",
-  "drive_07.flac"
+  "drive_07.flac",
+  "phonk_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7316,7 +7397,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto",
+ "formato_ultimo": "racconto_lento",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -7347,6 +7428,7 @@
   "2603949126473975",
   "1032171746983079",
   "2477944699150252",
-  "226065877006928"
+  "226065877006928",
+  "2417589738319876"
  ]
 }
