@@ -6487,11 +6487,46 @@
    },
    "spinto": true,
    "testo": "Il giorno in cui ho smesso di spiegarmi, è cambiato tutto."
+  },
+  {
+   "quando": "2026-10-27T03:00",
+   "slot": "2026-10-27 04:00",
+   "video": "IMG_3650.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "STO-04",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto",
+    "durata": 30.0,
+    "musica": "horizons_1.m4a",
+    "stacchi": 6,
+    "testi": 6,
+    "musica_meta": "phonk_02.flac",
+    "musica_instagram": "Feel Goods - Tickwanya"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "nYLMoK8DGH4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17955110745328976"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1138565582159204"
+    }
+   },
+   "spinto": true,
+   "testo": "Questa è la parte del viaggio che nessuno vede."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 05:00",
   "2026-10-20 06:00",
   "2026-10-20 07:00",
   "2026-10-20 08:00",
@@ -6570,10 +6605,10 @@
   "2026-10-26 20:00",
   "2026-10-26 22:00",
   "2026-10-27 00:00",
-  "2026-10-27 02:00"
+  "2026-10-27 02:00",
+  "2026-10-27 04:00"
  ],
  "musica_recenti": [
-  "ten_3.m4a",
   "death_duel_4.m4a",
   "ego_chall_4.m4a",
   "locked_in_1.m4a",
@@ -6592,7 +6627,8 @@
   "majestic_12_1.m4a",
   "final_boss_battle_1.m4a",
   "break_ya_neck_4.m4a",
-  "duty_calls_1.m4a"
+  "duty_calls_1.m4a",
+  "horizons_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6778,7 +6814,8 @@
   "MIE-52be73bb",
   "L22",
   "MIE-9d86edf0",
-  "STO-03"
+  "STO-03",
+  "STO-04"
  ],
  "temi_recenti": [
   "mentalita",
@@ -6787,17 +6824,17 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
   "mentalita",
+  "storia",
   "storia"
  ],
  "analisi": {},
  "pulizia": "2026-10-27",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
-   "usi": 1,
-   "ultimo": "2026-10-08"
+   "usi": 2,
+   "ultimo": "2026-10-27"
   },
   "1prxBAB3e2zYxgElc_5sFnFrc_3Lw6Snt": {
    "usi": 2,
@@ -7153,7 +7190,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_07.flac",
   "trap_08.flac",
   "deciso_06.flac",
   "deciso_02.flac",
@@ -7172,7 +7208,8 @@
   "phonk_11.flac",
   "phonk_01.flac",
   "trap_06.flac",
-  "deciso_08.flac"
+  "deciso_08.flac",
+  "phonk_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7233,6 +7270,7 @@
   "1423487866229281",
   "341745901246038",
   "732596883977972",
-  "2603949126473975"
+  "2603949126473975",
+  "1032171746983079"
  ]
 }
