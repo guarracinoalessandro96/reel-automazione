@@ -6667,11 +6667,75 @@
    },
    "spinto": true,
    "testo": "Mi hanno chiesto perché non esco più come prima."
+  },
+  {
+   "quando": "2026-10-27T13:11",
+   "slot": "2026-10-27 14:00",
+   "video": "IMG_4272.MOV",
+   "md5": "6e7e6e70d38c14d947d5eeb7ab538d32",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-26T21:54+01:00",
+   "frase": "STO-07",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto_lento",
+    "durata": 30.0,
+    "musica": "death_duel_1.m4a",
+    "stacchi": 3,
+    "testi": 6,
+    "musica_meta": "phonk_08.flac",
+    "musica_instagram": "Bass Attack - Scott Dugdale"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "EDYnd98FpU4"
+    },
+    "instagram": {
+     "ok": false,
+     "errore": "{'error': {'message': 'Media ID is not available', 'type': 'OAuthException', 'code': 9007, 'error_subcode': 2207027, 'is_transient': False, 'error_user_title': 'Impossibile pubblicare', 'error_user_msg': 'Il contenuto multimediale non è pronto per la pubblicazione, attendi un momento', 'fbtrace_id': 'AaqneaO70ROLN51CA6PdAH0'}}"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "4734851163437328"
+    }
+   },
+   "spinto": true,
+   "testo": "Mio padre non mi ha mai detto \"sono fiero di te\"."
   }
  ],
- "riprova": [],
+ "riprova": [
+  {
+   "frase": {
+    "id": "STO-07",
+    "tema": "storia",
+    "gancio": "Mio padre non mi ha mai detto \"sono fiero di te\".",
+    "autore": "",
+    "hashtag": [
+     "#storia",
+     "#mentalita",
+     "#motivazione"
+    ],
+    "serie": "GIORNO 300 / 365",
+    "testo_completo": [
+     "Mio padre non mi ha mai detto \"sono fiero di te\".",
+     "Però l'ho visto lavorare ogni giorno, senza lamentarsi mai.",
+     "Non servivano parole. Bastava guardarlo.",
+     "Ho capito che il rispetto si insegna con l'esempio.",
+     "Oggi faccio lo stesso, in silenzio.",
+     "Un giorno spero che qualcuno guardi me allo stesso modo."
+    ],
+    "copertina_ms": null
+   },
+   "pronti_id": "11CTSaxGC8XHi_0wQtX6d2X6H-bVaPiiL",
+   "piattaforme": [
+    "instagram"
+   ],
+   "tentativi": 0
+  }
+ ],
  "slot_fatti": [
-  "2026-10-20 10:00",
   "2026-10-20 11:00",
   "2026-10-20 12:00",
   "2026-10-20 13:00",
@@ -6750,10 +6814,10 @@
   "2026-10-27 06:00",
   "2026-10-27 08:00",
   "2026-10-27 10:00",
-  "2026-10-27 12:00"
+  "2026-10-27 12:00",
+  "2026-10-27 14:00"
  ],
  "musica_recenti": [
-  "cartier_1.m4a",
   "keep_it_movin_3.m4a",
   "van_life_rager_1.m4a",
   "survival_mode_2.m4a",
@@ -6772,7 +6836,8 @@
   "dusty_road_magic_1.m4a",
   "moon_vision_1.m4a",
   "delirium_1.m4a",
-  "van_life_rager_1.m4a"
+  "van_life_rager_1.m4a",
+  "death_duel_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6963,10 +7028,10 @@
   "STO-01",
   "STO-05",
   "STO-06",
-  "STO-02"
+  "STO-02",
+  "STO-07"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "regole",
   "mentalita",
@@ -6975,22 +7040,10 @@
   "storia",
   "storia",
   "storia",
+  "storia",
   "storia"
  ],
  "analisi": {
-  "1b6jLZrzSs8YwKhy4QEb382s6yYZIdhzZ": {
-   "nome": "IMG_4272.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.97,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-26T21:54+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-27T07:12:42.008Z",
-   "parlato": null,
-   "momento": null
-  },
   "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW": {
    "nome": "IMG_4269.MOV",
    "scena": "palestra",
@@ -7370,10 +7423,13 @@
   "1ihXK6xEsYtfnFtAgP15kNGGE71G07W-f": {
    "usi": 1,
    "ultimo": "2026-10-27"
+  },
+  "1b6jLZrzSs8YwKhy4QEb382s6yYZIdhzZ": {
+   "usi": 1,
+   "ultimo": "2026-10-27"
   }
  },
  "musica_recenti_meta": [
-  "trap_16.flac",
   "deciso_05.flac",
   "phonk_10.flac",
   "phonk_16.flac",
@@ -7392,7 +7448,8 @@
   "trap_02.flac",
   "drive_07.flac",
   "phonk_05.flac",
-  "phonk_04.flac"
+  "phonk_04.flac",
+  "phonk_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7425,11 +7482,11 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto",
+ "formato_ultimo": "racconto_lento",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
-  "instagram": 0
+  "instagram": 1
  },
  "tiktok_coda": [
   {
@@ -7458,6 +7515,7 @@
   "2477944699150252",
   "226065877006928",
   "2417589738319876",
-  "458742983134920"
+  "458742983134920",
+  "1718120844886611"
  ]
 }
