@@ -6831,11 +6831,46 @@
    },
    "spinto": true,
    "testo": "Tutti vogliono il risultato. Nessuno vuole la routine."
+  },
+  {
+   "quando": "2026-10-27T23:00",
+   "slot": "2026-10-28 00:00",
+   "video": "IMG_4274.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "STO-11",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto_broll",
+    "durata": 30.0,
+    "musica": "final_boss_battle_1.m4a",
+    "stacchi": 10,
+    "testi": 6,
+    "musica_meta": "phonk_16.flac",
+    "musica_instagram": "Flip Flip - Tupakeys"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "ZLwfQQgZt-w"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17910816855593600"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1151624214047581"
+    }
+   },
+   "spinto": false,
+   "testo": "La prima volta che ho venduto qualcosa online, ho tremato."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 14:00",
   "2026-10-20 15:00",
   "2026-10-20 16:00",
   "2026-10-20 17:00",
@@ -6914,10 +6949,10 @@
   "2026-10-27 14:00",
   "2026-10-27 16:00",
   "2026-10-27 18:00",
-  "2026-10-27 20:00"
+  "2026-10-27 20:00",
+  "2026-10-28 00:00"
  ],
  "musica_recenti": [
-  "kick_it_1.m4a",
   "intergalactic_1.m4a",
   "fire_in_the_sky_1.m4a",
   "death_duel_2.m4a",
@@ -6936,7 +6971,8 @@
   "death_duel_1.m4a",
   "vibe_check_1.m4a",
   "majestic_12_1.m4a",
-  "cartier_1.m4a"
+  "cartier_1.m4a",
+  "final_boss_battle_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7131,7 +7167,8 @@
   "STO-07",
   "STO-10",
   "STO-08",
-  "STO-09"
+  "STO-09",
+  "STO-11"
  ],
  "temi_recenti": [
   "storia",
@@ -7505,7 +7542,7 @@
    "ultimo": "2026-10-27"
   },
   "1VEPb54Y1oSgn1WwoX7EtQNTsLCC7CB4u": {
-   "usi": 1,
+   "usi": 2,
    "ultimo": "2026-10-27"
   },
   "1ihXK6xEsYtfnFtAgP15kNGGE71G07W-f": {
@@ -7526,7 +7563,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_04.flac",
   "phonk_15.flac",
   "phonk_06.flac",
   "phonk_03.flac",
@@ -7545,7 +7581,8 @@
   "phonk_08.flac",
   "deciso_04.flac",
   "phonk_13.flac",
-  "phonk_10.flac"
+  "phonk_10.flac",
+  "phonk_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7578,7 +7615,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto",
+ "formato_ultimo": "racconto_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -7615,6 +7652,7 @@
   "1718120844886611",
   "973266493758189",
   "475612031187222",
-  "1147818560896993"
+  "1147818560896993",
+  "900264374440235"
  ]
 }
