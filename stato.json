@@ -6795,11 +6795,46 @@
    },
    "spinto": true,
    "testo": "Un giorno ho fatto un errore che mi è costato tanto."
+  },
+  {
+   "quando": "2026-10-27T19:00",
+   "slot": "2026-10-27 20:00",
+   "video": "IMG_3796.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "STO-09",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto",
+    "durata": 30.0,
+    "musica": "cartier_1.m4a",
+    "stacchi": 6,
+    "testi": 6,
+    "musica_meta": "phonk_10.flac",
+    "musica_instagram": "Moomba - Chela Rivas"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "AFAF8L95oTo"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18120317371961838"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1511274477485445"
+    }
+   },
+   "spinto": true,
+   "testo": "Tutti vogliono il risultato. Nessuno vuole la routine."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 13:00",
   "2026-10-20 14:00",
   "2026-10-20 15:00",
   "2026-10-20 16:00",
@@ -6878,10 +6913,10 @@
   "2026-10-27 12:00",
   "2026-10-27 14:00",
   "2026-10-27 16:00",
-  "2026-10-27 18:00"
+  "2026-10-27 18:00",
+  "2026-10-27 20:00"
  ],
  "musica_recenti": [
-  "survival_mode_2.m4a",
   "kick_it_1.m4a",
   "intergalactic_1.m4a",
   "fire_in_the_sky_1.m4a",
@@ -6900,7 +6935,8 @@
   "van_life_rager_1.m4a",
   "death_duel_1.m4a",
   "vibe_check_1.m4a",
-  "majestic_12_1.m4a"
+  "majestic_12_1.m4a",
+  "cartier_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7094,10 +7130,11 @@
   "STO-02",
   "STO-07",
   "STO-10",
-  "STO-08"
+  "STO-08",
+  "STO-09"
  ],
  "temi_recenti": [
-  "mentalita",
+  "storia",
   "storia",
   "storia",
   "storia",
@@ -7188,8 +7225,8 @@
    "ultimo": "2026-10-19"
   },
   "1PQ4fQcv7i5uxq-1id98LKGmYVNXmunzk": {
-   "usi": 1,
-   "ultimo": "2026-10-10"
+   "usi": 2,
+   "ultimo": "2026-10-27"
   },
   "1bicrA3_wslB4doIghi4sFYoNaPd5lCyK": {
    "usi": 1,
@@ -7489,7 +7526,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_16.flac",
   "trap_04.flac",
   "phonk_15.flac",
   "phonk_06.flac",
@@ -7508,7 +7544,8 @@
   "phonk_04.flac",
   "phonk_08.flac",
   "deciso_04.flac",
-  "phonk_13.flac"
+  "phonk_13.flac",
+  "phonk_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7541,7 +7578,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto_broll",
+ "formato_ultimo": "racconto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -7555,7 +7592,7 @@
    "parlato": false
   }
  ],
- "commenti_fino": "2026-10-26T19:00:43Z",
+ "commenti_fino": "2026-10-27T19:00:43Z",
  "ig_audio_recenti": [
   "1230234233801424",
   "827252278567806",
@@ -7577,6 +7614,7 @@
   "458742983134920",
   "1718120844886611",
   "973266493758189",
-  "475612031187222"
+  "475612031187222",
+  "1147818560896993"
  ]
 }
