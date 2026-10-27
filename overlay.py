@@ -408,7 +408,7 @@ def versione_social(src, dst, audio=True):
     return dst
 
 
-def versione_tiktok(src, dst, audio=False, max_mb=9.5):
+def versione_tiktok(src, dst, audio=False, max_mb=8.0):
     """Versione per TikTok Studio (25/10/2026): 1080x1920 come versione_social ma SOTTO i 10 MB, il massimo che il
     giro serale in Chrome riesce a caricare in un colpo. Il suono lo sceglie poi TikTok (suoni nativi), quindi di
     norma senza audio; audio=True per parlato/momento con la loro voce."""

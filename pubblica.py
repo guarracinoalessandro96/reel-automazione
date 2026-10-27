@@ -14,7 +14,7 @@ Ad ogni esecuzione:
 
 Credenziali: variabili d'ambiente (GitHub Secrets). DRY_RUN=1 fa tutto tranne pubblicare.
 """
-import calendar, io, json, os, re, sys, time, datetime, random, traceback, subprocess, shutil
+import calendar, hashlib, io, json, os, re, sys, time, datetime, random, traceback, subprocess, shutil
 import requests
 import overlay
 import scena as scene_mod
@@ -183,6 +183,11 @@ def testo_breve(cap):
         testo = cap["gancio"] + "\n" + "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1))
     serie = serie_testo(cap)
     serie = serie + " · seguimi per vedere dove arrivo" if serie else ""     # il personaggio: un viaggio da seguire
+    if cap.get("tema") == "storia":   # 27/10/2026: una domanda in fondo -> piu' commenti -> piu' spinta dall'algoritmo
+        domande = ["E tu, cosa ti sei promesso? Scrivilo qui sotto 👇", "Ti è mai successo? Raccontamelo nei commenti 👇",
+                   "Per chi lo stai facendo tu? Scrivilo qui sotto 👇", "Qual è il tuo obiettivo di quest'anno? 👇",
+                   "Sei d'accordo? Scrivi \"sì\" se anche tu non molli 👇"]
+        testo += "\n\n" + domande[int(hashlib.md5(cap["id"].encode()).hexdigest(), 16) % len(domande)]
     return (serie + "\n" if serie else "") + testo + "\n\n" + " ".join(dict.fromkeys(tags[:4]))
 
 
