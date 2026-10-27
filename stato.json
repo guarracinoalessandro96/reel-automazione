@@ -6523,11 +6523,46 @@
    },
    "spinto": true,
    "testo": "Questa è la parte del viaggio che nessuno vede."
+  },
+  {
+   "quando": "2026-10-27T05:00",
+   "slot": "2026-10-27 06:00",
+   "video": "IMG_3311.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "STO-01",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto_broll",
+    "durata": 30.0,
+    "musica": "dusty_road_magic_1.m4a",
+    "stacchi": 10,
+    "testi": 6,
+    "musica_meta": "trap_02.flac",
+    "musica_instagram": "Peaceful Piano - Dr. Pheel"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "QCCq4m9SqzQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17879068446566070"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1652268299820129"
+    }
+   },
+   "spinto": false,
+   "testo": "Nessuno sa cosa ho promesso a me stesso quella notte."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 06:00",
   "2026-10-20 07:00",
   "2026-10-20 08:00",
   "2026-10-20 09:00",
@@ -6606,10 +6641,10 @@
   "2026-10-26 22:00",
   "2026-10-27 00:00",
   "2026-10-27 02:00",
-  "2026-10-27 04:00"
+  "2026-10-27 04:00",
+  "2026-10-27 06:00"
  ],
  "musica_recenti": [
-  "death_duel_4.m4a",
   "ego_chall_4.m4a",
   "locked_in_1.m4a",
   "i_might_be_late_1.m4a",
@@ -6628,7 +6663,8 @@
   "final_boss_battle_1.m4a",
   "break_ya_neck_4.m4a",
   "duty_calls_1.m4a",
-  "horizons_1.m4a"
+  "horizons_1.m4a",
+  "dusty_road_magic_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -6815,7 +6851,8 @@
   "L22",
   "MIE-9d86edf0",
   "STO-03",
-  "STO-04"
+  "STO-04",
+  "STO-01"
  ],
  "temi_recenti": [
   "mentalita",
@@ -6823,9 +6860,9 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "regole",
   "mentalita",
+  "storia",
   "storia",
   "storia"
  ],
@@ -6841,8 +6878,8 @@
    "ultimo": "2026-10-12"
   },
   "1QRloko-RTNUoZs6eVV1LYBLqTIhN7WDy": {
-   "usi": 1,
-   "ultimo": "2026-10-09"
+   "usi": 2,
+   "ultimo": "2026-10-27"
   },
   "1ssTZiPaSjGA63iZMxhUEOD6wWT-dqCLz": {
    "usi": 1,
@@ -7190,7 +7227,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_08.flac",
   "deciso_06.flac",
   "deciso_02.flac",
   "deciso_10.flac",
@@ -7209,7 +7245,8 @@
   "phonk_01.flac",
   "trap_06.flac",
   "deciso_08.flac",
-  "phonk_02.flac"
+  "phonk_02.flac",
+  "trap_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7242,7 +7279,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto",
+ "formato_ultimo": "racconto_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -7271,6 +7308,7 @@
   "341745901246038",
   "732596883977972",
   "2603949126473975",
-  "1032171746983079"
+  "1032171746983079",
+  "2477944699150252"
  ]
 }
