@@ -7119,11 +7119,46 @@
    },
    "spinto": true,
    "testo": "Una volta mi sono sentito il più indietro di tutti."
+  },
+  {
+   "quando": "2026-10-28T15:00",
+   "slot": "2026-10-28 16:00",
+   "video": "IMG_4293.MOV",
+   "md5": "788436dd4d532d17049583ba540befcd",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-27T21:01+01:00",
+   "frase": "STO-19",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto_lento",
+    "durata": 30.0,
+    "musica": "ten_1.m4a",
+    "stacchi": 3,
+    "testi": 6,
+    "musica_meta": "phonk_07.flac",
+    "musica_instagram": "Viral Quiet - Magnetic Sirens"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "gOoMF4aWryE"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17915051751501256"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "2470756800398337"
+    }
+   },
+   "spinto": true,
+   "testo": "Ho iniziato questo viaggio senza sapere dove portasse."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 22:00",
   "2026-10-20 23:00",
   "2026-10-21 00:00",
   "2026-10-21 02:00",
@@ -7202,10 +7237,10 @@
   "2026-10-28 08:00",
   "2026-10-28 10:00",
   "2026-10-28 12:00",
-  "2026-10-28 14:00"
+  "2026-10-28 14:00",
+  "2026-10-28 16:00"
  ],
  "musica_recenti": [
-  "final_boss_battle_1.m4a",
   "break_ya_neck_4.m4a",
   "duty_calls_1.m4a",
   "horizons_1.m4a",
@@ -7224,7 +7259,8 @@
   "wrangle_the_crazy_1.m4a",
   "visions_1.m4a",
   "intergalactic_1.m4a",
-  "locked_in_1.m4a"
+  "locked_in_1.m4a",
+  "ten_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7427,7 +7463,8 @@
   "STO-17",
   "STO-18",
   "STO-12",
-  "STO-20"
+  "STO-20",
+  "STO-19"
  ],
  "temi_recenti": [
   "storia",
@@ -7442,19 +7479,6 @@
   "storia"
  ],
  "analisi": {
-  "1imtjdovSsU7sfZ2CRaJTwVN1ETpo_8z3": {
-   "nome": "IMG_4293.MOV",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-27T21:01+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-28T10:50:41.415Z",
-   "parlato": null,
-   "momento": null
-  },
   "1doFy-IdLUGnZn_FuQyyUK5OqHf6xPX08": {
    "nome": "IMG_4292.MOV",
    "scena": "palestra",
@@ -7958,10 +7982,13 @@
   "1qg9QOoyt2IXIx0udqWcfdBdqz_RdzVo4": {
    "usi": 1,
    "ultimo": "2026-10-28"
+  },
+  "1imtjdovSsU7sfZ2CRaJTwVN1ETpo_8z3": {
+   "usi": 1,
+   "ultimo": "2026-10-28"
   }
  },
  "musica_recenti_meta": [
-  "phonk_01.flac",
   "trap_06.flac",
   "deciso_08.flac",
   "phonk_02.flac",
@@ -7980,7 +8007,8 @@
   "phonk_03.flac",
   "deciso_12.flac",
   "phonk_06.flac",
-  "phonk_09.flac"
+  "phonk_09.flac",
+  "phonk_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8013,7 +8041,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto",
+ "formato_ultimo": "racconto_lento",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8029,7 +8057,6 @@
  ],
  "commenti_fino": "2026-10-27T19:00:43Z",
  "ig_audio_recenti": [
-  "1230234233801424",
   "827252278567806",
   "969600794596390",
   "2037081536566008",
@@ -8058,6 +8085,7 @@
   "1626635767828538",
   "493652384544163",
   "381204824599064",
-  "1347176186322399"
+  "1347176186322399",
+  "1602746231488269"
  ]
 }
