@@ -6975,11 +6975,46 @@
    },
    "spinto": true,
    "testo": "Oggi non avevo voglia di niente."
+  },
+  {
+   "quando": "2026-10-28T07:00",
+   "slot": "2026-10-28 08:00",
+   "video": "IMG_4269.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "STO-17",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto_lento",
+    "durata": 30.0,
+    "musica": "wrangle_the_crazy_1.m4a",
+    "stacchi": 3,
+    "testi": 6,
+    "musica_meta": "phonk_03.flac",
+    "musica_instagram": "King Crazy (Instrumental) - Ella Joy Meir"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "doXJ_R3f_tU"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17920972332244315"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1806573007214472"
+    }
+   },
+   "spinto": true,
+   "testo": "Mia madre mi ha insegnato una cosa che non dimenticherò mai."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 18:00",
   "2026-10-20 19:00",
   "2026-10-20 20:00",
   "2026-10-20 21:00",
@@ -7058,10 +7093,10 @@
   "2026-10-28 00:00",
   "2026-10-28 02:00",
   "2026-10-28 04:00",
-  "2026-10-28 06:00"
+  "2026-10-28 06:00",
+  "2026-10-28 08:00"
  ],
  "musica_recenti": [
-  "i_might_be_late_2.m4a",
   "sweaty_staredown_1.m4a",
   "cartier_2.m4a",
   "majestic_12_1.m4a",
@@ -7080,7 +7115,8 @@
   "final_boss_battle_1.m4a",
   "fire_in_the_sky_1.m4a",
   "rubberband_1.m4a",
-  "whoop_1.m4a"
+  "whoop_1.m4a",
+  "wrangle_the_crazy_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7279,7 +7315,8 @@
   "STO-11",
   "STO-14",
   "STO-13",
-  "STO-15"
+  "STO-15",
+  "STO-17"
  ],
  "temi_recenti": [
   "storia",
@@ -7669,12 +7706,11 @@
    "ultimo": "2026-10-28"
   },
   "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW": {
-   "usi": 1,
-   "ultimo": "2026-10-27"
+   "usi": 2,
+   "ultimo": "2026-10-28"
   }
  },
  "musica_recenti_meta": [
-  "phonk_07.flac",
   "phonk_09.flac",
   "phonk_14.flac",
   "phonk_11.flac",
@@ -7693,7 +7729,8 @@
   "phonk_16.flac",
   "phonk_12.flac",
   "phonk_15.flac",
-  "deciso_07.flac"
+  "deciso_07.flac",
+  "phonk_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7726,7 +7763,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto_broll",
+ "formato_ultimo": "racconto_lento",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -7767,6 +7804,7 @@
   "900264374440235",
   "249201165751597",
   "823145229909724",
-  "932486288340954"
+  "932486288340954",
+  "1626635767828538"
  ]
 }
