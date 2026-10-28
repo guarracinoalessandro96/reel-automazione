@@ -7227,11 +7227,46 @@
    },
    "spinto": false,
    "testo": "La palestra mi ha insegnato più della scuola."
+  },
+  {
+   "quando": "2026-10-28T21:00",
+   "slot": "2026-10-28 22:00",
+   "video": "IMG_4298.MOV",
+   "md5": "2acf5a0ce8cd943cda0f6ce2f851566d",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-27T21:28+01:00",
+   "frase": "STO-23",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto",
+    "durata": 30.0,
+    "musica": "break_ya_neck_1.m4a",
+    "stacchi": 6,
+    "testi": 6,
+    "musica_meta": "phonk_01.flac",
+    "musica_instagram": "Masquerade - Company Money"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "QWWhzCxBm-E"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18119943632095375"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1886465076054583"
+    }
+   },
+   "spinto": true,
+   "testo": "Ricordo il giorno in cui ho deciso di cambiare."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-21 02:00",
   "2026-10-21 04:00",
   "2026-10-21 06:00",
   "2026-10-21 08:00",
@@ -7310,10 +7345,10 @@
   "2026-10-28 14:00",
   "2026-10-28 16:00",
   "2026-10-28 18:00",
-  "2026-10-28 20:00"
+  "2026-10-28 20:00",
+  "2026-10-28 22:00"
  ],
  "musica_recenti": [
-  "horizons_1.m4a",
   "dusty_road_magic_1.m4a",
   "moon_vision_1.m4a",
   "delirium_1.m4a",
@@ -7332,7 +7367,8 @@
   "locked_in_1.m4a",
   "ten_1.m4a",
   "kick_it_1.m4a",
-  "monthaholic_1.m4a"
+  "monthaholic_1.m4a",
+  "break_ya_neck_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7538,7 +7574,8 @@
   "STO-20",
   "STO-19",
   "STO-22",
-  "STO-21"
+  "STO-21",
+  "STO-23"
  ],
  "temi_recenti": [
   "storia",
@@ -7553,19 +7590,6 @@
   "storia"
  ],
  "analisi": {
-  "1Ks5dKBFsfm1KcBBN6VD0JeN6IDjWWTZu": {
-   "nome": "IMG_4298.MOV",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-27T21:28+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-28T10:56:52.446Z",
-   "parlato": null,
-   "momento": null
-  },
   "1NIAZGYq8oNsRCLyLOzwG8nRh_hWHpjGa": {
    "nome": "IMG_4300.MOV",
    "scena": "palestra",
@@ -8051,10 +8075,13 @@
   "1doFy-IdLUGnZn_FuQyyUK5OqHf6xPX08": {
    "usi": 1,
    "ultimo": "2026-10-28"
+  },
+  "1Ks5dKBFsfm1KcBBN6VD0JeN6IDjWWTZu": {
+   "usi": 1,
+   "ultimo": "2026-10-28"
   }
  },
  "musica_recenti_meta": [
-  "phonk_02.flac",
   "trap_02.flac",
   "drive_07.flac",
   "phonk_05.flac",
@@ -8073,7 +8100,8 @@
   "phonk_09.flac",
   "phonk_07.flac",
   "phonk_11.flac",
-  "drive_10.flac"
+  "drive_10.flac",
+  "phonk_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8107,7 +8135,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto_broll",
+ "formato_ultimo": "racconto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8123,7 +8151,6 @@
  ],
  "commenti_fino": "2026-10-28T19:00:43Z",
  "ig_audio_recenti": [
-  "2037081536566008",
   "1108285910189784",
   "1852688158814799",
   "1089503399371323",
@@ -8152,6 +8179,7 @@
   "1347176186322399",
   "1602746231488269",
   "3780853278812844",
-  "899970351935116"
+  "899970351935116",
+  "1005053937846758"
  ]
 }
