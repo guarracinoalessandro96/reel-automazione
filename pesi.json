@@ -1,22 +1,24 @@
 {
  "temi": {
-  "amicizia": 0.94,
-  "imprenditore": 1.1,
-  "mentalita": 0.95,
-  "palestra": 1.02,
+  "amicizia": 0.95,
+  "imprenditore": 1.11,
+  "mentalita": 0.94,
+  "palestra": 1.04,
   "dieta": 1.06,
-  "regole": 1.18
+  "regole": 1.21
  },
- "aggiornato": "2026-10-27",
+ "aggiornato": "2026-10-28",
  "frasi_vincenti": [
   "MIE-02d87ee7",
   "MIE-043e8cf1",
+  "MIE-09bf893e",
   "MIE-0fecdd42",
   "MIE-1cba4cc4",
   "MIE-1f097e9f",
   "MIE-22f623e2",
   "MIE-239a782a",
   "MIE-295fce20",
+  "MIE-3532228a",
   "MIE-373e069a",
   "MIE-3d86a685",
   "MIE-40a4765a",
@@ -57,10 +59,10 @@
   "QJ080"
  ],
  "formati": {
-  "frase": 0.73,
-  "regole": 1.03,
-  "montaggio": 0.83,
-  "frase8": 1.04
+  "frase": 0.67,
+  "regole": 1.05,
+  "montaggio": 0.81,
+  "frase8": 1.05
  },
  "esperimento_formati": {
   "regole": 1.6
