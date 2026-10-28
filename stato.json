@@ -7083,11 +7083,46 @@
    },
    "spinto": true,
    "testo": "Mi dicevano: \"chi te lo fa fare?\""
+  },
+  {
+   "quando": "2026-10-28T13:01",
+   "slot": "2026-10-28 14:00",
+   "video": "IMG_4294.MOV",
+   "md5": "0ef5b837408487695211a18faa71471b",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-27T21:05+01:00",
+   "frase": "STO-20",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto",
+    "durata": 30.0,
+    "musica": "locked_in_1.m4a",
+    "stacchi": 6,
+    "testi": 6,
+    "musica_meta": "phonk_09.flac",
+    "musica_instagram": "Do Ma Thing - Tony Dark Eyes"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "oy1CpSXvALM"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18034507364675349"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "2534817933687194"
+    }
+   },
+   "spinto": true,
+   "testo": "Una volta mi sono sentito il più indietro di tutti."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 21:00",
   "2026-10-20 22:00",
   "2026-10-20 23:00",
   "2026-10-21 00:00",
@@ -7166,10 +7201,10 @@
   "2026-10-28 06:00",
   "2026-10-28 08:00",
   "2026-10-28 10:00",
-  "2026-10-28 12:00"
+  "2026-10-28 12:00",
+  "2026-10-28 14:00"
  ],
  "musica_recenti": [
-  "majestic_12_1.m4a",
   "final_boss_battle_1.m4a",
   "break_ya_neck_4.m4a",
   "duty_calls_1.m4a",
@@ -7188,7 +7223,8 @@
   "whoop_1.m4a",
   "wrangle_the_crazy_1.m4a",
   "visions_1.m4a",
-  "intergalactic_1.m4a"
+  "intergalactic_1.m4a",
+  "locked_in_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7390,7 +7426,8 @@
   "STO-15",
   "STO-17",
   "STO-18",
-  "STO-12"
+  "STO-12",
+  "STO-20"
  ],
  "temi_recenti": [
   "storia",
@@ -7405,16 +7442,133 @@
   "storia"
  ],
  "analisi": {
-  "1qg9QOoyt2IXIx0udqWcfdBdqz_RdzVo4": {
-   "nome": "IMG_4294.MOV",
+  "1imtjdovSsU7sfZ2CRaJTwVN1ETpo_8z3": {
+   "nome": "IMG_4293.MOV",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-27T21:01+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-28T10:50:41.415Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1doFy-IdLUGnZn_FuQyyUK5OqHf6xPX08": {
+   "nome": "IMG_4292.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-27T20:50+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-28T10:54:16.027Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1Ks5dKBFsfm1KcBBN6VD0JeN6IDjWWTZu": {
+   "nome": "IMG_4298.MOV",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-27T21:28+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-28T10:56:52.446Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1NIAZGYq8oNsRCLyLOzwG8nRh_hWHpjGa": {
+   "nome": "IMG_4300.MOV",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-27T21:31+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-28T11:07:52.798Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1UefrogLKDdOKHxCBjQOsFjEsNFOeSefT": {
+   "nome": "IMG_4302.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-27T21:34+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-28T11:13:40.172Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1pHaSrw5l22--hj6mculM4Wx5XnAw4U-3": {
+   "nome": "IMG_4305.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-27T21:41+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-28T11:16:45.189Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1XySlsRReGeTwlbVlIctzRJDJBUZ2yHi0": {
+   "nome": "IMG_4307.MOV",
    "scena": "palestra",
    "sicurezza": 0.98,
    "motivo": "riconosciuta dalle immagini",
    "lato_corto": 2160,
    "compagnia": "solo",
-   "registrato": "2026-10-27T21:05+01:00",
+   "registrato": "2026-10-27T21:43+01:00",
    "fascia": "palestra",
-   "caricato": "2026-10-28T09:58:45.272Z",
+   "caricato": "2026-10-28T11:24:50.035Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1Dvdi1PK-wTKhXcDuM6STB2Mq6FUojSqR": {
+   "nome": "IMG_4286.MOV",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-27T20:27+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-28T11:31:57.205Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1-wXfeOgo9aVpjZBQjqJopT9L84ZIWVcr": {
+   "nome": "IMG_4287.MOV",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-27T20:41+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-28T11:38:43.304Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1icAhByFdodzmuGNrSAXVrb0tCLCv80Lx": {
+   "nome": "IMG_4311.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.96,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-27T21:47+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-28T11:45:38.069Z",
    "parlato": null,
    "momento": null
   }
@@ -7800,10 +7954,13 @@
   "1sS5KtmGf3aPo3O8udU6R6rADRrUb-zMb": {
    "usi": 1,
    "ultimo": "2026-10-28"
+  },
+  "1qg9QOoyt2IXIx0udqWcfdBdqz_RdzVo4": {
+   "usi": 1,
+   "ultimo": "2026-10-28"
   }
  },
  "musica_recenti_meta": [
-  "phonk_11.flac",
   "phonk_01.flac",
   "trap_06.flac",
   "deciso_08.flac",
@@ -7822,7 +7979,8 @@
   "deciso_07.flac",
   "phonk_03.flac",
   "deciso_12.flac",
-  "phonk_06.flac"
+  "phonk_06.flac",
+  "phonk_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7855,7 +8013,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto_lento",
+ "formato_ultimo": "racconto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -7899,6 +8057,7 @@
   "932486288340954",
   "1626635767828538",
   "493652384544163",
-  "381204824599064"
+  "381204824599064",
+  "1347176186322399"
  ]
 }
