@@ -7047,11 +7047,46 @@
    },
    "spinto": true,
    "testo": "Il silenzio mi ha salvato più volte delle parole."
+  },
+  {
+   "quando": "2026-10-28T11:00",
+   "slot": "2026-10-28 12:00",
+   "video": "IMG_4291.MOV",
+   "md5": "516f1d8668f667cf5b729902e4163f7b",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-27T20:46+01:00",
+   "frase": "STO-12",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto_lento",
+    "durata": 30.0,
+    "musica": "intergalactic_1.m4a",
+    "stacchi": 3,
+    "testi": 6,
+    "musica_meta": "phonk_06.flac",
+    "musica_instagram": "Lao' A Lao' - Kolektivo"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "zA0Tbg0WiEI"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18118900807967697"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1656190882567236"
+    }
+   },
+   "spinto": true,
+   "testo": "Mi dicevano: \"chi te lo fa fare?\""
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 20:00",
   "2026-10-20 21:00",
   "2026-10-20 22:00",
   "2026-10-20 23:00",
@@ -7130,10 +7165,10 @@
   "2026-10-28 04:00",
   "2026-10-28 06:00",
   "2026-10-28 08:00",
-  "2026-10-28 10:00"
+  "2026-10-28 10:00",
+  "2026-10-28 12:00"
  ],
  "musica_recenti": [
-  "cartier_2.m4a",
   "majestic_12_1.m4a",
   "final_boss_battle_1.m4a",
   "break_ya_neck_4.m4a",
@@ -7152,7 +7187,8 @@
   "rubberband_1.m4a",
   "whoop_1.m4a",
   "wrangle_the_crazy_1.m4a",
-  "visions_1.m4a"
+  "visions_1.m4a",
+  "intergalactic_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7353,7 +7389,8 @@
   "STO-13",
   "STO-15",
   "STO-17",
-  "STO-18"
+  "STO-18",
+  "STO-12"
  ],
  "temi_recenti": [
   "storia",
@@ -7367,7 +7404,21 @@
   "storia",
   "storia"
  ],
- "analisi": {},
+ "analisi": {
+  "1qg9QOoyt2IXIx0udqWcfdBdqz_RdzVo4": {
+   "nome": "IMG_4294.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.98,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "compagnia": "solo",
+   "registrato": "2026-10-27T21:05+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-10-28T09:58:45.272Z",
+   "parlato": null,
+   "momento": null
+  }
+ },
  "pulizia": "2026-10-28",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -7745,10 +7796,13 @@
   "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW": {
    "usi": 2,
    "ultimo": "2026-10-28"
+  },
+  "1sS5KtmGf3aPo3O8udU6R6rADRrUb-zMb": {
+   "usi": 1,
+   "ultimo": "2026-10-28"
   }
  },
  "musica_recenti_meta": [
-  "phonk_14.flac",
   "phonk_11.flac",
   "phonk_01.flac",
   "trap_06.flac",
@@ -7767,7 +7821,8 @@
   "phonk_15.flac",
   "deciso_07.flac",
   "phonk_03.flac",
-  "deciso_12.flac"
+  "deciso_12.flac",
+  "phonk_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7800,7 +7855,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto",
+ "formato_ultimo": "racconto_lento",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -7843,6 +7898,7 @@
   "823145229909724",
   "932486288340954",
   "1626635767828538",
-  "493652384544163"
+  "493652384544163",
+  "381204824599064"
  ]
 }
