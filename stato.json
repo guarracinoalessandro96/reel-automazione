@@ -7191,11 +7191,46 @@
    },
    "spinto": true,
    "testo": "Non ho mai avuto un piano B."
+  },
+  {
+   "quando": "2026-10-28T19:00",
+   "slot": "2026-10-28 20:00",
+   "video": "IMG_3606.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "cibo",
+   "registrato": null,
+   "frase": "STO-21",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto_broll",
+    "durata": 30.0,
+    "musica": "monthaholic_1.m4a",
+    "stacchi": 10,
+    "testi": 6,
+    "musica_meta": "drive_10.flac",
+    "musica_instagram": "Viral Sensation - Lyle Workman"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "vLTGy9IPFQM"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18644924536058160"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1462587732502799"
+    }
+   },
+   "spinto": false,
+   "testo": "La palestra mi ha insegnato più della scuola."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-21 00:00",
   "2026-10-21 02:00",
   "2026-10-21 04:00",
   "2026-10-21 06:00",
@@ -7274,10 +7309,10 @@
   "2026-10-28 12:00",
   "2026-10-28 14:00",
   "2026-10-28 16:00",
-  "2026-10-28 18:00"
+  "2026-10-28 18:00",
+  "2026-10-28 20:00"
  ],
  "musica_recenti": [
-  "duty_calls_1.m4a",
   "horizons_1.m4a",
   "dusty_road_magic_1.m4a",
   "moon_vision_1.m4a",
@@ -7296,7 +7331,8 @@
   "intergalactic_1.m4a",
   "locked_in_1.m4a",
   "ten_1.m4a",
-  "kick_it_1.m4a"
+  "kick_it_1.m4a",
+  "monthaholic_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7501,7 +7537,8 @@
   "STO-12",
   "STO-20",
   "STO-19",
-  "STO-22"
+  "STO-22",
+  "STO-21"
  ],
  "temi_recenti": [
   "storia",
@@ -7712,8 +7749,8 @@
    "ultimo": "2026-10-11"
   },
   "1evT1w3QaDK7AVRQtw_S2gz-hZLf5O6q_": {
-   "usi": 1,
-   "ultimo": "2026-10-11"
+   "usi": 2,
+   "ultimo": "2026-10-28"
   },
   "1OM78j2FpCSLtoEbMm8W45iXS3oPCaV-T": {
    "usi": 1,
@@ -8017,7 +8054,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_08.flac",
   "phonk_02.flac",
   "trap_02.flac",
   "drive_07.flac",
@@ -8036,14 +8072,16 @@
   "phonk_06.flac",
   "phonk_09.flac",
   "phonk_07.flac",
-  "phonk_11.flac"
+  "phonk_11.flac",
+  "drive_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
   "Pensieri in macchina": "PLM_wpEf-_YHM",
   "Lavoro e disciplina": "PLTzuBB07bRmQ",
   "Mentalità da palestra": "PLb-MgHwDrFLg",
-  "Vita e persone": "PLL64qug_Rkxw"
+  "Vita e persone": "PLL64qug_Rkxw",
+  "Disciplina ogni giorno": "PLc7wtJxuDht8"
  },
  "liste_usate": [
   "L01",
@@ -8069,7 +8107,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto",
+ "formato_ultimo": "racconto_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8083,9 +8121,8 @@
    "parlato": false
   }
  ],
- "commenti_fino": "2026-10-27T19:00:43Z",
+ "commenti_fino": "2026-10-28T19:00:43Z",
  "ig_audio_recenti": [
-  "969600794596390",
   "2037081536566008",
   "1108285910189784",
   "1852688158814799",
@@ -8114,6 +8151,7 @@
   "381204824599064",
   "1347176186322399",
   "1602746231488269",
-  "3780853278812844"
+  "3780853278812844",
+  "899970351935116"
  ]
 }
