@@ -6867,11 +6867,46 @@
    },
    "spinto": false,
    "testo": "La prima volta che ho venduto qualcosa online, ho tremato."
+  },
+  {
+   "quando": "2026-10-28T01:00",
+   "slot": "2026-10-28 02:00",
+   "video": "IMG_4271.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "STO-14",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto",
+    "durata": 30.0,
+    "musica": "fire_in_the_sky_1.m4a",
+    "stacchi": 6,
+    "testi": 6,
+    "musica_meta": "phonk_12.flac",
+    "musica_instagram": "Nayi Rahein - Dhruv Goel"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "ITTsU2y7Be0"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17876768289636257"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1102458102629345"
+    }
+   },
+   "spinto": true,
+   "testo": "Ho capito quanto valgo il giorno in cui ho smesso di chiederlo."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 15:00",
   "2026-10-20 16:00",
   "2026-10-20 17:00",
   "2026-10-20 18:00",
@@ -6950,10 +6985,10 @@
   "2026-10-27 16:00",
   "2026-10-27 18:00",
   "2026-10-27 20:00",
-  "2026-10-28 00:00"
+  "2026-10-28 00:00",
+  "2026-10-28 02:00"
  ],
  "musica_recenti": [
-  "intergalactic_1.m4a",
   "fire_in_the_sky_1.m4a",
   "death_duel_2.m4a",
   "i_might_be_late_2.m4a",
@@ -6972,7 +7007,8 @@
   "vibe_check_1.m4a",
   "majestic_12_1.m4a",
   "cartier_1.m4a",
-  "final_boss_battle_1.m4a"
+  "final_boss_battle_1.m4a",
+  "fire_in_the_sky_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7168,7 +7204,8 @@
   "STO-10",
   "STO-08",
   "STO-09",
-  "STO-11"
+  "STO-11",
+  "STO-14"
  ],
  "temi_recenti": [
   "storia",
@@ -7183,7 +7220,7 @@
   "storia"
  ],
  "analisi": {},
- "pulizia": "2026-10-27",
+ "pulizia": "2026-10-28",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -7546,8 +7583,8 @@
    "ultimo": "2026-10-27"
   },
   "1ihXK6xEsYtfnFtAgP15kNGGE71G07W-f": {
-   "usi": 1,
-   "ultimo": "2026-10-27"
+   "usi": 2,
+   "ultimo": "2026-10-28"
   },
   "1b6jLZrzSs8YwKhy4QEb382s6yYZIdhzZ": {
    "usi": 1,
@@ -7563,7 +7600,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_15.flac",
   "phonk_06.flac",
   "phonk_03.flac",
   "phonk_07.flac",
@@ -7582,7 +7618,8 @@
   "deciso_04.flac",
   "phonk_13.flac",
   "phonk_10.flac",
-  "phonk_16.flac"
+  "phonk_16.flac",
+  "phonk_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7615,7 +7652,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto_broll",
+ "formato_ultimo": "racconto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -7653,6 +7690,7 @@
   "973266493758189",
   "475612031187222",
   "1147818560896993",
-  "900264374440235"
+  "900264374440235",
+  "249201165751597"
  ]
 }
