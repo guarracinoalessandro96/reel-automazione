@@ -6939,11 +6939,46 @@
    },
    "spinto": true,
    "testo": "Questa città mi ha insegnato una cosa."
+  },
+  {
+   "quando": "2026-10-28T05:00",
+   "slot": "2026-10-28 06:00",
+   "video": "IMG_4285.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "STO-15",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto_broll",
+    "durata": 30.0,
+    "musica": "whoop_1.m4a",
+    "stacchi": 10,
+    "testi": 6,
+    "musica_meta": "deciso_07.flac",
+    "musica_instagram": "Moment - Global Genius"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "wL2i2BTrgnQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18075583364744649"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "4708196539415449"
+    }
+   },
+   "spinto": true,
+   "testo": "Oggi non avevo voglia di niente."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-20 17:00",
   "2026-10-20 18:00",
   "2026-10-20 19:00",
   "2026-10-20 20:00",
@@ -7022,10 +7057,10 @@
   "2026-10-27 20:00",
   "2026-10-28 00:00",
   "2026-10-28 02:00",
-  "2026-10-28 04:00"
+  "2026-10-28 04:00",
+  "2026-10-28 06:00"
  ],
  "musica_recenti": [
-  "death_duel_2.m4a",
   "i_might_be_late_2.m4a",
   "sweaty_staredown_1.m4a",
   "cartier_2.m4a",
@@ -7044,7 +7079,8 @@
   "cartier_1.m4a",
   "final_boss_battle_1.m4a",
   "fire_in_the_sky_1.m4a",
-  "rubberband_1.m4a"
+  "rubberband_1.m4a",
+  "whoop_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7242,7 +7278,8 @@
   "STO-09",
   "STO-11",
   "STO-14",
-  "STO-13"
+  "STO-13",
+  "STO-15"
  ],
  "temi_recenti": [
   "storia",
@@ -7628,8 +7665,8 @@
    "ultimo": "2026-10-28"
   },
   "1OKyRxbpEUPABWJM5Ey1cGm-BG7E-Rv9h": {
-   "usi": 1,
-   "ultimo": "2026-10-27"
+   "usi": 2,
+   "ultimo": "2026-10-28"
   },
   "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW": {
    "usi": 1,
@@ -7637,7 +7674,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_03.flac",
   "phonk_07.flac",
   "phonk_09.flac",
   "phonk_14.flac",
@@ -7656,7 +7692,8 @@
   "phonk_10.flac",
   "phonk_16.flac",
   "phonk_12.flac",
-  "phonk_15.flac"
+  "phonk_15.flac",
+  "deciso_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -7689,7 +7726,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto_lento",
+ "formato_ultimo": "racconto_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -7729,6 +7766,7 @@
   "1147818560896993",
   "900264374440235",
   "249201165751597",
-  "823145229909724"
+  "823145229909724",
+  "932486288340954"
  ]
 }
