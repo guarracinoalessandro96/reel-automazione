@@ -13,7 +13,10 @@ Per riaccendere Facebook: PLATFORMS = ["youtube", "facebook"]. Tutte: instagram,
 # "facebook-programma"), con gli stessi file della cartella "TikTok - da pubblicare" e un audio scelto li'.
 # Poco dopo, sempre il 29/10: anche INSTAGRAM da Meta Business Suite ("voglio pubblicare dall'app Meta Business Suite e
 # prendere l'audio di tendenza, lo faccio anche con BauVet"): un solo reel programmato su Pagina Facebook + Instagram.
-PLATFORMS = ["youtube"]
+# ... ma Meta Business Suite da PC NON permette l'audio sui reel per Instagram ("La pubblicazione dei reel modificati su
+# Instagram non e' supportata"): Instagram resta automatico via API, che gia' attacca un brano NATIVO di Instagram scelto
+# tra quelli di tendenza (scegli_audio_instagram). Facebook: Meta Business Suite con l'audio di Meta.
+PLATFORMS = ["youtube", "instagram"]
 TIKTOK_A_MANO = False     # True = ogni giorno alle 21 i video per TikTok (senza musica) arrivano su Telegram
 # 25/10/2026 sera: TikTok via TikTok Studio. A ogni orario la macchina salva su Drive ("TikTok - da pubblicare") la
 # versione 1080p sotto i 10 MB, senza musica, con la didascalia; alle 20 il PC programma in Chrome quelli delle ultime

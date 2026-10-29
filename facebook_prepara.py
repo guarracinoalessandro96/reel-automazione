@@ -9,7 +9,7 @@ didascalia nella descrizione e l'orario YouTube in appProperties) e segna su Dri
   python facebook_prepara.py [--max 4]          scarica i prossimi video e scrive "Facebook da programmare/elenco_facebook.json"
   python facebook_prepara.py segna ID "AAAA-MM-GG HH:MM"
 """
-import datetime, json, os, sys
+import datetime, json, os, re, sys
 import requests
 import tiktok_prepara as tp
 from orario import ORE
@@ -52,11 +52,18 @@ def prepara(massimo=4):
                         out.write(pezzo)
         elenco.append({"id": f["id"], "file": dest, "mb": round(os.path.getsize(dest) / 1e6, 1),
                        "orario": f"{quando:%Y-%m-%d %H:%M}", "youtube": p["tiktok_slot"],
-                       "voce": p.get("tiktok_voce") == "1", "didascalia": f.get("description", "")})
+                       "voce": p.get("tiktok_voce") == "1", "didascalia": pulisci(f.get("description", ""))})
     os.makedirs(CARTELLA_PC, exist_ok=True)
     json.dump(elenco, open(os.path.join(CARTELLA_PC, "elenco_facebook.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1)
     return elenco, len(attesa)
+
+
+
+def pulisci(testo):
+    """29/10/2026: via le domande per i commenti ("scrivilo nei commenti"/"qui sotto"): non piacciono ad Alessandro."""
+    righe = [r for r in testo.splitlines() if "👇" not in r]
+    return re.sub(r"(\r?\n){3,}", "\n\n", "\n".join(righe)).strip()
 
 
 def segna(fid, quando):

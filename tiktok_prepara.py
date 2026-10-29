@@ -16,7 +16,7 @@ senza musica salvo parlato/momento) con la didascalia nella descrizione e l'orar
 
 I video gia' programmati da piu' di 3 giorni vanno nel cestino di Drive (lo svuota Alessandro).
 """
-import datetime, json, os, sys
+import datetime, json, os, re, sys
 import requests
 from sposta_su_pc import SEGRETI, API, token
 
@@ -116,13 +116,20 @@ def prepara(massimo=4):
         rimpicciolisci(dest)
         elenco.append({"id": f["id"], "file": dest, "mb": round(os.path.getsize(dest) / 1e6, 1),
                        "orario": f"{quando:%Y-%m-%d %H:%M}", "youtube": p["tiktok_slot"],
-                       "voce": p.get("tiktok_voce") == "1", "didascalia": f.get("description", "")})
+                       "voce": p.get("tiktok_voce") == "1", "didascalia": pulisci(f.get("description", ""))})
     for fid in cestino:                                  # nel cestino, non cancellati per sempre
         requests.patch(f"{API}/{fid}", json={"trashed": True}, headers=H, timeout=30)
     os.makedirs(CARTELLA_PC, exist_ok=True)
     json.dump(elenco, open(os.path.join(CARTELLA_PC, "elenco.json"), "w", encoding="utf-8"), ensure_ascii=False,
               indent=1)
     return elenco, len(attesa)
+
+
+
+def pulisci(testo):
+    """29/10/2026: via le domande per i commenti ("scrivilo nei commenti"/"qui sotto"): non piacciono ad Alessandro."""
+    righe = [r for r in testo.splitlines() if "👇" not in r]
+    return re.sub(r"(\r?\n){3,}", "\n\n", "\n".join(righe)).strip()
 
 
 def segna(fid, quando):
