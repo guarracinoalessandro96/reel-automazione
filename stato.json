@@ -7473,11 +7473,46 @@
    },
    "spinto": true,
    "testo": "La gente mi chiede quale sia il mio segreto."
+  },
+  {
+   "quando": "2026-10-29T13:00",
+   "slot": "2026-10-29 14:00",
+   "video": "IMG_4307.MOV",
+   "md5": "665590f8b48b76ac3000de264e71b922",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-27T21:43+01:00",
+   "frase": "STO-27",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto_lento",
+    "durata": 30.0,
+    "musica": "horizons_1.m4a",
+    "stacchi": 3,
+    "testi": 6,
+    "musica_meta": "phonk_08.flac",
+    "musica_instagram": "Gymnopédie No.1 Lofi - Giulio Cercato"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "7YdmtwwwifQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18213917053362870"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1642728260724225"
+    }
+   },
+   "spinto": true,
+   "testo": "C'è una cosa che faccio ogni sera prima di dormire."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-21 14:00",
   "2026-10-21 16:00",
   "2026-10-21 18:00",
   "2026-10-21 20:00",
@@ -7556,10 +7591,10 @@
   "2026-10-29 02:00",
   "2026-10-29 04:00",
   "2026-10-29 10:00",
-  "2026-10-29 12:00"
+  "2026-10-29 12:00",
+  "2026-10-29 14:00"
  ],
  "musica_recenti": [
-  "vibe_check_1.m4a",
   "majestic_12_1.m4a",
   "cartier_1.m4a",
   "final_boss_battle_1.m4a",
@@ -7578,7 +7613,8 @@
   "the_light_1.m4a",
   "death_duel_1.m4a",
   "visions_1.m4a",
-  "ancient_civilisations_1.m4a"
+  "ancient_civilisations_1.m4a",
+  "horizons_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7790,7 +7826,8 @@
   "STO-25",
   "STO-26",
   "STO-16",
-  "STO-28"
+  "STO-28",
+  "STO-27"
  ],
  "temi_recenti": [
   "storia",
@@ -7805,19 +7842,6 @@
   "storia"
  ],
  "analisi": {
-  "1XySlsRReGeTwlbVlIctzRJDJBUZ2yHi0": {
-   "nome": "IMG_4307.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.98,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-27T21:43+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-28T11:24:50.035Z",
-   "parlato": null,
-   "momento": null
-  },
   "1Dvdi1PK-wTKhXcDuM6STB2Mq6FUojSqR": {
    "nome": "IMG_4286.MOV",
    "scena": "palestra",
@@ -8267,10 +8291,13 @@
   "1pHaSrw5l22--hj6mculM4Wx5XnAw4U-3": {
    "usi": 1,
    "ultimo": "2026-10-29"
+  },
+  "1XySlsRReGeTwlbVlIctzRJDJBUZ2yHi0": {
+   "usi": 1,
+   "ultimo": "2026-10-29"
   }
  },
  "musica_recenti_meta": [
-  "deciso_04.flac",
   "phonk_13.flac",
   "phonk_10.flac",
   "phonk_16.flac",
@@ -8289,7 +8316,8 @@
   "phonk_14.flac",
   "phonk_07.flac",
   "phonk_05.flac",
-  "phonk_04.flac"
+  "phonk_04.flac",
+  "phonk_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8323,7 +8351,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto_broll",
+ "formato_ultimo": "racconto_lento",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8339,7 +8367,6 @@
  ],
  "commenti_fino": "2026-10-28T19:00:43Z",
  "ig_audio_recenti": [
-  "1423487866229281",
   "341745901246038",
   "732596883977972",
   "2603949126473975",
@@ -8368,6 +8395,7 @@
   "1108285910189784",
   "1447374035821884",
   "158209132866603",
-  "2913736298667265"
+  "2913736298667265",
+  "330732519879801"
  ]
 }
