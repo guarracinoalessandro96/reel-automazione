@@ -950,29 +950,33 @@ IG_RICERCHE = {"palestra": ["motivational", "emotional", "cinematic"], "macchina
                "lavoro": ["motivational", "epic", "hustle"], "pacchi": ["motivational", "hustle"],
                "specchio": ["motivational", "phonk"], "casa": ["motivational", "epic"],
                "cibo": ["motivational", "epic"], "uscita": ["epic", "motivational"]}
-IG_DA_EVITARE = re.compile(r"love|amore|romantic|lullaby|sleep|relax|432hz|christmas|natale|baby|happy|domenica",
-                           re.I)
+IG_DA_EVITARE = re.compile(r"love|amore|romantic|lullaby|sleep|relax|432hz|christmas|natale|baby|happy|domenica|"
+                           r"lofi|lo-fi|slowed|chill|pensive|memor|miss|sad|calm|halloween|birthday|yummy|sitaron|"
+                           r"kannan|maya|vayam|afro|jazz|piano|vivaldi|lullab|meditat", re.I)
+# 30/10/2026: l'API delle app NON da' i suoni di tendenza veri di Instagram (cercando "trending" o "viral" escono brani
+# a caso della libreria libera: "Let Me Love You", "I Love My Baby", lofi...). Si cercano solo brani energici/epici e
+# si preferiscono i titoli che "suonano" motivazionali.
+IG_ENERGICI = ["motivational", "epic", "workout", "cinematic", "powerful", "inspiring", "energetic", "hype"]
+IG_TITOLI_FORTI = re.compile(r"knockout|fighter|level up|success|go go|big league|you can|inspired|rise|champion|"
+                             r"power|epic|victory|brave|breathtaker|unstoppable|believe|dream big|warrior|nerve|move",
+                             re.I)
 
 
 def scegli_audio_instagram(scena, recenti=()):
     """(audio_id, titolo) di un brano Instagram motivazionale per la scena, evitando i recenti. None se nessuno."""
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
-    ricerche = list(IG_RICERCHE.get(scena, ["motivational", "phonk", "epic"]))
-    random.shuffle(ricerche)
-    # 26/10/2026: prima i brani di tendenza (richiesta di Alessandro); 29/10: "suoni di tendenza piu' forti" ->
-    # prima le ricerche dei brani piu' usati sui reel, a caso tra i primi 3 (non 8)
-    tendenza = ["trending", "viral", "tiktok viral", "top hits", "trending italia"]
-    random.shuffle(tendenza)
-    ricerche = tendenza[:3] + ricerche
-    for q in ricerche:
+    ricerche = list(dict.fromkeys(random.sample(IG_ENERGICI, len(IG_ENERGICI))))
+    tutti = []
+    for q in ricerche[:4]:
         r = requests.get(f"{GRAPH_AUDIO}/ig_audio", params={"audio_type": "music", "search_query": q, "user_id": ig,
                                                              "access_token": token}, timeout=30).json()
-        brani = [a for a in r.get("audio", []) if a.get("audio_id") and not IG_DA_EVITARE.search(
-                 f"{a.get('title', '')} {a.get('display_artist', '')}") and a["audio_id"] not in recenti]
-        if brani:
-            a = random.choice(brani[:3] if q in tendenza else brani[:8])
-            return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')}"
-    return None
+        tutti += [a for a in r.get("audio", []) if a.get("audio_id") and not IG_DA_EVITARE.search(
+                  f"{a.get('title', '')} {a.get('display_artist', '')}") and a["audio_id"] not in recenti]
+    if not tutti:
+        return None
+    forti = [a for a in tutti if IG_TITOLI_FORTI.search(a.get("title", ""))]
+    a = random.choice(forti or tutti[:8])
+    return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')}"
 
 
 def instagram_upload(path, cap, audio_id=None):
