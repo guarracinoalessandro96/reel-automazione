@@ -7401,11 +7401,46 @@
    },
    "spinto": false,
    "testo": "Ho smesso di confrontarmi con gli altri sui social."
+  },
+  {
+   "quando": "2026-10-29T09:07",
+   "slot": "2026-10-29 10:00",
+   "video": "IMG_4302.MOV",
+   "md5": "19ee5a47d5555200a8b1d43740380a9f",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-27T21:34+01:00",
+   "frase": "STO-16",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto",
+    "durata": 30.0,
+    "musica": "visions_1.m4a",
+    "stacchi": 6,
+    "testi": 6,
+    "musica_meta": "phonk_05.flac",
+    "musica_instagram": "Are You Ready - Giulio Cercato"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "xM0qFRfKCWI"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18107993999624264"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "2601468033659796"
+    }
+   },
+   "spinto": true,
+   "testo": "Un tempo rimandavo tutto a lunedì."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-21 10:00",
   "2026-10-21 12:00",
   "2026-10-21 14:00",
   "2026-10-21 16:00",
@@ -7484,10 +7519,10 @@
   "2026-10-28 22:00",
   "2026-10-29 00:00",
   "2026-10-29 02:00",
-  "2026-10-29 04:00"
+  "2026-10-29 04:00",
+  "2026-10-29 10:00"
  ],
  "musica_recenti": [
-  "van_life_rager_1.m4a",
   "death_duel_1.m4a",
   "vibe_check_1.m4a",
   "majestic_12_1.m4a",
@@ -7506,7 +7541,8 @@
   "break_ya_neck_1.m4a",
   "rubberband_1.m4a",
   "the_light_1.m4a",
-  "death_duel_1.m4a"
+  "death_duel_1.m4a",
+  "visions_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7716,7 +7752,8 @@
   "STO-23",
   "STO-24",
   "STO-25",
-  "STO-26"
+  "STO-26",
+  "STO-16"
  ],
  "temi_recenti": [
   "storia",
@@ -7731,19 +7768,6 @@
   "storia"
  ],
  "analisi": {
-  "1UefrogLKDdOKHxCBjQOsFjEsNFOeSefT": {
-   "nome": "IMG_4302.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.99,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-27T21:34+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-28T11:13:40.172Z",
-   "parlato": null,
-   "momento": null
-  },
   "1pHaSrw5l22--hj6mculM4Wx5XnAw4U-3": {
    "nome": "IMG_4305.MOV",
    "scena": "palestra",
@@ -8211,10 +8235,13 @@
   "1NIAZGYq8oNsRCLyLOzwG8nRh_hWHpjGa": {
    "usi": 1,
    "ultimo": "2026-10-29"
+  },
+  "1UefrogLKDdOKHxCBjQOsFjEsNFOeSefT": {
+   "usi": 1,
+   "ultimo": "2026-10-29"
   }
  },
  "musica_recenti_meta": [
-  "phonk_04.flac",
   "phonk_08.flac",
   "deciso_04.flac",
   "phonk_13.flac",
@@ -8233,7 +8260,8 @@
   "phonk_01.flac",
   "phonk_02.flac",
   "phonk_14.flac",
-  "phonk_07.flac"
+  "phonk_07.flac",
+  "phonk_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8267,7 +8295,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto_lento",
+ "formato_ultimo": "racconto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8283,7 +8311,6 @@
  ],
  "commenti_fino": "2026-10-28T19:00:43Z",
  "ig_audio_recenti": [
-  "233950192789940",
   "1039098790480932",
   "1423487866229281",
   "341745901246038",
@@ -8312,6 +8339,7 @@
   "1005053937846758",
   "827252278567806",
   "1108285910189784",
-  "1447374035821884"
+  "1447374035821884",
+  "158209132866603"
  ]
 }
