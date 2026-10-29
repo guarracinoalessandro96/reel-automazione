@@ -7509,11 +7509,46 @@
    },
    "spinto": true,
    "testo": "C'è una cosa che faccio ogni sera prima di dormire."
+  },
+  {
+   "quando": "2026-10-29T21:00",
+   "slot": "2026-10-29 22:00",
+   "video": "IMG_4293.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "STO-48",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto",
+    "durata": 30.0,
+    "musica": "cartier_1.m4a",
+    "stacchi": 6,
+    "testi": 6,
+    "musica_meta": "phonk_12.flac",
+    "musica_instagram": "Lofi Street - bbox"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "oIpWe9elNfY"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18078187613754664"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1650396736785896"
+    }
+   },
+   "spinto": false,
+   "testo": "Ho imparato cos'è il rispetto guardando un cameriere."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-21 16:00",
   "2026-10-21 18:00",
   "2026-10-21 20:00",
   "2026-10-21 22:00",
@@ -7592,10 +7627,10 @@
   "2026-10-29 04:00",
   "2026-10-29 10:00",
   "2026-10-29 12:00",
-  "2026-10-29 14:00"
+  "2026-10-29 14:00",
+  "2026-10-29 22:00"
  ],
  "musica_recenti": [
-  "majestic_12_1.m4a",
   "cartier_1.m4a",
   "final_boss_battle_1.m4a",
   "fire_in_the_sky_1.m4a",
@@ -7614,7 +7649,8 @@
   "death_duel_1.m4a",
   "visions_1.m4a",
   "ancient_civilisations_1.m4a",
-  "horizons_1.m4a"
+  "horizons_1.m4a",
+  "cartier_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7827,7 +7863,8 @@
   "STO-26",
   "STO-16",
   "STO-28",
-  "STO-27"
+  "STO-27",
+  "STO-48"
  ],
  "temi_recenti": [
   "storia",
@@ -8269,8 +8306,8 @@
    "ultimo": "2026-10-29"
   },
   "1imtjdovSsU7sfZ2CRaJTwVN1ETpo_8z3": {
-   "usi": 1,
-   "ultimo": "2026-10-28"
+   "usi": 2,
+   "ultimo": "2026-10-29"
   },
   "1doFy-IdLUGnZn_FuQyyUK5OqHf6xPX08": {
    "usi": 1,
@@ -8298,7 +8335,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_13.flac",
   "phonk_10.flac",
   "phonk_16.flac",
   "phonk_12.flac",
@@ -8317,7 +8353,8 @@
   "phonk_07.flac",
   "phonk_05.flac",
   "phonk_04.flac",
-  "phonk_08.flac"
+  "phonk_08.flac",
+  "phonk_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8351,7 +8388,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto_lento",
+ "formato_ultimo": "racconto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8365,9 +8402,8 @@
    "parlato": false
   }
  ],
- "commenti_fino": "2026-10-28T19:00:43Z",
+ "commenti_fino": "2026-10-29T21:00:55Z",
  "ig_audio_recenti": [
-  "341745901246038",
   "732596883977972",
   "2603949126473975",
   "1032171746983079",
@@ -8396,6 +8432,7 @@
   "1447374035821884",
   "158209132866603",
   "2913736298667265",
-  "330732519879801"
+  "330732519879801",
+  "544713431841568"
  ]
 }
