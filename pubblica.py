@@ -61,6 +61,9 @@ PALESTRA = re.compile(r"palestr|gym|ripetizion|muscol|\bpes[io]\b|squat|panca|ad
 # racconti (storie.json spento), si torna alle FRASI MOTIVAZIONALI
 FAMIGLIA = re.compile(r"madr|padr|genitor|famigl|nonn|fratell|sorell|figli|mamma|pap[aà]|chi amo|"
                       r"persone che amo|casa tranquilla", re.I)
+# 29/10/2026 notte: "niente mentre gli altri si lamentano, nessun paragone con gli altri"
+CONFRONTO = re.compile(r"\baltr[ie]\b|la gente|le persone|\btutti\b|\bloro\b|\bpochi\b|maggior parte|"
+                       r"mentre (gli|tutti|voi|qualcuno)|più di me|\bil più\b|meglio di|peggio di|\bchi non\b|\bvoi\b", re.I)
 CRINGE = re.compile(r"\bricc[oaih]\w*|ricchezz|milion|miliard|lusso|lussuos|lamborghini|ferrari|rolex|supercar|"
                     r"hustle|grind|\balpha\b|sigma|\bleon[ei]\b|\blup[oi]\b|\bboss\b|\bbro\b|\bfra\b|mindset|guerrier|"
                     r"squal[oi]|\bre\b|regina|vincent[ei]|perdent[ei]|\bpecor|\bmassa\b|haters?|flex", re.I)
@@ -1437,7 +1440,8 @@ def main():
             mie = [f for f in mie if not TRADIMENTO.search(f["gancio"])] or mie
         mie = [f for f in mie if not DONNE.search(f["gancio"])] or mie       # 26/10/2026: mai frasi sulle donne
         mie = [f for f in mie if not NEGATIVO.search(f["gancio"]) and not PALESTRA.search(f["gancio"])
-               and not CRINGE.search(f["gancio"]) and not FAMIGLIA.search(f["gancio"])] or mie  # 29/10
+               and not CRINGE.search(f["gancio"]) and not FAMIGLIA.search(f["gancio"])
+               and not CONFRONTO.search(f["gancio"])] or mie  # 29/10
         frasi = [f for f in mie if f["id"] not in usi]
         log(f"'{DOC_MIE}': {len(mie)} citazioni, {len(frasi)} ancora da usare.")
         # reel da 5 s: anche le frasi lunghe (scelta di Alessandro 13/10/2026: se non si fa in tempo a leggere,
