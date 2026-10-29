@@ -7335,6 +7335,16 @@
    },
    "spinto": true,
    "testo": "Mio nonno diceva sempre: \"chi semina, raccoglie\"."
+  },
+  {
+   "quando": "2026-10-29T02:22",
+   "riprova": "STO-25",
+   "risultati": {
+    "instagram": {
+     "ok": false,
+     "errore": "{'error': {'message': 'Media ID is not available', 'type': 'OAuthException', 'code': 9007, 'error_subcode': 2207027, 'is_transient': False, 'error_user_title': 'Impossibile pubblicare', 'error_user_msg': 'Il contenuto multimediale non è pronto per la pubblicazione, attendi un momento', 'fbtrace_id': 'AuLuXVtGGgw8EIxydDzjxL5'}}"
+    }
+   }
   }
  ],
  "riprova": [
@@ -7364,7 +7374,7 @@
    "piattaforme": [
     "instagram"
    ],
-   "tentativi": 0
+   "tentativi": 1
   }
  ],
  "slot_fatti": [
