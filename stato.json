@@ -7299,11 +7299,75 @@
    },
    "spinto": false,
    "testo": "Le persone vedono il risultato, mai il prezzo."
+  },
+  {
+   "quando": "2026-10-29T01:11",
+   "slot": "2026-10-29 02:00",
+   "video": "IMG_4300.MOV",
+   "md5": "7d5d602ba6acdd30d07f549f3dbe9c4f",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-27T21:31+01:00",
+   "frase": "STO-25",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto",
+    "durata": 30.0,
+    "musica": "the_light_1.m4a",
+    "stacchi": 6,
+    "testi": 6,
+    "musica_meta": "phonk_14.flac",
+    "musica_instagram": "Knockout - Adam Griffith"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "4QBD2-CupXQ"
+    },
+    "instagram": {
+     "ok": false,
+     "errore": "{'error': {'message': 'Media ID is not available', 'type': 'OAuthException', 'code': 9007, 'error_subcode': 2207027, 'is_transient': False, 'error_user_title': 'Impossibile pubblicare', 'error_user_msg': 'Il contenuto multimediale non è pronto per la pubblicazione, attendi un momento', 'fbtrace_id': 'Ajb2s6HrmC6IqhrCMlc6ytq'}}"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "1132520922517826"
+    }
+   },
+   "spinto": true,
+   "testo": "Mio nonno diceva sempre: \"chi semina, raccoglie\"."
   }
  ],
- "riprova": [],
+ "riprova": [
+  {
+   "frase": {
+    "id": "STO-25",
+    "tema": "storia",
+    "gancio": "Mio nonno diceva sempre: \"chi semina, raccoglie\".",
+    "autore": "",
+    "hashtag": [
+     "#storia",
+     "#mentalita",
+     "#motivazione"
+    ],
+    "serie": "GIORNO 302 / 365",
+    "testo_completo": [
+     "Mio nonno diceva sempre: \"chi semina, raccoglie\".",
+     "Da piccolo pensavo parlasse solo della campagna.",
+     "Poi ho iniziato a lavorare davvero.",
+     "E ho capito che parlava di tutto.",
+     "Di quello che fai ogni giorno, anche quando nessuno guarda.",
+     "Oggi semino. Domani raccolgo."
+    ],
+    "copertina_ms": null
+   },
+   "pronti_id": "1RjRr1pPp993e4lbWjmK_RNVcaMMxOZzw",
+   "piattaforme": [
+    "instagram"
+   ],
+   "tentativi": 0
+  }
+ ],
  "slot_fatti": [
-  "2026-10-21 06:00",
   "2026-10-21 08:00",
   "2026-10-21 10:00",
   "2026-10-21 12:00",
@@ -7382,10 +7446,10 @@
   "2026-10-28 18:00",
   "2026-10-28 20:00",
   "2026-10-28 22:00",
-  "2026-10-29 00:00"
+  "2026-10-29 00:00",
+  "2026-10-29 02:00"
  ],
  "musica_recenti": [
-  "moon_vision_1.m4a",
   "delirium_1.m4a",
   "van_life_rager_1.m4a",
   "death_duel_1.m4a",
@@ -7404,7 +7468,8 @@
   "kick_it_1.m4a",
   "monthaholic_1.m4a",
   "break_ya_neck_1.m4a",
-  "rubberband_1.m4a"
+  "rubberband_1.m4a",
+  "the_light_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7612,7 +7677,8 @@
   "STO-22",
   "STO-21",
   "STO-23",
-  "STO-24"
+  "STO-24",
+  "STO-25"
  ],
  "temi_recenti": [
   "storia",
@@ -7627,19 +7693,6 @@
   "storia"
  ],
  "analisi": {
-  "1NIAZGYq8oNsRCLyLOzwG8nRh_hWHpjGa": {
-   "nome": "IMG_4300.MOV",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-27T21:31+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-28T11:07:52.798Z",
-   "parlato": null,
-   "momento": null
-  },
   "1UefrogLKDdOKHxCBjQOsFjEsNFOeSefT": {
    "nome": "IMG_4302.MOV",
    "scena": "palestra",
@@ -7719,7 +7772,7 @@
    "momento": null
   }
  },
- "pulizia": "2026-10-28",
+ "pulizia": "2026-10-29",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -8116,10 +8169,13 @@
   "1Ks5dKBFsfm1KcBBN6VD0JeN6IDjWWTZu": {
    "usi": 1,
    "ultimo": "2026-10-28"
+  },
+  "1NIAZGYq8oNsRCLyLOzwG8nRh_hWHpjGa": {
+   "usi": 1,
+   "ultimo": "2026-10-29"
   }
  },
  "musica_recenti_meta": [
-  "drive_07.flac",
   "phonk_05.flac",
   "phonk_04.flac",
   "phonk_08.flac",
@@ -8138,7 +8194,8 @@
   "phonk_11.flac",
   "drive_10.flac",
   "phonk_01.flac",
-  "phonk_02.flac"
+  "phonk_02.flac",
+  "phonk_14.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8172,11 +8229,11 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto_lento",
+ "formato_ultimo": "racconto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
-  "instagram": 0
+  "instagram": 1
  },
  "tiktok_coda": [
   {
@@ -8188,7 +8245,6 @@
  ],
  "commenti_fino": "2026-10-28T19:00:43Z",
  "ig_audio_recenti": [
-  "1852688158814799",
   "1089503399371323",
   "233950192789940",
   "1039098790480932",
@@ -8217,6 +8273,7 @@
   "3780853278812844",
   "899970351935116",
   "1005053937846758",
-  "827252278567806"
+  "827252278567806",
+  "1108285910189784"
  ]
 }
