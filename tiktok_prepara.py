@@ -94,6 +94,8 @@ def prepara(massimo=4):
             continue
         if slot > adesso:
             continue                                     # non ancora uscito su YouTube
+        if "STO-" in f["name"]:
+            continue                                     # 29/10/2026: niente racconti ("storie inventate, non su di me")
         if slot < adesso - datetime.timedelta(days=VECCHIO_GIORNI):
             continue                                     # 29/10/2026: troppo vecchio, si salta (resta su Drive)
         attesa.append((0, slot, f, p))

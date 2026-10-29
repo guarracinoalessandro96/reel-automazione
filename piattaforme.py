@@ -8,7 +8,12 @@ Per riaccendere Facebook: PLATFORMS = ["youtube", "facebook"]. Tutte: instagram,
 # condivisione automatica di Instagram). TikTok: programmato ogni sera dal PC (TikTok Studio), non da qui.
 # 25/10 sera: la condivisione automatica di Instagram arriva solo sul profilo PERSONALE (che lui non vuole):
 # la PAGINA Facebook "Alessandro Guarracin" (600 follower) la pubblica la macchina via API (musica nostra, 1080p).
-PLATFORMS = ["youtube", "instagram", "facebook"]
+# 29/10/2026: Facebook NON piu' via API (0-6 visualizzazioni da sempre, Pagina senza restrizioni): Alessandro ha scelto
+# di programmarlo da Meta Business Suite dal PC, come TikTok Studio (facebook_prepara.py + attivita' Claude
+# "facebook-programma"), con gli stessi file della cartella "TikTok - da pubblicare" e un audio scelto li'.
+# Poco dopo, sempre il 29/10: anche INSTAGRAM da Meta Business Suite ("voglio pubblicare dall'app Meta Business Suite e
+# prendere l'audio di tendenza, lo faccio anche con BauVet"): un solo reel programmato su Pagina Facebook + Instagram.
+PLATFORMS = ["youtube"]
 TIKTOK_A_MANO = False     # True = ogni giorno alle 21 i video per TikTok (senza musica) arrivano su Telegram
 # 25/10/2026 sera: TikTok via TikTok Studio. A ogni orario la macchina salva su Drive ("TikTok - da pubblicare") la
 # versione 1080p sotto i 10 MB, senza musica, con la didascalia; alle 20 il PC programma in Chrome quelli delle ultime
