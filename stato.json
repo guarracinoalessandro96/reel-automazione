@@ -7355,40 +7355,56 @@
      "errore": "{'error': {'message': 'Media ID is not available', 'type': 'OAuthException', 'code': 9007, 'error_subcode': 2207027, 'is_transient': False, 'error_user_title': 'Impossibile pubblicare', 'error_user_msg': 'Il contenuto multimediale non è pronto per la pubblicazione, attendi un momento', 'fbtrace_id': 'AcXrMfvktodxjvIi8MliaPw'}}"
     }
    }
-  }
- ],
- "riprova": [
+  },
   {
-   "frase": {
-    "id": "STO-25",
-    "tema": "storia",
-    "gancio": "Mio nonno diceva sempre: \"chi semina, raccoglie\".",
-    "autore": "",
-    "hashtag": [
-     "#storia",
-     "#mentalita",
-     "#motivazione"
-    ],
-    "serie": "GIORNO 302 / 365",
-    "testo_completo": [
-     "Mio nonno diceva sempre: \"chi semina, raccoglie\".",
-     "Da piccolo pensavo parlasse solo della campagna.",
-     "Poi ho iniziato a lavorare davvero.",
-     "E ho capito che parlava di tutto.",
-     "Di quello che fai ogni giorno, anche quando nessuno guarda.",
-     "Oggi semino. Domani raccolgo."
-    ],
-    "copertina_ms": null
+   "quando": "2026-10-29T02:43",
+   "riprova": "STO-25",
+   "risultati": {
+    "instagram": {
+     "ok": true,
+     "id": "18030718637916363"
+    }
+   }
+  },
+  {
+   "quando": "2026-10-29T03:00",
+   "slot": "2026-10-29 04:00",
+   "video": "IMG_4294.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "STO-26",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto_lento",
+    "durata": 30.0,
+    "musica": "death_duel_1.m4a",
+    "stacchi": 3,
+    "testi": 6,
+    "musica_meta": "phonk_07.flac",
+    "musica_instagram": "Viral Camera (Reels Sound - Before And After) - Sugartapes"
    },
-   "pronti_id": "1RjRr1pPp993e4lbWjmK_RNVcaMMxOZzw",
-   "piattaforme": [
-    "instagram"
-   ],
-   "tentativi": 2
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "BrfyntEgTSI"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18195457852395309"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "28829895586702333"
+    }
+   },
+   "spinto": false,
+   "testo": "Ho smesso di confrontarmi con gli altri sui social."
   }
  ],
+ "riprova": [],
  "slot_fatti": [
-  "2026-10-21 08:00",
   "2026-10-21 10:00",
   "2026-10-21 12:00",
   "2026-10-21 14:00",
@@ -7467,10 +7483,10 @@
   "2026-10-28 20:00",
   "2026-10-28 22:00",
   "2026-10-29 00:00",
-  "2026-10-29 02:00"
+  "2026-10-29 02:00",
+  "2026-10-29 04:00"
  ],
  "musica_recenti": [
-  "delirium_1.m4a",
   "van_life_rager_1.m4a",
   "death_duel_1.m4a",
   "vibe_check_1.m4a",
@@ -7489,7 +7505,8 @@
   "monthaholic_1.m4a",
   "break_ya_neck_1.m4a",
   "rubberband_1.m4a",
-  "the_light_1.m4a"
+  "the_light_1.m4a",
+  "death_duel_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7698,7 +7715,8 @@
   "STO-21",
   "STO-23",
   "STO-24",
-  "STO-25"
+  "STO-25",
+  "STO-26"
  ],
  "temi_recenti": [
   "storia",
@@ -8175,8 +8193,8 @@
    "ultimo": "2026-10-28"
   },
   "1qg9QOoyt2IXIx0udqWcfdBdqz_RdzVo4": {
-   "usi": 1,
-   "ultimo": "2026-10-28"
+   "usi": 2,
+   "ultimo": "2026-10-29"
   },
   "1imtjdovSsU7sfZ2CRaJTwVN1ETpo_8z3": {
    "usi": 1,
@@ -8196,7 +8214,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_05.flac",
   "phonk_04.flac",
   "phonk_08.flac",
   "deciso_04.flac",
@@ -8215,7 +8232,8 @@
   "drive_10.flac",
   "phonk_01.flac",
   "phonk_02.flac",
-  "phonk_14.flac"
+  "phonk_14.flac",
+  "phonk_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8249,11 +8267,11 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto",
+ "formato_ultimo": "racconto_lento",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
-  "instagram": 1
+  "instagram": 0
  },
  "tiktok_coda": [
   {
@@ -8265,7 +8283,6 @@
  ],
  "commenti_fino": "2026-10-28T19:00:43Z",
  "ig_audio_recenti": [
-  "1089503399371323",
   "233950192789940",
   "1039098790480932",
   "1423487866229281",
@@ -8294,6 +8311,7 @@
   "899970351935116",
   "1005053937846758",
   "827252278567806",
-  "1108285910189784"
+  "1108285910189784",
+  "1447374035821884"
  ]
 }
