@@ -27,7 +27,7 @@ STATE = os.path.join(HERE, "stato.json")
 GRAPH = "https://graph.facebook.com/v23.0"
 ENV = os.environ.get
 DRY = ENV("DRY_RUN") == "1"
-from piattaforme import PLATFORMS, TIKTOK_A_MANO, TIKTOK_STUDIO  # 19/10/2026: SOLO YOUTUBE (si cambia in piattaforme.py)
+from piattaforme import PLATFORMS, TIKTOK_A_MANO, TIKTOK_STUDIO, TIKTOK_BOZZE  # 19/10/2026: SOLO YOUTUBE (si cambia in piattaforme.py)
 MAX_TENTATIVI = 3
 GIORNI_PRONTI = 7             # reel montati (solo quelli da riprovare) tenuti 7 giorni, poi nel Cestino
 MAX_ORIGINALE_MB = 100000     # 25/10/2026: l'originale va SEMPRE intero nell'archivio (massima risoluzione, niente cestino)
@@ -51,8 +51,14 @@ DONNE = re.compile(r"\b(donn[ae]|ragazz[ae]|fidanzat[ae]|moglie|lei ti|la tua ex
 NEGATIVO = re.compile(r"fid[ao]|fiduc|tradi|fals[io]|invidi|nemic|ti usa|usano|opzion|critic|spalle|giudic|ingrat|"
                       r"serpent|velen|abbandon|delu|mancar\w* di rispetto|vendett|\bodi|cattiv|tratta|ipocri|approfitt|"
                       r"cambiano|ti lasci|spariscon|sparit|squill|chi c'era|tossic|manipol|spegn|lontano da", re.I)
-PALESTRA = re.compile(r"palestr|gym|allenam|allenar|ripetizion|muscol|fisico|\bpes[io]\b|squat|panca|dieta|addominal|"
-                      r"sudor|bilancier|serie in pi|massa", re.I)
+# 29/10/2026 sera (sue parole): "anche la parola palestra e' cringe, puoi parlare di tenersi in forma" -> vietata la
+# parola e il gergo da palestra, si' a "tenersi in forma", "stare bene", "allenarsi"
+PALESTRA = re.compile(r"palestr|gym|ripetizion|muscol|\bpes[io]\b|squat|panca|addominal|bilancier|serie in pi|massa|"
+                      r"pompar|\bpump", re.I)
+# 29/10/2026 sera: "non parlare della parola RICCO, e' troppo cringe, togli tutte le parole cringe"
+CRINGE = re.compile(r"\bricc[oaih]\w*|ricchezz|milion|miliard|lusso|lussuos|lamborghini|ferrari|rolex|supercar|"
+                    r"hustle|grind|\balpha\b|sigma|\bleon[ei]\b|\blup[oi]\b|\bboss\b|\bbro\b|\bfra\b|mindset|guerrier|"
+                    r"squal[oi]|\bre\b|regina|vincent[ei]|perdent[ei]|\bpecor|\bmassa\b|haters?|flex", re.I)
 
 SOLO_MIE = True              # dal 5/10/2026 escono SOLO le citazioni scelte da Alessandro (Google Doc "Le mie citazioni")
 DOC_MIE = mie_citazioni.DOC
@@ -192,8 +198,8 @@ def testo_breve(cap):
     serie = serie_testo(cap)
     serie = serie + " · seguimi per vedere dove arrivo" if serie else ""     # il personaggio: un viaggio da seguire
     if cap.get("tema") not in ("momento", "parlato", "regole"):   # 27/10/2026 (racconti), dal 29/10 tutti i reel con frase: una domanda in fondo -> piu' commenti -> piu' spinta dall'algoritmo
-        domande = ["E tu, cosa ti sei promesso? Scrivilo qui sotto 👇", "Per chi lo fai tu? Scrivilo nei commenti 👇",
-                   "Per chi lo stai facendo tu? Scrivilo qui sotto 👇", "Qual è il tuo obiettivo di quest'anno? 👇",
+        # 29/10/2026: tolta "Per chi lo fai tu? Scrivilo nei commenti" (non gli piace)
+        domande = ["E tu, cosa ti sei promesso? Scrivilo qui sotto 👇", "Qual è il tuo obiettivo di quest'anno? 👇",
                    "Sei d'accordo? Scrivi \"sì\" se anche tu non molli 👇"]
         testo += "\n\n" + domande[int(hashlib.md5(cap["id"].encode()).hexdigest(), 16) % len(domande)]
     return (serie + "\n" if serie else "") + testo + "\n\n" + " ".join(dict.fromkeys(tags[:4]))
@@ -339,7 +345,6 @@ def clip_extra(drive, work, clip, n=2, giorno=None):
     try:
         altre = [c for c in drive.lista_archivio() if (not clip or c["id"] != clip["id"]) and c.get("parlato") != "1"]
         random.shuffle(altre)
-        altre.sort(key=lambda c: c.get("scena") == "palestra")    # 29/10/2026: prima la vita normale, poi la palestra
         if giorno:
             altre.sort(key=lambda c: 0 if str(c.get("registrato") or "")[:10] == giorno else 1)
         for i, c in enumerate(altre[:n]):
@@ -459,7 +464,8 @@ def scegli_storia(state):
 
 def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip):
     """Reel da 10 s (formati_nuovi.make_dieci). 'dieci' usa solo il video dell'orario: se e' piu' corto di 10 s
-    si passa a 'dieci_due' (video dell'orario + una clip). Le clip in piu' sono di vita normale se ci sono."""
+    si passa a 'dieci_due' (video dell'orario + una clip). Si usano TUTTI i suoi video, anche quelli in palestra
+    (29/10/2026: "i video della palestra vanno bene"; e' solo la PAROLA palestra nei testi a essere vietata)."""
     import formati_nuovi
     if formato == "dieci" and overlay.probe(src)[0] < 10.5:
         formato = "dieci_due"
@@ -834,15 +840,15 @@ def youtube_upload(creds, path, cap, publish_at=None):
     privacy = ENV("YOUTUBE_PRIVACY") or "public"
     momento = cap.get("tema") == "momento"
     descr = (cap["gancio"].strip().strip('"“”') + ("\n\n#shorts " + " ".join(cap.get("hashtag") or []) if momento else
-             "\n\n#shorts #motivazione #mentalita #disciplina #crescitapersonale #frasimotivazionali #successo"))
+             "\n\n#shorts #motivazione #obiettivi #famiglia #crescitapersonale #frasimotivazionali #vitavera"))
     if cap.get("righe"):    # formato REGOLE: le regole in descrizione
         descr = "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1)) + "\n\n" + descr
     if serie_testo(cap):    # la serie in prima riga + invito a seguire il viaggio (il personaggio, non solo le frasi)
         descr = f"{serie_testo(cap)} - giorno dopo giorno fino alla fine dell'anno, iscriviti per vedere dove arrivo.\n\n" + descr
     body = {"snippet": {"title": title + " #shorts", "description": descr, "categoryId": "22",
                         "tags": (["vita vera", "momenti", "oggi", "italia", "shorts"] if momento else
-                                 ["motivazione", "mentalità", "disciplina", "frasi motivazionali", "crescita personale",
-                                  "successo", "obiettivi", "famiglia", "mindset", "shorts"]),   # 29/10: niente palestra
+                                 ["motivazione", "obiettivi", "disciplina", "frasi motivazionali", "crescita personale",
+                                  "futuro", "famiglia", "vita vera", "shorts"]),   # 29/10: niente palestra
                         "defaultLanguage": "it", "defaultAudioLanguage": "it"},
             "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": False}}
     if publish_at and privacy == "public":
@@ -864,7 +870,7 @@ def youtube_upload(creds, path, cap, publish_at=None):
 
 
 PLAYLIST_TUTTE = "Frasi motivazionali"
-PLAYLIST_SCENA = {"palestra": "Mentalità da palestra", "macchina": "Pensieri in macchina",
+PLAYLIST_SCENA = {"palestra": "Tenersi in forma",       # 29/10/2026: niente parola "palestra" "macchina": "Pensieri in macchina",
                   "lavoro": "Lavoro e disciplina", "pacchi": "Lavoro e disciplina", "specchio": "Lavoro e disciplina",
                   "casa": "Lavoro e disciplina", "cibo": "Disciplina ogni giorno", "uscita": "Vita e persone"}
 
@@ -1109,6 +1115,27 @@ def tiktok_upload(path, cap):
     if up.status_code >= 300:
         raise RuntimeError(up.text)
     return data["publish_id"]
+
+
+def tiktok_bozza(path, cap, target):
+    """29/10/2026 (Alessandro: "facciamo le bozze TikTok dall'app"): il reel (SENZA musica, salvo voce/suono vero)
+    arriva nelle bozze della sua app TikTok; lui sceglie un suono di tendenza e pubblica. L'API delle bozze non
+    accetta la descrizione: gliela mandiamo su Telegram, da copiare (un messaggio a parte, solo il testo)."""
+    try:
+        pid = tiktok_upload(path, cap)
+    except Exception as e:
+        log("TikTok: bozza non inviata:", e)
+        return {"ok": False, "errore": str(e)[:300]}
+    log("TikTok: bozza inviata all'app", pid)
+    if ENV("TELEGRAM_BOT_TOKEN") and ENV("TELEGRAM_CHAT_ID"):
+        try:
+            import avvisi
+            avvisi.manda(f"TIKTOK - BOZZA PRONTA\nReel delle {target:%H:%M}\nApri TikTok > notifiche/bozze\n"
+                         "Aggiungi un suono di tendenza\nIncolla il testo qui sotto e pubblica")
+            avvisi.manda(testo_breve(cap))
+        except Exception as e:
+            log("Telegram (testo TikTok) non riuscito:", e)
+    return {"ok": True, "id": pid, "bozza": True}
 
 
 # ------------------------------------------------------------------ orchestrazione
@@ -1401,7 +1428,8 @@ def main():
         if random.random() >= TRADIMENTO_QUOTA:   # 25/10/2026: di tradimento si parla poco (1 volta su 10)
             mie = [f for f in mie if not TRADIMENTO.search(f["gancio"])] or mie
         mie = [f for f in mie if not DONNE.search(f["gancio"])] or mie       # 26/10/2026: mai frasi sulle donne
-        mie = [f for f in mie if not NEGATIVO.search(f["gancio"]) and not PALESTRA.search(f["gancio"])] or mie  # 29/10
+        mie = [f for f in mie if not NEGATIVO.search(f["gancio"]) and not PALESTRA.search(f["gancio"])
+               and not CRINGE.search(f["gancio"])] or mie  # 29/10
         frasi = [f for f in mie if f["id"] not in usi]
         log(f"'{DOC_MIE}': {len(mie)} citazioni, {len(frasi)} ancora da usare.")
         # reel da 5 s: anche le frasi lunghe (scelta di Alessandro 13/10/2026: se non si fa in tempo a leggere,
@@ -1564,9 +1592,15 @@ def main():
             log("Versione per TikTok non salvata su Drive:", e)
     else:
         muto = None
-    if TIKTOK_STUDIO and target:     # 25/10/2026: versione per TikTok Studio, programmata la sera prima dal PC
+    tt = None
+    if TIKTOK_BOZZE and target:      # 29/10/2026: versione per le BOZZE di TikTok (inviata all'ora esatta, piu' sotto)
         try:
             tt = overlay.versione_tiktok(out, os.path.join(work, "reel_tt.mp4"), audio=bool(voce))
+        except Exception as e:
+            log("Versione per TikTok non preparata:", e)
+    if TIKTOK_STUDIO and target:     # 25/10/2026: versione per TikTok Studio, programmata la sera prima dal PC
+        try:
+            tt = tt or overlay.versione_tiktok(out, os.path.join(work, "reel_tt.mp4"), audio=bool(voce))
             nome_tt = f"{target:%Y-%m-%d %H%M} - {frase['id']}.mp4"
             drive.salva_tiktok(tt, nome_tt, testo_breve(frase), f"{target:%Y-%m-%d %H:%M}", voce)
             log(f"Pronto per TikTok Studio ({os.path.getsize(tt) / 1e6:.1f} MB): {CARTELLA_TIKTOK}/{nome_tt}")
@@ -1597,6 +1631,8 @@ def main():
             log("Invio serale TikTok su Telegram non riuscito:", e)
     results.update(publish_all(out, frase, creds, [p for p in piatt if p not in results], out_meta,
                                ig_nativo=ig_nativo))
+    if tt and TIKTOK_BOZZE and not DRY:
+        results["tiktok"] = tiktok_bozza(tt, frase, target)
     controlla_errori(state, results)
     if results.get("youtube", {}).get("ok") and not DRY:
         try:

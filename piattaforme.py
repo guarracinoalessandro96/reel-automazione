@@ -15,3 +15,6 @@ TIKTOK_A_MANO = False     # True = ogni giorno alle 21 i video per TikTok (senza
 # 24 ore per il giorno dopo, stessa ora, con un suono NATIVO di TikTok (tiktok_prepara.py + attivita' Claude
 # "tiktok-programma-sera"). TikTok e' quindi un giorno indietro rispetto a YouTube.
 TIKTOK_STUDIO = True
+# 29/10/2026: provate le BOZZE nell'app TikTok (API, funzionano), ma Alessandro vuole gli stessi video pubblicati su tutte
+# le piattaforme, TikTok compreso, tramite TikTok Studio dal PC: bozze spente (per riaccenderle: True)
+TIKTOK_BOZZE = False
