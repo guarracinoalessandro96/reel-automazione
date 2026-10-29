@@ -56,6 +56,11 @@ NEGATIVO = re.compile(r"fid[ao]|fiduc|tradi|fals[io]|invidi|nemic|ti usa|usano|o
 PALESTRA = re.compile(r"palestr|gym|ripetizion|muscol|\bpes[io]\b|squat|panca|addominal|bilancier|serie in pi|massa|"
                       r"pompar|\bpump", re.I)
 # 29/10/2026 sera: "non parlare della parola RICCO, e' troppo cringe, togli tutte le parole cringe"
+# 29/10/2026 sera: "togliamo le cose inerenti alla famiglia. parliamo solo di vincere nella vita, voglio sembrare un
+# ragazzo che si da' da fare" + "togliamo lo storytelling, sono storie inventate": niente famiglia nelle frasi, niente
+# racconti (storie.json spento), si torna alle FRASI MOTIVAZIONALI
+FAMIGLIA = re.compile(r"madr|padr|genitor|famigl|nonn|fratell|sorell|figli|mamma|pap[aà]|chi amo|"
+                      r"persone che amo|casa tranquilla", re.I)
 CRINGE = re.compile(r"\bricc[oaih]\w*|ricchezz|milion|miliard|lusso|lussuos|lamborghini|ferrari|rolex|supercar|"
                     r"hustle|grind|\balpha\b|sigma|\bleon[ei]\b|\blup[oi]\b|\bboss\b|\bbro\b|\bfra\b|mindset|guerrier|"
                     r"squal[oi]|\bre\b|regina|vincent[ei]|perdent[ei]|\bpecor|\bmassa\b|haters?|flex", re.I)
@@ -185,6 +190,9 @@ def serie_testo(cap):
     return (cap.get("serie") or "").replace("GIORNO", "Giorno").replace(" / ", "/")
 
 
+DOMANDE_COMMENTI = False   # 29/10/2026: "non mi piace quella cosa scrivila nei commenti, togliamola"
+
+
 def testo_breve(cap):
     """Descrizione pubblicata: la stessa frase del video + 3-4 hashtag (niente dettagli personali)."""
     tags = cap.get("hashtag") or ["#citazioni", "#motivazione"]
@@ -197,7 +205,7 @@ def testo_breve(cap):
         testo = cap["gancio"] + "\n" + "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1))
     serie = serie_testo(cap)
     serie = serie + " · seguimi per vedere dove arrivo" if serie else ""     # il personaggio: un viaggio da seguire
-    if cap.get("tema") not in ("momento", "parlato", "regole"):   # 27/10/2026 (racconti), dal 29/10 tutti i reel con frase: una domanda in fondo -> piu' commenti -> piu' spinta dall'algoritmo
+    if DOMANDE_COMMENTI and cap.get("tema") not in ("momento", "parlato", "regole"):   # 29/10/2026 sera: SPENTO: una domanda in fondo -> piu' commenti -> piu' spinta dall'algoritmo
         # 29/10/2026: tolta "Per chi lo fai tu? Scrivilo nei commenti" (non gli piace)
         domande = ["E tu, cosa ti sei promesso? Scrivilo qui sotto 👇", "Qual è il tuo obiettivo di quest'anno? 👇",
                    "Sei d'accordo? Scrivi \"sì\" se anche tu non molli 👇"]
@@ -840,7 +848,7 @@ def youtube_upload(creds, path, cap, publish_at=None):
     privacy = ENV("YOUTUBE_PRIVACY") or "public"
     momento = cap.get("tema") == "momento"
     descr = (cap["gancio"].strip().strip('"“”') + ("\n\n#shorts " + " ".join(cap.get("hashtag") or []) if momento else
-             "\n\n#shorts #motivazione #obiettivi #famiglia #crescitapersonale #frasimotivazionali #vitavera"))
+             "\n\n#shorts #motivazione #obiettivi #disciplina #crescitapersonale #frasimotivazionali #vincere"))
     if cap.get("righe"):    # formato REGOLE: le regole in descrizione
         descr = "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1)) + "\n\n" + descr
     if serie_testo(cap):    # la serie in prima riga + invito a seguire il viaggio (il personaggio, non solo le frasi)
@@ -848,7 +856,7 @@ def youtube_upload(creds, path, cap, publish_at=None):
     body = {"snippet": {"title": title + " #shorts", "description": descr, "categoryId": "22",
                         "tags": (["vita vera", "momenti", "oggi", "italia", "shorts"] if momento else
                                  ["motivazione", "obiettivi", "disciplina", "frasi motivazionali", "crescita personale",
-                                  "futuro", "famiglia", "vita vera", "shorts"]),   # 29/10: niente palestra
+                                  "futuro", "lavoro", "vincere", "shorts"]),   # 29/10: niente palestra
                         "defaultLanguage": "it", "defaultAudioLanguage": "it"},
             "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": False}}
     if publish_at and privacy == "public":
@@ -1429,7 +1437,7 @@ def main():
             mie = [f for f in mie if not TRADIMENTO.search(f["gancio"])] or mie
         mie = [f for f in mie if not DONNE.search(f["gancio"])] or mie       # 26/10/2026: mai frasi sulle donne
         mie = [f for f in mie if not NEGATIVO.search(f["gancio"]) and not PALESTRA.search(f["gancio"])
-               and not CRINGE.search(f["gancio"])] or mie  # 29/10
+               and not CRINGE.search(f["gancio"]) and not FAMIGLIA.search(f["gancio"])] or mie  # 29/10
         frasi = [f for f in mie if f["id"] not in usi]
         log(f"'{DOC_MIE}': {len(mie)} citazioni, {len(frasi)} ancora da usare.")
         # reel da 5 s: anche le frasi lunghe (scelta di Alessandro 13/10/2026: se non si fa in tempo a leggere,
