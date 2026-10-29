@@ -1,4 +1,6 @@
-"""Decide se adesso tocca pubblicare. Dal 21/10/2026: UNO SHORT OGNI 2 ORE, 12 al giorno (00, 02, ... 22), ora di Roma.
+"""Decide se adesso tocca pubblicare. Dal 29/10/2026: 10 AL GIORNO (scelta di Alessandro, "come dice Gary Vee"), alle
+00, 06, 08, 10, 12, 14, 16, 18, 20, 22 ora di Roma (niente 02 e 04: in Italia dormono tutti).
+(21-29/10: uno ogni 2 ore, 12 al giorno.)
 (18-21/10: uno ogni ora, ma YouTube ne faceva vedere solo ~10-14 al giorno: gli altri restavano sotto 25 views.)
 (8-11/10: 10 al giorno; 11-13/10: 5; 13-18/10: 4 alle 9, 13, 17, 21.)
 
@@ -14,7 +16,8 @@ ANTICIPO = 50                        # minuti: si prepara tutto prima, poi si pu
 RITARDO_MAX = 40                     # minuti: oltre, lo slot si salta e si prepara il successivo. 25/10/2026: era 10,
                                      # ma col PC che si sveglia alle :12 e GitHub in ritardo di ore lo slot si perdeva
                                      # (12:00 saltato per 2 minuti); in ritardo esce subito, mai due volte (slot_fatti)
-OGNI_ORE = 2                         # 21/10/2026: scelta di Alessandro (12 al giorno, tutti spinti da YouTube)
+OGNI_ORE = 2                         # 21/10/2026: uno ogni 2 ore ...
+ORE = (0, 6, 8, 10, 12, 14, 16, 18, 20, 22)   # ... 29/10/2026: 10 al giorno, senza le 02 e le 04
 STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stato.json")
 
 
@@ -34,7 +37,7 @@ def fascia_ora(h):
     return "notte"
 
 
-SLOTS = [(h, 0, fascia_ora(h)) for h in range(0, 24, OGNI_ORE)]      # (ora, minuti, fascia): uno ogni 2 ore
+SLOTS = [(h, 0, fascia_ora(h)) for h in ORE]      # (ora, minuti, fascia)
 
 
 def etichetta(h, m):
@@ -62,7 +65,7 @@ def slot_da_fare(now=None):
     if prossima - now <= datetime.timedelta(minutes=ANTICIPO):       # in arrivo: si prepara e si aspetta
         candidati.append(prossima)
     for c in candidati:
-        if c.hour % OGNI_ORE:                                         # solo le ore pari
+        if c.hour not in ORE:                                         # solo gli orari della giornata
             continue
         key = f"{c:%Y-%m-%d %H:%M}"
         if key not in fatti:

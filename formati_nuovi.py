@@ -6,6 +6,7 @@ il prima possibile quale format funziona"). Tutti in 4K 60 come gli altri, con l
 - broll2 : 10 s, 5 stacchi da 2 s, la frase divisa in pezzi: cambia a ogni stacco
 - broll3 : 12 s, 4 stacchi da 3 s, la frase divisa in pezzi: cambia a ogni stacco
 - storia : ~22 s, un racconto a schermate (titolo + 3 righe di una lista, una schermata alla volta) su 2-3 clip
+- dieci / dieci_due / dieci_broll (29/10/2026): 10 s, frase in due tempi, 1 / 2 / 4 inquadrature
 
 make_sequenza() e' il motore comune: pezzi di video tagliati netti + testi che compaiono a tempo + musica.
 """
@@ -22,8 +23,14 @@ FORMATI = {
     "racconto": {"stacchi": [5.0] * 6},              # uno stacco a ogni riga del racconto
     "racconto_broll": {"stacchi": [3.0] * 10},       # b-roll (stacchi da 3 s; da 2 s era troppo pesante in 4K), riga ogni 5 s
     "racconto_lento": {"stacchi": [10.0] * 3},       # SENZA b-roll: solo il video del giorno, 3 inquadrature lunghe
+    # 29/10/2026 (Alessandro: "passiamo a 10 secondi"; i 30 s erano visti al 35%, quelli da 8-13 s al 90-100%):
+    # frase in DUE TEMPI (gancio forte nei primi 3,5 s, poi la risposta), 10 s, si riguarda volentieri da capo
+    "dieci": {"stacchi": [10.0]},                    # una sola inquadratura: il video del giorno
+    "dieci_due": {"stacchi": [5.0, 5.0]},            # due inquadrature (video del giorno + una clip di vita normale)
+    "dieci_broll": {"stacchi": [2.5] * 4},           # quattro stacchi veloci
 }
 DURATA_RACCONTO = 30.0
+GANCIO_S = 3.5        # formati da 10 s: il gancio da solo per 3,5 s, poi la frase intera
 
 
 def dividi_in(testo, n):
@@ -55,7 +62,8 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
     W, H = ov.LATO_USCITA, int(ov.LATO_USCITA * 16 / 9)
     DUR = round(sum(durate), 3)
     tmp = tempfile.mkdtemp()
-    cmd, catena = [ov.FFMPEG, "-y", "-v", "error"], []
+    n = len(durate)
+    cmd, catena, volti = [ov.FFMPEG, "-y", "-v", "error"], [], []
     for i, seg in enumerate(durate):
         c = clips[i % len(clips)]
         secondi, hdr = ov.probe(c)
@@ -63,16 +71,25 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         riserva = max(0.0, min(0.5 + giro * (seg + 0.5), secondi - seg - 0.2))
         inizio = ov.inizio_bello(c, secondi, hdr, seg + 0.2, riserva) if giro == 0 else riserva
         cmd += ["-display_rotation", "0", "-ss", f"{inizio:.2f}", "-t", f"{seg + 0.2:.2f}", "-i", c]
+        # 29/10/2026 (Alessandro: "le scritte non devono mai coprire il viso"): volti di questo pezzo, gia' nel taglio
+        # 9:16 del reel (prima qui il testo andava sempre in alto, anche sopra la faccia)
+        try:
+            fr = ov.extract_frames(c, seg, n=3, start=inizio,
+                                   vf=f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H}")
+            volti.append(ov.detect_faces(fr))
+        except Exception:
+            volti.append([])
         f = [x for x in (ov.raddrizza(ov.rotazione(c)), ov.HDR_TO_SDR if hdr else "") if x]
         f += [f"scale={W}:{H}:force_original_aspect_ratio=increase", f"crop={W}:{H}", "setsar=1",
               f"fps={ov.FPS_MULTI}", "format=yuv420p", "settb=AVTB", f"fps={ov.FPS_MULTI}",
               "tpad=stop_mode=clone:stop_duration=1", f"trim=0:{seg:.3f}", "setpts=PTS-STARTPTS"]
         catena.append(f"[{i}:v]{','.join(f)}[c{i}]")
-    n = len(durate)
     g = ";".join(catena) + ";" + "".join(f"[c{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=0[bg]"
     corrente, idx = "bg", n
+    tagli = [sum(durate[:i]) for i in range(n + 1)]
     for k, (a, b, t) in enumerate(testi):
-        img, _, _ = ov.build_overlay(W, H, t, [], serie=serie)
+        sotto = [f for i in range(n) if tagli[i] < b and tagli[i + 1] > a for f in volti[i]]   # pezzi sotto il testo
+        img, _, _ = ov.build_overlay(W, H, t, sotto, serie=serie)
         p = os.path.join(tmp, f"t{k}.png")
         img.save(p)
         cmd += ["-i", p]
@@ -133,6 +150,15 @@ def make_racconto(nome, clips, righe, dst, musiche=(), serie=None):
     righe = [r for r in righe if r.strip()][:6]
     passo = DURATA_RACCONTO / len(righe)
     testi = [(i * passo, (i + 1) * passo, r) for i, r in enumerate(righe)]
+    return make_sequenza(clips, FORMATI[nome]["stacchi"], testi, dst, musiche, serie, nome)
+
+
+def make_dieci(nome, clips, frase, dst, musiche=(), serie=None):
+    """dieci / dieci_due / dieci_broll: 10 s. Se la frase ha due parti (es. "Non voglio diventare ricco. Voglio
+    che..."), la prima compare da sola per GANCIO_S secondi, poi resta la frase intera; altrimenti la frase fissa."""
+    dur = sum(FORMATI[nome]["stacchi"])
+    parti = ov.dividi_frase(frase)
+    testi = [(0.0, GANCIO_S, parti[0]), (GANCIO_S, dur, frase)] if parti else [(0.0, dur, frase)]
     return make_sequenza(clips, FORMATI[nome]["stacchi"], testi, dst, musiche, serie, nome)
 
 

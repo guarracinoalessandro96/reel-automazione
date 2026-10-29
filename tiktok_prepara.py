@@ -6,7 +6,7 @@ pubblica.py salva per ogni orario, nella cartella Drive "TikTok - da pubblicare"
 senza musica salvo parlato/momento) con la didascalia nella descrizione e l'orario YouTube in appProperties.
 
 27/10/2026: il primo giro (26/10) e' partito tardi e la rete e' caduta dopo 1 video -> 17 video arretrati. Ora:
-- ogni video in attesa prende il PROSSIMO ORARIO LIBERO (ore pari, uno ogni 2 ore come YouTube), cosi' niente si perde;
+- ogni video in attesa prende il PROSSIMO ORARIO LIBERO (gli stessi 10 orari di YouTube), cosi' niente si perde;
 - prima i racconti da 30 s (STO-, la prova in corso), poi gli altri, dal piu' vecchio;
 - l'attivita' gira piu' volte la sera (20, 21, 22, 23) e ogni giro ne fa al massimo --max (default 4);
 - i file sopra i 9 MB (limite di Chrome 10 MB) vengono rimpiccioliti qui sul PC.
@@ -22,7 +22,7 @@ from sposta_su_pc import SEGRETI, API, token
 
 CARTELLA_TIKTOK = "TikTok - da pubblicare"
 CARTELLA_PC = os.path.join(os.path.expanduser("~"), "TikTok da programmare")
-OGNI_ORE = 2                 # come YouTube (orario.py)
+from orario import ORE      # stessi orari di YouTube (29/10/2026: 10 al giorno)
 MAX_MB = 9.0
 ANTICIPO_MIN = 40            # TikTok vuole almeno 15' di anticipo: si tiene margine per il caricamento
 
@@ -56,11 +56,11 @@ def elenca(H, cart):
 
 
 def orari_liberi(occupati, adesso):
-    """Ore pari a partire da adesso + ANTICIPO_MIN, saltando quelle gia' usate."""
+    """Orari della giornata (orario.ORE) a partire da adesso + ANTICIPO_MIN, saltando quelli gia' usati."""
     t = (adesso + datetime.timedelta(minutes=ANTICIPO_MIN)).replace(minute=0, second=0, microsecond=0)
     t += datetime.timedelta(hours=1)
     while True:
-        if t.hour % OGNI_ORE == 0 and t not in occupati:
+        if t.hour in ORE and t not in occupati:
             yield t
         t += datetime.timedelta(hours=1)
 

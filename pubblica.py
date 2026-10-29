@@ -45,6 +45,14 @@ PRIMO_COMMENTO = False       # disattivato su richiesta: niente commento automat
 TRADIMENTO = re.compile(r"tradi(t|m|sc|re|rai|rei)", re.I)   # 25/10: argomento che non gli piace
 TRADIMENTO_QUOTA = 0.0      # ... 26/10/2026: "non parlare di tradimento" -> mai
 DONNE = re.compile(r"\b(donn[ae]|ragazz[ae]|fidanzat[ae]|moglie|lei ti|la tua ex|una ex|innamorat)", re.I)   # 26/10: mai
+# 29/10/2026 (Alessandro): niente argomenti negativi (non fidarsi degli altri, falsi, invidia, chi ti usa...) e niente
+# palestra nelle frasi ("e' vista come cringe, non voglio sembrare il fissato della palestra"): obiettivi di vita,
+# vita normale, famiglia, futuro
+NEGATIVO = re.compile(r"fid[ao]|fiduc|tradi|fals[io]|invidi|nemic|ti usa|usano|opzion|critic|spalle|giudic|ingrat|"
+                      r"serpent|velen|abbandon|delu|mancar\w* di rispetto|vendett|\bodi|cattiv|tratta|ipocri|approfitt|"
+                      r"cambiano|ti lasci|spariscon|sparit|squill|chi c'era|tossic|manipol|spegn|lontano da", re.I)
+PALESTRA = re.compile(r"palestr|gym|allenam|allenar|ripetizion|muscol|fisico|\bpes[io]\b|squat|panca|dieta|addominal|"
+                      r"sudor|bilancier|serie in pi|massa", re.I)
 
 SOLO_MIE = True              # dal 5/10/2026 escono SOLO le citazioni scelte da Alessandro (Google Doc "Le mie citazioni")
 DOC_MIE = mie_citazioni.DOC
@@ -183,8 +191,8 @@ def testo_breve(cap):
         testo = cap["gancio"] + "\n" + "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1))
     serie = serie_testo(cap)
     serie = serie + " · seguimi per vedere dove arrivo" if serie else ""     # il personaggio: un viaggio da seguire
-    if cap.get("tema") == "storia":   # 27/10/2026: una domanda in fondo -> piu' commenti -> piu' spinta dall'algoritmo
-        domande = ["E tu, cosa ti sei promesso? Scrivilo qui sotto 👇", "Ti è mai successo? Raccontamelo nei commenti 👇",
+    if cap.get("tema") not in ("momento", "parlato", "regole"):   # 27/10/2026 (racconti), dal 29/10 tutti i reel con frase: una domanda in fondo -> piu' commenti -> piu' spinta dall'algoritmo
+        domande = ["E tu, cosa ti sei promesso? Scrivilo qui sotto 👇", "Per chi lo fai tu? Scrivilo nei commenti 👇",
                    "Per chi lo stai facendo tu? Scrivilo qui sotto 👇", "Qual è il tuo obiettivo di quest'anno? 👇",
                    "Sei d'accordo? Scrivi \"sì\" se anche tu non molli 👇"]
         testo += "\n\n" + domande[int(hashlib.md5(cap["id"].encode()).hexdigest(), 16) % len(domande)]
@@ -289,6 +297,9 @@ def scegli_formato(slot, state, frase, an, spinto=True):
         return "momento"
     if an.get("parlato"):            # video in cui parla: sempre con la sua voce e i sottotitoli
         return "parlato"
+    if TUTTO_10S:                    # 29/10/2026: tutti da 10 s, a turno (mai lo stesso due volte di fila)
+        scelte = [f for f in FORMATI_10 if f != state.get("formato_ultimo")] or list(FORMATI_10)
+        return random.choice(scelte)
     if TUTTO_30S:                    # 26/10/2026: tutti da 30 s, i 3 formati a turno (mai lo stesso due volte di fila)
         scelte = [f for f in FORMATI_30 if f != state.get("formato_ultimo")] or list(FORMATI_30)
         return random.choice(scelte)
@@ -328,6 +339,7 @@ def clip_extra(drive, work, clip, n=2, giorno=None):
     try:
         altre = [c for c in drive.lista_archivio() if (not clip or c["id"] != clip["id"]) and c.get("parlato") != "1"]
         random.shuffle(altre)
+        altre.sort(key=lambda c: c.get("scena") == "palestra")    # 29/10/2026: prima la vita normale, poi la palestra
         if giorno:
             altre.sort(key=lambda c: 0 if str(c.get("registrato") or "")[:10] == giorno else 1)
         for i, c in enumerate(altre[:n]):
@@ -352,8 +364,12 @@ def musiche_brano(music, n=3):
 MOMENTO_MAX = 30.0          # secondi (i suoi momenti piu' visti duravano 9-50 s; dal 26/10/2026 tutti i reel 30 s)
 # 26/10/2026 (Alessandro): prova di 7 giorni, TUTTI i reel da 30 s che raccontano una storia (storie.json), formati a
 # rotazione con e senza b-roll (formati_nuovi.py). Momento e parlato restano: sono i suoi video veri.
-TUTTO_30S = True
+TUTTO_30S = False            # 29/10/2026: finita (visti al 35% contro il 90-100% dei video da 8-13 s)
 FORMATI_30 = ("racconto", "racconto_broll", "racconto_lento")
+# 29/10/2026 (Alessandro: "passiamo a 10 secondi", "cambiamo un po' il format"): TUTTI da 10 s, frase in due tempi,
+# tre varianti a turno (formati_nuovi.py). Momento e parlato restano.
+TUTTO_10S = True
+FORMATI_10 = ("dieci", "dieci_due", "dieci_broll")
 
 
 def monta_momento(an, src, out, music, serie, nome):
@@ -439,6 +455,16 @@ def scegli_storia(state):
         log("Racconti nuovi finiti: ne riuso uno vecchio. Aggiungerne altri a storie.json!")
     libere.sort(key=lambda x: -x.get("punteggio", 50))
     return random.choice(libere[:3])
+
+
+def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip):
+    """Reel da 10 s (formati_nuovi.make_dieci). 'dieci' usa solo il video dell'orario: se e' piu' corto di 10 s
+    si passa a 'dieci_due' (video dell'orario + una clip). Le clip in piu' sono di vita normale se ci sono."""
+    import formati_nuovi
+    if formato == "dieci" and overlay.probe(src)[0] < 10.5:
+        formato = "dieci_due"
+    clips = [src] + (clip_extra(drive, work, clip, 3 if formato == "dieci_broll" else 1) if formato != "dieci" else [])
+    return formati_nuovi.make_dieci(formato, clips, frase["gancio"], out, musiche_brano(music, 3), serie)
 
 
 def monta_racconto(formato, src, out, music, serie, drive, work, clip, state):
@@ -816,7 +842,7 @@ def youtube_upload(creds, path, cap, publish_at=None):
     body = {"snippet": {"title": title + " #shorts", "description": descr, "categoryId": "22",
                         "tags": (["vita vera", "momenti", "oggi", "italia", "shorts"] if momento else
                                  ["motivazione", "mentalità", "disciplina", "frasi motivazionali", "crescita personale",
-                                  "successo", "imprenditore", "palestra", "mindset", "shorts"]),
+                                  "successo", "obiettivi", "famiglia", "mindset", "shorts"]),   # 29/10: niente palestra
                         "defaultLanguage": "it", "defaultAudioLanguage": "it"},
             "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": False}}
     if publish_at and privacy == "public":
@@ -903,7 +929,7 @@ def instagram_storia(path):
 # Instagram con MUSICA NATIVA (16/10/2026): l'API audio di Meta (/ig_audio, Graph v25+) da' i brani di Instagram
 # autorizzati per le app; si carica il reel SENZA musica e si attacca il brano scelto (audio_configuration).
 GRAPH_AUDIO = "https://graph.facebook.com/v25.0"
-IG_RICERCHE = {"palestra": ["phonk", "workout", "gym"], "macchina": ["drive", "phonk", "night drive"],
+IG_RICERCHE = {"palestra": ["motivational", "emotional", "cinematic"], "macchina": ["drive", "phonk", "night drive"],
                "lavoro": ["motivational", "epic", "hustle"], "pacchi": ["motivational", "hustle"],
                "specchio": ["motivational", "phonk"], "casa": ["motivational", "epic"],
                "cibo": ["motivational", "epic"], "uscita": ["epic", "motivational"]}
@@ -916,14 +942,18 @@ def scegli_audio_instagram(scena, recenti=()):
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
     ricerche = list(IG_RICERCHE.get(scena, ["motivational", "phonk", "epic"]))
     random.shuffle(ricerche)
-    ricerche = ["trending", "viral"] + ricerche     # 26/10/2026: prima i brani di tendenza (richiesta di Alessandro)
+    # 26/10/2026: prima i brani di tendenza (richiesta di Alessandro); 29/10: "suoni di tendenza piu' forti" ->
+    # prima le ricerche dei brani piu' usati sui reel, a caso tra i primi 3 (non 8)
+    tendenza = ["trending", "viral", "tiktok viral", "top hits", "trending italia"]
+    random.shuffle(tendenza)
+    ricerche = tendenza[:3] + ricerche
     for q in ricerche:
         r = requests.get(f"{GRAPH_AUDIO}/ig_audio", params={"audio_type": "music", "search_query": q, "user_id": ig,
                                                              "access_token": token}, timeout=30).json()
         brani = [a for a in r.get("audio", []) if a.get("audio_id") and not IG_DA_EVITARE.search(
                  f"{a.get('title', '')} {a.get('display_artist', '')}") and a["audio_id"] not in recenti]
         if brani:
-            a = random.choice(brani[:8])
+            a = random.choice(brani[:3] if q in tendenza else brani[:8])
             return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')}"
     return None
 
@@ -1371,6 +1401,7 @@ def main():
         if random.random() >= TRADIMENTO_QUOTA:   # 25/10/2026: di tradimento si parla poco (1 volta su 10)
             mie = [f for f in mie if not TRADIMENTO.search(f["gancio"])] or mie
         mie = [f for f in mie if not DONNE.search(f["gancio"])] or mie       # 26/10/2026: mai frasi sulle donne
+        mie = [f for f in mie if not NEGATIVO.search(f["gancio"]) and not PALESTRA.search(f["gancio"])] or mie  # 29/10
         frasi = [f for f in mie if f["id"] not in usi]
         log(f"'{DOC_MIE}': {len(mie)} citazioni, {len(frasi)} ancora da usare.")
         # reel da 5 s: anche le frasi lunghe (scelta di Alessandro 13/10/2026: se non si fa in tempo a leggere,
@@ -1440,6 +1471,8 @@ def main():
                 info = overlay.make_video(src, prima, out, music=music, serie=serie,
                                           colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
                                           da_archivio=bool(clip), formato=dict(GANCIO, seconda=seconda))
+            elif formato in FORMATI_10:
+                info = monta_dieci(formato, frase, src, out, music, serie, drive, work, clip)
             elif formato in FORMATI_30:
                 frase, info = monta_racconto(formato, src, out, music, serie, drive, work, clip, state)
             elif formato in ("broll1", "broll2", "broll3", "storia"):
