@@ -7437,11 +7437,46 @@
    },
    "spinto": true,
    "testo": "Un tempo rimandavo tutto a lunedì."
+  },
+  {
+   "quando": "2026-10-29T11:00",
+   "slot": "2026-10-29 12:00",
+   "video": "IMG_4305.MOV",
+   "md5": "e73f1eef5201c053a07c6d2d27b0be5d",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-27T21:41+01:00",
+   "frase": "STO-28",
+   "tema": "storia",
+   "montaggio": {
+    "formato": "racconto_broll",
+    "durata": 30.0,
+    "musica": "ancient_civilisations_1.m4a",
+    "stacchi": 10,
+    "testi": 6,
+    "musica_meta": "phonk_04.flac",
+    "musica_instagram": "Kickstand - Lance Taber"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "XmZ40ayJza0"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18128371456859175"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "2354628051953931"
+    }
+   },
+   "spinto": true,
+   "testo": "La gente mi chiede quale sia il mio segreto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-21 12:00",
   "2026-10-21 14:00",
   "2026-10-21 16:00",
   "2026-10-21 18:00",
@@ -7520,10 +7555,10 @@
   "2026-10-29 00:00",
   "2026-10-29 02:00",
   "2026-10-29 04:00",
-  "2026-10-29 10:00"
+  "2026-10-29 10:00",
+  "2026-10-29 12:00"
  ],
  "musica_recenti": [
-  "death_duel_1.m4a",
   "vibe_check_1.m4a",
   "majestic_12_1.m4a",
   "cartier_1.m4a",
@@ -7542,7 +7577,8 @@
   "rubberband_1.m4a",
   "the_light_1.m4a",
   "death_duel_1.m4a",
-  "visions_1.m4a"
+  "visions_1.m4a",
+  "ancient_civilisations_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7753,7 +7789,8 @@
   "STO-24",
   "STO-25",
   "STO-26",
-  "STO-16"
+  "STO-16",
+  "STO-28"
  ],
  "temi_recenti": [
   "storia",
@@ -7768,19 +7805,6 @@
   "storia"
  ],
  "analisi": {
-  "1pHaSrw5l22--hj6mculM4Wx5XnAw4U-3": {
-   "nome": "IMG_4305.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.99,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-27T21:41+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-28T11:16:45.189Z",
-   "parlato": null,
-   "momento": null
-  },
   "1XySlsRReGeTwlbVlIctzRJDJBUZ2yHi0": {
    "nome": "IMG_4307.MOV",
    "scena": "palestra",
@@ -8239,10 +8263,13 @@
   "1UefrogLKDdOKHxCBjQOsFjEsNFOeSefT": {
    "usi": 1,
    "ultimo": "2026-10-29"
+  },
+  "1pHaSrw5l22--hj6mculM4Wx5XnAw4U-3": {
+   "usi": 1,
+   "ultimo": "2026-10-29"
   }
  },
  "musica_recenti_meta": [
-  "phonk_08.flac",
   "deciso_04.flac",
   "phonk_13.flac",
   "phonk_10.flac",
@@ -8261,7 +8288,8 @@
   "phonk_02.flac",
   "phonk_14.flac",
   "phonk_07.flac",
-  "phonk_05.flac"
+  "phonk_05.flac",
+  "phonk_04.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8295,7 +8323,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto",
+ "formato_ultimo": "racconto_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8311,7 +8339,6 @@
  ],
  "commenti_fino": "2026-10-28T19:00:43Z",
  "ig_audio_recenti": [
-  "1039098790480932",
   "1423487866229281",
   "341745901246038",
   "732596883977972",
@@ -8340,6 +8367,7 @@
   "827252278567806",
   "1108285910189784",
   "1447374035821884",
-  "158209132866603"
+  "158209132866603",
+  "2913736298667265"
  ]
 }
