@@ -22,11 +22,12 @@ concurrency: pubblica
 
 permissions:
   contents: write
+  actions: write     # 30/10/2026: per avviare da solo il lavoro successivo (catena, vedi in fondo)
 
 jobs:
   pubblica:
     runs-on: ubuntu-24.04
-    timeout-minutes: 330   # 25/10/2026: resta acceso fino a ~4,5 ore e fa da solo gli orari successivi
+    timeout-minutes: 355   # 25/10/2026: resta acceso a lungo e fa da solo gli orari successivi (30/10: ~5,5 ore)
     steps:
       # 11/10/2026: ref main = lo stato PIU' RECENTE (senza, un controllo in coda dietro a un altro leggeva lo stato
       # di quando era partito e ripubblicava lo stesso orario: alle 15:00 erano usciti 2 reel)
@@ -55,6 +56,10 @@ jobs:
             SLOT=""
           fi
           echo "slot=$SLOT" >> "$GITHUB_OUTPUT"
+          # 30/10/2026: il 29/10 GitHub ha avviato le esecuzioni programmate solo 6 volte in 24 ore (buchi di 5-7 ore,
+          # 5 orari su 12 saltati). Ora ogni lavoro RESTA ACCESO (anche se adesso non c'e' niente da fare) e alla fine
+          # avvia da solo il successivo: la macchina non si spegne mai. resta=0 solo con PAUSA o senza video.
+          if [ -f PAUSA ] || [ "$(python3 coda.py)" = "0" ]; then echo "resta=0" >> "$GITHUB_OUTPUT"; else echo "resta=1" >> "$GITHUB_OUTPUT"; fi
         env:
           FORZA: ${{ github.event_name == 'workflow_dispatch' && inputs.forza && '1' || '0' }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
@@ -63,20 +68,20 @@ jobs:
           DRIVE_FOLDER_DA_PUBBLICARE: ${{ secrets.DRIVE_FOLDER_DA_PUBBLICARE }}
 
       - uses: actions/setup-python@v5
-        if: steps.orario.outputs.slot != ''
+        if: steps.orario.outputs.resta == '1'
         with:
           python-version: "3.12"
           cache: pip
 
       - name: Memoria del modello di riconoscimento scene
-        if: steps.orario.outputs.slot != ''
+        if: steps.orario.outputs.resta == '1'
         uses: actions/cache@v4
         with:
           path: ~/.cache/huggingface
           key: clip-vit-b-32-openai
 
       - name: Installa
-        if: steps.orario.outputs.slot != ''
+        if: steps.orario.outputs.resta == '1'
         run: |
           pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
           pip install -r requirements.txt
@@ -84,14 +89,14 @@ jobs:
       # PARLATO (18/10/2026): modello della voce per i video in cui Alessandro parla. La libreria si installa da sola
       # (parlato.py) solo quando arriva un video parlato; se non riesce, il video resta un reel normale.
       - name: Memoria del modello della voce
-        if: steps.orario.outputs.slot != ''
+        if: steps.orario.outputs.resta == '1'
         uses: actions/cache@v4
         with:
           path: ~/.cache/whisper
           key: whisper-small-v1
 
       - name: Pubblica il prossimo video
-        if: steps.orario.outputs.slot != ''
+        if: steps.orario.outputs.resta == '1'
         env:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
@@ -132,10 +137,12 @@ jobs:
             done
           }
           SLOT="${{ steps.orario.outputs.slot }}"
-          FINE=$((SECONDS + 270 * 60))
-          while [ -n "$SLOT" ]; do
-            python pubblica.py "$SLOT" || echo "Orario $SLOT: pubblicazione non riuscita"
-            salva "$SLOT"
+          FINE=$((SECONDS + 320 * 60))
+          while [ $SECONDS -lt $FINE ]; do
+            if [ -n "$SLOT" ]; then
+              python pubblica.py "$SLOT" || echo "Orario $SLOT: pubblicazione non riuscita"
+              salva "$SLOT"
+            fi
             SLOT=""
             while [ -z "$SLOT" ] && [ $SECONDS -lt $FINE ]; do
               sleep 240
@@ -146,7 +153,7 @@ jobs:
           done
 
       - name: Salva lo stato
-        if: always() && steps.orario.outputs.slot != ''
+        if: always() && steps.orario.outputs.resta == '1'
         run: |
           git config user.name "reel-bot"
           git config user.email "reel-bot@users.noreply.github.com"
@@ -161,3 +168,14 @@ jobs:
             sleep $((i * 5))
           done
           exit 1
+
+      # 30/10/2026: CATENA. Prima di spegnersi il lavoro avvia il successivo (workflow_dispatch con GITHUB_TOKEN: e'
+      # l'unico evento che GitHub lascia partire cosi'). Resta in coda finche' questo non finisce, poi riparte subito.
+      - name: Avvia il lavoro successivo
+        if: always() && steps.orario.outputs.resta == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          curl -s -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/pubblica.yml/dispatches" \
+            -d '{"ref":"main","inputs":{"forza":"false"}}' && echo "Lavoro successivo avviato"
