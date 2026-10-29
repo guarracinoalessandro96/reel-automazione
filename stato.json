@@ -7345,6 +7345,16 @@
      "errore": "{'error': {'message': 'Media ID is not available', 'type': 'OAuthException', 'code': 9007, 'error_subcode': 2207027, 'is_transient': False, 'error_user_title': 'Impossibile pubblicare', 'error_user_msg': 'Il contenuto multimediale non è pronto per la pubblicazione, attendi un momento', 'fbtrace_id': 'AuLuXVtGGgw8EIxydDzjxL5'}}"
     }
    }
+  },
+  {
+   "quando": "2026-10-29T02:37",
+   "riprova": "STO-25",
+   "risultati": {
+    "instagram": {
+     "ok": false,
+     "errore": "{'error': {'message': 'Media ID is not available', 'type': 'OAuthException', 'code': 9007, 'error_subcode': 2207027, 'is_transient': False, 'error_user_title': 'Impossibile pubblicare', 'error_user_msg': 'Il contenuto multimediale non è pronto per la pubblicazione, attendi un momento', 'fbtrace_id': 'AcXrMfvktodxjvIi8MliaPw'}}"
+    }
+   }
   }
  ],
  "riprova": [
@@ -7374,7 +7384,7 @@
    "piattaforme": [
     "instagram"
    ],
-   "tentativi": 1
+   "tentativi": 2
   }
  ],
  "slot_fatti": [
