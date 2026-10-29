@@ -1,50 +1,1097 @@
 {
  "nota": "26/10/2026 - Racconti per i reel da 30 s (richiesta di Alessandro: tutti da 30 s, che raccontano una storia, niente tradimento, niente donne). 6 righe = 6 schermate da 5 s: aggancio, fatica, svolta, lezione. Regole: tono positivo, mai orari, mai calorie, mai eta', mai nomi, un po' di mistero. punteggio 0-100 = quanto pensiamo che vada virale (escono prima i piu' alti).",
  "storie": [
-  {"id": "STO-01", "punteggio": 95, "righe": ["Nessuno sa cosa ho promesso a me stesso quella notte.", "Non l'ho detto a nessuno. Neanche a chi mi sta vicino.", "Ho iniziato in silenzio. Una cosa piccola, ogni giorno.", "Ci sono stati giorni in cui volevo lasciar perdere tutto.", "Ma ogni volta mi ricordavo di quella notte.", "Le promesse che contano sono quelle che fai a te stesso."]},
-  {"id": "STO-02", "punteggio": 94, "righe": ["Mi hanno chiesto perché non esco più come prima.", "La verità è che sto costruendo qualcosa.", "E per costruire devi dire tanti no.", "No alle serate inutili. No a chi ti fa perdere tempo.", "Non è che sono cambiato. Ho solo capito cosa voglio.", "Fra qualche mese capiranno tutto. Senza che io dica niente."]},
-  {"id": "STO-03", "punteggio": 93, "righe": ["Il giorno in cui ho smesso di spiegarmi, è cambiato tutto.", "Prima volevo che tutti capissero le mie scelte.", "Passavo più tempo a giustificarmi che a lavorare.", "Poi ho capito: chi ti vuole capire, ti capisce.", "Gli altri non li convinci neanche con mille parole.", "Adesso parlo poco. E lascio parlare i risultati."]},
-  {"id": "STO-04", "punteggio": 92, "righe": ["Questa è la parte del viaggio che nessuno vede.", "Niente applausi. Niente like. Niente complimenti.", "Solo io, la fatica e una promessa da mantenere.", "È qui che la maggior parte delle persone si ferma.", "Io ho deciso di restare proprio qui. Ogni giorno.", "Perché è qui che si diventa qualcuno."]},
-  {"id": "STO-05", "punteggio": 92, "righe": ["Una volta mi sono guardato allo specchio e non mi sono piaciuto.", "Non parlo del fisico. Parlo di chi ero diventato.", "Sempre stanco, sempre con una scusa pronta.", "Quel giorno ho deciso di ricominciare da zero.", "Non è stato facile. Non lo è neanche adesso.", "Ma oggi, quando mi guardo, mi riconosco."]},
-  {"id": "STO-06", "punteggio": 91, "righe": ["Ho perso amici mentre provavo a migliorarmi.", "Non abbiamo litigato. Semplicemente, non c'era più niente da dirsi.", "Loro volevano restare uguali. Io no.", "All'inizio fa male, non lo nego.", "Poi capisci che non tutti possono venire dove stai andando.", "E va bene così. Si cresce anche lasciando andare."]},
-  {"id": "STO-07", "punteggio": 91, "righe": ["Mio padre non mi ha mai detto \"sono fiero di te\".", "Però l'ho visto lavorare ogni giorno, senza lamentarsi mai.", "Non servivano parole. Bastava guardarlo.", "Ho capito che il rispetto si insegna con l'esempio.", "Oggi faccio lo stesso, in silenzio.", "Un giorno spero che qualcuno guardi me allo stesso modo."]},
-  {"id": "STO-08", "punteggio": 90, "righe": ["Un giorno ho fatto un errore che mi è costato tanto.", "Soldi, tempo, e anche un po' di orgoglio.", "Potevo dare la colpa a tutti. Sarebbe stato facile.", "Invece mi sono preso la responsabilità.", "Da quel giorno ho imparato più che in tutti gli anni prima.", "Gli errori non ti fermano. Ti fermano le scuse."]},
-  {"id": "STO-09", "punteggio": 90, "righe": ["Tutti vogliono il risultato. Nessuno vuole la routine.", "Svegliarsi quando non hai voglia.", "Allenarsi quando fuori piove.", "Lavorare quando gli altri si divertono.", "È noioso. È ripetitivo. Nessuno ti applaude.", "Ma è proprio questo il segreto che nessuno ti dice."]},
-  {"id": "STO-10", "punteggio": 89, "righe": ["C'è stato un periodo in cui non credeva in me nessuno.", "Neanche io, a dire la verità.", "Ogni giorno mi chiedevo se stessi sbagliando tutto.", "Ma ho continuato, un passo alla volta, senza fermarmi.", "Non è arrivato tutto insieme. È arrivato piano piano.", "Se stai vivendo quel periodo adesso: non mollare."]},
-  {"id": "STO-11", "punteggio": 89, "righe": ["La prima volta che ho venduto qualcosa online, ho tremato.", "Era poco. Pochissimo. Ma era mio.", "Nessuno me l'aveva regalato. L'avevo costruito io.", "Da quel giorno non ho più smesso.", "Sbagliando, imparando, ricominciando ogni volta.", "Tutto quello che hai inizia sempre da una prima volta."]},
-  {"id": "STO-12", "punteggio": 88, "righe": ["Mi dicevano: \"chi te lo fa fare?\"", "Ogni giorno in palestra. Ogni giorno a lavorare su di me.", "La risposta è semplice, anche se non la capiscono.", "Lo faccio per la persona che voglio diventare.", "E per quella che non voglio più essere.", "Non serve che lo capiscano. Basta che lo capisca io."]},
-  {"id": "STO-13", "punteggio": 88, "righe": ["Questa città mi ha insegnato una cosa.", "Qui niente ti viene regalato.", "Se vuoi qualcosa, te lo devi andare a prendere.", "Con il sorriso, con rispetto, ma senza fermarti mai.", "È per questo che sono fiero di dove vengo.", "Da qui si parte. Ma si può arrivare ovunque."]},
-  {"id": "STO-14", "punteggio": 88, "righe": ["Ho capito quanto valgo il giorno in cui ho smesso di chiederlo.", "Prima aspettavo l'approvazione di tutti.", "Un messaggio, un complimento, una conferma.", "Poi ho iniziato a darmela da solo.", "Rispettando le mie promesse, giorno dopo giorno.", "Chi conosce il proprio valore non lo chiede a nessuno."]},
-  {"id": "STO-15", "punteggio": 87, "righe": ["Oggi non avevo voglia di niente.", "Né di allenarmi, né di lavorare, né di registrare questo video.", "Ma la voglia va e viene. La disciplina resta.", "Allora sono uscito lo stesso. Ho fatto la mia parte.", "Non è stata la giornata migliore. Ma l'ho vinta.", "Le giornate storte si vincono presentandosi lo stesso."]},
-  {"id": "STO-16", "punteggio": 87, "righe": ["Un tempo rimandavo tutto a lunedì.", "La dieta, la palestra, il lavoro, la vita.", "Sempre \"da lunedì inizio\". E lunedì non arrivava mai.", "Poi un giorno ho iniziato di mercoledì. Senza aspettare.", "Non era il giorno perfetto. Non esiste il giorno perfetto.", "Esiste solo oggi. E quello che decidi di farne."]},
-  {"id": "STO-17", "punteggio": 87, "righe": ["Mia madre mi ha insegnato una cosa che non dimenticherò mai.", "\"Tratta tutti con rispetto, anche chi non lo merita.\"", "Da ragazzo non capivo il perché.", "Oggi lo so: il rispetto dice chi sei tu, non chi sono loro.", "Puoi perdere soldi, tempo, occasioni.", "Ma non perdere mai la tua educazione."]},
-  {"id": "STO-18", "punteggio": 86, "righe": ["Il silenzio mi ha salvato più volte delle parole.", "Quando ero arrabbiato e volevo rispondere a tutti.", "Quando volevo raccontare i miei piani a chiunque.", "Ho imparato a stare zitto e a lavorare.", "I piani si raccontano quando sono realtà.", "Fino ad allora, il silenzio è il tuo migliore amico."]},
-  {"id": "STO-19", "punteggio": 86, "righe": ["Ho iniziato questo viaggio senza sapere dove portasse.", "Ogni giorno un video. Ogni giorno un passo.", "Alcuni li guardano in pochi. Altri in tanti.", "Ma non conta quanti ti guardano all'inizio.", "Conta non smettere quando non ti guarda nessuno.", "Restate con me. Vediamo insieme dove arrivo."]},
-  {"id": "STO-20", "punteggio": 86, "righe": ["Una volta mi sono sentito il più indietro di tutti.", "Gli altri avevano già tutto: lavoro, soldi, sicurezze.", "Io avevo solo tanta voglia e zero certezze.", "Poi ho smesso di guardare la loro strada.", "E ho iniziato a camminare sulla mia.", "Non sei in ritardo. Sei sul tuo percorso."]},
-  {"id": "STO-21", "punteggio": 85, "righe": ["La palestra mi ha insegnato più della scuola.", "Che i risultati arrivano solo se sei costante.", "Che il dolore di oggi è la forza di domani.", "Che nessuno può fare le ripetizioni al posto tuo.", "E che quando pensi di non farcela, ce ne sono ancora due.", "Vale per il fisico. E vale per la vita."]},
-  {"id": "STO-22", "punteggio": 85, "righe": ["Non ho mai avuto un piano B.", "Non perché fossi sicuro di farcela.", "Ma perché sapevo che con un piano B avrei mollato prima.", "Quando non hai alternative, trovi sempre un modo.", "Ogni porta chiusa diventa una lezione.", "A volte devi bruciare le navi per conquistare l'isola."]},
-  {"id": "STO-23", "punteggio": 85, "righe": ["Ricordo il giorno in cui ho deciso di cambiare.", "Non è successo niente di speciale, all'apparenza.", "Ero solo stanco di essere sempre la stessa persona.", "Ho preso un foglio e ho scritto cosa volevo davvero.", "Quel foglio ce l'ho ancora. Lo rileggo spesso.", "Tutto cambia nel momento in cui decidi tu."]},
-  {"id": "STO-24", "punteggio": 84, "righe": ["Le persone vedono il risultato, mai il prezzo.", "Non vedono le rinunce. Non vedono la stanchezza.", "Non vedono i giorni in cui niente andava bene.", "Vedono solo la foto finale e dicono \"che fortuna\".", "La fortuna non c'entra niente.", "C'entrano tutti i giorni in cui ho continuato senza nessuno."]},
-  {"id": "STO-25", "punteggio": 84, "righe": ["Mio nonno diceva sempre: \"chi semina, raccoglie\".", "Da piccolo pensavo parlasse solo della campagna.", "Poi ho iniziato a lavorare davvero.", "E ho capito che parlava di tutto.", "Di quello che fai ogni giorno, anche quando nessuno guarda.", "Oggi semino. Domani raccolgo."]},
-  {"id": "STO-26", "punteggio": 84, "righe": ["Ho smesso di confrontarmi con gli altri sui social.", "Vedevo solo successi, viaggi, macchine, vite perfette.", "E mi sentivo sempre un passo indietro.", "Poi ho capito che vedevo solo la parte migliore.", "Nessuno pubblica le giornate storte.", "L'unico confronto giusto è con chi eri ieri."]},
-  {"id": "STO-27", "punteggio": 83, "righe": ["C'è una cosa che faccio ogni sera prima di dormire.", "Mi chiedo: oggi sono stato migliore di ieri?", "Alcune sere la risposta è sì.", "Altre sere è no. E va bene lo stesso.", "L'importante è farsi la domanda ogni giorno.", "Chi smette di chiederselo, smette di crescere."]},
-  {"id": "STO-28", "punteggio": 83, "righe": ["La gente mi chiede quale sia il mio segreto.", "Si aspettano chissà quale trucco.", "La verità è molto più noiosa.", "Faccio le stesse cose giuste, ogni giorno, da tanto tempo.", "Anche quando non ne ho voglia. Soprattutto allora.", "Il segreto è che non c'è nessun segreto."]},
-  {"id": "STO-29", "punteggio": 83, "righe": ["Un giorno ho aiutato uno sconosciuto senza chiedere niente.", "Non lo rivedrò mai più, probabilmente.", "Ma quella sera sono tornato a casa più leggero.", "Ho capito che il bene che fai torna sempre.", "Magari non da quella persona. Magari non subito.", "Ma torna. Sempre."]},
-  {"id": "STO-30", "punteggio": 82, "righe": ["Una volta ho perso tutto quello che avevo costruito.", "Non per colpa di qualcuno. Per colpa mia.", "Ho passato giorni a chiedermi come fosse possibile.", "Poi mi sono alzato e ho ricominciato. Più lucido di prima.", "La seconda volta si costruisce più veloce.", "Perché ricominci con l'esperienza, non da zero."]},
-  {"id": "STO-31", "punteggio": 82, "righe": ["Ci sono giorni in cui mi sento solo in questo percorso.", "Gli altri escono, si divertono, staccano.", "Io resto concentrato sui miei obiettivi.", "Non perché sono migliore. Perché ho fatto una scelta.", "La solitudine di oggi è il prezzo della libertà di domani.", "E io ho deciso di pagarlo."]},
-  {"id": "STO-32", "punteggio": 82, "righe": ["Il mio primo cliente non lo dimenticherò mai.", "Si è fidato di me quando non avevo niente da mostrare.", "Né recensioni, né esperienza, né nome.", "Solo la promessa di fare un buon lavoro.", "Ho lavorato il doppio per non deluderlo.", "La fiducia degli altri si ripaga solo con i fatti."]},
-  {"id": "STO-33", "punteggio": 81, "righe": ["Pensavo che la motivazione arrivasse da sola.", "Aspettavo il giorno giusto, l'energia giusta.", "Intanto i mesi passavano e io restavo fermo.", "Poi ho scoperto una cosa: la motivazione arriva dopo.", "Prima ti muovi, poi ti viene voglia.", "Non aspettare di sentirti pronto. Inizia."]},
-  {"id": "STO-34", "punteggio": 81, "righe": ["Ho una regola: mai andare a dormire arrabbiato con me stesso.", "Se la giornata è andata male, faccio almeno una cosa buona.", "Un allenamento, una pagina, una telefonata a chi voglio bene.", "Una cosa piccola che mi ricorda chi voglio essere.", "Non serve vincere ogni giorno.", "Serve non perdere due giorni di fila."]},
-  {"id": "STO-35", "punteggio": 81, "righe": ["Da piccolo guardavo chi ce l'aveva fatta e pensavo: \"beati loro\".", "Pensavo fossero nati fortunati.", "Poi ho conosciuto alcune di quelle persone.", "Nessuna era nata fortunata. Tutte avevano lavorato tantissimo.", "Quel giorno ho smesso di invidiare.", "E ho iniziato a lavorare."]},
-  {"id": "STO-36", "punteggio": 80, "righe": ["Oggi è uno di quei giorni normali.", "Niente di speciale da raccontare.", "Sveglia, lavoro, allenamento, famiglia.", "Ma sono proprio i giorni normali che fanno la differenza.", "Quelli che nessuno filma, nessuno racconta.", "La vita che vuoi si costruisce nei giorni normali."]},
-  {"id": "STO-37", "punteggio": 80, "righe": ["Mi hanno detto che ero troppo ambizioso.", "Che dovevo accontentarmi, come tutti.", "Ho provato ad ascoltarli, per un po'.", "Ma ogni sera sentivo che stavo sprecando qualcosa.", "Allora ho smesso di abbassare i miei sogni.", "Non sei troppo ambizioso. Sono loro che si accontentano."]},
-  {"id": "STO-38", "punteggio": 80, "righe": ["Ho imparato a godermi le piccole vittorie.", "Un allenamento finito quando volevo fermarmi.", "Un problema risolto senza chiedere aiuto.", "Una giornata senza lamentarmi neanche una volta.", "Sembrano niente. Ma messe insieme, sono tutto.", "Le grandi vittorie sono fatte di quelle piccole."]},
-  {"id": "STO-39", "punteggio": 79, "righe": ["Una persona mi ha detto: \"tanto non durerà\".", "Parlava di questo progetto. Di questi video.", "Non ho risposto. Ho sorriso e sono andato avanti.", "Ogni giorno un video in più. Ogni giorno un passo in più.", "Non ho niente da dimostrare a nessuno.", "Ma intanto sono ancora qui. Giorno dopo giorno."]},
-  {"id": "STO-40", "punteggio": 79, "righe": ["La cosa più difficile non è iniziare.", "È continuare quando l'entusiasmo è finito.", "Quando la novità è passata e resta solo la fatica.", "Lì si vede chi vuole davvero una cosa.", "Chi la vuole trova un modo. Chi no, trova una scusa.", "Io ho deciso da che parte stare."]},
-  {"id": "STO-41", "punteggio": 78, "righe": ["Ho smesso di dire \"non ho tempo\".", "Perché il tempo c'era. Lo usavo male.", "Ore sul telefono. Ore a lamentarmi.", "Ho iniziato a togliere una cosa inutile al giorno.", "E il tempo per le cose importanti è comparso.", "Non è il tempo che manca. È la priorità."]},
-  {"id": "STO-42", "punteggio": 78, "righe": ["Quando qualcuno mi chiede consiglio, dico sempre la stessa cosa.", "Non aspettare di avere tutto chiaro.", "Io non avevo un piano perfetto. Avevo solo voglia.", "Il piano si sistema strada facendo.", "Chi aspetta la perfezione resta sempre al punto di partenza.", "Parti imperfetto. Migliora per strada."]},
-  {"id": "STO-43", "punteggio": 77, "righe": ["Un giorno qualcuno guarderà questi video dall'inizio.", "Vedrà da dove sono partito.", "I giorni buoni e quelli meno buoni.", "E forse penserà: \"se ce l'ha fatta lui, posso farcela anch'io\".", "Se anche solo una persona lo penserà, ne sarà valsa la pena.", "Questo diario è anche per te."]},
-  {"id": "STO-44", "punteggio": 77, "righe": ["Ho capito che la famiglia è il mio motore.", "Quando sono stanco, penso a loro.", "Quando voglio mollare, penso a loro.", "Non lavoro solo per me.", "Lavoro per restituire tutto quello che mi hanno dato.", "Ogni sacrificio ha un nome. Il mio ne ha tanti."]},
-  {"id": "STO-45", "punteggio": 76, "righe": ["Mi sono svegliato con mille pensieri in testa.", "Problemi di lavoro, cose da sistemare, decisioni da prendere.", "Ho fatto l'unica cosa che funziona sempre.", "Mi sono allenato. Senza pensare a niente.", "Quando ho finito, i problemi erano ancora lì.", "Ma io ero più forte di loro."]}
+  {
+   "id": "STO-01",
+   "punteggio": 95,
+   "righe": [
+    "Nessuno sa cosa ho promesso a me stesso quella notte.",
+    "Non l'ho detto a nessuno. Neanche a chi mi sta vicino.",
+    "Ho iniziato in silenzio. Una cosa piccola, ogni giorno.",
+    "Ci sono stati giorni in cui volevo lasciar perdere tutto.",
+    "Ma ogni volta mi ricordavo di quella notte.",
+    "Le promesse che contano sono quelle che fai a te stesso."
+   ]
+  },
+  {
+   "id": "STO-02",
+   "punteggio": 94,
+   "righe": [
+    "Mi hanno chiesto perché non esco più come prima.",
+    "La verità è che sto costruendo qualcosa.",
+    "E per costruire devi dire tanti no.",
+    "No alle serate inutili. No a chi ti fa perdere tempo.",
+    "Non è che sono cambiato. Ho solo capito cosa voglio.",
+    "Fra qualche mese capiranno tutto. Senza che io dica niente."
+   ]
+  },
+  {
+   "id": "STO-03",
+   "punteggio": 93,
+   "righe": [
+    "Il giorno in cui ho smesso di spiegarmi, è cambiato tutto.",
+    "Prima volevo che tutti capissero le mie scelte.",
+    "Passavo più tempo a giustificarmi che a lavorare.",
+    "Poi ho capito: chi ti vuole capire, ti capisce.",
+    "Gli altri non li convinci neanche con mille parole.",
+    "Adesso parlo poco. E lascio parlare i risultati."
+   ]
+  },
+  {
+   "id": "STO-04",
+   "punteggio": 92,
+   "righe": [
+    "Questa è la parte del viaggio che nessuno vede.",
+    "Niente applausi. Niente like. Niente complimenti.",
+    "Solo io, la fatica e una promessa da mantenere.",
+    "È qui che la maggior parte delle persone si ferma.",
+    "Io ho deciso di restare proprio qui. Ogni giorno.",
+    "Perché è qui che si diventa qualcuno."
+   ]
+  },
+  {
+   "id": "STO-05",
+   "punteggio": 92,
+   "righe": [
+    "Una volta mi sono guardato allo specchio e non mi sono piaciuto.",
+    "Non parlo del fisico. Parlo di chi ero diventato.",
+    "Sempre stanco, sempre con una scusa pronta.",
+    "Quel giorno ho deciso di ricominciare da zero.",
+    "Non è stato facile. Non lo è neanche adesso.",
+    "Ma oggi, quando mi guardo, mi riconosco."
+   ]
+  },
+  {
+   "id": "STO-06",
+   "punteggio": 91,
+   "righe": [
+    "Ho perso amici mentre provavo a migliorarmi.",
+    "Non abbiamo litigato. Semplicemente, non c'era più niente da dirsi.",
+    "Loro volevano restare uguali. Io no.",
+    "All'inizio fa male, non lo nego.",
+    "Poi capisci che non tutti possono venire dove stai andando.",
+    "E va bene così. Si cresce anche lasciando andare."
+   ]
+  },
+  {
+   "id": "STO-07",
+   "punteggio": 91,
+   "righe": [
+    "Mio padre non mi ha mai detto \"sono fiero di te\".",
+    "Però l'ho visto lavorare ogni giorno, senza lamentarsi mai.",
+    "Non servivano parole. Bastava guardarlo.",
+    "Ho capito che il rispetto si insegna con l'esempio.",
+    "Oggi faccio lo stesso, in silenzio.",
+    "Un giorno spero che qualcuno guardi me allo stesso modo."
+   ]
+  },
+  {
+   "id": "STO-08",
+   "punteggio": 90,
+   "righe": [
+    "Un giorno ho fatto un errore che mi è costato tanto.",
+    "Soldi, tempo, e anche un po' di orgoglio.",
+    "Potevo dare la colpa a tutti. Sarebbe stato facile.",
+    "Invece mi sono preso la responsabilità.",
+    "Da quel giorno ho imparato più che in tutti gli anni prima.",
+    "Gli errori non ti fermano. Ti fermano le scuse."
+   ]
+  },
+  {
+   "id": "STO-09",
+   "punteggio": 90,
+   "righe": [
+    "Tutti vogliono il risultato. Nessuno vuole la routine.",
+    "Svegliarsi quando non hai voglia.",
+    "Allenarsi quando fuori piove.",
+    "Lavorare quando gli altri si divertono.",
+    "È noioso. È ripetitivo. Nessuno ti applaude.",
+    "Ma è proprio questo il segreto che nessuno ti dice."
+   ]
+  },
+  {
+   "id": "STO-10",
+   "punteggio": 89,
+   "righe": [
+    "C'è stato un periodo in cui non credeva in me nessuno.",
+    "Neanche io, a dire la verità.",
+    "Ogni giorno mi chiedevo se stessi sbagliando tutto.",
+    "Ma ho continuato, un passo alla volta, senza fermarmi.",
+    "Non è arrivato tutto insieme. È arrivato piano piano.",
+    "Se stai vivendo quel periodo adesso: non mollare."
+   ]
+  },
+  {
+   "id": "STO-11",
+   "punteggio": 89,
+   "righe": [
+    "La prima volta che ho venduto qualcosa online, ho tremato.",
+    "Era poco. Pochissimo. Ma era mio.",
+    "Nessuno me l'aveva regalato. L'avevo costruito io.",
+    "Da quel giorno non ho più smesso.",
+    "Sbagliando, imparando, ricominciando ogni volta.",
+    "Tutto quello che hai inizia sempre da una prima volta."
+   ]
+  },
+  {
+   "id": "STO-12",
+   "punteggio": 88,
+   "righe": [
+    "Mi dicevano: \"chi te lo fa fare?\"",
+    "Ogni giorno in palestra. Ogni giorno a lavorare su di me.",
+    "La risposta è semplice, anche se non la capiscono.",
+    "Lo faccio per la persona che voglio diventare.",
+    "E per quella che non voglio più essere.",
+    "Non serve che lo capiscano. Basta che lo capisca io."
+   ]
+  },
+  {
+   "id": "STO-13",
+   "punteggio": 88,
+   "righe": [
+    "Questa città mi ha insegnato una cosa.",
+    "Qui niente ti viene regalato.",
+    "Se vuoi qualcosa, te lo devi andare a prendere.",
+    "Con il sorriso, con rispetto, ma senza fermarti mai.",
+    "È per questo che sono fiero di dove vengo.",
+    "Da qui si parte. Ma si può arrivare ovunque."
+   ]
+  },
+  {
+   "id": "STO-14",
+   "punteggio": 88,
+   "righe": [
+    "Ho capito quanto valgo il giorno in cui ho smesso di chiederlo.",
+    "Prima aspettavo l'approvazione di tutti.",
+    "Un messaggio, un complimento, una conferma.",
+    "Poi ho iniziato a darmela da solo.",
+    "Rispettando le mie promesse, giorno dopo giorno.",
+    "Chi conosce il proprio valore non lo chiede a nessuno."
+   ]
+  },
+  {
+   "id": "STO-15",
+   "punteggio": 87,
+   "righe": [
+    "Oggi non avevo voglia di niente.",
+    "Né di allenarmi, né di lavorare, né di registrare questo video.",
+    "Ma la voglia va e viene. La disciplina resta.",
+    "Allora sono uscito lo stesso. Ho fatto la mia parte.",
+    "Non è stata la giornata migliore. Ma l'ho vinta.",
+    "Le giornate storte si vincono presentandosi lo stesso."
+   ]
+  },
+  {
+   "id": "STO-16",
+   "punteggio": 87,
+   "righe": [
+    "Un tempo rimandavo tutto a lunedì.",
+    "La dieta, la palestra, il lavoro, la vita.",
+    "Sempre \"da lunedì inizio\". E lunedì non arrivava mai.",
+    "Poi un giorno ho iniziato di mercoledì. Senza aspettare.",
+    "Non era il giorno perfetto. Non esiste il giorno perfetto.",
+    "Esiste solo oggi. E quello che decidi di farne."
+   ]
+  },
+  {
+   "id": "STO-17",
+   "punteggio": 87,
+   "righe": [
+    "Mia madre mi ha insegnato una cosa che non dimenticherò mai.",
+    "\"Tratta tutti con rispetto, anche chi non lo merita.\"",
+    "Da ragazzo non capivo il perché.",
+    "Oggi lo so: il rispetto dice chi sei tu, non chi sono loro.",
+    "Puoi perdere soldi, tempo, occasioni.",
+    "Ma non perdere mai la tua educazione."
+   ]
+  },
+  {
+   "id": "STO-18",
+   "punteggio": 86,
+   "righe": [
+    "Il silenzio mi ha salvato più volte delle parole.",
+    "Quando ero arrabbiato e volevo rispondere a tutti.",
+    "Quando volevo raccontare i miei piani a chiunque.",
+    "Ho imparato a stare zitto e a lavorare.",
+    "I piani si raccontano quando sono realtà.",
+    "Fino ad allora, il silenzio è il tuo migliore amico."
+   ]
+  },
+  {
+   "id": "STO-19",
+   "punteggio": 86,
+   "righe": [
+    "Ho iniziato questo viaggio senza sapere dove portasse.",
+    "Ogni giorno un video. Ogni giorno un passo.",
+    "Alcuni li guardano in pochi. Altri in tanti.",
+    "Ma non conta quanti ti guardano all'inizio.",
+    "Conta non smettere quando non ti guarda nessuno.",
+    "Restate con me. Vediamo insieme dove arrivo."
+   ]
+  },
+  {
+   "id": "STO-20",
+   "punteggio": 86,
+   "righe": [
+    "Una volta mi sono sentito il più indietro di tutti.",
+    "Gli altri avevano già tutto: lavoro, soldi, sicurezze.",
+    "Io avevo solo tanta voglia e zero certezze.",
+    "Poi ho smesso di guardare la loro strada.",
+    "E ho iniziato a camminare sulla mia.",
+    "Non sei in ritardo. Sei sul tuo percorso."
+   ]
+  },
+  {
+   "id": "STO-21",
+   "punteggio": 85,
+   "righe": [
+    "La palestra mi ha insegnato più della scuola.",
+    "Che i risultati arrivano solo se sei costante.",
+    "Che il dolore di oggi è la forza di domani.",
+    "Che nessuno può fare le ripetizioni al posto tuo.",
+    "E che quando pensi di non farcela, ce ne sono ancora due.",
+    "Vale per il fisico. E vale per la vita."
+   ]
+  },
+  {
+   "id": "STO-22",
+   "punteggio": 85,
+   "righe": [
+    "Non ho mai avuto un piano B.",
+    "Non perché fossi sicuro di farcela.",
+    "Ma perché sapevo che con un piano B avrei mollato prima.",
+    "Quando non hai alternative, trovi sempre un modo.",
+    "Ogni porta chiusa diventa una lezione.",
+    "A volte devi bruciare le navi per conquistare l'isola."
+   ]
+  },
+  {
+   "id": "STO-23",
+   "punteggio": 85,
+   "righe": [
+    "Ricordo il giorno in cui ho deciso di cambiare.",
+    "Non è successo niente di speciale, all'apparenza.",
+    "Ero solo stanco di essere sempre la stessa persona.",
+    "Ho preso un foglio e ho scritto cosa volevo davvero.",
+    "Quel foglio ce l'ho ancora. Lo rileggo spesso.",
+    "Tutto cambia nel momento in cui decidi tu."
+   ]
+  },
+  {
+   "id": "STO-24",
+   "punteggio": 84,
+   "righe": [
+    "Le persone vedono il risultato, mai il prezzo.",
+    "Non vedono le rinunce. Non vedono la stanchezza.",
+    "Non vedono i giorni in cui niente andava bene.",
+    "Vedono solo la foto finale e dicono \"che fortuna\".",
+    "La fortuna non c'entra niente.",
+    "C'entrano tutti i giorni in cui ho continuato senza nessuno."
+   ]
+  },
+  {
+   "id": "STO-25",
+   "punteggio": 84,
+   "righe": [
+    "Mio nonno diceva sempre: \"chi semina, raccoglie\".",
+    "Da piccolo pensavo parlasse solo della campagna.",
+    "Poi ho iniziato a lavorare davvero.",
+    "E ho capito che parlava di tutto.",
+    "Di quello che fai ogni giorno, anche quando nessuno guarda.",
+    "Oggi semino. Domani raccolgo."
+   ]
+  },
+  {
+   "id": "STO-26",
+   "punteggio": 84,
+   "righe": [
+    "Ho smesso di confrontarmi con gli altri sui social.",
+    "Vedevo solo successi, viaggi, macchine, vite perfette.",
+    "E mi sentivo sempre un passo indietro.",
+    "Poi ho capito che vedevo solo la parte migliore.",
+    "Nessuno pubblica le giornate storte.",
+    "L'unico confronto giusto è con chi eri ieri."
+   ]
+  },
+  {
+   "id": "STO-27",
+   "punteggio": 83,
+   "righe": [
+    "C'è una cosa che faccio ogni sera prima di dormire.",
+    "Mi chiedo: oggi sono stato migliore di ieri?",
+    "Alcune sere la risposta è sì.",
+    "Altre sere è no. E va bene lo stesso.",
+    "L'importante è farsi la domanda ogni giorno.",
+    "Chi smette di chiederselo, smette di crescere."
+   ]
+  },
+  {
+   "id": "STO-28",
+   "punteggio": 83,
+   "righe": [
+    "La gente mi chiede quale sia il mio segreto.",
+    "Si aspettano chissà quale trucco.",
+    "La verità è molto più noiosa.",
+    "Faccio le stesse cose giuste, ogni giorno, da tanto tempo.",
+    "Anche quando non ne ho voglia. Soprattutto allora.",
+    "Il segreto è che non c'è nessun segreto."
+   ]
+  },
+  {
+   "id": "STO-29",
+   "punteggio": 83,
+   "righe": [
+    "Un giorno ho aiutato uno sconosciuto senza chiedere niente.",
+    "Non lo rivedrò mai più, probabilmente.",
+    "Ma quella sera sono tornato a casa più leggero.",
+    "Ho capito che il bene che fai torna sempre.",
+    "Magari non da quella persona. Magari non subito.",
+    "Ma torna. Sempre."
+   ]
+  },
+  {
+   "id": "STO-30",
+   "punteggio": 82,
+   "righe": [
+    "Una volta ho perso tutto quello che avevo costruito.",
+    "Non per colpa di qualcuno. Per colpa mia.",
+    "Ho passato giorni a chiedermi come fosse possibile.",
+    "Poi mi sono alzato e ho ricominciato. Più lucido di prima.",
+    "La seconda volta si costruisce più veloce.",
+    "Perché ricominci con l'esperienza, non da zero."
+   ]
+  },
+  {
+   "id": "STO-31",
+   "punteggio": 82,
+   "righe": [
+    "Ci sono giorni in cui mi sento solo in questo percorso.",
+    "Gli altri escono, si divertono, staccano.",
+    "Io resto concentrato sui miei obiettivi.",
+    "Non perché sono migliore. Perché ho fatto una scelta.",
+    "La solitudine di oggi è il prezzo della libertà di domani.",
+    "E io ho deciso di pagarlo."
+   ]
+  },
+  {
+   "id": "STO-32",
+   "punteggio": 82,
+   "righe": [
+    "Il mio primo cliente non lo dimenticherò mai.",
+    "Si è fidato di me quando non avevo niente da mostrare.",
+    "Né recensioni, né esperienza, né nome.",
+    "Solo la promessa di fare un buon lavoro.",
+    "Ho lavorato il doppio per non deluderlo.",
+    "La fiducia degli altri si ripaga solo con i fatti."
+   ]
+  },
+  {
+   "id": "STO-33",
+   "punteggio": 81,
+   "righe": [
+    "Pensavo che la motivazione arrivasse da sola.",
+    "Aspettavo il giorno giusto, l'energia giusta.",
+    "Intanto i mesi passavano e io restavo fermo.",
+    "Poi ho scoperto una cosa: la motivazione arriva dopo.",
+    "Prima ti muovi, poi ti viene voglia.",
+    "Non aspettare di sentirti pronto. Inizia."
+   ]
+  },
+  {
+   "id": "STO-34",
+   "punteggio": 81,
+   "righe": [
+    "Ho una regola: mai andare a dormire arrabbiato con me stesso.",
+    "Se la giornata è andata male, faccio almeno una cosa buona.",
+    "Un allenamento, una pagina, una telefonata a chi voglio bene.",
+    "Una cosa piccola che mi ricorda chi voglio essere.",
+    "Non serve vincere ogni giorno.",
+    "Serve non perdere due giorni di fila."
+   ]
+  },
+  {
+   "id": "STO-35",
+   "punteggio": 81,
+   "righe": [
+    "Da piccolo guardavo chi ce l'aveva fatta e pensavo: \"beati loro\".",
+    "Pensavo fossero nati fortunati.",
+    "Poi ho conosciuto alcune di quelle persone.",
+    "Nessuna era nata fortunata. Tutte avevano lavorato tantissimo.",
+    "Quel giorno ho smesso di invidiare.",
+    "E ho iniziato a lavorare."
+   ]
+  },
+  {
+   "id": "STO-36",
+   "punteggio": 80,
+   "righe": [
+    "Oggi è uno di quei giorni normali.",
+    "Niente di speciale da raccontare.",
+    "Sveglia, lavoro, allenamento, famiglia.",
+    "Ma sono proprio i giorni normali che fanno la differenza.",
+    "Quelli che nessuno filma, nessuno racconta.",
+    "La vita che vuoi si costruisce nei giorni normali."
+   ]
+  },
+  {
+   "id": "STO-37",
+   "punteggio": 80,
+   "righe": [
+    "Mi hanno detto che ero troppo ambizioso.",
+    "Che dovevo accontentarmi, come tutti.",
+    "Ho provato ad ascoltarli, per un po'.",
+    "Ma ogni sera sentivo che stavo sprecando qualcosa.",
+    "Allora ho smesso di abbassare i miei sogni.",
+    "Non sei troppo ambizioso. Sono loro che si accontentano."
+   ]
+  },
+  {
+   "id": "STO-38",
+   "punteggio": 80,
+   "righe": [
+    "Ho imparato a godermi le piccole vittorie.",
+    "Un allenamento finito quando volevo fermarmi.",
+    "Un problema risolto senza chiedere aiuto.",
+    "Una giornata senza lamentarmi neanche una volta.",
+    "Sembrano niente. Ma messe insieme, sono tutto.",
+    "Le grandi vittorie sono fatte di quelle piccole."
+   ]
+  },
+  {
+   "id": "STO-39",
+   "punteggio": 79,
+   "righe": [
+    "Una persona mi ha detto: \"tanto non durerà\".",
+    "Parlava di questo progetto. Di questi video.",
+    "Non ho risposto. Ho sorriso e sono andato avanti.",
+    "Ogni giorno un video in più. Ogni giorno un passo in più.",
+    "Non ho niente da dimostrare a nessuno.",
+    "Ma intanto sono ancora qui. Giorno dopo giorno."
+   ]
+  },
+  {
+   "id": "STO-40",
+   "punteggio": 79,
+   "righe": [
+    "La cosa più difficile non è iniziare.",
+    "È continuare quando l'entusiasmo è finito.",
+    "Quando la novità è passata e resta solo la fatica.",
+    "Lì si vede chi vuole davvero una cosa.",
+    "Chi la vuole trova un modo. Chi no, trova una scusa.",
+    "Io ho deciso da che parte stare."
+   ]
+  },
+  {
+   "id": "STO-41",
+   "punteggio": 78,
+   "righe": [
+    "Ho smesso di dire \"non ho tempo\".",
+    "Perché il tempo c'era. Lo usavo male.",
+    "Ore sul telefono. Ore a lamentarmi.",
+    "Ho iniziato a togliere una cosa inutile al giorno.",
+    "E il tempo per le cose importanti è comparso.",
+    "Non è il tempo che manca. È la priorità."
+   ]
+  },
+  {
+   "id": "STO-42",
+   "punteggio": 78,
+   "righe": [
+    "Quando qualcuno mi chiede consiglio, dico sempre la stessa cosa.",
+    "Non aspettare di avere tutto chiaro.",
+    "Io non avevo un piano perfetto. Avevo solo voglia.",
+    "Il piano si sistema strada facendo.",
+    "Chi aspetta la perfezione resta sempre al punto di partenza.",
+    "Parti imperfetto. Migliora per strada."
+   ]
+  },
+  {
+   "id": "STO-43",
+   "punteggio": 77,
+   "righe": [
+    "Un giorno qualcuno guarderà questi video dall'inizio.",
+    "Vedrà da dove sono partito.",
+    "I giorni buoni e quelli meno buoni.",
+    "E forse penserà: \"se ce l'ha fatta lui, posso farcela anch'io\".",
+    "Se anche solo una persona lo penserà, ne sarà valsa la pena.",
+    "Questo diario è anche per te."
+   ]
+  },
+  {
+   "id": "STO-44",
+   "punteggio": 77,
+   "righe": [
+    "Ho capito che la famiglia è il mio motore.",
+    "Quando sono stanco, penso a loro.",
+    "Quando voglio mollare, penso a loro.",
+    "Non lavoro solo per me.",
+    "Lavoro per restituire tutto quello che mi hanno dato.",
+    "Ogni sacrificio ha un nome. Il mio ne ha tanti."
+   ]
+  },
+  {
+   "id": "STO-45",
+   "punteggio": 76,
+   "righe": [
+    "Mi sono svegliato con mille pensieri in testa.",
+    "Problemi di lavoro, cose da sistemare, decisioni da prendere.",
+    "Ho fatto l'unica cosa che funziona sempre.",
+    "Mi sono allenato. Senza pensare a niente.",
+    "Quando ho finito, i problemi erano ancora lì.",
+    "Ma io ero più forte di loro."
+   ]
+  },
+  {
+   "id": "STO-46",
+   "punteggio": 90,
+   "righe": [
+    "Una volta hanno scambiato il mio silenzio per debolezza.",
+    "Parlavano di me, ridevano dei miei progetti.",
+    "Io non ho risposto. Neanche una parola.",
+    "Ho solo continuato a lavorare, giorno dopo giorno.",
+    "Oggi quelle stesse persone mi chiedono consigli.",
+    "Il silenzio non è debolezza. È concentrazione."
+   ]
+  },
+  {
+   "id": "STO-47",
+   "punteggio": 88,
+   "righe": [
+    "Ho visto mio padre tornare a casa distrutto.",
+    "Le mani rovinate, la schiena a pezzi, mai una lamentela.",
+    "Ci sorrideva lo stesso, come se fosse tutto facile.",
+    "Quel giorno ho capito quanto costava il nostro piatto a tavola.",
+    "Ho promesso che un giorno gli avrei restituito tutto.",
+    "Ogni sacrificio che faccio oggi porta il suo nome."
+   ]
+  },
+  {
+   "id": "STO-48",
+   "punteggio": 89,
+   "righe": [
+    "Ho imparato cos'è il rispetto guardando un cameriere.",
+    "Una persona al tavolo lo trattava come se fosse niente.",
+    "Lui ha sorriso ed è andato avanti con dignità.",
+    "Ho pensato: chi è davvero il più grande qui?",
+    "Il rispetto si vede da come tratti chi non può darti niente.",
+    "Da quel giorno tratto tutti allo stesso modo."
+   ]
+  },
+  {
+   "id": "STO-49",
+   "punteggio": 86,
+   "righe": [
+    "Per mesi ho lavorato senza dirlo a nessuno.",
+    "Niente annunci, niente storie, niente promesse in giro.",
+    "Ogni sera chiudevo il computer stanco ma contento.",
+    "Quando sono arrivati i primi risultati, nessuno ci credeva.",
+    "Mi chiedevano: ma quando hai fatto tutto questo?",
+    "I piani si raccontano solo quando sono già realtà."
+   ]
+  },
+  {
+   "id": "STO-50",
+   "punteggio": 87,
+   "righe": [
+    "C'è stato un periodo in cui stavo sempre da solo.",
+    "Non perché fossi triste. Perché stavo costruendo qualcosa.",
+    "Lavoro, palestra, casa. E di nuovo lavoro.",
+    "All'inizio mi sembrava di perdermi qualcosa di importante.",
+    "Poi ho capito che stavo trovando me stesso.",
+    "Stare da soli mentre cresci non è solitudine. È scelta."
+   ]
+  },
+  {
+   "id": "STO-51",
+   "punteggio": 85,
+   "righe": [
+    "Un amico mi ha chiesto aiuto in un momento difficile.",
+    "Io stesso non avevo molto, quel periodo.",
+    "Ma ho diviso con lui quello che avevo.",
+    "Non mi ha mai chiesto niente in cambio, e io neanche.",
+    "Oggi siamo ancora qui, uno accanto all'altro.",
+    "La lealtà non si dice. Si dimostra quando costa."
+   ]
+  },
+  {
+   "id": "STO-52",
+   "punteggio": 84,
+   "righe": [
+    "Stamattina la sveglia è suonata e non volevo alzarmi.",
+    "Pioveva, ero stanco, avevo mille scuse pronte.",
+    "Poi ho pensato a chi conta su di me.",
+    "Mi sono alzato e ho fatto tutto, una cosa alla volta.",
+    "La motivazione non c'era. La disciplina sì.",
+    "Sono le giornate così che ti cambiano davvero."
+   ]
+  },
+  {
+   "id": "STO-53",
+   "punteggio": 83,
+   "righe": [
+    "In palestra c'era un esercizio che odiavo.",
+    "Ogni volta trovavo una scusa per saltarlo.",
+    "Un giorno mi sono detto: basta scappare.",
+    "L'ho fatto male, poi un po' meglio, poi bene.",
+    "Adesso è quello in cui vado più forte.",
+    "Le cose che eviti sono quelle che ti fanno crescere."
+   ]
+  },
+  {
+   "id": "STO-54",
+   "punteggio": 88,
+   "righe": [
+    "Mia madre non ha mai chiesto niente per sé.",
+    "Tutto quello che aveva, lo dava a noi.",
+    "Vestiti, tempo, sonno, sogni messi da parte.",
+    "Da piccolo non me ne accorgevo neanche.",
+    "Oggi lavoro anche perché lei possa finalmente riposarsi.",
+    "I sacrifici dei genitori meritano il nostro successo."
+   ]
+  },
+  {
+   "id": "STO-55",
+   "punteggio": 86,
+   "righe": [
+    "Ho smesso di spiegarmi con chi non vuole capire.",
+    "Prima perdevo ore a convincere tutti delle mie scelte.",
+    "Discussioni, messaggi lunghi, notti a pensarci sopra.",
+    "Un giorno ho semplicemente smesso. Ho sorriso e basta.",
+    "Quel tempo l'ho usato per lavorare su me stesso.",
+    "Chi ti vuole capire, ti capisce senza spiegazioni."
+   ]
+  },
+  {
+   "id": "STO-56",
+   "punteggio": 82,
+   "righe": [
+    "Una persona mi ha detto che non sarei mai cambiato.",
+    "Lo ha detto davanti a tutti, ridendo.",
+    "Quella frase mi è rimasta in testa per mesi.",
+    "Ma invece di farmi male, mi ha dato energia.",
+    "Ogni allenamento, ogni giornata di lavoro, era una risposta.",
+    "Grazie a chi non credeva in me. Mi avete spinto voi."
+   ]
+  },
+  {
+   "id": "STO-57",
+   "punteggio": 85,
+   "righe": [
+    "Ho capito chi mi voleva bene quando non avevo niente.",
+    "Niente soldi da offrire, niente favori da fare.",
+    "Tante persone sono sparite in silenzio.",
+    "Ne sono rimaste poche. Ma erano quelle vere.",
+    "Oggi le porto con me ovunque vada.",
+    "Chi c'è quando non hai niente, merita tutto."
+   ]
+  },
+  {
+   "id": "STO-58",
+   "punteggio": 83,
+   "righe": [
+    "Ho perso un'occasione importante per colpa della fretta.",
+    "Volevo tutto e subito, senza aspettare il momento giusto.",
+    "Ci sono rimasto male per settimane.",
+    "Poi ho imparato a costruire con calma, mattone dopo mattone.",
+    "La fretta ti fa correre. La pazienza ti fa arrivare.",
+    "Oggi preferisco andare piano ma nella direzione giusta."
+   ]
+  },
+  {
+   "id": "STO-59",
+   "punteggio": 84,
+   "righe": [
+    "Mi sono accorto che reagivo a tutto.",
+    "Una parola storta e partivo subito.",
+    "Mi rovinavo la giornata per persone che neanche contavano.",
+    "Ho iniziato a respirare prima di rispondere.",
+    "E ho scoperto che quasi niente meritava la mia energia.",
+    "Chi resta calmo non si fa controllare da nessuno."
+   ]
+  },
+  {
+   "id": "STO-60",
+   "punteggio": 81,
+   "righe": [
+    "Il primo guadagno vero l'ho portato a casa con orgoglio.",
+    "Non era tanto, ma l'avevo costruito io.",
+    "L'ho messo sul tavolo davanti alla mia famiglia.",
+    "Nessuno ha detto niente. Ma gli occhi parlavano.",
+    "Quel momento vale più di qualsiasi applauso.",
+    "Il successo più bello è quello che condividi con chi ami."
+   ]
+  },
+  {
+   "id": "STO-61",
+   "punteggio": 83,
+   "righe": [
+    "Tutti vedono il risultato. Nessuno ha visto le notti.",
+    "Le notti con i dubbi e i conti che non tornavano.",
+    "Le volte in cui volevo mollare tutto.",
+    "Le mattine in cui mi alzavo senza nessuna certezza.",
+    "Adesso dicono che sono stato fortunato.",
+    "La fortuna arriva a chi non smette mai di provarci."
+   ]
+  },
+  {
+   "id": "STO-62",
+   "punteggio": 80,
+   "righe": [
+    "Oggi ho fatto una cosa che rimandavo da mesi.",
+    "Una telefonata difficile per il mio lavoro.",
+    "Avevo paura di sentirmi dire di no.",
+    "Mi hanno detto di no, infatti.",
+    "Ma mi sono sentito libero come non mai.",
+    "La paura di provarci fa più male di un rifiuto."
+   ]
+  },
+  {
+   "id": "STO-63",
+   "punteggio": 82,
+   "righe": [
+    "Ho tagliato fuori una persona che mi teneva fermo.",
+    "Non l'ho fatto con rabbia. L'ho fatto con rispetto.",
+    "Ogni volta che parlavamo, mi sentivo più piccolo.",
+    "Ho scelto di allontanarmi in silenzio.",
+    "Da quel giorno sono tornato a respirare.",
+    "Il rispetto per te stesso viene prima di tutto."
+   ]
+  },
+  {
+   "id": "STO-64",
+   "punteggio": 85,
+   "righe": [
+    "Nessuno verrà a salvarti. L'ho capito da solo.",
+    "Aspettavo un'occasione, un aiuto, una spinta da qualcuno.",
+    "Intanto il tempo passava e io restavo fermo.",
+    "Un giorno mi sono alzato e ho deciso di muovermi.",
+    "Piano piano ho costruito tutto con le mie mani.",
+    "Diventa tu la persona di cui avevi bisogno."
+   ]
+  },
+  {
+   "id": "STO-65",
+   "punteggio": 80,
+   "righe": [
+    "Ho fatto un sacrificio che nessuno ha notato.",
+    "Ho rinunciato a una cosa che volevo tanto.",
+    "Quei soldi li ho messi nel mio progetto.",
+    "Gli altri non capivano perché facessi così.",
+    "Oggi quel progetto mi sta ripagando di tutto.",
+    "Le rinunce di oggi sono le libertà di domani."
+   ]
+  },
+  {
+   "id": "STO-66",
+   "punteggio": 79,
+   "righe": [
+    "Pensavo che essere gentile volesse dire dire sempre sì.",
+    "Aiutavo tutti, anche chi se ne approfittava.",
+    "Alla fine mi sentivo svuotato e usato.",
+    "Ho imparato a dire no, con educazione ma con fermezza.",
+    "Sono rimasto gentile. Ma non più ingenuo.",
+    "La gentilezza non è il permesso di mancarti di rispetto."
+   ]
+  },
+  {
+   "id": "STO-67",
+   "punteggio": 81,
+   "righe": [
+    "Ricordo il primo giorno che sono entrato in palestra.",
+    "Non sapevo neanche come usare le macchine.",
+    "Mi sentivo osservato, fuori posto, impacciato.",
+    "Ma sono tornato il giorno dopo. E quello dopo ancora.",
+    "Oggi sono io a dare consigli a chi inizia.",
+    "Tutti iniziano da zero. Pochi hanno il coraggio di tornare."
+   ]
+  },
+  {
+   "id": "STO-68",
+   "punteggio": 84,
+   "righe": [
+    "Mi hanno chiesto perché parlo così poco.",
+    "La verità è che ascolto e osservo tutto.",
+    "Ho imparato più stando zitto che parlando.",
+    "Capisci le persone da come si comportano, non da cosa dicono.",
+    "E capisci te stesso quando smetti di rincorrere il rumore.",
+    "Chi parla poco spesso sa esattamente cosa sta facendo."
+   ]
+  },
+  {
+   "id": "STO-69",
+   "punteggio": 82,
+   "righe": [
+    "C'è stata una giornata in cui è andato tutto storto.",
+    "Un problema con un cliente, un ordine sbagliato, la stanchezza.",
+    "Volevo solo chiudere tutto e sparire.",
+    "Invece ho risolto una cosa alla volta, con calma.",
+    "La sera ero sfinito, ma avevo vinto io.",
+    "Le giornate peggiori ti insegnano di cosa sei fatto."
+   ]
+  },
+  {
+   "id": "STO-70",
+   "punteggio": 80,
+   "righe": [
+    "Una volta ho dato la mia parola a una persona.",
+    "Poi le cose si sono complicate e mantenerla costava caro.",
+    "Potevo trovare una scusa. Nessuno mi avrebbe detto niente.",
+    "Ma io avrei saputo. E non me lo sarei perdonato.",
+    "Ho mantenuto la parola, anche rimettendoci.",
+    "La tua parola vale più di qualsiasi contratto."
+   ]
+  },
+  {
+   "id": "STO-71",
+   "punteggio": 79,
+   "righe": [
+    "Ho deciso di cambiare abitudini un passo alla volta.",
+    "Prima ho iniziato a mangiare bene, come un atleta.",
+    "Poi ho tolto le ore perse sul telefono.",
+    "Poi ho aggiunto un allenamento in più.",
+    "Nessun cambiamento enorme. Solo piccole scelte ogni giorno.",
+    "Le grandi trasformazioni sono fatte di piccole abitudini."
+   ]
+  },
+  {
+   "id": "STO-72",
+   "punteggio": 83,
+   "righe": [
+    "Chi sperava di vedermi crollare, oggi mi guarda in silenzio.",
+    "Ci sono stati momenti in cui ero davvero a terra.",
+    "Qualcuno ci sperava. Lo leggevo nei loro occhi.",
+    "Ma io ho stretto i denti e mi sono rialzato.",
+    "Non ho detto niente a nessuno. Ho solo continuato.",
+    "La risposta migliore è continuare a crescere."
+   ]
+  },
+  {
+   "id": "STO-73",
+   "punteggio": 78,
+   "righe": [
+    "Lasciavo che le opinioni degli altri decidessero per me.",
+    "Cosa studiare, cosa fare, come vivere.",
+    "Mi sentivo sempre sulla strada di qualcun altro.",
+    "Un giorno ho scelto io. Anche se nessuno era d'accordo.",
+    "È stata la decisione più giusta della mia vita.",
+    "Se parlano alle tue spalle, è perché sei davanti."
+   ]
+  },
+  {
+   "id": "STO-74",
+   "punteggio": 81,
+   "righe": [
+    "La costanza mi ha portato dove il talento non arrivava.",
+    "Non ero il più bravo, né il più veloce.",
+    "C'erano persone molto più dotate di me.",
+    "Ma io mi presentavo ogni giorno, senza saltarne uno.",
+    "Molte di quelle persone ad un certo punto si sono fermate.",
+    "Il talento ti apre la porta. La costanza ti fa restare."
+   ]
+  },
+  {
+   "id": "STO-75",
+   "punteggio": 80,
+   "righe": [
+    "Mio fratello mi ha detto una cosa che non dimentico.",
+    "Ero giù, pensavo di non farcela più.",
+    "Lui mi ha guardato e mi ha detto: \"io credo in te\".",
+    "Quattro parole. Ma in quel momento erano tutto.",
+    "Da quel giorno cerco di essere quella voce per gli altri.",
+    "A volte basta una persona che crede in te."
+   ]
+  },
+  {
+   "id": "STO-76",
+   "punteggio": 82,
+   "righe": [
+    "Ho smesso di cercare l'approvazione di tutti.",
+    "Prima ogni like, ogni commento, mi cambiava l'umore.",
+    "Vivevo per il giudizio di persone che non conoscevo.",
+    "Poi ho iniziato a chiedermi solo: sono fiero di me?",
+    "Se la risposta è sì, il resto non conta.",
+    "Conosci il tuo valore. Non chiederlo a nessuno."
+   ]
+  },
+  {
+   "id": "STO-77",
+   "punteggio": 79,
+   "righe": [
+    "Sei mesi fa ho iniziato qualcosa che nessuno capiva.",
+    "Mi dicevano che era tempo perso.",
+    "Ci sono stati giorni in cui ci credevo solo io.",
+    "Oggi guardo indietro e vedo quanta strada ho fatto.",
+    "Non è ancora il traguardo. Ma è un inizio vero.",
+    "Fra sei mesi ringrazierai te stesso per non aver mollato."
+   ]
+  },
+  {
+   "id": "STO-78",
+   "punteggio": 77,
+   "righe": [
+    "Ho imparato a godermi il silenzio della mattina.",
+    "Prima di tutto, prima del telefono, prima del lavoro.",
+    "Un caffè, un pensiero, un obiettivo per la giornata.",
+    "In quei minuti decido chi voglio essere oggi.",
+    "Il resto del mondo può aspettare.",
+    "Chi controlla la sua mattina controlla la sua giornata."
+   ]
+  },
+  {
+   "id": "STO-79",
+   "punteggio": 80,
+   "righe": [
+    "Una sera ho fatto i conti e non tornavano.",
+    "Avevo investito tutto e i risultati non arrivavano.",
+    "Ho pensato davvero di lasciar perdere.",
+    "Poi ho cambiato una cosa sola nel mio lavoro.",
+    "E piano piano le cose hanno iniziato a girare.",
+    "A volte non devi mollare. Devi solo aggiustare il tiro."
+   ]
+  },
+  {
+   "id": "STO-80",
+   "punteggio": 78,
+   "righe": [
+    "Da piccolo guardavo mio nonno lavorare la terra.",
+    "Si alzava presto, sempre, senza lamentarsi mai.",
+    "Diceva che il lavoro fatto bene è una forma di rispetto.",
+    "Rispetto per te stesso e per chi ti sta intorno.",
+    "Oggi il mio lavoro è diverso, ma la regola è la stessa.",
+    "Fai le cose bene, anche quando nessuno controlla."
+   ]
+  },
+  {
+   "id": "STO-81",
+   "punteggio": 81,
+   "righe": [
+    "Mi hanno offerto una scorciatoia facile.",
+    "Guadagnare in fretta, senza fare troppe domande.",
+    "Era tentante, non lo nego a nessuno.",
+    "Ma non era il modo in cui mi hanno cresciuto.",
+    "Ho detto no e ho continuato per la mia strada.",
+    "Quello che costruisci con onestà nessuno te lo toglie."
+   ]
+  },
+  {
+   "id": "STO-82",
+   "punteggio": 79,
+   "righe": [
+    "Ho visto amici sprecare il loro tempo ogni giorno.",
+    "Sempre fuori, sempre a lamentarsi del lavoro.",
+    "Io restavo a casa a studiare e a lavorare sul mio progetto.",
+    "Mi prendevano in giro. Mi chiamavano noioso.",
+    "Oggi alcuni di loro mi chiedono come ho fatto.",
+    "Quello che fai quando gli altri si divertono ti cambia la vita."
+   ]
+  },
+  {
+   "id": "STO-83",
+   "punteggio": 78,
+   "righe": [
+    "Avevo paura di fallire davanti a tutti.",
+    "Paura del giudizio, delle risate, delle frasi alle spalle.",
+    "Così non provavo mai niente di nuovo.",
+    "Un giorno ho capito che fallire non mi avrebbe ucciso.",
+    "Ho provato. Ho sbagliato. Ho imparato.",
+    "Chi ha paura di sbagliare non inizia mai niente."
+   ]
+  },
+  {
+   "id": "STO-84",
+   "punteggio": 82,
+   "righe": [
+    "Non sai mai quale battaglia sta combattendo chi hai davanti.",
+    "Un giorno ho risposto male a una persona.",
+    "Poi ho scoperto che stava passando un momento terribile.",
+    "Mi sono sentito piccolo e sono tornato a scusarmi.",
+    "Da quella volta provo a essere gentile con tutti.",
+    "Un gesto gentile può cambiare la giornata di qualcuno."
+   ]
+  },
+  {
+   "id": "STO-85",
+   "punteggio": 80,
+   "righe": [
+    "La palestra è il posto dove spengo tutto.",
+    "Non c'è lavoro, non ci sono problemi, non ci sono pensieri.",
+    "Ci sono solo io, il peso e la fatica.",
+    "Ogni ripetizione è una promessa che mantengo a me stesso.",
+    "Esco sempre più leggero di come sono entrato.",
+    "Allenare il corpo mi ha insegnato ad allenare la testa."
+   ]
+  },
+  {
+   "id": "STO-86",
+   "punteggio": 81,
+   "righe": [
+    "Ho capito una cosa sui soldi, lavorando ogni giorno.",
+    "Non ti cambiano. Ti mostrano chi eri già.",
+    "Ho visto persone perdersi appena hanno guadagnato qualcosa.",
+    "Io voglio restare lo stesso, qualunque cosa succeda.",
+    "Umile quando cresco, affamato quando sono in alto.",
+    "I soldi si fanno. Il carattere si mantiene."
+   ]
+  },
+  {
+   "id": "STO-87",
+   "punteggio": 83,
+   "righe": [
+    "C'è chi mi ha chiesto: \"ma chi te lo fa fare?\"",
+    "Le levatacce, i weekend a lavorare, le rinunce.",
+    "Non ho risposto con le parole.",
+    "Ho pensato alla mia famiglia, al futuro che voglio dargli.",
+    "E ho continuato, ancora più deciso di prima.",
+    "Quando sai per chi lo fai, la fatica pesa meno."
+   ]
+  },
+  {
+   "id": "STO-88",
+   "punteggio": 79,
+   "righe": [
+    "Un giorno ho scritto su un foglio chi volevo diventare.",
+    "Una persona disciplinata, onesta, presente per la famiglia.",
+    "L'ho attaccato dove potevo vederlo ogni mattina.",
+    "Alcuni giorni quel ragazzo mi sembrava lontanissimo.",
+    "Altri giorni mi sentivo sempre più vicino.",
+    "Diventi quello che ripeti a te stesso ogni giorno."
+   ]
+  },
+  {
+   "id": "STO-89",
+   "punteggio": 78,
+   "righe": [
+    "Ho lasciato andare il rancore verso chi mi aveva fatto male.",
+    "Per tanto tempo ci ho pensato ogni giorno.",
+    "Mi rubava energia, sonno e concentrazione.",
+    "Un giorno ho deciso che non meritava più spazio.",
+    "Non l'ho fatto per loro. L'ho fatto per me.",
+    "La pace costa cara, ma è il regalo più bello che puoi farti."
+   ]
+  },
+  {
+   "id": "STO-90",
+   "punteggio": 80,
+   "righe": [
+    "Ogni giorno mi presento, anche quando nessuno guarda.",
+    "Questi video li vedono in pochi, a volte.",
+    "Potrei fermarmi e nessuno se ne accorgerebbe.",
+    "Ma io lo saprei. E questo mi basta.",
+    "La disciplina vera è quella che nessuno vede.",
+    "È lì che si capisce chi sei davvero."
+   ]
+  },
+  {
+   "id": "STO-91",
+   "punteggio": 84,
+   "righe": [
+    "Ho capito che non devo essere il migliore di tutti.",
+    "Per anni mi sono paragonato a chi era più avanti.",
+    "E mi sentivo sempre indietro, sempre insufficiente.",
+    "Poi ho iniziato a guardare solo chi ero ieri.",
+    "Ogni giorno un po' meglio. Solo questo.",
+    "L'unica gara che conta è quella con te stesso."
+   ]
+  }
  ]
 }
