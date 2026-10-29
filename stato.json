@@ -7545,11 +7545,46 @@
    },
    "spinto": false,
    "testo": "Ho imparato cos'è il rispetto guardando un cameriere."
+  },
+  {
+   "quando": "2026-10-29T23:00",
+   "slot": "2026-10-30 00:00",
+   "video": "IMG_4292.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-7214ec2b",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "fire_in_the_sky_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "musica_meta": "phonk_13.flac",
+    "musica_instagram": "The One I Miss - Phillipe Bianco"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "8S9DUvlWeUI"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18130647628876859"
+    },
+    "facebook": {
+     "ok": true,
+     "id": "2785327965232080"
+    }
+   },
+   "spinto": false,
+   "testo": "Sacrifica oggi per un domani migliore."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-21 18:00",
   "2026-10-21 20:00",
   "2026-10-21 22:00",
   "2026-10-22 00:00",
@@ -7628,10 +7663,10 @@
   "2026-10-29 10:00",
   "2026-10-29 12:00",
   "2026-10-29 14:00",
-  "2026-10-29 22:00"
+  "2026-10-29 22:00",
+  "2026-10-30 00:00"
  ],
  "musica_recenti": [
-  "cartier_1.m4a",
   "final_boss_battle_1.m4a",
   "fire_in_the_sky_1.m4a",
   "rubberband_1.m4a",
@@ -7650,7 +7685,8 @@
   "visions_1.m4a",
   "ancient_civilisations_1.m4a",
   "horizons_1.m4a",
-  "cartier_1.m4a"
+  "cartier_1.m4a",
+  "fire_in_the_sky_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7864,7 +7900,8 @@
   "STO-16",
   "STO-28",
   "STO-27",
-  "STO-48"
+  "STO-48",
+  "MIE-7214ec2b"
  ],
  "temi_recenti": [
   "storia",
@@ -7876,7 +7913,7 @@
   "storia",
   "storia",
   "storia",
-  "storia"
+  "mentalita"
  ],
  "analisi": {
   "1Dvdi1PK-wTKhXcDuM6STB2Mq6FUojSqR": {
@@ -8310,8 +8347,8 @@
    "ultimo": "2026-10-29"
   },
   "1doFy-IdLUGnZn_FuQyyUK5OqHf6xPX08": {
-   "usi": 1,
-   "ultimo": "2026-10-28"
+   "usi": 2,
+   "ultimo": "2026-10-29"
   },
   "1Ks5dKBFsfm1KcBBN6VD0JeN6IDjWWTZu": {
    "usi": 1,
@@ -8335,7 +8372,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_10.flac",
   "phonk_16.flac",
   "phonk_12.flac",
   "phonk_15.flac",
@@ -8354,7 +8390,8 @@
   "phonk_05.flac",
   "phonk_04.flac",
   "phonk_08.flac",
-  "phonk_12.flac"
+  "phonk_12.flac",
+  "phonk_13.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8388,7 +8425,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "racconto",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8404,7 +8441,6 @@
  ],
  "commenti_fino": "2026-10-29T21:00:55Z",
  "ig_audio_recenti": [
-  "732596883977972",
   "2603949126473975",
   "1032171746983079",
   "2477944699150252",
@@ -8433,6 +8469,7 @@
   "158209132866603",
   "2913736298667265",
   "330732519879801",
-  "544713431841568"
+  "544713431841568",
+  "1364616540355148"
  ]
 }
