@@ -7,7 +7,7 @@ senza musica salvo parlato/momento) con la didascalia nella descrizione e l'orar
 
 27/10/2026: il primo giro (26/10) e' partito tardi e la rete e' caduta dopo 1 video -> 17 video arretrati. Ora:
 - ogni video in attesa prende il PROSSIMO ORARIO LIBERO (gli stessi 10 orari di YouTube), cosi' niente si perde;
-- prima i racconti da 30 s (STO-, la prova in corso), poi gli altri, dal piu' vecchio;
+- (29/10) prima i PIU' NUOVI; quelli usciti su YouTube da piu' di 2 giorni si saltano;
 - l'attivita' gira piu' volte la sera (20, 21, 22, 23) e ogni giro ne fa al massimo --max (default 4);
 - i file sopra i 9 MB (limite di Chrome 10 MB) vengono rimpiccioliti qui sul PC.
 
@@ -24,6 +24,7 @@ CARTELLA_TIKTOK = "TikTok - da pubblicare"
 CARTELLA_PC = os.path.join(os.path.expanduser("~"), "TikTok da programmare")
 from orario import ORE      # stessi orari di YouTube (29/10/2026: 10 al giorno)
 MAX_MB = 9.0
+VECCHIO_GIORNI = 2           # 29/10/2026: con 10 al giorno Chrome ne programma 2-8 a sera: si pubblicano i piu' nuovi
 ANTICIPO_MIN = 40            # TikTok vuole almeno 15' di anticipo: si tiene margine per il caricamento
 
 
@@ -93,8 +94,10 @@ def prepara(massimo=4):
             continue
         if slot > adesso:
             continue                                     # non ancora uscito su YouTube
-        attesa.append((0 if "STO-" in f["name"] else 1, slot, f, p))
-    attesa.sort(key=lambda x: (x[0], x[1]))
+        if slot < adesso - datetime.timedelta(days=VECCHIO_GIORNI):
+            continue                                     # 29/10/2026: troppo vecchio, si salta (resta su Drive)
+        attesa.append((0, slot, f, p))
+    attesa.sort(key=lambda x: x[1], reverse=True)       # 29/10/2026: prima i PIU' NUOVI (formato attuale da 10 s)
     liberi = orari_liberi(occupati, adesso)
     elenco = []
     for _, slot, f, p in attesa[:massimo]:
