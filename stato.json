@@ -7767,11 +7767,42 @@
    },
    "spinto": true,
    "testo": "Volevo una vita diversa. Allora ho iniziato a fare cose diverse."
+  },
+  {
+   "quando": "2026-10-30T17:00",
+   "slot": "2026-10-30 18:00",
+   "video": "IMG_4305.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-40a4765a",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "ego_chall_1.m4a",
+    "stacchi": 2,
+    "testi": 2,
+    "musica_meta": "phonk_03.flac",
+    "musica_instagram": "Big Leagues (Instrumental) - Mike Floss"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "rTtuBKO-SDc"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17954260740297562"
+    }
+   },
+   "spinto": true,
+   "testo": "Se vuoi qualcosa che non hai mai avuto, fai qualcosa che non hai mai fatto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-22 08:00",
   "2026-10-22 10:00",
   "2026-10-22 12:00",
   "2026-10-22 14:00",
@@ -7850,10 +7881,10 @@
   "2026-10-30 10:00",
   "2026-10-30 12:00",
   "2026-10-30 14:00",
-  "2026-10-30 16:00"
+  "2026-10-30 16:00",
+  "2026-10-30 18:00"
  ],
  "musica_recenti": [
-  "visions_1.m4a",
   "intergalactic_1.m4a",
   "locked_in_1.m4a",
   "ten_1.m4a",
@@ -7872,7 +7903,8 @@
   "vibe_check_1.m4a",
   "rubberband_1.m4a",
   "van_life_rager_1.m4a",
-  "survival_mode_1.m4a"
+  "survival_mode_1.m4a",
+  "ego_chall_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8092,13 +8124,14 @@
   "MIE-3851d424",
   "MIE-22f623e2",
   "MIE-d860fe71",
-  "MIE-1abab25e"
+  "MIE-1abab25e",
+  "MIE-40a4765a"
  ],
  "temi_recenti": [
   "storia",
   "storia",
   "storia",
-  "storia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -8514,8 +8547,8 @@
    "ultimo": "2026-10-30"
   },
   "1pHaSrw5l22--hj6mculM4Wx5XnAw4U-3": {
-   "usi": 1,
-   "ultimo": "2026-10-29"
+   "usi": 2,
+   "ultimo": "2026-10-30"
   },
   "1XySlsRReGeTwlbVlIctzRJDJBUZ2yHi0": {
    "usi": 1,
@@ -8535,7 +8568,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_12.flac",
   "phonk_06.flac",
   "phonk_09.flac",
   "phonk_07.flac",
@@ -8554,7 +8586,8 @@
   "phonk_16.flac",
   "phonk_16.flac",
   "phonk_15.flac",
-  "phonk_12.flac"
+  "phonk_12.flac",
+  "phonk_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8589,7 +8622,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_broll",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8605,7 +8638,6 @@
  ],
  "commenti_fino": "2026-10-29T21:00:55Z",
  "ig_audio_recenti": [
-  "458742983134920",
   "1718120844886611",
   "973266493758189",
   "475612031187222",
@@ -8634,6 +8666,7 @@
   "2475524415980310",
   "283066584103655",
   "565118654020261",
-  "974432747187721"
+  "974432747187721",
+  "523966117385305"
  ]
 }
