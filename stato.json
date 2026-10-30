@@ -7709,11 +7709,36 @@
    },
    "spinto": true,
    "testo": "Nessuno mi ha regalato niente. Ogni cosa che ho, me la sono presa lavorando."
+  },
+  {
+   "quando": "2026-10-30T12:15",
+   "slot": "2026-10-30 14:00",
+   "video": "IMG_4300.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-9bf92cce",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "the_light_1.m4a",
+    "stacchi": 2,
+    "testi": 2,
+    "musica_meta": "phonk_07.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "-hwNuCwpY_Y"
+    }
+   },
+   "in_corso": true
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-22 04:00",
   "2026-10-22 06:00",
   "2026-10-22 08:00",
   "2026-10-22 10:00",
@@ -7792,7 +7817,8 @@
   "2026-10-30 06:00",
   "2026-10-30 08:00",
   "2026-10-30 10:00",
-  "2026-10-30 12:00"
+  "2026-10-30 12:00",
+  "2026-10-30 14:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_1.m4a",
