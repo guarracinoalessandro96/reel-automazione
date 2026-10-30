@@ -7799,11 +7799,36 @@
    },
    "spinto": true,
    "testo": "Se vuoi qualcosa che non hai mai avuto, fai qualcosa che non hai mai fatto."
+  },
+  {
+   "quando": "2026-10-30T18:15",
+   "slot": "2026-10-30 20:00",
+   "video": "IMG_4307.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-1f097e9f",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "final_boss_battle_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "musica_meta": "phonk_03.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "MzRe_jLE4qo"
+    }
+   },
+   "in_corso": true
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-22 10:00",
   "2026-10-22 12:00",
   "2026-10-22 14:00",
   "2026-10-22 16:00",
@@ -7882,7 +7907,8 @@
   "2026-10-30 12:00",
   "2026-10-30 14:00",
   "2026-10-30 16:00",
-  "2026-10-30 18:00"
+  "2026-10-30 18:00",
+  "2026-10-30 20:00"
  ],
  "musica_recenti": [
   "intergalactic_1.m4a",
