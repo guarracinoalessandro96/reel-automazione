@@ -207,7 +207,6 @@ def testo_breve(cap):
     if cap.get("righe"):          # formato REGOLE: titolo + regole numerate
         testo = cap["gancio"] + "\n" + "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1))
     serie = serie_testo(cap)
-    serie = serie + " · seguimi per vedere dove arrivo" if serie else ""     # il personaggio: un viaggio da seguire
     if DOMANDE_COMMENTI and cap.get("tema") not in ("momento", "parlato", "regole"):   # 29/10/2026 sera: SPENTO: una domanda in fondo -> piu' commenti -> piu' spinta dall'algoritmo
         # 29/10/2026: tolta "Per chi lo fai tu? Scrivilo nei commenti" (non gli piace)
         domande = ["E tu, cosa ti sei promesso? Scrivilo qui sotto 👇", "Qual è il tuo obiettivo di quest'anno? 👇",
@@ -855,7 +854,7 @@ def youtube_upload(creds, path, cap, publish_at=None):
     if cap.get("righe"):    # formato REGOLE: le regole in descrizione
         descr = "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1)) + "\n\n" + descr
     if serie_testo(cap):    # la serie in prima riga + invito a seguire il viaggio (il personaggio, non solo le frasi)
-        descr = f"{serie_testo(cap)} - giorno dopo giorno fino alla fine dell'anno, iscriviti per vedere dove arrivo.\n\n" + descr
+        descr = f"{serie_testo(cap)}\n\n" + descr
     body = {"snippet": {"title": title + " #shorts", "description": descr, "categoryId": "22",
                         "tags": (["vita vera", "momenti", "oggi", "italia", "shorts"] if momento else
                                  ["motivazione", "obiettivi", "disciplina", "frasi motivazionali", "crescita personale",
