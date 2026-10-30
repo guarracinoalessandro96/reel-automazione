@@ -7735,11 +7735,42 @@
     }
    },
    "in_corso": true
+  },
+  {
+   "quando": "2026-10-30T15:00",
+   "slot": "2026-10-30 16:00",
+   "video": "IMG_4302.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-1abab25e",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "survival_mode_1.m4a",
+    "stacchi": 4,
+    "testi": 2,
+    "musica_meta": "phonk_12.flac",
+    "musica_instagram": "Road Warriors - Giulio Cercato"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "goLQeamyHJM"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18436696324180275"
+    }
+   },
+   "spinto": true,
+   "testo": "Volevo una vita diversa. Allora ho iniziato a fare cose diverse."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-22 06:00",
   "2026-10-22 08:00",
   "2026-10-22 10:00",
   "2026-10-22 12:00",
@@ -7818,10 +7849,10 @@
   "2026-10-30 08:00",
   "2026-10-30 10:00",
   "2026-10-30 12:00",
-  "2026-10-30 14:00"
+  "2026-10-30 14:00",
+  "2026-10-30 16:00"
  ],
  "musica_recenti": [
-  "wrangle_the_crazy_1.m4a",
   "visions_1.m4a",
   "intergalactic_1.m4a",
   "locked_in_1.m4a",
@@ -7840,7 +7871,8 @@
   "locked_in_1.m4a",
   "vibe_check_1.m4a",
   "rubberband_1.m4a",
-  "van_life_rager_1.m4a"
+  "van_life_rager_1.m4a",
+  "survival_mode_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8059,14 +8091,15 @@
   "MIE-5a99bac4",
   "MIE-3851d424",
   "MIE-22f623e2",
-  "MIE-d860fe71"
+  "MIE-d860fe71",
+  "MIE-1abab25e"
  ],
  "temi_recenti": [
   "storia",
   "storia",
   "storia",
   "storia",
-  "storia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -8477,8 +8510,8 @@
    "ultimo": "2026-10-29"
   },
   "1UefrogLKDdOKHxCBjQOsFjEsNFOeSefT": {
-   "usi": 1,
-   "ultimo": "2026-10-29"
+   "usi": 2,
+   "ultimo": "2026-10-30"
   },
   "1pHaSrw5l22--hj6mculM4Wx5XnAw4U-3": {
    "usi": 1,
@@ -8502,7 +8535,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_03.flac",
   "deciso_12.flac",
   "phonk_06.flac",
   "phonk_09.flac",
@@ -8521,7 +8553,8 @@
   "phonk_10.flac",
   "phonk_16.flac",
   "phonk_16.flac",
-  "phonk_15.flac"
+  "phonk_15.flac",
+  "phonk_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8556,7 +8589,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8572,7 +8605,6 @@
  ],
  "commenti_fino": "2026-10-29T21:00:55Z",
  "ig_audio_recenti": [
-  "2417589738319876",
   "458742983134920",
   "1718120844886611",
   "973266493758189",
@@ -8601,6 +8633,7 @@
   "593371403855914",
   "2475524415980310",
   "283066584103655",
-  "565118654020261"
+  "565118654020261",
+  "974432747187721"
  ]
 }
