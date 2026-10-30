@@ -7677,11 +7677,42 @@
    },
    "spinto": true,
    "testo": "Non conta quanto forte colpisci, ma quanti colpi incassi e ti rialzi."
+  },
+  {
+   "quando": "2026-10-30T11:00",
+   "slot": "2026-10-30 12:00",
+   "video": "IMG_4298.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-d860fe71",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "van_life_rager_1.m4a",
+    "stacchi": 1,
+    "testi": 2,
+    "musica_meta": "phonk_15.flac",
+    "musica_instagram": "Inspired To Shine - Global Genius"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "hRv1xTBc41I"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18096717137259619"
+    }
+   },
+   "spinto": true,
+   "testo": "Nessuno mi ha regalato niente. Ogni cosa che ho, me la sono presa lavorando."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-22 02:00",
   "2026-10-22 04:00",
   "2026-10-22 06:00",
   "2026-10-22 08:00",
@@ -7760,10 +7791,10 @@
   "2026-10-30 00:00",
   "2026-10-30 06:00",
   "2026-10-30 08:00",
-  "2026-10-30 10:00"
+  "2026-10-30 10:00",
+  "2026-10-30 12:00"
  ],
  "musica_recenti": [
-  "whoop_1.m4a",
   "wrangle_the_crazy_1.m4a",
   "visions_1.m4a",
   "intergalactic_1.m4a",
@@ -7782,7 +7813,8 @@
   "fire_in_the_sky_1.m4a",
   "locked_in_1.m4a",
   "vibe_check_1.m4a",
-  "rubberband_1.m4a"
+  "rubberband_1.m4a",
+  "van_life_rager_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8000,7 +8032,8 @@
   "MIE-7214ec2b",
   "MIE-5a99bac4",
   "MIE-3851d424",
-  "MIE-22f623e2"
+  "MIE-22f623e2",
+  "MIE-d860fe71"
  ],
  "temi_recenti": [
   "storia",
@@ -8008,7 +8041,7 @@
   "storia",
   "storia",
   "storia",
-  "storia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -8410,8 +8443,8 @@
    "ultimo": "2026-10-29"
   },
   "1Ks5dKBFsfm1KcBBN6VD0JeN6IDjWWTZu": {
-   "usi": 1,
-   "ultimo": "2026-10-28"
+   "usi": 2,
+   "ultimo": "2026-10-30"
   },
   "1NIAZGYq8oNsRCLyLOzwG8nRh_hWHpjGa": {
    "usi": 1,
@@ -8443,7 +8476,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_07.flac",
   "phonk_03.flac",
   "deciso_12.flac",
   "phonk_06.flac",
@@ -8462,7 +8494,8 @@
   "phonk_13.flac",
   "phonk_10.flac",
   "phonk_16.flac",
-  "phonk_16.flac"
+  "phonk_16.flac",
+  "phonk_15.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8497,7 +8530,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8513,7 +8546,6 @@
  ],
  "commenti_fino": "2026-10-29T21:00:55Z",
  "ig_audio_recenti": [
-  "226065877006928",
   "2417589738319876",
   "458742983134920",
   "1718120844886611",
@@ -8542,6 +8574,7 @@
   "1364616540355148",
   "593371403855914",
   "2475524415980310",
-  "283066584103655"
+  "283066584103655",
+  "565118654020261"
  ]
 }
