@@ -62,7 +62,7 @@ def prepara(massimo=4):
 
 def pulisci(testo):
     """29/10/2026: via le domande per i commenti ("scrivilo nei commenti"/"qui sotto"): non piacciono ad Alessandro."""
-    righe = [r for r in testo.splitlines() if "👇" not in r]
+    righe = [re.sub(r"\s*·\s*seguimi per vedere dove arrivo", "", r) for r in testo.splitlines() if "👇" not in r]   # 30/10: via "seguimi"
     return re.sub(r"(\r?\n){3,}", "\n\n", "\n".join(righe)).strip()
 
 
