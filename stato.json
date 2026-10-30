@@ -7645,11 +7645,42 @@
    },
    "spinto": true,
    "testo": "La fortuna esiste, ma premia sempre chi si sta già dando da fare."
+  },
+  {
+   "quando": "2026-10-30T09:00",
+   "slot": "2026-10-30 10:00",
+   "video": "IMG_4311.MOV",
+   "md5": "c75d0c0ec1e51717990d926ae2c70576",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-27T21:47+01:00",
+   "frase": "MIE-22f623e2",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "rubberband_1.m4a",
+    "stacchi": 2,
+    "testi": 2,
+    "musica_meta": "phonk_16.flac",
+    "musica_instagram": "Go Go Go! - Dhruv Goel"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "QR1ytDakJTw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17988844439880175"
+    }
+   },
+   "spinto": true,
+   "testo": "Non conta quanto forte colpisci, ma quanti colpi incassi e ti rialzi."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-22 00:00",
   "2026-10-22 02:00",
   "2026-10-22 04:00",
   "2026-10-22 06:00",
@@ -7728,10 +7759,10 @@
   "2026-10-29 22:00",
   "2026-10-30 00:00",
   "2026-10-30 06:00",
-  "2026-10-30 08:00"
+  "2026-10-30 08:00",
+  "2026-10-30 10:00"
  ],
  "musica_recenti": [
-  "rubberband_1.m4a",
   "whoop_1.m4a",
   "wrangle_the_crazy_1.m4a",
   "visions_1.m4a",
@@ -7750,7 +7781,8 @@
   "cartier_1.m4a",
   "fire_in_the_sky_1.m4a",
   "locked_in_1.m4a",
-  "vibe_check_1.m4a"
+  "vibe_check_1.m4a",
+  "rubberband_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7967,7 +7999,8 @@
   "STO-48",
   "MIE-7214ec2b",
   "MIE-5a99bac4",
-  "MIE-3851d424"
+  "MIE-3851d424",
+  "MIE-22f623e2"
  ],
  "temi_recenti": [
   "storia",
@@ -7976,26 +8009,12 @@
   "storia",
   "storia",
   "storia",
-  "storia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
  ],
- "analisi": {
-  "1icAhByFdodzmuGNrSAXVrb0tCLCv80Lx": {
-   "nome": "IMG_4311.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.96,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-27T21:47+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-28T11:45:38.069Z",
-   "parlato": null,
-   "momento": null
-  }
- },
+ "analisi": {},
  "pulizia": "2026-10-30",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -8417,10 +8436,13 @@
   "1-wXfeOgo9aVpjZBQjqJopT9L84ZIWVcr": {
    "usi": 1,
    "ultimo": "2026-10-30"
+  },
+  "1icAhByFdodzmuGNrSAXVrb0tCLCv80Lx": {
+   "usi": 1,
+   "ultimo": "2026-10-30"
   }
  },
  "musica_recenti_meta": [
-  "phonk_15.flac",
   "deciso_07.flac",
   "phonk_03.flac",
   "deciso_12.flac",
@@ -8439,6 +8461,7 @@
   "phonk_12.flac",
   "phonk_13.flac",
   "phonk_10.flac",
+  "phonk_16.flac",
   "phonk_16.flac"
  ],
  "playlist": {
@@ -8474,7 +8497,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8490,7 +8513,6 @@
  ],
  "commenti_fino": "2026-10-29T21:00:55Z",
  "ig_audio_recenti": [
-  "2477944699150252",
   "226065877006928",
   "2417589738319876",
   "458742983134920",
@@ -8519,6 +8541,7 @@
   "544713431841568",
   "1364616540355148",
   "593371403855914",
-  "2475524415980310"
+  "2475524415980310",
+  "283066584103655"
  ]
 }
