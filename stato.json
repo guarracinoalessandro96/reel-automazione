@@ -7825,11 +7825,42 @@
     }
    },
    "in_corso": true
+  },
+  {
+   "quando": "2026-10-30T21:00",
+   "slot": "2026-10-30 22:00",
+   "video": "IMG_4286.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-9156c95a",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "wrangle_the_crazy_1.m4a",
+    "stacchi": 4,
+    "testi": 2,
+    "musica_meta": "phonk_06.flac",
+    "musica_instagram": "Breathtaker - Giulio Cercato"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "isVZj4VIY8A"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18397492285160164"
+    }
+   },
+   "spinto": true,
+   "testo": "Non mi fermo quando sono stanco. Mi fermo quando ho finito."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-22 12:00",
   "2026-10-22 14:00",
   "2026-10-22 16:00",
   "2026-10-22 18:00",
@@ -7908,10 +7939,10 @@
   "2026-10-30 14:00",
   "2026-10-30 16:00",
   "2026-10-30 18:00",
-  "2026-10-30 20:00"
+  "2026-10-30 20:00",
+  "2026-10-30 22:00"
  ],
  "musica_recenti": [
-  "intergalactic_1.m4a",
   "locked_in_1.m4a",
   "ten_1.m4a",
   "kick_it_1.m4a",
@@ -7930,7 +7961,8 @@
   "rubberband_1.m4a",
   "van_life_rager_1.m4a",
   "survival_mode_1.m4a",
-  "ego_chall_1.m4a"
+  "ego_chall_1.m4a",
+  "wrangle_the_crazy_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8151,12 +8183,13 @@
   "MIE-22f623e2",
   "MIE-d860fe71",
   "MIE-1abab25e",
-  "MIE-40a4765a"
+  "MIE-40a4765a",
+  "MIE-9156c95a"
  ],
  "temi_recenti": [
   "storia",
   "storia",
-  "storia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -8581,7 +8614,7 @@
    "ultimo": "2026-10-29"
   },
   "1Dvdi1PK-wTKhXcDuM6STB2Mq6FUojSqR": {
-   "usi": 1,
+   "usi": 2,
    "ultimo": "2026-10-30"
   },
   "1-wXfeOgo9aVpjZBQjqJopT9L84ZIWVcr": {
@@ -8594,7 +8627,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_06.flac",
   "phonk_09.flac",
   "phonk_07.flac",
   "phonk_11.flac",
@@ -8613,7 +8645,8 @@
   "phonk_16.flac",
   "phonk_15.flac",
   "phonk_12.flac",
-  "phonk_03.flac"
+  "phonk_03.flac",
+  "phonk_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8648,7 +8681,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8662,9 +8695,8 @@
    "parlato": false
   }
  ],
- "commenti_fino": "2026-10-29T21:00:55Z",
+ "commenti_fino": "2026-10-30T21:00:36Z",
  "ig_audio_recenti": [
-  "1718120844886611",
   "973266493758189",
   "475612031187222",
   "1147818560896993",
@@ -8693,6 +8725,7 @@
   "283066584103655",
   "565118654020261",
   "974432747187721",
-  "523966117385305"
+  "523966117385305",
+  "1372666635060078"
  ]
 }
