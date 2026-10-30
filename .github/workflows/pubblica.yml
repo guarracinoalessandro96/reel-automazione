@@ -137,7 +137,7 @@ jobs:
             done
           }
           SLOT="${{ steps.orario.outputs.slot }}"
-          FINE=$((SECONDS + 320 * 60))
+          FINE=$((SECONDS + 280 * 60))   # 30/10/2026: era 320; uno slot iniziato vicino alla fine (si prepara 50 min prima) sforava il limite di 355 e veniva ucciso
           while [ $SECONDS -lt $FINE ]; do
             if [ -n "$SLOT" ]; then
               python pubblica.py "$SLOT" || echo "Orario $SLOT: pubblicazione non riuscita"
