@@ -7581,11 +7581,42 @@
    },
    "spinto": false,
    "testo": "Sacrifica oggi per un domani migliore."
+  },
+  {
+   "quando": "2026-10-30T05:00",
+   "slot": "2026-10-30 06:00",
+   "video": "IMG_4286.MOV",
+   "md5": "885e88d1a74d43c351eafdf3482cf87f",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-27T20:27+01:00",
+   "frase": "MIE-5a99bac4",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "locked_in_1.m4a",
+    "stacchi": 2,
+    "testi": 2,
+    "musica_meta": "phonk_10.flac",
+    "musica_instagram": "Go Go Go - T.H.E."
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "lXE1ROjwS5E"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18039239285653492"
+    }
+   },
+   "spinto": true,
+   "testo": "Ho smesso di dire \"un giorno\". Ho iniziato a dire \"oggi\"."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-21 20:00",
   "2026-10-21 22:00",
   "2026-10-22 00:00",
   "2026-10-22 02:00",
@@ -7664,10 +7695,10 @@
   "2026-10-29 12:00",
   "2026-10-29 14:00",
   "2026-10-29 22:00",
-  "2026-10-30 00:00"
+  "2026-10-30 00:00",
+  "2026-10-30 06:00"
  ],
  "musica_recenti": [
-  "final_boss_battle_1.m4a",
   "fire_in_the_sky_1.m4a",
   "rubberband_1.m4a",
   "whoop_1.m4a",
@@ -7686,7 +7717,8 @@
   "ancient_civilisations_1.m4a",
   "horizons_1.m4a",
   "cartier_1.m4a",
-  "fire_in_the_sky_1.m4a"
+  "fire_in_the_sky_1.m4a",
+  "locked_in_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7901,7 +7933,8 @@
   "STO-28",
   "STO-27",
   "STO-48",
-  "MIE-7214ec2b"
+  "MIE-7214ec2b",
+  "MIE-5a99bac4"
  ],
  "temi_recenti": [
   "storia",
@@ -7912,23 +7945,10 @@
   "storia",
   "storia",
   "storia",
-  "storia",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "1Dvdi1PK-wTKhXcDuM6STB2Mq6FUojSqR": {
-   "nome": "IMG_4286.MOV",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-27T20:27+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-28T11:31:57.205Z",
-   "parlato": null,
-   "momento": null
-  },
   "1-wXfeOgo9aVpjZBQjqJopT9L84ZIWVcr": {
    "nome": "IMG_4287.MOV",
    "scena": "palestra",
@@ -7956,7 +7976,7 @@
    "momento": null
   }
  },
- "pulizia": "2026-10-29",
+ "pulizia": "2026-10-30",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -8369,10 +8389,13 @@
   "1XySlsRReGeTwlbVlIctzRJDJBUZ2yHi0": {
    "usi": 1,
    "ultimo": "2026-10-29"
+  },
+  "1Dvdi1PK-wTKhXcDuM6STB2Mq6FUojSqR": {
+   "usi": 1,
+   "ultimo": "2026-10-30"
   }
  },
  "musica_recenti_meta": [
-  "phonk_16.flac",
   "phonk_12.flac",
   "phonk_15.flac",
   "deciso_07.flac",
@@ -8391,7 +8414,8 @@
   "phonk_04.flac",
   "phonk_08.flac",
   "phonk_12.flac",
-  "phonk_13.flac"
+  "phonk_13.flac",
+  "phonk_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8399,7 +8423,8 @@
   "Lavoro e disciplina": "PLTzuBB07bRmQ",
   "Mentalità da palestra": "PLb-MgHwDrFLg",
   "Vita e persone": "PLL64qug_Rkxw",
-  "Disciplina ogni giorno": "PLc7wtJxuDht8"
+  "Disciplina ogni giorno": "PLc7wtJxuDht8",
+  "Tenersi in forma": "PLP0fddTUfsGo"
  },
  "liste_usate": [
   "L01",
@@ -8425,7 +8450,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8441,7 +8466,6 @@
  ],
  "commenti_fino": "2026-10-29T21:00:55Z",
  "ig_audio_recenti": [
-  "2603949126473975",
   "1032171746983079",
   "2477944699150252",
   "226065877006928",
@@ -8470,6 +8494,7 @@
   "2913736298667265",
   "330732519879801",
   "544713431841568",
-  "1364616540355148"
+  "1364616540355148",
+  "593371403855914"
  ]
 }
