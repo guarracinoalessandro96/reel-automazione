@@ -7613,11 +7613,42 @@
    },
    "spinto": true,
    "testo": "Ho smesso di dire \"un giorno\". Ho iniziato a dire \"oggi\"."
+  },
+  {
+   "quando": "2026-10-30T07:00",
+   "slot": "2026-10-30 08:00",
+   "video": "IMG_4287.MOV",
+   "md5": "ebd32d13156bcc4f67999859350d29ee",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-10-27T20:41+01:00",
+   "frase": "MIE-3851d424",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "vibe_check_1.m4a",
+    "stacchi": 1,
+    "testi": 2,
+    "musica_meta": "phonk_16.flac",
+    "musica_instagram": "Dream Big - Giulio Cercato"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Ci4tgNeYxrA"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18119313709792386"
+    }
+   },
+   "spinto": true,
+   "testo": "La fortuna esiste, ma premia sempre chi si sta già dando da fare."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-21 22:00",
   "2026-10-22 00:00",
   "2026-10-22 02:00",
   "2026-10-22 04:00",
@@ -7696,10 +7727,10 @@
   "2026-10-29 14:00",
   "2026-10-29 22:00",
   "2026-10-30 00:00",
-  "2026-10-30 06:00"
+  "2026-10-30 06:00",
+  "2026-10-30 08:00"
  ],
  "musica_recenti": [
-  "fire_in_the_sky_1.m4a",
   "rubberband_1.m4a",
   "whoop_1.m4a",
   "wrangle_the_crazy_1.m4a",
@@ -7718,7 +7749,8 @@
   "horizons_1.m4a",
   "cartier_1.m4a",
   "fire_in_the_sky_1.m4a",
-  "locked_in_1.m4a"
+  "locked_in_1.m4a",
+  "vibe_check_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -7934,7 +7966,8 @@
   "STO-27",
   "STO-48",
   "MIE-7214ec2b",
-  "MIE-5a99bac4"
+  "MIE-5a99bac4",
+  "MIE-3851d424"
  ],
  "temi_recenti": [
   "storia",
@@ -7944,24 +7977,11 @@
   "storia",
   "storia",
   "storia",
-  "storia",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
  "analisi": {
-  "1-wXfeOgo9aVpjZBQjqJopT9L84ZIWVcr": {
-   "nome": "IMG_4287.MOV",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-10-27T20:41+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-10-28T11:38:43.304Z",
-   "parlato": null,
-   "momento": null
-  },
   "1icAhByFdodzmuGNrSAXVrb0tCLCv80Lx": {
    "nome": "IMG_4311.MOV",
    "scena": "palestra",
@@ -8393,10 +8413,13 @@
   "1Dvdi1PK-wTKhXcDuM6STB2Mq6FUojSqR": {
    "usi": 1,
    "ultimo": "2026-10-30"
+  },
+  "1-wXfeOgo9aVpjZBQjqJopT9L84ZIWVcr": {
+   "usi": 1,
+   "ultimo": "2026-10-30"
   }
  },
  "musica_recenti_meta": [
-  "phonk_12.flac",
   "phonk_15.flac",
   "deciso_07.flac",
   "phonk_03.flac",
@@ -8415,7 +8438,8 @@
   "phonk_08.flac",
   "phonk_12.flac",
   "phonk_13.flac",
-  "phonk_10.flac"
+  "phonk_10.flac",
+  "phonk_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8450,7 +8474,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8466,7 +8490,6 @@
  ],
  "commenti_fino": "2026-10-29T21:00:55Z",
  "ig_audio_recenti": [
-  "1032171746983079",
   "2477944699150252",
   "226065877006928",
   "2417589738319876",
@@ -8495,6 +8518,7 @@
   "330732519879801",
   "544713431841568",
   "1364616540355148",
-  "593371403855914"
+  "593371403855914",
+  "2475524415980310"
  ]
 }
