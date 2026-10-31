@@ -8049,11 +8049,42 @@
    },
    "spinto": true,
    "testo": "Non conta da dove parti. Conta quanto sei disposto a lavorare per arrivare."
+  },
+  {
+   "quando": "2026-10-31T15:00",
+   "slot": "2026-10-31 16:00",
+   "video": "IMG_3611.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-a56f1caf",
+   "tema": "imprenditore",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "the_road_to_mordor_1.m4a",
+    "stacchi": 2,
+    "testi": 2,
+    "musica_meta": "drive_06.flac",
+    "musica_instagram": "Power On (Instrumental) - Giulio Cercato"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "-Q_o3nuiKhA"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18095970059181491"
+    }
+   },
+   "spinto": true,
+   "testo": "Se perdi i soldi non perdi niente. Se perdi la faccia, perdi tutto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-23 02:00",
   "2026-10-23 04:00",
   "2026-10-23 06:00",
   "2026-10-23 08:00",
@@ -8132,10 +8163,10 @@
   "2026-10-31 08:00",
   "2026-10-31 10:00",
   "2026-10-31 12:00",
-  "2026-10-31 14:00"
+  "2026-10-31 14:00",
+  "2026-10-31 16:00"
  ],
  "musica_recenti": [
-  "the_light_1.m4a",
   "death_duel_1.m4a",
   "visions_1.m4a",
   "ancient_civilisations_1.m4a",
@@ -8154,7 +8185,8 @@
   "sweaty_staredown_1.m4a",
   "delirium_1.m4a",
   "moon_vision_1.m4a",
-  "mirror_mirror_1.m4a"
+  "mirror_mirror_1.m4a",
+  "the_road_to_mordor_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8382,7 +8414,8 @@
   "MIE-95c3c510",
   "MIE-c2cfd80e",
   "MIE-003bb78c",
-  "MIE-355d8bb6"
+  "MIE-355d8bb6",
+  "MIE-a56f1caf"
  ],
  "temi_recenti": [
   "mentalita",
@@ -8392,9 +8425,9 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
-  "mentalita"
+  "mentalita",
+  "imprenditore"
  ],
  "analisi": {},
  "pulizia": "2026-10-31",
@@ -8508,8 +8541,8 @@
    "ultimo": "2026-10-31"
   },
   "1cws0l3N3pW2EVUmkD-GxH5nLIIh0UE-c": {
-   "usi": 1,
-   "ultimo": "2026-10-11"
+   "usi": 2,
+   "ultimo": "2026-10-31"
   },
   "1a3hFaj1fQm1AuYdIv6iY-TZDvDdPOmOp": {
    "usi": 1,
@@ -8825,7 +8858,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_14.flac",
   "phonk_07.flac",
   "phonk_05.flac",
   "phonk_04.flac",
@@ -8844,7 +8876,8 @@
   "deciso_12.flac",
   "phonk_11.flac",
   "drive_13.flac",
-  "trap_07.flac"
+  "trap_07.flac",
+  "drive_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8895,7 +8928,6 @@
  ],
  "commenti_fino": "2026-10-30T21:00:36Z",
  "ig_audio_recenti": [
-  "932486288340954",
   "1626635767828538",
   "493652384544163",
   "381204824599064",
@@ -8924,6 +8956,7 @@
   "820220974302825",
   "973266493758189",
   "849342490718599",
-  "1127106596130760"
+  "1127106596130760",
+  "9513789255356881"
  ]
 }
