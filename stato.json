@@ -8081,11 +8081,42 @@
    },
    "spinto": true,
    "testo": "Se perdi i soldi non perdi niente. Se perdi la faccia, perdi tutto."
+  },
+  {
+   "quando": "2026-10-31T17:00",
+   "slot": "2026-10-31 18:00",
+   "video": "IMG_3633.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-22d846c4",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "fire_in_the_sky_1.m4a",
+    "stacchi": 4,
+    "testi": 2,
+    "musica_meta": "drive_02.flac",
+    "musica_instagram": "Anima - Symphonic Planet"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "QFO4kEm0ols"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17997679955846106"
+    }
+   },
+   "spinto": true,
+   "testo": "Non aspetto che le cose succedano. Le faccio succedere."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-23 04:00",
   "2026-10-23 06:00",
   "2026-10-23 08:00",
   "2026-10-23 10:00",
@@ -8164,10 +8195,10 @@
   "2026-10-31 10:00",
   "2026-10-31 12:00",
   "2026-10-31 14:00",
-  "2026-10-31 16:00"
+  "2026-10-31 16:00",
+  "2026-10-31 18:00"
  ],
  "musica_recenti": [
-  "death_duel_1.m4a",
   "visions_1.m4a",
   "ancient_civilisations_1.m4a",
   "horizons_1.m4a",
@@ -8186,7 +8217,8 @@
   "delirium_1.m4a",
   "moon_vision_1.m4a",
   "mirror_mirror_1.m4a",
-  "the_road_to_mordor_1.m4a"
+  "the_road_to_mordor_1.m4a",
+  "fire_in_the_sky_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8415,7 +8447,8 @@
   "MIE-c2cfd80e",
   "MIE-003bb78c",
   "MIE-355d8bb6",
-  "MIE-a56f1caf"
+  "MIE-a56f1caf",
+  "MIE-22d846c4"
  ],
  "temi_recenti": [
   "mentalita",
@@ -8424,10 +8457,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
   "mentalita",
-  "imprenditore"
+  "imprenditore",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-10-31",
@@ -8545,8 +8578,8 @@
    "ultimo": "2026-10-31"
   },
   "1a3hFaj1fQm1AuYdIv6iY-TZDvDdPOmOp": {
-   "usi": 1,
-   "ultimo": "2026-10-11"
+   "usi": 2,
+   "ultimo": "2026-10-31"
   },
   "1zEPNZ20n1YmvIYS5sehdWmtTFzLNT8lO": {
    "usi": 1,
@@ -8858,7 +8891,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_07.flac",
   "phonk_05.flac",
   "phonk_04.flac",
   "phonk_08.flac",
@@ -8877,7 +8909,8 @@
   "phonk_11.flac",
   "drive_13.flac",
   "trap_07.flac",
-  "drive_06.flac"
+  "drive_06.flac",
+  "drive_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8912,7 +8945,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8928,7 +8961,6 @@
  ],
  "commenti_fino": "2026-10-30T21:00:36Z",
  "ig_audio_recenti": [
-  "1626635767828538",
   "493652384544163",
   "381204824599064",
   "1347176186322399",
@@ -8957,6 +8989,7 @@
   "973266493758189",
   "849342490718599",
   "1127106596130760",
-  "9513789255356881"
+  "9513789255356881",
+  "1283513152336813"
  ]
 }
