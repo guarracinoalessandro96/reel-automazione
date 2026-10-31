@@ -132,6 +132,22 @@ CARTELLA_TIKTOK = "TikTok - da pubblicare"
 GIORNI_DOPO = 60              # ... e ci resta 60 giorni
 
 
+def brani_forti():
+    try:
+        return set(json.load(open(os.path.join(HERE, "pesi.json"), encoding="utf-8")).get("brani_forti", []))
+    except Exception:
+        return set()
+
+
+def audio_tendenza():
+    """31/10/2026: titoli dei brani piu' usati dai reel forti (audio_tendenza.json, aggiornato la domenica)."""
+    try:
+        dati = json.load(open(os.path.join(HERE, "audio_tendenza.json"), encoding="utf-8"))
+        return [b["titolo"] for b in dati.get("brani", []) if b.get("titolo")]
+    except Exception:
+        return []
+
+
 def scegli_musica(tema, recenti, scena=None, nostra=False):
     """Un brano adatto alla scena, evitando quelli usati di recente: prima la Raccolta audio di YouTube, poi i loop
     generati da motivazione. nostra=True: solo i nostri brani (versione per Facebook/Instagram)."""
@@ -150,6 +166,10 @@ def scegli_musica(tema, recenti, scena=None, nostra=False):
             vicini = {brano(b) for b in recenti[-8:]}
             liberi = ([b for b in brani if b not in recenti and brano(b) not in vicini]
                       or [b for b in brani if b not in recenti] or brani)
+            # 31/10/2026: 2 volte su 3 i brani che su YouTube rendono di piu' (pesi.json, aggiornati la domenica)
+            forti = [b for b in liberi if brano(b) in brani_forti()]
+            if forti and random.random() < 0.67:
+                liberi = forti
             return os.path.join(d, random.choice(liberi))
     return None
 
@@ -984,6 +1004,14 @@ def scegli_audio_instagram(scena, recenti=()):
     """(audio_id, titolo) di un brano Instagram motivazionale per la scena, evitando i recenti. None se nessuno."""
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
     ricerche = list(dict.fromkeys(random.sample(IG_ENERGICI, len(IG_ENERGICI))))
+    for q in audio_tendenza()[:6]:                # prima i brani di tendenza, se Instagram li concede all'API
+        r = requests.get(f"{GRAPH_AUDIO}/ig_audio", params={"audio_type": "music", "search_query": q, "user_id": ig,
+                                                             "access_token": token}, timeout=30).json()
+        trovati = [a for a in r.get("audio", []) if a.get("audio_id") and a["audio_id"] not in recenti
+                   and q.lower() in a.get("title", "").lower() and not IG_DA_EVITARE.search(
+                   f"{a.get('title', '')} {a.get('display_artist', '')}")]
+        if trovati:
+            return trovati[0]["audio_id"], f"{trovati[0].get('title')} - {trovati[0].get('display_artist')}"
     tutti = []
     for q in ricerche[:4]:
         r = requests.get(f"{GRAPH_AUDIO}/ig_audio", params={"audio_type": "music", "search_query": q, "user_id": ig,
