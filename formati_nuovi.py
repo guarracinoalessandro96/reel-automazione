@@ -30,7 +30,8 @@ FORMATI = {
     "dieci_broll": {"stacchi": [2.5] * 4},           # quattro stacchi veloci
 }
 DURATA_RACCONTO = 30.0
-GANCIO_S = 3.5        # formati da 10 s: il gancio da solo per 3,5 s, poi la frase intera
+GANCIO_S = 3.5
+ENTRATA_S = 0.18   # 31/10/2026: la scritta sale in posizione nel primo istante (visibile dal primo fotogramma)        # formati da 10 s: il gancio da solo per 3,5 s, poi la frase intera
 
 
 def dividi_in(testo, n):
@@ -93,7 +94,8 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         p = os.path.join(tmp, f"t{k}.png")
         img.save(p)
         cmd += ["-i", p]
-        g += f";[{corrente}][{idx}:v]overlay=0:0:format=auto:enable='between(t,{a:.2f},{b - 0.001:.2f})'[o{k}]"
+        g += f";[{corrente}][{idx}:v]overlay=0:'if(lt(t-{a:.2f},{ENTRATA_S}),({ENTRATA_S}-(t-{a:.2f}))*{H * 0.05 / ENTRATA_S:.1f},0)':format=auto:"
+        g += f"enable='between(t,{a:.2f},{b - 0.001:.2f})'[o{k}]"
         corrente, idx = f"o{k}", idx + 1
     g += f";[{corrente}]format=yuv420p[v]"
     amap = ["-an"]
@@ -151,6 +153,12 @@ def make_racconto(nome, clips, righe, dst, musiche=(), serie=None):
     passo = DURATA_RACCONTO / len(righe)
     testi = [(i * passo, (i + 1) * passo, r) for i, r in enumerate(righe)]
     return make_sequenza(clips, FORMATI[nome]["stacchi"], testi, dst, musiche, serie, nome)
+
+
+def make_lista(clips, titolo, righe, dst, musiche=(), serie=None):
+    """31/10/2026: lista da 10 s: titolo, poi una regola alla volta, 2,5 s ciascuno (un'inquadratura per ogni testo)."""
+    testi = [(0.0, 2.5, titolo)] + [(2.5 * (i + 1), 2.5 * (i + 2), f"{i + 1}. {r}") for i, r in enumerate(righe[:3])]
+    return make_sequenza(clips, [2.5] * 4, testi, dst, musiche, serie, "dieci_lista")
 
 
 def make_dieci(nome, clips, frase, dst, musiche=(), serie=None):

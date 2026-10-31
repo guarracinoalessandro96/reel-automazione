@@ -457,5 +457,185 @@
    "Non far sapere quanto ti costa.",
    "Lascia parlare i risultati."
   ]
+ },
+ {
+  "id": "D01",
+  "titolo": "3 regole per non mollare",
+  "righe": [
+   "Ricorda perché hai iniziato.",
+   "Fai un passo anche oggi.",
+   "Non decidere quando sei stanco."
+  ]
+ },
+ {
+  "id": "D02",
+  "titolo": "3 cose che faccio ogni giorno",
+  "righe": [
+   "Mi alzo con un obiettivo.",
+   "Faccio prima la cosa difficile.",
+   "La sera guardo cosa migliorare."
+  ]
+ },
+ {
+  "id": "D03",
+  "titolo": "3 regole per aprire un'attività",
+  "righe": [
+   "Parti prima di sentirti pronto.",
+   "Trova il primo cliente.",
+   "Rimetti i guadagni nel lavoro."
+  ]
+ },
+ {
+  "id": "D04",
+  "titolo": "3 regole per vendere",
+  "righe": [
+   "Ascolta prima di parlare.",
+   "Risolvi un problema vero.",
+   "Mantieni sempre la parola."
+  ]
+ },
+ {
+  "id": "D05",
+  "titolo": "3 regole della disciplina",
+  "righe": [
+   "Inizia anche senza voglia.",
+   "Ripeti le cose semplici.",
+   "Finisci quello che hai iniziato."
+  ]
+ },
+ {
+  "id": "D06",
+  "titolo": "3 errori da evitare a inizio anno",
+  "righe": [
+   "Aspettare il momento giusto.",
+   "Puntare su dieci cose insieme.",
+   "Mollare alla prima difficoltà."
+  ]
+ },
+ {
+  "id": "D07",
+  "titolo": "3 domande da farti ogni sera",
+  "righe": [
+   "Cosa ho imparato oggi?",
+   "Cosa posso fare meglio?",
+   "Qual è il primo passo di domani?"
+  ]
+ },
+ {
+  "id": "D08",
+  "titolo": "3 regole per usare bene il tempo",
+  "righe": [
+   "Scegli le tre cose importanti.",
+   "Metti via il telefono.",
+   "Fai subito la più difficile."
+  ]
+ },
+ {
+  "id": "D09",
+  "titolo": "3 cose che ho imparato lavorando",
+  "righe": [
+   "Le scuse non pagano niente.",
+   "La costanza batte il talento.",
+   "Ogni errore insegna qualcosa."
+  ]
+ },
+ {
+  "id": "D10",
+  "titolo": "3 regole per crescere in azienda",
+  "righe": [
+   "Guarda i numeri ogni giorno.",
+   "Delega ciò che sa fare un altro.",
+   "Investi prima su di te."
+  ]
+ },
+ {
+  "id": "D11",
+  "titolo": "3 regole per tenerti in forma",
+  "righe": [
+   "Muoviti anche quando sei stanco.",
+   "Dormi il giusto.",
+   "Sii costante, non perfetto."
+  ]
+ },
+ {
+  "id": "D12",
+  "titolo": "3 regole per una giornata piena",
+  "righe": [
+   "Alzati senza rimandare.",
+   "Scrivi il tuo obiettivo.",
+   "Chiudi ciò che hai aperto."
+  ]
+ },
+ {
+  "id": "D13",
+  "titolo": "3 cose da fare dopo un errore",
+  "righe": [
+   "Accettalo senza scuse.",
+   "Capisci cosa ti insegna.",
+   "Riparti il giorno stesso."
+  ]
+ },
+ {
+  "id": "D14",
+  "titolo": "3 regole per il tuo primo cliente",
+  "righe": [
+   "Parla con persone vere.",
+   "Offri una cosa semplice.",
+   "Fai più di quanto prometti."
+  ]
+ },
+ {
+  "id": "D15",
+  "titolo": "3 modi per ritrovare la motivazione",
+  "righe": [
+   "Rileggi il tuo obiettivo.",
+   "Fai una piccola cosa subito.",
+   "Guarda quanta strada hai fatto."
+  ]
+ },
+ {
+  "id": "D16",
+  "titolo": "3 regole per decidere meglio",
+  "righe": [
+   "Scegli la strada che ti fa crescere.",
+   "Decidi con i numeri davanti.",
+   "Poi vai fino in fondo."
+  ]
+ },
+ {
+  "id": "D17",
+  "titolo": "3 regole per costruire qualcosa di tuo",
+  "righe": [
+   "Inizia piccolo.",
+   "Migliora ogni settimana.",
+   "Non fermarti ai primi no."
+  ]
+ },
+ {
+  "id": "D18",
+  "titolo": "3 cose da smettere di fare oggi",
+  "righe": [
+   "Rimandare a lunedì.",
+   "Aspettare di essere pronto.",
+   "Trovare scuse."
+  ]
+ },
+ {
+  "id": "D19",
+  "titolo": "3 regole per restare concentrato",
+  "righe": [
+   "Un obiettivo alla volta.",
+   "Niente telefono mentre lavori.",
+   "Finisci, poi riposati."
+  ]
+ },
+ {
+  "id": "D20",
+  "titolo": "3 cose che fanno la differenza",
+  "righe": [
+   "Quello che fai ogni giorno.",
+   "Quanto impari dagli errori.",
+   "Quanto a lungo resisti."
+  ]
  }
 ]

@@ -207,7 +207,7 @@ def testo_breve(cap):
     else:
         testo = testo.rstrip(" .")
     if cap.get("righe"):          # formato REGOLE: titolo + regole numerate
-        testo = cap["gancio"] + "\n" + "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1))
+        testo = cap["gancio"] + "\n" + "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1)) + "\n\nSalva questo video."
     serie = serie_testo(cap)
     if DOMANDE_COMMENTI and cap.get("tema") not in ("momento", "parlato", "regole"):   # 29/10/2026 sera: SPENTO: una domanda in fondo -> piu' commenti -> piu' spinta dall'algoritmo
         # 29/10/2026: tolta "Per chi lo fai tu? Scrivilo nei commenti" (non gli piace)
@@ -315,6 +315,8 @@ def scegli_formato(slot, state, frase, an, spinto=True):
         return "momento"
     if an.get("parlato"):            # video in cui parla: sempre con la sua voce e i sottotitoli
         return "parlato"
+    if TUTTO_10S and str(slot).endswith(ORARIO_LISTA) and lista_regole(slot, state):   # 31/10/2026: una lista al giorno
+        return "dieci_lista"
     if TUTTO_10S:                    # 29/10/2026: tutti da 10 s, a turno (mai lo stesso due volte di fila)
         scelte = [f for f in FORMATI_10 if f != state.get("formato_ultimo")] or list(FORMATI_10)
         return random.choice(scelte)
@@ -387,6 +389,7 @@ FORMATI_30 = ("racconto", "racconto_broll", "racconto_lento")
 # tre varianti a turno (formati_nuovi.py). Momento e parlato restano.
 TUTTO_10S = True
 FORMATI_10 = ("dieci", "dieci_due", "dieci_broll")
+ORARIO_LISTA = "18:00"       # 31/10/2026: formato lista, da salvare e mandare (un post cosi' fa 1 invio ogni 2 like)
 
 
 def monta_momento(an, src, out, music, serie, nome):
@@ -441,6 +444,8 @@ def lista_regole(slot, state):
     except Exception:
         return None
     libere = [l for l in liste if l["id"] not in state.get("liste_usate", [])]
+    if TUTTO_10S:                # 31/10/2026: solo le liste nuove (le vecchie parlano di persone, lealta', soldi)
+        libere = [l for l in libere if l["id"].startswith("D")]
     tema = lambda l: TRADIMENTO.search(l.get("titolo", "") + " " + " ".join(l.get("righe", [])))
     if random.random() >= TRADIMENTO_QUOTA:     # 25/10/2026: il tradimento solo di rado
         libere = [l for l in libere if not tema(l)] or libere
@@ -496,6 +501,17 @@ def monta_racconto(formato, src, out, music, serie, drive, work, clip, state):
     info = formati_nuovi.make_racconto(formato, clips, storia["righe"], out, musiche_brano(music, 7), serie)
     frase = {"id": storia["id"], "tema": "storia", "gancio": storia["righe"][0], "autore": "",
              "hashtag": ["#storia", "#mentalita", "#motivazione"], "serie": serie, "testo_completo": storia["righe"]}
+    return frase, info
+
+
+def monta_dieci_lista(lista, src, out, music, serie, drive, work, clip):
+    """Lista da 10 s con il video dell'orario + 3 clip dell'archivio. Restituisce (frase, info)."""
+    import formati_nuovi
+    clips = [src] + clip_extra(drive, work, clip, 3)
+    info = formati_nuovi.make_lista(clips, lista["titolo"], lista["righe"], out, musiche_brano(music, 3), serie)
+    info["musica"] = os.path.basename(music) if music else None
+    frase = {"id": lista["id"], "tema": "regole", "gancio": lista["titolo"], "righe": lista["righe"], "autore": "",
+             "hashtag": ["#obiettivi", "#motivazione", "#disciplina"], "serie": serie}
     return frase, info
 
 
@@ -1516,6 +1532,8 @@ def main():
                 info = overlay.make_video(src, prima, out, music=music, serie=serie,
                                           colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
                                           da_archivio=bool(clip), formato=dict(GANCIO, seconda=seconda))
+            elif formato == "dieci_lista":
+                frase, info = monta_dieci_lista(lista_regole(slot, state), src, out, music, serie, drive, work, clip)
             elif formato in FORMATI_10:
                 info = monta_dieci(formato, frase, src, out, music, serie, drive, work, clip)
             elif formato in FORMATI_30:
