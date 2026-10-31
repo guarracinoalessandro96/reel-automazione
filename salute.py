@@ -125,7 +125,8 @@ def main():
     for r in problemi:
         print("PROBLEMA", r)
     # promemoria coda solo una volta al giorno (il controllo gira ogni 3 ore): al giro delle 6:37 UTC
-    if VIDEO_IN_CODA is not None and VIDEO_IN_CODA < VIDEO_MINIMI and datetime.datetime.utcnow().hour == 6:
+    # 31/10/2026: "non voglio il promemoria": su Telegram solo errori e statistiche delle 8
+    if False and VIDEO_IN_CODA is not None and VIDEO_IN_CODA < VIDEO_MINIMI and datetime.datetime.utcnow().hour == 6:
         avvisi.manda(f"PROMEMORIA\nIn 'Da pubblicare' ci sono solo {VIDEO_IN_CODA} video nuovi\n"
                      "Ne esce uno ogni 2 ore\nMandane qualcuno al bot Telegram\n"
                      "Altrimenti riuso quelli vecchi dell'archivio")

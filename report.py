@@ -322,7 +322,7 @@ def main():
               + ("" if len(righe) >= MIN_POST else f" Servono almeno {MIN_POST} reel per conclusioni affidabili.")}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     json.dump(report, open(OUT, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
-    if datetime.date.today().weekday() == 0 or ENV("FORZA_RIASSUNTO") == "1":   # lunedi': riassunto su Telegram
+    if ENV("FORZA_RIASSUNTO") == "1":   # 31/10/2026: niente riassunto del lunedi', i numeri arrivano alle 8 ogni giorno
         import avvisi
         testo = riassunto_settimana(state)
         print(testo)

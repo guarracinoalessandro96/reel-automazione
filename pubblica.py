@@ -389,7 +389,8 @@ FORMATI_30 = ("racconto", "racconto_broll", "racconto_lento")
 # tre varianti a turno (formati_nuovi.py). Momento e parlato restano.
 TUTTO_10S = True
 FORMATI_10 = ("dieci", "dieci_due", "dieci_broll")
-ORARIO_LISTA = "18:00"       # 31/10/2026: formato lista, da salvare e mandare (un post cosi' fa 1 invio ogni 2 like)
+COMMENTI_SU_TELEGRAM = False   # 31/10/2026: "non voglio i commenti": su Telegram solo errori e statistiche delle 8
+ORARIO_LISTA = "spenta"      # 31/10/2026: prima tutte le frasi delle foto; per riaccenderla "18:00". Formato lista, da salvare e mandare (un post cosi' fa 1 invio ogni 2 like)
 
 
 def monta_momento(an, src, out, music, serie, nome):
@@ -1469,6 +1470,11 @@ def main():
         # si riguarda il video -> piu' visualizzazioni). Nessun filtro sulla lunghezza.
         # dati YouTube 16/10/2026 (53 Shorts): frasi fino a 6 parole ~340 views mediane, 7-10 parole ~1.020,
         # 11-15 parole ~1.255 -> 9 volte su 10 si sceglie una frase di almeno 7 parole (1 su 10 resta "esperimento")
+        # 31/10/2026 (Alessandro): prima TUTTE le frasi delle sue foto (classifica 100); imprenditoria sospesa (0)
+        import classifica_frasi
+        foto_punti = classifica_frasi.carica()
+        frasi = [f for f in frasi if foto_punti.get(f["id"]) != 0] or frasi
+        foto_rimaste = any(foto_punti.get(f["id"]) == 100 for f in frasi)
         lunghe = [f for f in frasi if len(f["gancio"].split()) >= MIN_PAROLE]
         virali = [f for f in frasi if f.get("virale")]       # prima quelle andate virali in altri video
         # come MoreMozi (18/10/2026): 1 volta su 4 si ripropone su un altro video una frase che ha gia' funzionato
@@ -1484,7 +1490,7 @@ def main():
         if not spinto and vecchie:           # orario fermo: si riusa la frase uscita da piu' tempo
             frase = min(vecchie, key=lambda f: usi[f["id"]])
             log("Orario fermo: riuso una frase uscita il", usi[frase["id"]])
-        elif vincenti and random.random() < 0.25:
+        elif vincenti and random.random() < 0.25 and not foto_rimaste:
             frase = random.choice(vincenti)
             log("Ripropongo una frase che ha gia' funzionato:", frase["gancio"])
         elif frasi:
@@ -1492,8 +1498,7 @@ def main():
             # 26/10/2026 (Alessandro): frasi piu' lunghe (la gente si ferma a leggere) e PRIMA quelle che pensiamo
             # vadano piu' virali: classifica_frasi.json (0-100, 50 se manca; lunghezza, temi sulle persone, [virale],
             # giudizio di Claude). Si sceglie a caso tra le prime 3, cosi' i reel vicini non sono sempre uguali.
-            import classifica_frasi
-            punti = classifica_frasi.carica()
+            punti = foto_punti
             ordinate = sorted(frasi, key=lambda f: -punti.get(f["id"], classifica_frasi.stima(f["gancio"], f.get("virale"))))
             frase = random.choice(ordinate[:3])
             log(f"Frase dalla classifica ({punti.get(frase['id'], 'stima')}):", frase["gancio"])
@@ -1749,7 +1754,7 @@ def main():
                              "da_archivio": bool(clip), "scena": an["scena"], "registrato": an.get("registrato"),
                              "frase": frase["id"], "tema": frase["tema"], "montaggio": info, "risultati": results,
                              "spinto": spinto, "testo": frase["gancio"][:120]})
-    if not DRY:              # la sera: i commenti nuovi su Telegram, per rispondere di persona (mai bloccare il reel)
+    if not DRY and COMMENTI_SU_TELEGRAM:   # la sera: i commenti nuovi su Telegram, per rispondere di persona (mai bloccare il reel)
         try:
             import commenti
             n = commenti.forse_manda(state, ora_roma())
