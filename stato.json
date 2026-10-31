@@ -7953,11 +7953,42 @@
    },
    "spinto": true,
    "testo": "I sogni non funzionano se non lavori tu."
+  },
+  {
+   "quando": "2026-10-31T09:00",
+   "slot": "2026-10-31 10:00",
+   "video": "IMG_3604.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-c2cfd80e",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "delirium_1.m4a",
+    "stacchi": 2,
+    "testi": 2,
+    "musica_meta": "phonk_11.flac",
+    "musica_instagram": "You Can Do It Too (Instrumental) - Jennah Bell"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "3CTA00M_qRM"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18149334175566130"
+    }
+   },
+   "spinto": false,
+   "testo": "Il dolore è temporaneo. Mollare è per sempre."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-22 20:00",
   "2026-10-22 22:00",
   "2026-10-23 00:00",
   "2026-10-23 02:00",
@@ -8036,10 +8067,10 @@
   "2026-10-30 22:00",
   "2026-10-31 00:00",
   "2026-10-31 06:00",
-  "2026-10-31 08:00"
+  "2026-10-31 08:00",
+  "2026-10-31 10:00"
  ],
  "musica_recenti": [
-  "monthaholic_1.m4a",
   "break_ya_neck_1.m4a",
   "rubberband_1.m4a",
   "the_light_1.m4a",
@@ -8058,7 +8089,8 @@
   "wrangle_the_crazy_1.m4a",
   "final_boss_battle_1.m4a",
   "horizons_1.m4a",
-  "sweaty_staredown_1.m4a"
+  "sweaty_staredown_1.m4a",
+  "delirium_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8283,7 +8315,8 @@
   "MIE-9156c95a",
   "MIE-4e0eaa96",
   "MIE-295fce20",
-  "MIE-95c3c510"
+  "MIE-95c3c510",
+  "MIE-c2cfd80e"
  ],
  "temi_recenti": [
   "mentalita",
@@ -8397,8 +8430,8 @@
    "ultimo": "2026-10-31"
   },
   "1_H1rfgZicjenJ-s7-rrSmVCm3oz6Jt2E": {
-   "usi": 1,
-   "ultimo": "2026-10-11"
+   "usi": 2,
+   "ultimo": "2026-10-31"
   },
   "1VcWPefu4x-3tDRSZ0FWdG27LeXQiy6FO": {
    "usi": 1,
@@ -8726,7 +8759,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_10.flac",
   "phonk_01.flac",
   "phonk_02.flac",
   "phonk_14.flac",
@@ -8745,7 +8777,8 @@
   "phonk_06.flac",
   "phonk_07.flac",
   "phonk_09.flac",
-  "deciso_12.flac"
+  "deciso_12.flac",
+  "phonk_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8780,7 +8813,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_broll",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8796,7 +8829,6 @@
  ],
  "commenti_fino": "2026-10-30T21:00:36Z",
  "ig_audio_recenti": [
-  "900264374440235",
   "249201165751597",
   "823145229909724",
   "932486288340954",
@@ -8825,6 +8857,7 @@
   "1372666635060078",
   "1377485917727304",
   "393903371411311",
-  "820220974302825"
+  "820220974302825",
+  "973266493758189"
  ]
 }
