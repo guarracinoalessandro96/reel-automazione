@@ -7985,11 +7985,42 @@
    },
    "spinto": false,
    "testo": "Il dolore è temporaneo. Mollare è per sempre."
+  },
+  {
+   "quando": "2026-10-31T11:00",
+   "slot": "2026-10-31 12:00",
+   "video": "IMG_3605.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-003bb78c",
+   "tema": "imprenditore",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "moon_vision_1.m4a",
+    "stacchi": 4,
+    "testi": 2,
+    "musica_meta": "drive_13.flac",
+    "musica_instagram": "Level Up - Giulio Cercato"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "EwOt4F2waWw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18183144736439927"
+    }
+   },
+   "spinto": true,
+   "testo": "Le scuse non pagano niente. Il lavoro sì."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-22 22:00",
   "2026-10-23 00:00",
   "2026-10-23 02:00",
   "2026-10-23 04:00",
@@ -8068,10 +8099,10 @@
   "2026-10-31 00:00",
   "2026-10-31 06:00",
   "2026-10-31 08:00",
-  "2026-10-31 10:00"
+  "2026-10-31 10:00",
+  "2026-10-31 12:00"
  ],
  "musica_recenti": [
-  "break_ya_neck_1.m4a",
   "rubberband_1.m4a",
   "the_light_1.m4a",
   "death_duel_1.m4a",
@@ -8090,7 +8121,8 @@
   "final_boss_battle_1.m4a",
   "horizons_1.m4a",
   "sweaty_staredown_1.m4a",
-  "delirium_1.m4a"
+  "delirium_1.m4a",
+  "moon_vision_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8316,7 +8348,8 @@
   "MIE-4e0eaa96",
   "MIE-295fce20",
   "MIE-95c3c510",
-  "MIE-c2cfd80e"
+  "MIE-c2cfd80e",
+  "MIE-003bb78c"
  ],
  "temi_recenti": [
   "mentalita",
@@ -8328,7 +8361,7 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "imprenditore"
  ],
  "analisi": {},
  "pulizia": "2026-10-31",
@@ -8434,8 +8467,8 @@
    "ultimo": "2026-10-31"
   },
   "1VcWPefu4x-3tDRSZ0FWdG27LeXQiy6FO": {
-   "usi": 1,
-   "ultimo": "2026-10-11"
+   "usi": 2,
+   "ultimo": "2026-10-31"
   },
   "1X37GK_cN0RxuzC0UYRmVlSUUrJUgw0WY": {
    "usi": 1,
@@ -8759,7 +8792,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_01.flac",
   "phonk_02.flac",
   "phonk_14.flac",
   "phonk_07.flac",
@@ -8778,7 +8810,8 @@
   "phonk_07.flac",
   "phonk_09.flac",
   "deciso_12.flac",
-  "phonk_11.flac"
+  "phonk_11.flac",
+  "drive_13.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8813,7 +8846,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8829,7 +8862,6 @@
  ],
  "commenti_fino": "2026-10-30T21:00:36Z",
  "ig_audio_recenti": [
-  "249201165751597",
   "823145229909724",
   "932486288340954",
   "1626635767828538",
@@ -8858,6 +8890,7 @@
   "1377485917727304",
   "393903371411311",
   "820220974302825",
-  "973266493758189"
+  "973266493758189",
+  "849342490718599"
  ]
 }
