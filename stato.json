@@ -8177,11 +8177,42 @@
    },
    "spinto": true,
    "testo": "Le occasioni non arrivano da sole. Te le vai a prendere."
+  },
+  {
+   "quando": "2026-10-31T23:00",
+   "slot": "2026-11-01 00:00",
+   "video": "IMG_3764.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "specchio",
+   "registrato": null,
+   "frase": "MIE-239a782a",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "whoop_1.m4a",
+    "stacchi": 2,
+    "testi": 2,
+    "musica_meta": "trap_16.flac",
+    "musica_instagram": "Guilty Rhythm - Cold Comfort"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "6EOvgDOWQvo"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18116867006467985"
+    }
+   },
+   "spinto": true,
+   "testo": "Impara a stare da solo: è lì che diventi forte."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-23 10:00",
   "2026-10-23 12:00",
   "2026-10-23 14:00",
   "2026-10-23 16:00",
@@ -8260,10 +8291,10 @@
   "2026-10-31 16:00",
   "2026-10-31 18:00",
   "2026-10-31 20:00",
-  "2026-10-31 22:00"
+  "2026-10-31 22:00",
+  "2026-11-01 00:00"
  ],
  "musica_recenti": [
-  "horizons_1.m4a",
   "cartier_1.m4a",
   "fire_in_the_sky_1.m4a",
   "locked_in_1.m4a",
@@ -8282,7 +8313,8 @@
   "the_road_to_mordor_1.m4a",
   "fire_in_the_sky_1.m4a",
   "break_ya_neck_1.m4a",
-  "stake_out_1.m4a"
+  "stake_out_1.m4a",
+  "whoop_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8514,16 +8546,17 @@
   "MIE-a56f1caf",
   "MIE-22d846c4",
   "MIE-94ebbc50",
-  "MIE-a1863c9e"
+  "MIE-a1863c9e",
+  "MIE-239a782a"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
   "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -8548,8 +8581,8 @@
    "ultimo": "2026-10-27"
   },
   "1HKv05Wh_t_gsHvCIkHBJFaKlY4mxyEy2": {
-   "usi": 2,
-   "ultimo": "2026-10-12"
+   "usi": 3,
+   "ultimo": "2026-10-31"
   },
   "1q_-2Z0Nxs0rzY0eRiS5kJ9hteaPWK_as": {
    "usi": 2,
@@ -8957,7 +8990,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_08.flac",
   "phonk_12.flac",
   "phonk_13.flac",
   "phonk_10.flac",
@@ -8976,7 +9008,8 @@
   "drive_06.flac",
   "drive_02.flac",
   "phonk_01.flac",
-  "drive_03.flac"
+  "drive_03.flac",
+  "trap_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9011,7 +9044,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_broll",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -9027,7 +9060,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1347176186322399",
   "1602746231488269",
   "3780853278812844",
   "899970351935116",
@@ -9056,6 +9088,7 @@
   "9513789255356881",
   "1283513152336813",
   "1852688158814799",
-  "620334183626298"
+  "620334183626298",
+  "272114135386704"
  ]
 }
