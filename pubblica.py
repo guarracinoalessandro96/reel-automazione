@@ -136,6 +136,8 @@ def scegli_musica(tema, recenti, scena=None, nostra=False):
     """Un brano adatto alla scena, evitando quelli usati di recente: prima la Raccolta audio di YouTube, poi i loop
     generati da motivazione. nostra=True: solo i nostri brani (versione per Facebook/Instagram)."""
     yt = [] if nostra else list(YT_PER_SCENA.get(scena, ["yt_carica", "yt_epica"]))
+    if TUTTO_10S and not nostra:      # 31/10/2026: pezzi unici da 10,5 s (prepara_dieci.py): la musica non salta a meta'
+        yt = ["yt_dieci"]
     random.shuffle(yt)
     for mood in (*yt, GENERE_PER_SCENA.get(scena), *random.sample(GENERI_MOTIVAZIONE, len(GENERI_MOTIVAZIONE))):
         if not mood:
