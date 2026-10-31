@@ -57,7 +57,20 @@ def dividi_in(testo, n):
     return [p for p in pezzi if p]
 
 
-def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="sequenza"):
+class VisoCoperto(Exception):
+    """31/10/2026: la scritta finirebbe sul viso anche nella posizione migliore: si riprova con altre clip."""
+
+
+def viso_coperto(img, sotto, W, H):
+    """True se il riquadro del testo copre piu' del 40% di un viso (le caselle dei visi hanno gia' un margine)."""
+    b = img.getbbox()
+    if not b:
+        return False
+    box = (b[0] / W, b[1] / H, b[2] / W, b[3] / H)
+    return any(ov._overlap(box, f) > 0.4 * max((f[2] - f[0]) * (f[3] - f[1]), 1e-6) for f in sotto)
+
+
+def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="sequenza", controlla_viso=False):
     """clips: video sorgente (si riusano a giro, ogni pezzo da un punto diverso); durate: secondi di ogni pezzo;
     testi: [(da_s, a_s, testo)] da mostrare a tempo. Restituisce info."""
     W, H = ov.LATO_USCITA, int(ov.LATO_USCITA * 16 / 9)
@@ -75,7 +88,7 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         # 29/10/2026 (Alessandro: "le scritte non devono mai coprire il viso"): volti di questo pezzo, gia' nel taglio
         # 9:16 del reel (prima qui il testo andava sempre in alto, anche sopra la faccia)
         try:
-            fr = ov.extract_frames(c, seg, n=3, start=inizio,
+            fr = ov.extract_frames(c, seg, n=5 if controlla_viso else 3, start=inizio,
                                    vf=f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H}")
             volti.append(ov.detect_faces(fr))
         except Exception:
@@ -91,6 +104,8 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
     for k, (a, b, t) in enumerate(testi):
         sotto = [f for i in range(n) if tagli[i] < b and tagli[i + 1] > a for f in volti[i]]   # pezzi sotto il testo
         img, _, _ = ov.build_overlay(W, H, t, sotto, serie=serie)
+        if controlla_viso and viso_coperto(img, sotto, W, H):
+            raise VisoCoperto(t)
         p = os.path.join(tmp, f"t{k}.png")
         img.save(p)
         cmd += ["-i", p]
@@ -161,13 +176,13 @@ def make_lista(clips, titolo, righe, dst, musiche=(), serie=None):
     return make_sequenza(clips, [2.5] * 4, testi, dst, musiche, serie, "dieci_lista")
 
 
-def make_dieci(nome, clips, frase, dst, musiche=(), serie=None):
+def make_dieci(nome, clips, frase, dst, musiche=(), serie=None, controlla_viso=False):
     """dieci / dieci_due / dieci_broll: 10 s. Se la frase ha due parti (es. "Non voglio diventare ricco. Voglio
     che..."), la prima compare da sola per GANCIO_S secondi, poi resta la frase intera; altrimenti la frase fissa."""
     dur = sum(FORMATI[nome]["stacchi"])
     parti = ov.dividi_frase(frase)
     testi = [(0.0, GANCIO_S, parti[0]), (GANCIO_S, dur, frase)] if parti else [(0.0, dur, frase)]
-    return make_sequenza(clips, FORMATI[nome]["stacchi"], testi, dst, musiche, serie, nome)
+    return make_sequenza(clips, FORMATI[nome]["stacchi"], testi, dst, musiche, serie, nome, controlla_viso)
 
 
 def make_storia(clips, titolo, righe, dst, musiche=(), serie=None):

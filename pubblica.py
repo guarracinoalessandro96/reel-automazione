@@ -339,7 +339,11 @@ def scegli_formato(slot, state, frase, an, spinto=True):
         return "dieci_lista"
     if TUTTO_10S:                    # 29/10/2026: tutti da 10 s, a turno (mai lo stesso due volte di fila)
         scelte = [f for f in FORMATI_10 if f != state.get("formato_ultimo")] or list(FORMATI_10)
-        return random.choice(scelte)
+        try:                         # 31/10/2026: piu' spazio ai formati che rendono (pesi.json, da report.py)
+            pesi_f = json.load(open(os.path.join(HERE, "pesi.json"), encoding="utf-8")).get("formati", {})
+        except Exception:
+            pesi_f = {}
+        return random.choices(scelte, weights=[float(pesi_f.get(f, 1.0)) for f in scelte])[0]
     if TUTTO_30S:                    # 26/10/2026: tutti da 30 s, i 3 formati a turno (mai lo stesso due volte di fila)
         scelte = [f for f in FORMATI_30 if f != state.get("formato_ultimo")] or list(FORMATI_30)
         return random.choice(scelte)
@@ -508,6 +512,17 @@ def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip):
     if formato == "dieci" and overlay.probe(src)[0] < 10.5:
         formato = "dieci_due"
     clips = [src] + (clip_extra(drive, work, clip, 3 if formato == "dieci_broll" else 1) if formato != "dieci" else [])
+    # 31/10/2026: controllo PRIMA di pubblicare: se la scritta coprirebbe il viso si cambia clip, fino a 2 volte
+    for prova in range(2):
+        try:
+            return formati_nuovi.make_dieci(formato, clips, frase["gancio"], out, musiche_brano(music, 3), serie, True)
+        except formati_nuovi.VisoCoperto:
+            log(f"Scritta sul viso (prova {prova + 1}): cambio le clip")
+            formato = "dieci_broll"
+            cambio = os.path.join(work, f"cambio_{prova}")
+            os.makedirs(cambio, exist_ok=True)
+            altre = clip_extra(drive, cambio, clip, 4)
+            clips = altre or clips
     return formati_nuovi.make_dieci(formato, clips, frase["gancio"], out, musiche_brano(music, 3), serie)
 
 
@@ -1324,7 +1339,41 @@ def scegli_archivio(archivio, slot_ora):
     def chiave(c):
         pos = ordine.index(c.get("fascia")) if c.get("fascia") in ordine else len(ordine)
         return (int(c.get("usi", 0)), c.get("ultimo", ""), pos)       # meno usato, poi da piu' tempo, poi fascia
+    # 31/10/2026: una volta su due tra le clip che hanno fatto piu' visualizzazioni (pesi.json, da report.py)
+    try:
+        forti = set(json.load(open(os.path.join(HERE, "pesi.json"), encoding="utf-8")).get("clip_forti", []))
+    except Exception:
+        forti = set()
+    scelte = [c for c in archivio if c.get("nome") in forti]
+    if scelte and random.random() < 0.5:
+        return min(scelte, key=chiave)
     return min(archivio, key=chiave)
+
+
+def recupera_instagram(state, drive, work, save):
+    """31/10/2026: se il lavoro viene interrotto mentre aspetta l'ora esatta (YouTube e' gia' programmato, Instagram no)
+    al giro dopo Instagram si recupera dalla versione 1080p senza musica salvata per TikTok."""
+    for h in [x for x in state["storico"] if x.get("in_corso") and x.get("frase_dati")]:
+        h.pop("in_corso")
+        if "instagram" not in PLATFORMS or "instagram" in (h.get("risultati") or {}) or fermo(state, "instagram"):
+            continue
+        nome = f"{ora_slot(h['slot']):%Y-%m-%d %H%M} - {h['frase']}.mp4"
+        try:
+            q = f"'{drive.cartella(CARTELLA_TIKTOK)}' in parents and name = '{nome}' and trashed = false"
+            trovati = drive.api.files().list(q=q, fields="files(id)").execute().get("files", [])
+            if not trovati:
+                log("Recupero Instagram: video non trovato", nome)
+                continue
+            path = os.path.join(work, "recupero.mp4")
+            drive.download(trovati[0]["id"], path, folder=CARTELLA_TIKTOK)
+            scelto = scegli_audio_instagram(h.get("scena"), state.get("ig_audio_recenti", []))
+            pid = instagram_upload(path, h["frase_dati"], scelto[0] if scelto else None)
+            h.setdefault("risultati", {})["instagram"] = {"ok": True, "id": pid, "recuperato": True}
+            log(f"Instagram recuperato per l'orario {h['slot']}")
+        except Exception as e:
+            log("Recupero Instagram non riuscito:", e)
+            h.setdefault("risultati", {})["instagram"] = {"ok": False, "errore": str(e)[:200]}
+        save()
 
 
 def main():
@@ -1373,6 +1422,9 @@ def main():
         if not job["piattaforme"] or job["tentativi"] >= MAX_TENTATIVI:
             state["riprova"].remove(job)
         save()
+
+    if not DRY:
+        recupera_instagram(state, drive, work, save)
 
     # pulizia di Drive (una volta al giorno, alla prima esecuzione della giornata)
     oggi = datetime.date.today().isoformat()
@@ -1637,7 +1689,8 @@ def main():
                                  "video": nome, "md5": video.get("md5Checksum") if video else None,
                                  "da_archivio": bool(clip), "scena": an["scena"], "registrato": an.get("registrato"),
                                  "frase": frase["id"], "tema": frase["tema"], "montaggio": info, "risultati": results,
-                                 "in_corso": True})
+                                 "in_corso": True, "frase_dati": {k: frase.get(k) for k in (
+                                     "id", "tema", "gancio", "righe", "autore", "hashtag", "serie")}})
         save()
     if per_dopo and out_meta:
         try:

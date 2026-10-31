@@ -307,6 +307,27 @@ def main():
     if controlla_blocchi(state, pesi):       # Short bloccati per diritti d'autore: avviso + formato spento
         json.dump(pesi, open(PESI, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
 
+    # 31/10/2026: ogni mattina il sistema tiene i brani e le clip che rendono di piu' (mediana, almeno 3 uscite in 30 giorni)
+    trenta = (datetime.datetime.now() - datetime.timedelta(days=30)).isoformat()
+    per_brano, per_clip = {}, {}
+    for h in post:
+        v = yt.get(h["risultati"]["youtube"]["id"])
+        if not v or h["quando"] < trenta:
+            continue
+        m = re.sub(r"_\d+\.\w+$", "", (h.get("montaggio") or {}).get("musica") or "")
+        if m:
+            per_brano.setdefault(m, []).append(v[0])
+        if h.get("video"):
+            per_clip.setdefault(h["video"], []).append(v[0])
+    def migliori_di(gruppi, quanti, minimo):
+        ok = [(statistics.median(x), k) for k, x in gruppi.items() if len(x) >= minimo]
+        return [k for _, k in sorted(ok, reverse=True)[:quanti]]
+    if migliori_di(per_brano, 10, 3):
+        pesi["brani_forti"] = migliori_di(per_brano, 10, 3)
+    if migliori_di(per_clip, 20, 2):
+        pesi["clip_forti"] = migliori_di(per_clip, 20, 2)
+    json.dump(pesi, open(PESI, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+
     migliori = sorted(righe, key=lambda r: (-r["views"], -r["like"]))[:5]
     testi = testi_citazioni() if migliori else {}
     migliori = [dict(m, frase=testi.get(m["frase"], m["frase"])) for m in migliori]
