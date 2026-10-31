@@ -8017,11 +8017,42 @@
    },
    "spinto": true,
    "testo": "Le scuse non pagano niente. Il lavoro sì."
+  },
+  {
+   "quando": "2026-10-31T13:00",
+   "slot": "2026-10-31 14:00",
+   "video": "IMG_3610.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "specchio",
+   "registrato": null,
+   "frase": "MIE-355d8bb6",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "mirror_mirror_1.m4a",
+    "stacchi": 2,
+    "testi": 2,
+    "musica_meta": "trap_07.flac",
+    "musica_instagram": "Move Ur Body (Instrumental) - half.cool"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "jFL9rhQ8LlE"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18110973040915711"
+    }
+   },
+   "spinto": true,
+   "testo": "Non conta da dove parti. Conta quanto sei disposto a lavorare per arrivare."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-23 00:00",
   "2026-10-23 02:00",
   "2026-10-23 04:00",
   "2026-10-23 06:00",
@@ -8100,10 +8131,10 @@
   "2026-10-31 06:00",
   "2026-10-31 08:00",
   "2026-10-31 10:00",
-  "2026-10-31 12:00"
+  "2026-10-31 12:00",
+  "2026-10-31 14:00"
  ],
  "musica_recenti": [
-  "rubberband_1.m4a",
   "the_light_1.m4a",
   "death_duel_1.m4a",
   "visions_1.m4a",
@@ -8122,7 +8153,8 @@
   "horizons_1.m4a",
   "sweaty_staredown_1.m4a",
   "delirium_1.m4a",
-  "moon_vision_1.m4a"
+  "moon_vision_1.m4a",
+  "mirror_mirror_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8349,7 +8381,8 @@
   "MIE-295fce20",
   "MIE-95c3c510",
   "MIE-c2cfd80e",
-  "MIE-003bb78c"
+  "MIE-003bb78c",
+  "MIE-355d8bb6"
  ],
  "temi_recenti": [
   "mentalita",
@@ -8360,8 +8393,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
-  "imprenditore"
+  "imprenditore",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-10-31",
@@ -8471,8 +8504,8 @@
    "ultimo": "2026-10-31"
   },
   "1X37GK_cN0RxuzC0UYRmVlSUUrJUgw0WY": {
-   "usi": 1,
-   "ultimo": "2026-10-11"
+   "usi": 2,
+   "ultimo": "2026-10-31"
   },
   "1cws0l3N3pW2EVUmkD-GxH5nLIIh0UE-c": {
    "usi": 1,
@@ -8792,7 +8825,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_02.flac",
   "phonk_14.flac",
   "phonk_07.flac",
   "phonk_05.flac",
@@ -8811,7 +8843,8 @@
   "phonk_09.flac",
   "deciso_12.flac",
   "phonk_11.flac",
-  "drive_13.flac"
+  "drive_13.flac",
+  "trap_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8846,7 +8879,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_broll",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8862,7 +8895,6 @@
  ],
  "commenti_fino": "2026-10-30T21:00:36Z",
  "ig_audio_recenti": [
-  "823145229909724",
   "932486288340954",
   "1626635767828538",
   "493652384544163",
@@ -8891,6 +8923,7 @@
   "393903371411311",
   "820220974302825",
   "973266493758189",
-  "849342490718599"
+  "849342490718599",
+  "1127106596130760"
  ]
 }
