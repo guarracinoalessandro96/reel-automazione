@@ -8145,11 +8145,42 @@
    },
    "spinto": true,
    "testo": "Ho capito una cosa: nessuno verrà a salvarti. Devi farlo tu."
+  },
+  {
+   "quando": "2026-10-31T21:00",
+   "slot": "2026-10-31 22:00",
+   "video": "IMG_3652.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-a1863c9e",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "stake_out_1.m4a",
+    "stacchi": 4,
+    "testi": 2,
+    "musica_meta": "drive_03.flac",
+    "musica_instagram": "Epica - Tony Dark Eyes"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "BUpWE87lXc8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18348755437283446"
+    }
+   },
+   "spinto": true,
+   "testo": "Le occasioni non arrivano da sole. Te le vai a prendere."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-23 08:00",
   "2026-10-23 10:00",
   "2026-10-23 12:00",
   "2026-10-23 14:00",
@@ -8228,10 +8259,10 @@
   "2026-10-31 14:00",
   "2026-10-31 16:00",
   "2026-10-31 18:00",
-  "2026-10-31 20:00"
+  "2026-10-31 20:00",
+  "2026-10-31 22:00"
  ],
  "musica_recenti": [
-  "ancient_civilisations_1.m4a",
   "horizons_1.m4a",
   "cartier_1.m4a",
   "fire_in_the_sky_1.m4a",
@@ -8250,7 +8281,8 @@
   "mirror_mirror_1.m4a",
   "the_road_to_mordor_1.m4a",
   "fire_in_the_sky_1.m4a",
-  "break_ya_neck_1.m4a"
+  "break_ya_neck_1.m4a",
+  "stake_out_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8481,17 +8513,18 @@
   "MIE-355d8bb6",
   "MIE-a56f1caf",
   "MIE-22d846c4",
-  "MIE-94ebbc50"
+  "MIE-94ebbc50",
+  "MIE-a1863c9e"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
   "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -8503,8 +8536,8 @@
    "ultimo": "2026-10-27"
   },
   "1prxBAB3e2zYxgElc_5sFnFrc_3Lw6Snt": {
-   "usi": 2,
-   "ultimo": "2026-10-12"
+   "usi": 3,
+   "ultimo": "2026-10-31"
   },
   "1QRloko-RTNUoZs6eVV1LYBLqTIhN7WDy": {
    "usi": 2,
@@ -8924,7 +8957,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_04.flac",
   "phonk_08.flac",
   "phonk_12.flac",
   "phonk_13.flac",
@@ -8943,7 +8975,8 @@
   "trap_07.flac",
   "drive_06.flac",
   "drive_02.flac",
-  "phonk_01.flac"
+  "phonk_01.flac",
+  "drive_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8978,7 +9011,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8994,7 +9027,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "381204824599064",
   "1347176186322399",
   "1602746231488269",
   "3780853278812844",
@@ -9023,6 +9055,7 @@
   "1127106596130760",
   "9513789255356881",
   "1283513152336813",
-  "1852688158814799"
+  "1852688158814799",
+  "620334183626298"
  ]
 }
