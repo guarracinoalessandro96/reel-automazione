@@ -7889,11 +7889,42 @@
    },
    "spinto": true,
    "testo": "Ho deciso di vincere nella vita. Il resto è solo questione di tempo."
+  },
+  {
+   "quando": "2026-10-31T05:00",
+   "slot": "2026-10-31 06:00",
+   "video": "IMG_4311.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-295fce20",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "horizons_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "phonk_09.flac",
+    "musica_instagram": "The Nerve - Elad Marish"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "2NNr005iup0"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17998978104062755"
+    }
+   },
+   "spinto": true,
+   "testo": "Ogni persona leale alla fine si fa male."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-22 16:00",
   "2026-10-22 18:00",
   "2026-10-22 20:00",
   "2026-10-22 22:00",
@@ -7972,10 +8003,10 @@
   "2026-10-30 18:00",
   "2026-10-30 20:00",
   "2026-10-30 22:00",
-  "2026-10-31 00:00"
+  "2026-10-31 00:00",
+  "2026-10-31 06:00"
  ],
  "musica_recenti": [
-  "ten_1.m4a",
   "kick_it_1.m4a",
   "monthaholic_1.m4a",
   "break_ya_neck_1.m4a",
@@ -7994,7 +8025,8 @@
   "survival_mode_1.m4a",
   "ego_chall_1.m4a",
   "wrangle_the_crazy_1.m4a",
-  "final_boss_battle_1.m4a"
+  "final_boss_battle_1.m4a",
+  "horizons_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8217,10 +8249,11 @@
   "MIE-1abab25e",
   "MIE-40a4765a",
   "MIE-9156c95a",
-  "MIE-4e0eaa96"
+  "MIE-4e0eaa96",
+  "MIE-295fce20"
  ],
  "temi_recenti": [
-  "storia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -8232,7 +8265,7 @@
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-10-30",
+ "pulizia": "2026-10-31",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -8655,12 +8688,11 @@
    "ultimo": "2026-10-30"
   },
   "1icAhByFdodzmuGNrSAXVrb0tCLCv80Lx": {
-   "usi": 1,
-   "ultimo": "2026-10-30"
+   "usi": 2,
+   "ultimo": "2026-10-31"
   }
  },
  "musica_recenti_meta": [
-  "phonk_07.flac",
   "phonk_11.flac",
   "drive_10.flac",
   "phonk_01.flac",
@@ -8679,7 +8711,8 @@
   "phonk_12.flac",
   "phonk_03.flac",
   "phonk_06.flac",
-  "phonk_07.flac"
+  "phonk_07.flac",
+  "phonk_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -8714,7 +8747,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -8730,7 +8763,6 @@
  ],
  "commenti_fino": "2026-10-30T21:00:36Z",
  "ig_audio_recenti": [
-  "475612031187222",
   "1147818560896993",
   "900264374440235",
   "249201165751597",
@@ -8759,6 +8791,7 @@
   "974432747187721",
   "523966117385305",
   "1372666635060078",
-  "1377485917727304"
+  "1377485917727304",
+  "393903371411311"
  ]
 }
