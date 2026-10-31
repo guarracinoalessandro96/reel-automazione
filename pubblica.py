@@ -311,8 +311,6 @@ def scegli_formato(slot, state, frase, an, spinto=True):
     se si puo'. FORMATO=nome forza un formato (prove)."""
     if ENV("FORMATO"):
         return ENV("FORMATO")
-    if frase.get("clip_speciali"):
-        return "dieci_speciale"
     if an.get("momento"):            # video mandato con il suo titolo: il momento com'e'
         return "momento"
     if an.get("parlato"):            # video in cui parla: sempre con la sua voce e i sottotitoli
@@ -479,32 +477,6 @@ def scegli_storia(state):
         log("Racconti nuovi finiti: ne riuso uno vecchio. Aggiungerne altri a storie.json!")
     libere.sort(key=lambda x: -x.get("punteggio", 50))
     return random.choice(libere[:3])
-
-
-def reel_speciale(slot, drive):
-    """31/10/2026: reel decisi da Alessandro per un orario preciso (speciali.json: frase + clip scelte a mano).
-    Restituisce (dati, [clip dell'archivio]) oppure None: se manca anche una sola clip esce il reel normale."""
-    try:
-        dati = json.load(open(os.path.join(HERE, "speciali.json"), encoding="utf-8")).get(slot)
-        if not dati:
-            return None
-        stem = lambda n: os.path.splitext(n)[0].lower()
-        archivio = {stem(c["nome"]): c for c in drive.lista_archivio()}
-        return dati, [archivio[x.lower()] for x in dati["clip"]]
-    except Exception as e:
-        log("Reel speciale non disponibile, esce quello normale:", e)
-        return None
-
-
-def monta_speciale(frase, src, out, music, serie, drive, work):
-    """Reel speciale: 4 clip scelte a mano, una ogni 2,5 s. src e' gia' la prima."""
-    import formati_nuovi
-    clips = [src]
-    for i, c in enumerate(frase["clip_speciali"][1:]):
-        p = os.path.join(work, f"speciale_{i}{os.path.splitext(c['nome'])[1] or '.mov'}")
-        drive.download(c["id"], p, folder="Archivio")
-        clips.append(p)
-    return formati_nuovi.make_dieci("dieci_broll", clips, frase["gancio"], out, musiche_brano(music, 3), serie)
 
 
 def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip):
@@ -1475,12 +1447,6 @@ def main():
         an = state["analisi"][video["id"]]
         nome, fonte_id = video["name"], video["id"]
 
-    speciale = reel_speciale(slot, drive)
-    if speciale:
-        clip, video, tenuto = speciale[1][0], None, None
-        an = {"scena": clip.get("scena"), "compagnia": clip.get("compagnia"), "fascia": clip.get("fascia")}
-        nome, fonte_id = clip["nome"], clip["id"]
-
     # 3. frase e musica adatte
     pesi_file = os.path.join(HERE, "pesi.json")
     pesi = json.load(open(pesi_file, encoding="utf-8")).get("temi", {}) if os.path.exists(pesi_file) else {}
@@ -1539,9 +1505,6 @@ def main():
             return
     else:
         frase = scegli_frase(frasi, an["scena"], usi, state["temi_recenti"], pesi, an.get("compagnia"))
-    if speciale:
-        frase = {"id": speciale[0]["id"], "tema": "imprenditore", "gancio": speciale[0]["frase"], "autore": "",
-                 "hashtag": ["#imprenditore", "#motivazione", "#obiettivi"], "clip_speciali": speciale[1]}
     music = None if ENV("SENZA_MUSICA") == "1" else scegli_musica(frase["tema"], state["musica_recenti"], an["scena"])
     log(f"Slot {slot} | {nome} | scena {an['scena']} | frase {frase['id']}: {frase['gancio']}")
 
@@ -1569,8 +1532,6 @@ def main():
                 info = overlay.make_video(src, prima, out, music=music, serie=serie,
                                           colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
                                           da_archivio=bool(clip), formato=dict(GANCIO, seconda=seconda))
-            elif formato == "dieci_speciale":
-                info = monta_speciale(frase, src, out, music, serie, drive, work)
             elif formato == "dieci_lista":
                 frase, info = monta_dieci_lista(lista_regole(slot, state), src, out, music, serie, drive, work, clip)
             elif formato in FORMATI_10:
