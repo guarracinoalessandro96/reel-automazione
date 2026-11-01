@@ -8209,11 +8209,42 @@
    },
    "spinto": true,
    "testo": "Impara a stare da solo: è lì che diventi forte."
+  },
+  {
+   "quando": "2026-11-01T05:00",
+   "slot": "2026-11-01 06:00",
+   "video": "IMG_4508.MOV",
+   "md5": "41526baeb41d9d37b466b6f2df41834d",
+   "da_archivio": false,
+   "scena": "uscita",
+   "registrato": "2026-10-31T23:19+01:00",
+   "frase": "MIE-e115a5f6",
+   "tema": "imprenditore",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "locked_in_1.m4a",
+    "stacchi": 4,
+    "testi": 2,
+    "musica_meta": "trap_01.flac",
+    "musica_instagram": "Dimensions - Sam Marshall"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "gITPp3HCUPQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18575415415074956"
+    }
+   },
+   "spinto": true,
+   "testo": "Un giorno tutto il duro lavoro sarà ripagato. Ogni notte insonne avrà un senso."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-23 12:00",
   "2026-10-23 14:00",
   "2026-10-23 16:00",
   "2026-10-23 18:00",
@@ -8292,10 +8323,10 @@
   "2026-10-31 18:00",
   "2026-10-31 20:00",
   "2026-10-31 22:00",
-  "2026-11-01 00:00"
+  "2026-11-01 00:00",
+  "2026-11-01 06:00"
  ],
  "musica_recenti": [
-  "cartier_1.m4a",
   "fire_in_the_sky_1.m4a",
   "locked_in_1.m4a",
   "vibe_check_1.m4a",
@@ -8314,7 +8345,8 @@
   "fire_in_the_sky_1.m4a",
   "break_ya_neck_1.m4a",
   "stake_out_1.m4a",
-  "whoop_1.m4a"
+  "whoop_1.m4a",
+  "locked_in_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8547,22 +8579,23 @@
   "MIE-22d846c4",
   "MIE-94ebbc50",
   "MIE-a1863c9e",
-  "MIE-239a782a"
+  "MIE-239a782a",
+  "MIE-e115a5f6"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
   "mentalita",
   "imprenditore",
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "imprenditore"
  ],
  "analisi": {},
- "pulizia": "2026-10-31",
+ "pulizia": "2026-11-01",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -8987,10 +9020,13 @@
   "1icAhByFdodzmuGNrSAXVrb0tCLCv80Lx": {
    "usi": 2,
    "ultimo": "2026-10-31"
+  },
+  "1hwiHGOvEhDI3PAMtPeTlDKfHKCTowt_G": {
+   "usi": 1,
+   "ultimo": "2026-11-01"
   }
  },
  "musica_recenti_meta": [
-  "phonk_12.flac",
   "phonk_13.flac",
   "phonk_10.flac",
   "phonk_16.flac",
@@ -9009,7 +9045,8 @@
   "drive_02.flac",
   "phonk_01.flac",
   "drive_03.flac",
-  "trap_16.flac"
+  "trap_16.flac",
+  "trap_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9044,7 +9081,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -9060,7 +9097,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1602746231488269",
   "3780853278812844",
   "899970351935116",
   "1005053937846758",
@@ -9089,6 +9125,7 @@
   "1283513152336813",
   "1852688158814799",
   "620334183626298",
-  "272114135386704"
+  "272114135386704",
+  "302973472523675"
  ]
 }
