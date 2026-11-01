@@ -1,14 +1,14 @@
 {
  "temi": {
-  "amicizia": 0.96,
-  "imprenditore": 1.15,
-  "mentalita": 0.97,
-  "palestra": 1.07,
-  "dieta": 1.07,
-  "regole": 1.25,
-  "storia": 0.8
+  "amicizia": 0.97,
+  "imprenditore": 1.16,
+  "mentalita": 0.98,
+  "palestra": 1.08,
+  "dieta": 1.08,
+  "regole": 1.27,
+  "storia": 0.77
  },
- "aggiornato": "2026-10-31",
+ "aggiornato": "2026-11-01",
  "frasi_vincenti": [
   "MIE-02d87ee7",
   "MIE-043e8cf1",
@@ -28,6 +28,7 @@
   "MIE-51b80f60",
   "MIE-53683e04",
   "MIE-578492d5",
+  "MIE-5a99bac4",
   "MIE-68b9fc8e",
   "MIE-6ac2e2c0",
   "MIE-6bd471d6",
@@ -57,7 +58,9 @@
   "MIE-be160ed8",
   "MIE-c2cfd80e",
   "MIE-c42d8782",
+  "MIE-cd7ff40e",
   "MIE-d7cc734e",
+  "MIE-d860fe71",
   "MIE-d8f3e08c",
   "MIE-e78c74d0",
   "MIE-f9129a4d",
@@ -70,12 +73,13 @@
   "STO-20"
  ],
  "formati": {
-  "frase": 0.77,
-  "regole": 1.21,
-  "montaggio": 0.93,
-  "gancio": 0.55,
-  "frase8": 1.21,
-  "racconto": 0.48
+  "frase": 0.79,
+  "regole": 1.23,
+  "montaggio": 0.95,
+  "gancio": 0.56,
+  "frase8": 1.23,
+  "racconto": 0.47,
+  "racconto_lento": 0.44
  },
  "esperimento_formati": {
   "regole": 1.6
@@ -84,13 +88,35 @@
  "brani_forti": [
   "drive",
   "phonk",
+  "sweaty_staredown",
   "way_back_home",
   "wrangle_the_crazy",
   "ancient_civilisations",
+  "moon_vision",
   "cutscene_crush",
-  "dusty_road_magic",
-  "keep_it_movin",
   "death_duel",
-  "moon_vision"
+  "dusty_road_magic"
+ ],
+ "clip_forti": [
+  "IMG_4037.MOV",
+  "IMG_3652.mov",
+  "IMG_3606.mov",
+  "IMG_4032.MOV",
+  "IMG_3311.mov",
+  "IMG_3832.mov",
+  "IMG_3833.mov",
+  "IMG_4061.MOV",
+  "IMG_4126.MOV",
+  "Alessandro Guarracino sta trasmettendo dal vivo..MOV",
+  "IMG_3972.MOV",
+  "IMG_3330.mov",
+  "IMG_4121.mov",
+  "IMG_3831.mov",
+  "IMG_3787.mov",
+  "IMG_4029.MOV",
+  "IMG_4294.MOV",
+  "IMG_4131.mov",
+  "IMG_4044.MOV",
+  "IMG_4271.MOV"
  ]
 }
