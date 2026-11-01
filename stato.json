@@ -8241,11 +8241,42 @@
    },
    "spinto": true,
    "testo": "Un giorno tutto il duro lavoro sarà ripagato. Ogni notte insonne avrà un senso."
+  },
+  {
+   "quando": "2026-11-01T07:00",
+   "slot": "2026-11-01 08:00",
+   "video": "IMG_3770.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-6e420549",
+   "tema": "imprenditore",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "death_duel_1.m4a",
+    "stacchi": 2,
+    "testi": 2,
+    "musica_meta": "drive_09.flac",
+    "musica_instagram": "Unstoppable - Dhruv Goel"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Fqfkf_BMguw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18150494551605013"
+    }
+   },
+   "spinto": false,
+   "testo": "Non lavorare per i soldi. Fai lavorare i soldi per te."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-23 14:00",
   "2026-10-23 16:00",
   "2026-10-23 18:00",
   "2026-10-23 20:00",
@@ -8324,10 +8355,10 @@
   "2026-10-31 20:00",
   "2026-10-31 22:00",
   "2026-11-01 00:00",
-  "2026-11-01 06:00"
+  "2026-11-01 06:00",
+  "2026-11-01 08:00"
  ],
  "musica_recenti": [
-  "fire_in_the_sky_1.m4a",
   "locked_in_1.m4a",
   "vibe_check_1.m4a",
   "rubberband_1.m4a",
@@ -8346,7 +8377,8 @@
   "break_ya_neck_1.m4a",
   "stake_out_1.m4a",
   "whoop_1.m4a",
-  "locked_in_1.m4a"
+  "locked_in_1.m4a",
+  "death_duel_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8580,11 +8612,11 @@
   "MIE-94ebbc50",
   "MIE-a1863c9e",
   "MIE-239a782a",
-  "MIE-e115a5f6"
+  "MIE-e115a5f6",
+  "MIE-6e420549"
  ],
  "temi_recenti": [
   "mentalita",
-  "mentalita",
   "imprenditore",
   "mentalita",
   "imprenditore",
@@ -8592,6 +8624,7 @@
   "mentalita",
   "mentalita",
   "mentalita",
+  "imprenditore",
   "imprenditore"
  ],
  "analisi": {},
@@ -8618,8 +8651,8 @@
    "ultimo": "2026-10-31"
   },
   "1q_-2Z0Nxs0rzY0eRiS5kJ9hteaPWK_as": {
-   "usi": 2,
-   "ultimo": "2026-10-12"
+   "usi": 3,
+   "ultimo": "2026-11-01"
   },
   "1Eit9vgbQEwd_RXA_ujWUx9-QNboc7VIg": {
    "usi": 2,
@@ -9027,7 +9060,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_13.flac",
   "phonk_10.flac",
   "phonk_16.flac",
   "phonk_16.flac",
@@ -9046,7 +9078,8 @@
   "phonk_01.flac",
   "drive_03.flac",
   "trap_16.flac",
-  "trap_01.flac"
+  "trap_01.flac",
+  "drive_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9081,7 +9114,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_broll",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -9097,7 +9130,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "3780853278812844",
   "899970351935116",
   "1005053937846758",
   "827252278567806",
@@ -9126,6 +9158,7 @@
   "1852688158814799",
   "620334183626298",
   "272114135386704",
-  "302973472523675"
+  "302973472523675",
+  "981510330704369"
  ]
 }
