@@ -252,7 +252,7 @@ def build_testo_giallo(W, H, text, faces, mappa=None):
             if punti is None or p < punti:
                 migliore, punti = (x, float(y)), p
     x0, y0 = int(migliore[0] * W), int(migliore[1] * H)
-    d.rounded_rectangle([x0, y0, x0 + bw * W, y0 + bh * H], radius=int(fsize * 0.28), fill=(0, 0, 0, 235))
+    d.rounded_rectangle([x0, y0, x0 + bw * W, y0 + bh * H], radius=int(fsize * 0.28), fill=(0, 0, 0, 140))
     for i, l in enumerate(lines):
         d.text((x0 + pad_x, y0 + pad_y + i * lh), l, font=font, fill=GIALLO)
     return img, migliore[1], punti
