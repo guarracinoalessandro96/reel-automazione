@@ -413,6 +413,7 @@ FORMATI_30 = ("racconto", "racconto_broll", "racconto_lento")
 # tre varianti a turno (formati_nuovi.py). Momento e parlato restano.
 TUTTO_10S = True
 FORMATI_10 = ("dieci", "dieci_due", "dieci_broll")
+ORARIO_FOTO, FOTO_DAL = "18:00", "2026-11-09"   # 1/11/2026: un reel al giorno con le foto della giornata (foto_giornata.py)
 COMMENTI_SU_TELEGRAM = False   # 31/10/2026: "non voglio i commenti": su Telegram solo errori e statistiche delle 8
 ORARIO_LISTA = "spenta"      # 31/10/2026: prima tutte le frasi delle foto; per riaccenderla "18:00". Formato lista, da salvare e mandare (un post cosi' fa 1 invio ogni 2 like)
 
@@ -1602,6 +1603,14 @@ def main():
         serie = etichetta_serie(slot)
         frase = dict(frase, serie=serie)
         info, formato = None, scegli_formato(slot, state, frase, an, spinto)
+        foto_oggi = []
+        if TUTTO_10S and formato in FORMATI_10 and str(slot).endswith(ORARIO_FOTO) and str(slot)[:10] >= FOTO_DAL:
+            try:
+                import foto_giornata
+                foto_oggi = foto_giornata.pronte(drive)
+            except Exception as e:
+                log("Foto della giornata non lette:", e)
+            formato = "dieci_foto" if foto_oggi else formato
         log(f"Formato: {formato}")
         try:                            # se un formato non riesce esce il reel normale (frase da 5 s)
             if formato == "momento":
@@ -1618,6 +1627,8 @@ def main():
                 info = overlay.make_video(src, prima, out, music=music, serie=serie,
                                           colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
                                           da_archivio=bool(clip), formato=dict(GANCIO, seconda=seconda))
+            elif formato == "dieci_foto":
+                info = foto_giornata.monta(foto_oggi, frase["gancio"], out, musiche_brano(music, 3), drive, work)
             elif formato == "dieci_lista":
                 frase, info = monta_dieci_lista(lista_regole(slot, state), src, out, music, serie, drive, work, clip)
             elif formato in FORMATI_10:
