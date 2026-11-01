@@ -8369,11 +8369,42 @@
    },
    "spinto": true,
    "testo": "Sii grato per ciò che hai, mentre lavori per ciò che desideri."
+  },
+  {
+   "quando": "2026-11-01T15:00",
+   "slot": "2026-11-01 16:00",
+   "video": "IMG_3831.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-36b48138",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "dusty_road_magic_1.m4a",
+    "stacchi": 4,
+    "testi": 1,
+    "musica_meta": "phonk_16.flac",
+    "musica_instagram": "Epic Proportions - Symphonic Planet"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "OdHBjvduutE"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18149570020583582"
+    }
+   },
+   "spinto": true,
+   "testo": "Se ti offrono una grande occasione e non sei sicuro di farcela: accetta, poi impari come si fa."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-23 22:00",
   "2026-10-24 00:00",
   "2026-10-24 02:00",
   "2026-10-24 06:00",
@@ -8452,10 +8483,10 @@
   "2026-11-01 08:00",
   "2026-11-01 10:00",
   "2026-11-01 12:00",
-  "2026-11-01 14:00"
+  "2026-11-01 14:00",
+  "2026-11-01 16:00"
  ],
  "musica_recenti": [
-  "van_life_rager_1.m4a",
   "survival_mode_1.m4a",
   "ego_chall_1.m4a",
   "wrangle_the_crazy_1.m4a",
@@ -8474,7 +8505,8 @@
   "death_duel_1.m4a",
   "intergalactic_1.m4a",
   "ancient_civilisations_1.m4a",
-  "visions_1.m4a"
+  "visions_1.m4a",
+  "dusty_road_magic_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8712,16 +8744,17 @@
   "MIE-6e420549",
   "MIE-44e75fe0",
   "MIE-a9f47ec7",
-  "MIE-11a0a2c4"
+  "MIE-11a0a2c4",
+  "MIE-36b48138"
  ],
  "temi_recenti": [
-  "imprenditore",
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
   "imprenditore",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -8882,8 +8915,8 @@
    "ultimo": "2026-10-20"
   },
   "1Me9XwPdk7-kx_j_4Y_9YpSyy48oLrBIM": {
-   "usi": 2,
-   "ultimo": "2026-10-20"
+   "usi": 3,
+   "ultimo": "2026-11-01"
   },
   "1Pnwa-lAv7b6BxxAB-L0Kp3azuB15R43F": {
    "usi": 2,
@@ -9159,7 +9192,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_15.flac",
   "phonk_12.flac",
   "phonk_03.flac",
   "phonk_06.flac",
@@ -9178,7 +9210,8 @@
   "drive_09.flac",
   "trap_04.flac",
   "trap_06.flac",
-  "deciso_09.flac"
+  "deciso_09.flac",
+  "phonk_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9229,7 +9262,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1108285910189784",
   "1447374035821884",
   "158209132866603",
   "2913736298667265",
@@ -9258,6 +9290,7 @@
   "981510330704369",
   "1661496314823289",
   "2373852472923170",
-  "581412716058691"
+  "581412716058691",
+  "522339937196006"
  ]
 }
