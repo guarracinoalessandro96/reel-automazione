@@ -208,7 +208,8 @@ def build_overlay_serie(W, H, serie):
 
 # 1/11/2026 (Alessandro, esempi di @andrewjamesjobe): scritta gialla senza riquadro, allineata a sinistra, nella parte
 # piu' libera dell'immagine e mai sul viso. Colori del video scuri e ricchi: ombre profonde, luci calde, pelle naturale.
-GIALLO = (250, 232, 140, 255)
+GIALLO = (255, 255, 0, 255)      # il giallo piu' acceso (1/11/2026), su riquadro nero
+FONT_GIALLO = os.path.join(_DIR, "font", "Inter-ExtraBold.ttf")      # Google Fonts, licenza OFL
 DIM_GIALLO = 0.048
 LOOK = ("curves=master='0/0 0.12/0.09 0.5/0.47 0.85/0.87 1/0.98',"
         "colorbalance=rs=-0.04:bs=0.05:rh=0.05:gh=0.01:bh=-0.05,"
@@ -233,17 +234,17 @@ def mappa_dettagli(frames):
 
 def build_testo_giallo(W, H, text, faces, mappa=None):
     """Sceglie tra le posizioni possibili quella senza visi e con meno dettagli. Stessa forma di build_overlay."""
-    from PIL import ImageFilter
     fsize = int(W * DIM_GIALLO)
-    font = ImageFont.truetype(FONT, fsize)
+    font = ImageFont.truetype(FONT_GIALLO if os.path.exists(FONT_GIALLO) else FONT, fsize)
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
     lines = _a_capo(d, text, font, W * (0.56 if len(text) <= 48 else 0.74))
-    lh = int(fsize * 1.2)
-    bw, bh = max(d.textlength(l, font=font) for l in lines) / W, lh * len(lines) / H
+    lh, pad_x, pad_y = int(fsize * 1.22), int(fsize * 0.55), int(fsize * 0.42)
+    larga = max(d.textlength(l, font=font) for l in lines)
+    bw, bh = (larga + 2 * pad_x) / W, (lh * len(lines) + 2 * pad_y) / H
     migliore, punti = (0.07, SAFE_TOP), None
     for x in (0.07, (1 - bw) / 2, max(0.07, 0.88 - bw)):
-        for y in np.arange(SAFE_TOP + 0.03, SAFE_BOTTOM - bh, 0.04):
+        for y in np.arange(SAFE_TOP + 0.03, max(SAFE_BOTTOM - bh, SAFE_TOP + 0.04), 0.04):
             box = (x, float(y), x + bw, float(y) + bh)
             p = 1000 * sum(_overlap(box, f) for f in faces)
             if mappa is not None:
@@ -251,14 +252,9 @@ def build_testo_giallo(W, H, text, faces, mappa=None):
             if punti is None or p < punti:
                 migliore, punti = (x, float(y)), p
     x0, y0 = int(migliore[0] * W), int(migliore[1] * H)
-    ombra = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    do = ImageDraw.Draw(ombra)
+    d.rounded_rectangle([x0, y0, x0 + bw * W, y0 + bh * H], radius=int(fsize * 0.28), fill=(0, 0, 0, 235))
     for i, l in enumerate(lines):
-        do.text((x0, y0 + i * lh + fsize * 0.04), l, font=font, fill=(0, 0, 0, 200))
-    img.alpha_composite(ombra.filter(ImageFilter.GaussianBlur(fsize * 0.22)))
-    d = ImageDraw.Draw(img)
-    for i, l in enumerate(lines):
-        d.text((x0, y0 + i * lh), l, font=font, fill=GIALLO)
+        d.text((x0 + pad_x, y0 + pad_y + i * lh), l, font=font, fill=GIALLO)
     return img, migliore[1], punti
 
 
