@@ -899,17 +899,18 @@ def youtube_upload(creds, path, cap, publish_at=None):
     from googleapiclient.http import MediaFileUpload
     yt = build("youtube", "v3", credentials=creds, cache_discovery=False)
     title = cap["gancio"].strip()
-    if len(title) > 92:     # limite YouTube 100 caratteri con " #shorts": taglio a parola intera + "…"
-        title = title[:90].rsplit(" ", 1)[0].rstrip(",;:") + "…"   # (mai solo la prima frase: cambierebbe il senso)
+    parola = random.choice(("#motivazione", "#disciplina", "#crescitapersonale"))    # 1/11/2026: una parola che la gente cerca
+    if len(title) > 100 - len(parola) - 10:     # limite YouTube 100 caratteri: taglio a parola intera + "…"
+        title = title[:88 - len(parola)].rsplit(" ", 1)[0].rstrip(",;:") + "…"   # (mai solo la prima frase: cambierebbe il senso)
     privacy = ENV("YOUTUBE_PRIVACY") or "public"
     momento = cap.get("tema") == "momento"
     descr = (cap["gancio"].strip().strip('"“”') + ("\n\n#shorts " + " ".join(cap.get("hashtag") or []) if momento else
-             "\n\n#shorts #motivazione #obiettivi #disciplina #crescitapersonale #frasimotivazionali #vincere"))
+             "\n\n#shorts #frasimotivazionali #obiettivi"))
     if cap.get("righe"):    # formato REGOLE: le regole in descrizione
         descr = "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1)) + "\n\n" + descr
     if serie_testo(cap):    # la serie in prima riga + invito a seguire il viaggio (il personaggio, non solo le frasi)
         descr = f"{serie_testo(cap)}\n\n" + descr
-    body = {"snippet": {"title": title + " #shorts", "description": descr, "categoryId": "22",
+    body = {"snippet": {"title": f"{title} {parola} #shorts", "description": descr, "categoryId": "22",
                         "tags": (["vita vera", "momenti", "oggi", "italia", "shorts"] if momento else
                                  ["motivazione", "obiettivi", "disciplina", "frasi motivazionali", "crescita personale",
                                   "futuro", "lavoro", "vincere", "shorts"]),   # 29/10: niente palestra
@@ -1509,8 +1510,8 @@ def main():
             usciti = [h["quando"][:16] for h in state["storico"] if h.get("video") and stem(h["video"]) == stem(c["nome"])]
             c["usi"] = max(int(c.get("usi", 0)), len(usciti))
             c["ultimo"] = max([c.get("ultimo", "")] + usciti)
-        limite = (datetime.datetime.now() - datetime.timedelta(hours=12)).isoformat(timespec="minutes")
-        riposati = [c for c in archivio if c.get("ultimo", "") < limite]     # niente video usciti nelle ultime 12 ore
+        limite = (datetime.datetime.now() - datetime.timedelta(days=7)).isoformat(timespec="minutes")
+        riposati = [c for c in archivio if c.get("ultimo", "") < limite]     # 1/11/2026: niente clip uscite negli ultimi 7 giorni
         clip = scegli_archivio(riposati or archivio, slot_ora)
         if clip is None and tenuto:           # archivio vuoto: esce comunque il video nuovo
             video, tenuto = tenuto, None

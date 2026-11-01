@@ -84,6 +84,11 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         giro = i // len(clips)                     # stessa clip riusata: punto diverso
         riserva = max(0.0, min(0.5 + giro * (seg + 0.5), secondi - seg - 0.2))
         inizio = ov.inizio_bello(c, secondi, hdr, seg + 0.2, riserva) if giro == 0 else riserva
+        if i == 0 and nome.startswith("dieci") and secondi > seg + 1.5:    # 1/11/2026: si parte sempre dal punto piu' forte
+            try:
+                inizio = ov.segmento_migliore(c, secondi, ov.HDR_TO_SDR if hdr else None, seg + 0.2)[0]
+            except Exception:
+                pass
         cmd += ["-display_rotation", "0", "-ss", f"{inizio:.2f}", "-t", f"{seg + 0.2:.2f}", "-i", c]
         # 29/10/2026 (Alessandro: "le scritte non devono mai coprire il viso"): volti di questo pezzo, gia' nel taglio
         # 9:16 del reel (prima qui il testo andava sempre in alto, anche sopra la faccia)
@@ -129,8 +134,7 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
                 g += f";{prec}{x}acrossfade=d=0.3[x{j}]"
                 prec = f"[x{j}]"
             a_out = prec
-        g += (f";{a_out}volume={ov.MUSIC_VOL},{ov.LIMITATORE},apad,atrim=0:{DUR},"
-              f"afade=t=out:st={DUR - 0.3}:d=0.3[a]")
+        g += f";{a_out}volume={ov.MUSIC_VOL},{ov.LIMITATORE},apad,atrim=0:{DUR}[a]"   # 1/11/2026: niente sfumata, il giro riparte pulito
         amap = ["-map", "[a]"]
     cmd += ["-filter_complex", g, "-map", "[v]", *amap, "-t", f"{DUR}", "-c:v", "libx264",
             "-preset", "medium" if DUR <= 10 else "veryfast", "-crf", "18", "-profile:v", "high",
@@ -176,13 +180,35 @@ def make_lista(clips, titolo, righe, dst, musiche=(), serie=None):
     return make_sequenza(clips, [2.5] * 4, testi, dst, musiche, serie, "dieci_lista")
 
 
+def tagli_a_tempo(musica, durate):
+    """1/11/2026: gli stacchi si spostano (massimo 0,3 s) sul colpo piu' forte del brano."""
+    import numpy as np
+    try:
+        pcm = subprocess.run([ov.FFMPEG, "-v", "error", "-i", musica, "-ac", "1", "-ar", "8000", "-f", "s16le", "-"],
+                             capture_output=True, timeout=30).stdout
+        x = np.frombuffer(pcm, dtype=np.int16).astype(float)
+        passo = 160                                # 20 ms
+        e = np.sqrt(np.mean(x[:len(x) // passo * passo].reshape(-1, passo) ** 2, axis=1))
+        colpi = np.maximum(np.diff(e, prepend=0), 0)
+        tagli, t = [], 0.0
+        for d in durate[:-1]:
+            t += d
+            a, b = max(0, int((t - 0.3) * 50)), int((t + 0.3) * 50)
+            tagli.append(round((a + int(np.argmax(colpi[a:b]))) / 50, 2) if colpi[a:b].size else t)
+        punti = [0.0] + tagli + [sum(durate)]
+        nuove = [round(q - p, 3) for p, q in zip(punti, punti[1:])]
+        return nuove if min(nuove) >= 1.0 else list(durate)
+    except Exception:
+        return list(durate)
+
+
 def make_dieci(nome, clips, frase, dst, musiche=(), serie=None, controlla_viso=False):
-    """dieci / dieci_due / dieci_broll: 10 s. Se la frase ha due parti (es. "Non voglio diventare ricco. Voglio
-    che..."), la prima compare da sola per GANCIO_S secondi, poi resta la frase intera; altrimenti la frase fissa."""
-    dur = sum(FORMATI[nome]["stacchi"])
-    parti = ov.dividi_frase(frase)
-    testi = [(0.0, GANCIO_S, parti[0]), (GANCIO_S, dur, frase)] if parti else [(0.0, dur, frase)]
-    return make_sequenza(clips, FORMATI[nome]["stacchi"], testi, dst, musiche, serie, nome, controlla_viso)
+    """dieci / dieci_due / dieci_broll: 10 s. 1/11/2026: la frase intera dal primo fotogramma (Instagram: la gente se ne
+    va dopo 4 s) e niente "GIORNO X / 365" sul video: lo spazio del primo secondo e' della frase, la serie e' in descrizione."""
+    durate = FORMATI[nome]["stacchi"]
+    if len(durate) > 1 and musiche and os.path.exists(musiche[0]):
+        durate = tagli_a_tempo(musiche[0], durate)
+    return make_sequenza(clips, durate, [(0.0, sum(durate), frase)], dst, musiche, None, nome, controlla_viso)
 
 
 def make_storia(clips, titolo, righe, dst, musiche=(), serie=None):

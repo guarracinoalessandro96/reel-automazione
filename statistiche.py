@@ -5,7 +5,7 @@ scarica il file da TikTok Studio e lo script lo legge da Download.
 
   python statistiche.py [--prova]     --prova: stampa e non manda
 """
-import csv, datetime, glob, io, json, os, sys, time, zipfile
+import csv, datetime, glob, io, json, os, subprocess, sys, time, zipfile
 import requests
 from zoneinfo import ZoneInfo
 
@@ -65,6 +65,20 @@ def tiktok():
     return int(righe[-1]["Video Views"]), sum(int(r["Video Views"]) for r in righe), righe[-1]["Date"], file
 
 
+def reel_mancanti(oggi):
+    """1/11/2026: se ieri sono usciti meno di 10 reel su YouTube o Instagram, una riga di errore in fondo al messaggio."""
+    qui = os.path.dirname(os.path.abspath(__file__))
+    subprocess.run(["git", "pull", "-q", "--ff-only"], cwd=qui, capture_output=True, timeout=60)
+    storia = json.load(open(os.path.join(qui, "stato.json"), encoding="utf-8"))["storico"]
+    ieri = (oggi - datetime.timedelta(days=1)).isoformat()
+    out = []
+    for p, nome in (("youtube", "YouTube"), ("instagram", "Instagram")):
+        n = sum(1 for h in storia if str(h.get("slot", "")).startswith(ieri) and (h.get("risultati") or {}).get(p, {}).get("ok"))
+        if n < 10:
+            out.append(f"{nome}: ieri usciti {n} reel su 10")
+    return out
+
+
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     k = json.load(open(SEGRETI, encoding="utf-8"))
@@ -86,6 +100,10 @@ def main():
         giorno["TikTok"], settimana["TikTok"], data_tiktok, file_tiktok = tiktok()
     except Exception as e:
         errori.append(f"TikTok: {e}")
+    try:
+        errori += reel_mancanti(oggi)
+    except Exception as e:
+        errori.append(f"Conteggio reel: {e}")
     def blocco(titolo, numeri):
         righe = [titolo]
         for nome in ("Facebook", "Instagram", "TikTok", "YouTube"):
