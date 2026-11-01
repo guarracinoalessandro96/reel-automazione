@@ -8465,11 +8465,42 @@
    },
    "spinto": true,
    "testo": "Non esistono scorciatoie. Più difficile del lavoro è svegliarti tra dieci anni nello stesso punto di oggi."
+  },
+  {
+   "quando": "2026-11-01T21:00",
+   "slot": "2026-11-01 22:00",
+   "video": "IMG_3792.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-2c37cb90",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "moon_vision_3.m4a",
+    "stacchi": 4,
+    "testi": 1,
+    "musica_meta": "phonk_03.flac",
+    "musica_instagram": "Epic Thoughts - JB Eckl"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "wpAOZqHxFw8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18117726905109786"
+    }
+   },
+   "spinto": true,
+   "testo": "Un obiettivo così grande non sarebbe nato dentro di te se non potessi realizzarlo."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-24 06:00",
   "2026-10-24 16:00",
   "2026-10-24 18:00",
   "2026-10-24 20:00",
@@ -8548,10 +8579,10 @@
   "2026-11-01 14:00",
   "2026-11-01 16:00",
   "2026-11-01 18:00",
-  "2026-11-01 20:00"
+  "2026-11-01 20:00",
+  "2026-11-01 22:00"
  ],
  "musica_recenti": [
-  "wrangle_the_crazy_1.m4a",
   "final_boss_battle_1.m4a",
   "horizons_1.m4a",
   "sweaty_staredown_1.m4a",
@@ -8570,7 +8601,8 @@
   "visions_1.m4a",
   "dusty_road_magic_1.m4a",
   "cutscene_crush_2.m4a",
-  "wrangle_the_crazy_3.m4a"
+  "wrangle_the_crazy_3.m4a",
+  "moon_vision_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8811,11 +8843,11 @@
   "MIE-11a0a2c4",
   "MIE-36b48138",
   "MIE-9cbbce3c",
-  "MIE-d8b71348"
+  "MIE-d8b71348",
+  "MIE-2c37cb90"
  ],
  "temi_recenti": [
   "mentalita",
-  "mentalita",
   "imprenditore",
   "imprenditore",
   "mentalita",
@@ -8823,7 +8855,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "imprenditore"
+  "imprenditore",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-11-01",
@@ -8873,8 +8906,8 @@
    "ultimo": "2026-11-01"
   },
   "1mIxav-KbU3ZL_NU9MF4Z-Vcww6fOPwR4": {
-   "usi": 2,
-   "ultimo": "2026-10-19"
+   "usi": 3,
+   "ultimo": "2026-11-01"
   },
   "1ehg1VD_Xtwd5ysGegtBXVLxxyo6vHs0U": {
    "usi": 2,
@@ -9258,7 +9291,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_06.flac",
   "phonk_07.flac",
   "phonk_09.flac",
   "deciso_12.flac",
@@ -9277,7 +9309,8 @@
   "deciso_09.flac",
   "phonk_16.flac",
   "drive_15.flac",
-  "phonk_10.flac"
+  "phonk_10.flac",
+  "phonk_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9312,7 +9345,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -9328,7 +9361,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2913736298667265",
   "330732519879801",
   "544713431841568",
   "1364616540355148",
@@ -9357,6 +9389,7 @@
   "581412716058691",
   "522339937196006",
   "1108285910189784",
-  "3846481242297548"
+  "3846481242297548",
+  "1781233772812838"
  ]
 }
