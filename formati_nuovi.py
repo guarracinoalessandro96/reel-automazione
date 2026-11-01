@@ -77,7 +77,8 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
     DUR = round(sum(durate), 3)
     tmp = tempfile.mkdtemp()
     n = len(durate)
-    cmd, catena, volti = [ov.FFMPEG, "-y", "-v", "error"], [], []
+    cmd, catena, volti, mappe = [ov.FFMPEG, "-y", "-v", "error"], [], [], []
+    dieci = nome.startswith("dieci")
     for i, seg in enumerate(durate):
         c = clips[i % len(clips)]
         secondi, hdr = ov.probe(c)
@@ -96,19 +97,29 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
             fr = ov.extract_frames(c, seg, n=5 if controlla_viso else 3, start=inizio,
                                    vf=f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H}")
             volti.append(ov.detect_faces(fr))
+            mappe.append(ov.mappa_dettagli(fr))
+            schiarisci = ov.schiarita(fr) if dieci else ""
         except Exception:
             volti.append([])
+            mappe.append(None)
+            schiarisci = ""
         f = [x for x in (ov.raddrizza(ov.rotazione(c)), ov.HDR_TO_SDR if hdr else "") if x]
-        f += [f"scale={W}:{H}:force_original_aspect_ratio=increase", f"crop={W}:{H}", "setsar=1",
-              f"fps={ov.FPS_MULTI}", "format=yuv420p", "settb=AVTB", f"fps={ov.FPS_MULTI}",
+        f += [f"scale={W}:{H}:force_original_aspect_ratio=increase", f"crop={W}:{H}", "setsar=1"]
+        f += [schiarisci] if schiarisci else []
+        f += [f"fps={ov.FPS_MULTI}", "format=yuv420p", "settb=AVTB", f"fps={ov.FPS_MULTI}",
               "tpad=stop_mode=clone:stop_duration=1", f"trim=0:{seg:.3f}", "setpts=PTS-STARTPTS"]
         catena.append(f"[{i}:v]{','.join(f)}[c{i}]")
-    g = ";".join(catena) + ";" + "".join(f"[c{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=0[bg]"
+    g = ";".join(catena) + ";" + "".join(f"[c{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=0" + (
+        f",{ov.LOOK}[bg]" if dieci else "[bg]")
     corrente, idx = "bg", n
     tagli = [sum(durate[:i]) for i in range(n + 1)]
     for k, (a, b, t) in enumerate(testi):
         sotto = [f for i in range(n) if tagli[i] < b and tagli[i + 1] > a for f in volti[i]]   # pezzi sotto il testo
-        img, _, _ = ov.build_overlay(W, H, t, sotto, serie=serie)
+        if dieci:
+            piene = [mappe[i] for i in range(n) if tagli[i] < b and tagli[i + 1] > a and mappe[i] is not None]
+            img, _, _ = ov.build_testo_giallo(W, H, t, sotto, sum(piene) / len(piene) if piene else None)
+        else:
+            img, _, _ = ov.build_overlay(W, H, t, sotto, serie=serie)
         if controlla_viso and viso_coperto(img, sotto, W, H):
             raise VisoCoperto(t)
         p = os.path.join(tmp, f"t{k}.png")

@@ -206,6 +206,62 @@ def build_overlay_serie(W, H, serie):
     return img
 
 
+# 1/11/2026 (Alessandro, esempi di @andrewjamesjobe): scritta gialla senza riquadro, allineata a sinistra, nella parte
+# piu' libera dell'immagine e mai sul viso. Colori del video scuri e ricchi: ombre profonde, luci calde, pelle naturale.
+GIALLO = (250, 232, 140, 255)
+DIM_GIALLO = 0.058
+LOOK = ("curves=master='0/0 0.12/0.09 0.5/0.47 0.85/0.87 1/0.98',"
+        "colorbalance=rs=-0.04:bs=0.05:rh=0.05:gh=0.01:bh=-0.05,"
+        "eq=saturation=0.94,vignette=PI/4.5")
+
+
+def schiarita(frames):
+    """Filtro per le clip buie (notte, auto): il look scuro non deve far sparire il viso. Vuoto se la clip e' gia' chiara."""
+    if not frames:
+        return ""
+    luce = float(np.mean([cv2.cvtColor(f, cv2.COLOR_BGR2GRAY).mean() for f in frames])) / 255
+    return f"eq=gamma={min(1.8, np.log(max(luce, 0.02)) / np.log(0.32)):.2f}" if luce < 0.32 else ""
+
+
+def mappa_dettagli(frames):
+    """Dove l'immagine e' piena: bordi + movimento su una griglia 45x80 (None se non ci sono fotogrammi)."""
+    if not frames:
+        return None
+    gr = [cv2.resize(cv2.cvtColor(f, cv2.COLOR_BGR2GRAY), (45, 80)).astype(np.float32) for f in frames]
+    return np.mean([np.abs(cv2.Laplacian(g, cv2.CV_32F)) for g in gr], axis=0) + 2 * np.std(gr, axis=0)
+
+
+def build_testo_giallo(W, H, text, faces, mappa=None):
+    """Sceglie tra le posizioni possibili quella senza visi e con meno dettagli. Stessa forma di build_overlay."""
+    from PIL import ImageFilter
+    fsize = int(W * DIM_GIALLO)
+    font = ImageFont.truetype(FONT, fsize)
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    lines = _a_capo(d, text, font, W * (0.56 if len(text) <= 48 else 0.74))
+    lh = int(fsize * 1.2)
+    bw, bh = max(d.textlength(l, font=font) for l in lines) / W, lh * len(lines) / H
+    migliore, punti = (0.07, SAFE_TOP), None
+    for x in (0.07, (1 - bw) / 2, max(0.07, 0.88 - bw)):
+        for y in np.arange(SAFE_TOP + 0.03, SAFE_BOTTOM - bh, 0.04):
+            box = (x, float(y), x + bw, float(y) + bh)
+            p = 1000 * sum(_overlap(box, f) for f in faces)
+            if mappa is not None:
+                p += float(mappa[int(box[1] * 80):int(box[3] * 80) + 1, int(box[0] * 45):int(box[2] * 45) + 1].mean())
+            if punti is None or p < punti:
+                migliore, punti = (x, float(y)), p
+    x0, y0 = int(migliore[0] * W), int(migliore[1] * H)
+    ombra = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    do = ImageDraw.Draw(ombra)
+    for i, l in enumerate(lines):
+        do.text((x0, y0 + i * lh + fsize * 0.04), l, font=font, fill=(0, 0, 0, 200))
+    img.alpha_composite(ombra.filter(ImageFilter.GaussianBlur(fsize * 0.22)))
+    d = ImageDraw.Draw(img)
+    for i, l in enumerate(lines):
+        d.text((x0, y0 + i * lh), l, font=font, fill=GIALLO)
+    return img, migliore[1], punti
+
+
 def dividi_frase(testo):
     """('prima parte', 'seconda parte') per il formato GANCIO, oppure None se la frase non si divide bene."""
     t = testo.strip()
