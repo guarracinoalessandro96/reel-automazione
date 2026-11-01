@@ -8401,11 +8401,42 @@
    },
    "spinto": true,
    "testo": "Se ti offrono una grande occasione e non sei sicuro di farcela: accetta, poi impari come si fa."
+  },
+  {
+   "quando": "2026-11-01T17:00",
+   "slot": "2026-11-01 18:00",
+   "video": "IMG_3765.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-9cbbce3c",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "cutscene_crush_2.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "drive_15.flac",
+    "musica_instagram": "Knockout - Adam Griffith"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "3YkG5Y1Gbvo"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17880481143632744"
+    }
+   },
+   "spinto": true,
+   "testo": "Se vuoi davvero ottenere qualcosa, devi lavorare sodo. Nessuno costruirà il tuo futuro al posto tuo."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-24 00:00",
   "2026-10-24 02:00",
   "2026-10-24 06:00",
   "2026-10-24 16:00",
@@ -8484,10 +8515,10 @@
   "2026-11-01 10:00",
   "2026-11-01 12:00",
   "2026-11-01 14:00",
-  "2026-11-01 16:00"
+  "2026-11-01 16:00",
+  "2026-11-01 18:00"
  ],
  "musica_recenti": [
-  "survival_mode_1.m4a",
   "ego_chall_1.m4a",
   "wrangle_the_crazy_1.m4a",
   "final_boss_battle_1.m4a",
@@ -8506,7 +8537,8 @@
   "intergalactic_1.m4a",
   "ancient_civilisations_1.m4a",
   "visions_1.m4a",
-  "dusty_road_magic_1.m4a"
+  "dusty_road_magic_1.m4a",
+  "cutscene_crush_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8745,15 +8777,16 @@
   "MIE-44e75fe0",
   "MIE-a9f47ec7",
   "MIE-11a0a2c4",
-  "MIE-36b48138"
+  "MIE-36b48138",
+  "MIE-9cbbce3c"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
+  "imprenditore",
+  "imprenditore",
   "mentalita",
-  "imprenditore",
-  "imprenditore",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -8803,8 +8836,8 @@
    "ultimo": "2026-10-19"
   },
   "1mOygaNSLk3zVyQOFm3atEW61_fUGn_3z": {
-   "usi": 2,
-   "ultimo": "2026-10-19"
+   "usi": 3,
+   "ultimo": "2026-11-01"
   },
   "1mIxav-KbU3ZL_NU9MF4Z-Vcww6fOPwR4": {
    "usi": 2,
@@ -9192,7 +9225,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_12.flac",
   "phonk_03.flac",
   "phonk_06.flac",
   "phonk_07.flac",
@@ -9211,7 +9243,8 @@
   "trap_04.flac",
   "trap_06.flac",
   "deciso_09.flac",
-  "phonk_16.flac"
+  "phonk_16.flac",
+  "drive_15.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9246,7 +9279,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_broll",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -9262,7 +9295,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1447374035821884",
   "158209132866603",
   "2913736298667265",
   "330732519879801",
@@ -9291,6 +9323,7 @@
   "1661496314823289",
   "2373852472923170",
   "581412716058691",
-  "522339937196006"
+  "522339937196006",
+  "1108285910189784"
  ]
 }
