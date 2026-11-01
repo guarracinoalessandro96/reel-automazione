@@ -126,10 +126,16 @@ def prepara(massimo=4):
 
 
 
+PAROLE_RICERCA = "frasi motivazionali · motivazione · disciplina · lavoro · costanza"
+
+
 def pulisci(testo):
     """29/10/2026: via le domande per i commenti ("scrivilo nei commenti"/"qui sotto"): non piacciono ad Alessandro."""
     righe = [re.sub(r"\s*·\s*seguimi per vedere dove arrivo", "", r) for r in testo.splitlines() if "👇" not in r]   # 30/10: via "seguimi"
-    return re.sub(r"(\r?\n){3,}", "\n\n", "\n".join(righe)).strip()
+    testo = re.sub(r"(\r?\n){3,}", "\n\n", "\n".join(righe)).strip()
+    if PAROLE_RICERCA not in testo:      # 1/11/2026: TikTok e' anche un motore di ricerca
+        testo += "\n\n" + PAROLE_RICERCA
+    return testo
 
 
 def segna(fid, quando):
