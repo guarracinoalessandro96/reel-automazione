@@ -1,11 +1,11 @@
 """
 Visualizzazioni delle ultime 24 ore e degli ultimi 7 giorni su Telegram (1/11/2026, richiesta di Alessandro: ogni mattina
 alle 8, Facebook, Instagram, TikTok e YouTube, solo questi dati). Gira sul PC dall'attivita' "statistiche-mattina": TikTok non ha un'API per i numeri, quindi l'attivita'
-li legge da TikTok Studio e li passa con --tiktok e --tiktok7.
+scarica il file da TikTok Studio e lo script lo legge da Download.
 
-  python statistiche.py [--tiktok 1234] [--tiktok7 5678] [--prova]     --prova: stampa e non manda
+  python statistiche.py [--prova]     --prova: stampa e non manda
 """
-import datetime, json, os, sys
+import csv, datetime, glob, io, json, os, sys, time, zipfile
 import requests
 from zoneinfo import ZoneInfo
 
@@ -53,8 +53,16 @@ def facebook(k, oggi):
     return valori[-1], sum(valori[-7:])
 
 
-def numero_arg(nome):
-    return int(sys.argv[sys.argv.index(nome) + 1]) if nome in sys.argv else None
+def tiktok():
+    """1/11/2026: il file di "Scarica dati" di TikTok Studio (zip con Overview.csv) ha i numeri esatti giorno per giorno."""
+    file = glob.glob(os.path.join(os.path.expanduser("~"), "Downloads", "Overview_*.zip"))
+    file = max(file, key=os.path.getmtime) if file else None
+    if not file or time.time() - os.path.getmtime(file) > 3600:
+        return None, None, None, None
+    z = zipfile.ZipFile(file)
+    righe = list(csv.DictReader(io.StringIO(z.read("Overview.csv").decode("utf-8-sig"))))[-7:]
+    z.close()
+    return int(righe[-1]["Video Views"]), sum(int(r["Video Views"]) for r in righe), righe[-1]["Date"], file
 
 
 def main():
@@ -73,12 +81,17 @@ def main():
             giorno[nome], settimana[nome] = f()
         except Exception as e:
             errori.append(f"{nome}: {e}")
-    giorno["TikTok"], settimana["TikTok"] = numero_arg("--tiktok"), numero_arg("--tiktok7")
+    file_tiktok = data_tiktok = None
+    try:
+        giorno["TikTok"], settimana["TikTok"], data_tiktok, file_tiktok = tiktok()
+    except Exception as e:
+        errori.append(f"TikTok: {e}")
     def blocco(titolo, numeri):
         righe = [titolo]
         for nome in ("Facebook", "Instagram", "TikTok", "YouTube"):
             v = numeri.get(nome)
-            righe.append(f"{nome}: {v:,}".replace(",", ".") if v is not None else f"{nome}: non disponibile")
+            coda = f" (fino al {data_tiktok})" if nome == "TikTok" and data_tiktok else ""   # TikTok arriva con 2 giorni di ritardo
+            righe.append(f"{nome}: {v:,}".replace(",", ".") + coda if v is not None else f"{nome}: non disponibile")
         return righe
     righe = blocco("VISUALIZZAZIONI ULTIME 24 ORE", giorno) + [""] + blocco("VISUALIZZAZIONI ULTIMI 7 GIORNI", settimana)
     if errori:
@@ -87,6 +100,8 @@ def main():
     print(testo)
     if "--prova" in sys.argv:
         return
+    if file_tiktok:      # un solo file, cosi' la cartella Download non si riempie
+        os.replace(file_tiktok, os.path.join(os.path.expanduser("~"), "statistiche_tiktok_ultimo.zip"))
     if tot is not None:
         storico.setdefault(oggi.isoformat(), {})["youtube_totale"] = tot
     storico.setdefault(oggi.isoformat(), {}).update({"giorno": giorno, "settimana": settimana})
