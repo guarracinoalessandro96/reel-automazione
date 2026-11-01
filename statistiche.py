@@ -73,7 +73,8 @@ def reel_mancanti(oggi):
     ieri = (oggi - datetime.timedelta(days=1)).isoformat()
     out = []
     for p, nome in (("youtube", "YouTube"), ("instagram", "Instagram")):
-        n = sum(1 for h in storia if str(h.get("slot", "")).startswith(ieri) and (h.get("risultati") or {}).get(p, {}).get("ok"))
+        n = sum(1 for h in storia if str(h.get("slot") or h.get("quando", "")).startswith(ieri)
+                and (h.get("risultati") or {}).get(p, {}).get("ok"))
         if n < 10:
             out.append(f"{nome}: ieri usciti {n} reel su 10")
     return out
@@ -118,8 +119,6 @@ def main():
     print(testo)
     if "--prova" in sys.argv:
         return
-    if file_tiktok:      # un solo file, cosi' la cartella Download non si riempie
-        os.replace(file_tiktok, os.path.join(os.path.expanduser("~"), "statistiche_tiktok_ultimo.zip"))
     if tot is not None:
         storico.setdefault(oggi.isoformat(), {})["youtube_totale"] = tot
     storico.setdefault(oggi.isoformat(), {}).update({"giorno": giorno, "settimana": settimana})
@@ -128,6 +127,8 @@ def main():
     import avvisi
     if not avvisi.manda(testo):
         raise SystemExit("Telegram non ha ricevuto il messaggio")
+    if file_tiktok:      # un solo file, cosi' la cartella Download non si riempie
+        os.replace(file_tiktok, os.path.join(os.path.expanduser("~"), "statistiche_tiktok_ultimo.zip"))
 
 
 if __name__ == "__main__":

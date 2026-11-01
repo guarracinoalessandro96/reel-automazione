@@ -55,7 +55,14 @@ def make_foto(foto, frase, dst, musiche=()):
             migliora(f, img)
             in_clip(img, clip, d + 1.0, i % 2)
             clips.append(clip)
-        return fn.make_sequenza(clips, durate, [(0.0, 10.0, frase)], dst, musiche, None, "dieci_foto", True)
+        # la scritta resta ferma per 10 s: se copre un viso si riprova con meno foto, altrimenti esce comunque nel punto migliore
+        for n in range(len(clips), 2, -1):
+            try:
+                d = [round(10.0 / n, 3)] * n
+                return fn.make_sequenza(clips[:n], d, [(0.0, 10.0, frase)], dst, musiche, None, "dieci_foto", True)
+            except fn.VisoCoperto:
+                pass
+        return fn.make_sequenza(clips, durate, [(0.0, 10.0, frase)], dst, musiche, None, "dieci_foto")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 

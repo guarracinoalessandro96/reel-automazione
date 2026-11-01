@@ -410,6 +410,8 @@ def musiche_brano(music, n=3):
         return []
     base = re.sub(r"_\d+$", "", os.path.splitext(os.path.basename(music))[0])
     d = os.path.dirname(music)
+    if os.path.basename(d) == "yt_dieci":      # 1/11/2026: pezzo unico da 10 s: si usa quello scelto, non sempre il primo
+        return [music]
     pezzi = sorted(os.path.join(d, f) for f in os.listdir(d) if re.fullmatch(re.escape(base) + r"_\d+\.m4a", f))
     return pezzi[:n] or [music]
 
@@ -1553,12 +1555,16 @@ def main():
         except Exception as e:
             log("Lettura di 'Le mie citazioni' non riuscita:", e)
             mie = []
+        import classifica_frasi
+        foto_punti = classifica_frasi.carica()
+        scelte_da_lui = [f for f in mie if foto_punti.get(f["id"]) == 100]   # 1/11/2026: le frasi delle sue foto passano sempre
         if random.random() >= TRADIMENTO_QUOTA:   # 25/10/2026: di tradimento si parla poco (1 volta su 10)
             mie = [f for f in mie if not TRADIMENTO.search(f["gancio"])] or mie
         mie = [f for f in mie if not DONNE.search(f["gancio"])] or mie       # 26/10/2026: mai frasi sulle donne
         mie = [f for f in mie if not NEGATIVO.search(f["gancio"]) and not PALESTRA.search(f["gancio"])
                and not CRINGE.search(f["gancio"]) and not FAMIGLIA.search(f["gancio"])
                and not CONFRONTO.search(f["gancio"])] or mie  # 29/10
+        mie += [f for f in scelte_da_lui if f not in mie]
         frasi = [f for f in mie if f["id"] not in usi]
         log(f"'{DOC_MIE}': {len(mie)} citazioni, {len(frasi)} ancora da usare.")
         # reel da 5 s: anche le frasi lunghe (scelta di Alessandro 13/10/2026: se non si fa in tempo a leggere,
@@ -1566,8 +1572,6 @@ def main():
         # dati YouTube 16/10/2026 (53 Shorts): frasi fino a 6 parole ~340 views mediane, 7-10 parole ~1.020,
         # 11-15 parole ~1.255 -> 9 volte su 10 si sceglie una frase di almeno 7 parole (1 su 10 resta "esperimento")
         # 31/10/2026 (Alessandro): prima TUTTE le frasi delle sue foto (classifica 100); imprenditoria sospesa (0)
-        import classifica_frasi
-        foto_punti = classifica_frasi.carica()
         frasi = [f for f in frasi if foto_punti.get(f["id"]) != 0] or frasi
         foto_rimaste = any(foto_punti.get(f["id"]) == 100 for f in frasi)
         lunghe = [f for f in frasi if len(f["gancio"].split()) >= MIN_PAROLE]
@@ -1661,6 +1665,11 @@ def main():
         except Exception as e:
             log(f"Formato {formato} non riuscito, faccio il reel normale:", e)
             info = None
+            if TUTTO_10S:                # 1/11/2026: il ripiego resta nello stile scelto (10 s, scritta gialla)
+                try:
+                    info = formati_nuovi.make_dieci("dieci", [src], frase["gancio"], out, musiche_brano(music, 3), serie)
+                except Exception as e2:
+                    log("Anche il ripiego da 10 s non riuscito:", e2)
         if info is None:
             info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"),
                                       music=music, serie=serie,
