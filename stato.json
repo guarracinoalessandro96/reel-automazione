@@ -8433,11 +8433,42 @@
    },
    "spinto": true,
    "testo": "Se vuoi davvero ottenere qualcosa, devi lavorare sodo. Nessuno costruirà il tuo futuro al posto tuo."
+  },
+  {
+   "quando": "2026-11-01T19:00",
+   "slot": "2026-11-01 20:00",
+   "video": "IMG_3832.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-d8b71348",
+   "tema": "imprenditore",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "wrangle_the_crazy_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "phonk_10.flac",
+    "musica_instagram": "Power Drift - Adam Griffith"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "cdYfgSEssDY"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18117033278168393"
+    }
+   },
+   "spinto": true,
+   "testo": "Non esistono scorciatoie. Più difficile del lavoro è svegliarti tra dieci anni nello stesso punto di oggi."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-24 02:00",
   "2026-10-24 06:00",
   "2026-10-24 16:00",
   "2026-10-24 18:00",
@@ -8516,10 +8547,10 @@
   "2026-11-01 12:00",
   "2026-11-01 14:00",
   "2026-11-01 16:00",
-  "2026-11-01 18:00"
+  "2026-11-01 18:00",
+  "2026-11-01 20:00"
  ],
  "musica_recenti": [
-  "ego_chall_1.m4a",
   "wrangle_the_crazy_1.m4a",
   "final_boss_battle_1.m4a",
   "horizons_1.m4a",
@@ -8538,7 +8569,8 @@
   "ancient_civilisations_1.m4a",
   "visions_1.m4a",
   "dusty_road_magic_1.m4a",
-  "cutscene_crush_2.m4a"
+  "cutscene_crush_2.m4a",
+  "wrangle_the_crazy_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8778,19 +8810,20 @@
   "MIE-a9f47ec7",
   "MIE-11a0a2c4",
   "MIE-36b48138",
-  "MIE-9cbbce3c"
+  "MIE-9cbbce3c",
+  "MIE-d8b71348"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
   "imprenditore",
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "imprenditore"
  ],
  "analisi": {},
  "pulizia": "2026-11-01",
@@ -8960,8 +8993,8 @@
    "ultimo": "2026-10-20"
   },
   "12Fo5vh8JbpmRDWSzG5Ro-KcD-bCBRZH_": {
-   "usi": 2,
-   "ultimo": "2026-10-20"
+   "usi": 3,
+   "ultimo": "2026-11-01"
   },
   "1dS3dJuren-0gwioBQEQ4MkMFmJH5kMNx": {
    "usi": 2,
@@ -9225,7 +9258,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_03.flac",
   "phonk_06.flac",
   "phonk_07.flac",
   "phonk_09.flac",
@@ -9244,7 +9276,8 @@
   "trap_06.flac",
   "deciso_09.flac",
   "phonk_16.flac",
-  "drive_15.flac"
+  "drive_15.flac",
+  "phonk_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9295,7 +9328,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "158209132866603",
   "2913736298667265",
   "330732519879801",
   "544713431841568",
@@ -9324,6 +9356,7 @@
   "2373852472923170",
   "581412716058691",
   "522339937196006",
-  "1108285910189784"
+  "1108285910189784",
+  "3846481242297548"
  ]
 }
