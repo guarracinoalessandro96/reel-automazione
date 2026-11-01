@@ -8305,11 +8305,42 @@
    },
    "spinto": true,
    "testo": "Non sei più chi eri un anno fa. È la prova che stai crescendo."
+  },
+  {
+   "quando": "2026-11-01T11:00",
+   "slot": "2026-11-01 12:00",
+   "video": "IMG_3762.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "specchio",
+   "registrato": null,
+   "frase": "MIE-a9f47ec7",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "ancient_civilisations_1.m4a",
+    "stacchi": 2,
+    "testi": 2,
+    "musica_meta": "trap_06.flac",
+    "musica_instagram": "Don't Give Up On Me - The Sheen"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "YcZ3jb2mkt4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18109738148238469"
+    }
+   },
+   "spinto": true,
+   "testo": "Non so come finirà la mia storia. Ma non leggerai mai che mi sono arreso."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-23 18:00",
   "2026-10-23 20:00",
   "2026-10-23 22:00",
   "2026-10-24 00:00",
@@ -8388,10 +8419,10 @@
   "2026-11-01 00:00",
   "2026-11-01 06:00",
   "2026-11-01 08:00",
-  "2026-11-01 10:00"
+  "2026-11-01 10:00",
+  "2026-11-01 12:00"
  ],
  "musica_recenti": [
-  "vibe_check_1.m4a",
   "rubberband_1.m4a",
   "van_life_rager_1.m4a",
   "survival_mode_1.m4a",
@@ -8410,7 +8441,8 @@
   "whoop_1.m4a",
   "locked_in_1.m4a",
   "death_duel_1.m4a",
-  "intergalactic_1.m4a"
+  "intergalactic_1.m4a",
+  "ancient_civilisations_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8646,10 +8678,10 @@
   "MIE-239a782a",
   "MIE-e115a5f6",
   "MIE-6e420549",
-  "MIE-44e75fe0"
+  "MIE-44e75fe0",
+  "MIE-a9f47ec7"
  ],
  "temi_recenti": [
-  "imprenditore",
   "mentalita",
   "imprenditore",
   "mentalita",
@@ -8658,6 +8690,7 @@
   "mentalita",
   "imprenditore",
   "imprenditore",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -8692,8 +8725,8 @@
    "ultimo": "2026-11-01"
   },
   "15jiV1pcQxInQYlwKdmhJ-oiXaPBuhCUQ": {
-   "usi": 1,
-   "ultimo": "2026-10-09"
+   "usi": 2,
+   "ultimo": "2026-11-01"
   },
   "1NgsmHHGD9Qdq4lQ_cY7_qoozFPSuqtJ4": {
    "usi": 2,
@@ -9094,7 +9127,6 @@
  },
  "musica_recenti_meta": [
   "phonk_16.flac",
-  "phonk_16.flac",
   "phonk_15.flac",
   "phonk_12.flac",
   "phonk_03.flac",
@@ -9112,7 +9144,8 @@
   "trap_16.flac",
   "trap_01.flac",
   "drive_09.flac",
-  "trap_04.flac"
+  "trap_04.flac",
+  "trap_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9163,7 +9196,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1005053937846758",
   "827252278567806",
   "1108285910189784",
   "1447374035821884",
@@ -9192,6 +9224,7 @@
   "272114135386704",
   "302973472523675",
   "981510330704369",
-  "1661496314823289"
+  "1661496314823289",
+  "2373852472923170"
  ]
 }
