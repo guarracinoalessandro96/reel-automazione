@@ -8497,11 +8497,42 @@
    },
    "spinto": true,
    "testo": "Un obiettivo così grande non sarebbe nato dentro di te se non potessi realizzarlo."
+  },
+  {
+   "quando": "2026-11-01T23:00",
+   "slot": "2026-11-02 00:00",
+   "video": "IMG_3833.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-7623edd1",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "sweaty_staredown_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "phonk_05.flac",
+    "musica_instagram": "Epic Battles - Trout Recording"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "awW9vLLEn7E"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18132376669747815"
+    }
+   },
+   "spinto": true,
+   "testo": "Ogni volta che sali di livello, la tua vecchia vita prova a richiamarti. Non rispondere."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-24 16:00",
   "2026-10-24 18:00",
   "2026-10-24 20:00",
   "2026-10-24 22:00",
@@ -8580,10 +8611,10 @@
   "2026-11-01 16:00",
   "2026-11-01 18:00",
   "2026-11-01 20:00",
-  "2026-11-01 22:00"
+  "2026-11-01 22:00",
+  "2026-11-02 00:00"
  ],
  "musica_recenti": [
-  "final_boss_battle_1.m4a",
   "horizons_1.m4a",
   "sweaty_staredown_1.m4a",
   "delirium_1.m4a",
@@ -8602,7 +8633,8 @@
   "dusty_road_magic_1.m4a",
   "cutscene_crush_2.m4a",
   "wrangle_the_crazy_3.m4a",
-  "moon_vision_3.m4a"
+  "moon_vision_3.m4a",
+  "sweaty_staredown_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8844,10 +8876,10 @@
   "MIE-36b48138",
   "MIE-9cbbce3c",
   "MIE-d8b71348",
-  "MIE-2c37cb90"
+  "MIE-2c37cb90",
+  "MIE-7623edd1"
  ],
  "temi_recenti": [
-  "mentalita",
   "imprenditore",
   "imprenditore",
   "mentalita",
@@ -8856,6 +8888,7 @@
   "mentalita",
   "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -9030,8 +9063,8 @@
    "ultimo": "2026-11-01"
   },
   "1dS3dJuren-0gwioBQEQ4MkMFmJH5kMNx": {
-   "usi": 2,
-   "ultimo": "2026-10-20"
+   "usi": 3,
+   "ultimo": "2026-11-01"
   },
   "1a2POnx-7OaYCvRXrpkTO6Qw_dTZ4CN-d": {
    "usi": 2,
@@ -9291,7 +9324,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_07.flac",
   "phonk_09.flac",
   "deciso_12.flac",
   "phonk_11.flac",
@@ -9310,7 +9342,8 @@
   "phonk_16.flac",
   "drive_15.flac",
   "phonk_10.flac",
-  "phonk_03.flac"
+  "phonk_03.flac",
+  "phonk_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9345,7 +9378,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_broll",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -9361,7 +9394,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "330732519879801",
   "544713431841568",
   "1364616540355148",
   "593371403855914",
@@ -9390,6 +9422,7 @@
   "522339937196006",
   "1108285910189784",
   "3846481242297548",
-  "1781233772812838"
+  "1781233772812838",
+  "5301582899854512"
  ]
 }
