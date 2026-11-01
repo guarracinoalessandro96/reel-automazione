@@ -212,7 +212,7 @@ GIALLO = (250, 232, 140, 255)
 DIM_GIALLO = 0.058
 LOOK = ("curves=master='0/0 0.12/0.09 0.5/0.47 0.85/0.87 1/0.98',"
         "colorbalance=rs=-0.04:bs=0.05:rh=0.05:gh=0.01:bh=-0.05,"
-        "eq=saturation=0.94,vignette=PI/4.5")
+        "eq=saturation=0.94,vignette=PI/6")
 
 
 def schiarita(frames):
