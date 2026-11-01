@@ -2,6 +2,30 @@
   "aggiornato": "2026-11-01",
   "brani": [
     {
+      "titolo": "Don't Give Up On Me",
+      "artista": "Andy Grammer",
+      "fonte": "instagram",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "Demons (Live in Vegas)",
+      "artista": "Imagine Dragons",
+      "fonte": "instagram",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Violin",
+      "artista": "Toneloom",
+      "fonte": "instagram",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "DEFEATED",
+      "artista": "MAXPVNK, DJ RITMO DIVINO",
+      "fonte": "instagram",
+      "reel_visti": 1
+    },
+    {
       "titolo": "Dimensions",
       "artista": "Arcade Fire, Owen Pallett",
       "fonte": "instagram",
@@ -22,6 +46,12 @@
     {
       "titolo": "retire (final)",
       "artista": "Alvedon",
+      "fonte": "instagram",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "alone x hoodtrap",
+      "artista": "floorage, hakeemos",
       "fonte": "instagram",
       "reel_visti": 1
     }
