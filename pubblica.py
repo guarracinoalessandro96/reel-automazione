@@ -1567,7 +1567,7 @@ def main():
         vincenti = [f for f in mie if f["id"] in vinc_id and usi.get(f["id"], "") < sette]
         vecchie_lim = (datetime.date.today() - datetime.timedelta(days=GIORNI_RIUSO_FRASE)).isoformat()
         vecchie = [f for f in mie if f["id"] in usi and usi[f["id"]] < vecchie_lim]
-        if not spinto and vecchie:           # orario fermo: si riusa la frase uscita da piu' tempo
+        if not spinto and vecchie and not foto_rimaste:   # orario fermo: si riusa la frase uscita da piu' tempo
             frase = min(vecchie, key=lambda f: usi[f["id"]])
             log("Orario fermo: riuso una frase uscita il", usi[frase["id"]])
         elif vincenti and random.random() < 0.25 and not foto_rimaste:
