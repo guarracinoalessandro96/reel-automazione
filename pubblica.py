@@ -376,12 +376,22 @@ def scegli_formato(slot, state, frase, an, spinto=True):
     return random.choices(list(pesi), weights=list(pesi.values()))[0] if pesi else "frase"
 
 
+def clip_voti():
+    """1/11/2026: voto visivo delle clip (luce + inquadratura + nitidezza, 3-15) e clip escluse (brutte o con altre persone)."""
+    try:
+        return json.load(open(os.path.join(HERE, "clip_voti.json"), encoding="utf-8"))
+    except Exception:
+        return {"escluse": [], "voti": {}}
+
+
 def clip_extra(drive, work, clip, n=2, giorno=None):
     """n clip dall'archivio (diverse da quella dell'orario), scaricate in locale: PRIMA quelle girate lo stesso
     giorno (es. la domenica delle castagne: un piccolo racconto della giornata), poi a caso."""
     out = []
     try:
-        altre = [c for c in drive.lista_archivio() if (not clip or c["id"] != clip["id"]) and c.get("parlato") != "1"]
+        fuori = clip_voti()["escluse"]
+        altre = [c for c in drive.lista_archivio() if (not clip or c["id"] != clip["id"]) and c.get("parlato") != "1"
+                 and c.get("nome") not in fuori]
         random.shuffle(altre)
         if giorno:
             altre.sort(key=lambda c: 0 if str(c.get("registrato") or "")[:10] == giorno else 1)
@@ -1504,7 +1514,9 @@ def main():
             log("Lettura dell'archivio non riuscita:", e)
             archivio = []
         # i video PARLATI non si riusano con la musica sopra (si vedrebbe la bocca muoversi senza voce)
-        archivio = [c for c in archivio if c.get("fallimenti", 0) < 2 and c.get("parlato") != "1"]
+        qualita = clip_voti()
+        archivio = [c for c in archivio if c.get("fallimenti", 0) < 2 and c.get("parlato") != "1"
+                    and c.get("nome") not in qualita["escluse"]]
         # quante volte e quando ogni video e' gia' uscito (anche come video nuovo, prima di entrare in archivio)
         stem = lambda n: os.path.splitext(n or "")[0].lower()
         for c in archivio:
@@ -1513,7 +1525,8 @@ def main():
             c["ultimo"] = max([c.get("ultimo", "")] + usciti)
         limite = (datetime.datetime.now() - datetime.timedelta(days=7)).isoformat(timespec="minutes")
         riposati = [c for c in archivio if c.get("ultimo", "") < limite]     # 1/11/2026: niente clip uscite negli ultimi 7 giorni
-        clip = scegli_archivio(riposati or archivio, slot_ora)
+        belle = [c for c in riposati if qualita["voti"].get(c.get("nome"), 0) >= 10]   # prima le clip migliori
+        clip = scegli_archivio(belle or riposati or archivio, slot_ora)
         if clip is None and tenuto:           # archivio vuoto: esce comunque il video nuovo
             video, tenuto = tenuto, None
         elif clip is None:
