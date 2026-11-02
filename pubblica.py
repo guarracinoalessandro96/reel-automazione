@@ -1394,8 +1394,11 @@ def recupera_instagram(state, drive, work, save):
                 continue
             path = os.path.join(work, "recupero.mp4")
             drive.download(trovati[0]["id"], path, folder=CARTELLA_TIKTOK)
-            scelto = scegli_audio_instagram(h.get("scena"), state.get("ig_audio_recenti", []))
-            pid = instagram_upload(path, h["frase_dati"], scelto[0] if scelto else None)
+            if (h.get("montaggio") or {}).get("formato") not in ("parlato", "momento"):   # il file TikTok e' muto
+                path = versione_meta(path, state.get("musica_recenti_meta", []), h.get("scena"))[0]
+                if not path:
+                    continue
+            pid = instagram_upload(path, h["frase_dati"])
             h.setdefault("risultati", {})["instagram"] = {"ok": True, "id": pid, "recuperato": True}
             log(f"Instagram recuperato per l'orario {h['slot']}")
         except Exception as e:
@@ -1780,16 +1783,7 @@ def main():
         except Exception as e:
             log("Versione per TikTok Studio non salvata su Drive:", e)
     ig_nativo = None
-    if "instagram" in piatt and not voce:   # Instagram: video 1080p senza musica + brano NATIVO scelto per la scena
-        try:
-            muto_ig = overlay.versione_social(out, os.path.join(work, "reel_ig.mp4"))   # 2/11/2026: con la nostra musica dentro: il brano nativo via API non sempre viene applicato e il reel usciva muto
-            scelto = scegli_audio_instagram(an["scena"], state.get("ig_audio_recenti", []))
-            if scelto:
-                ig_nativo = (muto_ig, scelto[0])
-                info["musica_instagram"] = scelto[1]
-                state["ig_audio_recenti"] = (state.get("ig_audio_recenti", []) + [scelto[0]])[-30:]
-        except Exception as e:
-            log("Brano nativo Instagram non scelto (uso la nostra musica):", e)
+    # 2/11/2026: Instagram col file che ha i nostri brani (out_meta): il brano nativo via API non viene applicato e la Raccolta YouTube fuori da YouTube non va
     attesa = (target - ora_roma()).total_seconds() if target else 0
     if 0 < attesa < 70 * 60 and not DRY:
         log(f"Aspetto le {target:%H:%M} per pubblicare puntuale ({attesa / 60:.0f} minuti)")
