@@ -8753,11 +8753,41 @@
    },
    "spinto": false,
    "testo": "Non sei arrivato fin qui per mollare proprio ora."
+  },
+  {
+   "quando": "2026-11-02T19:00",
+   "slot": "2026-11-02 20:00",
+   "video": "IMG_3815.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-1d389b79",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "kick_it_2.m4a",
+    "stacchi": 4,
+    "testi": 1,
+    "musica_meta": "drive_06.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "2QiWK-FqzNw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18120211936960488"
+    }
+   },
+   "spinto": true,
+   "testo": "È difficile essere costante senza nessuno che ti applaude. A volte ti incoraggi da solo."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-25 20:00",
   "2026-10-25 22:00",
   "2026-10-26 00:00",
   "2026-10-26 02:00",
@@ -8836,10 +8866,10 @@
   "2026-11-02 12:00",
   "2026-11-02 14:00",
   "2026-11-02 16:00",
-  "2026-11-02 18:00"
+  "2026-11-02 18:00",
+  "2026-11-02 20:00"
  ],
  "musica_recenti": [
-  "break_ya_neck_1.m4a",
   "stake_out_1.m4a",
   "whoop_1.m4a",
   "locked_in_1.m4a",
@@ -8858,7 +8888,8 @@
   "vibe_check_1.m4a",
   "i_might_be_late_1.m4a",
   "locked_in_2.m4a",
-  "cartier_2.m4a"
+  "cartier_2.m4a",
+  "kick_it_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -9108,10 +9139,11 @@
   "MIE-ba88ba7b",
   "MIE-14bf0e5e",
   "MIE-ba88ba7b",
-  "MIE-2c423b3f"
+  "MIE-2c423b3f",
+  "MIE-1d389b79"
  ],
  "temi_recenti": [
-  "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -9246,8 +9278,8 @@
    "ultimo": "2026-10-31"
   },
   "1vOgmkuZ-zKENaS1fagQc3J6w_396E-JX": {
-   "usi": 2,
-   "ultimo": "2026-10-19"
+   "usi": 3,
+   "ultimo": "2026-11-02"
   },
   "1fKbWVgrVrxr5Ecx1pZo_uFBf-CoX_0G5": {
    "usi": 2,
@@ -9555,7 +9587,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_01.flac",
   "drive_03.flac",
   "trap_16.flac",
   "trap_01.flac",
@@ -9574,7 +9605,8 @@
   "trap_11.flac",
   "deciso_10.flac",
   "deciso_12.flac",
-  "phonk_13.flac"
+  "phonk_13.flac",
+  "drive_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9609,7 +9641,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
