@@ -48,7 +48,8 @@ def fps(path):
 def rotazione(path):
     """Gradi di rotazione salvati nel file (i telefoni spesso salvano il video 'sdraiato' + un'indicazione)."""
     r = subprocess.run([FFMPEG, "-hide_banner", "-i", path], capture_output=True, text=True, errors="ignore").stderr
-    m = re.search(r"displaymatrix: rotation of (-?[\d.]+) degrees", r) or re.search(r"rotate\s*:\s*(-?\d+)", r)
+    # 2/11/2026: ffmpeg nuovo scrive "Display Matrix: rotation of": senza questo i video uscivano di lato
+    m = re.search(r"display\s*matrix: rotation of (-?[\d.]+) degrees", r, re.I) or re.search(r"rotate\s*:\s*(-?\d+)", r)
     return int(round(float(m.group(1)))) % 360 if m else 0
 
 
