@@ -1782,7 +1782,7 @@ def main():
     ig_nativo = None
     if "instagram" in piatt and not voce:   # Instagram: video 1080p senza musica + brano NATIVO scelto per la scena
         try:
-            muto_ig = overlay.versione_social(out, os.path.join(work, "reel_ig.mp4"), audio=False)
+            muto_ig = overlay.versione_social(out, os.path.join(work, "reel_ig.mp4"))   # 2/11/2026: con la nostra musica dentro: il brano nativo via API non sempre viene applicato e il reel usciva muto
             scelto = scegli_audio_instagram(an["scena"], state.get("ig_audio_recenti", []))
             if scelto:
                 ig_nativo = (muto_ig, scelto[0])
