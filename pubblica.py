@@ -376,6 +376,20 @@ def scegli_formato(slot, state, frase, an, spinto=True):
     return random.choices(list(pesi), weights=list(pesi.values()))[0] if pesi else "frase"
 
 
+def frase_forzata(mie, state):
+    """2/11/2026: frase che Alessandro vuole ripetere nel prossimo reel (frasi_forzate.json: [{"id", "dal"}, ...])."""
+    try:
+        forzate = json.load(open(os.path.join(HERE, "frasi_forzate.json"), encoding="utf-8"))
+    except Exception:
+        return None
+    for v in forzate:
+        ultima = max([h.get("quando", "") for h in state["storico"] if h.get("frase") == v["id"]] or [""])
+        trovata = next((f for f in mie if f["id"] == v["id"]), None)
+        if trovata and ultima < v["dal"]:
+            return trovata
+    return None
+
+
 def clip_voti():
     """1/11/2026: voto visivo delle clip (luce + inquadratura + nitidezza, 3-15) e clip escluse (brutte o con altre persone)."""
     try:
@@ -1586,7 +1600,11 @@ def main():
         vincenti = [f for f in mie if f["id"] in vinc_id and usi.get(f["id"], "") < sette]
         vecchie_lim = (datetime.date.today() - datetime.timedelta(days=GIORNI_RIUSO_FRASE)).isoformat()
         vecchie = [f for f in mie if f["id"] in usi and usi[f["id"]] < vecchie_lim]
-        if not spinto and vecchie and not foto_rimaste:   # orario fermo: si riusa la frase uscita da piu' tempo
+        forzata = frase_forzata(mie, state)
+        if forzata:
+            frase = forzata
+            log("Frase richiesta da Alessandro:", frase["gancio"])
+        elif not spinto and vecchie and not foto_rimaste:   # orario fermo: si riusa la frase uscita da piu' tempo
             frase = min(vecchie, key=lambda f: usi[f["id"]])
             log("Orario fermo: riuso una frase uscita il", usi[frase["id"]])
         elif vincenti and random.random() < 0.25 and not foto_rimaste:
