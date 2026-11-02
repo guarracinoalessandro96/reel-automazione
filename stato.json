@@ -8529,11 +8529,42 @@
    },
    "spinto": true,
    "testo": "Ogni volta che sali di livello, la tua vecchia vita prova a richiamarti. Non rispondere."
+  },
+  {
+   "quando": "2026-11-02T05:00",
+   "slot": "2026-11-02 06:00",
+   "video": "IMG_4029.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-3fec417d",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "way_back_home_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "musica_meta": "trap_03.flac",
+    "musica_instagram": "Inceptum (Instrumental) - Tony Dark Eyes"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "gx_vSWiy5cQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17954650269313057"
+    }
+   },
+   "spinto": true,
+   "testo": "Il giorno in cui pianti il seme non è il giorno in cui raccogli il frutto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-24 18:00",
   "2026-10-24 20:00",
   "2026-10-24 22:00",
   "2026-10-25 00:00",
@@ -8612,10 +8643,10 @@
   "2026-11-01 18:00",
   "2026-11-01 20:00",
   "2026-11-01 22:00",
-  "2026-11-02 00:00"
+  "2026-11-02 00:00",
+  "2026-11-02 06:00"
  ],
  "musica_recenti": [
-  "horizons_1.m4a",
   "sweaty_staredown_1.m4a",
   "delirium_1.m4a",
   "moon_vision_1.m4a",
@@ -8634,7 +8665,8 @@
   "cutscene_crush_2.m4a",
   "wrangle_the_crazy_3.m4a",
   "moon_vision_3.m4a",
-  "sweaty_staredown_3.m4a"
+  "sweaty_staredown_3.m4a",
+  "way_back_home_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8877,22 +8909,23 @@
   "MIE-9cbbce3c",
   "MIE-d8b71348",
   "MIE-2c37cb90",
-  "MIE-7623edd1"
+  "MIE-7623edd1",
+  "MIE-3fec417d"
  ],
  "temi_recenti": [
   "imprenditore",
-  "imprenditore",
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-01",
+ "pulizia": "2026-11-02",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -9091,8 +9124,8 @@
    "ultimo": "2026-10-20"
   },
   "1uc6eTA1H5KSzsqTsVNgk6Rzto2V2Wq3y": {
-   "usi": 2,
-   "ultimo": "2026-10-20"
+   "usi": 3,
+   "ultimo": "2026-11-02"
   },
   "1SViXJGWyrXZIxEMyHGwykElbvGkiJSxW": {
    "usi": 2,
@@ -9324,7 +9357,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_09.flac",
   "deciso_12.flac",
   "phonk_11.flac",
   "drive_13.flac",
@@ -9343,7 +9375,8 @@
   "drive_15.flac",
   "phonk_10.flac",
   "phonk_03.flac",
-  "phonk_05.flac"
+  "phonk_05.flac",
+  "trap_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9378,7 +9411,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -9394,7 +9427,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "544713431841568",
   "1364616540355148",
   "593371403855914",
   "2475524415980310",
@@ -9423,6 +9455,7 @@
   "1108285910189784",
   "3846481242297548",
   "1781233772812838",
-  "5301582899854512"
+  "5301582899854512",
+  "1283788913238327"
  ]
 }
