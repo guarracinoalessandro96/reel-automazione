@@ -8625,11 +8625,42 @@
    },
    "spinto": true,
    "testo": "Che privilegio essere stanco per una strada che ho scelto io."
+  },
+  {
+   "quando": "2026-11-02T11:00",
+   "slot": "2026-11-02 12:00",
+   "video": "IMG_3972.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-ba88ba7b",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "vibe_check_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "musica_meta": "trap_11.flac",
+    "musica_instagram": "Go Go Go - T.H.E."
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "MIvxt3eb7OQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18110425868246192"
+    }
+   },
+   "spinto": true,
+   "testo": "La bussola è nata prima dell'orologio. Sapere dove vai conta più del tempo che ci metti."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-25 00:00",
   "2026-10-25 02:00",
   "2026-10-25 08:00",
   "2026-10-25 16:00",
@@ -8708,10 +8739,10 @@
   "2026-11-02 00:00",
   "2026-11-02 06:00",
   "2026-11-02 08:00",
-  "2026-11-02 10:00"
+  "2026-11-02 10:00",
+  "2026-11-02 12:00"
  ],
  "musica_recenti": [
-  "moon_vision_1.m4a",
   "mirror_mirror_1.m4a",
   "the_road_to_mordor_1.m4a",
   "fire_in_the_sky_1.m4a",
@@ -8730,7 +8761,8 @@
   "sweaty_staredown_3.m4a",
   "way_back_home_2.m4a",
   "death_duel_2.m4a",
-  "ancient_civilisations_2.m4a"
+  "ancient_civilisations_2.m4a",
+  "vibe_check_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8976,14 +9008,15 @@
   "MIE-7623edd1",
   "MIE-3fec417d",
   "MIE-d0b639c4",
-  "MIE-7cb10c23"
+  "MIE-7cb10c23",
+  "MIE-ba88ba7b"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -9198,8 +9231,8 @@
    "ultimo": "2026-10-21"
   },
   "1NqfCjngnUsLcNgPGLaYs302aM3bRveLK": {
-   "usi": 2,
-   "ultimo": "2026-10-21"
+   "usi": 3,
+   "ultimo": "2026-11-02"
   },
   "1O5XL-iS65p-rWSE6IHKTNDsSp1HIG9a1": {
    "usi": 2,
@@ -9423,7 +9456,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_13.flac",
   "trap_07.flac",
   "drive_06.flac",
   "drive_02.flac",
@@ -9442,7 +9474,8 @@
   "phonk_05.flac",
   "trap_03.flac",
   "deciso_11.flac",
-  "deciso_02.flac"
+  "deciso_02.flac",
+  "trap_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9477,7 +9510,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -9493,7 +9526,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2475524415980310",
   "283066584103655",
   "565118654020261",
   "974432747187721",
@@ -9522,6 +9554,7 @@
   "5301582899854512",
   "1283788913238327",
   "617195401283615",
-  "351866282607327"
+  "351866282607327",
+  "593371403855914"
  ]
 }
