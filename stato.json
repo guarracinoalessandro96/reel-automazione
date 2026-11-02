@@ -8593,11 +8593,42 @@
    },
    "spinto": true,
    "testo": "Non ho ancora vinto. Forse non è il momento. Però ci sto provando con tutto me stesso."
+  },
+  {
+   "quando": "2026-11-02T09:00",
+   "slot": "2026-11-02 10:00",
+   "video": "IMG_3800.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "MIE-7cb10c23",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "ancient_civilisations_2.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "deciso_02.flac",
+    "musica_instagram": "Wildflowers - Nick Gallant"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "wC7QMdvVzuw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17903729280603755"
+    }
+   },
+   "spinto": true,
+   "testo": "Che privilegio essere stanco per una strada che ho scelto io."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-24 22:00",
   "2026-10-25 00:00",
   "2026-10-25 02:00",
   "2026-10-25 08:00",
@@ -8676,10 +8707,10 @@
   "2026-11-01 22:00",
   "2026-11-02 00:00",
   "2026-11-02 06:00",
-  "2026-11-02 08:00"
+  "2026-11-02 08:00",
+  "2026-11-02 10:00"
  ],
  "musica_recenti": [
-  "delirium_1.m4a",
   "moon_vision_1.m4a",
   "mirror_mirror_1.m4a",
   "the_road_to_mordor_1.m4a",
@@ -8698,7 +8729,8 @@
   "moon_vision_3.m4a",
   "sweaty_staredown_3.m4a",
   "way_back_home_2.m4a",
-  "death_duel_2.m4a"
+  "death_duel_2.m4a",
+  "ancient_civilisations_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -8943,15 +8975,16 @@
   "MIE-2c37cb90",
   "MIE-7623edd1",
   "MIE-3fec417d",
-  "MIE-d0b639c4"
+  "MIE-d0b639c4",
+  "MIE-7cb10c23"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -9017,8 +9050,8 @@
    "ultimo": "2026-11-02"
   },
   "1hvbjqvKs_ADW2bi_kJP0H1fxpKUzd-nq": {
-   "usi": 2,
-   "ultimo": "2026-10-19"
+   "usi": 3,
+   "ultimo": "2026-11-02"
   },
   "1667Zix1tBrgfPEpOlI9dHiGVISZp0i8L": {
    "usi": 2,
@@ -9390,7 +9423,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_11.flac",
   "drive_13.flac",
   "trap_07.flac",
   "drive_06.flac",
@@ -9409,7 +9441,8 @@
   "phonk_03.flac",
   "phonk_05.flac",
   "trap_03.flac",
-  "deciso_11.flac"
+  "deciso_11.flac",
+  "deciso_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9460,7 +9493,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "593371403855914",
   "2475524415980310",
   "283066584103655",
   "565118654020261",
@@ -9489,6 +9521,7 @@
   "1781233772812838",
   "5301582899854512",
   "1283788913238327",
-  "617195401283615"
+  "617195401283615",
+  "351866282607327"
  ]
 }
