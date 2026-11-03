@@ -1663,7 +1663,10 @@ def main():
             # giudizio di Claude). Si sceglie a caso tra le prime 3, cosi' i reel vicini non sono sempre uguali.
             punti = foto_punti
             ordinate = sorted(frasi, key=lambda f: -punti.get(f["id"], classifica_frasi.stima(f["gancio"], f.get("virale"))))
-            frase = random.choice(ordinate[:3])
+            # 3/11/2026: mai due frasi con le stesse prime parole nello stesso giorno
+            inizio = lambda t: " ".join(re.findall(r"\w+", (t or "").lower())[:2])
+            oggi = {inizio(h.get("testo")) for h in state["storico"] if h.get("quando", "")[:10] == datetime.date.today().isoformat()}
+            frase = random.choice([f for f in ordinate[:8] if inizio(f["gancio"]) not in oggi][:3] or ordinate[:3])
             log(f"Frase dalla classifica ({punti.get(frase['id'], 'stima')}):", frase["gancio"])
         elif mie:            # finite: si riusa quella uscita da piu' tempo (mai fermarsi); salute.py avvisa
             frase = min(mie, key=lambda f: usi.get(f["id"], ""))
