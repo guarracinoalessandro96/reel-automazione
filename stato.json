@@ -9006,7 +9006,10 @@
     },
     "instagram": {
      "ok": true,
-     "id": "17890379241476227"
+     "id": "17890379241476227",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": true,
@@ -9042,11 +9045,41 @@
    },
    "spinto": true,
    "testo": "Non era la fine. Era il cambio scena."
+  },
+  {
+   "quando": "2026-11-03T15:00",
+   "slot": "2026-11-03 16:00",
+   "video": "IMG_3330.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-eb58c136",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "majestic_12_2.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "drive_05.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "zOrD5sUHHLg"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17943558069365839"
+    }
+   },
+   "spinto": true,
+   "testo": "La tua unica competizione è contro chi eri ieri."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-26 16:00",
   "2026-10-26 18:00",
   "2026-10-26 20:00",
   "2026-10-26 22:00",
@@ -9125,10 +9158,10 @@
   "2026-11-03 08:00",
   "2026-11-03 10:00",
   "2026-11-03 12:00",
-  "2026-11-03 14:00"
+  "2026-11-03 14:00",
+  "2026-11-03 16:00"
  ],
  "musica_recenti": [
-  "dusty_road_magic_1.m4a",
   "cutscene_crush_2.m4a",
   "wrangle_the_crazy_3.m4a",
   "moon_vision_3.m4a",
@@ -9147,7 +9180,8 @@
   "keep_it_movin_2.m4a",
   "cutscene_crush_3.m4a",
   "way_back_home_3.m4a",
-  "moon_vision_1.m4a"
+  "moon_vision_1.m4a",
+  "majestic_12_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -9405,7 +9439,8 @@
   "MIE-af7b8cc7",
   "MIE-9d317fa5",
   "MIE-b598ffd8",
-  "MIE-2b244f1e"
+  "MIE-2b244f1e",
+  "MIE-eb58c136"
  ],
  "temi_recenti": [
   "mentalita",
@@ -9435,8 +9470,8 @@
    "ultimo": "2026-10-27"
   },
   "1ssTZiPaSjGA63iZMxhUEOD6wWT-dqCLz": {
-   "usi": 2,
-   "ultimo": "2026-10-27"
+   "usi": 3,
+   "ultimo": "2026-11-03"
   },
   "1HKv05Wh_t_gsHvCIkHBJFaKlY4mxyEy2": {
    "usi": 3,
@@ -9852,7 +9887,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_16.flac",
   "drive_15.flac",
   "phonk_10.flac",
   "phonk_03.flac",
@@ -9871,7 +9905,8 @@
   "drive_14.flac",
   "phonk_06.flac",
   "energia_02.flac",
-  "deciso_05.flac"
+  "deciso_05.flac",
+  "drive_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
