@@ -100,8 +100,16 @@ def main():
     storico = json.load(open(STORICO, encoding="utf-8")) if os.path.exists(STORICO) else {}
     giorno, settimana, errori = {}, {}, []
     tot = None
+    note = {}
     try:
         tot, giorno["YouTube"], settimana["YouTube"] = youtube(k, oggi, storico)
+        if giorno["YouTube"] is None:     # 3/11/2026: manca il totale di ieri (giro saltato): dall'ultimo salvato
+            for g in range(2, 8):
+                d = (oggi - datetime.timedelta(days=g)).isoformat()
+                if storico.get(d, {}).get("youtube_totale") is not None:
+                    giorno["YouTube"] = tot - storico[d]["youtube_totale"]
+                    note["YouTube"] = f" (ultimi {g} giorni)"
+                    break
     except Exception as e:
         errori.append(f"YouTube: {e}")
     for nome, f in (("Instagram", lambda: instagram(k, oggi)), ("Facebook", lambda: facebook(k, oggi))):
@@ -114,6 +122,12 @@ def main():
         giorno["TikTok"], settimana["TikTok"], data_tiktok, file_tiktok = tiktok()
     except Exception as e:
         errori.append(f"TikTok: {e}")
+    # 3/11/2026: TikTok non ha API per i numeri e il download da Chrome a volte non riesce: si salva l'ultimo dato
+    # e, se oggi manca, si mostra quello (con il suo giorno) invece di "non disponibile"
+    if giorno.get("TikTok") is not None:
+        storico["tiktok_ultimo"] = {"data": data_tiktok, "views": giorno["TikTok"]}
+    elif storico.get("tiktok_ultimo"):
+        giorno["TikTok"], data_tiktok = storico["tiktok_ultimo"]["views"], storico["tiktok_ultimo"]["data"]
     try:
         errori += reel_mancanti(oggi)
     except Exception as e:
@@ -122,13 +136,19 @@ def main():
         righe = [titolo]
         for nome in ("Facebook", "Instagram", "TikTok", "YouTube"):
             v = numeri.get(nome)
-            coda = f" (fino al {data_tiktok})" if nome == "TikTok" and data_tiktok else ""   # TikTok arriva con 2 giorni di ritardo
+            coda = f" (del {data_tiktok})" if nome == "TikTok" and data_tiktok else note.get(nome, "")   # TikTok arriva con 1-2 giorni di ritardo
             righe.append(f"{nome}: {v:,}".replace(",", ".") + coda if v is not None else f"{nome}: non disponibile")
         return righe
-    righe = blocco("VISUALIZZAZIONI ULTIME 24 ORE", giorno) + [""] + blocco("VISUALIZZAZIONI ULTIMI 7 GIORNI", settimana)
-    if errori:
-        righe += ["", "ERRORE", *errori]
+    # 3/11/2026 (Alessandro): "solamente le visualizzazioni delle ultime 24 ore con il giorno, e poi sotto facebook,
+    # instagram, tiktok e youtube, ogni social daccapo": niente 7 giorni e niente errori nel messaggio (restano nel log)
+    mesi = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre",
+            "novembre", "dicembre"]
+    ieri = oggi - datetime.timedelta(days=1)
+    righe = blocco("VISUALIZZAZIONI ULTIME 24 ORE", giorno)
+    righe.insert(1, f"{ieri.day} {mesi[ieri.month - 1]} {ieri.year}")
     testo = "\n".join(righe)
+    if errori:
+        print("ERRORI (non inviati su Telegram):", *errori, sep="\n")
     print(testo)
     if "--prova" in sys.argv:
         return
@@ -138,7 +158,7 @@ def main():
     json.dump(storico, open(STORICO, "w", encoding="utf-8"), indent=1)
     os.environ["TELEGRAM_BOT_TOKEN"], os.environ["TELEGRAM_CHAT_ID"] = k["TELEGRAM_BOT_TOKEN"], k["TELEGRAM_CHAT_ID"]
     import avvisi
-    if not avvisi.manda(testo):
+    if not avvisi.manda_statistiche(testo):
         raise SystemExit("Telegram non ha ricevuto il messaggio")
     if file_tiktok:      # un solo file, cosi' la cartella Download non si riempie
         os.replace(file_tiktok, os.path.join(os.path.expanduser("~"), "statistiche_tiktok_ultimo.zip"))
