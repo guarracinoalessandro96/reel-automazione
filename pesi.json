@@ -1,14 +1,14 @@
 {
  "temi": {
   "amicizia": 0.98,
-  "imprenditore": 1.12,
-  "mentalita": 0.97,
+  "imprenditore": 1.06,
+  "mentalita": 0.98,
   "palestra": 1.1,
   "dieta": 1.08,
   "regole": 1.3,
   "storia": 0.78
  },
- "aggiornato": "2026-11-02",
+ "aggiornato": "2026-11-03",
  "frasi_vincenti": [
   "MIE-02d87ee7",
   "MIE-043e8cf1",
@@ -24,6 +24,7 @@
   "MIE-373e069a",
   "MIE-3d86a685",
   "MIE-40a4765a",
+  "MIE-44e75fe0",
   "MIE-48a56ab6",
   "MIE-51b80f60",
   "MIE-53683e04",
@@ -45,6 +46,7 @@
   "MIE-8b8aa442",
   "MIE-9156c95a",
   "MIE-93d891c5",
+  "MIE-94ebbc50",
   "MIE-95c3c510",
   "MIE-95e45457",
   "MIE-96cb5cca",
@@ -52,6 +54,7 @@
   "MIE-9b789797",
   "MIE-9dd49640",
   "MIE-a56f1caf",
+  "MIE-a9f47ec7",
   "MIE-b0cb6aca",
   "MIE-b8b94c79",
   "MIE-ba146521",
@@ -76,14 +79,15 @@
   "STO-20"
  ],
  "formati": {
-  "frase": 0.83,
-  "regole": 1.3,
-  "montaggio": 1.0,
-  "gancio": 0.59,
-  "frase8": 1.3,
-  "racconto": 0.5,
-  "racconto_lento": 0.46,
-  "dieci_due": 0.49
+  "frase": 0.91,
+  "regole": 1.42,
+  "montaggio": 1.1,
+  "gancio": 0.65,
+  "frase8": 1.42,
+  "racconto": 0.55,
+  "racconto_lento": 0.51,
+  "dieci_due": 0.67,
+  "dieci_broll": 0.4
  },
  "esperimento_formati": {
   "regole": 1.6
@@ -96,19 +100,21 @@
   "wrangle_the_crazy",
   "ancient_civilisations",
   "cutscene_crush",
-  "death_duel",
   "dusty_road_magic",
   "keep_it_movin",
-  "locked_in"
+  "death_duel",
+  "moon_vision"
  ],
  "clip_forti": [
   "IMG_4037.MOV",
-  "IMG_3652.mov",
   "IMG_3606.mov",
   "IMG_4032.MOV",
+  "IMG_3763.mov",
   "IMG_3311.mov",
+  "IMG_3651.mov",
   "IMG_4286.MOV",
   "IMG_3832.mov",
+  "IMG_3652.mov",
   "IMG_3833.mov",
   "IMG_4061.MOV",
   "IMG_4126.MOV",
@@ -119,8 +125,6 @@
   "IMG_3831.mov",
   "IMG_3604.mov",
   "IMG_3787.mov",
-  "IMG_4029.MOV",
-  "IMG_4294.MOV",
-  "IMG_4131.mov"
+  "IMG_4029.MOV"
  ]
 }
