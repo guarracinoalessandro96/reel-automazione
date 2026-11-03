@@ -8909,11 +8909,41 @@
    },
    "spinto": true,
    "testo": "Nessuno costruisce per te quello che vuoi. Alzati e fallo."
+  },
+  {
+   "quando": "2026-11-03T07:00",
+   "slot": "2026-11-03 08:00",
+   "video": "IMG_3834.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-af7b8cc7",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "keep_it_movin_2.m4a",
+    "stacchi": 4,
+    "testi": 1,
+    "musica_meta": "drive_14.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "eUsQmdgdbik"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18198536845403899"
+    }
+   },
+   "spinto": false,
+   "testo": "Mente forte, obiettivi chiari, passi costanti. Ogni giorno."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-26 04:00",
   "2026-10-26 06:00",
   "2026-10-26 08:00",
   "2026-10-26 14:00",
@@ -8992,10 +9022,10 @@
   "2026-11-02 20:00",
   "2026-11-02 22:00",
   "2026-11-03 00:00",
-  "2026-11-03 06:00"
+  "2026-11-03 06:00",
+  "2026-11-03 08:00"
  ],
  "musica_recenti": [
-  "death_duel_1.m4a",
   "intergalactic_1.m4a",
   "ancient_civilisations_1.m4a",
   "visions_1.m4a",
@@ -9014,7 +9044,8 @@
   "kick_it_2.m4a",
   "wrangle_the_crazy_2.m4a",
   "monthaholic_1.m4a",
-  "dusty_road_magic_3.m4a"
+  "dusty_road_magic_3.m4a",
+  "keep_it_movin_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -9268,7 +9299,8 @@
   "MIE-1d389b79",
   "MIE-c9050293",
   "MIE-272aab85",
-  "MIE-8b2514da"
+  "MIE-8b2514da",
+  "MIE-af7b8cc7"
  ],
  "temi_recenti": [
   "mentalita",
@@ -9414,8 +9446,8 @@
    "ultimo": "2026-11-03"
   },
   "1HrgxYw6jMJ5qXxx8j5ZWOVhPdqD7b1fH": {
-   "usi": 2,
-   "ultimo": "2026-10-19"
+   "usi": 3,
+   "ultimo": "2026-11-03"
   },
   "1MGwGXNeSO9_CxJf-b3fdJUiJRRsBRTMw": {
    "usi": 2,
@@ -9715,7 +9747,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_09.flac",
   "trap_04.flac",
   "trap_06.flac",
   "deciso_09.flac",
@@ -9734,7 +9765,8 @@
   "drive_06.flac",
   "phonk_01.flac",
   "phonk_14.flac",
-  "deciso_06.flac"
+  "deciso_06.flac",
+  "drive_14.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9769,7 +9801,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
