@@ -9108,7 +9108,11 @@
     },
     "instagram": {
      "ok": true,
-     "id": "18111793058238239"
+     "id": "18111793058238239",
+     "tipo_audio": "ORIGINAL_SOUND",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": false,
@@ -9144,11 +9148,42 @@
    },
    "spinto": false,
    "testo": "Il tuo potenziale non ha limiti. Finora hai mostrato solo una minima parte."
+  },
+  {
+   "quando": "2026-11-03T21:00",
+   "slot": "2026-11-03 22:00",
+   "video": "IMG_3935.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-2759af9a",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "van_life_rager_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "phonk_11.flac",
+    "musica_instagram": "Brahms Violin Sonata 108 #3-2 - Mike Block (Producer)"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "HE3PXy558xA"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17924794206221372"
+    }
+   },
+   "spinto": true,
+   "testo": "Alla lunga il sacrificio paga. Il successo dipende da ciò che fai succedere ogni giorno."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-26 22:00",
   "2026-10-27 00:00",
   "2026-10-27 02:00",
   "2026-10-27 04:00",
@@ -9227,10 +9262,10 @@
   "2026-11-03 14:00",
   "2026-11-03 16:00",
   "2026-11-03 18:00",
-  "2026-11-03 20:00"
+  "2026-11-03 20:00",
+  "2026-11-03 22:00"
  ],
  "musica_recenti": [
-  "moon_vision_3.m4a",
   "sweaty_staredown_3.m4a",
   "way_back_home_2.m4a",
   "death_duel_2.m4a",
@@ -9249,7 +9284,8 @@
   "moon_vision_1.m4a",
   "majestic_12_2.m4a",
   "ancient_civilisations_1.m4a",
-  "death_duel_1.m4a"
+  "death_duel_1.m4a",
+  "van_life_rager_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -9510,7 +9546,8 @@
   "MIE-2b244f1e",
   "MIE-eb58c136",
   "MIE-f35b2225",
-  "MIE-a1e4c141"
+  "MIE-a1e4c141",
+  "MIE-2759af9a"
  ],
  "temi_recenti": [
   "mentalita",
@@ -9700,8 +9737,8 @@
    "ultimo": "2026-11-01"
   },
   "1a2POnx-7OaYCvRXrpkTO6Qw_dTZ4CN-d": {
-   "usi": 2,
-   "ultimo": "2026-10-20"
+   "usi": 3,
+   "ultimo": "2026-11-03"
   },
   "1psghsoVp3I-dU4RMW8CuX7jIIkUpjvLc": {
    "usi": 2,
@@ -9957,7 +9994,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_03.flac",
   "phonk_05.flac",
   "trap_03.flac",
   "deciso_11.flac",
@@ -9976,7 +10012,8 @@
   "deciso_05.flac",
   "drive_05.flac",
   "energia_04.flac",
-  "deciso_03.flac"
+  "deciso_03.flac",
+  "phonk_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10027,7 +10064,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "523966117385305",
   "1372666635060078",
   "1377485917727304",
   "393903371411311",
@@ -10056,6 +10092,7 @@
   "593371403855914",
   "585527483942549",
   "2475524415980310",
-  "565118654020261"
+  "565118654020261",
+  "796285350766311"
  ]
 }
