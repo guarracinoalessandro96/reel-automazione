@@ -156,6 +156,8 @@ def scegli_musica(tema, recenti, scena=None, nostra=False):
         yt = ["yt_dieci"]
     random.shuffle(yt)
     generi = (*yt, GENERE_PER_SCENA.get(scena), *random.sample(GENERI_MOTIVAZIONE, len(GENERI_MOTIVAZIONE)))
+    if not nostra:     # 3/11/2026 (Alessandro): "anche su YouTube audio di YouTube": mai i nostri brani, neanche di riserva
+        generi = (*yt, *[g for g in ("yt_dieci", "yt_carica", "yt_epica") if g not in yt])
     if nostra:     # 3/11/2026: generi diversi di fila; quelli appena usati restano solo come ultima scelta
         vicini_generi = {audio_ig.genere(b) for b in recenti[-2:]}
         generi = (*[g for g in generi if g not in vicini_generi], *generi)
@@ -223,9 +225,33 @@ def serie_testo(cap):
 DOMANDE_COMMENTI = False   # 29/10/2026: "non mi piace quella cosa scrivila nei commenti, togliamola"
 
 
+# 3/11/2026: parole che la gente cerca davvero, prese dalla frase (titolo/tag YouTube e hashtag delle didascalie)
+PAROLE_CERCATE = [("disciplin", "#disciplina"), ("costan", "#costanza"), ("sacrifi", "#sacrificio"),
+                  ("obiettiv", "#obiettivi"), ("futur", "#futuro"), ("lavor", "#lavoro"), ("sogn", "#sogni"),
+                  ("success", "#successo"), ("mental", "#mentalita"), ("crescit", "#crescitapersonale"),
+                  ("non mollare", "#nonmollare"), ("forza", "#forzadivolonta")]
+HASHTAG_GIRO = ["#frasimotivazionali", "#motivazione", "#citazioni", "#mentalita", "#obiettivi", "#disciplina",
+                "#crescitapersonale", "#frasidivita"]
+
+
+def parole_cercate(testo):
+    t = (testo or "").lower()
+    return list(dict.fromkeys(tag for radice, tag in PAROLE_CERCATE if radice in t))[:2]
+
+
+def hashtag_a_rotazione(cap, n, escludi=None):
+    """n hashtag: prima quelli della frase, poi a rotazione (fissi per la stessa frase, diversi tra frasi)."""
+    giro = int(hashlib.md5(str(cap.get("id", cap.get("gancio", ""))).encode()).hexdigest(), 16)
+    k = giro % len(HASHTAG_GIRO)
+    tutti = parole_cercate(cap.get("gancio")) + HASHTAG_GIRO[k:] + HASHTAG_GIRO[:k]
+    return [t for t in dict.fromkeys(tutti) if t != escludi][:n]
+
+
 def testo_breve(cap):
     """Descrizione pubblicata: la stessa frase del video + 3-4 hashtag (niente dettagli personali)."""
     tags = cap.get("hashtag") or ["#citazioni", "#motivazione"]
+    if tags == ["#citazioni", "#motivazione", "#mentalita"]:     # 3/11: le frasi del Doc non hanno sempre gli stessi 3
+        tags = hashtag_a_rotazione(cap, 3)
     testo = cap["gancio"].strip().strip('"“”')
     if MOSTRA_AUTORE and cap.get("autore"):
         testo = "“" + testo.strip('"“”') + "” — " + cap["autore"]
@@ -931,21 +957,23 @@ def youtube_upload(creds, path, cap, publish_at=None):
     from googleapiclient.http import MediaFileUpload
     yt = build("youtube", "v3", credentials=creds, cache_discovery=False)
     title = cap["gancio"].strip()
-    parola = random.choice(("#motivazione", "#disciplina", "#crescitapersonale"))    # 1/11/2026: una parola che la gente cerca
+    # 3/11/2026: la parola cercata viene dalla frase stessa (se parla di costanza -> #costanza), altrimenti una a caso
+    parola = (parole_cercate(cap["gancio"]) or [random.choice(("#motivazione", "#disciplina", "#crescitapersonale"))])[0]
     if len(title) > 100 - len(parola) - 10:     # limite YouTube 100 caratteri: taglio a parola intera + "…"
         title = title[:88 - len(parola)].rsplit(" ", 1)[0].rstrip(",;:") + "…"   # (mai solo la prima frase: cambierebbe il senso)
     privacy = ENV("YOUTUBE_PRIVACY") or "public"
     momento = cap.get("tema") == "momento"
     descr = (cap["gancio"].strip().strip('"“”') + ("\n\n#shorts " + " ".join(cap.get("hashtag") or []) if momento else
-             "\n\n#shorts #frasimotivazionali #obiettivi"))
+             "\n\n#shorts " + " ".join(hashtag_a_rotazione(cap, 2, escludi=parola))))
     if cap.get("righe"):    # formato REGOLE: le regole in descrizione
         descr = "\n".join(f"{i}. {r}" for i, r in enumerate(cap["righe"], 1)) + "\n\n" + descr
     if serie_testo(cap):    # la serie in prima riga + invito a seguire il viaggio (il personaggio, non solo le frasi)
         descr = f"{serie_testo(cap)}\n\n" + descr
     body = {"snippet": {"title": f"{title} {parola} #shorts", "description": descr, "categoryId": "22",
-                        "tags": (["vita vera", "momenti", "oggi", "italia", "shorts"] if momento else
+                        "tags": list(dict.fromkeys(["vita vera", "momenti", "oggi", "italia", "shorts"] if momento else
                                  ["motivazione", "obiettivi", "disciplina", "frasi motivazionali", "crescita personale",
-                                  "futuro", "lavoro", "vincere", "shorts"]),   # 29/10: niente palestra
+                                  "futuro", "lavoro", "vincere", "shorts"]
+                                 + [p.lstrip("#") for p in parole_cercate(cap["gancio"])])),   # 29/10: niente palestra; 3/11: + parole della frase
                         "defaultLanguage": "it", "defaultAudioLanguage": "it"},
             "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": False}}
     if publish_at and privacy == "public":
@@ -1082,11 +1110,19 @@ def ricontrolla_instagram(state, save):
         if not ig.get("ok") or "controllo" in ig or h.get("quando", "") > limite or not str(ig.get("id", "")).isdigit():
             continue
         try:
-            r = requests.get(f"{GRAPH}/{ig['id']}", params={"fields": "media_url", "access_token": token}, timeout=30).json()
+            r = requests.get(f"{GRAPH_AUDIO}/{ig['id']}", params={"fields": "media_url,media_audio_type",
+                                                                    "access_token": token}, timeout=30).json()
+            ig["tipo_audio"] = r.get("media_audio_type")
             if not r.get("media_url"):
                 ig["controllo"] = "non leggibile"
                 continue
             ig["controllo"] = audio_ig.controlla_pubblicato(r["media_url"])
+            if ig["tipo_audio"] == "MUSIC":      # 3/11: il brano di Instagram non e' nel file scaricabile: conta solo il resto
+                ig["controllo"] = [x for x in ig["controllo"] if x.startswith("video di lato")]
+            elif (h.get("montaggio") or {}).get("musica_instagram"):
+                if state.get("ig_avviso_brano") != h.get("quando", "")[:10]:     # questo avviso al massimo 1 al giorno
+                    state["ig_avviso_brano"] = h.get("quando", "")[:10]
+                    ig["controllo"].append("brano di Instagram non applicato (resta l'audio del file)")
             if ig["controllo"] and (h.get("montaggio") or {}).get("formato") != "parlato":
                 avvisi.manda(f"Instagram, reel delle {h['slot']}: " + ", ".join(ig["controllo"]))
         except Exception as e:
@@ -1666,7 +1702,17 @@ def main():
             # 3/11/2026: mai due frasi con le stesse prime parole nello stesso giorno
             inizio = lambda t: " ".join(re.findall(r"\w+", (t or "").lower())[:2])
             oggi = {inizio(h.get("testo")) for h in state["storico"] if h.get("quando", "")[:10] == datetime.date.today().isoformat()}
-            frase = random.choice([f for f in ordinate[:8] if inizio(f["gancio"]) not in oggi][:3] or ordinate[:3])
+            # 3/11/2026: niente frase quasi uguale a una uscita negli ultimi 30 giorni (stesse parole per il 60%)
+            # e niente stesso tema dei 2 reel precedenti
+            parole = lambda t: {w for w in re.findall(r"\w{4,}", (t or "").lower())}
+            mese = (datetime.date.today() - datetime.timedelta(days=30)).isoformat()
+            uscite = [parole(h.get("testo")) for h in state["storico"] if h.get("quando", "") >= mese and h.get("testo")]
+            simile = lambda t: any(len(parole(t) & u) >= 0.6 * max(1, min(len(parole(t)), len(u))) for u in uscite if u)
+            tema_di = {f["id"]: f.get("tema") for f in mie}
+            temi_vicini = {tema_di.get(h.get("frase")) for h in state["storico"][-2:]} - {None}
+            adatte = [f for f in ordinate[:12] if inizio(f["gancio"]) not in oggi and not simile(f["gancio"])]
+            adatte = [f for f in adatte if f.get("tema") not in temi_vicini] or adatte
+            frase = random.choice(adatte[:3] or [f for f in ordinate[:8] if inizio(f["gancio"]) not in oggi][:3] or ordinate[:3])
             log(f"Frase dalla classifica ({punti.get(frase['id'], 'stima')}):", frase["gancio"])
         elif mie:            # finite: si riusa quella uscita da piu' tempo (mai fermarsi); salute.py avvisa
             frase = min(mie, key=lambda f: usi.get(f["id"], ""))
@@ -1830,7 +1876,19 @@ def main():
         except Exception as e:
             log("Versione per TikTok Studio non salvata su Drive:", e)
     ig_nativo = None
-    # 2/11/2026: Instagram col file che ha i nostri brani (out_meta): il brano nativo via API non viene applicato e la Raccolta YouTube fuori da YouTube non va
+    # 3/11/2026: Instagram con un brano DI INSTAGRAM (Alessandro: "voglio gli audio delle piattaforme", mai i nostri).
+    # Instagram applica il brano (audio_configuration) solo se il video caricato HA una traccia audio: dal 25/10 al 2/11
+    # si caricava senza traccia e solo 1 reel su ~80 ha avuto la musica (il 2/11 delle 18, l'unico con la traccia).
+    # Si carica quindi out_meta (con traccia) e Instagram la sostituisce col suo brano (video_volume 0).
+    if "instagram" in piatt and not voce and out_meta:
+        try:
+            scelto = scegli_audio_instagram(an["scena"], state.get("ig_audio_recenti", []))
+            if scelto:
+                ig_nativo = (out_meta, scelto[0])
+                info["musica_instagram"] = scelto[1]
+                state["ig_audio_recenti"] = (state.get("ig_audio_recenti", []) + [scelto[0]])[-30:]
+        except Exception as e:
+            log("Brano di Instagram non scelto:", e)
     attesa = (target - ora_roma()).total_seconds() if target else 0
     if 0 < attesa < 70 * 60 and not DRY:
         log(f"Aspetto le {target:%H:%M} per pubblicare puntuale ({attesa / 60:.0f} minuti)")

@@ -22,7 +22,9 @@ def prepara(massimo=4):
     H, cart = tp.collega()
     adesso = tp.ora_roma()
     attesa, occupati = [], set()
-    for f in tp.elenca(H, cart):
+    files = tp.elenca(H, cart)
+    doppie = tp.gia_programmate(files, "fb_fatto", "fb_quando")   # 3/11/2026: stessa frase mai 2 volte in 7 giorni
+    for f in files:
         p = f.get("appProperties") or {}
         if "tiktok_slot" not in p:
             continue
@@ -35,6 +37,10 @@ def prepara(massimo=4):
             continue                                     # 29/10/2026: niente racconti ("storie inventate")
         if slot > adesso + datetime.timedelta(hours=1) or slot < adesso - datetime.timedelta(days=VECCHIO_GIORNI):
             continue
+        fr = tp.frase_di(f.get("description"))
+        if fr and fr in doppie:
+            continue
+        doppie.add(fr)
         attesa.append((slot, f, p))
     attesa.sort(key=lambda x: x[0], reverse=True)          # prima i piu' nuovi
     liberi = tp.orari_liberi(occupati, adesso)

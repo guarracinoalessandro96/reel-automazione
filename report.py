@@ -145,6 +145,35 @@ def brani_instagram(post):
     return [k for _, k in tutte[:len(tutte) // 2 + 1]] if len(tutte) >= 3 else []
 
 
+def stat_instagram(post, giorni=3):
+    """3/11/2026: reel Instagram degli ultimi `giorni`: quanti hanno davvero il brano DI INSTAGRAM (media_audio_type)
+    e visualizzazioni, salvataggi e condivisioni (i segnali che contano per la spinta)."""
+    import requests
+    token = ENV("META_PAGE_TOKEN")
+    if not token:
+        return {}
+    da = (datetime.datetime.now() - datetime.timedelta(days=giorni)).isoformat()
+    tot = {"reel": 0, "con_musica_instagram": 0, "views": 0, "salvati": 0, "condivisi": 0}
+    for h in post:
+        ig = h.get("risultati", {}).get("instagram", {})
+        if not ig.get("ok") or not str(ig.get("id", "")).isdigit() or h.get("quando", "") < da:
+            continue
+        try:
+            a = requests.get(f"https://graph.facebook.com/v25.0/{ig['id']}", timeout=30,
+                             params={"fields": "media_audio_type", "access_token": token}).json()
+            r = requests.get(f"https://graph.facebook.com/v25.0/{ig['id']}/insights", timeout=30,
+                             params={"metric": "views,saved,shares", "access_token": token}).json()
+        except Exception:
+            continue
+        tot["reel"] += 1
+        tot["con_musica_instagram"] += a.get("media_audio_type") == "MUSIC"
+        for d in r.get("data", []):
+            chiave = {"views": "views", "saved": "salvati", "shares": "condivisi"}.get(d.get("name"))
+            if chiave:
+                tot[chiave] += int(d["values"][0]["value"])
+    return tot
+
+
 def stat_facebook(post):
     """Riproduzioni dei reel Facebook (ultimi 30 giorni): {"reel": n, "riproduzioni": tot, "media": m, "ultimi": [...]}."""
     import requests
@@ -362,7 +391,7 @@ def main():
     migliori = [dict(m, frase=testi.get(m["frase"], m["frase"])) for m in migliori]
     tutti = [h for h in state.get("storico", []) if h.get("slot")]
     report = {"data": datetime.date.today().isoformat(), "reel_analizzati": len(righe),
-              "facebook": stat_facebook(tutti),
+              "facebook": stat_facebook(tutti), "instagram": stat_instagram(tutti),
               "media_views": round(media_tutti), "spinti": len(test), "like_totali": sum(r["like"] for r in righe),
               "per_tema": media(per["tema"]), "per_scena": media(per["scena"]), "per_orario": media(per["orario"]),
               "per_musica": media(per["musica"]), "per_origine": media(per["origine"]), "per_frase_virale": media(per["frase_virale"]),

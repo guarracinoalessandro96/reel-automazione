@@ -31,7 +31,7 @@ FORMATI = {
 }
 DURATA_RACCONTO = 30.0
 GANCIO_S = 3.5
-ENTRATA_S = 0.18   # 31/10/2026: la scritta sale in posizione nel primo istante (visibile dal primo fotogramma)        # formati da 10 s: il gancio da solo per 3,5 s, poi la frase intera
+ENTRATA_S = 0      # 3/11/2026: frase FISSA dal primo fotogramma (Alessandro non vuole che salga; prima 0.18)        # formati da 10 s: il gancio da solo per 3,5 s, poi la frase intera
 
 
 def dividi_in(testo, n):
@@ -125,7 +125,8 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         p = os.path.join(tmp, f"t{k}.png")
         img.save(p)
         cmd += ["-i", p]
-        g += f";[{corrente}][{idx}:v]overlay=0:'if(lt(t-{a:.2f},{ENTRATA_S}),({ENTRATA_S}-(t-{a:.2f}))*{H * 0.05 / ENTRATA_S:.1f},0)':format=auto:"
+        y = f"'if(lt(t-{a:.2f},{ENTRATA_S}),({ENTRATA_S}-(t-{a:.2f}))*{H * 0.05 / ENTRATA_S:.1f},0)'" if ENTRATA_S else "0"
+        g += f";[{corrente}][{idx}:v]overlay=0:{y}:format=auto:"
         g += f"enable='between(t,{a:.2f},{b - 0.001:.2f})'[o{k}]"
         corrente, idx = f"o{k}", idx + 1
     g += f";[{corrente}]format=yuv420p[v]"

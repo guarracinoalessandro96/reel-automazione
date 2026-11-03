@@ -77,11 +77,31 @@ def rimpicciolisci(path):
     os.replace(tmp, path)
 
 
+def frase_di(descrizione):
+    """La frase del reel dalla descrizione (senza 'Giorno X/365' e hashtag), per riconoscere i doppioni."""
+    righe = [r.strip() for r in (descrizione or "").splitlines()
+             if r.strip() and not r.strip().startswith(("Giorno", "#"))]
+    return re.sub(r"\W+", " ", righe[0].lower()).strip() if righe else ""
+
+
+def gia_programmate(files, fatto, quando, giorni=7):
+    """3/11/2026: frasi gia' programmate negli ultimi `giorni`: la stessa frase non torna su questa piattaforma."""
+    da = ora_roma() - datetime.timedelta(days=giorni)
+    fatte = set()
+    for f in files:
+        p = f.get("appProperties") or {}
+        if p.get(fatto) == "1" and p.get(quando, "") >= f"{da:%Y-%m-%d %H:%M}":
+            fatte.add(frase_di(f.get("description")))
+    return fatte - {""}
+
+
 def prepara(massimo=4):
     H, cart = collega()
     adesso = ora_roma()
     attesa, occupati, cestino = [], set(), []
-    for f in elenca(H, cart):
+    files = elenca(H, cart)
+    doppie = gia_programmate(files, "tiktok_fatto", "tiktok_quando")
+    for f in files:
         p = f.get("appProperties") or {}
         if "tiktok_slot" not in p:
             continue                                     # vecchi video del periodo Telegram
@@ -98,6 +118,10 @@ def prepara(massimo=4):
             continue                                     # 29/10/2026: niente racconti ("storie inventate, non su di me")
         if slot < adesso - datetime.timedelta(days=VECCHIO_GIORNI):
             continue                                     # 29/10/2026: troppo vecchio, si salta (resta su Drive)
+        fr = frase_di(f.get("description"))
+        if fr and fr in doppie:
+            continue                                     # 3/11/2026: stessa frase gia' su TikTok negli ultimi 7 giorni
+        doppie.add(fr)
         attesa.append((0, slot, f, p))
     attesa.sort(key=lambda x: x[1], reverse=True)       # 29/10/2026: prima i PIU' NUOVI (formato attuale da 10 s)
     liberi = orari_liberi(occupati, adesso)

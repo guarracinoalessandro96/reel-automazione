@@ -77,6 +77,19 @@ def reel_mancanti(oggi):
                 and (h.get("risultati") or {}).get(p, {}).get("ok"))
         if n < 10:
             out.append(f"{nome}: ieri usciti {n} reel su 10")
+    # 3/11/2026: Instagram deve avere il brano DI INSTAGRAM (scelta di Alessandro): se manca su qualche reel, errore
+    try:
+        import requests
+        tok = json.load(open(SEGRETI, encoding="utf-8"))["META_PAGE_TOKEN"]
+        ids = [h["risultati"]["instagram"]["id"] for h in storia if str(h.get("slot", "")).startswith(ieri)
+               and (h.get("risultati") or {}).get("instagram", {}).get("ok")
+               and (h.get("montaggio") or {}).get("formato") not in ("parlato", "momento")]
+        musica = sum(requests.get(f"https://graph.facebook.com/v25.0/{i}", timeout=30, params={
+            "fields": "media_audio_type", "access_token": tok}).json().get("media_audio_type") == "MUSIC" for i in ids)
+        if ids and musica < len(ids):
+            out.append(f"Instagram: ieri {musica} reel su {len(ids)} con la musica di Instagram")
+    except Exception as e:
+        out.append(f"Instagram, controllo musica: {e}")
     return out
 
 
