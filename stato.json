@@ -8492,7 +8492,10 @@
     },
     "instagram": {
      "ok": true,
-     "id": "18117726905109786"
+     "id": "18117726905109786",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": true,
@@ -8524,7 +8527,10 @@
     },
     "instagram": {
      "ok": true,
-     "id": "18132376669747815"
+     "id": "18132376669747815",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": true,
@@ -8556,7 +8562,10 @@
     },
     "instagram": {
      "ok": true,
-     "id": "17954650269313057"
+     "id": "17954650269313057",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": true,
@@ -8588,7 +8597,10 @@
     },
     "instagram": {
      "ok": true,
-     "id": "18169563406476190"
+     "id": "18169563406476190",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": true,
@@ -8620,7 +8632,10 @@
     },
     "instagram": {
      "ok": true,
-     "id": "17903729280603755"
+     "id": "17903729280603755",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": true,
@@ -8652,7 +8667,8 @@
     },
     "instagram": {
      "ok": true,
-     "id": "18110425868246192"
+     "id": "18110425868246192",
+     "controllo": "non leggibile"
     }
    },
    "spinto": true,
@@ -8684,7 +8700,8 @@
     },
     "instagram": {
      "ok": true,
-     "id": "18094699766195929"
+     "id": "18094699766195929",
+     "controllo": "non leggibile"
     }
    },
    "spinto": true,
@@ -8716,7 +8733,10 @@
     },
     "instagram": {
      "ok": true,
-     "id": "18129059566852589"
+     "id": "18129059566852589",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": true,
@@ -8748,7 +8768,10 @@
     },
     "instagram": {
      "ok": true,
-     "id": "17941273824384899"
+     "id": "17941273824384899",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": false,
@@ -8779,7 +8802,10 @@
     },
     "instagram": {
      "ok": true,
-     "id": "18120211936960488"
+     "id": "18120211936960488",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": true,
@@ -8810,7 +8836,10 @@
     },
     "instagram": {
      "ok": true,
-     "id": "17995843215023217"
+     "id": "17995843215023217",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": true,
@@ -8841,16 +8870,49 @@
     },
     "instagram": {
      "ok": true,
-     "id": "18135638680595675"
+     "id": "18135638680595675",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": true,
    "testo": "Continua a lavorare. Un giorno tutto questo avrà senso."
+  },
+  {
+   "quando": "2026-11-03T05:00",
+   "slot": "2026-11-03 06:00",
+   "video": "IMG_3824.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-8b2514da",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "dusty_road_magic_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "deciso_06.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "PHDmzyln4rs"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17910298506576352"
+    }
+   },
+   "spinto": true,
+   "testo": "Nessuno costruisce per te quello che vuoi. Alzati e fallo."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-26 02:00",
   "2026-10-26 04:00",
   "2026-10-26 06:00",
   "2026-10-26 08:00",
@@ -8929,10 +8991,10 @@
   "2026-11-02 18:00",
   "2026-11-02 20:00",
   "2026-11-02 22:00",
-  "2026-11-03 00:00"
+  "2026-11-03 00:00",
+  "2026-11-03 06:00"
  ],
  "musica_recenti": [
-  "locked_in_1.m4a",
   "death_duel_1.m4a",
   "intergalactic_1.m4a",
   "ancient_civilisations_1.m4a",
@@ -8951,7 +9013,8 @@
   "cartier_2.m4a",
   "kick_it_2.m4a",
   "wrangle_the_crazy_2.m4a",
-  "monthaholic_1.m4a"
+  "monthaholic_1.m4a",
+  "dusty_road_magic_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -9204,7 +9267,8 @@
   "MIE-2c423b3f",
   "MIE-1d389b79",
   "MIE-c9050293",
-  "MIE-272aab85"
+  "MIE-272aab85",
+  "MIE-8b2514da"
  ],
  "temi_recenti": [
   "mentalita",
@@ -9219,7 +9283,7 @@
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-02",
+ "pulizia": "2026-11-03",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -9346,8 +9410,8 @@
    "ultimo": "2026-11-02"
   },
   "1fKbWVgrVrxr5Ecx1pZo_uFBf-CoX_0G5": {
-   "usi": 2,
-   "ultimo": "2026-10-19"
+   "usi": 3,
+   "ultimo": "2026-11-03"
   },
   "1HrgxYw6jMJ5qXxx8j5ZWOVhPdqD7b1fH": {
    "usi": 2,
@@ -9651,7 +9715,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_01.flac",
   "drive_09.flac",
   "trap_04.flac",
   "trap_06.flac",
@@ -9670,7 +9733,8 @@
   "phonk_13.flac",
   "drive_06.flac",
   "phonk_01.flac",
-  "phonk_14.flac"
+  "phonk_14.flac",
+  "deciso_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9705,7 +9769,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
