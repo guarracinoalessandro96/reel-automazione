@@ -8904,7 +8904,10 @@
     },
     "instagram": {
      "ok": true,
-     "id": "17910298506576352"
+     "id": "17910298506576352",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": true,
@@ -8940,11 +8943,41 @@
    },
    "spinto": false,
    "testo": "Mente forte, obiettivi chiari, passi costanti. Ogni giorno."
+  },
+  {
+   "quando": "2026-11-03T09:00",
+   "slot": "2026-11-03 10:00",
+   "video": "IMG_3830.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-9d317fa5",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "cutscene_crush_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "phonk_06.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "cixMMrMu3xo"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17916263949519066"
+    }
+   },
+   "spinto": true,
+   "testo": "Se sai che puoi fare meglio, allora fai meglio."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-26 06:00",
   "2026-10-26 08:00",
   "2026-10-26 14:00",
   "2026-10-26 16:00",
@@ -9023,10 +9056,10 @@
   "2026-11-02 22:00",
   "2026-11-03 00:00",
   "2026-11-03 06:00",
-  "2026-11-03 08:00"
+  "2026-11-03 08:00",
+  "2026-11-03 10:00"
  ],
  "musica_recenti": [
-  "intergalactic_1.m4a",
   "ancient_civilisations_1.m4a",
   "visions_1.m4a",
   "dusty_road_magic_1.m4a",
@@ -9045,7 +9078,8 @@
   "wrangle_the_crazy_2.m4a",
   "monthaholic_1.m4a",
   "dusty_road_magic_3.m4a",
-  "keep_it_movin_2.m4a"
+  "keep_it_movin_2.m4a",
+  "cutscene_crush_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -9300,7 +9334,8 @@
   "MIE-c9050293",
   "MIE-272aab85",
   "MIE-8b2514da",
-  "MIE-af7b8cc7"
+  "MIE-af7b8cc7",
+  "MIE-9d317fa5"
  ],
  "temi_recenti": [
   "mentalita",
@@ -9458,8 +9493,8 @@
    "ultimo": "2026-10-19"
   },
   "1xaei2HIO4jSmSPuSxzKQ0VLbkh-c4iJO": {
-   "usi": 2,
-   "ultimo": "2026-10-19"
+   "usi": 3,
+   "ultimo": "2026-11-03"
   },
   "10Y6I2Km1UMianq9Mqd4A_PibNK36A1KR": {
    "usi": 2,
@@ -9747,7 +9782,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_04.flac",
   "trap_06.flac",
   "deciso_09.flac",
   "phonk_16.flac",
@@ -9766,7 +9800,8 @@
   "phonk_01.flac",
   "phonk_14.flac",
   "deciso_06.flac",
-  "drive_14.flac"
+  "drive_14.flac",
+  "phonk_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -9801,7 +9836,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_broll",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
