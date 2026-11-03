@@ -96,7 +96,7 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         try:
             fr = ov.extract_frames(c, seg, n=5 if controlla_viso else 3, start=inizio,
                                    vf=f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H}")
-            volti.append(ov.detect_faces(fr))
+            volti.append(ov.detect_faces(fr, ruotati=dieci))
             mappe.append(ov.mappa_dettagli(fr))
             schiarisci = ov.schiarita(fr) if dieci else ""
         except Exception:

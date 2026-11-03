@@ -77,6 +77,36 @@ def main():
     except Exception as e:
         check(False, f"versione Facebook: non riuscita ({e})")
     check(len(yt) >= 60, f"musica YouTube 5 s: {len(yt)} pezzi carica")
+    # rotazione (3/11/2026): i due modi in cui ffmpeg la scrive; se ne arriva un terzo il reel si ferma, non esce di lato
+    vero_run = overlay.subprocess.run
+    for riga, gradi in (("displaymatrix: rotation of -90.00 degrees", 270), ("Display Matrix: rotation of 90.00 degrees", 90),
+                        ("    rotate          : 180", 180), ("Stream #0:0: Video: h264", 0)):
+        overlay.subprocess.run = lambda *a, **k: subprocess.CompletedProcess(a, 0, "", riga)
+        check(overlay.rotazione("x") == gradi, f"rotazione letta: {gradi}")
+    overlay.subprocess.run = lambda *a, **k: subprocess.CompletedProcess(a, 0, "", "rotation matrix nuova 90")
+    try:
+        overlay.rotazione("x")
+        check(False, "rotazione illeggibile: doveva fermarsi")
+    except RuntimeError:
+        check(True, "rotazione illeggibile: il reel si ferma")
+    overlay.subprocess.run = vero_run
+    # audio Instagram (3/11/2026): partenza sul colpo, file controllato, mai reel muti, mai Raccolta YouTube
+    try:
+        import audio_ig
+        inizio = audio_ig.punto_inizio(musica, [2.5, 5.0])
+        fatto = overlay.cambia_musica(src_yt, musica, os.path.join(D, "ig_inizio.mp4"), inizio)
+        dur = overlay.probe(fatto)[0]
+        check(0 <= inizio < 8 and abs(dur - overlay.DURATA_MAX) < 0.15 and audio_ig.controlla(fatto) == [],
+              f"audio Instagram: parte da {inizio} s, durata {dur:.2f}, nessun difetto")
+        muto = overlay.senza_audio(fatto, os.path.join(D, "ig_muto.mp4"))
+        check(audio_ig.controlla(muto) == ["senza traccia audio"], "audio Instagram: il reel muto viene fermato")
+        silenzio = os.path.join(D, "ig_silenzio.mp4")
+        subprocess.run([overlay.FFMPEG, "-y", "-v", "error", "-i", fatto, "-af", "volume=0", "-c:v", "copy", "-c:a", "aac", silenzio])
+        check(audio_ig.controlla(silenzio) != [], "audio Instagram: il reel silenzioso viene fermato")
+        check(not audio_ig.ammesso(yt[0]) and audio_ig.ammesso(musica), "audio Instagram: mai Raccolta YouTube")
+        check(audio_ig.nome_audio("phonk_03.flac") == "Phonk motivazione", "audio Instagram: nome dell'audio")
+    except Exception as e:
+        check(False, f"audio Instagram: non riuscito ({e})")
     # clip d'archivio da 8 s: il reel ne prende 5 in un punto a caso
     st = [overlay.segmento_archivio(8.0) for _ in range(20)]
     check(all(0 <= a <= 3.0 and l == overlay.DURATA_MAX for a, l in st) and len({a for a, _ in st}) > 3,

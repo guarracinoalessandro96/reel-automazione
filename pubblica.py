@@ -16,7 +16,7 @@ Credenziali: variabili d'ambiente (GitHub Secrets). DRY_RUN=1 fa tutto tranne pu
 """
 import calendar, hashlib, io, json, os, re, sys, time, datetime, random, traceback, subprocess, shutil
 import requests
-import overlay
+import overlay, audio_ig, avvisi
 import scena as scene_mod
 import mie_citazioni
 import orario
@@ -132,9 +132,9 @@ CARTELLA_TIKTOK = "TikTok - da pubblicare"
 GIORNI_DOPO = 60              # ... e ci resta 60 giorni
 
 
-def brani_forti():
+def brani_forti(chiave="brani_forti"):
     try:
-        return set(json.load(open(os.path.join(HERE, "pesi.json"), encoding="utf-8")).get("brani_forti", []))
+        return set(json.load(open(os.path.join(HERE, "pesi.json"), encoding="utf-8")).get(chiave, []))
     except Exception:
         return set()
 
@@ -155,7 +155,11 @@ def scegli_musica(tema, recenti, scena=None, nostra=False):
     if TUTTO_10S and not nostra:      # 31/10/2026: pezzi unici da 10,5 s (prepara_dieci.py): la musica non salta a meta'
         yt = ["yt_dieci"]
     random.shuffle(yt)
-    for mood in (*yt, GENERE_PER_SCENA.get(scena), *random.sample(GENERI_MOTIVAZIONE, len(GENERI_MOTIVAZIONE))):
+    generi = (*yt, GENERE_PER_SCENA.get(scena), *random.sample(GENERI_MOTIVAZIONE, len(GENERI_MOTIVAZIONE)))
+    if nostra:     # 3/11/2026: generi diversi di fila; quelli appena usati restano solo come ultima scelta
+        vicini_generi = {audio_ig.genere(b) for b in recenti[-2:]}
+        generi = (*[g for g in generi if g not in vicini_generi], *generi)
+    for mood in generi:
         if not mood:
             continue
         d = os.path.join(HERE, "musica", mood)
@@ -167,7 +171,8 @@ def scegli_musica(tema, recenti, scena=None, nostra=False):
             liberi = ([b for b in brani if b not in recenti and brano(b) not in vicini]
                       or [b for b in brani if b not in recenti] or brani)
             # 31/10/2026: 2 volte su 3 i brani che su YouTube rendono di piu' (pesi.json, aggiornati la domenica)
-            forti = [b for b in liberi if brano(b) in brani_forti()]
+            preferiti = brani_forti("brani_forti_ig" if nostra else "brani_forti")   # 3/11: i nostri, dai numeri di Instagram
+            forti = [b for b in liberi if brano(b) in preferiti or os.path.splitext(b)[0] in preferiti]
             if forti and random.random() < 0.67:
                 liberi = forti
             return os.path.join(d, random.choice(liberi))
@@ -1068,6 +1073,27 @@ def scegli_audio_instagram(scena, recenti=()):
     return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')}"
 
 
+def ricontrolla_instagram(state, save):
+    """3/11/2026: rilegge i reel appena usciti da Instagram: se sono muti o di lato arriva l'avviso su Telegram."""
+    token = ENV("META_PAGE_TOKEN")
+    limite = (datetime.datetime.now() - datetime.timedelta(minutes=90)).isoformat()
+    for h in state["storico"][-12:]:
+        ig = (h.get("risultati") or {}).get("instagram") or {}
+        if not ig.get("ok") or "controllo" in ig or h.get("quando", "") > limite or not str(ig.get("id", "")).isdigit():
+            continue
+        try:
+            r = requests.get(f"{GRAPH}/{ig['id']}", params={"fields": "media_url", "access_token": token}, timeout=30).json()
+            if not r.get("media_url"):
+                ig["controllo"] = "non leggibile"
+                continue
+            ig["controllo"] = audio_ig.controlla_pubblicato(r["media_url"])
+            if ig["controllo"] and (h.get("montaggio") or {}).get("formato") != "parlato":
+                avvisi.manda(f"Instagram, reel delle {h['slot']}: " + ", ".join(ig["controllo"]))
+        except Exception as e:
+            log("controllo Instagram non riuscito:", e)
+    save()
+
+
 def instagram_upload(path, cap, audio_id=None):
     """audio_id: brano nativo di Instagram (allora path e' il video SENZA musica)."""
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
@@ -1076,8 +1102,13 @@ def instagram_upload(path, cap, audio_id=None):
         dati["audio_configuration"] = json.dumps({"audio_id": audio_id, "audio_volume": 100, "video_volume": 0})
     if cap.get("copertina_ms") is not None:
         dati["thumb_offset"] = str(cap["copertina_ms"])
+    if cap.get("audio_nome") and not audio_id:
+        dati["audio_name"] = cap["audio_nome"]
     r = requests.post(f"{GRAPH_AUDIO if audio_id else GRAPH}/{ig}/media", data={**dati, "upload_type": "resumable",
                                                                             "access_token": token}).json()
+    if "id" not in r and dati.pop("audio_name", None):     # il nome dell'audio non deve mai fermare il reel
+        log("instagram: nome dell'audio rifiutato:", r)
+        r = requests.post(f"{GRAPH}/{ig}/media", data={**dati, "upload_type": "resumable", "access_token": token}).json()
     if "id" not in r:
         raise RuntimeError(r)
     cid = r["id"]
@@ -1247,14 +1278,23 @@ def versione_meta(path, recenti, scena=None):
     """La versione del reel per Facebook/Instagram: stessa immagine, musica nostra. None se non riesce
     (allora su quelle piattaforme non si pubblica: mai la musica della Raccolta YouTube fuori da YouTube)."""
     try:
-        m = scegli_musica(None, recenti, scena, nostra=True)
-        if not m:
-            return None, None
         dst = os.path.splitext(path)[0] + "_meta.mp4"
-        return overlay.cambia_musica(path, m, dst), os.path.basename(m)
+        tagli = audio_ig.stacchi(path)
+        provati = list(recenti)
+        for _ in range(3):        # 3/11/2026: se il file esce muto o difettoso si riprova con un altro brano
+            m = scegli_musica(None, provati, scena, nostra=True)
+            if not m or not audio_ig.ammesso(m):
+                break
+            provati.append(os.path.basename(m))
+            overlay.cambia_musica(path, m, dst, audio_ig.punto_inizio(m, tagli))
+            difetti = audio_ig.controlla(dst)
+            if not difetti:
+                return dst, os.path.basename(m)
+            log("audio Instagram scartato:", os.path.basename(m), difetti)
     except Exception as e:
         log("versione per Facebook/Instagram non riuscita:", e)
-        return None, None
+    avvisi.manda("Instagram: nessun audio valido per questo reel, non pubblicato")
+    return None, None
 
 
 def publish_all(path, cap, creds, only, path_meta=None, publish_at=None, ig_nativo=None):
@@ -1395,9 +1435,11 @@ def recupera_instagram(state, drive, work, save):
             path = os.path.join(work, "recupero.mp4")
             drive.download(trovati[0]["id"], path, folder=CARTELLA_TIKTOK)
             if (h.get("montaggio") or {}).get("formato") not in ("parlato", "momento"):   # il file TikTok e' muto
-                path = versione_meta(path, state.get("musica_recenti_meta", []), h.get("scena"))[0]
+                path, brano = versione_meta(path, state.get("musica_recenti_meta", []), h.get("scena"))
                 if not path:
                     continue
+                h["frase_dati"]["audio_nome"] = audio_ig.nome_audio(brano)
+                h.setdefault("montaggio", {})["musica_meta"] = brano
             pid = instagram_upload(path, h["frase_dati"])
             h.setdefault("risultati", {})["instagram"] = {"ok": True, "id": pid, "recuperato": True}
             log(f"Instagram recuperato per l'orario {h['slot']}")
@@ -1456,6 +1498,7 @@ def main():
 
     if not DRY:
         recupera_instagram(state, drive, work, save)
+        ricontrolla_instagram(state, save)
 
     # pulizia di Drive (una volta al giorno, alla prima esecuzione della giornata)
     oggi = datetime.date.today().isoformat()
@@ -1730,6 +1773,7 @@ def main():
     elif MUSICA_NOSTRA & set(piatt) or per_dopo:
         base_social = overlay.versione_social(out, os.path.join(work, "reel_social.mp4"), audio=False)
         out_meta, info["musica_meta"] = versione_meta(base_social, state.get("musica_recenti_meta", []), an["scena"])
+        frase["audio_nome"] = audio_ig.nome_audio(info["musica_meta"])
     # PUNTUALITA' (16/10/2026): si parte ~45' prima dello slot. YouTube viene caricato subito e PROGRAMMATO all'ora
     # esatta; poi si aspetta l'ora esatta per Telegram (TikTok) e Facebook.
     target = ora_slot(slot)

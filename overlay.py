@@ -50,6 +50,8 @@ def rotazione(path):
     r = subprocess.run([FFMPEG, "-hide_banner", "-i", path], capture_output=True, text=True, errors="ignore").stderr
     # 2/11/2026: ffmpeg nuovo scrive "Display Matrix: rotation of": senza questo i video uscivano di lato
     m = re.search(r"display\s*matrix: rotation of (-?[\d.]+) degrees", r, re.I) or re.search(r"rotate\s*:\s*(-?\d+)", r)
+    if not m and re.search(r"rotat", r, re.I):     # 3/11/2026: formato nuovo di ffmpeg: meglio fermarsi che uscire di lato
+        raise RuntimeError("rotazione illeggibile: " + next(x for x in r.splitlines() if re.search("rotat", x, re.I)).strip())
     return int(round(float(m.group(1)))) % 360 if m else 0
 
 
@@ -83,8 +85,14 @@ def extract_frames(path, seconds, n=16, start=0.0, vf=None):
     return frames
 
 
-def detect_faces(frames):
+def detect_faces(frames, ruotati=False):
     boxes = []
+    if ruotati:      # 1/11/2026: lui sdraiato (pressa, panca): di dritto il viso non si trova, la scritta ci finiva sopra
+        for img in frames:
+            for x0, y0, x1, y1 in detect_faces([cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)]):
+                boxes.append((y0, 1 - x1, y1, 1 - x0))
+            for x0, y0, x1, y1 in detect_faces([cv2.rotate(img, cv2.ROTATE_90_COUNTERCLOCKWISE)]):
+                boxes.append((1 - y1, x0, 1 - y0, x1))
     for img in frames:
         h, w = img.shape[:2]
         s = 720 / max(h, w)
@@ -490,14 +498,14 @@ def senza_audio(src, dst):
     return dst
 
 
-def cambia_musica(src, music, dst):
+def cambia_musica(src, music, dst, inizio=0.0):
     """Stesso reel (video copiato, senza ricomprimere) con un'altra musica: es. la versione per Facebook/Instagram
-    con i nostri brani al posto di quelli della Raccolta audio di YouTube."""
+    con i nostri brani al posto di quelli della Raccolta audio di YouTube. inizio: secondo del brano da cui partire."""
     length, _ = probe(src)
-    r = subprocess.run([FFMPEG, "-y", "-v", "error", "-i", src, "-stream_loop", "-1", "-i", music,
+    r = subprocess.run([FFMPEG, "-y", "-v", "error", "-i", src, "-stream_loop", "-1", "-ss", f"{inizio:.2f}", "-i", music,
                         "-filter_complex", f"[1:a]volume={MUSIC_VOL},{LIMITATORE},"
                         f"afade=t=out:st={max(0.0, length - 0.3):.2f}:d=0.3[a]",
-                        "-map", "0:v:0", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
+                        "-map", "0:v:0", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
                         "-t", f"{length:.3f}", "-movflags", "+faststart", dst],
                        capture_output=True, text=True, errors="ignore", timeout=TEMPO_MAX_MONTAGGIO)
     if r.returncode != 0 or not os.path.exists(dst) or os.path.getsize(dst) < 50_000:

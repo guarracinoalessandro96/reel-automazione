@@ -119,6 +119,32 @@ def testi_citazioni():
         return {}
 
 
+def brani_instagram(post):
+    """3/11/2026: i nostri brani e generi che su Instagram rendono di piu' (da quando il brano sta nel file)."""
+    import requests, statistics
+    token = ENV("META_PAGE_TOKEN")
+    if not token:
+        return []
+    fino = (datetime.datetime.now() - datetime.timedelta(days=2)).isoformat()
+    per = {}
+    for h in post:
+        ig = h.get("risultati", {}).get("instagram", {})
+        brano = (h.get("montaggio") or {}).get("musica_meta")
+        if not ig.get("ok") or not brano or not "2026-11-02T15" <= h.get("quando", "") <= fino:
+            continue
+        try:
+            r = requests.get(f"https://graph.facebook.com/v23.0/{ig['id']}/insights",
+                             params={"metric": "views", "access_token": token}, timeout=30).json()
+            v = r["data"][0]["values"][0]["value"]
+        except Exception:
+            continue
+        nome = os.path.splitext(brano)[0]
+        per.setdefault(nome, []).append(v)
+        per.setdefault(re.sub(r"_\d+$", "", nome), []).append(v)
+    tutte = sorted(((statistics.median(x), k) for k, x in per.items() if len(x) >= 3), reverse=True)
+    return [k for _, k in tutte[:len(tutte) // 2 + 1]] if len(tutte) >= 3 else []
+
+
 def stat_facebook(post):
     """Riproduzioni dei reel Facebook (ultimi 30 giorni): {"reel": n, "riproduzioni": tot, "media": m, "ultimi": [...]}."""
     import requests
@@ -326,6 +352,9 @@ def main():
         pesi["brani_forti"] = migliori_di(per_brano, 10, 3)
     if migliori_di(per_clip, 20, 2):
         pesi["clip_forti"] = migliori_di(per_clip, 20, 2)
+    forti_ig = brani_instagram(post)
+    if forti_ig:
+        pesi["brani_forti_ig"] = forti_ig
     json.dump(pesi, open(PESI, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
 
     migliori = sorted(righe, key=lambda r: (-r["views"], -r["like"]))[:5]
