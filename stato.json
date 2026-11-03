@@ -9074,7 +9074,10 @@
     },
     "instagram": {
      "ok": true,
-     "id": "17943558069365839"
+     "id": "17943558069365839",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": true,
@@ -9110,11 +9113,41 @@
    },
    "spinto": false,
    "testo": "Sogna in grande, ma agisci ogni giorno."
+  },
+  {
+   "quando": "2026-11-03T19:00",
+   "slot": "2026-11-03 20:00",
+   "video": "IMG_3904.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-a1e4c141",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "death_duel_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "deciso_03.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "KXQipNPPCHk"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18150005131561024"
+    }
+   },
+   "spinto": false,
+   "testo": "Il tuo potenziale non ha limiti. Finora hai mostrato solo una minima parte."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-26 20:00",
   "2026-10-26 22:00",
   "2026-10-27 00:00",
   "2026-10-27 02:00",
@@ -9193,10 +9226,10 @@
   "2026-11-03 12:00",
   "2026-11-03 14:00",
   "2026-11-03 16:00",
-  "2026-11-03 18:00"
+  "2026-11-03 18:00",
+  "2026-11-03 20:00"
  ],
  "musica_recenti": [
-  "wrangle_the_crazy_3.m4a",
   "moon_vision_3.m4a",
   "sweaty_staredown_3.m4a",
   "way_back_home_2.m4a",
@@ -9215,7 +9248,8 @@
   "way_back_home_3.m4a",
   "moon_vision_1.m4a",
   "majestic_12_2.m4a",
-  "ancient_civilisations_1.m4a"
+  "ancient_civilisations_1.m4a",
+  "death_duel_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -9475,7 +9509,8 @@
   "MIE-b598ffd8",
   "MIE-2b244f1e",
   "MIE-eb58c136",
-  "MIE-f35b2225"
+  "MIE-f35b2225",
+  "MIE-a1e4c141"
  ],
  "temi_recenti": [
   "mentalita",
@@ -9653,8 +9688,8 @@
    "ultimo": "2026-11-03"
   },
   "1H_I6VC3vZgQwOjIWlcuhjr4OiNQ3Fpvl": {
-   "usi": 2,
-   "ultimo": "2026-10-20"
+   "usi": 3,
+   "ultimo": "2026-11-03"
   },
   "12Fo5vh8JbpmRDWSzG5Ro-KcD-bCBRZH_": {
    "usi": 3,
@@ -9922,7 +9957,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_10.flac",
   "phonk_03.flac",
   "phonk_05.flac",
   "trap_03.flac",
@@ -9941,7 +9975,8 @@
   "energia_02.flac",
   "deciso_05.flac",
   "drive_05.flac",
-  "energia_04.flac"
+  "energia_04.flac",
+  "deciso_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
