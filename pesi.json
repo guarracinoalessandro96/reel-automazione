@@ -1,14 +1,14 @@
 {
  "temi": {
-  "amicizia": 0.98,
-  "imprenditore": 1.06,
-  "mentalita": 0.98,
-  "palestra": 1.1,
-  "dieta": 1.08,
-  "regole": 1.3,
-  "storia": 0.78
+  "amicizia": 0.99,
+  "imprenditore": 1.05,
+  "mentalita": 0.97,
+  "palestra": 1.12,
+  "dieta": 1.09,
+  "regole": 1.32,
+  "storia": 0.8
  },
- "aggiornato": "2026-11-03",
+ "aggiornato": "2026-11-04",
  "frasi_vincenti": [
   "MIE-02d87ee7",
   "MIE-043e8cf1",
@@ -23,6 +23,7 @@
   "MIE-3532228a",
   "MIE-373e069a",
   "MIE-3d86a685",
+  "MIE-3fec417d",
   "MIE-40a4765a",
   "MIE-44e75fe0",
   "MIE-48a56ab6",
@@ -37,6 +38,7 @@
   "MIE-7214ec2b",
   "MIE-72340eb4",
   "MIE-72a11d64",
+  "MIE-73dbd0df",
   "MIE-747c8ba5",
   "MIE-79f323dd",
   "MIE-7e72f285",
@@ -58,6 +60,7 @@
   "MIE-b0cb6aca",
   "MIE-b8b94c79",
   "MIE-ba146521",
+  "MIE-ba88ba7b",
   "MIE-bd40bf0d",
   "MIE-bd41cc60",
   "MIE-be160ed8",
@@ -69,6 +72,7 @@
   "MIE-d8f3e08c",
   "MIE-e0cf1888",
   "MIE-e78c74d0",
+  "MIE-ee2f351d",
   "MIE-f9129a4d",
   "MIE-fb841d9f",
   "QJ080",
@@ -79,14 +83,15 @@
   "STO-20"
  ],
  "formati": {
-  "frase": 0.91,
-  "regole": 1.42,
-  "montaggio": 1.1,
-  "gancio": 0.65,
-  "frase8": 1.42,
-  "racconto": 0.55,
-  "racconto_lento": 0.51,
-  "dieci_due": 0.67,
+  "frase": 1.02,
+  "regole": 1.59,
+  "montaggio": 1.23,
+  "gancio": 0.73,
+  "frase8": 1.59,
+  "racconto": 0.61,
+  "racconto_lento": 0.57,
+  "dieci": 0.61,
+  "dieci_due": 0.69,
   "dieci_broll": 0.4
  },
  "esperimento_formati": {
@@ -96,14 +101,14 @@
  "brani_forti": [
   "drive",
   "phonk",
+  "vibe_check",
   "way_back_home",
   "wrangle_the_crazy",
   "ancient_civilisations",
+  "keep_it_movin",
   "cutscene_crush",
   "dusty_road_magic",
-  "keep_it_movin",
-  "death_duel",
-  "moon_vision"
+  "death_duel"
  ],
  "clip_forti": [
   "IMG_4037.MOV",
@@ -113,18 +118,18 @@
   "IMG_3311.mov",
   "IMG_3651.mov",
   "IMG_4286.MOV",
-  "IMG_3832.mov",
+  "IMG_3972.MOV",
+  "IMG_4029.MOV",
   "IMG_3652.mov",
   "IMG_3833.mov",
+  "IMG_3832.mov",
   "IMG_4061.MOV",
   "IMG_4126.MOV",
   "Alessandro Guarracino sta trasmettendo dal vivo..MOV",
-  "IMG_3972.MOV",
   "IMG_3330.mov",
   "IMG_4121.mov",
-  "IMG_3831.mov",
   "IMG_3604.mov",
-  "IMG_3787.mov",
-  "IMG_4029.MOV"
+  "IMG_4294.MOV",
+  "IMG_4131.mov"
  ]
 }
