@@ -959,6 +959,10 @@ def youtube_upload(creds, path, cap, publish_at=None):
     title = cap["gancio"].strip()
     # 3/11/2026: la parola cercata viene dalla frase stessa (se parla di costanza -> #costanza), altrimenti una a caso
     parola = (parole_cercate(cap["gancio"]) or [random.choice(("#motivazione", "#disciplina", "#crescitapersonale"))])[0]
+    if cap.get("volte"):     # frase gia' uscita: mai lo stesso titolo, la parola cambia a ogni ritorno
+        giro = list(dict.fromkeys(parole_cercate(cap["gancio"]) + ["#motivazione", "#disciplina", "#crescitapersonale",
+                                                                   "#obiettivi", "#mentalita"]))
+        parola = giro[cap["volte"] % len(giro)]
     if len(title) > 100 - len(parola) - 10:     # limite YouTube 100 caratteri: taglio a parola intera + "…"
         title = title[:88 - len(parola)].rsplit(" ", 1)[0].rstrip(",;:") + "…"   # (mai solo la prima frase: cambierebbe il senso)
     privacy = ENV("YOUTUBE_PRIVACY") or "public"
@@ -1059,7 +1063,7 @@ def instagram_storia(path):
 
 # Instagram con MUSICA NATIVA (16/10/2026): l'API audio di Meta (/ig_audio, Graph v25+) da' i brani di Instagram
 # autorizzati per le app; si carica il reel SENZA musica e si attacca il brano scelto (audio_configuration).
-GRAPH_AUDIO = "https://graph.facebook.com/v25.0"
+GRAPH_AUDIO = "https://graph.facebook.com/v26.0"   # 4/11/2026: l'ultima; la stessa per creare, controllare e pubblicare
 IG_RICERCHE = {"palestra": ["motivational", "emotional", "cinematic"], "macchina": ["drive", "phonk", "night drive"],
                "lavoro": ["motivational", "epic", "hustle"], "pacchi": ["motivational", "hustle"],
                "specchio": ["motivational", "phonk"], "casa": ["motivational", "epic"],
@@ -1076,15 +1080,48 @@ IG_TITOLI_FORTI = re.compile(r"knockout|fighter|level up|success|go go|big leagu
                              re.I)
 
 
-def scegli_audio_instagram(scena, recenti=()):
-    """(audio_id, titolo) di un brano Instagram motivazionale per la scena, evitando i recenti. None se nessuno."""
+# 4/11/2026: brani di stagione o cupi che compaiono tra le tendenze ma non c'entrano con un reel motivazionale
+IG_STAGIONE = re.compile(r"halloween|spooky|skeleton|trick or|ghost|thriller|dracula|monster|nightmare|llorona|"
+                         r"witch|zombie|vampir|bloody|creep|horror|scary|goo goo|xmas|jingle|santa", re.I)
+
+
+def tendenze_instagram(pagine=3):
+    """4/11/2026: i brani DI TENDENZA di Instagram: /ig_audio senza search_query restituisce le tendenze del
+    momento (la stessa lista dell'app; prima si cercava sempre per parola e uscivano brani a caso)."""
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
+    out, url, par = [], f"{GRAPH_AUDIO}/ig_audio", {"audio_type": "music", "user_id": ig, "access_token": token}
+    for _ in range(pagine):
+        r = requests.get(url, params=par, timeout=30).json()
+        out += r.get("audio", [])
+        url, par = (r.get("paging") or {}).get("next"), None
+        if not url:
+            break
+    return out
+
+
+def scegli_audio_instagram(scena, recenti=()):
+    """(audio_id, titolo) di un brano Instagram, evitando i recenti. None se nessuno.
+    Ordine (4/11/2026, Alessandro: "scegliendo la musica di tendenza di instagram, oppure la stessa musica degli altri
+    reel"): 1) tendenze ufficiali di Instagram, 2) brani piu' usati dai reel forti (audio_tendenza.json, domenica),
+    3) ricerca per parole energiche."""
+    token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
+    adatto = lambda a: (a.get("audio_id") and a["audio_id"] not in recenti and a.get("duration_in_ms", 99999) >= 15000
+                        and not IG_DA_EVITARE.search(f"{a.get('title', '')} {a.get('display_artist', '')}")
+                        and not IG_STAGIONE.search(f"{a.get('title', '')} {a.get('display_artist', '')}"))
+    try:
+        tendenza = [a for a in tendenze_instagram() if adatto(a)]
+    except Exception as e:
+        log("Tendenze di Instagram non lette:", e)
+        tendenza = []
+    if tendenza:     # tra le prime 8 (le piu' in tendenza), un po' a caso cosi' i reel vicini non hanno lo stesso brano
+        a = random.choice(tendenza[:8])
+        return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')} [tendenza]"
     ricerche = list(dict.fromkeys(random.sample(IG_ENERGICI, len(IG_ENERGICI))))
-    for q in audio_tendenza()[:6]:                # prima i brani di tendenza, se Instagram li concede all'API
+    for q in audio_tendenza()[:6]:                # i brani usati dagli altri reel, se Instagram li concede all'API
         r = requests.get(f"{GRAPH_AUDIO}/ig_audio", params={"audio_type": "music", "search_query": q, "user_id": ig,
                                                              "access_token": token}, timeout=30).json()
         trovati = [a for a in r.get("audio", []) if a.get("audio_id") and a["audio_id"] not in recenti
-                   and q.lower() in a.get("title", "").lower() and not IG_DA_EVITARE.search(
+                   and q.lower().strip() == a.get("title", "").lower().strip() and not IG_DA_EVITARE.search(   # 3/11: titolo esatto ("Violin" dava Brahms)
                    f"{a.get('title', '')} {a.get('display_artist', '')}")]
         if trovati:
             return trovati[0]["audio_id"], f"{trovati[0].get('title')} - {trovati[0].get('display_artist')}"
@@ -1099,6 +1136,51 @@ def scegli_audio_instagram(scena, recenti=()):
     forti = [a for a in tutti if IG_TITOLI_FORTI.search(a.get("title", ""))]
     a = random.choice(forti or tutti[:8])
     return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')}"
+
+
+def ricontrolla_youtube(state, creds, save):
+    """3/11/2026: un'ora dopo l'orario rilegge gli Short da YouTube: rifiutato, fallito, sparito o ancora privato
+    (programmazione saltata) -> avviso su Telegram."""
+    from googleapiclient.discovery import build
+    da_vedere = []
+    for h in state["storico"][-12:]:
+        yt = (h.get("risultati") or {}).get("youtube") or {}
+        t = ora_slot(h.get("slot", "")) if h.get("slot") else None
+        if yt.get("ok") and yt.get("id") and "controllo" not in yt and t and ora_roma() - t > datetime.timedelta(hours=1):
+            da_vedere.append((h, yt))
+    if not da_vedere:
+        return
+    try:
+        api = build("youtube", "v3", credentials=creds, cache_discovery=False)
+        trovati = {v["id"]: v["status"] for v in api.videos().list(
+            part="status", id=",".join(yt["id"] for _, yt in da_vedere)).execute().get("items", [])}
+    except Exception as e:
+        log("controllo YouTube non riuscito:", e)
+        return
+    for h, yt in da_vedere:
+        s = trovati.get(yt["id"])
+        if s is None:
+            yt["controllo"] = ["video non trovato su YouTube"]
+        else:
+            yt["controllo"] = [f"{s['uploadStatus']}: {s.get('rejectionReason') or s.get('failureReason') or ''}".strip()
+                               ] if s.get("uploadStatus") in ("rejected", "failed", "deleted") else []
+            if s.get("privacyStatus") != "public" and (ENV("YOUTUBE_PRIVACY") or "public") == "public":
+                yt["controllo"].append(f"ancora {s.get('privacyStatus')} dopo l'orario")
+        if yt["controllo"]:
+            avvisi.manda(f"YouTube, Short delle {h['slot']}: " + ", ".join(yt["controllo"]))
+    save()
+
+
+def brano_ig(state, scena):
+    """3/11/2026: (audio_id, titolo) di un brano DI INSTAGRAM per il reel (anche per recuperi e nuovi tentativi)."""
+    try:
+        scelto = scegli_audio_instagram(scena, state.get("ig_audio_recenti", []))
+    except Exception as e:
+        log("Brano di Instagram non scelto:", e)
+        return None
+    if scelto:
+        state["ig_audio_recenti"] = (state.get("ig_audio_recenti", []) + [scelto[0]])[-30:]
+    return scelto
 
 
 def ricontrolla_instagram(state, save):
@@ -1130,35 +1212,96 @@ def ricontrolla_instagram(state, save):
     save()
 
 
+def _aspetta_contenitore(V, cid, token):
+    """Attende l'elaborazione del contenitore Instagram (max ~10 minuti): FINISHED, ERROR o l'ultimo stato."""
+    st = {}
+    for _ in range(60):
+        try:
+            st = requests.get(f"{V}/{cid}", params={"fields": "status_code,status", "access_token": token},
+                              timeout=30).json()
+        except requests.exceptions.RequestException:
+            st = {}
+        if st.get("status_code") in ("FINISHED", "ERROR", "EXPIRED"):
+            break
+        time.sleep(10)
+    if st.get("status_code") == "ERROR":
+        log("instagram: contenitore in errore:", st)
+    return st.get("status_code")
+
+
+def link_temporaneo(path):
+    """4/11/2026: carica il video in Drive ('Instagram temporanei') e lo rende leggibile con il link, cosi'
+    Instagram lo scarica da li' (video_url). (id, indirizzo); togli_link() lo chiude e lo mette nel cestino."""
+    from googleapiclient.http import MediaFileUpload
+    d = Drive(google_creds())
+    fid = d.api.files().create(body={"name": os.path.basename(path), "parents": [d.cartella("Instagram temporanei")]},
+                               media_body=MediaFileUpload(path, mimetype="video/mp4"), fields="id").execute()["id"]
+    d.api.permissions().create(fileId=fid, body={"type": "anyone", "role": "reader"}).execute()
+    return (d, fid), f"https://drive.usercontent.google.com/download?id={fid}&export=download&confirm=t"
+
+
+def togli_link(temp):
+    """Toglie la condivisione e mette il file nel cestino di Drive (mai cancellato per sempre)."""
+    if not temp:
+        return
+    d, fid = temp
+    for _ in range(3):
+        try:
+            d.api.permissions().delete(fileId=fid, permissionId="anyoneWithLink").execute()
+            d.api.files().update(fileId=fid, body={"trashed": True}).execute()
+            return
+        except Exception as e:
+            log("instagram: link temporaneo non chiuso, riprovo:", e)
+            time.sleep(5)
+
+
 def instagram_upload(path, cap, audio_id=None):
     """audio_id: brano nativo di Instagram (allora path e' il video SENZA musica)."""
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
     dati = {"media_type": "REELS", "caption": testo_breve(cap), "share_to_feed": "true"}
     if audio_id:
-        dati["audio_configuration"] = json.dumps({"audio_id": audio_id, "audio_volume": 100, "video_volume": 0})
+        # 3/11/2026: video_volume 1 (minimo ammesso dalla documentazione Meta, 1-100): con 0 il brano veniva ignorato
+        dati["audio_configuration"] = json.dumps({"audio_id": audio_id, "audio_volume": 100, "video_volume": 1})
     if cap.get("copertina_ms") is not None:
         dati["thumb_offset"] = str(cap["copertina_ms"])
     if cap.get("audio_nome") and not audio_id:
         dati["audio_name"] = cap["audio_nome"]
-    r = requests.post(f"{GRAPH_AUDIO if audio_id else GRAPH}/{ig}/media", data={**dati, "upload_type": "resumable",
-                                                                            "access_token": token}).json()
-    if "id" not in r and dati.pop("audio_name", None):     # il nome dell'audio non deve mai fermare il reel
-        log("instagram: nome dell'audio rifiutato:", r)
-        r = requests.post(f"{GRAPH}/{ig}/media", data={**dati, "upload_type": "resumable", "access_token": token}).json()
-    if "id" not in r:
-        raise RuntimeError(r)
-    cid = r["id"]
-    up = _rupload(r.get("uri", f"https://rupload.facebook.com/ig-api-upload/v23.0/{cid}"), token, path)
-    if up.get("success") is False or "error" in up:
-        raise RuntimeError(up)
-    for _ in range(60):                      # attende l'elaborazione (max ~10 minuti)
-        st = requests.get(f"{GRAPH}/{cid}", params={"fields": "status_code,status", "access_token": token}).json()
-        if st.get("status_code") == "FINISHED":
-            break
-        if st.get("status_code") == "ERROR":
-            raise RuntimeError(st)
-        time.sleep(10)
-    pub = requests.post(f"{GRAPH}/{ig}/media_publish", data={"creation_id": cid, "access_token": token}).json()
+    V = GRAPH_AUDIO if audio_id else GRAPH
+    cid, temp = None, None
+    if audio_id:
+        # 4/11/2026: la musica di Instagram (audio_configuration) e' documentata solo col caricamento da indirizzo
+        # (video_url): col caricamento a pezzi (resumable) Instagram la ignorava quasi sempre. Il video passa da un
+        # link temporaneo di Drive (provato: contenitore FINISHED in 20 s), tolto subito dopo l'uscita.
+        try:
+            temp, url = link_temporaneo(path)
+            r = requests.post(f"{V}/{ig}/media", data={**dati, "video_url": url, "access_token": token}, timeout=60).json()
+            cid = r.get("id")
+            if not cid:
+                log("instagram: contenitore da link non creato, provo il caricamento diretto:", r)
+            elif _aspetta_contenitore(V, cid, token) != "FINISHED":
+                log("instagram: contenitore da link non pronto, provo il caricamento diretto")
+                cid = None
+        except Exception as e:
+            log("instagram: link temporaneo non riuscito, provo il caricamento diretto:", e)
+            cid = None
+    if not cid:
+        r = requests.post(f"{V}/{ig}/media", data={**dati, "upload_type": "resumable", "access_token": token}).json()
+        if "id" not in r and dati.pop("audio_name", None):     # il nome dell'audio non deve mai fermare il reel
+            log("instagram: nome dell'audio rifiutato:", r)
+            r = requests.post(f"{V}/{ig}/media", data={**dati, "upload_type": "resumable", "access_token": token}).json()
+        if "id" not in r:
+            togli_link(temp)
+            raise RuntimeError(r)
+        cid = r["id"]
+        up = _rupload(r.get("uri", f"https://rupload.facebook.com/ig-api-upload/v23.0/{cid}"), token, path)
+        if up.get("success") is False or "error" in up:
+            togli_link(temp)
+            raise RuntimeError(up)
+        if _aspetta_contenitore(V, cid, token) == "ERROR":
+            togli_link(temp)
+            raise RuntimeError(f"contenitore Instagram in errore ({cid})")
+    pub = requests.post(f"{V}/{ig}/media_publish", data={"creation_id": cid, "access_token": token}).json()
+    togli_link(temp)
     if "id" not in pub:
         raise RuntimeError(pub)
     if PRIMO_COMMENTO and cap.get("commento"):
@@ -1470,13 +1613,17 @@ def recupera_instagram(state, drive, work, save):
                 continue
             path = os.path.join(work, "recupero.mp4")
             drive.download(trovati[0]["id"], path, folder=CARTELLA_TIKTOK)
+            scelto = None
             if (h.get("montaggio") or {}).get("formato") not in ("parlato", "momento"):   # il file TikTok e' muto
                 path, brano = versione_meta(path, state.get("musica_recenti_meta", []), h.get("scena"))
                 if not path:
                     continue
                 h["frase_dati"]["audio_nome"] = audio_ig.nome_audio(brano)
                 h.setdefault("montaggio", {})["musica_meta"] = brano
-            pid = instagram_upload(path, h["frase_dati"])
+                scelto = brano_ig(state, h.get("scena"))     # 3/11/2026: anche qui il brano DI INSTAGRAM
+                if scelto:
+                    h["montaggio"]["musica_instagram"] = scelto[1]
+            pid = instagram_upload(path, h["frase_dati"], scelto[0] if scelto else None)
             h.setdefault("risultati", {})["instagram"] = {"ok": True, "id": pid, "recuperato": True}
             log(f"Instagram recuperato per l'orario {h['slot']}")
         except Exception as e:
@@ -1523,7 +1670,9 @@ def main():
             path_meta = path
         elif MUSICA_NOSTRA & set(job["piattaforme"]):
             path_meta, _ = versione_meta(path, state.get("musica_recenti_meta", []))
-        res = publish_all(path, job["frase"], creds, job["piattaforme"], path_meta)
+        scelto = brano_ig(state, None) if "instagram" in job["piattaforme"] and path_meta and path_meta != path else None
+        res = publish_all(path, job["frase"], creds, job["piattaforme"], path_meta,   # 3/11: brano DI INSTAGRAM
+                          ig_nativo=(path_meta, scelto[0]) if scelto else None)
         job["tentativi"] += 1
         job["piattaforme"] = [p for p, r in res.items() if not r["ok"]]
         state["storico"].append({"quando": datetime.datetime.now().isoformat(timespec="minutes"),
@@ -1535,6 +1684,7 @@ def main():
     if not DRY:
         recupera_instagram(state, drive, work, save)
         ricontrolla_instagram(state, save)
+        ricontrolla_youtube(state, creds, save)
 
     # pulizia di Drive (una volta al giorno, alla prima esecuzione della giornata)
     oggi = datetime.date.today().isoformat()
@@ -1809,7 +1959,8 @@ def main():
         shutil.rmtree(work, ignore_errors=True)
         raise
     log("Montato:", info)
-    frase = dict(frase, copertina_ms=info.get("copertina_ms"))
+    frase = dict(frase, copertina_ms=info.get("copertina_ms"),   # volte: per un titolo YouTube diverso se la frase torna
+                 volte=sum(1 for h in state["storico"] if h.get("frase") == frase.get("id")))
     out_meta = None
     piatt = piattaforme_slot(slot, state)
     per_dopo = [p for p in PREPARA_PER_DOPO if p not in attive()] if principale(slot) else []
@@ -1881,14 +2032,10 @@ def main():
     # si caricava senza traccia e solo 1 reel su ~80 ha avuto la musica (il 2/11 delle 18, l'unico con la traccia).
     # Si carica quindi out_meta (con traccia) e Instagram la sostituisce col suo brano (video_volume 0).
     if "instagram" in piatt and not voce and out_meta:
-        try:
-            scelto = scegli_audio_instagram(an["scena"], state.get("ig_audio_recenti", []))
-            if scelto:
-                ig_nativo = (out_meta, scelto[0])
-                info["musica_instagram"] = scelto[1]
-                state["ig_audio_recenti"] = (state.get("ig_audio_recenti", []) + [scelto[0]])[-30:]
-        except Exception as e:
-            log("Brano di Instagram non scelto:", e)
+        scelto = brano_ig(state, an["scena"])
+        if scelto:
+            ig_nativo = (out_meta, scelto[0])
+            info["musica_instagram"] = scelto[1]
     attesa = (target - ora_roma()).total_seconds() if target else 0
     if 0 < attesa < 70 * 60 and not DRY:
         log(f"Aspetto le {target:%H:%M} per pubblicare puntuale ({attesa / 60:.0f} minuti)")
@@ -1913,7 +2060,10 @@ def main():
             log("Playlist YouTube non aggiornata:", e)
     if results.get("instagram", {}).get("ok") and ENV("SENZA_STORIE") != "1" and principale(slot) and not DRY:
         try:
-            results["instagram_storia"] = {"ok": True, "id": instagram_storia(out_meta or (ig_nativo or [None])[0])}
+            # 3/11/2026: nelle Storie l'API non mette musica di Instagram -> mai i nostri brani: storia senza musica
+            # (parlato/momento con il loro suono vero)
+            storia = out_meta if voce else overlay.versione_social(out, os.path.join(work, "storia.mp4"), audio=False)
+            results["instagram_storia"] = {"ok": True, "id": instagram_storia(storia)}
             log("instagram storia pubblicata")
         except Exception as e:
             results["instagram_storia"] = {"ok": False, "errore": str(e)[:300]}
