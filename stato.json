@@ -9179,7 +9179,12 @@
     },
     "instagram": {
      "ok": true,
-     "id": "17924794206221372"
+     "id": "17924794206221372",
+     "tipo_audio": "ORIGINAL_SOUND",
+     "controllo": [
+      "senza traccia audio",
+      "brano di Instagram non applicato (resta l'audio del file)"
+     ]
     }
    },
    "spinto": true,
@@ -9211,16 +9216,51 @@
     },
     "instagram": {
      "ok": true,
-     "id": "18113488202627486"
+     "id": "18113488202627486",
+     "tipo_audio": "ORIGINAL_SOUND",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": true,
    "testo": "Un vincitore è solo uno che ha provato ancora una volta."
+  },
+  {
+   "quando": "2026-11-04T05:00",
+   "slot": "2026-11-04 06:00",
+   "video": "IMG_3952.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-a017ec41",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "dusty_road_magic_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "deciso_07.flac",
+    "musica_instagram": "Epic Adventure - Bloom"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "bCJAJr-qEZQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18131732212834574"
+    }
+   },
+   "spinto": false,
+   "testo": "Un giorno i risultati parleranno al posto tuo. E quel silenzio varrà più di mille spiegazioni."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-27 02:00",
   "2026-10-27 04:00",
   "2026-10-27 06:00",
   "2026-10-27 08:00",
@@ -9299,10 +9339,10 @@
   "2026-11-03 18:00",
   "2026-11-03 20:00",
   "2026-11-03 22:00",
-  "2026-11-04 00:00"
+  "2026-11-04 00:00",
+  "2026-11-04 06:00"
  ],
  "musica_recenti": [
-  "way_back_home_2.m4a",
   "death_duel_2.m4a",
   "ancient_civilisations_2.m4a",
   "vibe_check_1.m4a",
@@ -9321,7 +9361,8 @@
   "ancient_civilisations_1.m4a",
   "death_duel_1.m4a",
   "van_life_rager_1.m4a",
-  "mirror_mirror_2.m4a"
+  "mirror_mirror_2.m4a",
+  "dusty_road_magic_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -9584,7 +9625,8 @@
   "MIE-f35b2225",
   "MIE-a1e4c141",
   "MIE-2759af9a",
-  "MIE-54fb5833"
+  "MIE-54fb5833",
+  "MIE-a017ec41"
  ],
  "temi_recenti": [
   "mentalita",
@@ -9599,21 +9641,21 @@
   "mentalita"
  ],
  "analisi": {
-  "1kn8j1gVNXJi5l14YxYqNSBBSNfBhD5B5": {
+  "1N4fn6HE4aPH6EdZzDx8nkg0AsbsCT23E": {
    "nome": "IMG_4610.MOV",
    "scena": "palestra",
    "sicurezza": 0.99,
    "motivo": "riconosciuta dalle immagini",
    "lato_corto": 2160,
    "compagnia": "solo",
-   "registrato": "2026-11-02T22:01+01:00",
+   "registrato": "2026-11-03T23:35+01:00",
    "fascia": "palestra",
-   "caricato": "2026-11-03T22:04:37.247Z",
+   "caricato": "2026-11-03T22:36:20.214Z",
    "parlato": null,
    "momento": null
   }
  },
- "pulizia": "2026-11-03",
+ "pulizia": "2026-11-04",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -9792,8 +9834,8 @@
    "ultimo": "2026-11-03"
   },
   "1psghsoVp3I-dU4RMW8CuX7jIIkUpjvLc": {
-   "usi": 2,
-   "ultimo": "2026-10-20"
+   "usi": 3,
+   "ultimo": "2026-11-04"
   },
   "1KrAS_uFNheClKfLJbtUvGGJ16dNqCs2z": {
    "usi": 2,
@@ -10049,7 +10091,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_03.flac",
   "deciso_11.flac",
   "deciso_02.flac",
   "trap_11.flac",
@@ -10068,7 +10109,8 @@
   "energia_04.flac",
   "deciso_03.flac",
   "phonk_11.flac",
-  "energia_10.flac"
+  "energia_10.flac",
+  "deciso_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10103,7 +10145,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10119,7 +10161,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1377485917727304",
   "393903371411311",
   "820220974302825",
   "973266493758189",
@@ -10148,6 +10189,8 @@
   "2475524415980310",
   "565118654020261",
   "796285350766311",
-  "523966117385305"
- ]
+  "523966117385305",
+  "4489870934582584"
+ ],
+ "ig_avviso_brano": "2026-11-03"
 }
