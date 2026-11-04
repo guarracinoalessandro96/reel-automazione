@@ -8900,7 +8900,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "PHDmzyln4rs"
+     "id": "PHDmzyln4rs",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -8934,7 +8935,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "eUsQmdgdbik"
+     "id": "eUsQmdgdbik",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -8968,7 +8970,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "cixMMrMu3xo"
+     "id": "cixMMrMu3xo",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9002,7 +9005,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "dXXgUBxJxtE"
+     "id": "dXXgUBxJxtE",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9036,7 +9040,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "f-TWrzzV_IQ"
+     "id": "f-TWrzzV_IQ",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9070,7 +9075,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "zOrD5sUHHLg"
+     "id": "zOrD5sUHHLg",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9104,7 +9110,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "wLVFdpYSEWw"
+     "id": "wLVFdpYSEWw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9139,7 +9146,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "KXQipNPPCHk"
+     "id": "KXQipNPPCHk",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9175,7 +9183,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "HE3PXy558xA"
+     "id": "HE3PXy558xA",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9212,7 +9221,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "SrV5lL355u8"
+     "id": "SrV5lL355u8",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9248,11 +9258,17 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "bCJAJr-qEZQ"
+     "id": "bCJAJr-qEZQ",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
-     "id": "18131732212834574"
+     "id": "18131732212834574",
+     "tipo_audio": "ORIGINAL_SOUND",
+     "controllo": [
+      "senza traccia audio",
+      "brano di Instagram non applicato (resta l'audio del file)"
+     ]
     }
    },
    "spinto": false,
@@ -9280,7 +9296,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "QJ7HOB-3eDk"
+     "id": "QJ7HOB-3eDk",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9289,11 +9306,42 @@
    },
    "spinto": false,
    "testo": "Vuoi il risultato? Allora devi pagare il prezzo."
+  },
+  {
+   "quando": "2026-11-04T09:01",
+   "slot": "2026-11-04 10:00",
+   "video": "IMG_3974.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "MIE-754744ce",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "way_back_home_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "musica_meta": "energia_09.flac",
+    "musica_instagram": "Ramalama (Bang Bang) - Róisín Murphy [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "qee1LUHNKdM"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17877013242593002"
+    }
+   },
+   "spinto": false,
+   "testo": "Lavora ogni giorno per rendere orgoglioso il bambino che eri."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-27 06:00",
   "2026-10-27 08:00",
   "2026-10-27 10:00",
   "2026-10-27 12:00",
@@ -9372,10 +9420,10 @@
   "2026-11-03 22:00",
   "2026-11-04 00:00",
   "2026-11-04 06:00",
-  "2026-11-04 08:00"
+  "2026-11-04 08:00",
+  "2026-11-04 10:00"
  ],
  "musica_recenti": [
-  "ancient_civilisations_2.m4a",
   "vibe_check_1.m4a",
   "i_might_be_late_1.m4a",
   "locked_in_2.m4a",
@@ -9394,7 +9442,8 @@
   "van_life_rager_1.m4a",
   "mirror_mirror_2.m4a",
   "dusty_road_magic_1.m4a",
-  "sweaty_staredown_2.m4a"
+  "sweaty_staredown_2.m4a",
+  "way_back_home_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -9659,7 +9708,8 @@
   "MIE-2759af9a",
   "MIE-54fb5833",
   "MIE-a017ec41",
-  "MIE-903828b9"
+  "MIE-903828b9",
+  "MIE-754744ce"
  ],
  "temi_recenti": [
   "mentalita",
@@ -9903,8 +9953,8 @@
    "ultimo": "2026-10-21"
   },
   "1I2nAz0Ao_a1cbEPktFKRTPpswByM6NKZ": {
-   "usi": 2,
-   "ultimo": "2026-10-21"
+   "usi": 3,
+   "ultimo": "2026-11-04"
   },
   "1zw12S9166ROtTo6gXbB8osWAiBXUjT0Q": {
    "usi": 2,
@@ -10124,7 +10174,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_02.flac",
   "trap_11.flac",
   "deciso_10.flac",
   "deciso_12.flac",
@@ -10143,7 +10192,8 @@
   "phonk_11.flac",
   "energia_10.flac",
   "deciso_07.flac",
-  "trap_06.flac"
+  "trap_06.flac",
+  "energia_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10178,7 +10228,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_broll",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10194,7 +10244,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "820220974302825",
   "973266493758189",
   "849342490718599",
   "1127106596130760",
@@ -10223,7 +10272,8 @@
   "796285350766311",
   "523966117385305",
   "4489870934582584",
-  "974432747187721"
+  "974432747187721",
+  "736015230804186"
  ],
- "ig_avviso_brano": "2026-11-03"
+ "ig_avviso_brano": "2026-11-04"
 }
