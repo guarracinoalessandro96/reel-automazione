@@ -723,9 +723,15 @@ class Drive:
             return out
         q = (f"'{ENV('DRIVE_FOLDER_DA_PUBBLICARE')}' in parents and trashed = false "
              "and mimeType contains 'video/'")
-        res = self.api.files().list(q=q, orderBy="createdTime", pageSize=100,
-                                    fields="files(id,name,createdTime,md5Checksum,description,appProperties)").execute()
-        return res.get("files", [])
+        out, token = [], None
+        while True:     # 4/11/2026: tutte le pagine (prima solo i primi 100 video: gli altri non uscivano mai)
+            res = self.api.files().list(q=q, orderBy="createdTime", pageSize=100, pageToken=token,
+                                        fields="nextPageToken,files(id,name,createdTime,md5Checksum,description,"
+                                               "appProperties)").execute()
+            out += res.get("files", [])
+            token = res.get("nextPageToken")
+            if not token:
+                return out
 
     def download(self, file_id, dest, folder="Da pubblicare"):
         if self.local:
@@ -802,8 +808,15 @@ class Drive:
                                        media_body=MediaFileUpload(path, mimetype="video/mp4"), fields="id").execute()["id"]
 
     def cartella(self, nome):
-        """Id della cartella 'nome' accanto a 'Da pubblicare' (la crea se manca)."""
-        padre = self.api.files().get(fileId=ENV("DRIVE_FOLDER_DA_PUBBLICARE"), fields="parents").execute()["parents"][0]
+        """Id della cartella 'nome' accanto a 'Da pubblicare' (la crea se manca). 4/11/2026: ricordato per tutto il
+        giro (prima 2 chiamate a Drive ogni volta, ~15 per reel: ognuna un punto in cui la rete poteva cadere)."""
+        memo = self.__dict__.setdefault("_cartelle", {})
+        if nome not in memo:
+            memo[nome] = self._cartella(nome)
+        return memo[nome]
+
+    def _cartella(self, nome):
+        padre =self.api.files().get(fileId=ENV("DRIVE_FOLDER_DA_PUBBLICARE"), fields="parents").execute()["parents"][0]
         q = (f"'{padre}' in parents and name = '{nome}' and trashed = false "
              "and mimeType = 'application/vnd.google-apps.folder'")
         found = self.api.files().list(q=q, fields="files(id)").execute().get("files", [])
@@ -976,11 +989,21 @@ class Drive:
                                  *cartelle_dopo):
             if not cartella:
                 continue
-            q = f"'{cartella}' in parents and trashed = false and mimeType contains 'video/'"
-            for f in self.api.files().list(q=q, fields="files(id,createdTime)", pageSize=200).execute().get("files", []):
-                if datetime.datetime.fromisoformat(f["createdTime"].replace("Z", "+00:00")) < soglia:
+            # 4/11/2026: solo i file piu' vecchi della soglia e tutte le pagine (prima i primi 200 a caso: con 10 reel
+            # al giorno la cartella TikTok ne ha ~600 e i vecchi non andavano mai nel cestino)
+            limite_q = soglia.strftime("%Y-%m-%dT%H:%M:%S")
+            q = (f"'{cartella}' in parents and trashed = false and mimeType contains 'video/' "
+                 f"and createdTime < '{limite_q}'")
+            token = None
+            while True:
+                res = self.api.files().list(q=q, fields="nextPageToken,files(id)", pageSize=200,
+                                            pageToken=token).execute()
+                for f in res.get("files", []):
                     self.api.files().update(fileId=f["id"], body={"trashed": True}, fields="id").execute()
                     n += 1
+                token = res.get("nextPageToken")
+                if not token:
+                    break
         return n
 
 
@@ -1302,7 +1325,10 @@ def ricontrolla_instagram(state, save):
                                                                                 "access_token": token})
             ig["tipo_audio"] = r.get("media_audio_type")
             if not r.get("media_url"):
-                ig["controllo"] = "non leggibile"
+                # 4/11/2026: con la musica di Instagram (brano con licenza) l'API non da' mai il file: e' normale, non
+                # un errore (prima ogni reel MUSIC finiva "non leggibile"); senza musica si riprova al giro dopo
+                if ig["tipo_audio"] == "MUSIC":
+                    ig["controllo"] = []
                 continue
             ig["controllo"] = audio_ig.controlla_pubblicato(r["media_url"])
             if ig["tipo_audio"] == "MUSIC":      # 3/11: il brano di Instagram non e' nel file scaricabile: conta solo il resto
@@ -1313,7 +1339,7 @@ def ricontrolla_instagram(state, save):
                     ig["controllo"].append("brano di Instagram non applicato (resta l'audio del file"
                                            + (", caricato senza link)" if ig.get("metodo") == "diretto" else ")"))
             if ig["controllo"] and (h.get("montaggio") or {}).get("formato") != "parlato":
-                avvisi.manda(f"Instagram, reel delle {h['slot']}: " + ", ".join(ig["controllo"]))
+                avvisi.manda(f"Instagram, reel delle {h.get('slot', '?')}: " + ", ".join(ig["controllo"]))
         except Exception as e:
             log("controllo Instagram non riuscito:", e)
     save()
@@ -1852,17 +1878,40 @@ def recupera_instagram(state, drive, work, save):
         save()
 
 
+def carica_stato():
+    """4/11/2026: stato.json illeggibile (rovinato) -> l'ultima versione salvata su GitHub, mai uno stato vuoto
+    (che ripubblicherebbe frasi, video e orari gia' usciti)."""
+    if not os.path.exists(STATE):
+        return {}
+    try:
+        return json.load(open(STATE, encoding="utf-8-sig"))
+    except ValueError as e:
+        log("stato.json illeggibile, riprendo l'ultima versione salvata:", e)
+        for rif in ("HEAD", "HEAD~1", "HEAD~2"):
+            r = subprocess.run(["git", "-C", HERE, "show", f"{rif}:stato.json"], capture_output=True)
+            try:
+                return json.loads(r.stdout.decode("utf-8-sig"))
+            except ValueError:
+                continue
+        raise
+
+
 def main():
-    slot = sys.argv[1] if len(sys.argv) > 1 else "manuale"
+    slot =sys.argv[1] if len(sys.argv) > 1 else "manuale"
     slot_ora = None if "manuale" in slot else slot.split()[-1]     # es. "09:45"
     frasi = json.load(open(FRASI, encoding="utf-8"))
-    state = json.load(open(STATE, encoding="utf-8")) if os.path.exists(STATE) else {}
+    state = carica_stato()
     for k, v in (("usate", []), ("storico", []), ("riprova", []), ("slot_fatti", []), ("musica_recenti", []),
                  ("frasi_usate", []), ("temi_recenti", []), ("analisi", {}), ("archivio_usi", {})):
         state.setdefault(k, v)
 
     def save():
-        json.dump(state, open(STATE, "w", encoding="utf-8"), ensure_ascii=False, indent=1, default=str)
+        # 4/11/2026: prima su un file a parte, poi al suo posto: se il lavoro viene fermato a meta' scrittura
+        # stato.json resta quello di prima (un file tagliato faceva perdere tutta la memoria del sistema)
+        tmp = STATE + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(state, f, ensure_ascii=False, indent=1, default=str)
+        os.replace(tmp, STATE)
 
     if not DRY and not ENV("GOOGLE_REFRESH_TOKEN"):
         log("Account non ancora collegati (Secrets mancanti): niente da fare.")
@@ -1936,16 +1985,20 @@ def main():
         save()
 
     # 1. analisi dei video nuovi in coda
-    videos = drive.list_videos()
+    videos = con_tentativi(drive.list_videos, "Lettura della coda", drive)
     for v in videos:
-        if v["id"] not in state["analisi"]:
+        vecchia = state["analisi"].get(v["id"])
+        # 4/11/2026: un'analisi fallita (spesso per la rete) si rifa' al giro dopo, una volta: prima il video restava
+        # per sempre "casa / ufficio" e usciva con frase e orario sbagliati
+        if vecchia is None or (vecchia.get("analisi_fallita") == 1 and not vecchia.get("fallimenti")):
             try:
                 state["analisi"][v["id"]] = analizza_video(drive, v, work)
                 log("Analizzato:", state["analisi"][v["id"]])
             except Exception as e:
                 log("Analisi fallita per", v["name"], e)
                 state["analisi"][v["id"]] = {"nome": v["name"], "scena": "casa", "fascia": "ufficio",
-                                             "errore": str(e)[:200], "caricato": v["createdTime"]}
+                                             "errore": str(e)[:200], "caricato": v["createdTime"],
+                                             "analisi_fallita": (vecchia or {}).get("analisi_fallita", 0) + 1}
     for v in list(videos):
         a = state["analisi"].get(v["id"], {})
         if 0 < a.get("lato_corto", 9999) < QUALITA_MINIMA:
@@ -1995,7 +2048,9 @@ def main():
     if video is None:
         usi_arch = state.setdefault("archivio_usi", {})
         try:
-            archivio = [dict(c, **usi_arch.get(c["id"], {})) for c in drive.lista_archivio()]
+            # 4/11/2026: con nuovi tentativi: un archivio "vuoto" per la rete faceva saltare l'orario
+            archivio = [dict(c, **usi_arch.get(c["id"], {}))
+                        for c in con_tentativi(drive.lista_archivio, "Lettura dell'archivio", drive)]
         except Exception as e:
             log("Lettura dell'archivio non riuscita:", e)
             archivio = []
@@ -2035,7 +2090,8 @@ def main():
     usi = {h["frase"]: h["quando"][:10] for h in state["storico"] if h.get("frase") and h.get("quando")}
     if SOLO_MIE:    # solo le citazioni del Google Doc di Alessandro: prima quelle mai uscite, a caso
         try:
-            mie = mie_frasi(drive.testo_mie_citazioni() or "")
+            # 4/11/2026: con nuovi tentativi: senza il Doc l'orario saltava ("documento vuoto")
+            mie = mie_frasi(con_tentativi(drive.testo_mie_citazioni, "Lettura di 'Le mie citazioni'", drive) or "")
         except Exception as e:
             log("Lettura di 'Le mie citazioni' non riuscita:", e)
             mie = []
@@ -2132,7 +2188,7 @@ def main():
         if TUTTO_10S and formato in FORMATI_10 and str(slot).endswith(ORARIO_FOTO) and str(slot)[:10] >= FOTO_DAL:
             try:
                 import foto_giornata
-                foto_oggi = foto_giornata.pronte(drive)
+                foto_oggi = con_tentativi(lambda: foto_giornata.pronte(drive), "Lettura delle foto", drive)
             except Exception as e:
                 log("Foto della giornata non lette:", e)
             formato = "dieci_foto" if foto_oggi else formato

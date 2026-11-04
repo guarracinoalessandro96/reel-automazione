@@ -205,6 +205,20 @@ def main():
                   "TikTok: versione non salvata tenuta da parte e salvata al giro dopo")
         finally:
             p.SOSPESI = vero_sospesi
+        # reel con la musica di Instagram: l'API non da' il file, ma non e' un errore
+        p._meta = lambda *a, **kw: {"media_audio_type": "MUSIC"}
+        st = {"storico": [{"slot": "2026-11-04 12:00", "quando": "2026-11-04T08:00",
+                           "risultati": {"instagram": {"ok": True, "id": "123"}}}]}
+        p.ricontrolla_instagram(st, lambda: None)
+        ig = st["storico"][0]["risultati"]["instagram"]
+        check(ig.get("controllo") == [] and ig.get("tipo_audio") == "MUSIC", f"Instagram: reel MUSIC controllato ({ig})")
+        # stato.json rovinato: si riprende l'ultima versione salvata
+        vero_stato, p.STATE = p.STATE, os.path.join(D, "stato_rotto.json")
+        try:
+            open(p.STATE, "w", encoding="utf-8").write('{"storico": [{"slot": "2026')
+            check("storico" in p.carica_stato(), "stato.json rovinato: ripreso dall'ultima versione salvata")
+        finally:
+            p.STATE = vero_stato
     except Exception as e:
         check(False, f"Instagram: prova del caricamento non riuscita ({e})")
     finally:
