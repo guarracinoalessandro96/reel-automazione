@@ -9483,7 +9483,9 @@
     "instagram": {
      "ok": true,
      "id": "18099477884664131",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -9511,7 +9513,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "VglJRL-VTnk"
+     "id": "VglJRL-VTnk",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9521,11 +9524,43 @@
    },
    "spinto": false,
    "testo": "Non cercare di essere perfetto. Cerca di essere migliore di ieri."
+  },
+  {
+   "quando": "2026-11-04T21:00",
+   "slot": "2026-11-04 22:00",
+   "video": "IMG_4065.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-bbeb47d3",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "ancient_civilisations_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "musica_meta": "deciso_12.flac",
+    "musica_instagram": "Piccole Cose - Giordana Angi [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "ppvpZ1sREsA"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18011840570990363",
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Spingiti oltre, perché nessuno lo farà al posto tuo."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-27 18:00",
   "2026-10-27 20:00",
   "2026-10-28 00:00",
   "2026-10-28 02:00",
@@ -9604,10 +9639,10 @@
   "2026-11-04 14:00",
   "2026-11-04 16:00",
   "2026-11-04 18:00",
-  "2026-11-04 20:00"
+  "2026-11-04 20:00",
+  "2026-11-04 22:00"
  ],
  "musica_recenti": [
-  "wrangle_the_crazy_2.m4a",
   "monthaholic_1.m4a",
   "dusty_road_magic_3.m4a",
   "keep_it_movin_2.m4a",
@@ -9626,7 +9661,8 @@
   "whoop_3.m4a",
   "wrangle_the_crazy_3.m4a",
   "death_duel_2.m4a",
-  "keep_it_movin_1.m4a"
+  "keep_it_movin_1.m4a",
+  "ancient_civilisations_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -9897,7 +9933,8 @@
   "MIE-44a3b379",
   "MIE-567fdc22",
   "MIE-912f99c6",
-  "MIE-abd060ce"
+  "MIE-abd060ce",
+  "MIE-bbeb47d3"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10211,8 +10248,8 @@
    "ultimo": "2026-10-23"
   },
   "19lxUacEH3cLJ4agkgVgo3o7ErjaxO3My": {
-   "usi": 2,
-   "ultimo": "2026-10-24"
+   "usi": 3,
+   "ultimo": "2026-11-04"
   },
   "1UqKiP8I1uDBOGIlQ6FOiFV8glkTIPDqY": {
    "usi": 2,
@@ -10352,7 +10389,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_01.flac",
   "phonk_14.flac",
   "deciso_06.flac",
   "drive_14.flac",
@@ -10371,7 +10407,8 @@
   "trap_13.flac",
   "energia_08.flac",
   "phonk_05.flac",
-  "drive_02.flac"
+  "drive_02.flac",
+  "deciso_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10406,7 +10443,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_broll",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10422,7 +10459,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1852688158814799",
   "620334183626298",
   "272114135386704",
   "302973472523675",
@@ -10451,12 +10487,13 @@
   "1724811595735449",
   "2195838444698263",
   "242659649830381",
-  "258759081507255"
+  "258759081507255",
+  "1403113822033083"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Arjan Dhillon",
   "Guns N' Roses",
-  "Kehlani"
+  "Kehlani",
+  "Giordana Angi"
  ]
 }
