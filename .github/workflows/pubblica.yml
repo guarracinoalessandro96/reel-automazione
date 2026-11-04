@@ -178,7 +178,8 @@ jobs:
         if: always() && steps.orario.outputs.resta == '1'
         env:
           GH_TOKEN: ${{ github.token }}
+        # 4/11/2026: con nuovi tentativi: se questa chiamata cadeva la catena si fermava fino al controllo programmato
         run: |
-          curl -s -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+          curl -sf --retry 5 --retry-delay 15 --retry-all-errors -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/${{ github.repository }}/actions/workflows/pubblica.yml/dispatches" \
             -d '{"ref":"main","inputs":{"forza":"false"}}' && echo "Lavoro successivo avviato"

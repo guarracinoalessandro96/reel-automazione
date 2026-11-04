@@ -166,6 +166,45 @@ def main():
         p._aspetta_contenitore = lambda V, cid, t: "ERROR" if len(chiamate) < 3 else "FINISHED"
         check(p.instagram_upload(traccia, cap, "3") == "99" and p.ULTIMO_IG.get("metodo") == "diretto" and not aperti,
               "Instagram: due link falliti -> caricamento diretto, link chiusi")
+        # il secondo brano finisce tra i recenti del reel in corso
+        stato = {"ig_audio_recenti": ["3"], "ig_artisti_recenti": ["C"]}
+        p._IG_STATO["state"] = stato
+        esiti = iter(["ERROR", "FINISHED"])
+        p._aspetta_contenitore = lambda V, cid, t: next(esiti)
+        p.instagram_upload(traccia, cap, "3")
+        check(stato["ig_audio_recenti"][-1] == "4" and stato["ig_artisti_recenti"][-1] == "D",
+              f"Instagram: il secondo brano viene ricordato ({stato})")
+        p._IG_STATO.clear()
+
+        # 4/11/2026: risposta di media_publish persa ma reel uscito -> si ritrova il post, niente doppione
+        def meta_persa(metodo, url, **kw):
+            if url.endswith("media_publish"):
+                raise p.requests.exceptions.ConnectionError("EOF")
+            if url.endswith("/media"):
+                return {"data": [{"id": "77"}]}
+            return {"status_code": "PUBLISHED"}
+        p._meta = meta_persa
+        check(p._ig_pubblica("V", "ig", "c1", "t") == {"id": "77"}, "Instagram: risposta persa, post ritrovato")
+        prove = []
+        check(p.con_tentativi(lambda: prove.append(1) or (len(prove) < 3 and 1 / 0) or "ok", "prova") == "ok"
+              and len(prove) == 3, "nuovi tentativi: riesce al terzo")
+        p.google_con_tentativi()
+        import googleapiclient.http as gh
+        check(getattr(gh.HttpRequest.execute, "con_tentativi", False), "Google: tutte le chiamate con nuovi tentativi")
+        # TikTok non salvato su Drive: resta da parte e si salva al giro dopo
+        vero_sospesi, p.SOSPESI = p.SOSPESI, os.path.join(D, "sospesi")
+        try:
+            p.metti_in_sospeso(traccia, "2026-11-05 1000 - X.mp4", {"testo": "t", "slot": "2026-11-05 10:00", "voce": False})
+            salvati = []
+
+            class FintoDrive:
+                def salva_tiktok(self, path, nome, testo, slot, voce):
+                    salvati.append((nome, slot, os.path.getsize(path) > 0))
+            p.salva_sospesi(FintoDrive())
+            check(salvati == [("2026-11-05 1000 - X.mp4", "2026-11-05 10:00", True)] and not os.listdir(p.SOSPESI),
+                  "TikTok: versione non salvata tenuta da parte e salvata al giro dopo")
+        finally:
+            p.SOSPESI = vero_sospesi
     except Exception as e:
         check(False, f"Instagram: prova del caricamento non riuscita ({e})")
     finally:
