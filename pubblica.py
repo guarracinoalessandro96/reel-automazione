@@ -985,9 +985,16 @@ def youtube_upload(creds, path, cap, publish_at=None):
                               publishAt=publish_at.astimezone(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
     req = yt.videos().insert(part="snippet,status", body=body,
                              media_body=MediaFileUpload(path, mimetype="video/mp4", resumable=True))
-    resp = None
+    resp, cadute = None, 0
     while resp is None:
-        _, resp = req.next_chunk()
+        try:     # 4/11/2026: YouTube 5xx (num_retries) o rete che cade a meta' (SSL EOF): si riprende da dove era
+            _, resp = req.next_chunk(num_retries=5)
+        except OSError as e:
+            cadute += 1
+            if cadute > 5:
+                raise
+            log("youtube: caricamento interrotto, riprendo:", e)
+            time.sleep(5 * 2 ** cadute)
     vid = resp["id"]
     if PRIMO_COMMENTO and cap.get("commento") and privacy == "public":
         try:
@@ -1033,24 +1040,45 @@ def _rupload(url, token, path):
     return r.json()
 
 
+def _meta(metodo, url, tentativi=3, **kw):
+    """4/11/2026: chiamata a Meta con un tempo massimo e nuovi tentativi se la rete cade (prima senza timeout:
+    una risposta che non arrivava bloccava il lavoro fino al limite di GitHub)."""
+    kw.setdefault("timeout", 60)
+    for i in range(tentativi):
+        try:
+            return requests.request(metodo, url, **kw).json()
+        except (requests.exceptions.RequestException, ValueError) as e:
+            if i == tentativi - 1:
+                raise
+            log("Meta non raggiungibile, riprovo:", e)
+            time.sleep(10 * (i + 1))
+
+
+def _ig_pubblica(V, ig, cid, token):
+    """media_publish; se Instagram risponde che il video non e' ancora pronto (9007 / 2207027) riprova per ~2 minuti."""
+    for _ in range(8):
+        pub = _meta("POST", f"{V}/{ig}/media_publish", data={"creation_id": cid, "access_token": token})
+        err = pub.get("error") or {}
+        if "id" in pub or not (err.get("code") == 9007 or err.get("error_subcode") == 2207027):
+            return pub
+        log("instagram: video non ancora pronto per l'uscita, riprovo")
+        time.sleep(15)
+    return pub
+
+
 def _ig_carica_e_pubblica(path, dati):
     """Crea il contenitore Instagram (reel o storia), carica il video, aspetta l'elaborazione e pubblica."""
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
-    r = requests.post(f"{GRAPH}/{ig}/media", data={**dati, "upload_type": "resumable", "access_token": token}).json()
+    r = _meta("POST", f"{GRAPH}/{ig}/media", data={**dati, "upload_type": "resumable", "access_token": token})
     if "id" not in r:
         raise RuntimeError(r)
     cid = r["id"]
     up = _rupload(r.get("uri", f"https://rupload.facebook.com/ig-api-upload/v23.0/{cid}"), token, path)
     if up.get("success") is False or "error" in up:
         raise RuntimeError(up)
-    for _ in range(60):                      # attende l'elaborazione (max ~10 minuti)
-        st = requests.get(f"{GRAPH}/{cid}", params={"fields": "status_code,status", "access_token": token}).json()
-        if st.get("status_code") == "FINISHED":
-            break
-        if st.get("status_code") == "ERROR":
-            raise RuntimeError(st)
-        time.sleep(10)
-    pub = requests.post(f"{GRAPH}/{ig}/media_publish", data={"creation_id": cid, "access_token": token}).json()
+    if _aspetta_contenitore(GRAPH, cid, token) == "ERROR":      # attende l'elaborazione (max ~10 minuti)
+        raise RuntimeError(f"contenitore Instagram in errore ({cid})")
+    pub = _ig_pubblica(GRAPH, ig, cid, token)
     if "id" not in pub:
         raise RuntimeError(pub)
     return pub["id"]
@@ -1085,21 +1113,28 @@ IG_STAGIONE = re.compile(r"halloween|spooky|skeleton|trick or|ghost|thriller|dra
                          r"witch|zombie|vampir|bloody|creep|horror|scary|goo goo|xmas|jingle|santa", re.I)
 
 
+_TENDENZE = {}     # 4/11/2026: la lista letta una volta per lavoro (reel, nuovi tentativi e recuperi la riusano)
+
+
 def tendenze_instagram(pagine=3):
     """4/11/2026: i brani DI TENDENZA di Instagram: /ig_audio senza search_query restituisce le tendenze del
     momento (la stessa lista dell'app; prima si cercava sempre per parola e uscivano brani a caso)."""
+    if _TENDENZE.get("lista") and time.time() - _TENDENZE["ora"] < 1800:
+        return _TENDENZE["lista"]
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
     out, url, par = [], f"{GRAPH_AUDIO}/ig_audio", {"audio_type": "music", "user_id": ig, "access_token": token}
     for _ in range(pagine):
-        r = requests.get(url, params=par, timeout=30).json()
+        r = _meta("GET", url, params=par, timeout=30)
         out += r.get("audio", [])
         url, par = (r.get("paging") or {}).get("next"), None
         if not url:
             break
+    if out:
+        _TENDENZE.update(lista=out, ora=time.time())
     return out
 
 
-def scegli_audio_instagram(scena, recenti=()):
+def scegli_audio_instagram(scena, recenti=(), artisti_recenti=()):
     """(audio_id, titolo) di un brano Instagram, evitando i recenti. None se nessuno.
     Ordine (4/11/2026, Alessandro: "scegliendo la musica di tendenza di instagram, oppure la stessa musica degli altri
     reel"): 1) tendenze ufficiali di Instagram, 2) brani piu' usati dai reel forti (audio_tendenza.json, domenica),
@@ -1114,6 +1149,8 @@ def scegli_audio_instagram(scena, recenti=()):
         log("Tendenze di Instagram non lette:", e)
         tendenza = []
     if tendenza:     # tra le prime 8 (le piu' in tendenza), un po' a caso cosi' i reel vicini non hanno lo stesso brano
+        # 4/11/2026: e mai lo stesso artista di uno degli ultimi 3 reel (se resta almeno un brano)
+        tendenza = [a for a in tendenza if a.get("display_artist") not in artisti_recenti] or tendenza
         a = random.choice(tendenza[:8])
         return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')} [tendenza]"
     ricerche = list(dict.fromkeys(random.sample(IG_ENERGICI, len(IG_ENERGICI))))
@@ -1174,12 +1211,14 @@ def ricontrolla_youtube(state, creds, save):
 def brano_ig(state, scena):
     """3/11/2026: (audio_id, titolo) di un brano DI INSTAGRAM per il reel (anche per recuperi e nuovi tentativi)."""
     try:
-        scelto = scegli_audio_instagram(scena, state.get("ig_audio_recenti", []))
+        scelto = scegli_audio_instagram(scena, state.get("ig_audio_recenti", []), state.get("ig_artisti_recenti", []))
     except Exception as e:
         log("Brano di Instagram non scelto:", e)
         return None
     if scelto:
         state["ig_audio_recenti"] = (state.get("ig_audio_recenti", []) + [scelto[0]])[-30:]
+        artista = scelto[1].replace(" [tendenza]", "").rsplit(" - ", 1)[-1]
+        state["ig_artisti_recenti"] = (state.get("ig_artisti_recenti", []) + [artista])[-3:]
     return scelto
 
 
@@ -1204,7 +1243,8 @@ def ricontrolla_instagram(state, save):
             elif (h.get("montaggio") or {}).get("musica_instagram"):
                 if state.get("ig_avviso_brano") != h.get("quando", "")[:10]:     # questo avviso al massimo 1 al giorno
                     state["ig_avviso_brano"] = h.get("quando", "")[:10]
-                    ig["controllo"].append("brano di Instagram non applicato (resta l'audio del file)")
+                    ig["controllo"].append("brano di Instagram non applicato (resta l'audio del file"
+                                           + (", caricato senza link)" if ig.get("metodo") == "diretto" else ")"))
             if ig["controllo"] and (h.get("montaggio") or {}).get("formato") != "parlato":
                 avvisi.manda(f"Instagram, reel delle {h['slot']}: " + ", ".join(ig["controllo"]))
         except Exception as e:
@@ -1233,21 +1273,38 @@ def link_temporaneo(path):
     """4/11/2026: carica il video in Drive ('Instagram temporanei') e lo rende leggibile con il link, cosi'
     Instagram lo scarica da li' (video_url). (id, indirizzo); togli_link() lo chiude e lo mette nel cestino."""
     from googleapiclient.http import MediaFileUpload
-    d = Drive(google_creds())
-    fid = d.api.files().create(body={"name": os.path.basename(path), "parents": [d.cartella("Instagram temporanei")]},
-                               media_body=MediaFileUpload(path, mimetype="video/mp4"), fields="id").execute()["id"]
-    d.api.permissions().create(fileId=fid, body={"type": "anyone", "role": "reader"}).execute()
-    return (d, fid), f"https://drive.usercontent.google.com/download?id={fid}&export=download&confirm=t"
+    for i in range(4):     # 4/11/2026: il reel delle 10 e' uscito senza musica per un SSL EOF di Drive: si riprova
+        d, fid = None, None
+        try:
+            d = Drive(google_creds())
+            fid = d.api.files().create(body={"name": os.path.basename(path),
+                                             "parents": [d.cartella("Instagram temporanei")]},
+                                       media_body=MediaFileUpload(path, mimetype="video/mp4", resumable=True),
+                                       fields="id").execute(num_retries=3)["id"]
+            d.api.permissions().create(fileId=fid, body={"type": "anyone", "role": "reader"}).execute(num_retries=3)
+            return (d, fid), f"https://drive.usercontent.google.com/download?id={fid}&export=download&confirm=t"
+        except Exception as e:
+            if fid:
+                togli_link((d, fid))
+            if i == 3:
+                raise
+            log("instagram: Drive non raggiungibile per il link temporaneo, riprovo:", e)
+            time.sleep(10 * (i + 1))
 
 
 def togli_link(temp):
     """Toglie la condivisione e mette il file nel cestino di Drive (mai cancellato per sempre)."""
     if not temp:
         return
+    from googleapiclient.errors import HttpError
     d, fid = temp
     for _ in range(3):
         try:
-            d.api.permissions().delete(fileId=fid, permissionId="anyoneWithLink").execute()
+            try:      # 4/11/2026: se la condivisione era gia' tolta si mette comunque nel cestino
+                d.api.permissions().delete(fileId=fid, permissionId="anyoneWithLink").execute()
+            except HttpError as e:
+                if e.resp.status != 404:
+                    raise
             d.api.files().update(fileId=fid, body={"trashed": True}).execute()
             return
         except Exception as e:
@@ -1255,9 +1312,37 @@ def togli_link(temp):
             time.sleep(5)
 
 
+def pulisci_temporanei(drive):
+    """4/11/2026: un link temporaneo rimasto aperto (rete caduta a meta') si chiude al lavoro dopo: i video di
+    Alessandro non restano mai condivisi con il link per piu' di un paio d'ore."""
+    limite = (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=1)).strftime("%Y-%m-%dT%H:%M:%S")
+    q = f"'{drive.cartella('Instagram temporanei')}' in parents and trashed = false and createdTime < '{limite}'"
+    rimasti = drive.api.files().list(q=q, fields="files(id)").execute().get("files", [])
+    for f in rimasti:
+        togli_link((drive, f["id"]))
+    if rimasti:
+        log(f"Instagram: {len(rimasti)} link temporanei rimasti aperti, chiusi e nel cestino")
+
+
+def con_traccia(path):
+    """4/11/2026: la musica di Instagram si applica solo se il video ha una traccia audio (senza: errore 2207082):
+    se manca se ne aggiunge una muta."""
+    if overlay.ha_audio(path):
+        return path
+    dst = os.path.splitext(path)[0] + "_traccia.mp4"
+    subprocess.run([overlay.FFMPEG, "-y", "-v", "error", "-i", path, "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo",
+                    "-map", "0:v:0", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "128k", "-shortest",
+                    "-movflags", "+faststart", dst], check=True, capture_output=True, timeout=300)
+    return dst
+
+
+ULTIMO_IG = {}     # 4/11/2026: come e' uscito l'ultimo reel Instagram (metodo, brano se cambiato): finisce nei risultati
+
+
 def instagram_upload(path, cap, audio_id=None):
     """audio_id: brano nativo di Instagram (allora path e' il video SENZA musica)."""
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
+    ULTIMO_IG.clear()
     dati = {"media_type": "REELS", "caption": testo_breve(cap), "share_to_feed": "true"}
     if audio_id:
         # 3/11/2026: video_volume 1 (minimo ammesso dalla documentazione Meta, 1-100): con 0 il brano veniva ignorato
@@ -1272,23 +1357,50 @@ def instagram_upload(path, cap, audio_id=None):
         # 4/11/2026: la musica di Instagram (audio_configuration) e' documentata solo col caricamento da indirizzo
         # (video_url): col caricamento a pezzi (resumable) Instagram la ignorava quasi sempre. Il video passa da un
         # link temporaneo di Drive (provato: contenitore FINISHED in 20 s), tolto subito dopo l'uscita.
+        # Due tentativi, il secondo con un altro brano di tendenza: il caricamento diretto (ultima riserva) fa
+        # sentire la nostra traccia, che Alessandro non vuole.
         try:
-            temp, url = link_temporaneo(path)
-            r = requests.post(f"{V}/{ig}/media", data={**dati, "video_url": url, "access_token": token}, timeout=60).json()
-            cid = r.get("id")
-            if not cid:
-                log("instagram: contenitore da link non creato, provo il caricamento diretto:", r)
-            elif _aspetta_contenitore(V, cid, token) != "FINISHED":
-                log("instagram: contenitore da link non pronto, provo il caricamento diretto")
-                cid = None
+            path = con_traccia(path)
         except Exception as e:
-            log("instagram: link temporaneo non riuscito, provo il caricamento diretto:", e)
-            cid = None
+            log("instagram: traccia audio non aggiunta:", e)
+        for tentativo in range(2):
+            try:
+                temp, url = link_temporaneo(path)
+                r = _meta("POST", f"{V}/{ig}/media", data={**dati, "video_url": url, "access_token": token})
+                cid = r.get("id")
+                if not cid:
+                    log("instagram: contenitore da link non creato:", r)
+                elif _aspetta_contenitore(V, cid, token) != "FINISHED":
+                    log("instagram: contenitore da link non pronto")
+                    cid = None
+            except Exception as e:
+                log("instagram: link temporaneo non riuscito:", e)
+                cid = None
+            if cid:
+                ULTIMO_IG["metodo"] = "link"
+                break
+            togli_link(temp)
+            temp = None
+            if tentativo == 0:
+                try:
+                    altro = scegli_audio_instagram(None, (audio_id,))
+                except Exception as e:
+                    altro = None
+                    log("instagram: secondo brano non scelto:", e)
+                if altro:
+                    log("instagram: riprovo con un altro brano di tendenza:", altro[1])
+                    ULTIMO_IG["brano"] = altro[1]
+                    dati["audio_configuration"] = json.dumps({"audio_id": altro[0], "audio_volume": 100,
+                                                              "video_volume": 1})
+                time.sleep(20)
+        if not cid:
+            log("instagram: link non riuscito due volte, provo il caricamento diretto")
     if not cid:
-        r = requests.post(f"{V}/{ig}/media", data={**dati, "upload_type": "resumable", "access_token": token}).json()
+        ULTIMO_IG["metodo"] = "diretto"
+        r = _meta("POST", f"{V}/{ig}/media", data={**dati, "upload_type": "resumable", "access_token": token})
         if "id" not in r and dati.pop("audio_name", None):     # il nome dell'audio non deve mai fermare il reel
             log("instagram: nome dell'audio rifiutato:", r)
-            r = requests.post(f"{V}/{ig}/media", data={**dati, "upload_type": "resumable", "access_token": token}).json()
+            r = _meta("POST", f"{V}/{ig}/media", data={**dati, "upload_type": "resumable", "access_token": token})
         if "id" not in r:
             togli_link(temp)
             raise RuntimeError(r)
@@ -1300,8 +1412,10 @@ def instagram_upload(path, cap, audio_id=None):
         if _aspetta_contenitore(V, cid, token) == "ERROR":
             togli_link(temp)
             raise RuntimeError(f"contenitore Instagram in errore ({cid})")
-    pub = requests.post(f"{V}/{ig}/media_publish", data={"creation_id": cid, "access_token": token}).json()
-    togli_link(temp)
+    try:
+        pub = _ig_pubblica(V, ig, cid, token)
+    finally:
+        togli_link(temp)
     if "id" not in pub:
         raise RuntimeError(pub)
     if PRIMO_COMMENTO and cap.get("commento"):
@@ -1495,6 +1609,8 @@ def publish_all(path, cap, creds, only, path_meta=None, publish_at=None, ig_nati
             continue
         try:
             results[name] = {"ok": True, "id": fns[name]()}
+            if name == "instagram":      # 4/11/2026: metodo (link/diretto) e brano davvero usato, per i controlli
+                results[name].update(ULTIMO_IG)
             log(name, "pubblicato")
         except Exception as e:
             results[name] = {"ok": False, "errore": str(e)[:500]}
@@ -1624,7 +1740,9 @@ def recupera_instagram(state, drive, work, save):
                 if scelto:
                     h["montaggio"]["musica_instagram"] = scelto[1]
             pid = instagram_upload(path, h["frase_dati"], scelto[0] if scelto else None)
-            h.setdefault("risultati", {})["instagram"] = {"ok": True, "id": pid, "recuperato": True}
+            h.setdefault("risultati", {})["instagram"] = {"ok": True, "id": pid, "recuperato": True, **ULTIMO_IG}
+            if ULTIMO_IG.get("brano"):
+                h["montaggio"]["musica_instagram"] = ULTIMO_IG["brano"]
             log(f"Instagram recuperato per l'orario {h['slot']}")
         except Exception as e:
             log("Recupero Instagram non riuscito:", e)
@@ -1666,11 +1784,16 @@ def main():
         job["piattaforme"] = [x for x in job["piattaforme"] if x in PLATFORMS   # solo quelle ancora attive
                               and not fermo(state, x)]
         path_meta = None
-        if job["frase"].get("tema") == "parlato":        # reel parlato: la sua voce, niente musica da cambiare
-            path_meta = path
-        elif MUSICA_NOSTRA & set(job["piattaforme"]):
-            path_meta, _ = versione_meta(path, state.get("musica_recenti_meta", []))
-        scelto = brano_ig(state, None) if "instagram" in job["piattaforme"] and path_meta and path_meta != path else None
+        parlato = job["frase"].get("tema") == "parlato"
+        try:      # 4/11/2026: il file in Pronti e' il 4K di YouTube: Instagram/Facebook vogliono la versione 1080p
+            if parlato and MUSICA_NOSTRA & set(job["piattaforme"]):   # reel parlato: la sua voce, niente musica
+                path_meta = overlay.versione_social(path, os.path.join(work, "riprova_social.mp4"), audio=True)
+            elif MUSICA_NOSTRA & set(job["piattaforme"]):
+                base = overlay.versione_social(path, os.path.join(work, "riprova_social.mp4"), audio=False)
+                path_meta, _ = versione_meta(base, state.get("musica_recenti_meta", []))
+        except Exception as e:
+            log("riprova: versione 1080p non riuscita:", e)
+        scelto = brano_ig(state, None) if "instagram" in job["piattaforme"] and path_meta and not parlato else None
         res = publish_all(path, job["frase"], creds, job["piattaforme"], path_meta,   # 3/11: brano DI INSTAGRAM
                           ig_nativo=(path_meta, scelto[0]) if scelto else None)
         job["tentativi"] += 1
@@ -1685,6 +1808,10 @@ def main():
         recupera_instagram(state, drive, work, save)
         ricontrolla_instagram(state, save)
         ricontrolla_youtube(state, creds, save)
+        try:
+            pulisci_temporanei(drive)
+        except Exception as e:
+            log("pulizia dei link temporanei non riuscita:", e)
 
     # pulizia di Drive (una volta al giorno, alla prima esecuzione della giornata)
     oggi = datetime.date.today().isoformat()
@@ -2022,7 +2149,16 @@ def main():
         try:
             tt = tt or overlay.versione_tiktok(out, os.path.join(work, "reel_tt.mp4"), audio=bool(voce))
             nome_tt = f"{target:%Y-%m-%d %H%M} - {frase['id']}.mp4"
-            drive.salva_tiktok(tt, nome_tt, testo_breve(frase), f"{target:%Y-%m-%d %H:%M}", voce)
+            for i in range(4):     # 4/11/2026: un SSL EOF di Drive aveva fatto saltare il TikTok delle 10
+                try:
+                    drive.salva_tiktok(tt, nome_tt, testo_breve(frase), f"{target:%Y-%m-%d %H:%M}", voce)
+                    break
+                except Exception as e:
+                    if i == 3:
+                        raise
+                    log("TikTok Studio: Drive non raggiungibile, riprovo:", e)
+                    time.sleep(10 * (i + 1))
+                    drive.riconnetti()
             log(f"Pronto per TikTok Studio ({os.path.getsize(tt) / 1e6:.1f} MB): {CARTELLA_TIKTOK}/{nome_tt}")
         except Exception as e:
             log("Versione per TikTok Studio non salvata su Drive:", e)
@@ -2050,6 +2186,8 @@ def main():
             log("Invio serale TikTok su Telegram non riuscito:", e)
     results.update(publish_all(out, frase, creds, [p for p in piatt if p not in results], out_meta,
                                ig_nativo=ig_nativo))
+    if results.get("instagram", {}).get("brano"):     # 4/11: al secondo tentativo Instagram ha preso un altro brano
+        info["musica_instagram"] = results["instagram"]["brano"]
     if tt and TIKTOK_BOZZE and not DRY:
         results["tiktok"] = tiktok_bozza(tt, frase, target)
     controlla_errori(state, results)

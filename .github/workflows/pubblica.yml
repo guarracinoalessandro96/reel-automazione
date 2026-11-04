@@ -140,13 +140,16 @@ jobs:
           FINE=$((SECONDS + 280 * 60))   # 30/10/2026: era 320; uno slot iniziato vicino alla fine (si prepara 50 min prima) sforava il limite di 355 e veniva ucciso
           while [ $SECONDS -lt $FINE ]; do
             if [ -n "$SLOT" ]; then
+              # 4/11/2026: quale versione del codice pubblica questo orario (per capire se un aggiornamento e' arrivato)
+              echo "Codice: $(git log -1 --format='%h %s')"
               python pubblica.py "$SLOT" || echo "Orario $SLOT: pubblicazione non riuscita"
               salva "$SLOT"
             fi
             SLOT=""
             while [ -z "$SLOT" ] && [ $SECONDS -lt $FINE ]; do
               sleep 240
-              git pull -q --rebase || git rebase --abort 2>/dev/null || true
+              # 4/11/2026: --autostash: un file cambiato e non salvato non deve bloccare gli aggiornamenti del codice
+              git pull -q --rebase --autostash || { echo "Aggiornamento del codice non riuscito"; git rebase --abort 2>/dev/null; } || true
               python3 ricevi_telegram.py > /dev/null 2>&1 || true
               [ -f PAUSA ] || SLOT="$(python3 orario.py)"
             done

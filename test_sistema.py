@@ -129,6 +129,48 @@ def main():
               and info.get("formato") == "parlato", f"parlato: {dim}, {dur:.2f}s (attesa {durata}), {lufs:.1f} LUFS")
     except Exception as e:
         check(False, f"parlato: non riuscito ({e})")
+    # musica di Instagram (4/11/2026), senza rete: traccia garantita, tendenze filtrate, secondo tentativo con un
+    # altro brano, ultima riserva il caricamento diretto, link sempre chiusi
+    import pubblica as p
+    vere = (p.tendenze_instagram, p.link_temporaneo, p.togli_link, p._meta, p._aspetta_contenitore, p._rupload,
+            p.time.sleep)
+    try:
+        traccia = p.con_traccia(overlay.senza_audio(fatto, os.path.join(D, "ig_senza_traccia.mp4")))
+        check(overlay.ha_audio(traccia), "Instagram: al video senza traccia se ne aggiunge una muta")
+        finti = [{"audio_id": "1", "title": "Spooky Night", "display_artist": "A", "duration_in_ms": 60000},
+                 {"audio_id": "2", "title": "Corto", "display_artist": "B", "duration_in_ms": 9000},
+                 {"audio_id": "3", "title": "Forte", "display_artist": "C", "duration_in_ms": 60000},
+                 {"audio_id": "4", "title": "Altro", "display_artist": "D", "duration_in_ms": 60000}]
+        p.tendenze_instagram = lambda pagine=3: finti
+        p.time.sleep = lambda s: None
+        scelti = {p.scegli_audio_instagram(None, (), ("C",))[0] for _ in range(30)}
+        check(scelti == {"4"}, f"Instagram: tendenze senza Halloween, brani corti e artista recente ({scelti})")
+        aperti, chiamate = [], []
+        p.link_temporaneo = lambda path: (aperti.append(path) or ("t", len(aperti)), "https://x")
+        p.togli_link = lambda t: t and aperti.pop()
+        p._rupload = lambda *a: {"success": True}
+
+        def finto_meta(metodo, url, **kw):
+            dati = kw.get("data", {})
+            chiamate.append((url.rsplit("/", 1)[-1], dati.get("video_url"), dati.get("audio_configuration")))
+            if url.endswith("media_publish"):
+                return {"id": "99"}
+            return {"id": f"c{len(chiamate)}"}
+        p._meta = finto_meta
+        cap = {"id": "x", "gancio": "Prova", "hashtag": ["#citazioni"]}
+        esiti = iter(["ERROR", "FINISHED"])           # primo link in errore, il secondo (altro brano) va
+        p._aspetta_contenitore = lambda V, cid, t: next(esiti)
+        check(p.instagram_upload(traccia, cap, "3") == "99" and p.ULTIMO_IG.get("metodo") == "link"
+              and '"4"' in chiamate[1][2] and not aperti, "Instagram: secondo tentativo con un altro brano, link chiusi")
+        chiamate.clear()
+        p._aspetta_contenitore = lambda V, cid, t: "ERROR" if len(chiamate) < 3 else "FINISHED"
+        check(p.instagram_upload(traccia, cap, "3") == "99" and p.ULTIMO_IG.get("metodo") == "diretto" and not aperti,
+              "Instagram: due link falliti -> caricamento diretto, link chiusi")
+    except Exception as e:
+        check(False, f"Instagram: prova del caricamento non riuscita ({e})")
+    finally:
+        (p.tendenze_instagram, p.link_temporaneo, p.togli_link, p._meta, p._aspetta_contenitore, p._rupload,
+         p.time.sleep) = vere
     # piano di riserva: musica inesistente -> deve uscire lo stesso, senza musica
     dst = os.path.join(D, "riserva_reel.mp4")
     try:
