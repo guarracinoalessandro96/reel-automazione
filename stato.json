@@ -9301,7 +9301,11 @@
     },
     "instagram": {
      "ok": true,
-     "id": "18137081896676532"
+     "id": "18137081896676532",
+     "tipo_audio": "ORIGINAL_SOUND",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": false,
@@ -9329,7 +9333,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "qee1LUHNKdM"
+     "id": "qee1LUHNKdM",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9338,11 +9343,42 @@
    },
    "spinto": false,
    "testo": "Lavora ogni giorno per rendere orgoglioso il bambino che eri."
+  },
+  {
+   "quando": "2026-11-04T11:01",
+   "slot": "2026-11-04 12:00",
+   "video": "IMG_4610.MOV",
+   "md5": "31bb48effa0731664d78533bf63b9efc",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-03T23:35+01:00",
+   "frase": "MIE-f93fec21",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "taking_flight_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "phonk_12.flac",
+    "musica_instagram": "Eri solo da incontrare - Alfa [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "rx4wSDFkBUs"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17895377913435910"
+    }
+   },
+   "spinto": true,
+   "testo": "Hai toccato il fondo. Ma da lì hai costruito le fondamenta."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-27 08:00",
   "2026-10-27 10:00",
   "2026-10-27 12:00",
   "2026-10-27 14:00",
@@ -9421,10 +9457,10 @@
   "2026-11-04 00:00",
   "2026-11-04 06:00",
   "2026-11-04 08:00",
-  "2026-11-04 10:00"
+  "2026-11-04 10:00",
+  "2026-11-04 12:00"
  ],
  "musica_recenti": [
-  "vibe_check_1.m4a",
   "i_might_be_late_1.m4a",
   "locked_in_2.m4a",
   "cartier_2.m4a",
@@ -9443,7 +9479,8 @@
   "mirror_mirror_2.m4a",
   "dusty_road_magic_1.m4a",
   "sweaty_staredown_2.m4a",
-  "way_back_home_2.m4a"
+  "way_back_home_2.m4a",
+  "taking_flight_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -9709,7 +9746,8 @@
   "MIE-54fb5833",
   "MIE-a017ec41",
   "MIE-903828b9",
-  "MIE-754744ce"
+  "MIE-754744ce",
+  "MIE-f93fec21"
  ],
  "temi_recenti": [
   "mentalita",
@@ -9723,21 +9761,7 @@
   "mentalita",
   "mentalita"
  ],
- "analisi": {
-  "1N4fn6HE4aPH6EdZzDx8nkg0AsbsCT23E": {
-   "nome": "IMG_4610.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.99,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "compagnia": "solo",
-   "registrato": "2026-11-03T23:35+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-11-03T22:36:20.214Z",
-   "parlato": null,
-   "momento": null
-  }
- },
+ "analisi": {},
  "pulizia": "2026-11-04",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -10171,10 +10195,13 @@
   "1oUUrqOyG_ohoVbN_XgtVtB-Hb-INSikP": {
    "usi": 1,
    "ultimo": "2026-11-03"
+  },
+  "1N4fn6HE4aPH6EdZzDx8nkg0AsbsCT23E": {
+   "usi": 1,
+   "ultimo": "2026-11-04"
   }
  },
  "musica_recenti_meta": [
-  "trap_11.flac",
   "deciso_10.flac",
   "deciso_12.flac",
   "phonk_13.flac",
@@ -10193,7 +10220,8 @@
   "energia_10.flac",
   "deciso_07.flac",
   "trap_06.flac",
-  "energia_09.flac"
+  "energia_09.flac",
+  "phonk_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10228,7 +10256,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10244,7 +10272,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "973266493758189",
   "849342490718599",
   "1127106596130760",
   "9513789255356881",
@@ -10273,7 +10300,8 @@
   "523966117385305",
   "4489870934582584",
   "974432747187721",
-  "736015230804186"
+  "736015230804186",
+  "1109108338433886"
  ],
  "ig_avviso_brano": "2026-11-04"
 }
