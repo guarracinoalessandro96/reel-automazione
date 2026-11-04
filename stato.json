@@ -9411,7 +9411,9 @@
     "instagram": {
      "ok": true,
      "id": "18138630073748019",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": "non leggibile"
     }
    },
    "spinto": true,
@@ -9439,7 +9441,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "oO0gpmPDu_w"
+     "id": "oO0gpmPDu_w",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9449,11 +9452,43 @@
    },
    "spinto": true,
    "testo": "Non guardare l'orologio. Fai come lui: continua ad andare avanti."
+  },
+  {
+   "quando": "2026-11-04T17:00",
+   "slot": "2026-11-04 18:00",
+   "video": "IMG_4055.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-912f99c6",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "death_duel_2.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "phonk_05.flac",
+    "musica_instagram": "November Rain - Guns N' Roses [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "xKZAtiOWX5c"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18099477884664131",
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "E se il rischio più grande fosse rimanere esattamente dove sei?"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-27 14:00",
   "2026-10-27 16:00",
   "2026-10-27 18:00",
   "2026-10-27 20:00",
@@ -9532,10 +9567,10 @@
   "2026-11-04 10:00",
   "2026-11-04 12:00",
   "2026-11-04 14:00",
-  "2026-11-04 16:00"
+  "2026-11-04 16:00",
+  "2026-11-04 18:00"
  ],
  "musica_recenti": [
-  "cartier_2.m4a",
   "kick_it_2.m4a",
   "wrangle_the_crazy_2.m4a",
   "monthaholic_1.m4a",
@@ -9554,7 +9589,8 @@
   "way_back_home_2.m4a",
   "taking_flight_3.m4a",
   "whoop_3.m4a",
-  "wrangle_the_crazy_3.m4a"
+  "wrangle_the_crazy_3.m4a",
+  "death_duel_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -9823,7 +9859,8 @@
   "MIE-754744ce",
   "MIE-f93fec21",
   "MIE-44a3b379",
-  "MIE-567fdc22"
+  "MIE-567fdc22",
+  "MIE-912f99c6"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10081,8 +10118,8 @@
    "ultimo": "2026-10-22"
   },
   "13Mbzphz708QlBEv9Bq_CNQzZaM4WplJL": {
-   "usi": 2,
-   "ultimo": "2026-10-22"
+   "usi": 3,
+   "ultimo": "2026-11-04"
   },
   "1a6QgtIzJRhmtmWHx-62JQcB90PeF3vKz": {
    "usi": 2,
@@ -10278,7 +10315,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_13.flac",
   "drive_06.flac",
   "phonk_01.flac",
   "phonk_14.flac",
@@ -10297,7 +10333,8 @@
   "energia_09.flac",
   "phonk_12.flac",
   "trap_13.flac",
-  "energia_08.flac"
+  "energia_08.flac",
+  "phonk_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10332,7 +10369,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10348,7 +10385,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "9513789255356881",
   "1283513152336813",
   "1852688158814799",
   "620334183626298",
@@ -10377,11 +10413,13 @@
   "736015230804186",
   "1109108338433886",
   "1724811595735449",
-  "2195838444698263"
+  "2195838444698263",
+  "242659649830381"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
   "Gracie Abrams",
-  "Arjan Dhillon"
+  "Arjan Dhillon",
+  "Guns N' Roses"
  ]
 }
