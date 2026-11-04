@@ -9338,7 +9338,11 @@
     },
     "instagram": {
      "ok": true,
-     "id": "17877013242593002"
+     "id": "17877013242593002",
+     "tipo_audio": "ORIGINAL_SOUND",
+     "controllo": [
+      "senza traccia audio"
+     ]
     }
    },
    "spinto": false,
@@ -9366,7 +9370,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "rx4wSDFkBUs"
+     "id": "rx4wSDFkBUs",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9375,11 +9380,43 @@
    },
    "spinto": true,
    "testo": "Hai toccato il fondo. Ma da lì hai costruito le fondamenta."
+  },
+  {
+   "quando": "2026-11-04T13:01",
+   "slot": "2026-11-04 14:00",
+   "video": "IMG_4044.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-44a3b379",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "whoop_3.m4a",
+    "stacchi": 4,
+    "testi": 1,
+    "musica_meta": "trap_13.flac",
+    "musica_instagram": "Here You Come, There You Go - Gracie Abrams [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "76RGdFo-X8Y"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18138630073748019",
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non lasciare che le tue emozioni ti controllino."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-27 10:00",
   "2026-10-27 12:00",
   "2026-10-27 14:00",
   "2026-10-27 16:00",
@@ -9458,10 +9495,10 @@
   "2026-11-04 06:00",
   "2026-11-04 08:00",
   "2026-11-04 10:00",
-  "2026-11-04 12:00"
+  "2026-11-04 12:00",
+  "2026-11-04 14:00"
  ],
  "musica_recenti": [
-  "i_might_be_late_1.m4a",
   "locked_in_2.m4a",
   "cartier_2.m4a",
   "kick_it_2.m4a",
@@ -9480,7 +9517,8 @@
   "dusty_road_magic_1.m4a",
   "sweaty_staredown_2.m4a",
   "way_back_home_2.m4a",
-  "taking_flight_3.m4a"
+  "taking_flight_3.m4a",
+  "whoop_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -9747,7 +9785,8 @@
   "MIE-a017ec41",
   "MIE-903828b9",
   "MIE-754744ce",
-  "MIE-f93fec21"
+  "MIE-f93fec21",
+  "MIE-44a3b379"
  ],
  "temi_recenti": [
   "mentalita",
@@ -9989,8 +10028,8 @@
    "ultimo": "2026-11-02"
   },
   "1KWHsB3C0gOYpMsl2sVukkzMm7VQeRgh5": {
-   "usi": 2,
-   "ultimo": "2026-10-22"
+   "usi": 3,
+   "ultimo": "2026-11-04"
   },
   "1PMBub0TfO5ny81j1Z7XXxvf01HLU8e9j": {
    "usi": 2,
@@ -10202,7 +10241,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_10.flac",
   "deciso_12.flac",
   "phonk_13.flac",
   "drive_06.flac",
@@ -10221,7 +10259,8 @@
   "deciso_07.flac",
   "trap_06.flac",
   "energia_09.flac",
-  "phonk_12.flac"
+  "phonk_12.flac",
+  "trap_13.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10256,7 +10295,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10272,7 +10311,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "849342490718599",
   "1127106596130760",
   "9513789255356881",
   "1283513152336813",
@@ -10301,7 +10339,11 @@
   "4489870934582584",
   "974432747187721",
   "736015230804186",
-  "1109108338433886"
+  "1109108338433886",
+  "1724811595735449"
  ],
- "ig_avviso_brano": "2026-11-04"
+ "ig_avviso_brano": "2026-11-04",
+ "ig_artisti_recenti": [
+  "Gracie Abrams"
+ ]
 }
