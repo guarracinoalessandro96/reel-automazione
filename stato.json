@@ -9447,7 +9447,9 @@
     "instagram": {
      "ok": true,
      "id": "18121467052760625",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": "non leggibile"
     }
    },
    "spinto": true,
@@ -9475,7 +9477,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "xKZAtiOWX5c"
+     "id": "xKZAtiOWX5c",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9485,11 +9488,43 @@
    },
    "spinto": true,
    "testo": "E se il rischio più grande fosse rimanere esattamente dove sei?"
+  },
+  {
+   "quando": "2026-11-04T19:00",
+   "slot": "2026-11-04 20:00",
+   "video": "IMG_4063.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-abd060ce",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "keep_it_movin_1.m4a",
+    "stacchi": 4,
+    "testi": 1,
+    "musica_meta": "drive_02.flac",
+    "musica_instagram": "Gangsta (Harley Quinn & Joker Flashback Version) - Kehlani [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "VglJRL-VTnk"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18118554043820461",
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Non cercare di essere perfetto. Cerca di essere migliore di ieri."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-27 16:00",
   "2026-10-27 18:00",
   "2026-10-27 20:00",
   "2026-10-28 00:00",
@@ -9568,10 +9603,10 @@
   "2026-11-04 12:00",
   "2026-11-04 14:00",
   "2026-11-04 16:00",
-  "2026-11-04 18:00"
+  "2026-11-04 18:00",
+  "2026-11-04 20:00"
  ],
  "musica_recenti": [
-  "kick_it_2.m4a",
   "wrangle_the_crazy_2.m4a",
   "monthaholic_1.m4a",
   "dusty_road_magic_3.m4a",
@@ -9590,7 +9625,8 @@
   "taking_flight_3.m4a",
   "whoop_3.m4a",
   "wrangle_the_crazy_3.m4a",
-  "death_duel_2.m4a"
+  "death_duel_2.m4a",
+  "keep_it_movin_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -9860,7 +9896,8 @@
   "MIE-f93fec21",
   "MIE-44a3b379",
   "MIE-567fdc22",
-  "MIE-912f99c6"
+  "MIE-912f99c6",
+  "MIE-abd060ce"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10166,8 +10203,8 @@
    "ultimo": "2026-10-23"
   },
   "1pRzrCnxNrpVE44ol_vENtqhmbuRc2YAN": {
-   "usi": 2,
-   "ultimo": "2026-10-23"
+   "usi": 3,
+   "ultimo": "2026-11-04"
   },
   "1gE_FyJzF7yg-nilpN_tgldcTInZcTmkA": {
    "usi": 2,
@@ -10315,7 +10352,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_06.flac",
   "phonk_01.flac",
   "phonk_14.flac",
   "deciso_06.flac",
@@ -10334,7 +10370,8 @@
   "phonk_12.flac",
   "trap_13.flac",
   "energia_08.flac",
-  "phonk_05.flac"
+  "phonk_05.flac",
+  "drive_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10369,7 +10406,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10385,7 +10422,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1283513152336813",
   "1852688158814799",
   "620334183626298",
   "272114135386704",
@@ -10414,12 +10450,13 @@
   "1109108338433886",
   "1724811595735449",
   "2195838444698263",
-  "242659649830381"
+  "242659649830381",
+  "258759081507255"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Gracie Abrams",
   "Arjan Dhillon",
-  "Guns N' Roses"
+  "Guns N' Roses",
+  "Kehlani"
  ]
 }
