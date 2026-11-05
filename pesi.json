@@ -1,14 +1,14 @@
 {
  "temi": {
   "amicizia": 0.99,
-  "imprenditore": 1.05,
-  "mentalita": 0.97,
-  "palestra": 1.12,
+  "imprenditore": 1.07,
+  "mentalita": 0.96,
+  "palestra": 1.13,
   "dieta": 1.09,
-  "regole": 1.32,
-  "storia": 0.8
+  "regole": 1.35,
+  "storia": 0.81
  },
- "aggiornato": "2026-11-04",
+ "aggiornato": "2026-11-05",
  "frasi_vincenti": [
   "MIE-02d87ee7",
   "MIE-043e8cf1",
@@ -80,18 +80,19 @@
   "STO-07",
   "STO-08",
   "STO-10",
-  "STO-20"
+  "STO-20",
+  "STO-21"
  ],
  "formati": {
-  "frase": 1.02,
-  "regole": 1.59,
-  "montaggio": 1.23,
-  "gancio": 0.73,
-  "frase8": 1.59,
-  "racconto": 0.61,
-  "racconto_lento": 0.57,
-  "dieci": 0.61,
-  "dieci_due": 0.69,
+  "frase": 1.17,
+  "regole": 1.83,
+  "montaggio": 1.41,
+  "gancio": 0.83,
+  "frase8": 1.83,
+  "racconto": 0.7,
+  "racconto_lento": 0.65,
+  "dieci": 0.65,
+  "dieci_due": 0.62,
   "dieci_broll": 0.4
  },
  "esperimento_formati": {
@@ -103,12 +104,12 @@
   "phonk",
   "vibe_check",
   "way_back_home",
-  "wrangle_the_crazy",
   "ancient_civilisations",
-  "keep_it_movin",
-  "cutscene_crush",
+  "locked_in",
   "dusty_road_magic",
-  "death_duel"
+  "death_duel",
+  "intergalactic",
+  "the_light"
  ],
  "clip_forti": [
   "IMG_4037.MOV",
@@ -124,12 +125,12 @@
   "IMG_3833.mov",
   "IMG_3832.mov",
   "IMG_4061.MOV",
-  "IMG_4126.MOV",
   "Alessandro Guarracino sta trasmettendo dal vivo..MOV",
   "IMG_3330.mov",
-  "IMG_4121.mov",
+  "IMG_4126.MOV",
   "IMG_3604.mov",
   "IMG_4294.MOV",
-  "IMG_4131.mov"
+  "IMG_4131.mov",
+  "IMG_4044.MOV"
  ]
 }
