@@ -9627,7 +9627,9 @@
     "instagram": {
      "ok": true,
      "id": "17884191705628790",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -9655,7 +9657,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "3OClUSy3Y3I"
+     "id": "3OClUSy3Y3I",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9665,11 +9668,43 @@
    },
    "spinto": false,
    "testo": "Arriverà il momento di scegliere tra la vita che conosci e la vita che vuoi."
+  },
+  {
+   "quando": "2026-11-05T09:01",
+   "slot": "2026-11-05 10:00",
+   "video": "IMG_4116.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-5fc47f5e",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "cutscene_crush_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "musica_meta": "deciso_01.flac",
+    "musica_instagram": "Dimensions - Sam Marshall"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "E_DNdbn7w6M"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18062007563546083",
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Se riesco a vederlo nella mia mente, posso renderlo la mia realtà."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-28 04:00",
   "2026-10-28 06:00",
   "2026-10-28 08:00",
   "2026-10-28 10:00",
@@ -9748,10 +9783,10 @@
   "2026-11-04 22:00",
   "2026-11-05 00:00",
   "2026-11-05 06:00",
-  "2026-11-05 08:00"
+  "2026-11-05 08:00",
+  "2026-11-05 10:00"
  ],
  "musica_recenti": [
-  "cutscene_crush_3.m4a",
   "way_back_home_3.m4a",
   "moon_vision_1.m4a",
   "majestic_12_2.m4a",
@@ -9770,7 +9805,8 @@
   "ancient_civilisations_2.m4a",
   "vibe_check_3.m4a",
   "dusty_road_magic_2.m4a",
-  "way_back_home_1.m4a"
+  "way_back_home_1.m4a",
+  "cutscene_crush_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10045,7 +10081,8 @@
   "MIE-bbeb47d3",
   "MIE-babfd69b",
   "MIE-77970036",
-  "MIE-f8c62fcf"
+  "MIE-f8c62fcf",
+  "MIE-5fc47f5e"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10371,8 +10408,8 @@
    "ultimo": "2026-10-24"
   },
   "1RffuiBvFRbbbwuF-Qy2QfHTSEOUDPE8a": {
-   "usi": 2,
-   "ultimo": "2026-10-24"
+   "usi": 3,
+   "ultimo": "2026-11-05"
   },
   "1EIkrvNWHYfhUXhSzzqvvdiEFEPhXxmSi": {
    "usi": 2,
@@ -10500,7 +10537,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_06.flac",
   "energia_02.flac",
   "deciso_05.flac",
   "drive_05.flac",
@@ -10519,7 +10555,8 @@
   "deciso_12.flac",
   "trap_09.flac",
   "phonk_14.flac",
-  "energia_07.flac"
+  "energia_07.flac",
+  "deciso_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10554,7 +10591,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10570,7 +10607,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "981510330704369",
   "1661496314823289",
   "2373852472923170",
   "581412716058691",
@@ -10599,12 +10635,13 @@
   "1403113822033083",
   "886601410818919",
   "254969200347498",
-  "554133449182324"
+  "554133449182324",
+  "302973472523675"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Ricchi E Poveri",
   "DJ Redblack",
-  "Rockwell"
+  "Rockwell",
+  "Sam Marshall"
  ]
 }
