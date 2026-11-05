@@ -9859,7 +9859,9 @@
     "instagram": {
      "ok": true,
      "id": "18134279836789337",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -9887,7 +9889,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "p1g3xH7ECQ8"
+     "id": "p1g3xH7ECQ8",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9897,11 +9900,43 @@
    },
    "spinto": true,
    "testo": "Il problema non è lasciar andare. È accettare che non tornerà."
+  },
+  {
+   "quando": "2026-11-05T21:00",
+   "slot": "2026-11-05 22:00",
+   "video": "IMG_4274.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-ed8b4192",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "ancient_civilisations_3.m4a",
+    "stacchi": 4,
+    "testi": 1,
+    "musica_meta": "trap_11.flac",
+    "musica_instagram": "Winter Magic - Winterbell [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "rwLedVQGYRg"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17894117688654029",
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Sono fiero della mia nuova versione: sceglie la crescita invece della comodità."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-28 16:00",
   "2026-10-28 18:00",
   "2026-10-28 20:00",
   "2026-10-28 22:00",
@@ -9980,10 +10015,10 @@
   "2026-11-05 14:00",
   "2026-11-05 16:00",
   "2026-11-05 18:00",
-  "2026-11-05 20:00"
+  "2026-11-05 20:00",
+  "2026-11-05 22:00"
  ],
  "musica_recenti": [
-  "van_life_rager_1.m4a",
   "mirror_mirror_2.m4a",
   "dusty_road_magic_1.m4a",
   "sweaty_staredown_2.m4a",
@@ -10002,7 +10037,8 @@
   "wrangle_the_crazy_2.m4a",
   "intergalactic_2.m4a",
   "death_duel_3.m4a",
-  "locked_in_1.m4a"
+  "locked_in_1.m4a",
+  "ancient_civilisations_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10283,7 +10319,8 @@
   "MIE-cdde201b",
   "MIE-8ec49131",
   "MIE-061c0395",
-  "MIE-a9252760"
+  "MIE-a9252760",
+  "MIE-ed8b4192"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10657,8 +10694,8 @@
    "ultimo": "2026-10-27"
   },
   "1VEPb54Y1oSgn1WwoX7EtQNTsLCC7CB4u": {
-   "usi": 2,
-   "ultimo": "2026-10-27"
+   "usi": 3,
+   "ultimo": "2026-11-05"
   },
   "1ihXK6xEsYtfnFtAgP15kNGGE71G07W-f": {
    "usi": 2,
@@ -10738,7 +10775,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_11.flac",
   "energia_10.flac",
   "deciso_07.flac",
   "trap_06.flac",
@@ -10757,7 +10793,8 @@
   "trap_01.flac",
   "energia_03.flac",
   "phonk_10.flac",
-  "deciso_10.flac"
+  "deciso_10.flac",
+  "trap_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10792,7 +10829,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10808,7 +10845,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "3846481242297548",
   "1781233772812838",
   "5301582899854512",
   "1283788913238327",
@@ -10837,12 +10873,13 @@
   "1817045786209572",
   "2575057322947776",
   "972513352266790",
-  "257338181818606"
+  "257338181818606",
+  "856093300426979"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Pop Filters",
   "The Script",
-  "Flo Rida"
+  "Flo Rida",
+  "Winterbell"
  ]
 }
