@@ -470,7 +470,7 @@ FORMATI_30 = ("racconto", "racconto_broll", "racconto_lento")
 # tre varianti a turno (formati_nuovi.py). Momento e parlato restano.
 TUTTO_10S = True
 FORMATI_10 = ("dieci", "dieci_due", "dieci_broll")
-ORARIO_FOTO, FOTO_DAL = "18:00", "2026-11-09"   # 1/11/2026: un reel al giorno con le foto della giornata (foto_giornata.py)
+ORARIO_FOTO, FOTO_DAL = ("12:00", "18:00"), "2026-11-05"   # 1/11/2026: reel con le foto della giornata (foto_giornata.py); 5/11: 43 foto caricate -> si parte oggi, 2 al giorno finche' ce ne sono
 COMMENTI_SU_TELEGRAM = False   # 31/10/2026: "non voglio i commenti": su Telegram solo errori e statistiche delle 8
 ORARIO_LISTA = "spenta"      # 31/10/2026: prima tutte le frasi delle foto; per riaccenderla "18:00". Formato lista, da salvare e mandare (un post cosi' fa 1 invio ogni 2 like)
 
@@ -2260,6 +2260,12 @@ def main():
         shutil.rmtree(work, ignore_errors=True)
         raise
     log("Montato:", info)
+    # 5/11/2026: il reel con le foto NON usa il video scelto (resta solo come ripiego se le foto non si montano): quel
+    # video non va segnato come pubblicato ne' spostato nell'archivio, e la clip d'archivio non conta come usata
+    con_foto = info.get("formato") == "dieci_foto"
+    if con_foto:
+        video, clip, nome = None, None, "Foto della giornata"
+        an = dict(an, registrato=None)
     frase = dict(frase, copertina_ms=info.get("copertina_ms"),   # volte: per un titolo YouTube diverso se la frase torna
                  volte=sum(1 for h in state["storico"] if h.get("frase") == frase.get("id")))
     out_meta = None
@@ -2381,12 +2387,14 @@ def main():
 
     # 5. archivio e stato
     oggi = datetime.date.today().isoformat()
+    if con_foto and not DRY:
+        foto_giornata.segna_usate(drive, info.get("foto_ids", []))
     if clip:
         u = state["archivio_usi"].setdefault(clip["id"], {})
         u["usi"] = u.get("usi", 0) + 1
         u["ultimo"] = oggi
     spostato = False
-    if not clip:             # video nuovo: si tiene per riusarlo in futuro
+    if video:                # video nuovo: si tiene per riusarlo in futuro
         meta_arch = {"scena": an.get("scena"), "fascia": fascia_video(an), "compagnia": an.get("compagnia"),
                      "registrato": an.get("registrato"), "parlato": "1" if an.get("parlato") else None}
         stem = os.path.splitext(nome)[0]
@@ -2413,7 +2421,7 @@ def main():
     pronti_id = None
     for tentativo in range(2):          # il reel e' gia' uscito: un errore qui non deve far perdere lo stato
         try:
-            pronti_id = drive.archive(None if (clip or spostato) else video["id"], out,
+            pronti_id = drive.archive(None if (clip or spostato or not video) else video["id"], out,
                                       f"{frase['id']} - {os.path.splitext(nome)[0]}.mp4", carica=bool(failed))
             break
         except Exception as e:

@@ -7,7 +7,7 @@ formato 1080x1920, durata, audio presente, volume vicino a -15 LUFS e picchi sot
 (musica inesistente -> il reel esce lo stesso, senza musica), parole chiave nei nomi file, scorta musica e citazioni.
 Usa video piccoli: gira in pochi minuti. Esce con codice 1 se qualcosa non va.
 """
-import glob, json, os, re, subprocess, sys, tempfile
+import datetime, glob, json, os, re, subprocess, sys, tempfile
 import overlay, scena
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -233,6 +233,31 @@ def main():
               "riserva: con un brano mancante il reel esce lo stesso (senza musica, con zoom e colore)")
     except Exception as e:
         check(False, f"riserva: non ha funzionato ({e})")
+    # foto della giornata: una sola foto per raffica e foto da tutta la giornata
+    import foto_giornata as fg
+    raffica = [{"name": f"IMG_{i}", "quando": f"2026-11-04 21:42:{40 + i:02d}"} for i in range(8)]
+    altre = [{"name": f"IMG_{50 + i}", "quando": f"2026-11-04 22:{10 + i * 5:02d}:00"} for i in range(6)]
+    c = fg.scegli(raffica + altre)
+    check(sum(f in raffica for f in c) <= 3 and len(c) == 8 and c[-1] is altre[-1],
+          f"foto: raffica sfoltita e giornata intera ({[f['name'] for f in c]})")
+    check(str("2026-11-05 12:00").endswith(p.ORARIO_FOTO), "foto: orario 12:00 tra gli orari delle foto")
+
+    class FintoDrive:            # pronte(): avanzi di un giorno passato, foto usate o fallite 2 volte saltate
+        def __init__(self, files): self.files = files
+        def cartella(self, n): return "c"
+        @property
+        def api(self): return self
+        def files(self): return self
+        def list(self, **kw): return self
+        def execute(self): return {"files": self.files}
+    vecchio = (datetime.date.today() - datetime.timedelta(days=5)).isoformat()
+    oggi_f = datetime.date.today().isoformat()
+    fs = [{"id": f"v{i}", "name": f"v{i}", "createdTime": f"{vecchio}T10:0{i}:00"} for i in range(3)]
+    fs += [{"id": "u", "name": "u", "createdTime": f"{oggi_f}T09:00:00", "appProperties": {"usata": "1"}},
+           {"id": "x", "name": "x", "createdTime": f"{oggi_f}T09:01:00", "appProperties": {"fallita": "2"}}]
+    check([f["id"] for f in fg.pronte(FintoDrive(fs))] == ["v0", "v1", "v2"],
+          "foto: 3 avanzi di un giorno passato escono, usate e fallite saltate")
+    check(fg.pronte(FintoDrive(fs[3:])) == [], "foto: nessun reel con foto usate o fallite")
     for n, s in (("palestra_1.mov", "palestra"), ("cibo-pranzo.MOV", "cibo"), ("IMG_0001 pacchi.mov", "pacchi")):
         check(scena.riconosci([], n)[0] == s, f"nome file '{n}' -> {s}")
     for g in ("phonk", "drive", "house", "lofi", "tropical", "trap", "caldo"):

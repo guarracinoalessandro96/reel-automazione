@@ -1,5 +1,6 @@
 """
 Video mandati da Alessandro al bot Telegram -> cartella Drive "Da pubblicare" (16/10/2026).
+Foto (5/11/2026) -> cartella "Foto della giornata" (foto_giornata.py).
 Caricare su Drive dall'iPhone era lento: su Telegram basta condividere i video al bot, l'invio e' velocissimo.
 Gira a ogni controllo di GitHub (ogni 10 minuti), prima di tutto il resto. Solo libreria standard.
 
@@ -18,6 +19,7 @@ AIUTO = ("COMANDI DEL BOT\n\n"
          "PAUSA\nferma le pubblicazioni\n\n"
          "RIPRENDI\nriparte con le pubblicazioni\n\n"
          "Per mettere video in coda: mandali qui come video normali\n\n"
+         "FOTO\nmandale qui come FILE (graffetta > File): diventano i reel con le foto delle 12 e delle 18\n\n"
          "MOMENTO\nse sotto il video scrivi cosa sta succedendo (es. 'Roccaraso oggi, 500 persone in fila'), "
          "esce al prossimo orario con il tuo titolo e il suono vero")
 
@@ -44,10 +46,21 @@ def token_google():
     return json.load(urllib.request.urlopen("https://oauth2.googleapis.com/token", dati, timeout=30))["access_token"]
 
 
-def carica_su_drive(token, nome, contenuto, mime, titolo=""):
+def cartella_foto(token):
+    """La cartella Drive "Foto della giornata" (foto_giornata.py), cercata per nome."""
+    q = "name = 'Foto della giornata' and mimeType = 'application/vnd.google-apps.folder' and trashed = false"
+    url = "https://www.googleapis.com/drive/v3/files?" + urllib.parse.urlencode({"q": q, "fields": "files(id)"})
+    req = urllib.request.Request(url, headers={"Authorization": "Bearer " + token})
+    trovate = json.load(urllib.request.urlopen(req, timeout=30)).get("files", [])
+    if not trovate:
+        raise RuntimeError("cartella 'Foto della giornata' non trovata su Drive")
+    return trovate[0]["id"]
+
+
+def carica_su_drive(token, nome, contenuto, mime, titolo="", cartella=None):
     """titolo = la scritta sotto il video su Telegram: il video diventa un MOMENTO (pubblica.monta_momento)."""
     confine = uuid.uuid4().hex
-    dati_file = {"name": nome, "parents": [ENV("DRIVE_FOLDER_DA_PUBBLICARE")]}
+    dati_file = {"name": nome, "parents": [cartella or ENV("DRIVE_FOLDER_DA_PUBBLICARE")]}
     if titolo:
         dati_file.update(description=titolo, appProperties={"momento": "1"})
     meta = json.dumps(dati_file).encode()
@@ -73,6 +86,15 @@ def testo_stato(token):
     ultimi = [h for h in st.get("storico", []) if h.get("slot") and not h.get("in_corso")]
     righe = ["STATO DEL SISTEMA", "In pausa" if os.path.exists(os.path.join(QUI, "PAUSA")) else "Attivo", ""]
     righe += ["VIDEO NUOVI IN CODA", str(video_in_coda(token)), ""]
+    try:                         # 5/11/2026: anche le foto per i reel delle 12 e delle 18
+        q = (f"'{cartella_foto(token)}' in parents and trashed = false and mimeType contains 'image/' "
+             "and not appProperties has { key='usata' and value='1' }")
+        url = "https://www.googleapis.com/drive/v3/files?" + urllib.parse.urlencode({"q": q, "fields": "files(id)",
+                                                                                   "pageSize": 1000})
+        req = urllib.request.Request(url, headers={"Authorization": "Bearer " + token})
+        righe += ["FOTO DA USARE", str(len(json.load(urllib.request.urlopen(req, timeout=30)).get("files", []))), ""]
+    except Exception:
+        pass
     if ultimi:
         h = ultimi[-1]
         esiti = ", ".join(f"{p} {'ok' if r.get('ok') else 'ERRORE'}" for p, r in h.get("risultati", {}).items())
@@ -111,7 +133,7 @@ def main():
     agg = tg("getUpdates", timeout=0).get("result", [])
     if not agg:
         return
-    token, caricati, problemi, momenti = None, [], [], []
+    token, caricati, problemi, momenti, foto_salvate, cartella_f = None, [], [], [], [], None
     for u in agg:
         m = u.get("message") or {}
         if str(m.get("chat", {}).get("id")) != str(ENV("TELEGRAM_CHAT_ID")):
@@ -133,8 +155,25 @@ def main():
             except Exception as e:
                 scrivi(f"ATTENZIONE\nComando non riuscito: {str(e)[:150]}")
             continue
-        f = m.get("video") or (m.get("document") if (m.get("document") or {}).get("mime_type", "").startswith("video/")
-                               else None)
+        # 5/11/2026: anche le FOTO mandate al bot vanno nei reel con le foto (cartella "Foto della giornata").
+        # Meglio mandarle "come file": cosi' Telegram non le comprime e resta la data dello scatto.
+        doc = m.get("document") or {}
+        foto = (m.get("photo") or [None])[-1] or (doc if doc.get("mime_type", "").startswith("image/") else None)
+        if foto:
+            try:
+                path = tg("getFile", file_id=foto["file_id"])["result"]["file_path"]
+                dati = urllib.request.urlopen(f"https://api.telegram.org/file/bot{ENV('TELEGRAM_BOT_TOKEN')}/{path}",
+                                              timeout=300).read()
+                token = token or token_google()
+                cartella_f = cartella_f or cartella_foto(token)
+                est = os.path.splitext(foto.get("file_name") or path)[1] or ".jpg"
+                nome = f"TG_{time.strftime('%Y%m%d_%H%M%S', time.gmtime(m.get('date', time.time())))}_{m['message_id']}{est}"
+                carica_su_drive(token, nome, dati, foto.get("mime_type") or "image/jpeg", cartella=cartella_f)
+                foto_salvate.append(nome)
+            except Exception as e:
+                problemi.append(f"una foto non e' stata salvata ({str(e)[:120]})")
+            continue
+        f = m.get("video") or (doc if doc.get("mime_type", "").startswith("video/") else None)
         if not f:
             continue
         if f.get("file_size", 0) > LIMITE:
@@ -163,7 +202,7 @@ def main():
             righe += ["", "MOMENTO", "Esce al prossimo orario con il tuo titolo:", t]
         righe += problemi
         scrivi("\n".join(righe))
-    print(f"Telegram: {len(caricati)} video in coda, {len(problemi)} problemi")
+    print(f"Telegram: {len(caricati)} video in coda, {len(foto_salvate)} foto, {len(problemi)} problemi")
 
 
 if __name__ == "__main__":

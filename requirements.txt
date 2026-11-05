@@ -1,6 +1,7 @@
 opencv-python-headless<5
 numpy
 Pillow
+pillow-heif
 imageio-ffmpeg==0.6.0
 requests
 google-api-python-client
