@@ -10,9 +10,15 @@ import formati_nuovi as fn
 import overlay as ov
 try:                         # 5/11/2026: le foto dell'iPhone arrivano in HEIC, che Pillow da solo non apre
     import pillow_heif
+except ImportError:          # lavoro di GitHub partito prima dell'aggiornamento: si installa adesso (come parlato.py)
+    import sys
+    subprocess.run([sys.executable, "-m", "pip", "install", "-q", "pillow-heif"], timeout=300)
+    try:
+        import pillow_heif
+    except ImportError:
+        pillow_heif = None
+if pillow_heif:
     pillow_heif.register_heif_opener()
-except ImportError:
-    pass
 
 CARTELLA = "Foto della giornata"
 USATE = "Foto usate"         # 5/11/2026: dove finiscono le foto gia' uscite in un reel
@@ -198,7 +204,7 @@ def monta(foto, frase, dst, musiche, drive, work):
     try:
         info = make_foto([p for _, p in locali], frase, dst, musiche)
     except Exception:
-        for f, _ in locali:      # conta il fallimento: dopo 2 la foto si salta (vedi pronte)
+        for f, _ in (locali if pillow_heif else []):   # conta il fallimento (non se manca il lettore HEIC): dopo 2 si salta
             prop = f.get("appProperties") or {}
             try:
                 drive.api.files().update(fileId=f["id"], body={"appProperties": {
