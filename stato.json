@@ -9895,7 +9895,9 @@
     "instagram": {
      "ok": true,
      "id": "18132017287864286",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -9923,7 +9925,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "rwLedVQGYRg"
+     "id": "rwLedVQGYRg",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9933,11 +9936,43 @@
    },
    "spinto": true,
    "testo": "Sono fiero della mia nuova versione: sceglie la crescita invece della comodità."
+  },
+  {
+   "quando": "2026-11-05T23:00",
+   "slot": "2026-11-06 00:00",
+   "video": "IMG_4271.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-ef3aefc2",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "dusty_road_magic_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "musica_meta": "phonk_02.flac",
+    "musica_instagram": "Bad Time - Paramveer Singh katoch [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "-KBeFwT3u-o"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17967564683981780",
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Il tempo non cura tutto. Ma insegna a reggere."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-28 18:00",
   "2026-10-28 20:00",
   "2026-10-28 22:00",
   "2026-10-29 00:00",
@@ -10016,10 +10051,10 @@
   "2026-11-05 16:00",
   "2026-11-05 18:00",
   "2026-11-05 20:00",
-  "2026-11-05 22:00"
+  "2026-11-05 22:00",
+  "2026-11-06 00:00"
  ],
  "musica_recenti": [
-  "mirror_mirror_2.m4a",
   "dusty_road_magic_1.m4a",
   "sweaty_staredown_2.m4a",
   "way_back_home_2.m4a",
@@ -10038,7 +10073,8 @@
   "intergalactic_2.m4a",
   "death_duel_3.m4a",
   "locked_in_1.m4a",
-  "ancient_civilisations_3.m4a"
+  "ancient_civilisations_3.m4a",
+  "dusty_road_magic_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10320,7 +10356,8 @@
   "MIE-8ec49131",
   "MIE-061c0395",
   "MIE-a9252760",
-  "MIE-ed8b4192"
+  "MIE-ed8b4192",
+  "MIE-ef3aefc2"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10698,8 +10735,8 @@
    "ultimo": "2026-11-05"
   },
   "1ihXK6xEsYtfnFtAgP15kNGGE71G07W-f": {
-   "usi": 2,
-   "ultimo": "2026-10-28"
+   "usi": 3,
+   "ultimo": "2026-11-05"
   },
   "1b6jLZrzSs8YwKhy4QEb382s6yYZIdhzZ": {
    "usi": 2,
@@ -10775,7 +10812,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_10.flac",
   "deciso_07.flac",
   "trap_06.flac",
   "energia_09.flac",
@@ -10794,7 +10830,8 @@
   "energia_03.flac",
   "phonk_10.flac",
   "deciso_10.flac",
-  "trap_11.flac"
+  "trap_11.flac",
+  "phonk_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10829,7 +10866,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_broll",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10845,7 +10882,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1781233772812838",
   "5301582899854512",
   "1283788913238327",
   "617195401283615",
@@ -10874,12 +10910,13 @@
   "2575057322947776",
   "972513352266790",
   "257338181818606",
-  "856093300426979"
+  "856093300426979",
+  "2201065153808959"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "The Script",
   "Flo Rida",
-  "Winterbell"
+  "Winterbell",
+  "Paramveer Singh katoch"
  ]
 }
