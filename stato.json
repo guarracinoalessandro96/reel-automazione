@@ -9663,7 +9663,9 @@
     "instagram": {
      "ok": true,
      "id": "18110601209175486",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -9691,7 +9693,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "E_DNdbn7w6M"
+     "id": "E_DNdbn7w6M",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9701,11 +9704,51 @@
    },
    "spinto": true,
    "testo": "Se riesco a vederlo nella mia mente, posso renderlo la mia realtà."
+  },
+  {
+   "quando": "2026-11-05T11:00",
+   "slot": "2026-11-05 12:00",
+   "video": "Foto della giornata",
+   "md5": null,
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-3f3e1853",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_foto",
+    "durata": 10.002,
+    "musica": "moon_vision_2.m4a",
+    "stacchi": 6,
+    "testi": 1,
+    "foto_ids": [
+     "1W6Aii1xom1092_pVAeAwH8R2Pto7o3xY",
+     "1-AC6DSES_ZIbOVq0gUeEdoil0l5FMJ12",
+     "120sBEDESJIa3xqmVSTtpiIKCJ4D37udz",
+     "11Ugqg9tN5nvJM7yg36t3Sa_ajhbvKt5A",
+     "1bYnlw3pfpQgACFoE0r6XuNmKY0TtMosp",
+     "17rrmf1r01shvplUWOjsS97yZtdwFo5pC"
+    ],
+    "musica_meta": "phonk_01.flac",
+    "musica_instagram": "Ovunque Sarai - Irama [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "WxFOJuDb-l4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17992408578099463",
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Se c'è anche solo una possibilità di ottenere ciò che vuoi, rischia."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-28 06:00",
   "2026-10-28 08:00",
   "2026-10-28 10:00",
   "2026-10-28 12:00",
@@ -9784,10 +9827,10 @@
   "2026-11-05 00:00",
   "2026-11-05 06:00",
   "2026-11-05 08:00",
-  "2026-11-05 10:00"
+  "2026-11-05 10:00",
+  "2026-11-05 12:00"
  ],
  "musica_recenti": [
-  "way_back_home_3.m4a",
   "moon_vision_1.m4a",
   "majestic_12_2.m4a",
   "ancient_civilisations_1.m4a",
@@ -9806,7 +9849,8 @@
   "vibe_check_3.m4a",
   "dusty_road_magic_2.m4a",
   "way_back_home_1.m4a",
-  "cutscene_crush_1.m4a"
+  "cutscene_crush_1.m4a",
+  "moon_vision_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10082,7 +10126,8 @@
   "MIE-babfd69b",
   "MIE-77970036",
   "MIE-f8c62fcf",
-  "MIE-5fc47f5e"
+  "MIE-5fc47f5e",
+  "MIE-3f3e1853"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10537,7 +10582,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_02.flac",
   "deciso_05.flac",
   "drive_05.flac",
   "energia_04.flac",
@@ -10556,7 +10600,8 @@
   "trap_09.flac",
   "phonk_14.flac",
   "energia_07.flac",
-  "deciso_01.flac"
+  "deciso_01.flac",
+  "phonk_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10591,7 +10636,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_foto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10607,7 +10652,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1661496314823289",
   "2373852472923170",
   "581412716058691",
   "522339937196006",
@@ -10636,12 +10680,13 @@
   "886601410818919",
   "254969200347498",
   "554133449182324",
-  "302973472523675"
+  "302973472523675",
+  "622196672168620"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "DJ Redblack",
   "Rockwell",
-  "Sam Marshall"
+  "Sam Marshall",
+  "Irama"
  ]
 }
