@@ -9779,7 +9779,9 @@
     "instagram": {
      "ok": true,
      "id": "17924741595222712",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -9807,7 +9809,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "2wE1XRuAmig"
+     "id": "2wE1XRuAmig",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9817,11 +9820,51 @@
    },
    "spinto": true,
    "testo": "Non aspettare che passi la tempesta. Impara a lavorare sotto la pioggia."
+  },
+  {
+   "quando": "2026-11-05T17:00",
+   "slot": "2026-11-05 18:00",
+   "video": "Foto della giornata",
+   "md5": null,
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-061c0395",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_foto",
+    "durata": 10.002,
+    "musica": "death_duel_3.m4a",
+    "stacchi": 6,
+    "testi": 1,
+    "foto_ids": [
+     "1gmeuK9RRenQ78tzsZdPzlM1t9MQFUPoE",
+     "1GUEpUJpPuibfdKNTFQNee-XsxFtUCUSb",
+     "1P-3dxo_IAN4-OEGr7oCJy6CB49GzZH_l",
+     "1AQL6k8cgSKj0o0Rq0WnnCIQdeuh0K53W",
+     "1UH98ZVMXtrUWJU2wxo7DdNEN-ALwL4lJ",
+     "1utNFYPryBGjGgTaiEMuJwBD4vqzRLIOp"
+    ],
+    "musica_meta": "phonk_10.flac",
+    "musica_instagram": "Hall of Fame - The Script [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "JjrW2DkW3y4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18134279836789337",
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Stesso albero, stagione diversa. Ricorda: tutto è temporaneo."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-28 12:00",
   "2026-10-28 14:00",
   "2026-10-28 16:00",
   "2026-10-28 18:00",
@@ -9900,10 +9943,10 @@
   "2026-11-05 10:00",
   "2026-11-05 12:00",
   "2026-11-05 14:00",
-  "2026-11-05 16:00"
+  "2026-11-05 16:00",
+  "2026-11-05 18:00"
  ],
  "musica_recenti": [
-  "ancient_civilisations_1.m4a",
   "death_duel_1.m4a",
   "van_life_rager_1.m4a",
   "mirror_mirror_2.m4a",
@@ -9922,7 +9965,8 @@
   "cutscene_crush_1.m4a",
   "moon_vision_2.m4a",
   "wrangle_the_crazy_2.m4a",
-  "intergalactic_2.m4a"
+  "intergalactic_2.m4a",
+  "death_duel_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10201,7 +10245,8 @@
   "MIE-5fc47f5e",
   "MIE-3f3e1853",
   "MIE-cdde201b",
-  "MIE-8ec49131"
+  "MIE-8ec49131",
+  "MIE-061c0395"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10656,7 +10701,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_04.flac",
   "deciso_03.flac",
   "phonk_11.flac",
   "energia_10.flac",
@@ -10675,7 +10719,8 @@
   "deciso_01.flac",
   "phonk_01.flac",
   "trap_01.flac",
-  "energia_03.flac"
+  "energia_03.flac",
+  "phonk_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10710,7 +10755,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci_foto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10726,7 +10771,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "522339937196006",
   "1108285910189784",
   "3846481242297548",
   "1781233772812838",
@@ -10755,12 +10799,13 @@
   "302973472523675",
   "622196672168620",
   "1817045786209572",
-  "2575057322947776"
+  "2575057322947776",
+  "972513352266790"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Irama",
   "Kid Yugi",
-  "Pop Filters"
+  "Pop Filters",
+  "The Script"
  ]
 }
