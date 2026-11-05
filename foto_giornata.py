@@ -1,4 +1,4 @@
-"""
+﻿"""
 Reel con le foto della giornata (1/11/2026, richiesta di Alessandro): le foto dell'iPhone arrivano nella cartella Drive
 "Foto della giornata", si sistemano come fa l'iPhone (luce, contrasto, colori, nitidezza) e diventano un reel da 10 s
 con un movimento leggero, la musica e la scritta. Agli orari ORARIO_FOTO di pubblica.py, finche' ci sono foto.
@@ -22,7 +22,7 @@ if pillow_heif:
 
 CARTELLA = "Foto della giornata"
 USATE = "Foto usate"         # 5/11/2026: dove finiscono le foto gia' uscite in un reel
-STILE = "flash"              # 5/11/2026: "flash" (effetto Flash di Instagram, sua scelta) o "caldo" (lo stile di prima)
+STILE = "caldo"              # 5/11/2026: "flash" (effetto Flash di Instagram, sua scelta) o "caldo" (lo stile di prima)
 LATO_MINIMO = 700           # foto piu' piccole (miniature, screenshot ridotti) verrebbero sgranate nel reel
 MINIMO, MASSIMO = 4, 6       # foto della stessa giornata in un reel
 MARGINE = 1.08               # 8% in piu' della larghezza: lo spazio del movimento
