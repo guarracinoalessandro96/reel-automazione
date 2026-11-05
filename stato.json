@@ -9699,7 +9699,9 @@
     "instagram": {
      "ok": true,
      "id": "18062007563546083",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -9735,7 +9737,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "WxFOJuDb-l4"
+     "id": "WxFOJuDb-l4",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9745,11 +9748,43 @@
    },
    "spinto": false,
    "testo": "Se c'è anche solo una possibilità di ottenere ciò che vuoi, rischia."
+  },
+  {
+   "quando": "2026-11-05T13:01",
+   "slot": "2026-11-05 14:00",
+   "video": "IMG_4135.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-cdde201b",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "wrangle_the_crazy_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "musica_meta": "trap_01.flac",
+    "musica_instagram": "Sentire La Musica - Kid Yugi [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "3wDxE9k2xOY"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17924741595222712",
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Quando la fatica nasce da qualcosa che ami, non pesa più. Diventa libertà."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-28 08:00",
   "2026-10-28 10:00",
   "2026-10-28 12:00",
   "2026-10-28 14:00",
@@ -9828,10 +9863,10 @@
   "2026-11-05 06:00",
   "2026-11-05 08:00",
   "2026-11-05 10:00",
-  "2026-11-05 12:00"
+  "2026-11-05 12:00",
+  "2026-11-05 14:00"
  ],
  "musica_recenti": [
-  "moon_vision_1.m4a",
   "majestic_12_2.m4a",
   "ancient_civilisations_1.m4a",
   "death_duel_1.m4a",
@@ -9850,7 +9885,8 @@
   "dusty_road_magic_2.m4a",
   "way_back_home_1.m4a",
   "cutscene_crush_1.m4a",
-  "moon_vision_2.m4a"
+  "moon_vision_2.m4a",
+  "wrangle_the_crazy_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10127,7 +10163,8 @@
   "MIE-77970036",
   "MIE-f8c62fcf",
   "MIE-5fc47f5e",
-  "MIE-3f3e1853"
+  "MIE-3f3e1853",
+  "MIE-cdde201b"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10457,8 +10494,8 @@
    "ultimo": "2026-11-05"
   },
   "1EIkrvNWHYfhUXhSzzqvvdiEFEPhXxmSi": {
-   "usi": 2,
-   "ultimo": "2026-10-25"
+   "usi": 3,
+   "ultimo": "2026-11-05"
   },
   "1eFsX23f-gEnVKC5myas7iJmwUvbgQ-AX": {
    "usi": 2,
@@ -10582,7 +10619,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_05.flac",
   "drive_05.flac",
   "energia_04.flac",
   "deciso_03.flac",
@@ -10601,7 +10637,8 @@
   "phonk_14.flac",
   "energia_07.flac",
   "deciso_01.flac",
-  "phonk_01.flac"
+  "phonk_01.flac",
+  "trap_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10636,7 +10673,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_foto",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10652,7 +10689,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2373852472923170",
   "581412716058691",
   "522339937196006",
   "1108285910189784",
@@ -10681,12 +10717,13 @@
   "254969200347498",
   "554133449182324",
   "302973472523675",
-  "622196672168620"
+  "622196672168620",
+  "1817045786209572"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Rockwell",
   "Sam Marshall",
-  "Irama"
+  "Irama",
+  "Kid Yugi"
  ]
 }
