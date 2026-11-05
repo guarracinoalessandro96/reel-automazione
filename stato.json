@@ -9743,7 +9743,9 @@
     "instagram": {
      "ok": true,
      "id": "17992408578099463",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -9771,7 +9773,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "3wDxE9k2xOY"
+     "id": "3wDxE9k2xOY",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -9781,11 +9784,43 @@
    },
    "spinto": false,
    "testo": "Quando la fatica nasce da qualcosa che ami, non pesa più. Diventa libertà."
+  },
+  {
+   "quando": "2026-11-05T15:00",
+   "slot": "2026-11-05 16:00",
+   "video": "IMG_4129.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-8ec49131",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "intergalactic_2.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "energia_03.flac",
+    "musica_instagram": "Iconic (Radio Mix) - Pop Filters [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "2wE1XRuAmig"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18100577975416925",
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non aspettare che passi la tempesta. Impara a lavorare sotto la pioggia."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-28 10:00",
   "2026-10-28 12:00",
   "2026-10-28 14:00",
   "2026-10-28 16:00",
@@ -9864,10 +9899,10 @@
   "2026-11-05 08:00",
   "2026-11-05 10:00",
   "2026-11-05 12:00",
-  "2026-11-05 14:00"
+  "2026-11-05 14:00",
+  "2026-11-05 16:00"
  ],
  "musica_recenti": [
-  "majestic_12_2.m4a",
   "ancient_civilisations_1.m4a",
   "death_duel_1.m4a",
   "van_life_rager_1.m4a",
@@ -9886,7 +9921,8 @@
   "way_back_home_1.m4a",
   "cutscene_crush_1.m4a",
   "moon_vision_2.m4a",
-  "wrangle_the_crazy_2.m4a"
+  "wrangle_the_crazy_2.m4a",
+  "intergalactic_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10164,7 +10200,8 @@
   "MIE-f8c62fcf",
   "MIE-5fc47f5e",
   "MIE-3f3e1853",
-  "MIE-cdde201b"
+  "MIE-cdde201b",
+  "MIE-8ec49131"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10502,8 +10539,8 @@
    "ultimo": "2026-10-26"
   },
   "1t2HdsGs2qhC9CeBp31JACRAZz9LjJwdV": {
-   "usi": 2,
-   "ultimo": "2026-10-26"
+   "usi": 3,
+   "ultimo": "2026-11-05"
   },
   "1wIAA5bkWDLakZogTG-ehlMTtvzDMKN7q": {
    "usi": 2,
@@ -10619,7 +10656,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_05.flac",
   "energia_04.flac",
   "deciso_03.flac",
   "phonk_11.flac",
@@ -10638,7 +10674,8 @@
   "energia_07.flac",
   "deciso_01.flac",
   "phonk_01.flac",
-  "trap_01.flac"
+  "trap_01.flac",
+  "energia_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10673,7 +10710,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10689,7 +10726,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "581412716058691",
   "522339937196006",
   "1108285910189784",
   "3846481242297548",
@@ -10718,12 +10754,13 @@
   "554133449182324",
   "302973472523675",
   "622196672168620",
-  "1817045786209572"
+  "1817045786209572",
+  "2575057322947776"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Sam Marshall",
   "Irama",
-  "Kid Yugi"
+  "Kid Yugi",
+  "Pop Filters"
  ]
 }
