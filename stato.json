@@ -9555,7 +9555,9 @@
     "instagram": {
      "ok": true,
      "id": "18011840570990363",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -9583,21 +9585,56 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "L3rbATCKfEw"
+     "id": "L3rbATCKfEw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18002757989846251",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "Le grandi cose iniziano sempre con piccoli passi."
+  },
+  {
+   "quando": "2026-11-05T05:00",
+   "slot": "2026-11-05 06:00",
+   "video": "IMG_4294.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-77970036",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "dusty_road_magic_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "musica_meta": "phonk_14.flac",
+    "musica_instagram": "Sarà Perché Ti Amo - DJ Redblack [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "YQuG8c6sOnQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17884191705628790",
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Sii quello che ci prova ancora. Il meglio deve ancora venire."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-28 00:00",
   "2026-10-28 02:00",
   "2026-10-28 04:00",
   "2026-10-28 06:00",
@@ -9676,10 +9713,10 @@
   "2026-11-04 18:00",
   "2026-11-04 20:00",
   "2026-11-04 22:00",
-  "2026-11-05 00:00"
+  "2026-11-05 00:00",
+  "2026-11-05 06:00"
  ],
  "musica_recenti": [
-  "dusty_road_magic_3.m4a",
   "keep_it_movin_2.m4a",
   "cutscene_crush_3.m4a",
   "way_back_home_3.m4a",
@@ -9698,7 +9735,8 @@
   "death_duel_2.m4a",
   "keep_it_movin_1.m4a",
   "ancient_civilisations_2.m4a",
-  "vibe_check_3.m4a"
+  "vibe_check_3.m4a",
+  "dusty_road_magic_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -9971,7 +10009,8 @@
   "MIE-912f99c6",
   "MIE-abd060ce",
   "MIE-bbeb47d3",
-  "MIE-babfd69b"
+  "MIE-babfd69b",
+  "MIE-77970036"
  ],
  "temi_recenti": [
   "mentalita",
@@ -9986,7 +10025,7 @@
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-04",
+ "pulizia": "2026-11-05",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -10369,8 +10408,8 @@
    "ultimo": "2026-10-28"
   },
   "1qg9QOoyt2IXIx0udqWcfdBdqz_RdzVo4": {
-   "usi": 2,
-   "ultimo": "2026-10-29"
+   "usi": 3,
+   "ultimo": "2026-11-05"
   },
   "1imtjdovSsU7sfZ2CRaJTwVN1ETpo_8z3": {
    "usi": 2,
@@ -10426,7 +10465,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_06.flac",
   "drive_14.flac",
   "phonk_06.flac",
   "energia_02.flac",
@@ -10445,7 +10483,8 @@
   "phonk_05.flac",
   "drive_02.flac",
   "deciso_12.flac",
-  "trap_09.flac"
+  "trap_09.flac",
+  "phonk_14.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10480,7 +10519,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10496,7 +10535,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "272114135386704",
   "302973472523675",
   "981510330704369",
   "1661496314823289",
@@ -10525,12 +10563,13 @@
   "242659649830381",
   "258759081507255",
   "1403113822033083",
-  "886601410818919"
+  "886601410818919",
+  "254969200347498"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Kehlani",
   "Giordana Angi",
-  "Ricchi E Poveri"
+  "Ricchi E Poveri",
+  "DJ Redblack"
  ]
 }
