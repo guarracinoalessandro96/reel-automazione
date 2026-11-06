@@ -477,13 +477,22 @@ def clip_extra(drive, work, clip, n=2, giorno=None):
         random.shuffle(altre)
         if giorno:
             altre.sort(key=lambda c: 0 if str(c.get("registrato") or "")[:10] == giorno else 1)
+        # 6/11/2026 (revisione, punto 14): mai le clip messe da parte (tutte nere o che non si montano: 2 fallimenti)
+        noto = lambda c: ORIENTAMENTI_NOTI.get(c["id"], {})
+        altre = [c for c in altre if not noto(c).get("nera") and int(noto(c).get("fallimenti", 0) or 0) < 2]
         # 6/11/2026 (punto 34): le clip che sappiamo orizzontali (tagliate al centro nel 9:16) per ultime
-        altre.sort(key=lambda c: _orizz(dict(c, **ORIENTAMENTI_NOTI.get(c["id"], {}))) is True)
-        for i, c in enumerate(altre[:n]):
+        altre.sort(key=lambda c: _orizz(dict(c, **noto(c))) is True)
+        for i, c in enumerate(altre[:n + 2]):
+            if len(out) >= n:
+                break
             p = os.path.join(work, f"extra_{i}{os.path.splitext(c['nome'])[1] or '.mov'}")
             drive.download(c["id"], p, folder="Archivio")
-            out.append(p)
             ORIENTAMENTI[c["id"]] = orizzontale(p)
+            if _nera(p):     # 6/11/2026 (revisione): IMG_4508.MOV, tutta nera, metteva 2-5 s di nero nei reel
+                NERE.add(c["id"])
+                log(f"Clip extra {c['nome']} tutta nera: messa da parte, ne prendo un'altra")
+                continue
+            out.append(p)
     except Exception as e:
         log("Clip extra non scaricate (uso solo il video dell'orario):", e)
     return out
@@ -2147,7 +2156,8 @@ def publish_all(path, cap, creds, only, path_meta=None, publish_at=None, ig_nati
 # reel gli orizzontali aspettano, ma solo se c'e' altro da pubblicare (mai un orario saltato per questo)
 ORIZZONTALI_OGNI = 10
 ORIENTAMENTI = {}      # id della clip d'archivio -> orizzontale, scoperto scaricandola come clip extra in questo giro
-ORIENTAMENTI_NOTI = {}  # stato.json archivio_usi (id -> {"orizzontale": ...}), per mettere in fondo le clip extra orizzontali
+ORIENTAMENTI_NOTI = {}  # stato.json archivio_usi (id -> {"orizzontale", "nera", "fallimenti"...}), per le clip extra
+NERE = set()           # 6/11/2026 (revisione): clip extra scaricate in questo giro e risultate tutte nere
 
 
 def orizzontale(path):
@@ -2166,6 +2176,17 @@ def orizzontale(path):
     except Exception as e:
         log("Orientamento del video non letto:", e)
         return None
+
+
+def _nera(path):
+    """6/11/2026 (revisione, punto 14): True se il video e' tutto nero, bianco o tutto uguale (formati_nuovi.clip_nera);
+    False se non lo e' o non si sa (come prima)."""
+    try:
+        import formati_nuovi
+        return formati_nuovi.clip_nera(path) is True
+    except Exception as e:
+        log("Controllo del video nero non riuscito:", e)
+        return False
 
 
 def _orizz(x):
@@ -2212,10 +2233,16 @@ def analizza_video(drive, v, work):
         except Exception as e:
             log("Riconoscimento della voce non riuscito (resta un reel normale):", e)
     oriz = orizzontale(src)          # 6/11/2026 (punto 34): per rinviare i video orizzontali (1 ogni 10 reel)
+    try:     # 6/11/2026 (revisione, punto 14): tutto nero (telefono in tasca, obiettivo coperto)? Gli 8 fotogrammi
+        import formati_nuovi         # dell'analisi e, solo se sono tutti vuoti, i fotogrammi chiave di tutto il video
+        nero = bool(frames) and formati_nuovi._pezzo_nero(frames) and _nera(src)
+    except Exception as e:
+        log("Controllo del video nero non riuscito:", e)
+        nero = False
     os.remove(src)
     lato_corto = min(frames[0].shape[:2]) if frames else 0
     return {"nome": v["name"], "scena": sc, "sicurezza": conf, "motivo": motivo, "lato_corto": lato_corto,
-            "orizzontale": oriz,
+            "orizzontale": oriz, **({"nero": True} if nero else {}),
             "compagnia": con_chi if conf_chi >= 0.5 else None,
             "registrato": quando.isoformat(timespec="minutes") if quando else None,
             "fascia": scene_mod.fascia_per(sc, quando), "caricato": v["createdTime"], "parlato": parlato_info,
@@ -2490,6 +2517,13 @@ def main():
             except Exception as e:
                 log("cestino non riuscito:", e)
             videos.remove(v)
+        elif a.get("nero"):     # 6/11/2026 (revisione, punto 14): tutto nero, non esce; niente cancellato
+            log(f"{v['name']}: e' tutto nero, spostato in 'Da controllare' (non esce nei reel)")
+            try:
+                drive.sposta_in_sottocartella(v["id"], "Da controllare")
+            except Exception as e:
+                log("spostamento non riuscito (per ora resta fuori dai reel):", e)
+            videos.remove(v)
     # doppioni: stesso file caricato due volte (o gia' pubblicato) -> nel cestino, non esce due volte
     # anche lo stesso video esportato due volte (file diversi, es. IMG_3796.MOV e IMG_3796.mov): stesso nome + stessa ora di ripresa
     visti = {h["md5"] for h in state["storico"] if h.get("md5")}
@@ -2521,7 +2555,10 @@ def main():
     # 2. il video giusto per questo orario: prima i video NUOVI, se la coda e' vuota una clip dall'archivio.
     # Orario FERMO (20/10/2026): il video nuovo aspetta un orario che YouTube spinge (MOMENTO no: esce subito)
     spinto = orario_spinto(state, slot, creds)
-    # 6/11/2026 (punto 34): un video orizzontale negli ultimi 10 reel -> prima i verticali (in coda e in archivio)
+    # 6/11/2026 (punto 34): un video orizzontale negli ultimi 10 reel -> prima i verticali (in coda e in archivio).
+    # 6/11/2026 (revisione; Alessandro: "dai sempre priorita' ai nuovi contenuti piuttosto che ai vecchi"): un video
+    # NUOVO orizzontale non lascia mai il posto a una clip d'archivio. Aspetta solo dietro i video nuovi verticali; se in
+    # coda ci sono solo orizzontali esce lo stesso (montaggio.orizzontale lo segna)
     try:
         evita_oriz = orizzontale_recente(state)
         ORIENTAMENTI_NOTI.update(state.get("archivio_usi", {}))
@@ -2529,15 +2566,11 @@ def main():
         log("Controllo dei video orizzontali non riuscito (scelta come prima):", e)
         evita_oriz = False
     video = scegli_video(videos, state["analisi"], slot_ora, evita_oriz)
-    rinviato = None
-    if (video and evita_oriz and _orizz(state["analisi"].get(video["id"])) is True
-            and not state["analisi"].get(video["id"], {}).get("momento")):
-        rinviato, video = video, None          # in coda solo orizzontali: adesso l'archivio, il video al prossimo giro
     tenuto = None
     if (video and not spinto and len(videos) <= VIDEO_DA_TENERE
             and not state["analisi"].get(video["id"], {}).get("momento")):
         tenuto, video = video, None
-    clip = None
+    clip, riserva_arch = None, []
     if video is None:
         usi_arch = state.setdefault("archivio_usi", {})
         try:
@@ -2561,23 +2594,21 @@ def main():
         riposati = [c for c in archivio if c.get("ultimo", "") < limite]     # 1/11/2026: niente clip uscite negli ultimi 7 giorni
         belle = [c for c in riposati if qualita["voti"].get(c.get("nome"), 0) >= 10]   # prima le clip migliori
         gruppo = belle or riposati or archivio
-        if evita_oriz:     # 6/11/2026 (punto 34): prima le clip non orizzontali, anche gia' usate; mai bloccare
+        if evita_oriz:     # 6/11/2026 (punto 34): prima le clip non orizzontali; mai bloccare
+            # 6/11/2026 (revisione): senza ripescare le clip uscite negli ultimi 7 giorni (regola del 1/11) se ce ne
+            # sono di riposate
             vert = lambda l: [c for c in l if _orizz(c) is not True]
-            gruppo = vert(belle) or vert(riposati) or vert(archivio) or gruppo
+            gruppo = vert(belle) or vert(riposati) or vert(gruppo) or gruppo
+        riserva_arch = [gruppo, archivio]     # 6/11/2026 (revisione): per cambiare clip se e' tutta nera
         clip = scegli_archivio(gruppo, slot_ora)
-        if clip is None and (tenuto or rinviato):    # archivio vuoto: esce comunque il video nuovo
-            video, tenuto, rinviato = tenuto or rinviato, None, None
-        elif clip is not None and rinviato and _orizz(clip) is True:   # orizzontali anche in archivio: il video nuovo
-            video, clip, rinviato = rinviato, None, None
+        if clip is None and tenuto:           # archivio vuoto: esce comunque il video nuovo
+            video, tenuto = tenuto, None
         elif clip is None:
             log(f"Nessun video nuovo e archivio vuoto per l'orario {slot}.")
             return
     if clip:
         if tenuto:
             log(f"Orario fermo: {tenuto['name']} aspetta un orario spinto, adesso riuso dall'archivio {clip['nome']}")
-        elif rinviato:
-            log(f"{rinviato['name']} e' orizzontale e negli ultimi {ORIZZONTALI_OGNI} reel ce n'e' gia' uno: "
-                f"aspetta, adesso riuso dall'archivio {clip['nome']}")
         else:
             log(f"Nessun video nuovo: riuso dall'archivio {clip['nome']} (usato {clip.get('usi', 0)} volte)")
         an = {"scena": clip.get("scena"), "compagnia": clip.get("compagnia"), "fascia": clip.get("fascia")}
@@ -2688,6 +2719,27 @@ def main():
         log(f"Download di {nome} non riuscito (rete): resta in coda, nessun tentativo contato:", e)
         shutil.rmtree(work, ignore_errors=True)
         raise
+    nera_tolta = None
+    if clip:
+        # 6/11/2026 (revisione, punto 14): una clip d'archivio tutta nera (IMG_4508.MOV: 3,3 s di nero, il reel del 1/11
+        # alle 06:00) non esce piu'. Si mette da parte senza cancellare niente (archivio_usi: nera e 2 fallimenti, come
+        # una clip che non si monta) e al suo posto un'altra clip dell'archivio; se non c'e' o non si scarica, come prima
+        try:
+            if _nera(src):
+                u = state.setdefault("archivio_usi", {}).setdefault(clip["id"], {})
+                u["nera"], u["fallimenti"] = True, max(2, int(u.get("fallimenti", 0)))
+                altre = [[c for c in g if c["id"] != clip["id"] and not c.get("nera")] for g in riserva_arch]
+                altra = scegli_archivio(next((g for g in altre if g), []), slot_ora)
+                log(f"La clip d'archivio {nome} e' tutta nera: messa da parte, non torna nei reel"
+                    + (f"; al suo posto {altra['nome']}" if altra else "; nessun'altra clip, resta questa"))
+                save()
+                if altra:
+                    src2 = os.path.join(work, "altra" + (os.path.splitext(altra["nome"])[1] or ".mov"))
+                    con_tentativi(lambda: drive.download(altra["id"], src2, folder="Archivio"), "Download del video", drive)
+                    nera_tolta, clip, src, nome, fonte_id = nome, altra, src2, altra["nome"], altra["id"]
+                    an = {"scena": clip.get("scena"), "compagnia": clip.get("compagnia"), "fascia": clip.get("fascia")}
+        except Exception as e:
+            log("Controllo della clip nera non riuscito (resta la clip scelta):", e)
     oriz = orizzontale(src)          # 6/11/2026 (punto 34): montaggio.orizzontale in stato.json
     try:
         serie = etichetta_serie(slot)
@@ -2789,6 +2841,8 @@ def main():
         an = dict(an, registrato=None)
     # 6/11/2026 (punto 34): il video di partenza era orizzontale? (al massimo 1 ogni ORIZZONTALI_OGNI reel)
     info["orizzontale"] = False if con_foto else oriz is True
+    if nera_tolta and not con_foto:     # 6/11/2026 (revisione): la clip tutta nera scartata prima del montaggio
+        info["clip_nera_tolta"] = nera_tolta
     frase = dict(frase, copertina_ms=info.get("copertina_ms"),   # volte: per un titolo YouTube diverso se la frase torna
                  volte=sum(1 for h in state["storico"] if h.get("frase") == frase.get("id")))
     out_meta = None
@@ -2932,6 +2986,9 @@ def main():
     for cid, o in ORIENTAMENTI.items():     # 6/11/2026: anche le clip extra scaricate in questo giro
         if o is not None:
             state["archivio_usi"].setdefault(cid, {})["orizzontale"] = o
+    for cid in NERE:     # 6/11/2026 (revisione): clip extra tutte nere, messe da parte (niente cancellato)
+        u = state["archivio_usi"].setdefault(cid, {})
+        u["nera"], u["fallimenti"] = True, max(2, int(u.get("fallimenti", 0)))
     spostato = False
     if video:                # video nuovo: si tiene per riusarlo in futuro
         meta_arch = {"scena": an.get("scena"), "fascia": fascia_video(an), "compagnia": an.get("compagnia"),

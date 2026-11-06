@@ -210,12 +210,58 @@ def _misure(g):
 
 
 @functools.lru_cache(maxsize=16)
+def _chiave(src, firma):
+    """Misure dei fotogrammi chiave della clip (ffmpeg decodifica solo quelli: veloce anche in 4K), lette una volta."""
+    return tuple(_misure(g) for g in _grigi(src, ["-skip_frame", "nokey"]))
+
+
+@functools.lru_cache(maxsize=16)
 def _tipico(src, firma):
-    """(luce, contrasto, nitidezza) tipici della clip: la mediana sui fotogrammi chiave (ffmpeg decodifica solo quelli:
-    veloce anche in 4K). None se sono meno di 3: allora contano solo nero e bianco."""
+    """(luce, contrasto, nitidezza) tipici della clip: la mediana sui fotogrammi chiave. None se sono meno di 3:
+    allora contano solo nero e bianco."""
     import numpy as np
-    m = [_misure(g) for g in _grigi(src, ["-skip_frame", "nokey"])]
+    m = _chiave(src, firma)
     return tuple(float(x) for x in np.median(np.array(m), axis=0)) if len(m) >= 3 else None
+
+
+# 6/11/2026 (revisione, punto 14): una clip TUTTA nera (es. IMG_4508.MOV dell'archivio: 3,3 s di nero, il reel del 1/11
+# alle 06:00) non deve finire nei reel, ne' come video dell'orario ne' come scena presa da una clip extra
+PIATTO_ASSOLUTO = 6          # contrasto sotto 6 (0-255): un'immagine tutta uguale, niente da vedere
+
+
+def _vuoto(m):
+    """Fotogramma senza niente da vedere: nero, bianco o tutto uguale (soglie fisse: vale anche per le sue clip scure)."""
+    return m[0] < NERO or m[0] > SLAVATO or m[1] < PIATTO_ASSOLUTO
+
+
+def _pezzo_nero(fr):
+    """True se TUTTI i fotogrammi di una scena (quelli gia' estratti per i visi, a colori) sono vuoti."""
+    import cv2
+    if not fr:
+        return False
+    return all(_vuoto(_misure(cv2.resize(cv2.cvtColor(x, cv2.COLOR_BGR2GRAY), PICCOLO, interpolation=cv2.INTER_AREA)))
+               for x in fr)
+
+
+@functools.lru_cache(maxsize=32)
+def _clip_nera(src, firma):
+    m = _chiave(src, firma)
+    if any(not _vuoto(x) for x in m):      # basta un fotogramma chiave con qualcosa da vedere: niente altre letture
+        return False
+    if len(m) >= 3:
+        return True
+    # 0-2 fotogrammi chiave, tutti vuoti: si conferma con 2 fotogrammi al secondo (al massimo i primi 20 s)
+    m2 = [_misure(g) for g in _grigi(src, ["-t", "20"], "fps=2")]
+    return all(_vuoto(x) for x in m2) if m2 else None
+
+
+def clip_nera(src):
+    """True se la clip e' nera (o bianca, o tutta uguale) dall'inizio alla fine; None se non si legge."""
+    try:
+        return _clip_nera(src, _firma(src))
+    except Exception as e:
+        print("Controllo della clip nera non riuscito:", e)
+        return None
 
 
 def _difetto(m, tip):
@@ -473,6 +519,9 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
     n = len(durate)
     cmd, catena, volti, mappe = [ov.FFMPEG, "-y", "-v", "error"], [], [], []
     dieci = nome.startswith("dieci") or nome in DIECI_NOMI
+    # 6/11/2026 (revisione): le foto no. Il gancio lo sceglie gia' foto_giornata.ordina (viso con pelle e occhi,
+    # nitidezza, luce) e su una foto ferma il controllo del primo secondo non migliora niente (Haar vede "visi" nei dischi)
+    controlli = dieci and nome != "dieci_foto" and PRIMO_CONTROLLO
     wv, hv = (layout[1][2], layout[1][3]) if layout else (W, H)
     pezzi = []         # 6/11/2026: prima si guardano tutti i pezzi (viso, primo secondo), poi si monta
     for i, seg in enumerate(durate):
@@ -494,24 +543,16 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
                     inizio = ov.segmento_migliore(c, secondi, ov.HDR_TO_SDR if hdr else None, seg + 0.2)[0]
                 except Exception:
                     pass
-            if i == 0 and dieci:                   # 6/11/2026 (punto 14): primo secondo pulito (dieci, dieci_broll)
+            if i == 0 and controlli:               # 6/11/2026 (punto 14): primo secondo pulito (dieci, dieci_broll)
                 inizio = _controlla_primo(c, inizio, 0.0, max(0.0, secondi - sorgente - 0.2), min(seg, PRIMO_S))
-        # 29/10/2026 (Alessandro: "le scritte non devono mai coprire il viso"): volti di questo pezzo, gia' nel taglio
-        # 9:16 del reel (prima qui il testo andava sempre in alto, anche sopra la faccia).
-        # 6/11/2026: un fotogramma alla volta (stessi riquadri di prima) per sapere in quanti si vede il viso
-        p = {"c": c, "inizio": inizio, "secondi": secondi, "hdr": hdr, "volti": [], "visi": 0, "mappa": None,
-             "schiarisci": ""}
-        try:
-            fr = ov.extract_frames(c, sorgente, n=5 if controlla_viso else 3, start=inizio,
-                                   vf=f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H}")
-            per = [ov.detect_faces([x], ruotati=dieci) for x in fr]
-            p["volti"], p["visi"] = [b for x in per for b in x], sum(1 for x in per if x)
-            p["mappa"] = ov.mappa_dettagli(fr)
-            p["schiarisci"] = ov.schiarita(fr) if dieci else ""
-        except Exception:
-            pass
-        pezzi.append(p)
-    if dieci and n > 1 and not velocita and not indietro and PRIMO_CONTROLLO:
+        p = {"c": c, "inizio": inizio, "secondi": secondi, "hdr": hdr}
+        pezzi.append(_guarda(p, sorgente, W, H, 5 if controlla_viso else 3, dieci, controlli))
+    if controlli and not velocita and not indietro and any(p["nero"] for p in pezzi):
+        try:           # 6/11/2026 (revisione, punto 14): nessuna scena tutta nera nel reel
+            pezzi = _senza_nere(pezzi, durate, W, H, 5 if controlla_viso else 3, dieci)
+        except Exception as e:
+            print("Scene nere non sostituite, restano come prima:", e)
+    if controlli and n > 1 and not velocita and not indietro:
         try:           # 6/11/2026 (punti 13 e 14): per prima una scena col viso e il primo secondo pulito
             pezzi = _primo_pezzo(pezzi, durate)
         except Exception as e:
@@ -596,10 +637,10 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
     info = {"formato": nome, "durata": DUR, "musica": os.path.basename(musiche[0]) if musiche else None,
             "stacchi": n, "testi": len(testi)}
     if piano:          # 6/11/2026: quante scene vengono dal video principale (le altre dalle clip extra)
-        info["scene_dal_video"] = sum(1 for c, _ in piano if c == clips[0])
+        info["scene_dal_video"] = sum(1 for p in pezzi if p["c"] == clips[0])
     if velocita and min(velocita) < 1:
         info["velocita"] = min(velocita)
-    if dieci and CONTROLLO:      # 6/11/2026: cosa hanno cambiato i controlli del primo secondo e del viso (analisi 16/11)
+    if controlli and CONTROLLO:  # 6/11/2026: cosa hanno cambiato i controlli del primo secondo e del viso (analisi 16/11)
         info.update(CONTROLLO)
     return info
 
@@ -701,6 +742,64 @@ def _intero_pulito(c, durate):
     except Exception as e:
         print("intero: controllo del primo secondo non riuscito, la clip resta com'era:", e)
         return None, durate
+
+
+def _guarda(p, sorgente, W, H, quanti, dieci, controlli):
+    """I fotogrammi del pezzo p, gia' nel taglio 9:16 del reel: volti (29/10/2026, Alessandro: "le scritte non devono
+    mai coprire il viso"), in quanti fotogrammi si vede il viso (6/11: uno alla volta, stessi riquadri di prima),
+    mappa dei dettagli, schiarita e, con i controlli accesi, se la scena e' tutta nera. Restituisce p."""
+    p.update(volti=[], visi=0, mappa=None, schiarisci="", nero=False)
+    try:
+        fr = ov.extract_frames(p["c"], sorgente, n=quanti, start=p["inizio"],
+                               vf=f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H}")
+        per = [ov.detect_faces([x], ruotati=dieci) for x in fr]
+        p["volti"], p["visi"] = [b for x in per for b in x], sum(1 for x in per if x)
+        p["mappa"] = ov.mappa_dettagli(fr)
+        p["schiarisci"] = ov.schiarita(fr) if dieci else ""
+        p["nero"] = bool(controlli) and _pezzo_nero(fr)
+    except Exception:
+        pass
+    return p
+
+
+def _senza_nere(pezzi, durate, W, H, quanti, dieci):
+    """6/11/2026 (revisione, punto 14): al posto di una scena tutta nera un altro punto di una clip del reel che non e'
+    nera: prima le clip che hanno gia' scene buone (di solito il video principale), il punto piu' lontano dalle scene
+    che usano gia' quella clip. Al massimo 3 prove per scena; se nessuna va, la scena resta com'era. Le durate restano
+    ai loro posti. Segna in CONTROLLO quante scene nere c'erano e quante sono rimaste."""
+    nere = [i for i, p in enumerate(pezzi) if p["nero"]]
+    ordine = []
+    for p in sorted(pezzi, key=lambda p: p["nero"]):        # sorted e' stabile: prima le clip con scene buone
+        if p["c"] not in ordine:
+            ordine.append(p["c"])
+    rimaste = 0
+    for i in nere:
+        sorg, fatto, prove = durate[i] + 0.2, False, 0
+        for c in ordine:
+            if prove >= 3:
+                break
+            if clip_nera(c):
+                continue
+            secondi, hdr = ov.probe(c)
+            usati = [(q["inizio"], q["inizio"] + sorg) for j, q in enumerate(pezzi) if q["c"] == c]
+            alto = max(MARGINE_S, secondi - sorg - MARGINE_S)
+            passi = [round(MARGINE_S + k * 0.25, 2) for k in range(int((alto - MARGINE_S) / 0.25) + 1)] or [0.0]
+            lontano = lambda t: min([max(a - (t + sorg), t - b) for a, b in usati] or [0.0])
+            t = max(passi, key=lambda t: (lontano(t), -t))
+            prove += 1
+            nuovo = _guarda({"c": c, "inizio": t, "secondi": secondi, "hdr": hdr}, durate[i], W, H, quanti, dieci, True)
+            if not nuovo["nero"]:
+                print(f"Scena {i + 1} tutta nera ({os.path.basename(pezzi[i]['c'])}): al suo posto "
+                      f"{os.path.basename(c)} da {t:.2f} s")
+                pezzi[i], fatto = nuovo, True
+                if i == 0:     # la prima scena non e' piu' quella nera: il suo primo secondo lo guarda _primo_pezzo
+                    CONTROLLO.pop("primo_risolto", None)
+                break
+        rimaste += not fatto
+    CONTROLLO["scene_nere"] = len(nere)
+    if rimaste:
+        CONTROLLO["scene_nere_rimaste"] = rimaste
+    return pezzi
 
 
 def _primo_pezzo(pezzi, durate):
