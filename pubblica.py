@@ -1583,6 +1583,9 @@ def manda_telegram(path, testo, slot=None, n=None, tot=None, parlato=False):
     """Manda ad Alessandro il video per TikTok (senza musica) e, sotto, il testo: toccandolo si copia.
     n/tot: invio serale di tutti i TikTok del giorno ("TIKTOK 2 DI 4")."""
     import html
+    import avvisi
+    if not avvisi.AVVISI_TELEGRAM:     # 6/11/2026 (Alessandro): su Telegram solo le visualizzazioni delle 8
+        raise RuntimeError("Telegram: arrivano solo le visualizzazioni, video per TikTok non mandato")
     base = f"https://api.telegram.org/bot{ENV('TELEGRAM_BOT_TOKEN')}"
     if n:
         titolo = f"TIKTOK {n} DI {tot}\n"
