@@ -10155,7 +10155,9 @@
     "instagram": {
      "ok": true,
      "id": "18095023784272410",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -10184,7 +10186,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "dLShvg_-fAo"
+     "id": "dLShvg_-fAo",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10195,11 +10198,54 @@
    },
    "spinto": true,
    "testo": "Una sera a lavorare invece di uscire non cambia la vita. Trecento sere sì."
+  },
+  {
+   "quando": "2026-11-06T17:01",
+   "slot": "2026-11-06 18:00",
+   "video": "Foto della giornata",
+   "md5": null,
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-83d0883b",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_foto",
+    "durata": 10.002,
+    "musica": "whoop_1.m4a",
+    "stacchi": 6,
+    "testi": 1,
+    "foto_ids": [
+     "1MrOF4-7MJ5DhdZsRJxcOv4Jx4QorA5A-",
+     "1lK-yfe5Hn1yvuGsI9VFfALlOwlk3d7Yj",
+     "1vqGpAgYZZ4nKmn4aqzcwwgmuctF8gkRJ",
+     "1-pDtxzoaI6o0TzydZLJGt0uDZgzCL0Kz",
+     "1T7fz2u4TnGklaA8mjLjIGRox4nxLhzF7",
+     "1QdgQsgH-m_2-MIRihEvBG9ylXouIDJYx"
+    ],
+    "foto_doppie": 0,
+    "scritta": "bianco_parola_gialla",
+    "musica_meta": "energia_04.flac",
+    "musica_instagram": "UEFA Champions League Legacy Anthem - UEFA, Tony Britten [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "POuxse9QgZ4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18110739038192355",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Quando inizi ad amare te stesso, anche la vita inizia ad amare te."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-29 12:00",
   "2026-10-29 14:00",
   "2026-10-29 22:00",
   "2026-10-30 00:00",
@@ -10278,7 +10324,8 @@
   "2026-11-06 10:00",
   "2026-11-06 12:00",
   "2026-11-06 14:00",
-  "2026-11-06 16:00"
+  "2026-11-06 16:00",
+  "2026-11-06 18:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -10301,7 +10348,8 @@
   "monthaholic_1.m4a",
   "way_back_home_3.m4a",
   "mirror_mirror_1.m4a",
-  "i_might_be_late_3.m4a"
+  "i_might_be_late_3.m4a",
+  "whoop_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10590,7 +10638,8 @@
   "MIE-b8c79064",
   "MIE-37c85482",
   "MIE-cee896b5",
-  "MIE-2bf7a2a5"
+  "MIE-2bf7a2a5",
+  "MIE-83d0883b"
  ],
  "temi_recenti": [
   "mentalita",
@@ -11045,7 +11094,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_05.flac",
   "drive_02.flac",
   "deciso_12.flac",
   "trap_09.flac",
@@ -11064,7 +11112,8 @@
   "phonk_11.flac",
   "drive_14.flac",
   "trap_05.flac",
-  "phonk_06.flac"
+  "phonk_06.flac",
+  "energia_04.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11099,7 +11148,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_foto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -11145,11 +11194,11 @@
   "1190974441039956",
   "899668126445403",
   "2388876744974625",
-  "2865463390342861"
+  "2865463390342861",
+  "1076547086228050"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "The Script",
   "Flo Rida",
   "Winterbell",
   "Paramveer Singh katoch",
@@ -11158,10 +11207,10 @@
   "Giusy Ferreri",
   "a.s. kullar, Harry Pannu",
   "Kayhin",
-  "Patti Smith"
+  "Patti Smith",
+  "UEFA, Tony Britten"
  ],
  "ig_titoli_recenti": [
-  "epic proportions",
   "knockout",
   "power drift",
   "epic thoughts",
@@ -11200,49 +11249,15 @@
   "novembre",
   "3 times",
   "funkytown flute",
-  "people have the power"
+  "people have the power",
+  "uefa champions league legacy anthem"
  ],
  "ig_tendenze_riserva": [
-  {
-   "audio_id": "2201065153808959",
-   "title": "Bad Time",
-   "display_artist": "Paramveer Singh katoch",
-   "duration_in_ms": 289140,
-   "libreria": false
-  },
-  {
-   "audio_id": "1109108338433886",
-   "title": "Eri solo da incontrare",
-   "display_artist": "Alfa",
-   "duration_in_ms": 178859,
-   "libreria": false
-  },
   {
    "audio_id": "1076547086228050",
    "title": "UEFA Champions League Legacy Anthem",
    "display_artist": "UEFA, Tony Britten",
    "duration_in_ms": 41657,
-   "libreria": false
-  },
-  {
-   "audio_id": "2575057322947776",
-   "title": "Iconic (Radio Mix)",
-   "display_artist": "Pop Filters",
-   "duration_in_ms": 166511,
-   "libreria": false
-  },
-  {
-   "audio_id": "1817045786209572",
-   "title": "Sentire La Musica",
-   "display_artist": "Kid Yugi",
-   "duration_in_ms": 206210,
-   "libreria": false
-  },
-  {
-   "audio_id": "2388876744974625",
-   "title": "Funkytown Flute",
-   "display_artist": "Kayhin",
-   "duration_in_ms": 110513,
    "libreria": false
   },
   {
@@ -11253,24 +11268,10 @@
    "libreria": false
   },
   {
-   "audio_id": "2249735029150687",
-   "title": "Inside My Soul",
-   "display_artist": "SK.music",
-   "duration_in_ms": 192000,
-   "libreria": false
-  },
-  {
-   "audio_id": "1024907031830995",
-   "title": "Adore Remix (feat. DOSE, Jacquire King) (Tash)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 146296,
-   "libreria": true
-  },
-  {
-   "audio_id": "843173497227558",
-   "title": "Forever (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 193604,
+   "audio_id": "761620853592158",
+   "title": "Battle (Instrumental)",
+   "display_artist": "Shanice",
+   "duration_in_ms": 125750,
    "libreria": true
   }
  ]
