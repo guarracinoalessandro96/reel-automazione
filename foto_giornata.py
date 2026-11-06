@@ -431,6 +431,7 @@ def make_foto(foto, frase, dst, musiche=()):
         # 6/11/2026: si tolgono prima le foto coi visi piu' grandi (prima le ultime); la prima, il gancio, resta sempre
         via = sorted(range(1, len(clips)), key=lambda i: -area[i])
         for n in range(len(clips), 2, -1):
+            fn.CONTROLLO.clear()     # 6/11/2026 (revisione): niente dati di un tentativo scartato nel montaggio
             try:
                 tenute = sorted(set(range(len(clips))) - set(via[:len(clips) - n]))
                 d = durate if n == len(clips) else [round(10.0 / n, 3)] * n     # 6/11: stacchi a tempo anche qui
@@ -438,6 +439,7 @@ def make_foto(foto, frase, dst, musiche=()):
                                         "dieci_foto", True)
             except fn.VisoCoperto:
                 pass
+        fn.CONTROLLO.clear()
         return fn.make_sequenza(clips, durate, [(0.0, 10.0, frase)], dst, musiche, None, "dieci_foto")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
@@ -537,7 +539,13 @@ def ordina(locali, schede):
     nit_max = max(schede[p]["nitidezza"] for _, p in locali)
     punti = {p: voto(schede[p], nit_max) for _, p in locali}
     per_voto = sorted(locali, key=lambda x: -punti[x[1]])
-    tenute = [next(x for x in per_voto if schede[x[1]]["nitidezza"] >= GANCIO * nit_max)]
+    nitide = [x for x in per_voto if schede[x[1]]["nitidezza"] >= GANCIO * nit_max]
+    # 6/11/2026 (100 punti, punto 14): il gancio mai nero, buio o bruciato (stesse soglie di formati_nuovi, la luce
+    # "tipica" e' quella delle foto della giornata); se nessuna foto nitida lo e', come prima
+    luci = sorted(schede[p]["luce"] for _, p in locali)
+    tipica = luci[len(luci) // 2]
+    pulita = lambda s: 16 / 255 <= s["luce"] <= 232 / 255 and s["luce"] >= 0.45 * tipica
+    tenute = [next((x for x in nitide if pulita(schede[x[1]])), nitide[0])]
     for x in per_voto:
         if not any(_simili(schede[x[1]], schede[q]) for _, q in tenute):
             tenute.append(x)
