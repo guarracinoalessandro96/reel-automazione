@@ -144,31 +144,67 @@ def prepara(massimo=4):
     for fid in cestino:                                  # nel cestino, non cancellati per sempre
         requests.patch(f"{API}/{fid}", json={"trashed": True}, headers=H, timeout=30)
     os.makedirs(CARTELLA_PC, exist_ok=True)
-    evita = suoni_recenti()
-    for x in elenco:
-        x["suoni_da_evitare"] = evita
+    try:     # 6/11/2026 (revisione): un registro rovinato non deve mai fermare il giro: l'elenco esce comunque
+        evita = suoni_recenti()
+        for x in elenco:
+            x["suoni_da_evitare"] = evita
+        metti_ricerche(elenco)
+    except Exception as e:
+        print("suoni da evitare non aggiunti:", e)
     json.dump(elenco, open(os.path.join(CARTELLA_PC, "elenco.json"), "w", encoding="utf-8"), ensure_ascii=False,
               indent=1)
     return elenco, len(attesa)
 
 
+NON_SUONI = {"-", "", "audio suo", "nessuno", "nessun audio"}
 
-def suoni_recenti(quanti=30):
+
+def suoni_recenti(quanti=30, registro=None):
     """6/11/2026: negli ultimi 20 TikTok giravano sempre gli stessi 4 brani (i primi di audio_tendenza.json):
-    i brani degli ultimi `quanti` video del registro non si riusano."""
+    i brani degli ultimi `quanti` video del registro non si riusano. registro: un altro registro con le stesse colonne
+    (6/11/2026: anche quello di Facebook, facebook_prepara.py); le note tra parentesi non sono brani.
+    6/11/2026 (revisione): le righe scritte da strumenti di Windows possono essere in ANSI ("Sarà" in cp1252, es.
+    Add-Content di PowerShell 5.1): ogni riga si legge in UTF-8 e, se non va, in cp1252; mai un errore."""
     try:
-        righe = open(os.path.join(CARTELLA_PC, "registro.txt"), encoding="utf-8").read().splitlines()
-    except OSError:
+        dati = open(registro or os.path.join(CARTELLA_PC, "registro.txt"), "rb").read()
+        righe = []
+        for b in dati.replace(b"\x00", b"").splitlines():     # anche righe UTF-16 (Out-File): via gli zeri
+            try:
+                righe.append(b.decode("utf-8-sig"))
+            except UnicodeDecodeError:
+                righe.append(b.decode("cp1252", errors="replace"))
+    except Exception:
         return []
     suoni = []
     for r in reversed(righe):
         c = [x.strip() for x in r.split("|")]
-        if len(c) >= 5 and c[1] != "nota" and c[3] not in ("-", "audio suo", ""):
+        if len(c) >= 5 and c[1] != "nota" and c[3].lower() not in NON_SUONI and not c[3].startswith("("):
             if c[3] not in suoni:
                 suoni.append(c[3])
             if len(suoni) >= quanti:
                 break
     return suoni
+
+
+# 6/11/2026 (Alessandro: "ogni video una musica diversa"): ogni video del giro ha una parola di ricerca diversa per i
+# suoni, a rotazione con giorno e ora, cosi' ogni giro non riparte dagli stessi brani in cima alla lista
+# (revisione: niente "gym", la palestra non va nei testi e il nome del suono si vede sotto il video)
+RICERCHE = ["motivational", "epic", "workout", "cinematic", "phonk", "powerful", "hype", "energetic", "trailer",
+            "sport", "inspiring", "determination"]
+
+
+def ricerche(n, adesso=None):
+    adesso = adesso or ora_roma()
+    inizio = adesso.toordinal() * 5 + adesso.hour
+    return [RICERCHE[(inizio + i) % len(RICERCHE)] for i in range(n)]
+
+
+def metti_ricerche(elenco):
+    try:
+        for x, q in zip(elenco, ricerche(len(elenco))):
+            x["cerca"] = q
+    except Exception as e:      # mai fermare il giro per un suggerimento
+        print("parole di ricerca non aggiunte:", e)
 
 
 PAROLE_RICERCA ="frasi motivazionali · motivazione · disciplina · lavoro · costanza"
