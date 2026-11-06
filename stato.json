@@ -10119,7 +10119,9 @@
     "instagram": {
      "ok": true,
      "id": "18150324745487446",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -10147,7 +10149,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "oPQHfLRKeKU"
+     "id": "oPQHfLRKeKU",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10157,11 +10160,45 @@
    },
    "spinto": true,
    "testo": "Alcuni amori ti proteggono per tutta la vita. Il tuo è uno di quelli."
+  },
+  {
+   "quando": "2026-11-06T15:00",
+   "slot": "2026-11-06 16:00",
+   "video": "IMG_4293.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-2bf7a2a5",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "i_might_be_late_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scritta": "giallo_classico",
+    "musica_meta": "phonk_06.flac",
+    "musica_instagram": "People Have the Power - Patti Smith [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "dLShvg_-fAo"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18118429199518065",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Una sera a lavorare invece di uscire non cambia la vita. Trecento sere sì."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-29 10:00",
   "2026-10-29 12:00",
   "2026-10-29 14:00",
   "2026-10-29 22:00",
@@ -10240,7 +10277,8 @@
   "2026-11-06 08:00",
   "2026-11-06 10:00",
   "2026-11-06 12:00",
-  "2026-11-06 14:00"
+  "2026-11-06 14:00",
+  "2026-11-06 16:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -10262,7 +10300,8 @@
   "the_light_3.m4a",
   "monthaholic_1.m4a",
   "way_back_home_3.m4a",
-  "mirror_mirror_1.m4a"
+  "mirror_mirror_1.m4a",
+  "i_might_be_late_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10550,7 +10589,8 @@
   "MIE-77e3005c",
   "MIE-b8c79064",
   "MIE-37c85482",
-  "MIE-cee896b5"
+  "MIE-cee896b5",
+  "MIE-2bf7a2a5"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10952,8 +10992,8 @@
    "ultimo": "2026-11-05"
   },
   "1imtjdovSsU7sfZ2CRaJTwVN1ETpo_8z3": {
-   "usi": 2,
-   "ultimo": "2026-10-29"
+   "usi": 3,
+   "ultimo": "2026-11-06"
   },
   "1doFy-IdLUGnZn_FuQyyUK5OqHf6xPX08": {
    "usi": 2,
@@ -11005,7 +11045,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_08.flac",
   "phonk_05.flac",
   "drive_02.flac",
   "deciso_12.flac",
@@ -11024,7 +11063,8 @@
   "deciso_11.flac",
   "phonk_11.flac",
   "drive_14.flac",
-  "trap_05.flac"
+  "trap_05.flac",
+  "phonk_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11059,7 +11099,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_broll",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -11104,12 +11144,134 @@
   "4321185548142585",
   "1190974441039956",
   "899668126445403",
-  "2388876744974625"
+  "2388876744974625",
+  "2865463390342861"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
+  "The Script",
+  "Flo Rida",
+  "Winterbell",
+  "Paramveer Singh katoch",
+  "Eros Ramazzotti",
+  "HUMBE",
   "Giusy Ferreri",
   "a.s. kullar, Harry Pannu",
-  "Kayhin"
+  "Kayhin",
+  "Patti Smith"
+ ],
+ "ig_titoli_recenti": [
+  "epic proportions",
+  "knockout",
+  "power drift",
+  "epic thoughts",
+  "epic battles",
+  "inceptum",
+  "catch the spirit",
+  "wildflowers",
+  "go go go",
+  "brilliant",
+  "dream big",
+  "inspired to shine",
+  "brahms violin sonata 108 3 2",
+  "big leagues",
+  "epic adventure",
+  "road warriors",
+  "ramalama",
+  "eri solo da incontrare",
+  "here you come there you go",
+  "way bigger",
+  "november rain",
+  "gangsta",
+  "piccole cose",
+  "sara perche ti amo",
+  "sara perche ti amo",
+  "somebody s watching me",
+  "dimensions",
+  "ovunque sarai",
+  "sentire la musica",
+  "iconic",
+  "hall of fame",
+  "right round",
+  "winter magic",
+  "bad time",
+  "sta passando novembre",
+  "fantasmas",
+  "novembre",
+  "3 times",
+  "funkytown flute",
+  "people have the power"
+ ],
+ "ig_tendenze_riserva": [
+  {
+   "audio_id": "2201065153808959",
+   "title": "Bad Time",
+   "display_artist": "Paramveer Singh katoch",
+   "duration_in_ms": 289140,
+   "libreria": false
+  },
+  {
+   "audio_id": "1109108338433886",
+   "title": "Eri solo da incontrare",
+   "display_artist": "Alfa",
+   "duration_in_ms": 178859,
+   "libreria": false
+  },
+  {
+   "audio_id": "1076547086228050",
+   "title": "UEFA Champions League Legacy Anthem",
+   "display_artist": "UEFA, Tony Britten",
+   "duration_in_ms": 41657,
+   "libreria": false
+  },
+  {
+   "audio_id": "2575057322947776",
+   "title": "Iconic (Radio Mix)",
+   "display_artist": "Pop Filters",
+   "duration_in_ms": 166511,
+   "libreria": false
+  },
+  {
+   "audio_id": "1817045786209572",
+   "title": "Sentire La Musica",
+   "display_artist": "Kid Yugi",
+   "duration_in_ms": 206210,
+   "libreria": false
+  },
+  {
+   "audio_id": "2388876744974625",
+   "title": "Funkytown Flute",
+   "display_artist": "Kayhin",
+   "duration_in_ms": 110513,
+   "libreria": false
+  },
+  {
+   "audio_id": "2865463390342861",
+   "title": "People Have the Power",
+   "display_artist": "Patti Smith",
+   "duration_in_ms": 310400,
+   "libreria": false
+  },
+  {
+   "audio_id": "2249735029150687",
+   "title": "Inside My Soul",
+   "display_artist": "SK.music",
+   "duration_in_ms": 192000,
+   "libreria": false
+  },
+  {
+   "audio_id": "1024907031830995",
+   "title": "Adore Remix (feat. DOSE, Jacquire King) (Tash)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 146296,
+   "libreria": true
+  },
+  {
+   "audio_id": "843173497227558",
+   "title": "Forever (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 193604,
+   "libreria": true
+  }
  ]
 }
