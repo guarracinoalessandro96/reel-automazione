@@ -56,12 +56,14 @@ def elenca(H, cart):
             return files
 
 
-def orari_liberi(occupati, adesso):
-    """Orari della giornata (orario.ORE) a partire da adesso + ANTICIPO_MIN, saltando quelli gia' usati."""
+def orari_liberi(occupati, adesso, ore=None):
+    """Orari della giornata (orario.ORE, o le ore date: Facebook ha le sue) a partire da adesso + ANTICIPO_MIN,
+    saltando quelli gia' usati."""
+    ore = ORE if ore is None else ore
     t = (adesso + datetime.timedelta(minutes=ANTICIPO_MIN)).replace(minute=0, second=0, microsecond=0)
     t += datetime.timedelta(hours=1)
     while True:
-        if t.hour in ORE and t not in occupati:
+        if t.hour in ore and t not in occupati:
             yield t
         t += datetime.timedelta(hours=1)
 

@@ -16,6 +16,9 @@ from orario import ORE
 
 CARTELLA_PC = os.path.join(os.path.expanduser("~"), "Facebook da programmare")
 VECCHIO_GIORNI = 2
+# 6/11/2026 (analisi dei numeri, Alessandro: "fai tu"): su Facebook i reel delle 14-20 fanno 142 riproduzioni di
+# mediana, quelli tra le 22 e le 08 da 1 a 6: gli stessi 10 al giorno escono dalle 12 alle 21, uno ogni ora
+ORE_FACEBOOK = tuple(range(12, 22))
 
 
 def prepara(massimo=4):
@@ -43,7 +46,7 @@ def prepara(massimo=4):
         doppie.add(fr)
         attesa.append((slot, f, p))
     attesa.sort(key=lambda x: x[0], reverse=True)          # prima i piu' nuovi
-    liberi = tp.orari_liberi(occupati, adesso)
+    liberi = tp.orari_liberi(occupati, adesso, ORE_FACEBOOK)
     elenco = []
     for slot, f, p in attesa[:massimo]:
         quando = next(liberi)
