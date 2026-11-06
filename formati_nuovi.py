@@ -705,23 +705,35 @@ def piano_giornata(clips, ore=None, musica=None, frase=None, scene=None, durata=
         altre = [a for a in scelte if not a["principale"]]
         quante = {s: sum(1 for a in altre if a["scena"] == s) for s in {a["scena"] for a in altre}}
         scelte.remove(min(altre, key=lambda a: (-quante[a["scena"]], a["punti"])))
+    fascia = False
     if frase:     # la frase va dove non ci sono visi in nessuna scena: se non c'e' posto, via una clip
+        # 6/11/2026 (prova a 540x960): con 6 primi piani i riquadri dei visi coprono quasi tutto lo schermo e togliere
+        # una clip non basta: si tolgono clip SOLO se cosi' la frase trova davvero posto (minimo GIORNATA_MIN), se no
+        # restano tutte le scene e la frase va sulla fascia (make_giornata), senza il primo tentativo che fallirebbe
         W, H = ov.LATO_USCITA, int(ov.LATO_USCITA * 16 / 9)
-        while len(scelte) > GIORNATA_MIN:
-            img, _, _ = ov.build_testo_giallo(W, H, frase, [f for a in scelte for f in a["visi"]])
-            coperte = [a for a in scelte if viso_coperto(img, a["visi"], W, H)]
-            altre = [a for a in scelte if not a["principale"]]
+        prova, tolte = list(scelte), []
+        while True:
+            img, _, _ = ov.build_testo_giallo(W, H, frase, [f for a in prova for f in a["visi"]])
+            coperte = [a for a in prova if viso_coperto(img, a["visi"], W, H)]
             if not coperte:
                 break
             togli = [a for a in coperte if not a["principale"]]
-            if togli:
-                via = min(togli, key=lambda a: a["punti"])
-            else:      # copre solo il video dell'orario: via la clip con i visi piu' grandi, la frase trova un altro posto
-                via = max(altre, key=lambda a: sum((f[2] - f[0]) * (f[3] - f[1]) for f in a["visi"]))
-                if not via["visi"]:
-                    break
-            print(f"giornata: la frase finirebbe sul viso, tolgo {os.path.basename(via['clip'])}", flush=True)
-            scelte.remove(via)
+            altre = [a for a in prova if not a["principale"] and a["visi"]]
+            if len(prova) <= GIORNATA_MIN or not (togli or altre):
+                prova = None
+                break
+            # via la clip coperta piu' debole; se e' coperto solo il video dell'orario, quella con i visi piu' grandi
+            via = min(togli, key=lambda a: a["punti"]) if togli else \
+                max(altre, key=lambda a: sum((f[2] - f[0]) * (f[3] - f[1]) for f in a["visi"]))
+            prova.remove(via)
+            tolte.append(via)
+        if prova is None:
+            fascia = True
+            print("giornata: la frase non trova posto lontano dai visi: tutte le scene, frase sulla fascia", flush=True)
+        elif tolte:
+            print("giornata: la frase finirebbe sul viso, tolgo " + ", ".join(os.path.basename(a["clip"]) for a in tolte),
+                  flush=True)
+            scelte = prova
     # la prima scena: il momento piu' forte con il viso (in verticale e con luce), poi la giornata in ordine di ora.
     # Conta anche quanto e' grande il viso (rapporto del 6/11: "nel primo secondo ci sei tu e ti si riconosce"): un
     # primo piano in macchina batte lo stesso punteggio con il viso piccolo nello specchio della sala
@@ -739,7 +751,7 @@ def piano_giornata(clips, ore=None, musica=None, frase=None, scene=None, durata=
         durate = tagli_giornata(musica, durate)
     piano = [(a["clip"], round(min(a["inizio"], max(0.0, a["secondi"] - d - 0.05)), 3)) for a, d in zip(ordine, durate)]
     giorno0 = str(scelte[0]["ora"] or "")[:10] if scelte[0]["principale"] else ""
-    info = {"scene": n, "con_viso": sum(1 for a in ordine if a["viso"] > 0)}
+    info = {"scene": n, "con_viso": sum(1 for a in ordine if a["viso"] > 0), "fascia": fascia}
     if giorno0:
         info["stesso_giorno"] = sum(1 for a in ordine if str(a["ora"] or "")[:10] == giorno0)
     return piano, durate, info
@@ -755,6 +767,8 @@ def make_giornata(clips, frase, dst, musiche=(), ore=None, scene=None, controlla
                                          scene)
     usate = [clips[0]] + [c for c, _ in piano if c != clips[0]]
     try:
+        if info.pop("fascia", False):      # gia' si sa che la frase sul video coprirebbe un viso
+            raise VisoCoperto(frase)
         r = make_sequenza(usate, durate, [(0.0, sum(durate), frase)], dst, musiche, None, "giornata", controlla_viso,
                           piano=piano)
     except VisoCoperto:
