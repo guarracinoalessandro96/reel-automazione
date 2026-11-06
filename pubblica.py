@@ -1407,6 +1407,50 @@ def _priorita_ig(a, posto):
     return 0 if forte and vera else 1 if forte else 2 if vera else 3
 
 
+# 6/11/2026 (Alessandro: "non devi prendere la musica dall'inizio ma nel momento piu' virale"): su Instagram il brano
+# parte SEMPRE dal secondo 0 (l'API non ha un punto di partenza: audio_ig.apertura). Dei brani della libreria
+# (download_url) si controlla l'inizio e quelli con un intro lento si scartano; le canzoni con licenza non hanno il
+# file e restano come prima. False = come prima.
+IG_APERTURA = True
+IG_APERTURA_MAX = 4          # file nuovi controllati al massimo per gruppo di candidati (~0,5 MB e un secondo l'uno)
+IG_APERTURA_TOTALE = 8       # ... e per ogni brano scelto (tendenze + ricerche)
+_APERTURE = {}               # audio_id -> True (parte forte) / False (intro) / None (non si sa), una volta per lavoro
+_APERTURE_LETTE = [0]        # file letti per il brano in corso di scelta
+
+
+def _parte_forte(a):
+    """True/False per i brani con file (download_url), None se non si sa (canzoni con licenza, file non letto)."""
+    if not IG_APERTURA or not a.get("download_url"):
+        return None
+    aid = a.get("audio_id")
+    if aid not in _APERTURE:
+        try:
+            m = audio_ig.apertura(a["download_url"])
+        except Exception as e:
+            log("Instagram: inizio del brano non controllato:", type(e).__name__)
+            m = None
+        _APERTURE[aid] = None if m is None else bool(m["forte"])
+        if m:
+            log(f"Instagram: inizio di '{a.get('title')}': primo secondo {m['primo']:+.1f} dB, primi 10 s "
+                f"{m['dieci']:+.1f} dB, salto {m['salto']:+.1f} dB ->", "parte forte" if m["forte"] else "intro, scartato")
+    return _APERTURE[aid]
+
+
+def _scegli_forte(candidati):
+    """Il primo candidato che non parte con un intro lento: i brani della libreria si controllano (al massimo
+    IG_APERTURA_MAX file nuovi), le canzoni con licenza passano come prima. None se nessuno passa."""
+    nuovi = 0
+    for a in candidati:
+        if IG_APERTURA and a.get("download_url") and a.get("audio_id") not in _APERTURE:
+            if nuovi >= IG_APERTURA_MAX or _APERTURE_LETTE[0] >= IG_APERTURA_TOTALE:
+                continue
+            nuovi += 1
+            _APERTURE_LETTE[0] += 1
+        if _parte_forte(a) is not False:
+            return a
+    return None
+
+
 def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti=None):
     """(audio_id, titolo) di un brano Instagram, evitando i recenti. None se nessuno.
     Ordine (4/11/2026, Alessandro: "scegliendo la musica di tendenza di instagram, oppure la stessa musica degli altri
@@ -1415,8 +1459,12 @@ def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti
     6/11/2026: mai la stessa canzone (anche in un'altra versione) negli ultimi IG_FINESTRA_TITOLI reel, mai brani lenti
     o romantici (IG_LENTI). Ordine: tendenze energiche (_priorita_ig 0 e 1), altre canzoni del momento (2), ricerche
     energiche; ultima riserva la tendenza adatta usata meno di recente, perche' senza brano di Instagram il reel non
-    esce (instagram_upload)."""
+    esce (instagram_upload).
+    6/11/2026 (Alessandro: "la musica deve partire dal momento piu' virale"): Instagram fa partire il brano dal secondo
+    0, quindi tra i brani della libreria passano solo quelli che partono gia' forti (_scegli_forte); se nessuno
+    passa, la scelta di prima."""
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
+    _APERTURE_LETTE[0] = 0
     if titoli_recenti is None:     # 6/11/2026: anche il secondo tentativo di instagram_upload evita le stesse canzoni
         titoli_recenti = (_IG_STATO.get("state") or {}).get("ig_titoli_recenti", [])
     titoli = set(titoli_recenti)
@@ -1448,9 +1496,17 @@ def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti
         # Novembre di Giusy Ferreri non ci va: devi capire le musiche che devono andare nei video"): solo brani col
         # titolo da video motivazionale (gruppi 0-1 di _priorita_ig); finiti, le ricerche energiche
         tendenza = [x for x in sorted((_priorita_ig(a, i), i, a) for i, a in tendenza) if x[0] <= 1]
+    riserva = None
     if tendenza:     # tendenze prima delle ricerche: Alessandro vuole la musica di tendenza di Instagram (4/11)
-        a = random.choice([x for x in tendenza if x[0] == tendenza[0][0]][:8])[2]    # il gruppo migliore
-        return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')} [tendenza]"
+        gruppo = [x[2] for x in tendenza if x[0] == tendenza[0][0]][:8]    # il gruppo migliore
+        riserva = a = random.choice(gruppo)
+        try:     # 6/11/2026: in ordine casuale, il primo che non parte con un intro lento (brani della libreria)
+            a = _scegli_forte(random.sample(gruppo, len(gruppo)))
+        except Exception as e:
+            log("Instagram: inizio dei brani non controllato:", e)
+        if a:
+            return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')} [tendenza]"
+        log("Instagram: le tendenze adatte partono tutte con un intro lento, provo le ricerche")
     ricerche = list(dict.fromkeys(random.sample(IG_ENERGICI, len(IG_ENERGICI))))
     # 4/11/2026: anche le ricerche di riserva con nuovi tentativi e gli stessi filtri delle tendenze (stagione, durata)
     cerca = lambda q: _meta("GET", f"{GRAPH_AUDIO}/ig_audio", timeout=30, params={
@@ -1460,8 +1516,9 @@ def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti
         for q in audio_tendenza()[:6]:                # i brani usati dagli altri reel, se Instagram li concede all'API
             trovati = [a for a in cerca(q) if adatto(a)
                        and q.lower().strip() == a.get("title", "").lower().strip()]   # 3/11: titolo esatto ("Violin" dava Brahms)
-            if trovati:
-                return trovati[0]["audio_id"], f"{trovati[0].get('title')} - {trovati[0].get('display_artist')}"
+            a = _scegli_forte(trovati) if trovati else None      # 6/11/2026: mai un brano che parte con un intro lento
+            if a:
+                return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')}"
         for q in ricerche[:4]:
             tutti += [a for a in cerca(q) if adatto(a)]
     except Exception as e:
@@ -1470,6 +1527,15 @@ def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti
     # recenti se ce n'e' un altro
     forti = [a for a in tutti if IG_TITOLI_FORTI.search(a.get("title", "")) or IG_ENERGIA.search(a.get("title", ""))]
     forti = [a for a in forti if a.get("display_artist") not in artisti_recenti] or forti
+    try:     # 6/11/2026: prima un brano energico che parte gia' forte dal primo secondo
+        a = _scegli_forte(random.sample(forti, len(forti))) if forti else None
+    except Exception as e:
+        log("Instagram: inizio dei brani non controllato:", e)
+        a = None
+    if a:
+        return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')}"
+    if riserva:      # 6/11/2026: nessuno parte forte: la tendenza del gruppo migliore, come prima
+        return riserva["audio_id"], f"{riserva.get('title')} - {riserva.get('display_artist')} [tendenza]"
     if forti:
         a = random.choice(forti)
         return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')}"

@@ -63,6 +63,60 @@ def punto_inizio(brano, tagli=()):
     return round(inizio * PASSO, 2)
 
 
+# 6/11/2026 (Alessandro: "non devi prendere la musica dall'inizio ma nel momento piu' virale: i suoni di tendenza
+# partono gia' dal ritornello"): l'API di Instagram NON fa scegliere da dove parte il brano (audio_configuration ha solo
+# audio_id, audio_volume e video_volume; /ig_audio non da' il punto del ritornello: provato il 6/11 sulla v26), quindi
+# il brano parte dal secondo 0. Dei brani della libreria Instagram da' il file intero (download_url): si controlla che
+# parta GIA' forte. Sui 36 brani della Raccolta di YouTube presi dall'inizio passerebbero solo in 6: gli altri hanno un
+# intro di 5-20 s (primo secondo da 10 a 80 dB sotto i momenti forti).
+APERTURA_PRIMO_MIN = -6.0     # dB, il primo secondo rispetto ai momenti forti del brano (90esimo percentile)
+APERTURA_DIECI_MIN = -5.0     # dB, i primi 10 s
+APERTURA_SALTO_MAX = 6.0      # dB, un salto di volume nei primi 10 s = il drop arriva dopo (si parte dal crescendo)
+
+
+def apertura_pcm(x, sr=8000):
+    """Quanto e' forte l'inizio di un brano (x: campioni mono): dB del primo secondo e dei primi 10 s rispetto ai
+    momenti forti, salto di volume piu' grande nei primi 10 s, e forte = parte gia' pieno."""
+    n = sr // 2
+    k = len(x) // n
+    if k < 24:
+        return None
+    db = 10 * np.log10((np.asarray(x[:k * n], np.float64).reshape(k, n) ** 2).mean(axis=1) + 1e-10)
+    p90 = float(np.percentile(db, 90))
+    salto = max(float(db[i:i + 4].mean() - db[i - 4:i].mean()) for i in range(4, 17))
+    primo, dieci = float(db[:2].mean() - p90), float(db[:20].mean() - p90)
+    return {"primo": round(primo, 1), "dieci": round(dieci, 1), "salto": round(salto, 1),
+            "forte": primo >= APERTURA_PRIMO_MIN and dieci >= APERTURA_DIECI_MIN and salto < APERTURA_SALTO_MAX}
+
+
+def apertura(url, timeout=30):
+    """apertura_pcm del file di un brano di Instagram (download_url, ~0,5 MB). None se non si riesce a leggerlo."""
+    import tempfile, requests
+    tmp = None
+    try:
+        r = requests.get(url, timeout=timeout, stream=True)
+        r.raise_for_status()
+        fd, tmp = tempfile.mkstemp(suffix=".m4a")
+        with os.fdopen(fd, "wb") as f:
+            letti = 0
+            for pezzo in r.iter_content(256 * 1024):
+                f.write(pezzo)
+                letti += len(pezzo)
+                if letti > 25e6:
+                    raise ValueError("file troppo grande")
+        raw = subprocess.run([FFMPEG, "-v", "error", "-i", tmp, "-ac", "1", "-ar", "8000", "-f", "s16le", "-"],
+                             capture_output=True, timeout=90).stdout
+        return apertura_pcm(np.frombuffer(raw, "<i2").astype(np.float32) / 32768)
+    except Exception:
+        return None
+    finally:
+        if tmp:
+            try:
+                os.remove(tmp)      # file temporaneo nostro (copia scaricata), non dati di Alessandro
+            except OSError:
+                pass
+
+
 def _misura(path):
     return subprocess.run([FFMPEG, "-hide_banner", "-nostats", "-i", path, "-af",
                            f"ebur128=peak=true,silencedetect=n=-45dB:d=0.4", "-vn", "-f", "null", "-"],
