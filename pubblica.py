@@ -2178,7 +2178,10 @@ def _orizz(x):
 
 
 def orizzontale_recente(state, n=ORIZZONTALI_OGNI):
-    """True se tra gli ultimi n reel ce n'e' gia' uno fatto da un video orizzontale (montaggio.orizzontale)."""
+    """True se tra gli ultimi n reel ce n'e' gia' uno fatto da un video orizzontale (montaggio.orizzontale).
+    ORIZZONTALI_OGNI = 0 spegne la regola."""
+    if n <= 0:
+        return False
     ultimi = [h for h in state.get("storico", []) if h.get("slot") and not h.get("riprova")][-n:]
     return any((h.get("montaggio") or {}).get("orizzontale") is True for h in ultimi)
 
