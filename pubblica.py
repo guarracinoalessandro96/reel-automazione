@@ -584,6 +584,13 @@ def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, ultim
         formato = "dieci_due"
     if formato in ("rallenty", "loop") and overlay.probe(src)[0] < 6.5:     # 6/11/2026: troppo corto per giocarci
         formato = "dieci_due"
+    if formato == "rallenty":        # 6/11/2026 (revisione): 2,4 s + 8 s rallentati, a 0,5x (60 fps) o 0,75x (30 fps)
+        try:
+            v = 0.5 if float(overlay.fps(src)) >= 50 else 0.75
+        except Exception:
+            v = 0.75
+        if overlay.probe(src)[0] < 2.4 + 8 * v:
+            formato = "dieci_due"
     # 6/11/2026: le altre scene PRIMA dallo stesso giorno (i video della stessa palestra), poi a caso
     giorno = str((clip or {}).get("registrato") or overlay.data_ripresa(src) or "")[:10] or None
     musiche = musiche_brano(music, 3)
@@ -2262,13 +2269,11 @@ def main():
             info = None
             if TUTTO_10S:                # 1/11/2026: il ripiego resta nello stile scelto (10 s, scritta gialla)
                 try:
-                    import formati_nuovi     # 6/11/2026: qui non era importato (NameError: il ripiego da 10 s non partiva mai)
-                    try:                     # 6/11/2026: anche qui la scritta mai sul viso: se lo coprirebbe, 'cinema'
-                        info = formati_nuovi.make_dieci("dieci", [src], frase["gancio"], out, musiche_brano(music, 3),
-                                                        serie, True)
-                    except formati_nuovi.VisoCoperto:
-                        info = formati_nuovi.make_dieci("cinema", [src], frase["gancio"], out, musiche_brano(music, 3),
-                                                        serie, True)
+                    # 6/11/2026: prima qui formati_nuovi non era importato (NameError: il ripiego non partiva mai).
+                    # monta_dieci gestisce i video corti (dieci_due) e la scritta sul viso (cinema/post, controllo
+                    # del viso sempre acceso)
+                    info = monta_dieci("dieci", frase, src, out, music, serie, drive, work, clip,
+                                       state.get("formato_ultimo"))
                     info["ripiego_da"] = formato
                 except Exception as e2:
                     log("Anche il ripiego da 10 s non riuscito:", e2)
