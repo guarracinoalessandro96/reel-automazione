@@ -10003,7 +10003,9 @@
     "instagram": {
      "ok": true,
      "id": "17918322336523539",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -10031,7 +10033,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "sxqYNthcmxE"
+     "id": "sxqYNthcmxE",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10041,11 +10044,43 @@
    },
    "spinto": true,
    "testo": "Non torno dove ho dovuto pregare per essere scelto."
+  },
+  {
+   "quando": "2026-11-06T09:00",
+   "slot": "2026-11-06 10:00",
+   "video": "IMG_4269.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-b8c79064",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "monthaholic_1.m4a",
+    "stacchi": 4,
+    "testi": 1,
+    "musica_meta": "phonk_11.flac",
+    "musica_instagram": "Novembre - Giusy Ferreri [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "_d0xMGydzt4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18133223758806726",
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "La parte più difficile non è dimenticare. È continuare a vivere con tutto quello che resta."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-29 00:00",
   "2026-10-29 02:00",
   "2026-10-29 04:00",
   "2026-10-29 10:00",
@@ -10124,10 +10159,10 @@
   "2026-11-05 22:00",
   "2026-11-06 00:00",
   "2026-11-06 06:00",
-  "2026-11-06 08:00"
+  "2026-11-06 08:00",
+  "2026-11-06 10:00"
  ],
  "musica_recenti": [
-  "way_back_home_2.m4a",
   "taking_flight_3.m4a",
   "whoop_3.m4a",
   "wrangle_the_crazy_3.m4a",
@@ -10146,7 +10181,8 @@
   "ancient_civilisations_3.m4a",
   "dusty_road_magic_3.m4a",
   "vibe_check_1.m4a",
-  "the_light_3.m4a"
+  "the_light_3.m4a",
+  "monthaholic_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10431,7 +10467,8 @@
   "MIE-ed8b4192",
   "MIE-ef3aefc2",
   "MIE-0880c6d4",
-  "MIE-77e3005c"
+  "MIE-77e3005c",
+  "MIE-b8c79064"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10821,8 +10858,8 @@
    "ultimo": "2026-11-06"
   },
   "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW": {
-   "usi": 2,
-   "ultimo": "2026-10-28"
+   "usi": 3,
+   "ultimo": "2026-11-06"
   },
   "1sS5KtmGf3aPo3O8udU6R6rADRrUb-zMb": {
    "usi": 2,
@@ -10886,7 +10923,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_09.flac",
   "phonk_12.flac",
   "trap_13.flac",
   "energia_08.flac",
@@ -10905,7 +10941,8 @@
   "trap_11.flac",
   "phonk_02.flac",
   "drive_08.flac",
-  "deciso_11.flac"
+  "deciso_11.flac",
+  "phonk_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10940,7 +10977,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10956,7 +10993,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "617195401283615",
   "351866282607327",
   "593371403855914",
   "585527483942549",
@@ -10985,12 +11021,13 @@
   "856093300426979",
   "2201065153808959",
   "261968585425392",
-  "4321185548142585"
+  "4321185548142585",
+  "1190974441039956"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Paramveer Singh katoch",
   "Eros Ramazzotti",
-  "HUMBE"
+  "HUMBE",
+  "Giusy Ferreri"
  ]
 }
