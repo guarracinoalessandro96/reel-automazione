@@ -134,31 +134,48 @@ def _sull_entrata(c, s, x, cerca=1.5):
     return _primo_colpo(x, pl.sul_colpo(x, t + 0.07, SR, cerca=0.12))
 
 
-def _primo_colpo(x, s, fin=0.35, soglia=6.0):
+def _primo_colpo(x, s, fin=0.35, soglia=6.0, prima=0.12):
     """6/11/2026 (revisione): il primo colpo NETTO dopo l'inizio s (il volume a 10 ms sale di almeno 6 dB sulla media
     dei 30 ms prima) deve cadere 10-40 ms dopo l'inizio. Se arriva piu' tardi (entro 0,35 s: si partiva con un
     pezzetto della battuta prima) o troppo presto (attacco tagliato), l'inizio va 20 ms prima del suo attacco. Senza
-    colpi netti (trama continua) o con un errore resta s."""
+    colpi netti (trama continua) o con un errore resta s.
+    6/11/2026 (integrazione, revisione finale del ritornello): i colpi netti si cercano da 0,12 s PRIMA di s a 0,35 s
+    dopo, anche 3 dB sotto la mediana (rubberband_1 e i_might_be_late_2 partivano subito dopo il loro colpo: si
+    sentiva il colpo tagliato e si andava al colpo dopo). Se un colpo cade gia' a 10-40 ms resta s; se no, tra i colpi
+    da -0,12 a +0,04 s vince quello che sale di piu'; solo senza questi, il primo dopo 0,04 s."""
     try:
         w, h = SR // 100, SR // 400                                    # finestre da 10 ms, passo 2,5 ms
-        a = int(round(s * SR)) - 5 * w
-        seg = np.asarray(x[max(0, a):a + int(fin * SR) + 6 * w], np.float64)
+        pre = prima + 5 * w / SR                                       # 50 ms in piu': la salita guarda i 30 ms prima
+        a = int(round((s - pre) * SR))
+        seg = np.asarray(x[max(0, a):a + int((pre + fin) * SR) + w], np.float64)
         n = (len(seg) - w) // h
         if a < 0 or n < 40:
             return s
         e = 10 * np.log10(np.convolve(seg ** 2, np.ones(w) / w, "valid")[::h][:n] + 1e-12)
-        t = (np.arange(n) * h + w) / SR - 5 * w / SR                   # fine della finestra, rispetto a s
+        t = (np.arange(n) * h + w) / SR - pre                          # fine della finestra, rispetto a s
         cs = np.r_[0, np.cumsum(e)]
         j0 = np.arange(n)
         salita = e - (cs[j0] - cs[np.maximum(j0 - 12, 0)]) / np.maximum(j0 - np.maximum(j0 - 12, 0), 1)
-        ok = np.where((t >= 0) & (t <= fin) & (j0 >= 12) & (salita >= soglia) & (e >= np.median(e)))[0]
+        ok = np.where((t >= -prima) & (t <= fin) & (j0 >= 12) & (salita >= soglia)
+                      & (e >= np.median(e) - 3.0))[0]
         if not len(ok):
             return s
-        j = int(ok[0])
-        while j + 1 < n and salita[j + 1] > salita[j]:                 # il punto piu' ripido di quella salita
-            j += 1
-        if 0.01 <= t[j] <= 0.04:
+        colpi = []                                                     # un colpo per ogni salita (finestre di fila)
+        for gruppo in np.split(ok, np.where(np.diff(ok) > 1)[0] + 1):
+            j = int(gruppo[int(np.argmax(salita[gruppo]))])
+            while j + 1 < n and salita[j + 1] > salita[j]:             # il punto piu' ripido di quella salita
+                j += 1
+            colpi.append(j)
+        if any(0.01 <= t[j] <= 0.04 for j in colpi):
             return s
+        presto = [j for j in colpi if t[j] < 0.01]                     # da -0,12 a +0,04 s (10-40 ms gia' esclusi)
+        if presto:
+            j = max(presto, key=lambda j: salita[j])
+        else:
+            dopo = [j for j in colpi if t[j] > 0.04]
+            if not dopo:
+                return s
+            j = dopo[0]
         return max(0.0, s + float(t[j]) - 0.03)                         # attacco ~7 ms prima, poi 20 ms di margine
     except Exception:
         return s
@@ -313,8 +330,8 @@ def rifai(solo=(), tutti=False):
     """6/11/2026 (Alessandro: "la musica deve partire dal momento piu' virale, dal ritornello"): i pezzi gia' fatti
     che col ritornello partono da un altro punto si rifanno con lo stesso nome e lo stesso volume (-14 LUFS), poi la
     loro versione da 20,5 s. Se la versione lunga nuova non e' uguale al pezzo corto, quella vecchia si toglie
-    (partirebbe dal punto di prima: musiche_brano la usa per tutti i formati); i file vecchi restano nella storia di
-    git. solo: i brani da fare (al massimo 6 per volta: il lucchetto del PC si considera dimenticato dopo 20 minuti).
+    (partirebbe dal punto di prima: musiche_brano la usa per tutti i formati): si sposta in _lavoro/musica_vecchia
+    (mai cancellata) e resta anche nella storia di git. solo: i brani da fare (al massimo 6 per volta: il lucchetto del PC si considera dimenticato dopo 20 minuti).
     Revisione 6/11 sera: resta solo chi si sposta meno di 0,02 s (la rifinitura sul colpo vale circa 0,09 s);
     tutti=True (--tutti) rifa' anche quelli, per la sfumata d'ingresso nuova."""
     import shutil, tempfile
@@ -341,9 +358,21 @@ def rifai(solo=(), tutti=False):
             lungo = os.path.join(venti, os.path.basename(out))
             os.makedirs(venti, exist_ok=True)
             if not _lungo(p, x, slug, k, out, venti, g) and os.path.exists(lungo):
-                os.remove(lungo)
-                print(f"{slug}_{k}: tolta la versione lunga vecchia (partiva da prima)", flush=True)
+                # 6/11/2026 (integrazione): mai cancellare: la versione lunga vecchia si sposta fuori da musica/
+                print(f"{slug}_{k}: tolta la versione lunga vecchia (partiva da prima), messa in "
+                      f"{_metti_da_parte(lungo)}", flush=True)
     print(cambiati, "pezzi rifatti")
+
+
+def _metti_da_parte(path):
+    """6/11/2026 (integrazione): un file tolto da musica/ non si cancella mai: va in _lavoro/musica_vecchia/ (fuori da
+    git, vedi .gitignore) con l'ora nel nome e la desinenza .vecchio."""
+    import shutil, time
+    d = os.path.join(pl.HERE, "_lavoro", "musica_vecchia")
+    os.makedirs(d, exist_ok=True)
+    dest = os.path.join(d, f"{os.path.basename(path)}.{time.strftime('%Y%m%d_%H%M%S')}.vecchio")
+    shutil.move(path, dest)
+    return dest
 
 
 if __name__ == "__main__":
