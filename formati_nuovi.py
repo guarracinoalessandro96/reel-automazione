@@ -7,6 +7,9 @@ il prima possibile quale format funziona"). Tutti in 4K 60 come gli altri, con l
 - broll3 : 12 s, 4 stacchi da 3 s, la frase divisa in pezzi: cambia a ogni stacco
 - storia : ~22 s, un racconto a schermate (titolo + 3 righe di una lista, una schermata alla volta) su 2-3 clip
 - dieci / dieci_due / dieci_broll (29/10/2026): 10 s, frase in due tempi, 1 / 2 / 4 inquadrature
+- taglio1/2/3, intero (6/11/2026): scene da 1/2/3 s tagliate dal SUO video (piano_scene), o il video intero
+- cinema / post / rallenty / loop (6/11/2026): bande da film o post con la frase fuori dal video, rallentatore,
+  avanti-indietro che riparte senza stacco
 
 make_sequenza() e' il motore comune: pezzi di video tagliati netti + testi che compaiono a tempo + musica.
 """
@@ -34,7 +37,19 @@ FORMATI = {
     "taglio2": {"stacchi": [2.0] * 5},               # 5 scene da 2 s
     "taglio3": {"stacchi": [3.0, 3.5, 3.5]},         # 3 scene da ~3 s
     "intero": {"stacchi": [20.0]},                   # il suo video com'e', per intero (10-20 s: lo accorcia make_dieci)
+    # 6/11/2026 (Alessandro: "studia 10 format di video diversi"): 4 formati diversi per impaginazione o ritmo.
+    # cinema/post: la frase sta FUORI dal video (mai sul viso per costruzione)
+    "cinema": {"stacchi": [10.0], "layout": "cinema"},   # bande nere da film, frase gialla sulla banda in alto
+    "post": {"stacchi": [10.0], "layout": "post"},       # come un post: frase nera su bianco sopra, il video sotto
+    "rallenty": {"stacchi": [2.0, 8.0], "rallenty": True},   # 2 s normali, poi il momento migliore al rallentatore
+    "loop": {"stacchi": [3.5, 3.5], "loop": True},       # 3,5 s avanti e gli stessi all'indietro: riparte senza stacco
 }
+# formati della famiglia "dieci" (scritta gialla, colori, viso controllato), oltre ai nomi che iniziano con "dieci"
+DIECI_NOMI = ("taglio1", "taglio2", "taglio3", "intero", "cinema", "post", "rallenty", "loop")
+# 6/11/2026: formati le cui scene si tagliano PRIMA dal video principale (piano_scene)
+A_SCENE = ("dieci_due", "taglio1", "taglio2", "taglio3", "cinema", "post")
+MARGINE_S = 0.2      # secondi lasciati all'inizio e alla fine di ogni video
+STACCO_MIN = 0.25    # tra due scene dello stesso video si salta almeno questo, cosi' lo stacco si vede
 DURATA_RACCONTO = 30.0
 GANCIO_S = 3.5
 ENTRATA_S = 0      # 3/11/2026: frase FISSA dal primo fotogramma (Alessandro non vuole che salga; prima 0.18)        # formati da 10 s: il gancio da solo per 3,5 s, poi la frase intera
@@ -76,31 +91,203 @@ def viso_coperto(img, sotto, W, H):
     return any(ov._overlap(box, f) > 0.4 * max((f[2] - f[0]) * (f[3] - f[1]), 1e-6) for f in sotto)
 
 
-def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="sequenza", controlla_viso=False):
+def _distribuisci(da, a, durate):
+    """Inizi delle scene (in ordine di tempo) sparse con lo stesso spazio tra loro in [da, a]; None se non ci stanno
+    con almeno STACCO_MIN tra una e l'altra."""
+    if not durate:
+        return []
+    libero = (a - da) - sum(durate)
+    if libero < STACCO_MIN * (len(durate) + 1) - 1e-6:
+        return None
+    passo, t, inizi = libero / (len(durate) + 1), da, []
+    for d in durate:
+        t += passo
+        inizi.append(round(t, 3))
+        t += d
+    return inizi
+
+
+def _sparse(secondi, durate):
+    """Ripiego: inizi sparsi su tutto il video anche se le scene si sovrappongono (mai due scene dallo stesso punto)."""
+    fine = secondi - max(durate) - MARGINE_S
+    if fine <= MARGINE_S:
+        return [0.0] * len(durate)
+    return [round(MARGINE_S + (fine - MARGINE_S) * (i + 0.5) / len(durate), 3) for i in range(len(durate))]
+
+
+def scene_che_entrano(secondi, durate):
+    """Quante scene (dalla prima) si tagliano da un video lungo `secondi` senza ripetere fotogrammi."""
+    k = 0       # la prima scena non ha stacchi; le altre uno a testa (piano_scene puo' spostare la prima in cima)
+    while k < len(durate) and sum(durate[:k + 1]) + STACCO_MIN * (k + 1 if k else 0) <= secondi - 2 * MARGINE_S:
+        k += 1
+    return k
+
+
+def durate_formato(nome, secondi):
+    """Durate delle scene del formato per un video principale lungo `secondi`."""
+    durate = list(FORMATI[nome]["stacchi"])
+    if nome == "intero":                       # 6/11/2026: tutta la clip, tra 10 e 20 s
+        durate = [round(max(10.0, min(20.0, secondi - 0.3)), 2)]
+    elif FORMATI[nome].get("layout") and secondi < durate[0] + 0.5:   # video corto: due scene da 5 s
+        durate = [5.0, 5.0]
+    return durate
+
+
+def scene_mancanti(nome, src):
+    """6/11/2026: quante scene del formato NON entrano nel video principale (solo per quelle si scaricano clip extra)."""
+    try:
+        s = ov.probe(src)[0]
+        durate = durate_formato(nome, s)
+        margine = 0.3 if len(durate) > 1 else 0.0     # gli stacchi si spostano fino a 0,3 s sul colpo della musica
+        return len(durate) - scene_che_entrano(s - margine, durate)
+    except Exception:
+        return len(FORMATI.get(nome, {}).get("stacchi", [1]))
+
+
+def piano_scene(clips, durate):
+    """6/11/2026 (Alessandro: "li ritaglio io in 10-15-20 secondi e poi tu li tagli a tua volta in scene da 1, 2, 3, 5
+    secondi"): le scene si tagliano PRIMA dal video principale, sparse su tutta la sua lunghezza e in ordine di tempo,
+    con la prima nel momento piu' forte (segmento_migliore); le clip extra solo per le scene che non ci stanno.
+    Prima i pezzi di una clip riusata finivano tutti in fondo (con 12 s le ultime scene erano fotogrammi uguali).
+    Restituisce [(clip, inizio)] per ogni scena, nell'ordine del reel."""
+    c0, m = clips[0], MARGINE_S
+    S, hdr = ov.probe(c0)
+    d0 = durate[0]
+    t0 = m
+    if S > d0 + 1.5:
+        try:
+            t0 = ov.segmento_migliore(c0, S, ov.HDR_TO_SDR if hdr else None, d0 + 0.2)[0]
+        except Exception:
+            pass
+    limita = lambda t: round(min(max(t, m), max(0.0, S - d0 - m)), 3)
+
+    def disponi(t0):                           # le scene dopo la prima, prima e dopo il momento forte, in ordine
+        for k in range(len(durate), 1, -1):
+            dentro = list(durate[1:k])
+            l1, l2 = max(0.0, t0 - m), max(0.0, S - m - t0 - d0)
+            ideale = len(dentro) * l1 / max(l1 + l2, 1e-6)
+            for n1 in sorted(range(len(dentro) + 1), key=lambda n: abs(n - ideale)):
+                a = _distribuisci(m, t0, dentro[:n1])
+                b = _distribuisci(t0 + d0, S - m, dentro[n1:])
+                if a is not None and b is not None:
+                    return a + b
+        return []
+    # se dal momento forte non entrano tutte, la prima scena si sposta il meno possibile finche' entrano tutte
+    t0 = limita(t0)
+    scelta = (t0, disponi(t0))
+    for t in sorted({limita(t0 + 0.5 * s) for s in range(-40, 41)}, key=lambda t: abs(t - t0)):
+        if len(scelta[1]) == len(durate) - 1:
+            break
+        r = disponi(t)
+        if len(r) > len(scelta[1]):
+            scelta = (t, r)
+    piano = [(c0, scelta[0])] + [(c0, t) for t in scelta[1]]
+    mancanti, altre = list(range(len(piano), len(durate))), clips[1:]
+    if mancanti and altre:                     # le scene che mancano dalle clip extra, a giro, sparse anche li'
+        gruppi = {}
+        for q, i in enumerate(mancanti):
+            gruppi.setdefault(q % len(altre), []).append(i)
+        inizi = {}
+        for j, idx in gruppi.items():
+            dj = [durate[i] for i in idx]
+            sj = ov.probe(altre[j])[0]
+            pos = _distribuisci(m, sj - m, dj) or _sparse(sj, dj)
+            inizi.update({i: (altre[j], t) for i, t in zip(idx, pos)})
+        piano += [inizi[i] for i in mancanti]
+    elif mancanti:                             # nessuna clip extra: ancora il video principale, da punti diversi
+        piano += [(c0, t) for t in _sparse(S, [durate[i] for i in mancanti])]
+    return piano
+
+
+def _riquadro_video(volti_pezzo, wv, hv):
+    """Taglio verticale del video nella finestra wv x hv (cinema/post): il viso nella parte alta della finestra,
+    al centro se non c'e' viso. Espressione per il crop di ffmpeg."""
+    fy = 0.45
+    if volti_pezzo:
+        fy = sum((f[1] + f[3]) / 2 for f in volti_pezzo) / len(volti_pezzo)
+    return f"(iw-{wv})/2:'max(0,min(ih-{hv},{fy:.4f}*ih-{0.40 * hv:.1f}))'"
+
+
+def _righe(d, testo, font, max_px):
+    try:
+        return ov._a_capo(d, testo, font, max_px)
+    except Exception:
+        return [testo]
+
+
+def cornice(W, H, tipo, testo):
+    """6/11/2026: impaginazione con la frase FUORI dal video, quindi mai sul viso.
+    cinema: fondo nero con le bande da film, la frase gialla sulla banda in alto e il video largo quanto lo schermo;
+    post: fondo bianco come un post, la frase nera sopra e il video sotto con gli angoli arrotondati.
+    Restituisce (immagine W x H con il buco trasparente per il video, (x, y, w, h) del video, colore del fondo)."""
+    from PIL import Image, ImageDraw, ImageFont
+    post = tipo == "post"
+    pari = lambda v: int(v) // 2 * 2
+    fsize = int(W * ov.DIM_GIALLO * (0.95 if post else 1.0))
+    font = ImageFont.truetype(ov.FONT_GIALLO if os.path.exists(ov.FONT_GIALLO) else ov.FONT, fsize)
+    fondo = "white" if post else "black"
+    img = Image.new("RGBA", (W, H), (255, 255, 255, 255) if post else (0, 0, 0, 255))
+    d = ImageDraw.Draw(img)
+    margine = pari(W * 0.07)
+    righe = _righe(d, testo, font, (W - 2 * margine) if post else W * 0.84)
+    lh = int(fsize * 1.25)
+    alto = int(H * (ov.SAFE_TOP + 0.012))      # sotto il nome utente e le schede della piattaforma
+    alto_testo = lh * len(righe)
+    if post:
+        x, w = margine, W - 2 * margine
+        y = pari(alto + alto_testo + H * 0.028)
+        h = pari(min(w * 1.25, H * 0.90 - y))
+        for i, r in enumerate(righe):
+            d.text((margine, alto + i * lh), r, font=font, fill=(15, 20, 25, 255))
+        d.rounded_rectangle([x, y, x + w - 1, y + h - 1], radius=int(W * 0.035), fill=(0, 0, 0, 0))
+    else:
+        x, w = 0, W
+        y = pari(max(H * 0.22, alto + alto_testo + H * 0.03))
+        h = pari(min(W, H * 0.86 - y))
+        y_t = y - int(H * 0.022) - alto_testo  # la frase appoggiata sopra il video, come un titolo di film
+        for i, r in enumerate(righe):
+            d.text(((W - d.textlength(r, font=font)) / 2, y_t + i * lh), r, font=font, fill=ov.GIALLO)
+        d.rectangle([x, y, x + w - 1, y + h - 1], fill=(0, 0, 0, 0))
+    return img, (x, y, w, h), fondo
+
+
+def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="sequenza", controlla_viso=False,
+                  piano=None, velocita=None, indietro=None, layout=None):
     """clips: video sorgente (si riusano a giro, ogni pezzo da un punto diverso); durate: secondi di ogni pezzo;
-    testi: [(da_s, a_s, testo)] da mostrare a tempo. Restituisce info."""
+    testi: [(da_s, a_s, testo)] da mostrare a tempo. Restituisce info.
+    6/11/2026: piano = [(clip, inizio)] deciso prima (piano_scene); velocita = per pezzo (0,5 = rallentatore);
+    indietro = per pezzo (True = al contrario, loop); layout = (cornice, (x, y, w, h), colore) per cinema/post."""
     W, H = ov.LATO_USCITA, int(ov.LATO_USCITA * 16 / 9)
     DUR = round(sum(durate), 3)
     tmp = tempfile.mkdtemp()
     n = len(durate)
     cmd, catena, volti, mappe = [ov.FFMPEG, "-y", "-v", "error"], [], [], []
-    dieci = nome.startswith("dieci") or nome in ("taglio1", "taglio2", "taglio3", "intero")
+    dieci = nome.startswith("dieci") or nome in DIECI_NOMI
+    wv, hv = (layout[1][2], layout[1][3]) if layout else (W, H)
     for i, seg in enumerate(durate):
-        c = clips[i % len(clips)]
-        secondi, hdr = ov.probe(c)
-        giro = i // len(clips)                     # stessa clip riusata: punto diverso
-        riserva = max(0.0, min(0.5 + giro * (seg + 0.5), secondi - seg - 0.2))
-        inizio = ov.inizio_bello(c, secondi, hdr, seg + 0.2, riserva) if giro == 0 else riserva
-        if i == 0 and dieci and secondi > seg + 1.5:    # 1/11/2026: si parte sempre dal punto piu' forte
-            try:
-                inizio = ov.segmento_migliore(c, secondi, ov.HDR_TO_SDR if hdr else None, seg + 0.2)[0]
-            except Exception:
-                pass
-        cmd += ["-display_rotation", "0", "-ss", f"{inizio:.2f}", "-t", f"{seg + 0.2:.2f}", "-i", c]
+        v = float(velocita[i]) if velocita else 1.0
+        sorgente = seg * v                         # secondi di video sorgente usati dal pezzo
+        if piano:
+            c, inizio = piano[i]
+            secondi, hdr = ov.probe(c)
+        else:
+            c = clips[i % len(clips)]
+            secondi, hdr = ov.probe(c)
+            giro = i // len(clips)                 # stessa clip riusata: punto diverso
+            # 6/11/2026: i giri si spargono su tutta la clip (prima 0,5 + giro * (seg + 0,5) finiva in fondo: uguali)
+            usi = (n - 1 - i % len(clips)) // len(clips) + 1
+            riserva = max(0.0, min(0.5 + giro * max(0.0, secondi - seg - 0.7) / max(1, usi - 1), secondi - seg - 0.2))
+            inizio = ov.inizio_bello(c, secondi, hdr, seg + 0.2, riserva) if giro == 0 else riserva
+            if i == 0 and dieci and secondi > seg + 1.5:    # 1/11/2026: si parte sempre dal punto piu' forte
+                try:
+                    inizio = ov.segmento_migliore(c, secondi, ov.HDR_TO_SDR if hdr else None, seg + 0.2)[0]
+                except Exception:
+                    pass
+        cmd += ["-display_rotation", "0", "-ss", f"{inizio:.2f}", "-t", f"{sorgente + 0.2:.2f}", "-i", c]
         # 29/10/2026 (Alessandro: "le scritte non devono mai coprire il viso"): volti di questo pezzo, gia' nel taglio
         # 9:16 del reel (prima qui il testo andava sempre in alto, anche sopra la faccia)
         try:
-            fr = ov.extract_frames(c, seg, n=5 if controlla_viso else 3, start=inizio,
+            fr = ov.extract_frames(c, sorgente, n=5 if controlla_viso else 3, start=inizio,
                                    vf=f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H}")
             volti.append(ov.detect_faces(fr, ruotati=dieci))
             mappe.append(ov.mappa_dettagli(fr))
@@ -113,13 +300,28 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         # niente schiarita e niente LOOK, la luce resta quella che ha scelto col telefono
         sua = dieci and ov.luce_sua(c)
         f = [x for x in (ov.raddrizza(ov.rotazione(c)), ov.HDR_TO_SDR if hdr else "") if x]
-        f += [f"scale={W}:{H}:force_original_aspect_ratio=increase", f"crop={W}:{H}", "setsar=1"]
+        if layout:     # cinema/post: il video nella sua finestra, tagliato tenendo il viso dentro
+            f += [f"scale={wv}:{hv}:force_original_aspect_ratio=increase",
+                  f"crop={wv}:{hv}:{_riquadro_video(volti[-1], wv, hv)}", "setsar=1"]
+        else:
+            f += [f"scale={W}:{H}:force_original_aspect_ratio=increase", f"crop={W}:{H}", "setsar=1"]
         f += [schiarisci, ov.LOOK] if dieci and not sua and schiarisci else [ov.LOOK] if dieci and not sua else []
+        if v != 1.0:   # rallentatore: i fotogrammi si allungano, poi fps li porta a 60 (niente filtri pesanti)
+            f += [f"setpts=(PTS-STARTPTS)/{v:.3f}"]
         f += [f"fps={ov.FPS_MULTI}", "format=yuv420p", "settb=AVTB", f"fps={ov.FPS_MULTI}",
               "tpad=stop_mode=clone:stop_duration=1", f"trim=0:{seg:.3f}", "setpts=PTS-STARTPTS"]
+        if indietro and indietro[i]:               # loop: lo stesso pezzo al contrario (ingresso a parte, niente split)
+            f += ["reverse", "setpts=PTS-STARTPTS"]
         catena.append(f"[{i}:v]{','.join(f)}[c{i}]")
     g = ";".join(catena) + ";" + "".join(f"[c{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=0[bg]"
     corrente, idx = "bg", n
+    if layout:         # la finestra del video sul fondo, poi la cornice con la frase sopra
+        img, (x, y, _, _), colore = layout
+        p = os.path.join(tmp, "cornice.png")
+        img.save(p)
+        cmd += ["-i", p]
+        g += f";[bg]pad={W}:{H}:{x}:{y}:color={colore}[pd];[pd][{idx}:v]overlay=0:0:format=auto[cn]"
+        corrente, idx = "cn", idx + 1
     tagli = [sum(durate[:i]) for i in range(n + 1)]
     for k, (a, b, t) in enumerate(testi):
         sotto = [f for i in range(n) if tagli[i] < b and tagli[i + 1] > a for f in volti[i]]   # pezzi sotto il testo
@@ -163,8 +365,13 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
     shutil.rmtree(tmp, ignore_errors=True)
     if r.returncode != 0 or not os.path.exists(dst) or os.path.getsize(dst) < 50_000:
         raise RuntimeError(f"{nome}: " + r.stderr[-400:])
-    return {"formato": nome, "durata": DUR, "musica": os.path.basename(musiche[0]) if musiche else None,
+    info = {"formato": nome, "durata": DUR, "musica": os.path.basename(musiche[0]) if musiche else None,
             "stacchi": n, "testi": len(testi)}
+    if piano:          # 6/11/2026: quante scene vengono dal video principale (le altre dalle clip extra)
+        info["scene_dal_video"] = sum(1 for c, _ in piano if c == clips[0])
+    if velocita and min(velocita) < 1:
+        info["velocita"] = min(velocita)
+    return info
 
 
 def make_broll(nome, clips, frase, dst, musiche=(), serie=None):
@@ -222,15 +429,67 @@ def tagli_a_tempo(musica, durate):
         return list(durate)
 
 
+def _rallenty(c, durate):
+    """6/11/2026: (durate, velocita, inizio) del rallenty: i primi secondi a velocita' normale, poi lo STESSO momento
+    che continua al rallentatore (meta' velocita' sui video a 60 fps; 0,75 sui 30 fps, se no scatta)."""
+    secondi, hdr = ov.probe(c)
+    try:
+        v = 0.5 if float(ov.fps(c)) >= 50 else 0.75
+    except Exception:
+        v = 0.75
+    norm, lento = durate[0], durate[1]
+    lento = min(lento, (secondi - 2 * MARGINE_S - norm) / v)     # video corto: rallentatore piu' breve
+    if norm + lento < 6.0:
+        raise ValueError(f"rallenty: video troppo corto ({secondi:.1f} s)")
+    serve = norm + lento * v + 0.2
+    inizio = MARGINE_S
+    if secondi > serve + 1.0:
+        try:
+            inizio = ov.segmento_migliore(c, secondi, ov.HDR_TO_SDR if hdr else None, serve)[0]
+        except Exception:
+            pass
+    inizio = round(min(max(inizio, MARGINE_S), max(0.0, secondi - serve)), 3)
+    return [round(norm, 3), round(lento, 3)], [1.0, v], inizio
+
+
 def make_dieci(nome, clips, frase, dst, musiche=(), serie=None, controlla_viso=False):
     """dieci / dieci_due / dieci_broll: 10 s. 1/11/2026: la frase intera dal primo fotogramma (Instagram: la gente se ne
-    va dopo 4 s) e niente "GIORNO X / 365" sul video: lo spazio del primo secondo e' della frase, la serie e' in descrizione."""
-    durate = FORMATI[nome]["stacchi"]
-    if nome == "intero":                       # 6/11/2026: tutta la clip, tra 10 e 20 s
-        durate = [round(max(10.0, min(20.0, ov.probe(clips[0])[0] - 0.3)), 2)]
-    if len(durate) > 1 and musiche and os.path.exists(musiche[0]):
-        durate = tagli_a_tempo(musiche[0], durate)
-    return make_sequenza(clips, durate, [(0.0, sum(durate), frase)], dst, musiche, None, nome, controlla_viso)
+    va dopo 4 s) e niente "GIORNO X / 365" sul video: lo spazio del primo secondo e' della frase, la serie e' in descrizione.
+    6/11/2026: taglio1/2/3, dieci_due, cinema e post tagliano le scene dal video principale (piano_scene); cinema e post
+    mettono la frase fuori dal video; rallenty e loop giocano con la velocita' dello stesso momento."""
+    d = FORMATI[nome]
+    durate = durate_formato(nome, ov.probe(clips[0])[0])
+    piano = velocita = indietro = layout = None
+    testi = [(0.0, sum(durate), frase)]
+    if d.get("rallenty"):
+        durate, velocita, t0 = _rallenty(clips[0], durate)
+        if musiche and os.path.exists(musiche[0]):        # il rallentatore parte sul colpo della musica
+            durate = tagli_a_tempo(musiche[0], durate)
+        piano = [(clips[0], t0), (clips[0], round(t0 + durate[0], 3))]
+        testi = [(0.0, sum(durate), frase)]
+    elif d.get("loop"):    # avanti e indietro dallo stesso punto: l'ultimo fotogramma e' il primo, il giro non si vede
+        secondi, hdr = ov.probe(clips[0])
+        t0 = MARGINE_S
+        if secondi > durate[0] + 1.5:
+            try:
+                t0 = ov.segmento_migliore(clips[0], secondi, ov.HDR_TO_SDR if hdr else None, durate[0] + 0.2)[0]
+            except Exception:
+                pass
+        t0 = round(min(max(t0, 0.0), max(0.0, secondi - durate[0] - 0.1)), 3)
+        piano, indietro = [(clips[0], t0), (clips[0], t0)], [False, True]
+        testi = [(0.0, sum(durate), frase)]
+    else:
+        if len(durate) > 1 and musiche and os.path.exists(musiche[0]):
+            durate = tagli_a_tempo(musiche[0], durate)
+            testi = [(0.0, sum(durate), frase)]
+        if nome in A_SCENE:
+            piano = piano_scene(clips, durate)
+        if d.get("layout"):
+            W = ov.LATO_USCITA
+            layout = cornice(W, int(W * 16 / 9), d["layout"], frase)
+            testi = []                             # la frase e' gia' nella cornice, fuori dal video
+    return make_sequenza(clips, durate, testi, dst, musiche, None, nome, controlla_viso,
+                         piano=piano, velocita=velocita, indietro=indietro, layout=layout)
 
 
 def make_storia(clips, titolo, righe, dst, musiche=(), serie=None):

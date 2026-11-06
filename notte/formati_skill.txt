@@ -1,0 +1,9 @@
+AREA FORMATI (6/11/2026) - righe da aggiornare nelle attivita' programmate (fuori dal repo, le cambia il coordinatore)
+
+1) C:\Users\User\.claude\scheduled-tasks\controllo-macchina-reel\SKILL.md, riga 10
+   SOSTITUIRE:  Formati da 10 s: dieci, dieci_due, dieci_broll,
+   CON:         Formati (dal 6/11, alla pari fino al 16/11, pubblica.FORMATI_10): dieci, dieci_due, taglio1, taglio2, taglio3, intero (10-20 s), cinema e post (frase fuori dal video, su banda nera o fondo bianco), rallenty (rallentatore), loop (7 s avanti e indietro); dieci_broll solo come ripiego,
+
+2) C:\Users\User\.claude\scheduled-tasks\studio-viralita\SKILL.md, riga 10
+   SOSTITUIRE:  (formati dieci/dieci_due/dieci_broll, frase in due tempi)
+   CON:         (dal 6/11 dieci formati a rotazione alla pari fino al 16/11: dieci, dieci_due, taglio1, taglio2, taglio3, intero, cinema, post, rallenty, loop; confrontarli con report.py per_formato e tenere i migliori)

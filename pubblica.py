@@ -471,12 +471,17 @@ FORMATI_30 = ("racconto", "racconto_broll", "racconto_lento")
 # 29/10/2026 (Alessandro: "passiamo a 10 secondi", "cambiamo un po' il format"): TUTTI da 10 s, frase in due tempi,
 # tre varianti a turno (formati_nuovi.py). Momento e parlato restano.
 TUTTO_10S = True
-FORMATI_10 = ("dieci", "dieci_due", "dieci_broll", "taglio1", "taglio2", "taglio3", "intero")
+# 6/11/2026 (Alessandro: "studia 10 format di video diversi"): 10 formati diversi per ritmo o impaginazione:
+# una scena (dieci), il video intero, scene da 1/2/3/5 s tagliate dal SUO video (taglio1/2/3, dieci_due), bande da
+# film (cinema) e post (frase fuori dal video), rallentatore (rallenty), avanti-indietro senza stacco (loop).
+# dieci_broll (4 clip qualsiasi da 2,5 s) esce dal giro: stesso ritmo di taglio2/taglio3; resta come ripiego.
+FORMATI_10 = ("dieci", "dieci_due", "taglio1", "taglio2", "taglio3", "intero", "cinema", "post", "rallenty", "loop")
 # 6/11/2026 (Alessandro: "sfruttare diversi tipi di format per capire quali video possano funzionare, poi faremo solo
 # quelle"): fino a FORMATI_PROVA_FINO tutti i formati da 10 s con la STESSA probabilita' (niente pesi vecchi), mai lo
 # stesso due volte di fila; poi report.py/l'agente delle 18:30 tengono i migliori
 FORMATI_PROVA_FINO = "2026-11-16"
-SCENE_EXTRA = {"dieci_due": 1, "dieci_broll": 3, "taglio1": 3, "taglio2": 2, "taglio3": 2}
+# massimo di clip extra; dal 6/11 per i formati a scene si scaricano SOLO se il suo video non basta (scene_mancanti)
+SCENE_EXTRA = {"dieci_due": 1, "dieci_broll": 3, "taglio1": 3, "taglio2": 2, "taglio3": 2, "cinema": 1, "post": 1}
 ORARIO_FOTO, FOTO_DAL = ("12:00", "18:00"), "2026-11-05"   # 1/11/2026: reel con le foto della giornata (foto_giornata.py); 5/11: 43 foto caricate -> si parte oggi, 2 al giorno finche' ce ne sono
 COMMENTI_SU_TELEGRAM = False   # 31/10/2026: "non voglio i commenti": su Telegram solo errori e statistiche delle 8
 ORARIO_LISTA = "spenta"      # 31/10/2026: prima tutte le frasi delle foto; per riaccenderla "18:00". Formato lista, da salvare e mandare (un post cosi' fa 1 invio ogni 2 like)
@@ -576,9 +581,14 @@ def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip):
     import formati_nuovi
     if formato in ("dieci", "intero") and overlay.probe(src)[0] < 10.5:
         formato = "dieci_due"
+    if formato in ("rallenty", "loop") and overlay.probe(src)[0] < 6.5:     # 6/11/2026: troppo corto per giocarci
+        formato = "dieci_due"
     # 6/11/2026: le altre scene PRIMA dallo stesso giorno (i video della stessa palestra), poi a caso
     giorno = str((clip or {}).get("registrato") or overlay.data_ripresa(src) or "")[:10] or None
-    clips = [src] + (clip_extra(drive, work, clip, SCENE_EXTRA[formato], giorno) if formato in SCENE_EXTRA else [])
+    n_extra = SCENE_EXTRA.get(formato, 0)
+    if formato in formati_nuovi.A_SCENE:     # 6/11/2026: le scene dal SUO video; altre clip solo se non bastano
+        n_extra = min(n_extra, formati_nuovi.scene_mancanti(formato, src))
+    clips = [src] + (clip_extra(drive, work, clip, n_extra, giorno) if n_extra > 0 else [])
     # 31/10/2026: controllo PRIMA di pubblicare: se la scritta coprirebbe il viso si cambia clip, fino a 2 volte
     for prova in range(2):
         try:
@@ -2240,6 +2250,7 @@ def main():
             info = None
             if TUTTO_10S:                # 1/11/2026: il ripiego resta nello stile scelto (10 s, scritta gialla)
                 try:
+                    import formati_nuovi     # 6/11/2026: qui non era importato (NameError: il ripiego da 10 s non partiva mai)
                     info = formati_nuovi.make_dieci("dieci", [src], frase["gancio"], out, musiche_brano(music, 3), serie)
                 except Exception as e2:
                     log("Anche il ripiego da 10 s non riuscito:", e2)
