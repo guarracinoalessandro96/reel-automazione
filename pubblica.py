@@ -1292,7 +1292,7 @@ IG_DA_EVITARE = re.compile(r"love|amore|romantic|lullaby|sleep|relax|432hz|chris
                            r"lofi|lo-fi|slowed|chill|pensive|memor|miss|sad|calm|halloween|birthday|yummy|sitaron|"
                            r"kannan|maya|vayam|afro|jazz|piano|vivaldi|lullab|meditat|"
                            # 6/11/2026: il nome del brano compare sotto ogni reel: niente "Hell", doppi sensi, palestra
-                           r"\bhell\b|right round|sexy|\bsex\b|booty|twerk|gym|palestr|"
+                           r"\bhell\b|right round|sexy|\bsex\b|booty|twerk|gym|palestr|funkytown|"
                            # e niente donne o coppie nei titoli (sue regole sui testi)
                            r"housewife|\bwife\b|girlfriend|boyfriend|\bgirls?\b|\blad(y|ies)\b|\bbabe\b|darling|"
                            r"sweetheart|bonnie (and|&) clyde", re.I)
@@ -1330,7 +1330,8 @@ IG_ENERGIA = re.compile(r"anthem|hall of fame|champion|climb|running|\brun\b|spa
                         r"march|\bfire\b|legacy|winner|\bwin\b|beast|strong|fight|battle|legend|"
                         r"glory|hero|thunder|storm|phonk|\bhype\b|energy|adrenalin|accelerand|"
                         r"eye of the tiger|lose yourself|remember the name|believer|rock you|"
-                        r"can.t hold us|top of the world|remix|club mix|extended mix|radio mix|sped up", re.I)
+                        r"can.t hold us|top of the world", re.I)   # 6/11/2026: tolti remix/sped up (una canzone
+# d'amore in remix contava come energica)
 IG_FINESTRA_BRANI = 60       # 6/11/2026: stesso brano (audio_id) mai negli ultimi 60 reel Instagram (prima 30)
 IG_FINESTRA_TITOLI = 40      # stessa canzone, anche in un'altra versione o di un altro artista, mai negli ultimi 40
 IG_FINESTRA_ARTISTI = 10     # stesso artista mai negli ultimi 10 (prima 3)
@@ -1436,15 +1437,17 @@ def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti
             stato["ig_tendenze_riserva"] = [dict({k: a.get(k) for k in ("audio_id", "title", "display_artist",
                                                                          "duration_in_ms")},
                                                  libreria=bool(a.get("download_url")))
-                                            for i, a in enumerate(lista) if giusto(a) and _priorita_ig(a, i) <= 2][:30]
+                                            for i, a in enumerate(lista) if giusto(a) and _priorita_ig(a, i) <= 1][:30]
     except Exception as e:
         log("Tendenze di riserva non salvate:", e)
     tendenza = [(i, a) for i, a in enumerate(lista) if adatto(a)]
     if tendenza:     # tra le prime 8, un po' a caso cosi' i reel vicini non hanno lo stesso brano
         # 4/11/2026: e mai lo stesso artista dei reel recenti (6/11: ultimi 10), se resta almeno un brano
         tendenza = [x for x in tendenza if x[1].get("display_artist") not in artisti_recenti] or tendenza
-        # 6/11/2026: solo i gruppi 0-2 di _priorita_ig (il resto e' musica da sottofondo); finiti, le ricerche energiche
-        tendenza = [x for x in sorted((_priorita_ig(a, i), i, a) for i, a in tendenza) if x[0] <= 2]
+        # 6/11/2026 (Alessandro: "Sara' perche' ti amo non ci va, Funkytown Flute non ci va perche' non significa nulla,
+        # Novembre di Giusy Ferreri non ci va: devi capire le musiche che devono andare nei video"): solo brani col
+        # titolo da video motivazionale (gruppi 0-1 di _priorita_ig); finiti, le ricerche energiche
+        tendenza = [x for x in sorted((_priorita_ig(a, i), i, a) for i, a in tendenza) if x[0] <= 1]
     if tendenza:     # tendenze prima delle ricerche: Alessandro vuole la musica di tendenza di Instagram (4/11)
         a = random.choice([x for x in tendenza if x[0] == tendenza[0][0]][:8])[2]    # il gruppo migliore
         return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')} [tendenza]"
@@ -1474,10 +1477,10 @@ def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti
     # che nessun brano di Instagram); senza lista, le ultime tendenze adatte salvate nello stato
     uso = {x: i for i, x in enumerate(recenti)}
     fonte = lista or (stato or {}).get("ig_tendenze_riserva") or []
-    vecchie = sorted((_priorita_ig(a, i) > 2, titolo_base(a.get("title")) in titoli, uso.get(a["audio_id"], -1), i, a)
-                     for i, a in enumerate(fonte) if giusto(a))
+    vecchie = sorted((titolo_base(a.get("title")) in titoli, uso.get(a["audio_id"], -1), i, a)
+                     for i, a in enumerate(fonte) if giusto(a) and _priorita_ig(a, i) <= 1)
     if vecchie:
-        a = vecchie[0][4]
+        a = vecchie[0][3]
         return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')} [tendenza]"
     if tutti:
         a = random.choice(tutti[:8])
