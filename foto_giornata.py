@@ -502,6 +502,11 @@ def tempi_rapide(musica, n, durata=10.0):
         m = int(max(1, min(n, RAPIDE_MASSIMO, max(math.ceil(durata / RAPIDE_DURATA[1]), round(durata / u)))))
         if m * dmax < T:                                      # poche foto: ognuna un po' piu' lunga
             dmax = math.ceil(T / m) + 6
+        if m < round(durata / u) and fiducia >= 0.1:
+            # meno foto di quelle che il battito vorrebbe (anteprima del 6/11, 13 foto a 100 BPM: con 0,8 s al massimo
+            # solo 5 stacchi su 12 sul battito): una foto puo' durare anche un battito e mezzo (al massimo 0,92 s),
+            # cosi' gli stacchi restano sui battiti e sui mezzi battiti
+            dmax = max(dmax, min(int(0.92 * fps), int(round(1.5 * u * fps)) + 1))
         t = np.arange(T + 1) / fps
         i = np.clip(np.round(t * 100).astype(int), 1, len(forza) - 2)
         colpo = np.maximum(np.maximum(forza[i - 1], forza[i]), forza[i + 1])      # il colpo piu' vicino (+-10 ms)
