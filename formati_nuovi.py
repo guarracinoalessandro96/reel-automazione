@@ -162,11 +162,156 @@ def _momento_forte(src, durata, firma):
 def momento_forte(src, durata):
     """6/11/2026 (revisione): inizio del momento piu' forte del video (overlay.segmento_migliore) per una scena di
     `durata` s, calcolato UNA volta sola: scene_mancanti e piano_scene partono dallo stesso punto."""
+    return _momento_forte(src, round(float(durata), 1), _firma(src))
+
+
+def _firma(src):
     try:
-        firma = (os.path.getsize(src), os.path.getmtime(src))
+        return (os.path.getsize(src), os.path.getmtime(src))
     except OSError:
-        firma = None
-    return _momento_forte(src, round(float(durata), 1), firma)
+        return None
+
+
+# 6/11/2026 (100 punti, gruppo 2, punto 14; Alessandro: "se pensi che siano meglio... mettiamoli da subito"): il PRIMO
+# SECONDO di ogni reel mai nero, buio, slavato o mosso. Analisi del 6/11: 3 persone su 4 scorrono via nei primi secondi
+# e su Instagram, quando nei primi 3 s se ne va il 55% o piu', nessun reel ha passato le 200 views (0 su 60); il primo
+# fotogramma e' anche la copertina di default. Soglie RELATIVE alla luce tipica della SUA clip: dal 5/11 lui abbassa
+# l'esposizione apposta (overlay.luce_sua), una clip scura ma leggibile non e' "nera".
+PRIMO_CONTROLLO = True       # False = come prima del 6/11 (nessun controllo del primo secondo, nessuno scambio di scene)
+PRIMO_S, PRIMO_FPS = 1.0, 5  # il primo secondo, 5 fotogrammi (uno ogni 0,2 s)
+PICCOLO = (180, 320)         # fotogrammi del controllo: piccoli, grigi, gia' nel taglio 9:16 del reel
+NERO, SLAVATO = 16, 232      # luce media (0-255): sotto e' nero, sopra e' bianco/bruciato, per qualsiasi clip
+BUIO_QUOTA = 0.45            # buio: meno del 45% della luce tipica della clip
+PIATTO_QUOTA = 0.35          # piatto (obiettivo coperto, appannato): contrasto sotto il 35% di quello tipico
+MOSSO_QUOTA = 0.30           # mosso o sfocato: nitidezza sotto il 30% di quella tipica della clip
+CERCA_S = 2.5                # un inizio pulito si cerca fino a 2,5 s prima o dopo, nella stessa clip
+VISO_MIN = 2                 # una scena "mostra il viso" se il viso c'e' in almeno 2 dei suoi 5 fotogrammi
+PROVE_SCENE = 4              # scene provate al massimo come nuova prima scena (una lettura di 1 s ciascuna)
+CONTROLLO = {}               # cosa hanno cambiato i controlli nell'ultimo montaggio (finisce in montaggio, stato.json)
+_VERDETTI = {}
+
+
+def _grigi(src, prima, dopo=""):
+    """Fotogrammi PICCOLO in grigio, nel taglio 9:16 del reel, con una sola lettura di ffmpeg e senza file."""
+    import numpy as np
+    w, h = PICCOLO
+    vf = ",".join(x for x in (dopo, f"scale={w}:{h}:force_original_aspect_ratio=increase", f"crop={w}:{h}",
+                              "format=gray") if x)
+    r = subprocess.run([ov.FFMPEG, "-v", "error", *prima, "-i", src, "-vf", vf, "-fps_mode", "passthrough",
+                        "-f", "rawvideo", "-"], capture_output=True, timeout=240)
+    n = len(r.stdout) // (w * h)
+    return [np.frombuffer(r.stdout[i * w * h:(i + 1) * w * h], dtype=np.uint8).reshape(h, w) for i in range(n)]
+
+
+def _misure(g):
+    """(luce media, contrasto, nitidezza) di un fotogramma grigio."""
+    import cv2
+    return float(g.mean()), float(g.std()), float(cv2.Laplacian(g, cv2.CV_32F).var())
+
+
+@functools.lru_cache(maxsize=16)
+def _tipico(src, firma):
+    """(luce, contrasto, nitidezza) tipici della clip: la mediana sui fotogrammi chiave (ffmpeg decodifica solo quelli:
+    veloce anche in 4K). None se sono meno di 3: allora contano solo nero e bianco."""
+    import numpy as np
+    m = [_misure(g) for g in _grigi(src, ["-skip_frame", "nokey"])]
+    return tuple(float(x) for x in np.median(np.array(m), axis=0)) if len(m) >= 3 else None
+
+
+def _difetto(m, tip):
+    """Cosa non va in un fotogramma: 'nero', 'slavato', 'buio', 'piatto', 'mosso', o None se e' pulito."""
+    luce, contrasto, nitidezza = m
+    if luce < NERO:
+        return "nero"
+    if luce > SLAVATO:
+        return "slavato"
+    if not tip:
+        return "piatto" if contrasto < 6 else None
+    if luce < BUIO_QUOTA * tip[0]:
+        return "buio"
+    if contrasto < PIATTO_QUOTA * tip[1]:
+        return "piatto"
+    if nitidezza < MOSSO_QUOTA * tip[2]:
+        return "mosso"
+    return None
+
+
+def _giudica(difetti):
+    """Il motivo per cui il primo secondo (i difetti dei suoi fotogrammi) va cambiato, o None se va bene: il primo
+    fotogramma pulito, al massimo un fotogramma con la luce sbagliata e al massimo 2 mossi su 5 (non i primi due)."""
+    if not difetti:
+        return None
+    luce = [d for d in difetti if d and d != "mosso"]
+    mossi = sum(1 for d in difetti if d == "mosso")
+    if difetti[0]:
+        return difetti[0]
+    if len(luce) >= 2:
+        return luce[0]
+    if mossi >= 3 or (len(difetti) > 1 and difetti[1] == "mosso" and mossi >= 2):
+        return "mosso"
+    return None
+
+
+@functools.lru_cache(maxsize=64)
+def _difetti_da(src, firma, da, a):
+    """((tempo, difetto), ...) dei fotogrammi tra da e a secondi, PRIMO_FPS al secondo, con una lettura."""
+    tip = _tipico(src, firma)
+    g = _grigi(src, ["-ss", f"{da:.3f}", "-t", f"{max(0.2, a - da):.3f}"], f"fps={PRIMO_FPS}")
+    return tuple((round(da + i / PRIMO_FPS, 3), _difetto(_misure(x), tip)) for i, x in enumerate(g))
+
+
+def primo_secondo(src, t, durata=PRIMO_S):
+    """6/11/2026 (punto 14): None se il primo secondo da t e' pulito, se no il motivo ('nero', 'buio', 'slavato',
+    'piatto', 'mosso')."""
+    t, durata = round(max(0.0, t), 2), round(min(durata, PRIMO_S), 2)
+    chiave = (src, _firma(src), t, durata)
+    if chiave not in _VERDETTI:
+        _VERDETTI[chiave] = _giudica([x for _, x in _difetti_da(src, chiave[1], t, round(t + durata, 2))])
+    return _VERDETTI[chiave]
+
+
+def inizio_pulito(src, t0, lo, hi, durata=PRIMO_S, ammesso=None):
+    """6/11/2026 (punto 14): (inizio, motivo) della prima scena. t0 se il suo primo secondo e' pulito (motivo None); se
+    no il punto pulito piu' vicino tra lo e hi (al massimo CERCA_S s prima o dopo) che il formato ammette
+    (ammesso(t)), con UNA lettura in piu' per tutta la ricerca; se non c'e', t0 con il motivo."""
+    motivo = primo_secondo(src, t0, durata)
+    if not motivo:
+        return t0, None
+    durata = round(min(durata, PRIMO_S), 2)
+    lo, hi = max(0.0, lo, t0 - CERCA_S), min(hi, t0 + CERCA_S)
+    if hi < lo:
+        return t0, motivo
+    firma = _firma(src)
+    d = _difetti_da(src, firma, round(lo, 2), round(hi + durata, 2))
+    k = max(1, int(round(durata * PRIMO_FPS)))
+    buoni = [d[i][0] for i in range(len(d) - k + 1) if d[i][0] <= hi + 1e-6
+             and not _giudica([x for _, x in d[i:i + k]]) and (ammesso is None or ammesso(d[i][0]))]
+    if not buoni:
+        return t0, motivo
+    t = min(buoni, key=lambda t: (abs(t - t0), -t))       # il piu' vicino; a pari distanza piu' avanti
+    _VERDETTI[(src, firma, round(t, 2), durata)] = None
+    return round(t, 3), motivo
+
+
+def _controlla_primo(src, t0, lo, hi, durata=PRIMO_S, ammesso=None):
+    """inizio_pulito con quello che cambia segnato in CONTROLLO; qualsiasi errore -> t0, come prima del 6/11."""
+    if not PRIMO_CONTROLLO:
+        return t0
+    try:
+        t, motivo = inizio_pulito(src, t0, min(lo, hi), hi, durata, ammesso)
+    except Exception as e:
+        print("Controllo del primo secondo non riuscito, resta l'inizio di prima:", e)
+        return t0
+    for k in ("inizio_spostato", "primo_risolto"):
+        CONTROLLO.pop(k, None)
+    CONTROLLO["primo_controllo"] = motivo or "buono"
+    if motivo and abs(t - t0) > 1e-3:
+        CONTROLLO["inizio_spostato"] = round(t - t0, 2)
+        print(f"Primo secondo {motivo}: la prima scena parte {t - t0:+.2f} s piu' in la' ({t0:.2f} -> {t:.2f} s)")
+    elif motivo:
+        CONTROLLO["primo_risolto"] = False
+        print(f"Primo secondo {motivo} da {t0:.2f} s e nessun punto pulito vicino nella clip")
+    return t
 
 
 def _piano_principale(src, durate, passo=None):
@@ -199,6 +344,13 @@ def _piano_principale(src, durate, passo=None):
         r = disponi(t)
         if len(r) > len(scelta[1]):
             scelta = (t, r)
+    # 6/11/2026 (punto 14): primo secondo pulito; si sposta solo dove entrano ancora tutte le scene di prima (stesse
+    # clip extra di scene_mancanti, stesso salto tra le scene)
+    quante = len(scelta[1])
+    t = _controlla_primo(src, scelta[0], m, max(m, S - d0 - m), min(d0, PRIMO_S),
+                         ammesso=lambda t: len(disponi(t)) >= quante)
+    if t != scelta[0]:
+        scelta = (t, disponi(t))
     return scelta
 
 
@@ -322,6 +474,7 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
     cmd, catena, volti, mappe = [ov.FFMPEG, "-y", "-v", "error"], [], [], []
     dieci = nome.startswith("dieci") or nome in DIECI_NOMI
     wv, hv = (layout[1][2], layout[1][3]) if layout else (W, H)
+    pezzi = []         # 6/11/2026: prima si guardano tutti i pezzi (viso, primo secondo), poi si monta
     for i, seg in enumerate(durate):
         v = float(velocita[i]) if velocita else 1.0
         sorgente = seg * v                         # secondi di video sorgente usati dal pezzo
@@ -341,19 +494,36 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
                     inizio = ov.segmento_migliore(c, secondi, ov.HDR_TO_SDR if hdr else None, seg + 0.2)[0]
                 except Exception:
                     pass
-        cmd += ["-display_rotation", "0", "-ss", f"{inizio:.2f}", "-t", f"{sorgente + 0.2:.2f}", "-i", c]
+            if i == 0 and dieci:                   # 6/11/2026 (punto 14): primo secondo pulito (dieci, dieci_broll)
+                inizio = _controlla_primo(c, inizio, 0.0, max(0.0, secondi - sorgente - 0.2), min(seg, PRIMO_S))
         # 29/10/2026 (Alessandro: "le scritte non devono mai coprire il viso"): volti di questo pezzo, gia' nel taglio
-        # 9:16 del reel (prima qui il testo andava sempre in alto, anche sopra la faccia)
+        # 9:16 del reel (prima qui il testo andava sempre in alto, anche sopra la faccia).
+        # 6/11/2026: un fotogramma alla volta (stessi riquadri di prima) per sapere in quanti si vede il viso
+        p = {"c": c, "inizio": inizio, "secondi": secondi, "hdr": hdr, "volti": [], "visi": 0, "mappa": None,
+             "schiarisci": ""}
         try:
             fr = ov.extract_frames(c, sorgente, n=5 if controlla_viso else 3, start=inizio,
                                    vf=f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H}")
-            volti.append(ov.detect_faces(fr, ruotati=dieci))
-            mappe.append(ov.mappa_dettagli(fr))
-            schiarisci = ov.schiarita(fr) if dieci else ""
+            per = [ov.detect_faces([x], ruotati=dieci) for x in fr]
+            p["volti"], p["visi"] = [b for x in per for b in x], sum(1 for x in per if x)
+            p["mappa"] = ov.mappa_dettagli(fr)
+            p["schiarisci"] = ov.schiarita(fr) if dieci else ""
         except Exception:
-            volti.append([])
-            mappe.append(None)
-            schiarisci = ""
+            pass
+        pezzi.append(p)
+    if dieci and n > 1 and not velocita and not indietro and PRIMO_CONTROLLO:
+        try:           # 6/11/2026 (punti 13 e 14): per prima una scena col viso e il primo secondo pulito
+            pezzi = _primo_pezzo(pezzi, durate)
+        except Exception as e:
+            print("Scelta della prima scena non riuscita, ordine di prima:", e)
+    for i, seg in enumerate(durate):
+        v = float(velocita[i]) if velocita else 1.0
+        sorgente = seg * v
+        c, inizio, secondi, hdr = (pezzi[i][k] for k in ("c", "inizio", "secondi", "hdr"))
+        cmd += ["-display_rotation", "0", "-ss", f"{inizio:.2f}", "-t", f"{sorgente + 0.2:.2f}", "-i", c]
+        volti.append(pezzi[i]["volti"])
+        mappe.append(pezzi[i]["mappa"])
+        schiarisci = pezzi[i]["schiarisci"]
         # 6/11/2026 (Alessandro: "saro' io a decidere la luminosita' dei video"): sui video girati da lui dal 5/11
         # niente schiarita e niente LOOK, la luce resta quella che ha scelto col telefono
         sua = dieci and ov.luce_sua(c)
@@ -429,6 +599,8 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         info["scene_dal_video"] = sum(1 for c, _ in piano if c == clips[0])
     if velocita and min(velocita) < 1:
         info["velocita"] = min(velocita)
+    if dieci and CONTROLLO:      # 6/11/2026: cosa hanno cambiato i controlli del primo secondo e del viso (analisi 16/11)
+        info.update(CONTROLLO)
     return info
 
 
@@ -462,6 +634,7 @@ def make_racconto(nome, clips, righe, dst, musiche=(), serie=None):
 def make_lista(clips, titolo, righe, dst, musiche=(), serie=None):
     """31/10/2026: lista da 10 s: titolo, poi una regola alla volta, 2,5 s ciascuno (un'inquadratura per ogni testo)."""
     testi = [(0.0, 2.5, titolo)] + [(2.5 * (i + 1), 2.5 * (i + 2), f"{i + 1}. {r}") for i, r in enumerate(righe[:3])]
+    CONTROLLO.clear()
     return make_sequenza(clips, [2.5] * 4, testi, dst, musiche, serie, "dieci_lista")
 
 
@@ -507,7 +680,64 @@ def _rallenty(c, durate):
         except Exception:
             pass
     inizio = round(min(max(inizio, MARGINE_S), max(0.0, secondi - serve)), 3)
+    # 6/11/2026 (punto 14): i primi 2 s (velocita' normale) con il primo secondo pulito, lo stesso momento che rallenta
+    inizio = _controlla_primo(c, inizio, MARGINE_S, max(0.0, secondi - serve), min(norm, PRIMO_S))
     return [round(norm, 3), round(lento, 3)], [1.0, v], inizio
+
+
+def _intero_pulito(c, durate):
+    """6/11/2026 (punto 14): 'intero' usa tutta la clip e parte da 0-0,1 s (come make_sequenza). Se il primo secondo
+    non e' pulito si parte dal punto pulito piu' vicino e il reel si accorcia (mai sotto i 10 s). Restituisce (piano o
+    None per lasciar fare a make_sequenza come prima, durate)."""
+    try:
+        S = ov.probe(c)[0]
+        if not PRIMO_CONTROLLO or durate[0] < S - 0.35:    # clip oltre i 20 s: c'e' margine, ci pensa make_sequenza
+            return None, durate
+        t_def = 0.1 if S <= 12 else 0.0
+        t = _controlla_primo(c, t_def, 0.0, max(0.0, S - 10.3), PRIMO_S)
+        if abs(t - t_def) < 1e-3:
+            return None, durate
+        return [(c, t)], [round(max(10.0, min(20.0, S - t - 0.3)), 2)]
+    except Exception as e:
+        print("intero: controllo del primo secondo non riuscito, la clip resta com'era:", e)
+        return None, durate
+
+
+def _primo_pezzo(pezzi, durate):
+    """6/11/2026 (punti 13 e 14): la prima scena deve mostrare il viso se un'altra scena del reel lo mostra (spalle o
+    lontano -> dopo) e avere il primo secondo pulito; se no va per prima un'altra scena che lo e'. Prima la pulizia,
+    poi il viso: mai un primo secondo nero per avere il viso. Le altre scene restano nell'ordine di prima; quella tolta
+    dal primo posto torna al suo posto nel tempo tra le scene della stessa clip. Le durate restano ai loro posti (gli
+    stacchi sono sul colpo della musica). Restituisce i pezzi nel nuovo ordine."""
+    ha_viso = lambda p: p["visi"] >= VISO_MIN
+    d0 = min(durate[0], PRIMO_S)
+    pulito = lambda p: not primo_secondo(p["c"], p["inizio"], d0)
+    altri_viso = [k for k in range(1, len(pezzi)) if ha_viso(pezzi[k])]
+    ok0, viso0 = pulito(pezzi[0]), ha_viso(pezzi[0])
+    if ok0 and (viso0 or not altri_viso):
+        return pezzi
+    if ok0:            # pulita ma senza viso: le scene col viso, prima quelle dove si vede di piu'
+        cand = sorted(altri_viso, key=lambda k: (-pezzi[k]["visi"], k))
+    else:              # primo secondo sporco: le altre scene, prima quelle col viso
+        cand = sorted(range(1, len(pezzi)), key=lambda k: (not ha_viso(pezzi[k]), -pezzi[k]["visi"], k))
+    def al_primo_posto(k):     # al primo posto la scena dura durate[0]: deve stare dentro la sua clip
+        p = dict(pezzi[k])
+        p["inizio"] = round(min(p["inizio"], max(0.0, p["secondi"] - durate[0] - 0.1)), 3)
+        return p
+    scelta = next((k for k in cand[:PROVE_SCENE] if pulito(al_primo_posto(k))), None)
+    if scelta is None:
+        return pezzi
+    p0, nuovo = pezzi[0], al_primo_posto(scelta)
+    resto = [p for j, p in enumerate(pezzi) if j not in (0, scelta)]
+    stessi = [j for j, p in enumerate(resto) if p["c"] == p0["c"]]
+    dopo = next((j for j in stessi if resto[j]["inizio"] > p0["inizio"]), None)
+    resto.insert(dopo if dopo is not None else (stessi[-1] + 1 if stessi else 0), p0)
+    CONTROLLO["scena_viso_prima" if ok0 else "scena_cambiata"] = True
+    if not ok0:
+        CONTROLLO.pop("primo_risolto", None)
+    print("Prima scena cambiata:", "il viso si vede" if ok0 else f"primo secondo {primo_secondo(p0['c'], p0['inizio'], d0)}",
+          f"-> scena {scelta + 1} per prima")
+    return [nuovo] + resto
 
 
 def make_dieci(nome, clips, frase, dst, musiche=(), serie=None, controlla_viso=False):
@@ -515,6 +745,7 @@ def make_dieci(nome, clips, frase, dst, musiche=(), serie=None, controlla_viso=F
     va dopo 4 s) e niente "GIORNO X / 365" sul video: lo spazio del primo secondo e' della frase, la serie e' in descrizione.
     6/11/2026: taglio1/2/3, dieci_due, cinema e post tagliano le scene dal video principale (piano_scene); cinema e post
     mettono la frase fuori dal video; rallenty e loop giocano con la velocita' dello stesso momento."""
+    CONTROLLO.clear()
     d = FORMATI[nome]
     durate = durate_formato(nome, ov.probe(clips[0])[0])
     piano = velocita = indietro = layout = None
@@ -529,6 +760,8 @@ def make_dieci(nome, clips, frase, dst, musiche=(), serie=None, controlla_viso=F
         secondi = ov.probe(clips[0])[0]
         t0 = momento_forte(clips[0], durate[0])
         t0 = round(min(max(t0, 0.0), max(0.0, secondi - durate[0] - 0.1)), 3)
+        # 6/11/2026 (punto 14): il primo secondo pulito (e' anche l'ultimo del giro all'indietro)
+        t0 = _controlla_primo(clips[0], t0, 0.0, max(0.0, secondi - durate[0] - 0.1), min(durate[0], PRIMO_S))
         piano, indietro = [(clips[0], t0), (clips[0], t0)], [False, True]
         testi = [(0.0, sum(durate), frase)]
     else:
@@ -537,6 +770,9 @@ def make_dieci(nome, clips, frase, dst, musiche=(), serie=None, controlla_viso=F
         testi = [(0.0, sum(durate), frase)]
         if nome in A_SCENE:
             piano = piano_scene(clips, durate)
+        elif nome == "intero":   # 6/11/2026 (punto 14): la clip intera; l'inizio si sposta solo accorciandola
+            piano, durate = _intero_pulito(clips[0], durate)
+            testi = [(0.0, sum(durate), frase)]
         if d.get("layout"):
             W = ov.LATO_USCITA
             layout = cornice(W, int(W * 16 / 9), d["layout"], frase)

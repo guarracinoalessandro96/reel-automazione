@@ -537,7 +537,13 @@ def ordina(locali, schede):
     nit_max = max(schede[p]["nitidezza"] for _, p in locali)
     punti = {p: voto(schede[p], nit_max) for _, p in locali}
     per_voto = sorted(locali, key=lambda x: -punti[x[1]])
-    tenute = [next(x for x in per_voto if schede[x[1]]["nitidezza"] >= GANCIO * nit_max)]
+    nitide = [x for x in per_voto if schede[x[1]]["nitidezza"] >= GANCIO * nit_max]
+    # 6/11/2026 (100 punti, punto 14): il gancio mai nero, buio o bruciato (stesse soglie di formati_nuovi, la luce
+    # "tipica" e' quella delle foto della giornata); se nessuna foto nitida lo e', come prima
+    luci = sorted(schede[p]["luce"] for _, p in locali)
+    tipica = luci[len(luci) // 2]
+    pulita = lambda s: 16 / 255 <= s["luce"] <= 232 / 255 and s["luce"] >= 0.45 * tipica
+    tenute = [next((x for x in nitide if pulita(schede[x[1]])), nitide[0])]
     for x in per_voto:
         if not any(_simili(schede[x[1]], schede[q]) for _, q in tenute):
             tenute.append(x)
