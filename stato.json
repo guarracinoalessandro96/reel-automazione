@@ -10039,7 +10039,9 @@
     "instagram": {
      "ok": true,
      "id": "17882260692546316",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -10067,7 +10069,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "_d0xMGydzt4"
+     "id": "_d0xMGydzt4",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10077,11 +10080,51 @@
    },
    "spinto": true,
    "testo": "La parte più difficile non è dimenticare. È continuare a vivere con tutto quello che resta."
+  },
+  {
+   "quando": "2026-11-06T11:01",
+   "slot": "2026-11-06 12:00",
+   "video": "Foto della giornata",
+   "md5": null,
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-37c85482",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_foto",
+    "durata": 10.002,
+    "musica": "way_back_home_3.m4a",
+    "stacchi": 6,
+    "testi": 1,
+    "foto_ids": [
+     "1o6bVa4MoQpwhtgxTbRfApO7INfq1XnTF",
+     "1roVwULYJ6ScNgieNMtWbMTEFIn1R0Sne",
+     "1nvnpCmCfdXHjWx91BQIoQsGwHpfHrLai",
+     "1XngSggJAfD0UDBNv0eOrBwyu5heymXPt",
+     "1t-qkZ_MJzGDEaMzYF-nv9NNxt9aHhBln",
+     "1naUzMlnmsR4dGHY48NnjBt2ngQF5ut2e"
+    ],
+    "musica_meta": "drive_14.flac",
+    "musica_instagram": "3 Times (feat. Sun.E Rai) - a.s. kullar, Harry Pannu [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "G1JZg7LGkmk"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18150324745487446",
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Ricorda perché hai iniziato. Il resto viene da sé."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-29 02:00",
   "2026-10-29 04:00",
   "2026-10-29 10:00",
   "2026-10-29 12:00",
@@ -10160,10 +10203,10 @@
   "2026-11-06 00:00",
   "2026-11-06 06:00",
   "2026-11-06 08:00",
-  "2026-11-06 10:00"
+  "2026-11-06 10:00",
+  "2026-11-06 12:00"
  ],
  "musica_recenti": [
-  "taking_flight_3.m4a",
   "whoop_3.m4a",
   "wrangle_the_crazy_3.m4a",
   "death_duel_2.m4a",
@@ -10182,7 +10225,8 @@
   "dusty_road_magic_3.m4a",
   "vibe_check_1.m4a",
   "the_light_3.m4a",
-  "monthaholic_1.m4a"
+  "monthaholic_1.m4a",
+  "way_back_home_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10468,7 +10512,8 @@
   "MIE-ef3aefc2",
   "MIE-0880c6d4",
   "MIE-77e3005c",
-  "MIE-b8c79064"
+  "MIE-b8c79064",
+  "MIE-37c85482"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10923,7 +10968,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_12.flac",
   "trap_13.flac",
   "energia_08.flac",
   "phonk_05.flac",
@@ -10942,7 +10986,8 @@
   "phonk_02.flac",
   "drive_08.flac",
   "deciso_11.flac",
-  "phonk_11.flac"
+  "phonk_11.flac",
+  "drive_14.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10977,7 +11022,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_broll",
+ "formato_ultimo": "dieci_foto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10993,7 +11038,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "351866282607327",
   "593371403855914",
   "585527483942549",
   "2475524415980310",
@@ -11022,12 +11066,13 @@
   "2201065153808959",
   "261968585425392",
   "4321185548142585",
-  "1190974441039956"
+  "1190974441039956",
+  "899668126445403"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Eros Ramazzotti",
   "HUMBE",
-  "Giusy Ferreri"
+  "Giusy Ferreri",
+  "a.s. kullar, Harry Pannu"
  ]
 }
