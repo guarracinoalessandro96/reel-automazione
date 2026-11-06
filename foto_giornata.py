@@ -88,10 +88,15 @@ def _dentro(x0, y0, w, h, W, H, rot):
     return True
 
 
-def visi_foto(im, ruotati=False):
+import cv2 as _cv2
+_OCCHI = _cv2.CascadeClassifier(os.path.join(_cv2.data.haarcascades, "haarcascade_eye.xml"))   # gia' dentro OpenCV
+
+
+def visi_foto(im, ruotati=False, occhi=False):
     """6/11/2026: i visi della foto [(x0, y0, x1, y1) in frazioni, con margine per capelli e mento], uniti quando
     piu' rilevatori trovano lo stesso viso; dal piu' grande al piu' piccolo. In palestra i rilevatori vedono "visi"
-    anche nella pedana della pressa o nei dischi: si tengono solo quelli con abbastanza pelle al centro (PELLE)."""
+    anche nella pedana della pressa o nei dischi: si tengono solo quelli con abbastanza pelle al centro (PELLE) e,
+    con occhi=True (per il taglio: meglio perdere un viso che spostare il taglio su un falso), con almeno un occhio."""
     import cv2, numpy as np
     p = ImageOps.contain(im, (720, 720))
     bgr = cv2.cvtColor(np.asarray(p), cv2.COLOR_RGB2BGR)
@@ -106,11 +111,19 @@ def visi_foto(im, ruotati=False):
                 break
         else:
             gruppi.append(b)
+    grigio = cv2.equalizeHist(cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY))
     veri = []
     for g in gruppi:             # centro del riquadro (senza i margini per capelli e mento)
         x0, x1 = int((g[0] + (g[2] - g[0]) * 0.25) * p.width), int((g[2] - (g[2] - g[0]) * 0.25) * p.width)
         y0, y1 = int((g[1] + (g[3] - g[1]) * 0.3) * p.height), int((g[3] - (g[3] - g[1]) * 0.3) * p.height)
-        if x1 > x0 and y1 > y0 and float(pelle[y0:y1, x0:x1].mean()) >= PELLE:
+        if not (x1 > x0 and y1 > y0 and float(pelle[y0:y1, x0:x1].mean()) >= PELLE):
+            continue
+        # almeno un occhio nella parte alta del viso (la pedana con le scarpe passa anche la prova della pelle)
+        fx0, fx1 = int((g[0] + (g[2] - g[0]) / 6) * p.width), int((g[2] - (g[2] - g[0]) / 6) * p.width)
+        fy0, fy1 = int((g[1] + (g[3] - g[1]) * 0.15) * p.height), int((g[1] + (g[3] - g[1]) * 0.6) * p.height)
+        lato = max(8, (fx1 - fx0) // 8)
+        if not occhi or _OCCHI.empty() or (fx1 - fx0 > 2 * lato and fy1 - fy0 > 2 * lato and len(_OCCHI.detectMultiScale(
+                grigio[fy0:fy1, fx0:fx1], 1.1, 4, minSize=(lato, lato), maxSize=((fx1 - fx0) // 2, (fx1 - fx0) // 2)))):
             veri.append(g)
     return sorted(veri, key=lambda g: -(g[2] - g[0]) * (g[3] - g[1]))
 
@@ -183,8 +196,8 @@ def prepara(src):
         gradi = inclinazione(acc, obiettivo, im.height > im.width)
         if gradi:
             im = im.rotate(-gradi, resample=Image.BICUBIC)
-        # solo visi dritti: girata di 90 gradi la pedana della pressa con le scarpe sembra un viso (anche per la pelle)
-        visi = visi_foto(im, ruotati=False)
+        # solo visi dritti e con un occhio: la pedana della pressa con le scarpe sembra un viso (anche per la pelle)
+        visi = visi_foto(im, ruotati=False, occhi=True)
         x0, y0, w, h = taglio(im.width, im.height, -gradi, visi)
         tagliata = im.resize((int(W * MARGINE), H), Image.LANCZOS, box=(x0, y0, x0 + w, y0 + h))
         info.update(gradi=round(gradi, 1), visi=[((a - x0 / im.width) * im.width / w, (b - y0 / im.height) * im.height / h,
