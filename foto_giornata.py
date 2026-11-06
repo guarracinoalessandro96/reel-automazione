@@ -31,7 +31,6 @@ STACCO = 3                   # secondi minimi tra due foto dello stesso reel: de
 NITIDEZZA = 0.35             # sotto questa frazione della foto piu' nitida del gruppo la foto e' mossa e si scarta
 # 6/11/2026 (Alessandro: "implementa come puoi migliorare le mie immagini"):
 INCLINAZIONE = (1.0, 10.0)   # gradi: si raddrizzano solo le foto un po' storte (oltre 10 e' un'inquadratura voluta)
-VISO_Y = 0.40                # dove cade il viso nel taglio 9:16 (frazione dell'altezza), quando la foto lo permette
 SIMILI = 8                   # differenza massima (su 64) tra le impronte di due foto quasi uguali: se ne tiene una
 PELLE = 0.7                  # un "viso" con meno del 70% di pelle al centro e' un falso (pedana, dischi, scarpe:
                              # sulle foto di prova la pedana della pressa arriva al 60%, i visi veri a 76-87%)
@@ -118,9 +117,9 @@ def visi_foto(im, ruotati=False):
 
 def taglio(W, H, rot, visi):
     """6/11/2026: il riquadro 9:16 (+ MARGINE per il movimento) da prendere dalla foto. Si parte dal taglio di prima
-    (centro, un filo in alto); se quel taglio tagliasse il viso (foto orizzontali, viso vicino al bordo) si centra sul
-    viso, con il viso in alto (VISO_Y) quando la foto lo permette. Mai angoli neri se la foto e' stata raddrizzata.
-    Un viso "falso" che sta gia' dentro il taglio di prima non sposta niente. Restituisce (x0, y0, w, h)."""
+    (centro, un filo in alto); solo se quel taglio tagliasse un viso (foto orizzontali, viso vicino al bordo) si sposta
+    quanto basta per prenderlo intero, capelli e mento compresi. Mai angoli neri se la foto e' stata raddrizzata.
+    Un viso "falso" (macchine della palestra) che sta dentro il taglio di prima non sposta niente. -> (x0, y0, w, h)"""
     r = 9 / 16 * MARGINE
     h = min(H, W / r)
     if rot:                  # foto raddrizzata: il riquadro piu' grande che sta tutto dentro
@@ -139,13 +138,13 @@ def taglio(W, H, rot, visi):
             if (v[2] - v[0]) * (v[3] - v[1]) >= 0.3 * (visi[0][2] - visi[0][0]) * (visi[0][3] - visi[0][1]) \
                     and (u[2] - u[0]) * W <= 0.9 * w:
                 a = u
-        fx, fy = (a[0] + a[2]) / 2 * W, (a[1] + a[3]) / 2 * H
-        x0 = cx if cx <= a[0] * W and a[2] * W <= cx + w else fx - w / 2
-        y0 = cy if h >= H - 1 else fy - h * VISO_Y      # foto piu' alte del 9:16: il viso sale a VISO_Y
-        if a[2] * W - a[0] * W <= w:          # viso intero dentro il riquadro, se ci sta
-            x0 = min(max(x0, a[2] * W - w), a[0] * W)
-        if a[3] * H - a[1] * H <= h:
-            y0 = min(max(y0, a[3] * H - h), a[1] * H)
+        # il viso vero (senza i margini di detect_faces: 1/6 della larghezza per lato, capelli 0.35/1.8, mento 0.45/1.8)
+        vx0, vx1 = a[0] + (a[2] - a[0]) / 6, a[2] - (a[2] - a[0]) / 6
+        vy0, vy1 = a[1] + (a[3] - a[1]) * 0.35 / 1.8, a[3] - (a[3] - a[1]) * 0.45 / 1.8
+        if (vx0 * W < cx or vx1 * W > cx + w) and (a[2] - a[0]) * W <= w:     # il taglio di prima lo taglierebbe
+            x0 = min(max(cx, a[2] * W - w), a[0] * W)
+        if (vy0 * H < cy or vy1 * H > cy + h) and (a[3] - a[1]) * H <= h:
+            y0 = min(max(cy, a[3] * H - h), a[1] * H)
     x0, y0 = min(max(x0, 0.0), W - w), min(max(y0, 0.0), H - h)
     if rot and not _dentro(x0, y0, w, h, W, H, rot):
         lo, hi = 0.0, 1.0    # si avvicina al centro quanto basta per restare dentro la foto
