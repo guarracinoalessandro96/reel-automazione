@@ -719,9 +719,13 @@ def piano_giornata(clips, ore=None, musica=None, frase=None, scene=None, durata=
                     break
             print(f"giornata: la frase finirebbe sul viso, tolgo {os.path.basename(via['clip'])}", flush=True)
             scelte.remove(via)
-    # la prima scena: il momento piu' forte con il viso (in verticale e con luce), poi la giornata in ordine di ora
+    # la prima scena: il momento piu' forte con il viso (in verticale e con luce), poi la giornata in ordine di ora.
+    # Conta anche quanto e' grande il viso (rapporto del 6/11: "nel primo secondo ci sei tu e ti si riconosce"): un
+    # primo piano in macchina batte lo stesso punteggio con il viso piccolo nello specchio della sala
+    grande = lambda a: max([(f[2] - f[0]) * (f[3] - f[1]) for f in a["visi"]] or [0.0])
     adatte = [a for a in scelte if a["viso"] > 0 and a["verticale"] and a["luce"] >= 0.10]
-    gancio = max(adatte or [a for a in scelte if a["viso"] > 0] or scelte, key=lambda a: a["punti"])
+    gancio = max(adatte or [a for a in scelte if a["viso"] > 0] or scelte,
+                 key=lambda a: a["punti"] + 0.5 * min(1.0, grande(a) / 0.04))
     resto = sorted((a for a in scelte if a is not gancio), key=lambda a: (
         _minuti_giornata(a["ora"]) is None, _minuti_giornata(a["ora"]) or 0, os.path.basename(a["clip"]).lower()))
     ordine = [gancio] + resto
