@@ -48,6 +48,14 @@ RAPIDE_SCELTE = RAPIDE_MASSIMO + 8       # quante se ne scaricano (alcune si sca
 RAPIDE_MINIMO_USO = 10                   # sotto 10 foto buone il reel rapido non si fa (esce dieci_foto, come prima)
 RAPIDE_DURATA = (0.5, 0.8)               # secondi per foto: lo stacco cade sul colpo della musica in questo intervallo
 RIUSO_GIORNI = 7                         # senza foto nuove: una giornata gia' uscita torna dopo almeno 7 giorni
+# revisione 6/11/2026 (sera):
+RAPIDE_MOMENTO = 10          # secondi: due scatti piu' vicini sono lo stesso momento, nel reel rapido ne resta uno...
+RAPIDE_DIVERSE = 16          # ...salvo impronte diverse di almeno 16 bit (stessa posa nello stesso secondo: 10-11 bit)
+SCENA = 15 * 60              # secondi: la nitidezza si confronta solo tra foto della stessa scena (un'auto liscia contro
+                             # la palestra piena di dettagli sembrava mossa: 0,20 della piu' nitida)
+RAPIDE_PASSO = (0.42, 0.95)  # secondi: il passo degli stacchi (1 o 2 battiti) anche un po' fuori da 0,5-0,8 s, cosi'
+                             # anche i brani da 120-150 e da 60-75 BPM vanno a tempo (prima a 140 BPM: 47% sul battito)
+RAPIDE_FIDUCIA = 0.1         # sotto questa fiducia il battito non e' chiaro: foto da 0,5-0,8 s sui colpi (come prima)
 
 
 def _accelerometro(mn):
@@ -484,11 +492,44 @@ def ritmo(musica, secondi=10.0):
     return forza, periodo / 100, float(fasi[int(np.argmax(somme))]) / 100, fiducia
 
 
+def _sul_passo(colpo, griglia, passo, m, T, primo=0.75):
+    """Revisione 6/11/2026 (sera): gli stacchi di m foto SOLO sui punti della griglia (fotogrammi dei battiti), ogni foto
+    di 1 o 2 passi, mai 1,5 (con un battito e mezzo meta' degli stacchi cadeva sul controtempo e il montaggio
+    "zoppicava"). La prima foto da `primo` a 2,5 passi, l'ultima da 0,75 a 2,5, meglio 2; tra i punti si preferiscono
+    i colpi piu' forti del brano. passo in fotogrammi. -> fotogrammi dei tagli (0 e T compresi) o None se non ci stanno."""
+    G = len(griglia)
+    if m < 2 or G == 0:
+        return None
+    lo, hi, due = max(0.75 * passo, RAPIDE_PASSO[0] * ov.FPS_MULTI), 2.5 * passo, 1.5 * passo
+    NEG = -1e18
+    best = [[NEG] * G for _ in range(m)]        # best[k][j]: k stacchi, l'ultimo sul punto j
+    da = [[-1] * G for _ in range(m)]
+    for j, c in enumerate(griglia):
+        if max(lo, primo * passo) <= c <= hi:
+            best[1][j] = colpo[c] + (0.5 if c >= due else 0.0)
+    for k in range(2, m):
+        for j in range(G):
+            for s in (1, 2):
+                if j >= s and best[k - 1][j - s] > NEG / 2 and best[k - 1][j - s] + colpo[griglia[j]] > best[k][j]:
+                    best[k][j], da[k][j] = best[k - 1][j - s] + colpo[griglia[j]], j - s
+    fine = [(best[m - 1][j] + (0.5 if T - c >= due else 0.0), j) for j, c in enumerate(griglia)
+            if best[m - 1][j] > NEG / 2 and lo <= T - c <= hi]
+    if not fine:
+        return None
+    j, tagli = max(fine)[1], [T]
+    for k in range(m - 1, 0, -1):
+        tagli.append(griglia[j])
+        j = da[k][j]
+    return [0] + tagli[::-1]
+
+
 def tempi_rapide(musica, n, durata=10.0):
-    """6/11/2026 (foto_rapide): quanto dura ogni foto (secondi, a fotogrammi interi): tra RAPIDE_DURATA (0,5-0,8 s), con
-    gli stacchi sui colpi del brano: sui battiti, sui mezzi battiti e sui colpi piu' forti (programmazione dinamica).
-    Quante foto: quelle che stanno a tempo (mezzo, uno o due battiti tra 0,5 e 0,8 s), al massimo n; con poche foto
-    ognuna un po' piu' lunga. -> (durate, ritmo). Senza musica o se l'analisi non riesce: foto tutte uguali."""
+    """6/11/2026 (foto_rapide): quanto dura ogni foto (secondi, a fotogrammi interi), con gli stacchi a tempo.
+    Revisione 6/11 (sera): con un battito chiaro (fiducia >= RAPIDE_FIDUCIA) gli stacchi cadono SOLO sui battiti: passo
+    di 1 o 2 battiti (o mezzo battito sotto i 63 BPM) tra 0,42 e 0,95 s, ogni foto 1 o 2 passi, il gancio e l'ultima
+    meglio 2, il piu' possibile foto (al massimo n e RAPIDE_MASSIMO); prima a 120-150 BPM nessun passo stava in 0,5-0,8 s
+    e gli stacchi finivano a caso (mediana 73% sul battito, 26 brani su 108 sotto il 50%). Battito poco chiaro: come
+    prima, foto da 0,5-0,8 s sui colpi piu' forti. -> (durate, ritmo). Senza musica o se l'analisi non riesce: uguali."""
     import numpy as np
     fps = ov.FPS_MULTI
     T = int(round(durata * fps))
@@ -497,51 +538,69 @@ def tempi_rapide(musica, n, durata=10.0):
         if not musica or not os.path.exists(musica):
             raise ValueError("nessun brano")
         forza, battito, fase, fiducia = ritmo(musica, durata)
-        unita = [u for u in (battito / 2, battito, battito * 2) if RAPIDE_DURATA[0] <= u <= RAPIDE_DURATA[1]]
-        u = min(unita, key=lambda u: abs(u - 0.62)) if unita else 0.62
-        m = int(max(1, min(n, RAPIDE_MASSIMO, max(math.ceil(durata / RAPIDE_DURATA[1]), round(durata / u)))))
-        if m * dmax < T:                                      # poche foto: ognuna un po' piu' lunga
-            dmax = math.ceil(T / m) + 6
-        if m < round(durata / u) and fiducia >= 0.1:
-            # meno foto di quelle che il battito vorrebbe (anteprima del 6/11, 13 foto a 100 BPM: con 0,8 s al massimo
-            # solo 5 stacchi su 12 sul battito): una foto puo' durare anche un battito e mezzo (al massimo 0,92 s),
-            # cosi' gli stacchi restano sui battiti e sui mezzi battiti
-            dmax = max(dmax, min(int(0.92 * fps), int(round(1.5 * u * fps)) + 1))
         t = np.arange(T + 1) / fps
         i = np.clip(np.round(t * 100).astype(int), 1, len(forza) - 2)
         colpo = np.maximum(np.maximum(forza[i - 1], forza[i]), forza[i + 1])      # il colpo piu' vicino (+-10 ms)
-        vicino = lambda q: np.exp(-0.5 * (np.abs(q - np.round(q)) / 0.04) ** 2)   # 1 sul battito, ~0 a 1/8 di battito
-        if fiducia >= 0.1:           # battito regolare: lo stacco preferisce il battito, poi il mezzo battito
-            pieno = vicino((t - fase) / battito)
-            colpo = colpo + 0.6 * pieno + 0.25 * np.maximum(vicino((t - fase) / battito * 2) - pieno, 0)
         colpo[T] = 0.0
-        NEG = -1e18
-        best = np.full((m + 1, T + 1), NEG)
-        best[0, 0] = 0.0
-        da = np.zeros((m + 1, T + 1), dtype=np.int32)
-        for k in range(1, m + 1):    # best[k, t]: k foto, l'ultima finisce al fotogramma t
-            for d in range(dmin, dmax + 1):
-                cand = np.full(T + 1, NEG)
-                cand[d:] = best[k - 1, :T + 1 - d]
-                meglio = cand > best[k]
-                best[k, meglio], da[k, meglio] = cand[meglio], d
-            best[k] += colpo
-        if best[m, T] < NEG / 2:
-            raise ValueError(f"{m} foto non stanno in {durata} s")
-        tagli = [T]
-        for k in range(m, 0, -1):
-            tagli.append(tagli[-1] - int(da[k, tagli[-1]]))
-        tagli = tagli[::-1]
-        if tagli[0] != 0:
+        tagli, passo = None, None
+        if fiducia >= RAPIDE_FIDUCIA:
+            passi = [p for p in (battito, 2 * battito) if RAPIDE_PASSO[0] <= p <= RAPIDE_PASSO[1]] or \
+                    [p for p in (battito / 2,) if RAPIDE_PASSO[0] <= p <= RAPIDE_PASSO[1]]
+            for passo in sorted(passi, key=lambda p: abs(p - 0.62)):
+                # punti della griglia: ogni passo; per 2 battiti la meta' dei battiti che colpisce di piu'
+                fasi = [fase, fase + battito] if passo > 1.5 * battito else [fase]
+                punti = lambda f: [k for k in np.arange(f % passo, durata, passo) * fps if 1 <= round(k) < T]
+                f0 = max(fasi, key=lambda f: sum(float(colpo[int(round(k))]) for k in punti(f)))
+                # ogni punto sul colpo piu' forte entro un fotogramma (16 ms): il battito stimato scivola di poco
+                griglia = sorted({int(round(k)) + int(np.argmax(colpo[int(round(k)) - 1:int(round(k)) + 2])) - 1
+                                  for k in punti(f0) if 2 <= round(k) < T - 1})
+                # il piu' possibile foto, col gancio di almeno un battito e mezzo (una foto in meno, se serve); se no
+                # anche il gancio corto
+                for primo in (1.5, 0.75):
+                    for m in range(int(min(n, RAPIDE_MASSIMO)), 1, -1):
+                        tagli = _sul_passo(colpo, griglia, passo * fps, m, T, primo)
+                        if tagli:
+                            break
+                    if tagli:
+                        break
+                if tagli:
+                    break
+        if not tagli:            # battito poco chiaro (o nessun passo possibile): foto da 0,5-0,8 s sui colpi (come prima)
+            passo = None
+            m = int(max(1, min(n, RAPIDE_MASSIMO, max(math.ceil(durata / RAPIDE_DURATA[1]), round(durata / 0.62)))))
+            if m * dmax < T:                                  # poche foto: ognuna un po' piu' lunga
+                dmax = math.ceil(T / m) + 6
+            NEG = -1e18
+            best = np.full((m + 1, T + 1), NEG)
+            best[0, 0] = 0.0
+            da = np.zeros((m + 1, T + 1), dtype=np.int32)
+            for k in range(1, m + 1):    # best[k, t]: k foto, l'ultima finisce al fotogramma t
+                for d in range(dmin, dmax + 1):
+                    cand = np.full(T + 1, NEG)
+                    cand[d:] = best[k - 1, :T + 1 - d]
+                    meglio = cand > best[k]
+                    best[k, meglio], da[k, meglio] = cand[meglio], d
+                best[k] += colpo
+            if best[m, T] < NEG / 2:
+                raise ValueError(f"{m} foto non stanno in {durata} s")
+            tagli = [T]
+            for k in range(m, 0, -1):
+                tagli.append(tagli[-1] - int(da[k, tagli[-1]]))
+            tagli = tagli[::-1]
+        if tagli[0] != 0 or tagli[-1] != T or min(np.diff(tagli)) < 1:
             raise ValueError("stacchi non ricostruiti")
         stacchi = [c / fps for c in tagli[1:-1]]
-        mezzi = lambda s: (s - fase) / (battito / 2)          # posizione in mezzi battiti
+        q = lambda s, div: abs((s - fase) / (battito / div) - round((s - fase) / (battito / div))) * battito / div
+        pieni = [q(s, 1) <= 0.025 for s in stacchi]
+        quota = lambda xs: round(float(sum(xs)) / max(1, len(stacchi)), 2)
         ritmo_info = {"bpm": int(round(60 / battito)), "fiducia": round(float(fiducia), 2),
-                      # quota di stacchi entro 25 ms da un battito o mezzo battito / da un colpo forte del brano
-                      "sul_battito": round(float(sum(bool(abs(mezzi(s) - round(mezzi(s))) * battito / 2 <= 0.025)
-                                                     for s in stacchi)) / max(1, len(stacchi)), 2),
-                      "sul_colpo": round(float(sum(float(forza[max(0, round(s * 100) - 2):round(s * 100) + 3].max())
-                                                   >= 0.3 for s in stacchi)) / max(1, len(stacchi)), 2)}
+                      "passo": round(float(passo), 3) if passo else None,   # secondi; None: sui colpi (0,5-0,8 s)
+                      # quota di stacchi entro 25 ms da un battito pieno / da un mezzo battito (non pieno, a parte:
+                      # revisione 6/11, prima contavano insieme e il dato era gonfiato) / da un colpo forte del brano
+                      "sul_battito": quota(pieni),
+                      "sul_mezzo": quota(q(s, 2) <= 0.025 and not p for s, p in zip(stacchi, pieni)),
+                      "sul_colpo": quota(float(forza[max(0, round(s * 100) - 2):round(s * 100) + 3].max()) >= 0.3
+                                         for s in stacchi)}
     except Exception as e:
         print("Foto rapide: ritmo del brano non letto, foto tutte uguali:", str(e)[:200])
         m = int(max(1, min(n, 16)))
@@ -701,27 +760,27 @@ def _sparse(lista, n):
 
 
 def scegli_tante(foto, quante=RAPIDE_SCELTE):
-    """6/11/2026 (foto_rapide): fino a `quante` foto sparse su tutta la giornata, una per raffica come scegli(); se le
-    raffiche non bastano anche altre foto delle raffiche (le quasi-uguali le toglie poi ordina con l'impronta)."""
+    """6/11/2026 (foto_rapide): fino a `quante` foto sparse su tutta la giornata, una per raffica come scegli().
+    Revisione 6/11 (sera): non si riempie piu' con altre foto delle stesse raffiche (l'impronta non riconosce la stessa
+    posa nello stesso secondo: nel reel uscivano 3 foto uguali di fila); con pochi momenti diversi esce dieci_foto."""
     foto = sorted(foto, key=lambda f: (f["quando"], f["name"]))
     diverse = []
     for f in foto:
         if not diverse or _secondi(f["quando"]) - _secondi(diverse[-1]["quando"]) >= STACCO:
             diverse.append(f)
-    if len(diverse) < quante:
-        prese = {id(f) for f in diverse}
-        diverse += _sparse([f for f in foto if id(f) not in prese], quante - len(diverse))
-        diverse.sort(key=lambda f: (f["quando"], f["name"]))
     return _sparse(diverse, quante)
 
 
 def riusabili(drive, state, minimo=MINIMO, quante=None):
     """6/11/2026 (Alessandro: "se non ci sono foto in coda, si andranno ad utilizzare quelle vecchie"): le foto di una
-    giornata gia' uscita (cartella "Foto usate"). Prima le giornate non uscite negli ultimi RIUSO_GIORNI giorni (la piu'
-    recente per prima: contenuti nuovi prima); se non ce ne sono, quella uscita da piu' tempo. Mai la giornata dell'ultimo
-    reel con le foto (mai lo stesso gruppo due volte di fila) e, dentro la giornata, prima le foto non uscite l'ultima
-    volta. [] se non ce n'e' una con almeno `minimo` foto."""
-    giorni = {g: fs for g, fs in _per_giorno(_elenco(drive, USATE), anche_usate=True).items() if len(fs) >= minimo}
+    giornata gia' uscita (cartella "Foto usate") non uscita negli ultimi RIUSO_GIORNI giorni, la piu' recente per prima
+    (contenuti nuovi prima). Mai la giornata dell'ultimo reel con le foto e, dentro la giornata, prima le foto non uscite
+    l'ultima volta. [] se non ce n'e' una con almeno `minimo` foto (con quante, per foto_rapide: momenti diversi).
+    Revisione 6/11 (sera): se tutte le giornate sono uscite negli ultimi 7 giorni, [] (prima: quella uscita da piu'
+    tempo, cioe' foto viste 12-48 ore prima): meglio il reel col video nuovo in coda."""
+    scelta = (lambda fs: scegli_tante(fs, quante)) if quante else scegli
+    conta = (lambda fs: len(scelta(fs))) if quante else len
+    giorni = {g: fs for g, fs in _per_giorno(_elenco(drive, USATE), anche_usate=True).items() if conta(fs) >= minimo}
     if not giorni:
         return []
     giorno_di = {f["id"]: g for g, fs in giorni.items() for f in fs}
@@ -738,23 +797,29 @@ def riusabili(drive, state, minimo=MINIMO, quante=None):
         return []
     soglia = (datetime.datetime.now() - datetime.timedelta(days=RIUSO_GIORNI)).isoformat()
     liberi = [g for g in adatti if ultimo.get(g, "") < soglia]
-    g = liberi[0] if liberi else min(adatti, key=lambda g: ultimo.get(g, ""))
+    if not liberi:
+        print(f"Foto: nessuna foto nuova e nessuna giornata libera da {RIUSO_GIORNI} giorni: niente reel con le foto")
+        return []
+    g = liberi[0]
     altre = [f for f in giorni[g] if f["id"] not in ultime.get(g, set())]
-    fs = altre if len(altre) >= minimo else giorni[g]
+    fs = altre if conta(altre) >= minimo else giorni[g]
     print(f"Foto: nessuna foto nuova, riuso la giornata del {g} (uscita l'ultima volta: {ultimo.get(g) or 'mai'})")
-    return scegli_tante(fs, quante) if quante else scegli(fs)
+    return scelta(fs)
 
 
 def foto_per_slot(drive, state, voluto="dieci_foto"):
     """6/11/2026: (foto, formato, riuso) per un orario delle foto. Prima le foto NUOVE della giornata piu' recente:
-    foto_rapide se ne ha almeno RAPIDE_MINIMO (e l'estrazione dell'orario l'ha scelto), se no dieci_foto come prima.
+    foto_rapide se ha almeno RAPIDE_MINIMO momenti diversi (una foto per raffica; e l'estrazione dell'orario l'ha
+    scelto), se no dieci_foto come prima.
     Senza foto nuove si riusano quelle di una giornata gia' uscita (riusabili). ([], None, False): niente reel con le
     foto. Se qualcosa va storto: come prima (pronte, dieci_foto)."""
     try:
         _, nuove = giornata_nuova(drive)
         if nuove:
-            if voluto == "foto_rapide" and len(nuove) >= RAPIDE_MINIMO:
-                return scegli_tante(nuove), "foto_rapide", False
+            if voluto == "foto_rapide":
+                tante = scegli_tante(nuove)
+                if len(tante) >= RAPIDE_MINIMO:      # revisione 6/11: contano i momenti diversi, non le foto delle raffiche
+                    return tante, "foto_rapide", False
             return scegli(nuove), "dieci_foto", False
         for formato in (("foto_rapide", "dieci_foto") if voluto == "foto_rapide" else ("dieci_foto",)):
             rapide = formato == "foto_rapide"
@@ -825,18 +890,27 @@ def _simili(a, b):
     return bin(a["impronta"] ^ b["impronta"]).count("1") <= SIMILI
 
 
-def ordina(locali, schede, massimo=MASSIMO):
+def _doppie(x, y, schede, momento=None):
+    """Revisione 6/11/2026 (sera): True se le foto x e y ((file, percorso)) sono quasi-doppie: impronte a meno di
+    SIMILI bit (come _simili) o, con momento (secondi, foto_rapide), scatti a meno di `momento` secondi con impronte a
+    meno di RAPIDE_DIVERSE bit (sulle foto di prova la stessa posa nello stesso secondo: 10-11 bit)."""
+    d = bin(schede[x[1]]["impronta"] ^ schede[y[1]]["impronta"]).count("1")
+    return d <= SIMILI or bool(momento and d < RAPIDE_DIVERSE and
+                               abs(_secondi(x[0].get("quando", "")) - _secondi(y[0].get("quando", ""))) <= momento)
+
+
+def ordina(locali, schede, massimo=MASSIMO, momento=None):
     """6/11/2026 (gancio): delle foto quasi uguali se ne tiene una (la migliore), poi la foto piu' forte va per prima
     (e' quella che ferma chi scorre) e le altre seguono in ordine di scatto, sparse su tutta la giornata.
     Revisione 6/11: il gancio solo tra le foto nitide (GANCIO); restituisce (scelte, doppie), con doppie = le
     quasi-doppie rimaste fuori di una foto scelta: si segnano come usate con le altre, se no il reel dopo avrebbe
-    le stesse pose. massimo: foto nel reel (RAPIDE_MASSIMO per foto_rapide)."""
+    le stesse pose. massimo: foto nel reel (RAPIDE_MASSIMO per foto_rapide); momento: vedi _doppie (foto_rapide)."""
     nit_max = max(schede[p]["nitidezza"] for _, p in locali)
     punti = {p: voto(schede[p], nit_max) for _, p in locali}
     per_voto = sorted(locali, key=lambda x: -punti[x[1]])
     tenute = [next(x for x in per_voto if schede[x[1]]["nitidezza"] >= GANCIO * nit_max)]
     for x in per_voto:
-        if not any(_simili(schede[x[1]], schede[q]) for _, q in tenute):
+        if not any(_doppie(x, y, schede, momento) for y in tenute):
             tenute.append(x)
     for x in per_voto:       # mai meno di 3 foto per togliere le quasi-doppie
         if len(tenute) >= 3:
@@ -847,13 +921,27 @@ def ordina(locali, schede, massimo=MASSIMO):
     if len(altre) > massimo - 1:
         altre = [altre[round(i * (len(altre) - 1) / (massimo - 2))] for i in range(massimo - 1)]
     scelte = [gancio] + altre
-    doppie = [x for x in locali if x not in scelte and any(_simili(schede[x[1]], schede[q]) for _, q in scelte)]
+    doppie = [x for x in locali if x not in scelte and any(_doppie(x, y, schede, momento) for y in scelte)]
     return scelte, doppie
 
 
-def _scarica(foto, drive, work, massimo=MASSIMO, riuso=False):
+def _mosse(locali, voti):
+    """Revisione 6/11/2026 (sera): le foto mosse o sfocate. Ogni foto si confronta solo con le foto della stessa scena
+    (scattate a meno di SCENA, 15 minuti): la nitidezza misurata dipende da quanti dettagli ha la scena (palestra
+    795-1370, un primo piano nitido in macchina 268) e col confronto su tutta la giornata le foto nitide di macchina,
+    ufficio e specchio si scartavano per sempre. Una foto sola nella sua scena non si scarta."""
+    t = {p: _secondi(f.get("quando", "")) for f, p in locali}
+    mosse = []
+    for f, p in locali:
+        vicine = [voti[q] for _, q in locali if q != p and abs(t[q] - t[p]) <= SCENA]
+        if vicine and voti[p] < NITIDEZZA * max(vicine):
+            mosse.append((f, p))
+    return mosse
+
+
+def _scarica(foto, drive, work, massimo=MASSIMO, riuso=False, momento=None):
     """Scarica le foto, scarta le mosse e le quasi-doppie, la migliore per prima. -> (locali, doppie, schede).
-    6/11/2026: riuso = foto gia' uscite (cartella "Foto usate"): non si segnano come scartate."""
+    6/11/2026: riuso = foto gia' uscite (cartella "Foto usate"): non si segnano come scartate. momento: vedi _doppie."""
     locali = []
     for i, f in enumerate(foto):
         p = os.path.join(work, f"foto_{i}.jpg")
@@ -867,9 +955,13 @@ def _scarica(foto, drive, work, massimo=MASSIMO, riuso=False):
         except Exception as e:
             print("Foto: schede non riuscite, solo nitidezza:", e)
             schede, voti = {}, {p: nitidezza(p) for _, p in locali}
-        soglia = NITIDEZZA * max(voti.values())
         piccola = lambda p: min(Image.open(p).size) < LATO_MINIMO
-        mosse = [(f, p) for f, p in locali if voti[p] < soglia or piccola(p)]
+        try:                     # revisione 6/11 (sera): solo con le foto della stessa scena
+            mosse = _mosse(locali, voti)
+        except Exception as e:
+            print("Foto: confronto per scena non riuscito, come prima:", e)
+            mosse = [(f, p) for f, p in locali if voti[p] < NITIDEZZA * max(voti.values())]
+        mosse += [(f, p) for f, p in locali if (f, p) not in mosse and piccola(p)]
         if len(locali) - len(mosse) >= 3:
             for f, _ in ([] if riuso else mosse):
                 drive.api.files().update(fileId=f["id"], body={"appProperties": {"scartata": "1"}}).execute()
@@ -879,7 +971,7 @@ def _scarica(foto, drive, work, massimo=MASSIMO, riuso=False):
     doppie = []
     try:                         # 6/11/2026: niente quasi-doppie, la foto migliore per prima
         if schede:
-            locali, doppie = ordina(locali, schede, massimo)
+            locali, doppie = ordina(locali, schede, massimo, momento)
     except Exception as e:
         print("Foto: ordine col gancio non riuscito, ordine di scatto:", e)
     if len(locali) > massimo:    # restano sparse su tutta la giornata
@@ -923,7 +1015,7 @@ def monta_rapide(foto, frase, dst, musiche, drive, work, riuso=False):
     """6/11/2026: reel foto_rapide (make_rapide) con le foto della giornata: scarica, scarta mosse e quasi-doppie, la
     migliore per prima. Se non riesce (poche foto buone, scritta che coprirebbe il viso, errore): il reel con le foto
     di sempre (make_foto, 6 foto) con le stesse foto, cosi' esce comunque; le altre restano per il prossimo reel."""
-    locali, doppie, schede = _scarica(foto, drive, work, RAPIDE_MASSIMO, riuso)
+    locali, doppie, schede = _scarica(foto, drive, work, RAPIDE_MASSIMO, riuso, RAPIDE_MOMENTO)
     ganci = [0]
     try:         # ganci di riserva se la scritta coprisse il viso del primo: le foto nitide col voto piu' alto
         nit_max = max(schede[p]["nitidezza"] for _, p in locali)
@@ -945,7 +1037,7 @@ def monta_rapide(foto, frase, dst, musiche, drive, work, riuso=False):
             _conta_fallite(drive, [] if riuso else usate)
             raise
     try:         # le quasi-doppie solo delle foto uscite davvero (le altre foto restano in coda)
-        doppie = [x for x in doppie if any(_simili(schede[x[1]], schede[q]) for _, q in usate)]
+        doppie = [x for x in doppie if any(_doppie(x, y, schede, RAPIDE_MOMENTO) for y in usate)]
     except Exception:
         doppie = []
     return dict(info, **_dati_foto(usate, doppie, riuso))
