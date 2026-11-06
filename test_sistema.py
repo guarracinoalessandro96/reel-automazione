@@ -243,13 +243,14 @@ def main():
     check(str("2026-11-05 12:00").endswith(p.ORARIO_FOTO), "foto: orario 12:00 tra gli orari delle foto")
 
     class FintoDrive:            # pronte(): avanzi di un giorno passato, foto usate o fallite 2 volte saltate
-        def __init__(self, files): self.files = files
+        # 6/11/2026: "dati" e non "files": l'attributo copriva il metodo files() e la prova falliva sempre
+        def __init__(self, files): self.dati = files
         def cartella(self, n): return "c"
         @property
         def api(self): return self
         def files(self): return self
         def list(self, **kw): return self
-        def execute(self): return {"files": self.files}
+        def execute(self): return {"files": self.dati}
     vecchio = (datetime.date.today() - datetime.timedelta(days=5)).isoformat()
     oggi_f = datetime.date.today().isoformat()
     fs = [{"id": f"v{i}", "name": f"v{i}", "createdTime": f"{vecchio}T10:0{i}:00"} for i in range(3)]
