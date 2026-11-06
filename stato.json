@@ -9931,7 +9931,9 @@
     "instagram": {
      "ok": true,
      "id": "17894117688654029",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -9959,21 +9961,56 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "-KBeFwT3u-o"
+     "id": "-KBeFwT3u-o",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "17967564683981780",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "Il tempo non cura tutto. Ma insegna a reggere."
+  },
+  {
+   "quando": "2026-11-06T05:01",
+   "slot": "2026-11-06 06:00",
+   "video": "IMG_4272.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-0880c6d4",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "vibe_check_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "drive_08.flac",
+    "musica_instagram": "Sta passando novembre - Eros Ramazzotti [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "-JIHeRCBicw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17918322336523539",
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Il silenzio non fa meno rumore solo perché non si sente."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-28 20:00",
   "2026-10-28 22:00",
   "2026-10-29 00:00",
   "2026-10-29 02:00",
@@ -10052,10 +10089,10 @@
   "2026-11-05 18:00",
   "2026-11-05 20:00",
   "2026-11-05 22:00",
-  "2026-11-06 00:00"
+  "2026-11-06 00:00",
+  "2026-11-06 06:00"
  ],
  "musica_recenti": [
-  "dusty_road_magic_1.m4a",
   "sweaty_staredown_2.m4a",
   "way_back_home_2.m4a",
   "taking_flight_3.m4a",
@@ -10074,7 +10111,8 @@
   "death_duel_3.m4a",
   "locked_in_1.m4a",
   "ancient_civilisations_3.m4a",
-  "dusty_road_magic_3.m4a"
+  "dusty_road_magic_3.m4a",
+  "vibe_check_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10357,7 +10395,8 @@
   "MIE-061c0395",
   "MIE-a9252760",
   "MIE-ed8b4192",
-  "MIE-ef3aefc2"
+  "MIE-ef3aefc2",
+  "MIE-0880c6d4"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10372,7 +10411,7 @@
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-05",
+ "pulizia": "2026-11-06",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -10739,8 +10778,8 @@
    "ultimo": "2026-11-05"
   },
   "1b6jLZrzSs8YwKhy4QEb382s6yYZIdhzZ": {
-   "usi": 2,
-   "ultimo": "2026-10-28"
+   "usi": 3,
+   "ultimo": "2026-11-06"
   },
   "1OKyRxbpEUPABWJM5Ey1cGm-BG7E-Rv9h": {
    "usi": 2,
@@ -10812,7 +10851,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_07.flac",
   "trap_06.flac",
   "energia_09.flac",
   "phonk_12.flac",
@@ -10831,7 +10869,8 @@
   "phonk_10.flac",
   "deciso_10.flac",
   "trap_11.flac",
-  "phonk_02.flac"
+  "phonk_02.flac",
+  "drive_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10866,7 +10905,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10882,7 +10921,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "5301582899854512",
   "1283788913238327",
   "617195401283615",
   "351866282607327",
@@ -10911,12 +10949,13 @@
   "972513352266790",
   "257338181818606",
   "856093300426979",
-  "2201065153808959"
+  "2201065153808959",
+  "261968585425392"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Flo Rida",
   "Winterbell",
-  "Paramveer Singh katoch"
+  "Paramveer Singh katoch",
+  "Eros Ramazzotti"
  ]
 }
