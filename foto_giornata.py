@@ -56,6 +56,10 @@ SCENA = 15 * 60              # secondi: la nitidezza si confronta solo tra foto 
 RAPIDE_PASSO = (0.42, 0.95)  # secondi: il passo degli stacchi (1 o 2 battiti) anche un po' fuori da 0,5-0,8 s, cosi'
                              # anche i brani da 120-150 e da 60-75 BPM vanno a tempo (prima a 140 BPM: 47% sul battito)
 RAPIDE_FIDUCIA = 0.1         # sotto questa fiducia il battito non e' chiaro: foto da 0,5-0,8 s sui colpi (come prima)
+# 6/11/2026 (integrazione): pelle minima al centro dei riquadri dei rilevatori senza controlli (make_rapide): piu' bassa di
+# PELLE (0,7, per il taglio) perche' qui un viso perso finirebbe sotto la scritta
+RAPIDE_PELLE = 0.4
+SERIE = 180                  # secondi: foto della stessa serie; solo una foto piu' nitida della serie la scarta per sempre
 
 
 def _accelerometro(mn):
@@ -611,6 +615,23 @@ def tempi_rapide(musica, n, durata=10.0):
     return [round((b - a) / fps, 6) for a, b in zip(tagli, tagli[1:])], ritmo_info
 
 
+def _pelle(bgr, g):
+    """6/11/2026 (integrazione): quota di pelle al centro del riquadro g (frazioni, con i margini di detect_faces) sulla
+    miniatura bgr, con la stessa regola di visi_foto. Se non si misura, 1.0 (il riquadro resta: mai un viso perso)."""
+    try:
+        import cv2
+        h, w = bgr.shape[:2]
+        g = (max(0.0, g[0]), max(0.0, g[1]), min(1.0, g[2]), min(1.0, g[3]))
+        ycc = cv2.cvtColor(bgr, cv2.COLOR_BGR2YCrCb)
+        pelle = ((ycc[..., 0] > 40) & (ycc[..., 1] >= 135) & (ycc[..., 1] <= 180) & (ycc[..., 2] >= 80)
+                 & (ycc[..., 2] <= 135))
+        x0, x1 = int((g[0] + (g[2] - g[0]) * 0.25) * w), int((g[2] - (g[2] - g[0]) * 0.25) * w)
+        y0, y1 = int((g[1] + (g[3] - g[1]) * 0.3) * h), int((g[3] - (g[3] - g[1]) * 0.3) * h)
+        return float(pelle[y0:y1, x0:x1].mean()) if x1 > x0 and y1 > y0 else 1.0
+    except Exception:
+        return 1.0
+
+
 def _vero(f):
     """Il viso senza i margini di detect_faces (capelli 0.35/1.8, mento 0.45/1.8, 1/6 della larghezza per lato)."""
     w, h = f[2] - f[0], f[3] - f[1]
@@ -621,8 +642,11 @@ def _testo_libero(W, H, frase, visi, mappa, ganci=(0,)):
     """6/11/2026 (foto_rapide): la frase ferma per 10 s in un posto libero su TUTTE le foto (Alessandro: mai sul viso).
     Si prova con tutte; se una foto resterebbe col viso coperto si toglie (prima quella coperta di piu') e si riprova.
     Il gancio (la prima foto) non si toglie mai: i suoi visi pesano 20 volte tanto; se resta coperto lo stesso, si
-    prova come gancio la foto dopo in ganci (in ordine di voto). -> (scritta, indici delle foto nell'ordine del reel)"""
-    for g in list(ganci)[:3]:
+    prova come gancio la foto dopo in ganci (in ordine di voto). -> (scritta, indici delle foto nell'ordine del reel)
+    6/11/2026 (integrazione): il VisoCoperto finale ha viso_gancio = True se la scritta copriva il viso del PRIMO gancio
+    (la foto che anche make_foto metterebbe per prima): allora monta_rapide non ripiega su make_foto."""
+    viso_gancio = False
+    for k, g in enumerate(list(ganci)[:3]):
         ordine = [g] + [i for i in range(len(visi)) if i != g]
         while len(ordine) >= min(RAPIDE_MINIMO_USO, len(visi)):
             facce = visi[ordine[0]] * 20 + [f for i in ordine[1:] for f in visi[i]]
@@ -631,11 +655,14 @@ def _testo_libero(W, H, frase, visi, mappa, ganci=(0,)):
             box = (b[0] / W, b[1] / H, b[2] / W, b[3] / H)
             coperte = {i: c for i in ordine if (c := sum(ov._overlap(box, _vero(f)) for f in visi[i])) > 0}
             if ordine[0] in coperte:
+                viso_gancio = viso_gancio or k == 0
                 break                # il viso del gancio resta sotto la scritta: si prova un altro gancio
             if not coperte:
                 return img, ordine
             del ordine[ordine.index(max(coperte, key=coperte.get))]
-    raise fn.VisoCoperto(frase)
+    e = fn.VisoCoperto(frase)
+    e.viso_gancio = viso_gancio
+    raise e
 
 
 def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
@@ -661,8 +688,16 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
                 # inclinata o sdraiato, e quelli dei rilevatori senza controlli (sulle foto di prova della pressa 5 visi
                 # su 12 sfuggivano al solo controllo con gli occhi). Un falso viso al massimo toglie una foto, che
                 # resta in coda per il prossimo reel
-                v += visi_foto(im, ruotati=True, inclinati=True)
-                v += [tuple(float(x) for x in b) for b in ov.detect_faces([bgr], ruotati=True)]
+                trovati = visi_foto(im, ruotati=True, inclinati=True)
+                v += trovati
+                # 6/11/2026 (integrazione, revisione delle foto rapide): i riquadri dei rilevatori senza controlli
+                # contano se hanno un po' di pelle al centro (RAPIDE_PELLE) OPPURE se sulla foto nessun altro
+                # controllo ha trovato un viso: meno foto buone tolte per un disco o una macchina, mai un viso vero perso
+                nessuno = not (info.get("visi") or trovati)
+                for b in ov.detect_faces([bgr], ruotati=True):
+                    b = tuple(float(x) for x in b)
+                    if nessuno or _pelle(bgr, b) >= RAPIDE_PELLE:
+                        v.append(b)
             except Exception as e:
                 print("Foto rapide: visi per la scritta non cercati:", str(e)[:200])
             visi.append(v)
@@ -773,6 +808,19 @@ def scegli_tante(foto, quante=RAPIDE_SCELTE):
     return _sparse(diverse, quante)
 
 
+def momenti(foto, distacco=RAPIDE_MOMENTO):
+    """6/11/2026 (integrazione, ricontrollo delle foto rapide): quanti momenti diversi ha la giornata, cioe' scatti ad
+    almeno `distacco` s l'uno dall'altro (come scegli_tante). Per scegliere foto_rapide si contano con RAPIDE_MOMENTO
+    (10 s), lo stesso distacco con cui il reel toglie le quasi-doppie: con STACCO (3 s) bastava una serie di 40 s per
+    scegliere foto_rapide, poi restavano meno di 10 foto e il reel ripiegava su dieci_foto dopo minuti di lavoro."""
+    n, ultimo = 0, None
+    for f in sorted(foto, key=lambda f: (f.get("quando", ""), f.get("name", ""))):
+        t = _secondi(f.get("quando", ""))
+        if ultimo is None or t - ultimo >= distacco:
+            n, ultimo = n + 1, t
+    return n
+
+
 def riusabili(drive, state, minimo=MINIMO, quante=None):
     """6/11/2026 (Alessandro: "se non ci sono foto in coda, si andranno ad utilizzare quelle vecchie"): le foto di una
     giornata gia' uscita (cartella "Foto usate") non uscita negli ultimi RIUSO_GIORNI giorni, la piu' recente per prima
@@ -781,7 +829,8 @@ def riusabili(drive, state, minimo=MINIMO, quante=None):
     Revisione 6/11 (sera): se tutte le giornate sono uscite negli ultimi 7 giorni, [] (prima: quella uscita da piu'
     tempo, cioe' foto viste 12-48 ore prima): meglio il reel col video nuovo in coda."""
     scelta = (lambda fs: scegli_tante(fs, quante)) if quante else scegli
-    conta = (lambda fs: len(scelta(fs))) if quante else len
+    # 6/11/2026 (integrazione): per foto_rapide contano i momenti a RAPIDE_MOMENTO (vedi momenti)
+    conta = (lambda fs: min(len(scelta(fs)), momenti(fs))) if quante else len
     giorni = {g: fs for g, fs in _per_giorno(_elenco(drive, USATE), anche_usate=True).items() if conta(fs) >= minimo}
     if not giorni:
         return []
@@ -820,7 +869,8 @@ def foto_per_slot(drive, state, voluto="dieci_foto"):
         if nuove:
             if voluto == "foto_rapide":
                 tante = scegli_tante(nuove)
-                if len(tante) >= RAPIDE_MINIMO:      # revisione 6/11: contano i momenti diversi, non le foto delle raffiche
+                # revisione 6/11: contano i momenti diversi, non le foto delle raffiche; integrazione 6/11: a 10 s
+                if len(tante) >= RAPIDE_MINIMO and momenti(nuove) >= RAPIDE_MINIMO:
                     return tante, "foto_rapide", False
             return scegli(nuove), "dieci_foto", False
         for formato in (("foto_rapide", "dieci_foto") if voluto == "foto_rapide" else ("dieci_foto",)):
@@ -933,18 +983,29 @@ def ordina(locali, schede, massimo=MASSIMO, momento=None):
     return scelte, doppie
 
 
-def _mosse(locali, voti):
+def _mosse(locali, voti, isolate=False):
     """Revisione 6/11/2026 (sera): le foto mosse o sfocate. Ogni foto si confronta solo con le foto della stessa scena
     (scattate a meno di SCENA, 15 minuti): la nitidezza misurata dipende da quanti dettagli ha la scena (palestra
     795-1370, un primo piano nitido in macchina 268) e col confronto su tutta la giornata le foto nitide di macchina,
-    ufficio e specchio si scartavano per sempre. Una foto sola nella sua scena non si scarta."""
+    ufficio e specchio si scartavano per sempre. Una foto sola nella sua scena non si scarta.
+    6/11/2026 (integrazione, ricontrollo delle foto rapide): -> (mosse, da_segnare). mosse = fuori da QUESTO reel;
+    da_segnare = solo quelle piu' sfocate di una foto della stessa SERIE (meno di 3 minuti): queste si segnano
+    'scartata' per sempre. Con la foto piu' nitida a 3-15 minuti (cambio di scena: il selfie in macchina subito dopo
+    l'allenamento) la foto resta in coda per un altro reel. isolate=True (dieci_foto): le foto senza vicine nella
+    stessa scena si confrontano con la piu' nitida di tutte, come prima, ma solo per lasciarle fuori."""
     t = {p: _secondi(f.get("quando", "")) for f, p in locali}
-    mosse = []
+    tutte = max(voti.values()) if voti else 0.0
+    mosse, segnare = [], []
     for f, p in locali:
-        vicine = [voti[q] for _, q in locali if q != p and abs(t[q] - t[p]) <= SCENA]
-        if vicine and voti[p] < NITIDEZZA * max(vicine):
+        vicine = [(voti[q], abs(t[q] - t[p])) for _, q in locali if q != p and abs(t[q] - t[p]) <= SCENA]
+        if vicine and voti[p] < NITIDEZZA * max(v for v, _ in vicine):
             mosse.append((f, p))
-    return mosse
+            serie = [v for v, d in vicine if d <= SERIE]
+            if serie and voti[p] < NITIDEZZA * max(serie):
+                segnare.append((f, p))
+        elif not vicine and isolate and voti[p] < NITIDEZZA * tutte:
+            mosse.append((f, p))
+    return mosse, segnare
 
 
 def _scarica(foto, drive, work, massimo=MASSIMO, riuso=False, momento=None):
@@ -965,13 +1026,17 @@ def _scarica(foto, drive, work, massimo=MASSIMO, riuso=False, momento=None):
             schede, voti = {}, {p: nitidezza(p) for _, p in locali}
         piccola = lambda p: min(Image.open(p).size) < LATO_MINIMO
         try:                     # revisione 6/11 (sera): solo con le foto della stessa scena
-            mosse = _mosse(locali, voti)
+            # 6/11/2026 (integrazione): 'scartata' solo se la foto piu' nitida e' della stessa serie (vedi _mosse)
+            mosse, segnare = _mosse(locali, voti, isolate=momento is None)
         except Exception as e:
             print("Foto: confronto per scena non riuscito, come prima:", e)
             mosse = [(f, p) for f, p in locali if voti[p] < NITIDEZZA * max(voti.values())]
-        mosse += [(f, p) for f, p in locali if (f, p) not in mosse and piccola(p)]
+            segnare = list(mosse)
+        piccole = [(f, p) for f, p in locali if (f, p) not in mosse and piccola(p)]
+        mosse += piccole
+        segnare += piccole       # troppo piccola resta troppo piccola: fuori per sempre, come prima
         if len(locali) - len(mosse) >= 3:
-            for f, _ in ([] if riuso else mosse):
+            for f, _ in ([] if riuso else segnare):
                 drive.api.files().update(fileId=f["id"], body={"appProperties": {"scartata": "1"}}).execute()
             locali = [x for x in locali if x not in mosse]
     except Exception:
@@ -1037,6 +1102,13 @@ def monta_rapide(foto, frase, dst, musiche, drive, work, riuso=False):
         info = make_rapide([p for _, p in locali], frase, dst, musiche, ganci)
         usate = [locali[i] for i in info.pop("tenute")]
     except Exception as e:
+        if isinstance(e, fn.VisoCoperto) and getattr(e, "viso_gancio", False):
+            # 6/11/2026 (integrazione, revisione delle foto rapide; regola 2: la scritta mai sul viso): la scritta copre
+            # il viso della prima foto, la stessa che make_foto metterebbe per prima (e il suo ultimo tentativo non
+            # guarda i visi): esce il reel col video (pubblica: controllo del viso e fascia cinema/post). Le foto
+            # restano in coda, nessun fallimento contato
+            print("Foto rapide: la scritta coprirebbe il viso della prima foto, esce il reel col video")
+            raise
         print("Foto rapide non riuscite, reel con le foto che scorrono (come prima):", str(e)[:300])
         usate = locali[:1] + _sparse(locali[1:], MASSIMO - 1)
         try:

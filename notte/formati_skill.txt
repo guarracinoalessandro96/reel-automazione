@@ -1,4 +1,7 @@
 AREA FORMATI (6/11/2026) - righe da aggiornare nelle attivita' programmate (fuori dal repo, le cambia il coordinatore)
+Punti 1 e 2: gia' applicati la sera del 6/11. Integrazione della notte del 6/11: i formati nuovi sono 'giornata'
+(nei FORMATI_10: 4-7 momenti diversi della stessa giornata, uno per scena; righe in giornata_skill.txt, punti 1-3) e,
+negli orari delle foto, 'foto_rapide' accanto a 'dieci_foto' (punti 3-4 qui sotto). Prima giornata_skill.txt, poi 3-4.
 
 1) C:\Users\User\.claude\scheduled-tasks\controllo-macchina-reel\SKILL.md, riga 10
    SOSTITUIRE:  Formati da 10 s: dieci, dieci_due, dieci_broll,
@@ -7,3 +10,11 @@ AREA FORMATI (6/11/2026) - righe da aggiornare nelle attivita' programmate (fuor
 2) C:\Users\User\.claude\scheduled-tasks\studio-viralita\SKILL.md, riga 10
    SOSTITUIRE:  (formati dieci/dieci_due/dieci_broll, frase in due tempi)
    CON:         (dal 6/11 dieci formati a rotazione alla pari fino al 16/11: dieci, dieci_due, taglio1, taglio2, taglio3, intero, cinema, post, rallenty, loop; confrontarli con report.py per_formato e tenere i migliori. I reel con montaggio.ripiego_da sono usciti in cinema/post perche' la scritta copriva il viso: contarli a parte. cinema e post hanno una fascia sopra il video: guardarli piattaforma per piattaforma, soprattutto Instagram, che mostra meno i reel con bordi)
+
+3) (integrazione del 6/11 notte) C:\Users\User\.claude\scheduled-tasks\controllo-macchina-reel\SKILL.md, riga 10
+   SOSTITUIRE:  Alle 12 e alle 18 dieci_foto.
+   CON:         Alle 12 e alle 18 le foto della giornata (pubblica.FORMATI_FOTO; fino al 16/11 un reel per formato al giorno, alle 12 e alle 18 a giorni alterni): dieci_foto (6 foto che scorrono piano) e foto_rapide (photo dump: 12-18 foto ferme, una a ogni colpo della musica, montaggio.ritmo). Se foto_rapide non riesce escono le stesse foto in dieci_foto (montaggio.ripiego_da = foto_rapide); se la scritta coprirebbe il viso della prima foto esce il reel col video (formato video, ripiego_da = foto_rapide); con meno di 12 momenti diversi tra le foto nuove esce dieci_foto con montaggio.estratto = foto_rapide; senza foto nuove si riusano quelle di una giornata non uscita da 7 giorni (montaggio.foto_riuso).
+
+4) (integrazione del 6/11 notte) C:\Users\User\.claude\scheduled-tasks\studio-viralita\SKILL.md, riga 10
+   SOSTITUIRE:  fino al 16/11 proponi, non cambiare)
+   CON:         fino al 16/11 proponi, non cambiare; alle 12 e alle 18 le foto, dieci_foto e foto_rapide a meta': confrontarle tra loro e a parte dai video, con i "ripiego" e gli "estratto" a parte; per il ritmo di foto_rapide guardare montaggio.ritmo.sul_colpo, non sul_battito, che vale quasi sempre 1 per costruzione)

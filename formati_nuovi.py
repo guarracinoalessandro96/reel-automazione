@@ -13,7 +13,7 @@ il prima possibile quale format funziona"). Tutti in 4K 60 come gli altri, con l
 
 make_sequenza() e' il motore comune: pezzi di video tagliati netti + testi che compaiono a tempo + musica.
 """
-import functools, os, re, shutil, subprocess, tempfile
+import functools, os, re, shutil, subprocess, tempfile, time
 import overlay as ov
 
 FORMATI = {
@@ -194,14 +194,15 @@ CONTROLLO = {}               # cosa hanno cambiato i controlli nell'ultimo monta
 _VERDETTI = {}
 
 
-def _grigi(src, prima, dopo=""):
-    """Fotogrammi PICCOLO in grigio, nel taglio 9:16 del reel, con una sola lettura di ffmpeg e senza file."""
+def _grigi(src, prima, dopo="", uscita=(), timeout=240):
+    """Fotogrammi PICCOLO in grigio, nel taglio 9:16 del reel, con una sola lettura di ffmpeg e senza file.
+    6/11/2026 (integrazione): uscita = opzioni dopo l'ingresso (es. -frames:v), timeout in secondi."""
     import numpy as np
     w, h = PICCOLO
     vf = ",".join(x for x in (dopo, f"scale={w}:{h}:force_original_aspect_ratio=increase", f"crop={w}:{h}",
                               "format=gray") if x)
     r = subprocess.run([ov.FFMPEG, "-v", "error", *prima, "-i", src, "-vf", vf, "-fps_mode", "passthrough",
-                        "-f", "rawvideo", "-"], capture_output=True, timeout=240)
+                        *uscita, "-f", "rawvideo", "-"], capture_output=True, timeout=timeout)
     n = len(r.stdout) // (w * h)
     return [np.frombuffer(r.stdout[i * w * h:(i + 1) * w * h], dtype=np.uint8).reshape(h, w) for i in range(n)]
 
@@ -212,10 +213,21 @@ def _misure(g):
     return float(g.mean()), float(g.std()), float(cv2.Laplacian(g, cv2.CV_32F).var())
 
 
+CHIAVE_S, CHIAVE_MAX, CHIAVE_TEMPO = 60, 40, 60   # 6/11/2026 (integrazione): vedi _chiave
+
+
 @functools.lru_cache(maxsize=16)
 def _chiave(src, firma):
-    """Misure dei fotogrammi chiave della clip (ffmpeg decodifica solo quelli: veloce anche in 4K), lette una volta."""
-    return tuple(_misure(g) for g in _grigi(src, ["-skip_frame", "nokey"]))
+    """Misure dei fotogrammi chiave della clip (ffmpeg decodifica solo quelli: veloce anche in 4K), lette una volta.
+    6/11/2026 (integrazione, revisione del gruppo 2): al massimo i primi CHIAVE_S secondi e CHIAVE_MAX fotogrammi
+    chiave, entro CHIAVE_TEMPO secondi: in una clip d'archivio lunga fatta tutta di fotogrammi chiave ffmpeg li
+    decodificava tutti (minuti). Se non riesce: None, tenuto in memoria anche lui (nessuna seconda lettura lenta)."""
+    try:
+        return tuple(_misure(g) for g in _grigi(src, ["-skip_frame", "nokey", "-t", str(CHIAVE_S)],
+                                                uscita=["-frames:v", str(CHIAVE_MAX)], timeout=CHIAVE_TEMPO))
+    except Exception as e:
+        print("Fotogrammi chiave non letti (controlli della luce senza la clip tipica):", str(e)[:120])
+        return None
 
 
 @functools.lru_cache(maxsize=16)
@@ -224,7 +236,7 @@ def _tipico(src, firma):
     allora contano solo nero e bianco."""
     import numpy as np
     m = _chiave(src, firma)
-    return tuple(float(x) for x in np.median(np.array(m), axis=0)) if len(m) >= 3 else None
+    return tuple(float(x) for x in np.median(np.array(m), axis=0)) if m and len(m) >= 3 else None
 
 
 # 6/11/2026 (revisione, punto 14): una clip TUTTA nera (es. IMG_4508.MOV dell'archivio: 3,3 s di nero, il reel del 1/11
@@ -249,6 +261,8 @@ def _pezzo_nero(fr):
 @functools.lru_cache(maxsize=32)
 def _clip_nera(src, firma):
     m = _chiave(src, firma)
+    if m is None:                          # 6/11/2026 (integrazione): fotogrammi chiave non letti = non si sa
+        return None
     if any(not _vuoto(x) for x in m):      # basta un fotogramma chiave con qualcosa da vedere: niente altre letture
         return False
     if len(m) >= 3:
@@ -524,7 +538,10 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
     dieci = nome.startswith("dieci") or nome in DIECI_NOMI
     # 6/11/2026 (revisione): le foto no. Il gancio lo sceglie gia' foto_giornata.ordina (viso con pelle e occhi,
     # nitidezza, luce) e su una foto ferma il controllo del primo secondo non migliora niente (Haar vede "visi" nei dischi)
-    controlli = dieci and nome != "dieci_foto" and PRIMO_CONTROLLO
+    # 6/11/2026 (integrazione): neanche 'giornata', che ha la sua prima scena (il viso per tutto il primo secondo,
+    # piano_giornata), la memoria delle clip usate e mai la stessa clip due volte: _senza_nere e _primo_pezzo
+    # rimescolavano le sue scene e prendevano altri punti delle stesse clip (foto_rapide non passa di qui: make_rapide)
+    controlli = dieci and nome not in ("dieci_foto", "foto_rapide", "giornata") and PRIMO_CONTROLLO
     wv, hv = (layout[1][2], layout[1][3]) if layout else (W, H)
     pezzi = []         # 6/11/2026: prima si guardano tutti i pezzi (viso, primo secondo), poi si monta
     for i, seg in enumerate(durate):
@@ -641,6 +658,10 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
             "stacchi": n, "testi": len(testi)}
     if piano:          # 6/11/2026: quante scene vengono dal video principale (le altre dalle clip extra)
         info["scene_dal_video"] = sum(1 for p in pezzi if p["c"] == clips[0])
+    if dieci and nome not in ("dieci_foto", "foto_rapide"):
+        # 6/11/2026 (integrazione, revisione del gruppo 2): in quanti fotogrammi della prima scena (su 5, 3 senza il
+        # controllo del viso) si vede il viso, per tutti i formati video da 10 s (anche quelli a una scena), per il 16/11
+        info["viso_prima_scena"] = int(pezzi[0].get("visi") or 0)
     if velocita and min(velocita) < 1:
         info["velocita"] = min(velocita)
     if controlli and CONTROLLO:  # 6/11/2026: cosa hanno cambiato i controlli del primo secondo e del viso (analisi 16/11)
@@ -818,10 +839,13 @@ def _primo_pezzo(pezzi, durate):
     ok0, viso0 = pulito(pezzi[0]), ha_viso(pezzi[0])
     if ok0 and (viso0 or not altri_viso):
         return pezzi
+    # 6/11/2026 (integrazione, revisione del gruppo 2): a parita' prima le scene della stessa clip della prima scena
+    # (il video dell'orario, il contenuto piu' nuovo), poi quelle delle clip d'archivio
+    altra = lambda k: pezzi[k]["c"] != pezzi[0]["c"]
     if ok0:            # pulita ma senza viso: le scene col viso, prima quelle dove si vede di piu'
-        cand = sorted(altri_viso, key=lambda k: (-pezzi[k]["visi"], k))
+        cand = sorted(altri_viso, key=lambda k: (altra(k), -pezzi[k]["visi"], k))
     else:              # primo secondo sporco: le altre scene, prima quelle col viso
-        cand = sorted(range(1, len(pezzi)), key=lambda k: (not ha_viso(pezzi[k]), -pezzi[k]["visi"], k))
+        cand = sorted(range(1, len(pezzi)), key=lambda k: (not ha_viso(pezzi[k]), altra(k), -pezzi[k]["visi"], k))
     def al_primo_posto(k):     # al primo posto la scena dura durate[0]: deve stare dentro la sua clip
         p = dict(pezzi[k])
         p["inizio"] = round(min(p["inizio"], max(0.0, p["secondi"] - durate[0] - 0.1)), 3)
@@ -834,6 +858,10 @@ def _primo_pezzo(pezzi, durate):
     stessi = [j for j, p in enumerate(resto) if p["c"] == p0["c"]]
     dopo = next((j for j in stessi if resto[j]["inizio"] > p0["inizio"]), None)
     resto.insert(dopo if dopo is not None else (stessi[-1] + 1 if stessi else 0), p0)
+    # 6/11/2026 (integrazione, revisione del gruppo 2): le scene spostate prendono la durata del nuovo posto (gli stacchi
+    # restano sul colpo): ognuna deve stare dentro la sua clip, se no l'ultimo fotogramma restava fermo (tpad)
+    resto = [dict(p, inizio=round(min(p["inizio"], max(0.0, p["secondi"] - durate[j + 1] - 0.1)), 3))
+             if p["inizio"] + durate[j + 1] > p["secondi"] - 0.1 else p for j, p in enumerate(resto)]
     CONTROLLO["scena_viso_prima" if ok0 else "scena_cambiata"] = True
     if not ok0:
         CONTROLLO.pop("primo_risolto", None)
@@ -913,6 +941,23 @@ GIORNATA_SIMILI = 20.0
 # primo fotogramma) fino a 2,5 s; quelli della prima scena solo nel suo PRIMO secondo (il gancio)
 GIORNATA_PASSO, GIORNATA_FOTOGRAMMI = 0.5, 6
 GIORNATA_GANCIO_S = 1.0
+# 6/11/2026 (integrazione, revisione della giornata): oltre questi secondi di analisi (e con almeno GIORNATA_MIN momenti)
+# le clip che restano non si guardano piu': sul PC una clip 4K HDR costava fino a ~7 minuti
+GIORNATA_TEMPO_MAX = 360
+GIORNATA_BUIO = 0.10                  # luce media della scena (0-1) sotto cui una clip non principale e' quasi nera
+GIORNATA_TAGLIO = "scale=540:960:force_original_aspect_ratio=increase,crop=540:960"   # fotogrammi ridotti, 9:16
+
+
+@functools.lru_cache(maxsize=32)
+def _momento_ridotto(src, durata, firma):
+    """6/11/2026 (integrazione, revisione della giornata): come _momento_forte ma su fotogrammi RIDOTTI (540x960 nel
+    taglio 9:16, HDR convertito): a piena risoluzione ogni fotogramma PNG costava ~19 s sul PC (~433 s per una clip
+    4K HDR) e la giornata ne analizza fino a 7. Clip corte (fino alla scena + 1,5 s): MARGINE_S, come prima."""
+    S, hdr = ov.probe(src)
+    if S <= durata + 1.5:
+        return MARGINE_S
+    vf = f"{ov.HDR_TO_SDR},{GIORNATA_TAGLIO}" if hdr else GIORNATA_TAGLIO
+    return ov.segmento_migliore(src, S, vf, durata + 0.2)[0]
 
 
 def _verticale(path):
@@ -958,9 +1003,13 @@ def momento_giornata(c, durata):
     if secondi < 1.0:
         raise ValueError(f"clip troppo corta ({secondi:.1f} s)")
     fine = max(0.0, secondi - durata - 0.05)               # ultimo inizio possibile della scena
-    t = momento_forte(c, durata)
+    try:     # 6/11/2026 (integrazione): il momento forte sui fotogrammi ridotti; se non riesce, come prima
+        t = _momento_ridotto(c, round(float(durata), 1), _firma(c))
+    except Exception as e:
+        print(f"giornata: momento forte ridotto non riuscito ({str(e)[:80]}), uso quello a piena risoluzione", flush=True)
+        t = momento_forte(c, durata)
     t = round(min(max(t, MARGINE_S if secondi >= durata + 2 * MARGINE_S else 0.0), fine), 3)
-    taglio = "scale=540:960:force_original_aspect_ratio=increase,crop=540:960"
+    taglio = GIORNATA_TAGLIO
     vf = f"{ov.HDR_TO_SDR},{taglio}" if hdr else taglio
     fr = {}                                                # secondi dall'inizio della scena -> fotogramma
     for k in range(GIORNATA_FOTOGRAMMI):
@@ -999,7 +1048,11 @@ def momento_giornata(c, durata):
                 float(np.mean([np.abs(a - b).mean() for a, b in zip(xs, xs[1:])])) if len(xs) > 1 else 0.0)
     nitido, moto = misure(scena)
     nitido_g, moto_g = misure(g_scena)                     # la stessa scena se fa da prima, da gancio_inizio
-    return {"clip": c, "inizio": t, "secondi": secondi,
+    try:     # 6/11/2026 (integrazione): scena tutta nera, bianca o uguale (stesse soglie di _pezzo_nero)
+        nera = bool(_pezzo_nero([fr[o] for o in scena]))
+    except Exception:
+        nera = False
+    return {"clip": c, "inizio": t, "secondi": secondi, "nera": nera,
             "viso": sum(1 for o in scena if visi[o]) / len(scena),
             "gancio_inizio": float(g_t), "gancio_area": float(max(0.0, g_area)),
             "viso_gancio": sum(1 for o in g_scena if visi[o]) / len(g_scena),
@@ -1054,13 +1107,21 @@ def piano_giornata(clips, ore=None, musica=None, scene=None, durata=GIORNATA_DUR
     viste = (list(viste or []) + [False] * n0)[:n0]
     d0 = durata / max(GIORNATA_MIN, min(GIORNATA_MAX, n0))
     scelte, file_visti = [], set()
+    t_inizio = time.time()
     for i, c in enumerate(clips):
+        # 6/11/2026 (integrazione): un tetto al tempo dell'analisi, con gia' abbastanza momenti diversi
+        if i and len(scelte) >= GIORNATA_MIN and time.time() - t_inizio > GIORNATA_TEMPO_MAX:
+            print(f"giornata: analisi oltre {GIORNATA_TEMPO_MAX} s ({time.time() - t_inizio:.0f} s), "
+                  f"le ultime {n0 - i} clip restano fuori", flush=True)
+            break
+        t_clip = time.time()
         try:
             chiave = _stesso_file(c)
             if chiave in file_visti:
                 print(f"giornata: {os.path.basename(c)} e' lo stesso file di un'altra clip: saltata", flush=True)
                 continue
             a = momento_giornata(c, d0)
+            print(f"giornata: {os.path.basename(c)} analizzata in {time.time() - t_clip:.0f} s", flush=True)
         except Exception as e:
             if i == 0:
                 raise
@@ -1073,8 +1134,25 @@ def piano_giornata(clips, ore=None, musica=None, scene=None, durata=GIORNATA_DUR
         file_visti.add(chiave)
         a.update(principale=i == 0, ora=ore[i] or ov.data_ripresa(c), scena=scene[i], vista=bool(viste[i]))
         scelte.append(a)
+    print(f"giornata: analisi di {len(scelte)} momenti in {time.time() - t_inizio:.0f} s", flush=True)
     if len(scelte) < GIORNATA_MIN:
         raise ValueError(f"giornata: solo {len(scelte)} momenti diversi (ne servono {GIORNATA_MIN})")
+    # 6/11/2026 (integrazione; gruppo 2, punti 14 e 34): via le clip NON principali quasi nere (luce sotto GIORNATA_BUIO
+    # o scena tutta nera) e poi quelle orizzontali (nel 9:16 restano tagliate al centro), le piu' deboli per prime,
+    # finche' restano almeno GIORNATA_MIN momenti. Il video dell'orario resta sempre (montaggio.orizzontale dice se e'
+    # orizzontale lui; le scene orizzontali rimaste delle altre clip sono in montaggio.scene_orizzontali)
+    try:
+        difetto = lambda a: (None if a["principale"] else "quasi nera" if a["luce"] < GIORNATA_BUIO or a.get("nera")
+                             else None if a["verticale"] else "orizzontale")
+        voto = lambda a: 2.0 * a["viso"] + 0.6 * a["moto"] + 0.4 * a["nitido"] / max(1.0, max(x["nitido"] for x in scelte))
+        for tipo in ("quasi nera", "orizzontale"):
+            for a in sorted([a for a in scelte if difetto(a) == tipo], key=voto):
+                if len(scelte) <= GIORNATA_MIN:
+                    break
+                scelte.remove(a)
+                print(f"giornata: {os.path.basename(a['clip'])} tolta ({tipo}, luce {a['luce']:.2f})", flush=True)
+    except Exception as e:
+        print("giornata: controllo delle clip nere e orizzontali non riuscito, restano tutte:", e, flush=True)
     mm = max([a["moto"] for a in scelte] + [a["moto_gancio"] for a in scelte]) or 1.0
     mn = max([a["nitido"] for a in scelte] + [a["nitido_gancio"] for a in scelte]) or 1.0
     for a in scelte:   # come segmento_migliore (viso, movimento, nitidezza); giu' le clip orizzontali e quelle al buio
@@ -1110,6 +1188,14 @@ def piano_giornata(clips, ore=None, musica=None, scene=None, durata=GIORNATA_DUR
     giorno0 = str(scelte[0]["ora"] or "")[:10] if scelte[0]["principale"] else ""
     info = {"scene": n, "con_viso": sum(1 for k, a in enumerate(ordine) if (a["viso_gancio"] if k == 0 else a["viso"]) > 0),
             "viso_primo_secondo": bool(gancio["gancio_area"] > 0)}     # bool vero: va in stato.json
+    # 6/11/2026 (integrazione): scene da clip non principali orizzontali o quasi nere rimaste (servivano per arrivare a
+    # GIORNATA_MIN momenti)
+    oriz = sum(1 for a in ordine if not a["principale"] and not a["verticale"])
+    scure = sum(1 for a in ordine if not a["principale"] and (a["luce"] < GIORNATA_BUIO or a.get("nera")))
+    if oriz:
+        info["scene_orizzontali"] = oriz
+    if scure:
+        info["scene_scure"] = scure
     if giorno0:
         info["stesso_giorno"] = sum(1 for a in ordine if str(a["ora"] or "")[:10] == giorno0)
     return piano, durate, info
@@ -1126,6 +1212,7 @@ def make_giornata(clips, frase, dst, musiche=(), ore=None, scene=None, controlla
     reel). nomi = i nomi delle clip (paralleli a clips) per montaggio.clip_scene: le clip usate come scene; viste =
     le clip gia' uscite di recente (piano_giornata)."""
     import random
+    CONTROLLO.clear()     # 6/11/2026 (integrazione): niente dati dei controlli di un altro montaggio nel suo stato.json
     musiche = [m for m in musiche if m and os.path.exists(m)]
     piano, durate, info = piano_giornata(clips, ore, musiche[0] if musiche else None, scene, viste=viste)
     usate = [clips[0]] + [c for c, _ in piano if c != clips[0]]
@@ -1136,9 +1223,13 @@ def make_giornata(clips, frase, dst, musiche=(), ore=None, scene=None, controlla
         tipo = random.choice([t for t in ("cinema", "post") if t != ultimo] or ["cinema"])
         print(f"giornata: la frase coprirebbe il viso, stesse scene con la fascia '{tipo}'", flush=True)
         W = ov.LATO_USCITA
+        # 6/11/2026 (integrazione, revisione della giornata): la frase e' sulla fascia, non nella scritta in prova: lo
+        # stile del tentativo scartato non deve finire in montaggio.scritta (prova a meta' della scritta)
+        ov.ULTIMO_STILE = None
         r = make_sequenza(usate, durate, [], dst, musiche, None, "giornata", controlla_viso, piano=piano,
                           layout=cornice(W, int(W * 16 / 9), tipo, frase))
         r["cornice"] = tipo
+        r["scritta"] = None
     r.update(info)
     if nomi:
         nome = dict(zip(clips, nomi))

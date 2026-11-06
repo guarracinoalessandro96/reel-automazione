@@ -478,8 +478,10 @@ def clip_extra(drive, work, clip, n=2, giorno=None):
         if giorno:
             altre.sort(key=lambda c: 0 if str(c.get("registrato") or "")[:10] == giorno else 1)
         # 6/11/2026 (revisione, punto 14): mai le clip messe da parte (tutte nere o che non si montano: 2 fallimenti)
+        # 6/11/2026 (integrazione): ne' quelle trovate nere in questo stesso giro (NERE: clip extra o clip dell'orario)
         noto = lambda c: ORIENTAMENTI_NOTI.get(c["id"], {})
-        altre = [c for c in altre if not noto(c).get("nera") and int(noto(c).get("fallimenti", 0) or 0) < 2]
+        altre = [c for c in altre if not noto(c).get("nera") and int(noto(c).get("fallimenti", 0) or 0) < 2
+                 and c["id"] not in NERE]
         # 6/11/2026 (punto 34): le clip che sappiamo orizzontali (tagliate al centro nel 9:16) per ultime
         altre.sort(key=lambda c: _orizz(dict(c, **noto(c))) is True)
         for i, c in enumerate(altre[:n + 2]):
@@ -666,10 +668,14 @@ def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, ultim
     # video spariva, e dopo 2 prove l'ultimo montaggio partiva senza controllo del viso
     ripiego = random.choice([f for f in ("cinema", "post") if f != ultimo] or ["cinema"])
     log(f"Scritta sul viso con {formato}: stesse clip in '{ripiego}', con la frase fuori dal video")
+    # 6/11/2026 (integrazione, revisione della giornata): con la fascia la frase non e' la scritta in prova: lo stile del
+    # tentativo scartato non finisce in montaggio.scritta (se si arriva a dieci_broll, la sua scritta lo rimette)
+    overlay.ULTIMO_STILE = None
     try:
         if len(clips) == 1 and formati_nuovi.scene_mancanti(ripiego, src, musiche) > 0:   # video corto: 2 scene da 5 s
             clips += clip_extra(drive, work, clip, 1, giorno)
         info = formati_nuovi.make_dieci(ripiego, clips, frase["gancio"], out, musiche, serie, True)
+        info["scritta"] = None
     except Exception as e:     # solo se anche questo non riesce: 4 clip d'archivio, sempre con il controllo del viso
         log(f"Anche {ripiego} non riuscito ({e}): dieci_broll con altre clip")
         cambio = os.path.join(work, "cambio")
@@ -678,6 +684,29 @@ def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, ultim
                                         out, musiche, serie, True)
     info["ripiego_da"] = formato             # per report.py: questo reel non e' uscito nel formato estratto
     return info
+
+
+def _stem_clip(n):
+    return os.path.splitext(n or "")[0].lower()
+
+
+def _memoria_giornata(state):
+    """6/11/2026 (revisione della giornata; integrazione: in comune con monta_giornata) dallo storico: (nomi senza
+    estensione dei video usciti da soli nelle ultime 48 ore, nomi delle clip usate come scena in un reel GIORNATA
+    negli ultimi 7 giorni, {giorno della giornata: ultima uscita})."""
+    adesso = datetime.datetime.now()
+    da = lambda ore: (adesso - datetime.timedelta(hours=ore)).isoformat(timespec="minutes")
+    soli, come_scena, giorni_usati = set(), set(), {}
+    for h in state.get("storico", []):
+        quando, m = str(h.get("quando") or ""), h.get("montaggio")
+        m = m if isinstance(m, dict) else {}
+        if quando >= da(48) and h.get("video"):
+            soli.add(_stem_clip(h["video"]))
+        if quando >= da(24 * 7):
+            come_scena |= {_stem_clip(x) for x in m.get("clip_scene") or [] if x}
+        if m.get("giornata_del"):
+            giorni_usati[m["giornata_del"]] = max(giorni_usati.get(m["giornata_del"], ""), quando)
+    return soli, come_scena, giorni_usati
 
 
 def clip_giornata(drive, work, clip, an, src, state, videos=(), video=None):
@@ -694,23 +723,12 @@ def clip_giornata(drive, work, clip, an, src, state, videos=(), video=None):
     parita' il piu' recente. Prima il giorno di ripiego e le sue scene tornavano uguali a ogni reel.
     Restituisce (percorsi, ore di ripresa, scene, giorno, nomi delle clip, viste di recente si/no)."""
     import formati_nuovi
-    stem = lambda n: os.path.splitext(n or "")[0].lower()
+    stem = _stem_clip
     mio = clip or video or {}
     mio_id = mio.get("id")
     giorno0 = str((clip or {}).get("registrato") or an.get("registrato") or overlay.data_ripresa(src) or "")[:10]
     fuori, usi = set(clip_voti()["escluse"]), state.get("archivio_usi", {})
-    adesso = datetime.datetime.now()
-    da = lambda ore: (adesso - datetime.timedelta(hours=ore)).isoformat(timespec="minutes")
-    soli, come_scena, giorni_usati = set(), set(), {}
-    for h in state.get("storico", []):
-        quando, m = str(h.get("quando") or ""), h.get("montaggio")
-        m = m if isinstance(m, dict) else {}
-        if quando >= da(48) and h.get("video"):
-            soli.add(stem(h["video"]))
-        if quando >= da(24 * 7):
-            come_scena |= {stem(x) for x in m.get("clip_scene") or [] if x}
-        if m.get("giornata_del"):
-            giorni_usati[m["giornata_del"]] = max(giorni_usati.get(m["giornata_del"], ""), quando)
+    soli, come_scena, giorni_usati = _memoria_giornata(state)
     usata = lambda c: stem(c["nome"]) in soli or stem(c["nome"]) in come_scena
     cand = []
     for v in videos or []:               # la coda: i video nuovi, gia' analizzati (scena, ora di ripresa)
@@ -726,7 +744,7 @@ def clip_giornata(drive, work, clip, an, src, state, videos=(), video=None):
         archivio = []
     for c in archivio:
         if c["id"] != mio_id and c.get("parlato") != "1" and c.get("nome") not in fuori \
-                and usi.get(c["id"], {}).get("fallimenti", 0) < 2:
+                and usi.get(c["id"], {}).get("fallimenti", 0) < 2 and c["id"] not in NERE:   # 6/11 (integrazione)
             cand.append(dict(c, cartella="Archivio", nuova=False))
     visti, per_giorno = {stem(mio.get("nome") or mio.get("name"))}, {}
     for c in cand:                       # stesso nome = stesso video (gia' uscito, o esportato due volte)
@@ -787,14 +805,27 @@ def monta_giornata(frase, src, out, music, serie, drive, work, clip, an, state, 
     try:
         altre, ore, scene, giorno, nomi, viste = clip_giornata(drive, work, clip, an, src, state, videos, video)
         ora0 = (clip or {}).get("registrato") or an.get("registrato") or overlay.data_ripresa(src)
+        try:     # 6/11/2026 (integrazione, revisione della giornata): anche il video dell'orario puo' essere gia'
+            # uscito da poco (da solo o come scena): allora non fa da prima scena se c'e' un'altra clip adatta
+            mio = clip or video or {}
+            soli, come_scena, _ = _memoria_giornata(state)
+            nome0 = _stem_clip(mio.get("nome") or mio.get("name"))
+            vista0 = bool(nome0) and (nome0 in soli or nome0 in come_scena)
+        except Exception as e:
+            log("Giornata: memoria del video dell'orario non letta:", e)
+            vista0 = False
         info = formati_nuovi.make_giornata([src] + altre, frase["gancio"], out, musiche_brano(music, 3),
                                            [ora0] + ore, [an.get("scena")] + scene, True, state.get("formato_ultimo"),
-                                           [None] + nomi, [False] + viste)
+                                           [None] + nomi, [vista0] + viste)
         info["giornata_del"] = giorno
         return info
     except Exception as e:
         log("Giornata non riuscita, il video dell'orario in 'taglio2':", e)
-    return monta_dieci("taglio2", frase, src, out, music, serie, drive, work, clip, state.get("formato_ultimo"))
+    info = monta_dieci("taglio2", frase, src, out, music, serie, drive, work, clip, state.get("formato_ultimo"))
+    # 6/11/2026 (integrazione): come gli altri formati non riusciti (report.nome_formato: "ripiego ...", la tabella del
+    # 16/11 a parte); montaggio.estratto = giornata lo aggiunge main
+    info["ripiego_da"] = "giornata"
+    return info
 
 
 def monta_racconto(formato, src, out, music, serie, drive, work, clip, state):
@@ -1951,7 +1982,13 @@ def formato_foto(slot):
     stesso per lo stesso orario); dopo, coi pesi dei formati di pesi.json se ci sono (1 se mancano)."""
     r = random.Random(f"foto {slot}")
     if str(slot)[:10] < FORMATI_PROVA_FINO:
-        return r.choice(FORMATI_FOTO)
+        # 6/11/2026 (integrazione, revisione delle foto rapide): alternanza fissa invece della moneta, ogni giorno un reel
+        # per formato e alle 12 e alle 18 a giorni alterni (con la moneta uscivano giorni con due reel uguali)
+        try:
+            d = datetime.date.fromisoformat(str(slot)[:10])
+            return FORMATI_FOTO[(d.toordinal() + str(slot).endswith("18:00")) % 2]
+        except ValueError:
+            return r.choice(FORMATI_FOTO)
     try:
         pesi_f = json.load(open(os.path.join(HERE, "pesi.json"), encoding="utf-8")).get("formati", {})
     except Exception:
@@ -2970,6 +3007,7 @@ def main():
             if _nera(src):
                 u = state.setdefault("archivio_usi", {}).setdefault(clip["id"], {})
                 u["nera"], u["fallimenti"] = True, max(2, int(u.get("fallimenti", 0)))
+                NERE.add(clip["id"])     # 6/11/2026 (integrazione): neanche come clip extra in questo giro
                 altre = [[c for c in g if c["id"] != clip["id"] and not c.get("nera")] for g in riserva_arch]
                 altra = scegli_archivio(next((g for g in altre if g), []), slot_ora)
                 log(f"La clip d'archivio {nome} e' tutta nera: messa da parte, non torna nei reel"
@@ -3096,6 +3134,10 @@ def main():
         video, clip, nome = None, None, "Foto della giornata"
         an = dict(an, registrato=None)
     # 6/11/2026 (punto 34): il video di partenza era orizzontale? (al massimo 1 ogni ORIZZONTALI_OGNI reel)
+    # 6/11/2026 (integrazione): scritto per OGNI reel. Vuol dire: il video dell'orario (quello che risulta pubblicato,
+    # la prima clip di ogni montaggio, anche nei formati a piu' clip e in giornata) e' orizzontale; e' quello che la
+    # regola dei 10 reel controlla. Le clip extra orizzontali vanno gia' per ultime (clip_extra) e giornata le toglie
+    # finche' restano 4 momenti (montaggio.scene_orizzontali conta quelle rimaste). Foto: sempre False
     info["orizzontale"] = False if con_foto else oriz is True
     if nera_tolta and not con_foto:     # 6/11/2026 (revisione): la clip tutta nera scartata prima del montaggio
         info["clip_nera_tolta"] = nera_tolta
