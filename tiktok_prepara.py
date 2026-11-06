@@ -175,9 +175,24 @@ PAROLE_RICERCA ="frasi motivazionali · motivazione · disciplina · lavoro · c
 
 
 def pulisci(testo):
-    """29/10/2026: via le domande per i commenti ("scrivilo nei commenti"/"qui sotto"): non piacciono ad Alessandro."""
+    """29/10/2026: via le domande per i commenti ("scrivilo nei commenti"/"qui sotto"): non piacciono ad Alessandro.
+    6/11/2026: la riga di ricerca e' quella della frase (didascalie.py: "Frasi motivazionali sulla costanza e sul
+    lavoro."), non piu' le stesse 5 parole su ogni video: TikTok penalizza le parole ammucchiate o che non c'entrano.
+    Le didascalie nuove ce l'hanno gia'; ai momenti veri (#vitavera) niente riga sulle frasi motivazionali."""
     righe = [re.sub(r"\s*·\s*seguimi per vedere dove arrivo", "", r) for r in testo.splitlines() if "👇" not in r]   # 30/10: via "seguimi"
     testo = re.sub(r"(\r?\n){3,}", "\n\n", "\n".join(righe)).strip()
+    try:
+        qui = os.path.dirname(os.path.abspath(__file__))
+        if qui not in sys.path:
+            sys.path.insert(0, qui)
+        import didascalie
+        if not didascalie.ha_riga_ricerca(testo) and "#vitavera" not in testo:
+            frase = didascalie.frase_della_didascalia(testo)
+            if frase:
+                testo += "\n\n" + didascalie.riga_ricerca(frase, chiave=frase)
+        return testo
+    except Exception as e:
+        print("riga di ricerca dalla frase non riuscita, uso quella fissa:", e)
     if PAROLE_RICERCA not in testo:      # 1/11/2026: TikTok e' anche un motore di ricerca
         testo += "\n\n" + PAROLE_RICERCA
     return testo
