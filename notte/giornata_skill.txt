@@ -1,0 +1,10 @@
+AREA GIORNATA (6/11/2026, dopo la revisione) - righe da aggiornare nelle attivita' programmate (fuori dal repo, le
+cambia il coordinatore DOPO il merge di notte-giornata; se formati_skill.txt non e' ancora stato applicato, prima quello)
+
+1) C:\Users\User\.claude\scheduled-tasks\studio-viralita\SKILL.md, riga 10
+   SOSTITUIRE:  rallenty, loop; confrontarli con report.py per_formato e tenere i migliori.
+   CON:         rallenty, loop, giornata (4-7 momenti diversi della stessa giornata, uno per scena, la prima scena col suo viso nel primo secondo; quando la frase starebbe su un viso le stesse scene escono con la fascia: montaggio.cornice = cinema/post, il formato resta giornata e NON e' un ripiego, quindi resta nel confronto; per vedere se la fascia pesa separare i reel giornata con e senza cornice); confrontarli con report.py per_formato e tenere i migliori.
+
+2) C:\Users\User\.claude\scheduled-tasks\controllo-macchina-reel\SKILL.md, riga 10
+   SOSTITUIRE:  loop (10 s avanti e indietro);
+   CON:         loop (10 s avanti e indietro), giornata (4-7 momenti diversi della stessa giornata in ordine di ora; montaggio.scene, clip_scene, giornata_del; se la frase coprirebbe un viso le stesse scene escono con la fascia, montaggio.cornice = cinema/post, e il formato resta giornata; se mancano 4 momenti esce taglio2 con montaggio.estratto = giornata);
