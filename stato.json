@@ -10193,7 +10193,9 @@
      "ok": true,
      "id": "18118429199518065",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -10231,7 +10233,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "POuxse9QgZ4"
+     "id": "POuxse9QgZ4",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10242,11 +10245,45 @@
    },
    "spinto": false,
    "testo": "Quando inizi ad amare te stesso, anche la vita inizia ad amare te."
+  },
+  {
+   "quando": "2026-11-06T19:00",
+   "slot": "2026-11-06 20:00",
+   "video": "IMG_4292.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-8d6a1b9d",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "cinema",
+    "durata": 10.0,
+    "musica": "break_ya_neck_1.m4a",
+    "stacchi": 1,
+    "testi": 0,
+    "scene_dal_video": 1,
+    "musica_meta": "deciso_06.flac",
+    "musica_instagram": "Don't Give Up On Me - The Sheen"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "nYrrQpoBBgo"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18578353555077210",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non sono stanco perché sono debole. Sono stanco perché sto portando avanti qualcosa di grande."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-29 14:00",
   "2026-10-29 22:00",
   "2026-10-30 00:00",
   "2026-10-30 06:00",
@@ -10325,7 +10362,8 @@
   "2026-11-06 12:00",
   "2026-11-06 14:00",
   "2026-11-06 16:00",
-  "2026-11-06 18:00"
+  "2026-11-06 18:00",
+  "2026-11-06 20:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -10349,7 +10387,8 @@
   "way_back_home_3.m4a",
   "mirror_mirror_1.m4a",
   "i_might_be_late_3.m4a",
-  "whoop_1.m4a"
+  "whoop_1.m4a",
+  "break_ya_neck_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10639,7 +10678,8 @@
   "MIE-37c85482",
   "MIE-cee896b5",
   "MIE-2bf7a2a5",
-  "MIE-83d0883b"
+  "MIE-83d0883b",
+  "MIE-8d6a1b9d"
  ],
  "temi_recenti": [
   "mentalita",
@@ -11045,8 +11085,8 @@
    "ultimo": "2026-11-06"
   },
   "1doFy-IdLUGnZn_FuQyyUK5OqHf6xPX08": {
-   "usi": 2,
-   "ultimo": "2026-10-29"
+   "usi": 3,
+   "ultimo": "2026-11-06"
   },
   "1Ks5dKBFsfm1KcBBN6VD0JeN6IDjWWTZu": {
    "usi": 2,
@@ -11094,7 +11134,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_02.flac",
   "deciso_12.flac",
   "trap_09.flac",
   "phonk_14.flac",
@@ -11113,7 +11152,8 @@
   "drive_14.flac",
   "trap_05.flac",
   "phonk_06.flac",
-  "energia_04.flac"
+  "energia_04.flac",
+  "deciso_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11148,7 +11188,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_foto",
+ "formato_ultimo": "cinema",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -11195,11 +11235,11 @@
   "899668126445403",
   "2388876744974625",
   "2865463390342861",
-  "1076547086228050"
+  "1076547086228050",
+  "2373852472923170"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Flo Rida",
   "Winterbell",
   "Paramveer Singh katoch",
   "Eros Ramazzotti",
@@ -11208,10 +11248,10 @@
   "a.s. kullar, Harry Pannu",
   "Kayhin",
   "Patti Smith",
-  "UEFA, Tony Britten"
+  "UEFA, Tony Britten",
+  "The Sheen"
  ],
  "ig_titoli_recenti": [
-  "knockout",
   "power drift",
   "epic thoughts",
   "epic battles",
@@ -11250,7 +11290,8 @@
   "3 times",
   "funkytown flute",
   "people have the power",
-  "uefa champions league legacy anthem"
+  "uefa champions league legacy anthem",
+  "don t give up on me"
  ],
  "ig_tendenze_riserva": [
   {
@@ -11268,10 +11309,10 @@
    "libreria": false
   },
   {
-   "audio_id": "761620853592158",
-   "title": "Battle (Instrumental)",
-   "display_artist": "Shanice",
-   "duration_in_ms": 125750,
+   "audio_id": "2475524415980310",
+   "title": "Dream Big",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 119030,
    "libreria": true
   }
  ]
