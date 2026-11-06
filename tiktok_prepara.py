@@ -171,7 +171,7 @@ def suoni_recenti(quanti=30):
     return suoni
 
 
-PAROLE_RICERCA ="frasi motivazionali · motivazione · disciplina · lavoro · costanza"   # (riserva, fino al 6/11/2026)
+PAROLE_RICERCA ="frasi motivazionali · motivazione · disciplina · lavoro · costanza"
 
 
 def pulisci(testo):
