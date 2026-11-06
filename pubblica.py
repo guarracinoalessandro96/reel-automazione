@@ -1901,7 +1901,23 @@ PROVA_IG_FOLLOWER = 200      # guide 2025-26: almeno 200 follower per gli accoun
 PROVA_IG_PAUSA_ORE = 24      # dopo un rifiuto di Instagram (es. vuole piu' follower): niente prove per un giorno
 PROVA_IG_DAL = "2026-11-06"  # reel di prova controllati da questa data: spostarla in avanti riaccende dopo uno stop
 PROVA_IG_NON_IDONEO = re.compile(r"follower|eligib|maximum number of trial", re.I)   # account non (ancora) idoneo
-COPERTINA_FORMATI = tuple(FORMATI_10) + ("dieci_foto",)     # la frase c'e' dal primo all'ultimo fotogramma
+# 6/11/2026 (Alessandro: "100 foto al giorno"): negli orari delle foto meta' e meta' (fisso per orario, come
+# SCRITTE_PROVA) il reel con 6 foto che scorrono e il photo dump a tempo di musica (foto_giornata.make_rapide)
+FORMATI_FOTO = ("dieci_foto", "foto_rapide")
+COPERTINA_FORMATI = tuple(FORMATI_10) + FORMATI_FOTO     # la frase c'e' dal primo all'ultimo fotogramma
+
+
+def formato_foto(slot):
+    """6/11/2026: dieci_foto o foto_rapide per l'orario delle foto: fino a FORMATI_PROVA_FINO meta' e meta' (sempre lo
+    stesso per lo stesso orario); dopo, coi pesi dei formati di pesi.json se ci sono (1 se mancano)."""
+    r = random.Random(f"foto {slot}")
+    if str(slot)[:10] < FORMATI_PROVA_FINO:
+        return r.choice(FORMATI_FOTO)
+    try:
+        pesi_f = json.load(open(os.path.join(HERE, "pesi.json"), encoding="utf-8")).get("formati", {})
+    except Exception:
+        pesi_f = {}
+    return r.choices(FORMATI_FOTO, weights=[max(0.05, float(pesi_f.get(f, 1.0))) for f in FORMATI_FOTO])[0]
 
 
 class ProvaNonUscita(RuntimeError):
@@ -2935,14 +2951,22 @@ def main():
             overlay.STILE_SCRITTA = random.Random(f"scritta {slot}").choice(SCRITTE_PROVA)
         overlay.ULTIMO_STILE = None
         info, formato = None, scegli_formato(slot, state, frase, an, spinto)
-        foto_oggi = []
+        foto_oggi, foto_riuso, voluto = [], False, None
         if TUTTO_10S and formato in FORMATI_10 and str(slot).endswith(ORARIO_FOTO) and str(slot)[:10] >= FOTO_DAL:
+            formato_f = None
             try:
                 import foto_giornata
-                foto_oggi = con_tentativi(lambda: foto_giornata.pronte(drive), "Lettura delle foto", drive)
+                # 6/11/2026: meta' degli orari il photo dump (foto_rapide); prima le foto nuove, senza foto nuove si
+                # riusano quelle di una giornata gia' uscita (Alessandro: "se non ci sono foto in coda... quelle vecchie")
+                voluto = formato_foto(slot)
+                foto_oggi, formato_f, foto_riuso = con_tentativi(
+                    lambda: foto_giornata.foto_per_slot(drive, state, voluto), "Lettura delle foto", drive)
+                if foto_oggi:
+                    log(f"Foto: {len(foto_oggi)} {'gia uscite (riuso)' if foto_riuso else 'nuove'}, formato "
+                        f"{formato_f} (estratto {voluto})")
             except Exception as e:
                 log("Foto della giornata non lette:", e)
-            formato = "dieci_foto" if foto_oggi else formato
+            formato = (formato_f or "dieci_foto") if foto_oggi else formato
         log(f"Formato: {formato}")
         try:                            # se un formato non riesce esce il reel normale (frase da 5 s)
             if formato == "momento":
@@ -2959,8 +2983,12 @@ def main():
                 info = overlay.make_video(src, prima, out, music=music, serie=serie,
                                           colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
                                           da_archivio=bool(clip), formato=dict(GANCIO, seconda=seconda))
-            elif formato == "dieci_foto":
-                info = foto_giornata.monta(foto_oggi, frase["gancio"], out, musiche_brano(music, 3), drive, work)
+            elif formato in FORMATI_FOTO:
+                monta_foto = foto_giornata.monta_rapide if formato == "foto_rapide" else foto_giornata.monta
+                info = monta_foto(foto_oggi, frase["gancio"], out, musiche_brano(music, 3), drive, work,
+                                  riuso=foto_riuso)
+                if voluto and voluto != formato:     # estratto foto_rapide, ma la giornata aveva poche foto nuove
+                    info.setdefault("estratto", voluto)
             elif formato == "dieci_lista":
                 frase, info = monta_dieci_lista(lista_regole(slot, state), src, out, music, serie, drive, work, clip)
             elif formato == "giornata":     # 6/11/2026: i momenti della sua giornata, anche quelli ancora in coda
@@ -3024,7 +3052,7 @@ def main():
     log("Montato:", info)
     # 5/11/2026: il reel con le foto NON usa il video scelto (resta solo come ripiego se le foto non si montano): quel
     # video non va segnato come pubblicato ne' spostato nell'archivio, e la clip d'archivio non conta come usata
-    con_foto = info.get("formato") == "dieci_foto"
+    con_foto = info.get("formato") in FORMATI_FOTO
     if con_foto:
         video, clip, nome = None, None, "Foto della giornata"
         an = dict(an, registrato=None)
@@ -3164,7 +3192,7 @@ def main():
 
     # 5. archivio e stato
     oggi = datetime.date.today().isoformat()
-    if con_foto and not DRY:
+    if con_foto and not DRY and not info.get("foto_riuso"):     # 6/11: le foto riusate sono gia' in "Foto usate"
         foto_giornata.segna_usate(drive, info.get("foto_ids", []))
     if clip:
         u = state["archivio_usi"].setdefault(clip["id"], {})
