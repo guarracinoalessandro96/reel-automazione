@@ -414,14 +414,11 @@ def registra_giorno(tok, oggi, chi, giro, inviato_alle, libera, youtube_tot, tik
 
 
 # ------------------------------------------------------------------ giro
-def invia(testo, se_no=None):
+def invia(testo):
     """6/11/2026 (revisione): True arrivato, False di sicuro non partito, None non si sa (risposta persa dopo l'invio).
-    Fino a 3 tentativi, solo quando di sicuro non e' partito: un messaggio forse arrivato non si rimanda mai.
-    se_no() dopo ogni "no" sicuro."""
+    Fino a 3 tentativi, solo quando di sicuro non e' partito: un messaggio forse arrivato non si rimanda mai."""
     for attesa in (10, 30, None):
         esito = avvisi.manda_statistiche(testo)
-        if esito is False and se_no:
-            se_no()
         if esito is not False or attesa is None:
             return esito
         print(f"Telegram: messaggio non partito, riprovo tra {attesa} secondi")
@@ -543,7 +540,7 @@ def main():
 
     def salva_pc(**segni):
         """Il file del PC: numeri del giorno, totale YouTube (il primo del giorno: un secondo giro non lo sposta),
-        ultimo TikTok e i segni dell'invio (6/11/2026, revisione: scritto anche a meta' giro e anche senza invio)."""
+        ultimo TikTok e i segni dell'invio (6/11/2026, revisione: scritto anche quando non si manda)."""
         if su_github:
             return
         try:
@@ -581,17 +578,19 @@ def main():
     elif not blocco:
         if not su_github:
             os.environ["TELEGRAM_BOT_TOKEN"], os.environ["TELEGRAM_CHAT_ID"] = k["TELEGRAM_BOT_TOKEN"], k["TELEGRAM_CHAT_ID"]
-        # Telegram ha detto di no: lo si segna subito, cosi' il giro dopo puo' riprendere la prenotazione anche se
-        # questo viene interrotto durante l'attesa
-        esito = invia(testo, se_no=lambda: salva_pc(non_inviato=giro))
+        esito = invia(testo)
         if esito is None:
             print("ATTENZIONE: Telegram non ha confermato l'invio: il messaggio potrebbe essere arrivato, lo conto come "
                   "mandato (mai due)")
         if esito is not False:
             inviato_alle = adesso().strftime("%H:%M")
     # 6/11/2026 (revisione): il segno dell'invio non si perde mai (prima un giro dopo quello del codice vecchio lo
-    # cancellava, e il terzo rimandava)
-    salva_pc(**({"inviato": inviato_alle or ora_pc} if inviato_alle or gia_dal_pc else {}))
+    # cancellava, e il terzo rimandava). "non_inviato": Telegram ha detto di no a tutti i tentativi, il giro dopo puo'
+    # riprendere questa prenotazione (scritto solo alla fine: un giro interrotto a meta' resta "forse mandato")
+    segni = {"inviato": inviato_alle or ora_pc} if inviato_alle or gia_dal_pc else {}
+    if esito is False:
+        segni["non_inviato"] = giro
+    salva_pc(**segni)
     if tok and registro is not None and not blocco:
         # se l'aveva gia' mandato il PC (giro di prima) lo si segna ora, cosi' GitHub non lo rimanda
         segna = inviato_alle or (ora_pc if gia_dal_pc and not reg_oggi.get("inviato") else None)
