@@ -9997,7 +9997,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "-JIHeRCBicw"
+     "id": "-JIHeRCBicw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10007,11 +10008,43 @@
    },
    "spinto": true,
    "testo": "Il silenzio non fa meno rumore solo perché non si sente."
+  },
+  {
+   "quando": "2026-11-06T07:00",
+   "slot": "2026-11-06 08:00",
+   "video": "IMG_4285.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-77e3005c",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "the_light_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "musica_meta": "deciso_11.flac",
+    "musica_instagram": "fantasmas - HUMBE [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "sxqYNthcmxE"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17882260692546316",
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non torno dove ho dovuto pregare per essere scelto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-28 22:00",
   "2026-10-29 00:00",
   "2026-10-29 02:00",
   "2026-10-29 04:00",
@@ -10090,10 +10123,10 @@
   "2026-11-05 20:00",
   "2026-11-05 22:00",
   "2026-11-06 00:00",
-  "2026-11-06 06:00"
+  "2026-11-06 06:00",
+  "2026-11-06 08:00"
  ],
  "musica_recenti": [
-  "sweaty_staredown_2.m4a",
   "way_back_home_2.m4a",
   "taking_flight_3.m4a",
   "whoop_3.m4a",
@@ -10112,7 +10145,8 @@
   "locked_in_1.m4a",
   "ancient_civilisations_3.m4a",
   "dusty_road_magic_3.m4a",
-  "vibe_check_1.m4a"
+  "vibe_check_1.m4a",
+  "the_light_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10396,7 +10430,8 @@
   "MIE-a9252760",
   "MIE-ed8b4192",
   "MIE-ef3aefc2",
-  "MIE-0880c6d4"
+  "MIE-0880c6d4",
+  "MIE-77e3005c"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10782,8 +10817,8 @@
    "ultimo": "2026-11-06"
   },
   "1OKyRxbpEUPABWJM5Ey1cGm-BG7E-Rv9h": {
-   "usi": 2,
-   "ultimo": "2026-10-28"
+   "usi": 3,
+   "ultimo": "2026-11-06"
   },
   "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW": {
    "usi": 2,
@@ -10851,7 +10886,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_06.flac",
   "energia_09.flac",
   "phonk_12.flac",
   "trap_13.flac",
@@ -10870,7 +10904,8 @@
   "deciso_10.flac",
   "trap_11.flac",
   "phonk_02.flac",
-  "drive_08.flac"
+  "drive_08.flac",
+  "deciso_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10905,7 +10940,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10921,7 +10956,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1283788913238327",
   "617195401283615",
   "351866282607327",
   "593371403855914",
@@ -10950,12 +10984,13 @@
   "257338181818606",
   "856093300426979",
   "2201065153808959",
-  "261968585425392"
+  "261968585425392",
+  "4321185548142585"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Winterbell",
   "Paramveer Singh katoch",
-  "Eros Ramazzotti"
+  "Eros Ramazzotti",
+  "HUMBE"
  ]
 }
