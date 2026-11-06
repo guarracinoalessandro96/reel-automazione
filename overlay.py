@@ -358,13 +358,24 @@ def _nuda(w):
     return re.sub(r"^\w+'", "", w)
 
 
+_NON_E = set("è e' era sono sarà voglio vuoi serve servono".split())
+
+
 def _negata(nude, crude, i):
     """True se nella stessa proposizione, fino a 3 parole prima della i, c'e' una negazione: la parola e' il concetto
-    negato ("il problema non e' la MOTIVAZIONE", "non e' un SACRIFICIO") e in giallo direbbe il contrario."""
+    negato ("il problema non e' la MOTIVAZIONE", "non e' un SACRIFICIO") e in giallo direbbe il contrario.
+    6/11/2026 (revisione): anche "non e'/voglio/serve..." piu' indietro nella proposizione ("non e' il tuo LAVORO",
+    "non voglio una vita da SOGNO"); conta la parola com'e' scritta, quindi "non c'e'" no."""
     for j in range(i - 1, max(-1, i - 4), -1):
         if _FINE_PROPOSIZIONE.search(crude[j]):
             return False
         if nude[j] in _NEGANO:
+            return True
+    cruda = lambda w: re.sub(r"^\W+|[^\w']+$", "", w.lower().replace("’", "'"))
+    for j in range(i - 1, -1, -1):
+        if _FINE_PROPOSIZIONE.search(crude[j]):
+            return False
+        if cruda(crude[j]) == "non" and j + 1 < i and cruda(crude[j + 1]) in _NON_E:
             return True
     return False
 
@@ -413,11 +424,16 @@ _LEGATE = set("il lo la i gli le un uno una di a da in con su per tra fra e ed o
 
 def _unita(testo):
     """Gruppi di parole che non si separano andando a capo: articoli, preposizioni, "e"/"o", "mi/ti/si", possessivi
-    restano attaccati alla parola dopo (mai "per diventare il / meglio", ma "per diventare / il meglio")."""
+    restano attaccati alla parola dopo (mai "per diventare il / meglio", ma "per diventare / il meglio").
+    6/11/2026 (revisione): anche le coppie di _COPPIE ("non fermarti", "ogni giorno", "duro lavoro"): una parte gialla
+    spezzata a fine riga sembrava un errore."""
     out, attesa = [], []
-    for w in testo.split():
+    parole = testo.split()
+    for i, w in enumerate(parole):
         attesa.append(w)
-        if w.lower() not in _LEGATE:        # parola piena (o con la punteggiatura attaccata): chiude il gruppo
+        coppia = (i + 1 < len(parole) and not _FINE_PROPOSIZIONE.search(w)
+                  and (_nuda(w), _nuda(parole[i + 1])) in _COPPIE)
+        if w.lower() not in _LEGATE and not coppia:     # parola piena (o con la punteggiatura): chiude il gruppo
             out.append(" ".join(attesa))
             attesa = []
     if attesa:
@@ -544,15 +560,22 @@ def _scritta(W, H, text, faces, mappa, st):
     return img, fy, punti
 
 
+ULTIMO_STILE = None     # 6/11/2026: lo stile usato davvero dall'ultima scritta (montaggio.scritta in stato.json)
+
+
 def build_testo_giallo(W, H, text, faces, mappa=None):
     """Scritta dei reel da 10 s nello stile STILE_SCRITTA, nella posizione senza visi e con meno dettagli.
     Restituisce (immagine, y in frazione, punti). Se il nuovo stile fallisce: lo stile di prima, cosi' il reel esce."""
+    global ULTIMO_STILE
     st = STILI_SCRITTA.get(STILE_SCRITTA)
     if st:
         try:
-            return _scritta(W, H, text, faces, mappa, st)
+            risultato = _scritta(W, H, text, faces, mappa, st)
+            ULTIMO_STILE = STILE_SCRITTA
+            return risultato
         except Exception as e:
             print(f"Scritta: stile {STILE_SCRITTA} non riuscito, uso il giallo classico:", str(e)[:200], flush=True)
+    ULTIMO_STILE = "giallo_classico"
     return _testo_giallo_classico(W, H, text, faces, mappa)
 
 
