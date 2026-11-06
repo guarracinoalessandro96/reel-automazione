@@ -1492,11 +1492,11 @@ ULTIMO_IG = {}     # 4/11/2026: come e' uscito l'ultimo reel Instagram (metodo, 
 # dal 3/12/2025) su 5 reel su 10, a orari alterni che si scambiano ogni giorno. Instagram li mostra solo a chi NON lo
 # segue: finche' sono di prova NON compaiono sul suo profilo e non arrivano ai follower; se nelle prime 72 ore vanno
 # bene li pubblica da solo per tutti (graduation_strategy SS_PERFORMANCE).
-# SPENTI (revisione 6/11: il si' di Alessandro c'era solo nel testo del lavoro, non in un suo messaggio):
-# PROVA_IG = True solo dopo il suo si' esplicito. Anche accesi partono solo se prova_ig_ferma() non trova motivi contro.
+# ACCESI: si' di Alessandro del 6/11/2026 ("Si', su meta' dei reel"). Partono solo se prova_ig_ferma() non trova motivi
+# contro (tra cui: almeno 200 follower su Instagram). False = mai reel di prova.
 # In stato.json, risultati instagram: "prova" true/false e "prova_rifiutata" col motivo (allora lo stesso reel esce
 # subito normale: mai perso, mai doppio).
-PROVA_IG = False
+PROVA_IG = True
 PROVA_IG_PARAMETRI = json.dumps({"graduation_strategy": "SS_PERFORMANCE"})
 PROVA_IG_FOLLOWER = 200      # guide 2025-26: almeno 200 follower per gli account professionali (altre dicono 1.000)
 PROVA_IG_PAUSA_ORE = 24      # dopo un rifiuto di Instagram (es. vuole piu' follower): niente prove per un giorno
