@@ -211,8 +211,15 @@ def _riquadro_video(volti_pezzo, wv, hv):
 def _righe(d, testo, font, max_px):
     try:
         return ov._a_capo(d, testo, font, max_px)
-    except Exception:
-        return [testo]
+    except Exception:          # se overlay cambia: a capo semplice, mai una riga piu' larga dello schermo
+        righe, cur = [], ""
+        for p in testo.split():
+            t = (cur + " " + p).strip()
+            if cur and d.textlength(t, font=font) > max_px:
+                righe.append(cur)
+                t = p
+            cur = t
+        return righe + ([cur] if cur else [])
 
 
 def cornice(W, H, tipo, testo):
