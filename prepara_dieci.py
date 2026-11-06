@@ -16,10 +16,13 @@ ESCLUSI = set()
 LUNGO = 20.5     # 6/11/2026: il formato "intero" dura fino a 20 s; col pezzo da 10,5 s la musica ripartiva da capo a 10 s
 
 
-def _brani():
+def _brani(cartella=None):
+    """Brani da lavorare; con cartella, salta quelli che ci hanno gia' tutti i pezzi (6/11/2026: senza decodificarli,
+    sul PC carico ogni decodifica durava quasi un minuto)."""
     for p in sorted(glob.glob(os.path.join(pl.ORIG, "*.mp3"))):
         slug = re.sub(r"[^a-z0-9]+", "_", os.path.splitext(os.path.basename(p))[0].lower()).strip("_")
-        if slug not in ESCLUSI:
+        fatti = cartella and all(os.path.exists(os.path.join(cartella, f"{slug}_{k}.m4a")) for k in range(1, pl.PEZZI + 1))
+        if slug not in ESCLUSI and not fatti:
             yield p, slug
 
 
@@ -34,7 +37,7 @@ def main():
     dest = os.path.join(pl.HERE, "musica", "yt_dieci")
     os.makedirs(dest, exist_ok=True)
     fatti = 0
-    for p, slug in _brani():
+    for p, slug in _brani(dest):
         for k, s in enumerate(pl.migliori_inizi(pl.pcm(p)), 1):
             out = os.path.join(dest, f"{slug}_{k}.m4a")
             if os.path.exists(out):
@@ -60,7 +63,7 @@ def lunghi():
     dest = os.path.join(pl.HERE, "musica", "yt_venti")
     os.makedirs(dest, exist_ok=True)
     fatti = 0
-    for p, slug in _brani():
+    for p, slug in _brani(dest):
         x = pl.pcm(p)
         durata = len(x) / 8000
         for k, s in enumerate(pl.migliori_inizi(x), 1):

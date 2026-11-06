@@ -1309,7 +1309,8 @@ def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti
     giusto = lambda a: (a.get("audio_id") and a.get("duration_in_ms", 99999) >= 15000
                         and not IG_DA_EVITARE.search(testo(a)) and not IG_STAGIONE.search(testo(a))
                         and not IG_LENTI.search(testo(a)))
-    adatto = lambda a: giusto(a) and a["audio_id"] not in recenti and titolo_base(a.get("title")) not in titoli
+    adatto = lambda a: (giusto(a) and a["audio_id"] not in recenti
+                        and (titolo_base(a.get("title")) or "?") not in titoli)    # titoli non latini: solo l'id
     try:
         lista = tendenze_instagram()
     except Exception as e:
@@ -1392,7 +1393,7 @@ def ricorda_brano(state, scelto):
     nome = scelto[1].replace(" [tendenza]", "")
     artista = nome.rsplit(" - ", 1)[-1]
     state["ig_artisti_recenti"] = (state.get("ig_artisti_recenti", []) + [artista])[-IG_FINESTRA_ARTISTI:]
-    state["ig_titoli_recenti"] = (state.get("ig_titoli_recenti", []) + [titolo_base(nome.rsplit(" - ", 1)[0])]
+    state["ig_titoli_recenti"] = (state.get("ig_titoli_recenti", []) + [titolo_base(nome.rsplit(" - ", 1)[0]) or "-"]
                                   )[-IG_FINESTRA_TITOLI:]
 
 
