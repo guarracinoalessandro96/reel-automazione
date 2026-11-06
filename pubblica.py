@@ -148,6 +148,10 @@ def audio_tendenza():
         return []
 
 
+YT_FINESTRA_BRANI = 30   # 6/11/2026 (Alessandro: "ogni video una musica diversa"): stesso brano mai negli ultimi 30 Short
+# con musica (prima 8: in 3 giorni 16 brani su 23 reel, dusty_road_magic 3 volte). yt_dieci ne ha 36 (prepara_dieci.py)
+
+
 def scegli_musica(tema, recenti, scena=None, nostra=False):
     """Un brano adatto alla scena, evitando quelli usati di recente: prima la Raccolta audio di YouTube, poi i loop
     generati da motivazione. nostra=True: solo i nostri brani (versione per Facebook/Instagram)."""
@@ -167,11 +171,16 @@ def scegli_musica(tema, recenti, scena=None, nostra=False):
         d = os.path.join(HERE, "musica", mood)
         brani = sorted(f for f in os.listdir(d) if f.endswith((".flac", ".m4a"))) if os.path.isdir(d) else []
         if brani:
-            # niente stesso pezzo tra gli ultimi 20 e niente stesso BRANO (pezzi diversi della stessa canzone) negli ultimi 8
+            # niente stesso pezzo tra i recenti e niente stesso BRANO (pezzi diversi della stessa canzone) negli ultimi
+            # YT_FINESTRA_BRANI (6/11/2026; prima 8); se la cartella ha pochi brani la finestra si stringe da sola
             brano = lambda f: re.sub(r"_\d+$", "", os.path.splitext(f)[0])
-            vicini = {brano(b) for b in recenti[-8:]}
-            liberi = ([b for b in brani if b not in recenti and brano(b) not in vicini]
-                      or [b for b in brani if b not in recenti] or brani)
+            finestra, liberi = (8 if nostra else YT_FINESTRA_BRANI), []
+            for k in dict.fromkeys((finestra, finestra * 2 // 3, finestra // 3, 8)):
+                vicini = {brano(b) for b in recenti[-k:]}
+                liberi = [b for b in brani if b not in recenti and brano(b) not in vicini]
+                if liberi:
+                    break
+            liberi = liberi or [b for b in brani if b not in recenti] or brani
             # 31/10/2026: 2 volte su 3 i brani che su YouTube rendono di piu' (pesi.json, aggiornati la domenica)
             preferiti = brani_forti("brani_forti_ig" if nostra else "brani_forti")   # 3/11: i nostri, dai numeri di Instagram
             forti = [b for b in liberi if brano(b) in preferiti or os.path.splitext(b)[0] in preferiti]
@@ -458,7 +467,10 @@ def musiche_brano(music, n=3):
     base = re.sub(r"_\d+$", "", os.path.splitext(os.path.basename(music))[0])
     d = os.path.dirname(music)
     if os.path.basename(d) == "yt_dieci":      # 1/11/2026: pezzo unico da 10 s: si usa quello scelto, non sempre il primo
-        return [music]
+        # 6/11/2026: la versione da 20,5 s dello stesso pezzo (stesso inizio e volume, prepara_dieci.py lunghi): nel
+        # formato "intero" (fino a 20 s) il pezzo da 10,5 s ripartiva da capo a 10 s; nei reel da 10 s non cambia niente
+        lungo = os.path.join(os.path.dirname(d), "yt_venti", os.path.basename(music))
+        return [lungo if os.path.exists(lungo) else music]
     pezzi = sorted(os.path.join(d, f) for f in os.listdir(d) if re.fullmatch(re.escape(base) + r"_\d+\.m4a", f))
     return pezzi[:n] or [music]
 
@@ -1205,6 +1217,33 @@ IG_TITOLI_FORTI = re.compile(r"knockout|fighter|level up|success|go go|big leagu
 # 4/11/2026: brani di stagione o cupi che compaiono tra le tendenze ma non c'entrano con un reel motivazionale
 IG_STAGIONE = re.compile(r"halloween|spooky|skeleton|trick or|ghost|thriller|dracula|monster|nightmare|llorona|"
                          r"witch|zombie|vampir|bloody|creep|horror|scary|goo goo|xmas|jingle|santa", re.I)
+# 6/11/2026 (Alessandro: "ogni video una musica diversa", brani energici che partono forte): nei 3 giorni prima 9 reel su
+# 23 avevano brani lenti, romantici o di stagione (Sara' perche' ti amo in 2 versioni di fila, November Rain, Piccole
+# Cose, Ovunque Sarai, Sta passando novembre, fantasmas, Winter Magic). Fuori anche i jingle "Reels Sound".
+IG_LENTI = re.compile(r"\bti amo\b|\bte amo\b|\bamor\b|amour|lovin|kiss|bacio|\bbaci\b|cuore|heart|coraz|valentine|"
+                      r"wedding|you.re mine|be mine|novembre|november|autumn|autunno|winter|inverno|\bsnow|\bneve\b|"
+                      r"candle|twinkl|sunday|coffee|caff[eè]\b|moka|funeral|ballad|acoustic|lounge|ambient|bossa|"
+                      r"swing|reels sound|fantasm|\brain\b|raining|pioggia|lacrim|tears|\bcry(ing)?\b|triste|"
+                      r"piccole cose|ovunque sarai|one more light|apocalypse|always you|here you come|sogna, ragazzo|"
+                      r"guzarish|\bgod\b|jesus|ges[uù]|hallelujah|ave maria", re.I)
+# brani che "suonano" energici: tra le tendenze vengono prima (insieme a IG_TITOLI_FORTI)
+IG_ENERGIA = re.compile(r"anthem|hall of fame|champion|highway|climb|running|\brun\b|spark|\bin motion\b|\bmotion\b|"
+                        r"march|\bboss\b|\bfire\b|legacy|winner|\bwin\b|hustle|grind|beast|strong|fight|battle|legend|"
+                        r"glory|hero|thunder|storm|phonk|workout|\bgym\b|hype|energy|adrenalin|accelerand|right round|"
+                        r"on the floor|eye of the tiger|lose yourself|remember the name|believer|rock you|"
+                        r"can.t hold us|top of the world|remix|club mix|extended mix|radio mix|sped up", re.I)
+IG_FINESTRA_BRANI = 60       # 6/11/2026: stesso brano (audio_id) mai negli ultimi 60 reel Instagram (prima 30)
+IG_FINESTRA_TITOLI = 40      # stessa canzone, anche in un'altra versione o di un altro artista, mai negli ultimi 40
+IG_FINESTRA_ARTISTI = 10     # stesso artista mai negli ultimi 10 (prima 3)
+IG_PRIME_TENDENZE = 50       # le prime ~50 della lista sono le canzoni del momento, dopo vengono brani di libreria
+
+
+def titolo_base(t):
+    """6/11/2026: titolo senza versioni, accenti e parentesi ("Sarà Perché Ti Amo (Remix)" = "sara perche ti amo")."""
+    import unicodedata
+    t = unicodedata.normalize("NFKD", str(t or "")).encode("ascii", "ignore").decode().lower()
+    t = re.sub(r"[\(\[].*?[\)\]]", " ", t)
+    return re.sub(r"[^a-z0-9]+", " ", t).strip()
 
 
 _TENDENZE = {}     # 4/11/2026: la lista letta una volta per lavoro (reel, nuovi tentativi e recuperi la riusano)
@@ -1212,58 +1251,103 @@ _TENDENZE = {}     # 4/11/2026: la lista letta una volta per lavoro (reel, nuovi
 
 def tendenze_instagram(pagine=3):
     """4/11/2026: i brani DI TENDENZA di Instagram: /ig_audio senza search_query restituisce le tendenze del
-    momento (la stessa lista dell'app; prima si cercava sempre per parola e uscivano brani a caso)."""
+    momento (la stessa lista dell'app; prima si cercava sempre per parola e uscivano brani a caso).
+    6/11/2026: la lista intera, ~160 brani (prima 25): pagine da 100 (limit) e pagina dopo col cursore "after" (Meta
+    non da' "next", quindi si leggeva solo la prima pagina). Se limit non va, resta la pagina normale."""
     if _TENDENZE.get("lista") and time.time() - _TENDENZE["ora"] < 1800:
         return _TENDENZE["lista"]
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
-    out, url, par = [], f"{GRAPH_AUDIO}/ig_audio", {"audio_type": "music", "user_id": ig, "access_token": token}
-    for _ in range(pagine):
-        r = _meta("GET", url, params=par, timeout=30)
-        out += r.get("audio", [])
-        url, par = (r.get("paging") or {}).get("next"), None
-        if not url:
+    base = {"audio_type": "music", "user_id": ig, "access_token": token}
+    out, visti, dopo = [], set(), None
+    for i in range(pagine):
+        par = dict(base, limit=100, **({"after": dopo} if dopo else {}))
+        try:
+            r = _meta("GET", f"{GRAPH_AUDIO}/ig_audio", params=par, timeout=30)
+        except Exception as e:
+            if not out:
+                raise
+            log("Tendenze di Instagram: pagina", i + 1, "non letta:", type(e).__name__)
+            break
+        semplice = bool(r.get("error")) and not out
+        if semplice:      # limit rifiutato: la lettura di prima (una pagina)
+            log("Tendenze di Instagram: lettura a pagine rifiutata, leggo la prima pagina:",
+                (r.get("error") or {}).get("message"))
+            r = _meta("GET", f"{GRAPH_AUDIO}/ig_audio", params=base, timeout=30)
+        nuovi = [a for a in r.get("audio", []) if a.get("audio_id") and a["audio_id"] not in visti]
+        visti.update(a["audio_id"] for a in nuovi)
+        out += nuovi
+        dopo = ((r.get("paging") or {}).get("cursors") or {}).get("after")
+        if semplice or not nuovi or not dopo:
             break
     if out:
         _TENDENZE.update(lista=out, ora=time.time())
     return out
 
 
-def scegli_audio_instagram(scena, recenti=(), artisti_recenti=()):
+def _priorita_ig(a, posto):
+    """6/11/2026: prima le canzoni del momento che suonano energiche, poi le altre del momento, poi i brani di libreria
+    energici, poi il resto (a parita', l'ordine delle tendenze)."""
+    forte = (IG_TITOLI_FORTI.search(a.get("title", "") or "")
+             or IG_ENERGIA.search(f"{a.get('title', '')} {a.get('display_artist', '')}"))
+    vera = posto < IG_PRIME_TENDENZE
+    return 0 if forte and vera else 1 if vera else 2 if forte else 3
+
+
+def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti=None):
     """(audio_id, titolo) di un brano Instagram, evitando i recenti. None se nessuno.
     Ordine (4/11/2026, Alessandro: "scegliendo la musica di tendenza di instagram, oppure la stessa musica degli altri
     reel"): 1) tendenze ufficiali di Instagram, 2) brani piu' usati dai reel forti (audio_tendenza.json, domenica),
-    3) ricerca per parole energiche."""
+    3) ricerca per parole energiche.
+    6/11/2026: mai la stessa canzone (anche in un'altra versione) negli ultimi IG_FINESTRA_TITOLI reel, mai brani lenti
+    o romantici (IG_LENTI), prima quelli energici; ultima riserva la tendenza adatta usata meno di recente, perche'
+    senza brano di Instagram si sentirebbe la traccia del file."""
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
-    adatto = lambda a: (a.get("audio_id") and a["audio_id"] not in recenti and a.get("duration_in_ms", 99999) >= 15000
-                        and not IG_DA_EVITARE.search(f"{a.get('title', '')} {a.get('display_artist', '')}")
-                        and not IG_STAGIONE.search(f"{a.get('title', '')} {a.get('display_artist', '')}"))
+    if titoli_recenti is None:     # 6/11/2026: anche il secondo tentativo di instagram_upload evita le stesse canzoni
+        titoli_recenti = (_IG_STATO.get("state") or {}).get("ig_titoli_recenti", [])
+    titoli = set(titoli_recenti)
+    testo = lambda a: f"{a.get('title', '')} {a.get('display_artist', '')}"
+    giusto = lambda a: (a.get("audio_id") and a.get("duration_in_ms", 99999) >= 15000
+                        and not IG_DA_EVITARE.search(testo(a)) and not IG_STAGIONE.search(testo(a))
+                        and not IG_LENTI.search(testo(a)))
+    adatto = lambda a: giusto(a) and a["audio_id"] not in recenti and titolo_base(a.get("title")) not in titoli
     try:
-        tendenza = [a for a in tendenze_instagram() if adatto(a)]
+        lista = tendenze_instagram()
     except Exception as e:
         log("Tendenze di Instagram non lette:", e)
-        tendenza = []
-    if tendenza:     # tra le prime 8 (le piu' in tendenza), un po' a caso cosi' i reel vicini non hanno lo stesso brano
-        # 4/11/2026: e mai lo stesso artista di uno degli ultimi 3 reel (se resta almeno un brano)
-        tendenza = [a for a in tendenza if a.get("display_artist") not in artisti_recenti] or tendenza
-        a = random.choice(tendenza[:8])
+        lista = []
+    tendenza = [(i, a) for i, a in enumerate(lista) if adatto(a)]
+    if tendenza:     # tra le prime 8, un po' a caso cosi' i reel vicini non hanno lo stesso brano
+        # 4/11/2026: e mai lo stesso artista dei reel recenti (6/11: ultimi 10), se resta almeno un brano
+        tendenza = [x for x in tendenza if x[1].get("display_artist") not in artisti_recenti] or tendenza
+        tendenza = sorted((_priorita_ig(a, i), i, a) for i, a in tendenza)
+        a = random.choice([x for x in tendenza if x[0] == tendenza[0][0]][:8])[2]    # il gruppo migliore
         return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')} [tendenza]"
     ricerche = list(dict.fromkeys(random.sample(IG_ENERGICI, len(IG_ENERGICI))))
     # 4/11/2026: anche le ricerche di riserva con nuovi tentativi e gli stessi filtri delle tendenze (stagione, durata)
     cerca = lambda q: _meta("GET", f"{GRAPH_AUDIO}/ig_audio", timeout=30, params={
         "audio_type": "music", "search_query": q, "user_id": ig, "access_token": token}).get("audio", [])
-    for q in audio_tendenza()[:6]:                # i brani usati dagli altri reel, se Instagram li concede all'API
-        trovati = [a for a in cerca(q) if adatto(a)
-                   and q.lower().strip() == a.get("title", "").lower().strip()]   # 3/11: titolo esatto ("Violin" dava Brahms)
-        if trovati:
-            return trovati[0]["audio_id"], f"{trovati[0].get('title')} - {trovati[0].get('display_artist')}"
     tutti = []
-    for q in ricerche[:4]:
-        tutti += [a for a in cerca(q) if adatto(a)]
-    if not tutti:
-        return None
-    forti = [a for a in tutti if IG_TITOLI_FORTI.search(a.get("title", ""))]
-    a = random.choice(forti or tutti[:8])
-    return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')}"
+    try:      # 6/11/2026: un errore di rete qui non deve lasciare il reel senza brano (c'e' ancora la riserva sotto)
+        for q in audio_tendenza()[:6]:                # i brani usati dagli altri reel, se Instagram li concede all'API
+            trovati = [a for a in cerca(q) if adatto(a)
+                       and q.lower().strip() == a.get("title", "").lower().strip()]   # 3/11: titolo esatto ("Violin" dava Brahms)
+            if trovati:
+                return trovati[0]["audio_id"], f"{trovati[0].get('title')} - {trovati[0].get('display_artist')}"
+        for q in ricerche[:4]:
+            tutti += [a for a in cerca(q) if adatto(a)]
+    except Exception as e:
+        log("Ricerca di brani Instagram non riuscita:", type(e).__name__)
+    if tutti:
+        forti = [a for a in tutti if IG_TITOLI_FORTI.search(a.get("title", "")) or IG_ENERGIA.search(a.get("title", ""))]
+        a = random.choice(forti or tutti[:8])
+        return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')}"
+    # 6/11/2026: ultima riserva, la tendenza adatta usata meno di recente (meglio un brano ripetuto che la traccia del file)
+    uso = {x: i for i, x in enumerate(recenti)}
+    vecchie = sorted((uso.get(a["audio_id"], -1), i, a) for i, a in enumerate(lista) if giusto(a))
+    if vecchie:
+        a = vecchie[0][2]
+        return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')} [tendenza]"
+    return None
 
 
 def ricontrolla_youtube(state, creds, save):
@@ -1303,16 +1387,38 @@ _IG_STATO = {}     # 4/11/2026: lo stato del reel in corso, per il brano del sec
 
 
 def ricorda_brano(state, scelto):
-    state["ig_audio_recenti"] = (state.get("ig_audio_recenti", []) + [scelto[0]])[-30:]
-    artista = scelto[1].replace(" [tendenza]", "").rsplit(" - ", 1)[-1]
-    state["ig_artisti_recenti"] = (state.get("ig_artisti_recenti", []) + [artista])[-3:]
+    # 6/11/2026: finestre piu' larghe (brani 60, canzoni 40, artisti 10; prima 30 e 3)
+    state["ig_audio_recenti"] = (state.get("ig_audio_recenti", []) + [scelto[0]])[-IG_FINESTRA_BRANI:]
+    nome = scelto[1].replace(" [tendenza]", "")
+    artista = nome.rsplit(" - ", 1)[-1]
+    state["ig_artisti_recenti"] = (state.get("ig_artisti_recenti", []) + [artista])[-IG_FINESTRA_ARTISTI:]
+    state["ig_titoli_recenti"] = (state.get("ig_titoli_recenti", []) + [titolo_base(nome.rsplit(" - ", 1)[0])]
+                                  )[-IG_FINESTRA_TITOLI:]
+
+
+def _semina_titoli(state):
+    """6/11/2026: la prima volta canzoni e artisti recenti si ricostruiscono dallo storico (musica_instagram)."""
+    if "ig_titoli_recenti" in state:
+        return
+    try:
+        nomi = [(h.get("montaggio") or {}).get("musica_instagram") for h in state.get("storico", [])]
+        nomi = [n.replace(" [tendenza]", "") for n in nomi if n][-IG_FINESTRA_TITOLI:]
+        state["ig_titoli_recenti"] = [titolo_base(n.rsplit(" - ", 1)[0]) for n in nomi]
+        artisti = [n.rsplit(" - ", 1)[-1] for n in nomi][-IG_FINESTRA_ARTISTI:]
+        if len(artisti) > len(state.get("ig_artisti_recenti", [])):
+            state["ig_artisti_recenti"] = artisti
+    except Exception as e:
+        log("Canzoni recenti di Instagram non ricostruite:", e)
+        state.setdefault("ig_titoli_recenti", [])
 
 
 def brano_ig(state, scena):
     """3/11/2026: (audio_id, titolo) di un brano DI INSTAGRAM per il reel (anche per recuperi e nuovi tentativi)."""
     _IG_STATO["state"] = state
+    _semina_titoli(state)
     try:
-        scelto = scegli_audio_instagram(scena, state.get("ig_audio_recenti", []), state.get("ig_artisti_recenti", []))
+        scelto = scegli_audio_instagram(scena, state.get("ig_audio_recenti", []), state.get("ig_artisti_recenti", []),
+                                        state.get("ig_titoli_recenti", []))
     except Exception as e:
         log("Brano di Instagram non scelto:", e)
         return None
@@ -2448,8 +2554,8 @@ def main():
     if frase.get("righe"):
         state.setdefault("liste_usate", []).append(frase["id"])
     state["temi_recenti"] = (state["temi_recenti"] + [frase["tema"]])[-10:]
-    if info.get("musica"):
-        state["musica_recenti"] = (state["musica_recenti"] + [info["musica"]])[-20:]
+    if info.get("musica"):     # 6/11/2026: 60 (prima 20), per la finestra di YT_FINESTRA_BRANI brani
+        state["musica_recenti"] = (state["musica_recenti"] + [info["musica"]])[-60:]
     if info.get("musica_meta"):
         state["musica_recenti_meta"] = (state.get("musica_recenti_meta", []) + [info["musica_meta"]])[-20:]
     if slot not in state["slot_fatti"]:

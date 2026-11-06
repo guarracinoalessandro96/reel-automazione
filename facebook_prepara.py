@@ -60,6 +60,17 @@ def prepara(massimo=4):
                        "orario": f"{quando:%Y-%m-%d %H:%M}", "youtube": p["tiktok_slot"],
                        "voce": p.get("tiktok_voce") == "1", "didascalia": pulisci(f.get("description", ""))})
     os.makedirs(CARTELLA_PC, exist_ok=True)
+    # 6/11/2026 (Alessandro: "ogni video una musica diversa da altri video, su ogni piattaforma"): ogni giro ripartiva
+    # dall'inizio di audio_tendenza.json e su Facebook giravano sempre gli stessi 9 brani nello stesso ordine
+    # (Don't Give Up On Me, Demons, Violin, DEFEATED...): come su TikTok, gli audio degli ultimi 30 reel del registro
+    # non si riusano, e ogni video ha una parola di ricerca diversa
+    try:
+        evita = tp.suoni_recenti(30, os.path.join(CARTELLA_PC, "registro.txt"))
+        for x in elenco:
+            x["suoni_da_evitare"] = evita
+        tp.metti_ricerche(elenco)
+    except Exception as e:
+        print("audio da evitare non aggiunti:", e)
     json.dump(elenco, open(os.path.join(CARTELLA_PC, "elenco_facebook.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1)
     return elenco, len(attesa)

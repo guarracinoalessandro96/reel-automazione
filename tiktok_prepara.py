@@ -147,28 +147,52 @@ def prepara(massimo=4):
     evita = suoni_recenti()
     for x in elenco:
         x["suoni_da_evitare"] = evita
+    metti_ricerche(elenco)
     json.dump(elenco, open(os.path.join(CARTELLA_PC, "elenco.json"), "w", encoding="utf-8"), ensure_ascii=False,
               indent=1)
     return elenco, len(attesa)
 
 
+NON_SUONI = {"-", "", "audio suo", "nessuno", "nessun audio"}
 
-def suoni_recenti(quanti=30):
+
+def suoni_recenti(quanti=30, registro=None):
     """6/11/2026: negli ultimi 20 TikTok giravano sempre gli stessi 4 brani (i primi di audio_tendenza.json):
-    i brani degli ultimi `quanti` video del registro non si riusano."""
+    i brani degli ultimi `quanti` video del registro non si riusano. registro: un altro registro con le stesse colonne
+    (6/11/2026: anche quello di Facebook, facebook_prepara.py); le note tra parentesi non sono brani."""
     try:
-        righe = open(os.path.join(CARTELLA_PC, "registro.txt"), encoding="utf-8").read().splitlines()
+        righe = open(registro or os.path.join(CARTELLA_PC, "registro.txt"), encoding="utf-8").read().splitlines()
     except OSError:
         return []
     suoni = []
     for r in reversed(righe):
         c = [x.strip() for x in r.split("|")]
-        if len(c) >= 5 and c[1] != "nota" and c[3] not in ("-", "audio suo", ""):
+        if len(c) >= 5 and c[1] != "nota" and c[3].lower() not in NON_SUONI and not c[3].startswith("("):
             if c[3] not in suoni:
                 suoni.append(c[3])
             if len(suoni) >= quanti:
                 break
     return suoni
+
+
+# 6/11/2026 (Alessandro: "ogni video una musica diversa"): ogni video del giro ha una parola di ricerca diversa per i
+# suoni, a rotazione con giorno e ora, cosi' ogni giro non riparte dagli stessi brani in cima alla lista
+RICERCHE = ["motivational", "epic", "workout", "cinematic", "phonk", "powerful", "hype", "energetic", "trailer",
+            "sport", "inspiring", "gym"]
+
+
+def ricerche(n, adesso=None):
+    adesso = adesso or ora_roma()
+    inizio = adesso.toordinal() * 5 + adesso.hour
+    return [RICERCHE[(inizio + i) % len(RICERCHE)] for i in range(n)]
+
+
+def metti_ricerche(elenco):
+    try:
+        for x, q in zip(elenco, ricerche(len(elenco))):
+            x["cerca"] = q
+    except Exception as e:      # mai fermare il giro per un suggerimento
+        print("parole di ricerca non aggiunte:", e)
 
 
 PAROLE_RICERCA ="frasi motivazionali · motivazione · disciplina · lavoro · costanza"
