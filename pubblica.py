@@ -497,7 +497,12 @@ FORMATI_30 = ("racconto", "racconto_broll", "racconto_lento")
 # 29/10/2026 (Alessandro: "passiamo a 10 secondi", "cambiamo un po' il format"): TUTTI da 10 s, frase in due tempi,
 # tre varianti a turno (formati_nuovi.py). Momento e parlato restano.
 TUTTO_10S = True
-FORMATI_10 = ("dieci", "dieci_due", "dieci_broll", "taglio1", "taglio2", "taglio3", "intero")
+# 6/11/2026 (Alessandro: "studia 10 format di video diversi"): 10 formati diversi per ritmo o impaginazione:
+# una scena (dieci), il video intero, scene da 1/2/3/5 s tagliate dal SUO video (taglio1/2/3, dieci_due), bande da
+# film (cinema) e post (frase fuori dal video), rallentatore (rallenty), avanti-indietro senza stacco (loop).
+# dieci_broll (4 clip qualsiasi da 2,5 s) esce dal giro: stesso ritmo di taglio2/taglio3 e il peggiore nei dati (266
+# views medie contro 522 di dieci); resta solo come ultimo ripiego in monta_dieci.
+FORMATI_10 = ("dieci", "dieci_due", "taglio1", "taglio2", "taglio3", "intero", "cinema", "post", "rallenty", "loop")
 # 6/11/2026 (Alessandro: "sfruttare diversi tipi di format per capire quali video possano funzionare, poi faremo solo
 # quelle"): fino a FORMATI_PROVA_FINO tutti i formati da 10 s con la STESSA probabilita' (niente pesi vecchi), mai lo
 # stesso due volte di fila; poi report.py/l'agente delle 18:30 tengono i migliori
@@ -505,7 +510,8 @@ FORMATI_PROVA_FINO = "2026-11-16"
 # 6/11/2026 (Alessandro: "prova a meta'"): fino a FORMATI_PROVA_FINO la scritta e' a caso (meta' e meta', fissa per
 # orario) tra la nuova (bianca con le parole chiave gialle) e il suo giallo pieno; montaggio.scritta in stato.json
 SCRITTE_PROVA = ("bianco_parola_gialla", "giallo_classico")
-SCENE_EXTRA = {"dieci_due": 1, "dieci_broll": 3, "taglio1": 3, "taglio2": 2, "taglio3": 2}
+# massimo di clip extra; dal 6/11 per i formati a scene si scaricano SOLO se il suo video non basta (scene_mancanti)
+SCENE_EXTRA = {"dieci_due": 1, "dieci_broll": 3, "taglio1": 3, "taglio2": 2, "taglio3": 2, "cinema": 1, "post": 1}
 ORARIO_FOTO, FOTO_DAL = ("12:00", "18:00"), "2026-11-05"   # 1/11/2026: reel con le foto della giornata (foto_giornata.py); 5/11: 43 foto caricate -> si parte oggi, 2 al giorno finche' ce ne sono
 COMMENTI_SU_TELEGRAM = False   # 31/10/2026: "non voglio i commenti": su Telegram solo errori e statistiche delle 8
 ORARIO_LISTA = "spenta"      # 31/10/2026: prima tutte le frasi delle foto; per riaccenderla "18:00". Formato lista, da salvare e mandare (un post cosi' fa 1 invio ogni 2 like)
@@ -598,28 +604,51 @@ def scegli_storia(state):
     return random.choice(libere[:3])
 
 
-def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip):
+def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, ultimo=None):
     """Reel da 10 s (formati_nuovi.make_dieci). 'dieci' usa solo il video dell'orario: se e' piu' corto di 10 s
     si passa a 'dieci_due' (video dell'orario + una clip). Si usano TUTTI i suoi video, anche quelli in palestra
     (29/10/2026: "i video della palestra vanno bene"; e' solo la PAROLA palestra nei testi a essere vietata)."""
     import formati_nuovi
     if formato in ("dieci", "intero") and overlay.probe(src)[0] < 10.5:
         formato = "dieci_due"
+    if formato in ("rallenty", "loop") and overlay.probe(src)[0] < 6.5:     # 6/11/2026: troppo corto per giocarci
+        formato = "dieci_due"
+    if formato == "rallenty":        # 6/11/2026 (revisione): 2,4 s + 8 s rallentati, a 0,5x (60 fps) o 0,75x (30 fps)
+        try:
+            v = 0.5 if float(overlay.fps(src)) >= 50 else 0.75
+        except Exception:
+            v = 0.75
+        if overlay.probe(src)[0] < 2.4 + 8 * v:
+            formato = "dieci_due"
     # 6/11/2026: le altre scene PRIMA dallo stesso giorno (i video della stessa palestra), poi a caso
     giorno = str((clip or {}).get("registrato") or overlay.data_ripresa(src) or "")[:10] or None
-    clips = [src] + (clip_extra(drive, work, clip, SCENE_EXTRA[formato], giorno) if formato in SCENE_EXTRA else [])
-    # 31/10/2026: controllo PRIMA di pubblicare: se la scritta coprirebbe il viso si cambia clip, fino a 2 volte
-    for prova in range(2):
-        try:
-            return formati_nuovi.make_dieci(formato, clips, frase["gancio"], out, musiche_brano(music, 3), serie, True)
-        except formati_nuovi.VisoCoperto:
-            log(f"Scritta sul viso (prova {prova + 1}): cambio le clip")
-            formato = "dieci_broll"
-            cambio = os.path.join(work, f"cambio_{prova}")
-            os.makedirs(cambio, exist_ok=True)
-            altre = clip_extra(drive, cambio, clip, 4)
-            clips = altre or clips
-    return formati_nuovi.make_dieci(formato, clips, frase["gancio"], out, musiche_brano(music, 3), serie)
+    musiche = musiche_brano(music, 3)
+    n_extra = SCENE_EXTRA.get(formato, 0)
+    if formato in formati_nuovi.A_SCENE:     # 6/11/2026: le scene dal SUO video; altre clip solo se non bastano
+        n_extra = min(n_extra, formati_nuovi.scene_mancanti(formato, src, musiche))
+    clips = [src] + (clip_extra(drive, work, clip, n_extra, giorno) if n_extra > 0 else [])
+    # 31/10/2026: controllo PRIMA di pubblicare: la scritta non deve coprire il viso
+    try:
+        return formati_nuovi.make_dieci(formato, clips, frase["gancio"], out, musiche, serie, True)
+    except formati_nuovi.VisoCoperto:
+        pass
+    # 6/11/2026 (revisione): se la scritta coprirebbe il viso, lo STESSO video esce in 'cinema' o 'post' (la frase sta
+    # sulla fascia, fuori dal video: mai sul viso). Prima si passava a dieci_broll con 4 clip d'archivio a caso: il suo
+    # video spariva, e dopo 2 prove l'ultimo montaggio partiva senza controllo del viso
+    ripiego = random.choice([f for f in ("cinema", "post") if f != ultimo] or ["cinema"])
+    log(f"Scritta sul viso con {formato}: stesse clip in '{ripiego}', con la frase fuori dal video")
+    try:
+        if len(clips) == 1 and formati_nuovi.scene_mancanti(ripiego, src, musiche) > 0:   # video corto: 2 scene da 5 s
+            clips += clip_extra(drive, work, clip, 1, giorno)
+        info = formati_nuovi.make_dieci(ripiego, clips, frase["gancio"], out, musiche, serie, True)
+    except Exception as e:     # solo se anche questo non riesce: 4 clip d'archivio, sempre con il controllo del viso
+        log(f"Anche {ripiego} non riuscito ({e}): dieci_broll con altre clip")
+        cambio = os.path.join(work, "cambio")
+        os.makedirs(cambio, exist_ok=True)
+        info = formati_nuovi.make_dieci("dieci_broll", clip_extra(drive, cambio, clip, 4) or clips, frase["gancio"],
+                                        out, musiche, serie, True)
+    info["ripiego_da"] = formato             # per report.py: questo reel non e' uscito nel formato estratto
+    return info
 
 
 def monta_racconto(formato, src, out, music, serie, drive, work, clip, state):
@@ -2446,7 +2475,7 @@ def main():
             elif formato == "dieci_lista":
                 frase, info = monta_dieci_lista(lista_regole(slot, state), src, out, music, serie, drive, work, clip)
             elif formato in FORMATI_10:
-                info = monta_dieci(formato, frase, src, out, music, serie, drive, work, clip)
+                info = monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, state.get("formato_ultimo"))
             elif formato in FORMATI_30:
                 frase, info = monta_racconto(formato, src, out, music, serie, drive, work, clip, state)
             elif formato in ("broll1", "broll2", "broll3", "storia"):
@@ -2464,7 +2493,12 @@ def main():
             info = None
             if TUTTO_10S:                # 1/11/2026: il ripiego resta nello stile scelto (10 s, scritta gialla)
                 try:
-                    info = formati_nuovi.make_dieci("dieci", [src], frase["gancio"], out, musiche_brano(music, 3), serie)
+                    # 6/11/2026: prima qui formati_nuovi non era importato (NameError: il ripiego non partiva mai).
+                    # monta_dieci gestisce i video corti (dieci_due) e la scritta sul viso (cinema/post, controllo
+                    # del viso sempre acceso)
+                    info = monta_dieci("dieci", frase, src, out, music, serie, drive, work, clip,
+                                       state.get("formato_ultimo"))
+                    info["ripiego_da"] = formato
                 except Exception as e2:
                     log("Anche il ripiego da 10 s non riuscito:", e2)
         if info is None:
