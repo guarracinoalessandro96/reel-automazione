@@ -10278,7 +10278,9 @@
      "ok": true,
      "id": "18578353555077210",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -10307,7 +10309,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "F2G0ifWw23Q"
+     "id": "F2G0ifWw23Q",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10318,11 +10321,45 @@
    },
    "spinto": true,
    "testo": "Ho capito che il vero sacrificio non è rinunciare a qualcosa. È rinunciare a chi ero."
+  },
+  {
+   "quando": "2026-11-06T23:00",
+   "slot": "2026-11-07 00:00",
+   "video": "IMG_4302.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-bbcd32a3",
+   "tema": "imprenditore",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 20.0,
+    "musica": "taking_flight_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scritta": "bianco_parola_gialla",
+    "musica_meta": "drive_12.flac",
+    "musica_instagram": "Legends In My Head - The Poison Oaks [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "we3Ij-m3BMg"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18133912169507327",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "La svolta che cerco si nasconde proprio nel lavoro che ho meno voglia di fare."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-30 00:00",
   "2026-10-30 06:00",
   "2026-10-30 08:00",
   "2026-10-30 10:00",
@@ -10401,7 +10438,8 @@
   "2026-11-06 16:00",
   "2026-11-06 18:00",
   "2026-11-06 20:00",
-  "2026-11-06 22:00"
+  "2026-11-06 22:00",
+  "2026-11-07 00:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -10427,7 +10465,8 @@
   "i_might_be_late_3.m4a",
   "whoop_1.m4a",
   "break_ya_neck_1.m4a",
-  "sweaty_staredown_3.m4a"
+  "sweaty_staredown_3.m4a",
+  "taking_flight_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10719,7 +10758,8 @@
   "MIE-2bf7a2a5",
   "MIE-83d0883b",
   "MIE-8d6a1b9d",
-  "MIE-e9e8a3c2"
+  "MIE-e9e8a3c2",
+  "MIE-bbcd32a3"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10731,7 +10771,7 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "imprenditore"
  ],
  "analisi": {},
  "pulizia": "2026-11-06",
@@ -11137,8 +11177,8 @@
    "ultimo": "2026-11-06"
   },
   "1UefrogLKDdOKHxCBjQOsFjEsNFOeSefT": {
-   "usi": 2,
-   "ultimo": "2026-10-30"
+   "usi": 3,
+   "ultimo": "2026-11-06"
   },
   "1pHaSrw5l22--hj6mculM4Wx5XnAw4U-3": {
    "usi": 2,
@@ -11174,7 +11214,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_09.flac",
   "phonk_14.flac",
   "energia_07.flac",
   "deciso_01.flac",
@@ -11193,7 +11232,8 @@
   "phonk_06.flac",
   "energia_04.flac",
   "deciso_06.flac",
-  "phonk_12.flac"
+  "phonk_12.flac",
+  "drive_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11228,7 +11268,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "post",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -11277,11 +11317,11 @@
   "2865463390342861",
   "1076547086228050",
   "2373852472923170",
-  "580920710907743"
+  "580920710907743",
+  "8196916917049261"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Paramveer Singh katoch",
   "Eros Ramazzotti",
   "HUMBE",
   "Giusy Ferreri",
@@ -11290,10 +11330,10 @@
   "Patti Smith",
   "UEFA, Tony Britten",
   "The Sheen",
-  "Bryan Todd"
+  "Bryan Todd",
+  "The Poison Oaks"
  ],
  "ig_titoli_recenti": [
-  "epic thoughts",
   "epic battles",
   "inceptum",
   "catch the spirit",
@@ -11332,7 +11372,8 @@
   "people have the power",
   "uefa champions league legacy anthem",
   "don t give up on me",
-  "hero"
+  "hero",
+  "legends in my head"
  ],
  "ig_tendenze_riserva": [
   {
@@ -11350,10 +11391,17 @@
    "libreria": false
   },
   {
-   "audio_id": "580920710907743",
-   "title": "Hero (feat. Ashley Argota)",
-   "display_artist": "Bryan Todd",
-   "duration_in_ms": 213120,
+   "audio_id": "8196916917049261",
+   "title": "Legends In My Head",
+   "display_artist": "The Poison Oaks",
+   "duration_in_ms": 233897,
+   "libreria": true
+  },
+  {
+   "audio_id": "2422994201393793",
+   "title": "Power On",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 116549,
    "libreria": true
   }
  ]
