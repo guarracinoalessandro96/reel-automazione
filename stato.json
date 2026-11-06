@@ -10240,7 +10240,9 @@
      "ok": true,
      "id": "18110739038192355",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -10269,7 +10271,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "nYrrQpoBBgo"
+     "id": "nYrrQpoBBgo",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10280,11 +10283,45 @@
    },
    "spinto": true,
    "testo": "Non sono stanco perché sono debole. Sono stanco perché sto portando avanti qualcosa di grande."
+  },
+  {
+   "quando": "2026-11-06T21:01",
+   "slot": "2026-11-06 22:00",
+   "video": "IMG_4300.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-e9e8a3c2",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "post",
+    "durata": 10.0,
+    "musica": "sweaty_staredown_3.m4a",
+    "stacchi": 1,
+    "testi": 0,
+    "scene_dal_video": 1,
+    "musica_meta": "phonk_12.flac",
+    "musica_instagram": "Hero (feat. Ashley Argota) - Bryan Todd [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "F2G0ifWw23Q"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18640212769010963",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Ho capito che il vero sacrificio non è rinunciare a qualcosa. È rinunciare a chi ero."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-29 22:00",
   "2026-10-30 00:00",
   "2026-10-30 06:00",
   "2026-10-30 08:00",
@@ -10363,7 +10400,8 @@
   "2026-11-06 14:00",
   "2026-11-06 16:00",
   "2026-11-06 18:00",
-  "2026-11-06 20:00"
+  "2026-11-06 20:00",
+  "2026-11-06 22:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -10388,7 +10426,8 @@
   "mirror_mirror_1.m4a",
   "i_might_be_late_3.m4a",
   "whoop_1.m4a",
-  "break_ya_neck_1.m4a"
+  "break_ya_neck_1.m4a",
+  "sweaty_staredown_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10679,7 +10718,8 @@
   "MIE-cee896b5",
   "MIE-2bf7a2a5",
   "MIE-83d0883b",
-  "MIE-8d6a1b9d"
+  "MIE-8d6a1b9d",
+  "MIE-e9e8a3c2"
  ],
  "temi_recenti": [
   "mentalita",
@@ -11093,8 +11133,8 @@
    "ultimo": "2026-10-30"
   },
   "1NIAZGYq8oNsRCLyLOzwG8nRh_hWHpjGa": {
-   "usi": 1,
-   "ultimo": "2026-10-29"
+   "usi": 2,
+   "ultimo": "2026-11-06"
   },
   "1UefrogLKDdOKHxCBjQOsFjEsNFOeSefT": {
    "usi": 2,
@@ -11134,7 +11174,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_12.flac",
   "trap_09.flac",
   "phonk_14.flac",
   "energia_07.flac",
@@ -11153,7 +11192,8 @@
   "trap_05.flac",
   "phonk_06.flac",
   "energia_04.flac",
-  "deciso_06.flac"
+  "deciso_06.flac",
+  "phonk_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11188,7 +11228,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "cinema",
+ "formato_ultimo": "post",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -11236,11 +11276,11 @@
   "2388876744974625",
   "2865463390342861",
   "1076547086228050",
-  "2373852472923170"
+  "2373852472923170",
+  "580920710907743"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Winterbell",
   "Paramveer Singh katoch",
   "Eros Ramazzotti",
   "HUMBE",
@@ -11249,10 +11289,10 @@
   "Kayhin",
   "Patti Smith",
   "UEFA, Tony Britten",
-  "The Sheen"
+  "The Sheen",
+  "Bryan Todd"
  ],
  "ig_titoli_recenti": [
-  "power drift",
   "epic thoughts",
   "epic battles",
   "inceptum",
@@ -11291,7 +11331,8 @@
   "funkytown flute",
   "people have the power",
   "uefa champions league legacy anthem",
-  "don t give up on me"
+  "don t give up on me",
+  "hero"
  ],
  "ig_tendenze_riserva": [
   {
@@ -11309,10 +11350,10 @@
    "libreria": false
   },
   {
-   "audio_id": "2475524415980310",
-   "title": "Dream Big",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 119030,
+   "audio_id": "580920710907743",
+   "title": "Hero (feat. Ashley Argota)",
+   "display_artist": "Bryan Todd",
+   "duration_in_ms": 213120,
    "libreria": true
   }
  ]
