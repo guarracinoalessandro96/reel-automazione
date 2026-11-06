@@ -325,42 +325,73 @@ STILI_SCRITTA = {
                           centro=True),
 }
 
-# parole chiave (temi di Alessandro): punteggio piu' alto = si evidenzia prima. Mai piu' di 2 parole.
+# parole chiave (temi di Alessandro): 3 = temi centrali, 2 = parole forti vicine ai temi. Mai piu' di 2 parole.
+# 6/11/2026 (revisione: "una parola gialla a caso sembra un errore"): niente piu' ripiego sulla parola piu' lunga,
+# niente parole generiche da sole (tempo, vita, giorno, mai, oggi, meglio...) ne' negative (mollare, arreso, fatica,
+# rischio): se la frase non ha una parola forte resta tutta bianca, come le scritte native di TikTok.
 _CHIAVE = {
-    3: "sacrificio sacrifici disciplina disciplinato lavoro famiglia futuro rispetto costanza costante lealtà leale "
-       "libertà libero dignità onore umiltà sogni sogno fame",
-    2: "lavorare lavora successo obiettivo obiettivi risultati risultato forza forte coraggio pazienza fatica costruire "
-       "costruisci oggi domani realtà potenziale prezzo scelta scelto crescita crescere fondamenta vincere vincitore "
-       "orgoglioso fiero grato privilegio campione occasione occasioni possibilità fiducia valore fede padre madre "
-       "figli mollare arreso meglio migliore duro rischio rischia fortuna emozioni",
-    1: "tempo vita mente senso strada passi giorno anni silenzio cuore mai sempre avanti frutto raccoglie raccogli",
+    3: "sacrificio sacrifici sacrifica disciplina disciplinato lavoro famiglia futuro rispetto rispettarti costanza "
+       "costante lealtà leale libertà dignità onore umiltà sogni sogno",
+    2: "lavorare lavora successo obiettivo obiettivi risultati risultato forza forte coraggio pazienza costruire "
+       "costruisci potenziale prezzo scelta crescita crescere cresciuto fondamenta vincere vincitore orgoglioso "
+       "fiero grato privilegio campione campioni fiducia valore fede padre madre figli figlio figlia genitori mamma "
+       "papà nonno nonna abitudini abitudine investimento svolta rialzati rialzi",
 }
 _PESO_CHIAVE = {p: k for k, v in _CHIAVE.items() for p in v.split()}
-_COPPIE = {("ogni", "giorno"), ("per", "sempre"), ("duro", "lavoro"), ("te", "stesso"), ("ogni", "notte"),
-           ("piccoli", "passi"), ("mai", "arreso")}
-_VUOTE = set("il lo la gli le un uno una di da in con su per tra fra ed ma se che chi cui non più meno come quando "
-             "dove perché anche solo già ancora poi allora così questo questa quello quella sei sono sia hai ho ha "
-             "hanno essere avere fare fai del dello della dei degli delle al allo alla ai agli alle dal dallo dalla "
-             "dai dagli dalle nel nello nella nei negli nelle sul sullo sulla sui sugli sulle lui lei noi voi loro "
-             "mio mia tuo tua suo sua nostro vostro tuoi miei sue suoi tutto tutti niente nessuno qualcosa".split())
+# coppie da colorare insieme, col loro peso: quelle con la negazione dentro ("non mollare" = vai avanti) battono tutto
+_COPPIE = {("non", "mollare"): 4, ("mai", "mollare"): 4, ("mai", "arreso"): 4, ("non", "arrenderti"): 4,
+           ("non", "fermarti"): 4, ("duro", "lavoro"): 3.5, ("lavoro", "duro"): 3.5, ("ogni", "giorno"): 2.5,
+           ("per", "sempre"): 2.5, ("te", "stesso"): 2.5, ("ogni", "notte"): 2.5, ("piccoli", "passi"): 2.5,
+           ("il", "meglio"): 2.5, ("versione", "migliore"): 2.5, ("domani", "migliore"): 2.5}
+_NEGANO = set("non né mai senza nessuno nessuna nessun niente nulla neanche nemmeno neppure vorresti smetti smettere "
+              "smesso perdi perdere perso persa".split())
+# parole vietate da Alessandro: mai in risalto, anche se un giorno finissero in una lista
+_MAI_GIALLE = set("palestra palestre tradimento tradimenti tradire tradito tradita traditore donna donne ragazza "
+                  "ragazze fidanzata".split())
+_FINE_PROPOSIZIONE = re.compile(r"[.!?:;,]\W*$")
+
+
+def _nuda(w):
+    """Parola per il confronto: minuscola, senza punteggiatura e senza articolo eliso, anche con l'apostrofo
+    tipografico ("L'onore," -> "onore", "dell’umiltà" -> "umiltà")."""
+    w = re.sub(r"^\W+|\W+$", "", w.lower().replace("’", "'"))
+    return re.sub(r"^\w+'", "", w)
+
+
+def _negata(nude, crude, i):
+    """True se nella stessa proposizione, fino a 3 parole prima della i, c'e' una negazione: la parola e' il concetto
+    negato ("il problema non e' la MOTIVAZIONE", "non e' un SACRIFICIO") e in giallo direbbe il contrario."""
+    for j in range(i - 1, max(-1, i - 4), -1):
+        if _FINE_PROPOSIZIONE.search(crude[j]):
+            return False
+        if nude[j] in _NEGANO:
+            return True
+    return False
 
 
 def parole_chiave(testo, quante=2):
-    """6/11/2026: posizioni (indici in testo.split()) delle 1-2 parole da colorare: prima le parole dei temi di
-    Alessandro (sacrificio, disciplina, lavoro, famiglia, futuro...) e le coppie forti ("ogni giorno", "per sempre");
-    se non ce ne sono, la parola piu' lunga (la "pesante" della frase). Sempre la stessa scelta per la stessa frase."""
-    parole = [re.sub(r"[^\w']", "", w.lower()).strip("'") for w in testo.split()]
-    for i in range(len(parole) - 1):
-        if quante >= 2 and (parole[i], parole[i + 1]) in _COPPIE:
-            return {i, i + 1}
-    punti = [(_PESO_CHIAVE.get(p, 0), i) for i, p in enumerate(parole)]
-    scelte = [i for k, i in sorted(punti, key=lambda x: (-x[0], -x[1])) if k > 0]
-    if scelte:
-        prima = scelte[0]
-        altra = [i for i in scelte[1:] if _PESO_CHIAVE.get(parole[i], 0) >= 3 and abs(i - prima) > 1]
-        return {prima} | set(altra[:quante - 1])
-    lunghe = [(len(p), i) for i, p in enumerate(parole) if p not in _VUOTE and len(p) >= 6]
-    return {max(lunghe)[1]} if lunghe else set()
+    """6/11/2026: posizioni (indici in testo.split()) delle 1-2 parole da colorare, sempre le stesse per la stessa
+    frase: una coppia fissa ("non mollare", "ogni giorno") o le parole dei temi di Alessandro (sacrificio, disciplina,
+    lavoro, famiglia, futuro...), mai se negate. Se non ce ne sono: set(), la frase resta tutta bianca."""
+    crude = testo.split()
+    nude = [_nuda(w) for w in crude]
+    cand = []       # (peso, posizione, indici): vince il piu' pesante, a parita' il piu' avanti (la frase chiude li')
+    for i, p in enumerate(nude):
+        if p in _PESO_CHIAVE and p not in _MAI_GIALLE and not _negata(nude, crude, i):
+            cand.append((_PESO_CHIAVE[p], i, (i,)))
+        coppia = (p, nude[i + 1]) if i + 1 < len(nude) else None
+        if (quante >= 2 and coppia in _COPPIE and not _MAI_GIALLE & set(coppia)
+                and not _FINE_PROPOSIZIONE.search(crude[i]) and (p in _NEGANO or not _negata(nude, crude, i))):
+            cand.append((_COPPIE[coppia], i, (i, i + 1)))
+    if not cand:
+        return set()
+    peso, i, scelta = max(cand)
+    scelta = set(scelta)
+    if len(scelta) == 1 and quante >= 2 and peso >= 3:      # seconda parola: un altro tema centrale, non attaccato
+        altre = [j for k, j, s in cand if len(s) == 1 and k >= 3 and abs(j - i) > 1 and nude[j] != nude[i]]
+        if altre:
+            scelta.add(max(altre))
+    return scelta
 
 
 def _font_scritta(st, size):
@@ -475,8 +506,8 @@ def _scritta(W, H, text, faces, mappa, st):
         parole = riga.split()
         for j, p in enumerate(parole):
             x = xr[i] + (d.textlength(" ".join(parole[:j]) + " ", font=font) if j else 0)
-            if k in chiave:                         # virgolette e punteggiatura restano del colore normale
-                prima, nucleo, dopo = re.match(r"^(\W*)(.*?)(\W*)$", p).groups()
+            if k in chiave:     # virgolette, punteggiatura e articolo eliso ("l'onore") restano del colore normale
+                prima, nucleo, dopo = re.match(r"^(\W*(?:\w+['’](?=\w))?)(.*?)(\W*)$", p).groups()
                 for t, c in ((prima, st["testo"]), (nucleo, st["evidenza"]), (dopo, st["testo"])):
                     if t:
                         pezzi.append((x, base0 + i * lh, t, c))
