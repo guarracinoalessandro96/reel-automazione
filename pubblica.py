@@ -1037,20 +1037,38 @@ class Drive:
         return n
 
 
+def titolo_youtube(frase, parole):
+    """6/11/2026 (revisione: 23 titoli su 120 perdevano la fine della frase, quella che le da' senso, per far posto
+    all'hashtag): prima la frase INTERA. Poi il primo hashtag di `parole` che ci sta nei 100 caratteri di YouTube
+    (se nessuno ci sta resta solo in descrizione) e #shorts se c'e' posto: e' sempre anche in descrizione, quindi
+    l'hashtag della frase vale di piu' (e cambia il titolo quando la frase torna). Si taglia (a parola intera + "…",
+    mai solo la prima frase) solo una frase che da sola supera 100 caratteri. Ritorna (titolo, hashtag usato o None)."""
+    frase = frase.strip()
+    for fine in (" #shorts", ""):
+        for p in parole:
+            if len(f"{frase} {p}{fine}") <= 100:
+                return f"{frase} {p}{fine}", p
+    if len(f"{frase} #shorts") <= 100:
+        return f"{frase} #shorts", None
+    if len(frase) <= 100:
+        return frase, None
+    return frase[:99].rsplit(" ", 1)[0].rstrip(",;:") + "…", None
+
+
 def youtube_upload(creds, path, cap, publish_at=None):
     """publish_at (datetime): caricato subito come privato e PROGRAMMATO: YouTube lo pubblica all'ora esatta."""
     from googleapiclient.discovery import build
     from googleapiclient.http import MediaFileUpload
     yt = build("youtube", "v3", credentials=creds, cache_discovery=False)
-    title = cap["gancio"].strip()
     # 3/11/2026: la parola cercata viene dalla frase stessa (se parla di costanza -> #costanza), altrimenti una a caso
-    parola = (parole_cercate(cap["gancio"]) or [random.choice(("#motivazione", "#disciplina", "#crescitapersonale"))])[0]
+    della_frase = parole_cercate(cap["gancio"])
+    parole = della_frase or [random.choice(("#motivazione", "#disciplina", "#crescitapersonale"))]
     if cap.get("volte"):     # frase gia' uscita: mai lo stesso titolo, la parola cambia a ogni ritorno
-        giro = list(dict.fromkeys(parole_cercate(cap["gancio"]) + ["#motivazione", "#disciplina", "#crescitapersonale",
-                                                                   "#obiettivi", "#mentalita"]))
-        parola = giro[cap["volte"] % len(giro)]
-    if len(title) > 100 - len(parola) - 10:     # limite YouTube 100 caratteri: taglio a parola intera + "…"
-        title = title[:88 - len(parola)].rsplit(" ", 1)[0].rstrip(",;:") + "…"   # (mai solo la prima frase: cambierebbe il senso)
+        giro = list(dict.fromkeys(della_frase + ["#motivazione", "#disciplina", "#crescitapersonale",
+                                                 "#obiettivi", "#mentalita"]))
+        k = cap["volte"] % len(giro)
+        parole = giro[k:] + giro[:k]
+    title, parola = titolo_youtube(cap["gancio"], parole)    # 6/11: la frase intera conta piu' dell'hashtag
     privacy = ENV("YOUTUBE_PRIVACY") or "public"
     momento = cap.get("tema") == "momento"
     descr = (cap["gancio"].strip().strip('"“”') + ("\n\n#shorts " + " ".join(cap.get("hashtag") or []) if momento else
@@ -1065,10 +1083,10 @@ def youtube_upload(creds, path, cap, publish_at=None):
             import didascalie
             descr = didascalie.descrizione_youtube(cap["gancio"], serie_testo(cap), cap.get("tema"), cap.get("id"),
                                                    didascalie.hashtag(cap["gancio"], cap.get("tema"), cap.get("id"),
-                                                                      2, escludi=(parola,)))
+                                                                      2, escludi=(parola,) if parola else ()))
         except Exception as e:
             log("descrizione YouTube nuova non riuscita, uso quella di prima:", e)
-    body = {"snippet": {"title": f"{title} {parola} #shorts", "description": descr, "categoryId": "22",
+    body = {"snippet": {"title": title, "description": descr, "categoryId": "22",
                         "tags": list(dict.fromkeys(["vita vera", "momenti", "oggi", "italia", "shorts"] if momento else
                                  ["motivazione", "obiettivi", "disciplina", "frasi motivazionali", "crescita personale",
                                   "futuro", "lavoro", "vincere", "shorts"]
@@ -1470,14 +1488,20 @@ def con_traccia(path):
 
 ULTIMO_IG = {}     # 4/11/2026: come e' uscito l'ultimo reel Instagram (metodo, brano se cambiato): finisce nei risultati
 
-# 6/11/2026 (Alessandro: si' ai "reel di prova" su meta' dei reel): REEL DI PROVA di Instagram (trial reels, Graph API
-# trial_params, documentato da Meta per tutte le versioni dal 3/12/2025). Instagram li mostra prima solo a chi NON lo
-# segue e, se vanno bene, li passa da solo anche ai follower (graduation_strategy SS_PERFORMANCE). 5 su 10 al giorno,
-# a orari alterni che si scambiano ogni giorno (ogni orario e' a volte prova e a volte normale: confronto giusto).
-# In stato.json: risultati instagram "prova" true/false (e "prova_rifiutata" col motivo, se Instagram la rifiuta:
-# allora lo stesso reel esce subito normale, mai perso e mai doppio). Per spegnerli: PROVA_IG = False.
-PROVA_IG = True
+# 6/11/2026: REEL DI PROVA di Instagram (trial reels, Graph API trial_params, documentato da Meta per tutte le versioni
+# dal 3/12/2025) su 5 reel su 10, a orari alterni che si scambiano ogni giorno. Instagram li mostra solo a chi NON lo
+# segue: finche' sono di prova NON compaiono sul suo profilo e non arrivano ai follower; se nelle prime 72 ore vanno
+# bene li pubblica da solo per tutti (graduation_strategy SS_PERFORMANCE).
+# SPENTI (revisione 6/11: il si' di Alessandro c'era solo nel testo del lavoro, non in un suo messaggio):
+# PROVA_IG = True solo dopo il suo si' esplicito. Anche accesi partono solo se prova_ig_ferma() non trova motivi contro.
+# In stato.json, risultati instagram: "prova" true/false e "prova_rifiutata" col motivo (allora lo stesso reel esce
+# subito normale: mai perso, mai doppio).
+PROVA_IG = False
 PROVA_IG_PARAMETRI = json.dumps({"graduation_strategy": "SS_PERFORMANCE"})
+PROVA_IG_FOLLOWER = 200      # guide 2025-26: almeno 200 follower per gli account professionali (altre dicono 1.000)
+PROVA_IG_PAUSA_ORE = 24      # dopo un rifiuto di Instagram (es. vuole piu' follower): niente prove per un giorno
+PROVA_IG_DAL = "2026-11-06"  # reel di prova controllati da questa data: spostarla in avanti riaccende dopo uno stop
+PROVA_IG_NON_IDONEO = re.compile(r"follower|eligib|maximum number of trial", re.I)   # account non (ancora) idoneo
 COPERTINA_FORMATI = tuple(FORMATI_10) + ("dieci_foto",)     # la frase c'e' dal primo all'ultimo fotogramma
 
 
@@ -1485,12 +1509,54 @@ class ProvaNonUscita(RuntimeError):
     """Il reel di prova non e' uscito ma il contenitore e' pronto e NON pubblicato: si puo' rifare normale."""
 
 
-def reel_di_prova(slot):
-    """6/11/2026: True per meta' degli orari del giorno (orari alterni, scambiati ogni giorno)."""
+def prova_ig_ferma(state, adesso=None):
+    """6/11/2026 (revisione): perche' NON fare adesso un reel di prova (None = si puo'). Si fermano da soli se:
+    Instagram ha meno di PROVA_IG_FOLLOWER follower (docs/follower.json, aggiornato ogni sera); Instagram ne ha
+    rifiutato uno nelle ultime PROVA_IG_PAUSA_ORE ore; un reel di prova e' uscito SENZA il brano di Instagram
+    (tipo_audio letto da ricontrolla_instagram dopo 90': si sentirebbe la nostra musica) o non si e' riusciti a
+    controllarlo in 24 ore (questi due li spengono finche' PROVA_IG_DAL non va avanti); il controllo di un reel di prova
+    di piu' di 6 ore fa non e' ancora arrivato (si aspetta)."""
+    try:
+        fol = json.load(open(os.path.join(HERE, "docs", "follower.json"), encoding="utf-8"))
+        n = [x["instagram"] for x in fol if x.get("instagram")][-1]
+        if n < PROVA_IG_FOLLOWER:
+            return f"Instagram ha {n} follower (ne servono almeno {PROVA_IG_FOLLOWER})"
+    except Exception as e:
+        log("reel di prova: follower non letti, decido senza:", e)
+    adesso = adesso or datetime.datetime.now()
+    pausa = (adesso - datetime.timedelta(hours=PROVA_IG_PAUSA_ORE)).isoformat(timespec="minutes")
+    for h in (state or {}).get("storico") or []:
+        ig, quando = (h.get("risultati") or {}).get("instagram") or {}, h.get("quando") or ""
+        chi = h.get("slot") or quando
+        if quando < PROVA_IG_DAL:
+            continue
+        if ig.get("prova_rifiutata") and not ig.get("prova") and quando > pausa:
+            return f"Instagram ha rifiutato il reel di prova delle {chi}: pausa di un giorno"
+        if not (ig.get("prova") and ig.get("ok") and str(ig.get("id", "")).isdigit()):
+            continue
+        tipo, ore = ig.get("tipo_audio"), (adesso - datetime.datetime.fromisoformat(quando)).total_seconds() / 3600
+        if tipo and tipo != "MUSIC":
+            return f"SPENTI: il reel di prova delle {chi} e' uscito senza il brano di Instagram ({tipo})"
+        if not tipo and ore > 24:
+            return f"SPENTI: il brano del reel di prova delle {chi} non si e' mai potuto controllare"
+        if not tipo and ore > 6:
+            return f"aspetto il controllo del brano del reel di prova delle {chi}"
+    return None
+
+
+def reel_di_prova(slot, state=None):
+    """6/11/2026: True per meta' degli orari del giorno (orari alterni, scambiati ogni giorno), se prova_ig_ferma non
+    trova motivi per fermarli. In caso di errore: reel normale."""
     t = ora_slot(slot)
-    if not PROVA_IG or t is None or t.hour not in orario.ORE:
+    if not PROVA_IG or t is None or t.hour not in orario.ORE or (orario.ORE.index(t.hour) + t.toordinal()) % 2:
         return False
-    return (orario.ORE.index(t.hour) + t.toordinal()) % 2 == 0
+    try:
+        motivo = prova_ig_ferma(state)
+    except Exception as e:
+        motivo = f"controlli non riusciti ({e})"
+    if motivo:
+        log("Instagram: niente reel di prova:", motivo)
+    return not motivo
 
 
 def copertina_reel(path, durata=None):
@@ -1508,13 +1574,16 @@ def copertina_reel(path, durata=None):
 
 def _crea_reel(V, ig, token, dati, **extra):
     """6/11/2026: crea il contenitore del reel. Se Instagram rifiuta il reel di prova (trial_params) si riprova subito
-    senza share_to_feed e poi come reel NORMALE (lo stesso reel, mai perso); se rifiuta la copertina, senza."""
+    senza share_to_feed (non se l'account non e' idoneo) e poi come reel NORMALE (lo stesso reel, mai perso); se
+    rifiuta la copertina, senza."""
     crea = lambda d: _meta("POST", f"{V}/{ig}/media", data={**d, **extra, "access_token": token})
     r = crea(dati)
     if "id" not in r and "trial_params" in dati:
         log("instagram: reel di prova rifiutato:", r)
-        ULTIMO_IG["prova_rifiutata"] = str(r.get("error", r))[:200]
-        if "share_to_feed" in dati:
+        motivo = str(r.get("error", r))
+        ULTIMO_IG["prova_rifiutata"] = motivo[:300]
+        # 6/11/2026 (revisione): account non idoneo (pochi follower...): inutile riprovare senza share_to_feed
+        if "share_to_feed" in dati and not PROVA_IG_NON_IDONEO.search(motivo):
             r = crea({k: v for k, v in dati.items() if k != "share_to_feed"})
             if "id" in r:
                 del dati["share_to_feed"]
@@ -1541,8 +1610,17 @@ def _stato_contenitore(V, cid, token):
 
 def instagram_upload(path, cap, audio_id=None):
     """audio_id: brano nativo di Instagram (allora path e' il video SENZA musica). 6/11/2026: cap["prova_ig"] = reel
-    di prova; se la prova non esce, lo stesso reel esce subito come reel normale."""
-    prova = PROVA_IG and bool(cap.get("prova_ig"))
+    di prova, solo col brano di Instagram (audio_id) e se prova_ig_ferma lo permette ancora (anche nei recuperi e nei
+    nuovi tentativi); se la prova non esce, lo stesso reel esce subito come reel normale."""
+    prova = PROVA_IG and bool(cap.get("prova_ig")) and bool(audio_id)
+    if prova:
+        try:
+            motivo = prova_ig_ferma(_IG_STATO.get("state"))
+        except Exception as e:
+            motivo = f"controlli non riusciti ({e})"
+        if motivo:
+            log("instagram: reel normale, niente prova:", motivo)
+            prova = False
     try:
         return _instagram_reel(path, cap, audio_id, prova)
     except ProvaNonUscita as e:
@@ -2420,8 +2498,9 @@ def main():
         try:
             if frase.get("copertina_ms") is None and info.get("formato") in COPERTINA_FORMATI:
                 frase["copertina_ms"] = copertina_reel(out_meta, info.get("durata"))
-            frase["prova_ig"] = bool(reel_di_prova(slot) and not voce)
-            log(f"Instagram: copertina {frase.get('copertina_ms')} ms, reel di prova: {'si' if frase['prova_ig'] else 'no'}")
+            frase["prova_ig"] = bool(not voce and reel_di_prova(slot, state))
+            log(f"Instagram: copertina {frase.get('copertina_ms')} ms, reel di prova:",
+                "si" if frase["prova_ig"] else "no")
         except Exception as e:
             frase["prova_ig"] = False
             log("Instagram: copertina/prova non decise, reel normale:", e)

@@ -27,6 +27,16 @@ Codice: `didascalie.py` (nuovo, solo funzioni semplici), `pubblica.testo_breve` 
   perche' non partono dai follower. Il passaggio ai follower non si comanda dall'API.
   https://www.ayrshare.com/docs/apis/post/social-networks/instagram , https://superprofile.bio/guides/instagram-trial-reels ,
   https://postfa.st/blog/instagram-trial-reels
+- **Reel di prova - Instagram (guida ufficiale per i creator)**: mostrati prima a chi non ti segue; finche' non li
+  condividi con tutti non sono visibili alle altre persone sul profilo, solo dopo vanno nella griglia e ai follower
+  (feed e tab Reels); con la condivisione automatica Instagram decide in base alle visualizzazioni delle prime 72 ore.
+  https://creators.instagram.com/blog/instagram-trial-reels
+- **Reel di prova - errori (Metricool)**: un account non idoneo puo' ricevere dall'API lo stesso messaggio del limite
+  ("You reached maximum number of trial reels..."), anche sopra i 1.000 follower se Instagram non ha attivato la
+  funzione per l'account. https://help.metricool.com/es/how-to-publish-instagram-trial-reels-in-metricool-q27tj
+- **YouTube - #Shorts**: YouTube consiglia #Shorts "nel titolo o nella descrizione"; un video verticale fino a 3 minuti
+  e' uno Short anche senza. https://www.socialmediatoday.com/news/youtube-provides-new-overview-of-shorts-for-creators-answers-common-shorts/597446 ,
+  https://miraflow.ai/blog/youtube-shorts-hashtags-2026-do-they-still-matter
 - **YouTube (Centro assistenza)**: hashtag pertinenti al video (quelli fuori tema possono far togliere il video), fino
   a 3 hashtag della descrizione appaiono vicino al titolo, oltre 60 hashtag vengono ignorati tutti.
   https://support.google.com/youtube/answer/6390658
@@ -52,18 +62,34 @@ Codice: `didascalie.py` (nuovo, solo funzioni semplici), `pubblica.testo_breve` 
    finivano su OGNI video (rischio "spam" per TikTok).
 3. **4 hashtag pertinenti** (limite Instagram 5): #frasimotivazionali + quelli delle parole della frase + uno a giro.
    Mai #palestra, mai #citazioni (non sono citazioni di altri).
-4. **YouTube**: titolo come prima (la frase + 1 hashtag + #shorts) ma l'hashtag ora viene dalla frase molto piu'
-   spesso (prima era a caso se la frase non diceva "disciplina/lavoro/..."); descrizione con la stessa struttura
-   (frase, riga di ricerca, Giorno X/365, #shorts + 2 hashtag). Lingua it, categoria 22, "non per bambini",
-   programmazione all'ora esatta: invariati.
+4. **YouTube**: titolo = la frase INTERA + 1 hashtag + #shorts, ma solo quello che ci sta nei 100 caratteri
+   (revisione 6/11: prima 23 titoli su 120 tagliavano la fine della frase con "…" per far posto all'hashtag; ora
+   solo le frasi che da sole superano 100 caratteri, 3 su 120). Ordine: frase + hashtag + #shorts; se non ci sta,
+   frase + hashtag (#shorts e' comunque in descrizione: YouTube chiede #Shorts "nel titolo o nella descrizione");
+   se non ci sta, frase + #shorts; poi la frase da sola. L'hashtag che non entra nel titolo va in descrizione.
+   L'hashtag ora viene dalla frase molto piu' spesso (prima era a caso se la frase non diceva
+   "disciplina/lavoro/..."); descrizione con la stessa struttura (frase, riga di ricerca, Giorno X/365, #shorts +
+   2 hashtag). Lingua it, categoria 22, "non per bambini", programmazione all'ora esatta: invariati.
 5. **Instagram - copertina**: per i reel da 10 s (tutti, oggi) la copertina era il primo fotogramma. Ora si sceglie
    il fotogramma piu' nitido e ben esposto CON IL VISO (la frase c'e' sempre): vedi
    `C:\Users\User\reel-wt\anteprime\copy_copertina_dieci.jpg`.
-6. **Instagram - reel di prova** su 5 reel su 10 (orari alterni che si scambiano ogni giorno, cosi' ogni orario e' a
-   volte prova e a volte normale), passaggio automatico ai follower se vanno bene (SS_PERFORMANCE). Se Instagram
-   rifiuta la prova: si riprova senza share_to_feed, poi lo stesso reel esce normale (mai perso). Se la prova viene
-   rifiutata al momento dell'uscita si rifa' normale solo se Instagram conferma che non e' uscito (mai doppio).
-   In stato.json, risultati instagram: `"prova": true/false` e, se rifiutata, `"prova_rifiutata"` col motivo.
+6. **Instagram - reel di prova: pronti ma SPENTI** (`PROVA_IG = False`, revisione 6/11). Il "si'" di Alessandro
+   c'era solo nel testo del lavoro, non in un suo messaggio: si accendono solo dopo un suo si' esplicito.
+   Cosa deve sapere prima di dire si': i reel di prova li vede solo chi NON lo segue; finche' sono di prova **non
+   compaiono sul suo profilo e non arrivano ai suoi follower** (sembrera' che manchino dei reel). Se nelle prime
+   72 ore vanno bene, Instagram li pubblica da solo per tutti (SS_PERFORMANCE) e allora finiscono sul profilo.
+   Come funzionerebbero accesi: 5 reel su 10 (orari alterni che si scambiano ogni giorno), mai i parlati/momenti,
+   solo con il brano di Instagram. Partono da soli solo quando servono:
+   - Instagram con almeno 200 follower (`docs/follower.json`, oggi 126: secondo le guide sotto i 200 Instagram li
+     rifiuta; altre guide dicono 1.000). Quindi, anche accesi, oggi non partirebbero: nessun confronto a breve.
+   - Se Instagram ne rifiuta uno (es. "pochi follower"): lo stesso reel esce subito normale (senza il tentativo
+     inutile senza share_to_feed) e niente prove per 24 ore.
+   - Se un reel di prova esce SENZA il brano di Instagram (`tipo_audio` diverso da `MUSIC`, letto dopo 90 minuti):
+     si spengono da soli (si sentirebbe la nostra musica). Si spengono anche se il brano di un reel di prova non si
+     riesce a controllare per 24 ore; dopo 6 ore senza controllo si aspetta. Per riaccenderli dopo uno stop:
+     spostare `PROVA_IG_DAL` alla data nuova.
+   - Se la prova viene rifiutata al momento dell'uscita si rifa' normale solo se Instagram conferma che non e' uscito
+     (mai doppio). In stato.json, risultati instagram: `"prova": true/false` e `"prova_rifiutata"` col motivo.
 7. **Invariati**: momenti veri e parlati (il loro testo), liste/regole, niente domande per i commenti, niente
    "seguimi", niente autori, niente eta'.
 
@@ -216,7 +242,8 @@ Giorno 310/365
 #frasimotivazionali #crescitapersonale #motivazione #mentalita
 ```
 
-YouTube dopo - titolo: `Sono fiero della mia nuova versione: sceglie la crescita invece della… #crescitapersonale #shorts`
+YouTube dopo - titolo: `Sono fiero della mia nuova versione: sceglie la crescita invece della comodità. #crescitapersonale`
+(prima della revisione: `...sceglie la crescita invece della… #crescitapersonale #shorts`)
 
 ```
 Sono fiero della mia nuova versione: sceglie la crescita invece della comodità
@@ -381,3 +408,54 @@ Giorno 310/365
 
 #shorts #frasimotivazionali #mentalita
 ```
+
+## Revisione 6/11/2026: titoli YouTube delle 120 frasi vere piu' recenti (stato.json)
+
+Prima 23 titoli su 120 erano tagliati con "…", ora 3 (solo le frasi che da sole superano 100 caratteri). Tutti i titoli che cambiano (prima -> dopo):
+
+- prima: `Se qualcuno ti tratta come un'opzione, smetti di trattarlo come una… #crescitapersonale #shorts`
+  dopo:  `Se qualcuno ti tratta come un'opzione, smetti di trattarlo come una priorità. #crescitapersonale`
+- prima: `Il modo in cui le persone ti trattano mostra le loro ferite, non il… #crescitapersonale #shorts`
+  dopo:  `Il modo in cui le persone ti trattano mostra le loro ferite, non il tuo valore. #crescitapersonale`
+- prima: `Alcune persone non vedono quanto fai per loro. Vedono solo quello che non… #motivazione #shorts`
+  dopo:  `Alcune persone non vedono quanto fai per loro. Vedono solo quello che non fai. Non soddisferai mai…`
+- prima: `Non mancare mai di rispetto alle persone silenziose: osservano tutto e… #rispetto #shorts`
+  dopo:  `Non mancare mai di rispetto alle persone silenziose: osservano tutto e ricordano tutto. #rispetto`
+- prima: `Stai rimuginando di nuovo. Respira. Va bene, capirai come gestirla. E anche… #disciplina #shorts`
+  dopo:  `Stai rimuginando di nuovo. Respira. Va bene, capirai come gestirla. E anche se non ci riesci, va…`
+- prima: `Se vuoi qualcosa che non hai mai avuto, fai qualcosa che non hai mai… #crescitapersonale #shorts`
+  dopo:  `Se vuoi qualcosa che non hai mai avuto, fai qualcosa che non hai mai fatto. #crescitapersonale`
+- prima: `Non so come finirà la mia storia. Ma non leggerai mai che mi sono… #crescitapersonale #shorts`
+  dopo:  `Non so come finirà la mia storia. Ma non leggerai mai che mi sono arreso. #crescitapersonale #shorts`
+- prima: `Se ti offrono una grande occasione e non sei sicuro di farcela: accetta… #motivazione #shorts`
+  dopo:  `Se ti offrono una grande occasione e non sei sicuro di farcela: accetta, poi impari come si fa.`
+- prima: `Se vuoi davvero ottenere qualcosa, devi lavorare sodo. Nessuno costruirà il tuo… #futuro #shorts`
+  dopo:  `Se vuoi davvero ottenere qualcosa, devi lavorare sodo. Nessuno costruirà il tuo futuro al posto tuo.`
+- prima: `Non esistono scorciatoie. Più difficile del lavoro è svegliarti tra dieci anni… #lavoro #shorts`
+  dopo:  `Non esistono scorciatoie. Più difficile del lavoro è svegliarti tra dieci anni nello stesso punto…`
+- prima: `Un obiettivo così grande non sarebbe nato dentro di te se non potessi… #obiettivi #shorts`
+  dopo:  `Un obiettivo così grande non sarebbe nato dentro di te se non potessi realizzarlo. #obiettivi`
+- prima: `Ogni volta che sali di livello, la tua vecchia vita prova a richiamarti.… #frasidivita #shorts`
+  dopo:  `Ogni volta che sali di livello, la tua vecchia vita prova a richiamarti. Non rispondere. #shorts`
+- prima: `Il giorno in cui pianti il seme non è il giorno in cui raccogli il… #crescitapersonale #shorts`
+  dopo:  `Il giorno in cui pianti il seme non è il giorno in cui raccogli il frutto. #crescitapersonale`
+- prima: `Non ho ancora vinto. Forse non è il momento. Però ci sto provando con tutto… #disciplina #shorts`
+  dopo:  `Non ho ancora vinto. Forse non è il momento. Però ci sto provando con tutto me stesso. #disciplina`
+- prima: `La bussola è nata prima dell'orologio. Sapere dove vai conta più del… #crescitapersonale #shorts`
+  dopo:  `La bussola è nata prima dell'orologio. Sapere dove vai conta più del tempo che ci metti. #shorts`
+- prima: `Alla fine della giornata nessuno sa quanto ti impegni. Per questo devi farlo… #impegno #shorts`
+  dopo:  `Alla fine della giornata nessuno sa quanto ti impegni. Per questo devi farlo per te stesso. #impegno`
+- prima: `La bussola è nata prima dell'orologio. Sapere dove vai conta più del tempo… #disciplina #shorts`
+  dopo:  `La bussola è nata prima dell'orologio. Sapere dove vai conta più del tempo che ci metti. #disciplina`
+- prima: `È difficile essere costante senza nessuno che ti applaude. A volte ti… #costanza #shorts`
+  dopo:  `È difficile essere costante senza nessuno che ti applaude. A volte ti incoraggi da solo. #costanza`
+- prima: `Il tuo potenziale non ha limiti. Finora hai mostrato solo una minima… #crescitapersonale #shorts`
+  dopo:  `Il tuo potenziale non ha limiti. Finora hai mostrato solo una minima parte. #crescitapersonale`
+- prima: `Alla lunga il sacrificio paga. Il successo dipende da ciò che fai succedere… #sacrificio #shorts`
+  dopo:  `Alla lunga il sacrificio paga. Il successo dipende da ciò che fai succedere ogni giorno. #sacrificio`
+- prima: `Un giorno i risultati parleranno al posto tuo. E quel silenzio varrà più di… #disciplina #shorts`
+  dopo:  `Un giorno i risultati parleranno al posto tuo. E quel silenzio varrà più di mille spiegazioni.`
+- prima: `Sono fiero della mia nuova versione: sceglie la crescita invece della… #crescitapersonale #shorts`
+  dopo:  `Sono fiero della mia nuova versione: sceglie la crescita invece della comodità. #crescitapersonale`
+- prima: `La parte più difficile non è dimenticare. È continuare a vivere con tutto… #disciplina #shorts`
+  dopo:  `La parte più difficile non è dimenticare. È continuare a vivere con tutto quello che resta. #shorts`

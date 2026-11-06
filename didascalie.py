@@ -32,7 +32,7 @@ CHIAVI = [
     (r"crescit|\bcresc|miglior", "sulla crescita personale", "#crescitapersonale"),
     (r"volont|\bforza\b", "sulla forza di volontà", "#forzadivolonta"),
     (r"pazien", "sulla pazienza", "#pazienza"),
-    (r"coraggi", "sul coraggio", "#coraggio"),
+    (r"\bcoraggi", "sul coraggio", "#coraggio"),      # 6/11: non "incoraggi"
     (r"abitudin", "sulle abitudini", "#abitudini"),
     (r"impegn|\bfatic", "sull'impegno", "#impegno"),
     (r"client|impres|imprendit|aziend|business", "sull'imprenditoria", "#imprenditore"),
