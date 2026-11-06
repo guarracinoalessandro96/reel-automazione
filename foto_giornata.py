@@ -89,7 +89,7 @@ def _dentro(x0, y0, w, h, W, H, rot):
     return True
 
 
-def visi_foto(im, ruotati=True):
+def visi_foto(im, ruotati=False):
     """6/11/2026: i visi della foto [(x0, y0, x1, y1) in frazioni, con margine per capelli e mento], uniti quando
     piu' rilevatori trovano lo stesso viso; dal piu' grande al piu' piccolo. In palestra i rilevatori vedono "visi"
     anche nella pedana della pressa o nei dischi: si tengono solo quelli con abbastanza pelle al centro (PELLE)."""
@@ -184,7 +184,8 @@ def prepara(src):
         gradi = inclinazione(acc, obiettivo, im.height > im.width)
         if gradi:
             im = im.rotate(-gradi, resample=Image.BICUBIC)
-        visi = visi_foto(im)
+        # solo visi dritti: girata di 90 gradi la pedana della pressa con le scarpe sembra un viso (anche per la pelle)
+        visi = visi_foto(im, ruotati=False)
         x0, y0, w, h = taglio(im.width, im.height, -gradi, visi)
         tagliata = im.resize((int(W * MARGINE), H), Image.LANCZOS, box=(x0, y0, x0 + w, y0 + h))
         info.update(gradi=round(gradi, 1), visi=[((a - x0 / im.width) * im.width / w, (b - y0 / im.height) * im.height / h,
