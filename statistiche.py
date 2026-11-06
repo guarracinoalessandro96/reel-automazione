@@ -319,7 +319,7 @@ def registro_leggi(tok):
     if r.status_code == 401 and tok:
         r = _github("GET", None, params={"ref": "main"})
     if r.status_code == 404:
-        return {}, None
+        return {"giorni": {}}, None
     r.raise_for_status()
     j = r.json()
     try:
@@ -378,7 +378,7 @@ def prenota(tok, oggi, chi, giro, riprendi=None):
     ora = adesso()
     motivo = [None]
     def cambia(dati):
-        g = dati["giorni"].setdefault(oggi.isoformat(), {})
+        g = dati.setdefault("giorni", {}).setdefault(oggi.isoformat(), {})
         motivo[0] = gia_partito(g, giro, riprendi)
         if motivo[0] or (g.get("invio") or {}).get("giro") == giro:     # gia' mia: la scrittura di prima era arrivata
             return False
