@@ -2528,6 +2528,8 @@ def main():
         raise
     if overlay.ULTIMO_STILE and isinstance(info, dict):      # 6/11/2026: quale scritta e' uscita davvero
         info.setdefault("scritta", overlay.ULTIMO_STILE)
+    if isinstance(info, dict) and info.get("formato") and info["formato"] != formato:
+        info.setdefault("estratto", formato)     # 6/11/2026 (analisi): formato estratto, se e' uscito un altro (clip corta...)
     log("Montato:", info)
     # 5/11/2026: il reel con le foto NON usa il video scelto (resta solo come ripiego se le foto non si montano): quel
     # video non va segnato come pubblicato ne' spostato nell'archivio, e la clip d'archivio non conta come usata
