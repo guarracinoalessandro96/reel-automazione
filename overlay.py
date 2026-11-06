@@ -225,6 +225,31 @@ LOOK = ("curves=master='0/0 0.12/0.09 0.5/0.47 0.85/0.87 1/0.98',"
         "eq=saturation=0.94,vignette=PI/6")
 
 
+LUCE_SUA_DAL = "2026-11-05T18:00"     # 6/11/2026: da qui Alessandro sceglie la luce col telefono (esposizione sul viso)
+
+
+def data_ripresa(path):
+    """'AAAA-MM-GGTHH:MM' (ora italiana) in cui l'iPhone ha girato la clip, None se non si sa."""
+    try:
+        info = subprocess.run([FFMPEG, "-hide_banner", "-i", path], capture_output=True, text=True,
+                              errors="ignore", timeout=30).stderr
+        m = (re.search(r"com\.apple\.quicktime\.creationdate\s*:\s*(\S+)", info)
+             or re.search(r"creation_time\s*:\s*(\S+)", info))
+        if not m:
+            return None
+        import datetime
+        from zoneinfo import ZoneInfo
+        t = datetime.datetime.fromisoformat(m.group(1).replace("Z", "+00:00")).astimezone(ZoneInfo("Europe/Rome"))
+        return t.strftime("%Y-%m-%dT%H:%M")
+    except Exception:
+        return None
+
+
+def luce_sua(path):
+    """True se la clip e' stata girata dopo LUCE_SUA_DAL: niente LOOK ne' schiarita."""
+    return (data_ripresa(path) or "") >= LUCE_SUA_DAL
+
+
 def schiarita(frames):
     """Filtro per le clip buie (notte, auto): il look scuro non deve far sparire il viso. Vuoto se la clip e' gia' chiara."""
     if not frames:

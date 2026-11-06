@@ -374,6 +374,8 @@ def scegli_formato(slot, state, frase, an, spinto=True):
             pesi_f = json.load(open(os.path.join(HERE, "pesi.json"), encoding="utf-8")).get("formati", {})
         except Exception:
             pesi_f = {}
+        if str(slot)[:10] < FORMATI_PROVA_FINO:
+            pesi_f = {}
         return random.choices(scelte, weights=[float(pesi_f.get(f, 1.0)) for f in scelte])[0]
     if TUTTO_30S:                    # 26/10/2026: tutti da 30 s, i 3 formati a turno (mai lo stesso due volte di fila)
         scelte = [f for f in FORMATI_30 if f != state.get("formato_ultimo")] or list(FORMATI_30)
@@ -469,7 +471,12 @@ FORMATI_30 = ("racconto", "racconto_broll", "racconto_lento")
 # 29/10/2026 (Alessandro: "passiamo a 10 secondi", "cambiamo un po' il format"): TUTTI da 10 s, frase in due tempi,
 # tre varianti a turno (formati_nuovi.py). Momento e parlato restano.
 TUTTO_10S = True
-FORMATI_10 = ("dieci", "dieci_due", "dieci_broll")
+FORMATI_10 = ("dieci", "dieci_due", "dieci_broll", "taglio1", "taglio2", "taglio3", "intero")
+# 6/11/2026 (Alessandro: "sfruttare diversi tipi di format per capire quali video possano funzionare, poi faremo solo
+# quelle"): fino a FORMATI_PROVA_FINO tutti i formati da 10 s con la STESSA probabilita' (niente pesi vecchi), mai lo
+# stesso due volte di fila; poi report.py/l'agente delle 18:30 tengono i migliori
+FORMATI_PROVA_FINO = "2026-11-16"
+SCENE_EXTRA = {"dieci_due": 1, "dieci_broll": 3, "taglio1": 3, "taglio2": 2, "taglio3": 2}
 ORARIO_FOTO, FOTO_DAL = ("12:00", "18:00"), "2026-11-05"   # 1/11/2026: reel con le foto della giornata (foto_giornata.py); 5/11: 43 foto caricate -> si parte oggi, 2 al giorno finche' ce ne sono
 COMMENTI_SU_TELEGRAM = False   # 31/10/2026: "non voglio i commenti": su Telegram solo errori e statistiche delle 8
 ORARIO_LISTA = "spenta"      # 31/10/2026: prima tutte le frasi delle foto; per riaccenderla "18:00". Formato lista, da salvare e mandare (un post cosi' fa 1 invio ogni 2 like)
@@ -567,9 +574,11 @@ def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip):
     si passa a 'dieci_due' (video dell'orario + una clip). Si usano TUTTI i suoi video, anche quelli in palestra
     (29/10/2026: "i video della palestra vanno bene"; e' solo la PAROLA palestra nei testi a essere vietata)."""
     import formati_nuovi
-    if formato == "dieci" and overlay.probe(src)[0] < 10.5:
+    if formato in ("dieci", "intero") and overlay.probe(src)[0] < 10.5:
         formato = "dieci_due"
-    clips = [src] + (clip_extra(drive, work, clip, 3 if formato == "dieci_broll" else 1) if formato != "dieci" else [])
+    # 6/11/2026: le altre scene PRIMA dallo stesso giorno (i video della stessa palestra), poi a caso
+    giorno = str((clip or {}).get("registrato") or overlay.data_ripresa(src) or "")[:10] or None
+    clips = [src] + (clip_extra(drive, work, clip, SCENE_EXTRA[formato], giorno) if formato in SCENE_EXTRA else [])
     # 31/10/2026: controllo PRIMA di pubblicare: se la scritta coprirebbe il viso si cambia clip, fino a 2 volte
     for prova in range(2):
         try:

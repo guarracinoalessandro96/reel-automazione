@@ -1,4 +1,4 @@
-﻿"""
+"""
 Reel con le foto della giornata (1/11/2026, richiesta di Alessandro): le foto dell'iPhone arrivano nella cartella Drive
 "Foto della giornata", si sistemano come fa l'iPhone (luce, contrasto, colori, nitidezza) e diventano un reel da 10 s
 con un movimento leggero, la musica e la scritta. Agli orari ORARIO_FOTO di pubblica.py, finche' ci sono foto.
@@ -22,7 +22,7 @@ if pillow_heif:
 
 CARTELLA = "Foto della giornata"
 USATE = "Foto usate"         # 5/11/2026: dove finiscono le foto gia' uscite in un reel
-STILE = "caldo"              # 5/11/2026: "flash" (effetto Flash di Instagram, sua scelta) o "caldo" (lo stile di prima)
+STILE = "virale"             # 6/11/2026: "virale" (scelto da me su sua delega), "caldo" (prima) o "flash" (scartato)
 LATO_MINIMO = 700           # foto piu' piccole (miniature, screenshot ridotti) verrebbero sgranate nel reel
 MINIMO, MASSIMO = 4, 6       # foto della stessa giornata in un reel
 MARGINE = 1.08               # 8% in piu' della larghezza: lo spazio del movimento
@@ -44,6 +44,9 @@ def migliora(src, dst):
     if STILE == "flash":
         flash(im).save(dst, quality=96)
         return
+    if STILE == "virale":
+        virale(im).save(dst, quality=96)
+        return
     # stile delle foto che piacciono ad Alessandro: caldo e morbido, luci basse, ombre piene, colori naturali (non saturi)
     im = im.point([round(255 * ((i / 255) - 0.10 * max(0.0, (i / 255) - 0.7) / 0.3)) for i in range(256)] * 3)
     im = ImageEnhance.Contrast(im).enhance(1.04)
@@ -51,6 +54,31 @@ def migliora(src, dst):
     im = Image.merge("RGB", (r.point(lambda v: min(255, int(v * 1.03))), g, b.point(lambda v: int(v * 0.95))))
     im = im.filter(ImageFilter.UnsharpMask(radius=2, percent=40, threshold=3))
     im.save(dst, quality=96)
+
+
+def virale(im):
+    """6/11/2026 (Alessandro: il Flash di Instagram costa 55 euro al mese, "editami tu le foto... in base a come secondo
+    te possono andare virali"): foto nitide e "piene" come i profili lifestyle che girano di piu'. Chiarezza (contrasto
+    locale), colori vivi ma pelle naturale, luce leggermente calda, bordi un filo piu' scuri (la scritta si legge
+    meglio), nitidezza fine e un velo di grana."""
+    import numpy as np
+    im = im.filter(ImageFilter.UnsharpMask(radius=40, percent=22, threshold=0))          # chiarezza
+    a = np.asarray(im).astype(np.float32) / 255
+    a = a * a * (3 - 2 * a) * 0.35 + a * 0.65                                            # curva a S leggera
+    grigio = a.mean(axis=2, keepdims=True)
+    sat = a.max(axis=2, keepdims=True) - a.min(axis=2, keepdims=True)
+    r, g, b = a[..., 0:1], a[..., 1:2], a[..., 2:3]
+    pelle = ((r > g) & (g > b) & (r - b > 0.06)).astype(np.float32)                     # la pelle si spinge meno
+    spinta = (0.30 * (1 - sat) ** 2) * (1 - 0.6 * pelle)                                 # vivacita'
+    a = grigio + (a - grigio) * (1 + spinta)
+    a *= np.array([1.025, 1.0, 0.965], dtype=np.float32)                                 # un po' caldo
+    H, W = a.shape[:2]
+    yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
+    d = ((xx / W - 0.5) ** 2 + (yy / H - 0.47) ** 2) / 0.5
+    a *= (1 - 0.16 * np.clip(d, 0, 1) ** 1.5)[..., None]                                 # vignettatura morbida
+    a += np.random.default_rng(7).normal(0, 0.007, (H, W, 1)).astype(np.float32)         # grana leggera
+    im = Image.fromarray((np.clip(a, 0, 1) * 255).astype(np.uint8))
+    return im.filter(ImageFilter.UnsharpMask(radius=1.3, percent=70, threshold=2))       # nitidezza fine
 
 
 def centro_luce(im):

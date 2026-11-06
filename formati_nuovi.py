@@ -28,6 +28,12 @@ FORMATI = {
     "dieci": {"stacchi": [10.0]},                    # una sola inquadratura: il video del giorno
     "dieci_due": {"stacchi": [5.0, 5.0]},            # due inquadrature (video del giorno + una clip di vita normale)
     "dieci_broll": {"stacchi": [2.5] * 4},           # quattro stacchi veloci
+    # 6/11/2026 (Alessandro: "sfruttare diversi tipi di format... scene di un secondo, due, tre, cinque o il video per
+    # intero di 10 o 15 secondi"): i suoi video nuovi (10-20 s, tagliati da lui) a scene di lunghezza diversa
+    "taglio1": {"stacchi": [1.0] * 10},              # 10 scene da 1 s
+    "taglio2": {"stacchi": [2.0] * 5},               # 5 scene da 2 s
+    "taglio3": {"stacchi": [3.0, 3.5, 3.5]},         # 3 scene da ~3 s
+    "intero": {"stacchi": [20.0]},                   # il suo video com'e', per intero (10-20 s: lo accorcia make_dieci)
 }
 DURATA_RACCONTO = 30.0
 GANCIO_S = 3.5
@@ -78,14 +84,14 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
     tmp = tempfile.mkdtemp()
     n = len(durate)
     cmd, catena, volti, mappe = [ov.FFMPEG, "-y", "-v", "error"], [], [], []
-    dieci = nome.startswith("dieci")
+    dieci = nome.startswith("dieci") or nome in ("taglio1", "taglio2", "taglio3", "intero")
     for i, seg in enumerate(durate):
         c = clips[i % len(clips)]
         secondi, hdr = ov.probe(c)
         giro = i // len(clips)                     # stessa clip riusata: punto diverso
         riserva = max(0.0, min(0.5 + giro * (seg + 0.5), secondi - seg - 0.2))
         inizio = ov.inizio_bello(c, secondi, hdr, seg + 0.2, riserva) if giro == 0 else riserva
-        if i == 0 and nome.startswith("dieci") and secondi > seg + 1.5:    # 1/11/2026: si parte sempre dal punto piu' forte
+        if i == 0 and dieci and secondi > seg + 1.5:    # 1/11/2026: si parte sempre dal punto piu' forte
             try:
                 inizio = ov.segmento_migliore(c, secondi, ov.HDR_TO_SDR if hdr else None, seg + 0.2)[0]
             except Exception:
@@ -103,14 +109,16 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
             volti.append([])
             mappe.append(None)
             schiarisci = ""
+        # 6/11/2026 (Alessandro: "saro' io a decidere la luminosita' dei video"): sui video girati da lui dal 5/11
+        # niente schiarita e niente LOOK, la luce resta quella che ha scelto col telefono
+        sua = dieci and ov.luce_sua(c)
         f = [x for x in (ov.raddrizza(ov.rotazione(c)), ov.HDR_TO_SDR if hdr else "") if x]
         f += [f"scale={W}:{H}:force_original_aspect_ratio=increase", f"crop={W}:{H}", "setsar=1"]
-        f += [schiarisci] if schiarisci else []
+        f += [schiarisci, ov.LOOK] if dieci and not sua and schiarisci else [ov.LOOK] if dieci and not sua else []
         f += [f"fps={ov.FPS_MULTI}", "format=yuv420p", "settb=AVTB", f"fps={ov.FPS_MULTI}",
               "tpad=stop_mode=clone:stop_duration=1", f"trim=0:{seg:.3f}", "setpts=PTS-STARTPTS"]
         catena.append(f"[{i}:v]{','.join(f)}[c{i}]")
-    g = ";".join(catena) + ";" + "".join(f"[c{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=0" + (
-        f",{ov.LOOK}[bg]" if dieci else "[bg]")
+    g = ";".join(catena) + ";" + "".join(f"[c{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=0[bg]"
     corrente, idx = "bg", n
     tagli = [sum(durate[:i]) for i in range(n + 1)]
     for k, (a, b, t) in enumerate(testi):
@@ -218,6 +226,8 @@ def make_dieci(nome, clips, frase, dst, musiche=(), serie=None, controlla_viso=F
     """dieci / dieci_due / dieci_broll: 10 s. 1/11/2026: la frase intera dal primo fotogramma (Instagram: la gente se ne
     va dopo 4 s) e niente "GIORNO X / 365" sul video: lo spazio del primo secondo e' della frase, la serie e' in descrizione."""
     durate = FORMATI[nome]["stacchi"]
+    if nome == "intero":                       # 6/11/2026: tutta la clip, tra 10 e 20 s
+        durate = [round(max(10.0, min(20.0, ov.probe(clips[0])[0] - 0.3)), 2)]
     if len(durate) > 1 and musiche and os.path.exists(musiche[0]):
         durate = tagli_a_tempo(musiche[0], durate)
     return make_sequenza(clips, durate, [(0.0, sum(durate), frase)], dst, musiche, None, nome, controlla_viso)

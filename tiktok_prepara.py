@@ -144,13 +144,34 @@ def prepara(massimo=4):
     for fid in cestino:                                  # nel cestino, non cancellati per sempre
         requests.patch(f"{API}/{fid}", json={"trashed": True}, headers=H, timeout=30)
     os.makedirs(CARTELLA_PC, exist_ok=True)
+    evita = suoni_recenti()
+    for x in elenco:
+        x["suoni_da_evitare"] = evita
     json.dump(elenco, open(os.path.join(CARTELLA_PC, "elenco.json"), "w", encoding="utf-8"), ensure_ascii=False,
               indent=1)
     return elenco, len(attesa)
 
 
 
-PAROLE_RICERCA = "frasi motivazionali · motivazione · disciplina · lavoro · costanza"
+def suoni_recenti(quanti=30):
+    """6/11/2026: negli ultimi 20 TikTok giravano sempre gli stessi 4 brani (i primi di audio_tendenza.json):
+    i brani degli ultimi `quanti` video del registro non si riusano."""
+    try:
+        righe = open(os.path.join(CARTELLA_PC, "registro.txt"), encoding="utf-8").read().splitlines()
+    except OSError:
+        return []
+    suoni = []
+    for r in reversed(righe):
+        c = [x.strip() for x in r.split("|")]
+        if len(c) >= 5 and c[1] != "nota" and c[3] not in ("-", "audio suo", ""):
+            if c[3] not in suoni:
+                suoni.append(c[3])
+            if len(suoni) >= quanti:
+                break
+    return suoni
+
+
+PAROLE_RICERCA ="frasi motivazionali · motivazione · disciplina · lavoro · costanza"
 
 
 def pulisci(testo):
