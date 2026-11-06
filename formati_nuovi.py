@@ -641,14 +641,18 @@ def momento_giornata(c, durata):
     area = lambda o: max([(b[2] - b[0]) * (b[3] - b[1]) for b in visi[o]] or [0.0])
     dentro = lambda da, lungo: [o for o in fr if da - 1e-6 <= o < da + lungo - 1e-6]
     scena = dentro(0.0, durata) or [min(fr)]
-    # prima scena: parte dal fotogramma da cui il viso e' piu' grande per tutto il primo secondo (media dei suoi
-    # fotogrammi: cosi' anche il PRIMO fotogramma del reel e' il viso); si sposta solo se il viso e' piu' grande di
-    # almeno il 15% e mai oltre la fine della clip
+    # prima scena: parte dal fotogramma da cui il viso c'e' ed e' piu' grande per TUTTO il primo secondo (il piu'
+    # piccolo dei suoi fotogrammi: anche il PRIMO fotogramma del reel e' il viso); si sposta solo se il viso e' piu'
+    # grande di almeno il 15%, con almeno 2 fotogrammi nel primo secondo e mai oltre la fine della clip.
+    # 6/11/2026 (prova sulle clip vere): un viso visto in un fotogramma si' e in quello dopo no e' un errore del
+    # riconoscimento (il piatto del pranzo a 3 e 4,5 s, non a 3,5 e 4): il reel partiva dal piatto
     g_t, g_area = t, -1.0
     for o in sorted(fr):
         s = round(min(t + o, fine), 3)
         primo = dentro(s - t, GIORNATA_GANCIO_S)
-        a = sum(area(p) for p in primo) / len(primo) if primo else 0.0
+        if o and len(primo) < 2:
+            continue
+        a = min(area(p) for p in primo) if primo else 0.0
         if a > g_area * 1.15 + 0.002:
             g_t, g_area = s, a
     g_scena = dentro(g_t - t, durata) or scena
@@ -662,7 +666,7 @@ def momento_giornata(c, durata):
     nitido_g, moto_g = misure(g_scena)                     # la stessa scena se fa da prima, da gancio_inizio
     return {"clip": c, "inizio": t, "secondi": secondi,
             "viso": sum(1 for o in scena if visi[o]) / len(scena),
-            "gancio_inizio": g_t, "gancio_area": max(0.0, g_area),
+            "gancio_inizio": float(g_t), "gancio_area": float(max(0.0, g_area)),
             "viso_gancio": sum(1 for o in g_scena if visi[o]) / len(g_scena),
             "nitido": nitido, "moto": moto, "nitido_gancio": nitido_g, "moto_gancio": moto_g,
             "luce": float(np.mean([g[o].mean() for o in scena])) / 255,
@@ -770,7 +774,7 @@ def piano_giornata(clips, ore=None, musica=None, scene=None, durata=GIORNATA_DUR
     piano = [(a["clip"], round(min(t, max(0.0, a["secondi"] - d - 0.05)), 3)) for a, t, d in zip(ordine, inizi, durate)]
     giorno0 = str(scelte[0]["ora"] or "")[:10] if scelte[0]["principale"] else ""
     info = {"scene": n, "con_viso": sum(1 for k, a in enumerate(ordine) if (a["viso_gancio"] if k == 0 else a["viso"]) > 0),
-            "viso_primo_secondo": gancio["gancio_area"] > 0}
+            "viso_primo_secondo": bool(gancio["gancio_area"] > 0)}     # bool vero: va in stato.json
     if giorno0:
         info["stesso_giorno"] = sum(1 for a in ordine if str(a["ora"] or "")[:10] == giorno0)
     return piano, durate, info
