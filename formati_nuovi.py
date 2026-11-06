@@ -781,7 +781,7 @@ def _senza_nere(pezzi, durate, W, H, quanti, dieci):
             if clip_nera(c):
                 continue
             secondi, hdr = ov.probe(c)
-            usati = [(q["inizio"], q["inizio"] + sorg) for j, q in enumerate(pezzi) if q["c"] == c]
+            usati = [(q["inizio"], q["inizio"] + durate[j] + 0.2) for j, q in enumerate(pezzi) if q["c"] == c]
             alto = max(MARGINE_S, secondi - sorg - MARGINE_S)
             passi = sorted({round(min(alto, MARGINE_S + k * 0.25), 2) for k in range(int((alto - MARGINE_S) / 0.25) + 2)})
             lontano = lambda t: min([max(a - (t + sorg), t - b) for a, b in usati] or [0.0])
