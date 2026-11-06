@@ -25,6 +25,13 @@ def pulisci(r):
     return re.sub(r"\s+", " ", r)
 
 
+def compatta(testo):
+    """6/11/2026: ogni giro raddoppiava le righe vuote del Doc (Google, all'export, ne rende 2 per ognuna scritta: in
+    cima erano 32.768 e la prima frase stava alla riga 32.771) -> al massimo una riga vuota di fila. Le righe delle
+    frasi non cambiano, quindi nemmeno i loro id (mie_citazioni.frasi salta le righe vuote)."""
+    return re.sub(r"\n\s*\n+", "\n\n", testo.replace("\r", "")).rstrip("\n")
+
+
 def main():
     righe = [pulisci(l) for l in open(sys.argv[1], encoding="utf-8") if l.strip() and not l.startswith("#")]
     nota = sys.argv[2] if len(sys.argv) > 2 else "aggiunte"
@@ -53,10 +60,13 @@ def main():
     padre = api.files().get(fileId=s["DRIVE_FOLDER_DA_PUBBLICARE"], fields="parents").execute()["parents"][0]
     fid = api.files().list(q=f"'{padre}' in parents and name = '{mie_citazioni.DOC}' and trashed = false",
                            fields="files(id)").execute()["files"][0]["id"]
-    nuovo = testo.rstrip("\n").replace("\r", "") + f"\n\n# --- {nota} ---\n" + "\n".join(buone) + "\n"
+    pulito = compatta(testo)
+    nuovo = pulito + f"\n\n# --- {nota} ---\n" + "\n".join(buone) + "\n"
     api.files().update(fileId=fid, media_body=MediaIoBaseUpload(io.BytesIO(nuovo.encode("utf-8")),
                                                                  mimetype="text/plain")).execute()
-    print(f"AGGIUNTE {len(buone)} frasi. Ora nel documento: {len(mie_citazioni.frasi(nuovo))}")
+    tolte = testo.replace("\r", "").count("\n") - pulito.count("\n")
+    print(f"AGGIUNTE {len(buone)} frasi. Ora nel documento: {len(mie_citazioni.frasi(nuovo))}"
+          + (f" (tolte {tolte} righe vuote in piu')" if tolte > 0 else ""))
 
 
 if __name__ == "__main__":

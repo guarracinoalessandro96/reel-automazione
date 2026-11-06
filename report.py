@@ -56,6 +56,14 @@ def bloccati_youtube(ids):
     return out
 
 
+def nome_formato(h, senza="frase"):
+    """Formato del reel per i confronti. 6/11/2026: i reel usciti in cinema/post perche' la scritta copriva il viso
+    (montaggio.ripiego_da) si contano a parte ("ripiego cinema"): non sono stati estratti, falserebbero la media."""
+    m = h.get("montaggio") or {}
+    nome = m.get("formato") or senza
+    return f"ripiego {nome}" if m.get("ripiego_da") else nome
+
+
 # formati con l'audio ORIGINALE (musica della palestra, voci): se YouTube ne blocca uno, il formato si spegne da solo
 FORMATI_AUDIO_ORIGINALE = {"ambiente"}
 
@@ -226,7 +234,7 @@ def riassunto_settimana(state):
         if v < NON_SPINTO:                   # mai fatto vedere da YouTube: fermo per l'orario, non per il formato
             continue
         spinti += 1
-        formati.setdefault((h.get("montaggio") or {}).get("formato") or "frase", []).append(v)
+        formati.setdefault(nome_formato(h, "frase"), []).append(v)
     fb = stat_facebook(post)
     fol = []
     try:
@@ -316,7 +324,8 @@ def main():
                       "orario": (h.get("slot") or "").split(" ")[-1][:2], "musica": genere((h.get("montaggio") or {}).get("musica")),
                       "origine": "archivio" if h.get("da_archivio") else "video nuovo",
                       "frase_virale": "frase virale" if h.get("frase") in VIRALI else "frase normale",
-                      "formato": (h.get("montaggio") or {}).get("formato") or f"frase {round((h.get('montaggio') or {}).get('durata') or 8)} s", "views": v, "like": l})
+                      "formato": nome_formato(h, f"frase {round((h.get('montaggio') or {}).get('durata') or 8)} s"),
+                      "views": v, "like": l})
 
     # 20/10/2026: con uno Short ogni ora YouTube ne fa vedere solo ~10-14 al giorno; quelli mai spinti (fermi per
     # l'orario, non per il contenuto) non dicono niente su temi, formati e frasi: nei confronti si usano solo gli altri

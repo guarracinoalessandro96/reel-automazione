@@ -217,9 +217,17 @@ def build_overlay_serie(W, H, serie):
 
 # 1/11/2026 (Alessandro, esempi di @andrewjamesjobe): scritta gialla senza riquadro, allineata a sinistra, nella parte
 # piu' libera dell'immagine e mai sul viso. Colori del video scuri e ricchi: ombre profonde, luci calde, pelle naturale.
-GIALLO = (255, 255, 0, 255)      # il giallo piu' acceso (1/11/2026), su riquadro nero
-FONT_GIALLO = os.path.join(_DIR, "font", "Inter-ExtraBold.ttf")      # Google Fonts, licenza OFL
-DIM_GIALLO = 0.048
+GIALLO_CLASSICO = (255, 255, 0, 255)      # il giallo piu' acceso (1/11/2026), su riquadro nero
+FONT_CLASSICO = os.path.join(_DIR, "font", "Inter-ExtraBold.ttf")      # Google Fonts, licenza OFL
+# 6/11/2026 (Alessandro: "studia il font perfetto per i nostri video, i colori perfetti dello sfondo e dei testi",
+# "sorprendimi"): frase BIANCA in TikTok Sans ExtraBold (il carattere delle scritte native di TikTok, open source OFL
+# dal 2025) su riquadro scuro, con 1-2 parole chiave nel giallo di sempre. Prima tutta la frase era gialla: sulle
+# pareti gialle della sua palestra si confondeva e il giallo ovunque non metteva in risalto niente.
+# Gli altri stili restano pronti in STILI_SCRITTA: per tornare a quello di prima basta STILE_SCRITTA = "giallo_classico".
+STILE_SCRITTA = "bianco_parola_gialla"
+GIALLO = (255, 214, 10, 255)     # giallo caldo delle parole chiave (il 255,255,0 di prima sembrava "fluo" sulla pelle)
+FONT_GIALLO = os.path.join(_DIR, "font", "TikTokSans-ExtraBold.ttf")   # istanza statica (peso 800) del font variabile
+DIM_GIALLO = 0.047               # grandezza rispetto alla larghezza (TikTok Sans e' piu' largo di Inter: stesso ingombro)
 LOOK = ("curves=master='0/0 0.12/0.09 0.5/0.47 0.85/0.87 1/0.98',"
         "colorbalance=rs=-0.04:bs=0.05:rh=0.05:gh=0.01:bh=-0.05,"
         "eq=saturation=0.94,vignette=PI/6")
@@ -266,16 +274,8 @@ def mappa_dettagli(frames):
     return np.mean([np.abs(cv2.Laplacian(g, cv2.CV_32F)) for g in gr], axis=0) + 2 * np.std(gr, axis=0)
 
 
-def build_testo_giallo(W, H, text, faces, mappa=None):
-    """Sceglie tra le posizioni possibili quella senza visi e con meno dettagli. Stessa forma di build_overlay."""
-    fsize = int(W * DIM_GIALLO)
-    font = ImageFont.truetype(FONT_GIALLO if os.path.exists(FONT_GIALLO) else FONT, fsize)
-    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    d = ImageDraw.Draw(img)
-    lines = _a_capo(d, text, font, W * (0.56 if len(text) <= 48 else 0.74))
-    lh, pad_x, pad_y = int(fsize * 1.22), int(fsize * 0.55), int(fsize * 0.42)
-    larga = max(d.textlength(l, font=font) for l in lines)
-    bw, bh = (larga + 2 * pad_x) / W, (lh * len(lines) + 2 * pad_y) / H
+def _posto_libero(bw, bh, faces, mappa):
+    """((x, y), punti) del riquadro bw x bh (frazioni del fotogramma): mai sui visi, dove l'immagine e' piu' vuota."""
     migliore, punti = (0.07, SAFE_TOP), None
     for x in (0.07, (1 - bw) / 2, max(0.07, 0.88 - bw)):
         for y in np.arange(SAFE_TOP + 0.03, max(SAFE_BOTTOM - bh, SAFE_TOP + 0.04), 0.04):
@@ -285,11 +285,298 @@ def build_testo_giallo(W, H, text, faces, mappa=None):
                 p += float(mappa[int(box[1] * 80):int(box[3] * 80) + 1, int(box[0] * 45):int(box[2] * 45) + 1].mean())
             if punti is None or p < punti:
                 migliore, punti = (x, float(y)), p
+    return migliore, punti
+
+
+def _testo_giallo_classico(W, H, text, faces, mappa=None):
+    """Lo stile dall'1/11 al 6/11/2026: tutta la frase gialla (Inter ExtraBold) su riquadro nero semitrasparente."""
+    fsize = int(W * 0.048)
+    font = ImageFont.truetype(FONT_CLASSICO if os.path.exists(FONT_CLASSICO) else FONT, fsize)
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    lines = _a_capo(d, text, font, W * (0.56 if len(text) <= 48 else 0.74))
+    lh, pad_x, pad_y = int(fsize * 1.22), int(fsize * 0.55), int(fsize * 0.42)
+    larga = max(d.textlength(l, font=font) for l in lines)
+    bw, bh = (larga + 2 * pad_x) / W, (lh * len(lines) + 2 * pad_y) / H
+    migliore, punti = _posto_libero(bw, bh, faces, mappa)
     x0, y0 = int(migliore[0] * W), int(migliore[1] * H)
     d.rounded_rectangle([x0, y0, x0 + bw * W, y0 + bh * H], radius=int(fsize * 0.28), fill=(0, 0, 0, 140))
     for i, l in enumerate(lines):
-        d.text((x0 + pad_x, y0 + pad_y + i * lh), l, font=font, fill=GIALLO)
+        d.text((x0 + pad_x, y0 + pad_y + i * lh), l, font=font, fill=GIALLO_CLASSICO)
     return img, migliore[1], punti
+
+
+# 6/11/2026: stili pronti (confronto in anteprime/stile_confronto.jpg; scartati: Montserrat senza riquadro, sparisce
+# sulle pareti chiare, e Anton tutto maiuscolo, pesante da leggere per frasi lunghe). Misure in proporzione al testo.
+# sfondo: "blocco" = un riquadro unico, "righe" = una fascia per riga (come il testo con sfondo di TikTok), None = niente
+# Altre chiavi possibili: ombra=(spostamento, sfocatura, opacita'), bordo=(spessore, colore), maiuscolo, centro, variante
+STILI_SCRITTA = {
+    "giallo_classico": None,     # _testo_giallo_classico, identico a prima
+    # SCELTO: bianco (si legge su tutto, anche sulle pareti gialle), 1-2 parole chiave in giallo, riquadro scuro al 66%
+    "bianco_parola_gialla": dict(font=FONT_GIALLO, dim=DIM_GIALLO, testo=(255, 255, 255, 255), evidenza=GIALLO,
+                                 sfondo="blocco", colore_sfondo=(0, 0, 0, 168), raggio=0.30, pad=(0.55, 0.45),
+                                 interlinea=1.24),
+    # testo nativo di TikTok: bianco su fasce nere, centrato
+    "tiktok_righe": dict(font=FONT_GIALLO, dim=DIM_GIALLO, testo=(255, 255, 255, 255), evidenza=None, sfondo="righe",
+                         colore_sfondo=(0, 0, 0, 200), raggio=0.24, pad=(0.32, 0.20), interlinea=1.30, centro=True),
+    # testo nativo di TikTok "invertito": nero su fasce bianche
+    "tiktok_bianco": dict(font=FONT_GIALLO, dim=DIM_GIALLO, testo=(18, 18, 18, 255), evidenza=None, sfondo="righe",
+                          colore_sfondo=(255, 255, 255, 242), raggio=0.24, pad=(0.32, 0.20), interlinea=1.30,
+                          centro=True),
+}
+
+# parole chiave (temi di Alessandro): 3 = temi centrali, 2 = parole forti vicine ai temi. Mai piu' di 2 parole.
+# 6/11/2026 (revisione: "una parola gialla a caso sembra un errore"): niente piu' ripiego sulla parola piu' lunga,
+# niente parole generiche da sole (tempo, vita, giorno, mai, oggi, meglio...) ne' negative (mollare, arreso, fatica,
+# rischio): se la frase non ha una parola forte resta tutta bianca, come le scritte native di TikTok.
+_CHIAVE = {
+    3: "sacrificio sacrifici sacrifica disciplina disciplinato lavoro famiglia futuro rispetto rispettarti costanza "
+       "costante lealtà leale libertà dignità onore umiltà sogni sogno",
+    2: "lavorare lavora successo obiettivo obiettivi risultati risultato forza forte coraggio pazienza costruire "
+       "costruisci potenziale prezzo scelta crescita crescere cresciuto fondamenta vincere vincitore orgoglioso "
+       "fiero grato privilegio campione campioni fiducia valore fede padre madre figli figlio figlia genitori mamma "
+       "papà nonno nonna abitudini abitudine investimento svolta rialzati rialzi",
+}
+_PESO_CHIAVE = {p: k for k, v in _CHIAVE.items() for p in v.split()}
+# coppie da colorare insieme, col loro peso: quelle con la negazione dentro ("non mollare" = vai avanti) battono tutto
+_COPPIE = {("non", "mollare"): 4, ("mai", "mollare"): 4, ("mai", "arreso"): 4, ("non", "arrenderti"): 4,
+           ("non", "fermarti"): 4, ("duro", "lavoro"): 3.5, ("lavoro", "duro"): 3.5, ("ogni", "giorno"): 2.5,
+           ("per", "sempre"): 2.5, ("te", "stesso"): 2.5, ("ogni", "notte"): 2.5, ("piccoli", "passi"): 2.5,
+           ("il", "meglio"): 2.5, ("versione", "migliore"): 2.5, ("domani", "migliore"): 2.5}
+_NEGANO = set("non né mai senza nessuno nessuna nessun niente nulla neanche nemmeno neppure vorresti smetti smettere "
+              "smesso perdi perdere perso persa".split())
+# parole vietate da Alessandro: mai in risalto, anche se un giorno finissero in una lista
+_MAI_GIALLE = set("palestra palestre tradimento tradimenti tradire tradito tradita traditore donna donne ragazza "
+                  "ragazze fidanzata".split())
+_FINE_PROPOSIZIONE = re.compile(r"[.!?:;,]\W*$")
+
+
+def _nuda(w):
+    """Parola per il confronto: minuscola, senza punteggiatura e senza articolo eliso, anche con l'apostrofo
+    tipografico ("L'onore," -> "onore", "dell’umiltà" -> "umiltà")."""
+    w = re.sub(r"^\W+|\W+$", "", w.lower().replace("’", "'"))
+    return re.sub(r"^\w+'", "", w)
+
+
+_NON_E = set("è e' era sono sarà voglio vuoi serve servono".split())
+
+
+def _negata(nude, crude, i):
+    """True se nella stessa proposizione, fino a 3 parole prima della i, c'e' una negazione: la parola e' il concetto
+    negato ("il problema non e' la MOTIVAZIONE", "non e' un SACRIFICIO") e in giallo direbbe il contrario.
+    6/11/2026 (revisione): anche "non e'/voglio/serve..." piu' indietro nella proposizione ("non e' il tuo LAVORO",
+    "non voglio una vita da SOGNO"); conta la parola com'e' scritta, quindi "non c'e'" no."""
+    for j in range(i - 1, max(-1, i - 4), -1):
+        if _FINE_PROPOSIZIONE.search(crude[j]):
+            return False
+        if nude[j] in _NEGANO:
+            return True
+    cruda = lambda w: re.sub(r"^\W+|[^\w']+$", "", w.lower().replace("’", "'"))
+    for j in range(i - 1, -1, -1):
+        if _FINE_PROPOSIZIONE.search(crude[j]):
+            return False
+        if cruda(crude[j]) == "non" and j + 1 < i and cruda(crude[j + 1]) in _NON_E:
+            return True
+    return False
+
+
+def parole_chiave(testo, quante=2):
+    """6/11/2026: posizioni (indici in testo.split()) delle 1-2 parole da colorare, sempre le stesse per la stessa
+    frase: una coppia fissa ("non mollare", "ogni giorno") o le parole dei temi di Alessandro (sacrificio, disciplina,
+    lavoro, famiglia, futuro...), mai se negate. Se non ce ne sono: set(), la frase resta tutta bianca."""
+    crude = testo.split()
+    nude = [_nuda(w) for w in crude]
+    cand = []       # (peso, posizione, indici): vince il piu' pesante, a parita' il piu' avanti (la frase chiude li')
+    for i, p in enumerate(nude):
+        if p in _PESO_CHIAVE and p not in _MAI_GIALLE and not _negata(nude, crude, i):
+            cand.append((_PESO_CHIAVE[p], i, (i,)))
+        coppia = (p, nude[i + 1]) if i + 1 < len(nude) else None
+        if (quante >= 2 and coppia in _COPPIE and not _MAI_GIALLE & set(coppia)
+                and not _FINE_PROPOSIZIONE.search(crude[i]) and (p in _NEGANO or not _negata(nude, crude, i))):
+            cand.append((_COPPIE[coppia], i, (i, i + 1)))
+    if not cand:
+        return set()
+    peso, i, scelta = max(cand)
+    scelta = set(scelta)
+    if len(scelta) == 1 and quante >= 2 and peso >= 3:      # seconda parola: un altro tema centrale, non attaccato
+        altre = [j for k, j, s in cand if len(s) == 1 and k >= 3 and abs(j - i) > 1 and nude[j] != nude[i]]
+        if altre:
+            scelta.add(max(altre))
+    return scelta
+
+
+def _font_scritta(st, size):
+    """Carattere dello stile; se il file manca o non si apre (o la variante del font variabile non c'e'): Inter."""
+    try:
+        f = ImageFont.truetype(st["font"], size)
+        if st.get("variante"):          # file variabile: peso scelto per nome (es. "ExtraBold")
+            f.set_variation_by_name(st["variante"])
+        return f
+    except Exception as e:
+        print("Scritta: carattere non disponibile, uso Inter ExtraBold:", str(e)[:150], flush=True)
+        return ImageFont.truetype(FONT_CLASSICO if os.path.exists(FONT_CLASSICO) else FONT, size)
+
+
+_LEGATE = set("il lo la i gli le un uno una di a da in con su per tra fra e ed o mi ti si ci vi ne del dello della "
+              "dei degli delle al allo alla ai agli alle dal dallo dalla dai dagli dalle nel nello nella nei negli "
+              "nelle sul sulla mio mia miei mie tuo tua tuoi tue suo sua suoi sue nostro nostra vostro vostra".split())
+
+
+def _unita(testo):
+    """Gruppi di parole che non si separano andando a capo: articoli, preposizioni, "e"/"o", "mi/ti/si", possessivi
+    restano attaccati alla parola dopo (mai "per diventare il / meglio", ma "per diventare / il meglio").
+    6/11/2026 (revisione): anche le coppie di _COPPIE ("non fermarti", "ogni giorno", "duro lavoro"): una parte gialla
+    spezzata a fine riga sembrava un errore."""
+    out, attesa = [], []
+    parole = testo.split()
+    for i, w in enumerate(parole):
+        attesa.append(w)
+        coppia = (i + 1 < len(parole) and not _FINE_PROPOSIZIONE.search(w)
+                  and (_nuda(w), _nuda(parole[i + 1])) in _COPPIE)
+        if w.lower() not in _LEGATE and not coppia:     # parola piena (o con la punteggiatura): chiude il gruppo
+            out.append(" ".join(attesa))
+            attesa = []
+    if attesa:
+        out = out[:-1] + [" ".join(out[-1:] + attesa)]
+    return out
+
+
+def _a_capo_gruppi(d, gruppi, font, max_px):
+    righe, cur = [], ""
+    for g in gruppi:
+        t = (cur + " " + g).strip()
+        if not cur or d.textlength(t, font=font) <= max_px:
+            cur = t
+        else:
+            righe.append(cur)
+            cur = g
+    return righe + [cur] if cur else righe
+
+
+def _equilibrate(d, testo, font, max_px):
+    """Come _a_capo (righe equilibrate) ma a gruppi di parole; se un gruppo e' troppo largo, parola per parola."""
+    gruppi = _unita(testo)
+    if any(d.textlength(g, font=font) > max_px for g in gruppi):
+        return _a_capo(d, testo, font, max_px)
+    righe = _a_capo_gruppi(d, gruppi, font, max_px)
+    if len(righe) < 2:
+        return righe
+    lo, hi = max_px * 0.4, max_px
+    for _ in range(12):
+        mid = (lo + hi) / 2
+        if len(_a_capo_gruppi(d, gruppi, font, mid)) <= len(righe):
+            hi = mid
+        else:
+            lo = mid
+    return _a_capo_gruppi(d, gruppi, font, hi)
+
+
+def _righe_scritta(d, text, font, max_px):
+    """Righe equilibrate; se la frase e' fatta di piu' frasi, ognuna comincia a capo (si legge come la si dice:
+    "Disciplina oggi, liberta' domani. / Io ho gia' scelto."), purche' non serva piu' di una riga in piu'."""
+    base = _equilibrate(d, text, font, max_px)
+    pezzi = [p for p in re.split(r"(?<=[.!?:])\s+", text.strip()) if p]
+    if len(pezzi) < 2:
+        return base
+    righe = [r for p in pezzi for r in _equilibrate(d, p, font, max_px)]
+    sole = lambda rr: sum(1 for r in rr if len(r.split()) == 1)        # righe con una parola sola
+    return righe if len(righe) <= len(base) + 1 and sole(righe) <= sole(base) else base
+
+
+def _strato(W, H, colore, disegna, sfoca=0):
+    """Livello di un solo colore: disegna(draw) traccia in bianco su una maschera, che diventa la trasparenza.
+    (Disegnare a colori direttamente sul trasparente lascia un alone scuro intorno alle lettere.)"""
+    m = Image.new("L", (W, H), 0)
+    disegna(ImageDraw.Draw(m))
+    if sfoca:
+        from PIL import ImageFilter
+        m = m.filter(ImageFilter.GaussianBlur(sfoca))
+    s = Image.new("RGBA", (W, H), tuple(colore[:3]) + (0,))
+    s.putalpha(m.point(lambda v: v * colore[3] // 255))
+    return s
+
+
+def _scritta(W, H, text, faces, mappa, st):
+    """Disegna la frase nello stile st (un valore di STILI_SCRITTA). Stessa forma di build_testo_giallo."""
+    fsize = max(8, int(W * st["dim"]))
+    font = _font_scritta(st, fsize)
+    if st.get("maiuscolo"):
+        text = text.upper()
+    d = ImageDraw.Draw(Image.new("L", (8, 8)))
+    righe = _righe_scritta(d, text, font, W * (0.56 if len(text) <= 48 else 0.74))
+    chiave = parole_chiave(text) if st.get("evidenza") else set()
+    lh = int(fsize * st["interlinea"])
+    pad_x, pad_y = int(fsize * st["pad"][0]), int(fsize * st["pad"][1])
+    _, alto, _, basso = font.getbbox("Hg", anchor="ls")       # cima delle maiuscole e fondo della g (dalla base)
+    larghe = [d.textlength(r, font=font) for r in righe]
+    bw = (max(larghe) + 2 * pad_x) / W
+    bh = ((len(righe) - 1) * lh + (basso - alto) + 2 * pad_y) / H
+    (fx, fy), punti = _posto_libero(bw, bh, faces, mappa)
+    x0, y0 = int(fx * W), int(fy * H)
+    blocco_w = int(bw * W)
+    base0 = y0 + pad_y - alto                       # linea di base della prima riga
+    xr = [x0 + (blocco_w - w) / 2 if st.get("centro") else x0 + pad_x for w in larghe]
+    # parole una per una (colore normale o di evidenza), posizione = lunghezza di tutto quello che c'e' prima
+    pezzi, k = [], 0
+    for i, riga in enumerate(righe):
+        parole = riga.split()
+        for j, p in enumerate(parole):
+            x = xr[i] + (d.textlength(" ".join(parole[:j]) + " ", font=font) if j else 0)
+            if k in chiave:     # virgolette, punteggiatura e articolo eliso ("l'onore") restano del colore normale
+                prima, nucleo, dopo = re.match(r"^(\W*(?:\w+['’](?=\w))?)(.*?)(\W*)$", p).groups()
+                for t, c in ((prima, st["testo"]), (nucleo, st["evidenza"]), (dopo, st["testo"])):
+                    if t:
+                        pezzi.append((x, base0 + i * lh, t, c))
+                        x += d.textlength(t, font=font)
+            else:
+                pezzi.append((x, base0 + i * lh, p, st["testo"]))
+            k += 1
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    if st.get("sfondo"):        # una sola maschera per tutto lo sfondo: dove le fasce si toccano non diventa piu' scuro
+        r = int(fsize * st["raggio"])
+
+        def fondo(dm):
+            if st["sfondo"] == "righe":
+                for i, w in enumerate(larghe):
+                    b = base0 + i * lh
+                    dm.rounded_rectangle([xr[i] - pad_x, b + alto - pad_y, xr[i] + w + pad_x, b + basso + pad_y],
+                                         radius=r, fill=255)
+            else:
+                dm.rounded_rectangle([x0, y0, x0 + blocco_w, y0 + int(bh * H)], radius=r, fill=255)
+        img.alpha_composite(_strato(W, H, st["colore_sfondo"], fondo))
+    if st.get("ombra"):         # ombra morbida sotto le lettere (stile senza riquadro)
+        dy, sfoca, a = st["ombra"]
+        img.alpha_composite(_strato(W, H, (0, 0, 0, a), lambda dm: [dm.text((x, y + fsize * dy), t, font=font, fill=255,
+                                                                            anchor="ls") for x, y, t, _ in pezzi],
+                                    sfoca=fsize * sfoca))
+    if st.get("bordo"):         # bordo sottile intorno alle lettere
+        sw = max(1, int(fsize * st["bordo"][0]))
+        img.alpha_composite(_strato(W, H, st["bordo"][1], lambda dm: [dm.text((x, y), t, font=font, fill=255,
+                                                                              anchor="ls", stroke_width=sw,
+                                                                              stroke_fill=255) for x, y, t, _ in pezzi]))
+    for colore in dict.fromkeys(c for _, _, _, c in pezzi):
+        img.alpha_composite(_strato(W, H, colore, lambda dm: [dm.text((x, y), t, font=font, fill=255, anchor="ls")
+                                                              for x, y, t, c in pezzi if c == colore]))
+    return img, fy, punti
+
+
+ULTIMO_STILE = None     # 6/11/2026: lo stile usato davvero dall'ultima scritta (montaggio.scritta in stato.json)
+
+
+def build_testo_giallo(W, H, text, faces, mappa=None):
+    """Scritta dei reel da 10 s nello stile STILE_SCRITTA, nella posizione senza visi e con meno dettagli.
+    Restituisce (immagine, y in frazione, punti). Se il nuovo stile fallisce: lo stile di prima, cosi' il reel esce."""
+    global ULTIMO_STILE
+    st = STILI_SCRITTA.get(STILE_SCRITTA)
+    if st:
+        try:
+            risultato = _scritta(W, H, text, faces, mappa, st)
+            ULTIMO_STILE = STILE_SCRITTA
+            return risultato
+        except Exception as e:
+            print(f"Scritta: stile {STILE_SCRITTA} non riuscito, uso il giallo classico:", str(e)[:200], flush=True)
+    ULTIMO_STILE = "giallo_classico"
+    return _testo_giallo_classico(W, H, text, faces, mappa)
 
 
 def dividi_frase(testo):

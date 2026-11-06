@@ -9931,7 +9931,9 @@
     "instagram": {
      "ok": true,
      "id": "17894117688654029",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -9959,25 +9961,206 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "-KBeFwT3u-o"
+     "id": "-KBeFwT3u-o",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "17967564683981780",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "Il tempo non cura tutto. Ma insegna a reggere."
+  },
+  {
+   "quando": "2026-11-06T05:01",
+   "slot": "2026-11-06 06:00",
+   "video": "IMG_4272.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-0880c6d4",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "vibe_check_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "musica_meta": "drive_08.flac",
+    "musica_instagram": "Sta passando novembre - Eros Ramazzotti [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "-JIHeRCBicw",
+     "controllo": []
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17918322336523539",
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
+    }
+   },
+   "spinto": true,
+   "testo": "Il silenzio non fa meno rumore solo perché non si sente."
+  },
+  {
+   "quando": "2026-11-06T07:00",
+   "slot": "2026-11-06 08:00",
+   "video": "IMG_4285.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-77e3005c",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "the_light_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "musica_meta": "deciso_11.flac",
+    "musica_instagram": "fantasmas - HUMBE [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "sxqYNthcmxE",
+     "controllo": []
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17882260692546316",
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
+    }
+   },
+   "spinto": true,
+   "testo": "Non torno dove ho dovuto pregare per essere scelto."
+  },
+  {
+   "quando": "2026-11-06T09:00",
+   "slot": "2026-11-06 10:00",
+   "video": "IMG_4269.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-b8c79064",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "monthaholic_1.m4a",
+    "stacchi": 4,
+    "testi": 1,
+    "musica_meta": "phonk_11.flac",
+    "musica_instagram": "Novembre - Giusy Ferreri [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "_d0xMGydzt4",
+     "controllo": []
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18133223758806726",
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
+    }
+   },
+   "spinto": true,
+   "testo": "La parte più difficile non è dimenticare. È continuare a vivere con tutto quello che resta."
+  },
+  {
+   "quando": "2026-11-06T11:01",
+   "slot": "2026-11-06 12:00",
+   "video": "Foto della giornata",
+   "md5": null,
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-37c85482",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_foto",
+    "durata": 10.002,
+    "musica": "way_back_home_3.m4a",
+    "stacchi": 6,
+    "testi": 1,
+    "foto_ids": [
+     "1o6bVa4MoQpwhtgxTbRfApO7INfq1XnTF",
+     "1roVwULYJ6ScNgieNMtWbMTEFIn1R0Sne",
+     "1nvnpCmCfdXHjWx91BQIoQsGwHpfHrLai",
+     "1XngSggJAfD0UDBNv0eOrBwyu5heymXPt",
+     "1t-qkZ_MJzGDEaMzYF-nv9NNxt9aHhBln",
+     "1naUzMlnmsR4dGHY48NnjBt2ngQF5ut2e"
+    ],
+    "musica_meta": "drive_14.flac",
+    "musica_instagram": "3 Times (feat. Sun.E Rai) - a.s. kullar, Harry Pannu [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "G1JZg7LGkmk",
+     "controllo": []
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18150324745487446",
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Ricorda perché hai iniziato. Il resto viene da sé."
+  },
+  {
+   "quando": "2026-11-06T13:01",
+   "slot": "2026-11-06 14:00",
+   "video": "IMG_4291.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-cee896b5",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_broll",
+    "durata": 10.0,
+    "musica": "mirror_mirror_1.m4a",
+    "stacchi": 4,
+    "testi": 1,
+    "musica_meta": "trap_05.flac",
+    "musica_instagram": "Funkytown Flute - Kayhin [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "oPQHfLRKeKU"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18095023784272410",
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Alcuni amori ti proteggono per tutta la vita. Il tuo è uno di quelli."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-28 20:00",
-  "2026-10-28 22:00",
-  "2026-10-29 00:00",
-  "2026-10-29 02:00",
-  "2026-10-29 04:00",
   "2026-10-29 10:00",
   "2026-10-29 12:00",
   "2026-10-29 14:00",
@@ -10052,14 +10235,14 @@
   "2026-11-05 18:00",
   "2026-11-05 20:00",
   "2026-11-05 22:00",
-  "2026-11-06 00:00"
+  "2026-11-06 00:00",
+  "2026-11-06 06:00",
+  "2026-11-06 08:00",
+  "2026-11-06 10:00",
+  "2026-11-06 12:00",
+  "2026-11-06 14:00"
  ],
  "musica_recenti": [
-  "dusty_road_magic_1.m4a",
-  "sweaty_staredown_2.m4a",
-  "way_back_home_2.m4a",
-  "taking_flight_3.m4a",
-  "whoop_3.m4a",
   "wrangle_the_crazy_3.m4a",
   "death_duel_2.m4a",
   "keep_it_movin_1.m4a",
@@ -10074,7 +10257,12 @@
   "death_duel_3.m4a",
   "locked_in_1.m4a",
   "ancient_civilisations_3.m4a",
-  "dusty_road_magic_3.m4a"
+  "dusty_road_magic_3.m4a",
+  "vibe_check_1.m4a",
+  "the_light_3.m4a",
+  "monthaholic_1.m4a",
+  "way_back_home_3.m4a",
+  "mirror_mirror_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10357,7 +10545,12 @@
   "MIE-061c0395",
   "MIE-a9252760",
   "MIE-ed8b4192",
-  "MIE-ef3aefc2"
+  "MIE-ef3aefc2",
+  "MIE-0880c6d4",
+  "MIE-77e3005c",
+  "MIE-b8c79064",
+  "MIE-37c85482",
+  "MIE-cee896b5"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10372,7 +10565,7 @@
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-05",
+ "pulizia": "2026-11-06",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -10739,20 +10932,20 @@
    "ultimo": "2026-11-05"
   },
   "1b6jLZrzSs8YwKhy4QEb382s6yYZIdhzZ": {
-   "usi": 2,
-   "ultimo": "2026-10-28"
+   "usi": 3,
+   "ultimo": "2026-11-06"
   },
   "1OKyRxbpEUPABWJM5Ey1cGm-BG7E-Rv9h": {
-   "usi": 2,
-   "ultimo": "2026-10-28"
+   "usi": 3,
+   "ultimo": "2026-11-06"
   },
   "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW": {
-   "usi": 2,
-   "ultimo": "2026-10-28"
+   "usi": 3,
+   "ultimo": "2026-11-06"
   },
   "1sS5KtmGf3aPo3O8udU6R6rADRrUb-zMb": {
-   "usi": 2,
-   "ultimo": "2026-10-28"
+   "usi": 3,
+   "ultimo": "2026-11-06"
   },
   "1qg9QOoyt2IXIx0udqWcfdBdqz_RdzVo4": {
    "usi": 3,
@@ -10812,11 +11005,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_07.flac",
-  "trap_06.flac",
-  "energia_09.flac",
-  "phonk_12.flac",
-  "trap_13.flac",
   "energia_08.flac",
   "phonk_05.flac",
   "drive_02.flac",
@@ -10831,7 +11019,12 @@
   "phonk_10.flac",
   "deciso_10.flac",
   "trap_11.flac",
-  "phonk_02.flac"
+  "phonk_02.flac",
+  "drive_08.flac",
+  "deciso_11.flac",
+  "phonk_11.flac",
+  "drive_14.flac",
+  "trap_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -10866,7 +11059,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_broll",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -10882,11 +11075,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "5301582899854512",
-  "1283788913238327",
-  "617195401283615",
-  "351866282607327",
-  "593371403855914",
   "585527483942549",
   "2475524415980310",
   "565118654020261",
@@ -10911,12 +11099,17 @@
   "972513352266790",
   "257338181818606",
   "856093300426979",
-  "2201065153808959"
+  "2201065153808959",
+  "261968585425392",
+  "4321185548142585",
+  "1190974441039956",
+  "899668126445403",
+  "2388876744974625"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Flo Rida",
-  "Winterbell",
-  "Paramveer Singh katoch"
+  "Giusy Ferreri",
+  "a.s. kullar, Harry Pannu",
+  "Kayhin"
  ]
 }

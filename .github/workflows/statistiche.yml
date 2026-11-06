@@ -1,0 +1,59 @@
+name: Statistiche di riserva
+
+# 6/11/2026 (Alessandro: "concentrati ad aggiustare le notifiche su telegram che mi mandi"): il messaggio delle 8
+# (visualizzazioni delle ultime 24 ore) lo manda il PC. Il 5/11 il PC era spento e il messaggio e' arrivato alle 8:19:
+# se il PC non l'ha ancora mandato, dopo le 8:20 lo manda questo lavoro (YouTube, Instagram, Facebook; TikTok solo se
+# l'ultimo numero salvato dal PC non ha piu' di 2 giorni). statistiche.py --github controlla da solo l'ora di Roma
+# (8:20-12) e il registro statistiche_inviate.json: se il messaggio di oggi e' gia' partito (o forse partito: una
+# prenotazione rimasta senza conferma, anche di un giro di prima) non fa niente, mai due messaggi nello stesso giorno.
+# Piu' orari perche' GitHub salta spesso le esecuzioni programmate; ore di Roma (timezone, da marzo 2026): l'ora
+# legale la gestisce GitHub.
+on:
+  schedule:
+    - cron: "22 8 * * *"
+      timezone: "Europe/Rome"
+    - cron: "52 8 * * *"
+      timezone: "Europe/Rome"
+    - cron: "22 9 * * *"
+      timezone: "Europe/Rome"
+    - cron: "52 9 * * *"
+      timezone: "Europe/Rome"
+    - cron: "22 10 * * *"
+      timezone: "Europe/Rome"
+  workflow_dispatch:
+    inputs:
+      prova:
+        description: "Solo prova: stampa il messaggio, non lo manda e non scrive niente"
+        type: boolean
+        default: true
+
+# fila propria: due giri insieme non devono mai partire
+concurrency: statistiche
+
+permissions:
+  contents: write     # il registro statistiche_inviate.json (API di GitHub)
+
+jobs:
+  statistiche:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20     # 6/11/2026 (revisione): le chiamate al registro riprovano fino a ~2,5 minuti l'una
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests google-api-python-client google-auth
+      - env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GH_TOKEN: ${{ github.token }}
+          PROVA: ${{ github.event_name == 'workflow_dispatch' && inputs.prova && '1' || '' }}
+        run: python statistiche.py --github ${PROVA:+--prova}
