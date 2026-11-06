@@ -417,7 +417,8 @@ def frase_forzata(mie, state, spinto=True):
         forzate = json.load(open(os.path.join(HERE, "frasi_forzate.json"), encoding="utf-8"))
     except Exception:
         return None
-    for v in forzate:
+    # 6/11/2026: le richieste di Alessandro prima delle frasi che aspettano un orario spinto (sorted e' stabile)
+    for v in sorted(forzate, key=lambda v: bool(v.get("solo_spinti"))):
         if v.get("solo_spinti") and not spinto:
             continue
         ultima = max([h.get("quando", "") for h in state["storico"] if h.get("frase") == v["id"]] or [""])
