@@ -7,9 +7,10 @@ Restano fuori i brani con la mediana piu' bassa su YouTube (dati 20-30/10/2026, 
 (energia e colpi al secondo nella media degli altri, misurati sui pezzi): 36 brani -> mai lo stesso brano negli ultimi
 30 Short (pubblica.YT_FINESTRA_BRANI). I brani forti restano preferiti (pesi.json, aggiornato la domenica).
   python prepara_dieci.py           pezzi da 10,5 s mancanti in musica/yt_dieci/
-  python prepara_dieci.py lunghi    per ogni pezzo la versione da 20,5 s (stesso inizio) in musica/yt_venti/
+  python prepara_dieci.py lunghi [brano...]   per ogni pezzo la versione da 20,5 s (stesso inizio e volume)
+                                             in musica/yt_venti/; con i nomi, solo quei brani
 """
-import glob, json, os, re, subprocess, sys
+import glob, os, re, subprocess, sys
 import prepara_libreria as pl
 
 ESCLUSI = set()
@@ -47,37 +48,71 @@ def main():
     print(fatti, "pezzi creati")
 
 
-def picco(path, s, dur):
-    """Picco vero (dBTP) del tratto [s, s + dur]."""
-    r = subprocess.run([pl.F, "-hide_banner", "-ss", f"{s:.2f}", "-t", str(dur), "-i", path, "-af",
-                        "loudnorm=print_format=json", "-f", "null", "-"], capture_output=True, text=True,
-                       errors="ignore").stderr
-    return float(json.loads(r[r.rindex("{"):r.rindex("}") + 1])["input_tp"])
+def _inizio(x, y, sr=8000):
+    """6/11/2026: il secondo dell'originale x da cui e' tagliato il pezzo y (correlazione normalizzata via FFT, in meno
+    di un secondo: migliori_inizi ci metteva quasi un minuto a brano), arrotondato a 0,01 s come il taglio."""
+    import numpy as np
+    m = 1 << (len(x) + len(y) - 1).bit_length()
+    c = np.fft.irfft(np.fft.rfft(x, m) * np.conj(np.fft.rfft(y, m)), m)[:len(x) - len(y) + 1]
+    e = np.concatenate(([0.0], np.cumsum(x.astype(np.float64) ** 2)))
+    return round(int(np.argmax(c / np.sqrt(np.maximum(e[len(y):] - e[:-len(y)], 1e-9)))) / sr, 2)
 
 
-def lunghi():
-    """6/11/2026: per ogni pezzo di yt_dieci la versione da 20,5 s che parte dallo STESSO punto (stessi inizi di
-    migliori_inizi con DUR 10,5) e con lo stesso volume: i primi 10 s sono gli stessi (i reel da 10 s non cambiano),
-    quelli piu' lunghi non sentono piu' il brano ripartire. Se il brano finisce prima, resta solo il pezzo corto."""
+def _confronto(a, b, sr=8000):
+    """(correlazione, differenza in dB) dei primi 9,5 s di due pezzi: 1 e 0 = stesso audio, stesso volume."""
+    import numpy as np
+    n = int(9.5 * sr)
+    if min(len(a), len(b)) < n:
+        return 0.0, 99.0
+    a, b = a[:n].astype(np.float64), b[:n].astype(np.float64)
+    na, nb = np.linalg.norm(a) + 1e-12, np.linalg.norm(b) + 1e-12
+    return float(np.dot(a, b) / (na * nb)), float(20 * np.log10(na / nb))
+
+
+def lunghi(solo=()):
+    """6/11/2026: per ogni pezzo di yt_dieci la versione da 20,5 s in yt_venti: nel formato "intero" (fino a 20 s) il
+    pezzo da 10,5 s ripartiva da capo a 10 s. Parte dallo STESSO punto del pezzo corto (ritrovato nell'originale) con
+    lo STESSO guadagno, e si tiene solo se i primi 10 s sono uguali al pezzo corto (correlazione > 0,97, volume entro
+    0,3 dB): cosi' nei reel da 10 s la musica non cambia (revisione: prima il limite dei picchi poteva abbassarla).
+    Se il brano finisce prima resta solo il pezzo corto. solo: i brani da fare (a gruppi, col lucchetto del PC)."""
+    import shutil, tempfile
     pl.DUR, pl.PEZZI = 10.5, 3
+    dieci = os.path.join(pl.HERE, "musica", "yt_dieci")
     dest = os.path.join(pl.HERE, "musica", "yt_venti")
     os.makedirs(dest, exist_ok=True)
     fatti = 0
     for p, slug in _brani(dest):
+        corti = [(k, os.path.join(dieci, f"{slug}_{k}.m4a")) for k in range(1, pl.PEZZI + 1)]
+        corti = [(k, c) for k, c in corti
+                 if os.path.exists(c) and not os.path.exists(os.path.join(dest, os.path.basename(c)))]
+        if (solo and slug not in solo) or not corti:
+            continue
         x = pl.pcm(p)
-        durata = len(x) / 8000
-        for k, s in enumerate(pl.migliori_inizi(x), 1):
-            out = os.path.join(dest, f"{slug}_{k}.m4a")
-            if os.path.exists(out) or not os.path.exists(os.path.join(pl.HERE, "musica", "yt_dieci", f"{slug}_{k}.m4a")):
-                continue
-            if s + LUNGO > durata - 1.0:
+        for k, c in corti:
+            y = pl.pcm(c)
+            s = _inizio(x, y)
+            if s + LUNGO > len(x) / 8000 - 1.0:
                 print("troppo vicino alla fine, resta corto:", slug, k)
                 continue
-            g = min(pl.guadagno(p, s), -1.5 - picco(p, s, LUNGO))   # volume del pezzo corto, picchi sotto -1,5 dB
-            _taglia(p, s, LUNGO, g, out)
-            fatti += 1
+            tmp = os.path.join(tempfile.gettempdir(), f"yt_venti_{slug}_{k}.m4a")
+            g = pl.guadagno(p, s)
+            _taglia(p, s, LUNGO, g, tmp)
+            corr, db = _confronto(pl.pcm(tmp), y)
+            if corr > 0.97 and 0.05 <= abs(db) < 3:      # stesso punto ma volume un po' diverso: si corregge una volta
+                g -= db
+                _taglia(p, s, LUNGO, g, tmp)
+                corr, db = _confronto(pl.pcm(tmp), y)
+            ok = corr > 0.97 and abs(db) < 0.3
+            print(f"{slug}_{k}: da {s:.2f} s, guadagno {g:+.2f} dB, primi 10 s come il pezzo corto: "
+                  f"{'si' if ok else 'NO'} (correlazione {corr:.3f}, {db:+.2f} dB)", flush=True)
+            if ok:
+                shutil.move(tmp, os.path.join(dest, os.path.basename(c)))
+                fatti += 1
     print(fatti, "pezzi lunghi creati")
 
 
 if __name__ == "__main__":
-    lunghi() if "lunghi" in sys.argv[1:] else main()
+    if sys.argv[1:2] == ["lunghi"]:
+        lunghi(set(sys.argv[2:]))
+    else:
+        main()

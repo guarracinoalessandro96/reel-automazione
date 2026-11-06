@@ -467,8 +467,9 @@ def musiche_brano(music, n=3):
     base = re.sub(r"_\d+$", "", os.path.splitext(os.path.basename(music))[0])
     d = os.path.dirname(music)
     if os.path.basename(d) == "yt_dieci":      # 1/11/2026: pezzo unico da 10 s: si usa quello scelto, non sempre il primo
-        # 6/11/2026: la versione da 20,5 s dello stesso pezzo (stesso inizio e volume, prepara_dieci.py lunghi): nel
-        # formato "intero" (fino a 20 s) il pezzo da 10,5 s ripartiva da capo a 10 s; nei reel da 10 s non cambia niente
+        # 6/11/2026: la versione da 20,5 s dello stesso pezzo (prepara_dieci.py lunghi): nel formato "intero" (fino a
+        # 20 s) il pezzo da 10,5 s ripartiva da capo a 10 s. Stesso inizio e stesso guadagno, e prepara_dieci controlla
+        # che i primi 10 s siano uguali al pezzo corto: nei reel da 10 s la musica resta identica
         lungo = os.path.join(os.path.dirname(d), "yt_venti", os.path.basename(music))
         return [lungo if os.path.exists(lungo) else music]
     pezzi = sorted(os.path.join(d, f) for f in os.listdir(d) if re.fullmatch(re.escape(base) + r"_\d+\.m4a", f))
@@ -1204,12 +1205,17 @@ IG_RICERCHE = {"palestra": ["motivational", "emotional", "cinematic"], "macchina
                "cibo": ["motivational", "epic"], "uscita": ["epic", "motivational"]}
 IG_DA_EVITARE = re.compile(r"love|amore|romantic|lullaby|sleep|relax|432hz|christmas|natale|baby|happy|domenica|"
                            r"lofi|lo-fi|slowed|chill|pensive|memor|miss|sad|calm|halloween|birthday|yummy|sitaron|"
-                           r"kannan|maya|vayam|afro|jazz|piano|vivaldi|lullab|meditat", re.I)
+                           r"kannan|maya|vayam|afro|jazz|piano|vivaldi|lullab|meditat|"
+                           # 6/11/2026: il nome del brano compare sotto ogni reel: niente "Hell", doppi sensi, palestra
+                           r"\bhell\b|right round|sexy|\bsex\b|booty|twerk|\bgym\b|palestr|"
+                           # e niente donne o coppie nei titoli (sue regole sui testi)
+                           r"housewife|\bwife\b|girlfriend|boyfriend|\bgirls?\b|\blad(y|ies)\b|\bbabe\b|darling|"
+                           r"sweetheart|bonnie (and|&) clyde", re.I)
 # 30/10/2026: l'API delle app NON da' i suoni di tendenza veri di Instagram (cercando "trending" o "viral" escono brani
 # a caso della libreria libera: "Let Me Love You", "I Love My Baby", lofi...). Si cercano solo brani energici/epici e
 # si preferiscono i titoli che "suonano" motivazionali.
 IG_ENERGICI = ["motivational", "epic", "workout", "cinematic", "powerful", "inspiring", "energetic", "hype"]
-IG_TITOLI_FORTI = re.compile(r"knockout|fighter|level up|success|go go|big league|you can|inspired|rise|champion|"
+IG_TITOLI_FORTI = re.compile(r"knockout|fighter|level up|success|go go|big league|you can|inspired|\brise|champion|"
                              r"power|epic|victory|brave|breathtaker|unstoppable|believe|dream big|warrior|nerve|move",
                              re.I)
 
@@ -1225,12 +1231,20 @@ IG_LENTI = re.compile(r"\bti amo\b|\bte amo\b|\bamor\b|amour|lovin|kiss|bacio|\b
                       r"candle|twinkl|sunday|coffee|caff[eè]\b|moka|funeral|ballad|acoustic|lounge|ambient|bossa|"
                       r"swing|reels sound|fantasm|\brain\b|raining|pioggia|lacrim|tears|\bcry(ing)?\b|triste|"
                       r"piccole cose|ovunque sarai|one more light|apocalypse|always you|here you come|sogna, ragazzo|"
-                      r"guzarish|\bgod\b|jesus|ges[uù]|hallelujah|ave maria", re.I)
-# brani che "suonano" energici: tra le tendenze vengono prima (insieme a IG_TITOLI_FORTI)
-IG_ENERGIA = re.compile(r"anthem|hall of fame|champion|highway|climb|running|\brun\b|spark|\bin motion\b|\bmotion\b|"
+                      r"guzarish|\bgod\b|jesus|ges[uù]|hallelujah|ave maria|"
+                      # 6/11/2026 (revisione): parole generiche dei brani lenti, di festa, inni o da sottofondo
+                      # (la lista cambia ogni ora: 135 brani su 160 in due ore e mezza), piu' quelli visti oggi
+                      r"\bslow|holiday|\bbells?\b|carol|sheep|lazy|quiet|\bsoft\b|garden|seaside|moonlight|"
+                      r"harvest moon|\bhalo\b|cinnamon girl|tu mil jaaye|ipanema|whisp|helpless|little moments|"
+                      r"lost in the moment|\binno\b|\b(with|without|like|only|need|want) you\b|"
+                      r"\byour (hand|eyes|arms|lips)\b|\bhold me\b|\bleave me\b|first time|passion|desire|\bheves\b|"
+                      r"ocean trance|come ?over", re.I)
+# brani che "suonano" energici: tra le tendenze vengono prima (insieme a IG_TITOLI_FORTI). 6/11/2026: fuori Highway
+# (to Hell), Right Round e On The Floor (testi e titoli fuori tema) e gym/workout (la palestra non va nei testi)
+IG_ENERGIA = re.compile(r"anthem|hall of fame|champion|climb|running|\brun\b|spark|\bin motion\b|\bmotion\b|"
                         r"march|\bboss\b|\bfire\b|legacy|winner|\bwin\b|hustle|grind|beast|strong|fight|battle|legend|"
-                        r"glory|hero|thunder|storm|phonk|workout|\bgym\b|hype|energy|adrenalin|accelerand|right round|"
-                        r"on the floor|eye of the tiger|lose yourself|remember the name|believer|rock you|"
+                        r"glory|hero|thunder|storm|phonk|\bhype\b|energy|adrenalin|accelerand|"
+                        r"eye of the tiger|lose yourself|remember the name|believer|rock you|"
                         r"can.t hold us|top of the world|remix|club mix|extended mix|radio mix|sped up", re.I)
 IG_FINESTRA_BRANI = 60       # 6/11/2026: stesso brano (audio_id) mai negli ultimi 60 reel Instagram (prima 30)
 IG_FINESTRA_TITOLI = 40      # stessa canzone, anche in un'altra versione o di un altro artista, mai negli ultimi 40
@@ -1285,12 +1299,13 @@ def tendenze_instagram(pagine=3):
 
 
 def _priorita_ig(a, posto):
-    """6/11/2026: prima le canzoni del momento che suonano energiche, poi le altre del momento, poi i brani di libreria
-    energici, poi il resto (a parita', l'ordine delle tendenze)."""
-    forte = (IG_TITOLI_FORTI.search(a.get("title", "") or "")
-             or IG_ENERGIA.search(f"{a.get('title', '')} {a.get('display_artist', '')}"))
+    """6/11/2026: 0 = canzoni del momento che suonano energiche, 1 = brani di libreria energici, 2 = le altre canzoni
+    del momento, 3 = il resto, che tra le tendenze non si sceglie (revisione: dal 25esimo reel uscivano brani da
+    sottofondo come Me In My Garden, Ipanema, Seaside). Energico = dal TITOLO (con l'artista, "Here With Me - Indian
+    Run" contava come corsa). A parita', l'ordine delle tendenze."""
+    forte = IG_TITOLI_FORTI.search(a.get("title", "") or "") or IG_ENERGIA.search(a.get("title", "") or "")
     vera = posto < IG_PRIME_TENDENZE
-    return 0 if forte and vera else 1 if vera else 2 if forte else 3
+    return 0 if forte and vera else 1 if forte else 2 if vera else 3
 
 
 def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti=None):
@@ -1299,8 +1314,9 @@ def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti
     reel"): 1) tendenze ufficiali di Instagram, 2) brani piu' usati dai reel forti (audio_tendenza.json, domenica),
     3) ricerca per parole energiche.
     6/11/2026: mai la stessa canzone (anche in un'altra versione) negli ultimi IG_FINESTRA_TITOLI reel, mai brani lenti
-    o romantici (IG_LENTI), prima quelli energici; ultima riserva la tendenza adatta usata meno di recente, perche'
-    senza brano di Instagram si sentirebbe la traccia del file."""
+    o romantici (IG_LENTI). Ordine: tendenze energiche (_priorita_ig 0 e 1), altre canzoni del momento (2), ricerche
+    energiche; ultima riserva la tendenza adatta usata meno di recente, perche' senza brano di Instagram il reel non
+    esce (instagram_upload)."""
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
     if titoli_recenti is None:     # 6/11/2026: anche il secondo tentativo di instagram_upload evita le stesse canzoni
         titoli_recenti = (_IG_STATO.get("state") or {}).get("ig_titoli_recenti", [])
@@ -1316,11 +1332,21 @@ def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti
     except Exception as e:
         log("Tendenze di Instagram non lette:", e)
         lista = []
+    stato = _IG_STATO.get("state")
+    try:    # 6/11/2026: le ultime tendenze adatte restano nello stato, per l'ultima riserva se Instagram non le da'
+        if lista and isinstance(stato, dict):
+            stato["ig_tendenze_riserva"] = [{k: a.get(k) for k in ("audio_id", "title", "display_artist",
+                                                                    "duration_in_ms")}
+                                            for i, a in enumerate(lista) if giusto(a) and _priorita_ig(a, i) <= 2][:30]
+    except Exception as e:
+        log("Tendenze di riserva non salvate:", e)
     tendenza = [(i, a) for i, a in enumerate(lista) if adatto(a)]
     if tendenza:     # tra le prime 8, un po' a caso cosi' i reel vicini non hanno lo stesso brano
         # 4/11/2026: e mai lo stesso artista dei reel recenti (6/11: ultimi 10), se resta almeno un brano
         tendenza = [x for x in tendenza if x[1].get("display_artist") not in artisti_recenti] or tendenza
-        tendenza = sorted((_priorita_ig(a, i), i, a) for i, a in tendenza)
+        # 6/11/2026: solo i gruppi 0-2 di _priorita_ig (il resto e' musica da sottofondo); finiti, le ricerche energiche
+        tendenza = [x for x in sorted((_priorita_ig(a, i), i, a) for i, a in tendenza) if x[0] <= 2]
+    if tendenza:     # tendenze prima delle ricerche: Alessandro vuole la musica di tendenza di Instagram (4/11)
         a = random.choice([x for x in tendenza if x[0] == tendenza[0][0]][:8])[2]    # il gruppo migliore
         return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')} [tendenza]"
     ricerche = list(dict.fromkeys(random.sample(IG_ENERGICI, len(IG_ENERGICI))))
@@ -1338,16 +1364,25 @@ def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti
             tutti += [a for a in cerca(q) if adatto(a)]
     except Exception as e:
         log("Ricerca di brani Instagram non riuscita:", type(e).__name__)
-    if tutti:
-        forti = [a for a in tutti if IG_TITOLI_FORTI.search(a.get("title", "")) or IG_ENERGIA.search(a.get("title", ""))]
-        a = random.choice(forti or tutti[:8])
+    # 6/11/2026: dalle ricerche solo i titoli energici (prima, senza, uno a caso dei primi 8), mai l'artista dei reel
+    # recenti se ce n'e' un altro
+    forti = [a for a in tutti if IG_TITOLI_FORTI.search(a.get("title", "")) or IG_ENERGIA.search(a.get("title", ""))]
+    forti = [a for a in forti if a.get("display_artist") not in artisti_recenti] or forti
+    if forti:
+        a = random.choice(forti)
         return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')}"
-    # 6/11/2026: ultima riserva, la tendenza adatta usata meno di recente (meglio un brano ripetuto che la traccia del file)
+    # 6/11/2026: ultima riserva, la tendenza adatta usata meno di recente, prima i gruppi 0-2 (meglio un brano ripetuto
+    # che nessun brano di Instagram); senza lista, le ultime tendenze adatte salvate nello stato
     uso = {x: i for i, x in enumerate(recenti)}
-    vecchie = sorted((uso.get(a["audio_id"], -1), i, a) for i, a in enumerate(lista) if giusto(a))
+    fonte = lista or (stato or {}).get("ig_tendenze_riserva") or []
+    vecchie = sorted((_priorita_ig(a, i) > 2, titolo_base(a.get("title")) in titoli, uso.get(a["audio_id"], -1), i, a)
+                     for i, a in enumerate(fonte) if giusto(a))
     if vecchie:
-        a = vecchie[0][2]
+        a = vecchie[0][4]
         return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')} [tendenza]"
+    if tutti:
+        a = random.choice(tutti[:8])
+        return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')}"
     return None
 
 
@@ -1546,10 +1581,17 @@ def con_traccia(path):
 
 
 ULTIMO_IG = {}     # 4/11/2026: come e' uscito l'ultimo reel Instagram (metodo, brano se cambiato): finisce nei risultati
+# 6/11/2026 (Alessandro: su ogni social solo la musica di quel social, mai la nostra, nemmeno di riserva): i file con la
+# NOSTRA musica (versione_meta) escono su Instagram solo col brano di Instagram sopra (video_volume 1). Senza brano o
+# col caricamento diretto (che lo ignora) si sentiva la nostra traccia: ora errore e si riprova al giro dopo
+NOSTRA_MUSICA = set()
 
 
 def instagram_upload(path, cap, audio_id=None):
     """audio_id: brano nativo di Instagram (allora path e' il video SENZA musica)."""
+    nostra = os.path.abspath(path) in NOSTRA_MUSICA
+    if nostra and not audio_id:
+        raise RuntimeError("nessun brano di Instagram: il video ha la nostra musica, non esce (si riprova)")
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
     ULTIMO_IG.clear()
     dati = {"media_type": "REELS", "caption": testo_breve(cap), "share_to_feed": "true"}
@@ -1606,6 +1648,8 @@ def instagram_upload(path, cap, audio_id=None):
                     dati["audio_configuration"] = json.dumps({"audio_id": altro[0], "audio_volume": 100,
                                                               "video_volume": 1})
                 time.sleep(20)
+        if not cid and nostra:     # 6/11/2026: mai il caricamento diretto con la nostra musica (vedi NOSTRA_MUSICA)
+            raise RuntimeError("due link non riusciti: niente caricamento diretto con la nostra musica, si riprova")
         if not cid:
             log("instagram: link non riuscito due volte, provo il caricamento diretto")
     if not cid:
@@ -1795,6 +1839,7 @@ def versione_meta(path, recenti, scena=None):
             overlay.cambia_musica(path, m, dst, audio_ig.punto_inizio(m, tagli))
             difetti = audio_ig.controlla(dst)
             if not difetti:
+                NOSTRA_MUSICA.add(os.path.abspath(dst))     # 6/11/2026: su Instagram solo col brano di Instagram
                 return dst, os.path.basename(m)
             log("audio Instagram scartato:", os.path.basename(m), difetti)
     except Exception as e:
