@@ -1547,8 +1547,17 @@ def _priorita_ig(a, posto):
 IG_APERTURA = True
 IG_APERTURA_MAX = 4          # file nuovi controllati al massimo per gruppo di candidati (~0,5 MB e un secondo l'uno)
 IG_APERTURA_TOTALE = 8       # ... e per ogni brano scelto (tendenze + ricerche)
+# 6/11/2026 (integrazione, revisione del ritornello): tutti i file dei brani controllati in UNA scelta stanno in circa
+# 60 s; poi niente altri download e la scelta di prima (la tendenza del gruppo migliore): con la rete lenta 8 file da
+# 30 s l'uno potevano far tardare il reel
+IG_APERTURA_SECONDI = 60
 _APERTURE = {}               # audio_id -> True (parte forte) / False (intro) / None (non si sa), una volta per lavoro
 _APERTURE_LETTE = [0]        # file letti per il brano in corso di scelta
+_APERTURA_FINE = [None]      # ora (time.time()) oltre cui nella scelta in corso non si scarica piu' niente
+
+
+def _tempo_brani_finito():
+    return _APERTURA_FINE[0] is not None and time.time() >= _APERTURA_FINE[0]
 
 
 def _parte_forte(a):
@@ -1557,8 +1566,10 @@ def _parte_forte(a):
         return None
     aid = a.get("audio_id")
     if aid not in _APERTURE:
+        if _tempo_brani_finito():          # 6/11/2026 (integrazione): tempo finito, il brano resta "non si sa"
+            return None
         try:
-            m = audio_ig.apertura(a["download_url"])
+            m = audio_ig.apertura(a["download_url"], fine=_APERTURA_FINE[0])
         except Exception as e:
             log("Instagram: inizio del brano non controllato:", type(e).__name__)
             m = None
@@ -1569,13 +1580,26 @@ def _parte_forte(a):
     return _APERTURE[aid]
 
 
+def _riserva_senza_intro(gruppo, riserva):
+    """6/11/2026 (integrazione, revisione del ritornello): la riserva tra i brani del gruppo che NON sono stati misurati
+    con un intro lento (_APERTURE False), se ce n'e' almeno uno; se no quella di prima."""
+    try:
+        if riserva is None or _APERTURE.get(riserva.get("audio_id")) is not False:
+            return riserva
+        buoni = [a for a in gruppo if _APERTURE.get(a.get("audio_id")) is not False]
+        return random.choice(buoni) if buoni else riserva
+    except Exception as e:
+        log("Instagram: riserva non ricontrollata:", e)
+        return riserva
+
+
 def _scegli_forte(candidati):
     """Il primo candidato che non parte con un intro lento: i brani della libreria si controllano (al massimo
     IG_APERTURA_MAX file nuovi), le canzoni con licenza passano come prima. None se nessuno passa."""
     nuovi = 0
     for a in candidati:
         if IG_APERTURA and a.get("download_url") and a.get("audio_id") not in _APERTURE:
-            if nuovi >= IG_APERTURA_MAX or _APERTURE_LETTE[0] >= IG_APERTURA_TOTALE:
+            if nuovi >= IG_APERTURA_MAX or _APERTURE_LETTE[0] >= IG_APERTURA_TOTALE or _tempo_brani_finito():
                 continue
             nuovi += 1
             _APERTURE_LETTE[0] += 1
@@ -1598,6 +1622,7 @@ def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti
     passa, la scelta di prima."""
     token, ig = ENV("META_PAGE_TOKEN"), ENV("IG_USER_ID")
     _APERTURE_LETTE[0] = 0
+    _APERTURA_FINE[0] = time.time() + IG_APERTURA_SECONDI     # 6/11/2026 (integrazione): un tempo per tutta la scelta
     if titoli_recenti is None:     # 6/11/2026: anche il secondo tentativo di instagram_upload evita le stesse canzoni
         titoli_recenti = (_IG_STATO.get("state") or {}).get("ig_titoli_recenti", [])
     titoli = set(titoli_recenti)
@@ -1639,14 +1664,28 @@ def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti
             log("Instagram: inizio dei brani non controllato:", e)
         if a:
             return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')} [tendenza]"
+        # 6/11/2026 (integrazione): la riserva tra i brani del gruppo NON misurati con l'intro (se ce ne sono)
+        riserva = _riserva_senza_intro(gruppo, riserva)
+        if _tempo_brani_finito():     # 6/11/2026 (integrazione): tempo dei controlli finito: la scelta di prima
+            log("Instagram: tempo per controllare i brani finito, la tendenza del gruppo migliore come prima")
+            return riserva["audio_id"], f"{riserva.get('title')} - {riserva.get('display_artist')} [tendenza]"
         log("Instagram: le tendenze adatte partono tutte con un intro lento, provo le ricerche")
     ricerche = list(dict.fromkeys(random.sample(IG_ENERGICI, len(IG_ENERGICI))))
     # 4/11/2026: anche le ricerche di riserva con nuovi tentativi e gli stessi filtri delle tendenze (stagione, durata)
     cerca = lambda q: _meta("GET", f"{GRAPH_AUDIO}/ig_audio", timeout=30, params={
         "audio_type": "music", "search_query": q, "user_id": ig, "access_token": token}).get("audio", [])
     tutti = []
+    # 6/11/2026 (integrazione, revisione del ritornello): dei brani usati dagli altri reel solo i titoli energici e
+    # adatti, come per le tendenze (gruppi 0-1 di _priorita_ig): "DEFEATED" o "retire (final)" non vanno sotto un
+    # reel motivazionale
+    energico = lambda t: bool(IG_TITOLI_FORTI.search(t or "") or IG_ENERGIA.search(t or ""))
+    try:
+        da_altri = [q for q in audio_tendenza() if energico(q) and giusto({"audio_id": "-", "title": q})]
+    except Exception as e:
+        log("Brani degli altri reel non filtrati:", e)
+        da_altri = []
     try:      # 6/11/2026: un errore di rete qui non deve lasciare il reel senza brano (c'e' ancora la riserva sotto)
-        for q in audio_tendenza()[:6]:                # i brani usati dagli altri reel, se Instagram li concede all'API
+        for q in da_altri[:6]:                        # i brani usati dagli altri reel, se Instagram li concede all'API
             trovati = [a for a in cerca(q) if adatto(a)
                        and q.lower().strip() == a.get("title", "").lower().strip()]   # 3/11: titolo esatto ("Violin" dava Brahms)
             a = _scegli_forte(trovati) if trovati else None      # 6/11/2026: mai un brano che parte con un intro lento
@@ -1669,8 +1708,8 @@ def scegli_audio_instagram(scena, recenti=(), artisti_recenti=(), titoli_recenti
         return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')}"
     if riserva:      # 6/11/2026: nessuno parte forte: la tendenza del gruppo migliore, come prima
         return riserva["audio_id"], f"{riserva.get('title')} - {riserva.get('display_artist')} [tendenza]"
-    if forti:
-        a = random.choice(forti)
+    if forti:        # 6/11/2026 (integrazione): prima quelli non misurati con l'intro
+        a = random.choice([x for x in forti if _APERTURE.get(x.get("audio_id")) is not False] or forti)
         return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')}"
     # 6/11/2026: ultima riserva, la tendenza adatta usata meno di recente, prima i gruppi 0-2 (meglio un brano ripetuto
     # che nessun brano di Instagram); senza lista, le ultime tendenze adatte salvate nello stato

@@ -89,12 +89,16 @@ def apertura_pcm(x, sr=8000):
             "forte": primo >= APERTURA_PRIMO_MIN and dieci >= APERTURA_DIECI_MIN and salto < APERTURA_SALTO_MAX}
 
 
-def apertura(url, timeout=30):
-    """apertura_pcm del file di un brano di Instagram (download_url, ~0,5 MB). None se non si riesce a leggerlo."""
-    import tempfile, requests
+def apertura(url, timeout=30, fine=None):
+    """apertura_pcm del file di un brano di Instagram (download_url, ~0,5 MB). None se non si riesce a leggerlo.
+    6/11/2026 (integrazione): fine = ora (time.time()) entro cui finire download e lettura, se no None."""
+    import tempfile, time, requests
     tmp = None
+    resta = lambda: None if fine is None else fine - time.time()
     try:
-        r = requests.get(url, timeout=timeout, stream=True)
+        if resta() is not None and resta() <= 1:
+            return None
+        r = requests.get(url, timeout=timeout if resta() is None else max(1.0, min(timeout, resta())), stream=True)
         r.raise_for_status()
         fd, tmp = tempfile.mkstemp(suffix=".m4a")
         with os.fdopen(fd, "wb") as f:
@@ -104,8 +108,10 @@ def apertura(url, timeout=30):
                 letti += len(pezzo)
                 if letti > 25e6:
                     raise ValueError("file troppo grande")
+                if resta() is not None and resta() <= 0:
+                    raise TimeoutError("tempo per i brani finito")
         raw = subprocess.run([FFMPEG, "-v", "error", "-i", tmp, "-ac", "1", "-ar", "8000", "-f", "s16le", "-"],
-                             capture_output=True, timeout=90).stdout
+                             capture_output=True, timeout=90 if resta() is None else max(5.0, min(90, resta()))).stdout
         return apertura_pcm(np.frombuffer(raw, "<i2").astype(np.float32) / 32768)
     except Exception:
         return None

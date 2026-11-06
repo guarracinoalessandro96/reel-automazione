@@ -63,7 +63,7 @@ e) In "Impostazioni" → "Quando pubblicare" seleziona "Programma".
    - Imposta data e ora uguali a "orario". Il fuso deve restare "(GMT+1) Ora locale" (Italia).
    - Se il selettore dell'ora permette solo multipli di 5 minuti, gli orari sono comunque a ore piene.
    - "Chi può vedere questo post" = Tutti. Le altre impostazioni restano come sono.
-f) Prima di confermare, fai uno screenshot e controlla quattro cose: descrizione giusta, suono messo (se serviva) su tutto il video e fatto partire dalla parte forte, data e ora giuste. Poi clicca il pulsante rosso "Programma" in fondo alla pagina.
+f) Prima di confermare, fai uno screenshot e controlla quattro cose: descrizione giusta; suono messo (se serviva), già controllato al punto d5: qui NON riaprire Suoni. Se lo riapri e salvi, riscrivi la descrizione come in c2 e ricontrolla con javascript che contenga frase e hashtag; data e ora giuste. Poi clicca il pulsante rosso "Programma" in fondo alla pagina.
    Questa conferma è autorizzata da Alessandro: è proprio il compito di questa attività. Programma SOLO i video presenti in elenco.json.
 g) Controlla che TikTok confermi la programmazione (messaggio o pagina dei post), poi segna il video:
    cd /c/Users/User/reel-automazione && python tiktok_prepara.py segna <id> "<orario>"   (orario = quello dell'elenco, tra virgolette)
