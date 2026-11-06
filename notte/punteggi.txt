@@ -1,50 +1,50 @@
-99	Una sera a lavorare invece di uscire non ti cambia la vita. Trecento sere sì.
-99	Il tuo futuro non cambia a capodanno. Cambia con quello che fai un martedì qualsiasi.
-99	Nessuno applaude le mattine in cui ti alzi stanco. Eppure sono quelle a cambiarti la vita.
-98	Non sei stanco perché sei debole. Sei stanco perché stai portando avanti qualcosa di grande.
-98	Il problema non è la fatica. È abituarsi a una vita più piccola di quella che potresti avere.
-98	Un anno fa ci avresti messo la firma per essere dove sei adesso. Ricordatelo nei giorni più duri.
-98	Mancano meno di due mesi alla fine dell'anno. Abbastanza per farlo diventare l'anno della svolta.
-97	Ho capito che il vero sacrificio non è rinunciare a qualcosa. È rinunciare a chi ero.
-97	Ho smesso di chiedermi se ce la farò. Ora mi chiedo cosa posso fare oggi per farcela.
-97	La tua vecchia versione non era sbagliata. Ti ha solo portato fin qui. Adesso tocca alla prossima.
-96	Il 31 dicembre arriverà comunque. Decidi adesso se arrivarci uguale a prima o fiero di te.
-96	Plot twist: la persona che ti cambierà la vita la vedi ogni mattina allo specchio.
-95	La sveglia presto non è una punizione. È il prezzo della vita che hai deciso di costruirti.
-95	Ogni no che dici a una distrazione è un sì che dici al tuo futuro.
-94	Ogni volta che ti alzi quando vorresti mollare, diventi un po' più difficile da fermare.
-94	Le scuse ti fanno stare bene una sera. La disciplina ti fa stare bene una vita.
-93	Se stai leggendo questo mentre sei stanco ma vai avanti lo stesso: sono fiero di te.
-93	La disciplina non è punirti. È ricordarti ogni giorno cosa ti sei promesso.
-92	La costanza non fa rumore. Ma un giorno ti svegli e non riconosci più la persona che eri.
-92	Plot twist: la vita che vuoi è dall'altra parte delle cose che stai rimandando.
-91	All'inizio sembra lentissimo. Poi un giorno ti giri e non riconosci più il punto di partenza.
+99	Una sera a lavorare invece di uscire non cambia la vita. Trecento sere sì.
+98	Non sono stanco perché sono debole. Sono stanco perché sto portando avanti qualcosa di grande.
+98	Ho capito che il vero sacrificio non è rinunciare a qualcosa. È rinunciare a chi ero.
+97	Mancano meno di due mesi alla fine dell'anno. Abbastanza per farlo diventare l'anno della svolta.
+98	Un giorno mi chiederanno come ho fatto. Risponderò: non mi sono mai fermato.
+97	La sveglia presto non è una punizione. È il prezzo della vita che ho scelto.
+97	Questo è per chi lavora tutto il giorno e la sera costruisce ancora il suo futuro.
+97	La mia vecchia versione non era sbagliata. Mi ha portato fin qui. Adesso tocca alla prossima.
+97	Il segreto non è fare cose straordinarie. È fare cose normali con una costanza straordinaria.
+99	Il mio futuro non cambia a capodanno. Cambia con quello che faccio un martedì qualsiasi.
+96	Il sacrificio pesa adesso. Il rimpianto pesa per sempre. Io scelgo il sacrificio.
+96	Plot twist: la persona che mi sta cambiando la vita la vedo ogni mattina allo specchio.
+96	Un anno fa ci avrei messo la firma per essere qui. Me lo ripeto quando è dura.
+96	Il 31 dicembre arriverà comunque. Voglio arrivarci fiero di me, non uguale a gennaio.
+95	Ho smesso di chiedermi se ce la farò. Ora mi chiedo cosa posso fare oggi per farcela.
+95	Nessuno applaude le mattine in cui mi alzo stanco. Eppure sono quelle a cambiarmi la vita.
+95	Ogni no che dico a una distrazione è un sì che dico al mio futuro.
+94	Ogni volta che mi rialzo quando vorrei mollare, divento un po' più difficile da fermare.
+94	Le scuse fanno stare bene una sera. La disciplina fa stare bene una vita.
+93	I risultati non sono arrivati quando li aspettavo. Sono arrivati quando ho smesso di contarli.
+92	Dormire un'ora in meno per costruire qualcosa di mio non è un sacrificio. È un investimento.
 91	La costanza è noiosa, lo so. Ma è l'unica cosa che ho visto funzionare ogni singola volta.
-90	Non sei in ritardo. Quello che stai facendo richiede solo più tempo di una scorciatoia.
-90	Il sacrificio pesa adesso. Il rimpianto pesa per sempre. Scegli tu quale portarti dietro.
-90	Dormire un'ora in meno per costruire qualcosa di tuo non è un sacrificio. È un investimento.
-89	Rispettarti significa anche dirti di no quando stai per scegliere la strada più comoda.
-89	Questo è per chi lavora tutto il giorno e la sera costruisce ancora il suo futuro.
-89	Sii orgoglioso di quanto sei cresciuto in silenzio, anche se nessuno se n'è accorto.
-88	Non hai bisogno di una vita nuova. Hai bisogno di abitudini nuove nella vita che hai già.
 88	Chi si alza presto non ha più ore nella giornata. Ha solo deciso che il suo tempo vale.
-88	I risultati non arrivano quando li aspetti. Arrivano quando smetti di contarli e continui.
-87	Non devi vincere ogni giorno. Devi solo non arrenderti nei giorni in cui perdi.
-87	Un giorno qualcuno ti chiederà come hai fatto. La risposta sarà semplice: non mi sono fermato.
-87	Quando ti senti indietro, ricordati che non è una gara. Stai costruendo la tua vita.
-86	Fai pace con il fatto che ci vorrà tempo. Poi lavora come se non ne avessi.
-86	Scegli una cosa sola e falla ogni giorno per un anno. Poi guarda chi sei diventato.
-85	Non ti chiedo di cambiare tutto. Cambia una sola abitudine e tienila finché non diventa tua.
-85	Sei stanco? Riposati. Ma non fermarti: il riposo fa parte del lavoro, arrendersi no.
-84	Hai due possibilità ogni mattina: restare come sei o fare un passo verso chi vuoi diventare.
 84	Va bene andare piano. Va bene fermarsi a respirare. L'importante è non tornare indietro.
-83	Il segreto non è fare cose straordinarie. È fare cose normali con una costanza straordinaria.
-83	Non aspettare lunedì, il primo del mese o l'anno nuovo. Ricominci quando decidi tu: adesso.
-82	Forse non ti mancano le capacità. Forse ti manca solo la costanza di riprovarci.
-82	Il tuo prossimo livello chiede una versione di te che non hai ancora conosciuto.
-81	Lavora come se nessuno ti stesse guardando. Un giorno lo faranno, e tu sarai pronto.
-80	Un giorno ti guarderai indietro e capirai che le mattine più dure ti stavano costruendo.
-79	Il momento in cui smetti di cercare scuse è il momento in cui inizia la tua storia.
-78	Ogni volta che scegli il lavoro invece della comodità, il te del futuro ti ringrazia.
-77	Non serve un piano perfetto. Serve un piano semplice che segui anche quando nessuno ti controlla.
-76	Stai attento a quello che ripeti ogni giorno: alla fine diventa quello che sei.
+92	Il problema non è la fatica. È abituarsi a una vita più piccola di quella che potresti avere.
+87	Se stai leggendo questo mentre sei stanco ma vai avanti lo stesso: sono fiero di te.
+87	La disciplina non è punirti. È ricordarti ogni giorno cosa ti sei promesso.
+86	La costanza non fa rumore. Ma un giorno ti svegli e non riconosci più la persona che eri.
+86	Plot twist: la vita che vuoi è dall'altra parte delle cose che stai rimandando.
+85	All'inizio sembra lentissimo. Poi un giorno ti giri e non riconosci più il punto di partenza.
+84	Non sei in ritardo. Quello che stai facendo richiede solo più tempo di una scorciatoia.
+83	Rispettarti significa anche dirti di no quando stai per scegliere la strada più comoda.
+83	Sii orgoglioso di quanto sei cresciuto in silenzio, anche se nessuno se n'è accorto.
+82	Non hai bisogno di una vita nuova. Hai bisogno di abitudini nuove nella vita che hai già.
+81	Non devi vincere ogni giorno. Devi solo non arrenderti nei giorni in cui perdi.
+81	Quando ti senti indietro, ricordati che non è una gara. Stai costruendo la tua vita.
+80	Fai pace con il fatto che ci vorrà tempo. Poi lavora come se non ne avessi.
+80	Scegli una cosa sola e falla ogni giorno per un anno. Poi guarda chi sei diventato.
+79	Non ti chiedo di cambiare tutto. Cambia una sola abitudine e tienila finché non diventa tua.
+79	Sei stanco? Riposati. Ma non fermarti: il riposo fa parte del lavoro, arrendersi no.
+78	Hai due possibilità ogni mattina: restare come sei o fare un passo verso chi vuoi diventare.
+77	Non aspettare lunedì, il primo del mese o l'anno nuovo. Ricominci quando decidi tu: adesso.
+76	Forse non ti mancano le capacità. Forse ti manca solo la costanza di riprovarci.
+76	Il tuo prossimo livello chiede una versione di te che non hai ancora conosciuto.
+75	Lavora come se nessuno ti stesse guardando. Un giorno lo faranno, e tu sarai pronto.
+74	Un giorno ti guarderai indietro e capirai che le mattine più dure ti stavano costruendo.
+73	Il momento in cui smetti di cercare scuse è il momento in cui inizia la tua storia.
+72	Ogni volta che scegli il lavoro invece della comodità, il te del futuro ti ringrazia.
+71	Non serve un piano perfetto. Serve un piano semplice che segui anche quando nessuno ti controlla.
+70	Stai attento a quello che ripeti ogni giorno: alla fine diventa quello che sei.
