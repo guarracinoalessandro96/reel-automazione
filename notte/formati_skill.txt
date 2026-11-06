@@ -2,8 +2,8 @@ AREA FORMATI (6/11/2026) - righe da aggiornare nelle attivita' programmate (fuor
 
 1) C:\Users\User\.claude\scheduled-tasks\controllo-macchina-reel\SKILL.md, riga 10
    SOSTITUIRE:  Formati da 10 s: dieci, dieci_due, dieci_broll,
-   CON:         Formati (dal 6/11, alla pari fino al 16/11, pubblica.FORMATI_10): dieci, dieci_due, taglio1, taglio2, taglio3, intero (10-20 s), cinema e post (frase fuori dal video, su banda nera o fondo bianco), rallenty (rallentatore), loop (7 s avanti e indietro); dieci_broll solo come ripiego,
+   CON:         Formati (dal 6/11, alla pari fino al 16/11, pubblica.FORMATI_10): dieci, dieci_due, taglio1, taglio2, taglio3, intero (10-20 s), cinema e post (frase su una fascia in alto, nera o bianca, fuori dal video), rallenty (rallentatore), loop (10 s avanti e indietro); se la scritta coprirebbe il viso lo stesso video esce in cinema o post (montaggio.ripiego_da = formato estratto), dieci_broll solo se anche quello fallisce,
 
 2) C:\Users\User\.claude\scheduled-tasks\studio-viralita\SKILL.md, riga 10
    SOSTITUIRE:  (formati dieci/dieci_due/dieci_broll, frase in due tempi)
-   CON:         (dal 6/11 dieci formati a rotazione alla pari fino al 16/11: dieci, dieci_due, taglio1, taglio2, taglio3, intero, cinema, post, rallenty, loop; confrontarli con report.py per_formato e tenere i migliori)
+   CON:         (dal 6/11 dieci formati a rotazione alla pari fino al 16/11: dieci, dieci_due, taglio1, taglio2, taglio3, intero, cinema, post, rallenty, loop; confrontarli con report.py per_formato e tenere i migliori. I reel con montaggio.ripiego_da sono usciti in cinema/post perche' la scritta copriva il viso: contarli a parte. cinema e post hanno una fascia sopra il video: guardarli piattaforma per piattaforma, soprattutto Instagram, che mostra meno i reel con bordi)
