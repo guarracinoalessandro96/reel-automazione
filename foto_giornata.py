@@ -444,7 +444,8 @@ def make_foto(foto, frase, dst, musiche=()):
 
 
 def pronte(drive):
-    """Le foto non ancora usate della giornata piu' vecchia che ne ha abbastanza: [] se non ce ne sono."""
+    """Le foto non ancora usate della giornata piu' recente che ne ha abbastanza (dal 6/11; prima la piu' vecchia):
+    [] se non ce ne sono."""
     q = (f"'{drive.cartella(CARTELLA)}' in parents and trashed = false and mimeType contains 'image/'")
     r, pagina = [], None
     while True:              # 5/11/2026: tutte le pagine (prima solo le prime 500 foto)
@@ -462,7 +463,8 @@ def pronte(drive):
         f["quando"] = (f.get("imageMediaMetadata") or {}).get("time", "").replace(":", "-", 2) or f.get("createdTime", "")
         giorni.setdefault(f["quando"][:10], []).append(f)
     vecchio = (datetime.date.today() - datetime.timedelta(days=2)).isoformat()
-    for g in sorted(giorni):
+    # 6/11/2026 (Alessandro: "dai sempre priorita' ai nuovi contenuti"): prima la giornata PIU' RECENTE, poi le altre
+    for g in sorted(giorni, reverse=True):
         # 5/11: gli avanzi (3 foto) di una giornata passata escono lo stesso invece di restare per sempre nella cartella
         if len(giorni[g]) >= MINIMO or (len(giorni[g]) >= 3 and g < vecchio):
             return scegli(giorni[g])

@@ -2195,21 +2195,24 @@ def fascia_video(a):
 
 
 def scegli_video(videos, analisi, slot_ora):
-    """Il video NUOVO giusto per questo orario (stessa fascia della giornata, poi fasce vicine, poi il piu' vecchio).
-    I video nuovi hanno sempre la precedenza: l'archivio si usa solo se la coda e' vuota (vedi main)."""
+    """Il video NUOVO giusto per questo orario (stessa fascia della giornata, poi fasce vicine, poi qualsiasi).
+    I video nuovi hanno sempre la precedenza: l'archivio si usa solo se la coda e' vuota (vedi main).
+    6/11/2026 (Alessandro: "dai sempre priorita' ai nuovi contenuti piuttosto che ai vecchi"): tra quelli in coda esce
+    il PIU' RECENTE (prima il piu' vecchio)."""
     if not videos:
         return None
+    recente = lambda lista: max(lista, key=lambda v: v.get("createdTime") or "")
     momenti = [v for v in videos if analisi.get(v["id"], {}).get("momento")]
     if momenti:                                # MOMENTO: e' una cosa di oggi, esce al primo orario
-        return momenti[0]
-    if slot_ora is None:                       # esecuzione manuale: il piu' vecchio
-        return videos[0]
+        return recente(momenti)
+    if slot_ora is None:                       # esecuzione manuale
+        return recente(videos)
     f = orario.fascia(slot_ora)
     for fascia in [f] + VICINE.get(f, []):
         adatti = [v for v in videos if fascia_video(analisi.get(v["id"], {})) == fascia]
         if adatti:
-            return adatti[0]
-    return videos[0]                           # nessun orario resta vuoto: il piu' vecchio in coda
+            return recente(adatti)
+    return recente(videos)                     # nessun orario resta vuoto
 
 
 def scegli_archivio(archivio, slot_ora):
