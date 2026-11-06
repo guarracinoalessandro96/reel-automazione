@@ -515,7 +515,8 @@ TUTTO_10S = True
 # film (cinema) e post (frase fuori dal video), rallentatore (rallenty), avanti-indietro senza stacco (loop).
 # dieci_broll (4 clip qualsiasi da 2,5 s) esce dal giro: stesso ritmo di taglio2/taglio3 e il peggiore nei dati (266
 # views medie contro 522 di dieci); resta solo come ultimo ripiego in monta_dieci.
-FORMATI_10 = ("dieci", "dieci_due", "taglio1", "taglio2", "taglio3", "intero", "cinema", "post", "rallenty", "loop")
+FORMATI_10 = ("dieci", "dieci_due", "taglio1", "taglio2", "taglio3", "intero", "cinema", "post", "rallenty", "loop",
+              "giornata")   # 6/11/2026: la sua giornata, un momento diverso per scena (monta_giornata)
 # 6/11/2026 (Alessandro: "sfruttare diversi tipi di format per capire quali video possano funzionare, poi faremo solo
 # quelle"): fino a FORMATI_PROVA_FINO tutti i formati da 10 s con la STESSA probabilita' (niente pesi vecchi), mai lo
 # stesso due volte di fila; poi report.py/l'agente delle 18:30 tengono i migliori
@@ -524,7 +525,8 @@ FORMATI_PROVA_FINO = "2026-11-16"
 # orario) tra la nuova (bianca con le parole chiave gialle) e il suo giallo pieno; montaggio.scritta in stato.json
 SCRITTE_PROVA = ("bianco_parola_gialla", "giallo_classico")
 # massimo di clip extra; dal 6/11 per i formati a scene si scaricano SOLO se il suo video non basta (scene_mancanti)
-SCENE_EXTRA = {"dieci_due": 1, "dieci_broll": 3, "taglio1": 3, "taglio2": 2, "taglio3": 2, "cinema": 1, "post": 1}
+SCENE_EXTRA = {"dieci_due": 1, "dieci_broll": 3, "taglio1": 3, "taglio2": 2, "taglio3": 2, "cinema": 1, "post": 1,
+               "giornata": 7}   # 6/11/2026: momenti della stessa giornata (clip_giornata), una clip di scorta
 ORARIO_FOTO, FOTO_DAL = ("12:00", "18:00"), "2026-11-05"   # 1/11/2026: reel con le foto della giornata (foto_giornata.py); 5/11: 43 foto caricate -> si parte oggi, 2 al giorno finche' ce ne sono
 COMMENTI_SU_TELEGRAM = False   # 31/10/2026: "non voglio i commenti": su Telegram solo errori e statistiche delle 8
 ORARIO_LISTA = "spenta"      # 31/10/2026: prima tutte le frasi delle foto; per riaccenderla "18:00". Formato lista, da salvare e mandare (un post cosi' fa 1 invio ogni 2 like)
@@ -622,6 +624,8 @@ def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, ultim
     si passa a 'dieci_due' (video dell'orario + una clip). Si usano TUTTI i suoi video, anche quelli in palestra
     (29/10/2026: "i video della palestra vanno bene"; e' solo la PAROLA palestra nei testi a essere vietata)."""
     import formati_nuovi
+    if formato == "giornata":        # 6/11/2026: ha il suo montaggio (da qui senza la coda: solo l'archivio)
+        return monta_giornata(frase, src, out, music, serie, drive, work, clip, {}, {"formato_ultimo": ultimo})
     if formato in ("dieci", "intero") and overlay.probe(src)[0] < 10.5:
         formato = "dieci_due"
     if formato in ("rallenty", "loop") and overlay.probe(src)[0] < 6.5:     # 6/11/2026: troppo corto per giocarci
@@ -662,6 +666,93 @@ def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, ultim
                                         out, musiche, serie, True)
     info["ripiego_da"] = formato             # per report.py: questo reel non e' uscito nel formato estratto
     return info
+
+
+def clip_giornata(drive, work, clip, an, src, state, videos=(), video=None):
+    """6/11/2026 (formato GIORNATA): clip di altri momenti della stessa giornata del video dell'orario, scaricate in
+    locale (al massimo SCENE_EXTRA["giornata"]). Le clip gia' uscite stanno nell'ARCHIVIO (data di ripresa nelle
+    proprieta', 'registrato'), quelle caricate e non ancora uscite in 'Da pubblicare' (state["analisi"]): il portinaio
+    le carica tutte insieme quando il telefono e' in carica, quindi la mattina la giornata di ieri e' quasi tutta
+    ancora in coda. Se quel giorno ha meno di 4 momenti diversi: il giorno piu' recente che li ha (prima i nuovi).
+    Prima scene diverse (macchina, ufficio, cibo, palestra...), poi le clip nuove; mai il video dell'orario, i video
+    parlati, i momenti col titolo (escono da soli), le clip escluse o con la famiglia, le clip senza data.
+    Restituisce (percorsi, ore di ripresa, scene, giorno)."""
+    import formati_nuovi
+    stem = lambda n: os.path.splitext(n or "")[0].lower()
+    mio = clip or video or {}
+    mio_id = mio.get("id")
+    giorno0 = str((clip or {}).get("registrato") or an.get("registrato") or overlay.data_ripresa(src) or "")[:10]
+    fuori, usi = set(clip_voti()["escluse"]), state.get("archivio_usi", {})
+    cand = []
+    for v in videos or []:               # la coda: i video nuovi, gia' analizzati (scena, ora di ripresa)
+        a = state.get("analisi", {}).get(v["id"], {})
+        if v["id"] != mio_id and not (a.get("parlato") or a.get("momento") or a.get("analisi_fallita")
+                                      or a.get("fallimenti")):
+            cand.append({"id": v["id"], "nome": v["name"], "scena": a.get("scena"), "registrato": a.get("registrato"),
+                         "compagnia": a.get("compagnia"), "cartella": "Da pubblicare", "nuova": True})
+    try:
+        archivio = drive.lista_archivio()
+    except Exception as e:
+        log("Giornata: archivio non letto, solo i video in coda:", e)
+        archivio = []
+    for c in archivio:
+        if c["id"] != mio_id and c.get("parlato") != "1" and c.get("nome") not in fuori \
+                and usi.get(c["id"], {}).get("fallimenti", 0) < 2:
+            cand.append(dict(c, cartella="Archivio", nuova=False))
+    visti, per_giorno = {stem(mio.get("nome") or mio.get("name"))}, {}
+    for c in cand:                       # stesso nome = stesso video (gia' uscito, o esportato due volte)
+        reg = str(c.get("registrato") or "")
+        if len(reg) >= 16 and c.get("compagnia") != "famiglia" and stem(c["nome"]) not in visti:
+            visti.add(stem(c["nome"]))
+            per_giorno.setdefault(reg[:10], []).append(c)
+    minimo = formati_nuovi.GIORNATA_MIN
+    giorno = giorno0 if len(per_giorno.get(giorno0, [])) >= minimo - 1 else next(
+        (g for g in sorted(per_giorno, reverse=True) if len(per_giorno[g]) >= minimo), None)
+    if not giorno:
+        raise ValueError(f"nessun giorno con {minimo} momenti diversi")
+    scelte = per_giorno[giorno]
+    random.shuffle(scelte)
+    scelte.sort(key=lambda c: not c["nuova"])          # a parita' di scena prima le clip nuove
+    gruppi = {}
+    for c in scelte:
+        gruppi.setdefault(c.get("scena") or "?", []).append(c)
+    giro = sorted(gruppi, key=lambda s: (s == an.get("scena"), random.random()))   # prima le scene diverse dalla sua
+    ordine = []
+    while any(gruppi.values()):
+        ordine += [gruppi[s].pop(0) for s in giro if gruppi[s]]
+    percorsi, ore, scene, nuove = [], [], [], 0
+    for i, c in enumerate(ordine):
+        if len(percorsi) >= SCENE_EXTRA.get("giornata", 7):
+            break
+        p = os.path.join(work, f"giornata_{i}{os.path.splitext(c['nome'])[1] or '.mov'}")
+        try:
+            drive.download(c["id"], p, folder=c["cartella"])
+            percorsi.append(p)
+            ore.append(str(c["registrato"])[:16])
+            scene.append(c.get("scena"))
+            nuove += 1 if c["nuova"] else 0
+        except Exception as e:
+            log(f"Giornata: {c['nome']} non scaricata:", e)
+    if len(percorsi) < minimo - 1:
+        raise ValueError(f"solo {len(percorsi)} clip della giornata scaricate")
+    log(f"Giornata del {giorno}{' (stesso giorno del video)' if giorno == giorno0 else ''}: {len(percorsi)} momenti "
+        f"({', '.join(str(s) for s in scene)}), {nuove} ancora in coda")
+    return percorsi, ore, scene, giorno
+
+
+def monta_giornata(frase, src, out, music, serie, drive, work, clip, an, state, videos=(), video=None):
+    """6/11/2026 (Alessandro: "devi essere tu a capire come devi fare l'editing"): reel GIORNATA, il video dell'orario
+    e altri momenti della stessa giornata (clip_giornata) in formati_nuovi.make_giornata. Se i momenti non bastano o
+    il montaggio non riesce: il video dell'orario in 'taglio2' come oggi (montaggio.estratto = giornata)."""
+    import formati_nuovi
+    try:
+        altre, ore, scene, _ = clip_giornata(drive, work, clip, an, src, state, videos, video)
+        ora0 = (clip or {}).get("registrato") or an.get("registrato") or overlay.data_ripresa(src)
+        return formati_nuovi.make_giornata([src] + altre, frase["gancio"], out, musiche_brano(music, 3),
+                                           [ora0] + ore, [an.get("scena")] + scene, True, state.get("formato_ultimo"))
+    except Exception as e:
+        log("Giornata non riuscita, il video dell'orario in 'taglio2':", e)
+    return monta_dieci("taglio2", frase, src, out, music, serie, drive, work, clip, state.get("formato_ultimo"))
 
 
 def monta_racconto(formato, src, out, music, serie, drive, work, clip, state):
@@ -2651,6 +2742,8 @@ def main():
                 info = foto_giornata.monta(foto_oggi, frase["gancio"], out, musiche_brano(music, 3), drive, work)
             elif formato == "dieci_lista":
                 frase, info = monta_dieci_lista(lista_regole(slot, state), src, out, music, serie, drive, work, clip)
+            elif formato == "giornata":     # 6/11/2026: i momenti della sua giornata, anche quelli ancora in coda
+                info = monta_giornata(frase, src, out, music, serie, drive, work, clip, an, state, videos, video)
             elif formato in FORMATI_10:
                 info = monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, state.get("formato_ultimo"))
             elif formato in FORMATI_30:

@@ -45,9 +45,12 @@ FORMATI = {
     # 6/11/2026 (revisione): 10 s come gli altri (dal 29/10 reel da 10 s; da 7 s il brano YouTube da 10,5 s veniva
     # tagliato e ripartiva di colpo a ogni giro)
     "loop": {"stacchi": [5.0, 5.0], "loop": True},       # 5 s avanti e gli stessi all'indietro: riparte senza stacco
+    # 6/11/2026 (Alessandro: "lavoro dalle 9 alle 19... registro video di 10 secondi... barba, barbiere, macchina,
+    # ufficio, pacchi, ascensore, borsa, quando mangio"): la sua GIORNATA, un momento diverso per scena (make_giornata)
+    "giornata": {"stacchi": [round(10.0 / 6, 3)] * 6},
 }
 # formati della famiglia "dieci" (scritta gialla, colori, viso controllato), oltre ai nomi che iniziano con "dieci"
-DIECI_NOMI = ("taglio1", "taglio2", "taglio3", "intero", "cinema", "post", "rallenty", "loop")
+DIECI_NOMI = ("taglio1", "taglio2", "taglio3", "intero", "cinema", "post", "rallenty", "loop", "giornata")
 # 6/11/2026: formati le cui scene si tagliano PRIMA dal video principale (piano_scene)
 A_SCENE = ("dieci_due", "taglio1", "taglio2", "taglio3", "cinema", "post")
 MARGINE_S = 0.2      # secondi lasciati all'inizio e alla fine di ogni video
@@ -557,3 +560,202 @@ def make_storia(clips, titolo, righe, dst, musiche=(), serie=None):
     while sum(durate) < totale - 0.01:
         durate.append(min(7.0, round(totale - sum(durate), 2)))
     return make_sequenza(clips, durate, testi, dst, musiche, serie, "storia")
+
+
+# ------------------------------------------------------------------ formato GIORNATA (6/11/2026)
+# Alessandro lavora dalle 9 alle 19 e durante il giorno gira ~10 clip mute da 10 s di momenti diversi (barba, barbiere,
+# macchina, ufficio, pacchi, ascensore, borsa, pranzo, allenamento). GIORNATA le mette in fila come la sua giornata:
+# una scena per momento (4-7 scene sui 10 s), stacchi sul colpo della musica, la frase fissa dal primo fotogramma.
+# La prima scena e' il momento piu' forte con il suo viso (3 persone su 4 vanno via nei primi secondi: rapporto del
+# 6/11), poi la giornata dalla mattina alla sera. Mai la stessa clip due volte, mai due clip quasi uguali.
+GIORNATA_MIN, GIORNATA_MAX = 4, 7     # momenti diversi in un reel
+GIORNATA_DURATA = 10.0
+GIORNATA_SCENA_MIN = 1.0              # nessuna scena sotto 1 s, anche dopo lo spostamento sul colpo della musica
+# differenza media delle miniature (0-255) sotto cui due clip sono lo stesso momento (prove del 6/11: stesso video 0,
+# due clip diverse 39-100, anche due selfie allo specchio di giorni diversi 39)
+GIORNATA_SIMILI = 20.0
+
+
+def _verticale(path):
+    """True se la clip si vede in verticale (rotazione compresa) o se non si sa; False se e' orizzontale."""
+    try:
+        r = subprocess.run([ov.FFMPEG, "-hide_banner", "-i", path], capture_output=True, text=True, errors="ignore",
+                           timeout=30).stderr
+        m = re.search(r"Video:.*?\b(\d{3,5})x(\d{3,5})\b", r)
+        if not m:
+            return True
+        w, h = int(m.group(1)), int(m.group(2))
+        if ov.rotazione(path) in (90, 270):
+            w, h = h, w
+        return h >= w
+    except Exception:
+        return True
+
+
+def _stesso_file(path):
+    """(grandezza, md5 del primo MB): lo stesso video caricato due volte con due nomi."""
+    import hashlib
+    with open(path, "rb") as f:
+        return os.path.getsize(path), hashlib.md5(f.read(1 << 20)).hexdigest()
+
+
+def _minuti_giornata(quando):
+    """Minuti dalle 5 del mattino di 'AAAA-MM-GGTHH:MM' (dopo mezzanotte e' ancora la sera prima); None se manca."""
+    m = re.search(r"T(\d{2}):(\d{2})", str(quando or ""))
+    return (int(m.group(1)) * 60 + int(m.group(2)) - 300) % 1440 if m else None
+
+
+def momento_giornata(c, durata):
+    """La scena di `durata` s della clip, nel suo momento piu' forte (momento_forte), e cosa serve per sceglierla:
+    viso visibile nel taglio 9:16 del reel, movimento, nitidezza, luce, i visi e una miniatura per i doppioni."""
+    import cv2
+    import numpy as np
+    secondi, hdr = ov.probe(c)
+    if secondi < 1.0:
+        raise ValueError(f"clip troppo corta ({secondi:.1f} s)")
+    t = momento_forte(c, durata)
+    t = round(min(max(t, MARGINE_S if secondi >= durata + 2 * MARGINE_S else 0.0), max(0.0, secondi - durata - 0.05)), 3)
+    taglio = "scale=540:960:force_original_aspect_ratio=increase,crop=540:960"
+    fr = ov.extract_frames(c, max(0.3, min(durata, secondi - t)), n=3, start=t,
+                           vf=f"{ov.HDR_TO_SDR},{taglio}" if hdr else taglio)
+    if not fr:
+        raise ValueError("fotogrammi non letti")
+    visi = [ov.detect_faces([f], ruotati=True) for f in fr]
+    g = [cv2.cvtColor(cv2.resize(f, (90, 160)), cv2.COLOR_BGR2GRAY).astype(np.float32) for f in fr]
+    return {"clip": c, "inizio": t, "secondi": secondi,
+            "viso": sum(1 for v in visi if v) / len(fr), "visi": [b for v in visi for b in v],
+            "nitido": float(np.mean([cv2.Laplacian(x, cv2.CV_32F).var() for x in g])),
+            "moto": float(np.mean([np.abs(a - b).mean() for a, b in zip(g, g[1:])])) if len(g) > 1 else 0.0,
+            "luce": float(np.mean([x.mean() for x in g])) / 255,
+            "firma": np.mean([cv2.resize(x, (18, 32), interpolation=cv2.INTER_AREA) for x in g], axis=0),
+            "verticale": _verticale(c)}
+
+
+def tagli_giornata(musica, durate, minimo=GIORNATA_SCENA_MIN):
+    """Come tagli_a_tempo (ogni stacco sul colpo piu' forte entro 0,3 s), ma uno stacco alla volta e mai sotto
+    `minimo` s per scena: con 7 scene da 1,4 s tagli_a_tempo rinuncerebbe a tutti gli stacchi a tempo."""
+    import math
+    import numpy as np
+    try:
+        pcm = subprocess.run([ov.FFMPEG, "-v", "error", "-i", musica, "-ac", "1", "-ar", "8000", "-f", "s16le", "-"],
+                             capture_output=True, timeout=30).stdout
+        x = np.frombuffer(pcm, dtype=np.int16).astype(float)
+        passo = 160                                # 20 ms
+        e = np.sqrt(np.mean(x[:len(x) // passo * passo].reshape(-1, passo) ** 2, axis=1))
+        colpi = np.maximum(np.diff(e, prepend=0), 0)
+        tot, n = round(sum(durate), 3), len(durate)
+        tagli, t, prima = [], 0.0, 0.0
+        for k, d in enumerate(durate[:-1]):
+            t += d
+            lo, hi = max(t - 0.3, prima + minimo), min(t + 0.3, tot - (n - 1 - k) * minimo)
+            if hi < lo:
+                return list(durate)
+            a, b = math.ceil(lo * 50 - 1e-6), math.floor(hi * 50 + 1e-6) + 1
+            tagli.append(round((a + int(np.argmax(colpi[a:b]))) / 50, 2) if colpi[a:b].size else round(t, 2))
+            prima = tagli[-1]
+        punti = [0.0] + tagli + [tot]
+        nuove = [round(q - p, 3) for p, q in zip(punti, punti[1:])]
+        return nuove if min(nuove) >= minimo - 0.011 else list(durate)
+    except Exception:
+        return list(durate)
+
+
+def piano_giornata(clips, ore=None, musica=None, frase=None, scene=None, durata=GIORNATA_DURATA):
+    """(piano [(clip, inizio)], durate, info) del reel GIORNATA.
+    clips[0] e' il video dell'orario e resta sempre (e' quello che risulta pubblicato); le altre sono momenti della
+    giornata in ordine di preferenza (pubblica.clip_giornata: prima scene diverse). ore = data e ora di ripresa di
+    ogni clip ('AAAA-MM-GGTHH:MM', None = dal file con overlay.data_ripresa); scene = etichette (palestra, macchina...).
+    Con la frase: se finirebbe su un viso, si tolgono prima le clip che la spingono sul viso (fino a GIORNATA_MIN);
+    se non basta ci pensa make_giornata (fascia cinema/post)."""
+    import numpy as np
+    n0 = len(clips)
+    ore, scene = (list(ore or []) + [None] * n0)[:n0], (list(scene or []) + [None] * n0)[:n0]
+    d0 = durata / max(GIORNATA_MIN, min(GIORNATA_MAX, n0))
+    scelte, file_visti = [], set()
+    for i, c in enumerate(clips):
+        try:
+            chiave = _stesso_file(c)
+            if chiave in file_visti:
+                print(f"giornata: {os.path.basename(c)} e' lo stesso file di un'altra clip: saltata", flush=True)
+                continue
+            a = momento_giornata(c, d0)
+        except Exception as e:
+            if i == 0:
+                raise
+            print(f"giornata: {os.path.basename(c)} saltata ({str(e)[:120]})", flush=True)
+            continue
+        simile = next((b for b in scelte if float(np.abs(a["firma"] - b["firma"]).mean()) < GIORNATA_SIMILI), None)
+        if simile:
+            print(f"giornata: {os.path.basename(c)} quasi uguale a {os.path.basename(simile['clip'])}: saltata", flush=True)
+            continue
+        file_visti.add(chiave)
+        a.update(principale=i == 0, ora=ore[i] or ov.data_ripresa(c), scena=scene[i])
+        scelte.append(a)
+    if len(scelte) < GIORNATA_MIN:
+        raise ValueError(f"giornata: solo {len(scelte)} momenti diversi (ne servono {GIORNATA_MIN})")
+    mm = max(a["moto"] for a in scelte) or 1.0
+    mn = max(a["nitido"] for a in scelte) or 1.0
+    for a in scelte:   # come segmento_migliore (viso, movimento, nitidezza); giu' le clip orizzontali e quelle al buio
+        a["punti"] = (2.0 * a["viso"] + 0.6 * a["moto"] / mm + 0.4 * a["nitido"] / mn
+                      - (1.0 if not a["verticale"] else 0.0) - (0.8 if a["luce"] < 0.10 else 0.0))
+    while len(scelte) > GIORNATA_MAX:      # troppe: via la piu' debole della scena che si ripete di piu'
+        altre = [a for a in scelte if not a["principale"]]
+        quante = {s: sum(1 for a in altre if a["scena"] == s) for s in {a["scena"] for a in altre}}
+        scelte.remove(min(altre, key=lambda a: (-quante[a["scena"]], a["punti"])))
+    if frase:     # la frase va dove non ci sono visi in nessuna scena: se non c'e' posto, via una clip
+        W, H = ov.LATO_USCITA, int(ov.LATO_USCITA * 16 / 9)
+        while len(scelte) > GIORNATA_MIN:
+            img, _, _ = ov.build_testo_giallo(W, H, frase, [f for a in scelte for f in a["visi"]])
+            coperte = [a for a in scelte if viso_coperto(img, a["visi"], W, H)]
+            altre = [a for a in scelte if not a["principale"]]
+            if not coperte:
+                break
+            togli = [a for a in coperte if not a["principale"]]
+            if togli:
+                via = min(togli, key=lambda a: a["punti"])
+            else:      # copre solo il video dell'orario: via la clip con i visi piu' grandi, la frase trova un altro posto
+                via = max(altre, key=lambda a: sum((f[2] - f[0]) * (f[3] - f[1]) for f in a["visi"]))
+                if not via["visi"]:
+                    break
+            print(f"giornata: la frase finirebbe sul viso, tolgo {os.path.basename(via['clip'])}", flush=True)
+            scelte.remove(via)
+    # la prima scena: il momento piu' forte con il viso (in verticale e con luce), poi la giornata in ordine di ora
+    adatte = [a for a in scelte if a["viso"] > 0 and a["verticale"] and a["luce"] >= 0.10]
+    gancio = max(adatte or [a for a in scelte if a["viso"] > 0] or scelte, key=lambda a: a["punti"])
+    resto = sorted((a for a in scelte if a is not gancio), key=lambda a: (
+        _minuti_giornata(a["ora"]) is None, _minuti_giornata(a["ora"]) or 0, os.path.basename(a["clip"]).lower()))
+    ordine = [gancio] + resto
+    n = len(ordine)
+    base = round(durata / n, 3)
+    durate = [base] * (n - 1) + [round(durata - base * (n - 1), 3)]
+    if musica and os.path.exists(musica):
+        durate = tagli_giornata(musica, durate)
+    piano = [(a["clip"], round(min(a["inizio"], max(0.0, a["secondi"] - d - 0.05)), 3)) for a, d in zip(ordine, durate)]
+    giorno0 = str(scelte[0]["ora"] or "")[:10] if scelte[0]["principale"] else ""
+    info = {"scene": n, "con_viso": sum(1 for a in ordine if a["viso"] > 0)}
+    if giorno0:
+        info["stesso_giorno"] = sum(1 for a in ordine if str(a["ora"] or "")[:10] == giorno0)
+    return piano, durate, info
+
+
+def make_giornata(clips, frase, dst, musiche=(), ore=None, scene=None, controlla_viso=True, ultimo=None):
+    """Reel GIORNATA (vedi piano_giornata): clips[0] = video dell'orario, le altre = momenti della stessa giornata.
+    Se la frase coprirebbe comunque un viso, le STESSE scene escono con la fascia 'cinema' o 'post' (frase fuori dal
+    video) come negli altri formati: info cornice + ripiego_da (report.py le conta a parte)."""
+    import random
+    musiche = [m for m in musiche if m and os.path.exists(m)]
+    piano, durate, info = piano_giornata(clips, ore, musiche[0] if musiche else None, frase if controlla_viso else None,
+                                         scene)
+    usate = [clips[0]] + [c for c, _ in piano if c != clips[0]]
+    try:
+        r = make_sequenza(usate, durate, [(0.0, sum(durate), frase)], dst, musiche, None, "giornata", controlla_viso,
+                          piano=piano)
+    except VisoCoperto:
+        tipo = random.choice([t for t in ("cinema", "post") if t != ultimo] or ["cinema"])
+        print(f"giornata: la frase coprirebbe il viso, stesse scene con la fascia '{tipo}'", flush=True)
+        W = ov.LATO_USCITA
+        r = make_sequenza(usate, durate, [], dst, musiche, None, "giornata", controlla_viso, piano=piano,
+                          layout=cornice(W, int(W * 16 / 9), tipo, frase))
+        r.update(cornice=tipo, ripiego_da="giornata")
+    r.update(info)
+    return r
