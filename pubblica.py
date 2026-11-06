@@ -502,6 +502,9 @@ FORMATI_10 = ("dieci", "dieci_due", "dieci_broll", "taglio1", "taglio2", "taglio
 # quelle"): fino a FORMATI_PROVA_FINO tutti i formati da 10 s con la STESSA probabilita' (niente pesi vecchi), mai lo
 # stesso due volte di fila; poi report.py/l'agente delle 18:30 tengono i migliori
 FORMATI_PROVA_FINO = "2026-11-16"
+# 6/11/2026 (Alessandro: "prova a meta'"): fino a FORMATI_PROVA_FINO la scritta e' a caso (meta' e meta', fissa per
+# orario) tra la nuova (bianca con le parole chiave gialle) e il suo giallo pieno; montaggio.scritta in stato.json
+SCRITTE_PROVA = ("bianco_parola_gialla", "giallo_classico")
 SCENE_EXTRA = {"dieci_due": 1, "dieci_broll": 3, "taglio1": 3, "taglio2": 2, "taglio3": 2}
 ORARIO_FOTO, FOTO_DAL = ("12:00", "18:00"), "2026-11-05"   # 1/11/2026: reel con le foto della giornata (foto_giornata.py); 5/11: 43 foto caricate -> si parte oggi, 2 al giorno finche' ce ne sono
 COMMENTI_SU_TELEGRAM = False   # 31/10/2026: "non voglio i commenti": su Telegram solo errori e statistiche delle 8
@@ -2410,6 +2413,9 @@ def main():
     try:
         serie = etichetta_serie(slot)
         frase = dict(frase, serie=serie)
+        if str(slot)[:10] < FORMATI_PROVA_FINO:
+            overlay.STILE_SCRITTA = random.Random(f"scritta {slot}").choice(SCRITTE_PROVA)
+        overlay.ULTIMO_STILE = None
         info, formato = None, scegli_formato(slot, state, frase, an, spinto)
         foto_oggi = []
         if TUTTO_10S and formato in FORMATI_10 and str(slot).endswith(ORARIO_FOTO) and str(slot)[:10] >= FOTO_DAL:
@@ -2486,6 +2492,8 @@ def main():
         save()
         shutil.rmtree(work, ignore_errors=True)
         raise
+    if overlay.ULTIMO_STILE and isinstance(info, dict):      # 6/11/2026: quale scritta e' uscita davvero
+        info.setdefault("scritta", overlay.ULTIMO_STILE)
     log("Montato:", info)
     # 5/11/2026: il reel con le foto NON usa il video scelto (resta solo come ripiego se le foto non si montano): quel
     # video non va segnato come pubblicato ne' spostato nell'archivio, e la clip d'archivio non conta come usata
