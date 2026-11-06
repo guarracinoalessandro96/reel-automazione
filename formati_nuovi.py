@@ -616,7 +616,10 @@ def momento_giornata(c, durata):
     t = momento_forte(c, durata)
     t = round(min(max(t, MARGINE_S if secondi >= durata + 2 * MARGINE_S else 0.0), max(0.0, secondi - durata - 0.05)), 3)
     taglio = "scale=540:960:force_original_aspect_ratio=increase,crop=540:960"
-    fr = ov.extract_frames(c, max(0.3, min(durata, secondi - t)), n=3, start=t,
+    # 5 fotogrammi (come il controllo finale di make_sequenza) su tutta la scena piu' lunga possibile (4 scene + colpo
+    # della musica): prima 3 sulla scena corta, e la frase finiva sul viso visto solo dal controllo finale
+    lunga = max(durata, GIORNATA_DURATA / GIORNATA_MIN + 0.3)
+    fr = ov.extract_frames(c, max(0.3, min(lunga, secondi - t)), n=5, start=t,
                            vf=f"{ov.HDR_TO_SDR},{taglio}" if hdr else taglio)
     if not fr:
         raise ValueError("fotogrammi non letti")
