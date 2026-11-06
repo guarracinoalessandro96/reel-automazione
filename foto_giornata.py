@@ -34,6 +34,10 @@ INCLINAZIONE = (1.0, 10.0)   # gradi: si raddrizzano solo le foto un po' storte 
 SIMILI = 8                   # differenza massima (su 64) tra le impronte di due foto quasi uguali: se ne tiene una
 PELLE = 0.7                  # un "viso" con meno del 70% di pelle al centro e' un falso (pedana, dischi, scarpe:
                              # sulle foto di prova la pedana della pressa arriva al 60%, i visi veri a 76-87%)
+RIDUZIONE = 0.9              # 6/11/2026 (revisione): sulle foto raddrizzate il taglio spostato per il viso puo'
+                             # stringersi al massimo del 10% per restare dentro; se non basta la foto non si raddrizza
+GANCIO = 0.65                # 6/11/2026 (revisione): la prima foto solo tra quelle nitide almeno al 65% della piu'
+                             # nitida (la foto col dito davanti all'obiettivo vinceva per il viso grande)
 
 
 def _accelerometro(mn):
@@ -92,80 +96,160 @@ import cv2 as _cv2
 _OCCHI = _cv2.CascadeClassifier(os.path.join(_cv2.data.haarcascades, "haarcascade_eye.xml"))   # gia' dentro OpenCV
 
 
-def visi_foto(im, ruotati=False, occhi=False):
+def _occhio(im, g):
+    """6/11/2026 (revisione): True se nella parte alta del viso g (frazioni, con i margini di detect_faces) c'e' almeno
+    un occhio. Si cerca sul viso ritagliato dalla foto GRANDE e portato a 240 px: sulla miniatura da 720 px un viso a
+    figura intera e' largo 40-80 px e l'occhio non si trovava mai (nessun viso nelle foto di prova, neanche frontale)."""
+    import cv2, numpy as np
+    x0, y0, x1, y1 = g[0] * im.width, g[1] * im.height, g[2] * im.width, g[3] * im.height
+    if x1 - x0 < 24 or y1 - y0 < 24:
+        return False
+    alto = max(48, round((y1 - y0) * 240 / (x1 - x0)))
+    r = cv2.equalizeHist(np.asarray(im.crop((int(x0), int(y0), int(x1), int(y1))).convert("L").resize((240, alto),
+                                                                                                       Image.BILINEAR)))
+    # tra il 15% e il 60% dell'altezza, dentro il viso vero (1/6 di margine per lato = 40 px su 240)
+    return len(_OCCHI.detectMultiScale(r[int(alto * 0.15):int(alto * 0.6), 40:200], 1.1, 4,
+                                       minSize=(20, 20), maxSize=(80, 80))) > 0
+
+
+def visi_foto(im, ruotati=False, occhi=False, inclinati=False):
     """6/11/2026: i visi della foto [(x0, y0, x1, y1) in frazioni, con margine per capelli e mento], uniti quando
     piu' rilevatori trovano lo stesso viso; dal piu' grande al piu' piccolo. In palestra i rilevatori vedono "visi"
     anche nella pedana della pressa o nei dischi: si tengono solo quelli con abbastanza pelle al centro (PELLE) e,
-    con occhi=True (per il taglio: meglio perdere un viso che spostare il taglio su un falso), con almeno un occhio."""
+    con occhi=True (per il taglio: meglio perdere un viso che spostare il taglio su un falso), con almeno un occhio
+    (_occhio, cercato sulla foto grande: im va passata a piena grandezza).
+    Revisione 6/11, inclinati=True (per il taglio): anche le teste inclinate di 25-45 gradi (sdraiato sulla pressa,
+    foto 4702 e 4710: di dritto non si trovano e lo zoom della raddrizzatura le spingeva fuori). Si cercano sulla
+    miniatura girata; il riquadro torna nella foto dritta come rettangolo che contiene il viso girato."""
     import cv2, numpy as np
     p = ImageOps.contain(im, (720, 720))
-    bgr = cv2.cvtColor(np.asarray(p), cv2.COLOR_RGB2BGR)
-    ycc = cv2.cvtColor(bgr, cv2.COLOR_BGR2YCrCb)
-    pelle = (ycc[..., 0] > 40) & (ycc[..., 1] >= 135) & (ycc[..., 1] <= 180) & (ycc[..., 2] >= 80) & (ycc[..., 2] <= 135)
-    gruppi = []
-    for b in ov.detect_faces([bgr], ruotati=ruotati):
-        b = (max(0.0, b[0]), max(0.0, b[1]), min(1.0, b[2]), min(1.0, b[3]))
-        for i, g in enumerate(gruppi):
-            if ov._overlap(g, b) > 0:
-                gruppi[i] = (min(g[0], b[0]), min(g[1], b[1]), max(g[2], b[2]), max(g[3], b[3]))
-                break
-        else:
-            gruppi.append(b)
-    grigio = cv2.equalizeHist(cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY))
     veri = []
-    for g in gruppi:             # centro del riquadro (senza i margini per capelli e mento)
-        x0, x1 = int((g[0] + (g[2] - g[0]) * 0.25) * p.width), int((g[2] - (g[2] - g[0]) * 0.25) * p.width)
-        y0, y1 = int((g[1] + (g[3] - g[1]) * 0.3) * p.height), int((g[3] - (g[3] - g[1]) * 0.3) * p.height)
-        if not (x1 > x0 and y1 > y0 and float(pelle[y0:y1, x0:x1].mean()) >= PELLE):
-            continue
-        # almeno un occhio nella parte alta del viso (la pedana con le scarpe passa anche la prova della pelle)
-        fx0, fx1 = int((g[0] + (g[2] - g[0]) / 6) * p.width), int((g[2] - (g[2] - g[0]) / 6) * p.width)
-        fy0, fy1 = int((g[1] + (g[3] - g[1]) * 0.15) * p.height), int((g[1] + (g[3] - g[1]) * 0.6) * p.height)
-        lato = max(8, (fx1 - fx0) // 8)
-        if not occhi or _OCCHI.empty() or (fx1 - fx0 > 2 * lato and fy1 - fy0 > 2 * lato and len(_OCCHI.detectMultiScale(
-                grigio[fy0:fy1, fx0:fx1], 1.1, 4, minSize=(lato, lato), maxSize=((fx1 - fx0) // 2, (fx1 - fx0) // 2)))):
-            veri.append(g)
+    for ang in ((0, 25, -25, 45, -45) if inclinati else (0,)):
+        q = p.rotate(ang, resample=Image.BICUBIC, expand=True) if ang else p
+        bgr = cv2.cvtColor(np.asarray(q), cv2.COLOR_RGB2BGR)
+        ycc = cv2.cvtColor(bgr, cv2.COLOR_BGR2YCrCb)
+        pelle = (ycc[..., 0] > 40) & (ycc[..., 1] >= 135) & (ycc[..., 1] <= 180) & (ycc[..., 2] >= 80) & (ycc[..., 2] <= 135)
+        gruppi = []
+        for b in ov.detect_faces([bgr], ruotati=ruotati and not ang):
+            b = (max(0.0, b[0]), max(0.0, b[1]), min(1.0, b[2]), min(1.0, b[3]))
+            for i, g in enumerate(gruppi):
+                if ov._overlap(g, b) > 0:
+                    gruppi[i] = (min(g[0], b[0]), min(g[1], b[1]), max(g[2], b[2]), max(g[3], b[3]))
+                    break
+            else:
+                gruppi.append(b)
+        for g in gruppi:         # centro del riquadro (senza i margini per capelli e mento)
+            x0, x1 = int((g[0] + (g[2] - g[0]) * 0.25) * q.width), int((g[2] - (g[2] - g[0]) * 0.25) * q.width)
+            y0, y1 = int((g[1] + (g[3] - g[1]) * 0.3) * q.height), int((g[3] - (g[3] - g[1]) * 0.3) * q.height)
+            if not (x1 > x0 and y1 > y0 and float(pelle[y0:y1, x0:x1].mean()) >= PELLE):
+                continue
+            faccia = (im, g)
+            if ang:              # il viso torna nella foto dritta; l'occhio si cerca sul quadrato girato come q
+                g, faccia = _raddrizza_viso(g, q, p, ang), _faccia_girata(im, g, q, p, ang)
+            if any(ov._overlap(g, v) > 0 for v in veri):
+                continue         # lo stesso viso, gia' trovato in un altro giro
+            # almeno un occhio nella parte alta del viso (la pedana con le scarpe passa anche la prova della pelle)
+            if not occhi or _OCCHI.empty() or _occhio(*faccia):
+                veri.append(g)
     return sorted(veri, key=lambda g: -(g[2] - g[0]) * (g[3] - g[1]))
+
+
+def _indietro(x, y, q, p, ang):
+    """6/11/2026: un punto (pixel) della miniatura q girata di ang gradi (expand) -> frazioni della miniatura dritta p."""
+    a = math.radians(ang)
+    dx, dy = x - q.width / 2, y - q.height / 2
+    return ((dx * math.cos(a) - dy * math.sin(a)) + p.width / 2) / p.width, \
+           ((dx * math.sin(a) + dy * math.cos(a)) + p.height / 2) / p.height
+
+
+def _raddrizza_viso(g, q, p, ang):
+    """6/11/2026: il viso g trovato sulla miniatura girata -> riquadro nella foto dritta, con gli stessi margini di
+    detect_faces intorno al rettangolo che contiene il viso vero girato (cosi' taglio() lo legge come gli altri)."""
+    w, h = (g[2] - g[0]) * q.width, (g[3] - g[1]) * q.height
+    x0, y0, x1, y1 = g[0] * q.width + w / 6, g[1] * q.height + h * 0.35 / 1.8, g[2] * q.width - w / 6, \
+        g[3] * q.height - h * 0.45 / 1.8
+    pts = [_indietro(x, y, q, p, ang) for x, y in ((x0, y0), (x1, y0), (x0, y1), (x1, y1))]
+    tx0, tx1 = min(x for x, _ in pts), max(x for x, _ in pts)
+    ty0, ty1 = min(y for _, y in pts), max(y for _, y in pts)
+    fw, fh = tx1 - tx0, ty1 - ty0
+    return (max(0.0, tx0 - 0.25 * fw), max(0.0, ty0 - 0.35 * fh), min(1.0, tx1 + 0.25 * fw), min(1.0, ty1 + 0.45 * fh))
+
+
+def _faccia_girata(im, g, q, p, ang):
+    """6/11/2026: (immagine, riquadro) per _occhio di un viso inclinato: un quadrato della foto grande intorno al viso,
+    girato come la miniatura (il viso torna dritto), col riquadro del viso al centro."""
+    s = im.width / p.width
+    cx, cy = _indietro((g[0] + g[2]) / 2 * q.width, (g[1] + g[3]) / 2 * q.height, q, p, ang)
+    bw, bh = (g[2] - g[0]) * q.width * s, (g[3] - g[1]) * q.height * s
+    lato = math.hypot(bw, bh) + 4
+    cx, cy = cx * im.width, cy * im.height
+    sq = im.crop((int(cx - lato / 2), int(cy - lato / 2), int(cx + lato / 2), int(cy + lato / 2)))
+    sq = sq.rotate(ang, resample=Image.BILINEAR)
+    return sq, (0.5 - bw / 2 / sq.width, 0.5 - bh / 2 / sq.height, 0.5 + bw / 2 / sq.width, 0.5 + bh / 2 / sq.height)
 
 
 def taglio(W, H, rot, visi):
     """6/11/2026: il riquadro 9:16 (+ MARGINE per il movimento) da prendere dalla foto. Si parte dal taglio di prima
     (centro, un filo in alto); solo se quel taglio tagliasse un viso (foto orizzontali, viso vicino al bordo) si sposta
     quanto basta per prenderlo intero, capelli e mento compresi. Mai angoli neri se la foto e' stata raddrizzata.
-    Un viso "falso" (macchine della palestra) che sta dentro il taglio di prima non sposta niente. -> (x0, y0, w, h)"""
-    r = 9 / 16 * MARGINE
+    Un viso "falso" (macchine della palestra) che sta dentro il taglio di prima non sposta niente.
+    Revisione 6/11: il viso deve stare nella fascia che si vede SEMPRE durante lo scorrimento (tra 1-1/MARGINE e
+    1/MARGINE del riquadro: a un capo dello scorrimento la nuca usciva); sulle foto raddrizzate si parte dal centro
+    esatto (il riquadro piu' grande sta dentro solo li') e il riquadro spostato si stringe quanto basta per restare
+    dentro (al massimo RIDUZIONE). -> (x0, y0, w, h, intero); intero=False se il viso vero resta tagliato."""
+    r, k = 9 / 16 * MARGINE, 1 / MARGINE
     h = min(H, W / r)
-    if rot:                  # foto raddrizzata: il riquadro piu' grande che sta tutto dentro
+    if rot:                  # foto raddrizzata: il riquadro piu' grande che sta tutto dentro (al centro esatto)
         lo, hi = 0.0, h
         for _ in range(30):
             m = (lo + hi) / 2
             lo, hi = (m, hi) if _dentro((W - m * r) / 2, (H - m) / 2, m * r, m, W, H, rot) else (lo, m)
         h = lo
-    w = h * r
-    cx, cy = (W - w) * 0.5, (H - h) * 0.45
-    x0, y0 = cx, cy
+    a = vero = None
     if visi:
         a = visi[0]          # il viso piu' grande, insieme agli altri visi grandi se ci stanno (foto di gruppo)
         for v in visi[1:]:
             u = (min(a[0], v[0]), min(a[1], v[1]), max(a[2], v[2]), max(a[3], v[3]))
             if (v[2] - v[0]) * (v[3] - v[1]) >= 0.3 * (visi[0][2] - visi[0][0]) * (visi[0][3] - visi[0][1]) \
-                    and (u[2] - u[0]) * W <= 0.9 * w:
+                    and (u[2] - u[0]) * W <= 0.9 * h * r * (2 * k - 1):
                 a = u
+        a = (a[0] * W, a[1] * H, a[2] * W, a[3] * H)
         # il viso vero (senza i margini di detect_faces: 1/6 della larghezza per lato, capelli 0.35/1.8, mento 0.45/1.8)
-        vx0, vx1 = a[0] + (a[2] - a[0]) / 6, a[2] - (a[2] - a[0]) / 6
-        vy0, vy1 = a[1] + (a[3] - a[1]) * 0.35 / 1.8, a[3] - (a[3] - a[1]) * 0.45 / 1.8
-        if (vx0 * W < cx or vx1 * W > cx + w) and (a[2] - a[0]) * W <= w:     # il taglio di prima lo taglierebbe
-            x0 = min(max(cx, a[2] * W - w), a[0] * W)
-        if (vy0 * H < cy or vy1 * H > cy + h) and (a[3] - a[1]) * H <= h:
-            y0 = min(max(cy, a[3] * H - h), a[1] * H)
-    x0, y0 = min(max(x0, 0.0), W - w), min(max(y0, 0.0), H - h)
-    if rot and not _dentro(x0, y0, w, h, W, H, rot):
-        lo, hi = 0.0, 1.0    # si avvicina al centro quanto basta per restare dentro la foto
-        for _ in range(20):
-            m = (lo + hi) / 2
-            lo, hi = (lo, m) if _dentro(x0 + (cx - x0) * m, y0 + (cy - y0) * m, w, h, W, H, rot) else (m, hi)
-        x0, y0 = x0 + (cx - x0) * hi, y0 + (cy - y0) * hi
-    return x0, y0, w, h
+        vero = (a[0] + (a[2] - a[0]) / 6, a[1] + (a[3] - a[1]) * 0.35 / 1.8,
+                a[2] - (a[2] - a[0]) / 6, a[3] - (a[3] - a[1]) * 0.45 / 1.8)
+
+    def posto(h):
+        """dove va il riquadro alto h: il taglio di prima, spostato quanto basta se taglierebbe il viso vero"""
+        w = h * r
+        x0, y0 = (W - w) / 2, (H - h) * (0.5 if rot else 0.45)
+        if vero:
+            f0, f1 = w * (1 - k), w * k        # la fascia sempre in vista, misurata dal bordo sinistro del riquadro
+            if vero[0] < x0 + f0 or vero[2] > x0 + f1:      # capelli e orecchie dentro se ci stanno, se no il viso al centro
+                x0 = min(max(x0, a[2] - f1), a[0] - f0) if a[2] - a[0] <= f1 - f0 else (vero[0] + vero[2] - w) / 2
+            if vero[1] < y0 or vero[3] > y0 + h:
+                y0 = min(max(y0, a[3] - h), a[1]) if a[3] - a[1] <= h else (vero[1] + vero[3] - h) / 2
+        return min(max(x0, 0.0), W - w), min(max(y0, 0.0), H - h)
+
+    x0, y0 = posto(h)
+    if rot and not _dentro(x0, y0, h * r, h, W, H, rot):
+        lo, hi = h * RIDUZIONE, h      # spostato per il viso: il riquadro piu' grande che sta dentro in quel punto
+        if _dentro(*posto(lo), lo * r, lo, W, H, rot):
+            for _ in range(20):
+                m = (lo + hi) / 2
+                lo, hi = (m, hi) if _dentro(*posto(m), m * r, m, W, H, rot) else (lo, m)
+            h = lo
+            x0, y0 = posto(h)
+        else:                # non basta: verso il centro esatto (dentro per costruzione) quanto serve per restare dentro
+            cx, cy = (W - h * r) / 2, (H - h) / 2
+            lo, hi = 0.0, 1.0
+            for _ in range(20):
+                m = (lo + hi) / 2
+                lo, hi = (lo, m) if _dentro(x0 + (cx - x0) * m, y0 + (cy - y0) * m, h * r, h, W, H, rot) else (m, hi)
+            x0, y0 = x0 + (cx - x0) * hi, y0 + (cy - y0) * hi
+    w = h * r
+    intero = not vero or (x0 + w * (1 - k) - 1 <= vero[0] and vero[2] <= x0 + w * k + 1
+                          and y0 - 1 <= vero[1] and vero[3] <= y0 + h + 1)
+    return x0, y0, w, h, intero
 
 
 def pulisci(im, iso, luce):
@@ -196,9 +280,16 @@ def prepara(src):
         gradi = inclinazione(acc, obiettivo, im.height > im.width)
         if gradi:
             im = im.rotate(-gradi, resample=Image.BICUBIC)
-        # solo visi dritti e con un occhio: la pedana della pressa con le scarpe sembra un viso (anche per la pelle)
-        visi = visi_foto(im, ruotati=False, occhi=True)
-        x0, y0, w, h = taglio(im.width, im.height, -gradi, visi)
+        # solo visi con un occhio: la pedana della pressa con le scarpe sembra un viso (anche per la pelle);
+        # revisione 6/11: anche le teste inclinate (sdraiato sulle macchine), mai quelle girate di 90 gradi
+        visi = visi_foto(im, ruotati=False, occhi=True, inclinati=True)
+        x0, y0, w, h, intero = taglio(im.width, im.height, -gradi, visi)
+        if gradi and not intero:     # revisione 6/11: meglio storta di qualche grado che con la testa tagliata
+            visi0 = visi_foto(base, ruotati=False, occhi=True, inclinati=True)
+            if visi0:
+                print(f"Foto: raddrizzata di {gradi:.1f} gradi taglierebbe il viso, resta com'e'")
+                gradi, im, visi = 0.0, base, visi0
+                x0, y0, w, h, intero = taglio(im.width, im.height, 0.0, visi)
         tagliata = im.resize((int(W * MARGINE), H), Image.LANCZOS, box=(x0, y0, x0 + w, y0 + h))
         info.update(gradi=round(gradi, 1), visi=[((a - x0 / im.width) * im.width / w, (b - y0 / im.height) * im.height / h,
                                                   (c - x0 / im.width) * im.width / w, (d - y0 / im.height) * im.height / h)
@@ -412,9 +503,10 @@ def scheda(path):
     grande, frazione della foto), luce (media 0-1), impronta (dHash da 64 bit, per le quasi-doppie)."""
     import cv2, numpy as np
     im = ImageOps.exif_transpose(Image.open(path)).convert("RGB")
+    # per il gancio conta il viso dritto, ben visibile; revisione 6/11: con gli occhi aperti, cercati sulla foto grande
+    visi = visi_foto(im, ruotati=False, occhi=True)
     im.thumbnail((720, 720))
     g = np.asarray(im.convert("L"))
-    visi = visi_foto(im, ruotati=False)          # per il gancio conta il viso dritto, ben visibile
     p = cv2.resize(g, (9, 8), interpolation=cv2.INTER_AREA).astype(int)
     return {"nitidezza": float(cv2.Laplacian(g, cv2.CV_64F).var()),
             "viso": max(((v[2] - v[0]) * (v[3] - v[1]) for v in visi), default=0.0),
@@ -429,16 +521,25 @@ def voto(s, nit_max):
     return 1.2 * viso + 0.6 * s["nitidezza"] / max(nit_max, 1e-6) + 0.4 * luce
 
 
+def _simili(a, b):
+    """6/11/2026: True se le impronte di due schede differiscono al massimo di SIMILI bit su 64 (quasi-doppie)."""
+    return bin(a["impronta"] ^ b["impronta"]).count("1") <= SIMILI
+
+
 def ordina(locali, schede):
     """6/11/2026 (gancio): delle foto quasi uguali se ne tiene una (la migliore), poi la foto piu' forte va per prima
-    (e' quella che ferma chi scorre) e le altre seguono in ordine di scatto, sparse su tutta la giornata."""
+    (e' quella che ferma chi scorre) e le altre seguono in ordine di scatto, sparse su tutta la giornata.
+    Revisione 6/11: il gancio solo tra le foto nitide (GANCIO); restituisce (scelte, doppie), con doppie = le
+    quasi-doppie rimaste fuori di una foto scelta: si segnano come usate con le altre, se no il reel dopo avrebbe
+    le stesse pose."""
     nit_max = max(schede[p]["nitidezza"] for _, p in locali)
     punti = {p: voto(schede[p], nit_max) for _, p in locali}
-    tenute = []
-    for f, p in sorted(locali, key=lambda x: -punti[x[1]]):
-        if all(bin(schede[p]["impronta"] ^ schede[q]["impronta"]).count("1") > SIMILI for _, q in tenute):
-            tenute.append((f, p))
-    for x in sorted(locali, key=lambda x: -punti[x[1]]):     # mai meno di 3 foto per togliere le quasi-doppie
+    per_voto = sorted(locali, key=lambda x: -punti[x[1]])
+    tenute = [next(x for x in per_voto if schede[x[1]]["nitidezza"] >= GANCIO * nit_max)]
+    for x in per_voto:
+        if not any(_simili(schede[x[1]], schede[q]) for _, q in tenute):
+            tenute.append(x)
+    for x in per_voto:       # mai meno di 3 foto per togliere le quasi-doppie
         if len(tenute) >= 3:
             break
         if x not in tenute:
@@ -446,7 +547,9 @@ def ordina(locali, schede):
     gancio, altre = tenute[0], sorted(tenute[1:], key=lambda x: (x[0].get("quando", ""), x[0].get("name", "")))
     if len(altre) > MASSIMO - 1:
         altre = [altre[round(i * (len(altre) - 1) / (MASSIMO - 2))] for i in range(MASSIMO - 1)]
-    return [gancio] + altre
+    scelte = [gancio] + altre
+    doppie = [x for x in locali if x not in scelte and any(_simili(schede[x[1]], schede[q]) for _, q in scelte)]
+    return scelte, doppie
 
 
 def monta(foto, frase, dst, musiche, drive, work):
@@ -473,8 +576,10 @@ def monta(foto, frase, dst, musiche, drive, work):
             locali = [x for x in locali if x not in mosse]
     except Exception:
         pass                     # senza il controllo si usano tutte
+    doppie = []
     try:                         # 6/11/2026: niente quasi-doppie, la foto migliore per prima
-        locali = ordina(locali, schede) if schede else locali
+        if schede:
+            locali, doppie = ordina(locali, schede)
     except Exception as e:
         print("Foto: ordine col gancio non riuscito, ordine di scatto:", e)
     if len(locali) > MASSIMO:    # restano sparse su tutta la giornata
@@ -491,8 +596,9 @@ def monta(foto, frase, dst, musiche, drive, work):
                 pass
         raise
     # 5/11/2026: le foto si segnano come usate solo DOPO la pubblicazione (segna_usate, da pubblica.py):
-    # prima un reel montato ma non uscito su nessuna piattaforma le faceva perdere
-    return dict(info, foto_ids=[f["id"] for f, _ in locali])
+    # prima un reel montato ma non uscito su nessuna piattaforma le faceva perdere.
+    # 6/11/2026 (revisione): con loro anche le quasi-doppie rimaste fuori (stessa posa gia' uscita in questo reel)
+    return dict(info, foto_ids=[f["id"] for f, _ in locali + doppie], foto_doppie=len(doppie))
 
 
 def segna_usate(drive, ids):
