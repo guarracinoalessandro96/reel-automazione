@@ -409,13 +409,18 @@ def scegli_formato(slot, state, frase, an, spinto=True):
     return random.choices(list(pesi), weights=list(pesi.values()))[0] if pesi else "frase"
 
 
-def frase_forzata(mie, state):
-    """2/11/2026: frase che Alessandro vuole ripetere nel prossimo reel (frasi_forzate.json: [{"id", "dal"}, ...])."""
+def frase_forzata(mie, state, spinto=True):
+    """2/11/2026: frase che Alessandro vuole ripetere nel prossimo reel (frasi_forzate.json: [{"id", "dal"}, ...]).
+    6/11/2026: con "solo_spinti": true la frase aspetta un orario spinto da YouTube: dal 29/10 nessuno Short di un
+    orario previsto fermo ha preso il giro di prova (0 su 14), le frasi migliori non vanno sprecate li'."""
     try:
         forzate = json.load(open(os.path.join(HERE, "frasi_forzate.json"), encoding="utf-8"))
     except Exception:
         return None
-    for v in forzate:
+    # 6/11/2026: le richieste di Alessandro prima delle frasi che aspettano un orario spinto (sorted e' stabile)
+    for v in sorted(forzate, key=lambda v: bool(v.get("solo_spinti"))):
+        if v.get("solo_spinti") and not spinto:
+            continue
         ultima = max([h.get("quando", "") for h in state["storico"] if h.get("frase") == v["id"]] or [""])
         trovata = next((f for f in mie if f["id"] == v["id"]), None)
         if trovata and ultima < v["dal"]:
@@ -2138,7 +2143,9 @@ def main():
         vincenti = [f for f in mie if f["id"] in vinc_id and usi.get(f["id"], "") < sette]
         vecchie_lim = (datetime.date.today() - datetime.timedelta(days=GIORNI_RIUSO_FRASE)).isoformat()
         vecchie = [f for f in mie if f["id"] in usi and usi[f["id"]] < vecchie_lim]
-        forzata = frase_forzata(mie, state)
+        forzata = frase_forzata(mie, state, spinto)
+        if not forzata and not spinto and frase_forzata(mie, state):
+            log("Orario fermo: le frasi scelte aspettano il prossimo orario spinto")
         if forzata:
             frase = forzata
             log("Frase richiesta da Alessandro:", frase["gancio"])
@@ -2154,7 +2161,11 @@ def main():
             # vadano piu' virali: classifica_frasi.json (0-100, 50 se manca; lunghezza, temi sulle persone, [virale],
             # giudizio di Claude). Si sceglie a caso tra le prime 3, cosi' i reel vicini non sono sempre uguali.
             punti = foto_punti
-            ordinate = sorted(frasi, key=lambda f: -punti.get(f["id"], classifica_frasi.stima(f["gancio"], f.get("virale"))))
+            # 6/11/2026 (67 reel dal 29/10): a parita' di punteggio prima le frasi da 11-17 parole: YouTube ne ha
+            # spinte il 39% (13 su 33), di quelle fino a 10 parole solo il 10% (3 su 31)
+            giusta = lambda f: 11 <= len(f["gancio"].split()) <= 17
+            ordinate = sorted(frasi, key=lambda f: (-punti.get(f["id"], classifica_frasi.stima(f["gancio"], f.get("virale"))),
+                                                    not giusta(f)))
             # 3/11/2026: mai due frasi con le stesse prime parole nello stesso giorno
             inizio = lambda t: " ".join(re.findall(r"\w+", (t or "").lower())[:2])
             oggi = {inizio(h.get("testo")) for h in state["storico"] if h.get("quando", "")[:10] == datetime.date.today().isoformat()}
