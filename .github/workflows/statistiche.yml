@@ -4,9 +4,10 @@ name: Statistiche di riserva
 # (visualizzazioni delle ultime 24 ore) lo manda il PC. Il 5/11 il PC era spento e il messaggio e' arrivato alle 8:19:
 # se il PC non l'ha ancora mandato, dopo le 8:20 lo manda questo lavoro (YouTube, Instagram, Facebook; TikTok solo se
 # l'ultimo numero salvato dal PC non ha piu' di 2 giorni). statistiche.py --github controlla da solo l'ora di Roma
-# (8:20-12) e il registro statistiche_inviate.json: se il messaggio di oggi e' gia' partito (o sta partendo dal PC)
-# non fa niente, mai due messaggi nello stesso giorno. Piu' orari perche' GitHub salta spesso le esecuzioni
-# programmate; ore di Roma (timezone, da marzo 2026): l'ora legale la gestisce GitHub.
+# (8:20-12) e il registro statistiche_inviate.json: se il messaggio di oggi e' gia' partito (o forse partito: una
+# prenotazione rimasta senza conferma, anche di un giro di prima) non fa niente, mai due messaggi nello stesso giorno.
+# Piu' orari perche' GitHub salta spesso le esecuzioni programmate; ore di Roma (timezone, da marzo 2026): l'ora
+# legale la gestisce GitHub.
 on:
   schedule:
     - cron: "22 8 * * *"
@@ -35,7 +36,7 @@ permissions:
 jobs:
   statistiche:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 20     # 6/11/2026 (revisione): le chiamate al registro riprovano fino a ~2,5 minuti l'una
     steps:
       - uses: actions/checkout@v4
         with:

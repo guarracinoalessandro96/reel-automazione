@@ -13,12 +13,17 @@ per i numeri, quindi l'attivita' scarica il file da TikTok Studio e lo script lo
   di 2 giorni). Chi manda lo segna nel registro statistiche_inviate.json del repository (scritto con l'API di GitHub,
   senza toccare la cartella di lavoro del PC) con il totale YouTube del giorno e l'ultimo numero di TikTok: prima di
   mandare lo si "prenota" nel registro, cosi' non partono mai due messaggi nello stesso giorno.
+- Revisione (un solo 502 di GitHub al momento sbagliato bastava per due messaggi): le chiamate al registro riprovano per
+  ~2,5 minuti anche le risposte 5xx/429; ogni giro scrive il suo nome nella prenotazione e una prenotazione rimasta
+  senza conferma di un ALTRO giro vuol dire "forse gia' mandato": non scade e vale anche per lo stesso mittente (solo il
+  PC riprende la sua, quando il suo file dice che quel giro di sicuro non e' partito). Senza registro il PC non manda;
+  una risposta di Telegram persa dopo l'invio conta come arrivata. Caso peggiore: nessun messaggio quel giorno, mai due.
 
   python statistiche.py [--prova] [--tiktok N --tiktok-data AAAA-MM-GG]
   python statistiche.py --github [--prova]
   --prova: stampa il messaggio, non lo manda e non scrive niente
 """
-import base64, csv, datetime, glob, io, json, os, re, subprocess, sys, time, zipfile
+import base64, csv, datetime, glob, io, json, os, re, subprocess, sys, time, uuid, zipfile
 import requests
 from zoneinfo import ZoneInfo
 
@@ -32,9 +37,9 @@ ROMA = ZoneInfo("Europe/Rome")
 MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre",
         "novembre", "dicembre"]
 # il file di TikTok ha le date in italiano senza anno ("4 novembre"); anche in inglese, se cambia la lingua
-MESE_DA_PAROLA = {**{m[:3]: i + 1 for i, m in enumerate(MESI)},
-                  **{m: i + 1 for i, m in enumerate(("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep",
-                                                     "oct", "nov", "dec"))}}
+NOMI_MESI = [(m, i + 1) for i, m in enumerate(MESI)] + [(m, i + 1) for i, m in enumerate((
+    "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november",
+    "december"))]
 TIKTOK_MAX_GIORNI = 2       # 6/11/2026: un numero di TikTok piu' vecchio di cosi' non si mostra
 # 6/11/2026: registro condiviso PC/GitHub (niente segreti: solo orari e numeri di visualizzazioni)
 REPO = "guarracinoalessandro96/reel-automazione"
@@ -42,7 +47,10 @@ REGISTRO = "statistiche_inviate.json"
 API_REGISTRO = f"https://api.github.com/repos/{REPO}/contents/{REGISTRO}"
 RISERVA_DALLE, RISERVA_FINO = (8, 20), (12, 0)     # ora di Roma in cui GitHub puo' mandare al posto del PC
 PC_DALLE, PC_FINO = (7, 30), (23, 0)    # il PC acceso di notte recupera il giro saltato: mai un messaggio di notte
-PRENOTAZIONE_MINUTI = 20    # una prenotazione piu' vecchia senza "inviato" (mittente spento a meta') non conta piu'
+# 6/11/2026 (revisione): ogni chiamata al registro riprova per SECONDI_GITHUB, con attese crescenti, gli errori di
+# rete, i timeout e queste risposte di GitHub (prima un solo 502 faceva fallire la scrittura)
+RITENTA_GITHUB = (429, 500, 502, 503, 504)
+SECONDI_GITHUB = 150
 GIORNI_TENUTI = 60
 CHIAVI = ("GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "GOOGLE_REFRESH_TOKEN", "META_PAGE_TOKEN", "IG_USER_ID",
           "FB_PAGE_ID", "TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID")
@@ -122,7 +130,11 @@ def data_tiktok(testo, oggi):
         m = re.fullmatch(r"(\d{1,2})[/.](\d{1,2})[/.](\d{4})", s)
         if m:
             return datetime.date(int(m[3]), int(m[2]), int(m[1]))
-        mese = next((MESE_DA_PAROLA[p[:3]] for p in re.findall(r"[a-z]+", s) if p[:3] in MESE_DA_PAROLA), None)
+        # 6/11/2026 (revisione): conta solo una parola che e' l'inizio di un mese ("nov", "sett.", "novembre"), la piu'
+        # lunga e a pari lunghezza l'ultima: prima "martedi' 4 novembre" (e "mar 4 nov") diventava il 4 marzo
+        trovati = [(len(p), i, n) for i, p in enumerate(re.findall(r"[^\W\d_]{3,}", s))
+                   for n in {n for nome, n in NOMI_MESI if nome.startswith(p)}]
+        mese = max(trovati)[2] if trovati else None
         numeri = re.findall(r"\d+", s)
         giorni = [int(n) for n in numeri if len(n) <= 2]
         anni = [int(n) for n in numeri if len(n) == 4]
@@ -274,22 +286,38 @@ def token_github(su_github):
 
 
 def _github(metodo, tok, **kw):
+    """La rete del PC a volte non risponde (DNS, 3/11) e GitHub a volte da' 502: si riprova per SECONDI_GITHUB con
+    attese crescenti (6/11/2026, revisione: anche le risposte 5xx/429, non solo gli errori di rete). Una PUT ripetuta
+    e' sicura: se la prima era arrivata, la seconda trova lo sha cambiato (409) e chi chiama rilegge.
+    -> l'ultima risposta (chi chiama guarda lo stato); rilancia l'ultimo errore di rete."""
     h = {"Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"}
     if tok:
         h["Authorization"] = "Bearer " + tok
-    for i in range(4):           # la rete del PC a volte non risponde (DNS, 3/11): si riprova
+    inizio, attesa = time.monotonic(), 5
+    while True:
         try:
-            return requests.request(metodo, API_REGISTRO, headers=h, timeout=30, **kw)
-        except requests.RequestException:
-            if i == 3:
-                raise
-            time.sleep(10 * (i + 1))
+            r, errore = requests.request(metodo, API_REGISTRO, headers=h, timeout=20, **kw), None
+            if r.status_code not in RITENTA_GITHUB:
+                return r
+            dopo = str((getattr(r, "headers", None) or {}).get("Retry-After", ""))
+            if dopo.isdigit():
+                attesa = max(attesa, min(int(dopo), 60))
+        except requests.RequestException as e:
+            r, errore = None, e
+        if time.monotonic() - inizio + attesa > SECONDI_GITHUB:
+            if errore is not None:
+                raise errore
+            return r
+        time.sleep(attesa)
+        attesa = min(attesa * 2, 40)
 
 
 def registro_leggi(tok):
     """(dati, sha) del registro su main; ({}, None) se non c'e' ancora. Il repository e' pubblico: si legge anche
-    senza collegamento."""
+    senza collegamento (6/11/2026, revisione: anche quando il collegamento del PC non vale piu', 401)."""
     r = _github("GET", tok, params={"ref": "main"})
+    if r.status_code == 401 and tok:
+        r = _github("GET", None, params={"ref": "main"})
     if r.status_code == 404:
         return {}, None
     r.raise_for_status()
@@ -300,8 +328,8 @@ def registro_leggi(tok):
         dati = None
     if not isinstance(dati, dict):       # file rovinato (a mano?): si riparte da vuoto, il messaggio parte lo stesso
         dati = {}
-    if not isinstance(dati.get("giorni"), dict):
-        dati["giorni"] = {}
+    giorni = dati.get("giorni")          # 6/11/2026 (revisione): una voce rovinata non deve fermare il giro
+    dati["giorni"] = {g: v for g, v in giorni.items() if isinstance(v, dict)} if isinstance(giorni, dict) else {}
     return dati, j["sha"]
 
 
@@ -327,44 +355,52 @@ def registro_aggiorna(tok, cambia, messaggio_commit):
     raise RuntimeError("registro cambiato troppe volte di seguito")
 
 
-def prenota(tok, oggi, chi):
-    """Prima di mandare: (True, "") se tocca a me, (False, motivo) se il messaggio di oggi e' gia' partito o sta
-    partendo dall'altro mittente."""
+def gia_partito(g, giro, riprendi=None):
+    """Perche' il messaggio di oggi non va mandato, oppure None. 6/11/2026 (revisione): una prenotazione rimasta
+    senza "inviato" di un ALTRO giro vuol dire "forse gia' mandato" (chi l'ha scritta puo' aver mandato e poi non
+    essere riuscito a segnarlo): non scade e vale anche per lo stesso mittente, perche' GitHub non ricorda niente tra
+    un giro e l'altro. Solo il PC riprende la sua: riprendi = il giro che il suo file segna come di sicuro non partito."""
+    if g.get("inviato"):
+        return f"gia' mandato da {g.get('da', '?')} alle {g['inviato']}"
+    p = g.get("invio")
+    if not p:
+        return None
+    p = p if isinstance(p, dict) else {}
+    if p.get("giro") and p["giro"] in (giro, riprendi):
+        return None
+    return (f"forse gia' mandato da {p.get('da', '?')} (prenotazione delle {str(p.get('ora', ''))[11:16] or '?'} "
+            f"senza conferma)")
+
+
+def prenota(tok, oggi, chi, giro, riprendi=None):
+    """Prima di mandare: None se tocca a me (prenotazione scritta, o gia' mia), se no il motivo (gia' partito o forse
+    partito). Errori di GitHub: eccezione, e chi chiama non manda (se la riserva e' accesa)."""
     ora = adesso()
-    motivo = [""]
+    motivo = [None]
     def cambia(dati):
-        g = dati.setdefault("giorni", {}).setdefault(oggi.isoformat(), {})
-        if g.get("inviato"):
-            motivo[0] = f"gia' mandato da {g.get('da', '?')} alle {g['inviato']}"
+        g = dati["giorni"].setdefault(oggi.isoformat(), {})
+        motivo[0] = gia_partito(g, giro, riprendi)
+        if motivo[0] or (g.get("invio") or {}).get("giro") == giro:     # gia' mia: la scrittura di prima era arrivata
             return False
-        p = g.get("invio") or {}
-        if p.get("da") and p["da"] != chi:
-            try:
-                fresca = ora - datetime.datetime.fromisoformat(p["ora"]) < datetime.timedelta(minutes=PRENOTAZIONE_MINUTI)
-            except (KeyError, TypeError, ValueError):
-                fresca = False
-            if fresca:
-                motivo[0] = f"lo sta mandando {p['da']}"
-                return False
-        g["invio"] = {"da": chi, "ora": ora.isoformat(timespec="seconds")}
+        g["invio"] = {"da": chi, "ora": ora.isoformat(timespec="seconds"), "giro": giro}
         if chi == "pc":
             dati.setdefault("pc_dal", oggi.isoformat())
-    if registro_aggiorna(tok, cambia, f"Statistiche {oggi}: in invio ({chi})"):
-        return True, ""
-    if not motivo[0]:          # la prenotazione c'era gia' (stesso mittente): tocca comunque a me
-        return True, ""
-    return False, motivo[0]
+    registro_aggiorna(tok, cambia, f"Statistiche {oggi}: in invio ({chi})")
+    return motivo[0]
 
 
-def registra_giorno(tok, oggi, chi, inviato_alle, youtube_tot, tiktok, numeri):
+def registra_giorno(tok, oggi, chi, giro, inviato_alle, libera, youtube_tot, tiktok, numeri):
     """Dopo il giro: chi ha mandato e quando, il totale YouTube di oggi (il primo del giorno: base delle 24 ore di
-    domani) e l'ultimo numero di TikTok. Senza invio toglie la propria prenotazione (l'altro puo' riprovare)."""
+    domani) e l'ultimo numero di TikTok. 6/11/2026 (revisione): la prenotazione si toglie quando il messaggio e'
+    segnato, oppure se e' di questo giro e Telegram ha detto di no (libera: di sicuro non partito, l'altro mittente
+    puo' riprovare); se non si sa resta e blocca gli altri."""
     def cambia(dati):
         giorni = dati.setdefault("giorni", {})
         g = giorni.setdefault(oggi.isoformat(), {})
         if inviato_alle and not g.get("inviato"):
             g.update(inviato=inviato_alle, da=chi, numeri=numeri)
-        if (g.get("invio") or {}).get("da") == chi:
+        p = g.get("invio")
+        if p is not None and (g.get("inviato") or (libera and isinstance(p, dict) and p.get("giro") == giro)):
             del g["invio"]
         if youtube_tot is not None:
             g.setdefault("youtube_totale", youtube_tot)
@@ -378,11 +414,27 @@ def registra_giorno(tok, oggi, chi, inviato_alle, youtube_tot, tiktok, numeri):
 
 
 # ------------------------------------------------------------------ giro
+def invia(testo, se_no=None):
+    """6/11/2026 (revisione): True arrivato, False di sicuro non partito, None non si sa (risposta persa dopo l'invio).
+    Fino a 3 tentativi, solo quando di sicuro non e' partito: un messaggio forse arrivato non si rimanda mai.
+    se_no() dopo ogni "no" sicuro."""
+    for attesa in (10, 30, None):
+        esito = avvisi.manda_statistiche(testo)
+        if esito is False and se_no:
+            se_no()
+        if esito is not False or attesa is None:
+            return esito
+        print(f"Telegram: messaggio non partito, riprovo tra {attesa} secondi")
+        time.sleep(attesa)
+
+
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     argv = sys.argv[1:]
     su_github, prova = "--github" in argv, "--prova" in argv
     chi = "github" if su_github else "pc"
+    # 6/11/2026 (revisione): il nome di questo giro, scritto nella prenotazione (per riconoscere quelle rimaste)
+    giro = f"{chi}-{os.environ.get('GITHUB_RUN_ID') or os.getpid()}-{uuid.uuid4().hex[:6]}"
     ora = adesso()
     oggi = ora.date()
     if not su_github and not prova and not PC_DALLE <= (ora.hour, ora.minute) < PC_FINO:
@@ -405,8 +457,8 @@ def main():
             fermo = "il PC non scrive ancora nel registro"
         elif not RISERVA_DALLE <= (ora.hour, ora.minute) < RISERVA_FINO:
             fermo = f"fuori orario ({ora:%H:%M})"
-        elif reg_oggi.get("inviato"):
-            fermo = f"messaggio di oggi gia' mandato da {reg_oggi.get('da', '?')} alle {reg_oggi['inviato']}"
+        elif gia_partito(reg_oggi, giro):
+            fermo = "messaggio di oggi " + gia_partito(reg_oggi, giro)
         if fermo and not prova:
             print("Riserva GitHub: non mando,", fermo)
             return
@@ -477,55 +529,83 @@ def main():
         print("ERRORI (non inviati su Telegram):", *map(pulito, errori), sep="\n")
     print(testo)
     loc = storico.get(oggi.isoformat()) or {}
+    riprendi = None if su_github else loc.get("non_inviato")
     # gia' partito oggi? Registro su GitHub, oppure il file del PC ("v" manca = giro col codice di prima del 6/11,
     # che salvava i numeri e subito dopo mandava: l'ora del file e' quella dell'invio)
-    gia = reg_oggi.get("inviato") and f"gia' mandato da {reg_oggi.get('da', '?')} alle {reg_oggi['inviato']}"
+    gia = gia_partito(reg_oggi, giro, riprendi)
     ora_pc = loc.get("inviato") or (loc.get("giorno") and not loc.get("v") and ora_file and f"{ora_file:%H:%M}")
     gia_dal_pc = bool(not su_github and ora_pc)
-    if not gia and gia_dal_pc:
+    if gia_dal_pc and not reg_oggi.get("inviato"):
         gia = f"gia' mandato dal PC alle {ora_pc}"
     if prova:
         print("(prova: niente inviato e niente salvato)" + (f" Il messaggio di oggi e' {gia}." if gia else ""))
         return
-    if not gia:
-        if tok and registro is not None:
-            try:
-                ok, motivo = prenota(tok, oggi, chi)
-                if not ok:
-                    gia = motivo
-            except Exception as e:
-                print("Registro su GitHub: prenotazione non riuscita:", pulito(e)[:150])
-                if su_github:
-                    raise SystemExit("Riserva GitHub: senza prenotazione non mando (mai due messaggi)")
-        elif su_github:
-            raise SystemExit("Riserva GitHub: senza collegamento al registro non mando (mai due messaggi)")
-    inviato_alle = None
-    if gia:
-        print(f"Messaggio di oggi {gia}: non lo rimando.")
-    else:
-        if not su_github:
-            os.environ["TELEGRAM_BOT_TOKEN"], os.environ["TELEGRAM_CHAT_ID"] = k["TELEGRAM_BOT_TOKEN"], k["TELEGRAM_CHAT_ID"]
-        if avvisi.manda_statistiche(testo):
-            inviato_alle = adesso().strftime("%H:%M")
-    if not su_github:
+
+    def salva_pc(**segni):
+        """Il file del PC: numeri del giorno, totale YouTube (il primo del giorno: un secondo giro non lo sposta),
+        ultimo TikTok e i segni dell'invio (6/11/2026, revisione: scritto anche a meta' giro e anche senza invio)."""
+        if su_github:
+            return
         try:
             g = storico.setdefault(oggi.isoformat(), {})
             if tot is not None:
-                g.setdefault("youtube_totale", tot)      # 6/11/2026: il primo del giorno (un secondo giro non lo sposta)
-            g.update(giorno=giorno, settimana=settimana, v=2)
-            if inviato_alle:
-                g["inviato"] = inviato_alle
+                g.setdefault("youtube_totale", tot)
+            g.update(giorno=giorno, settimana=settimana, v=2, **segni)
             if tiktok_nuovo:
                 storico["tiktok_ultimo"] = tiktok_nuovo
-            json.dump(storico, open(STORICO, "w", encoding="utf-8"), indent=1)
+            with open(STORICO, "w", encoding="utf-8") as f:
+                json.dump(storico, f, indent=1)
         except Exception as e:
             print("ATTENZIONE: statistiche_giornaliere.json non salvato:", pulito(e)[:150])
-    if tok:
-        try:          # se l'aveva gia' mandato il PC (giro di prima) lo si segna ora, cosi' GitHub non lo rimanda
-            segna = inviato_alle or (ora_pc if gia_dal_pc and not reg_oggi.get("inviato") else None)
-            registra_giorno(tok, oggi, chi, segna, tot, tiktok_nuovo, giorno)
+
+    blocco = None        # 6/11/2026 (revisione): perche' non si manda per un guasto del registro
+    if not gia:
+        if registro is None:     # non si sa se GitHub l'ha gia' mandato o lo mandera' dopo le 8:20
+            blocco = ("Registro su GitHub non leggibile: non mando (mai due messaggi; se serve lo manda GitHub dopo "
+                      "le 8:20)")
+        else:
+            try:
+                if not tok:
+                    raise RuntimeError("collegamento a GitHub non trovato")
+                gia = prenota(tok, oggi, chi, giro, riprendi)
+            except Exception as e:
+                print("Registro su GitHub: prenotazione non riuscita:", pulito(e)[:150])
+                # riserva accesa (pc_dal): GitHub puo' mandare, quindi niente invio senza prenotazione. Spenta: GitHub
+                # non manda mai, il PC puo' mandare anche senza
+                if su_github or registro.get("pc_dal"):
+                    blocco = (("Riserva GitHub" if su_github else "PC") + ": senza prenotazione nel registro non "
+                              "mando (mai due messaggi)")
+    inviato_alle = esito = None
+    if gia:
+        print(f"Messaggio di oggi {gia}: non lo rimando.")
+    elif not blocco:
+        if not su_github:
+            os.environ["TELEGRAM_BOT_TOKEN"], os.environ["TELEGRAM_CHAT_ID"] = k["TELEGRAM_BOT_TOKEN"], k["TELEGRAM_CHAT_ID"]
+        # Telegram ha detto di no: lo si segna subito, cosi' il giro dopo puo' riprendere la prenotazione anche se
+        # questo viene interrotto durante l'attesa
+        esito = invia(testo, se_no=lambda: salva_pc(non_inviato=giro))
+        if esito is None:
+            print("ATTENZIONE: Telegram non ha confermato l'invio: il messaggio potrebbe essere arrivato, lo conto come "
+                  "mandato (mai due)")
+        if esito is not False:
+            inviato_alle = adesso().strftime("%H:%M")
+    # 6/11/2026 (revisione): il segno dell'invio non si perde mai (prima un giro dopo quello del codice vecchio lo
+    # cancellava, e il terzo rimandava)
+    salva_pc(**({"inviato": inviato_alle or ora_pc} if inviato_alle or gia_dal_pc else {}))
+    if tok and registro is not None and not blocco:
+        # se l'aveva gia' mandato il PC (giro di prima) lo si segna ora, cosi' GitHub non lo rimanda
+        segna = inviato_alle or (ora_pc if gia_dal_pc and not reg_oggi.get("inviato") else None)
+        try:
+            registra_giorno(tok, oggi, chi, giro, segna, esito is False, tot, tiktok_nuovo, giorno)
         except Exception as e:
             print("ATTENZIONE: registro su GitHub non aggiornato:", pulito(e)[:150])
+            if segna and not su_github:
+                # la skill lo rilancia una volta: il giro dopo vede dal file del PC che e' gia' partito e lo segna
+                # senza rimandarlo (intanto la prenotazione rimasta ferma GitHub)
+                raise SystemExit("Messaggio di oggi mandato, ma non segnato nel registro su GitHub: rilancia lo "
+                                 "script, lo segna senza rimandarlo")
+    if blocco:
+        raise SystemExit(blocco)
     if not inviato_alle and not gia:
         raise SystemExit("Telegram non ha ricevuto il messaggio")
     if file_tiktok:      # un solo file, cosi' la cartella Download non si riempie
