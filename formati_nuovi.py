@@ -574,6 +574,10 @@ GIORNATA_SCENA_MIN = 1.0              # nessuna scena sotto 1 s, anche dopo lo s
 # differenza media delle miniature (0-255) sotto cui due clip sono lo stesso momento (prove del 6/11: stesso video 0,
 # due clip diverse 39-100, anche due selfie allo specchio di giorni diversi 39)
 GIORNATA_SIMILI = 20.0
+# 6/11/2026 (revisione): i visi si guardano fotogramma per fotogramma, ogni 0,5 s dall'inizio della scena (0 = il
+# primo fotogramma) fino a 2,5 s; quelli della prima scena solo nel suo PRIMO secondo (il gancio)
+GIORNATA_PASSO, GIORNATA_FOTOGRAMMI = 0.5, 6
+GIORNATA_GANCIO_S = 1.0
 
 
 def _verticale(path):
@@ -607,30 +611,63 @@ def _minuti_giornata(quando):
 
 def momento_giornata(c, durata):
     """La scena di `durata` s della clip, nel suo momento piu' forte (momento_forte), e cosa serve per sceglierla:
-    viso visibile nel taglio 9:16 del reel, movimento, nitidezza, luce, i visi e una miniatura per i doppioni."""
+    viso visibile nel taglio 9:16 del reel, movimento, nitidezza, luce, una miniatura per i doppioni e, se fa da
+    prima scena, da dove partire perche' nel PRIMO secondo si veda il viso piu' grande (gancio_inizio, gancio_area,
+    viso_gancio).
+    6/11/2026 (revisione): visi fotogramma per fotogramma (ogni 0,5 s dall'inizio della scena); prima 5 fotogrammi
+    sparsi su 2,8 s davano il bonus del viso grande anche quando il viso arrivava dopo la fine della scena (la prima
+    scena del reel partiva con il viso piccolo dietro al telefono nello specchio)."""
     import cv2
     import numpy as np
     secondi, hdr = ov.probe(c)
     if secondi < 1.0:
         raise ValueError(f"clip troppo corta ({secondi:.1f} s)")
+    fine = max(0.0, secondi - durata - 0.05)               # ultimo inizio possibile della scena
     t = momento_forte(c, durata)
-    t = round(min(max(t, MARGINE_S if secondi >= durata + 2 * MARGINE_S else 0.0), max(0.0, secondi - durata - 0.05)), 3)
+    t = round(min(max(t, MARGINE_S if secondi >= durata + 2 * MARGINE_S else 0.0), fine), 3)
     taglio = "scale=540:960:force_original_aspect_ratio=increase,crop=540:960"
-    # 5 fotogrammi (come il controllo finale di make_sequenza) su tutta la scena piu' lunga possibile (4 scene + colpo
-    # della musica): prima 3 sulla scena corta, e la frase finiva sul viso visto solo dal controllo finale
-    lunga = max(durata, GIORNATA_DURATA / GIORNATA_MIN + 0.3)
-    fr = ov.extract_frames(c, max(0.3, min(lunga, secondi - t)), n=5, start=t,
-                           vf=f"{ov.HDR_TO_SDR},{taglio}" if hdr else taglio)
+    vf = f"{ov.HDR_TO_SDR},{taglio}" if hdr else taglio
+    fr = {}                                                # secondi dall'inizio della scena -> fotogramma
+    for k in range(GIORNATA_FOTOGRAMMI):
+        o = round(k * GIORNATA_PASSO, 2)
+        if k and t + o >= secondi - 0.05:
+            break
+        x = ov.extract_frames(c, 0.02, n=1, start=max(0.0, t + o - 0.01), vf=vf)   # il fotogramma a t + o
+        if x:
+            fr[o] = x[0]
     if not fr:
         raise ValueError("fotogrammi non letti")
-    visi = [ov.detect_faces([f], ruotati=True) for f in fr]
-    g = [cv2.cvtColor(cv2.resize(f, (90, 160)), cv2.COLOR_BGR2GRAY).astype(np.float32) for f in fr]
+    visi = {o: ov.detect_faces([f], ruotati=True) for o, f in fr.items()}
+    area = lambda o: max([(b[2] - b[0]) * (b[3] - b[1]) for b in visi[o]] or [0.0])
+    dentro = lambda da, lungo: [o for o in fr if da - 1e-6 <= o < da + lungo - 1e-6]
+    scena = dentro(0.0, durata) or [min(fr)]
+    # prima scena: parte dal fotogramma da cui il viso e' piu' grande per tutto il primo secondo (media dei suoi
+    # fotogrammi: cosi' anche il PRIMO fotogramma del reel e' il viso); si sposta solo se il viso e' piu' grande di
+    # almeno il 15% e mai oltre la fine della clip
+    g_t, g_area = t, -1.0
+    for o in sorted(fr):
+        s = round(min(t + o, fine), 3)
+        primo = dentro(s - t, GIORNATA_GANCIO_S)
+        a = sum(area(p) for p in primo) / len(primo) if primo else 0.0
+        if a > g_area * 1.15 + 0.002:
+            g_t, g_area = s, a
+    g_scena = dentro(g_t - t, durata) or scena
+    g = {o: cv2.cvtColor(cv2.resize(f, (90, 160)), cv2.COLOR_BGR2GRAY).astype(np.float32) for o, f in fr.items()}
+
+    def misure(tempi):                                     # (nitidezza, movimento) dei fotogrammi della scena
+        xs = [g[o] for o in sorted(tempi)]
+        return (float(np.mean([cv2.Laplacian(x, cv2.CV_32F).var() for x in xs])),
+                float(np.mean([np.abs(a - b).mean() for a, b in zip(xs, xs[1:])])) if len(xs) > 1 else 0.0)
+    nitido, moto = misure(scena)
+    nitido_g, moto_g = misure(g_scena)                     # la stessa scena se fa da prima, da gancio_inizio
     return {"clip": c, "inizio": t, "secondi": secondi,
-            "viso": sum(1 for v in visi if v) / len(fr), "visi": [b for v in visi for b in v],
-            "nitido": float(np.mean([cv2.Laplacian(x, cv2.CV_32F).var() for x in g])),
-            "moto": float(np.mean([np.abs(a - b).mean() for a, b in zip(g, g[1:])])) if len(g) > 1 else 0.0,
-            "luce": float(np.mean([x.mean() for x in g])) / 255,
-            "firma": np.mean([cv2.resize(x, (18, 32), interpolation=cv2.INTER_AREA) for x in g], axis=0),
+            "viso": sum(1 for o in scena if visi[o]) / len(scena),
+            "gancio_inizio": g_t, "gancio_area": max(0.0, g_area),
+            "viso_gancio": sum(1 for o in g_scena if visi[o]) / len(g_scena),
+            "nitido": nitido, "moto": moto, "nitido_gancio": nitido_g, "moto_gancio": moto_g,
+            "luce": float(np.mean([g[o].mean() for o in scena])) / 255,
+            # i doppioni su tutti i fotogrammi (fino a 2,5 s), come le prove che hanno fissato GIORNATA_SIMILI
+            "firma": np.mean([cv2.resize(g[o], (18, 32), interpolation=cv2.INTER_AREA) for o in sorted(g)], axis=0),
             "verticale": _verticale(c)}
 
 
@@ -663,16 +700,19 @@ def tagli_giornata(musica, durate, minimo=GIORNATA_SCENA_MIN):
         return list(durate)
 
 
-def piano_giornata(clips, ore=None, musica=None, frase=None, scene=None, durata=GIORNATA_DURATA):
+def piano_giornata(clips, ore=None, musica=None, scene=None, durata=GIORNATA_DURATA, viste=None):
     """(piano [(clip, inizio)], durate, info) del reel GIORNATA.
     clips[0] e' il video dell'orario e resta sempre (e' quello che risulta pubblicato); le altre sono momenti della
     giornata in ordine di preferenza (pubblica.clip_giornata: prima scene diverse). ore = data e ora di ripresa di
-    ogni clip ('AAAA-MM-GGTHH:MM', None = dal file con overlay.data_ripresa); scene = etichette (palestra, macchina...).
-    Con la frase: se finirebbe su un viso, si tolgono prima le clip che la spingono sul viso (fino a GIORNATA_MIN);
-    se non basta ci pensa make_giornata (fascia cinema/post)."""
+    ogni clip ('AAAA-MM-GGTHH:MM', None = dal file con overlay.data_ripresa); scene = etichette (palestra, macchina...);
+    viste = True per le clip gia' uscite di recente (da sole o come scena): non fanno da prima scena se c'e' un'altra.
+    6/11/2026 (revisione): la frase non si controlla piu' qui. Il controllo preventivo guardava fotogrammi diversi da
+    quelli del montaggio e sbagliava nei due sensi (fascia quando la frase ci stava, o il contrario) e toglieva scene
+    senza motivo: decide make_sequenza, sugli stessi fotogrammi del reel, prima di montare (make_giornata)."""
     import numpy as np
     n0 = len(clips)
     ore, scene = (list(ore or []) + [None] * n0)[:n0], (list(scene or []) + [None] * n0)[:n0]
+    viste = (list(viste or []) + [False] * n0)[:n0]
     d0 = durata / max(GIORNATA_MIN, min(GIORNATA_MAX, n0))
     scelte, file_visti = [], set()
     for i, c in enumerate(clips):
@@ -692,55 +732,29 @@ def piano_giornata(clips, ore=None, musica=None, frase=None, scene=None, durata=
             print(f"giornata: {os.path.basename(c)} quasi uguale a {os.path.basename(simile['clip'])}: saltata", flush=True)
             continue
         file_visti.add(chiave)
-        a.update(principale=i == 0, ora=ore[i] or ov.data_ripresa(c), scena=scene[i])
+        a.update(principale=i == 0, ora=ore[i] or ov.data_ripresa(c), scena=scene[i], vista=bool(viste[i]))
         scelte.append(a)
     if len(scelte) < GIORNATA_MIN:
         raise ValueError(f"giornata: solo {len(scelte)} momenti diversi (ne servono {GIORNATA_MIN})")
-    mm = max(a["moto"] for a in scelte) or 1.0
-    mn = max(a["nitido"] for a in scelte) or 1.0
+    mm = max([a["moto"] for a in scelte] + [a["moto_gancio"] for a in scelte]) or 1.0
+    mn = max([a["nitido"] for a in scelte] + [a["nitido_gancio"] for a in scelte]) or 1.0
     for a in scelte:   # come segmento_migliore (viso, movimento, nitidezza); giu' le clip orizzontali e quelle al buio
-        a["punti"] = (2.0 * a["viso"] + 0.6 * a["moto"] / mm + 0.4 * a["nitido"] / mn
-                      - (1.0 if not a["verticale"] else 0.0) - (0.8 if a["luce"] < 0.10 else 0.0))
+        meno = (1.0 if not a["verticale"] else 0.0) + (0.8 if a["luce"] < 0.10 else 0.0)
+        a["punti"] = 2.0 * a["viso"] + 0.6 * a["moto"] / mm + 0.4 * a["nitido"] / mn - meno
+        # come prima scena conta la scena che parte da gancio_inizio (viso, movimento, nitidezza) e quanto e' grande il
+        # viso nel primo secondo (rapporto del 6/11: "nel primo secondo ci sei tu e ti si riconosce"): un primo piano in
+        # macchina batte lo stesso punteggio con il viso piccolo nello specchio della sala (fino a +0,5)
+        a["punti_gancio"] = (2.0 * a["viso_gancio"] + 0.6 * a["moto_gancio"] / mm + 0.4 * a["nitido_gancio"] / mn
+                             - meno + 0.5 * min(1.0, a["gancio_area"] / 0.04))
     while len(scelte) > GIORNATA_MAX:      # troppe: via la piu' debole della scena che si ripete di piu'
         altre = [a for a in scelte if not a["principale"]]
         quante = {s: sum(1 for a in altre if a["scena"] == s) for s in {a["scena"] for a in altre}}
         scelte.remove(min(altre, key=lambda a: (-quante[a["scena"]], a["punti"])))
-    fascia = False
-    if frase:     # la frase va dove non ci sono visi in nessuna scena: se non c'e' posto, via una clip
-        # 6/11/2026 (prova a 540x960): con 6 primi piani i riquadri dei visi coprono quasi tutto lo schermo e togliere
-        # una clip non basta: si tolgono clip SOLO se cosi' la frase trova davvero posto (minimo GIORNATA_MIN), se no
-        # restano tutte le scene e la frase va sulla fascia (make_giornata), senza il primo tentativo che fallirebbe
-        W, H = ov.LATO_USCITA, int(ov.LATO_USCITA * 16 / 9)
-        prova, tolte = list(scelte), []
-        while True:
-            img, _, _ = ov.build_testo_giallo(W, H, frase, [f for a in prova for f in a["visi"]])
-            coperte = [a for a in prova if viso_coperto(img, a["visi"], W, H)]
-            if not coperte:
-                break
-            togli = [a for a in coperte if not a["principale"]]
-            altre = [a for a in prova if not a["principale"] and a["visi"]]
-            if len(prova) <= GIORNATA_MIN or not (togli or altre):
-                prova = None
-                break
-            # via la clip coperta piu' debole; se e' coperto solo il video dell'orario, quella con i visi piu' grandi
-            via = min(togli, key=lambda a: a["punti"]) if togli else \
-                max(altre, key=lambda a: sum((f[2] - f[0]) * (f[3] - f[1]) for f in a["visi"]))
-            prova.remove(via)
-            tolte.append(via)
-        if prova is None:
-            fascia = True
-            print("giornata: la frase non trova posto lontano dai visi: tutte le scene, frase sulla fascia", flush=True)
-        elif tolte:
-            print("giornata: la frase finirebbe sul viso, tolgo " + ", ".join(os.path.basename(a["clip"]) for a in tolte),
-                  flush=True)
-            scelte = prova
-    # la prima scena: il momento piu' forte con il viso (in verticale e con luce), poi la giornata in ordine di ora.
-    # Conta anche quanto e' grande il viso (rapporto del 6/11: "nel primo secondo ci sei tu e ti si riconosce"): un
-    # primo piano in macchina batte lo stesso punteggio con il viso piccolo nello specchio della sala
-    grande = lambda a: max([(f[2] - f[0]) * (f[3] - f[1]) for f in a["visi"]] or [0.0])
-    adatte = [a for a in scelte if a["viso"] > 0 and a["verticale"] and a["luce"] >= 0.10]
-    gancio = max(adatte or [a for a in scelte if a["viso"] > 0] or scelte,
-                 key=lambda a: a["punti"] + 0.5 * min(1.0, grande(a) / 0.04))
+    # la prima scena: il momento piu' forte con il viso nel suo primo secondo (in verticale e con luce), poi la
+    # giornata in ordine di ora. Prima le clip non viste di recente: due reel vicini non partono dalla stessa scena
+    adatte = [a for a in scelte if a["gancio_area"] > 0 and a["verticale"] and a["luce"] >= 0.10]
+    adatte = [a for a in adatte if not a["vista"]] or adatte
+    gancio = max(adatte or [a for a in scelte if a["gancio_area"] > 0] or scelte, key=lambda a: a["punti_gancio"])
     resto = sorted((a for a in scelte if a is not gancio), key=lambda a: (
         _minuti_giornata(a["ora"]) is None, _minuti_giornata(a["ora"]) or 0, os.path.basename(a["clip"]).lower()))
     ordine = [gancio] + resto
@@ -749,26 +763,34 @@ def piano_giornata(clips, ore=None, musica=None, frase=None, scene=None, durata=
     durate = [base] * (n - 1) + [round(durata - base * (n - 1), 3)]
     if musica and os.path.exists(musica):
         durate = tagli_giornata(musica, durate)
-    piano = [(a["clip"], round(min(a["inizio"], max(0.0, a["secondi"] - d - 0.05)), 3)) for a, d in zip(ordine, durate)]
+    inizi = [gancio["gancio_inizio"]] + [a["inizio"] for a in resto]
+    if gancio["gancio_inizio"] != gancio["inizio"]:
+        print(f"giornata: prima scena {os.path.basename(gancio['clip'])} da {gancio['gancio_inizio']:.2f} s invece di "
+              f"{gancio['inizio']:.2f} s: nel primo secondo il viso e' piu' grande", flush=True)
+    piano = [(a["clip"], round(min(t, max(0.0, a["secondi"] - d - 0.05)), 3)) for a, t, d in zip(ordine, inizi, durate)]
     giorno0 = str(scelte[0]["ora"] or "")[:10] if scelte[0]["principale"] else ""
-    info = {"scene": n, "con_viso": sum(1 for a in ordine if a["viso"] > 0), "fascia": fascia}
+    info = {"scene": n, "con_viso": sum(1 for k, a in enumerate(ordine) if (a["viso_gancio"] if k == 0 else a["viso"]) > 0),
+            "viso_primo_secondo": gancio["gancio_area"] > 0}
     if giorno0:
         info["stesso_giorno"] = sum(1 for a in ordine if str(a["ora"] or "")[:10] == giorno0)
     return piano, durate, info
 
 
-def make_giornata(clips, frase, dst, musiche=(), ore=None, scene=None, controlla_viso=True, ultimo=None):
+def make_giornata(clips, frase, dst, musiche=(), ore=None, scene=None, controlla_viso=True, ultimo=None, nomi=None,
+                  viste=None):
     """Reel GIORNATA (vedi piano_giornata): clips[0] = video dell'orario, le altre = momenti della stessa giornata.
-    Se la frase coprirebbe comunque un viso, le STESSE scene escono con la fascia 'cinema' o 'post' (frase fuori dal
-    video) come negli altri formati: info cornice + ripiego_da (report.py le conta a parte)."""
+    La frase va sul video se non copre nessun viso: lo decide make_sequenza sui fotogrammi del reel, PRIMA di montare
+    (VisoCoperto); se no le STESSE scene escono con la fascia 'cinema' o 'post' (frase fuori dal video).
+    6/11/2026 (revisione): con la fascia il reel resta GIORNATA, segnato con montaggio.cornice = cinema/post e NON
+    come ripiego (ripiego_da): con 5-7 scene e i primi piani la fascia e' il caso normale, e contati come "ripiego
+    giornata" questi reel non sarebbero mai entrati nel confronto dei formati (report.py pesa i formati con almeno 6
+    reel). nomi = i nomi delle clip (paralleli a clips) per montaggio.clip_scene: le clip usate come scene; viste =
+    le clip gia' uscite di recente (piano_giornata)."""
     import random
     musiche = [m for m in musiche if m and os.path.exists(m)]
-    piano, durate, info = piano_giornata(clips, ore, musiche[0] if musiche else None, frase if controlla_viso else None,
-                                         scene)
+    piano, durate, info = piano_giornata(clips, ore, musiche[0] if musiche else None, scene, viste=viste)
     usate = [clips[0]] + [c for c, _ in piano if c != clips[0]]
     try:
-        if info.pop("fascia", False):      # gia' si sa che la frase sul video coprirebbe un viso
-            raise VisoCoperto(frase)
         r = make_sequenza(usate, durate, [(0.0, sum(durate), frase)], dst, musiche, None, "giornata", controlla_viso,
                           piano=piano)
     except VisoCoperto:
@@ -777,6 +799,9 @@ def make_giornata(clips, frase, dst, musiche=(), ore=None, scene=None, controlla
         W = ov.LATO_USCITA
         r = make_sequenza(usate, durate, [], dst, musiche, None, "giornata", controlla_viso, piano=piano,
                           layout=cornice(W, int(W * 16 / 9), tipo, frase))
-        r.update(cornice=tipo, ripiego_da="giornata")
+        r["cornice"] = tipo
     r.update(info)
+    if nomi:
+        nome = dict(zip(clips, nomi))
+        r["clip_scene"] = [nome.get(c) for c, _ in piano if c != clips[0]]
     return r

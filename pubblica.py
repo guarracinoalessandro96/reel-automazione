@@ -676,13 +676,30 @@ def clip_giornata(drive, work, clip, an, src, state, videos=(), video=None):
     ancora in coda. Se quel giorno ha meno di 4 momenti diversi: il giorno piu' recente che li ha (prima i nuovi).
     Prima scene diverse (macchina, ufficio, cibo, palestra...), poi le clip nuove; mai il video dell'orario, i video
     parlati, i momenti col titolo (escono da soli), le clip escluse o con la famiglia, le clip senza data.
-    Restituisce (percorsi, ore di ripresa, scene, giorno)."""
+    6/11/2026 (revisione): con memoria (stato.json). In fondo, senza escluderle, le clip uscite da sole nelle ultime
+    48 ore e quelle gia' usate come scena in un reel GIORNATA negli ultimi 7 giorni (montaggio.clip_scene); se il
+    giorno del video non basta, tra i giorni con 4 momenti quello usato meno di recente (montaggio.giornata_del), a
+    parita' il piu' recente. Prima il giorno di ripiego e le sue scene tornavano uguali a ogni reel.
+    Restituisce (percorsi, ore di ripresa, scene, giorno, nomi delle clip, viste di recente si/no)."""
     import formati_nuovi
     stem = lambda n: os.path.splitext(n or "")[0].lower()
     mio = clip or video or {}
     mio_id = mio.get("id")
     giorno0 = str((clip or {}).get("registrato") or an.get("registrato") or overlay.data_ripresa(src) or "")[:10]
     fuori, usi = set(clip_voti()["escluse"]), state.get("archivio_usi", {})
+    adesso = datetime.datetime.now()
+    da = lambda ore: (adesso - datetime.timedelta(hours=ore)).isoformat(timespec="minutes")
+    soli, come_scena, giorni_usati = set(), set(), {}
+    for h in state.get("storico", []):
+        quando, m = str(h.get("quando") or ""), h.get("montaggio")
+        m = m if isinstance(m, dict) else {}
+        if quando >= da(48) and h.get("video"):
+            soli.add(stem(h["video"]))
+        if quando >= da(24 * 7):
+            come_scena |= {stem(x) for x in m.get("clip_scene") or [] if x}
+        if m.get("giornata_del"):
+            giorni_usati[m["giornata_del"]] = max(giorni_usati.get(m["giornata_del"], ""), quando)
+    usata = lambda c: stem(c["nome"]) in soli or stem(c["nome"]) in come_scena
     cand = []
     for v in videos or []:               # la coda: i video nuovi, gia' analizzati (scena, ora di ripresa)
         a = state.get("analisi", {}).get(v["id"], {})
@@ -706,21 +723,28 @@ def clip_giornata(drive, work, clip, an, src, state, videos=(), video=None):
             visti.add(stem(c["nome"]))
             per_giorno.setdefault(reg[:10], []).append(c)
     minimo = formati_nuovi.GIORNATA_MIN
-    giorno = giorno0 if len(per_giorno.get(giorno0, [])) >= minimo - 1 else next(
-        (g for g in sorted(per_giorno, reverse=True) if len(per_giorno[g]) >= minimo), None)
+    if len(per_giorno.get(giorno0, [])) >= minimo - 1:
+        giorno = giorno0
+    else:     # min() tiene il primo a parita': in ordine dal giorno piu' recente
+        adatti = sorted((g for g in per_giorno if len(per_giorno[g]) >= minimo), reverse=True)
+        giorno = min(adatti, key=lambda g: giorni_usati.get(g, "")) if adatti else None
     if not giorno:
         raise ValueError(f"nessun giorno con {minimo} momenti diversi")
     scelte = per_giorno[giorno]
     random.shuffle(scelte)
     scelte.sort(key=lambda c: not c["nuova"])          # a parita' di scena prima le clip nuove
-    gruppi = {}
-    for c in scelte:
-        gruppi.setdefault(c.get("scena") or "?", []).append(c)
-    giro = sorted(gruppi, key=lambda s: (s == an.get("scena"), random.random()))   # prima le scene diverse dalla sua
-    ordine = []
-    while any(gruppi.values()):
-        ordine += [gruppi[s].pop(0) for s in giro if gruppi[s]]
-    percorsi, ore, scene, nuove = [], [], [], 0
+
+    def a_giro(lista):                                 # una per scena a giro, prima le scene diverse dalla sua
+        gruppi = {}
+        for c in lista:
+            gruppi.setdefault(c.get("scena") or "?", []).append(c)
+        giro = sorted(gruppi, key=lambda s: (s == an.get("scena"), random.random()))
+        fila = []
+        while any(gruppi.values()):
+            fila += [gruppi[s].pop(0) for s in giro if gruppi[s]]
+        return fila
+    ordine = a_giro([c for c in scelte if not usata(c)]) + a_giro([c for c in scelte if usata(c)])
+    percorsi, ore, scene, nomi, viste, nuove = [], [], [], [], [], 0
     for i, c in enumerate(ordine):
         if len(percorsi) >= SCENE_EXTRA.get("giornata", 7):
             break
@@ -730,26 +754,32 @@ def clip_giornata(drive, work, clip, an, src, state, videos=(), video=None):
             percorsi.append(p)
             ore.append(str(c["registrato"])[:16])
             scene.append(c.get("scena"))
+            nomi.append(c["nome"])
+            viste.append(usata(c))
             nuove += 1 if c["nuova"] else 0
         except Exception as e:
             log(f"Giornata: {c['nome']} non scaricata:", e)
     if len(percorsi) < minimo - 1:
         raise ValueError(f"solo {len(percorsi)} clip della giornata scaricate")
     log(f"Giornata del {giorno}{' (stesso giorno del video)' if giorno == giorno0 else ''}: {len(percorsi)} momenti "
-        f"({', '.join(str(s) for s in scene)}), {nuove} ancora in coda")
-    return percorsi, ore, scene, giorno
+        f"({', '.join(str(s) for s in scene)}), {nuove} ancora in coda, {sum(viste)} gia' viste di recente")
+    return percorsi, ore, scene, giorno, nomi, viste
 
 
 def monta_giornata(frase, src, out, music, serie, drive, work, clip, an, state, videos=(), video=None):
     """6/11/2026 (Alessandro: "devi essere tu a capire come devi fare l'editing"): reel GIORNATA, il video dell'orario
     e altri momenti della stessa giornata (clip_giornata) in formati_nuovi.make_giornata. Se i momenti non bastano o
-    il montaggio non riesce: il video dell'orario in 'taglio2' come oggi (montaggio.estratto = giornata)."""
+    il montaggio non riesce: il video dell'orario in 'taglio2' come oggi (montaggio.estratto = giornata).
+    6/11/2026 (revisione): montaggio.clip_scene e giornata_del per la memoria di clip_giornata."""
     import formati_nuovi
     try:
-        altre, ore, scene, _ = clip_giornata(drive, work, clip, an, src, state, videos, video)
+        altre, ore, scene, giorno, nomi, viste = clip_giornata(drive, work, clip, an, src, state, videos, video)
         ora0 = (clip or {}).get("registrato") or an.get("registrato") or overlay.data_ripresa(src)
-        return formati_nuovi.make_giornata([src] + altre, frase["gancio"], out, musiche_brano(music, 3),
-                                           [ora0] + ore, [an.get("scena")] + scene, True, state.get("formato_ultimo"))
+        info = formati_nuovi.make_giornata([src] + altre, frase["gancio"], out, musiche_brano(music, 3),
+                                           [ora0] + ore, [an.get("scena")] + scene, True, state.get("formato_ultimo"),
+                                           [None] + nomi, [False] + viste)
+        info["giornata_del"] = giorno
+        return info
     except Exception as e:
         log("Giornata non riuscita, il video dell'orario in 'taglio2':", e)
     return monta_dieci("taglio2", frase, src, out, music, serie, drive, work, clip, state.get("formato_ultimo"))
