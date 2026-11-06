@@ -2151,7 +2151,11 @@ def main():
             # vadano piu' virali: classifica_frasi.json (0-100, 50 se manca; lunghezza, temi sulle persone, [virale],
             # giudizio di Claude). Si sceglie a caso tra le prime 3, cosi' i reel vicini non sono sempre uguali.
             punti = foto_punti
-            ordinate = sorted(frasi, key=lambda f: -punti.get(f["id"], classifica_frasi.stima(f["gancio"], f.get("virale"))))
+            # 6/11/2026 (67 reel dal 29/10): a parita' di punteggio prima le frasi da 11-17 parole: YouTube ne ha
+            # spinte il 39% (13 su 33), di quelle fino a 10 parole solo il 10% (3 su 31)
+            giusta = lambda f: 11 <= len(f["gancio"].split()) <= 17
+            ordinate = sorted(frasi, key=lambda f: (-punti.get(f["id"], classifica_frasi.stima(f["gancio"], f.get("virale"))),
+                                                    not giusta(f)))
             # 3/11/2026: mai due frasi con le stesse prime parole nello stesso giorno
             inizio = lambda t: " ".join(re.findall(r"\w+", (t or "").lower())[:2])
             oggi = {inizio(h.get("testo")) for h in state["storico"] if h.get("quando", "")[:10] == datetime.date.today().isoformat()}
