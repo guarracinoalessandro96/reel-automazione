@@ -10703,7 +10703,9 @@
      "ok": true,
      "id": "18155449138540926",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -10764,7 +10766,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "OtfwoZQ3ac0"
+     "id": "OtfwoZQ3ac0",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10775,11 +10778,78 @@
    },
    "spinto": true,
    "testo": "Ogni problema ha una soluzione."
+  },
+  {
+   "quando": "2026-11-07T21:00",
+   "slot": "2026-11-07 22:00",
+   "video": "IMG_4942.mov",
+   "md5": "2a9953a04ae10c1bbd9425bb6a428535",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-05T23:53+01:00",
+   "frase": "MIE-fc938333",
+   "tema": "dieta",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "rubberband_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 12.05,
+     "primo_piano_fermo": false,
+     "soglia_moto": 7.53,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 121,
+     "righe": 10,
+     "scurito": 0.0,
+     "luce": 0.18,
+     "sfumatura": 0.0,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 85,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 31
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_06.flac",
+    "musica_instagram": "Think About (feat. Dawson March) - The K Club [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "g28FJ0Z9wZE"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18117920570607452",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Concentrati su te stesso. Aggiusta il sonno. Mangia bene. Sistema il tuo giro. Accetta il passato. Parla meno. Evita il "
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-30 22:00",
   "2026-10-31 00:00",
   "2026-10-31 06:00",
   "2026-10-31 08:00",
@@ -10858,7 +10928,8 @@
   "2026-11-07 14:00",
   "2026-11-07 16:00",
   "2026-11-07 18:00",
-  "2026-11-07 20:00"
+  "2026-11-07 20:00",
+  "2026-11-07 22:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -10893,7 +10964,8 @@
   "cartier_1.m4a",
   "fire_in_the_sky_1.m4a",
   "the_road_to_mordor_3.m4a",
-  "majestic_12_1.m4a"
+  "majestic_12_1.m4a",
+  "rubberband_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -11194,10 +11266,10 @@
   "MIE-660996ae",
   "MIE-2d30e188",
   "MIE-481bb733",
-  "MIE-ca8b6276"
+  "MIE-ca8b6276",
+  "MIE-fc938333"
  ],
  "temi_recenti": [
-  "mentalita",
   "imprenditore",
   "mentalita",
   "mentalita",
@@ -11206,7 +11278,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "dieta"
  ],
  "analisi": {
   "1VwzOJlNFXwF38jB7i5hSwSazY9X3e8bD": {
@@ -11304,20 +11377,6 @@
    "registrato": "2026-11-05T23:45+01:00",
    "fascia": "palestra",
    "caricato": "2026-11-07T12:58:51.952Z",
-   "parlato": null,
-   "momento": null
-  },
-  "1QwBjSQ5XSgspU6LCqlkF6RLF0WVPttj0": {
-   "nome": "IMG_4942.mov",
-   "scena": "palestra",
-   "sicurezza": 0.99,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-05T23:53+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-11-07T13:01:19.333Z",
    "parlato": null,
    "momento": null
   }
@@ -11773,10 +11832,14 @@
    "usi": 1,
    "ultimo": "2026-11-07",
    "orizzontale": false
+  },
+  "1QwBjSQ5XSgspU6LCqlkF6RLF0WVPttj0": {
+   "usi": 1,
+   "ultimo": "2026-11-07",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "trap_11.flac",
   "phonk_02.flac",
   "drive_08.flac",
   "deciso_11.flac",
@@ -11795,7 +11858,8 @@
   "phonk_08.flac",
   "drive_13.flac",
   "trap_15.flac",
-  "phonk_04.flac"
+  "phonk_04.flac",
+  "energia_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11830,7 +11894,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio2",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -11888,11 +11952,11 @@
   "888162299407391",
   "552615862069907",
   "2242687643238503",
-  "820220974302825"
+  "820220974302825",
+  "1495460624383703"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Bryan Todd",
   "The Poison Oaks",
   "Trout Recording",
   "Adam Griffith",
@@ -11901,10 +11965,10 @@
   "Chela Rivas",
   "Jumbo",
   "Fellow Travelers",
-  "stereogully"
+  "stereogully",
+  "The K Club"
  ],
  "ig_titoli_recenti": [
-  "brahms violin sonata 108 3 2",
   "big leagues",
   "epic adventure",
   "road warriors",
@@ -11943,7 +12007,8 @@
   "winner",
   "unstoppable",
   "family food fight",
-  "success"
+  "success",
+  "think about"
  ],
  "ig_tendenze_riserva": [
   {
@@ -11965,6 +12030,20 @@
    "title": "Road Warriors",
    "display_artist": "Giulio Cercato",
    "duration_in_ms": 108029,
+   "libreria": true
+  },
+  {
+   "audio_id": "1495460624383703",
+   "title": "Think About (feat. Dawson March)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 140840,
+   "libreria": true
+  },
+  {
+   "audio_id": "387139071011986",
+   "title": "Nikkatha (Unstoppable)",
+   "display_artist": "4 Staan",
+   "duration_in_ms": 164060,
    "libreria": true
   }
  ]
