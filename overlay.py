@@ -114,6 +114,102 @@ def _overlap(a, b):
     return max(0, min(a[2], b[2]) - max(a[0], b[0])) * max(0, min(a[3], b[3]) - max(a[1], b[1]))
 
 
+# 7/11/2026 (studio della sera, modifiche 1 e 7): prova a meta' sull'APERTURA, lato deciso da pubblica.lato_prova per
+# ogni reel (montaggio.prove.apertura). "viso" = esattamente come prima (fase 1); "azione" = si parte con lui in
+# movimento e dove il viso da' punti conta solo un viso VERO. Studio del 6/11: il primo piano fermo del viso fa scorrere
+# via di piu' su Instagram (69,3% contro 62,3%, p=0,02) e detect_faces trova "un viso" in 12 fotogrammi su 20 senza visi
+APERTURA = "viso"
+PRIMO_PESO, PRIMO_PESO_S = 2.5, 1.5   # azione: i fotogrammi dei primi 1,5 s di una finestra pesano 2,5 volte
+MIGLIORI_N, MOTO_PASSO = 3, 0.5       # azione: delle 3 finestre migliori vince quella che parte in movimento (0 -> +0,5 s)
+VISO_VERO_QUOTA = 0.6                 # viso vero: quasi nello stesso punto in 3 fotogrammi su 5 (il 60% di quelli che ci sono)
+PELLE_VERA, PELLE_OCCHIO = 0.7, 0.4   # ...e pelle al centro come foto_giornata.PELLE, oppure un occhio con un po' di pelle
+PRIMO_PIANO_ALTO = 0.30               # primo piano: riquadro di detect_faces (con i margini) alto il 30% = viso al 17%
+_OCCHI = cv2.CascadeClassifier(os.path.join(cv2.data.haarcascades, "haarcascade_eye.xml"))   # gia' dentro OpenCV
+
+
+def azione():
+    """True sul lato "azione" della prova dell'apertura."""
+    return APERTURA == "azione"
+
+
+def _pelle_viso(img, b):
+    """Quota di pelle al centro del riquadro b (frazioni, con i margini di detect_faces), come foto_giornata.visi_foto."""
+    h, w = img.shape[:2]
+    bw, bh = b[2] - b[0], b[3] - b[1]
+    x0, x1 = int(max(0.0, b[0] + bw * 0.25) * w), int(min(1.0, b[2] - bw * 0.25) * w)
+    y0, y1 = int(max(0.0, b[1] + bh * 0.3) * h), int(min(1.0, b[3] - bh * 0.3) * h)
+    if x1 <= x0 or y1 <= y0:
+        return 0.0
+    ycc = cv2.cvtColor(img[y0:y1, x0:x1], cv2.COLOR_BGR2YCrCb)
+    pelle = ((ycc[..., 0] > 40) & (ycc[..., 1] >= 135) & (ycc[..., 1] <= 180) & (ycc[..., 2] >= 80)
+             & (ycc[..., 2] <= 135))
+    return float(pelle.mean())
+
+
+def _occhio_viso(img, b):
+    """True se nella parte alta del viso b c'e' almeno un occhio (come foto_giornata._occhio: viso portato a 240 px)."""
+    h, w = img.shape[:2]
+    x0, y0, x1, y1 = int(max(0.0, b[0]) * w), int(max(0.0, b[1]) * h), int(min(1.0, b[2]) * w), int(min(1.0, b[3]) * h)
+    if x1 - x0 < 24 or y1 - y0 < 24 or _OCCHI.empty():
+        return False
+    alto = max(48, round((y1 - y0) * 240 / (x1 - x0)))
+    r = cv2.equalizeHist(cv2.resize(cv2.cvtColor(img[y0:y1, x0:x1], cv2.COLOR_BGR2GRAY), (240, alto)))
+    return len(_OCCHI.detectMultiScale(r[int(alto * 0.15):int(alto * 0.6), 40:200], 1.1, 4,
+                                       minSize=(20, 20), maxSize=(80, 80))) > 0
+
+
+def _vicini(a, b):
+    """Due riquadri quasi nello stesso punto: centri piu' vicini di meta' della grandezza del piu' grande."""
+    return (abs((a[0] + a[2]) - (b[0] + b[2])) / 2 < 0.5 * max(a[2] - a[0], b[2] - b[0])
+            and abs((a[1] + a[3]) - (b[1] + b[3])) / 2 < 0.5 * max(a[3] - a[1], b[3] - b[1]))
+
+
+def visi_veri(frames, boxes=None, raggio=None):
+    """7/11/2026 (studio della sera, modifica 7): per ogni fotogramma i riquadri dei visi VERI. Un riquadro di
+    detect_faces conta solo se un riquadro quasi nello stesso punto c'e' in almeno 3 fotogrammi su 5 (il 60% di quelli
+    disponibili; raggio = quanti fotogrammi prima e dopo guardare, None = tutti) e se ha pelle al centro (PELLE_VERA)
+    oppure un occhio con almeno PELLE_OCCHIO di pelle (le lettere della frase e i dischi non hanno pelle). Solo dove il
+    viso DA' PUNTI: per la regola "testo mai sul viso" restano tutti i riquadri (un falso viso sposta solo la scritta)."""
+    import math
+    boxes = [detect_faces([f]) for f in frames] if boxes is None else boxes
+    out = []
+    for i, (f, bs) in enumerate(zip(frames, boxes)):
+        lo, hi = (0, len(boxes)) if raggio is None else (max(0, i - raggio), min(len(boxes), i + raggio + 1))
+        serve = max(1, min(3, math.ceil(VISO_VERO_QUOTA * (hi - lo) - 1e-9)))
+        veri = []
+        for b in bs:
+            if sum(1 for j in range(lo, hi) if any(_vicini(b, c) for c in boxes[j])) < serve:
+                continue
+            pelle = _pelle_viso(f, b)
+            if pelle >= PELLE_VERA or (pelle >= PELLE_OCCHIO and _occhio_viso(f, b)):
+                veri.append(b)
+        out.append(veri)
+    return out
+
+
+def grigi_da(src, t, durata, fps=4, lato=(90, 160), timeout=45):
+    """7/11/2026 (studio della sera): fotogrammi grigi piccoli (90x160, nel taglio 9:16) da t per `durata` s, `fps` al
+    secondo, con UNA lettura di ffmpeg e senza file (mai PNG a piena risoluzione: ~19 s l'uno sul PC)."""
+    w, h = lato
+    r = subprocess.run([FFMPEG, "-v", "error", "-ss", f"{max(0.0, t):.3f}", "-t", f"{durata:.3f}", "-i", src, "-vf",
+                        f"fps={fps},scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},format=gray",
+                        "-f", "rawvideo", "-"], capture_output=True, timeout=timeout)
+    n = len(r.stdout) // (w * h)
+    return [np.frombuffer(r.stdout[i * w * h:(i + 1) * w * h], dtype=np.uint8).reshape(h, w).astype(np.float32)
+            for i in range(n)]
+
+
+def moto_da(src, t, passo=MOTO_PASSO):
+    """Movimento da t: differenza media (0-255) tra il fotogramma a t e quello a t + passo, grigi 90x160 (come lo studio
+    del 6/11, che misura da 0 a +1 s). None se non si legge."""
+    fps = 4 if abs(passo * 4 - round(passo * 4)) < 1e-6 else 10
+    g = grigi_da(src, t, passo + 0.05, fps)
+    k = int(round(passo * fps))
+    if len(g) <= k:
+        return None
+    return float(np.abs(g[k] - g[0]).mean())
+
+
 def choose_position(block_h, faces):
     # 20/10/2026: SEMPRE prima in alto (dati di 98 Short: testo in alto mediana 988 views, in basso 485). Prima, con il
     # viso nella meta' alta si partiva dal basso anche quando sopra il viso c'era spazio. Il viso non si copre mai:
@@ -705,7 +801,15 @@ def segmento_migliore(src, seconds, vf=None, durata=None, a_caso=False):
         return segmento(seconds, durata)
     tempi = [seconds * (i + 0.5) / len(frames) for i in range(len(frames))]
     piccoli = [cv2.cvtColor(cv2.resize(f, (90, 160)), cv2.COLOR_BGR2GRAY).astype(np.float32) for f in frames]
-    viso = [1.0 if detect_faces([f]) else 0.0 for f in frames]
+    in_azione = azione() and not a_caso    # 7/11/2026 (studio della sera): lato "azione" della prova dell'apertura
+    if in_azione:
+        try:     # solo un viso VERO da' punti (stesso punto in 3 fotogrammi vicini su 5, pelle o occhi)
+            viso = [1.0 if v else 0.0 for v in visi_veri(frames, raggio=2)]
+        except Exception as e:
+            print("visi veri non calcolati (conta ogni viso, come prima):", str(e)[:120])
+            viso = [1.0 if detect_faces([f]) else 0.0 for f in frames]
+    else:
+        viso = [1.0 if detect_faces([f]) else 0.0 for f in frames]
     nitido = [float(cv2.Laplacian(g, cv2.CV_32F).var()) for g in piccoli]
     moto = [0.0] + [float(np.abs(piccoli[i] - piccoli[i - 1]).mean()) for i in range(1, len(piccoli))]
     norm = lambda v: [x / (max(v) or 1) for x in v]
@@ -715,9 +819,13 @@ def segmento_migliore(src, seconds, vf=None, durata=None, a_caso=False):
     finestre = []
     s = 0.0
     while s + durata + LOOP_SFUMATURA <= seconds:
-        dentro = [p for t, p in zip(tempi, punti) if s <= t <= s + durata]
-        if dentro:
-            v = sum(dentro) / len(dentro)
+        if in_azione:    # 7/11/2026: i primi PRIMO_PESO_S secondi della finestra pesano PRIMO_PESO volte (il primo secondo)
+            pesi = [(PRIMO_PESO if t < s + PRIMO_PESO_S else 1.0, p) for t, p in zip(tempi, punti) if s <= t <= s + durata]
+            v = sum(w * p for w, p in pesi) / sum(w for w, _ in pesi) if pesi else None
+        else:
+            dentro = [p for t, p in zip(tempi, punti) if s <= t <= s + durata]
+            v = sum(dentro) / len(dentro) if dentro else None
+        if v is not None:
             finestre.append((v, s))
             if migliore is None or v > migliore + 0.02:      # a parita' resta il pezzo piu' vicino all'inizio
                 migliore, inizio = v, s
@@ -725,6 +833,20 @@ def segmento_migliore(src, seconds, vf=None, durata=None, a_caso=False):
     if a_caso and finestre:
         buone = [x for v, x in finestre if v >= migliore - 0.25]
         inizio = random.choice(buone)
+    if in_azione and len(finestre) > 1:
+        # 7/11/2026 (studio della sera, modifica 1c): delle MIGLIORI_N finestre migliori vince quella che PARTE in
+        # movimento (differenza tra l'inizio e +0,5 s, 2 fotogrammi grigi piccoli per finestra); se non si legge, la migliore
+        try:
+            prime = sorted(finestre, key=lambda x: (-x[0], x[1]))[:MIGLIORI_N]
+            mossi = {}
+            for _, x in prime:          # alla prima lettura non riuscita ci si ferma
+                mossi[x] = moto_da(src, x)
+                if mossi[x] is None:
+                    break
+            if len(mossi) == len(prime) and all(m is not None for m in mossi.values()):
+                inizio = max(prime, key=lambda x: (mossi[x[1]], x[0], -x[1]))[1]
+        except Exception as e:
+            print("movimento d'inizio non letto (resta la finestra migliore):", str(e)[:120])
     return (round(inizio, 2), durata) if inizio is not None else segmento(seconds, durata)
 
 
@@ -738,12 +860,18 @@ def segmento_archivio(seconds, durata=None):
 def scegli_copertina(frames, length):
     """Momento migliore per la copertina (ms dall'inizio del reel): nitido, ben esposto e con il viso visibile."""
     best, best_s = 0, -1e9
+    veri = None
+    if azione():     # 7/11/2026 (studio della sera, modifica 7): sul lato "azione" da' punti solo un viso vero
+        try:
+            veri = visi_veri(frames, raggio=2)
+        except Exception as e:
+            print("copertina: visi veri non calcolati (conta ogni viso, come prima):", str(e)[:120])
     for i, f in enumerate(frames):
         small = cv2.resize(f, (360, int(360 * f.shape[0] / f.shape[1])))
         gray = cv2.cvtColor(small, cv2.COLOR_BGR2GRAY)
         nitidezza = min(cv2.Laplacian(gray, cv2.CV_64F).var() / 300.0, 3.0)
         luce = 1.0 - abs(gray.mean() / 255.0 - 0.5) * 2          # 1 = esposizione media ideale
-        viso = 1.5 if detect_faces([f]) else 0.0
+        viso = (1.5 if veri[i] else 0.0) if veri is not None else 1.5 if detect_faces([f]) else 0.0
         s = nitidezza + luce + viso
         if s > best_s:
             best, best_s = i, s

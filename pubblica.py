@@ -538,6 +538,107 @@ FORMATI_PROVA_FINO = "2026-11-16"
 # 6/11/2026 (Alessandro: "prova a meta'"): fino a FORMATI_PROVA_FINO la scritta e' a caso (meta' e meta', fissa per
 # orario) tra la nuova (bianca con le parole chiave gialle) e il suo giallo pieno; montaggio.scritta in stato.json
 SCRITTE_PROVA = ("bianco_parola_gialla", "giallo_classico")
+# 7/11/2026 (studio della sera, modifica 2): ogni novita' che cambia i video parte su META' dei reel, con una moneta per
+# orario indipendente dal formato, dalla scritta e dalle altre prove (seme diverso), e il lato uscito va in stato.json
+# (montaggio.prove). Il 1/11 una decina di cambi insieme e la mediana YouTube e' scesa da 375 a 152,5 views: non si sa
+# per quale. "apertura": "azione" (lui in movimento, mai il primo piano fermo per primo, solo visi veri) contro "viso"
+# (com'era, fase 1); "frase": "aforisma" (tra le stesse 12 di oggi l'aforisma in una frase sola meglio piazzato)
+# contro "classifica" (com'era). Fino a "fino" compreso meta' e meta', poi "dopo" (il lato da tenere se non si decide)
+PROVE = {"apertura": {"lati": ("azione", "viso"), "fino": "2026-11-30", "dopo": "azione"},
+         "frase": {"lati": ("aforisma", "classifica"), "fino": "2026-11-30", "dopo": "classifica"}}
+
+
+def lato_prova(nome, slot):
+    """7/11/2026: il lato della prova `nome` per l'orario `slot` (sempre lo stesso per lo stesso orario): fino a
+    PROVE[nome]["fino"] compreso una moneta random.Random(f"{nome} {slot}"), meta' e meta'; dopo, o con un errore,
+    PROVE[nome]["dopo"]. Non tocca il random di tutto il resto (formato, frase, musica)."""
+    try:
+        p = PROVE[nome]
+        if str(slot)[:10] <= p["fino"]:
+            return random.Random(f"{nome} {slot}").choice(p["lati"])
+        return p["dopo"]
+    except Exception as e:
+        log(f"Prova {nome}: lato non deciso ({e}), uso quello di dopo la prova")
+        return (PROVE.get(nome) or {}).get("dopo")
+
+
+# 7/11/2026 (studio della sera, modifica 4): la forma della frase (montaggio.frase_forma). Su Instagram gli aforismi
+# positivi in una frase sola sono andati meglio (5 su 6 sopra 200 views contro 2 su 16: indizio debole), su YouTube le
+# frasi da 11+ parole. Regole semplici sull'italiano: voce "io" (prima persona), "tu" (seconda o un imperativo in
+# testa) o "generale"; forma "due" se dentro la frase c'e' un punto, ! ? ; : o un trattino staccato, se no "una"
+_VOCE_IO = set("io mi me mio mia miei mie ho sono faccio voglio devo posso sto vado ero avevo volevo potevo dovevo "
+               "noi nostro nostra nostri nostre siamo abbiamo".split())
+_VOCE_TU = set("tu ti te tuo tua tuoi tue sei hai puoi devi vuoi sai stai fai vai".split())
+_IMPERATIVI = set("fai vai smetti inizia ricomincia continua ricorda credi lavora alzati rialzati pensa guarda impara "
+                  "sii abbi prendi scegli lascia metti fidati allenati concentrati resta rimani cerca trova dimostra "
+                  "ascolta diventa costruisci combatti insisti segui sogna osa svegliati muoviti datti dai vivi ama "
+                  "goditi accetta sorridi respira fermati provaci tieni mantieni porta smettila spingi corri fallo "
+                  "falla fatti stai credici vivila rischia rilassati calmati lotta parti pensaci punta migliora "
+                  "studia leggi chiedi aspetta parla agisci sbaglia riprova perdona ringrazia".split())
+# "sono" dopo un plurale ("i sogni sono", "le cose che sono", "ci sono") e' la terza persona, non "io"
+_PLURALI = set("i gli le questi queste quelli quelle tutti tutte molti molte pochi poche alcuni alcune certi certe "
+               "loro coloro tanti tante".split())
+
+
+def forma_frase(testo):
+    """7/11/2026: {"voce": "io"|"tu"|"generale", "forma": "una"|"due", "parole": n} della frase (regole semplici)."""
+    t = str(testo or "").strip()
+    pezzi = re.findall(r"[a-zàèéìíòóùú]+|[.!?;:,]", t.lower().replace("’", "'"))
+    parole = [w for w in pezzi if w.isalpha()]
+    pos_io = pos_tu = None
+    if parole and (parole[0] in _IMPERATIVI or (parole[0] == "non" and len(parole) > 1
+                                                and re.search(r"(are|ere|ire|arti|erti|irti)$", parole[1]))):
+        pos_tu = 0
+    clausola, i = [], 0
+    for w in pezzi:
+        if not w.isalpha():          # nuova frase o nuova parte: il plurale di prima non vale piu'
+            clausola = []
+            continue
+        if w == "sono" and (set(clausola) & _PLURALI or (clausola and clausola[-1] == "ci")):
+            pass
+        elif w in _VOCE_IO and pos_io is None:
+            pos_io = i
+        elif w in _VOCE_TU and pos_tu is None:
+            pos_tu = i
+        clausola.append(w)
+        i += 1
+    voce = ("io" if pos_tu is None or (pos_io is not None and pos_io < pos_tu) else "tu") \
+        if pos_io is not None or pos_tu is not None else "generale"
+    due = bool(re.search(r"[.!?;:…]+[\"'»”)]*\s+\S", t) or re.search(r"\s[-–—]\s", t))
+    return {"voce": voce, "forma": "due" if due else "una", "parole": sum(1 for w in t.split() if re.search(r"\w", w))}
+
+
+def aforisma(testo):
+    """7/11/2026: aforisma = una frase sola, voce generale, 9-20 parole (forma_frase)."""
+    f = forma_frase(testo)
+    return f["forma"] == "una" and f["voce"] == "generale" and 9 <= f["parole"] <= 20
+
+
+def segna_prove(info, con_foto, lato_frase, frase_via, scelta, frase, src):
+    """7/11/2026 (studio della sera): in montaggio (stato.json) le prove a meta' del reel, per la tabella del 16-17/11:
+    prove = {"apertura": lato, "frase": lato} ("apertura" solo nei reel col video: sulle foto non cambia niente),
+    apertura = {"lato", "viso_alto", "movimento", "primo_piano_fermo", "soglia_moto"} (misurata in make_sequenza, o qui
+    dal file per i formati senza make_sequenza: momento, parlato, reel normale), frase_forma = forma_frase della frase
+    uscita, frase_via = come e' stata scelta ("forzata" anche quando il formato ha messo il suo titolo). Mai un errore."""
+    try:
+        prove = {"frase": lato_frase} if lato_frase else {}
+        if con_foto:
+            info.pop("apertura", None)
+        else:
+            prove["apertura"] = overlay.APERTURA
+            ap = info.get("apertura")
+            if not isinstance(ap, dict) and "viso_prima_scena" not in info:   # montato senza make_sequenza
+                import formati_nuovi
+                formati_nuovi._APERTURA_TEMPO[0] = 0.0
+                ap = formati_nuovi.apertura_info([formati_nuovi.apertura_da(src, float(info.get("inizio") or 0.0))])
+            if ap:
+                info["apertura"] = dict(ap, lato=overlay.APERTURA)
+        info["prove"] = prove
+        testo = frase.get("gancio") or frase.get("titolo") or ""
+        info["frase_forma"] = forma_frase(testo)
+        info["frase_via"] = frase_via if (frase.get("id"), frase.get("gancio")) == tuple(scelta) else "forzata"
+    except Exception as e:
+        log("Prove a meta' non segnate nello stato (il reel esce lo stesso):", e)
 # massimo di clip extra; dal 6/11 per i formati a scene si scaricano SOLO se il suo video non basta (scene_mancanti)
 SCENE_EXTRA = {"dieci_due": 1, "dieci_broll": 3, "taglio1": 3, "taglio2": 2, "taglio3": 2, "cinema": 1, "post": 1,
                "giornata": 7}   # 6/11/2026: momenti della stessa giornata (clip_giornata), una clip di scorta
@@ -2900,6 +3001,10 @@ def main():
     pesi_file = os.path.join(HERE, "pesi.json")
     pesi = json.load(open(pesi_file, encoding="utf-8")).get("temi", {}) if os.path.exists(pesi_file) else {}
     usi = {h["frase"]: h["quando"][:10] for h in state["storico"] if h.get("frase") and h.get("quando")}
+    # 7/11/2026 (studio della sera, modifica 4): prova a meta' sulla frase (montaggio.prove.frase, montaggio.frase_via):
+    # "forzata" = la frase non viene dalla scelta libera in classifica (sua richiesta, suo screenshot, titolo del
+    # MOMENTO, orario fermo, frase vincente riproposta): li' la prova non tocca niente, su tutti e due i lati
+    lato_frase, frase_via = lato_prova("frase", slot), "forzata"
     if SOLO_MIE:    # solo le citazioni del Google Doc di Alessandro: prima quelle mai uscite, a caso
         try:
             # 4/11/2026: con nuovi tentativi: senza il Doc l'orario saltava ("documento vuoto")
@@ -2976,6 +3081,24 @@ def main():
             adatte = [f for f in adatte if f.get("tema") not in temi_vicini] or adatte
             frase = random.choice(adatte[:3] or [f for f in ordinate[:8] if inizio(f["gancio"]) not in oggi][:3] or ordinate[:3])
             log(f"Frase dalla classifica ({punti.get(frase['id'], 'stima')}):", frase["gancio"])
+            # 7/11/2026 (studio della sera, modifica 4): sul lato "aforisma", tra le STESSE candidate di oggi (adatte)
+            # l'aforisma (una frase sola, voce generale, 9-20 parole) meglio piazzato, se c'e'. Le frasi dei suoi
+            # screenshot (classifica 100) restano davanti su tutti e due i lati. La scelta di oggi resta fatta prima
+            # (stesso random per il resto del reel)
+            frase_via = "forzata" if punti.get(frase["id"]) == 100 else "classifica"
+            if lato_frase == "aforisma" and frase_via == "classifica":
+                try:
+                    if any(punti.get(f["id"]) == 100 for f in adatte):
+                        log("Prova della frase: restano davanti le frasi dei suoi screenshot")
+                    else:
+                        afo = next((f for f in adatte if aforisma(f["gancio"])), None)
+                        frase_via = "aforisma" if afo else "nessun_aforisma"
+                        if afo and afo is not frase:
+                            log(f"Prova della frase (aforisma): {afo['gancio']} (al posto di {frase['gancio']})")
+                        frase = afo or frase
+                except Exception as e:
+                    log("Prova della frase non riuscita (resta la scelta di oggi):", e)
+                    frase_via = "classifica"
         elif mie:            # finite: si riusa quella uscita da piu' tempo (mai fermarsi); salute.py avvisa
             frase = min(mie, key=lambda f: usi.get(f["id"], ""))
             log("Citazioni nuove finite: riuso la meno recente. Aggiungerne altre al documento!")
@@ -3045,6 +3168,13 @@ def main():
                 log("Foto della giornata non lette:", e)
             formato = (formato_f or "dieci_foto") if foto_oggi else formato
         log(f"Formato: {formato}")
+        # 7/11/2026 (studio della sera, modifiche 1 e 7): il lato della prova dell'apertura, deciso per OGNI reel (mai
+        # quello del reel prima). Le foto no: li' non cambia niente e resta "viso" (com'era); un ripiego col video si'
+        lato_ap = lato_prova("apertura", slot) or "viso"
+        overlay.APERTURA = "viso" if formato in FORMATI_FOTO else lato_ap
+        scelta_frase = (frase.get("id"), frase.get("gancio"))
+        log(f"Prove a meta': apertura {overlay.APERTURA if formato not in FORMATI_FOTO else '-'}, frase {lato_frase}"
+            f" ({frase_via})")
         try:                            # se un formato non riesce esce il reel normale (frase da 5 s)
             if formato == "momento":
                 frase, info = monta_momento(an, src, out, music, serie, nome)
@@ -3087,6 +3217,7 @@ def main():
         except Exception as e:
             log(f"Formato {formato} non riuscito, faccio il reel normale:", e)
             info = None
+            overlay.APERTURA = lato_ap   # 7/11/2026: il ripiego e' un reel col video (anche dopo le foto)
             if TUTTO_10S:                # 1/11/2026: il ripiego resta nello stile scelto (10 s, scritta gialla)
                 try:
                     # 6/11/2026: prima qui formati_nuovi non era importato (NameError: il ripiego non partiva mai).
@@ -3141,6 +3272,7 @@ def main():
     info["orizzontale"] = False if con_foto else oriz is True
     if nera_tolta and not con_foto:     # 6/11/2026 (revisione): la clip tutta nera scartata prima del montaggio
         info["clip_nera_tolta"] = nera_tolta
+    segna_prove(info, con_foto, lato_frase, frase_via, scelta_frase, frase, src)
     frase = dict(frase, copertina_ms=info.get("copertina_ms"),   # volte: per un titolo YouTube diverso se la frase torna
                  volte=sum(1 for h in state["storico"] if h.get("frase") == frase.get("id")))
     out_meta = None
