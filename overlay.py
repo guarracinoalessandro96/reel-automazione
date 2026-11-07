@@ -164,12 +164,17 @@ def _vicini(a, b):
             and abs((a[1] + a[3]) - (b[1] + b[3])) / 2 < 0.5 * max(a[3] - a[1], b[3] - b[1]))
 
 
-def visi_veri(frames, boxes=None, raggio=None):
+def visi_veri(frames, boxes=None, raggio=None, fermi=True):
     """7/11/2026 (studio della sera, modifica 7): per ogni fotogramma i riquadri dei visi VERI. Un riquadro di
     detect_faces conta solo se un riquadro quasi nello stesso punto c'e' in almeno 3 fotogrammi su 5 (il 60% di quelli
     disponibili; raggio = quanti fotogrammi prima e dopo guardare, None = tutti) e se ha pelle al centro (PELLE_VERA)
     oppure un occhio con almeno PELLE_OCCHIO di pelle (le lettere della frase e i dischi non hanno pelle). Solo dove il
-    viso DA' PUNTI: per la regola "testo mai sul viso" restano tutti i riquadri (un falso viso sposta solo la scritta)."""
+    viso DA' PUNTI: per la regola "testo mai sul viso" restano tutti i riquadri (un falso viso sposta solo la scritta).
+    7/11/2026 (revisione): fermi=False per i fotogrammi RADI (segmento_migliore, scegli_copertina, giornata: 0,4-1 s
+    l'uno dall'altro). Li' un viso che si muove (lui che cammina in sala) non resta nello stesso punto e veniva scartato,
+    il primo piano fermo invece passava: sul lato "azione" vinceva il viso fermo, il contrario della prova. Sui
+    fotogrammi radi un riquadro conta se ha pelle al centro (PELLE_VERA) E un occhio: il petto (pelle 0,99) e i piatti
+    non hanno occhi. Lo stesso punto si chiede solo sui fotogrammi fitti (0,25 s: formati_nuovi._apertura_da)."""
     import math
     boxes = [detect_faces([f]) for f in frames] if boxes is None else boxes
     out = []
@@ -178,6 +183,10 @@ def visi_veri(frames, boxes=None, raggio=None):
         serve = max(1, min(3, math.ceil(VISO_VERO_QUOTA * (hi - lo) - 1e-9)))
         veri = []
         for b in bs:
+            if not fermi:
+                if _pelle_viso(f, b) >= PELLE_VERA and _occhio_viso(f, b):
+                    veri.append(b)
+                continue
             if sum(1 for j in range(lo, hi) if any(_vicini(b, c) for c in boxes[j])) < serve:
                 continue
             pelle = _pelle_viso(f, b)
@@ -805,8 +814,8 @@ def segmento_migliore(src, seconds, vf=None, durata=None, a_caso=False):
     piccoli = [cv2.cvtColor(cv2.resize(f, (90, 160)), cv2.COLOR_BGR2GRAY).astype(np.float32) for f in frames]
     in_azione = azione() and not a_caso    # 7/11/2026 (studio della sera): lato "azione" della prova dell'apertura
     if in_azione:
-        try:     # solo un viso VERO da' punti (stesso punto in 3 fotogrammi vicini su 5, pelle o occhi)
-            viso = [1.0 if v else 0.0 for v in visi_veri(frames, raggio=2)]
+        try:     # solo un viso VERO da' punti (7/11, revisione: fotogrammi radi, pelle E occhio, anche se si muove)
+            viso = [1.0 if v else 0.0 for v in visi_veri(frames, fermi=False)]
         except Exception as e:
             print("visi veri non calcolati (conta ogni viso, come prima):", str(e)[:120])
             viso = [1.0 if detect_faces([f]) else 0.0 for f in frames]
@@ -864,8 +873,8 @@ def scegli_copertina(frames, length):
     best, best_s = 0, -1e9
     veri = None
     if azione():     # 7/11/2026 (studio della sera, modifica 7): sul lato "azione" da' punti solo un viso vero
-        try:
-            veri = visi_veri(frames, raggio=2)
+        try:     # 7/11/2026 (revisione): fotogrammi radi (~0,6 s): pelle E occhio, anche un viso che si muove
+            veri = visi_veri(frames, fermi=False)
         except Exception as e:
             print("copertina: visi veri non calcolati (conta ogni viso, come prima):", str(e)[:120])
     for i, f in enumerate(frames):

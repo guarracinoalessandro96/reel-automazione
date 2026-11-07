@@ -555,8 +555,11 @@ SCRITTE_PROVA = ("bianco_parola_gialla", "giallo_classico")
 # per quale. "apertura": "azione" (lui in movimento, mai il primo piano fermo per primo, solo visi veri) contro "viso"
 # (com'era, fase 1); "frase": "aforisma" (tra le stesse 12 di oggi l'aforisma in una frase sola meglio piazzato)
 # contro "classifica" (com'era). Fino a "fino" compreso meta' e meta', poi "dopo" (il lato da tenere se non si decide)
+# 7/11/2026 (revisione): la prova della frase agisce solo quando la coda dei suoi screenshot e' finita (182 frasi a 100
+# in notte/ordine_screenshot.json, 10 al giorno: verso il 25/11); prima esce "forzata" su tutti e due i lati. Dura
+# quindi fino al 15/12, cosi' ha circa 20 giorni veri (~100 reel per lato) e non solo i 5 prima del 30/11
 PROVE = {"apertura": {"lati": ("azione", "viso"), "fino": "2026-11-30", "dopo": "azione"},
-         "frase": {"lati": ("aforisma", "classifica"), "fino": "2026-11-30", "dopo": "classifica"}}
+         "frase": {"lati": ("aforisma", "classifica"), "fino": "2026-12-15", "dopo": "classifica"}}
 
 
 def lato_prova(nome, slot):
@@ -630,9 +633,15 @@ def segna_prove(info, con_foto, lato_frase, frase_via, scelta, frase, src):
     prove = {"apertura": lato, "frase": lato} ("apertura" solo nei reel col video: sulle foto non cambia niente),
     apertura = {"lato", "viso_alto", "movimento", "primo_piano_fermo", "soglia_moto"} (misurata in make_sequenza, o qui
     dal file per i formati senza make_sequenza: momento, parlato, reel normale), frase_forma = forma_frase della frase
-    uscita, frase_via = come e' stata scelta ("forzata" anche quando il formato ha messo il suo titolo). Mai un errore."""
+    uscita, frase_via = come e' stata scelta ("forzata" anche quando il formato ha messo il suo titolo). Mai un errore.
+    7/11/2026 (revisione): prove["frase"] solo dove la prova poteva agire (frase_via diverso da "forzata"). "forzata" si
+    decide PRIMA della moneta e nello stesso modo sui due lati (frase scelta da lui, suo screenshot o suoi screenshot tra
+    le candidate, titolo del formato...): togliere quei reel non falsa il confronto. Con la coda degli screenshot quasi
+    tutti i reel sono "forzata": prima la tabella del 17/11 avrebbe confrontato due gruppi trattati allo stesso modo;
+    cosi' scrive che la prova non e' ancora partita. Oltre la scadenza del reel l'apertura non si misura dal file."""
     try:
-        prove = {"frase": lato_frase} if lato_frase else {}
+        via = frase_via if (frase.get("id"), frase.get("gancio")) == tuple(scelta) else "forzata"
+        prove = {"frase": lato_frase} if lato_frase and via != "forzata" else {}
         if con_foto:
             info.pop("apertura", None)
         else:
@@ -640,19 +649,30 @@ def segna_prove(info, con_foto, lato_frase, frase_via, scelta, frase, src):
             ap = info.get("apertura")
             if not isinstance(ap, dict) and "viso_prima_scena" not in info:   # montato senza make_sequenza
                 import formati_nuovi
-                formati_nuovi._APERTURA_TEMPO[0] = 0.0
-                ap = formati_nuovi.apertura_info([formati_nuovi.apertura_da(src, float(info.get("inizio") or 0.0))])
+                if formati_nuovi.scaduto():
+                    info["oltre_scadenza"] = True
+                else:
+                    formati_nuovi._APERTURA_TEMPO[0] = 0.0
+                    ap = formati_nuovi.apertura_info([formati_nuovi.apertura_da(src, float(info.get("inizio") or 0.0))])
             if ap:
                 info["apertura"] = dict(ap, lato=overlay.APERTURA)
         info["prove"] = prove
         testo = frase.get("gancio") or frase.get("titolo") or ""
         info["frase_forma"] = forma_frase(testo)
-        info["frase_via"] = frase_via if (frase.get("id"), frase.get("gancio")) == tuple(scelta) else "forzata"
+        info["frase_via"] = via
     except Exception as e:
         log("Prove a meta' non segnate nello stato (il reel esce lo stesso):", e)
 # massimo di clip extra; dal 6/11 per i formati a scene si scaricano SOLO se il suo video non basta (scene_mancanti)
 SCENE_EXTRA = {"dieci_due": 1, "dieci_broll": 3, "taglio1": 3, "taglio2": 2, "taglio3": 2, "cinema": 1, "post": 1,
                "giornata": 7}   # 6/11/2026: momenti della stessa giornata (clip_giornata), una clip di scorta
+# 7/11/2026 (revisione, tempi): i tetti di tempo valevano ognuno per un pezzo solo e nessuno guardava l'orario del reel.
+# Ora una scadenza unica (formati_nuovi.SCADENZA) a SCADENZA_MINUTI dall'orario (YouTube va caricato almeno 10 minuti
+# prima: restano ~5 minuti per la versione 1080p e il caricamento); la giornata (il formato piu' pesante) parte solo se
+# alla scadenza mancano almeno GIORNATA_MINUTI minuti, se no subito taglio2 (ripiego_da = giornata). Le clip d'archivio
+# piu' grandi di GIORNATA_MB_MAX (originali da 470-500 MB) vanno per ultime tra i momenti della giornata
+SCADENZA_MINUTI = 15
+GIORNATA_MINUTI = 20
+GIORNATA_MB_MAX = 250
 ORARIO_FOTO, FOTO_DAL = ("12:00", "18:00"), "2026-11-05"   # 1/11/2026: reel con le foto della giornata (foto_giornata.py); 5/11: 43 foto caricate -> si parte oggi, 2 al giorno finche' ce ne sono
 COMMENTI_SU_TELEGRAM = False   # 31/10/2026: "non voglio i commenti": su Telegram solo errori e statistiche delle 8
 ORARIO_LISTA = "spenta"      # 31/10/2026: prima tutte le frasi delle foto; per riaccenderla "18:00". Formato lista, da salvare e mandare (un post cosi' fa 1 invio ogni 2 like)
@@ -802,6 +822,14 @@ def _stem_clip(n):
     return os.path.splitext(n or "")[0].lower()
 
 
+def _byte(x):
+    """7/11/2026 (revisione): la grandezza di un file di Drive ('size', una stringa) in byte; 0 se manca o e' strana."""
+    try:
+        return max(0, int(float(x or 0)))
+    except (TypeError, ValueError):
+        return 0
+
+
 def _memoria_giornata(state):
     """6/11/2026 (revisione della giornata; integrazione: in comune con monta_giornata) dallo storico: (nomi senza
     estensione dei video usciti da soli nelle ultime 48 ore, nomi delle clip usate come scena in un reel GIORNATA
@@ -886,6 +914,15 @@ def clip_giornata(drive, work, clip, an, src, state, videos=(), video=None):
             fila += [gruppi[s].pop(0) for s in giro if gruppi[s]]
         return fila
     ordine = a_giro([c for c in scelte if not usata(c)]) + a_giro([c for c in scelte if usata(c)])
+    try:     # 7/11/2026 (revisione, tempi): le clip d'archivio piu' grandi di GIORNATA_MB_MAX per ultime (sorted e'
+        # stabile: le altre restano nell'ordine di prima); le clip nuove mai (regola 7: prima il contenuto nuovo)
+        grande = lambda c: not c["nuova"] and _byte(c.get("size")) > GIORNATA_MB_MAX * 1_000_000
+        if any(grande(c) for c in ordine):
+            ordine.sort(key=grande)
+            log("Giornata: per ultime le clip d'archivio oltre "
+                f"{GIORNATA_MB_MAX} MB: {', '.join(c['nome'] for c in ordine if grande(c))}")
+    except Exception as e:
+        log("Giornata: grandezza delle clip non letta (ordine di prima):", e)
     percorsi, ore, scene, nomi, viste, nuove = [], [], [], [], [], 0
     for i, c in enumerate(ordine):
         if len(percorsi) >= SCENE_EXTRA.get("giornata", 7):
@@ -912,9 +949,16 @@ def monta_giornata(frase, src, out, music, serie, drive, work, clip, an, state, 
     """6/11/2026 (Alessandro: "devi essere tu a capire come devi fare l'editing"): reel GIORNATA, il video dell'orario
     e altri momenti della stessa giornata (clip_giornata) in formati_nuovi.make_giornata. Se i momenti non bastano o
     il montaggio non riesce: il video dell'orario in 'taglio2' come oggi (montaggio.estratto = giornata).
-    6/11/2026 (revisione): montaggio.clip_scene e giornata_del per la memoria di clip_giornata."""
+    6/11/2026 (revisione): montaggio.clip_scene e giornata_del per la memoria di clip_giornata.
+    7/11/2026 (revisione, tempi): con meno di GIORNATA_MINUTI minuti alla scadenza del reel la giornata non si prova
+    (download di 7 clip, analisi, forse la fascia: 8-20 minuti su GitHub): subito taglio2. Il motivo di ogni ripiego
+    va in montaggio.ripiego_motivo."""
     import formati_nuovi
+    motivo = None
     try:
+        rimasti = formati_nuovi.secondi_rimasti()
+        if rimasti is not None and rimasti < GIORNATA_MINUTI * 60:
+            raise ValueError(f"mancano {max(0.0, rimasti) / 60:.0f} minuti alla scadenza del reel")
         altre, ore, scene, giorno, nomi, viste = clip_giornata(drive, work, clip, an, src, state, videos, video)
         ora0 = (clip or {}).get("registrato") or an.get("registrato") or overlay.data_ripresa(src)
         try:     # 6/11/2026 (integrazione, revisione della giornata): anche il video dell'orario puo' essere gia'
@@ -933,10 +977,13 @@ def monta_giornata(frase, src, out, music, serie, drive, work, clip, an, state, 
         return info
     except Exception as e:
         log("Giornata non riuscita, il video dell'orario in 'taglio2':", e)
+        motivo = str(e)[:120]
     info = monta_dieci("taglio2", frase, src, out, music, serie, drive, work, clip, state.get("formato_ultimo"))
     # 6/11/2026 (integrazione): come gli altri formati non riusciti (report.nome_formato: "ripiego ...", la tabella del
     # 16/11 a parte); montaggio.estratto = giornata lo aggiunge main
     info["ripiego_da"] = "giornata"
+    if motivo:
+        info["ripiego_motivo"] = motivo
     return info
 
 
@@ -1213,19 +1260,21 @@ class Drive:
         return file_id
 
     def lista_archivio(self):
-        """Clip dell'archivio: [{id, nome, scena, fascia, compagnia, registrato}]."""
+        """Clip dell'archivio: [{id, nome, scena, fascia, compagnia, registrato, size}].
+        7/11/2026 (revisione, tempi): anche size (byte del file, 0 se non si sa) per clip_giornata."""
         if self.local:
             d = os.path.join(self.local, "Archivio")
             if not os.path.isdir(d):
                 return []
-            return [dict(json.load(open(os.path.join(d, f + ".json"))), id=f, nome=f)
+            return [dict(json.load(open(os.path.join(d, f + ".json"))), id=f, nome=f, size=os.path.getsize(os.path.join(d, f)))
                     for f in sorted(os.listdir(d)) if not f.endswith(".json") and os.path.exists(os.path.join(d, f + ".json"))]
         q = f"'{self.cartella('Archivio')}' in parents and trashed = false and mimeType contains 'video/'"
         out, token = [], None
         while True:
-            res = self.api.files().list(q=q, fields="nextPageToken,files(id,name,appProperties)", pageSize=500,
+            res = self.api.files().list(q=q, fields="nextPageToken,files(id,name,size,appProperties)", pageSize=500,
                                         pageToken=token).execute()
-            out += [dict(f.get("appProperties") or {}, id=f["id"], nome=f["name"]) for f in res.get("files", [])]
+            out += [dict(f.get("appProperties") or {}, id=f["id"], nome=f["name"], size=_byte(f.get("size")))
+                    for f in res.get("files", [])]
             token = res.get("nextPageToken")
             if not token:
                 return out
@@ -3014,7 +3063,8 @@ def main():
     usi = {h["frase"]: h["quando"][:10] for h in state["storico"] if h.get("frase") and h.get("quando")}
     # 7/11/2026 (studio della sera, modifica 4): prova a meta' sulla frase (montaggio.prove.frase, montaggio.frase_via):
     # "forzata" = la frase non viene dalla scelta libera in classifica (sua richiesta, suo screenshot, titolo del
-    # MOMENTO, orario fermo, frase vincente riproposta): li' la prova non tocca niente, su tutti e due i lati
+    # MOMENTO, orario fermo, frase vincente riproposta; 7/11, revisione: anche un suo screenshot tra le candidate): li'
+    # la prova non tocca niente, su tutti e due i lati, e prove.frase non si scrive (segna_prove)
     lato_frase, frase_via = lato_prova("frase", slot), "forzata"
     if SOLO_MIE:    # solo le citazioni del Google Doc di Alessandro: prima quelle mai uscite, a caso
         try:
@@ -3107,16 +3157,19 @@ def main():
             # screenshot (classifica 100) restano davanti su tutti e due i lati. La scelta di oggi resta fatta prima
             # (stesso random per il resto del reel)
             frase_via = "forzata" if punti.get(frase["id"]) == 100 else "classifica"
+            # 7/11/2026 (revisione): con una frase dei suoi screenshot (100) tra le candidate la prova non puo' agire (le
+            # sue frasi restano davanti su tutti e due i lati): "forzata" anche qui, deciso prima della moneta e uguale
+            # sui due lati (segna_prove allora non scrive prove.frase: la tabella non confronta reel trattati uguali)
+            if frase_via == "classifica" and any(punti.get(f["id"]) == 100 for f in adatte):
+                log("Prova della frase: restano davanti le frasi dei suoi screenshot (la prova non agisce)")
+                frase_via = "forzata"
             if lato_frase == "aforisma" and frase_via == "classifica":
                 try:
-                    if any(punti.get(f["id"]) == 100 for f in adatte):
-                        log("Prova della frase: restano davanti le frasi dei suoi screenshot")
-                    else:
-                        afo = next((f for f in adatte if aforisma(f["gancio"])), None)
-                        frase_via = "aforisma" if afo else "nessun_aforisma"
-                        if afo and afo is not frase:
-                            log(f"Prova della frase (aforisma): {afo['gancio']} (al posto di {frase['gancio']})")
-                        frase = afo or frase
+                    afo = next((f for f in adatte if aforisma(f["gancio"])), None)
+                    frase_via = "aforisma" if afo else "nessun_aforisma"
+                    if afo and afo is not frase:
+                        log(f"Prova della frase (aforisma): {afo['gancio']} (al posto di {frase['gancio']})")
+                    frase = afo or frase
                 except Exception as e:
                     log("Prova della frase non riuscita (resta la scelta di oggi):", e)
                     frase_via = "classifica"
@@ -3132,6 +3185,17 @@ def main():
     log(f"Slot {slot} | {nome} | scena {an['scena']} | frase {frase['id']}: {frase['gancio']}")
 
     # 4. montaggio e pubblicazione
+    # 7/11/2026 (revisione, tempi): la scadenza unica del reel (vedi SCADENZA_MINUTI), per OGNI reel; a mano nessuna
+    try:
+        import formati_nuovi
+        t_orario = ora_slot(slot)
+        formati_nuovi.SCADENZA = ((t_orario - datetime.timedelta(minutes=SCADENZA_MINUTI)).timestamp()
+                                  if t_orario else None)
+        if t_orario:
+            log(f"Scadenza del montaggio: {t_orario - datetime.timedelta(minutes=SCADENZA_MINUTI):%H:%M} "
+                f"({formati_nuovi.secondi_rimasti() / 60:.0f} minuti)")
+    except Exception as e:
+        log("Scadenza del reel non impostata (nessun limite, come prima):", e)
     src = os.path.join(work, "originale" + (os.path.splitext(nome)[1] or ".mov"))
     out = os.path.join(work, "reel.mp4")
     try:     # 4/11/2026: fuori dal montaggio: un errore di rete non e' colpa del video (2 "fallimenti" lo spostavano
@@ -3171,6 +3235,7 @@ def main():
         if str(slot)[:10] < FORMATI_PROVA_FINO:
             overlay.STILE_SCRITTA = random.Random(f"scritta {slot}").choice(SCRITTE_PROVA)
         overlay.ULTIMO_STILE = None
+        t_montaggio = time.time()       # 7/11/2026 (revisione, tempi): montaggio.secondi_montaggio
         info, formato = None, scegli_formato(slot, state, frase, an, spinto)
         foto_oggi, foto_riuso, voluto = [], False, None
         if TUTTO_10S and formato in FORMATI_10 and str(slot).endswith(ORARIO_FOTO) and str(slot)[:10] >= FOTO_DAL:
@@ -3255,6 +3320,8 @@ def main():
                                       autore=frase.get("autore") if MOSTRA_AUTORE else None,
                                       colore=ENV("SENZA_COLORE") != "1", nome=nome,
                                       scena_rilevata=an["scena"], da_archivio=bool(clip))
+        if isinstance(info, dict):      # 7/11/2026 (revisione, tempi): per misurare i primi reel su GitHub
+            info["secondi_montaggio"] = round(time.time() - t_montaggio)
     except Exception as e:      # un video "rotto" non deve bloccare la coda
         if clip:
             u = state["archivio_usi"].setdefault(clip["id"], {})

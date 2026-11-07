@@ -7,7 +7,7 @@ cambia il coordinatore DOPO il merge di notte-giornata; se formati_skill.txt non
 
 2) C:\Users\User\.claude\scheduled-tasks\controllo-macchina-reel\SKILL.md, riga 10
    SOSTITUIRE:  loop (10 s avanti e indietro);
-   CON:         loop (10 s avanti e indietro), giornata (4-7 momenti diversi della stessa giornata in ordine di ora; montaggio.scene, clip_scene, giornata_del; se la frase coprirebbe un viso le stesse scene escono con la fascia, montaggio.cornice = cinema/post, e il formato resta giornata; se mancano 4 momenti esce taglio2 con montaggio.estratto = giornata e montaggio.ripiego_da = giornata; le clip orizzontali o quasi nere delle altre clip si tolgono finche' restano 4 momenti, montaggio.scene_orizzontali conta quelle rimaste; montaggio.orizzontale = il video dell'orario e' orizzontale);
+   CON:         loop (10 s avanti e indietro), giornata (4-7 momenti diversi della stessa giornata in ordine di ora; montaggio.scene, clip_scene, giornata_del; se la frase coprirebbe un viso le stesse scene escono con la fascia, montaggio.cornice = cinema/post, e il formato resta giornata; se mancano 4 momenti, o alla scadenza del reel (15 minuti prima dell'orario) mancano meno di 20 minuti, esce taglio2 con montaggio.estratto = giornata e montaggio.ripiego_da = giornata (montaggio.ripiego_motivo dice perche'; montaggio.secondi_analisi = secondi dell'analisi dei momenti); le clip orizzontali o quasi nere delle altre clip si tolgono finche' restano 4 momenti, montaggio.scene_orizzontali conta quelle rimaste; montaggio.orizzontale = il video dell'orario e' orizzontale);
 
 3) (integrazione del 6/11 notte) C:\Users\User\.claude\scheduled-tasks\studio-viralita\SKILL.md, riga 10
    SOSTITUIRE:  montaggio.scritta = "bianco_parola_gialla" o "giallo_classico";

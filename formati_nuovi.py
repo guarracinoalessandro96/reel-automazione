@@ -217,6 +217,25 @@ def _apertura_da(src, firma, t):
 
 APERTURA_TEMPO_MAX = 90      # secondi di letture per reel al massimo (poi niente misura: mai un reel in ritardo)
 _APERTURA_TEMPO = [0.0]      # secondi gia' spesi nel montaggio in corso (si azzera in make_sequenza)
+# 7/11/2026 (revisione, tempi): la scadenza del reel in corso (time.time(); None = nessuna, es. a mano). La mette
+# pubblica.main per ogni reel a pubblica.SCADENZA_MINUTI dall'orario: YouTube va caricato almeno 10 minuti prima, se no
+# esce in ritardo. I tetti di prima valevano ognuno per un pezzo solo; oltre la scadenza niente lavori facoltativi
+# (apertura in azione, misura dell'apertura, analisi della giornata oltre il minimo)
+SCADENZA = None
+
+
+def secondi_rimasti():
+    """Secondi che mancano alla scadenza del reel in corso; None se non c'e' una scadenza."""
+    try:
+        return None if SCADENZA is None else float(SCADENZA) - time.time()
+    except Exception:
+        return None
+
+
+def scaduto():
+    """True se la scadenza del reel in corso e' passata."""
+    r = secondi_rimasti()
+    return r is not None and r <= 0
 
 
 def apertura_da(src, t):
@@ -653,7 +672,10 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
     misure, a_scene = None, n > 1 and not velocita and not indietro    # rallenty e loop: lo stesso momento, una scena
     if controlli and a_scene:
         fatto = None
-        if ov.azione():    # 7/11/2026 (studio della sera, modifica 1a): lato "azione", mai il primo piano fermo per primo
+        if ov.azione() and scaduto():   # 7/11/2026 (revisione, tempi): oltre la scadenza la scelta della fase 1
+            CONTROLLO["oltre_scadenza"] = True
+            print("Oltre la scadenza del reel: niente apertura in azione, prima scena come la fase 1")
+        elif ov.azione():  # 7/11/2026 (studio della sera, modifica 1a): lato "azione", mai il primo piano fermo per primo
             try:
                 fatto = _primo_azione(pezzi, durate, clips[0])
             except Exception as e:
@@ -665,6 +687,10 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
                 pezzi = _primo_pezzo(pezzi, durate)
             except Exception as e:
                 print("Scelta della prima scena non riuscita, ordine di prima:", e)
+        try:               # 7/11/2026 (revisione, regola 2): le scene spostate si riguardano (visi del tratto nuovo)
+            pezzi = _riguarda(pezzi, durate, W, H, 5 if controlla_viso else 3, dieci)
+        except Exception as e:
+            print("Scene spostate non riguardate (restano i visi di prima):", e)
     for i, seg in enumerate(durate):
         v = float(velocita[i]) if velocita else 1.0
         sorgente = seg * v
@@ -753,11 +779,19 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         # 7/11/2026 (studio della sera): l'apertura misurata sui due lati della prova (montaggio.apertura, per il 16/11):
         # con piu' scene la soglia del movimento e' la mediana delle scene del reel, con una scena MOTO_FERMO
         try:
-            if misure is None:
-                misure = [apertura_da(p["c"], p["inizio"]) for p in (pezzi if a_scene else pezzi[:1])]
-            ap = apertura_info(misure)
-            if ap:
-                info["apertura"] = ap
+            if misure is None and scaduto():     # 7/11/2026 (revisione, tempi): oltre la scadenza niente misura
+                info["oltre_scadenza"] = True
+                print("Oltre la scadenza del reel: apertura non misurata")
+            else:
+                if misure is None:
+                    misure = [apertura_da(p["c"], p["inizio"]) for p in (pezzi if a_scene else pezzi[:1])]
+                ap = apertura_info(misure)
+                if ap:
+                    # 7/11/2026 (revisione): la prima scena viene da una clip extra dell'archivio e non dal video
+                    # dell'orario (per la tabella: "in movimento" contro "clip vecchia"); in giornata non si segna
+                    if nome != "giornata":
+                        ap["da_archivio"] = bool(pezzi[0]["c"] != clips[0])
+                    info["apertura"] = ap
         except Exception as e:
             print("apertura non misurata (il reel esce lo stesso):", str(e)[:120])
     if velocita and min(velocita) < 1:
@@ -866,22 +900,67 @@ def _intero_pulito(c, durate):
         return None, durate
 
 
-def _guarda(p, sorgente, W, H, quanti, dieci, controlli):
+def _guarda(p, sorgente, W, H, quanti, dieci, controlli, lato=None):
     """I fotogrammi del pezzo p, gia' nel taglio 9:16 del reel: volti (29/10/2026, Alessandro: "le scritte non devono
     mai coprire il viso"), in quanti fotogrammi si vede il viso (6/11: uno alla volta, stessi riquadri di prima),
-    mappa dei dettagli, schiarita e, con i controlli accesi, se la scena e' tutta nera. Restituisce p."""
+    mappa dei dettagli, schiarita e, con i controlli accesi, se la scena e' tutta nera. Restituisce p.
+    7/11/2026 (revisione): p["guardato"] = (inizio, secondi) del tratto guardato davvero (solo se i fotogrammi ci sono),
+    per _riguarda; lato = (w, h) dei fotogrammi se non W x H (i riquadri sono in frazioni: stesso taglio 9:16)."""
     p.update(volti=[], visi=0, mappa=None, schiarisci="", nero=False)
+    p.pop("guardato", None)
     try:
+        w, h = lato or (W, H)
         fr = ov.extract_frames(p["c"], sorgente, n=quanti, start=p["inizio"],
-                               vf=f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H}")
+                               vf=f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h}")
         per = [ov.detect_faces([x], ruotati=dieci) for x in fr]
         p["volti"], p["visi"] = [b for x in per for b in x], sum(1 for x in per if x)
         p["mappa"] = ov.mappa_dettagli(fr)
         p["schiarisci"] = ov.schiarita(fr) if dieci else ""
         p["nero"] = bool(controlli) and _pezzo_nero(fr)
+        if fr:
+            p["guardato"] = (round(float(p["inizio"]), 2), round(float(sorgente), 2))
     except Exception:
         pass
     return p
+
+
+RIGUARDA_LATO = (540, 960)   # 7/11/2026 (revisione): fotogrammi di _riguarda (detect_faces lavora comunque a 720 px)
+# 7/11/2026 (revisione, prova sul PC): con 5 fotogrammi su una scena di 5 s (uno al secondo) la palestra spostata per
+# prima in dieci_due aveva ancora la scritta su fronte e capelli tra due fotogrammi guardati (lui si muove: la scena e'
+# scelta apposta in movimento). Le scene riguardate si guardano ogni RIGUARDA_PASSO s (al massimo RIGUARDA_MAX)
+RIGUARDA_PASSO, RIGUARDA_MAX = 0.5, 12
+
+
+def _riguarda(pezzi, durate, W, H, quanti, dieci):
+    """7/11/2026 (revisione, regola 2: la scritta mai sul viso): dopo il riordino della prima scena (_primo_azione,
+    _primo_pezzo) le scene spostate hanno un altro inizio e la durata del nuovo posto, ma i visi (e la mappa) erano quelli
+    del tratto di prima: un pezzo del reel non era mai stato guardato e la scritta poteva finire su un viso che compare
+    solo li'. Ogni scena che esce dal tratto gia' guardato si riguarda tutta, un fotogramma ogni RIGUARDA_PASSO s (almeno
+    quanti); i visi nuovi si AGGIUNGONO a quelli di prima (mai toglierne: piu' prudenza), mappa e schiarita vengono dal
+    tratto nuovo, visi resta "su quanti" (montaggio.viso_prima_scena). Vale per tutti e due i lati della prova (e'
+    sicurezza). Se non riesce, la scena resta com'era. Restituisce i pezzi."""
+    import math
+    for i, p in enumerate(pezzi):
+        g = p.get("guardato")
+        a, b = float(p["inizio"]), float(p["inizio"]) + float(durate[i])
+        if g and g[0] - 0.011 <= a and b <= g[0] + g[1] + 0.011:      # dentro il tratto gia' guardato
+            continue
+        try:
+            n = int(min(RIGUARDA_MAX, max(quanti, math.ceil(float(durate[i]) / RIGUARDA_PASSO))))
+            q = _guarda(dict(p), durate[i], W, H, n, dieci, False, lato=RIGUARDA_LATO)
+            if not q.get("guardato"):
+                print(f"Scena {i + 1}: fotogrammi del tratto nuovo non letti, restano i visi di prima")
+                continue
+            q["visi"] = int(round(q["visi"] * quanti / n))
+            q["volti"] = list(q["volti"]) + list(p.get("volti") or [])
+            q["nero"] = p.get("nero", False)
+            pezzi[i] = q
+            CONTROLLO["scene_riguardate"] = CONTROLLO.get("scene_riguardate", 0) + 1
+            print(f"Scena {i + 1} spostata ({os.path.basename(p['c'])} {a:.2f}-{b:.2f} s): riguardata, "
+                  f"{len(q['volti']) - len(p.get('volti') or [])} visi in piu'")
+        except Exception as e:
+            print(f"Scena {i + 1}: non riguardata ({str(e)[:100]}), restano i visi di prima")
+    return pezzi
 
 
 def _senza_nere(pezzi, durate, W, H, quanti, dieci):
@@ -924,12 +1003,44 @@ def _senza_nere(pezzi, durate, W, H, quanti, dieci):
     return pezzi
 
 
+AZIONE_SPOSTA = (1.0, -1.0, 2.0, -2.0)   # 7/11/2026 (revisione): spostamenti provati nel video dell'orario (entro CERCA_S)
+
+
+def _azione_spostata(pezzi, durate, mediana, principale, d0):
+    """7/11/2026 (revisione, lato "azione"): (k, inizio, misura) di una scena k del video dell'orario spostata di 1 o 2 s
+    che non e' un primo piano fermo e ha il primo secondo pulito; dentro la clip (al primo posto dura durate[0]), mai
+    sopra le altre scene della stessa clip; al massimo PROVE_SCENE misure. None se non c'e'."""
+    dmax, prove = max(durate), 0
+    for k in sorted((k for k, p in enumerate(pezzi) if p["c"] == principale), key=lambda k: k):
+        p = pezzi[k]
+        altre = [q["inizio"] for j, q in enumerate(pezzi) if j != k and q["c"] == p["c"]]
+        for dt in AZIONE_SPOSTA:
+            t = round(p["inizio"] + dt, 3)
+            if abs(dt) > CERCA_S or t < MARGINE_S or t + durate[0] > p["secondi"] - 0.1:
+                continue
+            if any(t < a + dmax and a < t + durate[0] for a in altre):     # sopra un'altra sua scena
+                continue
+            if prove >= PROVE_SCENE:
+                return None
+            prove += 1
+            m = apertura_da(p["c"], t)
+            if m and not primo_piano_fermo(m[0], m[1], mediana) and not primo_secondo(p["c"], t, d0):
+                return k, t, m
+    return None
+
+
 def _primo_azione(pezzi, durate, principale=None):
     """7/11/2026 (studio della sera, modifica 1a), lato "azione": per prima una scena con il primo secondo pulito che
     NON sia un primo piano fermo (viso vero grande e movimento sotto la mediana delle scene del reel); tra queste prima
     quelle del video dell'orario (il contenuto piu' nuovo), poi quella che si muove di piu' nel primo secondo. Al massimo
     PROVE_SCENE letture del primo secondo, come la fase 1. None = nessuna scena cosi': resta la scelta della fase 1.
-    Restituisce (pezzi, misure delle scene nell'ordine nuovo) o None."""
+    Restituisce (pezzi, misure delle scene nell'ordine nuovo) o None.
+    7/11/2026 (revisione; regola 7, prima il contenuto nuovo): se tutte le scene del video dell'orario sono primi piani
+    fermi (il selfie in macchina, il suo video piu' comune) prima di passare alle clip d'archivio si cerca nel SUO video
+    un inizio spostato di 1 o 2 s (_azione_spostata) che non sia fermo e abbia il primo secondo pulito; tra le clip
+    d'archivio poi prima le scene con lui (viso vero nel primo secondo, o il viso in almeno VISO_MIN fotogrammi), poi la
+    piu' mossa (al massimo PROVE_SCENE letture per ognuno dei tre passi). montaggio.apertura.da_archivio dice se il
+    reel apre con una clip d'archivio, montaggio.apertura_spostata di quanto si e' spostato l'inizio nel suo video."""
     import statistics
     misure = [apertura_da(p["c"], p["inizio"]) for p in pezzi]
     if any(m is None for m in misure):
@@ -937,18 +1048,34 @@ def _primo_azione(pezzi, durate, principale=None):
     mediana = statistics.median(m[1] for m in misure)
     principale = principale or pezzi[0]["c"]
     d0 = min(durate[0], PRIMO_S)
+    fermo0 = primo_piano_fermo(*misure[0], mediana)
+    pezzi = list(pezzi)        # una scena spostata nel video dell'orario cambia solo qui (copia)
 
     def al_primo_posto(k):     # al primo posto la scena dura durate[0]: deve stare dentro la sua clip
         p = dict(pezzi[k])
         p["inizio"] = round(min(p["inizio"], max(0.0, p["secondi"] - durate[0] - 0.1)), 3)
         return p
-    cand = sorted((k for k in range(len(pezzi)) if not primo_piano_fermo(*misure[k], mediana)),
-                  key=lambda k: (pezzi[k]["c"] != principale, -misure[k][1], k))
-    scelta = next((k for k in cand[:PROVE_SCENE] if not primo_secondo(pezzi[k]["c"], al_primo_posto(k)["inizio"], d0)),
-                  None)
+    fermo = lambda k: primo_piano_fermo(*misure[k], mediana)
+    pulito = lambda k: not primo_secondo(pezzi[k]["c"], al_primo_posto(k)["inizio"], d0)
+    suoi = sorted((k for k in range(len(pezzi)) if pezzi[k]["c"] == principale and not fermo(k)),
+                  key=lambda k: (-misure[k][1], k))
+    scelta = next((k for k in suoi[:PROVE_SCENE] if pulito(k)), None)
+    if scelta is None:         # nel video dell'orario, un inizio spostato di 1-2 s
+        spostata = _azione_spostata(pezzi, durate, mediana, principale, d0)
+        if spostata:
+            scelta, t, m = spostata
+            CONTROLLO["apertura_spostata"] = round(t - pezzi[scelta]["inizio"], 2)
+            print(f"Apertura in azione: scena {scelta + 1} del video dell'orario da {t:.2f} s invece di "
+                  f"{pezzi[scelta]['inizio']:.2f} s (movimento {m[1]:.1f})")
+            pezzi[scelta], misure[scelta] = dict(pezzi[scelta], inizio=t), m
+    if scelta is None:         # le clip d'archivio: prima le scene con lui, poi la piu' mossa
+        con_lui = lambda k: misure[k][0] > 0 or pezzi[k]["visi"] >= VISO_MIN
+        altre = sorted((k for k in range(len(pezzi)) if pezzi[k]["c"] != principale and not fermo(k)),
+                       key=lambda k: (not con_lui(k), -misure[k][1], k))
+        scelta = next((k for k in altre[:PROVE_SCENE] if pulito(k)), None)
     if scelta is None:
         return None
-    CONTROLLO["apertura_fermo_prima"] = primo_piano_fermo(*misure[0], mediana)
+    CONTROLLO["apertura_fermo_prima"] = fermo0
     if scelta == 0:
         return pezzi, misure
     p0, nuovo = pezzi[0], al_primo_posto(scelta)
@@ -1091,6 +1218,10 @@ GIORNATA_GANCIO_S = 1.0
 # 6/11/2026 (integrazione, revisione della giornata): oltre questi secondi di analisi (e con almeno GIORNATA_MIN momenti)
 # le clip che restano non si guardano piu': sul PC una clip 4K HDR costava fino a ~7 minuti
 GIORNATA_TEMPO_MAX = 360
+# 7/11/2026 (revisione, tempi): con la scadenza del reel (SCADENZA) l'analisi si ferma anche GIORNATA_RISERVA secondi
+# prima della scadenza (il montaggio 4K e il ripiego con la fascia devono ancora starci)
+GIORNATA_RISERVA = 600
+GANCIO_PROVE = 3                      # 7/11/2026 (revisione): momenti provati al massimo per l'apertura in azione pulita
 GIORNATA_BUIO = 0.10                  # luce media della scena (0-1) sotto cui una clip non principale e' quasi nera
 GIORNATA_TAGLIO = "scale=540:960:force_original_aspect_ratio=increase,crop=540:960"   # fotogrammi ridotti, 9:16
 
@@ -1202,8 +1333,8 @@ def momento_giornata(c, durata):
     # 7/11/2026 (studio della sera, modifiche 1b e 7): per il lato "azione" della prova dell'apertura, sugli stessi
     # fotogrammi: il viso VERO della scena (ov.visi_veri) e il movimento nel primo secondo (0 -> +1 s, grigi 90x160)
     vero, alto_vero, moto_primo = 0.0, 0.0, None
-    try:
-        veri = ov.visi_veri([fr[o] for o in sorted(scena)], [visi[o] for o in sorted(scena)])
+    try:     # 7/11/2026 (revisione): fotogrammi ogni 0,5 s (radi): pelle E occhio, anche se il viso si muove
+        veri = ov.visi_veri([fr[o] for o in sorted(scena)], [visi[o] for o in sorted(scena)], fermi=False)
         vero = sum(1 for v in veri if v) / len(veri)
         alto_vero = max([b[3] - b[1] for v in veri for b in v] or [0.0])
         if 0.0 in g and 1.0 in g:
@@ -1270,7 +1401,15 @@ def _gancio_azione(scelte, mm, mn):
     mp = max(moti) or 1.0
     punti = lambda a: (2.0 * a.get("viso_vero", 0.0) + 0.6 * a["moto"] / mm + 0.4 * a["nitido"] / mn
                        + 0.5 * min(1.0, float(a.get("moto_primo") or 0.0) / mp))
-    scelto = max(mobili, key=punti)
+    # 7/11/2026 (revisione): il primo secondo pulito (mai mosso o buio: regola del gruppo 2, che in giornata e' spento).
+    # Il lato "viso" ce l'ha gia' (un viso visto per tutto il primo secondo); qui si parte dal momento piu' mosso. Al
+    # massimo GANCIO_PROVE momenti in ordine di punti (sorted e' stabile: il primo e' quello di max); se nessuno e'
+    # pulito, None e resta la scelta della fase 1
+    scelto = next((a for a in sorted(mobili, key=punti, reverse=True)[:GANCIO_PROVE]
+                   if not primo_secondo(a["clip"], a["inizio"], GIORNATA_GANCIO_S)), None)
+    if scelto is None:
+        print("giornata: nessun momento in azione col primo secondo pulito, prima scena come la fase 1", flush=True)
+        return None
     print(f"giornata: apertura in azione da {os.path.basename(scelto['clip'])} (movimento "
           f"{float(scelto.get('moto_primo') or 0):.1f}, mediana {mediana:.1f})", flush=True)
     return scelto
@@ -1292,10 +1431,18 @@ def piano_giornata(clips, ore=None, musica=None, scene=None, durata=GIORNATA_DUR
     d0 = durata / max(GIORNATA_MIN, min(GIORNATA_MAX, n0))
     scelte, file_visti = [], set()
     t_inizio = time.time()
+    # 7/11/2026 (revisione, tempi): il tetto e' anche legato all'orario del reel: al massimo fino a GIORNATA_RISERVA
+    # secondi prima della scadenza (SCADENZA), mai oltre GIORNATA_TEMPO_MAX
+    tetto = float(GIORNATA_TEMPO_MAX)
+    rimasti = secondi_rimasti()
+    if rimasti is not None:
+        tetto = max(0.0, min(tetto, rimasti - GIORNATA_RISERVA))
+        print(f"giornata: {rimasti / 60:.0f} minuti alla scadenza del reel, analisi al massimo {tetto:.0f} s "
+              f"(appena ci sono {GIORNATA_MIN} momenti)", flush=True)
     for i, c in enumerate(clips):
         # 6/11/2026 (integrazione): un tetto al tempo dell'analisi, con gia' abbastanza momenti diversi
-        if i and len(scelte) >= GIORNATA_MIN and time.time() - t_inizio > GIORNATA_TEMPO_MAX:
-            print(f"giornata: analisi oltre {GIORNATA_TEMPO_MAX} s ({time.time() - t_inizio:.0f} s), "
+        if i and len(scelte) >= GIORNATA_MIN and time.time() - t_inizio > tetto:
+            print(f"giornata: analisi oltre {tetto:.0f} s ({time.time() - t_inizio:.0f} s), "
                   f"le ultime {n0 - i} clip restano fuori", flush=True)
             break
         t_clip = time.time()
@@ -1318,7 +1465,8 @@ def piano_giornata(clips, ore=None, musica=None, scene=None, durata=GIORNATA_DUR
         file_visti.add(chiave)
         a.update(principale=i == 0, ora=ore[i] or ov.data_ripresa(c), scena=scene[i], vista=bool(viste[i]))
         scelte.append(a)
-    print(f"giornata: analisi di {len(scelte)} momenti in {time.time() - t_inizio:.0f} s", flush=True)
+    t_analisi = round(time.time() - t_inizio)
+    print(f"giornata: analisi di {len(scelte)} momenti in {t_analisi} s", flush=True)
     if len(scelte) < GIORNATA_MIN:
         raise ValueError(f"giornata: solo {len(scelte)} momenti diversi (ne servono {GIORNATA_MIN})")
     # 6/11/2026 (integrazione; gruppo 2, punti 14 e 34): via le clip NON principali quasi nere (luce sotto GIORNATA_BUIO
@@ -1395,6 +1543,7 @@ def piano_giornata(clips, ore=None, musica=None, scene=None, durata=GIORNATA_DUR
         info["scene_orizzontali"] = oriz
     if scure:
         info["scene_scure"] = scure
+    info["secondi_analisi"] = t_analisi     # 7/11/2026 (revisione, tempi): per misurare i primi reel su GitHub
     if giorno0:
         info["stesso_giorno"] = sum(1 for a in ordine if str(a["ora"] or "")[:10] == giorno0)
     return piano, durate, info
