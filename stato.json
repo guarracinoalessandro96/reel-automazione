@@ -10557,7 +10557,9 @@
      "ok": true,
      "id": "18090379856287019",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -10629,7 +10631,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "Tgd_jiAkyzc"
+     "id": "Tgd_jiAkyzc",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10640,11 +10643,72 @@
    },
    "spinto": true,
    "testo": "Il segreto non è fare cose straordinarie. È fare cose normali con una costanza straordinaria."
+  },
+  {
+   "quando": "2026-11-07T17:00",
+   "slot": "2026-11-07 18:00",
+   "video": "Foto della giornata",
+   "md5": null,
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-481bb733",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_foto",
+    "durata": 10.002,
+    "musica": "the_road_to_mordor_3.m4a",
+    "stacchi": 6,
+    "testi": 1,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 4,
+     "scurito": 0.51,
+     "luce": 0.41,
+     "sfumatura": 0.31
+    },
+    "foto_ids": [
+     "1FF_UeM1T5fAjm6fB-wj_nm82Rkbq5dQv",
+     "1h-qHYVvq53m37HkSB5MMeoog5u_jvM63",
+     "1DXNCEOydE64My6EyPL9_K3CsY16hy2Oq",
+     "1deeJzCThJDNJ-C-fxMMTQg65DogzmOxG",
+     "1QdJ4wADgk2yFB9hD4ICxm7symUoVjVP7",
+     "1pEOL7V5_WgfeL1ORXcjzYwutxtgZrnfu"
+    ],
+    "foto_doppie": 0,
+    "foto_giorno": "2026-11-04",
+    "secondi_montaggio": 149,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {},
+    "frase_forma": {
+     "voce": "io",
+     "forma": "due",
+     "parole": 15
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_15.flac",
+    "musica_instagram": "Family Food Fight - Fellow Travelers [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "wQ7Vtq07CUQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18155449138540926",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Il mio futuro non cambia a capodanno. Cambia con quello che faccio un martedì qualsiasi."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-30 18:00",
   "2026-10-30 20:00",
   "2026-10-30 22:00",
   "2026-10-31 00:00",
@@ -10723,7 +10787,8 @@
   "2026-11-07 10:00",
   "2026-11-07 12:00",
   "2026-11-07 14:00",
-  "2026-11-07 16:00"
+  "2026-11-07 16:00",
+  "2026-11-07 18:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -10756,7 +10821,8 @@
   "duty_calls_2.m4a",
   "stake_out_2.m4a",
   "cartier_1.m4a",
-  "fire_in_the_sky_1.m4a"
+  "fire_in_the_sky_1.m4a",
+  "the_road_to_mordor_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -11055,13 +11121,14 @@
   "MIE-1f186d46",
   "MIE-a314909c",
   "MIE-660996ae",
-  "MIE-2d30e188"
+  "MIE-2d30e188",
+  "MIE-481bb733"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -11646,7 +11713,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_10.flac",
   "deciso_10.flac",
   "trap_11.flac",
   "phonk_02.flac",
@@ -11665,7 +11731,8 @@
   "deciso_05.flac",
   "energia_09.flac",
   "phonk_08.flac",
-  "drive_13.flac"
+  "drive_13.flac",
+  "trap_15.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11700,7 +11767,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "giornata",
+ "formato_ultimo": "dieci_foto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -11756,11 +11823,11 @@
   "1015255657240675",
   "1354603606762864",
   "888162299407391",
-  "552615862069907"
+  "552615862069907",
+  "2242687643238503"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "UEFA, Tony Britten",
   "The Sheen",
   "Bryan Todd",
   "The Poison Oaks",
@@ -11769,10 +11836,10 @@
   "bbox",
   "Blues369",
   "Chela Rivas",
-  "Jumbo"
+  "Jumbo",
+  "Fellow Travelers"
  ],
  "ig_titoli_recenti": [
-  "dream big",
   "inspired to shine",
   "brahms violin sonata 108 3 2",
   "big leagues",
@@ -11811,7 +11878,8 @@
   "the running",
   "work hard dream big",
   "winner",
-  "unstoppable"
+  "unstoppable",
+  "family food fight"
  ],
  "ig_tendenze_riserva": [
   {
@@ -11829,10 +11897,17 @@
    "libreria": false
   },
   {
-   "audio_id": "1488842099008011",
-   "title": "Electric Movement (Instrumental)",
-   "display_artist": "Sam Marshall",
-   "duration_in_ms": 187894,
+   "audio_id": "9513789255356881",
+   "title": "Power On (Instrumental)",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 116549,
+   "libreria": true
+  },
+  {
+   "audio_id": "2242687643238503",
+   "title": "Family Food Fight",
+   "display_artist": "Fellow Travelers",
+   "duration_in_ms": 63576,
    "libreria": true
   }
  ]
