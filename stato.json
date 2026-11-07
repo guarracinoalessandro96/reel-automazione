@@ -10638,7 +10638,9 @@
      "ok": true,
      "id": "18063614711532732",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -10694,7 +10696,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "wQ7Vtq07CUQ"
+     "id": "wQ7Vtq07CUQ",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10705,11 +10708,77 @@
    },
    "spinto": true,
    "testo": "Il mio futuro non cambia a capodanno. Cambia con quello che faccio un martedì qualsiasi."
+  },
+  {
+   "quando": "2026-11-07T19:00",
+   "slot": "2026-11-07 20:00",
+   "video": "IMG_4944.mov",
+   "md5": "8229547439d2d83377fd4daff0ada97c",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-05T23:56+01:00",
+   "frase": "MIE-ca8b6276",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio2",
+    "durata": 10.0,
+    "musica": "majestic_12_1.m4a",
+    "stacchi": 5,
+    "testi": 1,
+    "scene_dal_video": 5,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.13,
+     "movimento": 4.19,
+     "primo_piano_fermo": false,
+     "soglia_moto": 2.36,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 148,
+     "righe": 2,
+     "scurito": 0.0,
+     "luce": 0.15,
+     "sfumatura": 0.0,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 81,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 5
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_04.flac",
+    "musica_instagram": "Success (Instrumental) - stereogully"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "OtfwoZQ3ac0"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18168950044422324",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Ogni problema ha una soluzione."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-30 20:00",
   "2026-10-30 22:00",
   "2026-10-31 00:00",
   "2026-10-31 06:00",
@@ -10788,7 +10857,8 @@
   "2026-11-07 12:00",
   "2026-11-07 14:00",
   "2026-11-07 16:00",
-  "2026-11-07 18:00"
+  "2026-11-07 18:00",
+  "2026-11-07 20:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -10822,7 +10892,8 @@
   "stake_out_2.m4a",
   "cartier_1.m4a",
   "fire_in_the_sky_1.m4a",
-  "the_road_to_mordor_3.m4a"
+  "the_road_to_mordor_3.m4a",
+  "majestic_12_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -11122,12 +11193,13 @@
   "MIE-a314909c",
   "MIE-660996ae",
   "MIE-2d30e188",
-  "MIE-481bb733"
+  "MIE-481bb733",
+  "MIE-ca8b6276"
  ],
  "temi_recenti": [
   "mentalita",
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -11246,20 +11318,6 @@
    "registrato": "2026-11-05T23:53+01:00",
    "fascia": "palestra",
    "caricato": "2026-11-07T13:01:19.333Z",
-   "parlato": null,
-   "momento": null
-  },
-  "120-zV-uuyXnc76Vb0qhngDGOr0ak2EGs": {
-   "nome": "IMG_4944.mov",
-   "scena": "palestra",
-   "sicurezza": 0.99,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-05T23:56+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-11-07T13:02:25.691Z",
    "parlato": null,
    "momento": null
   }
@@ -11710,10 +11768,14 @@
    "usi": 1,
    "ultimo": "2026-11-07",
    "orizzontale": false
+  },
+  "120-zV-uuyXnc76Vb0qhngDGOr0ak2EGs": {
+   "usi": 1,
+   "ultimo": "2026-11-07",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "deciso_10.flac",
   "trap_11.flac",
   "phonk_02.flac",
   "drive_08.flac",
@@ -11732,7 +11794,8 @@
   "energia_09.flac",
   "phonk_08.flac",
   "drive_13.flac",
-  "trap_15.flac"
+  "trap_15.flac",
+  "phonk_04.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11767,7 +11830,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_foto",
+ "formato_ultimo": "taglio2",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -11824,11 +11887,11 @@
   "1354603606762864",
   "888162299407391",
   "552615862069907",
-  "2242687643238503"
+  "2242687643238503",
+  "820220974302825"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "The Sheen",
   "Bryan Todd",
   "The Poison Oaks",
   "Trout Recording",
@@ -11837,10 +11900,10 @@
   "Blues369",
   "Chela Rivas",
   "Jumbo",
-  "Fellow Travelers"
+  "Fellow Travelers",
+  "stereogully"
  ],
  "ig_titoli_recenti": [
-  "inspired to shine",
   "brahms violin sonata 108 3 2",
   "big leagues",
   "epic adventure",
@@ -11879,7 +11942,8 @@
   "work hard dream big",
   "winner",
   "unstoppable",
-  "family food fight"
+  "family food fight",
+  "success"
  ],
  "ig_tendenze_riserva": [
   {
@@ -11897,17 +11961,10 @@
    "libreria": false
   },
   {
-   "audio_id": "9513789255356881",
-   "title": "Power On (Instrumental)",
+   "audio_id": "974432747187721",
+   "title": "Road Warriors",
    "display_artist": "Giulio Cercato",
-   "duration_in_ms": 116549,
-   "libreria": true
-  },
-  {
-   "audio_id": "2242687643238503",
-   "title": "Family Food Fight",
-   "display_artist": "Fellow Travelers",
-   "duration_in_ms": 63576,
+   "duration_in_ms": 108029,
    "libreria": true
   }
  ]
