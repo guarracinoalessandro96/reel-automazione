@@ -343,7 +343,7 @@ def dati(scurito=0.0, luce=None):
 # drammatico): si misura la luce (0-1) nella zona della frase; oltre LUCE_DA si abbassa come un'esposizione piu' bassa
 # (tutti i valori moltiplicati per lo stesso fattore: il nero resta nero, i colori restano quelli) fino a LUCE_MAX al
 # massimo; sotto LUCE_DA (le sue clip scure) niente. Mai piu' chiaro.
-LUCE_DA, LUCE_MAX, LUCE_PENDENZA = 0.24, 0.28, 0.35
+LUCE_DA, LUCE_MAX, LUCE_PENDENZA = 0.22, 0.25, 0.35   # "tutto scuro" come i suoi esempi, ma scene ancora leggibili
 FATTORE_MIN = 0.45                   # mai piu' scuro di cosi' (una clip chiarissima non diventa grigia)
 ZONA_LUCE = (0.14, 0.24, 0.86, 0.70)  # dove si misura: la zona della frase (x0, y0, x1, y1 in frazioni)
 
