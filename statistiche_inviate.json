@@ -1,0 +1,20 @@
+{
+ "giorni": {
+  "2026-11-07": {
+   "inviato": "08:03",
+   "da": "pc",
+   "numeri": {
+    "YouTube": 2025,
+    "Instagram": 3054,
+    "Facebook": 618,
+    "TikTok": 2458
+   },
+   "youtube_totale": 1952445,
+   "tiktok": {
+    "data": "2026-11-05",
+    "views": 2458
+   }
+  }
+ },
+ "pc_dal": "2026-11-07"
+}
