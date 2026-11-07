@@ -676,6 +676,17 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
             "-preset", "medium" if DUR <= 10 else "veryfast", "-crf", "18", "-profile:v", "high",
             "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-movflags", "+faststart", dst]
     r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore", timeout=ov.TEMPO_MAX_MONTAGGIO)
+    scuro_tolto = False
+    if r.returncode != 0 and ov.STILE_CENTRO:
+        try:     # 7/11/2026: se il montaggio non riesce con lo scurimento, lo stesso montaggio senza (il reel esce)
+            import stile_centro
+            cmd2 = stile_centro.senza_scuro(cmd)
+            if cmd2:
+                print("Montaggio non riuscito con lo scurimento, riprovo senza:", r.stderr[-200:])
+                r, scuro_tolto = subprocess.run(cmd2, capture_output=True, text=True, errors="ignore",
+                                                timeout=ov.TEMPO_MAX_MONTAGGIO), True
+        except Exception as e:
+            print("Ripiego senza scurimento non riuscito:", str(e)[:150])
     shutil.rmtree(tmp, ignore_errors=True)
     if r.returncode != 0 or not os.path.exists(dst) or os.path.getsize(dst) < 50_000:
         raise RuntimeError(f"{nome}: " + r.stderr[-400:])
@@ -695,7 +706,7 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         try:     # 7/11/2026: carattere, corpo, righe e quanto e' stata scurita la scena piu' chiara (tabella del 16/11)
             import stile_centro
             luci = [l for _, l in scuriti if l is not None]
-            info["stile_centro"] = stile_centro.dati(max([s for s, _ in scuriti] or [0.0]),
+            info["stile_centro"] = stile_centro.dati(0.0 if scuro_tolto else max([s for s, _ in scuriti] or [0.0]),
                                                      max(luci) if luci else None)
         except Exception as e:
             print("Dati dello stile al centro non scritti:", str(e)[:150])

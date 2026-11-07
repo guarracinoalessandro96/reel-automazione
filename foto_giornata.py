@@ -762,6 +762,17 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
                 "-crf", "18", "-profile:v", "high", "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
                 "-movflags", "+faststart", dst]
         r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore", timeout=ov.TEMPO_MAX_MONTAGGIO)
+        if r.returncode != 0 and scuriti:
+            try:     # 7/11/2026: se non riesce con lo scurimento, lo stesso montaggio senza (il reel esce)
+                import stile_centro
+                cmd2 = stile_centro.senza_scuro(cmd)
+                if cmd2:
+                    print("Foto rapide: montaggio non riuscito con lo scurimento, riprovo senza:", r.stderr[-200:])
+                    r = subprocess.run(cmd2, capture_output=True, text=True, errors="ignore",
+                                       timeout=ov.TEMPO_MAX_MONTAGGIO)
+                    scuriti = [(0.0, l) for _, l in scuriti]
+            except Exception as e:
+                print("Foto rapide: ripiego senza scurimento non riuscito:", str(e)[:150])
         if r.returncode != 0 or not os.path.exists(dst) or os.path.getsize(dst) < 50_000:
             raise RuntimeError("foto_rapide: " + r.stderr[-400:])
         info = {"formato": "foto_rapide", "durata": DUR, "musica": os.path.basename(musiche[0]) if musiche else None,

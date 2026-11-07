@@ -388,3 +388,13 @@ def filtro(m):
     if m is None or m >= 0.995:
         return ""
     return f"lutyuv=y=16+(val-16)*{m:.3f}:u=128+(val-128)*{m:.3f}:v=128+(val-128)*{m:.3f}"
+
+
+def senza_scuro(cmd):
+    """Lo stesso comando ffmpeg senza i filtri di scurimento (quelli di filtro()); None se non ce ne sono. Se ffmpeg
+    non riuscisse a montare con lo scurimento, il reel si rifa' senza (deve uscire sempre)."""
+    if "-filter_complex" not in cmd:
+        return None
+    i = cmd.index("-filter_complex") + 1
+    g = re.sub(r",lutyuv=y=16\+\(val-16\)\*[\d.]+:u=128\+\(val-128\)\*[\d.]+:v=128\+\(val-128\)\*[\d.]+", "", cmd[i])
+    return None if g == cmd[i] else cmd[:i] + [g] + cmd[i + 1:]

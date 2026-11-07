@@ -966,8 +966,10 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
         chain.append(filtro_colore)
         grade_info = grade.descrivi(misure, tipo, motivo)
     centro = None
-    if STILE_CENTRO and not parlato and ULTIMO_STILE == "centro_serif":
-        try:     # 7/11/2026: sotto la frase al centro il video troppo chiaro diventa un po' piu' scuro (stile_centro)
+    if STILE_CENTRO and colore and not parlato and ULTIMO_STILE == "centro_serif":
+        # 7/11/2026: sotto la frase al centro il video troppo chiaro diventa un po' piu' scuro (stile_centro); con il
+        # colore: se ffmpeg non riesce, il piano di riserva di make_video (senza colore) monta anche senza scurimento
+        try:
             import stile_centro
             luce = stile_centro.luce_centro(frames)
             m = stile_centro.fattore(luce)
