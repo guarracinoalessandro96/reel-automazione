@@ -365,6 +365,9 @@ def dati(scurito=0.0, luce=None, sfuma=0.0):
 # scritta, quindi nel montaggio non costa niente. Le scene gia' scure (le sue nuove a luce bassa, le foto col filtro
 # drammatico) restano come sono.
 OBIETTIVO_TESTO, OBIETTIVO_TUTTO = 0.20, 0.26   # un filo sotto 0,22 / 0,28: la misura e' su pochi fotogrammi
+# le luci alte (il 10% piu' chiaro del fotogramma: pareti gialle, finestre, cielo) al massimo OBIETTIVO_ALTE, solo se la
+# scena va scurita comunque: sulle foto "virali" molto contrastate la media era giusta ma il fotogramma restava chiaro
+OBIETTIVO_ALTE = 0.40
 SFUMATURA_MAX = 0.45                 # opacita' dell'ombra al centro al massimo (0,45: il centro al 55% della luce)
 SFUMA_SX, SFUMA_SY = 0.40, 0.20      # ampiezza dell'ombra (sigma): 40% della larghezza, 20% dell'altezza
 FATTORE_MIN = 0.36                   # una scena non scende mai sotto il 36% (una clip bianchissima non diventa nera)
@@ -372,16 +375,17 @@ ZONA_LUCE = (0.14, 0.24, 0.86, 0.70)  # dove si misura: la zona della frase (x0,
 
 
 def _misura(p, zona, bgr):
-    """(luce della zona, luce di tutto) di un'immagine 160x90x3 float (luma Rec.709)."""
+    """(luce della zona, luce di tutto, luci alte = 90o percentile) di un'immagine 160x90x3 float (luma Rec.709)."""
+    import numpy as np
     b, g, r = (0, 1, 2) if bgr else (2, 1, 0)
     y = (0.0722 * p[..., b] + 0.7152 * p[..., g] + 0.2126 * p[..., r]) / 255
     x0, y0, x1, y1 = int(zona[0] * 90), int(zona[1] * 160), int(zona[2] * 90), int(zona[3] * 160)
-    return float(y[y0:y1, x0:x1].mean()), float(y.mean())
+    return float(y[y0:y1, x0:x1].mean()), float(y.mean()), float(np.percentile(y, 90))
 
 
 def misura(frames, zona=ZONA_LUCE):
-    """(luce media della zona della frase, luce media di tutto il fotogramma), 0-1, dei fotogrammi BGR (numpy, gia'
-    nel taglio 9:16). (None, None) se non si misura."""
+    """(luce media della zona della frase, luce media di tutto il fotogramma, luci alte), 0-1, dei fotogrammi BGR
+    (numpy, gia' nel taglio 9:16). (None, None, None) se non si misura."""
     import numpy as np
     vals = []
     for f in frames or []:
@@ -392,8 +396,8 @@ def misura(frames, zona=ZONA_LUCE):
             p = np.asarray(Image.fromarray(f[..., ::-1]).resize((90, 160))).astype(np.float32)[..., ::-1]
         vals.append(_misura(p, zona, True))
     if not vals:
-        return None, None
-    return float(np.mean([v[0] for v in vals])), float(np.mean([v[1] for v in vals]))
+        return None, None, None
+    return tuple(float(np.mean([v[k] for v in vals])) for k in range(3))
 
 
 def luce_centro(frames, zona=ZONA_LUCE):
@@ -441,15 +445,20 @@ def sfumatura_per(luci):
     return round(min(SFUMATURA_MAX, 0.6 * (1 - OBIETTIVO_TESTO / l)), 3)
 
 
-def fattore(luce, tutto=None, sfuma=0.0):
+def fattore(luce, tutto=None, sfuma=0.0, alte=None):
     """Fattore dell'esposizione della scena (1 = com'e', mai sopra 1): la zona della frase scende a OBIETTIVO_TESTO e
-    tutto il fotogramma a OBIETTIVO_TUTTO, contando anche l'ombra dietro la frase (sfuma); mai sotto FATTORE_MIN."""
+    tutto il fotogramma a OBIETTIVO_TUTTO, contando anche l'ombra dietro la frase (sfuma); se la scena va scurita, anche
+    le luci alte fino a OBIETTIVO_ALTE (una scena gia' scura resta com'e'); mai sotto FATTORE_MIN."""
     m = 1.0
     zona, intero = pesi() if sfuma else (0.0, 0.0)
     if luce:
         m = min(m, OBIETTIVO_TESTO / (float(luce) * (1 - sfuma * zona)))
     if tutto:
         m = min(m, OBIETTIVO_TUTTO / (float(tutto) * (1 - sfuma * intero)))
+    if alte and m < 0.995 and OBIETTIVO_ALTE / float(alte) < m:
+        # per gradi: piena quando la scena va scurita di almeno il 35%, cosi' una scena appena sopra gli obiettivi
+        # (stanza scura con una finestra) non salta di colpo a meta' luce
+        m -= (m - OBIETTIVO_ALTE / float(alte)) * min(1.0, (1 - m) / 0.35)
     return round(max(FATTORE_MIN, min(1.0, m)), 3)
 
 

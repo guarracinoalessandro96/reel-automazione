@@ -723,7 +723,7 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
         if luci and ov.ULTIMO_STILE == "centro_serif":
             try:     # 7/11/2026: l'ombra morbida dietro la frase (dalla foto piu' chiara), dentro l'immagine della scritta
                 import stile_centro
-                sfuma = stile_centro.sfumatura_per([l for l, _ in luci.values()])
+                sfuma = stile_centro.sfumatura_per([v[0] for v in luci.values()])
                 testo = stile_centro.con_sfumatura(testo, sfuma)
             except Exception as e:
                 sfuma = 0.0
@@ -741,7 +741,7 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
             if i in luci:      # 7/11/2026: foto troppo chiara sotto la frase al centro -> un po' piu' scura
                 try:
                     import stile_centro
-                    m = stile_centro.fattore(luci[i][0], luci[i][1], sfuma)
+                    m = stile_centro.fattore(luci[i][0], luci[i][1], sfuma, luci[i][2])
                     scuro = stile_centro.filtro(m)
                     scuriti.append((1 - m, luci[i][0]))
                 except Exception as e:

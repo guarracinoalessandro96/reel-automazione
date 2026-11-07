@@ -583,7 +583,7 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
     if ov.STILE_CENTRO and (velocita or indietro):
         # 7/11/2026: rallenty e loop sono lo stesso momento che continua: una sola luce per tutte le scene, se no al
         # passaggio al rallentatore (o all'indietro) il video cambierebbe luminosita' di colpo
-        for k in ("luce", "luce_tutto"):
+        for k in ("luce", "luce_tutto", "luce_alte"):
             luci = [p.get(k) for p in pezzi if p.get(k) is not None]
             if luci:
                 for p in pezzi:
@@ -618,7 +618,8 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
             schiarisci = ""
             try:
                 import stile_centro
-                m = stile_centro.fattore(pezzi[i].get("luce"), pezzi[i].get("luce_tutto"), sfuma)
+                m = stile_centro.fattore(pezzi[i].get("luce"), pezzi[i].get("luce_tutto"), sfuma,
+                                         pezzi[i].get("luce_alte"))
                 scuro = stile_centro.filtro(m)
                 scuriti.append((1 - m, pezzi[i].get("luce")))
             except Exception as e:
@@ -840,7 +841,7 @@ def _guarda(p, sorgente, W, H, quanti, dieci, controlli):
         p["nero"] = bool(controlli) and _pezzo_nero(fr)
         if ov.STILE_CENTRO:      # 7/11/2026: luce nella zona della frase e di tutto il fotogramma (scene troppo chiare)
             import stile_centro
-            p["luce"], p["luce_tutto"] = stile_centro.misura(fr)
+            p["luce"], p["luce_tutto"], p["luce_alte"] = stile_centro.misura(fr)
     except Exception:
         pass
     return p
