@@ -10519,7 +10519,9 @@
      "ok": true,
      "id": "17891422164619339",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -10548,23 +10550,165 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "gsvI1kr1mNI"
+     "id": "gsvI1kr1mNI",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18090379856287019",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "La mia vecchia versione non era sbagliata. Mi ha portato fin qui. Adesso tocca alla prossima."
+  },
+  {
+   "quando": "2026-11-07T15:00",
+   "slot": "2026-11-07 16:00",
+   "video": "IMG_4945.mov",
+   "md5": "17d454270e648afa88da5dc44aed342b",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-06T00:00+01:00",
+   "frase": "MIE-2d30e188",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "giornata",
+    "durata": 10.0,
+    "musica": "fire_in_the_sky_1.m4a",
+    "stacchi": 7,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 6.77,
+     "primo_piano_fermo": false,
+     "soglia_moto": 8.31
+    },
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 4,
+     "scurito": 0.0,
+     "luce": 0.19,
+     "sfumatura": 0.0
+    },
+    "scene": 7,
+    "con_viso": 7,
+    "viso_primo_secondo": true,
+    "gancio_azione": true,
+    "secondi_analisi": 128,
+    "stesso_giorno": 1,
+    "clip_scene": [
+     "IMG_4931.mov",
+     "IMG_4930.mov",
+     "IMG_4935.mov",
+     "IMG_4941.mov",
+     "IMG_4942.mov",
+     "IMG_4944.mov"
+    ],
+    "giornata_del": "2026-11-05",
+    "secondi_montaggio": 225,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "due",
+     "parole": 15
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_13.flac",
+    "musica_instagram": "Unstoppable - Jumbo"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Tgd_jiAkyzc",
+     "controllo": []
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18063614711532732",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Il segreto non è fare cose straordinarie. È fare cose normali con una costanza straordinaria."
+  },
+  {
+   "quando": "2026-11-07T17:00",
+   "slot": "2026-11-07 18:00",
+   "video": "Foto della giornata",
+   "md5": null,
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-481bb733",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_foto",
+    "durata": 10.002,
+    "musica": "the_road_to_mordor_3.m4a",
+    "stacchi": 6,
+    "testi": 1,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 4,
+     "scurito": 0.51,
+     "luce": 0.41,
+     "sfumatura": 0.31
+    },
+    "foto_ids": [
+     "1FF_UeM1T5fAjm6fB-wj_nm82Rkbq5dQv",
+     "1h-qHYVvq53m37HkSB5MMeoog5u_jvM63",
+     "1DXNCEOydE64My6EyPL9_K3CsY16hy2Oq",
+     "1deeJzCThJDNJ-C-fxMMTQg65DogzmOxG",
+     "1QdJ4wADgk2yFB9hD4ICxm7symUoVjVP7",
+     "1pEOL7V5_WgfeL1ORXcjzYwutxtgZrnfu"
+    ],
+    "foto_doppie": 0,
+    "foto_giorno": "2026-11-04",
+    "secondi_montaggio": 149,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {},
+    "frase_forma": {
+     "voce": "io",
+     "forma": "due",
+     "parole": 15
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_15.flac",
+    "musica_instagram": "Family Food Fight - Fellow Travelers [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "wQ7Vtq07CUQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18155449138540926",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Il mio futuro non cambia a capodanno. Cambia con quello che faccio un martedì qualsiasi."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-30 16:00",
-  "2026-10-30 18:00",
   "2026-10-30 20:00",
   "2026-10-30 22:00",
   "2026-10-31 00:00",
@@ -10642,7 +10786,9 @@
   "2026-11-07 08:00",
   "2026-11-07 10:00",
   "2026-11-07 12:00",
-  "2026-11-07 14:00"
+  "2026-11-07 14:00",
+  "2026-11-07 16:00",
+  "2026-11-07 18:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -10674,7 +10820,9 @@
   "turn_in_the_sun_1.m4a",
   "duty_calls_2.m4a",
   "stake_out_2.m4a",
-  "cartier_1.m4a"
+  "cartier_1.m4a",
+  "fire_in_the_sky_1.m4a",
+  "the_road_to_mordor_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10972,11 +11120,11 @@
   "MIE-0ca11e56",
   "MIE-1f186d46",
   "MIE-a314909c",
-  "MIE-660996ae"
+  "MIE-660996ae",
+  "MIE-2d30e188",
+  "MIE-481bb733"
  ],
  "temi_recenti": [
-  "mentalita",
-  "mentalita",
   "mentalita",
   "mentalita",
   "imprenditore",
@@ -10984,9 +11132,138 @@
   "mentalita",
   "mentalita",
   "mentalita",
+  "mentalita",
+  "mentalita",
   "mentalita"
  ],
- "analisi": {},
+ "analisi": {
+  "1VwzOJlNFXwF38jB7i5hSwSazY9X3e8bD": {
+   "nome": "IMG_4928.mov",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-05T23:11+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-07T12:36:42.833Z",
+   "parlato": null,
+   "momento": null
+  },
+  "10aHpUrqQ4CV6nuv1NtWSkqHE0ct93MWt": {
+   "nome": "IMG_4930.mov",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-05T23:16+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-07T12:39:35.643Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1TVnVGYSV7g1eeT5SjH5TkiKb191AP0nv": {
+   "nome": "IMG_4931.mov",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-05T23:21+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-07T12:45:16.539Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1_OL65Qki6ySnmMPRN1qE4fdzvXGKG5DR": {
+   "nome": "IMG_4933.mov",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-05T23:24+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-07T12:54:38.882Z",
+   "parlato": null,
+   "momento": null
+  },
+  "14QoMtThefVorOVBLoNVdmgdTR_HwMKcm": {
+   "nome": "IMG_4935.mov",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-05T23:29+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-07T12:56:31.781Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1yQe1setSa76amvkKIjIjgwo2TwUPJVGR": {
+   "nome": "IMG_4939.mov",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-05T23:41+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-07T12:57:56.937Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1y-GlNvTfB-cxiYleE_jKZYeXXlmLxyBb": {
+   "nome": "IMG_4941.mov",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-05T23:45+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-07T12:58:51.952Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1QwBjSQ5XSgspU6LCqlkF6RLF0WVPttj0": {
+   "nome": "IMG_4942.mov",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-05T23:53+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-07T13:01:19.333Z",
+   "parlato": null,
+   "momento": null
+  },
+  "120-zV-uuyXnc76Vb0qhngDGOr0ak2EGs": {
+   "nome": "IMG_4944.mov",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-05T23:56+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-07T13:02:25.691Z",
+   "parlato": null,
+   "momento": null
+  }
+ },
  "pulizia": "2026-11-07",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -11428,11 +11705,14 @@
   "1FhrjVfAVErgd_8w9xxvmzHE3Yopn1VNm": {
    "usi": 1,
    "ultimo": "2026-11-07"
+  },
+  "1MQ4NH4oNcZ7HsOU1T-R9FPkQ1yy9pa2u": {
+   "usi": 1,
+   "ultimo": "2026-11-07",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "energia_03.flac",
-  "phonk_10.flac",
   "deciso_10.flac",
   "trap_11.flac",
   "phonk_02.flac",
@@ -11450,7 +11730,9 @@
   "phonk_16.flac",
   "deciso_05.flac",
   "energia_09.flac",
-  "phonk_08.flac"
+  "phonk_08.flac",
+  "drive_13.flac",
+  "trap_15.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11485,7 +11767,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "post",
+ "formato_ultimo": "dieci_foto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -11540,12 +11822,12 @@
   "1108285910189784",
   "1015255657240675",
   "1354603606762864",
-  "888162299407391"
+  "888162299407391",
+  "552615862069907",
+  "2242687643238503"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Patti Smith",
-  "UEFA, Tony Britten",
   "The Sheen",
   "Bryan Todd",
   "The Poison Oaks",
@@ -11553,11 +11835,11 @@
   "Adam Griffith",
   "bbox",
   "Blues369",
-  "Chela Rivas"
+  "Chela Rivas",
+  "Jumbo",
+  "Fellow Travelers"
  ],
  "ig_titoli_recenti": [
-  "brilliant",
-  "dream big",
   "inspired to shine",
   "brahms violin sonata 108 3 2",
   "big leagues",
@@ -11595,7 +11877,9 @@
   "knockout",
   "the running",
   "work hard dream big",
-  "winner"
+  "winner",
+  "unstoppable",
+  "family food fight"
  ],
  "ig_tendenze_riserva": [
   {
@@ -11613,10 +11897,17 @@
    "libreria": false
   },
   {
-   "audio_id": "888162299407391",
-   "title": "Winner",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 149760,
+   "audio_id": "9513789255356881",
+   "title": "Power On (Instrumental)",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 116549,
+   "libreria": true
+  },
+  {
+   "audio_id": "2242687643238503",
+   "title": "Family Food Fight",
+   "display_artist": "Fellow Travelers",
+   "duration_in_ms": 63576,
    "libreria": true
   }
  ]

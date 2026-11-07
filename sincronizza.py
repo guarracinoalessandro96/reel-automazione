@@ -7,7 +7,16 @@ Non copia mai i file segreti (client_secret*.json) ne' la cartella .git.
 import filecmp, os, shutil, sys
 
 SRC = os.path.dirname(os.path.abspath(__file__))
-DST = sys.argv[1] if len(sys.argv) > 1 else r"H:\Il mio Drive\Reel Alessandro\Automazione"
+# 7/11/2026 (riordino del Drive chiesto da Alessandro): "Automazione" passa in
+# "0. Reel Alessandro\Sistema (non toccare)"; si usa il posto in cui c'e' davvero (prima o dopo il riordino,
+# cartelle.percorso_h). Se non c'e' da nessuna parte non si ricrea: prima rinasceva da sola e si ricaricava tutto il
+# repository (~450 MB) anche dopo averla tolta apposta.
+try:
+    import cartelle
+    _AUTOMAZIONE = cartelle.percorso_h("Automazione")
+except Exception:            # cartelle.py mancante: come prima
+    _AUTOMAZIONE = r"H:\Il mio Drive\Reel Alessandro\Automazione"
+DST = sys.argv[1] if len(sys.argv) > 1 else _AUTOMAZIONE
 ESCLUDI_DIR = {".git", "_lavoro", "__pycache__"}
 ESCLUDI_FILE = ("client_secret",)
 
@@ -18,8 +27,9 @@ def da_copiare(rel):
 
 
 def main():
-    if not os.path.isdir(os.path.dirname(DST)):
-        print("Drive non trovato:", DST)
+    if not DST or not os.path.isdir(os.path.dirname(DST)):
+        print("Drive non trovato:", DST or "nessuna cartella 'Automazione' in 0. Reel Alessandro (o Reel Alessandro): "
+              "non copio niente")
         return
     copiati = rimossi = 0
     presenti = set()

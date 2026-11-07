@@ -73,9 +73,12 @@ def main():
     if not buone:
         print("Niente da aggiungere.")
         return
-    padre = api.files().get(fileId=s["DRIVE_FOLDER_DA_PUBBLICARE"], fields="parents").execute()["parents"][0]
-    fid = api.files().list(q=f"'{padre}' in parents and name = '{mie_citazioni.DOC}' and trashed = false",
-                           fields="files(id)").execute()["files"][0]["id"]
+    # 7/11/2026 (riordino del Drive): il Documento si trova come in mie_citazioni.leggi, anche dentro
+    # "Sistema (non toccare)"; se non c'e' non si scrive niente (prima un errore a meta')
+    fid = mie_citazioni.trova_doc(api, s["DRIVE_FOLDER_DA_PUBBLICARE"])
+    if not fid:
+        print(f"FERMO, non aggiungo niente: documento '{mie_citazioni.DOC}' non trovato su Drive")
+        return
     pulito = compatta(testo)
     nuovo = pulito + f"\n\n# --- {nota} ---\n" + "\n".join(buone) + "\n"
     api.files().update(fileId=fid, media_body=MediaIoBaseUpload(io.BytesIO(nuovo.encode("utf-8")),

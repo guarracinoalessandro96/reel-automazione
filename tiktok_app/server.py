@@ -20,7 +20,13 @@ SEGRETI = os.path.join(os.path.expanduser("~"), "reel-segreti.json")
 HERE = os.path.dirname(os.path.abspath(__file__))
 FRASI = os.path.join(os.path.dirname(HERE), "frasi.json")
 _args = [a for a in sys.argv[1:] if not a.startswith("--")]
-PRONTI = _args[0] if _args else r"H:\Il mio Drive\Reel Alessandro\Pronti"
+try:     # 7/11/2026 (riordino del Drive): "Pronti" puo' stare in "0. Reel Alessandro\Sistema (non toccare)"
+    sys.path.insert(0, os.path.dirname(HERE))
+    import cartelle
+    _PRONTI = cartelle.percorso_h("Pronti")
+except Exception:
+    _PRONTI = None
+PRONTI = _args[0] if _args else (_PRONTI or r"H:\Il mio Drive\Reel Alessandro\Pronti")
 SCOPES = "user.info.basic,video.upload,video.publish"
 API = "https://open.tiktokapis.com"
 

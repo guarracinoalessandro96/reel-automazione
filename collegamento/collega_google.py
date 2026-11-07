@@ -56,10 +56,25 @@ def main():
             body["parents"] = [parent]
         return drive.files().create(body=body, fields="id").execute()["id"]
 
-    root = cartella("Reel Alessandro")
-    s["DRIVE_FOLDER_DA_PUBBLICARE"] = cartella("Da pubblicare", root)
-    s["DRIVE_FOLDER_PUBBLICATI"] = cartella("Pubblicati", root)
-    s["DRIVE_FOLDER_PRONTI"] = cartella("Pronti", root)
+    # 7/11/2026 (riordino del Drive chiesto da Alessandro): la cartella principale si chiama "0. Reel Alessandro",
+    # "Da pubblicare" e' "Video da pubblicare", Pronti e Pubblicati stanno dentro "Sistema (non toccare)". Si cercano
+    # con i nomi nuovi e vecchi: le cartelle si creano solo se non ci sono da nessuna parte (prima, dopo il riordino,
+    # si sarebbe creato un albero nuovo vuoto e la macchina avrebbe lavorato su cartelle vuote).
+    sys.path.insert(0, os.path.dirname(HERE))
+    import cartelle
+
+    def elenca(q):
+        return drive.files().list(q=q, fields=f"files({cartelle.CAMPI})").execute().get("files", [])
+
+    def crea(nome, dentro):
+        return drive.files().create(body={"name": nome, "mimeType": cartelle.CARTELLA, "parents": [dentro]},
+                                    fields="id").execute()["id"]
+    radici = elenca("(" + " or ".join(f"name = '{n}'" for n in cartelle.nomi(cartelle.PRINCIPALE)) +
+                    f") and mimeType = '{cartelle.CARTELLA}' and trashed = false")
+    root = cartelle.scegli(radici, cartelle.PRINCIPALE) or cartella(cartelle.PRINCIPALE)
+    s["DRIVE_FOLDER_DA_PUBBLICARE"] = cartelle.trova(cartelle.VIDEO, root, elenca, crea)
+    s["DRIVE_FOLDER_PUBBLICATI"] = cartelle.trova("Pubblicati", root, elenca, crea)
+    s["DRIVE_FOLDER_PRONTI"] = cartelle.trova("Pronti", root, elenca, crea)
 
     yt = build("youtube", "v3", credentials=creds)
     ch = yt.channels().list(part="snippet", mine=True).execute().get("items", [])

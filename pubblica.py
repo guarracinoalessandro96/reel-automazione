@@ -19,6 +19,7 @@ import requests
 import overlay, audio_ig, avvisi
 import scena as scene_mod
 import mie_citazioni
+import cartelle              # 7/11/2026: dove stanno le cartelle su Drive, prima e dopo il riordino
 import orario
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -1221,22 +1222,35 @@ class Drive:
                                              "description": testo, "appProperties": props},
                                        media_body=MediaFileUpload(path, mimetype="video/mp4"), fields="id").execute()["id"]
 
-    def cartella(self, nome):
+    def cartella(self, nome, crea=True):
         """Id della cartella 'nome' accanto a 'Da pubblicare' (la crea se manca). 4/11/2026: ricordato per tutto il
-        giro (prima 2 chiamate a Drive ogni volta, ~15 per reel: ognuna un punto in cui la rete poteva cadere)."""
+        giro (prima 2 chiamate a Drive ogni volta, ~15 per reel: ognuna un punto in cui la rete poteva cadere).
+        7/11/2026 (riordino del Drive): anche dentro "Sistema (non toccare)" e col nome vecchio (cartelle.py), ricordato
+        col nome nuovo; crea=False: None se non c'e' (per le pulizie, che non devono far nascere cartelle)."""
         memo = self.__dict__.setdefault("_cartelle", {})
-        if nome not in memo:
-            memo[nome] = self._cartella(nome)
-        return memo[nome]
+        chiave = cartelle.nomi(nome)[0]
+        if chiave not in memo:
+            trovata = self._cartella(nome, crea)
+            if not trovata:
+                return None
+            memo[chiave] = trovata
+        return memo[chiave]
 
-    def _cartella(self, nome):
-        padre =self.api.files().get(fileId=ENV("DRIVE_FOLDER_DA_PUBBLICARE"), fields="parents").execute()["parents"][0]
-        q = (f"'{padre}' in parents and name = '{nome}' and trashed = false "
-             "and mimeType = 'application/vnd.google-apps.folder'")
-        found = self.api.files().list(q=q, fields="files(id)").execute().get("files", [])
-        return found[0]["id"] if found else self.api.files().create(
-            body={"name": nome, "parents": [padre], "mimeType": "application/vnd.google-apps.folder"},
-            fields="id").execute()["id"]
+    def _cartella(self, nome, crea=True):
+        # 7/11/2026 (Alessandro: "tutte le altre cartelle mettile in una sola cartella generica"): si cerca col nome
+        # nuovo e col vecchio, accanto a "Video da pubblicare" e dentro "Sistema (non toccare)"; si crea solo se non
+        # c'e' da nessuna parte, nel posto giusto. Prima si cercava solo accanto e, se la cartella era stata spostata,
+        # ne nasceva subito una nuova vuota (archivio vuoto, cartella TikTok vuota...).
+        padre = self.api.files().get(fileId=ENV("DRIVE_FOLDER_DA_PUBBLICARE"), fields="parents").execute()["parents"][0]
+
+        def elenca(q):
+            return self.api.files().list(q=q, fields=f"files({cartelle.CAMPI})", pageSize=100).execute().get("files", [])
+
+        def nuova(n, dentro):
+            log(f"Drive: la cartella '{n}' non c'era da nessuna parte: creata")
+            return self.api.files().create(body={"name": n, "parents": [dentro], "mimeType": cartelle.CARTELLA},
+                                           fields="id").execute()["id"]
+        return cartelle.trova(nome, padre, elenca, nuova if crea else None, avvisa=log)
 
     def carica_archivio(self, path, nome, meta):
         """Salva la clip (qualita' originale) nella cartella Archivio, con scena/fascia/ora nelle proprieta' del file
@@ -1349,22 +1363,17 @@ class Drive:
         self.api.files().update(fileId=file_id, body={"trashed": True}, fields="id").execute()
 
     def sposta_in_sottocartella(self, file_id, nome):
-        """Sposta un video da 'Da pubblicare' a una cartella accanto (creata se manca)."""
+        """Sposta un video da 'Da pubblicare' a una cartella accanto (creata se manca).
+        7/11/2026 (riordino del Drive): la cartella si trova come tutte le altre (cartelle.py): dopo il riordino
+        "Da controllare" sta (o nasce) dentro "Sistema (non toccare)"."""
         if self.local:
             dest = os.path.join(self.local, nome)
             os.makedirs(dest, exist_ok=True)
             shutil.move(os.path.join(self.local, "Da pubblicare", file_id), os.path.join(dest, file_id))
             return
         origine = ENV("DRIVE_FOLDER_DA_PUBBLICARE")
-        padre = self.api.files().get(fileId=origine, fields="parents").execute()["parents"][0]
-        nome_q = nome.replace("'", "\\'")
-        q = (f"'{padre}' in parents and name = '{nome_q}' and trashed = false "
-             "and mimeType = 'application/vnd.google-apps.folder'")
-        found = self.api.files().list(q=q, fields="files(id)").execute().get("files", [])
-        cartella = found[0]["id"] if found else self.api.files().create(
-            body={"name": nome, "parents": [padre], "mimeType": "application/vnd.google-apps.folder"},
-            fields="id").execute()["id"]
-        self.api.files().update(fileId=file_id, addParents=cartella, removeParents=origine, fields="id").execute()
+        self.api.files().update(fileId=file_id, addParents=self.cartella(nome), removeParents=origine,
+                                fields="id").execute()
 
     def archive(self, file_id, final_path, final_name, carica=True):
         """Dopo la pubblicazione: l'originale (se c'e' ancora in coda) va nel Cestino e, solo se serve riprovare
@@ -1395,9 +1404,10 @@ class Drive:
         n = 0
         cartelle_dopo = []
         for nome_c in (CARTELLA_DOPO, CARTELLA_TIKTOK):
-            try:
-                cartelle_dopo.append((self.cartella(nome_c),
-                                      datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=GIORNI_DOPO)))
+            try:     # 7/11/2026: crea=False, una cartella che non c'e' piu' non rinasce solo per essere pulita
+                c = self.cartella(nome_c, crea=False)
+                if c:
+                    cartelle_dopo.append((c, datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=GIORNI_DOPO)))
             except Exception:
                 pass
         for cartella, soglia in ((ENV("DRIVE_FOLDER_PRONTI"), limite),

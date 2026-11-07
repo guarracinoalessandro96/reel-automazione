@@ -3,8 +3,11 @@ Le citazioni scelte da Alessandro: Google Doc "Le mie citazioni" nella cartella 
 Una riga = una citazione. Righe che iniziano con # = note. Facoltativo: [palestra] [cibo] [lavoro] [famiglia] [amici]
 all'inizio della riga per legarla a un tipo di video. Senza etichetta il tema si indovina dalle parole.
 Usato da pubblica.py (sceglie la frase) e da salute.py (controlla che ne restino).
+7/11/2026 (riordino del Drive chiesto da Alessandro): il Documento puo' stare accanto a "Video da pubblicare" (prima)
+o dentro "Sistema (non toccare)" (dopo): si cerca in tutti e due i posti (cartelle.py), mai creato.
 """
 import hashlib, re
+import cartelle
 
 DOC = "Le mie citazioni"
 ETICHETTE = {"palestra": "palestra", "cibo": "dieta", "dieta": "dieta", "lavoro": "imprenditore", "famiglia": "famiglia",
@@ -16,15 +19,23 @@ PAROLE_TEMA = [("dieta", ("mangi", "cibo", "dieta", "nutri", "pasto", "fame")),
                ("imprenditore", ("business", "azienda", "client", "soldi", "impresa", "lavoro"))]
 
 
-def leggi(api, cartella_da_pubblicare):
-    """Testo del documento (cerca nella cartella che contiene 'Da pubblicare'). None se non c'e'."""
+def trova_doc(api, cartella_da_pubblicare):
+    """Id del documento: nella cartella che contiene 'Da pubblicare' o, dal riordino del 7/11/2026, dentro
+    'Sistema (non toccare)'. None se non c'e'. Lo usano leggi() e aggiungi_mie.py (che lo riscrive)."""
     padre = api.files().get(fileId=cartella_da_pubblicare, fields="parents").execute()["parents"][0]
-    q = (f"'{padre}' in parents and name = '{DOC}' and trashed = false "
-         "and mimeType = 'application/vnd.google-apps.document'")
-    found = api.files().list(q=q, fields="files(id)").execute().get("files", [])
-    if not found:
+
+    def elenca(q):
+        return api.files().list(q=q, fields=f"files({cartelle.CAMPI})").execute().get("files", [])
+    return cartelle.trova(DOC, padre, elenca, tipo=cartelle.DOCUMENTO)
+
+
+def leggi(api, cartella_da_pubblicare):
+    """Testo del documento (cerca nella cartella che contiene 'Da pubblicare' e in 'Sistema (non toccare)').
+    None se non c'e'."""
+    fid = trova_doc(api, cartella_da_pubblicare)
+    if not fid:
         return None
-    return api.files().export(fileId=found[0]["id"], mimeType="text/plain").execute().decode("utf-8")
+    return api.files().export(fileId=fid, mimeType="text/plain").execute().decode("utf-8")
 
 
 def frasi(testo, temi_per_scena=None):

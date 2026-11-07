@@ -23,7 +23,7 @@ except ImportError:          # lavoro di GitHub partito prima dell'aggiornamento
 if pillow_heif:
     pillow_heif.register_heif_opener()
 
-CARTELLA = "Foto della giornata"
+CARTELLA = "Foto da pubblicare"   # 7/11/2026 (riordino del Drive): prima "Foto della giornata", vale ancora (cartelle.py)
 USATE = "Foto usate"         # 5/11/2026: dove finiscono le foto gia' uscite in un reel
 STILE = "virale"             # 6/11/2026: "virale" (scelto da me su sua delega), "caldo" (prima) o "flash" (scartato)
 LATO_MINIMO = 700           # foto piu' piccole (miniature, screenshot ridotti) verrebbero sgranate nel reel
