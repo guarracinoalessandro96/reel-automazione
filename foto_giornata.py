@@ -335,6 +335,10 @@ def migliora(src, dst, margine=None):
     im, info = prepara(src, margine)
     media = sum(ImageOps.grayscale(im).resize((64, 64)).getdata()) / (64 * 64 * 255)
     gamma = max(0.75, min(1.25, math.log(LUCE) / math.log(max(media, 0.02))))
+    if getattr(ov, "STILE_CENTRO", False):
+        # 7/11/2026 (Alessandro: "da oggi le foto le faro' tutte con il filtro drammatico"): mai schiarire, la sua luce
+        # scura resta; le foto troppo chiare le scurisce poi il montaggio sotto la frase al centro
+        gamma = max(1.0, gamma)
     tabella = [round(255 * (i / 255) ** gamma) for i in range(256)]
     try:
         im = pulisci(im, info["iso"], media)
@@ -645,6 +649,12 @@ def _testo_libero(W, H, frase, visi, mappa, ganci=(0,)):
     prova come gancio la foto dopo in ganci (in ordine di voto). -> (scritta, indici delle foto nell'ordine del reel)
     6/11/2026 (integrazione): il VisoCoperto finale ha viso_gancio = True se la scritta copriva il viso del PRIMO gancio
     (la foto che anche make_foto metterebbe per prima): allora monta_rapide non ripiega su make_foto."""
+    if getattr(ov, "STILE_CENTRO", False):
+        # 7/11/2026 (Alessandro: "testo al centro anche se copre il viso"): la frase al centro su tutte le foto, nessuna
+        # foto tolta per il viso; l'ordine e' quello del primo gancio
+        img, _, _ = ov.build_testo_giallo(W, H, frase, [], mappa)
+        g = list(ganci)[0] if ganci else 0
+        return img, [g] + [i for i in range(len(visi)) if i != g]
     viso_gancio = False
     for k, g in enumerate(list(ganci)[:3]):
         ordine = [g] + [i for i in range(len(visi)) if i != g]
@@ -677,7 +687,7 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
     fps = ov.FPS_MULTI
     tmp = tempfile.mkdtemp()
     try:
-        visi, piccole = [], []
+        visi, piccole, luci = [], [], {}
         for i, f in enumerate(foto):
             p = os.path.join(tmp, f"r{i}.jpg")
             info = migliora(f, p, margine=1.0) or {}           # 9:16 esatto: nessuno spazio per lo scorrimento
@@ -702,17 +712,32 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
                 print("Foto rapide: visi per la scritta non cercati:", str(e)[:200])
             visi.append(v)
             piccole.append(bgr)
+            if getattr(ov, "STILE_CENTRO", False):     # 7/11/2026: luce nella zona della frase al centro
+                try:
+                    import stile_centro
+                    luci[i] = stile_centro.luce_immagine(im)
+                except Exception as e:
+                    print("Foto rapide: luce della foto non misurata:", str(e)[:150])
         testo, ordine = _testo_libero(W, H, frase, visi, ov.mappa_dettagli(piccole), ganci)
         durate, ritmo_info = tempi_rapide(musiche[0] if musiche else None, len(ordine))
         if len(durate) < len(ordine):        # le foto in piu' restano in coda: il gancio, poi sparse sulla giornata
             ordine = ordine[:1] + _sparse(ordine[1:], len(durate) - 1)
         quadri = [int(round(d * fps)) for d in durate]       # fotogrammi di ogni foto (a fotogrammi esatti)
         DUR = round(sum(quadri) / fps, 3)
-        cmd, catena = [ov.FFMPEG, "-y", "-v", "error"], []
+        cmd, catena, scuriti = [ov.FFMPEG, "-y", "-v", "error"], [], []
         for k, (i, nf) in enumerate(zip(ordine, quadri)):
             # foto ferma: pochi fotogrammi letti (2 al secondo), fps li ripete
             cmd += ["-loop", "1", "-framerate", "2", "-t", f"{nf / fps + 0.6:.3f}", "-i", os.path.join(tmp, f"r{i}.jpg")]
-            catena.append(f"[{k}:v]scale={W}:{H},setsar=1,format=yuv420p,fps={fps},"
+            scuro = ""
+            if i in luci:      # 7/11/2026: foto troppo chiara sotto la frase al centro -> un po' piu' scura
+                try:
+                    import stile_centro
+                    m = stile_centro.fattore(luci[i])
+                    scuro = stile_centro.filtro(m)
+                    scuriti.append((1 - m, luci[i]))
+                except Exception as e:
+                    print("Foto rapide: foto non scurita:", str(e)[:150])
+            catena.append(f"[{k}:v]scale={W}:{H},setsar=1,format=yuv420p,{scuro + ',' if scuro else ''}fps={fps},"
                           f"tpad=stop_mode=clone:stop_duration=1,trim=end_frame={nf},setpts=PTS-STARTPTS[c{k}]")
         n = len(ordine)
         p_testo = os.path.join(tmp, "testo.png")
@@ -739,8 +764,16 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
         r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore", timeout=ov.TEMPO_MAX_MONTAGGIO)
         if r.returncode != 0 or not os.path.exists(dst) or os.path.getsize(dst) < 50_000:
             raise RuntimeError("foto_rapide: " + r.stderr[-400:])
-        return {"formato": "foto_rapide", "durata": DUR, "musica": os.path.basename(musiche[0]) if musiche else None,
+        info = {"formato": "foto_rapide", "durata": DUR, "musica": os.path.basename(musiche[0]) if musiche else None,
                 "stacchi": n, "testi": 1, "ritmo": ritmo_info, "foto_tolte": len(foto) - n, "tenute": ordine}
+        if getattr(ov, "STILE_CENTRO", False) and ov.ULTIMO_STILE == "centro_serif":
+            try:     # 7/11/2026: montaggio.stile_centro (carattere, corpo, righe, quanto e' scurita la foto piu' chiara)
+                import stile_centro
+                info["stile_centro"] = stile_centro.dati(max([s for s, _ in scuriti] or [0.0]),
+                                                         max([l for _, l in scuriti] or [0.0]) if scuriti else None)
+            except Exception as e:
+                print("Foto rapide: dati dello stile al centro non scritti:", str(e)[:150])
+        return info
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 

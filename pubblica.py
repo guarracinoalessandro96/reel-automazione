@@ -531,6 +531,10 @@ TUTTO_10S = True
 # views medie contro 522 di dieci); resta solo come ultimo ripiego in monta_dieci.
 FORMATI_10 = ("dieci", "dieci_due", "taglio1", "taglio2", "taglio3", "intero", "cinema", "post", "rallenty", "loop",
               "giornata")   # 6/11/2026: la sua giornata, un momento diverso per scena (monta_giornata)
+if overlay.STILE_CENTRO:
+    # 7/11/2026 (Alessandro: "scene di video o foto e frase al centro"): cinema e post mettono la frase su una fascia
+    # fuori dal video, il contrario del nuovo stile: escono dal giro (la prova degli altri formati va avanti al 16/11)
+    FORMATI_10 = tuple(f for f in FORMATI_10 if f not in ("cinema", "post"))
 # 6/11/2026 (Alessandro: "sfruttare diversi tipi di format per capire quali video possano funzionare, poi faremo solo
 # quelle"): fino a FORMATI_PROVA_FINO tutti i formati da 10 s con la STESSA probabilita' (niente pesi vecchi), mai lo
 # stesso due volte di fila; poi report.py/l'agente delle 18:30 tengono i migliori
@@ -666,6 +670,7 @@ def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, ultim
     # 6/11/2026 (revisione): se la scritta coprirebbe il viso, lo STESSO video esce in 'cinema' o 'post' (la frase sta
     # sulla fascia, fuori dal video: mai sul viso). Prima si passava a dieci_broll con 4 clip d'archivio a caso: il suo
     # video spariva, e dopo 2 prove l'ultimo montaggio partiva senza controllo del viso
+    # 7/11/2026: con overlay.STILE_CENTRO la frase va al centro anche sul viso, VisoCoperto non arriva: qui non si passa
     ripiego = random.choice([f for f in ("cinema", "post") if f != ultimo] or ["cinema"])
     log(f"Scritta sul viso con {formato}: stesse clip in '{ripiego}', con la frase fuori dal video")
     # 6/11/2026 (integrazione, revisione della giornata): con la fascia la frase non e' la scritta in prova: lo stile del
@@ -3024,7 +3029,9 @@ def main():
     try:
         serie = etichetta_serie(slot)
         frase = dict(frase, serie=serie)
-        if str(slot)[:10] < FORMATI_PROVA_FINO:
+        # 7/11/2026: con lo stile al centro la prova a meta' delle scritte finisce (decisione di Alessandro): ogni reel
+        # ha montaggio.scritta = centro_serif e montaggio.stile_centro (carattere, corpo, righe, quanto e' scurito)
+        if str(slot)[:10] < FORMATI_PROVA_FINO and not overlay.STILE_CENTRO:
             overlay.STILE_SCRITTA = random.Random(f"scritta {slot}").choice(SCRITTE_PROVA)
         overlay.ULTIMO_STILE = None
         info, formato = None, scegli_formato(slot, state, frase, an, spinto)
