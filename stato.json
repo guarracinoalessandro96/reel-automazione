@@ -10396,7 +10396,9 @@
      "ok": true,
      "id": "18137244364734889",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -10426,7 +10428,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "e6G62V6vcp0"
+     "id": "e6G62V6vcp0",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10437,11 +10440,45 @@
    },
    "spinto": true,
    "testo": "Un giorno mi chiederanno come ho fatto. Risponderò: non mi sono mai fermato."
+  },
+  {
+   "quando": "2026-11-07T09:00",
+   "slot": "2026-11-07 10:00",
+   "video": "IMG_4305.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-1f186d46",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "cinema",
+    "durata": 10.0,
+    "musica": "duty_calls_2.m4a",
+    "stacchi": 1,
+    "testi": 0,
+    "scene_dal_video": 1,
+    "musica_meta": "deciso_05.flac",
+    "musica_instagram": "The Running (Instrumental) - bbox [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "J75r6v3prCw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17930431149186387",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "La sveglia presto non è una punizione. È il prezzo della vita che ho scelto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-30 10:00",
   "2026-10-30 12:00",
   "2026-10-30 14:00",
   "2026-10-30 16:00",
@@ -10520,7 +10557,8 @@
   "2026-11-06 22:00",
   "2026-11-07 00:00",
   "2026-11-07 06:00",
-  "2026-11-07 08:00"
+  "2026-11-07 08:00",
+  "2026-11-07 10:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -10549,7 +10587,8 @@
   "sweaty_staredown_3.m4a",
   "taking_flight_1.m4a",
   "delirium_3.m4a",
-  "turn_in_the_sun_1.m4a"
+  "turn_in_the_sun_1.m4a",
+  "duty_calls_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10844,7 +10883,8 @@
   "MIE-e9e8a3c2",
   "MIE-bbcd32a3",
   "MIE-52b3207a",
-  "MIE-0ca11e56"
+  "MIE-0ca11e56",
+  "MIE-1f186d46"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10853,8 +10893,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -11266,8 +11306,8 @@
    "ultimo": "2026-11-06"
   },
   "1pHaSrw5l22--hj6mculM4Wx5XnAw4U-3": {
-   "usi": 2,
-   "ultimo": "2026-10-30"
+   "usi": 3,
+   "ultimo": "2026-11-07"
   },
   "1XySlsRReGeTwlbVlIctzRJDJBUZ2yHi0": {
    "usi": 1,
@@ -11303,7 +11343,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_01.flac",
   "phonk_01.flac",
   "trap_01.flac",
   "energia_03.flac",
@@ -11322,7 +11361,8 @@
   "phonk_12.flac",
   "drive_12.flac",
   "trap_12.flac",
-  "phonk_16.flac"
+  "phonk_16.flac",
+  "deciso_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11357,7 +11397,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "loop",
+ "formato_ultimo": "cinema",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -11409,11 +11449,11 @@
   "580920710907743",
   "8196916917049261",
   "2173371459664032",
-  "1108285910189784"
+  "1108285910189784",
+  "1015255657240675"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Giusy Ferreri",
   "a.s. kullar, Harry Pannu",
   "Kayhin",
   "Patti Smith",
@@ -11422,10 +11462,10 @@
   "Bryan Todd",
   "The Poison Oaks",
   "Trout Recording",
-  "Adam Griffith"
+  "Adam Griffith",
+  "bbox"
  ],
  "ig_titoli_recenti": [
-  "catch the spirit",
   "wildflowers",
   "go go go",
   "brilliant",
@@ -11464,7 +11504,8 @@
   "hero",
   "legends in my head",
   "fighting back a flight of stairs",
-  "knockout"
+  "knockout",
+  "the running"
  ],
  "ig_tendenze_riserva": [
   {
@@ -11480,6 +11521,20 @@
    "display_artist": "Patti Smith",
    "duration_in_ms": 310400,
    "libreria": false
+  },
+  {
+   "audio_id": "1015255657240675",
+   "title": "The Running (Instrumental)",
+   "display_artist": "bbox",
+   "duration_in_ms": 179320,
+   "libreria": true
+  },
+  {
+   "audio_id": "566336025028596",
+   "title": "Fire",
+   "display_artist": "Tony Dark Eyes",
+   "duration_in_ms": 162580,
+   "libreria": true
   }
  ]
 }
