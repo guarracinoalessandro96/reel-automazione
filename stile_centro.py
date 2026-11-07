@@ -44,13 +44,15 @@ ALONE = (0.45, 0.28)                 # alone larghissimo e leggero sotto le lett
 P_DEBOLE, P_ORFANA, P_SOLA, P_CORTA, P_RIGA_IN_PIU = 0.6, 1.0, 0.35, 0.2, 0.3
 B_FRASE, B_VIRGOLA = 0.15, 0.05      # bonus: a capo dopo la fine di una frase / dopo una virgola
 B_PRIMA = 0.10                       # bonus: la riga dopo comincia con "perche'", "che", "e", "ma"...
+RIDUCI = (0.94, 0.88)                # corpi un po' piu' piccoli provati per un a capo migliore
+COSTO_CORPO = 0.02                   # costo di ogni 1% di corpo in meno (6% = 0,12: meno di un a capo brutto, 0,6)
 PRIMA_DI = set("perché che e ed ma se quando come dove mentre finché anche però quindi perciò poi oppure per "
                "because and but when".split())
 # parole con cui una riga non dovrebbe finire (vanno con la parola dopo)
 DEBOLI = set("il lo la i gli le un uno una di a da in con su per tra fra e ed o od ma che se non ne mi ti si ci vi "
              "del dello della dei degli delle al allo alla ai agli alle dal dallo dalla dai dagli dalle nel nello "
              "nella nei negli nelle sul sullo sulla sui sugli sulle col coi mio mia miei mie tuo tua tuoi tue suo sua "
-             "suoi sue nostro nostra nostri nostre vostro vostra vostri vostre come quando dove perché cosa chi "
+             "suoi sue nostro nostra nostri nostre vostro vostra vostri vostre come quando dove perché chi "
              "più meno molto tanto troppo ogni questo questa questi queste quel quella quei quelle "
              "the a an of to in on for and or but with my your".split())
 _FINE_FRASE = re.compile(r"[.!?…]['’\"”»)]*$")
@@ -135,15 +137,20 @@ def _orfane(righe):
 
 
 def righe_equilibrate(testo, larghezza, max_px, righe_in_piu=2):
-    """Le righe della frase (vedi _dp). Se la frase ha piu' frasi, si prova anche con ogni frase a capo (si legge come
-    la si dice: "Non posso arrendermi. / Mamma e papa'..."): vince se costa al massimo una riga in piu' e non lascia
-    piu' parole sole."""
+    """Le righe della frase (vedi righe_e_costo)."""
+    return righe_e_costo(testo, larghezza, max_px, righe_in_piu)[1]
+
+
+def righe_e_costo(testo, larghezza, max_px, righe_in_piu=2):
+    """(costo, righe) della frase (vedi _dp). Se la frase ha piu' frasi, si prova anche con ogni frase a capo (si legge
+    come la si dice: "Non posso arrendermi. / Mamma e papa'..."): vince se costa al massimo una riga in piu' e non
+    lascia piu' parole sole."""
     a = _dp(testo, larghezza, max_px, righe_in_piu)
     pezzi = _frasi(testo)
     if len(pezzi) < 2:
         return a
     b = _dp("\n".join(pezzi), larghezza, max_px, righe_in_piu)
-    return b if len(b) <= len(a) + 1 and _orfane(b) <= _orfane(a) else a
+    return b if len(b[1]) <= len(a[1]) + 1 and _orfane(b[1]) <= _orfane(a[1]) else a
 
 
 def _dp(testo, larghezza, max_px, righe_in_piu=2):
@@ -160,7 +167,7 @@ def _dp(testo, larghezza, max_px, righe_in_piu=2):
             forzato += [False] * (len(ws) - 1) + [True]
     N = len(parole)
     if N == 0:
-        return []
+        return 0.0, []
     L = {}
 
     def w(i, j):                     # larghezza delle parole i..j-1 su una riga
@@ -226,7 +233,7 @@ def _dp(testo, larghezza, max_px, righe_in_piu=2):
                 tagli.append((i, j))
                 j = i
             migliore = (costo, [" ".join(parole[i:j]) for i, j in reversed(tagli)])
-    return migliore[1] if migliore else [" ".join(parole)]
+    return migliore if migliore else (9.0, [" ".join(parole)])
 
 
 # ------------------------------------------------------------------ impaginazione e disegno
@@ -262,7 +269,16 @@ def impagina(W, H, testo):
                     lista, corpo = False, corpo_per(testo)
                 continue
         else:
-            righe = righe_equilibrate(testo, lun, max_px)
+            # anche un corpo un filo piu' piccolo (mai sotto CORPO_MIN) se toglie un a capo brutto (riga che finisce
+            # con "la", "che"...) o una riga di troppo: vince il costo dell'a capo + COSTO_CORPO per 1% di corpo in meno
+            prove = []
+            for k in [k for k in (1.0,) + RIDUCI if corpo * k >= min(corpo, CORPO_MIN) - 1e-9]:
+                pk = max(8, int(round(W * corpo * k)))
+                fk = _font(pk, corpo * k < PIENO_SOTTO)
+                c, rr = righe_e_costo(testo, fk.getlength, max_px)
+                prove.append((c + COSTO_CORPO * (1 - k) * 100, -k, pk, fk, rr))
+            _, meno_k, px, font, righe = min(prove, key=lambda x: (x[0], x[1]))   # a parita' il corpo piu' grande
+            corpo, lun = corpo * -meno_k, font.getlength
         lh = px * INTERLINEA
         _, cima, _, _ = font.getbbox("H", anchor="ls")             # cima delle maiuscole (dalla linea di base, < 0)
         _, _, _, fondo = font.getbbox("gjpqy", anchor="ls")         # fondo delle discendenti (> 0)
