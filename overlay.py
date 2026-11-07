@@ -114,6 +114,113 @@ def _overlap(a, b):
     return max(0, min(a[2], b[2]) - max(a[0], b[0])) * max(0, min(a[3], b[3]) - max(a[1], b[1]))
 
 
+# 7/11/2026 (studio della sera, modifiche 1 e 7): prova a meta' sull'APERTURA, lato deciso da pubblica.lato_prova per
+# ogni reel (montaggio.prove.apertura). "viso" = esattamente come prima (fase 1); "azione" = si parte con lui in
+# movimento e dove il viso da' punti conta solo un viso VERO. Studio del 6/11: il primo piano fermo del viso fa scorrere
+# via di piu' su Instagram (69,3% contro 62,3%, p=0,02) e detect_faces trova "un viso" in 12 fotogrammi su 20 senza visi
+APERTURA = "viso"
+PRIMO_PESO, PRIMO_PESO_S = 2.5, 1.5   # azione: i fotogrammi dei primi 1,5 s di una finestra pesano 2,5 volte
+MIGLIORI_N, MOTO_PASSO = 3, 0.5       # azione: delle 3 finestre migliori vince quella che parte in movimento (0 -> +0,5 s)
+VISO_VERO_QUOTA = 0.6                 # viso vero: quasi nello stesso punto in 3 fotogrammi su 5 (il 60% di quelli che ci sono)
+PELLE_VERA, PELLE_OCCHIO = 0.7, 0.4   # ...e pelle al centro come foto_giornata.PELLE, oppure un occhio con un po' di pelle
+PRIMO_PIANO_ALTO = 0.30               # primo piano: riquadro di detect_faces (con i margini) alto il 30% = viso al 17%
+_OCCHI = cv2.CascadeClassifier(os.path.join(cv2.data.haarcascades, "haarcascade_eye.xml"))   # gia' dentro OpenCV
+
+
+def azione():
+    """True sul lato "azione" della prova dell'apertura."""
+    return APERTURA == "azione"
+
+
+def _pelle_viso(img, b):
+    """Quota di pelle al centro del riquadro b (frazioni, con i margini di detect_faces), come foto_giornata.visi_foto."""
+    h, w = img.shape[:2]
+    bw, bh = b[2] - b[0], b[3] - b[1]
+    x0, x1 = int(max(0.0, b[0] + bw * 0.25) * w), int(min(1.0, b[2] - bw * 0.25) * w)
+    y0, y1 = int(max(0.0, b[1] + bh * 0.3) * h), int(min(1.0, b[3] - bh * 0.3) * h)
+    if x1 <= x0 or y1 <= y0:
+        return 0.0
+    ycc = cv2.cvtColor(img[y0:y1, x0:x1], cv2.COLOR_BGR2YCrCb)
+    pelle = ((ycc[..., 0] > 40) & (ycc[..., 1] >= 135) & (ycc[..., 1] <= 180) & (ycc[..., 2] >= 80)
+             & (ycc[..., 2] <= 135))
+    return float(pelle.mean())
+
+
+def _occhio_viso(img, b):
+    """True se nella parte alta del viso b c'e' almeno un occhio (come foto_giornata._occhio: viso portato a 240 px)."""
+    h, w = img.shape[:2]
+    x0, y0, x1, y1 = int(max(0.0, b[0]) * w), int(max(0.0, b[1]) * h), int(min(1.0, b[2]) * w), int(min(1.0, b[3]) * h)
+    if x1 - x0 < 24 or y1 - y0 < 24 or _OCCHI.empty():
+        return False
+    alto = max(48, round((y1 - y0) * 240 / (x1 - x0)))
+    r = cv2.equalizeHist(cv2.resize(cv2.cvtColor(img[y0:y1, x0:x1], cv2.COLOR_BGR2GRAY), (240, alto)))
+    return len(_OCCHI.detectMultiScale(r[int(alto * 0.15):int(alto * 0.6), 40:200], 1.1, 4,
+                                       minSize=(20, 20), maxSize=(80, 80))) > 0
+
+
+def _vicini(a, b):
+    """Due riquadri quasi nello stesso punto: centri piu' vicini di meta' della grandezza del piu' grande."""
+    return (abs((a[0] + a[2]) - (b[0] + b[2])) / 2 < 0.5 * max(a[2] - a[0], b[2] - b[0])
+            and abs((a[1] + a[3]) - (b[1] + b[3])) / 2 < 0.5 * max(a[3] - a[1], b[3] - b[1]))
+
+
+def visi_veri(frames, boxes=None, raggio=None, fermi=True):
+    """7/11/2026 (studio della sera, modifica 7): per ogni fotogramma i riquadri dei visi VERI. Un riquadro di
+    detect_faces conta solo se un riquadro quasi nello stesso punto c'e' in almeno 3 fotogrammi su 5 (il 60% di quelli
+    disponibili; raggio = quanti fotogrammi prima e dopo guardare, None = tutti) e se ha pelle al centro (PELLE_VERA)
+    oppure un occhio con almeno PELLE_OCCHIO di pelle (le lettere della frase e i dischi non hanno pelle). Solo dove il
+    viso DA' PUNTI: per la regola "testo mai sul viso" restano tutti i riquadri (un falso viso sposta solo la scritta).
+    7/11/2026 (revisione): fermi=False per i fotogrammi RADI (segmento_migliore, scegli_copertina, giornata: 0,4-1 s
+    l'uno dall'altro). Li' un viso che si muove (lui che cammina in sala) non resta nello stesso punto e veniva scartato,
+    il primo piano fermo invece passava: sul lato "azione" vinceva il viso fermo, il contrario della prova. Sui
+    fotogrammi radi un riquadro conta se ha pelle al centro (PELLE_VERA) E un occhio: il petto (pelle 0,99) e i piatti
+    non hanno occhi. Lo stesso punto si chiede solo sui fotogrammi fitti (0,25 s: formati_nuovi._apertura_da)."""
+    import math
+    boxes = [detect_faces([f]) for f in frames] if boxes is None else boxes
+    out = []
+    for i, (f, bs) in enumerate(zip(frames, boxes)):
+        lo, hi = (0, len(boxes)) if raggio is None else (max(0, i - raggio), min(len(boxes), i + raggio + 1))
+        serve = max(1, min(3, math.ceil(VISO_VERO_QUOTA * (hi - lo) - 1e-9)))
+        veri = []
+        for b in bs:
+            if not fermi:
+                if _pelle_viso(f, b) >= PELLE_VERA and _occhio_viso(f, b):
+                    veri.append(b)
+                continue
+            if sum(1 for j in range(lo, hi) if any(_vicini(b, c) for c in boxes[j])) < serve:
+                continue
+            pelle = _pelle_viso(f, b)
+            if pelle >= PELLE_VERA or (pelle >= PELLE_OCCHIO and _occhio_viso(f, b)):
+                veri.append(b)
+        out.append(veri)
+    return out
+
+
+def grigi_da(src, t, durata, fps=4, lato=(90, 160), timeout=45):
+    """7/11/2026 (studio della sera): fotogrammi grigi piccoli (90x160, nel taglio 9:16) da t per `durata` s, `fps` al
+    secondo, con UNA lettura di ffmpeg e senza file (mai PNG a piena risoluzione: ~19 s l'uno sul PC)."""
+    w, h = lato
+    r = subprocess.run([FFMPEG, "-v", "error", "-ss", f"{max(0.0, t):.3f}", "-t", f"{durata:.3f}", "-i", src, "-vf",
+                        f"fps={fps},scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},format=gray",
+                        "-f", "rawvideo", "-"], capture_output=True, timeout=timeout)
+    n = len(r.stdout) // (w * h)
+    return [np.frombuffer(r.stdout[i * w * h:(i + 1) * w * h], dtype=np.uint8).reshape(h, w).astype(np.float32)
+            for i in range(n)]
+
+
+def moto_da(src, t, passo=MOTO_PASSO):
+    """Movimento da t: differenza media (0-255) tra il fotogramma a t e quello a t + passo, grigi 90x160 (come lo studio
+    del 6/11, che misura da 0 a +1 s). None se non si legge."""
+    fps = 4 if abs(passo * 4 - round(passo * 4)) < 1e-6 else 10
+    # 7/11/2026 (prova sul PC): il filtro fps non da' il fotogramma che cade proprio alla fine della lettura (1,05 s a 4
+    # al secondo = 4 fotogrammi, 0-0,75 s): si legge 0,3 s in piu' e si prende quello a +passo
+    g = grigi_da(src, t, passo + 0.3, fps)
+    k = int(round(passo * fps))
+    if len(g) <= k:
+        return None
+    return float(np.abs(g[k] - g[0]).mean())
+
+
 def choose_position(block_h, faces):
     # 20/10/2026: SEMPRE prima in alto (dati di 98 Short: testo in alto mediana 988 views, in basso 485). Prima, con il
     # viso nella meta' alta si partiva dal basso anche quando sopra il viso c'era spazio. Il viso non si copre mai:
@@ -225,6 +332,11 @@ FONT_CLASSICO = os.path.join(_DIR, "font", "Inter-ExtraBold.ttf")      # Google 
 # pareti gialle della sua palestra si confondeva e il giallo ovunque non metteva in risalto niente.
 # Gli altri stili restano pronti in STILI_SCRITTA: per tornare a quello di prima basta STILE_SCRITTA = "giallo_classico".
 STILE_SCRITTA = "bianco_parola_gialla"
+# 7/11/2026 (Alessandro: "testo al centro del video anche se copre il viso", "copia esattamente lo stile di questo
+# screenshot"): ogni frase bianca, in un serif da libro, al CENTRO del video anche sopra il viso, ferma dal primo
+# fotogramma (stile_centro.py); il video troppo chiaro sotto la frase un po' piu' scuro, mai schiarito. La prova a meta'
+# delle scritte (SCRITTE_PROVA) finisce qui. False = tutto come prima (scritta lontano dal viso, STILE_SCRITTA).
+STILE_CENTRO = True
 GIALLO = (255, 214, 10, 255)     # giallo caldo delle parole chiave (il 255,255,0 di prima sembrava "fluo" sulla pelle)
 FONT_GIALLO = os.path.join(_DIR, "font", "TikTokSans-ExtraBold.ttf")   # istanza statica (peso 800) del font variabile
 DIM_GIALLO = 0.047               # grandezza rispetto alla larghezza (TikTok Sans e' piu' largo di Inter: stesso ingombro)
@@ -563,10 +675,29 @@ def _scritta(W, H, text, faces, mappa, st):
 ULTIMO_STILE = None     # 6/11/2026: lo stile usato davvero dall'ultima scritta (montaggio.scritta in stato.json)
 
 
+def _scritta_centro(W, H, text):
+    """7/11/2026: la frase nello stile al centro (stile_centro.scritta); None se non riesce (allora lo stile di prima,
+    cosi' il reel esce comunque)."""
+    global ULTIMO_STILE
+    try:
+        import stile_centro
+        risultato = stile_centro.scritta(W, H, text)
+        ULTIMO_STILE = stile_centro.NOME_STILE
+        return risultato
+    except Exception as e:
+        print("Scritta al centro non riuscita, uso lo stile di prima:", str(e)[:200], flush=True)
+        return None
+
+
 def build_testo_giallo(W, H, text, faces, mappa=None):
     """Scritta dei reel da 10 s nello stile STILE_SCRITTA, nella posizione senza visi e con meno dettagli.
-    Restituisce (immagine, y in frazione, punti). Se il nuovo stile fallisce: lo stile di prima, cosi' il reel esce."""
+    Restituisce (immagine, y in frazione, punti). Se il nuovo stile fallisce: lo stile di prima, cosi' il reel esce.
+    7/11/2026: con STILE_CENTRO la frase al centro (anche sul viso: visi e dettagli non contano piu')."""
     global ULTIMO_STILE
+    if STILE_CENTRO:
+        risultato = _scritta_centro(W, H, text)
+        if risultato:
+            return risultato
     st = STILI_SCRITTA.get(STILE_SCRITTA)
     if st:
         try:
@@ -599,7 +730,13 @@ def ha_audio(path):
 
 
 def build_overlay(W, H, text, faces, stile=None, autore=None, serie=None):
-    """serie: piccola etichetta sopra la frase (es. "GIORNO 12 / 365"), la "serie" che da' un motivo per seguire."""
+    """serie: piccola etichetta sopra la frase (es. "GIORNO 12 / 365"), la "serie" che da' un motivo per seguire.
+    7/11/2026: con STILE_CENTRO la frase al centro come nei reel da 10 s (niente etichetta ne' autore: dal 1/11 la serie
+    e' in descrizione e gli autori non si mostrano)."""
+    if STILE_CENTRO and text and text.strip():
+        risultato = _scritta_centro(W, H, text)
+        if risultato:
+            return risultato
     stile = stile or STILE
     fsize = int(W * DIM_TESTO * (1.12 if stile == "contorno" else 1.0))
     font = ImageFont.truetype(FONT, fsize)
@@ -705,7 +842,15 @@ def segmento_migliore(src, seconds, vf=None, durata=None, a_caso=False):
         return segmento(seconds, durata)
     tempi = [seconds * (i + 0.5) / len(frames) for i in range(len(frames))]
     piccoli = [cv2.cvtColor(cv2.resize(f, (90, 160)), cv2.COLOR_BGR2GRAY).astype(np.float32) for f in frames]
-    viso = [1.0 if detect_faces([f]) else 0.0 for f in frames]
+    in_azione = azione() and not a_caso    # 7/11/2026 (studio della sera): lato "azione" della prova dell'apertura
+    if in_azione:
+        try:     # solo un viso VERO da' punti (7/11, revisione: fotogrammi radi, pelle E occhio, anche se si muove)
+            viso = [1.0 if v else 0.0 for v in visi_veri(frames, fermi=False)]
+        except Exception as e:
+            print("visi veri non calcolati (conta ogni viso, come prima):", str(e)[:120])
+            viso = [1.0 if detect_faces([f]) else 0.0 for f in frames]
+    else:
+        viso = [1.0 if detect_faces([f]) else 0.0 for f in frames]
     nitido = [float(cv2.Laplacian(g, cv2.CV_32F).var()) for g in piccoli]
     moto = [0.0] + [float(np.abs(piccoli[i] - piccoli[i - 1]).mean()) for i in range(1, len(piccoli))]
     norm = lambda v: [x / (max(v) or 1) for x in v]
@@ -715,9 +860,13 @@ def segmento_migliore(src, seconds, vf=None, durata=None, a_caso=False):
     finestre = []
     s = 0.0
     while s + durata + LOOP_SFUMATURA <= seconds:
-        dentro = [p for t, p in zip(tempi, punti) if s <= t <= s + durata]
-        if dentro:
-            v = sum(dentro) / len(dentro)
+        if in_azione:    # 7/11/2026: i primi PRIMO_PESO_S secondi della finestra pesano PRIMO_PESO volte (il primo secondo)
+            pesi = [(PRIMO_PESO if t < s + PRIMO_PESO_S else 1.0, p) for t, p in zip(tempi, punti) if s <= t <= s + durata]
+            v = sum(w * p for w, p in pesi) / sum(w for w, _ in pesi) if pesi else None
+        else:
+            dentro = [p for t, p in zip(tempi, punti) if s <= t <= s + durata]
+            v = sum(dentro) / len(dentro) if dentro else None
+        if v is not None:
             finestre.append((v, s))
             if migliore is None or v > migliore + 0.02:      # a parita' resta il pezzo piu' vicino all'inizio
                 migliore, inizio = v, s
@@ -725,6 +874,20 @@ def segmento_migliore(src, seconds, vf=None, durata=None, a_caso=False):
     if a_caso and finestre:
         buone = [x for v, x in finestre if v >= migliore - 0.25]
         inizio = random.choice(buone)
+    if in_azione and len(finestre) > 1:
+        # 7/11/2026 (studio della sera, modifica 1c): delle MIGLIORI_N finestre migliori vince quella che PARTE in
+        # movimento (differenza tra l'inizio e +0,5 s, 2 fotogrammi grigi piccoli per finestra); se non si legge, la migliore
+        try:
+            prime = sorted(finestre, key=lambda x: (-x[0], x[1]))[:MIGLIORI_N]
+            mossi = {}
+            for _, x in prime:          # alla prima lettura non riuscita ci si ferma
+                mossi[x] = moto_da(src, x)
+                if mossi[x] is None:
+                    break
+            if len(mossi) == len(prime) and all(m is not None for m in mossi.values()):
+                inizio = max(prime, key=lambda x: (mossi[x[1]], x[0], -x[1]))[1]
+        except Exception as e:
+            print("movimento d'inizio non letto (resta la finestra migliore):", str(e)[:120])
     return (round(inizio, 2), durata) if inizio is not None else segmento(seconds, durata)
 
 
@@ -738,12 +901,18 @@ def segmento_archivio(seconds, durata=None):
 def scegli_copertina(frames, length):
     """Momento migliore per la copertina (ms dall'inizio del reel): nitido, ben esposto e con il viso visibile."""
     best, best_s = 0, -1e9
+    veri = None
+    if azione():     # 7/11/2026 (studio della sera, modifica 7): sul lato "azione" da' punti solo un viso vero
+        try:     # 7/11/2026 (revisione): fotogrammi radi (~0,6 s): pelle E occhio, anche un viso che si muove
+            veri = visi_veri(frames, fermi=False)
+        except Exception as e:
+            print("copertina: visi veri non calcolati (conta ogni viso, come prima):", str(e)[:120])
     for i, f in enumerate(frames):
         small = cv2.resize(f, (360, int(360 * f.shape[0] / f.shape[1])))
         gray = cv2.cvtColor(small, cv2.COLOR_BGR2GRAY)
         nitidezza = min(cv2.Laplacian(gray, cv2.CV_64F).var() / 300.0, 3.0)
         luce = 1.0 - abs(gray.mean() / 255.0 - 0.5) * 2          # 1 = esposizione media ideale
-        viso = 1.5 if detect_faces([f]) else 0.0
+        viso = (1.5 if veri[i] else 0.0) if veri is not None else 1.5 if detect_faces([f]) else 0.0
         s = nitidezza + luce + viso
         if s > best_s:
             best, best_s = i, s
@@ -890,13 +1059,15 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     png2, t2 = None, None
     if parlato:                     # il testo sono i sottotitoli: in alto solo la serie
         overlay, y_frac, score = build_overlay_serie(W, H, serie), 0.08, 0
-    elif formato.get("seconda"):      # GANCIO: prima parte subito, la seconda compare dopo t secondi
+    elif formato.get("seconda") and not STILE_CENTRO:   # GANCIO: prima parte subito, la seconda dopo t secondi
         ov1, ov2, y_frac, score = build_overlay_2tempi(W, H, hook, formato["seconda"], faces, serie)
         png2 = os.path.join(tempfile.gettempdir(), "overlay_reel_2.png")
         ov2.save(png2)
         overlay, t2 = ov1, min(float(formato.get("t", 3.0)), length - 1.5)
     else:
-        overlay, y_frac, score = build_overlay(W, H, hook, faces, autore=autore, serie=serie)
+        # 7/11/2026: con lo stile al centro anche il GANCIO ha la frase intera e ferma dal primo fotogramma
+        testo = f"{hook} {formato['seconda']}" if formato.get("seconda") else hook
+        overlay, y_frac, score = build_overlay(W, H, testo, faces, autore=autore, serie=serie)
     png = os.path.join(tempfile.gettempdir(), "overlay_reel.png")
     overlay.save(png)
     cmd = [FFMPEG, "-y", "-v", "error", "-display_rotation", "0", "-ss", f"{start:.3f}", "-i", src, "-i", png]
@@ -927,8 +1098,29 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
         tipo, motivo = grade.scena(misure, nome)
         if scena_rilevata == "palestra" and tipo != "palestra":   # riconosciuta dalle immagini: profilo palestra
             tipo, motivo = "palestra", "scena riconosciuta: palestra"
-        chain.append(grade.build_filter(misure, tipo))
+        filtro_colore = grade.build_filter(misure, tipo)
+        if STILE_CENTRO:      # 7/11/2026 (Alessandro: luce bassa voluta): l'esposizione mai verso l'alto
+            filtro_colore = re.sub(r"eq=gamma=([\d.]+)", lambda x: f"eq=gamma={min(1.0, float(x.group(1))):.3f}",
+                                   filtro_colore)
+        chain.append(filtro_colore)
         grade_info = grade.descrivi(misure, tipo, motivo)
+    centro = None
+    if STILE_CENTRO and colore and not parlato and ULTIMO_STILE == "centro_serif":
+        # 7/11/2026: sotto la frase al centro il video troppo chiaro diventa un po' piu' scuro (stile_centro); con il
+        # colore: se ffmpeg non riesce, il piano di riserva di make_video (senza colore) monta anche senza scurimento
+        try:
+            import stile_centro
+            luce, tutto, alte = stile_centro.misura(frames)
+            sfuma = stile_centro.sfumatura_per([luce])
+            m = stile_centro.fattore(luce, tutto, sfuma, alte)
+            if stile_centro.filtro(m):
+                chain += ["format=yuv420p", stile_centro.filtro(m)]
+            if sfuma:        # l'ombra morbida dietro la frase, dentro l'immagine della scritta
+                overlay = stile_centro.con_sfumatura(overlay, sfuma)
+                overlay.save(png)
+            centro = stile_centro.dati(1 - m, luce, sfuma)
+        except Exception as e:
+            print("Video non scurito (resta com'era):", str(e)[:200], flush=True)
     base = f"[0:v]{','.join(chain)}[base];[base]" if chain else "[0:v]"
     # LOOP PERFETTO (16/10/2026): si usa il pezzo da X a length+X e negli ultimi X secondi ci si sfuma sopra l'inizio
     # (fotogrammi 0..X): l'ultimo fotogramma coincide con il primo, quando lo Short ricomincia non si vede lo stacco.
@@ -993,11 +1185,14 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     if preview:   # anteprima presa dal reel finito (colori e testo come verranno pubblicati)
         subprocess.run([FFMPEG, "-y", "-v", "error", "-ss", f"{length / 2:.2f}", "-i", dst, "-frames:v", "1",
                         "-vf", f"scale={W // 3}:-2", preview], capture_output=True)
-    return {"testo": "alto" if y_frac < 0.4 else "basso", "volti": len(faces),
+    info = {"testo": "alto" if y_frac < 0.4 else "basso", "volti": len(faces),
             "tocca_viso": bool(score > 0), "hdr": hdr, "risoluzione": f"{W}x{H}", "taglio": f"da {start:.1f}s a {start + length:.1f}s",
             "durata": round(length, 2), "inizio": round(start, 2), "colore": grade_info, "copertina_ms": scegli_copertina(frames, length),
             "musica": os.path.basename(music) if music else None, "formato": formato.get("nome") or "frase",
             "audio_originale": vol_orig or None}
+    if centro:          # 7/11/2026: frase al centro (montaggio.stile_centro)
+        info.update(testo="centro", stile_centro=centro)
+    return info
 
 
 # ------------------------------------------------------------------ formato "REGOLE" (esperimento dal 17/10/2026)
