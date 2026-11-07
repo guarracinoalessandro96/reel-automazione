@@ -12,6 +12,8 @@ il prima possibile quale format funziona"). Tutti in 4K 60 come gli altri, con l
   video, rallentatore, 10 s avanti-indietro che riparte senza stacco
 
 make_sequenza() e' il motore comune: pezzi di video tagliati netti + testi che compaiono a tempo + musica.
+7/11/2026 (overlay.STILE_CENTRO): la frase sempre al centro, bianca, anche sul viso (stile_centro.py); niente piu'
+VisoCoperto, quindi niente ripieghi cinema/post/fascia; scene troppo chiare un po' piu' scure, mai schiarite.
 """
 import functools, os, re, shutil, subprocess, tempfile, time
 import overlay as ov
@@ -691,6 +693,21 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
             pezzi = _riguarda(pezzi, durate, W, H, 5 if controlla_viso else 3, dieci)
         except Exception as e:
             print("Scene spostate non riguardate (restano i visi di prima):", e)
+    scuriti, sfuma = [], 0.0   # 7/11/2026: (quanto piu' scura, luce misurata) di ogni scena; ombra dietro la frase
+    if ov.STILE_CENTRO and (velocita or indietro):
+        # 7/11/2026: rallenty e loop sono lo stesso momento che continua: una sola luce per tutte le scene, se no al
+        # passaggio al rallentatore (o all'indietro) il video cambierebbe luminosita' di colpo
+        for k in ("luce", "luce_tutto", "luce_alte"):
+            luci = [p.get(k) for p in pezzi if p.get(k) is not None]
+            if luci:
+                for p in pezzi:
+                    p[k] = sum(luci) / len(luci)
+    if ov.STILE_CENTRO:
+        try:     # 7/11/2026: l'ombra morbida dietro la frase, una per tutto il video (dalla scena piu' chiara)
+            import stile_centro
+            sfuma = stile_centro.sfumatura_per([p.get("luce") for p in pezzi])
+        except Exception as e:
+            print("Ombra dietro la frase non calcolata (niente ombra):", str(e)[:150])
     for i, seg in enumerate(durate):
         v = float(velocita[i]) if velocita else 1.0
         sorgente = seg * v
@@ -708,11 +725,25 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
                   f"crop={wv}:{hv}:{_riquadro_video(volti[-1], wv, hv)}", "setsar=1"]
         else:
             f += [f"scale={W}:{H}:force_original_aspect_ratio=increase", f"crop={W}:{H}", "setsar=1"]
+        scuro = ""
+        if ov.STILE_CENTRO:
+            # 7/11/2026 (Alessandro: "se il video e' troppo luminoso scuriscilo un po'"): mai schiarire; la scena troppo
+            # chiara (zona della frase o tutto il fotogramma) piu' scura (stile_centro.fattore), ognuna per conto suo
+            schiarisci = ""
+            try:
+                import stile_centro
+                m = stile_centro.fattore(pezzi[i].get("luce"), pezzi[i].get("luce_tutto"), sfuma,
+                                         pezzi[i].get("luce_alte"))
+                scuro = stile_centro.filtro(m)
+                scuriti.append((1 - m, pezzi[i].get("luce")))
+            except Exception as e:
+                print("Scena non scurita (resta com'era):", str(e)[:150])
         f += [schiarisci, ov.LOOK] if dieci and not sua and schiarisci else [ov.LOOK] if dieci and not sua else []
         if v != 1.0:   # rallentatore: i fotogrammi si allungano, poi fps li porta a 60 (niente filtri pesanti)
             f += [f"setpts=(PTS-STARTPTS)/{v:.3f}"]
-        f += [f"fps={ov.FPS_MULTI}", "format=yuv420p", "settb=AVTB", f"fps={ov.FPS_MULTI}",
-              "tpad=stop_mode=clone:stop_duration=1", f"trim=0:{seg:.3f}", "setpts=PTS-STARTPTS"]
+        f += [f"fps={ov.FPS_MULTI}", "format=yuv420p"] + ([scuro] if scuro else []) + [
+              "settb=AVTB", f"fps={ov.FPS_MULTI}", "tpad=stop_mode=clone:stop_duration=1", f"trim=0:{seg:.3f}",
+              "setpts=PTS-STARTPTS"]
         if indietro and indietro[i]:               # loop: lo stesso pezzo al contrario (ingresso a parte, niente split)
             f += ["reverse", "setpts=PTS-STARTPTS"]
         catena.append(f"[{i}:v]{','.join(f)}[c{i}]")
@@ -733,8 +764,16 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
             img, _, _ = ov.build_testo_giallo(W, H, t, sotto, sum(piene) / len(piene) if piene else None)
         else:
             img, _, _ = ov.build_overlay(W, H, t, sotto, serie=serie)
-        if controlla_viso and viso_coperto(img, sotto, W, H):
+        # 7/11/2026 (Alessandro: "testo al centro anche se copre il viso, non ci sono problemi"): con lo stile al centro
+        # il viso sotto la frase va bene, niente piu' VisoCoperto (ne' i ripieghi cinema/post/fascia che ne seguivano)
+        if controlla_viso and not ov.STILE_CENTRO and viso_coperto(img, sotto, W, H):
             raise VisoCoperto(t)
+        if sfuma and ov.ULTIMO_STILE == "centro_serif":
+            try:     # 7/11/2026: sotto la frase l'ombra rotonda morbidissima (nessun bordo): il bianco risalta sempre
+                import stile_centro
+                img = stile_centro.con_sfumatura(img, sfuma)
+            except Exception as e:
+                print("Ombra dietro la frase non messa:", str(e)[:150])
         p = os.path.join(tmp, f"t{k}.png")
         img.save(p)
         cmd += ["-i", p]
@@ -765,6 +804,17 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
             "-preset", "medium" if DUR <= 10 else "veryfast", "-crf", "18", "-profile:v", "high",
             "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-movflags", "+faststart", dst]
     r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore", timeout=ov.TEMPO_MAX_MONTAGGIO)
+    scuro_tolto = False
+    if r.returncode != 0 and ov.STILE_CENTRO:
+        try:     # 7/11/2026: se il montaggio non riesce con lo scurimento, lo stesso montaggio senza (il reel esce)
+            import stile_centro
+            cmd2 = stile_centro.senza_scuro(cmd)
+            if cmd2:
+                print("Montaggio non riuscito con lo scurimento, riprovo senza:", r.stderr[-200:])
+                r, scuro_tolto = subprocess.run(cmd2, capture_output=True, text=True, errors="ignore",
+                                                timeout=ov.TEMPO_MAX_MONTAGGIO), True
+        except Exception as e:
+            print("Ripiego senza scurimento non riuscito:", str(e)[:150])
     shutil.rmtree(tmp, ignore_errors=True)
     if r.returncode != 0 or not os.path.exists(dst) or os.path.getsize(dst) < 50_000:
         raise RuntimeError(f"{nome}: " + r.stderr[-400:])
@@ -798,6 +848,14 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         info["velocita"] = min(velocita)
     if controlli and CONTROLLO:  # 6/11/2026: cosa hanno cambiato i controlli del primo secondo e del viso (analisi 16/11)
         info.update(CONTROLLO)
+    if ov.STILE_CENTRO and testi and ov.ULTIMO_STILE == "centro_serif":
+        try:     # 7/11/2026: carattere, corpo, righe e quanto e' stata scurita la scena piu' chiara (tabella del 16/11)
+            import stile_centro
+            luci = [l for _, l in scuriti if l is not None]
+            info["stile_centro"] = stile_centro.dati(0.0 if scuro_tolto else max([s for s, _ in scuriti] or [0.0]),
+                                                     max(luci) if luci else None, sfuma)
+        except Exception as e:
+            print("Dati dello stile al centro non scritti:", str(e)[:150])
     return info
 
 
@@ -919,6 +977,9 @@ def _guarda(p, sorgente, W, H, quanti, dieci, controlli, lato=None):
         p["nero"] = bool(controlli) and _pezzo_nero(fr)
         if fr:
             p["guardato"] = (round(float(p["inizio"]), 2), round(float(sorgente), 2))
+        if ov.STILE_CENTRO:      # 7/11/2026: luce nella zona della frase e di tutto il fotogramma (scene troppo chiare)
+            import stile_centro
+            p["luce"], p["luce_tutto"], p["luce_alte"] = stile_centro.misura(fr)
     except Exception:
         pass
     return p
@@ -1558,7 +1619,9 @@ def make_giornata(clips, frase, dst, musiche=(), ore=None, scene=None, controlla
     come ripiego (ripiego_da): con 5-7 scene e i primi piani la fascia e' il caso normale, e contati come "ripiego
     giornata" questi reel non sarebbero mai entrati nel confronto dei formati (report.py pesa i formati con almeno 6
     reel). nomi = i nomi delle clip (paralleli a clips) per montaggio.clip_scene: le clip usate come scene; viste =
-    le clip gia' uscite di recente (piano_giornata)."""
+    le clip gia' uscite di recente (piano_giornata).
+    7/11/2026 (overlay.STILE_CENTRO): la frase al centro anche sul viso, VisoCoperto non arriva piu' e la fascia non si
+    usa (resta solo per STILE_CENTRO = False)."""
     import random
     CONTROLLO.clear()     # 6/11/2026 (integrazione): niente dati dei controlli di un altro montaggio nel suo stato.json
     musiche = [m for m in musiche if m and os.path.exists(m)]

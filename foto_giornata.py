@@ -8,7 +8,7 @@ Le foto arrivano anche dal bot Telegram (ricevi_telegram.py); quelle uscite vann
 senza foto nuove si riusano quelle di una giornata gia' uscita ("se non ci sono foto in coda... quelle vecchie").
 """
 import datetime, math, os, shutil, subprocess, tempfile
-from PIL import Image, ImageEnhance, ImageFilter, ImageOps
+from PIL import Image, ImageChops, ImageEnhance, ImageFilter, ImageOps
 import formati_nuovi as fn
 import overlay as ov
 try:                         # 5/11/2026: le foto dell'iPhone arrivano in HEIC, che Pillow da solo non apre
@@ -30,6 +30,10 @@ LATO_MINIMO = 700           # foto piu' piccole (miniature, screenshot ridotti) 
 MINIMO, MASSIMO = 4, 6       # foto della stessa giornata in un reel
 MARGINE = 1.08               # 8% in piu' della larghezza: lo spazio del movimento
 LUCE = 0.46                  # luminosita' media a cui portare la foto
+# 7/11/2026 (revisione; Alessandro: "da oggi le foto le faro' tutte con il filtro drammatico"): con lo stile al centro
+# una foto gia' scura (luce media fino a 0,30, o zona della frase gia' all'obiettivo dello scurimento) resta come l'ha
+# scattata: solo taglio, pulizia della grana e nitidezza leggera (niente autocontrast ne' stile "virale")
+SCURA_FINO = 0.30
 STACCO = 3                   # secondi minimi tra due foto dello stesso reel: delle raffiche se ne prende una sola
 NITIDEZZA = 0.35             # sotto questa frazione della foto piu' nitida del gruppo la foto e' mossa e si scarta
 # 6/11/2026 (Alessandro: "implementa come puoi migliorare le mie immagini"):
@@ -335,13 +339,27 @@ def migliora(src, dst, margine=None):
     im, info = prepara(src, margine)
     media = sum(ImageOps.grayscale(im).resize((64, 64)).getdata()) / (64 * 64 * 255)
     gamma = max(0.75, min(1.25, math.log(LUCE) / math.log(max(media, 0.02))))
+    centro = getattr(ov, "STILE_CENTRO", False)
+    if centro:
+        # 7/11/2026 (Alessandro: "da oggi le foto le faro' tutte con il filtro drammatico"): mai schiarire, la sua luce
+        # scura resta; le foto troppo chiare le scurisce poi il montaggio sotto la frase al centro
+        gamma = max(1.0, gamma)
     tabella = [round(255 * (i / 255) ** gamma) for i in range(256)]
     try:
         im = pulisci(im, info["iso"], media)
     except Exception as e:
         print("Foto: pulizia della grana non riuscita:", e)
+    if centro and _gia_scura(im, media):
+        # 7/11/2026 (revisione: autocontrast e stile "virale" stiravano le foto scure verso il bianco, sulle foto di
+        # prova rese "drammatiche" luci alte +24-39% e colore +29-65%): la foto scura resta com'e' scattata
+        im.filter(ImageFilter.UnsharpMask(radius=1.3, percent=40, threshold=3)).save(dst, quality=96)
+        return info
     im = im.point(tabella * 3)
-    im = ImageOps.autocontrast(im, cutoff=0.5, preserve_tone=True)
+    if centro:
+        # 7/11/2026 (revisione): l'autocontrast solo dove scurisce (nero piu' pieno), mai dove schiarirebbe
+        im = ImageChops.darker(im, ImageOps.autocontrast(im, cutoff=0.5, preserve_tone=True))
+    else:
+        im = ImageOps.autocontrast(im, cutoff=0.5, preserve_tone=True)
     if STILE == "flash":
         flash(im).save(dst, quality=96)
         return info
@@ -356,6 +374,20 @@ def migliora(src, dst, margine=None):
     im = im.filter(ImageFilter.UnsharpMask(radius=2, percent=40, threshold=3))
     im.save(dst, quality=96)
     return info
+
+
+def _gia_scura(im, media):
+    """7/11/2026 (stile al centro): True se la foto e' gia' scura (luce media fino a SCURA_FINO, o zona della frase gia'
+    all'obiettivo dello scurimento del montaggio): resta come l'ha scattata. Se la misura non riesce: False (la
+    sistemazione di prima, che con lo stile al centro non schiarisce: il montaggio poi la scurisce)."""
+    if media <= SCURA_FINO:
+        return True
+    try:
+        import stile_centro
+        return stile_centro.misura_immagine(im)[0] <= stile_centro.OBIETTIVO_TESTO
+    except Exception as e:
+        print("Foto: luce della zona della frase non misurata:", str(e)[:150])
+        return False
 
 
 def virale(im):
@@ -645,6 +677,12 @@ def _testo_libero(W, H, frase, visi, mappa, ganci=(0,)):
     prova come gancio la foto dopo in ganci (in ordine di voto). -> (scritta, indici delle foto nell'ordine del reel)
     6/11/2026 (integrazione): il VisoCoperto finale ha viso_gancio = True se la scritta copriva il viso del PRIMO gancio
     (la foto che anche make_foto metterebbe per prima): allora monta_rapide non ripiega su make_foto."""
+    if getattr(ov, "STILE_CENTRO", False):
+        # 7/11/2026 (Alessandro: "testo al centro anche se copre il viso"): la frase al centro su tutte le foto, nessuna
+        # foto tolta per il viso; l'ordine e' quello del primo gancio
+        img, _, _ = ov.build_testo_giallo(W, H, frase, [], mappa)
+        g = list(ganci)[0] if ganci else 0
+        return img, [g] + [i for i in range(len(visi)) if i != g]
     viso_gancio = False
     for k, g in enumerate(list(ganci)[:3]):
         ordine = [g] + [i for i in range(len(visi)) if i != g]
@@ -677,7 +715,7 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
     fps = ov.FPS_MULTI
     tmp = tempfile.mkdtemp()
     try:
-        visi, piccole = [], []
+        visi, piccole, luci = [], [], {}
         for i, f in enumerate(foto):
             p = os.path.join(tmp, f"r{i}.jpg")
             info = migliora(f, p, margine=1.0) or {}           # 9:16 esatto: nessuno spazio per lo scorrimento
@@ -702,17 +740,41 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
                 print("Foto rapide: visi per la scritta non cercati:", str(e)[:200])
             visi.append(v)
             piccole.append(bgr)
+            if getattr(ov, "STILE_CENTRO", False):     # 7/11/2026: luce nella zona della frase e di tutta la foto
+                try:
+                    import stile_centro
+                    luci[i] = stile_centro.misura_immagine(im)
+                except Exception as e:
+                    print("Foto rapide: luce della foto non misurata:", str(e)[:150])
         testo, ordine = _testo_libero(W, H, frase, visi, ov.mappa_dettagli(piccole), ganci)
+        sfuma = 0.0
+        if luci and ov.ULTIMO_STILE == "centro_serif":
+            try:     # 7/11/2026: l'ombra morbida dietro la frase (dalla foto piu' chiara), dentro l'immagine della scritta
+                import stile_centro
+                sfuma = stile_centro.sfumatura_per([v[0] for v in luci.values()])
+                testo = stile_centro.con_sfumatura(testo, sfuma)
+            except Exception as e:
+                sfuma = 0.0
+                print("Foto rapide: ombra dietro la frase non messa:", str(e)[:150])
         durate, ritmo_info = tempi_rapide(musiche[0] if musiche else None, len(ordine))
         if len(durate) < len(ordine):        # le foto in piu' restano in coda: il gancio, poi sparse sulla giornata
             ordine = ordine[:1] + _sparse(ordine[1:], len(durate) - 1)
         quadri = [int(round(d * fps)) for d in durate]       # fotogrammi di ogni foto (a fotogrammi esatti)
         DUR = round(sum(quadri) / fps, 3)
-        cmd, catena = [ov.FFMPEG, "-y", "-v", "error"], []
+        cmd, catena, scuriti = [ov.FFMPEG, "-y", "-v", "error"], [], []
         for k, (i, nf) in enumerate(zip(ordine, quadri)):
             # foto ferma: pochi fotogrammi letti (2 al secondo), fps li ripete
             cmd += ["-loop", "1", "-framerate", "2", "-t", f"{nf / fps + 0.6:.3f}", "-i", os.path.join(tmp, f"r{i}.jpg")]
-            catena.append(f"[{k}:v]scale={W}:{H},setsar=1,format=yuv420p,fps={fps},"
+            scuro = ""
+            if i in luci:      # 7/11/2026: foto troppo chiara sotto la frase al centro -> un po' piu' scura
+                try:
+                    import stile_centro
+                    m = stile_centro.fattore(luci[i][0], luci[i][1], sfuma, luci[i][2])
+                    scuro = stile_centro.filtro(m)
+                    scuriti.append((1 - m, luci[i][0]))
+                except Exception as e:
+                    print("Foto rapide: foto non scurita:", str(e)[:150])
+            catena.append(f"[{k}:v]scale={W}:{H},setsar=1,format=yuv420p,{scuro + ',' if scuro else ''}fps={fps},"
                           f"tpad=stop_mode=clone:stop_duration=1,trim=end_frame={nf},setpts=PTS-STARTPTS[c{k}]")
         n = len(ordine)
         p_testo = os.path.join(tmp, "testo.png")
@@ -737,10 +799,30 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
                 "-crf", "18", "-profile:v", "high", "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
                 "-movflags", "+faststart", dst]
         r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore", timeout=ov.TEMPO_MAX_MONTAGGIO)
+        if r.returncode != 0 and scuriti:
+            try:     # 7/11/2026: se non riesce con lo scurimento, lo stesso montaggio senza (il reel esce)
+                import stile_centro
+                cmd2 = stile_centro.senza_scuro(cmd)
+                if cmd2:
+                    print("Foto rapide: montaggio non riuscito con lo scurimento, riprovo senza:", r.stderr[-200:])
+                    r = subprocess.run(cmd2, capture_output=True, text=True, errors="ignore",
+                                       timeout=ov.TEMPO_MAX_MONTAGGIO)
+                    scuriti = [(0.0, l) for _, l in scuriti]
+            except Exception as e:
+                print("Foto rapide: ripiego senza scurimento non riuscito:", str(e)[:150])
         if r.returncode != 0 or not os.path.exists(dst) or os.path.getsize(dst) < 50_000:
             raise RuntimeError("foto_rapide: " + r.stderr[-400:])
-        return {"formato": "foto_rapide", "durata": DUR, "musica": os.path.basename(musiche[0]) if musiche else None,
+        info = {"formato": "foto_rapide", "durata": DUR, "musica": os.path.basename(musiche[0]) if musiche else None,
                 "stacchi": n, "testi": 1, "ritmo": ritmo_info, "foto_tolte": len(foto) - n, "tenute": ordine}
+        if getattr(ov, "STILE_CENTRO", False) and ov.ULTIMO_STILE == "centro_serif":
+            try:     # 7/11/2026: montaggio.stile_centro (carattere, corpo, righe, quanto e' scurita la foto piu' chiara)
+                import stile_centro
+                info["stile_centro"] = stile_centro.dati(max([s for s, _ in scuriti] or [0.0]),
+                                                         max([l for _, l in scuriti] or [0.0]) if scuriti else None,
+                                                         sfuma)
+            except Exception as e:
+                print("Foto rapide: dati dello stile al centro non scritti:", str(e)[:150])
+        return info
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
