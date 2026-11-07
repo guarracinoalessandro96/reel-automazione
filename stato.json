@@ -10389,7 +10389,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "Dd7UK2KJ2F4"
+     "id": "Dd7UK2KJ2F4",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10400,11 +10401,46 @@
    },
    "spinto": true,
    "testo": "Mancano meno di due mesi alla fine dell'anno. Abbastanza per farlo diventare l'anno della svolta."
+  },
+  {
+   "quando": "2026-11-07T07:00",
+   "slot": "2026-11-07 08:00",
+   "video": "IMG_4286.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-0ca11e56",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "loop",
+    "durata": 10.0,
+    "musica": "turn_in_the_sun_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "scritta": "giallo_classico",
+    "musica_meta": "phonk_16.flac",
+    "musica_instagram": "Knockout - Adam Griffith"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "e6G62V6vcp0"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18135987811779333",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Un giorno mi chiederanno come ho fatto. Risponderò: non mi sono mai fermato."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-30 08:00",
   "2026-10-30 10:00",
   "2026-10-30 12:00",
   "2026-10-30 14:00",
@@ -10483,7 +10519,8 @@
   "2026-11-06 20:00",
   "2026-11-06 22:00",
   "2026-11-07 00:00",
-  "2026-11-07 06:00"
+  "2026-11-07 06:00",
+  "2026-11-07 08:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -10511,7 +10548,8 @@
   "break_ya_neck_1.m4a",
   "sweaty_staredown_3.m4a",
   "taking_flight_1.m4a",
-  "delirium_3.m4a"
+  "delirium_3.m4a",
+  "turn_in_the_sun_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10805,7 +10843,8 @@
   "MIE-8d6a1b9d",
   "MIE-e9e8a3c2",
   "MIE-bbcd32a3",
-  "MIE-52b3207a"
+  "MIE-52b3207a",
+  "MIE-0ca11e56"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10815,8 +10854,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -11235,8 +11274,8 @@
    "ultimo": "2026-10-29"
   },
   "1Dvdi1PK-wTKhXcDuM6STB2Mq6FUojSqR": {
-   "usi": 2,
-   "ultimo": "2026-10-30"
+   "usi": 3,
+   "ultimo": "2026-11-07"
   },
   "1-wXfeOgo9aVpjZBQjqJopT9L84ZIWVcr": {
    "usi": 2,
@@ -11264,7 +11303,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_07.flac",
   "deciso_01.flac",
   "phonk_01.flac",
   "trap_01.flac",
@@ -11283,7 +11321,8 @@
   "deciso_06.flac",
   "phonk_12.flac",
   "drive_12.flac",
-  "trap_12.flac"
+  "trap_12.flac",
+  "phonk_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11318,7 +11357,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "rallenty",
+ "formato_ultimo": "loop",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -11369,11 +11408,11 @@
   "2373852472923170",
   "580920710907743",
   "8196916917049261",
-  "2173371459664032"
+  "2173371459664032",
+  "1108285910189784"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "HUMBE",
   "Giusy Ferreri",
   "a.s. kullar, Harry Pannu",
   "Kayhin",
@@ -11382,10 +11421,10 @@
   "The Sheen",
   "Bryan Todd",
   "The Poison Oaks",
-  "Trout Recording"
+  "Trout Recording",
+  "Adam Griffith"
  ],
  "ig_titoli_recenti": [
-  "inceptum",
   "catch the spirit",
   "wildflowers",
   "go go go",
@@ -11424,7 +11463,8 @@
   "don t give up on me",
   "hero",
   "legends in my head",
-  "fighting back a flight of stairs"
+  "fighting back a flight of stairs",
+  "knockout"
  ],
  "ig_tendenze_riserva": [
   {
@@ -11440,27 +11480,6 @@
    "display_artist": "Patti Smith",
    "duration_in_ms": 310400,
    "libreria": false
-  },
-  {
-   "audio_id": "1127106596130760",
-   "title": "Move Ur Body (Instrumental)",
-   "display_artist": "half.cool",
-   "duration_in_ms": 143018,
-   "libreria": true
-  },
-  {
-   "audio_id": "2173371459664032",
-   "title": "Fighting Back A Flight Of Stairs",
-   "display_artist": "Trout Recording",
-   "duration_in_ms": 175107,
-   "libreria": true
-  },
-  {
-   "audio_id": "2113684212909650",
-   "title": "Only Stronger",
-   "display_artist": "Auralux",
-   "duration_in_ms": 63210,
-   "libreria": true
   }
  ]
 }
