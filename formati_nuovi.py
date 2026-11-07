@@ -580,6 +580,13 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         except Exception as e:
             print("Scelta della prima scena non riuscita, ordine di prima:", e)
     scuriti = []       # 7/11/2026: (quanto piu' scura, luce misurata) di ogni scena (montaggio.stile_centro)
+    if ov.STILE_CENTRO and (velocita or indietro):
+        # 7/11/2026: rallenty e loop sono lo stesso momento che continua: una sola luce per tutte le scene, se no al
+        # passaggio al rallentatore (o all'indietro) il video cambierebbe luminosita' di colpo
+        luci = [p.get("luce") for p in pezzi if p.get("luce") is not None]
+        if luci:
+            for p in pezzi:
+                p["luce"] = sum(luci) / len(luci)
     for i, seg in enumerate(durate):
         v = float(velocita[i]) if velocita else 1.0
         sorgente = seg * v
