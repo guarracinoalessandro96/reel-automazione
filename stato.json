@@ -10316,7 +10316,9 @@
      "ok": true,
      "id": "18640212769010963",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -10345,22 +10347,63 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "we3Ij-m3BMg"
+     "id": "we3Ij-m3BMg",
+     "controllo": [
+      "video non trovato su YouTube"
+     ]
     },
     "instagram": {
      "ok": true,
      "id": "18133912169507327",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
    "testo": "La svolta che cerco si nasconde proprio nel lavoro che ho meno voglia di fare."
+  },
+  {
+   "quando": "2026-11-07T05:00",
+   "slot": "2026-11-07 06:00",
+   "video": "IMG_4928.MOV",
+   "md5": "a1a16cdd757e047ed811a12bc281277b",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-07T01:22+01:00",
+   "frase": "MIE-52b3207a",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "rallenty",
+    "durata": 10.0,
+    "musica": "delirium_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "velocita": 0.5,
+    "scritta": "giallo_classico",
+    "musica_meta": "trap_12.flac",
+    "musica_instagram": "Fighting Back A Flight Of Stairs - Trout Recording [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Dd7UK2KJ2F4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18137244364734889",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Mancano meno di due mesi alla fine dell'anno. Abbastanza per farlo diventare l'anno della svolta."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-30 06:00",
   "2026-10-30 08:00",
   "2026-10-30 10:00",
   "2026-10-30 12:00",
@@ -10439,7 +10482,8 @@
   "2026-11-06 18:00",
   "2026-11-06 20:00",
   "2026-11-06 22:00",
-  "2026-11-07 00:00"
+  "2026-11-07 00:00",
+  "2026-11-07 06:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -10466,7 +10510,8 @@
   "whoop_1.m4a",
   "break_ya_neck_1.m4a",
   "sweaty_staredown_3.m4a",
-  "taking_flight_1.m4a"
+  "taking_flight_1.m4a",
+  "delirium_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10759,7 +10804,8 @@
   "MIE-83d0883b",
   "MIE-8d6a1b9d",
   "MIE-e9e8a3c2",
-  "MIE-bbcd32a3"
+  "MIE-bbcd32a3",
+  "MIE-52b3207a"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10770,11 +10816,11 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
-  "imprenditore"
+  "imprenditore",
+  "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-06",
+ "pulizia": "2026-11-07",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -11211,10 +11257,13 @@
   "1N4fn6HE4aPH6EdZzDx8nkg0AsbsCT23E": {
    "usi": 1,
    "ultimo": "2026-11-04"
+  },
+  "1FhrjVfAVErgd_8w9xxvmzHE3Yopn1VNm": {
+   "usi": 1,
+   "ultimo": "2026-11-07"
   }
  },
  "musica_recenti_meta": [
-  "phonk_14.flac",
   "energia_07.flac",
   "deciso_01.flac",
   "phonk_01.flac",
@@ -11233,7 +11282,8 @@
   "energia_04.flac",
   "deciso_06.flac",
   "phonk_12.flac",
-  "drive_12.flac"
+  "drive_12.flac",
+  "trap_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11268,7 +11318,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "rallenty",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -11318,11 +11368,11 @@
   "1076547086228050",
   "2373852472923170",
   "580920710907743",
-  "8196916917049261"
+  "8196916917049261",
+  "2173371459664032"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Eros Ramazzotti",
   "HUMBE",
   "Giusy Ferreri",
   "a.s. kullar, Harry Pannu",
@@ -11331,10 +11381,10 @@
   "UEFA, Tony Britten",
   "The Sheen",
   "Bryan Todd",
-  "The Poison Oaks"
+  "The Poison Oaks",
+  "Trout Recording"
  ],
  "ig_titoli_recenti": [
-  "epic battles",
   "inceptum",
   "catch the spirit",
   "wildflowers",
@@ -11373,7 +11423,8 @@
   "uefa champions league legacy anthem",
   "don t give up on me",
   "hero",
-  "legends in my head"
+  "legends in my head",
+  "fighting back a flight of stairs"
  ],
  "ig_tendenze_riserva": [
   {
@@ -11391,17 +11442,24 @@
    "libreria": false
   },
   {
-   "audio_id": "8196916917049261",
-   "title": "Legends In My Head",
-   "display_artist": "The Poison Oaks",
-   "duration_in_ms": 233897,
+   "audio_id": "1127106596130760",
+   "title": "Move Ur Body (Instrumental)",
+   "display_artist": "half.cool",
+   "duration_in_ms": 143018,
    "libreria": true
   },
   {
-   "audio_id": "2422994201393793",
-   "title": "Power On",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 116549,
+   "audio_id": "2173371459664032",
+   "title": "Fighting Back A Flight Of Stairs",
+   "display_artist": "Trout Recording",
+   "duration_in_ms": 175107,
+   "libreria": true
+  },
+  {
+   "audio_id": "2113684212909650",
+   "title": "Only Stronger",
+   "display_artist": "Auralux",
+   "duration_in_ms": 63210,
    "libreria": true
   }
  ]
