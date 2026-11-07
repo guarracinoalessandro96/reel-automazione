@@ -10773,7 +10773,9 @@
      "ok": true,
      "id": "18168950044422324",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -10835,7 +10837,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "g28FJ0Z9wZE"
+     "id": "g28FJ0Z9wZE",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10846,11 +10849,78 @@
    },
    "spinto": true,
    "testo": "Concentrati su te stesso. Aggiusta il sonno. Mangia bene. Sistema il tuo giro. Accetta il passato. Parla meno. Evita il "
+  },
+  {
+   "quando": "2026-11-07T23:00",
+   "slot": "2026-11-08 00:00",
+   "video": "IMG_4941.mov",
+   "md5": "6ea3d20de0908f66b3cc300cac37f921",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-05T23:45+01:00",
+   "frase": "MIE-09c18c57",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio2",
+    "durata": 10.0,
+    "musica": "ten_1.m4a",
+    "stacchi": 5,
+    "testi": 1,
+    "scene_dal_video": 5,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 4.86,
+     "primo_piano_fermo": false,
+     "soglia_moto": 3.5,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 120,
+     "righe": 3,
+     "scurito": 0.0,
+     "luce": 0.12,
+     "sfumatura": 0.0,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 100,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "io",
+     "forma": "una",
+     "parole": 10
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_11.flac",
+    "musica_instagram": "Luxe Motion (Instrumental) - Giulio Cercato [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "sosw4zPL0lw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18116150003030760",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Ci chiamano sognatori, ma siamo noi quelli che non dormono."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-31 00:00",
   "2026-10-31 06:00",
   "2026-10-31 08:00",
   "2026-10-31 10:00",
@@ -10929,7 +10999,8 @@
   "2026-11-07 16:00",
   "2026-11-07 18:00",
   "2026-11-07 20:00",
-  "2026-11-07 22:00"
+  "2026-11-07 22:00",
+  "2026-11-08 00:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -10965,7 +11036,8 @@
   "fire_in_the_sky_1.m4a",
   "the_road_to_mordor_3.m4a",
   "majestic_12_1.m4a",
-  "rubberband_3.m4a"
+  "rubberband_3.m4a",
+  "ten_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -11267,10 +11339,10 @@
   "MIE-2d30e188",
   "MIE-481bb733",
   "MIE-ca8b6276",
-  "MIE-fc938333"
+  "MIE-fc938333",
+  "MIE-09c18c57"
  ],
  "temi_recenti": [
-  "imprenditore",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -11279,7 +11351,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "dieta"
+  "dieta",
+  "mentalita"
  ],
  "analisi": {
   "1VwzOJlNFXwF38jB7i5hSwSazY9X3e8bD": {
@@ -11363,20 +11436,6 @@
    "registrato": "2026-11-05T23:41+01:00",
    "fascia": "palestra",
    "caricato": "2026-11-07T12:57:56.937Z",
-   "parlato": null,
-   "momento": null
-  },
-  "1y-GlNvTfB-cxiYleE_jKZYeXXlmLxyBb": {
-   "nome": "IMG_4941.mov",
-   "scena": "palestra",
-   "sicurezza": 0.99,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-05T23:45+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-11-07T12:58:51.952Z",
    "parlato": null,
    "momento": null
   }
@@ -11837,10 +11896,14 @@
    "usi": 1,
    "ultimo": "2026-11-07",
    "orizzontale": false
+  },
+  "1y-GlNvTfB-cxiYleE_jKZYeXXlmLxyBb": {
+   "usi": 1,
+   "ultimo": "2026-11-07",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "phonk_02.flac",
   "drive_08.flac",
   "deciso_11.flac",
   "phonk_11.flac",
@@ -11859,7 +11922,8 @@
   "drive_13.flac",
   "trap_15.flac",
   "phonk_04.flac",
-  "energia_06.flac"
+  "energia_06.flac",
+  "drive_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11894,7 +11958,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "taglio2",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -11953,11 +12017,11 @@
   "552615862069907",
   "2242687643238503",
   "820220974302825",
-  "1495460624383703"
+  "1495460624383703",
+  "23939038495769960"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "The Poison Oaks",
   "Trout Recording",
   "Adam Griffith",
   "bbox",
@@ -11966,10 +12030,10 @@
   "Jumbo",
   "Fellow Travelers",
   "stereogully",
-  "The K Club"
+  "The K Club",
+  "Giulio Cercato"
  ],
  "ig_titoli_recenti": [
-  "big leagues",
   "epic adventure",
   "road warriors",
   "ramalama",
@@ -12008,7 +12072,8 @@
   "unstoppable",
   "family food fight",
   "success",
-  "think about"
+  "think about",
+  "luxe motion"
  ],
  "ig_tendenze_riserva": [
   {
@@ -12026,24 +12091,10 @@
    "libreria": false
   },
   {
-   "audio_id": "974432747187721",
-   "title": "Road Warriors",
+   "audio_id": "23939038495769960",
+   "title": "Luxe Motion (Instrumental)",
    "display_artist": "Giulio Cercato",
-   "duration_in_ms": 108029,
-   "libreria": true
-  },
-  {
-   "audio_id": "1495460624383703",
-   "title": "Think About (feat. Dawson March)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 140840,
-   "libreria": true
-  },
-  {
-   "audio_id": "387139071011986",
-   "title": "Nikkatha (Unstoppable)",
-   "display_artist": "4 Staan",
-   "duration_in_ms": 164060,
+   "duration_in_ms": 112680,
    "libreria": true
   }
  ]
