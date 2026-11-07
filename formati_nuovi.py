@@ -1578,6 +1578,7 @@ def make_giornata(clips, frase, dst, musiche=(), ore=None, scene=None, controlla
                           layout=cornice(W, int(W * 16 / 9), tipo, frase))
         r["cornice"] = tipo
         r["scritta"] = None
+        r["fascia_viso"] = True     # 7/11/2026 (revisione, giro 2): come pubblica.monta_dieci, per la tabella del 17/11
     r.update(info)
     if nomi:
         nome = dict(zip(clips, nomi))

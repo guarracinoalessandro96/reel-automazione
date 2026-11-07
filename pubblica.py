@@ -808,6 +808,10 @@ def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, ultim
             clips += clip_extra(drive, work, clip, 1, giorno)
         info = formati_nuovi.make_dieci(ripiego, clips, frase["gancio"], out, musiche, serie, True)
         info["scritta"] = None
+        # 7/11/2026 (revisione, giro 2): montaggio.fascia_viso = fascia perche' la scritta copriva un viso (anche falso:
+        # regola 2). Sul lato "azione" della prova dell'apertura capita piu' spesso: la tabella del 17/11 conta questi
+        # reel per lato e confronta i lati anche solo sui reel con la frase sul video (notte/formati_skill.txt, punto 6)
+        info["fascia_viso"] = True
     except Exception as e:     # solo se anche questo non riesce: 4 clip d'archivio, sempre con il controllo del viso
         log(f"Anche {ripiego} non riuscito ({e}): dieci_broll con altre clip")
         cambio = os.path.join(work, "cambio")
