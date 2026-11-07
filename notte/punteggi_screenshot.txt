@@ -1,0 +1,244 @@
+# 7/11/2026: punteggi delle frasi dei suoi screenshot (righe 'punteggio<TAB>frase'). 100 = in coda (le 182 di notte/ordine_screenshot.json), 0 = versione cambiata sostituita dal testo esatto (o doppione di una frase gia' uscita). Si possono rifare su qualsiasi classifica con: python classifica_frasi.py aggiungi notte/punteggi_screenshot.txt (le righe con # vengono saltate perche' non hanno TAB)
+100	Ogni problema ha una soluzione.
+100	Concentrati su te stesso. Aggiusta il sonno. Mangia bene. Sistema il tuo giro. Accetta il passato. Parla meno. Evita il drama. Sistema la mente. Non inseguire le persone. Lavora di più.
+100	Ci chiamano sognatori, ma siamo noi quelli che non dormono.
+100	Fallo da solo. Fallo al verde. Fallo stanco. Fallo impaurito. Fallo e basta.
+100	Ispirato dalla paura di essere nella media.
+100	Anche quando perdo, vinco.
+100	Fai qualcosa oggi per cui il te stesso futuro ti ringrazierà.
+100	Se puoi sognarlo, puoi farlo!
+100	Respira. È solo una giornata storta, non una vita storta.
+100	Non sarà sempre logico. Va bene così.
+100	Il tuo futuro ti sta guardando. Rendilo orgoglioso.
+100	Non esiste il momento "giusto", esiste solo il tempo, e quello che ci fai con lui.
+100	Lavora sodo, perché un uomo senza soldi è amato solo da sua madre.
+100	Non sei mai troppo piccolo per sognare in grande.
+100	Giorni difficili costruiscono giorni migliori.
+100	Sii più forte delle tue scuse.
+100	Un giorno il duro lavoro porterà risultati. Continua a spingere!
+100	Un capitolo brutto non significa che la tua storia è finita.
+100	Stai vicino a chi ti fa sentire come il sole.
+100	Se ti presenti ogni giorno, i risultati non avranno scelta.
+100	Sogna in grande. Lavora sodo. Resta umile.
+100	A volte devi chiudere una porta per respirare aria nuova.
+100	Sii grato alle persone che hanno parlato al vincente che è in te, prima che tu iniziassi a vincere.
+100	Scelte difficili oggi, vita facile domani.
+100	Non vivrai mai più questo giorno. Fallo contare.
+100	Prendi decisioni come se il tuo io del futuro avesse già vinto.
+100	Ce la farai. Dio è dalla tua parte.
+100	Fidati della vibrazione: l'energia non mente.
+100	Se stavi cercando un segno, eccolo.
+100	Stai vivendo? O stai solo esistendo? Vivi la tua vita.
+100	È tempo di diventare seri sui tuoi obiettivi, sul tuo futuro, la tua pace e la tua vita.
+100	Fallisci solo quando smetti di provare.
+100	Continua a fare del tuo meglio ogni giorno, e se nessuno è orgoglioso di te, sii orgoglioso di te stesso.
+100	Diventa ricco o muori provando.
+100	Non mollare solo perché è difficile.
+100	O rischi e provi, o lavori per chi l'ha fatto.
+100	Non rovinare un buon oggi pensando a un ieri difficile. Lascia perdere.
+100	Qualcosa di buono sta sempre per arrivare. Ricordalo.
+100	Quelli che vincono sono quelli che restano affamati.
+100	Il tuo unico limite sei tu.
+100	L'obiettivo è morire con ricordi, non sogni.
+100	Scegli come vuoi sentirti.
+100	Un vincente è solo un perdente che si è rialzato di nuovo.
+100	Credi nei tuoi sogni. Non mollare mai. I sacrifici di oggi saranno i successi di domani.
+100	Non parlare, agisci. Non dire, dimostra. Non promettere, prova.
+100	Non sei in ritardo solo perché qualcuno è davanti a te.
+100	Grazie per avermi mostrato quanto c'è da amare su me stesso.
+100	Passo dopo passo, giorno dopo giorno.
+100	Le persone giuste troveranno sempre un modo per restare.
+100	Non mollare, l'inizio è sempre il più difficile.
+100	Non rinunciare a qualcosa a cui non puoi passare un giorno senza pensare.
+100	Odiare è gratis. È per questo che i poveri lo fanno così bene.
+100	Non devi essere perfetto per iniziare.
+100	Hai uno sguardo più felice da quando hai iniziato a darti l'amore che hai sempre dato agli altri.
+100	Il successo è la migliore vendetta.
+100	La vita diventa più semplice quando elimini le persone negative da essa.
+100	Ciò che consuma la tua mente controlla la tua vita.
+100	Puoi vincere solo quando la tua mente è più forte delle tue emozioni.
+100	Crescere significa lasciare indietro alcune persone.
+100	Oggi è il tuo giorno per iniziare freschi, per mangiare sano, per allenarti duro, per vivere sano, per essere fieri.
+100	Perdere persone tossiche è una vittoria.
+100	Essere odiati dagli idioti è il prezzo da pagare per non essere uno di loro.
+100	A quelli che sono rimasti.
+100	Non smettere di essere una brava persona a causa delle persone cattive.
+100	Quest'anno scegli la crescita al posto della comodità.
+100	Il panorama migliore arriva dopo la salita più dura.
+100	Molte cose mi hanno spezzato il cuore ma mi hanno aggiustato la visione. Leggilo di nuovo.
+100	Concentrati sul miglioramento, non sulla dimostrazione.
+100	Tutti penseranno che sei pazzo finché non funziona. Poi sei un genio.
+100	Non piangere. Di' solo "vaffanculo" e sorridi.
+100	Il meglio deve ancora venire.
+100	Se non tu, chi? Se non ora, quando?
+100	Non ti sentirai mai pronto. Pronto non è una sensazione, è una decisione.
+100	Se lavori solo quando è facile, non aspettarti di vincere quando è difficile.
+100	La vita continua.
+100	Non dimenticare mai quello che ti sei promesso quella notte.
+100	Le persone che aspettano sempre il momento giusto muoiono aspettando.
+100	La cattiva notizia è che il tempo vola... La buona notizia è che sei tu il pilota.
+100	Scegli persone che fanno bene alla tua salute mentale.
+100	Il tuo futuro è plasmato dalle abitudini che ripeti, non dagli obiettivi che ti poni.
+100	I duri non si fermano, continuano ad andare.
+100	Nulla cambia se nulla cambia.
+100	Mi sto ponendo obiettivi così alti che continuo a dimenticare che sto già vivendo il mio sogno.
+100	Vederti vincere fa parte anche del mio sogno, comunque.
+100	Sogna fino a che non è la tua realtà.
+100	Alcuni errori ci portano nel posto giusto.
+100	Sei tu vs. le tue distrazioni ogni singolo giorno.
+100	La tua prossima mossa è più importante del tuo ultimo errore.
+100	Insegui i tuoi sogni.
+100	A volte vinci. A volte impari.
+100	Come fai a vincere se hai paura di prenderti il rischio?
+100	Sii fedele al tuo futuro, non al tuo passato.
+100	Non è mai troppo tardi per diventare la persona che hai sempre voluto essere.
+100	Non dimenticare di immaginare anche il miglior scenario possibile.
+100	Devo avere successo perché mi piacciono le cose costose.
+100	Se non controlli la tua mente, qualcun altro lo farà.
+100	Un solo passo può fare tutta la differenza.
+100	La vita è piena di persone finte.
+100	Non adeguarti mai ai loro standard.
+100	Ti abitui all'assenza, non al vuoto.
+100	Sei stata abbastanza forte da coprire anche il vuoto di un padre.
+100	A volte il silenzio dice tutto.
+100	Nessuno lo farà per te.
+100	Rendi fieri i tuoi genitori.
+100	Se fosse stato facile, l'avrebbero fatto tutti.
+100	Ne varrà la pena.
+100	Fidati del processo.
+100	Sii orgoglioso di te per tutte le volte in cui sei andato avanti anche quando dentro di te stavi combattendo battaglie di cui nessuno conosceva l'esistenza. Per ciò che hai attraversato in silenzio. Per le ferite che hai imparato a custodire. Per tutte le volte in cui hai trovato la forza proprio quando pensavi di averla finita. Forse nessuno sa quanto ti è costato arrivare fin qui. Ma tu sì. E questo dovrebbe bastare per essere fiero di te.
+100	Ricorda: «Se ti dicono che è impossibile stanno parlando dei loro limiti, non dei tuoi.»
+100	Uno dei più grandi piaceri della vita è portare a termine ciò che gli altri dicevano che non saresti riuscito a fare.
+100	È solo una stupida frase... A un certo punto arriverai alla consapevolezza del tuo valore. Da quel momento, la vita ti darà tutto quello che hai sempre sognato. O forse ancora di più. Perché quando capisci ciò che meriti, inizi ad attrarre ciò che ti rende felice.
+100	Sinceramente, in questo momento la mia unica priorità è rimettere in sesto la mia vita e diventare la migliore versione di me stesso. Non mi interessa chi resta e chi se ne va, questo capitolo è solamente per me.
+100	Non devi avere tutto sotto controllo per meritare pace. Puoi respirare anche in mezzo al caos. Puoi sorridere anche se non hai tutte le risposte. La vita non si risolve: si vive, un giorno alla volta.
+100	Se le persone dubitano di quanto lontano puoi arrivare, spingiti così lontano in modo da non sentirle più.
+100	Un giorno ho letto una frase, ma non l'avevo capita. Poi l'ho riletta e diceva: «A volte bisogna attraversare l'oscurità per vedere la luce, ogni tempesta lascia spazio ad un cielo più sereno.»
+100	Non avevo mai dato così tanto valore alla vita finché non cominciai ad osservare ciò che mi circondava e capii una cosa: ci sono persone che mi amano davvero. Persone che sono felici di vedermi. Persone che mi includono nei loro piani, anche quando non sono così presente. E poi ho capito: non devo essere nella vita di tutti per essere importante. Sono importante per le persone giuste.
+100	Smetti di cercare di piacere a tutti, non ti piacciono nemmeno tutti.
+100	Nessuno sente un albero crescere, ma tutti lo sentono cadere.
+100	Il motivo per cui alcune persone sono così gentili è che il mondo è stato così duro con loro che non vogliono che nessun altro si senta come si sono sentiti loro.
+100	Alcune persone non si rendono conto di quanta luce portino nella vita degli altri semplicemente essendo sé stesse. Tu sei una di quelle persone. Grazie di esistere.
+100	Sarò per sempre la persona che sorride anche se il mondo le sta crollando addosso, perché spiegare a qualcuno come ci si sente è troppo difficile.
+100	Non sapranno mai quanto dolore ci è voluto per essere così calmo.
+100	Alcuni di noi non hanno mai trovato il tempo per essere felici perché erano troppo occupati a cercare di essere forti.
+100	Una delle benedizioni più sottovalutate è incontrare persone che vogliono davvero vederti vincere. Nessuna competizione, nessuna gelosia, nessuna energia strana... Solo sostegno sincero.
+100	Amo le persone che fanno sembrare normali i grandi sogni. Che ti ricordano che niente è impossibile. Che ampliano la tua visione solo essendo sé stesse.
+100	Chiedi scusa in fretta, perdona in fretta e vai avanti in fretta. I rancori occupano un sacco di spazio nella testa, e tu hai cose più grandi da inseguire.
+100	Guardati. Esausto, sotto pressione, mentre combatti le tue battaglie silenziose, eppure ogni giorno ti rialzi e vai avanti. Non smetterò mai di essere orgoglioso di te.
+100	La vera forza è restare gentili anche quando la vita ti dà motivi per non esserlo.
+100	Non essere sposati a 30 anni non è un fallimento. È una vittoria. Hai evitato la persona sbagliata. La casa sbagliata. La vita sbagliata. Non sei indietro. Sei avanti al 90% delle persone che hanno scelto per paura, pressione sociale o bisogno di approvazione.
+100	Vince solo chi rischia. Punta tutto.
+100	Vogliono farti credere che tutta questa roba sia complicata.
+100	Le persone che cambiano davvero la propria vita sono quelle che riescono a sopportare di essere incomprese e invisibili mentre lo fanno.
+100	Essere incompresi è il prezzo del successo. Prendilo come la prova che stai vincendo.
+100	La sicurezza che desideri si trova nelle paure che eviti.
+100	Se vuoi fare qualcosa di eccezionale, devi accettare di essere l'eccezione. Vuol dire essere incompreso, criticato e perfino odiato.
+100	Sto diventando l'uomo capace di vincere nel 2027. Con la pioggia o con il sole.
+100	«La palestra non fa per me». Va bene, sai cos'altro probabilmente non fa per te? Dolori articolari, mal di schiena cronico, osteoporosi, perdita di massa muscolare, diabete di tipo 2, obesità, pressione alta, assistenza futura, ecc.
+100	La palestra è la parte più facile. Mangiare sano, tracciare il cibo e dire di no alle voglie è la vera disciplina.
+100	La libertà nasce dal seguire un piano, non le tue emozioni.
+100	Hai iniziato ad andare in palestra per cambiare il tuo corpo, ma ciò che è realmente cambiato è stato: priorità, mindset, amici, autostima, concentrazione, pensieri, carattere.
+100	Il dubbio si cura con l'azione.
+100	Vedere dei progressi in palestra è una delle esperienze più illuminanti che chiunque possa attraversare. Rendersi conto che puoi cambiare qualcosa attraverso la costanza è un pensiero che dovrebbe essere veramente portato avanti in tutto ciò che fai.
+100	La fortuna incontra chi è in movimento.
+100	Il trucco più grande della vita: capire che puoi davvero svegliarti un giorno, dire adesso basta e cambiare completamente direzione. Non serve una sensazione, un momento di svolta o un'illuminazione. Solo una decisione.
+100	Sollevare pesi, fare qualche passo, non scappare dalle verdure, mangiare un po' di proteine a ogni pasto e non bere alcol funzionerà meglio del 99,99% delle follie, diete, pillole, polveri e pozioni che vedi vendere online dai fitness influencer. Hai bisogno di abitudini, non di scorciatoie.
+100	Ti garantisco che concentrarti sulla palestra, migliorare il tuo guardaroba e pulire la tua alimentazione renderà la tua vita 10 volte migliore. Prenditi cura di te stesso, costruisci la tua fiducia e guarda tutto il resto iniziare a mettersi a posto.
+100	È molto meglio essere la persona più anziana della sala pesi che la persona più giovane della casa di riposo.
+100	Le persone carismatiche fanno complimenti. Le persone felici incoraggiano. Le persone di successo sostengono. E quelle che non hanno nulla da offrire cercano di buttarti giù.
+100	Il tuo allenamento è un appuntamento con te stesso. Non disdire con la persona che stai cercando di diventare.
+100	Tra tre anni, se non insegui il tuo sogno più grande, la tua vita sarà la stessa. Se lo insegui? Potrebbe diventare qualsiasi cosa.
+100	Se qualcuno ti osservasse per una settimana, scommetterebbe su di te o contro di te?
+100	«Dove trovi l'energia per allenarti più volte a settimana?» «Ho l'energia per allenarmi proprio perché mi alleno più volte a settimana.»
+100	La gente pensa che la parte difficile sia costruire un'attività. In realtà la parte difficile è diventare la persona di cui quell'attività ha bisogno.
+100	Non è buffo come il non muoversi ti faccia sentire ancora più stanco? Ma una camminata di 30 minuti ti riempie di energia da matti. Spesso devi dare energia per poterla ottenere. Strano come funzioni, eh?
+100	Il tuo corpo durerà molto più di qualsiasi lavoro, borsa firmata, automobile o casa super costosa. Investi nella tua salute.
+100	La palestra non ha mai trasformato una brutta giornata in una giornata peggiore.
+100	I segreti per essere in forma: bevi acqua. Sii socievole. Esci e cammina. Vai a letto presto. Pratica la gratitudine. Proteine ad ogni pasto. Cardio zona 2 più volte a settimana. Frutta e verdura ad ogni pasto. Fai pesi 2 o più volte a settimana. Non eliminare di tutto dalla tua dieta.
+100	Vivi felice, che tutto passa.
+100	Nella vita ci sarà sempre stress. Conti da pagare. Problemi da risolvere. Persone da accontentare. Responsabilità da gestire. Giornate che non vanno come previsto. Ecco perché devi camminare. Ecco perché devi fare pesi. Ecco perché devi dormire. Ecco perché ti serve tempo all'aria aperta. Devi mettere te stesso al primo posto.
+100	Che privilegio potersi permettere la palestra, comprare cibo sano, pagare le bollette, avere gambe che camminano, occhi che vedono, un cervello che funziona, lavorare ogni giorno e portare il nostro corpo al massimo del suo potenziale.
+100	Ho mentito. Voglio sempre essere il migliore. Sono ossessionato. Amo la pressione. Odio perdere. Amo il dolore. Amo quando la gente mi prende per pazzo. Amo essere diverso. Amo la disciplina.
+100	Non posso arrendermi. Mamma e papà hanno dato tutto perché avessi la possibilità di vivere la vita che desideravo, e meritano di vedermi vincere.
+100	La vita è troppo breve per vivere con una mentalità negativa, quindi sii felice, lascia andare le cose, sii libero, rimani positivo, abbraccia il cambiamento, sii gentile e rendi la vita degna di essere vissuta.
+100	Non capirò mai come fa la gente a non andare in palestra. Sono letteralmente due ore della tua musica preferita, tempo tutto per te, e intanto diventi più attraente.
+100	Chiediti questo: se i tuoi figli copiassero le tue abitudini, ne saresti fiero? È una regola di vita potente.
+100	Qualcuno in un letto d'ospedale sta pregando per avere le opportunità che hai tu in questo momento.
+100	Ricorda: i soldi che spendi per mangiare bene, vestirti bene, profumare e scoprire il mondo non sono mai sprecati.
+100	Porca miseria. Sto davvero facendo tutto quello che avevo detto che avrei fatto.
+100	Mi sono capitati un papà e una mamma che muovono mari e cieli per vedermi stare bene, non posso accontentarmi di meno.
+100	Solo un piccolo promemoria: la versione di te di tre anni fa oggi sarebbe tanto fiera di te.
+100	E a volte le decisioni che ti spaventano di più finiscono per essere le migliori della tua vita.
+100	Niente drammi. Pensa a te stesso. Accetta il passato. Scegli le persone giuste. Non rincorrere nessuno. Dormi bene. Mangia bene. Parla meno. Lavora sodo.
+100	Là fuori c'è qualcuno che ha bisogno della tua storia. Qualcuno che ha bisogno di vederti farcela per capire che è possibile anche per lui. Sii tu il cambiamento.
+100	Non dimenticare di guardarti intorno, ogni tanto. Il punto in cui ti trovi adesso una volta era il tuo obiettivo.
+100	Forse quest'anno ti sembra più difficile perché stai cercando di diventare qualcuno che non sei mai stato prima. Vai avanti.
+100	Sinceramente, il trucco della vita potrebbe essere proprio questo: essere esageratamente ottimisti e un po' illusi su quanto lontano puoi arrivare davvero.
+100	Una vita soddisfacente è meglio di una vita di successo. Il successo lo misurano gli altri, la soddisfazione la misura la tua anima.
+100	Fare impresa è pazzesco: inizi costruendo un'attività, ma alla fine è l'attività a costruire te.
+100	Gli obiettivi diventano più grandi. Il corpo più forte. Gli standard più alti. La cerchia più piccola. La pace si fa sentire di più. La vita è bella.
+100	Certe persone ti fanno sognare in grande dopo una sola chiacchierata. Altre ti prosciugano l'ambizione in cinque minuti. Scegli bene.
+100	Se ti rende felice, rischia. Male che vada, impari. Bene che vada, ti cambia tutta la vita.
+100	Qualunque scelta tu faccia, mettiti il cuore in pace. Se va bene, sii grato. Se va male, sii fiero di averci provato. Qualsiasi cosa è meglio che vivere di se e di ma.
+0	Fai qualcosa oggi per cui il te stesso del futuro ti ringrazierà.
+0	Non esiste il momento giusto. Esiste solo il tempo, e quello che ci fai.
+0	I giorni difficili costruiscono giorni migliori.
+0	Un brutto capitolo non significa che la tua storia è finita. Volta pagina.
+0	Prendi decisioni come se il te stesso del futuro avesse già vinto.
+0	È tempo di diventare seri sui tuoi obiettivi, sul tuo futuro, sulla tua pace e sulla tua vita.
+0	L'obiettivo è morire con ricordi, non con sogni.
+0	Grazie per avermi mostrato quanto c'è da amare in me stesso.
+0	Non mollare: l'inizio è sempre la parte più difficile.
+0	Non rinunciare a qualcosa a cui non riesci a non pensare nemmeno per un giorno.
+0	La vita diventa più semplice quando elimini le persone negative.
+0	Oggi è il tuo giorno: per ripartire, per mangiare sano, per allenarti duro, per vivere sano, per essere fiero.
+0	Molte cose mi hanno spezzato il cuore, ma mi hanno aggiustato la visione.
+0	Non ti sentirai mai pronto. Essere pronto non è una sensazione, è una decisione.
+0	La cattiva notizia è che il tempo vola. La buona notizia è che il pilota sei tu.
+0	Vederti vincere fa parte anche del mio sogno.
+0	Sogna finché non diventa la tua realtà.
+0	Sei tu contro le tue distrazioni, ogni singolo giorno.
+0	Ne varrà la pena. Non mollare proprio adesso.
+0	Sii orgoglioso di te per tutte le volte in cui sei andato avanti. Nessuno sa quanto ti è costato arrivare fin qui. Ma tu sì.
+0	Se ti dicono che è impossibile, stanno parlando dei loro limiti, non dei tuoi.
+0	A un certo punto arriverai alla consapevolezza del tuo valore. Quando capisci ciò che meriti, inizi ad attrarre ciò che ti rende felice.
+0	A un certo punto arriverai alla consapevolezza del tuo valore. Da quel momento, la vita ti darà tutto quello che hai sempre sognato. O forse ancora di più. Perché quando capisci ciò che meriti, inizi ad attrarre ciò che ti rende felice.
+0	La mia unica priorità adesso è diventare la versione migliore di me stesso.
+0	Non devi avere tutto sotto controllo per meritare pace. La vita non si risolve: si vive, un giorno alla volta.
+0	Se le persone dubitano di quanto lontano puoi arrivare, spingiti così lontano da non sentirle più.
+0	A volte bisogna attraversare l'oscurità per vedere la luce. Ogni tempesta lascia spazio a un cielo più sereno.
+0	Smetti di cercare di piacere a tutti: nemmeno a te piacciono tutti.
+0	Non devo essere nella vita di tutti per essere importante. Sono importante per le persone giuste.
+0	Non apprezziamo mai veramente un momento fino a quando non diventa un ricordo.
+0	Alcune persone sono così gentili perché il mondo è stato così duro con loro che non vogliono che nessun altro si senta così.
+0	Alcune persone non si rendono conto di quanta luce portino nella vita degli altri semplicemente essendo sé stesse. Tu sei una di quelle persone.
+0	Sarò per sempre la persona che sorride anche se il mondo le sta crollando addosso, perché spiegare come ci si sente è troppo difficile.
+0	Una delle benedizioni più sottovalutate è incontrare persone che vogliono davvero vederti vincere. Nessuna gelosia, solo sostegno sincero.
+0	Amo le persone che fanno sembrare normali i grandi sogni. Che ti ricordano che niente è impossibile. Che ampliano la tua visione essendo sé stesse.
+0	Chiedi scusa in fretta, perdona in fretta e vai avanti in fretta. I rancori occupano spazio nella testa: tu hai cose più grandi da inseguire.
+0	Guardati. Esausto, sotto pressione, eppure ogni giorno ti rialzi e vai avanti. Non smetterò mai di essere orgoglioso di te.
+0	Vince solo chi ha il coraggio di rischiare. Io ci metto tutto me stesso.
+0	Non è complicato come sembra. Basta fare ogni giorno quello che va fatto, senza scuse.
+0	La sicurezza in me stesso non la trovo evitando le paure. La trovo affrontandole.
+0	Chi cambia davvero la propria vita sa andare avanti anche quando nessuno se ne accorge.
+0	Se voglio fare qualcosa di eccezionale, devo accettare di essere l'eccezione, con tutto quello che costa.
+0	Pioggia o sole, ogni mattina lavoro su di me: il 2027 sarà il mio anno.
+0	Allenarmi è la parte facile. La vera disciplina è mangiare bene e dire di no alle voglie.
+0	La libertà me la costruisco seguendo un piano, non l'umore del momento.
+0	Ho iniziato ad allenarmi per il fisico e alla fine ho cambiato testa, priorità e carattere.
+0	Vedere i miei progressi mi ha fatto capire che con la costanza posso cambiare qualsiasi cosa.
+0	Il dubbio non se ne va pensandoci. Se ne va solo quando inizio ad agire.
+0	La fortuna non si aspetta da fermi: arriva solo a chi è già in movimento.
+0	Ho capito che posso svegliarmi un giorno, dire basta e cambiare strada. Serve solo una decisione.
+0	Non mi servono scorciatoie. Mi servono abitudini: cose semplici, fatte bene, ogni giorno.
+0	Mi tengo in forma, mangio bene e credo in me: tutto il resto si mette a posto.
+0	Chi è felice incoraggia, chi ce l'ha fatta tende la mano. Io voglio essere così.
+0	Ogni giorno ho un appuntamento con la persona che voglio diventare, e non lo salto mai.
+0	Se non inseguo il mio sogno, tra tre anni sarà tutto uguale. Se lo inseguo, può cambiare tutto.
+0	Voglio vivere in modo che chi mi guarda per una settimana scommetta su di me.
+0	Il difficile non è costruire qualcosa di mio. È diventare l'uomo capace di portarlo avanti.
+0	Per avere energia devo prima spenderla: stare fermo mi stanca, muovermi mi ricarica.
+0	Nessun allenamento ha mai peggiorato una brutta giornata. Anzi, spesso me l'ha salvata.
+0	Investo sulla mia salute, perché il corpo me lo porto dietro per tutta la vita.
+0	Vivo felice e vado avanti: tutto passa, anche i giorni più duri.

@@ -1,11 +1,15 @@
 """
 Aggiunge frasi nuove in fondo al Google Doc "Le mie citazioni" (quelle che escono nei reel), in sicurezza.
-Uso: python aggiungi_mie.py nuove.txt "nota della sezione" [--suoi]     (una frase per riga)
+Uso: python aggiungi_mie.py nuove.txt "nota della sezione" [--suoi] [--sostituisce=MIE-xxxx,MIE-yyyy]   (una frase per riga)
 
 Tiene solo frasi da 7 a 30 parole (le corte rendono meno: dati YouTube 16/10/2026; dal 26/10 anche lunghe, fino a 30), senza eta' ("30 anni"),
 senza autori/virgolette, senza doppioni (anche quasi uguali) rispetto al documento. Stampa cosa scarta e perche'.
 --suoi (7/11/2026, Alessandro: "quando vedi i miei screenshot dimenticati delle regole che ti ho dato e pubblicale lo
 stesso"): per le frasi dei SUOI screenshot non controlla lunghezza, eta' e parole vietate; il controllo dei doppioni resta.
+--sostituisce=MIE-xxxx,... (7/11/2026): quelle righe del Doc non contano nel controllo doppioni. Sono le versioni cambiate
+(parole tolte, aggiunte o girate) di frasi dei suoi screenshot, che nello stesso giro vanno a 0 in classifica_frasi.json
+perche' il testo esatto le sostituisce. Il controllo doppioni resta per tutte le altre righe e tra le frasi nuove; se un
+id non e' nel Doc non scrive niente.
 Le credenziali le legge da ~/reel-segreti.json (solo su questo PC).
 """
 import difflib, io, json, os, re, sys
@@ -36,7 +40,9 @@ def compatta(testo):
 
 def main():
     suoi = "--suoi" in sys.argv[1:]
-    argomenti = [a for a in sys.argv[1:] if a != "--suoi"]
+    sostituite = {i.strip() for a in sys.argv[1:] if a.startswith("--sostituisce=")
+                  for i in a.split("=", 1)[1].split(",") if i.strip()}
+    argomenti = [a for a in sys.argv[1:] if a != "--suoi" and not a.startswith("--sostituisce=")]
     righe = [pulisci(l) for l in open(argomenti[0], encoding="utf-8") if l.strip() and not l.startswith("#")]
     nota = argomenti[1] if len(argomenti) > 1 else "aggiunte"
     s = json.load(open(os.path.join(os.path.expanduser("~"), "reel-segreti.json"), encoding="utf-8"))
@@ -44,7 +50,12 @@ def main():
                     client_secret=s["GOOGLE_CLIENT_SECRET"], token_uri="https://oauth2.googleapis.com/token")
     api = build("drive", "v3", credentials=c, cache_discovery=False)
     testo = mie_citazioni.leggi(api, s["DRIVE_FOLDER_DA_PUBBLICARE"]) or ""
-    viste = [f["gancio"].lower() for f in mie_citazioni.frasi(testo)]
+    tutte = mie_citazioni.frasi(testo)
+    mancano = sostituite - {f["id"] for f in tutte}
+    if mancano:       # --sostituisce: un id sbagliato non deve togliere niente dal controllo doppioni
+        print("FERMO, non aggiungo niente: righe da sostituire che non sono nel documento:", ", ".join(sorted(mancano)))
+        return
+    viste = [f["gancio"].lower() for f in tutte if f["id"] not in sostituite]
     buone = []
     for r in righe:
         n = len(re.sub(r"^\[\w+\]\s*", "", r).split())
