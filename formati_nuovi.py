@@ -200,11 +200,13 @@ def _apertura_da(src, firma, t):
     w, h = 540, 960
     vf = ",".join(x for x in (f"fps={APERTURA_FPS}", ov.HDR_TO_SDR if hdr else "",
                               f"scale={w}:{h}:force_original_aspect_ratio=increase", f"crop={w}:{h}", "format=bgr24") if x)
-    r = subprocess.run([ov.FFMPEG, "-v", "error", "-ss", f"{max(0.0, t):.3f}", "-t", "1.05", "-i", src, "-vf", vf,
+    # 7/11/2026 (prova sul PC): con -t 1,05 il filtro fps dava 4 fotogrammi (0-0,75 s): si legge 1,3 s e si tengono
+    # i primi 5 (0; 0,25; 0,5; 0,75; 1 s)
+    r = subprocess.run([ov.FFMPEG, "-v", "error", "-ss", f"{max(0.0, t):.3f}", "-t", "1.3", "-i", src, "-vf", vf,
                         "-f", "rawvideo", "-"], capture_output=True, timeout=60)
     q = w * h * 3
     fr = [np.frombuffer(r.stdout[i * q:(i + 1) * q], dtype=np.uint8).reshape(h, w, 3).copy()
-          for i in range(len(r.stdout) // q)]
+          for i in range(min(APERTURA_FPS + 1, len(r.stdout) // q))]
     if len(fr) < 2:
         return None
     veri = ov.visi_veri(fr, [ov.detect_faces([f]) for f in fr])    # di dritto: il primo piano e' un viso dritto

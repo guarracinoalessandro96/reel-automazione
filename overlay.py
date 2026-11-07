@@ -203,7 +203,9 @@ def moto_da(src, t, passo=MOTO_PASSO):
     """Movimento da t: differenza media (0-255) tra il fotogramma a t e quello a t + passo, grigi 90x160 (come lo studio
     del 6/11, che misura da 0 a +1 s). None se non si legge."""
     fps = 4 if abs(passo * 4 - round(passo * 4)) < 1e-6 else 10
-    g = grigi_da(src, t, passo + 0.05, fps)
+    # 7/11/2026 (prova sul PC): il filtro fps non da' il fotogramma che cade proprio alla fine della lettura (1,05 s a 4
+    # al secondo = 4 fotogrammi, 0-0,75 s): si legge 0,3 s in piu' e si prende quello a +passo
+    g = grigi_da(src, t, passo + 0.3, fps)
     k = int(round(passo * fps))
     if len(g) <= k:
         return None
