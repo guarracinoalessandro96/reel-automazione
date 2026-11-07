@@ -10435,7 +10435,9 @@
      "ok": true,
      "id": "18135987811779333",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -10464,7 +10466,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "J75r6v3prCw"
+     "id": "J75r6v3prCw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10475,11 +10478,53 @@
    },
    "spinto": true,
    "testo": "La sveglia presto non è una punizione. È il prezzo della vita che ho scelto."
+  },
+  {
+   "quando": "2026-11-07T11:01",
+   "slot": "2026-11-07 12:00",
+   "video": "Foto della giornata",
+   "md5": null,
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-a314909c",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_foto",
+    "durata": 10.0,
+    "musica": "stake_out_2.m4a",
+    "stacchi": 5,
+    "testi": 1,
+    "foto_ids": [
+     "1k0vGrBgNhLzs3-C0c0eITZNYaX_BKDek",
+     "1VawZhsjR1jLlcQOyeIf5BKwr_6crUbf4",
+     "1eFxvzbd8wgpVgXML3ZNb9swwoqvQNhWb",
+     "1FcEFi9zU4YshCHayCw6Voir7ZI5GyXEq",
+     "1hLA4MMtuJoBH5zqnliqWwF8hyg2FoqIC"
+    ],
+    "foto_doppie": 0,
+    "scritta": "bianco_parola_gialla",
+    "musica_meta": "energia_09.flac",
+    "musica_instagram": "Work hard, dream big - Blues369 [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "UMS5Kls8yNQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17891422164619339",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Questo è per chi lavora tutto il giorno e la sera costruisce ancora il suo futuro."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-30 12:00",
   "2026-10-30 14:00",
   "2026-10-30 16:00",
   "2026-10-30 18:00",
@@ -10558,7 +10603,8 @@
   "2026-11-07 00:00",
   "2026-11-07 06:00",
   "2026-11-07 08:00",
-  "2026-11-07 10:00"
+  "2026-11-07 10:00",
+  "2026-11-07 12:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -10588,7 +10634,8 @@
   "taking_flight_1.m4a",
   "delirium_3.m4a",
   "turn_in_the_sun_1.m4a",
-  "duty_calls_2.m4a"
+  "duty_calls_2.m4a",
+  "stake_out_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10884,7 +10931,8 @@
   "MIE-bbcd32a3",
   "MIE-52b3207a",
   "MIE-0ca11e56",
-  "MIE-1f186d46"
+  "MIE-1f186d46",
+  "MIE-a314909c"
  ],
  "temi_recenti": [
   "mentalita",
@@ -10892,8 +10940,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -11343,7 +11391,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_01.flac",
   "trap_01.flac",
   "energia_03.flac",
   "phonk_10.flac",
@@ -11362,7 +11409,8 @@
   "drive_12.flac",
   "trap_12.flac",
   "phonk_16.flac",
-  "deciso_05.flac"
+  "deciso_05.flac",
+  "energia_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11397,7 +11445,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "cinema",
+ "formato_ultimo": "dieci_foto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -11450,11 +11498,11 @@
   "8196916917049261",
   "2173371459664032",
   "1108285910189784",
-  "1015255657240675"
+  "1015255657240675",
+  "1354603606762864"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "a.s. kullar, Harry Pannu",
   "Kayhin",
   "Patti Smith",
   "UEFA, Tony Britten",
@@ -11463,10 +11511,10 @@
   "The Poison Oaks",
   "Trout Recording",
   "Adam Griffith",
-  "bbox"
+  "bbox",
+  "Blues369"
  ],
  "ig_titoli_recenti": [
-  "wildflowers",
   "go go go",
   "brilliant",
   "dream big",
@@ -11505,7 +11553,8 @@
   "legends in my head",
   "fighting back a flight of stairs",
   "knockout",
-  "the running"
+  "the running",
+  "work hard dream big"
  ],
  "ig_tendenze_riserva": [
   {
@@ -11516,24 +11565,45 @@
    "libreria": false
   },
   {
-   "audio_id": "2865463390342861",
-   "title": "People Have the Power",
-   "display_artist": "Patti Smith",
-   "duration_in_ms": 310400,
+   "audio_id": "1354603606762864",
+   "title": "Work hard, dream big",
+   "display_artist": "Blues369",
+   "duration_in_ms": 274920,
    "libreria": false
   },
   {
-   "audio_id": "1015255657240675",
-   "title": "The Running (Instrumental)",
-   "display_artist": "bbox",
-   "duration_in_ms": 179320,
+   "audio_id": "1050254964075544",
+   "title": "Peaceful Motion",
+   "display_artist": "Lightbox Music",
+   "duration_in_ms": 65330,
    "libreria": true
   },
   {
-   "audio_id": "566336025028596",
-   "title": "Fire",
-   "display_artist": "Tony Dark Eyes",
-   "duration_in_ms": 162580,
+   "audio_id": "795179878894620",
+   "title": "Move Me",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 151967,
+   "libreria": true
+  },
+  {
+   "audio_id": "739108178545320",
+   "title": "Move My Body (Instrumental)",
+   "display_artist": "Ella Joy Meir",
+   "duration_in_ms": 114620,
+   "libreria": true
+  },
+  {
+   "audio_id": "865871322866438",
+   "title": "Power Of Good Hair",
+   "display_artist": "Company Money",
+   "duration_in_ms": 16766,
+   "libreria": true
+  },
+  {
+   "audio_id": "1234959381777711",
+   "title": "Chasing Granular (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 157349,
    "libreria": true
   }
  ]
