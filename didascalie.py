@@ -106,18 +106,15 @@ def pulita(frase):
 
 def didascalia(frase, serie="", tema=None, chiave=None, n=NUMERO_TAG):
     """Instagram, TikTok e Facebook: frase / riga di ricerca + Giorno X/365 / hashtag."""
-    righe = [pulita(frase), "", riga_ricerca(frase, tema, chiave)]
-    if serie:
-        righe.append(serie)
-    return "\n".join(righe + ["", " ".join(hashtag(frase, tema, chiave, n))])
+    # 7/11/2026 sera (Alessandro: "nelle descrizioni non mettere frasi motivazionali sul lavoro e sulla disciplina,
+    # lascia solo quello che sta sopra e poi gli hashtag, ma ne metti solo 3"): solo la frase e 3 hashtag
+    return pulita(frase) + "\n\n" + " ".join(hashtag(frase, tema, chiave, n)[:3])
 
 
 def descrizione_youtube(frase, serie="", tema=None, chiave=None, tags=()):
     """YouTube: la stessa struttura, hashtag '#shorts' + quelli scelti dal chiamante (i primi 3 vanno sopra il titolo)."""
-    righe = [pulita(frase), "", riga_ricerca(frase, tema, chiave)]
-    if serie:
-        righe.append(serie)
-    return "\n".join(righe + ["", " ".join(dict.fromkeys(["#shorts"] + list(tags)))])
+    # 7/11/2026 sera (Alessandro): solo la frase e 3 hashtag (#shorts + 2)
+    return pulita(frase) + "\n\n" + " ".join(list(dict.fromkeys(["#shorts"] + list(tags)))[:3])
 
 
 def ha_riga_ricerca(testo):
