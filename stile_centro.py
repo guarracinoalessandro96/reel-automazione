@@ -2,10 +2,11 @@
 STILE "TESTO AL CENTRO" (7/11/2026, Alessandro: "testo al centro del video anche se copre il viso, deve essere sempre
 li'", "copia esattamente lo stile di questo screenshot", "cio' che fa andare virale il video sono i testi").
 Come i suoi 5 esempi: la frase BIANCA in un serif da libro (Source Serif Pro, licenza OFL, nel repo in font/; il
-Semibold per le frasi lunghe, come il suo esempio 2), centrata in orizzontale e in verticale (centro del blocco al 47%
+Semibold solo per le frasi lunghissime, sotto il 4,4%), centrata in orizzontale e in verticale (centro del blocco al 47%
 dell'altezza), senza riquadro ne' contorno, solo un'ombra morbida quasi invisibile; ferma dal primo all'ultimo
-fotogramma; grandezza in base alla lunghezza della frase (7% della larghezza per 1-5 parole, 5,5% per le frasi medie,
-fino al 3,8% per quelle da ~45 parole; sempre intera e dentro la zona sicura, anche a ~70 parole); righe equilibrate
+fotogramma; grandezza in base alla lunghezza della frase (7% della larghezza per 1-5 parole, 5,5% per le frasi medie
+e lunghe finche' il blocco sta nel 34% dell'altezza, come i suoi esempi 1 e 2; poi piu' piccola, mai sotto il 3,8% fino
+a ~100 parole; sempre intera e dentro la zona sicura); righe equilibrate
 (mai una parola sola nell'ultima riga, mai una riga che finisce con un articolo o una preposizione se si puo'
 evitare); una lista di frasi brevi va una frase per riga (esempi 3 e 5). La frase non si cambia mai (solo l'apostrofo
 tipografico e i simboli che il carattere non sa disegnare, come le emoji).
@@ -32,9 +33,14 @@ PIENO_SOTTO = 0.044
 BIANCO = (255, 255, 255, 255)
 CENTRO_Y = 0.47                      # centro del blocco di testo (frazione dell'altezza)
 COLONNA = 0.72                       # larghezza massima delle righe (frazione della larghezza, centrata: 14%-86%)
-CORPO_MAX, CORPO_MIN = 0.055, 0.038  # grandezza del carattere (frazione della larghezza): frasi medie / ~45 parole
-CORPO_FONDO = 0.032                  # solo se a 3,8% la frase non sta nel 45% dell'altezza (frasi oltre le 45 parole)
-LUNGA_DA, LUNGA_A = 60, 260          # caratteri: a 60 il 5,5%, da 260 (~45 parole) il minimo
+CORPO_MAX, CORPO_MIN = 0.055, 0.038  # grandezza del carattere (frazione della larghezza): frasi medie e lunghe / minimo
+CORPO_FONDO = 0.032                  # solo se a 3,8% la frase non sta nel 45% dell'altezza (frasi oltre le ~100 parole)
+LUNGA_DA = 60                        # caratteri: da qui la frase e' "lunga" (parte dal 5,5%, vedi ALTEZZA_LUNGA)
+# 7/11/2026 (revisione: le frasi lunghe uscivano al 4,2-4,8% della larghezza contro il 5,5-6% dei suoi esempi 1 e 2,
+# perche' la grandezza dipendeva solo dai caratteri; Alessandro: "da ora i testi sono LUNGHI"): una frase lunga parte
+# dal 5,5% e scende solo finche' il blocco supera il 34% dell'altezza (il suo esempio 2: 10 righe, ~33%)
+ALTEZZA_LUNGA = 0.34
+CORPO_LUNGA = 0.050                  # ...e per un a capo migliore (RIDUCI) una frase lunga non scende sotto il 5%
 # 7/11/2026 (Alessandro, 02:26: le frasi dei suoi screenshot escono "cosi' come sono", da 1-5 parole a ~70): le frasi
 # cortissime grandi come il suo esempio 5 (~7% della larghezza), non una rigetta piccola; le liste brevi piu' grandi
 CORPO_CORTA, CORTA_FINO = 0.070, 28  # fino a 28 caratteri il 7%, poi giu' fino al 5,5% a LUNGA_DA caratteri
@@ -50,6 +56,7 @@ ALONE = (0.45, 0.28)                 # alone larghissimo e leggero sotto le lett
                                      # (sui video chiari e pieni di dettagli la frase si legge, nessun riquadro)
 # penalita' dell'a capo (stessa scala della differenza di larghezza tra le righe, al quadrato)
 P_DEBOLE, P_ORFANA, P_SOLA, P_CORTA, P_RIGA_IN_PIU = 0.6, 1.0, 0.35, 0.2, 0.3
+P_INIZIO = 0.6                       # riga che finisce con la prima parola di una frase nuova
 B_FRASE, B_VIRGOLA = 0.15, 0.05      # bonus: a capo dopo la fine di una frase / dopo una virgola
 B_PRIMA = 0.10                       # bonus: la riga dopo comincia con "perche'", "che", "e", "ma"...
 RIDUCI = (0.94, 0.88)                # corpi un po' piu' piccoli provati per un a capo migliore
@@ -190,45 +197,61 @@ def _dp(testo, larghezza, max_px, righe_in_piu=2):
             j += 1
         minimo, i = minimo + 1, j
     totale = sum(w(i, i + 1) for i in range(N)) + larghezza(" ") * (N - 1)
+    # 7/11/2026 (revisione): le proprieta' di ogni parola calcolate una volta sola (prima: espressioni regolari a ogni
+    # passo, ~5 s per una frase da 78 parole con le prove di corpo delle frasi lunghe)
+    fine_f = [bool(_FINE_FRASE.search(p)) for p in parole]
+    fine_p = [bool(_FINE_PEZZO.search(p)) for p in parole]
+    debole = [_parola(p) in DEBOLI or p.endswith("’") for p in parole]
+    prima = [_parola(p) in PRIMA_DI for p in parole]
     migliore = None
     for n in range(minimo, min(N, minimo + righe_in_piu) + 1):
         T = max(1.0, min(max_px, totale / n))
         INF = float("inf")
+        # il costo di ogni riga possibile (parole i..j-1) non dipende da quante righe vengono prima: si calcola una
+        # volta sola per n, nello stesso ordine di prima (stesse righe di prima, piu' veloce)
+        possibili = [[] for _ in range(N + 1)]
+        for j in range(1, N + 1):
+            ultima = j == N
+            for i in range(j - 1, -1, -1):
+                if i < j - 1 and forzato[i]:                           # una riga non scavalca un a capo del testo
+                    break
+                lw = w(i, j)
+                if lw > max_px and j - i > 1:
+                    break                                              # piu' lunga: lo sara' anche andando indietro
+                c = ((T - lw) / T) ** 2 if not ultima or lw > T else 0.5 * ((T - lw) / T) ** 2
+                if lw > max_px:                                        # una parola sola piu' larga della colonna
+                    c += 2.0
+                if not ultima:
+                    if forzato[j - 1]:
+                        pass
+                    elif fine_f[j - 1]:
+                        c -= B_FRASE
+                    elif fine_p[j - 1]:
+                        c -= B_VIRGOLA
+                    elif debole[j - 1]:
+                        c += P_DEBOLE
+                    elif prima[j]:
+                        c -= B_PRIMA
+                    # 7/11/2026 (revisione): mai una riga che finisce con la prima parola di una frase nuova
+                    # ("Non mollare. Stai / costruendo qualcosa.", 9 frasi su 1526 del suo Doc)
+                    if j - i >= 2 and not forzato[j - 1] and fine_f[j - 2] and not fine_f[j - 1]:
+                        c += P_INIZIO
+                if j - i == 1 and n > 1:
+                    if ultima:
+                        c += P_ORFANA if not forzato[j - 2] else P_SOLA
+                    elif not fine_f[j - 1]:
+                        c += P_SOLA
+                if ultima and n > 1 and lw < 0.35 * T:
+                    c += P_CORTA
+                possibili[j].append((i, c))
         best = [[INF] * (N + 1) for _ in range(n + 1)]
         da = [[-1] * (N + 1) for _ in range(n + 1)]
         best[0][0] = 0.0
         for k in range(1, n + 1):
             for j in range(1, N + 1):
-                ultima = j == N
-                for i in range(j - 1, -1, -1):
-                    if i < j - 1 and forzato[i]:                       # una riga non scavalca un a capo del testo
-                        break
+                for i, c in possibili[j]:
                     if best[k - 1][i] == INF:
                         continue
-                    lw = w(i, j)
-                    if lw > max_px and j - i > 1:
-                        break                                          # piu' lunga: lo sara' anche andando indietro
-                    c = ((T - lw) / T) ** 2 if not ultima or lw > T else 0.5 * ((T - lw) / T) ** 2
-                    if lw > max_px:                                    # una parola sola piu' larga della colonna
-                        c += 2.0
-                    if not ultima:
-                        if forzato[j - 1]:
-                            pass
-                        elif _FINE_FRASE.search(parole[j - 1]):
-                            c -= B_FRASE
-                        elif _FINE_PEZZO.search(parole[j - 1]):
-                            c -= B_VIRGOLA
-                        elif _parola(parole[j - 1]) in DEBOLI or parole[j - 1].endswith("’"):
-                            c += P_DEBOLE
-                        elif _parola(parole[j]) in PRIMA_DI:
-                            c -= B_PRIMA
-                    if j - i == 1 and n > 1:
-                        if ultima:
-                            c += P_ORFANA if not forzato[j - 2] else P_SOLA
-                        elif not _FINE_FRASE.search(parole[j - 1]):
-                            c += P_SOLA
-                    if ultima and n > 1 and lw < 0.35 * T:
-                        c += P_CORTA
                     if best[k - 1][i] + c < best[k][j]:
                         best[k][j], da[k][j] = best[k - 1][i] + c, i
         if best[n][N] == INF:
@@ -246,15 +269,14 @@ def _dp(testo, larghezza, max_px, righe_in_piu=2):
 
 # ------------------------------------------------------------------ impaginazione e disegno
 def corpo_per(testo):
-    """Grandezza del carattere (frazione della larghezza) in base alla lunghezza della frase."""
+    """Grandezza del carattere da cui si parte (frazione della larghezza): 7% fino a CORTA_FINO caratteri, poi giu' fino
+    a CORPO_MAX a LUNGA_DA; oltre si parte da CORPO_MAX e decide lo spazio (impagina: blocco entro ALTEZZA_LUNGA)."""
     n = len(testo)
     if n <= CORTA_FINO:
         return CORPO_CORTA
     if n <= LUNGA_DA:
         return CORPO_CORTA - (CORPO_CORTA - CORPO_MAX) * (n - CORTA_FINO) / (LUNGA_DA - CORTA_FINO)
-    if n >= LUNGA_A:
-        return CORPO_MIN
-    return CORPO_MAX - (CORPO_MAX - CORPO_MIN) * (n - LUNGA_DA) / (LUNGA_A - LUNGA_DA)
+    return CORPO_MAX
 
 
 def impagina(W, H, testo):
@@ -268,6 +290,7 @@ def impagina(W, H, testo):
     corpo = (CORPO_LISTA[0] if len(_frasi(testo)) <= CORPO_LISTA[1] else CORPO_LISTA[2]) if lista else corpo_per(testo)
     sicura = H * (ZONA_SICURA[1] - ZONA_SICURA[0])
     while True:
+        lunga, base = not lista and len(testo) > LUNGA_DA, corpo
         px = max(8, int(round(W * corpo)))
         font = _font(px, corpo < PIENO_SOTTO)
         lun = font.getlength
@@ -282,8 +305,10 @@ def impagina(W, H, testo):
         else:
             # anche un corpo un filo piu' piccolo (mai sotto CORPO_MIN) se toglie un a capo brutto (riga che finisce
             # con "la", "che"...) o una riga di troppo: vince il costo dell'a capo + COSTO_CORPO per 1% di corpo in meno
+            # (7/11/2026, revisione: una frase lunga per l'a capo mai sotto CORPO_LUNGA, sotto ci va solo per lo spazio)
+            pavimento = min(corpo, max(CORPO_MIN, CORPO_LUNGA) if lunga else CORPO_MIN)
             prove = []
-            for k in [k for k in (1.0,) + RIDUCI if corpo * k >= min(corpo, CORPO_MIN) - 1e-9]:
+            for k in [k for k in (1.0,) + RIDUCI if corpo * k >= pavimento - 1e-9]:
                 pk = max(8, int(round(W * corpo * k)))
                 fk = _font(pk, corpo * k < PIENO_SOTTO)
                 c, rr = righe_e_costo(testo, fk.getlength, max_px)
@@ -295,8 +320,14 @@ def impagina(W, H, testo):
         _, _, _, fondo = font.getbbox("gjpqy", anchor="ls")         # fondo delle discendenti (> 0)
         alto = -cima + (len(righe) - 1) * lh + 0.25 * fondo         # blocco: dalle maiuscole all'ultima base (+ un po')
         larga = max(lun(r) for r in righe)
+        # 7/11/2026 (revisione): una frase lunga (non una lista) scende dal 5,5% a passi di 0,95, sempre con lo stesso
+        # costo dell'a capo, solo finche' il blocco supera ALTEZZA_LUNGA o una riga esce dalla colonna; CORPO_MIN resta
+        # il pavimento (lo si tocca solo oltre le ~100 parole)
+        if lunga and base > CORPO_MIN + 1e-9 and (alto > H * ALTEZZA_LUNGA or larga > max_px + 1):
+            corpo = max(CORPO_MIN, base * 0.95)
+            continue
         # 7/11/2026: la frase resta sempre intera e dentro la zona sicura: sotto CORPO_FONDO solo se non ci starebbe
-        # (oltre le ~70 parole o una parola piu' larga della colonna), mai sotto CORPO_ULTIMO
+        # (oltre le ~100 parole o una parola piu' larga della colonna), mai sotto CORPO_ULTIMO
         troppo = alto > sicura or larga > max_px + 1
         if corpo <= CORPO_ULTIMO + 1e-9 or (not troppo and (alto <= H * ALTEZZA_MAX or corpo <= CORPO_FONDO + 1e-9)):
             break

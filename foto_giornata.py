@@ -8,7 +8,7 @@ Le foto arrivano anche dal bot Telegram (ricevi_telegram.py); quelle uscite vann
 senza foto nuove si riusano quelle di una giornata gia' uscita ("se non ci sono foto in coda... quelle vecchie").
 """
 import datetime, math, os, shutil, subprocess, tempfile
-from PIL import Image, ImageEnhance, ImageFilter, ImageOps
+from PIL import Image, ImageChops, ImageEnhance, ImageFilter, ImageOps
 import formati_nuovi as fn
 import overlay as ov
 try:                         # 5/11/2026: le foto dell'iPhone arrivano in HEIC, che Pillow da solo non apre
@@ -30,6 +30,10 @@ LATO_MINIMO = 700           # foto piu' piccole (miniature, screenshot ridotti) 
 MINIMO, MASSIMO = 4, 6       # foto della stessa giornata in un reel
 MARGINE = 1.08               # 8% in piu' della larghezza: lo spazio del movimento
 LUCE = 0.46                  # luminosita' media a cui portare la foto
+# 7/11/2026 (revisione; Alessandro: "da oggi le foto le faro' tutte con il filtro drammatico"): con lo stile al centro
+# una foto gia' scura (luce media fino a 0,30, o zona della frase gia' all'obiettivo dello scurimento) resta come l'ha
+# scattata: solo taglio, pulizia della grana e nitidezza leggera (niente autocontrast ne' stile "virale")
+SCURA_FINO = 0.30
 STACCO = 3                   # secondi minimi tra due foto dello stesso reel: delle raffiche se ne prende una sola
 NITIDEZZA = 0.35             # sotto questa frazione della foto piu' nitida del gruppo la foto e' mossa e si scarta
 # 6/11/2026 (Alessandro: "implementa come puoi migliorare le mie immagini"):
@@ -335,7 +339,8 @@ def migliora(src, dst, margine=None):
     im, info = prepara(src, margine)
     media = sum(ImageOps.grayscale(im).resize((64, 64)).getdata()) / (64 * 64 * 255)
     gamma = max(0.75, min(1.25, math.log(LUCE) / math.log(max(media, 0.02))))
-    if getattr(ov, "STILE_CENTRO", False):
+    centro = getattr(ov, "STILE_CENTRO", False)
+    if centro:
         # 7/11/2026 (Alessandro: "da oggi le foto le faro' tutte con il filtro drammatico"): mai schiarire, la sua luce
         # scura resta; le foto troppo chiare le scurisce poi il montaggio sotto la frase al centro
         gamma = max(1.0, gamma)
@@ -344,8 +349,17 @@ def migliora(src, dst, margine=None):
         im = pulisci(im, info["iso"], media)
     except Exception as e:
         print("Foto: pulizia della grana non riuscita:", e)
+    if centro and _gia_scura(im, media):
+        # 7/11/2026 (revisione: autocontrast e stile "virale" stiravano le foto scure verso il bianco, sulle foto di
+        # prova rese "drammatiche" luci alte +24-39% e colore +29-65%): la foto scura resta com'e' scattata
+        im.filter(ImageFilter.UnsharpMask(radius=1.3, percent=40, threshold=3)).save(dst, quality=96)
+        return info
     im = im.point(tabella * 3)
-    im = ImageOps.autocontrast(im, cutoff=0.5, preserve_tone=True)
+    if centro:
+        # 7/11/2026 (revisione): l'autocontrast solo dove scurisce (nero piu' pieno), mai dove schiarirebbe
+        im = ImageChops.darker(im, ImageOps.autocontrast(im, cutoff=0.5, preserve_tone=True))
+    else:
+        im = ImageOps.autocontrast(im, cutoff=0.5, preserve_tone=True)
     if STILE == "flash":
         flash(im).save(dst, quality=96)
         return info
@@ -360,6 +374,20 @@ def migliora(src, dst, margine=None):
     im = im.filter(ImageFilter.UnsharpMask(radius=2, percent=40, threshold=3))
     im.save(dst, quality=96)
     return info
+
+
+def _gia_scura(im, media):
+    """7/11/2026 (stile al centro): True se la foto e' gia' scura (luce media fino a SCURA_FINO, o zona della frase gia'
+    all'obiettivo dello scurimento del montaggio): resta come l'ha scattata. Se la misura non riesce: False (la
+    sistemazione di prima, che con lo stile al centro non schiarisce: il montaggio poi la scurisce)."""
+    if media <= SCURA_FINO:
+        return True
+    try:
+        import stile_centro
+        return stile_centro.misura_immagine(im)[0] <= stile_centro.OBIETTIVO_TESTO
+    except Exception as e:
+        print("Foto: luce della zona della frase non misurata:", str(e)[:150])
+        return False
 
 
 def virale(im):
