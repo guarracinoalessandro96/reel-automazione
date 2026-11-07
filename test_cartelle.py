@@ -464,6 +464,35 @@ try:
         check("non copio niente" in uscita.getvalue(), "sincronizza.py: Automazione tolta, non la ricrea")
     check(not os.path.exists(os.path.join(S, "Automazione")) and not os.path.exists(os.path.join(ZRA, "Automazione")),
           "sincronizza.py: nessuna cartella ricreata")
+
+    # 10. stati a meta' fra i passi 5, 6 e 7 del riordino (principale ancora "Reel Alessandro") e il comando
+    #     "python cartelle.py <nome>" che usano gli SKILL: trova sempre il posto vero, in ogni combinazione
+    h2 = os.path.join(tmp, "H2")
+    os.environ["REEL_DRIVE_H"] = h2
+    RA2 = os.path.join(h2, "Reel Alessandro")
+    S2 = os.path.join(RA2, cartelle.SISTEMA)
+    for p in ("Frasi da pubblicare", os.path.join("Frasi da pubblicare", "Fatte"), os.path.join(cartelle.SISTEMA, "Raccolta"),
+              os.path.join(cartelle.SISTEMA, "Frasi da foto")):
+        os.makedirs(os.path.join(RA2, p), exist_ok=True)
+    check(cartelle.percorso_h("Frasi da usare") == os.path.join(RA2, "Frasi da pubblicare"),
+          "H: passo 6 fatto e 7 no, Frasi da pubblicare in Reel Alessandro")
+    check(cartelle.percorso_h("Raccolta") == os.path.join(S2, "Raccolta"), "H: passo 5 fatto e 7 no, Raccolta")
+    check(cartelle.percorso_h("Frasi da foto") == os.path.join(S2, "Frasi da foto"), "H: passo 5 fatto e 7 no, Frasi da foto")
+    tutti_i_posti = cartelle.candidati_h("Frasi da foto", h2)
+    check(len(set(tutti_i_posti)) == 4 and os.path.join(S2, "Frasi da foto") in tutti_i_posti and
+          os.path.join(RA2, "Frasi da foto") in tutti_i_posti, "candidati_h: le 4 combinazioni")
+    import subprocess
+    for nome, atteso in (("Frasi da pubblicare", os.path.join(RA2, "Frasi da pubblicare")),
+                         ("Raccolta", os.path.join(S2, "Raccolta")), ("Studio viralità", None)):
+        r = subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), "cartelle.py"), nome],
+                           capture_output=True, env=dict(os.environ, PYTHONIOENCODING="utf-8"))
+        out = r.stdout.decode("utf-8", "replace")
+        if atteso:
+            check(r.returncode == 0 and out.strip() == f"{nome}: {atteso}", f"python cartelle.py \"{nome}\" a meta'")
+        else:
+            check(r.returncode == 0 and os.path.join(S2, nome) in out and "non c'e'" in out,
+                  f"python cartelle.py \"{nome}\": dice dove crearla (in Sistema)")
+    check(not os.path.exists(os.path.join(h2, cartelle.PRINCIPALE)), "nessuna principale nuova creata")
 finally:
     urllib.request.urlopen = vero_urlopen
     shutil.rmtree(tmp, ignore_errors=True)
