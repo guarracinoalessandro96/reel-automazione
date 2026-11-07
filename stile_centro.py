@@ -4,11 +4,14 @@ li'", "copia esattamente lo stile di questo screenshot", "cio' che fa andare vir
 Come i suoi 5 esempi: la frase BIANCA in un serif da libro (Source Serif Pro, licenza OFL, nel repo in font/; il
 Semibold per le frasi lunghe, come il suo esempio 2), centrata in orizzontale e in verticale (centro del blocco al 47%
 dell'altezza), senza riquadro ne' contorno, solo un'ombra morbida quasi invisibile; ferma dal primo all'ultimo
-fotogramma; grandezza in base alla lunghezza della frase (5,5% della larghezza per le frasi corte, fino al 3,8% per
-quelle da ~45 parole); righe equilibrate (mai una parola sola nell'ultima riga, mai una riga che finisce con un
-articolo o una preposizione se si puo' evitare); una lista di frasi brevi va una frase per riga (esempi 3 e 5).
-Il video sotto la frase, se e' troppo chiaro, diventa un po' piu' scuro (come un'esposizione piu' bassa: niente neri
-schiacciati, niente dominanti) e mai piu' chiaro.
+fotogramma; grandezza in base alla lunghezza della frase (7% della larghezza per 1-5 parole, 5,5% per le frasi medie,
+fino al 3,8% per quelle da ~45 parole; sempre intera e dentro la zona sicura, anche a ~70 parole); righe equilibrate
+(mai una parola sola nell'ultima riga, mai una riga che finisce con un articolo o una preposizione se si puo'
+evitare); una lista di frasi brevi va una frase per riga (esempi 3 e 5). La frase non si cambia mai (solo l'apostrofo
+tipografico e i simboli che il carattere non sa disegnare, come le emoji).
+Il video sotto la frase, se e' troppo chiaro, diventa piu' scuro fino a obiettivi misurati (zona della frase <= 0,20,
+fotogramma <= 0,26): come un'esposizione piu' bassa (niente neri schiacciati, niente dominanti), piu' un'ombra rotonda
+morbidissima dietro la frase; mai piu' chiaro.
 Non importa overlay (overlay importa questo modulo): si puo' provare da solo.
 """
 import os, re
@@ -29,9 +32,14 @@ PIENO_SOTTO = 0.044
 BIANCO = (255, 255, 255, 255)
 CENTRO_Y = 0.47                      # centro del blocco di testo (frazione dell'altezza)
 COLONNA = 0.72                       # larghezza massima delle righe (frazione della larghezza, centrata: 14%-86%)
-CORPO_MAX, CORPO_MIN = 0.055, 0.038  # grandezza del carattere (frazione della larghezza): frasi corte / ~45 parole
+CORPO_MAX, CORPO_MIN = 0.055, 0.038  # grandezza del carattere (frazione della larghezza): frasi medie / ~45 parole
 CORPO_FONDO = 0.032                  # solo se a 3,8% la frase non sta nel 45% dell'altezza (frasi oltre le 45 parole)
-LUNGA_DA, LUNGA_A = 60, 260          # caratteri: fino a 60 il corpo massimo, da 260 (~45 parole) il minimo
+LUNGA_DA, LUNGA_A = 60, 260          # caratteri: a 60 il 5,5%, da 260 (~45 parole) il minimo
+# 7/11/2026 (Alessandro, 02:26: le frasi dei suoi screenshot escono "cosi' come sono", da 1-5 parole a ~70): le frasi
+# cortissime grandi come il suo esempio 5 (~7% della larghezza), non una rigetta piccola; le liste brevi piu' grandi
+CORPO_CORTA, CORTA_FINO = 0.070, 28  # fino a 28 caratteri il 7%, poi giu' fino al 5,5% a LUNGA_DA caratteri
+CORPO_LISTA = (0.065, 6, 0.056)      # lista: 6,5% fino a 6 righe, 5,6% oltre (poi piu' piccolo se non entra)
+CORPO_ULTIMO = 0.015                 # mai sotto: una frase lunghissima (o una parola enorme) resta intera e dentro
 ALTEZZA_MAX = 0.45                   # il blocco resta dentro il 45% dell'altezza
 ZONA_SICURA = (0.10, 0.80)           # sopra: nome utente e schede; sotto: didascalia e pulsanti (icone a destra: 88%+)
 INTERLINEA = 1.10                    # distanza tra le linee di base, in em
@@ -240,8 +248,10 @@ def _dp(testo, larghezza, max_px, righe_in_piu=2):
 def corpo_per(testo):
     """Grandezza del carattere (frazione della larghezza) in base alla lunghezza della frase."""
     n = len(testo)
+    if n <= CORTA_FINO:
+        return CORPO_CORTA
     if n <= LUNGA_DA:
-        return CORPO_MAX
+        return CORPO_CORTA - (CORPO_CORTA - CORPO_MAX) * (n - CORTA_FINO) / (LUNGA_DA - CORTA_FINO)
     if n >= LUNGA_A:
         return CORPO_MIN
     return CORPO_MAX - (CORPO_MAX - CORPO_MIN) * (n - LUNGA_DA) / (LUNGA_A - LUNGA_DA)
@@ -255,7 +265,8 @@ def impagina(W, H, testo):
         raise ValueError("frase vuota")
     lista = e_lista(testo)
     max_px = W * COLONNA
-    corpo = CORPO_MAX if lista else corpo_per(testo)
+    corpo = (CORPO_LISTA[0] if len(_frasi(testo)) <= CORPO_LISTA[1] else CORPO_LISTA[2]) if lista else corpo_per(testo)
+    sicura = H * (ZONA_SICURA[1] - ZONA_SICURA[0])
     while True:
         px = max(8, int(round(W * corpo)))
         font = _font(px, corpo < PIENO_SOTTO)
@@ -284,9 +295,12 @@ def impagina(W, H, testo):
         _, _, _, fondo = font.getbbox("gjpqy", anchor="ls")         # fondo delle discendenti (> 0)
         alto = -cima + (len(righe) - 1) * lh + 0.25 * fondo         # blocco: dalle maiuscole all'ultima base (+ un po')
         larga = max(lun(r) for r in righe)
-        if alto <= H * ALTEZZA_MAX or corpo <= CORPO_FONDO + 1e-9:
+        # 7/11/2026: la frase resta sempre intera e dentro la zona sicura: sotto CORPO_FONDO solo se non ci starebbe
+        # (oltre le ~70 parole o una parola piu' larga della colonna), mai sotto CORPO_ULTIMO
+        troppo = alto > sicura or larga > max_px + 1
+        if corpo <= CORPO_ULTIMO + 1e-9 or (not troppo and (alto <= H * ALTEZZA_MAX or corpo <= CORPO_FONDO + 1e-9)):
             break
-        corpo = max(CORPO_FONDO, corpo * 0.95)
+        corpo = max(CORPO_ULTIMO if troppo else CORPO_FONDO, corpo * 0.95)
     top = H * CENTRO_Y - alto / 2
     top = min(max(top, H * ZONA_SICURA[0]), H * ZONA_SICURA[1] - alto)
     return {"font": font, "corpo": px, "righe": righe, "lh": lh, "base0": top - cima, "top": top, "alto": alto,
@@ -329,28 +343,45 @@ def scritta(W, H, testo):
     return img, imp["top"] / H, 0.0
 
 
-def dati(scurito=0.0, luce=None):
-    """montaggio.stile_centro: carattere, corpo in px, righe, quanto e' stato scurito il video (0 = per niente)."""
+def dati(scurito=0.0, luce=None, sfuma=0.0):
+    """montaggio.stile_centro: carattere, corpo in px, righe, quanto e' stato scurito il video (0 = per niente), luce
+    misurata prima nella zona della frase, opacita' dell'ombra dietro la frase (0 = niente)."""
     d = {k: ULTIMO[k] for k in ("font", "corpo", "righe") if k in ULTIMO}
     d["scurito"] = round(float(scurito or 0.0), 2)
     if luce is not None:
         d["luce"] = round(float(luce), 2)
+    d["sfumatura"] = round(float(sfuma or 0.0), 2)
     return d
 
 
 # ------------------------------------------------------------------ video piu' scuro sotto la frase
-# 7/11/2026 (Alessandro: "se il video e' troppo luminoso scuriscilo un po'"; da oggi gira lui con luce bassa e filtro
-# drammatico): si misura la luce (0-1) nella zona della frase; oltre LUCE_DA si abbassa come un'esposizione piu' bassa
-# (tutti i valori moltiplicati per lo stesso fattore: il nero resta nero, i colori restano quelli) fino a LUCE_MAX al
-# massimo; sotto LUCE_DA (le sue clip scure) niente. Mai piu' chiaro.
-LUCE_DA, LUCE_MAX, LUCE_PENDENZA = 0.22, 0.25, 0.35   # "tutto scuro" come i suoi esempi, ma scene ancora leggibili
-FATTORE_MIN = 0.45                   # mai piu' scuro di cosi' (una clip chiarissima non diventa grigia)
+# 7/11/2026 (Alessandro: "tutto scuro ... colore bianco sopra", "se il video e' troppo luminoso scuriscilo un po'";
+# coordinatore alle 07:30: le prime anteprime erano ancora troppo chiare, soffitto dell'auto grigio chiaro dietro la
+# frase, la clip chiara all'aperto solo da 1,00 a 0,54). Obiettivi misurati: luce media (0-1) della zona della frase al
+# massimo OBIETTIVO_TESTO, di tutto il fotogramma al massimo OBIETTIVO_TUTTO. Due mezzi, tutti e due come
+# un'esposizione piu' bassa (R, G e B moltiplicati per lo stesso numero: il nero resta nero, niente dominanti, MAI piu'
+# chiaro): (1) ogni scena piu' scura per intero (fattore -> filtro lutyuv, costa pochissimo); (2) un'ombra rotonda,
+# grandissima e morbidissima dietro la frase (una gaussiana: nessun bordo, nessun riquadro), dentro l'immagine della
+# scritta, quindi nel montaggio non costa niente. Le scene gia' scure (le sue nuove a luce bassa, le foto col filtro
+# drammatico) restano come sono.
+OBIETTIVO_TESTO, OBIETTIVO_TUTTO = 0.20, 0.26   # un filo sotto 0,22 / 0,28: la misura e' su pochi fotogrammi
+SFUMATURA_MAX = 0.45                 # opacita' dell'ombra al centro al massimo (0,45: il centro al 55% della luce)
+SFUMA_SX, SFUMA_SY = 0.40, 0.20      # ampiezza dell'ombra (sigma): 40% della larghezza, 20% dell'altezza
+FATTORE_MIN = 0.36                   # una scena non scende mai sotto il 36% (una clip bianchissima non diventa nera)
 ZONA_LUCE = (0.14, 0.24, 0.86, 0.70)  # dove si misura: la zona della frase (x0, y0, x1, y1 in frazioni)
 
 
-def luce_centro(frames, zona=ZONA_LUCE):
-    """Luce media (0-1, luma Rec.709) nella zona della frase dei fotogrammi (BGR numpy, gia' nel taglio 9:16).
-    None se non si misura."""
+def _misura(p, zona, bgr):
+    """(luce della zona, luce di tutto) di un'immagine 160x90x3 float (luma Rec.709)."""
+    b, g, r = (0, 1, 2) if bgr else (2, 1, 0)
+    y = (0.0722 * p[..., b] + 0.7152 * p[..., g] + 0.2126 * p[..., r]) / 255
+    x0, y0, x1, y1 = int(zona[0] * 90), int(zona[1] * 160), int(zona[2] * 90), int(zona[3] * 160)
+    return float(y[y0:y1, x0:x1].mean()), float(y.mean())
+
+
+def misura(frames, zona=ZONA_LUCE):
+    """(luce media della zona della frase, luce media di tutto il fotogramma), 0-1, dei fotogrammi BGR (numpy, gia'
+    nel taglio 9:16). (None, None) se non si misura."""
     import numpy as np
     vals = []
     for f in frames or []:
@@ -359,27 +390,81 @@ def luce_centro(frames, zona=ZONA_LUCE):
             p = cv2.resize(f, (90, 160), interpolation=cv2.INTER_AREA).astype(np.float32)
         except Exception:
             p = np.asarray(Image.fromarray(f[..., ::-1]).resize((90, 160))).astype(np.float32)[..., ::-1]
-        x0, y0, x1, y1 = int(zona[0] * 90), int(zona[1] * 160), int(zona[2] * 90), int(zona[3] * 160)
-        z = p[y0:y1, x0:x1]
-        vals.append(float((0.0722 * z[..., 0] + 0.7152 * z[..., 1] + 0.2126 * z[..., 2]).mean()) / 255)
-    return float(np.mean(vals)) if vals else None
+        vals.append(_misura(p, zona, True))
+    if not vals:
+        return None, None
+    return float(np.mean([v[0] for v in vals])), float(np.mean([v[1] for v in vals]))
+
+
+def luce_centro(frames, zona=ZONA_LUCE):
+    """Luce media (0-1) nella zona della frase dei fotogrammi (vedi misura). None se non si misura."""
+    return misura(frames, zona)[0]
+
+
+def misura_immagine(img, zona=ZONA_LUCE):
+    """Come misura per un'immagine PIL (foto gia' nel taglio 9:16)."""
+    import numpy as np
+    return _misura(np.asarray(img.convert("RGB").resize((90, 160))).astype(np.float32), zona, False)
 
 
 def luce_immagine(img, zona=ZONA_LUCE):
-    """Come luce_centro per un'immagine PIL (foto gia' nel taglio 9:16)."""
+    return misura_immagine(img, zona)[0]
+
+
+def _profilo(W, H):
+    """L'ombra dietro la frase a opacita' 1 (W x H, 0-1): gaussiana centrata sulla frase, separabile (veloce a 4K)."""
     import numpy as np
-    p = np.asarray(img.convert("RGB").resize((90, 160))).astype(np.float32)
-    x0, y0, x1, y1 = int(zona[0] * 90), int(zona[1] * 160), int(zona[2] * 90), int(zona[3] * 160)
-    z = p[y0:y1, x0:x1]
-    return float((0.2126 * z[..., 0] + 0.7152 * z[..., 1] + 0.0722 * z[..., 2]).mean()) / 255
+    x = (np.arange(W, dtype=np.float32) + 0.5) / W - 0.5
+    y = (np.arange(H, dtype=np.float32) + 0.5) / H - CENTRO_Y
+    return np.exp(-0.5 * (y / SFUMA_SY) ** 2)[:, None] * np.exp(-0.5 * (x / SFUMA_SX) ** 2)[None, :]
 
 
-def fattore(luce):
-    """Fattore dell'esposizione (1 = com'e'): oltre LUCE_DA la luce scende dolcemente, mai sopra LUCE_MAX."""
-    if luce is None or luce <= LUCE_DA:
-        return 1.0
-    obiettivo = min(LUCE_MAX, LUCE_DA + LUCE_PENDENZA * (luce - LUCE_DA))
-    return round(max(FATTORE_MIN, min(1.0, obiettivo / luce)), 3)
+_PESI = []
+
+
+def pesi():
+    """Quanto copre in media l'ombra (a opacita' 1) la zona della frase e tutto il fotogramma."""
+    if not _PESI:
+        p = _profilo(90, 160)
+        x0, y0, x1, y1 = (int(ZONA_LUCE[0] * 90), int(ZONA_LUCE[1] * 160), int(ZONA_LUCE[2] * 90),
+                          int(ZONA_LUCE[3] * 160))
+        _PESI.extend([float(p[y0:y1, x0:x1].mean()), float(p.mean())])
+    return _PESI
+
+
+def sfumatura_per(luci):
+    """Opacita' al centro dell'ombra dietro la frase per tutto il video (0 = niente), dalla scena piu' chiara nella zona
+    della frase: le scene gia' scure (luce <= OBIETTIVO_TESTO) non la hanno."""
+    l = max([float(x) for x in luci or [] if x is not None] or [0.0])
+    if l <= OBIETTIVO_TESTO + 0.01:
+        return 0.0
+    return round(min(SFUMATURA_MAX, 0.6 * (1 - OBIETTIVO_TESTO / l)), 3)
+
+
+def fattore(luce, tutto=None, sfuma=0.0):
+    """Fattore dell'esposizione della scena (1 = com'e', mai sopra 1): la zona della frase scende a OBIETTIVO_TESTO e
+    tutto il fotogramma a OBIETTIVO_TUTTO, contando anche l'ombra dietro la frase (sfuma); mai sotto FATTORE_MIN."""
+    m = 1.0
+    zona, intero = pesi() if sfuma else (0.0, 0.0)
+    if luce:
+        m = min(m, OBIETTIVO_TESTO / (float(luce) * (1 - sfuma * zona)))
+    if tutto:
+        m = min(m, OBIETTIVO_TUTTO / (float(tutto) * (1 - sfuma * intero)))
+    return round(max(FATTORE_MIN, min(1.0, m)), 3)
+
+
+def con_sfumatura(img, sfuma):
+    """L'immagine della scritta (RGBA W x H) con sotto l'ombra rotonda dietro la frase (opacita' sfuma al centro).
+    Un filo di rumore (mezzo livello) evita gli scalini della sfumatura sui fondi uniformi."""
+    if not sfuma or sfuma <= 0.005:
+        return img
+    import numpy as np
+    W, H = img.size
+    a = _profilo(W, H) * np.float32(255.0 * sfuma) + np.random.default_rng(7).random((H, W), dtype=np.float32)
+    ombra = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    ombra.putalpha(Image.fromarray(np.clip(a, 0, 255).astype(np.uint8)))
+    ombra.alpha_composite(img)
+    return ombra
 
 
 def filtro(m):

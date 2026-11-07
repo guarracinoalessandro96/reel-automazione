@@ -971,11 +971,15 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
         # colore: se ffmpeg non riesce, il piano di riserva di make_video (senza colore) monta anche senza scurimento
         try:
             import stile_centro
-            luce = stile_centro.luce_centro(frames)
-            m = stile_centro.fattore(luce)
+            luce, tutto = stile_centro.misura(frames)
+            sfuma = stile_centro.sfumatura_per([luce])
+            m = stile_centro.fattore(luce, tutto, sfuma)
             if stile_centro.filtro(m):
                 chain += ["format=yuv420p", stile_centro.filtro(m)]
-            centro = stile_centro.dati(1 - m, luce)
+            if sfuma:        # l'ombra morbida dietro la frase, dentro l'immagine della scritta
+                overlay = stile_centro.con_sfumatura(overlay, sfuma)
+                overlay.save(png)
+            centro = stile_centro.dati(1 - m, luce, sfuma)
         except Exception as e:
             print("Video non scurito (resta com'era):", str(e)[:200], flush=True)
     base = f"[0:v]{','.join(chain)}[base];[base]" if chain else "[0:v]"

@@ -712,13 +712,22 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
                 print("Foto rapide: visi per la scritta non cercati:", str(e)[:200])
             visi.append(v)
             piccole.append(bgr)
-            if getattr(ov, "STILE_CENTRO", False):     # 7/11/2026: luce nella zona della frase al centro
+            if getattr(ov, "STILE_CENTRO", False):     # 7/11/2026: luce nella zona della frase e di tutta la foto
                 try:
                     import stile_centro
-                    luci[i] = stile_centro.luce_immagine(im)
+                    luci[i] = stile_centro.misura_immagine(im)
                 except Exception as e:
                     print("Foto rapide: luce della foto non misurata:", str(e)[:150])
         testo, ordine = _testo_libero(W, H, frase, visi, ov.mappa_dettagli(piccole), ganci)
+        sfuma = 0.0
+        if luci and ov.ULTIMO_STILE == "centro_serif":
+            try:     # 7/11/2026: l'ombra morbida dietro la frase (dalla foto piu' chiara), dentro l'immagine della scritta
+                import stile_centro
+                sfuma = stile_centro.sfumatura_per([l for l, _ in luci.values()])
+                testo = stile_centro.con_sfumatura(testo, sfuma)
+            except Exception as e:
+                sfuma = 0.0
+                print("Foto rapide: ombra dietro la frase non messa:", str(e)[:150])
         durate, ritmo_info = tempi_rapide(musiche[0] if musiche else None, len(ordine))
         if len(durate) < len(ordine):        # le foto in piu' restano in coda: il gancio, poi sparse sulla giornata
             ordine = ordine[:1] + _sparse(ordine[1:], len(durate) - 1)
@@ -732,9 +741,9 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
             if i in luci:      # 7/11/2026: foto troppo chiara sotto la frase al centro -> un po' piu' scura
                 try:
                     import stile_centro
-                    m = stile_centro.fattore(luci[i])
+                    m = stile_centro.fattore(luci[i][0], luci[i][1], sfuma)
                     scuro = stile_centro.filtro(m)
-                    scuriti.append((1 - m, luci[i]))
+                    scuriti.append((1 - m, luci[i][0]))
                 except Exception as e:
                     print("Foto rapide: foto non scurita:", str(e)[:150])
             catena.append(f"[{k}:v]scale={W}:{H},setsar=1,format=yuv420p,{scuro + ',' if scuro else ''}fps={fps},"
@@ -781,7 +790,8 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
             try:     # 7/11/2026: montaggio.stile_centro (carattere, corpo, righe, quanto e' scurita la foto piu' chiara)
                 import stile_centro
                 info["stile_centro"] = stile_centro.dati(max([s for s, _ in scuriti] or [0.0]),
-                                                         max([l for _, l in scuriti] or [0.0]) if scuriti else None)
+                                                         max([l for _, l in scuriti] or [0.0]) if scuriti else None,
+                                                         sfuma)
             except Exception as e:
                 print("Foto rapide: dati dello stile al centro non scritti:", str(e)[:150])
         return info

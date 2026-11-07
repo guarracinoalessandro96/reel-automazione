@@ -579,14 +579,21 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
             pezzi = _primo_pezzo(pezzi, durate)
         except Exception as e:
             print("Scelta della prima scena non riuscita, ordine di prima:", e)
-    scuriti = []       # 7/11/2026: (quanto piu' scura, luce misurata) di ogni scena (montaggio.stile_centro)
+    scuriti, sfuma = [], 0.0   # 7/11/2026: (quanto piu' scura, luce misurata) di ogni scena; ombra dietro la frase
     if ov.STILE_CENTRO and (velocita or indietro):
         # 7/11/2026: rallenty e loop sono lo stesso momento che continua: una sola luce per tutte le scene, se no al
         # passaggio al rallentatore (o all'indietro) il video cambierebbe luminosita' di colpo
-        luci = [p.get("luce") for p in pezzi if p.get("luce") is not None]
-        if luci:
-            for p in pezzi:
-                p["luce"] = sum(luci) / len(luci)
+        for k in ("luce", "luce_tutto"):
+            luci = [p.get(k) for p in pezzi if p.get(k) is not None]
+            if luci:
+                for p in pezzi:
+                    p[k] = sum(luci) / len(luci)
+    if ov.STILE_CENTRO:
+        try:     # 7/11/2026: l'ombra morbida dietro la frase, una per tutto il video (dalla scena piu' chiara)
+            import stile_centro
+            sfuma = stile_centro.sfumatura_per([p.get("luce") for p in pezzi])
+        except Exception as e:
+            print("Ombra dietro la frase non calcolata (niente ombra):", str(e)[:150])
     for i, seg in enumerate(durate):
         v = float(velocita[i]) if velocita else 1.0
         sorgente = seg * v
@@ -607,11 +614,11 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         scuro = ""
         if ov.STILE_CENTRO:
             # 7/11/2026 (Alessandro: "se il video e' troppo luminoso scuriscilo un po'"): mai schiarire; la scena troppo
-            # chiara nella zona della frase un po' piu' scura (stile_centro.fattore), ognuna per conto suo
+            # chiara (zona della frase o tutto il fotogramma) piu' scura (stile_centro.fattore), ognuna per conto suo
             schiarisci = ""
             try:
                 import stile_centro
-                m = stile_centro.fattore(pezzi[i].get("luce"))
+                m = stile_centro.fattore(pezzi[i].get("luce"), pezzi[i].get("luce_tutto"), sfuma)
                 scuro = stile_centro.filtro(m)
                 scuriti.append((1 - m, pezzi[i].get("luce")))
             except Exception as e:
@@ -646,6 +653,12 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         # il viso sotto la frase va bene, niente piu' VisoCoperto (ne' i ripieghi cinema/post/fascia che ne seguivano)
         if controlla_viso and not ov.STILE_CENTRO and viso_coperto(img, sotto, W, H):
             raise VisoCoperto(t)
+        if sfuma and ov.ULTIMO_STILE == "centro_serif":
+            try:     # 7/11/2026: sotto la frase l'ombra rotonda morbidissima (nessun bordo): il bianco risalta sempre
+                import stile_centro
+                img = stile_centro.con_sfumatura(img, sfuma)
+            except Exception as e:
+                print("Ombra dietro la frase non messa:", str(e)[:150])
         p = os.path.join(tmp, f"t{k}.png")
         img.save(p)
         cmd += ["-i", p]
@@ -707,7 +720,7 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
             import stile_centro
             luci = [l for _, l in scuriti if l is not None]
             info["stile_centro"] = stile_centro.dati(0.0 if scuro_tolto else max([s for s, _ in scuriti] or [0.0]),
-                                                     max(luci) if luci else None)
+                                                     max(luci) if luci else None, sfuma)
         except Exception as e:
             print("Dati dello stile al centro non scritti:", str(e)[:150])
     return info
@@ -825,9 +838,9 @@ def _guarda(p, sorgente, W, H, quanti, dieci, controlli):
         p["mappa"] = ov.mappa_dettagli(fr)
         p["schiarisci"] = ov.schiarita(fr) if dieci else ""
         p["nero"] = bool(controlli) and _pezzo_nero(fr)
-        if ov.STILE_CENTRO:      # 7/11/2026: luce nella zona della frase al centro (per scurire le scene troppo chiare)
+        if ov.STILE_CENTRO:      # 7/11/2026: luce nella zona della frase e di tutto il fotogramma (scene troppo chiare)
             import stile_centro
-            p["luce"] = stile_centro.luce_centro(fr)
+            p["luce"], p["luce_tutto"] = stile_centro.misura(fr)
     except Exception:
         pass
     return p
