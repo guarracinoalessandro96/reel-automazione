@@ -1520,8 +1520,15 @@ PLAYLIST_SCENA = {"palestra": "Tenersi in forma",       # 29/10/2026: niente par
                   "casa": "Lavoro e disciplina", "cibo": "Disciplina ogni giorno", "uscita": "Vita e persone"}
 
 
+# 7/11/2026 (Alessandro: vuole cancellare tutte le playlist del canale, non i video): niente piu' playlist,
+# ne' aggiunte ne' create di nuovo
+PLAYLIST_ATTIVE = False
+
+
 def aggiungi_playlist(creds, video_id, scena, state):
     """Ogni Short in 2 playlist pubbliche (tutte + quella della scena): YouTube fa guardare piu' video di fila."""
+    if not PLAYLIST_ATTIVE:
+        return
     from googleapiclient.discovery import build
     yt = build("youtube", "v3", credentials=creds, cache_discovery=False)
     ids = state.setdefault("playlist", {})
