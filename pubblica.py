@@ -458,6 +458,17 @@ def frase_forzata(mie, state, spinto=True):
     return None
 
 
+def coda_screenshot():
+    """7/11/2026 (Alessandro: "pubblica quelle che non sono state utilizzate privilegiando sempre quelle che ti ho
+    salvato per prima"): le frasi dei suoi screenshot in fila, dalla piu' vecchia (notte/ordine_screenshot.json:
+    [{"id", "file", "cartella", "creato", "frase"}, ...]) -> {id: posto}. Senza il file: {} e si sceglie come prima."""
+    try:
+        with open(os.path.join(HERE, "notte", "ordine_screenshot.json"), encoding="utf-8") as f:
+            return {v["id"]: n for n, v in enumerate(json.load(f))}
+    except Exception:
+        return {}
+
+
 def clip_voti():
     """1/11/2026: voto visivo delle clip (luce + inquadratura + nitidezza, 3-15) e clip escluse (brutte o con altre persone)."""
     try:
@@ -3061,11 +3072,14 @@ def main():
             # vadano piu' virali: classifica_frasi.json (0-100, 50 se manca; lunghezza, temi sulle persone, [virale],
             # giudizio di Claude). Si sceglie a caso tra le prime 3, cosi' i reel vicini non sono sempre uguali.
             punti = foto_punti
+            # 7/11/2026 (Alessandro: "privilegiando sempre quelle che ti ho salvato per prima"): a parita' di
+            # punteggio le frasi dei suoi screenshot nell'ordine della coda, dalla piu' vecchia
+            coda = coda_screenshot()
             # 6/11/2026 (67 reel dal 29/10): a parita' di punteggio prima le frasi da 11-17 parole: YouTube ne ha
             # spinte il 39% (13 su 33), di quelle fino a 10 parole solo il 10% (3 su 31)
             giusta = lambda f: 11 <= len(f["gancio"].split()) <= 17
             ordinate = sorted(frasi, key=lambda f: (-punti.get(f["id"], classifica_frasi.stima(f["gancio"], f.get("virale"))),
-                                                    not giusta(f)))
+                                                    coda.get(f["id"], len(coda)), not giusta(f)))
             # 3/11/2026: mai due frasi con le stesse prime parole nello stesso giorno
             inizio = lambda t: " ".join(re.findall(r"\w+", (t or "").lower())[:2])
             oggi = {inizio(h.get("testo")) for h in state["storico"] if h.get("quando", "")[:10] == datetime.date.today().isoformat()}
@@ -3077,10 +3091,17 @@ def main():
             simile = lambda t: any(len(parole(t) & u) >= 0.6 * max(1, min(len(parole(t)), len(u))) for u in uscite if u)
             tema_di = {f["id"]: f.get("tema") for f in mie}
             temi_vicini = {tema_di.get(h.get("frase")) for h in state["storico"][-2:]} - {None}
-            adatte = [f for f in ordinate[:12] if inizio(f["gancio"]) not in oggi and not simile(f["gancio"])]
-            adatte = [f for f in adatte if f.get("tema") not in temi_vicini] or adatte
+            # 7/11/2026: le frasi della coda dei suoi screenshot non aspettano per 'simile' e per il tema (la coda e'
+            # stata controllata contro le frasi gia' uscite; quelle uscite restano fuori per id)
+            adatte = [f for f in ordinate[:12] if inizio(f["gancio"]) not in oggi and (f["id"] in coda or not simile(f["gancio"]))]
+            adatte = [f for f in adatte if f.get("tema") not in temi_vicini or f["id"] in coda] or adatte
             frase = random.choice(adatte[:3] or [f for f in ordinate[:8] if inizio(f["gancio"]) not in oggi][:3] or ordinate[:3])
-            log(f"Frase dalla classifica ({punti.get(frase['id'], 'stima')}):", frase["gancio"])
+            in_fila = [f for f in adatte if f["id"] in coda and punti.get(f["id"]) == 100]
+            if in_fila:          # la prima in fila, senza sorteggio (il random sopra resta per non cambiare il resto)
+                frase = in_fila[0]
+                log(f"Frase dei suoi screenshot, posto {coda[frase['id']] + 1} della coda:", frase["gancio"])
+            else:
+                log(f"Frase dalla classifica ({punti.get(frase['id'], 'stima')}):", frase["gancio"])
             # 7/11/2026 (studio della sera, modifica 4): sul lato "aforisma", tra le STESSE candidate di oggi (adatte)
             # l'aforisma (una frase sola, voce generale, 9-20 parole) meglio piazzato, se c'e'. Le frasi dei suoi
             # screenshot (classifica 100) restano davanti su tutti e due i lati. La scelta di oggi resta fatta prima
