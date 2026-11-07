@@ -10473,7 +10473,9 @@
      "ok": true,
      "id": "17930431149186387",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -10510,7 +10512,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "UMS5Kls8yNQ"
+     "id": "UMS5Kls8yNQ",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10521,11 +10524,45 @@
    },
    "spinto": true,
    "testo": "Questo è per chi lavora tutto il giorno e la sera costruisce ancora il suo futuro."
+  },
+  {
+   "quando": "2026-11-07T13:01",
+   "slot": "2026-11-07 14:00",
+   "video": "IMG_4307.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-660996ae",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "post",
+    "durata": 10.0,
+    "musica": "cartier_1.m4a",
+    "stacchi": 1,
+    "testi": 0,
+    "scene_dal_video": 1,
+    "musica_meta": "phonk_08.flac",
+    "musica_instagram": "Winner - Chela Rivas [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "gsvI1kr1mNI"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18090379856287019",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "La mia vecchia versione non era sbagliata. Mi ha portato fin qui. Adesso tocca alla prossima."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-30 14:00",
   "2026-10-30 16:00",
   "2026-10-30 18:00",
   "2026-10-30 20:00",
@@ -10604,7 +10641,8 @@
   "2026-11-07 06:00",
   "2026-11-07 08:00",
   "2026-11-07 10:00",
-  "2026-11-07 12:00"
+  "2026-11-07 12:00",
+  "2026-11-07 14:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -10635,7 +10673,8 @@
   "delirium_3.m4a",
   "turn_in_the_sun_1.m4a",
   "duty_calls_2.m4a",
-  "stake_out_2.m4a"
+  "stake_out_2.m4a",
+  "cartier_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -10932,15 +10971,16 @@
   "MIE-52b3207a",
   "MIE-0ca11e56",
   "MIE-1f186d46",
-  "MIE-a314909c"
+  "MIE-a314909c",
+  "MIE-660996ae"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -11358,8 +11398,8 @@
    "ultimo": "2026-11-07"
   },
   "1XySlsRReGeTwlbVlIctzRJDJBUZ2yHi0": {
-   "usi": 1,
-   "ultimo": "2026-10-29"
+   "usi": 2,
+   "ultimo": "2026-11-07"
   },
   "1Dvdi1PK-wTKhXcDuM6STB2Mq6FUojSqR": {
    "usi": 3,
@@ -11391,7 +11431,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_01.flac",
   "energia_03.flac",
   "phonk_10.flac",
   "deciso_10.flac",
@@ -11410,7 +11449,8 @@
   "trap_12.flac",
   "phonk_16.flac",
   "deciso_05.flac",
-  "energia_09.flac"
+  "energia_09.flac",
+  "phonk_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11445,7 +11485,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_foto",
+ "formato_ultimo": "post",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -11499,11 +11539,11 @@
   "2173371459664032",
   "1108285910189784",
   "1015255657240675",
-  "1354603606762864"
+  "1354603606762864",
+  "888162299407391"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Kayhin",
   "Patti Smith",
   "UEFA, Tony Britten",
   "The Sheen",
@@ -11512,10 +11552,10 @@
   "Trout Recording",
   "Adam Griffith",
   "bbox",
-  "Blues369"
+  "Blues369",
+  "Chela Rivas"
  ],
  "ig_titoli_recenti": [
-  "go go go",
   "brilliant",
   "dream big",
   "inspired to shine",
@@ -11554,7 +11594,8 @@
   "fighting back a flight of stairs",
   "knockout",
   "the running",
-  "work hard dream big"
+  "work hard dream big",
+  "winner"
  ],
  "ig_tendenze_riserva": [
   {
@@ -11572,38 +11613,10 @@
    "libreria": false
   },
   {
-   "audio_id": "1050254964075544",
-   "title": "Peaceful Motion",
-   "display_artist": "Lightbox Music",
-   "duration_in_ms": 65330,
-   "libreria": true
-  },
-  {
-   "audio_id": "795179878894620",
-   "title": "Move Me",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 151967,
-   "libreria": true
-  },
-  {
-   "audio_id": "739108178545320",
-   "title": "Move My Body (Instrumental)",
-   "display_artist": "Ella Joy Meir",
-   "duration_in_ms": 114620,
-   "libreria": true
-  },
-  {
-   "audio_id": "865871322866438",
-   "title": "Power Of Good Hair",
-   "display_artist": "Company Money",
-   "duration_in_ms": 16766,
-   "libreria": true
-  },
-  {
-   "audio_id": "1234959381777711",
-   "title": "Chasing Granular (feat. My City Glory) (Instrumental)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 157349,
+   "audio_id": "888162299407391",
+   "title": "Winner",
+   "display_artist": "Chela Rivas",
+   "duration_in_ms": 149760,
    "libreria": true
   }
  ]
