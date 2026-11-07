@@ -1129,8 +1129,9 @@ def _scarica(foto, drive, work, massimo=MASSIMO, riuso=False, momento=None):
         p = os.path.join(work, f"foto_{i}.jpg")
         drive.download(f["id"], p, folder=USATE if riuso else CARTELLA)
         # 7/11/2026: se nella foto manca la data di scatto, per ov.intatta vale quella di Drive (scatto o caricamento)
-        ov.CARICATI[p] = (((f.get("imageMediaMetadata") or {}).get("time") or "").replace(":", "-", 2)
-                          or f.get("createdTime"))
+        v = (((f.get("imageMediaMetadata") or {}).get("time") or "").replace(":", "-", 2) or f.get("createdTime"))
+        if v:      # se l'elenco non ha date resta (api, id) di drive.download: caricato() chiede createdTime a Drive
+            ov.CARICATI[p] = v
         locali.append((f, p))
     schede = {}
     try:
