@@ -1,9 +1,11 @@
 """
 Aggiunge frasi nuove in fondo al Google Doc "Le mie citazioni" (quelle che escono nei reel), in sicurezza.
-Uso: python aggiungi_mie.py nuove.txt "nota della sezione"     (una frase per riga)
+Uso: python aggiungi_mie.py nuove.txt "nota della sezione" [--suoi]     (una frase per riga)
 
 Tiene solo frasi da 7 a 30 parole (le corte rendono meno: dati YouTube 16/10/2026; dal 26/10 anche lunghe, fino a 30), senza eta' ("30 anni"),
 senza autori/virgolette, senza doppioni (anche quasi uguali) rispetto al documento. Stampa cosa scarta e perche'.
+--suoi (7/11/2026, Alessandro: "quando vedi i miei screenshot dimenticati delle regole che ti ho dato e pubblicale lo
+stesso"): per le frasi dei SUOI screenshot non controlla lunghezza, eta' e parole vietate; il controllo dei doppioni resta.
 Le credenziali le legge da ~/reel-segreti.json (solo su questo PC).
 """
 import difflib, io, json, os, re, sys
@@ -33,8 +35,10 @@ def compatta(testo):
 
 
 def main():
-    righe = [pulisci(l) for l in open(sys.argv[1], encoding="utf-8") if l.strip() and not l.startswith("#")]
-    nota = sys.argv[2] if len(sys.argv) > 2 else "aggiunte"
+    suoi = "--suoi" in sys.argv[1:]
+    argomenti = [a for a in sys.argv[1:] if a != "--suoi"]
+    righe = [pulisci(l) for l in open(argomenti[0], encoding="utf-8") if l.strip() and not l.startswith("#")]
+    nota = argomenti[1] if len(argomenti) > 1 else "aggiunte"
     s = json.load(open(os.path.join(os.path.expanduser("~"), "reel-segreti.json"), encoding="utf-8"))
     c = Credentials(None, refresh_token=s["GOOGLE_REFRESH_TOKEN"], client_id=s["GOOGLE_CLIENT_ID"],
                     client_secret=s["GOOGLE_CLIENT_SECRET"], token_uri="https://oauth2.googleapis.com/token")
@@ -44,8 +48,9 @@ def main():
     buone = []
     for r in righe:
         n = len(re.sub(r"^\[\w+\]\s*", "", r).split())
-        motivo = ("meno di 7 parole" if n < 7 else "piu' di 30 parole" if n > 30 else "parla di eta'" if ETA.search(r)
-                  else "parola vietata" if VIETATE.search(r) else None)
+        motivo = None if suoi else (                  # --suoi: frasi dei suoi screenshot, solo il controllo doppioni
+            "meno di 7 parole" if n < 7 else "piu' di 30 parole" if n > 30 else "parla di eta'" if ETA.search(r)
+            else "parola vietata" if VIETATE.search(r) else None)
         if not motivo:
             simile = difflib.get_close_matches(re.sub(r"^\[\w+\]\s*", "", r).lower(), viste, n=1, cutoff=0.82)
             motivo = f"doppione di: {simile[0]}" if simile else None
