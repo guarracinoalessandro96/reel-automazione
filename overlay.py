@@ -370,6 +370,60 @@ def luce_sua(path):
     return (data_ripresa(path) or "") >= LUCE_SUA_DAL
 
 
+# 7/11/2026 (Alessandro, 14:20: "tutti i video che registrero' avranno questo filtro drammatico con bassa esposizione,
+# quindi quando te li metto nella cartella sul google drive non li devi piu' modificare, anche le foto stessa cosa"):
+# video e foto SUOI girati/scattati da INTATTI_DAL (ora italiana) restano come li ha fatti: niente scurimento dello
+# stile al centro, niente schiarita, niente LOOK, niente color correction, niente "migliora"/"virale". Solo taglio e
+# scala al 9:16; la frase bianca al centro e l'ombra morbida dietro (fanno parte della scritta) restano.
+# Il segnale: la data di ripresa nel file (come luce_sua); se manca, la data di caricamento su Drive (createdTime).
+# Clip e foto d'archivio piu' vecchie: tutto come prima. Se qualcosa non si legge: False (come prima, il reel esce).
+INTATTI_DAL = "2026-11-07T14:00"
+INTATTI = {}       # percorso -> True/False gia' deciso (le clip fatte dalle foto, che portano la data di oggi)
+CARICATI = {}      # percorso scaricato -> createdTime di Drive, oppure (api, id) da chiedere solo se serve
+
+
+def _ora_roma(s):
+    """'2026-11-07T13:05:00.000Z' / '2026:11:07 14:05:00' -> '2026-11-07T14:05' (ora italiana), None se illeggibile."""
+    try:
+        import datetime
+        from zoneinfo import ZoneInfo
+        s = str(s).strip()
+        if re.match(r"^\d{4}:\d\d:\d\d", s):              # EXIF: ora locale del telefono, senza fuso
+            s = s[:10].replace(":", "-") + "T" + s[11:]
+        t = datetime.datetime.fromisoformat(s.replace("Z", "+00:00"))
+        if t.tzinfo:
+            t = t.astimezone(ZoneInfo("Europe/Rome"))
+        return t.strftime("%Y-%m-%dT%H:%M")
+    except Exception:
+        return None
+
+
+def caricato(path):
+    """Data di caricamento su Drive del file scaricato in path (ora italiana), None se non si sa."""
+    try:
+        v = CARICATI.get(path)
+        if isinstance(v, tuple):
+            api, fid = v
+            v = CARICATI[path] = api.files().get(fileId=fid, fields="createdTime").execute().get("createdTime")
+        return _ora_roma(v) if v else None
+    except Exception:
+        return None
+
+
+def intatta(path, quando=None):
+    """True se il video/foto in path e' suo e fatto da INTATTI_DAL: non si tocca ne' la luce ne' il colore.
+    quando = data di ripresa gia' nota (le foto: EXIF). Ogni errore -> False (tutto come prima)."""
+    try:
+        if path in INTATTI:
+            return bool(INTATTI[path])
+        quando = _ora_roma(quando) if quando else (data_ripresa(path) if not path.lower().endswith(
+            (".jpg", ".jpeg", ".heic", ".png")) else None)
+        quando = quando or caricato(path)
+        return bool(quando) and quando >= INTATTI_DAL
+    except Exception:
+        return False
+
+
 def schiarita(frames):
     """Filtro per le clip buie (notte, auto): il look scuro non deve far sparire il viso. Vuoto se la clip e' gia' chiara."""
     if not frames:
@@ -1093,7 +1147,10 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     elif (W, H) != (W0, H0):
         chain.append(f"scale={W}:{H}:flags=lanczos")
     grade_info = None
-    if colore:  # color correction automatica in base alla scena (grade.py)
+    # 7/11/2026 (Alessandro: "non li devi piu' modificare"): sui suoi video da INTATTI_DAL niente color correction ne'
+    # scurimento; l'ombra dietro la frase si', fa parte della scritta
+    intatto = colore and intatta(src)
+    if colore and not intatto:  # color correction automatica in base alla scena (grade.py)
         misure = grade.analizza(frames, faces)
         tipo, motivo = grade.scena(misure, nome)
         if scena_rilevata == "palestra" and tipo != "palestra":   # riconosciuta dalle immagini: profilo palestra
@@ -1112,13 +1169,14 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
             import stile_centro
             luce, tutto, alte = stile_centro.misura(frames)
             sfuma = stile_centro.sfumatura_per([luce])
-            m = stile_centro.fattore(luce, tutto, sfuma, alte)
+            m = 1.0 if intatto else stile_centro.fattore(luce, tutto, sfuma, alte)
             if stile_centro.filtro(m):
                 chain += ["format=yuv420p", stile_centro.filtro(m)]
             if sfuma:        # l'ombra morbida dietro la frase, dentro l'immagine della scritta
                 overlay = stile_centro.con_sfumatura(overlay, sfuma)
                 overlay.save(png)
             centro = stile_centro.dati(1 - m, luce, sfuma)
+            centro["intatto"] = bool(intatto)
         except Exception as e:
             print("Video non scurito (resta com'era):", str(e)[:200], flush=True)
     base = f"[0:v]{','.join(chain)}[base];[base]" if chain else "[0:v]"

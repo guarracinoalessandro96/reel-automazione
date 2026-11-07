@@ -333,10 +333,35 @@ def prepara(src, margine=None):
     return im, info
 
 
+def foto_intatta(src):
+    """7/11/2026 (Alessandro: "anche le foto stessa cosa, le faro' ritratto e abbassero' l'esposizione"): True se la
+    foto e' scattata da ov.INTATTI_DAL (EXIF DateTimeOriginal col fuso; se manca la data di Drive, ov.caricato).
+    Ogni errore -> False (la sistemazione di prima)."""
+    quando = None
+    try:
+        sub = Image.open(src).getexif().get_ifd(0x8769)
+        if sub.get(0x9003):
+            quando = str(sub.get(0x9003)).strip()
+            fuso = str(sub.get(0x9011) or "").strip()
+            if fuso and quando[:4].isdigit():
+                quando = quando[:10].replace(":", "-") + "T" + quando[11:19] + fuso
+    except Exception:
+        quando = None
+    return ov.intatta(src, quando)
+
+
 def migliora(src, dst, margine=None):
     """Sistemazione automatica: esposizione, contrasto, saturazione, tono un po' caldo, nitidezza. Taglio 9:16.
-    6/11/2026: raddrizzata, tagliata sul viso e ripulita dalla grana (prepara); restituisce le info del taglio."""
+    6/11/2026: raddrizzata, tagliata sul viso e ripulita dalla grana (prepara); restituisce le info del taglio.
+    7/11/2026: le sue foto da ov.INTATTI_DAL solo raddrizzate e tagliate (info["intatta"] = True), luce e colore suoi."""
     im, info = prepara(src, margine)
+    try:
+        if foto_intatta(src):
+            im.save(dst, quality=96)
+            info["intatta"] = True
+            return info
+    except Exception as e:
+        print("Foto: controllo 'non toccare' non riuscito, sistemazione di prima:", str(e)[:150])
     media = sum(ImageOps.grayscale(im).resize((64, 64)).getdata()) / (64 * 64 * 255)
     gamma = max(0.75, min(1.25, math.log(LUCE) / math.log(max(media, 0.02))))
     centro = getattr(ov, "STILE_CENTRO", False)
@@ -454,7 +479,7 @@ def flash(im):
     return out.filter(ImageFilter.UnsharpMask(radius=1.5, percent=60, threshold=2))
 
 
-def in_clip(img, dst, secondi, verso):
+def in_clip(img, dst, secondi, verso, intatta=False):
     """Foto -> clip con uno scorrimento leggero (verso 1: a destra, 0: a sinistra).
     6/11/2026: la clip porta la data di oggi (creation_time): cosi' il montaggio (ov.luce_sua) non ci rimette sopra
     LOOK e schiarita, e il reel ha la stessa luce delle foto "virale" che Alessandro ha approvato (prima erano
@@ -466,6 +491,8 @@ def in_clip(img, dst, secondi, verso):
     subprocess.run([ov.FFMPEG, "-y", "-v", "error", "-loop", "1", "-framerate", str(ov.FPS_MULTI), "-t", f"{secondi:.2f}",
                     "-i", img, "-vf", f"crop={W}:{H}:'{x}':0,format=yuv420p", "-c:v", "libx264", "-preset", "ultrafast",
                     "-crf", "16", "-metadata", f"creation_time={adesso}", dst], check=True, timeout=ov.TEMPO_MAX_MONTAGGIO)
+    # 7/11/2026: la clip porta la data di oggi, quindi si dice qui se la foto era sua e nuova (ov.intatta: non scurire)
+    ov.INTATTI[dst] = bool(intatta)
 
 
 def make_foto(foto, frase, dst, musiche=()):
@@ -480,7 +507,7 @@ def make_foto(foto, frase, dst, musiche=()):
             img, clip = os.path.join(tmp, f"f{i}.jpg"), os.path.join(tmp, f"c{i}.mp4")
             info = migliora(f, img) or {}
             # 6/11/2026: il movimento porta il viso verso il centro (prima: a destra e a sinistra alternati)
-            in_clip(img, clip, d + 1.0, i % 2 if info.get("verso") is None else info["verso"])
+            in_clip(img, clip, d + 1.0, i % 2 if info.get("verso") is None else info["verso"], info.get("intatta"))
             clips.append(clip)
             area.append(sum((v[2] - v[0]) * (v[3] - v[1]) for v in info.get("visi", [])))
         # la scritta resta ferma per 10 s: se copre un viso si riprova con meno foto, altrimenti esce comunque nel punto migliore.
@@ -715,10 +742,12 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
     fps = ov.FPS_MULTI
     tmp = tempfile.mkdtemp()
     try:
-        visi, piccole, luci = [], [], {}
+        visi, piccole, luci, intatte = [], [], {}, set()    # intatte: 7/11/2026, foto sue nuove (non si scuriscono)
         for i, f in enumerate(foto):
             p = os.path.join(tmp, f"r{i}.jpg")
             info = migliora(f, p, margine=1.0) or {}           # 9:16 esatto: nessuno spazio per lo scorrimento
+            if info.get("intatta"):
+                intatte.add(i)
             im = Image.open(p).convert("RGB")
             v = list(info.get("visi", []))
             bgr = cv2.cvtColor(np.asarray(ImageOps.contain(im, (720, 720))), cv2.COLOR_RGB2BGR)   # come visi_foto
@@ -769,7 +798,7 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
             if i in luci:      # 7/11/2026: foto troppo chiara sotto la frase al centro -> un po' piu' scura
                 try:
                     import stile_centro
-                    m = stile_centro.fattore(luci[i][0], luci[i][1], sfuma, luci[i][2])
+                    m = 1.0 if i in intatte else stile_centro.fattore(luci[i][0], luci[i][1], sfuma, luci[i][2])
                     scuro = stile_centro.filtro(m)
                     scuriti.append((1 - m, luci[i][0]))
                 except Exception as e:
@@ -820,6 +849,8 @@ def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
                 info["stile_centro"] = stile_centro.dati(max([s for s, _ in scuriti] or [0.0]),
                                                          max([l for _, l in scuriti] or [0.0]) if scuriti else None,
                                                          sfuma)
+                info["stile_centro"]["intatto"] = bool(ordine) and all(i in intatte for i in ordine)
+                info["stile_centro"]["scene_intatte"] = sum(1 for i in ordine if i in intatte)
             except Exception as e:
                 print("Foto rapide: dati dello stile al centro non scritti:", str(e)[:150])
         return info
@@ -1097,6 +1128,9 @@ def _scarica(foto, drive, work, massimo=MASSIMO, riuso=False, momento=None):
     for i, f in enumerate(foto):
         p = os.path.join(work, f"foto_{i}.jpg")
         drive.download(f["id"], p, folder=USATE if riuso else CARTELLA)
+        # 7/11/2026: se nella foto manca la data di scatto, per ov.intatta vale quella di Drive (scatto o caricamento)
+        ov.CARICATI[p] = (((f.get("imageMediaMetadata") or {}).get("time") or "").replace(":", "-", 2)
+                          or f.get("createdTime"))
         locali.append((f, p))
     schede = {}
     try:

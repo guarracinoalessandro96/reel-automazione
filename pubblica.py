@@ -1150,6 +1150,8 @@ class Drive:
             shutil.copy(os.path.join(self.local, folder, file_id), dest)
             return
         from googleapiclient.http import MediaIoBaseDownload
+        # 7/11/2026: la data di caricamento su Drive, chiesta solo se nel video manca la data di ripresa (overlay.intatta)
+        overlay.CARICATI[dest] = (self.api, file_id)
         with io.FileIO(dest, "wb") as fh:
             dl = MediaIoBaseDownload(fh, self.api.files().get_media(fileId=file_id), chunksize=50 * 1024 * 1024)
             done = False

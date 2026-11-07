@@ -693,6 +693,7 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
             pezzi = _riguarda(pezzi, durate, W, H, 5 if controlla_viso else 3, dieci)
         except Exception as e:
             print("Scene spostate non riguardate (restano i visi di prima):", e)
+    intatti = []               # 7/11/2026: per ogni scena, True = sua da ov.INTATTI_DAL (luce e colore non toccati)
     scuriti, sfuma = [], 0.0   # 7/11/2026: (quanto piu' scura, luce misurata) di ogni scena; ombra dietro la frase
     if ov.STILE_CENTRO and (velocita or indietro):
         # 7/11/2026: rallenty e loop sono lo stesso momento che continua: una sola luce per tutte le scene, se no al
@@ -719,6 +720,11 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         # 6/11/2026 (Alessandro: "saro' io a decidere la luminosita' dei video"): sui video girati da lui dal 5/11
         # niente schiarita e niente LOOK, la luce resta quella che ha scelto col telefono
         sua = dieci and ov.luce_sua(c)
+        # 7/11/2026 (Alessandro: "tutti i video che registrero' avranno questo filtro drammatico con bassa esposizione
+        # ... non li devi piu' modificare, anche le foto"): da ov.INTATTI_DAL niente scurimento, schiarita ne' LOOK
+        intatto = ov.intatta(c)
+        intatti.append(intatto)
+        sua = sua or intatto
         f = [x for x in (ov.raddrizza(ov.rotazione(c)), ov.HDR_TO_SDR if hdr else "") if x]
         if layout:     # cinema/post: il video nella sua finestra, tagliato tenendo il viso dentro
             f += [f"scale={wv}:{hv}:force_original_aspect_ratio=increase",
@@ -732,8 +738,8 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
             schiarisci = ""
             try:
                 import stile_centro
-                m = stile_centro.fattore(pezzi[i].get("luce"), pezzi[i].get("luce_tutto"), sfuma,
-                                         pezzi[i].get("luce_alte"))
+                m = 1.0 if intatto else stile_centro.fattore(pezzi[i].get("luce"), pezzi[i].get("luce_tutto"),
+                                                             sfuma, pezzi[i].get("luce_alte"))
                 scuro = stile_centro.filtro(m)
                 scuriti.append((1 - m, pezzi[i].get("luce")))
             except Exception as e:
@@ -854,6 +860,9 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
             luci = [l for _, l in scuriti if l is not None]
             info["stile_centro"] = stile_centro.dati(0.0 if scuro_tolto else max([s for s, _ in scuriti] or [0.0]),
                                                      max(luci) if luci else None, sfuma)
+            # 7/11/2026: True = tutte le scene sue nuove, non toccate; "scene_intatte" = quante (su "stacchi")
+            info["stile_centro"]["intatto"] = bool(intatti) and all(intatti)
+            info["stile_centro"]["scene_intatte"] = sum(1 for x in intatti if x)
         except Exception as e:
             print("Dati dello stile al centro non scritti:", str(e)[:150])
     return info
