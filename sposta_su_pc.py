@@ -6,6 +6,7 @@ e' completa (stessa grandezza), li toglie da Drive. Nessun video va perso: i 4K 
 """
 import json, os
 import requests
+import cartelle              # 7/11/2026: dove stanno le cartelle su Drive, prima e dopo il riordino
 
 SEGRETI = os.path.join(os.path.expanduser("~"), "reel-segreti.json")
 CARTELLA_PC = os.path.join(os.path.expanduser("~"), "Archivio reel (4K)")
@@ -19,15 +20,24 @@ def token(k):
         "refresh_token": k["GOOGLE_REFRESH_TOKEN"], "grant_type": "refresh_token"}).json()["access_token"]
 
 
+def elenca_cartelle(H, q):
+    """7/11/2026: una ricerca di cartelle su Drive per cartelle.trova (anche tiktok_prepara.py). Un errore di Drive
+    ferma il giro: non deve sembrare "cartella non trovata"."""
+    r = requests.get(API, params={"q": q, "fields": f"files({cartelle.CAMPI})", "pageSize": 100}, headers=H, timeout=30)
+    r.raise_for_status()
+    return r.json().get("files", [])
+
+
 def sposta():
     """Restituisce (spostati, GB liberati, GB liberi sul disco del PC)."""
     k = json.load(open(SEGRETI, encoding="utf-8"))
     H = {"Authorization": "Bearer " + token(k)}
     padre = requests.get(f"{API}/{k['DRIVE_FOLDER_DA_PUBBLICARE']}", params={"fields": "parents"}, headers=H,
                          timeout=30).json()["parents"][0]
-    q = (f"'{padre}' in parents and name = '{VERSO_PC}' and trashed = false "
-         "and mimeType = 'application/vnd.google-apps.folder'")
-    cart = requests.get(API, params={"q": q, "fields": "files(id)"}, headers=H, timeout=30).json().get("files", [])
+    # 7/11/2026 (riordino del Drive chiesto da Alessandro): accanto a "Video da pubblicare" o dentro
+    # "Sistema (non toccare)" (cartelle.py); qui non si crea mai (se non c'e', niente da spostare)
+    trovata = cartelle.trova(VERSO_PC, padre, lambda q: elenca_cartelle(H, q))
+    cart = [{"id": trovata}] if trovata else []
     os.makedirs(CARTELLA_PC, exist_ok=True)
     spostati, liberati = 0, 0
     if cart:

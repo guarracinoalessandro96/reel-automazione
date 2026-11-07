@@ -47,14 +47,30 @@ def token_google():
 
 
 def cartella_foto(token):
-    """La cartella Drive "Foto della giornata" (foto_giornata.py), cercata per nome."""
-    q = "name = 'Foto della giornata' and mimeType = 'application/vnd.google-apps.folder' and trashed = false"
-    url = "https://www.googleapis.com/drive/v3/files?" + urllib.parse.urlencode({"q": q, "fields": "files(id)"})
-    req = urllib.request.Request(url, headers={"Authorization": "Bearer " + token})
-    trovate = json.load(urllib.request.urlopen(req, timeout=30)).get("files", [])
-    if not trovate:
-        raise RuntimeError("cartella 'Foto della giornata' non trovata su Drive")
-    return trovate[0]["id"]
+    """La cartella Drive delle foto (foto_giornata.py): "Foto da pubblicare", prima "Foto della giornata".
+    7/11/2026 (riordino del Drive chiesto da Alessandro): si cerca con tutti e due i nomi nella cartella che contiene
+    "Video da pubblicare" (e dentro "Sistema (non toccare)", cartelle.py); se li' non c'e', in tutto il Drive come
+    prima. Mai creata: se non c'e' da nessuna parte, errore (la foto va rimandata)."""
+    import cartelle
+    H = {"Authorization": "Bearer " + token}
+
+    def elenca(q):
+        url = "https://www.googleapis.com/drive/v3/files?" + urllib.parse.urlencode({"q": q, "fields": f"files({cartelle.CAMPI})"})
+        return json.load(urllib.request.urlopen(urllib.request.Request(url, headers=H), timeout=30)).get("files", [])
+    try:
+        url = f"https://www.googleapis.com/drive/v3/files/{ENV('DRIVE_FOLDER_DA_PUBBLICARE')}?fields=parents"
+        padre = json.load(urllib.request.urlopen(urllib.request.Request(url, headers=H), timeout=30))["parents"][0]
+        trovata = cartelle.trova(cartelle.FOTO, padre, elenca, avvisa=None)
+        if trovata:
+            return trovata
+    except Exception as e:
+        print("Foto: ricerca accanto a 'Video da pubblicare' non riuscita, cerco in tutto il Drive:", e)
+    nomi = " or ".join(f"name = '{n}'" for n in cartelle.nomi(cartelle.FOTO))
+    trovata = cartelle.scegli(elenca(f"({nomi}) and mimeType = '{cartelle.CARTELLA}' and trashed = false"),
+                              cartelle.FOTO, None)
+    if not trovata:
+        raise RuntimeError(f"cartella '{cartelle.FOTO}' non trovata su Drive")
+    return trovata
 
 
 def carica_su_drive(token, nome, contenuto, mime, titolo="", cartella=None):

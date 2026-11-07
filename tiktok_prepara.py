@@ -18,7 +18,8 @@ I video gia' programmati da piu' di 3 giorni vanno nel cestino di Drive (lo svuo
 """
 import datetime, json, os, re, sys
 import requests
-from sposta_su_pc import SEGRETI, API, token
+from sposta_su_pc import SEGRETI, API, token, elenca_cartelle
+import cartelle              # 7/11/2026: dove stanno le cartelle su Drive, prima e dopo il riordino
 
 CARTELLA_TIKTOK = "TikTok - da pubblicare"
 CARTELLA_PC = os.path.join(os.path.expanduser("~"), "TikTok da programmare")
@@ -38,9 +39,11 @@ def collega():
     H = {"Authorization": "Bearer " + token(k)}
     padre = requests.get(f"{API}/{k['DRIVE_FOLDER_DA_PUBBLICARE']}", params={"fields": "parents"}, headers=H,
                          timeout=30).json()["parents"][0]
-    q = (f"'{padre}' in parents and name = '{CARTELLA_TIKTOK}' and trashed = false "
-         "and mimeType = 'application/vnd.google-apps.folder'")
-    cart = requests.get(API, params={"q": q, "fields": "files(id)"}, headers=H, timeout=30).json()["files"][0]["id"]
+    # 7/11/2026 (riordino del Drive chiesto da Alessandro): accanto a "Video da pubblicare" o dentro
+    # "Sistema (non toccare)" (cartelle.py). Qui non si crea mai: se manca ci si ferma, come prima.
+    cart = cartelle.trova(CARTELLA_TIKTOK, padre, lambda q: elenca_cartelle(H, q))
+    if not cart:
+        raise RuntimeError(f"cartella '{CARTELLA_TIKTOK}' non trovata su Drive")
     return H, cart
 
 

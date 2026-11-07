@@ -1,7 +1,7 @@
 """Quanti video ci sono in 'Da pubblicare' su Drive? Stampa il numero (o -1 se non si riesce a controllare).
 Solo libreria standard: gira in un secondo, prima di installare torch e il resto. Se la coda e' vuota,
 il workflow si ferma subito (le esecuzioni ogni 20 minuti restano leggerissime)."""
-import json, os, urllib.parse, urllib.request
+import json, os, sys, urllib.parse, urllib.request
 
 
 def conta():
@@ -23,11 +23,15 @@ def conta():
     url = f"https://www.googleapis.com/drive/v3/files/{coda}?fields=parents"
     padre = json.load(urllib.request.urlopen(urllib.request.Request(url, headers={"Authorization": "Bearer " + token}),
                                              timeout=20))["parents"][0]
-    arch = lista(f"'{padre}' in parents and name = 'Archivio' and trashed = false "
-                 "and mimeType = 'application/vnd.google-apps.folder'")
+    # 7/11/2026 (riordino del Drive chiesto da Alessandro): l'Archivio puo' stare accanto a "Video da pubblicare" o
+    # dentro "Sistema (non toccare)" (cartelle.py). Qui non si crea niente; gli avvisi vanno su stderr, perche' il
+    # workflow legge solo il numero stampato. Import qui dentro: se manca qualcosa si stampa -1 e si procede.
+    import cartelle
+    arch = cartelle.trova("Archivio", padre, lambda q: lista(q, f"files({cartelle.CAMPI})"),
+                          avvisa=lambda m: print(m, file=sys.stderr))
     if not arch:
         return 0
-    return len(lista(f"'{arch[0]['id']}' in parents and trashed = false and mimeType contains 'video/'"))
+    return len(lista(f"'{arch}' in parents and trashed = false and mimeType contains 'video/'"))
 
 
 if __name__ == "__main__":
