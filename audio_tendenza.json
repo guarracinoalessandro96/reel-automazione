@@ -1,6 +1,426 @@
 {
-  "aggiornato": "2026-11-01",
+  "aggiornato": "2026-11-08",
   "brani": [
+    {
+      "titolo": "TURAN",
+      "artista": "ASTXR & MC ETERNA",
+      "fonte": "tiktok",
+      "reel_visti": 5
+    },
+    {
+      "titolo": "Einaudi: Experience",
+      "artista": "Ludovico Einaudi & Daniel Hope & I Virtuosi Italiani",
+      "fonte": "tiktok",
+      "reel_visti": 3
+    },
+    {
+      "titolo": "Solace",
+      "artista": "Txmy",
+      "fonte": "tiktok",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "Last Hope (Over Slowed + Reverb)",
+      "artista": "Steve Ralph",
+      "fonte": "tiktok",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "Lights Are On - Instrumental",
+      "artista": "Edith Whiskers",
+      "fonte": "tiktok",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "I Need a Dollar (Instrumental Version)",
+      "artista": "Beats Nation",
+      "fonte": "tiktok",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "LOST ASTRONAUT (SLOWED)",
+      "artista": "PINKY SMASH",
+      "fonte": "tiktok",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "Freedom",
+      "artista": "Pharrell Williams",
+      "fonte": "tiktok",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "SCARLET MOON",
+      "artista": "TXVN",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Distant Echoes",
+      "artista": "VXLLAIN & VØJ & Narvent",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Pirates Of The Caribbean - Main Theme - He's A Pirate",
+      "artista": "Geek Music",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "MONACO",
+      "artista": "Bad Bunny",
+      "fonte": "instagram",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "GALLOW DANCE - Slowed + Reverb",
+      "artista": "SCRVZVY",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Cornfield Chase",
+      "artista": "Hans Zimmer",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Skins - Ultra Slowed + Reverb",
+      "artista": "KREZUS & Surreal_dvd",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "You Might Find Me (From \"Creed II\" Soundtrack)",
+      "artista": "Ludwig Göransson & Jacob Banks",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "LUNA BALA (Extreme Slowed)",
+      "artista": "Yb Wasg'ood & Ariis",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "growth",
+      "artista": "Gede Yudis",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Einaudi: Nuvole Bianche",
+      "artista": "Ludovico Einaudi",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Free (Mood II Swing Extended Vocal Mix)",
+      "artista": "Ultra Naté",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "A Simple Life",
+      "artista": "Morunas",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "New Sun",
+      "artista": "Chichni Ro Bachiyo",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "PASSO BEM SOLTO (Slowed)",
+      "artista": "ATLXS",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "AROUND THE GLOBE (RMX)",
+      "artista": "Unjaps & 404NR & June Boii",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "BRODYAGA FUNK - SLOWED + REVERB",
+      "artista": "Eternxlkz",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Idea 10 (Sped Up)",
+      "artista": "Gibran Alcocer",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "REDLINE (Slowed)",
+      "artista": "RXDFXRCE",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Non mollare mai",
+      "artista": "Mirage",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "NEON JUMP",
+      "artista": "Phonk Killer & PHOROMANE & Faberlique",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Inception: Time - Orchestra Version (Live)",
+      "artista": "Hans Zimmer & Rusanda Panfili & Eliane Correa & Vienna Radio Symphony Orchestra & Martin Gellner",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Action Intro",
+      "artista": "Stereo Color",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Fear Nothing",
+      "artista": "DJ Gangster & Dj Belite",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "vertigo (sped up)",
+      "artista": "insensible & énouement",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "River flows in you",
+      "artista": "Felipe FR Music",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "STRUCT - Tiktok Version",
+      "artista": "UdieNnx",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "AURA",
+      "artista": "Ogryzek",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "They Don't Care About Us (Remastered Version)",
+      "artista": "Michael Jackson",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Revolution",
+      "artista": "Stereo Color",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Templar - Slowed",
+      "artista": "onimanxd",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Now We Are Free",
+      "artista": "Lisa Gerrard & Gavin Greenaway & The Lyndhurst Orchestra",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "win again - slowed",
+      "artista": "trucky",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Idea 15",
+      "artista": "Gibran Alcocer",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Hall of Fame (feat. will.i.am)",
+      "artista": "The Script",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Mist",
+      "artista": "EsDeeKid & Rico Ace",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Ambient-style emotional piano",
+      "artista": "MoppySound",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Lets Fight",
+      "artista": "JDHD beats",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "BUMP!",
+      "artista": "CryJaxx & MVRPHiN & Phonk King",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Event Horizon (STEM percussion)",
+      "artista": "Altitude Music / BMGPM",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Sport Motivational",
+      "artista": "TimTaj",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Get Up (Rattle) [feat. Far East Movement] [Vocal Extended]",
+      "artista": "Bingo Players",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Aura Farming (Slowed)",
+      "artista": "Mustafa Saboori",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Dream On",
+      "artista": "Aerosmith",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "PSYCHO CRUISE",
+      "artista": "ONIMXRU & STRAWANGLE",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Success Story",
+      "artista": "AShamaluevMusic",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "X-COOL! - Instrumental - Ultra Slowed",
+      "artista": "tienanh109 & HDN & hailong140",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Jacob and the Stone",
+      "artista": "Emile Mosseri",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Morto Mai (Piano Solo)",
+      "artista": "Lazza",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "G.O.A.T. - Il cuore",
+      "artista": "Marracash",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Requiem for a Dream",
+      "artista": "Scott Benson Band",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Virtuoso Violin",
+      "artista": "Rafael Krux",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Can't Hold Us (feat. Ray Dalton)",
+      "artista": "Macklemore & Ryan Lewis",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "everlasting",
+      "artista": "Nectry & Antent",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Inspiring Violins",
+      "artista": "D'MICHEL LEB & soul frequency",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Glory",
+      "artista": "fatbunny",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "MY FISTS ?",
+      "artista": "Prood samuka",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Epic Inspiration",
+      "artista": "AShamaluevMusic",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Momentum",
+      "artista": "vshe",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "The Lifetime",
+      "artista": "Saymon Cleiton & jhonatan Rodrigues",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "The Rumbling",
+      "artista": "Rok Nardin & Samuel Kim",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Grounded",
+      "artista": "Jameson Nathan Jones",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
     {
       "titolo": "Don't Give Up On Me",
       "artista": "Andy Grammer",
