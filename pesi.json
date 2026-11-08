@@ -5,10 +5,10 @@
   "mentalita": 1.0,
   "palestra": 0.97,
   "dieta": 1.01,
-  "regole": 1.05,
+  "regole": 1.06,
   "storia": 0.98
  },
- "aggiornato": "2026-11-07",
+ "aggiornato": "2026-11-08",
  "frasi_vincenti": [
   "MIE-02d87ee7",
   "MIE-043e8cf1",
@@ -63,7 +63,7 @@
   "regole": 1.01,
   "montaggio": 0.89,
   "frase8": 0.99,
-  "dieci_due": 1.03,
+  "dieci_due": 1.04,
   "dieci": 1.02
  },
  "esperimento_formati": {
@@ -71,42 +71,42 @@
  },
  "esperimento_nota": "Agente 25/10/2026: regole x1,6 (12 Short dal 18/10: mediana 954, 2 sopra 1.200; frase 935 e 0 su 13; montaggio 770 e 1 su 14). Verifica 1/11/2026: se le regole rendono meno della mediana degli altri formati si toglie.",
  "brani_forti": [
-  "taking_flight",
-  "cutscene_crush",
   "sweaty_staredown",
   "intergalactic",
-  "vibe_check",
   "cartier",
+  "vibe_check",
   "the_road_to_mordor",
   "way_back_home",
   "fire_in_the_sky",
-  "wrangle_the_crazy"
+  "wrangle_the_crazy",
+  "ancient_civilisations",
+  "rubberband"
  ],
  "clip_forti": [
   "IMG_4037.MOV",
-  "IMG_3652.mov",
   "IMG_4029.MOV",
   "IMG_4032.MOV",
   "IMG_3763.mov",
-  "IMG_3311.mov",
   "IMG_3651.mov",
   "IMG_4286.MOV",
-  "IMG_3972.MOV",
   "IMG_4294.MOV",
+  "IMG_3972.MOV",
   "IMG_3832.mov",
   "IMG_3833.mov",
   "IMG_4061.MOV",
   "IMG_4126.MOV",
   "Alessandro Guarracino sta trasmettendo dal vivo..MOV",
-  "IMG_3330.mov",
   "IMG_4121.mov",
   "IMG_3974.MOV",
   "IMG_3606.mov",
-  "IMG_3787.mov"
+  "IMG_3787.mov",
+  "IMG_3952.mov",
+  "IMG_4044.MOV",
+  "IMG_4118.mov"
  ],
  "brani_forti_ig": [
   "trap",
-  "phonk",
-  "energia"
+  "drive",
+  "phonk"
  ]
 }
