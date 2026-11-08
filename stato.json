@@ -11352,7 +11352,9 @@
      "ok": true,
      "id": "18107918159633243",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -11415,7 +11417,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "2TQINQb37L8"
+     "id": "2TQINQb37L8",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -11426,11 +11429,77 @@
    },
    "spinto": true,
    "testo": "Non sarà sempre logico. Va bene così."
+  },
+  {
+   "quando": "2026-11-08T19:00",
+   "slot": "2026-11-08 20:00",
+   "video": "IMG_4287.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-da339c68",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "intergalactic_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 2,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 5.71,
+     "primo_piano_fermo": false,
+     "soglia_moto": 10.64,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 128,
+     "righe": 3,
+     "scurito": 0.39,
+     "luce": 0.42,
+     "sfumatura": 0.31,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 189,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 8
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_05.flac",
+    "musica_instagram": "La Marche des Commis Voyageurs - Genticorum [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "yJC3fuDx64A"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18647300665048027",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Il tuo futuro ti sta guardando. Rendilo orgoglioso."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-31 20:00",
   "2026-10-31 22:00",
   "2026-11-01 00:00",
   "2026-11-01 06:00",
@@ -11509,7 +11578,8 @@
   "2026-11-08 12:00",
   "2026-11-08 14:00",
   "2026-11-08 16:00",
-  "2026-11-08 18:00"
+  "2026-11-08 18:00",
+  "2026-11-08 20:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -11553,7 +11623,8 @@
   "cutscene_crush_2.m4a",
   "van_life_rager_1.m4a",
   "wrangle_the_crazy_1.m4a",
-  "keep_it_movin_3.m4a"
+  "keep_it_movin_3.m4a",
+  "intergalactic_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -11863,11 +11934,12 @@
   "MIE-c23d3837",
   "MIE-0093b678",
   "MIE-8cc508a2",
-  "MIE-3b06a8a3"
+  "MIE-3b06a8a3",
+  "MIE-da339c68"
  ],
  "temi_recenti": [
-  "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -12297,8 +12369,9 @@
    "ultimo": "2026-11-07"
   },
   "1-wXfeOgo9aVpjZBQjqJopT9L84ZIWVcr": {
-   "usi": 2,
-   "ultimo": "2026-10-30"
+   "usi": 3,
+   "ultimo": "2026-11-08",
+   "orizzontale": false
   },
   "1icAhByFdodzmuGNrSAXVrb0tCLCv80Lx": {
    "usi": 2,
@@ -12372,7 +12445,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_06.flac",
   "phonk_12.flac",
   "drive_12.flac",
   "trap_12.flac",
@@ -12391,7 +12463,8 @@
   "phonk_13.flac",
   "trap_14.flac",
   "drive_09.flac",
-  "phonk_06.flac"
+  "phonk_06.flac",
+  "energia_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -12426,7 +12499,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio1",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -12493,11 +12566,11 @@
   "605387610085051",
   "485127744365118",
   "1204148475203672",
-  "522339937196006"
+  "522339937196006",
+  "1546581635764552"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "stereogully",
   "The K Club",
   "Giulio Cercato",
   "Afterlight",
@@ -12506,10 +12579,10 @@
   "Vault 49",
   "Kolektivo",
   "Auralux",
-  "Symphonic Planet"
+  "Symphonic Planet",
+  "Genticorum"
  ],
  "ig_titoli_recenti": [
-  "gangsta",
   "piccole cose",
   "sara perche ti amo",
   "sara perche ti amo",
@@ -12548,7 +12621,8 @@
   "glory",
   "fight contigo",
   "careful believer",
-  "epic proportions"
+  "epic proportions",
+  "la marche des commis voyageurs"
  ],
  "ig_tendenze_riserva": [
   {
@@ -12557,6 +12631,20 @@
    "display_artist": "Blues369",
    "duration_in_ms": 274920,
    "libreria": false
+  },
+  {
+   "audio_id": "1546581635764552",
+   "title": "La Marche des Commis Voyageurs",
+   "display_artist": "Genticorum",
+   "duration_in_ms": 182512,
+   "libreria": true
+  },
+  {
+   "audio_id": "1415626095700405",
+   "title": "Game To Win (feat. G7MBL3)",
+   "display_artist": "d.higgs",
+   "duration_in_ms": 102770,
+   "libreria": true
   }
  ]
 }
