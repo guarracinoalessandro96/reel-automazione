@@ -129,6 +129,9 @@ def frase_della_didascalia(testo):
     """La frase com'e' scritta (prima riga che non e' 'Giorno X/365' ne' hashtag), anche per le didascalie vecchie."""
     for r in (testo or "").splitlines():
         r = r.strip()
-        if r and not r.startswith(("Giorno", "#")):
-            return re.sub(r"(\s+#\S+)+\s*$", "", r)    # 8/11/2026: via gli hashtag in coda sulla stessa riga
+        # 8/11/2026: "Giorno 310/365 frase" sulla stessa riga (Facebook): si toglie solo il Giorno; la riga di ricerca
+        # ("Frasi motivazionali ...") non e' la frase; via gli hashtag in coda sulla stessa riga
+        r = re.sub(r"^Giorno\s+\d+\s*/\s*\d+\s*", "", r).strip()
+        if r and not r.startswith("#") and not r.lower().startswith(TESTA.lower()):
+            return re.sub(r"(\s+#\S+)+\s*$", "", r)
     return ""
