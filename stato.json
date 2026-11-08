@@ -10978,7 +10978,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "jZshIdmuYfA"
+     "id": "jZshIdmuYfA",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -10989,11 +10990,88 @@
    },
    "spinto": true,
    "testo": "Fallo da solo. Fallo al verde. Fallo stanco. Fallo impaurito. Fallo e basta."
+  },
+  {
+   "quando": "2026-11-08T07:00",
+   "slot": "2026-11-08 08:00",
+   "video": "IMG_4935.mov",
+   "md5": "6cb76dc5610e6a085b236ea8434d7a4b",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-05T23:29+01:00",
+   "frase": "MIE-40bcee41",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "giornata",
+    "durata": 10.0,
+    "musica": "ego_chall_2.m4a",
+    "stacchi": 5,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 6.77,
+     "primo_piano_fermo": false,
+     "soglia_moto": 12.4
+    },
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 136,
+     "righe": 2,
+     "scurito": 0.0,
+     "luce": 0.19,
+     "sfumatura": 0.0,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scene": 5,
+    "con_viso": 5,
+    "viso_primo_secondo": true,
+    "gancio_azione": true,
+    "secondi_analisi": 196,
+    "stesso_giorno": 5,
+    "clip_scene": [
+     "IMG_4931.mov",
+     "IMG_4928.mov",
+     "IMG_4933.mov",
+     "IMG_4942.mov"
+    ],
+    "giornata_del": "2026-11-05",
+    "secondi_montaggio": 330,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 7
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_01.flac",
+    "musica_instagram": "Photocopy (feat. My City Glory) (Instrumental) - Ross Lara [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "N3RN954DR_0"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18119789038975936",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Ispirato dalla paura di essere nella media."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-31 08:00",
   "2026-10-31 10:00",
   "2026-10-31 12:00",
   "2026-10-31 14:00",
@@ -11072,7 +11150,8 @@
   "2026-11-07 20:00",
   "2026-11-07 22:00",
   "2026-11-08 00:00",
-  "2026-11-08 06:00"
+  "2026-11-08 06:00",
+  "2026-11-08 08:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -11110,7 +11189,8 @@
   "majestic_12_1.m4a",
   "rubberband_3.m4a",
   "ten_1.m4a",
-  "final_boss_battle_3.m4a"
+  "final_boss_battle_3.m4a",
+  "ego_chall_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -11414,7 +11494,8 @@
   "MIE-ca8b6276",
   "MIE-fc938333",
   "MIE-09c18c57",
-  "MIE-65994949"
+  "MIE-65994949",
+  "MIE-40bcee41"
  ],
  "temi_recenti": [
   "mentalita",
@@ -11423,8 +11504,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -11482,20 +11563,6 @@
    "registrato": "2026-11-05T23:24+01:00",
    "fascia": "palestra",
    "caricato": "2026-11-07T12:54:38.882Z",
-   "parlato": null,
-   "momento": null
-  },
-  "14QoMtThefVorOVBLoNVdmgdTR_HwMKcm": {
-   "nome": "IMG_4935.mov",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-05T23:29+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-11-07T12:56:31.781Z",
    "parlato": null,
    "momento": null
   }
@@ -11966,10 +12033,14 @@
    "usi": 1,
    "ultimo": "2026-11-08",
    "orizzontale": false
+  },
+  "14QoMtThefVorOVBLoNVdmgdTR_HwMKcm": {
+   "usi": 1,
+   "ultimo": "2026-11-08",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "deciso_11.flac",
   "phonk_11.flac",
   "drive_14.flac",
   "trap_05.flac",
@@ -11988,7 +12059,8 @@
   "phonk_04.flac",
   "energia_06.flac",
   "drive_11.flac",
-  "phonk_05.flac"
+  "phonk_05.flac",
+  "energia_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -12023,7 +12095,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "giornata",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -12084,11 +12156,11 @@
   "820220974302825",
   "1495460624383703",
   "23939038495769960",
-  "1716216946466764"
+  "1716216946466764",
+  "1868754054118430"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Adam Griffith",
   "bbox",
   "Blues369",
   "Chela Rivas",
@@ -12097,10 +12169,10 @@
   "stereogully",
   "The K Club",
   "Giulio Cercato",
-  "Afterlight"
+  "Afterlight",
+  "Ross Lara"
  ],
  "ig_titoli_recenti": [
-  "road warriors",
   "ramalama",
   "eri solo da incontrare",
   "here you come there you go",
@@ -12139,7 +12211,8 @@
   "success",
   "think about",
   "luxe motion",
-  "join the movement"
+  "join the movement",
+  "photocopy"
  ],
  "ig_tendenze_riserva": [
   {
@@ -12157,24 +12230,31 @@
    "libreria": false
   },
   {
-   "audio_id": "886249782709175",
-   "title": "March Of Libertad",
-   "display_artist": "Symphonic Planet",
-   "duration_in_ms": 236050,
+   "audio_id": "832983041880365",
+   "title": "Empowering Electro",
+   "display_artist": "bbox",
+   "duration_in_ms": 179610,
    "libreria": true
   },
   {
-   "audio_id": "976973397894084",
-   "title": "Champions (Instrumental)",
-   "display_artist": "stereogully",
-   "duration_in_ms": 114995,
+   "audio_id": "245071018407764",
+   "title": "Cygnus (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 177400,
    "libreria": true
   },
   {
-   "audio_id": "1716216946466764",
-   "title": "Join The Movement",
-   "display_artist": "Afterlight",
-   "duration_in_ms": 61611,
+   "audio_id": "1868754054118430",
+   "title": "Photocopy (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 167521,
+   "libreria": true
+  },
+  {
+   "audio_id": "806476269035757",
+   "title": "On Fire (Instrumental)",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 197861,
    "libreria": true
   }
  ]
