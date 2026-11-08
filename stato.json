@@ -11270,7 +11270,9 @@
      "ok": true,
      "id": "18128829037909845",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -11343,7 +11345,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "3yoNOKTpivU"
+     "id": "3yoNOKTpivU",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -11354,11 +11357,79 @@
    },
    "spinto": true,
    "testo": "Respira. È solo una giornata storta, non una vita storta."
+  },
+  {
+   "quando": "2026-11-08T17:00",
+   "slot": "2026-11-08 18:00",
+   "video": "IMG_4928.mov",
+   "md5": "0e9162e956325a9918fce7259e5b07e6",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-05T23:11+01:00",
+   "frase": "MIE-3b06a8a3",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio1",
+    "durata": 10.0,
+    "musica": "keep_it_movin_3.m4a",
+    "stacchi": 10,
+    "testi": 1,
+    "scene_dal_video": 10,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.205,
+     "movimento": 10.13,
+     "primo_piano_fermo": false,
+     "soglia_moto": 8.07,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "scena_azione_prima": true,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 142,
+     "righe": 2,
+     "scurito": 0.0,
+     "luce": 0.14,
+     "sfumatura": 0.0,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 182,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "due",
+     "parole": 7
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_06.flac",
+    "musica_instagram": "Epic Proportions - Symphonic Planet"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "2TQINQb37L8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17918139609549659",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non sarà sempre logico. Va bene così."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-31 18:00",
   "2026-10-31 20:00",
   "2026-10-31 22:00",
   "2026-11-01 00:00",
@@ -11437,7 +11508,8 @@
   "2026-11-08 10:00",
   "2026-11-08 12:00",
   "2026-11-08 14:00",
-  "2026-11-08 16:00"
+  "2026-11-08 16:00",
+  "2026-11-08 18:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -11480,7 +11552,8 @@
   "visions_1.m4a",
   "cutscene_crush_2.m4a",
   "van_life_rager_1.m4a",
-  "wrangle_the_crazy_1.m4a"
+  "wrangle_the_crazy_1.m4a",
+  "keep_it_movin_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -11789,10 +11862,10 @@
   "MIE-df844e22",
   "MIE-c23d3837",
   "MIE-0093b678",
-  "MIE-8cc508a2"
+  "MIE-8cc508a2",
+  "MIE-3b06a8a3"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "dieta",
   "mentalita",
@@ -11801,24 +11874,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
+  "mentalita",
   "mentalita"
  ],
- "analisi": {
-  "1VwzOJlNFXwF38jB7i5hSwSazY9X3e8bD": {
-   "nome": "IMG_4928.mov",
-   "scena": "palestra",
-   "sicurezza": 0.99,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-05T23:11+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-11-07T12:36:42.833Z",
-   "parlato": null,
-   "momento": null
-  }
- },
+ "analisi": {},
  "pulizia": "2026-11-08",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -12305,10 +12364,14 @@
    "usi": 1,
    "ultimo": "2026-11-08",
    "orizzontale": false
+  },
+  "1VwzOJlNFXwF38jB7i5hSwSazY9X3e8bD": {
+   "usi": 1,
+   "ultimo": "2026-11-08",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "energia_04.flac",
   "deciso_06.flac",
   "phonk_12.flac",
   "drive_12.flac",
@@ -12327,7 +12390,8 @@
   "drive_02.flac",
   "phonk_13.flac",
   "trap_14.flac",
-  "drive_09.flac"
+  "drive_09.flac",
+  "phonk_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -12362,7 +12426,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "giornata",
+ "formato_ultimo": "taglio1",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -12428,11 +12492,11 @@
   "1774121270615760",
   "605387610085051",
   "485127744365118",
-  "1204148475203672"
+  "1204148475203672",
+  "522339937196006"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Fellow Travelers",
   "stereogully",
   "The K Club",
   "Giulio Cercato",
@@ -12441,10 +12505,10 @@
   "Sbvce",
   "Vault 49",
   "Kolektivo",
-  "Auralux"
+  "Auralux",
+  "Symphonic Planet"
  ],
  "ig_titoli_recenti": [
-  "november rain",
   "gangsta",
   "piccole cose",
   "sara perche ti amo",
@@ -12483,7 +12547,8 @@
   "unmatched energy",
   "glory",
   "fight contigo",
-  "careful believer"
+  "careful believer",
+  "epic proportions"
  ],
  "ig_tendenze_riserva": [
   {
@@ -12492,13 +12557,6 @@
    "display_artist": "Blues369",
    "duration_in_ms": 274920,
    "libreria": false
-  },
-  {
-   "audio_id": "1204148475203672",
-   "title": "Careful Believer",
-   "display_artist": "Auralux",
-   "duration_in_ms": 62684,
-   "libreria": true
   }
  ]
 }
