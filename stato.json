@@ -10985,7 +10985,9 @@
      "ok": true,
      "id": "18121543171968603",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -11057,7 +11059,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "N3RN954DR_0"
+     "id": "N3RN954DR_0",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -11068,11 +11071,78 @@
    },
    "spinto": true,
    "testo": "Ispirato dalla paura di essere nella media."
+  },
+  {
+   "quando": "2026-11-08T09:00",
+   "slot": "2026-11-08 10:00",
+   "video": "IMG_4933.mov",
+   "md5": "a55cbdce6152d24d4b2d3f9687112f0d",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-05T23:24+01:00",
+   "frase": "MIE-df844e22",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "rallenty",
+    "durata": 10.0,
+    "musica": "visions_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 2,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 2.94,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "velocita": 0.75,
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 151,
+     "righe": 2,
+     "scurito": 0.0,
+     "luce": 0.16,
+     "sfumatura": 0.0,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 103,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 4
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_02.flac",
+    "musica_instagram": "Unmatched Energy - Sbvce [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "LWWbxy6eQ_Y"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18071736824785976",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Anche quando perdo, vinco."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-31 10:00",
   "2026-10-31 12:00",
   "2026-10-31 14:00",
   "2026-10-31 16:00",
@@ -11151,7 +11221,8 @@
   "2026-11-07 22:00",
   "2026-11-08 00:00",
   "2026-11-08 06:00",
-  "2026-11-08 08:00"
+  "2026-11-08 08:00",
+  "2026-11-08 10:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -11190,7 +11261,8 @@
   "rubberband_3.m4a",
   "ten_1.m4a",
   "final_boss_battle_3.m4a",
-  "ego_chall_2.m4a"
+  "ego_chall_2.m4a",
+  "visions_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -11495,7 +11567,8 @@
   "MIE-fc938333",
   "MIE-09c18c57",
   "MIE-65994949",
-  "MIE-40bcee41"
+  "MIE-40bcee41",
+  "MIE-df844e22"
  ],
  "temi_recenti": [
   "mentalita",
@@ -11503,8 +11576,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -11549,20 +11622,6 @@
    "registrato": "2026-11-05T23:21+01:00",
    "fascia": "palestra",
    "caricato": "2026-11-07T12:45:16.539Z",
-   "parlato": null,
-   "momento": null
-  },
-  "1_OL65Qki6ySnmMPRN1qE4fdzvXGKG5DR": {
-   "nome": "IMG_4933.mov",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-05T23:24+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-11-07T12:54:38.882Z",
    "parlato": null,
    "momento": null
   }
@@ -12038,10 +12097,14 @@
    "usi": 1,
    "ultimo": "2026-11-08",
    "orizzontale": false
+  },
+  "1_OL65Qki6ySnmMPRN1qE4fdzvXGKG5DR": {
+   "usi": 1,
+   "ultimo": "2026-11-08",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "phonk_11.flac",
   "drive_14.flac",
   "trap_05.flac",
   "phonk_06.flac",
@@ -12060,7 +12123,8 @@
   "energia_06.flac",
   "drive_11.flac",
   "phonk_05.flac",
-  "energia_01.flac"
+  "energia_01.flac",
+  "drive_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -12095,7 +12159,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "giornata",
+ "formato_ultimo": "rallenty",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -12157,11 +12221,11 @@
   "1495460624383703",
   "23939038495769960",
   "1716216946466764",
-  "1868754054118430"
+  "1868754054118430",
+  "1774121270615760"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "bbox",
   "Blues369",
   "Chela Rivas",
   "Jumbo",
@@ -12170,10 +12234,10 @@
   "The K Club",
   "Giulio Cercato",
   "Afterlight",
-  "Ross Lara"
+  "Ross Lara",
+  "Sbvce"
  ],
  "ig_titoli_recenti": [
-  "ramalama",
   "eri solo da incontrare",
   "here you come there you go",
   "way bigger",
@@ -12212,7 +12276,8 @@
   "think about",
   "luxe motion",
   "join the movement",
-  "photocopy"
+  "photocopy",
+  "unmatched energy"
  ],
  "ig_tendenze_riserva": [
   {
@@ -12230,31 +12295,24 @@
    "libreria": false
   },
   {
-   "audio_id": "832983041880365",
-   "title": "Empowering Electro",
-   "display_artist": "bbox",
-   "duration_in_ms": 179610,
+   "audio_id": "1917637308769695",
+   "title": "What Heroes Do (prod. by Jonny Houlihan)",
+   "display_artist": "Sofie Tabesh",
+   "duration_in_ms": 217130,
    "libreria": true
   },
   {
-   "audio_id": "245071018407764",
-   "title": "Cygnus (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 177400,
+   "audio_id": "1552659642157024",
+   "title": "Running Through Gold",
+   "display_artist": "The Poison Oaks",
+   "duration_in_ms": 193934,
    "libreria": true
   },
   {
-   "audio_id": "1868754054118430",
-   "title": "Photocopy (feat. My City Glory) (Instrumental)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 167521,
-   "libreria": true
-  },
-  {
-   "audio_id": "806476269035757",
-   "title": "On Fire (Instrumental)",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 197861,
+   "audio_id": "1774121270615760",
+   "title": "Unmatched Energy",
+   "display_artist": "Sbvce",
+   "duration_in_ms": 53590,
    "libreria": true
   }
  ]
