@@ -83,7 +83,15 @@ def prepara(massimo=4):
 def pulisci(testo):
     """29/10/2026: via le domande per i commenti ("scrivilo nei commenti"/"qui sotto"): non piacciono ad Alessandro."""
     righe = [re.sub(r"\s*·\s*seguimi per vedere dove arrivo", "", r) for r in testo.splitlines() if "👇" not in r]   # 30/10: via "seguimi"
-    return re.sub(r"(\r?\n){3,}", "\n\n", "\n".join(righe)).strip()
+    testo = re.sub(r"(\r?\n){3,}", "\n\n", "\n".join(righe)).strip()
+    # 8/11/2026 23:20 (Alessandro: "ci va solo il titolo", su tutti i social): solo la frase (come TikTok)
+    try:
+        frase = tp.pulisci(testo)
+        if frase:
+            return frase
+    except Exception as e:
+        print("descrizione con la sola frase non riuscita, lascio quella di prima:", e)
+    return testo
 
 
 def segna(fid, quando):
