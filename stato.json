@@ -11201,7 +11201,9 @@
      "ok": true,
      "id": "18134688016685637",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -11261,7 +11263,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "Jm-4xZ6pYiE"
+     "id": "Jm-4xZ6pYiE",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -11272,11 +11275,89 @@
    },
    "spinto": true,
    "testo": "Se puoi sognarlo, puoi farlo!"
+  },
+  {
+   "quando": "2026-11-08T15:00",
+   "slot": "2026-11-08 16:00",
+   "video": "IMG_4930.mov",
+   "md5": "828e6597e25dd83131a97b4636d44d52",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-05T23:16+01:00",
+   "frase": "MIE-8cc508a2",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "giornata",
+    "durata": 10.0,
+    "musica": "wrangle_the_crazy_1.m4a",
+    "stacchi": 6,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 6.77,
+     "primo_piano_fermo": false,
+     "soglia_moto": 8.86
+    },
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 122,
+     "righe": 2,
+     "scurito": 0.0,
+     "luce": 0.18,
+     "sfumatura": 0.0,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scene": 6,
+    "con_viso": 6,
+    "viso_primo_secondo": true,
+    "gancio_azione": true,
+    "secondi_analisi": 165,
+    "stesso_giorno": 6,
+    "clip_scene": [
+     "IMG_4931.mov",
+     "IMG_4935.mov",
+     "IMG_4941.mov",
+     "IMG_4942.mov",
+     "IMG_4944.mov"
+    ],
+    "giornata_del": "2026-11-05",
+    "secondi_montaggio": 283,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 10
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_09.flac",
+    "musica_instagram": "Careful Believer - Auralux [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "3yoNOKTpivU"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18107918159633243",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Respira. È solo una giornata storta, non una vita storta."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-31 16:00",
   "2026-10-31 18:00",
   "2026-10-31 20:00",
   "2026-10-31 22:00",
@@ -11355,7 +11436,8 @@
   "2026-11-08 08:00",
   "2026-11-08 10:00",
   "2026-11-08 12:00",
-  "2026-11-08 14:00"
+  "2026-11-08 14:00",
+  "2026-11-08 16:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -11397,7 +11479,8 @@
   "ego_chall_2.m4a",
   "visions_1.m4a",
   "cutscene_crush_2.m4a",
-  "van_life_rager_1.m4a"
+  "van_life_rager_1.m4a",
+  "wrangle_the_crazy_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -11705,13 +11788,14 @@
   "MIE-40bcee41",
   "MIE-df844e22",
   "MIE-c23d3837",
-  "MIE-0093b678"
+  "MIE-0093b678",
+  "MIE-8cc508a2"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -11731,20 +11815,6 @@
    "registrato": "2026-11-05T23:11+01:00",
    "fascia": "palestra",
    "caricato": "2026-11-07T12:36:42.833Z",
-   "parlato": null,
-   "momento": null
-  },
-  "10aHpUrqQ4CV6nuv1NtWSkqHE0ct93MWt": {
-   "nome": "IMG_4930.mov",
-   "scena": "palestra",
-   "sicurezza": 0.99,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-05T23:16+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-11-07T12:39:35.643Z",
    "parlato": null,
    "momento": null
   }
@@ -12230,10 +12300,14 @@
    "usi": 1,
    "ultimo": "2026-11-08",
    "orizzontale": false
+  },
+  "10aHpUrqQ4CV6nuv1NtWSkqHE0ct93MWt": {
+   "usi": 1,
+   "ultimo": "2026-11-08",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "phonk_06.flac",
   "energia_04.flac",
   "deciso_06.flac",
   "phonk_12.flac",
@@ -12252,7 +12326,8 @@
   "energia_01.flac",
   "drive_02.flac",
   "phonk_13.flac",
-  "trap_14.flac"
+  "trap_14.flac",
+  "drive_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -12287,7 +12362,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "giornata",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -12352,11 +12427,11 @@
   "1868754054118430",
   "1774121270615760",
   "605387610085051",
-  "485127744365118"
+  "485127744365118",
+  "1204148475203672"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jumbo",
   "Fellow Travelers",
   "stereogully",
   "The K Club",
@@ -12365,10 +12440,10 @@
   "Ross Lara",
   "Sbvce",
   "Vault 49",
-  "Kolektivo"
+  "Kolektivo",
+  "Auralux"
  ],
  "ig_titoli_recenti": [
-  "way bigger",
   "november rain",
   "gangsta",
   "piccole cose",
@@ -12407,7 +12482,8 @@
   "photocopy",
   "unmatched energy",
   "glory",
-  "fight contigo"
+  "fight contigo",
+  "careful believer"
  ],
  "ig_tendenze_riserva": [
   {
@@ -12418,17 +12494,10 @@
    "libreria": false
   },
   {
-   "audio_id": "485127744365118",
-   "title": "Fight Contigo (Instrumental)",
-   "display_artist": "Kolektivo",
-   "duration_in_ms": 165760,
-   "libreria": true
-  },
-  {
-   "audio_id": "832983041880365",
-   "title": "Empowering Electro",
-   "display_artist": "bbox",
-   "duration_in_ms": 179610,
+   "audio_id": "1204148475203672",
+   "title": "Careful Believer",
+   "display_artist": "Auralux",
+   "duration_in_ms": 62684,
    "libreria": true
   }
  ]
