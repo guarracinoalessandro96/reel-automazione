@@ -10844,7 +10844,9 @@
      "ok": true,
      "id": "18117920570607452",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -10906,22 +10908,91 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "sosw4zPL0lw"
+     "id": "sosw4zPL0lw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18116150003030760",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "Ci chiamano sognatori, ma siamo noi quelli che non dormono."
+  },
+  {
+   "quando": "2026-11-08T05:00",
+   "slot": "2026-11-08 06:00",
+   "video": "IMG_4939.mov",
+   "md5": "c5e9432564b2ae087c1233213c7c565e",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-05T23:41+01:00",
+   "frase": "MIE-65994949",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 20.0,
+    "musica": "final_boss_battle_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 0,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 0.67,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "scene_nere": 1,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 140,
+     "righe": 5,
+     "scurito": 0.0,
+     "luce": 0.05,
+     "sfumatura": 0.0,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 100,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 13
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_05.flac",
+    "musica_instagram": "Join The Movement - Afterlight [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "jZshIdmuYfA"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18121543171968603",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Fallo da solo. Fallo al verde. Fallo stanco. Fallo impaurito. Fallo e basta."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-31 06:00",
   "2026-10-31 08:00",
   "2026-10-31 10:00",
   "2026-10-31 12:00",
@@ -11000,7 +11071,8 @@
   "2026-11-07 18:00",
   "2026-11-07 20:00",
   "2026-11-07 22:00",
-  "2026-11-08 00:00"
+  "2026-11-08 00:00",
+  "2026-11-08 06:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -11037,7 +11109,8 @@
   "the_road_to_mordor_3.m4a",
   "majestic_12_1.m4a",
   "rubberband_3.m4a",
-  "ten_1.m4a"
+  "ten_1.m4a",
+  "final_boss_battle_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -11340,7 +11413,8 @@
   "MIE-481bb733",
   "MIE-ca8b6276",
   "MIE-fc938333",
-  "MIE-09c18c57"
+  "MIE-09c18c57",
+  "MIE-65994949"
  ],
  "temi_recenti": [
   "mentalita",
@@ -11350,8 +11424,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
@@ -11424,23 +11498,9 @@
    "caricato": "2026-11-07T12:56:31.781Z",
    "parlato": null,
    "momento": null
-  },
-  "1yQe1setSa76amvkKIjIjgwo2TwUPJVGR": {
-   "nome": "IMG_4939.mov",
-   "scena": "palestra",
-   "sicurezza": 0.99,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-05T23:41+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-11-07T12:57:56.937Z",
-   "parlato": null,
-   "momento": null
   }
  },
- "pulizia": "2026-11-07",
+ "pulizia": "2026-11-08",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -11901,10 +11961,14 @@
    "usi": 1,
    "ultimo": "2026-11-07",
    "orizzontale": false
+  },
+  "1yQe1setSa76amvkKIjIjgwo2TwUPJVGR": {
+   "usi": 1,
+   "ultimo": "2026-11-08",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "drive_08.flac",
   "deciso_11.flac",
   "phonk_11.flac",
   "drive_14.flac",
@@ -11923,7 +11987,8 @@
   "trap_15.flac",
   "phonk_04.flac",
   "energia_06.flac",
-  "drive_11.flac"
+  "drive_11.flac",
+  "phonk_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -11958,7 +12023,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio2",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -12018,11 +12083,11 @@
   "2242687643238503",
   "820220974302825",
   "1495460624383703",
-  "23939038495769960"
+  "23939038495769960",
+  "1716216946466764"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Trout Recording",
   "Adam Griffith",
   "bbox",
   "Blues369",
@@ -12031,10 +12096,10 @@
   "Fellow Travelers",
   "stereogully",
   "The K Club",
-  "Giulio Cercato"
+  "Giulio Cercato",
+  "Afterlight"
  ],
  "ig_titoli_recenti": [
-  "epic adventure",
   "road warriors",
   "ramalama",
   "eri solo da incontrare",
@@ -12073,7 +12138,8 @@
   "family food fight",
   "success",
   "think about",
-  "luxe motion"
+  "luxe motion",
+  "join the movement"
  ],
  "ig_tendenze_riserva": [
   {
@@ -12091,10 +12157,24 @@
    "libreria": false
   },
   {
-   "audio_id": "23939038495769960",
-   "title": "Luxe Motion (Instrumental)",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 112680,
+   "audio_id": "886249782709175",
+   "title": "March Of Libertad",
+   "display_artist": "Symphonic Planet",
+   "duration_in_ms": 236050,
+   "libreria": true
+  },
+  {
+   "audio_id": "976973397894084",
+   "title": "Champions (Instrumental)",
+   "display_artist": "stereogully",
+   "duration_in_ms": 114995,
+   "libreria": true
+  },
+  {
+   "audio_id": "1716216946466764",
+   "title": "Join The Movement",
+   "display_artist": "Afterlight",
+   "duration_in_ms": 61611,
    "libreria": true
   }
  ]
