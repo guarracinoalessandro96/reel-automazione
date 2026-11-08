@@ -11066,7 +11066,9 @@
      "ok": true,
      "id": "18119789038975936",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -11128,7 +11130,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "LWWbxy6eQ_Y"
+     "id": "LWWbxy6eQ_Y",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -11139,11 +11142,71 @@
    },
    "spinto": true,
    "testo": "Anche quando perdo, vinco."
+  },
+  {
+   "quando": "2026-11-08T11:01",
+   "slot": "2026-11-08 12:00",
+   "video": "Foto della giornata",
+   "md5": null,
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-c23d3837",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_foto",
+    "durata": 9.999,
+    "musica": "cutscene_crush_2.m4a",
+    "stacchi": 3,
+    "testi": 1,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 2,
+     "scurito": 0.51,
+     "luce": 0.43,
+     "sfumatura": 0.32,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "foto_ids": [
+     "11Ra2IEw0pdoQ7hql1f6azdJ2FYsMzMaa",
+     "1gvau5W1wyHsBEskXueQrukDzttD1KHsw",
+     "1OzoDKCkM8QlUR8Pk2-3fWBNhWmB9iht3"
+    ],
+    "foto_doppie": 0,
+    "foto_giorno": "2026-11-04",
+    "secondi_montaggio": 129,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {},
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 11
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_13.flac",
+    "musica_instagram": "Glory - Vault 49"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "7FCsmmA4fYU"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18134688016685637",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Fai qualcosa oggi per cui il te stesso futuro ti ringrazierà."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-31 12:00",
   "2026-10-31 14:00",
   "2026-10-31 16:00",
   "2026-10-31 18:00",
@@ -11222,7 +11285,8 @@
   "2026-11-08 00:00",
   "2026-11-08 06:00",
   "2026-11-08 08:00",
-  "2026-11-08 10:00"
+  "2026-11-08 10:00",
+  "2026-11-08 12:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -11262,7 +11326,8 @@
   "ten_1.m4a",
   "final_boss_battle_3.m4a",
   "ego_chall_2.m4a",
-  "visions_1.m4a"
+  "visions_1.m4a",
+  "cutscene_crush_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -11568,15 +11633,16 @@
   "MIE-09c18c57",
   "MIE-65994949",
   "MIE-40bcee41",
-  "MIE-df844e22"
+  "MIE-df844e22",
+  "MIE-c23d3837"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -12105,7 +12171,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_14.flac",
   "trap_05.flac",
   "phonk_06.flac",
   "energia_04.flac",
@@ -12124,7 +12189,8 @@
   "drive_11.flac",
   "phonk_05.flac",
   "energia_01.flac",
-  "drive_02.flac"
+  "drive_02.flac",
+  "phonk_13.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -12159,7 +12225,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "rallenty",
+ "formato_ultimo": "dieci_foto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -12222,11 +12288,11 @@
   "23939038495769960",
   "1716216946466764",
   "1868754054118430",
-  "1774121270615760"
+  "1774121270615760",
+  "605387610085051"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Blues369",
   "Chela Rivas",
   "Jumbo",
   "Fellow Travelers",
@@ -12235,10 +12301,10 @@
   "Giulio Cercato",
   "Afterlight",
   "Ross Lara",
-  "Sbvce"
+  "Sbvce",
+  "Vault 49"
  ],
  "ig_titoli_recenti": [
-  "eri solo da incontrare",
   "here you come there you go",
   "way bigger",
   "november rain",
@@ -12277,16 +12343,10 @@
   "luxe motion",
   "join the movement",
   "photocopy",
-  "unmatched energy"
+  "unmatched energy",
+  "glory"
  ],
  "ig_tendenze_riserva": [
-  {
-   "audio_id": "1076547086228050",
-   "title": "UEFA Champions League Legacy Anthem",
-   "display_artist": "UEFA, Tony Britten",
-   "duration_in_ms": 41657,
-   "libreria": false
-  },
   {
    "audio_id": "1354603606762864",
    "title": "Work hard, dream big",
