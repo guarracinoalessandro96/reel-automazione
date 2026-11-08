@@ -11494,7 +11494,9 @@
      "ok": true,
      "id": "18647300665048027",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -11555,7 +11557,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "nEtQHB1M340"
+     "id": "nEtQHB1M340",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -11566,11 +11569,78 @@
    },
    "spinto": true,
    "testo": "Non esiste il momento \"giusto\", esiste solo il tempo, e quello che ci fai con lui."
+  },
+  {
+   "quando": "2026-11-08T23:01",
+   "slot": "2026-11-09 00:00",
+   "video": "IMG_3611.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-233c5590",
+   "tema": "famiglia",
+   "montaggio": {
+    "formato": "taglio1",
+    "durata": 10.0,
+    "musica": "moon_vision_1.m4a",
+    "stacchi": 10,
+    "testi": 1,
+    "scene_dal_video": 4,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.415,
+     "movimento": 31.34,
+     "primo_piano_fermo": false,
+     "soglia_moto": 27.93,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 3,
+     "scurito": 0.55,
+     "luce": 0.48,
+     "sfumatura": 0.35,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 263,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 13
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_10.flac",
+    "musica_instagram": "Hype Beast - Jumbo"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "kSezKSvtsXQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18162706624543445",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Lavora sodo, perché un uomo senza soldi è amato solo da sua madre."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-01 00:00",
   "2026-11-01 06:00",
   "2026-11-01 08:00",
   "2026-11-01 10:00",
@@ -11649,7 +11719,8 @@
   "2026-11-08 16:00",
   "2026-11-08 18:00",
   "2026-11-08 20:00",
-  "2026-11-08 22:00"
+  "2026-11-08 22:00",
+  "2026-11-09 00:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -11695,7 +11766,8 @@
   "wrangle_the_crazy_1.m4a",
   "keep_it_movin_3.m4a",
   "intergalactic_3.m4a",
-  "horizons_2.m4a"
+  "horizons_2.m4a",
+  "moon_vision_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -12007,7 +12079,8 @@
   "MIE-8cc508a2",
   "MIE-3b06a8a3",
   "MIE-da339c68",
-  "MIE-75ed9b50"
+  "MIE-75ed9b50",
+  "MIE-233c5590"
  ],
  "temi_recenti": [
   "mentalita",
@@ -12019,7 +12092,7 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "famiglia"
  ],
  "analisi": {},
  "pulizia": "2026-11-08",
@@ -12030,7 +12103,8 @@
   },
   "1prxBAB3e2zYxgElc_5sFnFrc_3Lw6Snt": {
    "usi": 3,
-   "ultimo": "2026-10-31"
+   "ultimo": "2026-10-31",
+   "orizzontale": false
   },
   "1QRloko-RTNUoZs6eVV1LYBLqTIhN7WDy": {
    "usi": 2,
@@ -12119,7 +12193,8 @@
   },
   "1OM78j2FpCSLtoEbMm8W45iXS3oPCaV-T": {
    "usi": 2,
-   "ultimo": "2026-10-31"
+   "ultimo": "2026-10-31",
+   "orizzontale": false
   },
   "1_H1rfgZicjenJ-s7-rrSmVCm3oz6Jt2E": {
    "usi": 2,
@@ -12134,12 +12209,14 @@
    "ultimo": "2026-10-31"
   },
   "1cws0l3N3pW2EVUmkD-GxH5nLIIh0UE-c": {
-   "usi": 2,
-   "ultimo": "2026-10-31"
+   "usi": 3,
+   "ultimo": "2026-11-08",
+   "orizzontale": false
   },
   "1a3hFaj1fQm1AuYdIv6iY-TZDvDdPOmOp": {
    "usi": 2,
-   "ultimo": "2026-10-31"
+   "ultimo": "2026-10-31",
+   "orizzontale": false
   },
   "1zEPNZ20n1YmvIYS5sehdWmtTFzLNT8lO": {
    "usi": 2,
@@ -12520,7 +12597,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_12.flac",
   "trap_12.flac",
   "phonk_16.flac",
   "deciso_05.flac",
@@ -12539,7 +12615,8 @@
   "drive_09.flac",
   "phonk_06.flac",
   "energia_05.flac",
-  "deciso_08.flac"
+  "deciso_08.flac",
+  "drive_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -12574,7 +12651,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio3",
+ "formato_ultimo": "taglio1",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -12643,11 +12720,11 @@
   "1204148475203672",
   "522339937196006",
   "1546581635764552",
-  "1377485917727304"
+  "1377485917727304",
+  "612291812716191"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Giulio Cercato",
   "Afterlight",
   "Ross Lara",
   "Sbvce",
@@ -12656,10 +12733,10 @@
   "Auralux",
   "Symphonic Planet",
   "Genticorum",
-  "LAVLO"
+  "LAVLO",
+  "Jumbo"
  ],
  "ig_titoli_recenti": [
-  "sara perche ti amo",
   "sara perche ti amo",
   "somebody s watching me",
   "dimensions",
@@ -12698,7 +12775,8 @@
   "careful believer",
   "epic proportions",
   "la marche des commis voyageurs",
-  "fighter"
+  "fighter",
+  "hype beast"
  ],
  "ig_tendenze_riserva": [
   {
@@ -12707,13 +12785,6 @@
    "display_artist": "Blues369",
    "duration_in_ms": 274920,
    "libreria": false
-  },
-  {
-   "audio_id": "1277778362904200",
-   "title": "Cruise (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 146716,
-   "libreria": true
   }
  ]
 }
