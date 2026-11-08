@@ -11424,7 +11424,9 @@
      "ok": true,
      "id": "17918139609549659",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -11485,7 +11487,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "yJC3fuDx64A"
+     "id": "yJC3fuDx64A",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -11496,11 +11499,77 @@
    },
    "spinto": true,
    "testo": "Il tuo futuro ti sta guardando. Rendilo orgoglioso."
+  },
+  {
+   "quando": "2026-11-08T21:00",
+   "slot": "2026-11-08 22:00",
+   "video": "IMG_3359.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-75ed9b50",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio3",
+    "durata": 10.0,
+    "musica": "horizons_2.m4a",
+    "stacchi": 3,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.393,
+     "movimento": 6.77,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.1,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 3,
+     "scurito": 0.51,
+     "luce": 0.44,
+     "sfumatura": 0.33,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 180,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 16
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_08.flac",
+    "musica_instagram": "Fighter - LAVLO"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "nEtQHB1M340"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18637425793032350",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non esiste il momento \"giusto\", esiste solo il tempo, e quello che ci fai con lui."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-31 22:00",
   "2026-11-01 00:00",
   "2026-11-01 06:00",
   "2026-11-01 08:00",
@@ -11579,7 +11648,8 @@
   "2026-11-08 14:00",
   "2026-11-08 16:00",
   "2026-11-08 18:00",
-  "2026-11-08 20:00"
+  "2026-11-08 20:00",
+  "2026-11-08 22:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -11624,7 +11694,8 @@
   "van_life_rager_1.m4a",
   "wrangle_the_crazy_1.m4a",
   "keep_it_movin_3.m4a",
-  "intergalactic_3.m4a"
+  "intergalactic_3.m4a",
+  "horizons_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -11935,10 +12006,11 @@
   "MIE-0093b678",
   "MIE-8cc508a2",
   "MIE-3b06a8a3",
-  "MIE-da339c68"
+  "MIE-da339c68",
+  "MIE-75ed9b50"
  ],
  "temi_recenti": [
-  "dieta",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -11966,7 +12038,8 @@
   },
   "1ssTZiPaSjGA63iZMxhUEOD6wWT-dqCLz": {
    "usi": 3,
-   "ultimo": "2026-11-03"
+   "ultimo": "2026-11-03",
+   "orizzontale": false
   },
   "1HKv05Wh_t_gsHvCIkHBJFaKlY4mxyEy2": {
    "usi": 3,
@@ -12162,7 +12235,8 @@
   },
   "1O5XL-iS65p-rWSE6IHKTNDsSp1HIG9a1": {
    "usi": 2,
-   "ultimo": "2026-10-21"
+   "ultimo": "2026-10-21",
+   "orizzontale": false
   },
   "1I2nAz0Ao_a1cbEPktFKRTPpswByM6NKZ": {
    "usi": 3,
@@ -12305,8 +12379,9 @@
    "ultimo": "2026-10-26"
   },
   "154DEQH3JaEBg95Z01YeNC0Bu_KyTq1XR": {
-   "usi": 1,
-   "ultimo": "2026-10-27"
+   "usi": 2,
+   "ultimo": "2026-11-08",
+   "orizzontale": false
   },
   "1VEPb54Y1oSgn1WwoX7EtQNTsLCC7CB4u": {
    "usi": 3,
@@ -12445,7 +12520,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_12.flac",
   "drive_12.flac",
   "trap_12.flac",
   "phonk_16.flac",
@@ -12464,7 +12538,8 @@
   "trap_14.flac",
   "drive_09.flac",
   "phonk_06.flac",
-  "energia_05.flac"
+  "energia_05.flac",
+  "deciso_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -12499,7 +12574,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "taglio3",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -12567,11 +12642,11 @@
   "485127744365118",
   "1204148475203672",
   "522339937196006",
-  "1546581635764552"
+  "1546581635764552",
+  "1377485917727304"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "The K Club",
   "Giulio Cercato",
   "Afterlight",
   "Ross Lara",
@@ -12580,10 +12655,10 @@
   "Kolektivo",
   "Auralux",
   "Symphonic Planet",
-  "Genticorum"
+  "Genticorum",
+  "LAVLO"
  ],
  "ig_titoli_recenti": [
-  "piccole cose",
   "sara perche ti amo",
   "sara perche ti amo",
   "somebody s watching me",
@@ -12622,7 +12697,8 @@
   "fight contigo",
   "careful believer",
   "epic proportions",
-  "la marche des commis voyageurs"
+  "la marche des commis voyageurs",
+  "fighter"
  ],
  "ig_tendenze_riserva": [
   {
@@ -12633,17 +12709,10 @@
    "libreria": false
   },
   {
-   "audio_id": "1546581635764552",
-   "title": "La Marche des Commis Voyageurs",
-   "display_artist": "Genticorum",
-   "duration_in_ms": 182512,
-   "libreria": true
-  },
-  {
-   "audio_id": "1415626095700405",
-   "title": "Game To Win (feat. G7MBL3)",
-   "display_artist": "d.higgs",
-   "duration_in_ms": 102770,
+   "audio_id": "1277778362904200",
+   "title": "Cruise (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 146716,
    "libreria": true
   }
  ]
