@@ -227,10 +227,11 @@ def pulisci(testo):
         if qui not in sys.path:
             sys.path.insert(0, qui)
         import didascalie
-        if not didascalie.ha_riga_ricerca(testo) and "#vitavera" not in testo:
-            frase = didascalie.frase_della_didascalia(testo)
-            if frase:
-                testo += "\n\n" + didascalie.riga_ricerca(frase, chiave=frase)
+        # 8/11/2026 23:20 (Alessandro: "ci va solo il titolo", su tutti i social): solo la frase, niente riga di
+        # ricerca, hashtag o Giorno X/365 (anche per i video gia' preparati con la descrizione vecchia)
+        frase = didascalie.frase_della_didascalia(testo)
+        if frase:
+            return frase
         return testo
     except Exception as e:
         print("riga di ricerca dalla frase non riuscita, uso quella fissa:", e)
