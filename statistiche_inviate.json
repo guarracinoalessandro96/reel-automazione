@@ -16,10 +16,18 @@
    }
   },
   "2026-11-08": {
-   "invio": {
-    "da": "pc",
-    "ora": "2026-11-08T08:01:29+01:00",
-    "giro": "pc-9968-306386"
+   "inviato": "08:01",
+   "da": "pc",
+   "numeri": {
+    "YouTube": null,
+    "Instagram": 4118,
+    "Facebook": 291,
+    "TikTok": 1877
+   },
+   "youtube_totale": 1919755,
+   "tiktok": {
+    "data": "2026-11-06",
+    "views": 1877
    }
   }
  },
