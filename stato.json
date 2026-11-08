@@ -11137,7 +11137,9 @@
      "ok": true,
      "id": "18071736824785976",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -11192,7 +11194,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "7FCsmmA4fYU"
+     "id": "7FCsmmA4fYU",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -11203,11 +11206,76 @@
    },
    "spinto": true,
    "testo": "Fai qualcosa oggi per cui il te stesso futuro ti ringrazierà."
+  },
+  {
+   "quando": "2026-11-08T13:00",
+   "slot": "2026-11-08 14:00",
+   "video": "IMG_4931.mov",
+   "md5": "c4de1f8394a8dfe116079082cf9c6060",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-05T23:21+01:00",
+   "frase": "MIE-0093b678",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "van_life_rager_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 6.77,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 150,
+     "righe": 2,
+     "scurito": 0.0,
+     "luce": 0.13,
+     "sfumatura": 0.0,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 95,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 5
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_14.flac",
+    "musica_instagram": "Fight Contigo (Instrumental) - Kolektivo [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Jm-4xZ6pYiE"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18128829037909845",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Se puoi sognarlo, puoi farlo!"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-10-31 14:00",
   "2026-10-31 16:00",
   "2026-10-31 18:00",
   "2026-10-31 20:00",
@@ -11286,7 +11354,8 @@
   "2026-11-08 06:00",
   "2026-11-08 08:00",
   "2026-11-08 10:00",
-  "2026-11-08 12:00"
+  "2026-11-08 12:00",
+  "2026-11-08 14:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -11327,7 +11396,8 @@
   "final_boss_battle_3.m4a",
   "ego_chall_2.m4a",
   "visions_1.m4a",
-  "cutscene_crush_2.m4a"
+  "cutscene_crush_2.m4a",
+  "van_life_rager_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -11634,14 +11704,15 @@
   "MIE-65994949",
   "MIE-40bcee41",
   "MIE-df844e22",
-  "MIE-c23d3837"
+  "MIE-c23d3837",
+  "MIE-0093b678"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -11674,20 +11745,6 @@
    "registrato": "2026-11-05T23:16+01:00",
    "fascia": "palestra",
    "caricato": "2026-11-07T12:39:35.643Z",
-   "parlato": null,
-   "momento": null
-  },
-  "1TVnVGYSV7g1eeT5SjH5TkiKb191AP0nv": {
-   "nome": "IMG_4931.mov",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-05T23:21+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-11-07T12:45:16.539Z",
    "parlato": null,
    "momento": null
   }
@@ -12168,10 +12225,14 @@
    "usi": 1,
    "ultimo": "2026-11-08",
    "orizzontale": false
+  },
+  "1TVnVGYSV7g1eeT5SjH5TkiKb191AP0nv": {
+   "usi": 1,
+   "ultimo": "2026-11-08",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "trap_05.flac",
   "phonk_06.flac",
   "energia_04.flac",
   "deciso_06.flac",
@@ -12190,7 +12251,8 @@
   "phonk_05.flac",
   "energia_01.flac",
   "drive_02.flac",
-  "phonk_13.flac"
+  "phonk_13.flac",
+  "trap_14.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -12225,7 +12287,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_foto",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -12289,11 +12351,11 @@
   "1716216946466764",
   "1868754054118430",
   "1774121270615760",
-  "605387610085051"
+  "605387610085051",
+  "485127744365118"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Chela Rivas",
   "Jumbo",
   "Fellow Travelers",
   "stereogully",
@@ -12302,10 +12364,10 @@
   "Afterlight",
   "Ross Lara",
   "Sbvce",
-  "Vault 49"
+  "Vault 49",
+  "Kolektivo"
  ],
  "ig_titoli_recenti": [
-  "here you come there you go",
   "way bigger",
   "november rain",
   "gangsta",
@@ -12344,7 +12406,8 @@
   "join the movement",
   "photocopy",
   "unmatched energy",
-  "glory"
+  "glory",
+  "fight contigo"
  ],
  "ig_tendenze_riserva": [
   {
@@ -12355,24 +12418,17 @@
    "libreria": false
   },
   {
-   "audio_id": "1917637308769695",
-   "title": "What Heroes Do (prod. by Jonny Houlihan)",
-   "display_artist": "Sofie Tabesh",
-   "duration_in_ms": 217130,
+   "audio_id": "485127744365118",
+   "title": "Fight Contigo (Instrumental)",
+   "display_artist": "Kolektivo",
+   "duration_in_ms": 165760,
    "libreria": true
   },
   {
-   "audio_id": "1552659642157024",
-   "title": "Running Through Gold",
-   "display_artist": "The Poison Oaks",
-   "duration_in_ms": 193934,
-   "libreria": true
-  },
-  {
-   "audio_id": "1774121270615760",
-   "title": "Unmatched Energy",
-   "display_artist": "Sbvce",
-   "duration_in_ms": 53590,
+   "audio_id": "832983041880365",
+   "title": "Empowering Electro",
+   "display_artist": "bbox",
+   "duration_in_ms": 179610,
    "libreria": true
   }
  ]
