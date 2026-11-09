@@ -11564,7 +11564,9 @@
      "ok": true,
      "id": "18637425793032350",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -11626,22 +11628,91 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "kSezKSvtsXQ"
+     "id": "kSezKSvtsXQ",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18162706624543445",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "Lavora sodo, perché un uomo senza soldi è amato solo da sua madre."
+  },
+  {
+   "quando": "2026-11-09T05:01",
+   "slot": "2026-11-09 06:00",
+   "video": "IMG_3633.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-2f42829b",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "loop",
+    "durata": 10.0,
+    "musica": "survival_mode_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.453,
+     "movimento": 45.26,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 122,
+     "righe": 2,
+     "scurito": 0.51,
+     "luce": 0.45,
+     "sfumatura": 0.34,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 160,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 9
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_08.flac",
+    "musica_instagram": "Breathtaker - Giulio Cercato [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "o2CyHj2gxxE"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18094476845279042",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non sei mai troppo piccolo per sognare in grande."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-01 06:00",
   "2026-11-01 08:00",
   "2026-11-01 10:00",
   "2026-11-01 12:00",
@@ -11720,7 +11791,8 @@
   "2026-11-08 18:00",
   "2026-11-08 20:00",
   "2026-11-08 22:00",
-  "2026-11-09 00:00"
+  "2026-11-09 00:00",
+  "2026-11-09 06:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -11767,7 +11839,8 @@
   "keep_it_movin_3.m4a",
   "intergalactic_3.m4a",
   "horizons_2.m4a",
-  "moon_vision_1.m4a"
+  "moon_vision_1.m4a",
+  "survival_mode_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -12080,7 +12153,8 @@
   "MIE-3b06a8a3",
   "MIE-da339c68",
   "MIE-75ed9b50",
-  "MIE-233c5590"
+  "MIE-233c5590",
+  "MIE-2f42829b"
  ],
  "temi_recenti": [
   "mentalita",
@@ -12091,11 +12165,11 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
-  "famiglia"
+  "famiglia",
+  "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-08",
+ "pulizia": "2026-11-09",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -12214,8 +12288,8 @@
    "orizzontale": false
   },
   "1a3hFaj1fQm1AuYdIv6iY-TZDvDdPOmOp": {
-   "usi": 2,
-   "ultimo": "2026-10-31",
+   "usi": 3,
+   "ultimo": "2026-11-09",
    "orizzontale": false
   },
   "1zEPNZ20n1YmvIYS5sehdWmtTFzLNT8lO": {
@@ -12597,7 +12671,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_12.flac",
   "phonk_16.flac",
   "deciso_05.flac",
   "energia_09.flac",
@@ -12616,7 +12689,8 @@
   "phonk_06.flac",
   "energia_05.flac",
   "deciso_08.flac",
-  "drive_10.flac"
+  "drive_10.flac",
+  "trap_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -12651,7 +12725,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio1",
+ "formato_ultimo": "loop",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -12721,11 +12795,11 @@
   "522339937196006",
   "1546581635764552",
   "1377485917727304",
-  "612291812716191"
+  "612291812716191",
+  "1372666635060078"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Afterlight",
   "Ross Lara",
   "Sbvce",
   "Vault 49",
@@ -12734,10 +12808,10 @@
   "Symphonic Planet",
   "Genticorum",
   "LAVLO",
-  "Jumbo"
+  "Jumbo",
+  "Giulio Cercato"
  ],
  "ig_titoli_recenti": [
-  "sara perche ti amo",
   "somebody s watching me",
   "dimensions",
   "ovunque sarai",
@@ -12776,7 +12850,8 @@
   "epic proportions",
   "la marche des commis voyageurs",
   "fighter",
-  "hype beast"
+  "hype beast",
+  "breathtaker"
  ],
  "ig_tendenze_riserva": [
   {
@@ -12785,6 +12860,27 @@
    "display_artist": "Blues369",
    "duration_in_ms": 274920,
    "libreria": false
+  },
+  {
+   "audio_id": "317746227387387",
+   "title": "Worth Fighting For",
+   "display_artist": "Cameron Rasmussen",
+   "duration_in_ms": 141620,
+   "libreria": true
+  },
+  {
+   "audio_id": "1372666635060078",
+   "title": "Breathtaker",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 60035,
+   "libreria": true
+  },
+  {
+   "audio_id": "1629473460916415",
+   "title": "Fighter",
+   "display_artist": "Chela Rivas",
+   "duration_in_ms": 138800,
+   "libreria": true
   }
  ]
 }
