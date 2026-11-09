@@ -11698,7 +11698,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "o2CyHj2gxxE"
+     "id": "o2CyHj2gxxE",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -11709,11 +11710,78 @@
    },
    "spinto": true,
    "testo": "Non sei mai troppo piccolo per sognare in grande."
+  },
+  {
+   "quando": "2026-11-09T07:00",
+   "slot": "2026-11-09 08:00",
+   "video": "IMG_3832.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-79b36c7f",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "vibe_check_2.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 1,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 33.13,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.5,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 125,
+     "righe": 2,
+     "scurito": 0.42,
+     "luce": 0.42,
+     "sfumatura": 0.32,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 99,
+    "scritta": "centro_serif",
+    "estratto": "dieci",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 5
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_03.flac",
+    "musica_instagram": "Move My Body (Instrumental) - Ella Joy Meir [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "LfaPMr44EUc"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18116611061174207",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Giorni difficili costruiscono giorni migliori."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-01 08:00",
   "2026-11-01 10:00",
   "2026-11-01 12:00",
   "2026-11-01 14:00",
@@ -11792,7 +11860,8 @@
   "2026-11-08 20:00",
   "2026-11-08 22:00",
   "2026-11-09 00:00",
-  "2026-11-09 06:00"
+  "2026-11-09 06:00",
+  "2026-11-09 08:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -11840,7 +11909,8 @@
   "intergalactic_3.m4a",
   "horizons_2.m4a",
   "moon_vision_1.m4a",
-  "survival_mode_3.m4a"
+  "survival_mode_3.m4a",
+  "vibe_check_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -12154,7 +12224,8 @@
   "MIE-da339c68",
   "MIE-75ed9b50",
   "MIE-233c5590",
-  "MIE-2f42829b"
+  "MIE-2f42829b",
+  "MIE-79b36c7f"
  ],
  "temi_recenti": [
   "mentalita",
@@ -12164,8 +12235,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -12310,7 +12381,8 @@
   },
   "1MGwGXNeSO9_CxJf-b3fdJUiJRRsBRTMw": {
    "usi": 2,
-   "ultimo": "2026-10-19"
+   "ultimo": "2026-10-19",
+   "orizzontale": false
   },
   "1dwrjfUDcgUEtMKQ_1I0bVcET8o1a2N_E": {
    "usi": 2,
@@ -12341,8 +12413,9 @@
    "ultimo": "2026-11-03"
   },
   "12Fo5vh8JbpmRDWSzG5Ro-KcD-bCBRZH_": {
-   "usi": 3,
-   "ultimo": "2026-11-01"
+   "usi": 4,
+   "ultimo": "2026-11-09",
+   "orizzontale": false
   },
   "1dS3dJuren-0gwioBQEQ4MkMFmJH5kMNx": {
    "usi": 3,
@@ -12671,7 +12744,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_16.flac",
   "deciso_05.flac",
   "energia_09.flac",
   "phonk_08.flac",
@@ -12690,7 +12762,8 @@
   "energia_05.flac",
   "deciso_08.flac",
   "drive_10.flac",
-  "trap_08.flac"
+  "trap_08.flac",
+  "phonk_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -12725,7 +12798,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "loop",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -12796,11 +12869,11 @@
   "1546581635764552",
   "1377485917727304",
   "612291812716191",
-  "1372666635060078"
+  "1372666635060078",
+  "739108178545320"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Ross Lara",
   "Sbvce",
   "Vault 49",
   "Kolektivo",
@@ -12809,10 +12882,10 @@
   "Genticorum",
   "LAVLO",
   "Jumbo",
-  "Giulio Cercato"
+  "Giulio Cercato",
+  "Ella Joy Meir"
  ],
  "ig_titoli_recenti": [
-  "somebody s watching me",
   "dimensions",
   "ovunque sarai",
   "sentire la musica",
@@ -12851,7 +12924,8 @@
   "la marche des commis voyageurs",
   "fighter",
   "hype beast",
-  "breathtaker"
+  "breathtaker",
+  "move my body"
  ],
  "ig_tendenze_riserva": [
   {
@@ -12862,24 +12936,24 @@
    "libreria": false
   },
   {
-   "audio_id": "317746227387387",
-   "title": "Worth Fighting For",
-   "display_artist": "Cameron Rasmussen",
-   "duration_in_ms": 141620,
-   "libreria": true
-  },
-  {
-   "audio_id": "1372666635060078",
-   "title": "Breathtaker",
+   "audio_id": "795179878894620",
+   "title": "Move Me",
    "display_artist": "Giulio Cercato",
-   "duration_in_ms": 60035,
+   "duration_in_ms": 151967,
    "libreria": true
   },
   {
-   "audio_id": "1629473460916415",
-   "title": "Fighter",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 138800,
+   "audio_id": "672409740985213",
+   "title": "Champion",
+   "display_artist": "Adam Griffith",
+   "duration_in_ms": 141051,
+   "libreria": true
+  },
+  {
+   "audio_id": "739108178545320",
+   "title": "Move My Body (Instrumental)",
+   "display_artist": "Ella Joy Meir",
+   "duration_in_ms": 114620,
    "libreria": true
   }
  ]
