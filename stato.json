@@ -11776,7 +11776,9 @@
      "ok": true,
      "id": "18116611061174207",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -11837,7 +11839,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "ZpvzvHmCpow"
+     "id": "ZpvzvHmCpow",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -11848,11 +11851,77 @@
    },
    "spinto": false,
    "testo": "Sii più forte delle tue scuse."
+  },
+  {
+   "quando": "2026-11-09T11:00",
+   "slot": "2026-11-09 12:00",
+   "video": "IMG_3833.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-f49b3786",
+   "tema": "imprenditore",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "locked_in_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.112,
+     "movimento": 8.58,
+     "primo_piano_fermo": false,
+     "soglia_moto": 13.95,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 3,
+     "scurito": 0.47,
+     "luce": 0.4,
+     "sfumatura": 0.3,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 161,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "due",
+     "parole": 10
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_04.flac",
+    "musica_instagram": "Marching - Summer Islands [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "eQZPAFsp5Lw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17908692822670169",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Un giorno il duro lavoro porterà risultati. Continua a spingere!"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-01 12:00",
   "2026-11-01 14:00",
   "2026-11-01 16:00",
   "2026-11-01 18:00",
@@ -11931,7 +12000,8 @@
   "2026-11-09 00:00",
   "2026-11-09 06:00",
   "2026-11-09 08:00",
-  "2026-11-09 10:00"
+  "2026-11-09 10:00",
+  "2026-11-09 12:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -11981,7 +12051,8 @@
   "moon_vision_1.m4a",
   "survival_mode_3.m4a",
   "vibe_check_2.m4a",
-  "ancient_civilisations_1.m4a"
+  "ancient_civilisations_1.m4a",
+  "locked_in_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -12297,10 +12368,10 @@
   "MIE-233c5590",
   "MIE-2f42829b",
   "MIE-79b36c7f",
-  "MIE-9fb0c4bc"
+  "MIE-9fb0c4bc",
+  "MIE-f49b3786"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -12309,7 +12380,8 @@
   "famiglia",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "imprenditore"
  ],
  "analisi": {},
  "pulizia": "2026-11-09",
@@ -12491,8 +12563,9 @@
    "orizzontale": false
   },
   "1dS3dJuren-0gwioBQEQ4MkMFmJH5kMNx": {
-   "usi": 3,
-   "ultimo": "2026-11-01"
+   "usi": 4,
+   "ultimo": "2026-11-09",
+   "orizzontale": false
   },
   "1a2POnx-7OaYCvRXrpkTO6Qw_dTZ4CN-d": {
    "usi": 3,
@@ -12817,7 +12890,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_09.flac",
   "phonk_08.flac",
   "drive_13.flac",
   "trap_15.flac",
@@ -12836,7 +12908,8 @@
   "drive_10.flac",
   "trap_08.flac",
   "phonk_03.flac",
-  "deciso_07.flac"
+  "deciso_07.flac",
+  "energia_04.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -12871,7 +12944,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "loop",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -12944,11 +13017,11 @@
   "612291812716191",
   "1372666635060078",
   "739108178545320",
-  "1383912545569665"
+  "1383912545569665",
+  "1346975640096385"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Vault 49",
   "Kolektivo",
   "Auralux",
   "Symphonic Planet",
@@ -12957,10 +13030,10 @@
   "Jumbo",
   "Giulio Cercato",
   "Ella Joy Meir",
-  "Global Genius"
+  "Global Genius",
+  "Summer Islands"
  ],
  "ig_titoli_recenti": [
-  "ovunque sarai",
   "sentire la musica",
   "iconic",
   "hall of fame",
@@ -12999,7 +13072,8 @@
   "hype beast",
   "breathtaker",
   "move my body",
-  "you can do it"
+  "you can do it",
+  "marching"
  ],
  "ig_tendenze_riserva": [
   {
@@ -13010,10 +13084,17 @@
    "libreria": false
   },
   {
-   "audio_id": "2065054100581983",
-   "title": "Run",
-   "display_artist": "Jumbo",
-   "duration_in_ms": 68050,
+   "audio_id": "1346975640096385",
+   "title": "Marching",
+   "display_artist": "Summer Islands",
+   "duration_in_ms": 67686,
+   "libreria": true
+  },
+  {
+   "audio_id": "1716216946466764",
+   "title": "Join The Movement",
+   "display_artist": "Afterlight",
+   "duration_in_ms": 61611,
    "libreria": true
   }
  ]
