@@ -11705,7 +11705,9 @@
      "ok": true,
      "id": "18094476845279042",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -11767,7 +11769,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "LfaPMr44EUc"
+     "id": "LfaPMr44EUc",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -11778,11 +11781,77 @@
    },
    "spinto": false,
    "testo": "Giorni difficili costruiscono giorni migliori."
+  },
+  {
+   "quando": "2026-11-09T09:00",
+   "slot": "2026-11-09 10:00",
+   "video": "IMG_3764.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "specchio",
+   "registrato": null,
+   "frase": "MIE-9fb0c4bc",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "loop",
+    "durata": 10.0,
+    "musica": "ancient_civilisations_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.357,
+     "movimento": 38.4,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 149,
+     "righe": 2,
+     "scurito": 0.49,
+     "luce": 0.53,
+     "sfumatura": 0.37,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 97,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 6
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_07.flac",
+    "musica_instagram": "You Can Do It - Global Genius"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "ZpvzvHmCpow"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17992561863098065",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Sii più forte delle tue scuse."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-01 10:00",
   "2026-11-01 12:00",
   "2026-11-01 14:00",
   "2026-11-01 16:00",
@@ -11861,7 +11930,8 @@
   "2026-11-08 22:00",
   "2026-11-09 00:00",
   "2026-11-09 06:00",
-  "2026-11-09 08:00"
+  "2026-11-09 08:00",
+  "2026-11-09 10:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -11910,7 +11980,8 @@
   "horizons_2.m4a",
   "moon_vision_1.m4a",
   "survival_mode_3.m4a",
-  "vibe_check_2.m4a"
+  "vibe_check_2.m4a",
+  "ancient_civilisations_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -12225,7 +12296,8 @@
   "MIE-75ed9b50",
   "MIE-233c5590",
   "MIE-2f42829b",
-  "MIE-79b36c7f"
+  "MIE-79b36c7f",
+  "MIE-9fb0c4bc"
  ],
  "temi_recenti": [
   "mentalita",
@@ -12234,8 +12306,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -12261,8 +12333,9 @@
    "orizzontale": false
   },
   "1HKv05Wh_t_gsHvCIkHBJFaKlY4mxyEy2": {
-   "usi": 3,
-   "ultimo": "2026-10-31"
+   "usi": 4,
+   "ultimo": "2026-11-09",
+   "orizzontale": false
   },
   "1q_-2Z0Nxs0rzY0eRiS5kJ9hteaPWK_as": {
    "usi": 3,
@@ -12744,7 +12817,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_05.flac",
   "energia_09.flac",
   "phonk_08.flac",
   "drive_13.flac",
@@ -12763,7 +12835,8 @@
   "deciso_08.flac",
   "drive_10.flac",
   "trap_08.flac",
-  "phonk_03.flac"
+  "phonk_03.flac",
+  "deciso_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -12798,7 +12871,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "loop",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -12870,11 +12943,11 @@
   "1377485917727304",
   "612291812716191",
   "1372666635060078",
-  "739108178545320"
+  "739108178545320",
+  "1383912545569665"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Sbvce",
   "Vault 49",
   "Kolektivo",
   "Auralux",
@@ -12883,10 +12956,10 @@
   "LAVLO",
   "Jumbo",
   "Giulio Cercato",
-  "Ella Joy Meir"
+  "Ella Joy Meir",
+  "Global Genius"
  ],
  "ig_titoli_recenti": [
-  "dimensions",
   "ovunque sarai",
   "sentire la musica",
   "iconic",
@@ -12925,7 +12998,8 @@
   "fighter",
   "hype beast",
   "breathtaker",
-  "move my body"
+  "move my body",
+  "you can do it"
  ],
  "ig_tendenze_riserva": [
   {
@@ -12936,24 +13010,10 @@
    "libreria": false
   },
   {
-   "audio_id": "795179878894620",
-   "title": "Move Me",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 151967,
-   "libreria": true
-  },
-  {
-   "audio_id": "672409740985213",
-   "title": "Champion",
-   "display_artist": "Adam Griffith",
-   "duration_in_ms": 141051,
-   "libreria": true
-  },
-  {
-   "audio_id": "739108178545320",
-   "title": "Move My Body (Instrumental)",
-   "display_artist": "Ella Joy Meir",
-   "duration_in_ms": 114620,
+   "audio_id": "2065054100581983",
+   "title": "Run",
+   "display_artist": "Jumbo",
+   "duration_in_ms": 68050,
    "libreria": true
   }
  ]
