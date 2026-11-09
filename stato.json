@@ -11985,7 +11985,9 @@
      "ok": true,
      "id": "18382983793243097",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -12058,7 +12060,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "XlpZhxl68uc"
+     "id": "XlpZhxl68uc",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -12069,11 +12072,78 @@
    },
    "spinto": true,
    "testo": "Stai vicino a chi ti fa sentire come il sole."
+  },
+  {
+   "quando": "2026-11-09T17:00",
+   "slot": "2026-11-09 18:00",
+   "video": "IMG_4032.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "MIE-65c28710",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio3",
+    "durata": 10.0,
+    "musica": "death_duel_1.m4a",
+    "stacchi": 3,
+    "testi": 1,
+    "scene_dal_video": 3,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.547,
+     "movimento": 70.55,
+     "primo_piano_fermo": false,
+     "soglia_moto": 2.41,
+     "da_archivio": false
+    },
+    "primo_controllo": "mosso",
+    "inizio_spostato": 0.2,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 113,
+     "righe": 2,
+     "scurito": 0.56,
+     "luce": 0.4,
+     "sfumatura": 0.3,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 151,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 10
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_16.flac",
+    "musica_instagram": "I'll Let You Run - Kerina Kinch [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "FJkNhu2jGic"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17922334854245818",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Se ti presenti ogni giorno, i risultati non avranno scelta."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-01 18:00",
   "2026-11-01 20:00",
   "2026-11-01 22:00",
   "2026-11-02 00:00",
@@ -12152,7 +12222,8 @@
   "2026-11-09 10:00",
   "2026-11-09 12:00",
   "2026-11-09 14:00",
-  "2026-11-09 16:00"
+  "2026-11-09 16:00",
+  "2026-11-09 18:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -12205,7 +12276,8 @@
   "ancient_civilisations_1.m4a",
   "locked_in_3.m4a",
   "way_back_home_2.m4a",
-  "kick_it_3.m4a"
+  "kick_it_3.m4a",
+  "death_duel_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -12524,10 +12596,10 @@
   "MIE-9fb0c4bc",
   "MIE-f49b3786",
   "MIE-fa387b61",
-  "MIE-3f5b876b"
+  "MIE-3f5b876b",
+  "MIE-65c28710"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "famiglia",
@@ -12535,6 +12607,7 @@
   "mentalita",
   "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -12774,8 +12847,9 @@
    "ultimo": "2026-10-22"
   },
   "1UoUWHyHwCuON4BVs4SSdx-6x-4H6CKw9": {
-   "usi": 3,
-   "ultimo": "2026-11-02"
+   "usi": 4,
+   "ultimo": "2026-11-09",
+   "orizzontale": false
   },
   "1KWHsB3C0gOYpMsl2sVukkzMm7VQeRgh5": {
    "usi": 3,
@@ -13047,7 +13121,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_15.flac",
   "phonk_04.flac",
   "energia_06.flac",
   "drive_11.flac",
@@ -13066,7 +13139,8 @@
   "deciso_07.flac",
   "energia_04.flac",
   "trap_16.flac",
-  "deciso_02.flac"
+  "deciso_02.flac",
+  "drive_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -13101,7 +13175,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "giornata",
+ "formato_ultimo": "taglio3",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -13117,7 +13191,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2475524415980310",
   "565118654020261",
   "796285350766311",
   "523966117385305",
@@ -13176,11 +13249,11 @@
   "1383912545569665",
   "1346975640096385",
   "226975706443939",
-  "1127106596130760"
+  "1127106596130760",
+  "1593403817732751"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Symphonic Planet",
   "Genticorum",
   "LAVLO",
   "Jumbo",
@@ -13189,10 +13262,10 @@
   "Global Genius",
   "Summer Islands",
   "Alex Blue",
-  "half.cool"
+  "half.cool",
+  "Kerina Kinch"
  ],
  "ig_titoli_recenti": [
-  "hall of fame",
   "right round",
   "winter magic",
   "bad time",
@@ -13231,7 +13304,8 @@
   "you can do it",
   "marching",
   "your legacy",
-  "move ur body"
+  "move ur body",
+  "i ll let you run"
  ],
  "ig_tendenze_riserva": [
   {
@@ -13242,17 +13316,17 @@
    "libreria": false
   },
   {
-   "audio_id": "1391428169578763",
-   "title": "Secret Powers",
-   "display_artist": "Auralux",
-   "duration_in_ms": 61600,
+   "audio_id": "2065054100581983",
+   "title": "Run",
+   "display_artist": "Jumbo",
+   "duration_in_ms": 68050,
    "libreria": true
   },
   {
-   "audio_id": "226975706443939",
-   "title": "Your Legacy",
-   "display_artist": "Alex Blue",
-   "duration_in_ms": 188680,
+   "audio_id": "1593403817732751",
+   "title": "I'll Let You Run",
+   "display_artist": "Kerina Kinch",
+   "duration_in_ms": 212927,
    "libreria": true
   }
  ]
