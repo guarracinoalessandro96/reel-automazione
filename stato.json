@@ -11846,7 +11846,9 @@
      "ok": true,
      "id": "17992561863098065",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -11907,7 +11909,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "eQZPAFsp5Lw"
+     "id": "eQZPAFsp5Lw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -11918,11 +11921,76 @@
    },
    "spinto": true,
    "testo": "Un giorno il duro lavoro porterà risultati. Continua a spingere!"
+  },
+  {
+   "quando": "2026-11-09T13:00",
+   "slot": "2026-11-09 14:00",
+   "video": "IMG_4029.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-fa387b61",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "way_back_home_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 22.52,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 3,
+     "scurito": 0.35,
+     "luce": 0.36,
+     "sfumatura": 0.27,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 206,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 11
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_16.flac",
+    "musica_instagram": "Your Legacy - Alex Blue [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "GevBxD7Hfro"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18382983793243097",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Un capitolo brutto non significa che la tua storia è finita."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-01 14:00",
   "2026-11-01 16:00",
   "2026-11-01 18:00",
   "2026-11-01 20:00",
@@ -12001,7 +12069,8 @@
   "2026-11-09 06:00",
   "2026-11-09 08:00",
   "2026-11-09 10:00",
-  "2026-11-09 12:00"
+  "2026-11-09 12:00",
+  "2026-11-09 14:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -12052,7 +12121,8 @@
   "survival_mode_3.m4a",
   "vibe_check_2.m4a",
   "ancient_civilisations_1.m4a",
-  "locked_in_3.m4a"
+  "locked_in_3.m4a",
+  "way_back_home_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -12369,10 +12439,10 @@
   "MIE-2f42829b",
   "MIE-79b36c7f",
   "MIE-9fb0c4bc",
-  "MIE-f49b3786"
+  "MIE-f49b3786",
+  "MIE-fa387b61"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -12381,7 +12451,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "imprenditore"
+  "imprenditore",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-11-09",
@@ -12592,8 +12663,9 @@
    "ultimo": "2026-11-04"
   },
   "1uc6eTA1H5KSzsqTsVNgk6Rzto2V2Wq3y": {
-   "usi": 3,
-   "ultimo": "2026-11-02"
+   "usi": 4,
+   "ultimo": "2026-11-09",
+   "orizzontale": false
   },
   "1SViXJGWyrXZIxEMyHGwykElbvGkiJSxW": {
    "usi": 2,
@@ -12890,7 +12962,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_08.flac",
   "drive_13.flac",
   "trap_15.flac",
   "phonk_04.flac",
@@ -12909,7 +12980,8 @@
   "trap_08.flac",
   "phonk_03.flac",
   "deciso_07.flac",
-  "energia_04.flac"
+  "energia_04.flac",
+  "trap_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -12944,7 +13016,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -13018,11 +13090,11 @@
   "1372666635060078",
   "739108178545320",
   "1383912545569665",
-  "1346975640096385"
+  "1346975640096385",
+  "226975706443939"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Kolektivo",
   "Auralux",
   "Symphonic Planet",
   "Genticorum",
@@ -13031,10 +13103,10 @@
   "Giulio Cercato",
   "Ella Joy Meir",
   "Global Genius",
-  "Summer Islands"
+  "Summer Islands",
+  "Alex Blue"
  ],
  "ig_titoli_recenti": [
-  "sentire la musica",
   "iconic",
   "hall of fame",
   "right round",
@@ -13073,7 +13145,8 @@
   "breathtaker",
   "move my body",
   "you can do it",
-  "marching"
+  "marching",
+  "your legacy"
  ],
  "ig_tendenze_riserva": [
   {
@@ -13084,17 +13157,17 @@
    "libreria": false
   },
   {
-   "audio_id": "1346975640096385",
-   "title": "Marching",
-   "display_artist": "Summer Islands",
-   "duration_in_ms": 67686,
+   "audio_id": "1391428169578763",
+   "title": "Secret Powers",
+   "display_artist": "Auralux",
+   "duration_in_ms": 61600,
    "libreria": true
   },
   {
-   "audio_id": "1716216946466764",
-   "title": "Join The Movement",
-   "display_artist": "Afterlight",
-   "duration_in_ms": 61611,
+   "audio_id": "226975706443939",
+   "title": "Your Legacy",
+   "display_artist": "Alex Blue",
+   "duration_in_ms": 188680,
    "libreria": true
   }
  ]
