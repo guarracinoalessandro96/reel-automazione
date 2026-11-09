@@ -1,25 +1,28 @@
 {
  "temi": {
   "amicizia": 0.98,
-  "imprenditore": 1.0,
-  "mentalita": 1.0,
-  "palestra": 0.97,
+  "imprenditore": 1.01,
+  "mentalita": 0.99,
+  "palestra": 0.98,
   "dieta": 1.01,
-  "regole": 1.06,
-  "storia": 0.98
+  "regole": 1.07,
+  "storia": 0.99
  },
- "aggiornato": "2026-11-08",
+ "aggiornato": "2026-11-09",
  "frasi_vincenti": [
   "MIE-02d87ee7",
   "MIE-043e8cf1",
+  "MIE-0ca11e56",
   "MIE-0fecdd42",
   "MIE-1cba4cc4",
   "MIE-1f097e9f",
   "MIE-22f623e2",
   "MIE-239a782a",
   "MIE-373e069a",
+  "MIE-3fec417d",
   "MIE-44e75fe0",
   "MIE-48a56ab6",
+  "MIE-52b3207a",
   "MIE-53683e04",
   "MIE-578492d5",
   "MIE-5a99bac4",
@@ -76,11 +79,11 @@
   "cartier",
   "vibe_check",
   "the_road_to_mordor",
-  "way_back_home",
   "fire_in_the_sky",
+  "way_back_home",
   "wrangle_the_crazy",
-  "ancient_civilisations",
-  "rubberband"
+  "rubberband",
+  "van_life_rager"
  ],
  "clip_forti": [
   "IMG_4037.MOV",
@@ -99,14 +102,13 @@
   "IMG_4121.mov",
   "IMG_3974.MOV",
   "IMG_3606.mov",
-  "IMG_3787.mov",
   "IMG_3952.mov",
   "IMG_4044.MOV",
   "IMG_4118.mov"
  ],
  "brani_forti_ig": [
   "trap",
-  "drive",
-  "phonk"
+  "phonk",
+  "drive"
  ]
 }
