@@ -12067,7 +12067,9 @@
      "ok": true,
      "id": "18079883504423341",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -12129,7 +12131,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "FJkNhu2jGic"
+     "id": "FJkNhu2jGic",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -12140,11 +12143,78 @@
    },
    "spinto": true,
    "testo": "Se ti presenti ogni giorno, i risultati non avranno scelta."
+  },
+  {
+   "quando": "2026-11-09T19:00",
+   "slot": "2026-11-09 20:00",
+   "video": "IMG_3770.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-700b7322",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio1",
+    "durata": 10.0,
+    "musica": "i_might_be_late_2.m4a",
+    "stacchi": 10,
+    "testi": 1,
+    "scene_dal_video": 4,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.39,
+     "movimento": 36.53,
+     "primo_piano_fermo": false,
+     "soglia_moto": 21.61,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 140,
+     "righe": 3,
+     "scurito": 0.53,
+     "luce": 0.59,
+     "sfumatura": 0.4,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 217,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 7
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_07.flac",
+    "musica_instagram": "Peaceful Motion - Lightbox Music [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Kl0xEX3pd1M"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18128754760903626",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Sogna in grande. Lavora sodo. Resta umile."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-01 20:00",
   "2026-11-01 22:00",
   "2026-11-02 00:00",
   "2026-11-02 06:00",
@@ -12223,7 +12293,8 @@
   "2026-11-09 12:00",
   "2026-11-09 14:00",
   "2026-11-09 16:00",
-  "2026-11-09 18:00"
+  "2026-11-09 18:00",
+  "2026-11-09 20:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -12277,7 +12348,8 @@
   "locked_in_3.m4a",
   "way_back_home_2.m4a",
   "kick_it_3.m4a",
-  "death_duel_1.m4a"
+  "death_duel_1.m4a",
+  "i_might_be_late_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -12597,16 +12669,17 @@
   "MIE-f49b3786",
   "MIE-fa387b61",
   "MIE-3f5b876b",
-  "MIE-65c28710"
+  "MIE-65c28710",
+  "MIE-700b7322"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "famiglia",
   "mentalita",
   "mentalita",
   "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -12638,8 +12711,9 @@
    "orizzontale": false
   },
   "1q_-2Z0Nxs0rzY0eRiS5kJ9hteaPWK_as": {
-   "usi": 3,
-   "ultimo": "2026-11-01"
+   "usi": 4,
+   "ultimo": "2026-11-09",
+   "orizzontale": false
   },
   "1Eit9vgbQEwd_RXA_ujWUx9-QNboc7VIg": {
    "usi": 3,
@@ -12647,7 +12721,8 @@
   },
   "15jiV1pcQxInQYlwKdmhJ-oiXaPBuhCUQ": {
    "usi": 2,
-   "ultimo": "2026-11-01"
+   "ultimo": "2026-11-01",
+   "orizzontale": false
   },
   "1NgsmHHGD9Qdq4lQ_cY7_qoozFPSuqtJ4": {
    "usi": 3,
@@ -12687,7 +12762,8 @@
   },
   "1fr7r7gFPOa5mMg3NCHBo-KO8j4yxbprb": {
    "usi": 2,
-   "ultimo": "2026-10-19"
+   "ultimo": "2026-10-19",
+   "orizzontale": false
   },
   "1fiTj8eVYumSNhYT3V8Few0omcOH62Olm": {
    "usi": 3,
@@ -13121,7 +13197,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_04.flac",
   "energia_06.flac",
   "drive_11.flac",
   "phonk_05.flac",
@@ -13140,7 +13215,8 @@
   "energia_04.flac",
   "trap_16.flac",
   "deciso_02.flac",
-  "drive_16.flac"
+  "drive_16.flac",
+  "phonk_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -13175,7 +13251,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio3",
+ "formato_ultimo": "taglio1",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -13191,7 +13267,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "565118654020261",
   "796285350766311",
   "523966117385305",
   "4489870934582584",
@@ -13250,11 +13325,11 @@
   "1346975640096385",
   "226975706443939",
   "1127106596130760",
-  "1593403817732751"
+  "1593403817732751",
+  "1050254964075544"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Genticorum",
   "LAVLO",
   "Jumbo",
   "Giulio Cercato",
@@ -13263,10 +13338,10 @@
   "Summer Islands",
   "Alex Blue",
   "half.cool",
-  "Kerina Kinch"
+  "Kerina Kinch",
+  "Lightbox Music"
  ],
  "ig_titoli_recenti": [
-  "right round",
   "winter magic",
   "bad time",
   "sta passando novembre",
@@ -13305,7 +13380,8 @@
   "marching",
   "your legacy",
   "move ur body",
-  "i ll let you run"
+  "i ll let you run",
+  "peaceful motion"
  ],
  "ig_tendenze_riserva": [
   {
@@ -13316,17 +13392,17 @@
    "libreria": false
   },
   {
-   "audio_id": "2065054100581983",
-   "title": "Run",
-   "display_artist": "Jumbo",
-   "duration_in_ms": 68050,
+   "audio_id": "5890184931105352",
+   "title": "Gospel Hype",
+   "display_artist": "bbox",
+   "duration_in_ms": 210050,
    "libreria": true
   },
   {
-   "audio_id": "1593403817732751",
-   "title": "I'll Let You Run",
-   "display_artist": "Kerina Kinch",
-   "duration_in_ms": 212927,
+   "audio_id": "1050254964075544",
+   "title": "Peaceful Motion",
+   "display_artist": "Lightbox Music",
+   "duration_in_ms": 65330,
    "libreria": true
   }
  ]
