@@ -11916,7 +11916,9 @@
      "ok": true,
      "id": "17908692822670169",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -11976,7 +11978,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "GevBxD7Hfro"
+     "id": "GevBxD7Hfro",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -11987,11 +11990,89 @@
    },
    "spinto": false,
    "testo": "Un capitolo brutto non significa che la tua storia è finita."
+  },
+  {
+   "quando": "2026-11-09T15:01",
+   "slot": "2026-11-09 16:00",
+   "video": "IMG_3972.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-3f5b876b",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "giornata",
+    "durata": 10.0,
+    "musica": "kick_it_3.m4a",
+    "stacchi": 6,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.132,
+     "movimento": 38.43,
+     "primo_piano_fermo": false,
+     "soglia_moto": 39.36
+    },
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 134,
+     "righe": 2,
+     "scurito": 0.48,
+     "luce": 0.49,
+     "sfumatura": 0.35,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scene": 6,
+    "con_viso": 6,
+    "viso_primo_secondo": true,
+    "gancio_azione": true,
+    "secondi_analisi": 168,
+    "stesso_giorno": 6,
+    "clip_scene": [
+     "IMG_4037.MOV",
+     "IMG_3968.mov",
+     "IMG_3969.mov",
+     "IMG_3971.MOV",
+     "IMG_4043.MOV"
+    ],
+    "giornata_del": "2026-10-18",
+    "secondi_montaggio": 384,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 10
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_02.flac",
+    "musica_instagram": "Move Ur Body (Instrumental) - half.cool"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "XlpZhxl68uc"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18079883504423341",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Stai vicino a chi ti fa sentire come il sole."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-01 16:00",
   "2026-11-01 18:00",
   "2026-11-01 20:00",
   "2026-11-01 22:00",
@@ -12070,7 +12151,8 @@
   "2026-11-09 08:00",
   "2026-11-09 10:00",
   "2026-11-09 12:00",
-  "2026-11-09 14:00"
+  "2026-11-09 14:00",
+  "2026-11-09 16:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -12122,7 +12204,8 @@
   "vibe_check_2.m4a",
   "ancient_civilisations_1.m4a",
   "locked_in_3.m4a",
-  "way_back_home_2.m4a"
+  "way_back_home_2.m4a",
+  "kick_it_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -12440,10 +12523,10 @@
   "MIE-79b36c7f",
   "MIE-9fb0c4bc",
   "MIE-f49b3786",
-  "MIE-fa387b61"
+  "MIE-fa387b61",
+  "MIE-3f5b876b"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -12452,6 +12535,7 @@
   "mentalita",
   "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -12672,8 +12756,9 @@
    "ultimo": "2026-10-21"
   },
   "1NqfCjngnUsLcNgPGLaYs302aM3bRveLK": {
-   "usi": 3,
-   "ultimo": "2026-11-02"
+   "usi": 4,
+   "ultimo": "2026-11-09",
+   "orizzontale": false
   },
   "1O5XL-iS65p-rWSE6IHKTNDsSp1HIG9a1": {
    "usi": 2,
@@ -12962,7 +13047,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_13.flac",
   "trap_15.flac",
   "phonk_04.flac",
   "energia_06.flac",
@@ -12981,7 +13065,8 @@
   "phonk_03.flac",
   "deciso_07.flac",
   "energia_04.flac",
-  "trap_16.flac"
+  "trap_16.flac",
+  "deciso_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -13016,7 +13101,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "giornata",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -13032,7 +13117,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "585527483942549",
   "2475524415980310",
   "565118654020261",
   "796285350766311",
@@ -13091,11 +13175,11 @@
   "739108178545320",
   "1383912545569665",
   "1346975640096385",
-  "226975706443939"
+  "226975706443939",
+  "1127106596130760"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Auralux",
   "Symphonic Planet",
   "Genticorum",
   "LAVLO",
@@ -13104,10 +13188,10 @@
   "Ella Joy Meir",
   "Global Genius",
   "Summer Islands",
-  "Alex Blue"
+  "Alex Blue",
+  "half.cool"
  ],
  "ig_titoli_recenti": [
-  "iconic",
   "hall of fame",
   "right round",
   "winter magic",
@@ -13146,7 +13230,8 @@
   "move my body",
   "you can do it",
   "marching",
-  "your legacy"
+  "your legacy",
+  "move ur body"
  ],
  "ig_tendenze_riserva": [
   {
