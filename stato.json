@@ -12209,7 +12209,9 @@
      "ok": true,
      "id": "18128754760903626",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -12270,7 +12272,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "JRUp6oYRdfk"
+     "id": "JRUp6oYRdfk",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -12281,11 +12284,78 @@
    },
    "spinto": true,
    "testo": "A volte devi chiudere una porta per respirare aria nuova."
+  },
+  {
+   "quando": "2026-11-09T23:00",
+   "slot": "2026-11-10 00:00",
+   "video": "IMG_4061.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-e0366dfa",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "rallenty",
+    "durata": 10.0,
+    "musica": "sweaty_staredown_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.355,
+     "movimento": 22.48,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "velocita": 0.75,
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 4,
+     "scurito": 0.46,
+     "luce": 0.36,
+     "sfumatura": 0.26,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 167,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 19
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_12.flac",
+    "musica_instagram": "Cave Fight - Apesaw [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "9nUCqQO36cs"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17917657008515183",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Sii grato alle persone che hanno parlato al vincente che è in te, prima che tu iniziassi a vincere."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-02 00:00",
   "2026-11-02 06:00",
   "2026-11-02 08:00",
   "2026-11-02 10:00",
@@ -12364,7 +12434,8 @@
   "2026-11-09 16:00",
   "2026-11-09 18:00",
   "2026-11-09 20:00",
-  "2026-11-09 22:00"
+  "2026-11-09 22:00",
+  "2026-11-10 00:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -12420,7 +12491,8 @@
   "kick_it_3.m4a",
   "death_duel_1.m4a",
   "i_might_be_late_2.m4a",
-  "break_ya_neck_3.m4a"
+  "break_ya_neck_3.m4a",
+  "sweaty_staredown_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -12742,14 +12814,15 @@
   "MIE-3f5b876b",
   "MIE-65c28710",
   "MIE-700b7322",
-  "MIE-0afe867a"
+  "MIE-0afe867a",
+  "MIE-e0366dfa"
  ],
  "temi_recenti": [
-  "famiglia",
   "mentalita",
   "mentalita",
   "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -13057,8 +13130,9 @@
    "ultimo": "2026-10-23"
   },
   "1120zEipzyBfScy4IMkZ_264cYRRj4_wC": {
-   "usi": 3,
-   "ultimo": "2026-11-02"
+   "usi": 4,
+   "ultimo": "2026-11-09",
+   "orizzontale": false
   },
   "1Ysgny_QvDeVi4Yc1fvcAP2jh-Qv2xZgx": {
    "usi": 2,
@@ -13270,7 +13344,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_11.flac",
   "phonk_05.flac",
   "energia_01.flac",
   "drive_02.flac",
@@ -13289,7 +13362,8 @@
   "deciso_02.flac",
   "drive_16.flac",
   "phonk_07.flac",
-  "trap_11.flac"
+  "trap_11.flac",
+  "energia_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -13324,7 +13398,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "rallenty",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -13340,7 +13414,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "523966117385305",
   "4489870934582584",
   "974432747187721",
   "736015230804186",
@@ -13399,11 +13472,11 @@
   "1127106596130760",
   "1593403817732751",
   "1050254964075544",
-  "576850318404245"
+  "576850318404245",
+  "921570148849598"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jumbo",
   "Giulio Cercato",
   "Ella Joy Meir",
   "Global Genius",
@@ -13412,10 +13485,10 @@
   "half.cool",
   "Kerina Kinch",
   "Lightbox Music",
-  "Sam Marshall"
+  "Sam Marshall",
+  "Apesaw"
  ],
  "ig_titoli_recenti": [
-  "bad time",
   "sta passando novembre",
   "fantasmas",
   "novembre",
@@ -13454,7 +13527,8 @@
   "move ur body",
   "i ll let you run",
   "peaceful motion",
-  "not phonk"
+  "not phonk",
+  "cave fight"
  ],
  "ig_tendenze_riserva": [
   {
@@ -13465,24 +13539,10 @@
    "libreria": false
   },
   {
-   "audio_id": "566336025028596",
-   "title": "Fire",
-   "display_artist": "Tony Dark Eyes",
-   "duration_in_ms": 162580,
-   "libreria": true
-  },
-  {
-   "audio_id": "576850318404245",
-   "title": "Not Phonk",
-   "display_artist": "Sam Marshall",
-   "duration_in_ms": 188462,
-   "libreria": true
-  },
-  {
-   "audio_id": "226975706443939",
-   "title": "Your Legacy",
-   "display_artist": "Alex Blue",
-   "duration_in_ms": 188680,
+   "audio_id": "921570148849598",
+   "title": "Cave Fight",
+   "display_artist": "Apesaw",
+   "duration_in_ms": 25214,
    "libreria": true
   }
  ]
