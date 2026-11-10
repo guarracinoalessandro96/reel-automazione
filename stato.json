@@ -12843,7 +12843,9 @@
      "ok": true,
      "id": "17966080212214289",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -12906,7 +12908,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "J2ApPBPb8pg"
+     "id": "J2ApPBPb8pg",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -12917,11 +12920,78 @@
    },
    "spinto": false,
    "testo": "È tempo di diventare seri sui tuoi obiettivi, sul tuo futuro, la tua pace e la tua vita."
+  },
+  {
+   "quando": "2026-11-10T21:00",
+   "slot": "2026-11-10 22:00",
+   "video": "IMG_3815.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-0d454c50",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio2",
+    "durata": 10.0,
+    "musica": "fire_in_the_sky_2.m4a",
+    "stacchi": 5,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.405,
+     "movimento": 43.28,
+     "primo_piano_fermo": false,
+     "soglia_moto": 20.39,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 140,
+     "righe": 3,
+     "scurito": 0.5,
+     "luce": 0.52,
+     "sfumatura": 0.37,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 128,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 6
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_09.flac",
+    "musica_instagram": "Main Character Energy - Afterlight [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "RwVhObxBbro"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17966778762212896",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Fallisci solo quando smetti di provare."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-02 22:00",
   "2026-11-03 00:00",
   "2026-11-03 06:00",
   "2026-11-03 08:00",
@@ -13000,10 +13070,10 @@
   "2026-11-10 14:00",
   "2026-11-10 16:00",
   "2026-11-10 18:00",
-  "2026-11-10 20:00"
+  "2026-11-10 20:00",
+  "2026-11-10 22:00"
  ],
  "musica_recenti": [
-  "ancient_civilisations_2.m4a",
   "vibe_check_3.m4a",
   "dusty_road_magic_2.m4a",
   "way_back_home_1.m4a",
@@ -13062,7 +13132,8 @@
   "duty_calls_1.m4a",
   "stake_out_3.m4a",
   "cartier_2.m4a",
-  "the_road_to_mordor_1.m4a"
+  "the_road_to_mordor_1.m4a",
+  "fire_in_the_sky_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -13393,7 +13464,8 @@
   "MIE-ddee2268",
   "MIE-42862dc5",
   "MIE-256d1107",
-  "MIE-68c466d9"
+  "MIE-68c466d9",
+  "MIE-0d454c50"
  ],
  "temi_recenti": [
   "mentalita",
@@ -13548,12 +13620,14 @@
    "ultimo": "2026-10-31"
   },
   "1vOgmkuZ-zKENaS1fagQc3J6w_396E-JX": {
-   "usi": 3,
-   "ultimo": "2026-11-02"
+   "usi": 4,
+   "ultimo": "2026-11-10",
+   "orizzontale": false
   },
   "1fKbWVgrVrxr5Ecx1pZo_uFBf-CoX_0G5": {
    "usi": 3,
-   "ultimo": "2026-11-03"
+   "ultimo": "2026-11-03",
+   "orizzontale": false
   },
   "1HrgxYw6jMJ5qXxx8j5ZWOVhPdqD7b1fH": {
    "usi": 3,
@@ -13931,7 +14005,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_08.flac",
   "drive_10.flac",
   "trap_08.flac",
   "phonk_03.flac",
@@ -13950,7 +14023,8 @@
   "phonk_13.flac",
   "trap_06.flac",
   "deciso_01.flac",
-  "phonk_01.flac"
+  "phonk_01.flac",
+  "drive_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -13985,7 +14059,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "taglio2",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -14001,7 +14075,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1403113822033083",
   "886601410818919",
   "254969200347498",
   "554133449182324",
@@ -14060,11 +14133,11 @@
   "1324542209262772",
   "269408148764736",
   "3528656724045832",
-  "1131466168211650"
+  "1131466168211650",
+  "27850712597869154"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Sam Marshall",
   "Apesaw",
   "Ruby Amanfu",
   "Daria Novo",
@@ -14073,10 +14146,10 @@
   "Jackson Whalan",
   "Jumbo",
   "d.higgs",
-  "The K Club"
+  "The K Club",
+  "Afterlight"
  ],
  "ig_titoli_recenti": [
-  "hero",
   "legends in my head",
   "fighting back a flight of stairs",
   "knockout",
@@ -14115,7 +14188,8 @@
   "getting strong",
   "rise",
   "the power",
-  "can t run away remix"
+  "can t run away remix",
+  "main character energy"
  ],
  "ig_tendenze_riserva": [
   {
@@ -14133,38 +14207,59 @@
    "libreria": false
   },
   {
-   "audio_id": "241840291972862",
-   "title": "Action Hero",
-   "display_artist": "Sam Marshall",
-   "duration_in_ms": 202751,
+   "audio_id": "27850712597869154",
+   "title": "Main Character Energy",
+   "display_artist": "Afterlight",
+   "duration_in_ms": 61756,
    "libreria": true
   },
   {
-   "audio_id": "3188463141456618",
-   "title": "Sentimental Motion (feat. ZAB)",
-   "display_artist": "half.cool",
-   "duration_in_ms": 192050,
+   "audio_id": "886249782709175",
+   "title": "March Of Libertad",
+   "display_artist": "Symphonic Planet",
+   "duration_in_ms": 236050,
    "libreria": true
   },
   {
-   "audio_id": "1131466168211650",
-   "title": "Can't Run Away Remix (Otis McDonald) (feat. DOSE)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 136390,
+   "audio_id": "806476269035757",
+   "title": "On Fire (Instrumental)",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 197861,
    "libreria": true
   },
   {
-   "audio_id": "3643996589148382",
-   "title": "Storm",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 154693,
+   "audio_id": "1068592065620532",
+   "title": "Legendary",
+   "display_artist": "LAVLO",
+   "duration_in_ms": 67490,
    "libreria": true
   },
   {
-   "audio_id": "595861529686311",
-   "title": "Hero",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 146716,
+   "audio_id": "820220974302825",
+   "title": "Success (Instrumental)",
+   "display_artist": "stereogully",
+   "duration_in_ms": 123870,
+   "libreria": true
+  },
+  {
+   "audio_id": "550723776899092",
+   "title": "Power Is Relative",
+   "display_artist": "Trout Recording",
+   "duration_in_ms": 181850,
+   "libreria": true
+  },
+  {
+   "audio_id": "893506731941053",
+   "title": "Can't Run Away",
+   "display_artist": "Otis McDonald",
+   "duration_in_ms": 153511,
+   "libreria": true
+  },
+  {
+   "audio_id": "1463029071233766",
+   "title": "Win The Game (feat. Barbasauce)",
+   "display_artist": "Neko Fuzz",
+   "duration_in_ms": 177260,
    "libreria": true
   }
  ]
