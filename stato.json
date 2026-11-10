@@ -12489,7 +12489,9 @@
      "ok": true,
      "id": "17979117327146537",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -12551,7 +12553,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "S_Qx7G9E2TA"
+     "id": "S_Qx7G9E2TA",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -12562,11 +12565,77 @@
    },
    "spinto": false,
    "testo": "Prendi decisioni come se il tuo io del futuro avesse già vinto."
+  },
+  {
+   "quando": "2026-11-10T11:00",
+   "slot": "2026-11-10 12:00",
+   "video": "IMG_3768.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-897d20e8",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "loop",
+    "durata": 10.0,
+    "musica": "turn_in_the_sun_2.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.462,
+     "movimento": 13.37,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 144,
+     "righe": 2,
+     "scurito": 0.56,
+     "luce": 0.65,
+     "sfumatura": 0.41,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 104,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 8
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_05.flac",
+    "musica_instagram": "You Can't Always Get What You Want - Sam Fender [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "pxZeXFjbKMo"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18134713324683131",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Ce la farai. Dio è dalla tua parte."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-02 12:00",
   "2026-11-02 14:00",
   "2026-11-02 16:00",
   "2026-11-02 18:00",
@@ -12645,7 +12714,8 @@
   "2026-11-10 00:00",
   "2026-11-10 06:00",
   "2026-11-10 08:00",
-  "2026-11-10 10:00"
+  "2026-11-10 10:00",
+  "2026-11-10 12:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -12705,7 +12775,8 @@
   "sweaty_staredown_1.m4a",
   "mirror_mirror_3.m4a",
   "whoop_2.m4a",
-  "the_light_1.m4a"
+  "the_light_1.m4a",
+  "turn_in_the_sun_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -13031,10 +13102,11 @@
   "MIE-e0366dfa",
   "MIE-87fad368",
   "MIE-ee91697e",
-  "MIE-6d659e6a"
+  "MIE-6d659e6a",
+  "MIE-897d20e8"
  ],
  "temi_recenti": [
-  "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -13109,8 +13181,9 @@
    "orizzontale": false
   },
   "1J6rUreSm_Mrsbua06uFjE1b4xu8-pRpL": {
-   "usi": 3,
-   "ultimo": "2026-11-02"
+   "usi": 4,
+   "ultimo": "2026-11-10",
+   "orizzontale": false
   },
   "1hvbjqvKs_ADW2bi_kJP0H1fxpKUzd-nq": {
    "usi": 3,
@@ -13563,7 +13636,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_13.flac",
   "trap_14.flac",
   "drive_09.flac",
   "phonk_06.flac",
@@ -13582,7 +13654,8 @@
   "energia_12.flac",
   "phonk_11.flac",
   "drive_15.flac",
-  "energia_06.flac"
+  "energia_06.flac",
+  "deciso_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -13617,7 +13690,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio3",
+ "formato_ultimo": "loop",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -13633,7 +13706,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1109108338433886",
   "1724811595735449",
   "2195838444698263",
   "242659649830381",
@@ -13692,11 +13764,11 @@
   "921570148849598",
   "1341809783805885",
   "845285864683880",
-  "1232530197323594"
+  "1232530197323594",
+  "1478915717468599"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Summer Islands",
   "Alex Blue",
   "half.cool",
   "Kerina Kinch",
@@ -13705,10 +13777,10 @@
   "Apesaw",
   "Ruby Amanfu",
   "Daria Novo",
-  "Abby Posner"
+  "Abby Posner",
+  "Sam Fender"
  ],
  "ig_titoli_recenti": [
-  "3 times",
   "funkytown flute",
   "people have the power",
   "uefa champions league legacy anthem",
@@ -13747,7 +13819,8 @@
   "cave fight",
   "stronger than you think",
   "rise of the brave",
-  "reflect and rise"
+  "reflect and rise",
+  "you can t always get what you want"
  ],
  "ig_tendenze_riserva": [
   {
@@ -13758,11 +13831,11 @@
    "libreria": false
   },
   {
-   "audio_id": "845285864683880",
-   "title": "Rise Of The Brave",
-   "display_artist": "Daria Novo",
-   "duration_in_ms": 216086,
-   "libreria": true
+   "audio_id": "1478915717468599",
+   "title": "You Can't Always Get What You Want",
+   "display_artist": "Sam Fender",
+   "duration_in_ms": 209457,
+   "libreria": false
   }
  ]
 }
