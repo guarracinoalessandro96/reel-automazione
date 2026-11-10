@@ -12412,7 +12412,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "g92yrSB7OUo"
+     "id": "g92yrSB7OUo",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -12423,11 +12424,77 @@
    },
    "spinto": false,
    "testo": "Scelte difficili oggi, vita facile domani."
+  },
+  {
+   "quando": "2026-11-10T07:00",
+   "slot": "2026-11-10 08:00",
+   "video": "IMG_3765.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-ee91697e",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "loop",
+    "durata": 10.0,
+    "musica": "whoop_2.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.463,
+     "movimento": 5.95,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 131,
+     "righe": 3,
+     "scurito": 0.5,
+     "luce": 0.44,
+     "sfumatura": 0.33,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 141,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "due",
+     "parole": 8
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_15.flac",
+    "musica_instagram": "Rise Of The Brave - Daria Novo [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "ZFxywrNL9yk"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17979117327146537",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Non vivrai mai più questo giorno. Fallo contare."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-02 08:00",
   "2026-11-02 10:00",
   "2026-11-02 12:00",
   "2026-11-02 14:00",
@@ -12506,7 +12573,8 @@
   "2026-11-09 20:00",
   "2026-11-09 22:00",
   "2026-11-10 00:00",
-  "2026-11-10 06:00"
+  "2026-11-10 06:00",
+  "2026-11-10 08:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -12564,7 +12632,8 @@
   "i_might_be_late_2.m4a",
   "break_ya_neck_3.m4a",
   "sweaty_staredown_1.m4a",
-  "mirror_mirror_3.m4a"
+  "mirror_mirror_3.m4a",
+  "whoop_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -12888,12 +12957,13 @@
   "MIE-700b7322",
   "MIE-0afe867a",
   "MIE-e0366dfa",
-  "MIE-87fad368"
+  "MIE-87fad368",
+  "MIE-ee91697e"
  ],
  "temi_recenti": [
   "mentalita",
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -12951,8 +13021,8 @@
    "ultimo": "2026-10-19"
   },
   "1mOygaNSLk3zVyQOFm3atEW61_fUGn_3z": {
-   "usi": 3,
-   "ultimo": "2026-11-01",
+   "usi": 4,
+   "ultimo": "2026-11-10",
    "orizzontale": false
   },
   "1mIxav-KbU3ZL_NU9MF4Z-Vcww6fOPwR4": {
@@ -13418,7 +13488,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_01.flac",
   "drive_02.flac",
   "phonk_13.flac",
   "trap_14.flac",
@@ -13437,7 +13506,8 @@
   "phonk_07.flac",
   "trap_11.flac",
   "energia_12.flac",
-  "phonk_11.flac"
+  "phonk_11.flac",
+  "drive_15.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -13472,7 +13542,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "loop",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -13488,7 +13558,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "974432747187721",
   "736015230804186",
   "1109108338433886",
   "1724811595735449",
@@ -13547,11 +13616,11 @@
   "1050254964075544",
   "576850318404245",
   "921570148849598",
-  "1341809783805885"
+  "1341809783805885",
+  "845285864683880"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Ella Joy Meir",
   "Global Genius",
   "Summer Islands",
   "Alex Blue",
@@ -13560,10 +13629,10 @@
   "Lightbox Music",
   "Sam Marshall",
   "Apesaw",
-  "Ruby Amanfu"
+  "Ruby Amanfu",
+  "Daria Novo"
  ],
  "ig_titoli_recenti": [
-  "fantasmas",
   "novembre",
   "3 times",
   "funkytown flute",
@@ -13602,7 +13671,8 @@
   "peaceful motion",
   "not phonk",
   "cave fight",
-  "stronger than you think"
+  "stronger than you think",
+  "rise of the brave"
  ],
  "ig_tendenze_riserva": [
   {
@@ -13613,17 +13683,10 @@
    "libreria": false
   },
   {
-   "audio_id": "1341809783805885",
-   "title": "Stronger Than You Think",
-   "display_artist": "Ruby Amanfu",
-   "duration_in_ms": 214420,
-   "libreria": true
-  },
-  {
-   "audio_id": "820220974302825",
-   "title": "Success (Instrumental)",
-   "display_artist": "stereogully",
-   "duration_in_ms": 123870,
+   "audio_id": "845285864683880",
+   "title": "Rise Of The Brave",
+   "display_artist": "Daria Novo",
+   "duration_in_ms": 216086,
    "libreria": true
   }
  ]
