@@ -12771,7 +12771,9 @@
      "ok": true,
      "id": "18079754834563314",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -12834,7 +12836,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "FCCYVZC7fJQ"
+     "id": "FCCYVZC7fJQ",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -12845,11 +12848,79 @@
    },
    "spinto": true,
    "testo": "Stai vivendo? O stai solo esistendo? Vivi la tua vita."
+  },
+  {
+   "quando": "2026-11-10T19:00",
+   "slot": "2026-11-10 20:00",
+   "video": "IMG_3794.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-68c466d9",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "the_road_to_mordor_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 4,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 20.03,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.9,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 4,
+     "scurito": 0.49,
+     "luce": 0.53,
+     "sfumatura": 0.38,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 174,
+    "scritta": "centro_serif",
+    "estratto": "rallenty",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 18
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_01.flac",
+    "musica_instagram": "Can't Run Away Remix (Otis McDonald) (feat. DOSE) - The K Club [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "J2ApPBPb8pg"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18654435046051587",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "È tempo di diventare seri sui tuoi obiettivi, sul tuo futuro, la tua pace e la tua vita."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-02 20:00",
   "2026-11-02 22:00",
   "2026-11-03 00:00",
   "2026-11-03 06:00",
@@ -12928,10 +12999,10 @@
   "2026-11-10 12:00",
   "2026-11-10 14:00",
   "2026-11-10 16:00",
-  "2026-11-10 18:00"
+  "2026-11-10 18:00",
+  "2026-11-10 20:00"
  ],
  "musica_recenti": [
-  "keep_it_movin_1.m4a",
   "ancient_civilisations_2.m4a",
   "vibe_check_3.m4a",
   "dusty_road_magic_2.m4a",
@@ -12990,7 +13061,8 @@
   "turn_in_the_sun_2.m4a",
   "duty_calls_1.m4a",
   "stake_out_3.m4a",
-  "cartier_2.m4a"
+  "cartier_2.m4a",
+  "the_road_to_mordor_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -13320,7 +13392,8 @@
   "MIE-897d20e8",
   "MIE-ddee2268",
   "MIE-42862dc5",
-  "MIE-256d1107"
+  "MIE-256d1107",
+  "MIE-68c466d9"
  ],
  "temi_recenti": [
   "mentalita",
@@ -13423,8 +13496,9 @@
    "orizzontale": false
   },
   "1fiTj8eVYumSNhYT3V8Few0omcOH62Olm": {
-   "usi": 3,
-   "ultimo": "2026-11-02"
+   "usi": 4,
+   "ultimo": "2026-11-10",
+   "orizzontale": false
   },
   "1PQ4fQcv7i5uxq-1id98LKGmYVNXmunzk": {
    "usi": 2,
@@ -13857,7 +13931,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_05.flac",
   "deciso_08.flac",
   "drive_10.flac",
   "trap_08.flac",
@@ -13876,7 +13949,8 @@
   "deciso_05.flac",
   "phonk_13.flac",
   "trap_06.flac",
-  "deciso_01.flac"
+  "deciso_01.flac",
+  "phonk_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -13927,7 +14001,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "258759081507255",
   "1403113822033083",
   "886601410818919",
   "254969200347498",
@@ -13986,11 +14059,11 @@
   "1478915717468599",
   "1324542209262772",
   "269408148764736",
-  "3528656724045832"
+  "3528656724045832",
+  "1131466168211650"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Lightbox Music",
   "Sam Marshall",
   "Apesaw",
   "Ruby Amanfu",
@@ -13999,10 +14072,10 @@
   "Sam Fender",
   "Jackson Whalan",
   "Jumbo",
-  "d.higgs"
+  "d.higgs",
+  "The K Club"
  ],
  "ig_titoli_recenti": [
-  "don t give up on me",
   "hero",
   "legends in my head",
   "fighting back a flight of stairs",
@@ -14041,7 +14114,8 @@
   "you can t always get what you want",
   "getting strong",
   "rise",
-  "the power"
+  "the power",
+  "can t run away remix"
  ],
  "ig_tendenze_riserva": [
   {
@@ -14059,38 +14133,38 @@
    "libreria": false
   },
   {
-   "audio_id": "1764087140836610",
-   "title": "Horizon (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 128850,
-   "libreria": true
-  },
-  {
-   "audio_id": "3528656724045832",
-   "title": "The Power (feat. Alan Avry)",
-   "display_artist": "d.higgs",
-   "duration_in_ms": 123800,
-   "libreria": true
-  },
-  {
-   "audio_id": "1891400918224519",
-   "title": "Like A Win (Instrumental)",
-   "display_artist": "Phury",
-   "duration_in_ms": 204188,
-   "libreria": true
-  },
-  {
-   "audio_id": "25368629129436516",
-   "title": "Hero Journey",
+   "audio_id": "241840291972862",
+   "title": "Action Hero",
    "display_artist": "Sam Marshall",
-   "duration_in_ms": 185368,
+   "duration_in_ms": 202751,
    "libreria": true
   },
   {
-   "audio_id": "156774090838394",
-   "title": "Star Chasers (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 138383,
+   "audio_id": "3188463141456618",
+   "title": "Sentimental Motion (feat. ZAB)",
+   "display_artist": "half.cool",
+   "duration_in_ms": 192050,
+   "libreria": true
+  },
+  {
+   "audio_id": "1131466168211650",
+   "title": "Can't Run Away Remix (Otis McDonald) (feat. DOSE)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 136390,
+   "libreria": true
+  },
+  {
+   "audio_id": "3643996589148382",
+   "title": "Storm",
+   "display_artist": "Chela Rivas",
+   "duration_in_ms": 154693,
+   "libreria": true
+  },
+  {
+   "audio_id": "595861529686311",
+   "title": "Hero",
+   "display_artist": "Chela Rivas",
+   "duration_in_ms": 146716,
    "libreria": true
   }
  ]
