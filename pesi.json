@@ -1,14 +1,14 @@
 {
  "temi": {
-  "amicizia": 0.98,
-  "imprenditore": 1.01,
-  "mentalita": 0.99,
-  "palestra": 0.98,
+  "amicizia": 1.0,
+  "imprenditore": 1.03,
+  "mentalita": 0.98,
+  "palestra": 1.0,
   "dieta": 1.01,
-  "regole": 1.07,
-  "storia": 0.99
+  "regole": 1.1,
+  "storia": 1.01
  },
- "aggiornato": "2026-11-09",
+ "aggiornato": "2026-11-10",
  "frasi_vincenti": [
   "MIE-02d87ee7",
   "MIE-043e8cf1",
@@ -21,6 +21,7 @@
   "MIE-373e069a",
   "MIE-3fec417d",
   "MIE-44e75fe0",
+  "MIE-481bb733",
   "MIE-48a56ab6",
   "MIE-52b3207a",
   "MIE-53683e04",
@@ -54,6 +55,7 @@
   "MIE-d7cc734e",
   "MIE-d860fe71",
   "MIE-e78c74d0",
+  "MIE-f9129a4d",
   "MIE-fb841d9f",
   "QJ080",
   "STO-07",
@@ -62,11 +64,11 @@
   "STO-20"
  ],
  "formati": {
-  "frase": 1.01,
+  "frase": 1.02,
   "regole": 1.01,
   "montaggio": 0.89,
-  "frase8": 0.99,
-  "dieci_due": 1.04,
+  "frase8": 1.0,
+  "dieci_due": 1.02,
   "dieci": 1.02
  },
  "esperimento_formati": {
@@ -75,15 +77,15 @@
  "esperimento_nota": "Agente 25/10/2026: regole x1,6 (12 Short dal 18/10: mediana 954, 2 sopra 1.200; frase 935 e 0 su 13; montaggio 770 e 1 su 14). Verifica 1/11/2026: se le regole rendono meno della mediana degli altri formati si toglie.",
  "brani_forti": [
   "sweaty_staredown",
-  "intergalactic",
-  "cartier",
   "vibe_check",
   "the_road_to_mordor",
-  "fire_in_the_sky",
   "way_back_home",
+  "fire_in_the_sky",
+  "cartier",
   "wrangle_the_crazy",
+  "van_life_rager",
   "rubberband",
-  "van_life_rager"
+  "ancient_civilisations"
  ],
  "clip_forti": [
   "IMG_4037.MOV",
@@ -104,7 +106,8 @@
   "IMG_3606.mov",
   "IMG_3952.mov",
   "IMG_4044.MOV",
-  "IMG_4118.mov"
+  "IMG_4118.mov",
+  "Foto della giornata"
  ],
  "brani_forti_ig": [
   "trap",
