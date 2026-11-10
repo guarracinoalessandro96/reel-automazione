@@ -12630,7 +12630,9 @@
      "ok": true,
      "id": "18134713324683131",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -12691,7 +12693,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "rRcdPo-IXAY"
+     "id": "rRcdPo-IXAY",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -12702,11 +12705,78 @@
    },
    "spinto": false,
    "testo": "Fidati della vibrazione: l'energia non mente."
+  },
+  {
+   "quando": "2026-11-10T15:01",
+   "slot": "2026-11-10 16:00",
+   "video": "IMG_3800.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "MIE-42862dc5",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "stake_out_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.525,
+     "movimento": 4.81,
+     "primo_piano_fermo": true,
+     "soglia_moto": 4.91,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 144,
+     "righe": 2,
+     "scurito": 0.53,
+     "luce": 0.6,
+     "sfumatura": 0.4,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 102,
+    "scritta": "centro_serif",
+    "estratto": "rallenty",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 6
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_06.flac",
+    "musica_instagram": "Rise (feat. Plum Soul) - Jumbo [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "G-Am2Pr5WjY"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18079754834563314",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Se stavi cercando un segno, eccolo."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-02 16:00",
   "2026-11-02 18:00",
   "2026-11-02 20:00",
   "2026-11-02 22:00",
@@ -12785,10 +12855,10 @@
   "2026-11-10 08:00",
   "2026-11-10 10:00",
   "2026-11-10 12:00",
-  "2026-11-10 14:00"
+  "2026-11-10 14:00",
+  "2026-11-10 16:00"
  ],
  "musica_recenti": [
-  "wrangle_the_crazy_3.m4a",
   "death_duel_2.m4a",
   "keep_it_movin_1.m4a",
   "ancient_civilisations_2.m4a",
@@ -12847,7 +12917,8 @@
   "whoop_2.m4a",
   "the_light_1.m4a",
   "turn_in_the_sun_2.m4a",
-  "duty_calls_1.m4a"
+  "duty_calls_1.m4a",
+  "stake_out_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -13175,7 +13246,8 @@
   "MIE-ee91697e",
   "MIE-6d659e6a",
   "MIE-897d20e8",
-  "MIE-ddee2268"
+  "MIE-ddee2268",
+  "MIE-42862dc5"
  ],
  "temi_recenti": [
   "mentalita",
@@ -13258,8 +13330,9 @@
    "orizzontale": false
   },
   "1hvbjqvKs_ADW2bi_kJP0H1fxpKUzd-nq": {
-   "usi": 3,
-   "ultimo": "2026-11-02"
+   "usi": 4,
+   "ultimo": "2026-11-10",
+   "orizzontale": false
   },
   "1667Zix1tBrgfPEpOlI9dHiGVISZp0i8L": {
    "usi": 3,
@@ -13267,7 +13340,8 @@
   },
   "1pehUAXM-ECFcfP-KX5ZvviOGvc64zvgA": {
    "usi": 2,
-   "ultimo": "2026-10-28"
+   "ultimo": "2026-10-28",
+   "orizzontale": false
   },
   "1fr7r7gFPOa5mMg3NCHBo-KO8j4yxbprb": {
    "usi": 2,
@@ -13709,7 +13783,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_09.flac",
   "phonk_06.flac",
   "energia_05.flac",
   "deciso_08.flac",
@@ -13728,7 +13801,8 @@
   "drive_15.flac",
   "energia_06.flac",
   "deciso_05.flac",
-  "phonk_13.flac"
+  "phonk_13.flac",
+  "trap_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -13779,7 +13853,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2195838444698263",
   "242659649830381",
   "258759081507255",
   "1403113822033083",
@@ -13838,11 +13911,11 @@
   "845285864683880",
   "1232530197323594",
   "1478915717468599",
-  "1324542209262772"
+  "1324542209262772",
+  "269408148764736"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "half.cool",
   "Kerina Kinch",
   "Lightbox Music",
   "Sam Marshall",
@@ -13851,10 +13924,10 @@
   "Daria Novo",
   "Abby Posner",
   "Sam Fender",
-  "Jackson Whalan"
+  "Jackson Whalan",
+  "Jumbo"
  ],
  "ig_titoli_recenti": [
-  "people have the power",
   "uefa champions league legacy anthem",
   "don t give up on me",
   "hero",
@@ -13893,7 +13966,8 @@
   "rise of the brave",
   "reflect and rise",
   "you can t always get what you want",
-  "getting strong"
+  "getting strong",
+  "rise"
  ],
  "ig_tendenze_riserva": [
   {
@@ -13911,31 +13985,45 @@
    "libreria": false
   },
   {
-   "audio_id": "1449501010135619",
-   "title": "When I'm In Motion (Instrumental)",
-   "display_artist": "Baegod",
-   "duration_in_ms": 177438,
+   "audio_id": "846729664516192",
+   "title": "Chops (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 171070,
    "libreria": true
   },
   {
-   "audio_id": "838674124312983",
-   "title": "Game Winner",
+   "audio_id": "727931292858890",
+   "title": "Copacetic (feat. Dawson March)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 136490,
+   "libreria": true
+  },
+  {
+   "audio_id": "880659894299230",
+   "title": "Faded (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 209714,
+   "libreria": true
+  },
+  {
+   "audio_id": "269408148764736",
+   "title": "Rise (feat. Plum Soul)",
    "display_artist": "Jumbo",
-   "duration_in_ms": 158200,
+   "duration_in_ms": 210050,
    "libreria": true
   },
   {
-   "audio_id": "2184716849124026",
-   "title": "Just Can't Believe",
-   "display_artist": "Shanice",
-   "duration_in_ms": 164651,
+   "audio_id": "1223976581860991",
+   "title": "The Bull And The Fighter",
+   "display_artist": "Symphonic Planet",
+   "duration_in_ms": 269181,
    "libreria": true
   },
   {
-   "audio_id": "1324542209262772",
-   "title": "Getting Strong",
-   "display_artist": "Jackson Whalan",
-   "duration_in_ms": 66260,
+   "audio_id": "3243337306057458",
+   "title": "Photocopy (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 167521,
    "libreria": true
   }
  ]
