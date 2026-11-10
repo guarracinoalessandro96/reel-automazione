@@ -12279,7 +12279,9 @@
      "ok": true,
      "id": "18131444968847128",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -12341,22 +12343,90 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "9nUCqQO36cs"
+     "id": "9nUCqQO36cs",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "17917657008515183",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "Sii grato alle persone che hanno parlato al vincente che è in te, prima che tu iniziassi a vincere."
+  },
+  {
+   "quando": "2026-11-10T05:01",
+   "slot": "2026-11-10 06:00",
+   "video": "IMG_4121.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-87fad368",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "mirror_mirror_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.167,
+     "movimento": 58.71,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 137,
+     "righe": 2,
+     "scurito": 0.52,
+     "luce": 0.46,
+     "sfumatura": 0.34,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 250,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 6
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_11.flac",
+    "musica_instagram": "Stronger Than You Think - Ruby Amanfu [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "g92yrSB7OUo"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17995575492105077",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Scelte difficili oggi, vita facile domani."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-02 06:00",
   "2026-11-02 08:00",
   "2026-11-02 10:00",
   "2026-11-02 12:00",
@@ -12435,7 +12505,8 @@
   "2026-11-09 18:00",
   "2026-11-09 20:00",
   "2026-11-09 22:00",
-  "2026-11-10 00:00"
+  "2026-11-10 00:00",
+  "2026-11-10 06:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -12492,7 +12563,8 @@
   "death_duel_1.m4a",
   "i_might_be_late_2.m4a",
   "break_ya_neck_3.m4a",
-  "sweaty_staredown_1.m4a"
+  "sweaty_staredown_1.m4a",
+  "mirror_mirror_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -12815,10 +12887,10 @@
   "MIE-65c28710",
   "MIE-700b7322",
   "MIE-0afe867a",
-  "MIE-e0366dfa"
+  "MIE-e0366dfa",
+  "MIE-87fad368"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "imprenditore",
@@ -12827,10 +12899,11 @@
   "mentalita",
   "mentalita",
   "mentalita",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-09",
+ "pulizia": "2026-11-10",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -13187,8 +13260,9 @@
    "ultimo": "2026-10-26"
   },
   "1Ec9__ctnSkN9Cj2-_GnGAOPpY6a3V57S": {
-   "usi": 3,
-   "ultimo": "2026-11-02"
+   "usi": 4,
+   "ultimo": "2026-11-10",
+   "orizzontale": false
   },
   "1-ciPqgzhDOKWA7FElGzwRc9htypB_2u3": {
    "usi": 3,
@@ -13344,7 +13418,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_05.flac",
   "energia_01.flac",
   "drive_02.flac",
   "phonk_13.flac",
@@ -13363,7 +13436,8 @@
   "drive_16.flac",
   "phonk_07.flac",
   "trap_11.flac",
-  "energia_12.flac"
+  "energia_12.flac",
+  "phonk_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -13398,7 +13472,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "rallenty",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -13414,7 +13488,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "4489870934582584",
   "974432747187721",
   "736015230804186",
   "1109108338433886",
@@ -13473,11 +13546,11 @@
   "1593403817732751",
   "1050254964075544",
   "576850318404245",
-  "921570148849598"
+  "921570148849598",
+  "1341809783805885"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Giulio Cercato",
   "Ella Joy Meir",
   "Global Genius",
   "Summer Islands",
@@ -13486,10 +13559,10 @@
   "Kerina Kinch",
   "Lightbox Music",
   "Sam Marshall",
-  "Apesaw"
+  "Apesaw",
+  "Ruby Amanfu"
  ],
  "ig_titoli_recenti": [
-  "sta passando novembre",
   "fantasmas",
   "novembre",
   "3 times",
@@ -13528,7 +13601,8 @@
   "i ll let you run",
   "peaceful motion",
   "not phonk",
-  "cave fight"
+  "cave fight",
+  "stronger than you think"
  ],
  "ig_tendenze_riserva": [
   {
@@ -13539,10 +13613,17 @@
    "libreria": false
   },
   {
-   "audio_id": "921570148849598",
-   "title": "Cave Fight",
-   "display_artist": "Apesaw",
-   "duration_in_ms": 25214,
+   "audio_id": "1341809783805885",
+   "title": "Stronger Than You Think",
+   "display_artist": "Ruby Amanfu",
+   "duration_in_ms": 214420,
+   "libreria": true
+  },
+  {
+   "audio_id": "820220974302825",
+   "title": "Success (Instrumental)",
+   "display_artist": "stereogully",
+   "duration_in_ms": 123870,
    "libreria": true
   }
  ]
