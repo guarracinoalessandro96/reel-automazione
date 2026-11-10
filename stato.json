@@ -12915,7 +12915,9 @@
      "ok": true,
      "id": "18654435046051587",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -12977,7 +12979,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "RwVhObxBbro"
+     "id": "RwVhObxBbro",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -12988,11 +12991,78 @@
    },
    "spinto": true,
    "testo": "Fallisci solo quando smetti di provare."
+  },
+  {
+   "quando": "2026-11-10T23:00",
+   "slot": "2026-11-11 00:00",
+   "video": "IMG_5051.MOV",
+   "md5": "2a01eede5942909133611ad3dc26653b",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-10T22:20+01:00",
+   "frase": "MIE-51613b3b",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "rubberband_2.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 0,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 12.98,
+     "primo_piano_fermo": false,
+     "soglia_moto": 11.16,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 112,
+     "righe": 4,
+     "scurito": 0.0,
+     "luce": 0.28,
+     "sfumatura": 0.17,
+     "intatto": true,
+     "scene_intatte": 2
+    },
+    "secondi_montaggio": 103,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 20
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_12.flac",
+    "musica_instagram": "Energy - Giulio Cercato [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "CYmntdqEPQA"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18121294988048403",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Continua a fare del tuo meglio ogni giorno, e se nessuno è orgoglioso di te, sii orgoglioso di te stesso."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-03 00:00",
   "2026-11-03 06:00",
   "2026-11-03 08:00",
   "2026-11-03 10:00",
@@ -13071,10 +13141,10 @@
   "2026-11-10 16:00",
   "2026-11-10 18:00",
   "2026-11-10 20:00",
-  "2026-11-10 22:00"
+  "2026-11-10 22:00",
+  "2026-11-11 00:00"
  ],
  "musica_recenti": [
-  "vibe_check_3.m4a",
   "dusty_road_magic_2.m4a",
   "way_back_home_1.m4a",
   "cutscene_crush_1.m4a",
@@ -13133,7 +13203,8 @@
   "stake_out_3.m4a",
   "cartier_2.m4a",
   "the_road_to_mordor_1.m4a",
-  "fire_in_the_sky_2.m4a"
+  "fire_in_the_sky_2.m4a",
+  "rubberband_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -13465,7 +13536,8 @@
   "MIE-42862dc5",
   "MIE-256d1107",
   "MIE-68c466d9",
-  "MIE-0d454c50"
+  "MIE-0d454c50",
+  "MIE-51613b3b"
  ],
  "temi_recenti": [
   "mentalita",
@@ -14002,10 +14074,14 @@
    "usi": 1,
    "ultimo": "2026-11-08",
    "orizzontale": false
+  },
+  "1fv4NxsJ2NXXvoQYd9I8LEHOE7WdLovW7": {
+   "usi": 1,
+   "ultimo": "2026-11-10",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "drive_10.flac",
   "trap_08.flac",
   "phonk_03.flac",
   "deciso_07.flac",
@@ -14024,7 +14100,8 @@
   "trap_06.flac",
   "deciso_01.flac",
   "phonk_01.flac",
-  "drive_09.flac"
+  "drive_09.flac",
+  "deciso_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -14059,7 +14136,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio2",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -14075,7 +14152,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "886601410818919",
   "254969200347498",
   "554133449182324",
   "302973472523675",
@@ -14134,11 +14210,11 @@
   "269408148764736",
   "3528656724045832",
   "1131466168211650",
-  "27850712597869154"
+  "27850712597869154",
+  "1223134719013093"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Apesaw",
   "Ruby Amanfu",
   "Daria Novo",
   "Abby Posner",
@@ -14147,10 +14223,10 @@
   "Jumbo",
   "d.higgs",
   "The K Club",
-  "Afterlight"
+  "Afterlight",
+  "Giulio Cercato"
  ],
  "ig_titoli_recenti": [
-  "legends in my head",
   "fighting back a flight of stairs",
   "knockout",
   "the running",
@@ -14189,7 +14265,8 @@
   "rise",
   "the power",
   "can t run away remix",
-  "main character energy"
+  "main character energy",
+  "energy"
  ],
  "ig_tendenze_riserva": [
   {
@@ -14207,59 +14284,24 @@
    "libreria": false
   },
   {
-   "audio_id": "27850712597869154",
-   "title": "Main Character Energy",
-   "display_artist": "Afterlight",
-   "duration_in_ms": 61756,
+   "audio_id": "839755312036903",
+   "title": "Pressure (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 210809,
    "libreria": true
   },
   {
-   "audio_id": "886249782709175",
-   "title": "March Of Libertad",
-   "display_artist": "Symphonic Planet",
-   "duration_in_ms": 236050,
-   "libreria": true
-  },
-  {
-   "audio_id": "806476269035757",
-   "title": "On Fire (Instrumental)",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 197861,
-   "libreria": true
-  },
-  {
-   "audio_id": "1068592065620532",
-   "title": "Legendary",
-   "display_artist": "LAVLO",
-   "duration_in_ms": 67490,
-   "libreria": true
-  },
-  {
-   "audio_id": "820220974302825",
-   "title": "Success (Instrumental)",
-   "display_artist": "stereogully",
-   "duration_in_ms": 123870,
-   "libreria": true
-  },
-  {
-   "audio_id": "550723776899092",
-   "title": "Power Is Relative",
+   "audio_id": "1881921842142265",
+   "title": "Red Sun Powered",
    "display_artist": "Trout Recording",
-   "duration_in_ms": 181850,
+   "duration_in_ms": 216770,
    "libreria": true
   },
   {
-   "audio_id": "893506731941053",
-   "title": "Can't Run Away",
-   "display_artist": "Otis McDonald",
-   "duration_in_ms": 153511,
-   "libreria": true
-  },
-  {
-   "audio_id": "1463029071233766",
-   "title": "Win The Game (feat. Barbasauce)",
-   "display_artist": "Neko Fuzz",
-   "duration_in_ms": 177260,
+   "audio_id": "1223134719013093",
+   "title": "Energy",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 122020,
    "libreria": true
   }
  ]
