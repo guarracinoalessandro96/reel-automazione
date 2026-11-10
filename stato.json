@@ -12560,7 +12560,9 @@
      "ok": true,
      "id": "18184752253379198",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -12621,7 +12623,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "pxZeXFjbKMo"
+     "id": "pxZeXFjbKMo",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -12632,11 +12635,77 @@
    },
    "spinto": false,
    "testo": "Ce la farai. Dio è dalla tua parte."
+  },
+  {
+   "quando": "2026-11-10T13:00",
+   "slot": "2026-11-10 14:00",
+   "video": "IMG_4126.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-ddee2268",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "duty_calls_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.21,
+     "movimento": 11.92,
+     "primo_piano_fermo": false,
+     "soglia_moto": 14.96,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 134,
+     "righe": 2,
+     "scurito": 0.48,
+     "luce": 0.46,
+     "sfumatura": 0.34,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 167,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 6
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_13.flac",
+    "musica_instagram": "Getting Strong - Jackson Whalan [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "rRcdPo-IXAY"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18584176840073505",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Fidati della vibrazione: l'energia non mente."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-02 14:00",
   "2026-11-02 16:00",
   "2026-11-02 18:00",
   "2026-11-02 20:00",
@@ -12715,7 +12784,8 @@
   "2026-11-10 06:00",
   "2026-11-10 08:00",
   "2026-11-10 10:00",
-  "2026-11-10 12:00"
+  "2026-11-10 12:00",
+  "2026-11-10 14:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -12776,7 +12846,8 @@
   "mirror_mirror_3.m4a",
   "whoop_2.m4a",
   "the_light_1.m4a",
-  "turn_in_the_sun_2.m4a"
+  "turn_in_the_sun_2.m4a",
+  "duty_calls_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -13103,7 +13174,8 @@
   "MIE-87fad368",
   "MIE-ee91697e",
   "MIE-6d659e6a",
-  "MIE-897d20e8"
+  "MIE-897d20e8",
+  "MIE-ddee2268"
  ],
  "temi_recenti": [
   "mentalita",
@@ -13483,8 +13555,9 @@
    "orizzontale": false
   },
   "1-ciPqgzhDOKWA7FElGzwRc9htypB_2u3": {
-   "usi": 3,
-   "ultimo": "2026-11-03"
+   "usi": 4,
+   "ultimo": "2026-11-10",
+   "orizzontale": false
   },
   "1Tyefc-vEJZrdzNqOTaUh2yXtSQjsP7fg": {
    "usi": 3,
@@ -13636,7 +13709,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_14.flac",
   "drive_09.flac",
   "phonk_06.flac",
   "energia_05.flac",
@@ -13655,7 +13727,8 @@
   "phonk_11.flac",
   "drive_15.flac",
   "energia_06.flac",
-  "deciso_05.flac"
+  "deciso_05.flac",
+  "phonk_13.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -13690,7 +13763,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "loop",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -13706,7 +13779,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1724811595735449",
   "2195838444698263",
   "242659649830381",
   "258759081507255",
@@ -13765,11 +13837,11 @@
   "1341809783805885",
   "845285864683880",
   "1232530197323594",
-  "1478915717468599"
+  "1478915717468599",
+  "1324542209262772"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Alex Blue",
   "half.cool",
   "Kerina Kinch",
   "Lightbox Music",
@@ -13778,10 +13850,10 @@
   "Ruby Amanfu",
   "Daria Novo",
   "Abby Posner",
-  "Sam Fender"
+  "Sam Fender",
+  "Jackson Whalan"
  ],
  "ig_titoli_recenti": [
-  "funkytown flute",
   "people have the power",
   "uefa champions league legacy anthem",
   "don t give up on me",
@@ -13820,7 +13892,8 @@
   "stronger than you think",
   "rise of the brave",
   "reflect and rise",
-  "you can t always get what you want"
+  "you can t always get what you want",
+  "getting strong"
  ],
  "ig_tendenze_riserva": [
   {
@@ -13836,6 +13909,34 @@
    "display_artist": "Sam Fender",
    "duration_in_ms": 209457,
    "libreria": false
+  },
+  {
+   "audio_id": "1449501010135619",
+   "title": "When I'm In Motion (Instrumental)",
+   "display_artist": "Baegod",
+   "duration_in_ms": 177438,
+   "libreria": true
+  },
+  {
+   "audio_id": "838674124312983",
+   "title": "Game Winner",
+   "display_artist": "Jumbo",
+   "duration_in_ms": 158200,
+   "libreria": true
+  },
+  {
+   "audio_id": "2184716849124026",
+   "title": "Just Can't Believe",
+   "display_artist": "Shanice",
+   "duration_in_ms": 164651,
+   "libreria": true
+  },
+  {
+   "audio_id": "1324542209262772",
+   "title": "Getting Strong",
+   "display_artist": "Jackson Whalan",
+   "duration_in_ms": 66260,
+   "libreria": true
   }
  ]
 }
