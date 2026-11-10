@@ -12419,7 +12419,9 @@
      "ok": true,
      "id": "17995575492105077",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -12480,7 +12482,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "ZFxywrNL9yk"
+     "id": "ZFxywrNL9yk",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -12491,11 +12494,78 @@
    },
    "spinto": false,
    "testo": "Non vivrai mai più questo giorno. Fallo contare."
+  },
+  {
+   "quando": "2026-11-10T09:00",
+   "slot": "2026-11-10 10:00",
+   "video": "IMG_3792.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-6d659e6a",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio3",
+    "durata": 10.0,
+    "musica": "the_light_1.m4a",
+    "stacchi": 3,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 15.94,
+     "primo_piano_fermo": false,
+     "soglia_moto": 15.94,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 3,
+     "scurito": 0.56,
+     "luce": 0.65,
+     "sfumatura": 0.42,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 159,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 12
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_06.flac",
+    "musica_instagram": "Reflect And Rise - Abby Posner"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "S_Qx7G9E2TA"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18184752253379198",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Prendi decisioni come se il tuo io del futuro avesse già vinto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-02 10:00",
   "2026-11-02 12:00",
   "2026-11-02 14:00",
   "2026-11-02 16:00",
@@ -12574,7 +12644,8 @@
   "2026-11-09 22:00",
   "2026-11-10 00:00",
   "2026-11-10 06:00",
-  "2026-11-10 08:00"
+  "2026-11-10 08:00",
+  "2026-11-10 10:00"
  ],
  "musica_recenti": [
   "wrangle_the_crazy_3.m4a",
@@ -12633,7 +12704,8 @@
   "break_ya_neck_3.m4a",
   "sweaty_staredown_1.m4a",
   "mirror_mirror_3.m4a",
-  "whoop_2.m4a"
+  "whoop_2.m4a",
+  "the_light_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -12958,11 +13030,12 @@
   "MIE-0afe867a",
   "MIE-e0366dfa",
   "MIE-87fad368",
-  "MIE-ee91697e"
+  "MIE-ee91697e",
+  "MIE-6d659e6a"
  ],
  "temi_recenti": [
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -13026,12 +13099,14 @@
    "orizzontale": false
   },
   "1mIxav-KbU3ZL_NU9MF4Z-Vcww6fOPwR4": {
-   "usi": 3,
-   "ultimo": "2026-11-01"
+   "usi": 4,
+   "ultimo": "2026-11-10",
+   "orizzontale": false
   },
   "1ehg1VD_Xtwd5ysGegtBXVLxxyo6vHs0U": {
    "usi": 2,
-   "ultimo": "2026-10-19"
+   "ultimo": "2026-10-19",
+   "orizzontale": false
   },
   "1J6rUreSm_Mrsbua06uFjE1b4xu8-pRpL": {
    "usi": 3,
@@ -13488,7 +13563,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_02.flac",
   "phonk_13.flac",
   "trap_14.flac",
   "drive_09.flac",
@@ -13507,7 +13581,8 @@
   "trap_11.flac",
   "energia_12.flac",
   "phonk_11.flac",
-  "drive_15.flac"
+  "drive_15.flac",
+  "energia_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -13542,7 +13617,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "loop",
+ "formato_ultimo": "taglio3",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -13558,7 +13633,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "736015230804186",
   "1109108338433886",
   "1724811595735449",
   "2195838444698263",
@@ -13617,11 +13691,11 @@
   "576850318404245",
   "921570148849598",
   "1341809783805885",
-  "845285864683880"
+  "845285864683880",
+  "1232530197323594"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Global Genius",
   "Summer Islands",
   "Alex Blue",
   "half.cool",
@@ -13630,10 +13704,10 @@
   "Sam Marshall",
   "Apesaw",
   "Ruby Amanfu",
-  "Daria Novo"
+  "Daria Novo",
+  "Abby Posner"
  ],
  "ig_titoli_recenti": [
-  "novembre",
   "3 times",
   "funkytown flute",
   "people have the power",
@@ -13672,7 +13746,8 @@
   "not phonk",
   "cave fight",
   "stronger than you think",
-  "rise of the brave"
+  "rise of the brave",
+  "reflect and rise"
  ],
  "ig_tendenze_riserva": [
   {
