@@ -3171,13 +3171,16 @@ def main():
             temi_vicini = {tema_di.get(h.get("frase")) for h in state["storico"][-2:]} - {None}
             # 7/11/2026: le frasi della coda dei suoi screenshot non aspettano per 'simile' e per il tema (la coda e'
             # stata controllata contro le frasi gia' uscite; quelle uscite restano fuori per id)
-            adatte = [f for f in ordinate[:12] if inizio(f["gancio"]) not in oggi and (f["id"] in coda or not simile(f["gancio"]))]
-            adatte = [f for f in adatte if f.get("tema") not in temi_vicini or f["id"] in coda] or adatte
+            # 11/11/2026 (Alessandro: "tutte le frasi screenshot che ti metto nella cartella devono essere pubblicate"):
+            # anche quelle a 100 aggiunte dopo la coda (attivita' delle 06:15) sono in fila, dopo la coda
+            sua = lambda f: f["id"] in coda or punti.get(f["id"]) == 100
+            adatte = [f for f in ordinate[:12] if inizio(f["gancio"]) not in oggi and (sua(f) or not simile(f["gancio"]))]
+            adatte = [f for f in adatte if f.get("tema") not in temi_vicini or sua(f)] or adatte
             frase = random.choice(adatte[:3] or [f for f in ordinate[:8] if inizio(f["gancio"]) not in oggi][:3] or ordinate[:3])
-            in_fila = [f for f in adatte if f["id"] in coda and punti.get(f["id"]) == 100]
+            in_fila = [f for f in adatte if punti.get(f["id"]) == 100]
             if in_fila:          # la prima in fila, senza sorteggio (il random sopra resta per non cambiare il resto)
                 frase = in_fila[0]
-                log(f"Frase dei suoi screenshot, posto {coda[frase['id']] + 1} della coda:", frase["gancio"])
+                log(f"Frase dei suoi screenshot, posto {coda.get(frase['id'], len(coda)) + 1} della coda:", frase["gancio"])
             else:
                 log(f"Frase dalla classifica ({punti.get(frase['id'], 'stima')}):", frase["gancio"])
             # 7/11/2026 (studio della sera, modifica 4): sul lato "aforisma", tra le STESSE candidate di oggi (adatte)
