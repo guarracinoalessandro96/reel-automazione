@@ -13196,7 +13196,9 @@
      "ok": true,
      "id": "17916272202497389",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -13257,7 +13259,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "gpwEWdV_f1g"
+     "id": "gpwEWdV_f1g",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -13268,11 +13271,78 @@
    },
    "spinto": true,
    "testo": "O rischi e provi, o lavori per chi l'ha fatto."
+  },
+  {
+   "quando": "2026-11-11T11:00",
+   "slot": "2026-11-11 12:00",
+   "video": "IMG_3834.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-1ec91947",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio3",
+    "durata": 10.0,
+    "musica": "monthaholic_3.m4a",
+    "stacchi": 3,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.425,
+     "movimento": 11.38,
+     "primo_piano_fermo": false,
+     "soglia_moto": 11.38,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 3,
+     "scurito": 0.56,
+     "luce": 0.52,
+     "sfumatura": 0.37,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 131,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 12
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_08.flac",
+    "musica_instagram": "Heros Journey - Abby Posner [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "o2ueXsGqP-Y"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18116572307164857",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non rovinare un buon oggi pensando a un ieri difficile. Lascia perdere."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-03 12:00",
   "2026-11-03 14:00",
   "2026-11-03 16:00",
   "2026-11-03 18:00",
@@ -13351,10 +13421,10 @@
   "2026-11-11 00:00",
   "2026-11-11 06:00",
   "2026-11-11 08:00",
-  "2026-11-11 10:00"
+  "2026-11-11 10:00",
+  "2026-11-11 12:00"
  ],
  "musica_recenti": [
-  "moon_vision_2.m4a",
   "wrangle_the_crazy_2.m4a",
   "intergalactic_2.m4a",
   "death_duel_3.m4a",
@@ -13413,7 +13483,8 @@
   "rubberband_2.m4a",
   "delirium_2.m4a",
   "ten_3.m4a",
-  "taking_flight_2.m4a"
+  "taking_flight_2.m4a",
+  "monthaholic_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -13749,7 +13820,8 @@
   "MIE-51613b3b",
   "MIE-6ec0d693",
   "MIE-e4469069",
-  "MIE-65791b6f"
+  "MIE-65791b6f",
+  "MIE-1ec91947"
  ],
  "temi_recenti": [
   "mentalita",
@@ -13914,8 +13986,9 @@
    "orizzontale": false
   },
   "1HrgxYw6jMJ5qXxx8j5ZWOVhPdqD7b1fH": {
-   "usi": 3,
-   "ultimo": "2026-11-03"
+   "usi": 4,
+   "ultimo": "2026-11-11",
+   "orizzontale": false
   },
   "1MGwGXNeSO9_CxJf-b3fdJUiJRRsBRTMw": {
    "usi": 2,
@@ -13932,7 +14005,8 @@
   },
   "10Y6I2Km1UMianq9Mqd4A_PibNK36A1KR": {
    "usi": 3,
-   "ultimo": "2026-11-03"
+   "ultimo": "2026-11-03",
+   "orizzontale": false
   },
   "17a5fFwJj8p33vlSv-Y6jRBPmRGJLzC1Q": {
    "usi": 2,
@@ -14050,7 +14124,8 @@
   },
   "1rvQrANwghfIXVfOFT05EVv2HadSlUl__": {
    "usi": 2,
-   "ultimo": "2026-10-22"
+   "ultimo": "2026-10-22",
+   "orizzontale": false
   },
   "17EZ3mbgpyShyxZFPCxPm2FHj5T7EgG15": {
    "usi": 2,
@@ -14304,7 +14379,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_04.flac",
   "trap_16.flac",
   "deciso_02.flac",
   "drive_16.flac",
@@ -14323,7 +14397,8 @@
   "deciso_12.flac",
   "phonk_10.flac",
   "energia_01.flac",
-  "trap_15.flac"
+  "trap_15.flac",
+  "deciso_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -14358,7 +14433,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio2",
+ "formato_ultimo": "taglio3",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -14374,7 +14449,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "622196672168620",
   "1817045786209572",
   "2575057322947776",
   "972513352266790",
@@ -14433,11 +14507,11 @@
   "1223134719013093",
   "744011543289259",
   "930354837134154",
-  "1765359430669153"
+  "1765359430669153",
+  "800297207899385"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Sam Fender",
   "Jackson Whalan",
   "Jumbo",
   "d.higgs",
@@ -14446,10 +14520,10 @@
   "Giulio Cercato",
   "Jonny Houlihan",
   "YoungPop",
-  "Company Money"
+  "Company Money",
+  "Abby Posner"
  ],
  "ig_titoli_recenti": [
-  "work hard dream big",
   "winner",
   "unstoppable",
   "family food fight",
@@ -14488,7 +14562,8 @@
   "energy",
   "winners take all",
   "fire",
-  "rock your world"
+  "rock your world",
+  "heros journey"
  ],
  "ig_tendenze_riserva": [
   {
@@ -14506,10 +14581,52 @@
    "libreria": false
   },
   {
-   "audio_id": "1765359430669153",
-   "title": "Rock Your World",
-   "display_artist": "Company Money",
-   "duration_in_ms": 119170,
+   "audio_id": "1145606523800710",
+   "title": "Fight For Freedom (Instrumental)",
+   "display_artist": "Lyle Workman",
+   "duration_in_ms": 241850,
+   "libreria": true
+  },
+  {
+   "audio_id": "1015255657240675",
+   "title": "The Running (Instrumental)",
+   "display_artist": "bbox",
+   "duration_in_ms": 179320,
+   "libreria": true
+  },
+  {
+   "audio_id": "1681179019357274",
+   "title": "Fight For It All (feat. Poccex)",
+   "display_artist": "Jumbo",
+   "duration_in_ms": 168050,
+   "libreria": true
+  },
+  {
+   "audio_id": "576850318404245",
+   "title": "Not Phonk",
+   "display_artist": "Sam Marshall",
+   "duration_in_ms": 188462,
+   "libreria": true
+  },
+  {
+   "audio_id": "800297207899385",
+   "title": "Heros Journey",
+   "display_artist": "Abby Posner",
+   "duration_in_ms": 149047,
+   "libreria": true
+  },
+  {
+   "audio_id": "27908405255457112",
+   "title": "When It Sparks",
+   "display_artist": "Magnetic Sirens",
+   "duration_in_ms": 61340,
+   "libreria": true
+  },
+  {
+   "audio_id": "819743797457783",
+   "title": "Redux (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 243803,
    "libreria": true
   }
  ]
