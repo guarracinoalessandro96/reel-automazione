@@ -13478,7 +13478,9 @@
      "ok": true,
      "id": "18033533081887339",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -13552,7 +13554,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "65VanjnRc7E"
+     "id": "65VanjnRc7E",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -13563,11 +13566,81 @@
    },
    "spinto": true,
    "testo": "Il tuo unico limite sei tu."
+  },
+  {
+   "quando": "2026-11-11T19:00",
+   "slot": "2026-11-11 20:00",
+   "video": "IMG_3974.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "MIE-71c07313",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio2",
+    "durata": 10.0,
+    "musica": "majestic_12_2.m4a",
+    "stacchi": 5,
+    "testi": 1,
+    "scene_dal_video": 5,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.575,
+     "movimento": 86.7,
+     "primo_piano_fermo": false,
+     "soglia_moto": 53.83,
+     "da_archivio": false
+    },
+    "primo_controllo": "mosso",
+    "inizio_spostato": 0.3,
+    "apertura_fermo_prima": true,
+    "scena_azione_prima": true,
+    "scene_riguardate": 2,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 135,
+     "righe": 2,
+     "scurito": 0.54,
+     "luce": 0.6,
+     "sfumatura": 0.4,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 239,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 7
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_04.flac",
+    "musica_instagram": "Redux (feat. My City Glory) (Instrumental) - Ross Lara [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "8Lid6-DFiTQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17896578045654575",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "L'obiettivo è morire con ricordi, non sogni."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-03 20:00",
   "2026-11-03 22:00",
   "2026-11-04 00:00",
   "2026-11-04 06:00",
@@ -13646,10 +13719,10 @@
   "2026-11-11 12:00",
   "2026-11-11 14:00",
   "2026-11-11 16:00",
-  "2026-11-11 18:00"
+  "2026-11-11 18:00",
+  "2026-11-11 20:00"
  ],
  "musica_recenti": [
-  "locked_in_1.m4a",
   "ancient_civilisations_3.m4a",
   "dusty_road_magic_3.m4a",
   "vibe_check_1.m4a",
@@ -13708,7 +13781,8 @@
   "monthaholic_3.m4a",
   "ego_chall_1.m4a",
   "dusty_road_magic_1.m4a",
-  "wrangle_the_crazy_2.m4a"
+  "wrangle_the_crazy_2.m4a",
+  "majestic_12_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -14048,7 +14122,8 @@
   "MIE-1ec91947",
   "MIE-fd3e0443",
   "MIE-914d07a5",
-  "MIE-6532de8b"
+  "MIE-6532de8b",
+  "MIE-71c07313"
  ],
  "temi_recenti": [
   "mentalita",
@@ -14308,8 +14383,9 @@
    "orizzontale": false
   },
   "1I2nAz0Ao_a1cbEPktFKRTPpswByM6NKZ": {
-   "usi": 3,
-   "ultimo": "2026-11-04"
+   "usi": 4,
+   "ultimo": "2026-11-11",
+   "orizzontale": false
   },
   "1zw12S9166ROtTo6gXbB8osWAiBXUjT0Q": {
    "usi": 2,
@@ -14609,7 +14685,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_07.flac",
   "trap_11.flac",
   "energia_12.flac",
   "phonk_11.flac",
@@ -14628,7 +14703,8 @@
   "deciso_08.flac",
   "phonk_05.flac",
   "trap_02.flac",
-  "deciso_06.flac"
+  "deciso_06.flac",
+  "energia_04.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -14663,7 +14739,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "giornata",
+ "formato_ultimo": "taglio2",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -14679,7 +14755,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "257338181818606",
   "856093300426979",
   "2201065153808959",
   "261968585425392",
@@ -14738,11 +14813,11 @@
   "800297207899385",
   "923490770808517",
   "1763628994746804",
-  "1030263145726523"
+  "1030263145726523",
+  "819743797457783"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "The K Club",
   "Afterlight",
   "Giulio Cercato",
   "Jonny Houlihan",
@@ -14751,10 +14826,10 @@
   "Abby Posner",
   "Magnetic Sirens",
   "ill Think in ink",
-  "Jumbo"
+  "Jumbo",
+  "Ross Lara"
  ],
  "ig_titoli_recenti": [
-  "success",
   "think about",
   "luxe motion",
   "join the movement",
@@ -14793,7 +14868,8 @@
   "heros journey",
   "energy in motion",
   "rockstar anthem",
-  "voices of victory"
+  "voices of victory",
+  "redux"
  ],
  "ig_tendenze_riserva": [
   {
@@ -14811,10 +14887,17 @@
    "libreria": false
   },
   {
-   "audio_id": "1030263145726523",
-   "title": "Voices Of Victory (feat. Plum Soul)",
-   "display_artist": "Jumbo",
-   "duration_in_ms": 66716,
+   "audio_id": "933091696547992",
+   "title": "Rockstar Anthem (feat. YawnyBlew)",
+   "display_artist": "ill Think in ink",
+   "duration_in_ms": 144050,
+   "libreria": true
+  },
+  {
+   "audio_id": "819743797457783",
+   "title": "Redux (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 243803,
    "libreria": true
   }
  ]
