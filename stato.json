@@ -13120,7 +13120,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "RC-e3sgkr6g"
+     "id": "RC-e3sgkr6g",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -13131,11 +13132,76 @@
    },
    "spinto": false,
    "testo": "Diventa ricco o muori provando."
+  },
+  {
+   "quando": "2026-11-11T07:00",
+   "slot": "2026-11-11 08:00",
+   "video": "IMG_5057.MOV",
+   "md5": "105046c21c17e954aa28fc4d22298b90",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-10T22:37+01:00",
+   "frase": "MIE-e4469069",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 20.0,
+    "musica": "ten_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 3,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 1.3,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 143,
+     "righe": 2,
+     "scurito": 0.0,
+     "luce": 0.18,
+     "sfumatura": 0.0,
+     "intatto": true,
+     "scene_intatte": 1
+    },
+    "secondi_montaggio": 71,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 6
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_01.flac",
+    "musica_instagram": "Fire - YoungPop [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "iNZ49Q8kF8M"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17916272202497389",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non mollare solo perché è difficile."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-03 08:00",
   "2026-11-03 10:00",
   "2026-11-03 12:00",
   "2026-11-03 14:00",
@@ -13214,10 +13280,10 @@
   "2026-11-10 20:00",
   "2026-11-10 22:00",
   "2026-11-11 00:00",
-  "2026-11-11 06:00"
+  "2026-11-11 06:00",
+  "2026-11-11 08:00"
  ],
  "musica_recenti": [
-  "way_back_home_1.m4a",
   "cutscene_crush_1.m4a",
   "moon_vision_2.m4a",
   "wrangle_the_crazy_2.m4a",
@@ -13276,7 +13342,8 @@
   "the_road_to_mordor_1.m4a",
   "fire_in_the_sky_2.m4a",
   "rubberband_2.m4a",
-  "delirium_2.m4a"
+  "delirium_2.m4a",
+  "ten_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -13610,7 +13677,8 @@
   "MIE-68c466d9",
   "MIE-0d454c50",
   "MIE-51613b3b",
-  "MIE-6ec0d693"
+  "MIE-6ec0d693",
+  "MIE-e4469069"
  ],
  "temi_recenti": [
   "mentalita",
@@ -13636,20 +13704,6 @@
    "registrato": "2026-11-10T22:28+01:00",
    "fascia": "palestra",
    "caricato": "2026-11-10T22:15:27.445Z",
-   "parlato": null,
-   "momento": null
-  },
-  "1pvPcqoOijv_y8sI9usDZ1Xb2Y6_4EdJK": {
-   "nome": "IMG_5057.MOV",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-10T22:37+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-11-10T22:16:38.801Z",
    "parlato": null,
    "momento": null
   }
@@ -14181,10 +14235,14 @@
    "usi": 1,
    "ultimo": "2026-11-10",
    "orizzontale": false
+  },
+  "1pvPcqoOijv_y8sI9usDZ1Xb2Y6_4EdJK": {
+   "usi": 1,
+   "ultimo": "2026-11-11",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "phonk_03.flac",
   "deciso_07.flac",
   "energia_04.flac",
   "trap_16.flac",
@@ -14203,7 +14261,8 @@
   "phonk_01.flac",
   "drive_09.flac",
   "deciso_12.flac",
-  "phonk_10.flac"
+  "phonk_10.flac",
+  "energia_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -14238,7 +14297,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio2",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -14254,7 +14313,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "554133449182324",
   "302973472523675",
   "622196672168620",
   "1817045786209572",
@@ -14313,11 +14371,11 @@
   "1131466168211650",
   "27850712597869154",
   "1223134719013093",
-  "744011543289259"
+  "744011543289259",
+  "930354837134154"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Daria Novo",
   "Abby Posner",
   "Sam Fender",
   "Jackson Whalan",
@@ -14326,10 +14384,10 @@
   "The K Club",
   "Afterlight",
   "Giulio Cercato",
-  "Jonny Houlihan"
+  "Jonny Houlihan",
+  "YoungPop"
  ],
  "ig_titoli_recenti": [
-  "knockout",
   "the running",
   "work hard dream big",
   "winner",
@@ -14368,7 +14426,8 @@
   "can t run away remix",
   "main character energy",
   "energy",
-  "winners take all"
+  "winners take all",
+  "fire"
  ],
  "ig_tendenze_riserva": [
   {
@@ -14386,31 +14445,17 @@
    "libreria": false
   },
   {
-   "audio_id": "1372666635060078",
-   "title": "Breathtaker",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 60035,
+   "audio_id": "930354837134154",
+   "title": "Fire",
+   "display_artist": "YoungPop",
+   "duration_in_ms": 183434,
    "libreria": true
   },
   {
-   "audio_id": "744011543289259",
-   "title": "Winners Take All (feat. Briana Tyson)",
-   "display_artist": "Jonny Houlihan",
-   "duration_in_ms": 213980,
-   "libreria": true
-  },
-  {
-   "audio_id": "1100130857775330",
-   "title": "Good Fight (feat. Dipzy)",
-   "display_artist": "Swell Sound",
-   "duration_in_ms": 179830,
-   "libreria": true
-  },
-  {
-   "audio_id": "663866025342759",
-   "title": "Don't Run From Me",
-   "display_artist": "Julia Gartha",
-   "duration_in_ms": 132680,
+   "audio_id": "4027732330853406",
+   "title": "Success",
+   "display_artist": "Jordan Olmos",
+   "duration_in_ms": 67510,
    "libreria": true
   }
  ]
