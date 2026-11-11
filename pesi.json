@@ -1,14 +1,15 @@
 {
  "temi": {
-  "amicizia": 1.0,
-  "imprenditore": 1.03,
-  "mentalita": 0.98,
-  "palestra": 1.0,
-  "dieta": 1.01,
-  "regole": 1.1,
-  "storia": 1.01
+  "amicizia": 1.01,
+  "imprenditore": 1.06,
+  "mentalita": 0.96,
+  "palestra": 1.03,
+  "dieta": 1.02,
+  "regole": 1.14,
+  "storia": 1.04,
+  "famiglia": 0.9
  },
- "aggiornato": "2026-11-10",
+ "aggiornato": "2026-11-11",
  "frasi_vincenti": [
   "MIE-02d87ee7",
   "MIE-043e8cf1",
@@ -19,6 +20,7 @@
   "MIE-22f623e2",
   "MIE-239a782a",
   "MIE-373e069a",
+  "MIE-3d86a685",
   "MIE-3fec417d",
   "MIE-44e75fe0",
   "MIE-481bb733",
@@ -39,8 +41,10 @@
   "MIE-8917fc6c",
   "MIE-8a2c841c",
   "MIE-8b8aa442",
+  "MIE-9156c95a",
   "MIE-93d891c5",
   "MIE-94ebbc50",
+  "MIE-95c3c510",
   "MIE-96cb5cca",
   "MIE-98f390fa",
   "MIE-9b789797",
@@ -65,10 +69,10 @@
  ],
  "formati": {
   "frase": 1.02,
-  "regole": 1.01,
-  "montaggio": 0.89,
+  "regole": 1.02,
+  "montaggio": 0.9,
   "frase8": 1.0,
-  "dieci_due": 1.02,
+  "dieci_due": 1.0,
   "dieci": 1.02
  },
  "esperimento_formati": {
@@ -77,27 +81,26 @@
  "esperimento_nota": "Agente 25/10/2026: regole x1,6 (12 Short dal 18/10: mediana 954, 2 sopra 1.200; frase 935 e 0 su 13; montaggio 770 e 1 su 14). Verifica 1/11/2026: se le regole rendono meno della mediana degli altri formati si toglie.",
  "brani_forti": [
   "sweaty_staredown",
-  "vibe_check",
   "the_road_to_mordor",
+  "intergalactic",
   "way_back_home",
   "fire_in_the_sky",
-  "cartier",
   "wrangle_the_crazy",
-  "van_life_rager",
+  "cartier",
   "rubberband",
-  "ancient_civilisations"
+  "delirium",
+  "mirror_mirror"
  ],
  "clip_forti": [
   "IMG_4037.MOV",
   "IMG_4029.MOV",
   "IMG_4032.MOV",
   "IMG_3763.mov",
-  "IMG_3651.mov",
   "IMG_4286.MOV",
   "IMG_4294.MOV",
   "IMG_3972.MOV",
-  "IMG_3832.mov",
   "IMG_3833.mov",
+  "IMG_3832.mov",
   "IMG_4061.MOV",
   "IMG_4126.MOV",
   "Alessandro Guarracino sta trasmettendo dal vivo..MOV",
@@ -105,13 +108,15 @@
   "IMG_3974.MOV",
   "IMG_3606.mov",
   "IMG_3952.mov",
+  "IMG_3611.mov",
   "IMG_4044.MOV",
   "IMG_4118.mov",
   "Foto della giornata"
  ],
  "brani_forti_ig": [
   "trap",
-  "phonk",
-  "drive"
+  "drive",
+  "deciso",
+  "phonk"
  ]
 }
