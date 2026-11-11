@@ -13127,7 +13127,9 @@
      "ok": true,
      "id": "18110434784617314",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -13187,7 +13189,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "iNZ49Q8kF8M"
+     "id": "iNZ49Q8kF8M",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -13198,11 +13201,77 @@
    },
    "spinto": true,
    "testo": "Non mollare solo perché è difficile."
+  },
+  {
+   "quando": "2026-11-11T09:01",
+   "slot": "2026-11-11 10:00",
+   "video": "IMG_5054.MOV",
+   "md5": "20f545c0b17c113cd56c4faff451bf32",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-10T22:28+01:00",
+   "frase": "MIE-65791b6f",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio2",
+    "durata": 10.0,
+    "musica": "taking_flight_2.m4a",
+    "stacchi": 5,
+    "testi": 1,
+    "scene_dal_video": 5,
+    "viso_prima_scena": 4,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 15.44,
+     "primo_piano_fermo": false,
+     "soglia_moto": 13.49,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 133,
+     "righe": 2,
+     "scurito": 0.0,
+     "luce": 0.29,
+     "sfumatura": 0.18,
+     "intatto": true,
+     "scene_intatte": 5
+    },
+    "secondi_montaggio": 211,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 10
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_15.flac",
+    "musica_instagram": "Rock Your World - Company Money [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "gpwEWdV_f1g"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18138456643567309",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "O rischi e provi, o lavori per chi l'ha fatto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-03 10:00",
   "2026-11-03 12:00",
   "2026-11-03 14:00",
   "2026-11-03 16:00",
@@ -13281,10 +13350,10 @@
   "2026-11-10 22:00",
   "2026-11-11 00:00",
   "2026-11-11 06:00",
-  "2026-11-11 08:00"
+  "2026-11-11 08:00",
+  "2026-11-11 10:00"
  ],
  "musica_recenti": [
-  "cutscene_crush_1.m4a",
   "moon_vision_2.m4a",
   "wrangle_the_crazy_2.m4a",
   "intergalactic_2.m4a",
@@ -13343,7 +13412,8 @@
   "fire_in_the_sky_2.m4a",
   "rubberband_2.m4a",
   "delirium_2.m4a",
-  "ten_3.m4a"
+  "ten_3.m4a",
+  "taking_flight_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -13678,7 +13748,8 @@
   "MIE-0d454c50",
   "MIE-51613b3b",
   "MIE-6ec0d693",
-  "MIE-e4469069"
+  "MIE-e4469069",
+  "MIE-65791b6f"
  ],
  "temi_recenti": [
   "mentalita",
@@ -13692,22 +13763,7 @@
   "mentalita",
   "mentalita"
  ],
- "analisi": {
-  "1dBGwehtXxoa1nPofvI_YtcQhvfjb0CE_": {
-   "nome": "IMG_5054.MOV",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-10T22:28+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-11-10T22:15:27.445Z",
-   "parlato": null,
-   "momento": null
-  }
- },
+ "analisi": {},
  "pulizia": "2026-11-11",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -14240,10 +14296,14 @@
    "usi": 1,
    "ultimo": "2026-11-11",
    "orizzontale": false
+  },
+  "1dBGwehtXxoa1nPofvI_YtcQhvfjb0CE_": {
+   "usi": 1,
+   "ultimo": "2026-11-11",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "deciso_07.flac",
   "energia_04.flac",
   "trap_16.flac",
   "deciso_02.flac",
@@ -14262,7 +14322,8 @@
   "drive_09.flac",
   "deciso_12.flac",
   "phonk_10.flac",
-  "energia_01.flac"
+  "energia_01.flac",
+  "trap_15.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -14297,7 +14358,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "taglio2",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -14313,7 +14374,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "302973472523675",
   "622196672168620",
   "1817045786209572",
   "2575057322947776",
@@ -14372,11 +14432,11 @@
   "27850712597869154",
   "1223134719013093",
   "744011543289259",
-  "930354837134154"
+  "930354837134154",
+  "1765359430669153"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Abby Posner",
   "Sam Fender",
   "Jackson Whalan",
   "Jumbo",
@@ -14385,10 +14445,10 @@
   "Afterlight",
   "Giulio Cercato",
   "Jonny Houlihan",
-  "YoungPop"
+  "YoungPop",
+  "Company Money"
  ],
  "ig_titoli_recenti": [
-  "the running",
   "work hard dream big",
   "winner",
   "unstoppable",
@@ -14427,7 +14487,8 @@
   "main character energy",
   "energy",
   "winners take all",
-  "fire"
+  "fire",
+  "rock your world"
  ],
  "ig_tendenze_riserva": [
   {
@@ -14445,17 +14506,10 @@
    "libreria": false
   },
   {
-   "audio_id": "930354837134154",
-   "title": "Fire",
-   "display_artist": "YoungPop",
-   "duration_in_ms": 183434,
-   "libreria": true
-  },
-  {
-   "audio_id": "4027732330853406",
-   "title": "Success",
-   "display_artist": "Jordan Olmos",
-   "duration_in_ms": 67510,
+   "audio_id": "1765359430669153",
+   "title": "Rock Your World",
+   "display_artist": "Company Money",
+   "duration_in_ms": 119170,
    "libreria": true
   }
  ]
