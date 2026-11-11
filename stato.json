@@ -13337,7 +13337,9 @@
      "ok": true,
      "id": "18116572307164857",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -13399,7 +13401,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "sgcbLW-IgjI"
+     "id": "sgcbLW-IgjI",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -13410,11 +13413,77 @@
    },
    "spinto": false,
    "testo": "Qualcosa di buono sta sempre per arrivare. Ricordalo."
+  },
+  {
+   "quando": "2026-11-11T15:00",
+   "slot": "2026-11-11 16:00",
+   "video": "IMG_3830.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-914d07a5",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "loop",
+    "durata": 10.0,
+    "musica": "dusty_road_magic_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.147,
+     "movimento": 8.76,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 127,
+     "righe": 2,
+     "scurito": 0.38,
+     "luce": 0.41,
+     "sfumatura": 0.31,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 134,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 8
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_02.flac",
+    "musica_instagram": "Rockstar Anthem (feat. YawnyBlew) (Instrumental) - ill Think in ink [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "9HNjLz6455c"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18033533081887339",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Quelli che vincono sono quelli che restano affamati."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-03 16:00",
   "2026-11-03 18:00",
   "2026-11-03 20:00",
   "2026-11-03 22:00",
@@ -13493,10 +13562,10 @@
   "2026-11-11 08:00",
   "2026-11-11 10:00",
   "2026-11-11 12:00",
-  "2026-11-11 14:00"
+  "2026-11-11 14:00",
+  "2026-11-11 16:00"
  ],
  "musica_recenti": [
-  "intergalactic_2.m4a",
   "death_duel_3.m4a",
   "locked_in_1.m4a",
   "ancient_civilisations_3.m4a",
@@ -13555,7 +13624,8 @@
   "ten_3.m4a",
   "taking_flight_2.m4a",
   "monthaholic_3.m4a",
-  "ego_chall_1.m4a"
+  "ego_chall_1.m4a",
+  "dusty_road_magic_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -13893,7 +13963,8 @@
   "MIE-e4469069",
   "MIE-65791b6f",
   "MIE-1ec91947",
-  "MIE-fd3e0443"
+  "MIE-fd3e0443",
+  "MIE-914d07a5"
  ],
  "temi_recenti": [
   "mentalita",
@@ -14072,8 +14143,9 @@
    "ultimo": "2026-10-19"
   },
   "1xaei2HIO4jSmSPuSxzKQ0VLbkh-c4iJO": {
-   "usi": 3,
-   "ultimo": "2026-11-03"
+   "usi": 4,
+   "ultimo": "2026-11-11",
+   "orizzontale": false
   },
   "10Y6I2Km1UMianq9Mqd4A_PibNK36A1KR": {
    "usi": 3,
@@ -14453,7 +14525,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_02.flac",
   "drive_16.flac",
   "phonk_07.flac",
   "trap_11.flac",
@@ -14472,7 +14543,8 @@
   "energia_01.flac",
   "trap_15.flac",
   "deciso_08.flac",
-  "phonk_05.flac"
+  "phonk_05.flac",
+  "trap_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -14507,7 +14579,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "loop",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -14523,7 +14595,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2575057322947776",
   "972513352266790",
   "257338181818606",
   "856093300426979",
@@ -14582,11 +14653,11 @@
   "930354837134154",
   "1765359430669153",
   "800297207899385",
-  "923490770808517"
+  "923490770808517",
+  "1763628994746804"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jumbo",
   "d.higgs",
   "The K Club",
   "Afterlight",
@@ -14595,10 +14666,10 @@
   "YoungPop",
   "Company Money",
   "Abby Posner",
-  "Magnetic Sirens"
+  "Magnetic Sirens",
+  "ill Think in ink"
  ],
  "ig_titoli_recenti": [
-  "unstoppable",
   "family food fight",
   "success",
   "think about",
@@ -14637,7 +14708,8 @@
   "fire",
   "rock your world",
   "heros journey",
-  "energy in motion"
+  "energy in motion",
+  "rockstar anthem"
  ],
  "ig_tendenze_riserva": [
   {
@@ -14655,66 +14727,31 @@
    "libreria": false
   },
   {
-   "audio_id": "602734618692954",
-   "title": "Forever In Motion",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 116693,
+   "audio_id": "1324542209262772",
+   "title": "Getting Strong",
+   "display_artist": "Jackson Whalan",
+   "duration_in_ms": 66260,
    "libreria": true
   },
   {
-   "audio_id": "1463029071233766",
-   "title": "Win The Game (feat. Barbasauce)",
-   "display_artist": "Neko Fuzz",
-   "duration_in_ms": 177260,
+   "audio_id": "245071018407764",
+   "title": "Cygnus (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 177400,
    "libreria": true
   },
   {
-   "audio_id": "2082990731893350",
-   "title": "La Marche des Commis Voyageurs (Vintage 78RPM)",
-   "display_artist": "Genticorum",
-   "duration_in_ms": 183013,
+   "audio_id": "981510330704369",
+   "title": "Unstoppable",
+   "display_artist": "Dhruv Goel",
+   "duration_in_ms": 122750,
    "libreria": true
   },
   {
-   "audio_id": "923490770808517",
-   "title": "Energy In Motion",
-   "display_artist": "Magnetic Sirens",
-   "duration_in_ms": 62182,
-   "libreria": true
-  },
-  {
-   "audio_id": "27850712597869154",
-   "title": "Main Character Energy",
-   "display_artist": "Afterlight",
-   "duration_in_ms": 61756,
-   "libreria": true
-  },
-  {
-   "audio_id": "1238592560253841",
-   "title": "In Motion",
-   "display_artist": "Ella Joy Meir",
-   "duration_in_ms": 182656,
-   "libreria": true
-  },
-  {
-   "audio_id": "976973397894084",
-   "title": "Champions (Instrumental)",
-   "display_artist": "stereogully",
-   "duration_in_ms": 114995,
-   "libreria": true
-  },
-  {
-   "audio_id": "751793197912868",
-   "title": "In Motion (Instrumental)",
-   "display_artist": "Sam Marshall",
-   "duration_in_ms": 188848,
-   "libreria": true
-  },
-  {
-   "audio_id": "1029576439693978",
-   "title": "Peaceful Storm",
-   "display_artist": "erloom",
-   "duration_in_ms": 67374,
+   "audio_id": "1763628994746804",
+   "title": "Rockstar Anthem (feat. YawnyBlew) (Instrumental)",
+   "display_artist": "ill Think in ink",
+   "duration_in_ms": 144050,
    "libreria": true
   }
  ]
