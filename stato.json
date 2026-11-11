@@ -13635,7 +13635,9 @@
      "ok": true,
      "id": "17896578045654575",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -13697,7 +13699,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "nJuojjIQ54Y"
+     "id": "nJuojjIQ54Y",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -13708,11 +13711,78 @@
    },
    "spinto": true,
    "testo": "Scegli come vuoi sentirti."
+  },
+  {
+   "quando": "2026-11-11T23:00",
+   "slot": "2026-11-12 00:00",
+   "video": "IMG_4044.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-011e57f7",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "rallenty",
+    "durata": 10.0,
+    "musica": "final_boss_battle_2.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 2,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 38.64,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "velocita": 0.75,
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 121,
+     "righe": 3,
+     "scurito": 0.41,
+     "luce": 0.35,
+     "sfumatura": 0.26,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 125,
+    "scritta": "centro_serif",
+    "orizzontale": true,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 12
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_07.flac",
+    "musica_instagram": "Hype Track - bbox"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "GQCHvqpFbHQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18133091293701464",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Un vincente è solo un perdente che si è rialzato di nuovo."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-04 00:00",
   "2026-11-04 06:00",
   "2026-11-04 08:00",
   "2026-11-04 10:00",
@@ -13791,10 +13861,10 @@
   "2026-11-11 16:00",
   "2026-11-11 18:00",
   "2026-11-11 20:00",
-  "2026-11-11 22:00"
+  "2026-11-11 22:00",
+  "2026-11-12 00:00"
  ],
  "musica_recenti": [
-  "dusty_road_magic_3.m4a",
   "vibe_check_1.m4a",
   "the_light_3.m4a",
   "monthaholic_1.m4a",
@@ -13853,7 +13923,8 @@
   "dusty_road_magic_1.m4a",
   "wrangle_the_crazy_2.m4a",
   "majestic_12_2.m4a",
-  "intergalactic_1.m4a"
+  "intergalactic_1.m4a",
+  "final_boss_battle_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -14195,7 +14266,8 @@
   "MIE-914d07a5",
   "MIE-6532de8b",
   "MIE-71c07313",
-  "MIE-cf6d9767"
+  "MIE-cf6d9767",
+  "MIE-011e57f7"
  ],
  "temi_recenti": [
   "mentalita",
@@ -14471,8 +14543,9 @@
    "orizzontale": false
   },
   "1KWHsB3C0gOYpMsl2sVukkzMm7VQeRgh5": {
-   "usi": 3,
-   "ultimo": "2026-11-04"
+   "usi": 4,
+   "ultimo": "2026-11-11",
+   "orizzontale": true
   },
   "1PMBub0TfO5ny81j1Z7XXxvf01HLU8e9j": {
    "usi": 3,
@@ -14759,7 +14832,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_12.flac",
   "phonk_11.flac",
   "drive_15.flac",
   "energia_06.flac",
@@ -14778,7 +14850,8 @@
   "trap_02.flac",
   "deciso_06.flac",
   "energia_04.flac",
-  "drive_16.flac"
+  "drive_16.flac",
+  "trap_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -14813,7 +14886,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "rallenty",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -14829,7 +14902,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2201065153808959",
   "261968585425392",
   "4321185548142585",
   "1190974441039956",
@@ -14888,11 +14960,11 @@
   "1763628994746804",
   "1030263145726523",
   "819743797457783",
-  "751793197912868"
+  "751793197912868",
+  "1186003979031011"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Giulio Cercato",
   "Jonny Houlihan",
   "YoungPop",
   "Company Money",
@@ -14901,10 +14973,10 @@
   "ill Think in ink",
   "Jumbo",
   "Ross Lara",
-  "Sam Marshall"
+  "Sam Marshall",
+  "bbox"
  ],
  "ig_titoli_recenti": [
-  "luxe motion",
   "join the movement",
   "photocopy",
   "unmatched energy",
@@ -14943,7 +15015,8 @@
   "rockstar anthem",
   "voices of victory",
   "redux",
-  "in motion"
+  "in motion",
+  "hype track"
  ],
  "ig_tendenze_riserva": [
   {
@@ -14961,31 +15034,10 @@
    "libreria": false
   },
   {
-   "audio_id": "1352337306404213",
-   "title": "Redux (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 243803,
-   "libreria": true
-  },
-  {
-   "audio_id": "751793197912868",
-   "title": "In Motion (Instrumental)",
-   "display_artist": "Sam Marshall",
-   "duration_in_ms": 188848,
-   "libreria": true
-  },
-  {
-   "audio_id": "4489870934582584",
-   "title": "Epic Adventure",
-   "display_artist": "Bloom",
-   "duration_in_ms": 64335,
-   "libreria": true
-  },
-  {
-   "audio_id": "1050254964075544",
-   "title": "Peaceful Motion",
-   "display_artist": "Lightbox Music",
-   "duration_in_ms": 65330,
+   "audio_id": "1763628994746804",
+   "title": "Rockstar Anthem (feat. YawnyBlew) (Instrumental)",
+   "display_artist": "ill Think in ink",
+   "duration_in_ms": 144050,
    "libreria": true
   }
  ]
