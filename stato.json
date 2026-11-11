@@ -12986,7 +12986,9 @@
      "ok": true,
      "id": "17966778762212896",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -13048,22 +13050,91 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "CYmntdqEPQA"
+     "id": "CYmntdqEPQA",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18121294988048403",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "Continua a fare del tuo meglio ogni giorno, e se nessuno è orgoglioso di te, sii orgoglioso di te stesso."
+  },
+  {
+   "quando": "2026-11-11T05:00",
+   "slot": "2026-11-11 06:00",
+   "video": "IMG_3824.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-6ec0d693",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio2",
+    "durata": 10.0,
+    "musica": "delirium_2.m4a",
+    "stacchi": 5,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.335,
+     "movimento": 21.64,
+     "primo_piano_fermo": false,
+     "soglia_moto": 21.09,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 148,
+     "righe": 2,
+     "scurito": 0.5,
+     "luce": 0.52,
+     "sfumatura": 0.37,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 169,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 5
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_10.flac",
+    "musica_instagram": "Winners Take All (feat. Briana Tyson) - Jonny Houlihan [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "RC-e3sgkr6g"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18110434784617314",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Diventa ricco o muori provando."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-03 06:00",
   "2026-11-03 08:00",
   "2026-11-03 10:00",
   "2026-11-03 12:00",
@@ -13142,10 +13213,10 @@
   "2026-11-10 18:00",
   "2026-11-10 20:00",
   "2026-11-10 22:00",
-  "2026-11-11 00:00"
+  "2026-11-11 00:00",
+  "2026-11-11 06:00"
  ],
  "musica_recenti": [
-  "dusty_road_magic_2.m4a",
   "way_back_home_1.m4a",
   "cutscene_crush_1.m4a",
   "moon_vision_2.m4a",
@@ -13204,7 +13275,8 @@
   "cartier_2.m4a",
   "the_road_to_mordor_1.m4a",
   "fire_in_the_sky_2.m4a",
-  "rubberband_2.m4a"
+  "rubberband_2.m4a",
+  "delirium_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -13537,7 +13609,8 @@
   "MIE-256d1107",
   "MIE-68c466d9",
   "MIE-0d454c50",
-  "MIE-51613b3b"
+  "MIE-51613b3b",
+  "MIE-6ec0d693"
  ],
  "temi_recenti": [
   "mentalita",
@@ -13551,8 +13624,37 @@
   "mentalita",
   "mentalita"
  ],
- "analisi": {},
- "pulizia": "2026-11-10",
+ "analisi": {
+  "1dBGwehtXxoa1nPofvI_YtcQhvfjb0CE_": {
+   "nome": "IMG_5054.MOV",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-10T22:28+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-10T22:15:27.445Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1pvPcqoOijv_y8sI9usDZ1Xb2Y6_4EdJK": {
+   "nome": "IMG_5057.MOV",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-10T22:37+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-10T22:16:38.801Z",
+   "parlato": null,
+   "momento": null
+  }
+ },
+ "pulizia": "2026-11-11",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -13697,8 +13799,8 @@
    "orizzontale": false
   },
   "1fKbWVgrVrxr5Ecx1pZo_uFBf-CoX_0G5": {
-   "usi": 3,
-   "ultimo": "2026-11-03",
+   "usi": 4,
+   "ultimo": "2026-11-11",
    "orizzontale": false
   },
   "1HrgxYw6jMJ5qXxx8j5ZWOVhPdqD7b1fH": {
@@ -14082,7 +14184,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_08.flac",
   "phonk_03.flac",
   "deciso_07.flac",
   "energia_04.flac",
@@ -14101,7 +14202,8 @@
   "deciso_01.flac",
   "phonk_01.flac",
   "drive_09.flac",
-  "deciso_12.flac"
+  "deciso_12.flac",
+  "phonk_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -14136,7 +14238,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "taglio2",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -14152,7 +14254,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "254969200347498",
   "554133449182324",
   "302973472523675",
   "622196672168620",
@@ -14211,11 +14312,11 @@
   "3528656724045832",
   "1131466168211650",
   "27850712597869154",
-  "1223134719013093"
+  "1223134719013093",
+  "744011543289259"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Ruby Amanfu",
   "Daria Novo",
   "Abby Posner",
   "Sam Fender",
@@ -14224,10 +14325,10 @@
   "d.higgs",
   "The K Club",
   "Afterlight",
-  "Giulio Cercato"
+  "Giulio Cercato",
+  "Jonny Houlihan"
  ],
  "ig_titoli_recenti": [
-  "fighting back a flight of stairs",
   "knockout",
   "the running",
   "work hard dream big",
@@ -14266,7 +14367,8 @@
   "the power",
   "can t run away remix",
   "main character energy",
-  "energy"
+  "energy",
+  "winners take all"
  ],
  "ig_tendenze_riserva": [
   {
@@ -14284,24 +14386,31 @@
    "libreria": false
   },
   {
-   "audio_id": "839755312036903",
-   "title": "Pressure (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 210809,
-   "libreria": true
-  },
-  {
-   "audio_id": "1881921842142265",
-   "title": "Red Sun Powered",
-   "display_artist": "Trout Recording",
-   "duration_in_ms": 216770,
-   "libreria": true
-  },
-  {
-   "audio_id": "1223134719013093",
-   "title": "Energy",
+   "audio_id": "1372666635060078",
+   "title": "Breathtaker",
    "display_artist": "Giulio Cercato",
-   "duration_in_ms": 122020,
+   "duration_in_ms": 60035,
+   "libreria": true
+  },
+  {
+   "audio_id": "744011543289259",
+   "title": "Winners Take All (feat. Briana Tyson)",
+   "display_artist": "Jonny Houlihan",
+   "duration_in_ms": 213980,
+   "libreria": true
+  },
+  {
+   "audio_id": "1100130857775330",
+   "title": "Good Fight (feat. Dipzy)",
+   "display_artist": "Swell Sound",
+   "duration_in_ms": 179830,
+   "libreria": true
+  },
+  {
+   "audio_id": "663866025342759",
+   "title": "Don't Run From Me",
+   "display_artist": "Julia Gartha",
+   "duration_in_ms": 132680,
    "libreria": true
   }
  ]
