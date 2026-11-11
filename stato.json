@@ -13266,7 +13266,9 @@
      "ok": true,
      "id": "18138456643567309",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -13328,7 +13330,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "o2ueXsGqP-Y"
+     "id": "o2ueXsGqP-Y",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -13339,11 +13342,78 @@
    },
    "spinto": true,
    "testo": "Non rovinare un buon oggi pensando a un ieri difficile. Lascia perdere."
+  },
+  {
+   "quando": "2026-11-11T13:00",
+   "slot": "2026-11-11 14:00",
+   "video": "IMG_3952.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-fd3e0443",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "ego_chall_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.468,
+     "movimento": 38.38,
+     "primo_piano_fermo": false,
+     "soglia_moto": 25.25,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 126,
+     "righe": 3,
+     "scurito": 0.53,
+     "luce": 0.44,
+     "sfumatura": 0.33,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 139,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "due",
+     "parole": 8
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_05.flac",
+    "musica_instagram": "Energy In Motion - Magnetic Sirens [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "sgcbLW-IgjI"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17893880085457106",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Qualcosa di buono sta sempre per arrivare. Ricordalo."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-03 14:00",
   "2026-11-03 16:00",
   "2026-11-03 18:00",
   "2026-11-03 20:00",
@@ -13422,10 +13492,10 @@
   "2026-11-11 06:00",
   "2026-11-11 08:00",
   "2026-11-11 10:00",
-  "2026-11-11 12:00"
+  "2026-11-11 12:00",
+  "2026-11-11 14:00"
  ],
  "musica_recenti": [
-  "wrangle_the_crazy_2.m4a",
   "intergalactic_2.m4a",
   "death_duel_3.m4a",
   "locked_in_1.m4a",
@@ -13484,7 +13554,8 @@
   "delirium_2.m4a",
   "ten_3.m4a",
   "taking_flight_2.m4a",
-  "monthaholic_3.m4a"
+  "monthaholic_3.m4a",
+  "ego_chall_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -13821,7 +13892,8 @@
   "MIE-6ec0d693",
   "MIE-e4469069",
   "MIE-65791b6f",
-  "MIE-1ec91947"
+  "MIE-1ec91947",
+  "MIE-fd3e0443"
  ],
  "temi_recenti": [
   "mentalita",
@@ -14036,11 +14108,13 @@
   },
   "1a2POnx-7OaYCvRXrpkTO6Qw_dTZ4CN-d": {
    "usi": 3,
-   "ultimo": "2026-11-03"
+   "ultimo": "2026-11-03",
+   "orizzontale": false
   },
   "1psghsoVp3I-dU4RMW8CuX7jIIkUpjvLc": {
-   "usi": 3,
-   "ultimo": "2026-11-04"
+   "usi": 4,
+   "ultimo": "2026-11-11",
+   "orizzontale": false
   },
   "1KrAS_uFNheClKfLJbtUvGGJ16dNqCs2z": {
    "usi": 2,
@@ -14379,7 +14453,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_16.flac",
   "deciso_02.flac",
   "drive_16.flac",
   "phonk_07.flac",
@@ -14398,7 +14471,8 @@
   "phonk_10.flac",
   "energia_01.flac",
   "trap_15.flac",
-  "deciso_08.flac"
+  "deciso_08.flac",
+  "phonk_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -14433,7 +14507,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio3",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -14449,7 +14523,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1817045786209572",
   "2575057322947776",
   "972513352266790",
   "257338181818606",
@@ -14508,11 +14581,11 @@
   "744011543289259",
   "930354837134154",
   "1765359430669153",
-  "800297207899385"
+  "800297207899385",
+  "923490770808517"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jackson Whalan",
   "Jumbo",
   "d.higgs",
   "The K Club",
@@ -14521,10 +14594,10 @@
   "Jonny Houlihan",
   "YoungPop",
   "Company Money",
-  "Abby Posner"
+  "Abby Posner",
+  "Magnetic Sirens"
  ],
  "ig_titoli_recenti": [
-  "winner",
   "unstoppable",
   "family food fight",
   "success",
@@ -14563,7 +14636,8 @@
   "winners take all",
   "fire",
   "rock your world",
-  "heros journey"
+  "heros journey",
+  "energy in motion"
  ],
  "ig_tendenze_riserva": [
   {
@@ -14581,52 +14655,66 @@
    "libreria": false
   },
   {
-   "audio_id": "1145606523800710",
-   "title": "Fight For Freedom (Instrumental)",
-   "display_artist": "Lyle Workman",
-   "duration_in_ms": 241850,
+   "audio_id": "602734618692954",
+   "title": "Forever In Motion",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 116693,
    "libreria": true
   },
   {
-   "audio_id": "1015255657240675",
-   "title": "The Running (Instrumental)",
-   "display_artist": "bbox",
-   "duration_in_ms": 179320,
+   "audio_id": "1463029071233766",
+   "title": "Win The Game (feat. Barbasauce)",
+   "display_artist": "Neko Fuzz",
+   "duration_in_ms": 177260,
    "libreria": true
   },
   {
-   "audio_id": "1681179019357274",
-   "title": "Fight For It All (feat. Poccex)",
-   "display_artist": "Jumbo",
-   "duration_in_ms": 168050,
+   "audio_id": "2082990731893350",
+   "title": "La Marche des Commis Voyageurs (Vintage 78RPM)",
+   "display_artist": "Genticorum",
+   "duration_in_ms": 183013,
    "libreria": true
   },
   {
-   "audio_id": "576850318404245",
-   "title": "Not Phonk",
-   "display_artist": "Sam Marshall",
-   "duration_in_ms": 188462,
-   "libreria": true
-  },
-  {
-   "audio_id": "800297207899385",
-   "title": "Heros Journey",
-   "display_artist": "Abby Posner",
-   "duration_in_ms": 149047,
-   "libreria": true
-  },
-  {
-   "audio_id": "27908405255457112",
-   "title": "When It Sparks",
+   "audio_id": "923490770808517",
+   "title": "Energy In Motion",
    "display_artist": "Magnetic Sirens",
-   "duration_in_ms": 61340,
+   "duration_in_ms": 62182,
    "libreria": true
   },
   {
-   "audio_id": "819743797457783",
-   "title": "Redux (feat. My City Glory) (Instrumental)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 243803,
+   "audio_id": "27850712597869154",
+   "title": "Main Character Energy",
+   "display_artist": "Afterlight",
+   "duration_in_ms": 61756,
+   "libreria": true
+  },
+  {
+   "audio_id": "1238592560253841",
+   "title": "In Motion",
+   "display_artist": "Ella Joy Meir",
+   "duration_in_ms": 182656,
+   "libreria": true
+  },
+  {
+   "audio_id": "976973397894084",
+   "title": "Champions (Instrumental)",
+   "display_artist": "stereogully",
+   "duration_in_ms": 114995,
+   "libreria": true
+  },
+  {
+   "audio_id": "751793197912868",
+   "title": "In Motion (Instrumental)",
+   "display_artist": "Sam Marshall",
+   "duration_in_ms": 188848,
+   "libreria": true
+  },
+  {
+   "audio_id": "1029576439693978",
+   "title": "Peaceful Storm",
+   "display_artist": "erloom",
+   "duration_in_ms": 67374,
    "libreria": true
   }
  ]
