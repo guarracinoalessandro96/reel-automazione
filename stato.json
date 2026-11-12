@@ -13706,7 +13706,9 @@
      "ok": true,
      "id": "18395607595167176",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -13768,22 +13770,91 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "GQCHvqpFbHQ"
+     "id": "GQCHvqpFbHQ",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18133091293701464",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
    "testo": "Un vincente è solo un perdente che si è rialzato di nuovo."
+  },
+  {
+   "quando": "2026-11-12T05:00",
+   "slot": "2026-11-12 06:00",
+   "video": "IMG_3904.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-6d039cc3",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio2",
+    "durata": 10.0,
+    "musica": "moon_vision_2.m4a",
+    "stacchi": 5,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.403,
+     "movimento": 9.12,
+     "primo_piano_fermo": false,
+     "soglia_moto": 9.12,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 4,
+     "scurito": 0.58,
+     "luce": 0.6,
+     "sfumatura": 0.4,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 114,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 16
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_03.flac",
+    "musica_instagram": "Adrenalina Was Her Name - Ecklectic Music [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "k-2m4vzC8JI"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18139125460710802",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Credi nei tuoi sogni. Non mollare mai. I sacrifici di oggi saranno i successi di domani."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-04 06:00",
   "2026-11-04 08:00",
   "2026-11-04 10:00",
   "2026-11-04 12:00",
@@ -13862,10 +13933,10 @@
   "2026-11-11 18:00",
   "2026-11-11 20:00",
   "2026-11-11 22:00",
-  "2026-11-12 00:00"
+  "2026-11-12 00:00",
+  "2026-11-12 06:00"
  ],
  "musica_recenti": [
-  "vibe_check_1.m4a",
   "the_light_3.m4a",
   "monthaholic_1.m4a",
   "way_back_home_3.m4a",
@@ -13924,7 +13995,8 @@
   "wrangle_the_crazy_2.m4a",
   "majestic_12_2.m4a",
   "intergalactic_1.m4a",
-  "final_boss_battle_2.m4a"
+  "final_boss_battle_2.m4a",
+  "moon_vision_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -14267,7 +14339,8 @@
   "MIE-6532de8b",
   "MIE-71c07313",
   "MIE-cf6d9767",
-  "MIE-011e57f7"
+  "MIE-011e57f7",
+  "MIE-6d039cc3"
  ],
  "temi_recenti": [
   "mentalita",
@@ -14282,7 +14355,7 @@
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-11",
+ "pulizia": "2026-11-12",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -14457,7 +14530,8 @@
   },
   "17a5fFwJj8p33vlSv-Y6jRBPmRGJLzC1Q": {
    "usi": 2,
-   "ultimo": "2026-10-20"
+   "ultimo": "2026-10-20",
+   "orizzontale": false
   },
   "1Me9XwPdk7-kx_j_4Y_9YpSyy48oLrBIM": {
    "usi": 3,
@@ -14469,8 +14543,8 @@
    "orizzontale": false
   },
   "1H_I6VC3vZgQwOjIWlcuhjr4OiNQ3Fpvl": {
-   "usi": 3,
-   "ultimo": "2026-11-03",
+   "usi": 4,
+   "ultimo": "2026-11-12",
    "orizzontale": false
   },
   "12Fo5vh8JbpmRDWSzG5Ro-KcD-bCBRZH_": {
@@ -14832,7 +14906,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_11.flac",
   "drive_15.flac",
   "energia_06.flac",
   "deciso_05.flac",
@@ -14851,7 +14924,8 @@
   "deciso_06.flac",
   "energia_04.flac",
   "drive_16.flac",
-  "trap_07.flac"
+  "trap_07.flac",
+  "deciso_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -14886,7 +14960,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "rallenty",
+ "formato_ultimo": "taglio2",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -14902,7 +14976,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "261968585425392",
   "4321185548142585",
   "1190974441039956",
   "899668126445403",
@@ -14961,11 +15034,11 @@
   "1030263145726523",
   "819743797457783",
   "751793197912868",
-  "1186003979031011"
+  "1186003979031011",
+  "936174714667779"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jonny Houlihan",
   "YoungPop",
   "Company Money",
   "Abby Posner",
@@ -14974,10 +15047,10 @@
   "Jumbo",
   "Ross Lara",
   "Sam Marshall",
-  "bbox"
+  "bbox",
+  "Ecklectic Music"
  ],
  "ig_titoli_recenti": [
-  "join the movement",
   "photocopy",
   "unmatched energy",
   "glory",
@@ -15016,7 +15089,8 @@
   "voices of victory",
   "redux",
   "in motion",
-  "hype track"
+  "hype track",
+  "adrenalina was her name"
  ],
  "ig_tendenze_riserva": [
   {
@@ -15034,10 +15108,31 @@
    "libreria": false
   },
   {
-   "audio_id": "1763628994746804",
-   "title": "Rockstar Anthem (feat. YawnyBlew) (Instrumental)",
-   "display_artist": "ill Think in ink",
-   "duration_in_ms": 144050,
+   "audio_id": "602734618692954",
+   "title": "Forever In Motion",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 116693,
+   "libreria": true
+  },
+  {
+   "audio_id": "1781233772812838",
+   "title": "Epic Thoughts",
+   "display_artist": "JB Eckl",
+   "duration_in_ms": 192818,
+   "libreria": true
+  },
+  {
+   "audio_id": "727931292858890",
+   "title": "Copacetic (feat. Dawson March)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 136490,
+   "libreria": true
+  },
+  {
+   "audio_id": "936174714667779",
+   "title": "Adrenalina Was Her Name",
+   "display_artist": "Ecklectic Music",
+   "duration_in_ms": 158890,
    "libreria": true
   }
  ]
