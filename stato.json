@@ -14060,7 +14060,9 @@
      "ok": true,
      "id": "18134855548707205",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -14133,7 +14135,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "S36SRRcmiis"
+     "id": "S36SRRcmiis",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -14144,11 +14147,78 @@
    },
    "spinto": true,
    "testo": "Passo dopo passo, giorno dopo giorno."
+  },
+  {
+   "quando": "2026-11-12T15:00",
+   "slot": "2026-11-12 16:00",
+   "video": "IMG_3971.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-643bdfb5",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio2",
+    "durata": 10.0,
+    "musica": "locked_in_2.m4a",
+    "stacchi": 5,
+    "testi": 1,
+    "scene_dal_video": 4,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.322,
+     "movimento": 56.76,
+     "primo_piano_fermo": false,
+     "soglia_moto": 37.25,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 123,
+     "righe": 3,
+     "scurito": 0.45,
+     "luce": 0.39,
+     "sfumatura": 0.29,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 243,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 9
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_01.flac",
+    "musica_instagram": "Marathon Weekend Warriors - Lyle Workman [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "s9vwl09egx4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18169798918472726",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Le persone giuste troveranno sempre un modo per restare."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-04 16:00",
   "2026-11-04 18:00",
   "2026-11-04 20:00",
   "2026-11-04 22:00",
@@ -14227,10 +14297,10 @@
   "2026-11-12 08:00",
   "2026-11-12 10:00",
   "2026-11-12 12:00",
-  "2026-11-12 14:00"
+  "2026-11-12 14:00",
+  "2026-11-12 16:00"
  ],
  "musica_recenti": [
-  "i_might_be_late_3.m4a",
   "whoop_1.m4a",
   "break_ya_neck_1.m4a",
   "sweaty_staredown_3.m4a",
@@ -14289,7 +14359,8 @@
   "keep_it_movin_2.m4a",
   "horizons_1.m4a",
   "vibe_check_3.m4a",
-  "survival_mode_1.m4a"
+  "survival_mode_1.m4a",
+  "locked_in_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -14637,7 +14708,8 @@
   "MIE-65509d4e",
   "MIE-1f9f8d20",
   "MIE-0630e0f0",
-  "MIE-ccde4efb"
+  "MIE-ccde4efb",
+  "MIE-643bdfb5"
  ],
  "temi_recenti": [
   "mentalita",
@@ -14879,8 +14951,9 @@
    "ultimo": "2026-10-20"
   },
   "1NfvRrrvtikqSvJNkOOpi9sOBXs09blgz": {
-   "usi": 3,
-   "ultimo": "2026-11-04"
+   "usi": 4,
+   "ultimo": "2026-11-12",
+   "orizzontale": false
   },
   "1uc6eTA1H5KSzsqTsVNgk6Rzto2V2Wq3y": {
    "usi": 4,
@@ -14908,7 +14981,8 @@
   },
   "1zw12S9166ROtTo6gXbB8osWAiBXUjT0Q": {
    "usi": 2,
-   "ultimo": "2026-10-22"
+   "ultimo": "2026-10-22",
+   "orizzontale": true
   },
   "1UoUWHyHwCuON4BVs4SSdx-6x-4H6CKw9": {
    "usi": 4,
@@ -15207,7 +15281,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_06.flac",
   "deciso_01.flac",
   "phonk_01.flac",
   "drive_09.flac",
@@ -15226,7 +15299,8 @@
   "phonk_15.flac",
   "drive_04.flac",
   "energia_07.flac",
-  "deciso_10.flac"
+  "deciso_10.flac",
+  "trap_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -15261,7 +15335,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "giornata",
+ "formato_ultimo": "taglio2",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -15277,7 +15351,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2865463390342861",
   "1076547086228050",
   "2373852472923170",
   "580920710907743",
@@ -15336,11 +15409,11 @@
   "6931473226905938",
   "974432747187721",
   "556944786364191",
-  "3643996589148382"
+  "3643996589148382",
+  "2818493204964733"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "ill Think in ink",
   "Jumbo",
   "Ross Lara",
   "Sam Marshall",
@@ -15349,10 +15422,10 @@
   "Trout Recording",
   "Giulio Cercato",
   "Jamie West-Oram",
-  "Chela Rivas"
+  "Chela Rivas",
+  "Lyle Workman"
  ],
  "ig_titoli_recenti": [
-  "careful believer",
   "epic proportions",
   "la marche des commis voyageurs",
   "fighter",
@@ -15391,7 +15464,8 @@
   "running out of heaven tonight",
   "road warriors",
   "battle ska",
-  "storm"
+  "storm",
+  "marathon weekend warriors"
  ],
  "ig_tendenze_riserva": [
   {
@@ -15409,17 +15483,31 @@
    "libreria": false
   },
   {
-   "audio_id": "485127744365118",
-   "title": "Fight Contigo (Instrumental)",
-   "display_artist": "Kolektivo",
-   "duration_in_ms": 165760,
+   "audio_id": "878487453608490",
+   "title": "Legend Of Castle Bran",
+   "display_artist": "Brent Bourgeois",
+   "duration_in_ms": 152621,
    "libreria": true
   },
   {
-   "audio_id": "1108285910189784",
-   "title": "Knockout",
-   "display_artist": "Adam Griffith",
-   "duration_in_ms": 137167,
+   "audio_id": "7924819170928272",
+   "title": "Your Race To Win",
+   "display_artist": "Charlie Peacock",
+   "duration_in_ms": 136160,
+   "libreria": true
+  },
+  {
+   "audio_id": "1615649653514803",
+   "title": "Stronger",
+   "display_artist": "LAVLO",
+   "duration_in_ms": 63194,
+   "libreria": true
+  },
+  {
+   "audio_id": "2818493204964733",
+   "title": "Marathon Weekend Warriors",
+   "display_artist": "Lyle Workman",
+   "duration_in_ms": 251290,
    "libreria": true
   }
  ]
