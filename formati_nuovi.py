@@ -61,6 +61,7 @@ MARGINE_S = 0.2      # secondi lasciati all'inizio e alla fine di ogni video
 STACCO_MIN, STACCO_QUOTA, STACCO_MAX = 0.75, 0.6, 2.0
 SPOSTA_MAX = 1.0     # la prima scena (il momento piu' forte) si sposta al massimo di 1 s per far entrare le altre
 DURATA_RACCONTO = 30.0
+DIECI_SECONDI = 10.0   # 12/11/2026 (Alessandro: "tutti i video devono essere di 10 secondi")
 GANCIO_S = 3.5
 ENTRATA_S = 0      # 3/11/2026: frase FISSA dal primo fotogramma (Alessandro non vuole che salga; prima 0.18)        # formati da 10 s: il gancio da solo per 3,5 s, poi la frase intera
 
@@ -138,7 +139,8 @@ def durate_formato(nome, secondi):
     """Durate delle scene del formato per un video principale lungo `secondi`."""
     durate = list(FORMATI[nome]["stacchi"])
     if nome == "intero":                       # 6/11/2026: tutta la clip, tra 10 e 20 s
-        durate = [round(max(10.0, min(20.0, secondi - 0.3)), 2)]
+        # 12/11/2026 (Alessandro: "tutti i video devono essere di 10 secondi"): anche "intero" dura 10 s
+        durate = [DIECI_SECONDI]
     elif FORMATI[nome].get("layout") and secondi < durate[0] + 0.5:   # video corto: due scene da 5 s
         durate = [5.0, 5.0]
     return durate
@@ -961,7 +963,7 @@ def _intero_pulito(c, durate):
         t = _controlla_primo(c, t_def, 0.0, max(0.0, S - 10.3), PRIMO_S)
         if abs(t - t_def) < 1e-3:
             return None, durate
-        return [(c, t)], [round(max(10.0, min(20.0, S - t - 0.3)), 2)]
+        return [(c, t)], [DIECI_SECONDI]          # 12/11/2026: sempre 10 s (Alessandro)
     except Exception as e:
         print("intero: controllo del primo secondo non riuscito, la clip resta com'era:", e)
         return None, durate

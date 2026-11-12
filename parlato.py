@@ -63,7 +63,8 @@ def testo(parole):
 def taglio(parole, durata_video):
     """(inizio, durata) del reel: dalla prima all'ultima parola (massimo MAX_SECONDI)."""
     inizio = max(0.0, parole[0]["s"] - 0.3)
-    fine = min(durata_video, parole[-1]["e"] + 0.6, inizio + MAX_SECONDI)
+    # 12/11/2026 (Alessandro: "tutti i video devono essere di 10 secondi"): il reel parlato si ferma a 10 s
+    fine = min(durata_video, parole[-1]["e"] + 0.6, inizio + 10.0)
     return round(float(inizio), 2), round(float(max(fine - inizio, 3.0)), 2)
 
 

@@ -74,6 +74,7 @@ def prepara(massimo=4):
         tp.metti_ricerche(elenco)
     except Exception as e:
         print("audio da evitare non aggiunti:", e)
+    tp.metti_musica_screenshot(elenco)     # 12/11/2026: prima il brano dello screenshot della frase
     json.dump(elenco, open(os.path.join(CARTELLA_PC, "elenco_facebook.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1)
     return elenco, len(attesa)

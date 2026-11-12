@@ -690,7 +690,8 @@ def monta_momento(an, src, out, music, serie, nome):
     titolo = an["momento"]["titolo"]
     secondi, _ = overlay.probe(src)
     famiglia = an.get("compagnia") == "famiglia"
-    durata = round(min(secondi, 15.0 if famiglia else MOMENTO_MAX), 2)
+    # 12/11/2026 (Alessandro: "tutti i video devono essere di 10 secondi"): anche i momenti al massimo 10 s
+    durata = round(min(secondi, 10.0), 2)
     info = overlay.make_video(src, titolo, out, music=music if famiglia else None, serie=serie,
                               colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an.get("scena"),
                               formato={"nome": "momento", "inizio": 0.0, "durata": durata,
@@ -2008,10 +2009,44 @@ def _semina_titoli(state):
         state.setdefault("ig_titoli_recenti", [])
 
 
-def brano_ig(state, scena):
-    """3/11/2026: (audio_id, titolo) di un brano DI INSTAGRAM per il reel (anche per recuperi e nuovi tentativi)."""
+def brano_dello_screenshot(fid):
+    """12/11/2026 (Alessandro: "utilizza la stessa musica che sta su quello screenshot... dai priorita' e cerca prima
+    se puoi mettere quella musica"): (audio_id, titolo) del brano dello screenshot della frase tra quelli di Instagram,
+    o None (allora si sceglie come sempre). Il brano e' una sua scelta: niente filtri di gusto o di brani recenti."""
+    try:
+        import musica_screenshot
+        brano = musica_screenshot.di(fid)
+        if not brano:
+            return None
+        titolo, artista = musica_screenshot.parti(brano)
+        base = titolo_base(titolo)
+        if not base:
+            return None
+        par = {"audio_type": "music", "search_query": f"{titolo} {artista}".strip(), "user_id": ENV("IG_USER_ID"),
+               "access_token": ENV("META_PAGE_TOKEN")}
+        trovati = [a for a in (_meta("GET", f"{GRAPH_AUDIO}/ig_audio", timeout=30, params=par).get("audio") or [])
+                   if a.get("audio_id") and titolo_base(a.get("title")) == base]
+        if artista:     # stesso titolo: prima l'artista giusto
+            trovati.sort(key=lambda a: titolo_base(artista) not in titolo_base(a.get("display_artist")))
+        if trovati:
+            a = trovati[0]
+            log(f"Instagram: il brano dello screenshot c'e': {a.get('title')} - {a.get('display_artist')}")
+            return a["audio_id"], f"{a.get('title')} - {a.get('display_artist')} [screenshot]"
+        log(f"Instagram: il brano dello screenshot ({brano}) non c'e', scelgo come sempre")
+    except Exception as e:
+        log("Brano dello screenshot non cercato:", e)
+    return None
+
+
+def brano_ig(state, scena, fid=None):
+    """3/11/2026: (audio_id, titolo) di un brano DI INSTAGRAM per il reel (anche per recuperi e nuovi tentativi).
+    12/11/2026: fid = id della frase: se la frase viene da un suo screenshot con un brano, prima quel brano."""
     _IG_STATO["state"] = state
     _semina_titoli(state)
+    scelto = brano_dello_screenshot(fid) if fid else None
+    if scelto:
+        ricorda_brano(state, scelto)
+        return scelto
     try:
         scelto = scegli_audio_instagram(scena, state.get("ig_audio_recenti", []), state.get("ig_artisti_recenti", []),
                                         state.get("ig_titoli_recenti", []))
@@ -2837,7 +2872,7 @@ def recupera_instagram(state, drive, work, save):
                     continue
                 h["frase_dati"]["audio_nome"] = audio_ig.nome_audio(brano)
                 h.setdefault("montaggio", {})["musica_meta"] = brano
-                scelto = brano_ig(state, h.get("scena"))     # 3/11/2026: anche qui il brano DI INSTAGRAM
+                scelto = brano_ig(state, h.get("scena"), h.get("frase"))   # 3/11/2026: anche qui il brano DI INSTAGRAM
                 if scelto:
                     h["montaggio"]["musica_instagram"] = scelto[1]
             pid = instagram_upload(path, h["frase_dati"], scelto[0] if scelto else None)
@@ -2929,7 +2964,8 @@ def main():
                 path_meta, _ = versione_meta(base, state.get("musica_recenti_meta", []))
         except Exception as e:
             log("riprova: versione 1080p non riuscita:", e)
-        scelto = brano_ig(state, None) if "instagram" in job["piattaforme"] and path_meta and not parlato else None
+        scelto = (brano_ig(state, None, (job.get("frase") or {}).get("id"))
+                  if "instagram" in job["piattaforme"] and path_meta and not parlato else None)
         res = publish_all(path, job["frase"], creds, job["piattaforme"], path_meta,   # 3/11: brano DI INSTAGRAM
                           ig_nativo=(path_meta, scelto[0]) if scelto else None)
         job["tentativi"] += 1
@@ -3482,7 +3518,7 @@ def main():
     # si caricava senza traccia e solo 1 reel su ~80 ha avuto la musica (il 2/11 delle 18, l'unico con la traccia).
     # Si carica quindi out_meta (con traccia) e Instagram la sostituisce col suo brano (video_volume 0).
     if "instagram" in piatt and not voce and out_meta:
-        scelto = brano_ig(state, an["scena"])
+        scelto = brano_ig(state, an["scena"], frase.get("id"))
         if scelto:
             ig_nativo = (out_meta, scelto[0])
             info["musica_instagram"] = scelto[1]

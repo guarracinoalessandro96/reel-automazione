@@ -156,6 +156,7 @@ def prepara(massimo=4):
         metti_ricerche(elenco)
     except Exception as e:
         print("suoni da evitare non aggiunti:", e)
+    metti_musica_screenshot(elenco)
     json.dump(elenco, open(os.path.join(CARTELLA_PC, "elenco.json"), "w", encoding="utf-8"), ensure_ascii=False,
               indent=1)
     return elenco, len(attesa)
@@ -202,6 +203,23 @@ def ricerche(n, adesso=None):
     adesso = adesso or ora_roma()
     inizio = adesso.toordinal() * 5 + adesso.hour
     return [RICERCHE[(inizio + i) % len(RICERCHE)] for i in range(n)]
+
+
+def metti_musica_screenshot(elenco):
+    """12/11/2026 (Alessandro: "utilizza la stessa musica che sta su quello screenshot... cerca prima se puoi mettere
+    quella musica"): "musica_screenshot" = il brano dello screenshot della frase (dal nome del file, che ha l'id):
+    il giro lo cerca PRIMA di tutto il resto, anche se e' tra i suoni da evitare; se non c'e', sceglie come sempre."""
+    try:
+        qui = os.path.dirname(os.path.abspath(__file__))
+        if qui not in sys.path:
+            sys.path.insert(0, qui)
+        import musica_screenshot
+        for x in elenco:
+            brano = musica_screenshot.da_nome_file(os.path.basename(x.get("file", "")))
+            if brano:
+                x["musica_screenshot"] = brano
+    except Exception as e:      # mai fermare il giro per un suggerimento
+        print("musica degli screenshot non aggiunta:", e)
 
 
 def metti_ricerche(elenco):
