@@ -13847,7 +13847,9 @@
      "ok": true,
      "id": "18139125460710802",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -13909,7 +13911,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "InjHHUQUUuI"
+     "id": "InjHHUQUUuI",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -13920,11 +13923,77 @@
    },
    "spinto": false,
    "testo": "Non parlare, agisci. Non dire, dimostra. Non promettere, prova."
+  },
+  {
+   "quando": "2026-11-12T09:00",
+   "slot": "2026-11-12 10:00",
+   "video": "IMG_4118.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-1f9f8d20",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "horizons_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 3,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 13.55,
+     "primo_piano_fermo": false,
+     "soglia_moto": 10.88,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 124,
+     "righe": 3,
+     "scurito": 0.4,
+     "luce": 0.42,
+     "sfumatura": 0.32,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 156,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 11
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_04.flac",
+    "musica_instagram": "Road Warriors - Giulio Cercato"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "TelmMfM9gtw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18649112761048930",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non sei in ritardo solo perché qualcuno è davanti a te."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-04 10:00",
   "2026-11-04 12:00",
   "2026-11-04 14:00",
   "2026-11-04 16:00",
@@ -14003,10 +14072,10 @@
   "2026-11-11 22:00",
   "2026-11-12 00:00",
   "2026-11-12 06:00",
-  "2026-11-12 08:00"
+  "2026-11-12 08:00",
+  "2026-11-12 10:00"
  ],
  "musica_recenti": [
-  "monthaholic_1.m4a",
   "way_back_home_3.m4a",
   "mirror_mirror_1.m4a",
   "i_might_be_late_3.m4a",
@@ -14065,7 +14134,8 @@
   "intergalactic_1.m4a",
   "final_boss_battle_2.m4a",
   "moon_vision_2.m4a",
-  "keep_it_movin_2.m4a"
+  "keep_it_movin_2.m4a",
+  "horizons_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -14410,7 +14480,8 @@
   "MIE-cf6d9767",
   "MIE-011e57f7",
   "MIE-6d039cc3",
-  "MIE-65509d4e"
+  "MIE-65509d4e",
+  "MIE-1f9f8d20"
  ],
  "temi_recenti": [
   "mentalita",
@@ -14766,8 +14837,9 @@
    "ultimo": "2026-11-04"
   },
   "1UqKiP8I1uDBOGIlQ6FOiFV8glkTIPDqY": {
-   "usi": 3,
-   "ultimo": "2026-11-05"
+   "usi": 4,
+   "ultimo": "2026-11-12",
+   "orizzontale": false
   },
   "1y59kJ0xjsyIN9aCTP_yAw2eVeS32oQwv": {
    "usi": 2,
@@ -14977,7 +15049,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_06.flac",
   "deciso_05.flac",
   "phonk_13.flac",
   "trap_06.flac",
@@ -14996,7 +15067,8 @@
   "drive_16.flac",
   "trap_07.flac",
   "deciso_03.flac",
-  "phonk_15.flac"
+  "phonk_15.flac",
+  "drive_04.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -15031,7 +15103,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "rallenty",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -15047,7 +15119,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1190974441039956",
   "899668126445403",
   "2388876744974625",
   "2865463390342861",
@@ -15106,11 +15177,11 @@
   "751793197912868",
   "1186003979031011",
   "936174714667779",
-  "6931473226905938"
+  "6931473226905938",
+  "974432747187721"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Company Money",
   "Abby Posner",
   "Magnetic Sirens",
   "ill Think in ink",
@@ -15119,10 +15190,10 @@
   "Sam Marshall",
   "bbox",
   "Ecklectic Music",
-  "Trout Recording"
+  "Trout Recording",
+  "Giulio Cercato"
  ],
  "ig_titoli_recenti": [
-  "unmatched energy",
   "glory",
   "fight contigo",
   "careful believer",
@@ -15161,7 +15232,8 @@
   "in motion",
   "hype track",
   "adrenalina was her name",
-  "running out of heaven tonight"
+  "running out of heaven tonight",
+  "road warriors"
  ],
  "ig_tendenze_riserva": [
   {
@@ -15179,17 +15251,45 @@
    "libreria": false
   },
   {
-   "audio_id": "1488842099008011",
-   "title": "Electric Movement (Instrumental)",
-   "display_artist": "Sam Marshall",
-   "duration_in_ms": 187894,
+   "audio_id": "1569344687927084",
+   "title": "Run",
+   "display_artist": "Jordan Olmos",
+   "duration_in_ms": 62450,
    "libreria": true
   },
   {
-   "audio_id": "6931473226905938",
-   "title": "Running Out Of Heaven Tonight",
-   "display_artist": "Trout Recording",
-   "duration_in_ms": 219888,
+   "audio_id": "819743797457783",
+   "title": "Redux (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 243803,
+   "libreria": true
+  },
+  {
+   "audio_id": "672409740985213",
+   "title": "Champion",
+   "display_artist": "Adam Griffith",
+   "duration_in_ms": 141051,
+   "libreria": true
+  },
+  {
+   "audio_id": "2475524415980310",
+   "title": "Dream Big",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 119030,
+   "libreria": true
+  },
+  {
+   "audio_id": "1068776575596252",
+   "title": "Stop Motion",
+   "display_artist": "LAVLO",
+   "duration_in_ms": 57100,
+   "libreria": true
+  },
+  {
+   "audio_id": "487292243908544",
+   "title": "Pink Lemonade (feat. Dawson March)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 141290,
    "libreria": true
   }
  ]
