@@ -14213,7 +14213,9 @@
      "ok": true,
      "id": "18169798918472726",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -14274,7 +14276,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "FtMle8W4ImU"
+     "id": "FtMle8W4ImU",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -14285,11 +14288,78 @@
    },
    "spinto": false,
    "testo": "Non mollare, l'inizio è sempre il più difficile."
+  },
+  {
+   "quando": "2026-11-12T19:01",
+   "slot": "2026-11-12 20:00",
+   "video": "IMG_4055.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-180d9824",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio3",
+    "durata": 10.0,
+    "musica": "van_life_rager_2.m4a",
+    "stacchi": 3,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.103,
+     "movimento": 10.2,
+     "primo_piano_fermo": false,
+     "soglia_moto": 5.3,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 141,
+     "righe": 2,
+     "scurito": 0.49,
+     "luce": 0.43,
+     "sfumatura": 0.32,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 208,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 6
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_01.flac",
+    "musica_instagram": "Beast - Jumbo [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "_0Pe7zv2xTs"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17929125537431826",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non devi essere perfetto per iniziare."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-04 20:00",
   "2026-11-04 22:00",
   "2026-11-05 00:00",
   "2026-11-05 06:00",
@@ -14368,10 +14438,10 @@
   "2026-11-12 12:00",
   "2026-11-12 14:00",
   "2026-11-12 16:00",
-  "2026-11-12 18:00"
+  "2026-11-12 18:00",
+  "2026-11-12 20:00"
  ],
  "musica_recenti": [
-  "break_ya_neck_1.m4a",
   "sweaty_staredown_3.m4a",
   "taking_flight_1.m4a",
   "delirium_3.m4a",
@@ -14430,7 +14500,8 @@
   "vibe_check_3.m4a",
   "survival_mode_1.m4a",
   "locked_in_2.m4a",
-  "way_back_home_3.m4a"
+  "way_back_home_3.m4a",
+  "van_life_rager_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -14780,7 +14851,8 @@
   "MIE-0630e0f0",
   "MIE-ccde4efb",
   "MIE-643bdfb5",
-  "MIE-33cdfba4"
+  "MIE-33cdfba4",
+  "MIE-180d9824"
  ],
  "temi_recenti": [
   "mentalita",
@@ -15079,8 +15151,9 @@
    "ultimo": "2026-10-22"
   },
   "13Mbzphz708QlBEv9Bq_CNQzZaM4WplJL": {
-   "usi": 3,
-   "ultimo": "2026-11-04"
+   "usi": 4,
+   "ultimo": "2026-11-12",
+   "orizzontale": false
   },
   "1a6QgtIzJRhmtmWHx-62JQcB90PeF3vKz": {
    "usi": 2,
@@ -15138,7 +15211,8 @@
   },
   "19lxUacEH3cLJ4agkgVgo3o7ErjaxO3My": {
    "usi": 3,
-   "ultimo": "2026-11-04"
+   "ultimo": "2026-11-04",
+   "orizzontale": false
   },
   "1UqKiP8I1uDBOGIlQ6FOiFV8glkTIPDqY": {
    "usi": 4,
@@ -15353,7 +15427,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_01.flac",
   "drive_09.flac",
   "deciso_12.flac",
   "phonk_10.flac",
@@ -15372,7 +15445,8 @@
   "energia_07.flac",
   "deciso_10.flac",
   "trap_01.flac",
-  "phonk_06.flac"
+  "phonk_06.flac",
+  "deciso_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -15407,7 +15481,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio1",
+ "formato_ultimo": "taglio3",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -15423,7 +15497,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2373852472923170",
   "580920710907743",
   "8196916917049261",
   "2173371459664032",
@@ -15482,11 +15555,11 @@
   "556944786364191",
   "3643996589148382",
   "2818493204964733",
-  "873920756997122"
+  "873920756997122",
+  "907634520516585"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Ross Lara",
   "Sam Marshall",
   "bbox",
   "Ecklectic Music",
@@ -15495,10 +15568,10 @@
   "Jamie West-Oram",
   "Chela Rivas",
   "Lyle Workman",
-  "Apesaw"
+  "Apesaw",
+  "Jumbo"
  ],
  "ig_titoli_recenti": [
-  "la marche des commis voyageurs",
   "fighter",
   "hype beast",
   "breathtaker",
@@ -15537,7 +15610,8 @@
   "battle ska",
   "storm",
   "marathon weekend warriors",
-  "the beast"
+  "the beast",
+  "beast"
  ],
  "ig_tendenze_riserva": [
   {
@@ -15555,45 +15629,38 @@
    "libreria": false
   },
   {
-   "audio_id": "472437631290189",
-   "title": "Soul (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 219500,
+   "audio_id": "907634520516585",
+   "title": "Beast",
+   "display_artist": "Jumbo",
+   "duration_in_ms": 165764,
    "libreria": true
   },
   {
-   "audio_id": "1552659642157024",
-   "title": "Running Through Gold",
-   "display_artist": "The Poison Oaks",
-   "duration_in_ms": 193934,
+   "audio_id": "397890202830542",
+   "title": "Carry The Motion",
+   "display_artist": "Global Genius",
+   "duration_in_ms": 194029,
    "libreria": true
   },
   {
-   "audio_id": "139421689171943",
-   "title": "Enigma (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 153256,
+   "audio_id": "283066584103655",
+   "title": "Go Go Go!",
+   "display_artist": "Dhruv Goel",
+   "duration_in_ms": 117874,
    "libreria": true
   },
   {
-   "audio_id": "3396153023900256",
-   "title": "Sparkle Drain",
-   "display_artist": "cloud cover",
-   "duration_in_ms": 59530,
+   "audio_id": "1029338276527053",
+   "title": "Spanish Fire",
+   "display_artist": "Summer Islands",
+   "duration_in_ms": 61390,
    "libreria": true
   },
   {
-   "audio_id": "873920756997122",
-   "title": "The Beast",
-   "display_artist": "Apesaw",
-   "duration_in_ms": 268050,
-   "libreria": true
-  },
-  {
-   "audio_id": "800297207899385",
-   "title": "Heros Journey",
-   "display_artist": "Abby Posner",
-   "duration_in_ms": 149047,
+   "audio_id": "1386871190037063",
+   "title": "Running",
+   "display_artist": "Summer Islands",
+   "duration_in_ms": 70064,
    "libreria": true
   }
  ]
