@@ -14283,7 +14283,9 @@
      "ok": true,
      "id": "18034045214912367",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -14345,7 +14347,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "_0Pe7zv2xTs"
+     "id": "_0Pe7zv2xTs",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -14356,11 +14359,77 @@
    },
    "spinto": true,
    "testo": "Non devi essere perfetto per iniziare."
+  },
+  {
+   "quando": "2026-11-12T21:02",
+   "slot": "2026-11-12 22:00",
+   "video": "IMG_4063.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-900bad6a",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "ancient_civilisations_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.39,
+     "movimento": 27.43,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 150,
+     "righe": 2,
+     "scurito": 0.48,
+     "luce": 0.36,
+     "sfumatura": 0.27,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 161,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 5
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_16.flac",
+    "musica_instagram": "Go Go Go! - Dhruv Goel [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "CN4c4TRGbE8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18375639376245967",
+     "prova": false,
+     "brano": "Go Go Go! - Dhruv Goel [tendenza]",
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Il meglio deve ancora venire."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-04 22:00",
   "2026-11-05 00:00",
   "2026-11-05 06:00",
   "2026-11-05 08:00",
@@ -14439,10 +14508,10 @@
   "2026-11-12 14:00",
   "2026-11-12 16:00",
   "2026-11-12 18:00",
-  "2026-11-12 20:00"
+  "2026-11-12 20:00",
+  "2026-11-12 22:00"
  ],
  "musica_recenti": [
-  "sweaty_staredown_3.m4a",
   "taking_flight_1.m4a",
   "delirium_3.m4a",
   "turn_in_the_sun_1.m4a",
@@ -14501,7 +14570,8 @@
   "survival_mode_1.m4a",
   "locked_in_2.m4a",
   "way_back_home_3.m4a",
-  "van_life_rager_2.m4a"
+  "van_life_rager_2.m4a",
+  "ancient_civilisations_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -14852,7 +14922,8 @@
   "MIE-ccde4efb",
   "MIE-643bdfb5",
   "MIE-33cdfba4",
-  "MIE-180d9824"
+  "MIE-180d9824",
+  "MIE-900bad6a"
  ],
  "temi_recenti": [
   "mentalita",
@@ -15202,8 +15273,9 @@
    "ultimo": "2026-10-23"
   },
   "1pRzrCnxNrpVE44ol_vENtqhmbuRc2YAN": {
-   "usi": 3,
-   "ultimo": "2026-11-04"
+   "usi": 4,
+   "ultimo": "2026-11-12",
+   "orizzontale": false
   },
   "1gE_FyJzF7yg-nilpN_tgldcTInZcTmkA": {
    "usi": 2,
@@ -15427,7 +15499,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_09.flac",
   "deciso_12.flac",
   "phonk_10.flac",
   "energia_01.flac",
@@ -15446,7 +15517,8 @@
   "deciso_10.flac",
   "trap_01.flac",
   "phonk_06.flac",
-  "deciso_01.flac"
+  "deciso_01.flac",
+  "trap_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -15481,7 +15553,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio3",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -15497,8 +15569,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "580920710907743",
-  "8196916917049261",
   "2173371459664032",
   "1108285910189784",
   "1015255657240675",
@@ -15556,12 +15626,12 @@
   "3643996589148382",
   "2818493204964733",
   "873920756997122",
-  "907634520516585"
+  "907634520516585",
+  "672409740985213",
+  "283066584103655"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Sam Marshall",
-  "bbox",
   "Ecklectic Music",
   "Trout Recording",
   "Giulio Cercato",
@@ -15569,11 +15639,11 @@
   "Chela Rivas",
   "Lyle Workman",
   "Apesaw",
-  "Jumbo"
+  "Jumbo",
+  "Adam Griffith",
+  "Dhruv Goel"
  ],
  "ig_titoli_recenti": [
-  "fighter",
-  "hype beast",
   "breathtaker",
   "move my body",
   "you can do it",
@@ -15611,7 +15681,9 @@
   "storm",
   "marathon weekend warriors",
   "the beast",
-  "beast"
+  "beast",
+  "champion",
+  "go go go"
  ],
  "ig_tendenze_riserva": [
   {
@@ -15629,17 +15701,10 @@
    "libreria": false
   },
   {
-   "audio_id": "907634520516585",
-   "title": "Beast",
-   "display_artist": "Jumbo",
-   "duration_in_ms": 165764,
-   "libreria": true
-  },
-  {
-   "audio_id": "397890202830542",
-   "title": "Carry The Motion",
-   "display_artist": "Global Genius",
-   "duration_in_ms": 194029,
+   "audio_id": "672409740985213",
+   "title": "Champion",
+   "display_artist": "Adam Griffith",
+   "duration_in_ms": 141051,
    "libreria": true
   },
   {
@@ -15650,17 +15715,17 @@
    "libreria": true
   },
   {
-   "audio_id": "1029338276527053",
-   "title": "Spanish Fire",
-   "display_artist": "Summer Islands",
-   "duration_in_ms": 61390,
+   "audio_id": "820220974302825",
+   "title": "Success (Instrumental)",
+   "display_artist": "stereogully",
+   "duration_in_ms": 123870,
    "libreria": true
   },
   {
-   "audio_id": "1386871190037063",
-   "title": "Running",
-   "display_artist": "Summer Islands",
-   "duration_in_ms": 70064,
+   "audio_id": "845285864683880",
+   "title": "Rise Of The Brave",
+   "display_artist": "Daria Novo",
+   "duration_in_ms": 216086,
    "libreria": true
   }
  ]
