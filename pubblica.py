@@ -3192,7 +3192,20 @@ def main():
             # 6/11/2026 (67 reel dal 29/10): a parita' di punteggio prima le frasi da 11-17 parole: YouTube ne ha
             # spinte il 39% (13 su 33), di quelle fino a 10 parole solo il 10% (3 su 31)
             giusta = lambda f: 11 <= len(f["gancio"].split()) <= 17
-            ordinate = sorted(frasi, key=lambda f: (-punti.get(f["id"], classifica_frasi.stima(f["gancio"], f.get("virale"))),
+            # 12/11/2026 (Alessandro: "dai priorita' alle frasi in italiano non tradotte, dai priorita' alle frasi con
+            # la musica che si vede dagli screenshot che puoi utilizzare"): 0 = suo screenshot con il brano,
+            # 1 = suo screenshot, 2 = frase italiana non tradotta, 3 = [virale] (spesso presa da video stranieri)
+            try:
+                import musica_screenshot
+                con_brano = set(k for k in musica_screenshot.leggi() if musica_screenshot.di(k))
+            except Exception:
+                con_brano = set()
+            def fascia(f):
+                if punti.get(f["id"]) == 100 or f["id"] in coda:
+                    return 0 if f["id"] in con_brano else 1
+                return 3 if f.get("virale") else 2
+            ordinate = sorted(frasi, key=lambda f: (fascia(f),
+                                                    -punti.get(f["id"], classifica_frasi.stima(f["gancio"], f.get("virale"))),
                                                     coda.get(f["id"], len(coda)), not giusta(f)))
             # 3/11/2026: mai due frasi con le stesse prime parole nello stesso giorno
             inizio = lambda t: " ".join(re.findall(r"\w+", (t or "").lower())[:2])
