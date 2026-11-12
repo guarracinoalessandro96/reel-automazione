@@ -14354,7 +14354,9 @@
      "ok": true,
      "id": "17929125537431826",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -14414,7 +14416,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "CN4c4TRGbE8"
+     "id": "CN4c4TRGbE8",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -14426,11 +14429,77 @@
    },
    "spinto": true,
    "testo": "Il meglio deve ancora venire."
+  },
+  {
+   "quando": "2026-11-12T23:01",
+   "slot": "2026-11-13 00:00",
+   "video": "IMG_4065.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-2a2aefe4",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio2",
+    "durata": 10.0,
+    "musica": "i_might_be_late_3.m4a",
+    "stacchi": 5,
+    "testi": 1,
+    "scene_dal_video": 4,
+    "viso_prima_scena": 4,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 18.95,
+     "primo_piano_fermo": false,
+     "soglia_moto": 4.81,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 144,
+     "righe": 2,
+     "scurito": 0.5,
+     "luce": 0.43,
+     "sfumatura": 0.32,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 180,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 8
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_01.flac",
+    "musica_instagram": "Beast Mode (feat. XODREW) - NINI, The Red Collective [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "rd5AHbD_l0Q"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18116071397165206",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Se non tu, chi? Se non ora, quando?"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-05 00:00",
   "2026-11-05 06:00",
   "2026-11-05 08:00",
   "2026-11-05 10:00",
@@ -14509,10 +14578,10 @@
   "2026-11-12 16:00",
   "2026-11-12 18:00",
   "2026-11-12 20:00",
-  "2026-11-12 22:00"
+  "2026-11-12 22:00",
+  "2026-11-13 00:00"
  ],
  "musica_recenti": [
-  "taking_flight_1.m4a",
   "delirium_3.m4a",
   "turn_in_the_sun_1.m4a",
   "duty_calls_2.m4a",
@@ -14571,7 +14640,8 @@
   "locked_in_2.m4a",
   "way_back_home_3.m4a",
   "van_life_rager_2.m4a",
-  "ancient_civilisations_2.m4a"
+  "ancient_civilisations_2.m4a",
+  "i_might_be_late_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -14923,7 +14993,8 @@
   "MIE-643bdfb5",
   "MIE-33cdfba4",
   "MIE-180d9824",
-  "MIE-900bad6a"
+  "MIE-900bad6a",
+  "MIE-2a2aefe4"
  ],
  "temi_recenti": [
   "mentalita",
@@ -15282,8 +15353,8 @@
    "ultimo": "2026-10-23"
   },
   "19lxUacEH3cLJ4agkgVgo3o7ErjaxO3My": {
-   "usi": 3,
-   "ultimo": "2026-11-04",
+   "usi": 4,
+   "ultimo": "2026-11-12",
    "orizzontale": false
   },
   "1UqKiP8I1uDBOGIlQ6FOiFV8glkTIPDqY": {
@@ -15499,7 +15570,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_12.flac",
   "phonk_10.flac",
   "energia_01.flac",
   "trap_15.flac",
@@ -15518,7 +15588,8 @@
   "trap_01.flac",
   "phonk_06.flac",
   "deciso_01.flac",
-  "trap_16.flac"
+  "trap_16.flac",
+  "phonk_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -15553,7 +15624,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "taglio2",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -15569,7 +15640,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2173371459664032",
   "1108285910189784",
   "1015255657240675",
   "1354603606762864",
@@ -15628,11 +15698,11 @@
   "873920756997122",
   "907634520516585",
   "672409740985213",
-  "283066584103655"
+  "283066584103655",
+  "605055452330912"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Ecklectic Music",
   "Trout Recording",
   "Giulio Cercato",
   "Jamie West-Oram",
@@ -15641,10 +15711,10 @@
   "Apesaw",
   "Jumbo",
   "Adam Griffith",
-  "Dhruv Goel"
+  "Dhruv Goel",
+  "NINI, The Red Collective"
  ],
  "ig_titoli_recenti": [
-  "breathtaker",
   "move my body",
   "you can do it",
   "marching",
@@ -15683,7 +15753,8 @@
   "the beast",
   "beast",
   "champion",
-  "go go go"
+  "go go go",
+  "beast mode"
  ],
  "ig_tendenze_riserva": [
   {
@@ -15701,31 +15772,38 @@
    "libreria": false
   },
   {
-   "audio_id": "672409740985213",
-   "title": "Champion",
-   "display_artist": "Adam Griffith",
-   "duration_in_ms": 141051,
+   "audio_id": "28473683348895849",
+   "title": "Rise Up",
+   "display_artist": "LAVLO",
+   "duration_in_ms": 51860,
    "libreria": true
   },
   {
-   "audio_id": "283066584103655",
-   "title": "Go Go Go!",
-   "display_artist": "Dhruv Goel",
-   "duration_in_ms": 117874,
+   "audio_id": "620334183626298",
+   "title": "Epica",
+   "display_artist": "Tony Dark Eyes",
+   "duration_in_ms": 156180,
    "libreria": true
   },
   {
-   "audio_id": "820220974302825",
-   "title": "Success (Instrumental)",
-   "display_artist": "stereogully",
-   "duration_in_ms": 123870,
+   "audio_id": "1151859204035484",
+   "title": "Uncanny (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 164300,
    "libreria": true
   },
   {
-   "audio_id": "845285864683880",
-   "title": "Rise Of The Brave",
-   "display_artist": "Daria Novo",
-   "duration_in_ms": 216086,
+   "audio_id": "605055452330912",
+   "title": "Beast Mode (feat. XODREW)",
+   "display_artist": "NINI, The Red Collective",
+   "duration_in_ms": 63420,
+   "libreria": true
+  },
+  {
+   "audio_id": "1774121270615760",
+   "title": "Unmatched Energy",
+   "display_artist": "Sbvce",
+   "duration_in_ms": 53590,
    "libreria": true
   }
  ]
