@@ -13988,7 +13988,9 @@
      "ok": true,
      "id": "18649112761048930",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -14051,7 +14053,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "yn09kswYBRw"
+     "id": "yn09kswYBRw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -14062,11 +14065,89 @@
    },
    "spinto": true,
    "testo": "Grazie per avermi mostrato quanto c'è da amare su me stesso."
+  },
+  {
+   "quando": "2026-11-12T13:01",
+   "slot": "2026-11-12 14:00",
+   "video": "IMG_3935.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-ccde4efb",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "giornata",
+    "durata": 10.0,
+    "musica": "survival_mode_1.m4a",
+    "stacchi": 6,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.405,
+     "movimento": 32.49,
+     "primo_piano_fermo": false,
+     "soglia_moto": 7.78
+    },
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 142,
+     "righe": 2,
+     "scurito": 0.53,
+     "luce": 0.5,
+     "sfumatura": 0.36,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scene": 6,
+    "con_viso": 5,
+    "viso_primo_secondo": true,
+    "gancio_azione": true,
+    "secondi_analisi": 147,
+    "stesso_giorno": 1,
+    "clip_scene": [
+     "IMG_4269.MOV",
+     "IMG_4271.MOV",
+     "IMG_4272.MOV",
+     "IMG_4274.MOV",
+     "IMG_4259.MOV"
+    ],
+    "giornata_del": "2026-10-26",
+    "secondi_montaggio": 369,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 6
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_10.flac",
+    "musica_instagram": "Storm - Chela Rivas"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "S36SRRcmiis"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17964484161230879",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Passo dopo passo, giorno dopo giorno."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-04 14:00",
   "2026-11-04 16:00",
   "2026-11-04 18:00",
   "2026-11-04 20:00",
@@ -14145,10 +14226,10 @@
   "2026-11-12 06:00",
   "2026-11-12 08:00",
   "2026-11-12 10:00",
-  "2026-11-12 12:00"
+  "2026-11-12 12:00",
+  "2026-11-12 14:00"
  ],
  "musica_recenti": [
-  "mirror_mirror_1.m4a",
   "i_might_be_late_3.m4a",
   "whoop_1.m4a",
   "break_ya_neck_1.m4a",
@@ -14207,7 +14288,8 @@
   "moon_vision_2.m4a",
   "keep_it_movin_2.m4a",
   "horizons_1.m4a",
-  "vibe_check_3.m4a"
+  "vibe_check_3.m4a",
+  "survival_mode_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -14554,7 +14636,8 @@
   "MIE-6d039cc3",
   "MIE-65509d4e",
   "MIE-1f9f8d20",
-  "MIE-0630e0f0"
+  "MIE-0630e0f0",
+  "MIE-ccde4efb"
  ],
  "temi_recenti": [
   "mentalita",
@@ -14774,8 +14857,8 @@
    "orizzontale": false
   },
   "1a2POnx-7OaYCvRXrpkTO6Qw_dTZ4CN-d": {
-   "usi": 3,
-   "ultimo": "2026-11-03",
+   "usi": 4,
+   "ultimo": "2026-11-12",
    "orizzontale": false
   },
   "1psghsoVp3I-dU4RMW8CuX7jIIkUpjvLc": {
@@ -15124,7 +15207,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_13.flac",
   "trap_06.flac",
   "deciso_01.flac",
   "phonk_01.flac",
@@ -15143,7 +15225,8 @@
   "deciso_03.flac",
   "phonk_15.flac",
   "drive_04.flac",
-  "energia_07.flac"
+  "energia_07.flac",
+  "deciso_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -15178,7 +15261,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "giornata",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -15194,7 +15277,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2388876744974625",
   "2865463390342861",
   "1076547086228050",
   "2373852472923170",
@@ -15253,11 +15335,11 @@
   "936174714667779",
   "6931473226905938",
   "974432747187721",
-  "556944786364191"
+  "556944786364191",
+  "3643996589148382"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Magnetic Sirens",
   "ill Think in ink",
   "Jumbo",
   "Ross Lara",
@@ -15266,10 +15348,10 @@
   "Ecklectic Music",
   "Trout Recording",
   "Giulio Cercato",
-  "Jamie West-Oram"
+  "Jamie West-Oram",
+  "Chela Rivas"
  ],
  "ig_titoli_recenti": [
-  "fight contigo",
   "careful believer",
   "epic proportions",
   "la marche des commis voyageurs",
@@ -15308,7 +15390,8 @@
   "adrenalina was her name",
   "running out of heaven tonight",
   "road warriors",
-  "battle ska"
+  "battle ska",
+  "storm"
  ],
  "ig_tendenze_riserva": [
   {
@@ -15326,17 +15409,10 @@
    "libreria": false
   },
   {
-   "audio_id": "2754720771336314",
-   "title": "Desert Fire",
-   "display_artist": "Golden Braid Productions",
-   "duration_in_ms": 194550,
-   "libreria": true
-  },
-  {
-   "audio_id": "556944786364191",
-   "title": "Battle Ska",
-   "display_artist": "Jamie West-Oram",
-   "duration_in_ms": 181510,
+   "audio_id": "485127744365118",
+   "title": "Fight Contigo (Instrumental)",
+   "display_artist": "Kolektivo",
+   "duration_in_ms": 165760,
    "libreria": true
   },
   {
