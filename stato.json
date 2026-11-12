@@ -14142,7 +14142,9 @@
      "ok": true,
      "id": "17964484161230879",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -14204,7 +14206,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "s9vwl09egx4"
+     "id": "s9vwl09egx4",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -14215,11 +14218,77 @@
    },
    "spinto": true,
    "testo": "Le persone giuste troveranno sempre un modo per restare."
+  },
+  {
+   "quando": "2026-11-12T17:00",
+   "slot": "2026-11-12 18:00",
+   "video": "IMG_4052.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-33cdfba4",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio1",
+    "durata": 10.0,
+    "musica": "way_back_home_3.m4a",
+    "stacchi": 10,
+    "testi": 1,
+    "scene_dal_video": 8,
+    "viso_prima_scena": 2,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 14.69,
+     "primo_piano_fermo": false,
+     "soglia_moto": 7.73,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 131,
+     "righe": 2,
+     "scurito": 0.52,
+     "luce": 0.44,
+     "sfumatura": 0.33,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 291,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 8
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_06.flac",
+    "musica_instagram": "The Beast - Apesaw [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "FtMle8W4ImU"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18034045214912367",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Non mollare, l'inizio è sempre il più difficile."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-04 18:00",
   "2026-11-04 20:00",
   "2026-11-04 22:00",
   "2026-11-05 00:00",
@@ -14298,10 +14367,10 @@
   "2026-11-12 10:00",
   "2026-11-12 12:00",
   "2026-11-12 14:00",
-  "2026-11-12 16:00"
+  "2026-11-12 16:00",
+  "2026-11-12 18:00"
  ],
  "musica_recenti": [
-  "whoop_1.m4a",
   "break_ya_neck_1.m4a",
   "sweaty_staredown_3.m4a",
   "taking_flight_1.m4a",
@@ -14360,7 +14429,8 @@
   "horizons_1.m4a",
   "vibe_check_3.m4a",
   "survival_mode_1.m4a",
-  "locked_in_2.m4a"
+  "locked_in_2.m4a",
+  "way_back_home_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -14709,7 +14779,8 @@
   "MIE-1f9f8d20",
   "MIE-0630e0f0",
   "MIE-ccde4efb",
-  "MIE-643bdfb5"
+  "MIE-643bdfb5",
+  "MIE-33cdfba4"
  ],
  "temi_recenti": [
   "mentalita",
@@ -14995,8 +15066,9 @@
    "orizzontale": true
   },
   "1PMBub0TfO5ny81j1Z7XXxvf01HLU8e9j": {
-   "usi": 3,
-   "ultimo": "2026-11-04"
+   "usi": 4,
+   "ultimo": "2026-11-12",
+   "orizzontale": false
   },
   "1SGGMjRnx6n1zbId63P80hrjMQDvxV6E7": {
    "usi": 2,
@@ -15281,7 +15353,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_01.flac",
   "phonk_01.flac",
   "drive_09.flac",
   "deciso_12.flac",
@@ -15300,7 +15371,8 @@
   "drive_04.flac",
   "energia_07.flac",
   "deciso_10.flac",
-  "trap_01.flac"
+  "trap_01.flac",
+  "phonk_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -15335,7 +15407,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio2",
+ "formato_ultimo": "taglio1",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -15351,7 +15423,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1076547086228050",
   "2373852472923170",
   "580920710907743",
   "8196916917049261",
@@ -15410,11 +15481,11 @@
   "974432747187721",
   "556944786364191",
   "3643996589148382",
-  "2818493204964733"
+  "2818493204964733",
+  "873920756997122"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jumbo",
   "Ross Lara",
   "Sam Marshall",
   "bbox",
@@ -15423,10 +15494,10 @@
   "Giulio Cercato",
   "Jamie West-Oram",
   "Chela Rivas",
-  "Lyle Workman"
+  "Lyle Workman",
+  "Apesaw"
  ],
  "ig_titoli_recenti": [
-  "epic proportions",
   "la marche des commis voyageurs",
   "fighter",
   "hype beast",
@@ -15465,7 +15536,8 @@
   "road warriors",
   "battle ska",
   "storm",
-  "marathon weekend warriors"
+  "marathon weekend warriors",
+  "the beast"
  ],
  "ig_tendenze_riserva": [
   {
@@ -15483,31 +15555,45 @@
    "libreria": false
   },
   {
-   "audio_id": "878487453608490",
-   "title": "Legend Of Castle Bran",
-   "display_artist": "Brent Bourgeois",
-   "duration_in_ms": 152621,
+   "audio_id": "472437631290189",
+   "title": "Soul (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 219500,
    "libreria": true
   },
   {
-   "audio_id": "7924819170928272",
-   "title": "Your Race To Win",
-   "display_artist": "Charlie Peacock",
-   "duration_in_ms": 136160,
+   "audio_id": "1552659642157024",
+   "title": "Running Through Gold",
+   "display_artist": "The Poison Oaks",
+   "duration_in_ms": 193934,
    "libreria": true
   },
   {
-   "audio_id": "1615649653514803",
-   "title": "Stronger",
-   "display_artist": "LAVLO",
-   "duration_in_ms": 63194,
+   "audio_id": "139421689171943",
+   "title": "Enigma (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 153256,
    "libreria": true
   },
   {
-   "audio_id": "2818493204964733",
-   "title": "Marathon Weekend Warriors",
-   "display_artist": "Lyle Workman",
-   "duration_in_ms": 251290,
+   "audio_id": "3396153023900256",
+   "title": "Sparkle Drain",
+   "display_artist": "cloud cover",
+   "duration_in_ms": 59530,
+   "libreria": true
+  },
+  {
+   "audio_id": "873920756997122",
+   "title": "The Beast",
+   "display_artist": "Apesaw",
+   "duration_in_ms": 268050,
+   "libreria": true
+  },
+  {
+   "audio_id": "800297207899385",
+   "title": "Heros Journey",
+   "display_artist": "Abby Posner",
+   "duration_in_ms": 149047,
    "libreria": true
   }
  ]
