@@ -76,10 +76,18 @@
    }
   },
   "2026-11-12": {
-   "invio": {
-    "da": "pc",
-    "ora": "2026-11-12T08:02:45+01:00",
-    "giro": "pc-4816-ba634a"
+   "inviato": "08:02",
+   "da": "pc",
+   "numeri": {
+    "YouTube": 2325,
+    "Instagram": 1611,
+    "Facebook": 148,
+    "TikTok": 2496
+   },
+   "youtube_totale": 1929365,
+   "tiktok": {
+    "data": "2026-11-10",
+    "views": 2496
    }
   }
  },
