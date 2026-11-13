@@ -14558,7 +14558,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "Rdc8hya9iJ8"
+     "id": "Rdc8hya9iJ8",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -14569,11 +14570,77 @@
    },
    "spinto": true,
    "testo": "Dietro ogni mia forza c'è il bene che mi hai dato e che non saprò mai ripagare davvero."
+  },
+  {
+   "quando": "2026-11-13T07:00",
+   "slot": "2026-11-13 08:00",
+   "video": "IMG_4135.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-3ef7a5bf",
+   "tema": "famiglia",
+   "montaggio": {
+    "formato": "loop",
+    "durata": 10.0,
+    "musica": "break_ya_neck_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.157,
+     "movimento": 5.97,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 3,
+     "scurito": 0.45,
+     "luce": 0.4,
+     "sfumatura": 0.3,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 261,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 12
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_07.flac",
+    "musica_instagram": "Sentimental Motion (Instrumental) - half.cool [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "iAX8hWGsO64"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18115062029613165",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Sei stata abbastanza forte da coprire anche il vuoto di un padre."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-05 08:00",
   "2026-11-05 10:00",
   "2026-11-05 12:00",
   "2026-11-05 14:00",
@@ -14652,10 +14719,10 @@
   "2026-11-12 20:00",
   "2026-11-12 22:00",
   "2026-11-13 00:00",
-  "2026-11-13 06:00"
+  "2026-11-13 06:00",
+  "2026-11-13 08:00"
  ],
  "musica_recenti": [
-  "turn_in_the_sun_1.m4a",
   "duty_calls_2.m4a",
   "stake_out_2.m4a",
   "cartier_1.m4a",
@@ -14714,7 +14781,8 @@
   "van_life_rager_2.m4a",
   "ancient_civilisations_2.m4a",
   "i_might_be_late_3.m4a",
-  "death_duel_3.m4a"
+  "death_duel_3.m4a",
+  "break_ya_neck_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -15068,7 +15136,8 @@
   "MIE-180d9824",
   "MIE-900bad6a",
   "MIE-2a2aefe4",
-  "MIE-320916ff"
+  "MIE-320916ff",
+  "MIE-3ef7a5bf"
  ],
  "temi_recenti": [
   "mentalita",
@@ -15080,7 +15149,7 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "famiglia"
  ],
  "analisi": {},
  "pulizia": "2026-11-13",
@@ -15446,8 +15515,9 @@
    "orizzontale": false
   },
   "1EIkrvNWHYfhUXhSzzqvvdiEFEPhXxmSi": {
-   "usi": 3,
-   "ultimo": "2026-11-05"
+   "usi": 4,
+   "ultimo": "2026-11-13",
+   "orizzontale": false
   },
   "1eFsX23f-gEnVKC5myas7iJmwUvbgQ-AX": {
    "usi": 2,
@@ -15645,7 +15715,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_01.flac",
   "trap_15.flac",
   "deciso_08.flac",
   "phonk_05.flac",
@@ -15664,7 +15733,8 @@
   "deciso_01.flac",
   "trap_16.flac",
   "phonk_01.flac",
-  "energia_06.flac"
+  "energia_06.flac",
+  "deciso_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -15699,7 +15769,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio3",
+ "formato_ultimo": "loop",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -15715,7 +15785,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1015255657240675",
   "1354603606762864",
   "888162299407391",
   "552615862069907",
@@ -15774,11 +15843,11 @@
   "672409740985213",
   "283066584103655",
   "605055452330912",
-  "1029338276527053"
+  "1029338276527053",
+  "313517751444003"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Giulio Cercato",
   "Jamie West-Oram",
   "Chela Rivas",
   "Lyle Workman",
@@ -15787,10 +15856,10 @@
   "Adam Griffith",
   "Dhruv Goel",
   "NINI, The Red Collective",
-  "Summer Islands"
+  "Summer Islands",
+  "half.cool"
  ],
  "ig_titoli_recenti": [
-  "you can do it",
   "marching",
   "your legacy",
   "move ur body",
@@ -15829,7 +15898,8 @@
   "champion",
   "go go go",
   "beast mode",
-  "spanish fire"
+  "spanish fire",
+  "sentimental motion"
  ],
  "ig_tendenze_riserva": [
   {
@@ -15847,31 +15917,38 @@
    "libreria": false
   },
   {
-   "audio_id": "566682361550021",
-   "title": "Thunder",
-   "display_artist": "Dirty Dave",
-   "duration_in_ms": 192603,
+   "audio_id": "1036027239348051",
+   "title": "Main Character March",
+   "display_artist": "cloud cover",
+   "duration_in_ms": 59140,
    "libreria": true
   },
   {
-   "audio_id": "1068592065620532",
-   "title": "Legendary",
-   "display_artist": "LAVLO",
-   "duration_in_ms": 67490,
+   "audio_id": "1612124633494978",
+   "title": "Você Me Deixa (Move That Body Round) (feat. dontkillrose) (Instrumental)",
+   "display_artist": "Kolektivo",
+   "duration_in_ms": 190765,
    "libreria": true
   },
   {
-   "audio_id": "3679159392392793",
-   "title": "Luxe Motion",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 112680,
+   "audio_id": "279294248187225",
+   "title": "The Willow's Fight",
+   "display_artist": "Symphonic Planet",
+   "duration_in_ms": 207900,
    "libreria": true
   },
   {
-   "audio_id": "1029338276527053",
-   "title": "Spanish Fire",
-   "display_artist": "Summer Islands",
-   "duration_in_ms": 61390,
+   "audio_id": "522339937196006",
+   "title": "Epic Proportions",
+   "display_artist": "Symphonic Planet",
+   "duration_in_ms": 185880,
+   "libreria": true
+  },
+  {
+   "audio_id": "313517751444003",
+   "title": "Sentimental Motion (Instrumental)",
+   "display_artist": "half.cool",
+   "duration_in_ms": 192050,
    "libreria": true
   }
  ]
