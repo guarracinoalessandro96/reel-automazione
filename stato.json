@@ -14786,7 +14786,9 @@
      "ok": true,
      "id": "18151217062530761",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -14848,7 +14850,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "JqY13mcYgWg"
+     "id": "JqY13mcYgWg",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -14859,11 +14862,76 @@
    },
    "spinto": true,
    "testo": "Nessuno fra quelli che hanno mai provato a sminuirmi ha una vita che ammiro. E questo mi basta."
+  },
+  {
+   "quando": "2026-11-13T15:00",
+   "slot": "2026-11-13 16:00",
+   "video": "IMG_4274.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-a65325e2",
+   "tema": "imprenditore",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "turn_in_the_sun_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 4,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.092,
+     "movimento": 4.27,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 112,
+     "righe": 5,
+     "scurito": 0.41,
+     "luce": 0.38,
+     "sfumatura": 0.28,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 205,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 23
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_05.flac",
+    "musica_instagram": "Heroes - Giulio Cercato [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "2tEXVKDf0m0"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17930794266183827",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Certo che ti odiano: hai iniziato con meno privilegi, meno soldi, meno connessioni e meno aiuto di loro, e li hai comunq"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-05 16:00",
   "2026-11-05 18:00",
   "2026-11-05 20:00",
   "2026-11-05 22:00",
@@ -14942,10 +15010,10 @@
   "2026-11-13 08:00",
   "2026-11-13 10:00",
   "2026-11-13 12:00",
-  "2026-11-13 14:00"
+  "2026-11-13 14:00",
+  "2026-11-13 16:00"
  ],
  "musica_recenti": [
-  "fire_in_the_sky_1.m4a",
   "the_road_to_mordor_3.m4a",
   "majestic_12_1.m4a",
   "rubberband_3.m4a",
@@ -15004,7 +15072,8 @@
   "break_ya_neck_1.m4a",
   "sweaty_staredown_3.m4a",
   "kick_it_1.m4a",
-  "cutscene_crush_1.m4a"
+  "cutscene_crush_1.m4a",
+  "turn_in_the_sun_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -15362,10 +15431,10 @@
   "MIE-3ef7a5bf",
   "MIE-6956041c",
   "MIE-c903f303",
-  "MIE-21592181"
+  "MIE-21592181",
+  "MIE-a65325e2"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -15374,7 +15443,8 @@
   "famiglia",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "imprenditore"
  ],
  "analisi": {},
  "pulizia": "2026-11-13",
@@ -15791,8 +15861,9 @@
    "orizzontale": false
   },
   "1VEPb54Y1oSgn1WwoX7EtQNTsLCC7CB4u": {
-   "usi": 3,
-   "ultimo": "2026-11-05"
+   "usi": 4,
+   "ultimo": "2026-11-13",
+   "orizzontale": false
   },
   "1ihXK6xEsYtfnFtAgP15kNGGE71G07W-f": {
    "usi": 3,
@@ -15948,7 +16019,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_02.flac",
   "deciso_06.flac",
   "energia_04.flac",
   "drive_16.flac",
@@ -15967,7 +16037,8 @@
   "deciso_07.flac",
   "phonk_10.flac",
   "drive_13.flac",
-  "trap_15.flac"
+  "trap_15.flac",
+  "phonk_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -16002,7 +16073,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -16018,7 +16089,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2242687643238503",
   "820220974302825",
   "1495460624383703",
   "23939038495769960",
@@ -16077,11 +16147,11 @@
   "313517751444003",
   "3605912576363284",
   "1354603606762864",
-  "850390349975783"
+  "850390349975783",
+  "920880257688447"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Apesaw",
   "Jumbo",
   "Adam Griffith",
   "Dhruv Goel",
@@ -16090,10 +16160,10 @@
   "half.cool",
   "Global Genius",
   "Blues369",
-  "Tony Dark Eyes"
+  "Tony Dark Eyes",
+  "Giulio Cercato"
  ],
  "ig_titoli_recenti": [
-  "i ll let you run",
   "peaceful motion",
   "not phonk",
   "cave fight",
@@ -16132,7 +16202,8 @@
   "sentimental motion",
   "nice move",
   "work hard dream big",
-  "move"
+  "move",
+  "heroes"
  ],
  "ig_tendenze_riserva": [
   {
@@ -16143,10 +16214,24 @@
    "libreria": false
   },
   {
-   "audio_id": "850390349975783",
-   "title": "Move (Instrumental)",
-   "display_artist": "Tony Dark Eyes",
-   "duration_in_ms": 103760,
+   "audio_id": "888162299407391",
+   "title": "Winner",
+   "display_artist": "Chela Rivas",
+   "duration_in_ms": 149760,
+   "libreria": true
+  },
+  {
+   "audio_id": "920880257688447",
+   "title": "Heroes",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 52430,
+   "libreria": true
+  },
+  {
+   "audio_id": "283066584103655",
+   "title": "Go Go Go!",
+   "display_artist": "Dhruv Goel",
+   "duration_in_ms": 117874,
    "libreria": true
   }
  ]
