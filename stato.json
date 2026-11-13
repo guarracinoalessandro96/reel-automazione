@@ -14857,7 +14857,9 @@
      "ok": true,
      "id": "18024287897942152",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -14917,7 +14919,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "2tEXVKDf0m0"
+     "id": "2tEXVKDf0m0",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -14928,11 +14931,78 @@
    },
    "spinto": true,
    "testo": "Certo che ti odiano: hai iniziato con meno privilegi, meno soldi, meno connessioni e meno aiuto di loro, e li hai comunq"
+  },
+  {
+   "quando": "2026-11-13T17:00",
+   "slot": "2026-11-13 18:00",
+   "video": "IMG_4271.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-526a38eb",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "rallenty",
+    "durata": 10.0,
+    "musica": "the_light_2.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.115,
+     "movimento": 6.65,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "velocita": 0.75,
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 112,
+     "righe": 8,
+     "scurito": 0.42,
+     "luce": 0.4,
+     "sfumatura": 0.3,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 178,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "io",
+     "forma": "due",
+     "parole": 39
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_03.flac",
+    "musica_instagram": "The Nerve - Elad Marish"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "pesRy4Mqbis"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18122373151752501",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Sinceramente, in questo momento la mia unica priorità è rimettere in sesto la mia vita e diventare la migliore versione "
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-05 18:00",
   "2026-11-05 20:00",
   "2026-11-05 22:00",
   "2026-11-06 00:00",
@@ -15011,10 +15081,10 @@
   "2026-11-13 10:00",
   "2026-11-13 12:00",
   "2026-11-13 14:00",
-  "2026-11-13 16:00"
+  "2026-11-13 16:00",
+  "2026-11-13 18:00"
  ],
  "musica_recenti": [
-  "the_road_to_mordor_3.m4a",
   "majestic_12_1.m4a",
   "rubberband_3.m4a",
   "ten_1.m4a",
@@ -15073,7 +15143,8 @@
   "sweaty_staredown_3.m4a",
   "kick_it_1.m4a",
   "cutscene_crush_1.m4a",
-  "turn_in_the_sun_3.m4a"
+  "turn_in_the_sun_3.m4a",
+  "the_light_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -15432,10 +15503,10 @@
   "MIE-6956041c",
   "MIE-c903f303",
   "MIE-21592181",
-  "MIE-a65325e2"
+  "MIE-a65325e2",
+  "MIE-526a38eb"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -15444,7 +15515,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "imprenditore"
+  "imprenditore",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-11-13",
@@ -15866,8 +15938,9 @@
    "orizzontale": false
   },
   "1ihXK6xEsYtfnFtAgP15kNGGE71G07W-f": {
-   "usi": 3,
-   "ultimo": "2026-11-05"
+   "usi": 4,
+   "ultimo": "2026-11-13",
+   "orizzontale": false
   },
   "1b6jLZrzSs8YwKhy4QEb382s6yYZIdhzZ": {
    "usi": 3,
@@ -16019,7 +16092,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_06.flac",
   "energia_04.flac",
   "drive_16.flac",
   "trap_07.flac",
@@ -16038,7 +16110,8 @@
   "phonk_10.flac",
   "drive_13.flac",
   "trap_15.flac",
-  "phonk_05.flac"
+  "phonk_05.flac",
+  "drive_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -16073,7 +16146,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "rallenty",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -16089,7 +16162,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "820220974302825",
   "1495460624383703",
   "23939038495769960",
   "1716216946466764",
@@ -16148,11 +16220,11 @@
   "3605912576363284",
   "1354603606762864",
   "850390349975783",
-  "920880257688447"
+  "920880257688447",
+  "393903371411311"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jumbo",
   "Adam Griffith",
   "Dhruv Goel",
   "NINI, The Red Collective",
@@ -16161,10 +16233,10 @@
   "Global Genius",
   "Blues369",
   "Tony Dark Eyes",
-  "Giulio Cercato"
+  "Giulio Cercato",
+  "Elad Marish"
  ],
  "ig_titoli_recenti": [
-  "peaceful motion",
   "not phonk",
   "cave fight",
   "stronger than you think",
@@ -16203,7 +16275,8 @@
   "nice move",
   "work hard dream big",
   "move",
-  "heroes"
+  "heroes",
+  "the nerve"
  ],
  "ig_tendenze_riserva": [
   {
@@ -16214,24 +16287,24 @@
    "libreria": false
   },
   {
-   "audio_id": "888162299407391",
-   "title": "Winner",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 149760,
+   "audio_id": "768339039520368",
+   "title": "Silent Spring (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 163638,
    "libreria": true
   },
   {
-   "audio_id": "920880257688447",
-   "title": "Heroes",
+   "audio_id": "795179878894620",
+   "title": "Move Me",
    "display_artist": "Giulio Cercato",
-   "duration_in_ms": 52430,
+   "duration_in_ms": 151967,
    "libreria": true
   },
   {
-   "audio_id": "283066584103655",
-   "title": "Go Go Go!",
-   "display_artist": "Dhruv Goel",
-   "duration_in_ms": 117874,
+   "audio_id": "601112655997356",
+   "title": "Orbiting (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 165490,
    "libreria": true
   }
  ]
