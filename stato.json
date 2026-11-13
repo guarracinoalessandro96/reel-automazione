@@ -14717,7 +14717,9 @@
      "ok": true,
      "id": "18104823038357888",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -14777,7 +14779,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "YdcbjSmO4x8"
+     "id": "YdcbjSmO4x8",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -14788,11 +14791,78 @@
    },
    "spinto": false,
    "testo": "Non dico spesso grazie, ma una parte di me ti deve tutto."
+  },
+  {
+   "quando": "2026-11-13T13:00",
+   "slot": "2026-11-13 14:00",
+   "video": "IMG_5120.mov",
+   "md5": "67c9efa3df52b50989853b5f4471be0e",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-11-12T09:06+01:00",
+   "frase": "MIE-21592181",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "cutscene_crush_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 4,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.402,
+     "movimento": 67.16,
+     "primo_piano_fermo": false,
+     "soglia_moto": 41.45,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 4,
+     "scurito": 0.0,
+     "luce": 0.54,
+     "sfumatura": 0.38,
+     "intatto": false,
+     "scene_intatte": 1
+    },
+    "secondi_montaggio": 122,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "io",
+     "forma": "due",
+     "parole": 18
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_15.flac",
+    "musica_instagram": "Move (Instrumental) - Tony Dark Eyes [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "JqY13mcYgWg"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18024287897942152",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Nessuno fra quelli che hanno mai provato a sminuirmi ha una vita che ammiro. E questo mi basta."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-05 14:00",
   "2026-11-05 16:00",
   "2026-11-05 18:00",
   "2026-11-05 20:00",
@@ -14871,10 +14941,10 @@
   "2026-11-13 06:00",
   "2026-11-13 08:00",
   "2026-11-13 10:00",
-  "2026-11-13 12:00"
+  "2026-11-13 12:00",
+  "2026-11-13 14:00"
  ],
  "musica_recenti": [
-  "cartier_1.m4a",
   "fire_in_the_sky_1.m4a",
   "the_road_to_mordor_3.m4a",
   "majestic_12_1.m4a",
@@ -14933,7 +15003,8 @@
   "death_duel_3.m4a",
   "break_ya_neck_1.m4a",
   "sweaty_staredown_3.m4a",
-  "kick_it_1.m4a"
+  "kick_it_1.m4a",
+  "cutscene_crush_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -15290,7 +15361,8 @@
   "MIE-320916ff",
   "MIE-3ef7a5bf",
   "MIE-6956041c",
-  "MIE-c903f303"
+  "MIE-c903f303",
+  "MIE-21592181"
  ],
  "temi_recenti": [
   "mentalita",
@@ -15299,8 +15371,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -15599,7 +15671,8 @@
   },
   "1ebzNdlPG-0cLcESWwbpn2LI0c4WUOM7P": {
    "usi": 2,
-   "ultimo": "2026-10-22"
+   "ultimo": "2026-10-22",
+   "orizzontale": false
   },
   "1fNkyh45gyqcWbr7dNtwE-jOutIxNjGFj": {
    "usi": 2,
@@ -15867,10 +15940,14 @@
    "usi": 1,
    "ultimo": "2026-11-11",
    "orizzontale": false
+  },
+  "1hsZNC-N_gcgdSXtWXXHXkwNpGILissxJ": {
+   "usi": 1,
+   "ultimo": "2026-11-13",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "phonk_05.flac",
   "trap_02.flac",
   "deciso_06.flac",
   "energia_04.flac",
@@ -15889,7 +15966,8 @@
   "energia_06.flac",
   "deciso_07.flac",
   "phonk_10.flac",
-  "drive_13.flac"
+  "drive_13.flac",
+  "trap_15.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -15924,7 +16002,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -15940,7 +16018,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "552615862069907",
   "2242687643238503",
   "820220974302825",
   "1495460624383703",
@@ -15999,11 +16076,11 @@
   "1029338276527053",
   "313517751444003",
   "3605912576363284",
-  "1354603606762864"
+  "1354603606762864",
+  "850390349975783"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Lyle Workman",
   "Apesaw",
   "Jumbo",
   "Adam Griffith",
@@ -16012,10 +16089,10 @@
   "Summer Islands",
   "half.cool",
   "Global Genius",
-  "Blues369"
+  "Blues369",
+  "Tony Dark Eyes"
  ],
  "ig_titoli_recenti": [
-  "move ur body",
   "i ll let you run",
   "peaceful motion",
   "not phonk",
@@ -16054,7 +16131,8 @@
   "spanish fire",
   "sentimental motion",
   "nice move",
-  "work hard dream big"
+  "work hard dream big",
+  "move"
  ],
  "ig_tendenze_riserva": [
   {
@@ -16063,6 +16141,13 @@
    "display_artist": "Blues369",
    "duration_in_ms": 274920,
    "libreria": false
+  },
+  {
+   "audio_id": "850390349975783",
+   "title": "Move (Instrumental)",
+   "display_artist": "Tony Dark Eyes",
+   "duration_in_ms": 103760,
+   "libreria": true
   }
  ]
 }
