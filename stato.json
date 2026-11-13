@@ -14635,7 +14635,9 @@
      "ok": true,
      "id": "18115062029613165",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -14708,7 +14710,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "LRQgiFbe3r0"
+     "id": "LRQgiFbe3r0",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -14719,11 +14722,76 @@
    },
    "spinto": true,
    "testo": "Se oggi non mollo è perché mi hai insegnato a resistere anche nei giorni in cui volevo sparire."
+  },
+  {
+   "quando": "2026-11-13T11:01",
+   "slot": "2026-11-13 12:00",
+   "video": "IMG_4120.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-c903f303",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 10.0,
+    "musica": "kick_it_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.17,
+     "movimento": 9.43,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 122,
+     "righe": 3,
+     "scurito": 0.47,
+     "luce": 0.4,
+     "sfumatura": 0.3,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 319,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "io",
+     "forma": "una",
+     "parole": 12
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_13.flac",
+    "musica_instagram": "Work hard, dream big - Blues369 [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "YdcbjSmO4x8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18151217062530761",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Non dico spesso grazie, ma una parte di me ti deve tutto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-05 12:00",
   "2026-11-05 14:00",
   "2026-11-05 16:00",
   "2026-11-05 18:00",
@@ -14802,10 +14870,10 @@
   "2026-11-13 00:00",
   "2026-11-13 06:00",
   "2026-11-13 08:00",
-  "2026-11-13 10:00"
+  "2026-11-13 10:00",
+  "2026-11-13 12:00"
  ],
  "musica_recenti": [
-  "stake_out_2.m4a",
   "cartier_1.m4a",
   "fire_in_the_sky_1.m4a",
   "the_road_to_mordor_3.m4a",
@@ -14864,7 +14932,8 @@
   "i_might_be_late_3.m4a",
   "death_duel_3.m4a",
   "break_ya_neck_1.m4a",
-  "sweaty_staredown_3.m4a"
+  "sweaty_staredown_3.m4a",
+  "kick_it_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -15220,7 +15289,8 @@
   "MIE-2a2aefe4",
   "MIE-320916ff",
   "MIE-3ef7a5bf",
-  "MIE-6956041c"
+  "MIE-6956041c",
+  "MIE-c903f303"
  ],
  "temi_recenti": [
   "mentalita",
@@ -15230,8 +15300,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -15634,8 +15704,9 @@
    "orizzontale": false
   },
   "1Tyefc-vEJZrdzNqOTaUh2yXtSQjsP7fg": {
-   "usi": 3,
-   "ultimo": "2026-11-05"
+   "usi": 4,
+   "ultimo": "2026-11-13",
+   "orizzontale": false
   },
   "1pDAftR96LYxUz7ZfUjOC4rrX4qrn3DF5": {
    "usi": 2,
@@ -15799,7 +15870,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_08.flac",
   "phonk_05.flac",
   "trap_02.flac",
   "deciso_06.flac",
@@ -15818,7 +15888,8 @@
   "phonk_01.flac",
   "energia_06.flac",
   "deciso_07.flac",
-  "phonk_10.flac"
+  "phonk_10.flac",
+  "drive_13.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -15853,7 +15924,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "giornata",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -15869,7 +15940,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "888162299407391",
   "552615862069907",
   "2242687643238503",
   "820220974302825",
@@ -15928,11 +15998,11 @@
   "605055452330912",
   "1029338276527053",
   "313517751444003",
-  "3605912576363284"
+  "3605912576363284",
+  "1354603606762864"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Chela Rivas",
   "Lyle Workman",
   "Apesaw",
   "Jumbo",
@@ -15941,10 +16011,10 @@
   "NINI, The Red Collective",
   "Summer Islands",
   "half.cool",
-  "Global Genius"
+  "Global Genius",
+  "Blues369"
  ],
  "ig_titoli_recenti": [
-  "your legacy",
   "move ur body",
   "i ll let you run",
   "peaceful motion",
@@ -15983,7 +16053,8 @@
   "beast mode",
   "spanish fire",
   "sentimental motion",
-  "nice move"
+  "nice move",
+  "work hard dream big"
  ],
  "ig_tendenze_riserva": [
   {
@@ -15992,34 +16063,6 @@
    "display_artist": "Blues369",
    "duration_in_ms": 274920,
    "libreria": false
-  },
-  {
-   "audio_id": "1478915717468599",
-   "title": "You Can't Always Get What You Want",
-   "display_artist": "Sam Fender",
-   "duration_in_ms": 209457,
-   "libreria": false
-  },
-  {
-   "audio_id": "813449818396457",
-   "title": "When I'm In Motion",
-   "display_artist": "Baegod",
-   "duration_in_ms": 179622,
-   "libreria": true
-  },
-  {
-   "audio_id": "820220974302825",
-   "title": "Success (Instrumental)",
-   "display_artist": "stereogully",
-   "duration_in_ms": 123870,
-   "libreria": true
-  },
-  {
-   "audio_id": "3605912576363284",
-   "title": "Nice Move",
-   "display_artist": "Global Genius",
-   "duration_in_ms": 177422,
-   "libreria": true
   }
  ]
 }
