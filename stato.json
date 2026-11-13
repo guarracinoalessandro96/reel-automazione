@@ -14424,7 +14424,9 @@
      "id": "18375639376245967",
      "prova": false,
      "brano": "Go Go Go! - Dhruv Goel [tendenza]",
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -14485,22 +14487,92 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "rd5AHbD_l0Q"
+     "id": "rd5AHbD_l0Q",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18116071397165206",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "Se non tu, chi? Se non ora, quando?"
+  },
+  {
+   "quando": "2026-11-13T05:00",
+   "slot": "2026-11-13 06:00",
+   "video": "IMG_4116.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-320916ff",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio3",
+    "durata": 10.0,
+    "musica": "death_duel_3.m4a",
+    "stacchi": 3,
+    "testi": 1,
+    "scene_dal_video": 3,
+    "viso_prima_scena": 3,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 22.21,
+     "primo_piano_fermo": false,
+     "soglia_moto": 5.81,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 4,
+     "scurito": 0.46,
+     "luce": 0.39,
+     "sfumatura": 0.3,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 266,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "io",
+     "forma": "una",
+     "parole": 18
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_06.flac",
+    "musica_instagram": "Spanish Fire - Summer Islands [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Rdc8hya9iJ8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18393743548238991",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Dietro ogni mia forza c'è il bene che mi hai dato e che non saprò mai ripagare davvero."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-05 06:00",
   "2026-11-05 08:00",
   "2026-11-05 10:00",
   "2026-11-05 12:00",
@@ -14579,10 +14651,10 @@
   "2026-11-12 18:00",
   "2026-11-12 20:00",
   "2026-11-12 22:00",
-  "2026-11-13 00:00"
+  "2026-11-13 00:00",
+  "2026-11-13 06:00"
  ],
  "musica_recenti": [
-  "delirium_3.m4a",
   "turn_in_the_sun_1.m4a",
   "duty_calls_2.m4a",
   "stake_out_2.m4a",
@@ -14641,7 +14713,8 @@
   "way_back_home_3.m4a",
   "van_life_rager_2.m4a",
   "ancient_civilisations_2.m4a",
-  "i_might_be_late_3.m4a"
+  "i_might_be_late_3.m4a",
+  "death_duel_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -14994,7 +15067,8 @@
   "MIE-33cdfba4",
   "MIE-180d9824",
   "MIE-900bad6a",
-  "MIE-2a2aefe4"
+  "MIE-2a2aefe4",
+  "MIE-320916ff"
  ],
  "temi_recenti": [
   "mentalita",
@@ -15009,7 +15083,7 @@
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-12",
+ "pulizia": "2026-11-13",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -15367,8 +15441,9 @@
    "ultimo": "2026-10-24"
   },
   "1RffuiBvFRbbbwuF-Qy2QfHTSEOUDPE8a": {
-   "usi": 3,
-   "ultimo": "2026-11-05"
+   "usi": 4,
+   "ultimo": "2026-11-13",
+   "orizzontale": false
   },
   "1EIkrvNWHYfhUXhSzzqvvdiEFEPhXxmSi": {
    "usi": 3,
@@ -15570,7 +15645,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_10.flac",
   "energia_01.flac",
   "trap_15.flac",
   "deciso_08.flac",
@@ -15589,7 +15663,8 @@
   "phonk_06.flac",
   "deciso_01.flac",
   "trap_16.flac",
-  "phonk_01.flac"
+  "phonk_01.flac",
+  "energia_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -15624,7 +15699,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio2",
+ "formato_ultimo": "taglio3",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -15640,7 +15715,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1108285910189784",
   "1015255657240675",
   "1354603606762864",
   "888162299407391",
@@ -15699,11 +15773,11 @@
   "907634520516585",
   "672409740985213",
   "283066584103655",
-  "605055452330912"
+  "605055452330912",
+  "1029338276527053"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Trout Recording",
   "Giulio Cercato",
   "Jamie West-Oram",
   "Chela Rivas",
@@ -15712,10 +15786,10 @@
   "Jumbo",
   "Adam Griffith",
   "Dhruv Goel",
-  "NINI, The Red Collective"
+  "NINI, The Red Collective",
+  "Summer Islands"
  ],
  "ig_titoli_recenti": [
-  "move my body",
   "you can do it",
   "marching",
   "your legacy",
@@ -15754,7 +15828,8 @@
   "beast",
   "champion",
   "go go go",
-  "beast mode"
+  "beast mode",
+  "spanish fire"
  ],
  "ig_tendenze_riserva": [
   {
@@ -15772,38 +15847,31 @@
    "libreria": false
   },
   {
-   "audio_id": "28473683348895849",
-   "title": "Rise Up",
+   "audio_id": "566682361550021",
+   "title": "Thunder",
+   "display_artist": "Dirty Dave",
+   "duration_in_ms": 192603,
+   "libreria": true
+  },
+  {
+   "audio_id": "1068592065620532",
+   "title": "Legendary",
    "display_artist": "LAVLO",
-   "duration_in_ms": 51860,
+   "duration_in_ms": 67490,
    "libreria": true
   },
   {
-   "audio_id": "620334183626298",
-   "title": "Epica",
-   "display_artist": "Tony Dark Eyes",
-   "duration_in_ms": 156180,
+   "audio_id": "3679159392392793",
+   "title": "Luxe Motion",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 112680,
    "libreria": true
   },
   {
-   "audio_id": "1151859204035484",
-   "title": "Uncanny (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 164300,
-   "libreria": true
-  },
-  {
-   "audio_id": "605055452330912",
-   "title": "Beast Mode (feat. XODREW)",
-   "display_artist": "NINI, The Red Collective",
-   "duration_in_ms": 63420,
-   "libreria": true
-  },
-  {
-   "audio_id": "1774121270615760",
-   "title": "Unmatched Energy",
-   "display_artist": "Sbvce",
-   "duration_in_ms": 53590,
+   "audio_id": "1029338276527053",
+   "title": "Spanish Fire",
+   "display_artist": "Summer Islands",
+   "duration_in_ms": 61390,
    "libreria": true
   }
  ]
