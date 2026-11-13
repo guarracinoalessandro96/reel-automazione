@@ -15066,7 +15066,9 @@
      "ok": true,
      "id": "18122648158963070",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -15126,7 +15128,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "_JPDHFQ6vdw"
+     "id": "_JPDHFQ6vdw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -15137,11 +15140,77 @@
    },
    "spinto": false,
    "testo": "Quella sensazione quando non sai più nemmeno cosa stai provando. Niente rabbia, niente felicità. Solo confusione. Esaust"
+  },
+  {
+   "quando": "2026-11-13T23:01",
+   "slot": "2026-11-14 00:00",
+   "video": "IMG_4269.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-b3b979d4",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "loop",
+    "durata": 10.0,
+    "musica": "the_road_to_mordor_2.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.108,
+     "movimento": 7.35,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 112,
+     "righe": 4,
+     "scurito": 0.41,
+     "luce": 0.39,
+     "sfumatura": 0.29,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 196,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 18
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_16.flac",
+    "musica_instagram": "Epic Battles - Trout Recording"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "EnljJi9DHoI"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18114838019151172",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Se le persone dubitano di quanto lontano puoi arrivare, spingiti così lontano in modo da non sentirle più."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-06 00:00",
   "2026-11-06 06:00",
   "2026-11-06 08:00",
   "2026-11-06 10:00",
@@ -15220,10 +15289,10 @@
   "2026-11-13 16:00",
   "2026-11-13 18:00",
   "2026-11-13 20:00",
-  "2026-11-13 22:00"
+  "2026-11-13 22:00",
+  "2026-11-14 00:00"
  ],
  "musica_recenti": [
-  "ten_1.m4a",
   "final_boss_battle_3.m4a",
   "ego_chall_2.m4a",
   "visions_1.m4a",
@@ -15282,7 +15351,8 @@
   "turn_in_the_sun_3.m4a",
   "the_light_2.m4a",
   "visions_2.m4a",
-  "duty_calls_3.m4a"
+  "duty_calls_3.m4a",
+  "the_road_to_mordor_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -15644,16 +15714,17 @@
   "MIE-a65325e2",
   "MIE-526a38eb",
   "MIE-fb16ea4a",
-  "MIE-ad1b0703"
+  "MIE-ad1b0703",
+  "MIE-b3b979d4"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "famiglia",
   "mentalita",
   "mentalita",
   "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -16093,8 +16164,9 @@
    "orizzontale": false
   },
   "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW": {
-   "usi": 3,
-   "ultimo": "2026-11-06"
+   "usi": 4,
+   "ultimo": "2026-11-13",
+   "orizzontale": false
   },
   "1sS5KtmGf3aPo3O8udU6R6rADRrUb-zMb": {
    "usi": 3,
@@ -16234,7 +16306,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_07.flac",
   "deciso_03.flac",
   "phonk_15.flac",
   "drive_04.flac",
@@ -16253,7 +16324,8 @@
   "phonk_05.flac",
   "drive_03.flac",
   "trap_11.flac",
-  "deciso_02.flac"
+  "deciso_02.flac",
+  "phonk_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -16288,7 +16360,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "loop",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -16304,7 +16376,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1716216946466764",
   "1868754054118430",
   "1774121270615760",
   "605387610085051",
@@ -16363,11 +16434,11 @@
   "920880257688447",
   "393903371411311",
   "1085647872473097",
-  "602890775391410"
+  "602890775391410",
+  "5301582899854512"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "NINI, The Red Collective",
   "Summer Islands",
   "half.cool",
   "Global Genius",
@@ -16376,10 +16447,10 @@
   "Giulio Cercato",
   "Elad Marish",
   "TrackTribe",
-  "Ross Lara"
+  "Ross Lara",
+  "Trout Recording"
  ],
  "ig_titoli_recenti": [
-  "stronger than you think",
   "rise of the brave",
   "reflect and rise",
   "you can t always get what you want",
@@ -16418,7 +16489,8 @@
   "heroes",
   "the nerve",
   "punk power",
-  "will you believe"
+  "will you believe",
+  "epic battles"
  ],
  "ig_tendenze_riserva": [
   {
@@ -16429,17 +16501,10 @@
    "libreria": false
   },
   {
-   "audio_id": "28748477811406397",
-   "title": "You Can Do This",
-   "display_artist": "Afterlight",
-   "duration_in_ms": 64289,
-   "libreria": true
-  },
-  {
-   "audio_id": "602890775391410",
-   "title": "Will You Believe",
+   "audio_id": "5814774055297093",
+   "title": "Running Waves",
    "display_artist": "Ross Lara",
-   "duration_in_ms": 231040,
+   "duration_in_ms": 150594,
    "libreria": true
   }
  ]
