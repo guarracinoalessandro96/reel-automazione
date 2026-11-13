@@ -14565,7 +14565,9 @@
      "ok": true,
      "id": "18393743548238991",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -14626,7 +14628,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "iAX8hWGsO64"
+     "id": "iAX8hWGsO64",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -14637,11 +14640,89 @@
    },
    "spinto": true,
    "testo": "Sei stata abbastanza forte da coprire anche il vuoto di un padre."
+  },
+  {
+   "quando": "2026-11-13T09:01",
+   "slot": "2026-11-13 10:00",
+   "video": "IMG_4129.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-6956041c",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "giornata",
+    "durata": 10.0,
+    "musica": "sweaty_staredown_3.m4a",
+    "stacchi": 7,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 10.39,
+     "primo_piano_fermo": false,
+     "soglia_moto": 10.15
+    },
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 4,
+     "scurito": 0.5,
+     "luce": 0.44,
+     "sfumatura": 0.33,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scene": 7,
+    "con_viso": 7,
+    "viso_primo_secondo": true,
+    "secondi_analisi": 314,
+    "stesso_giorno": 7,
+    "clip_scene": [
+     "IMG_4139.mov",
+     "IMG_4116.mov",
+     "IMG_4128.mov",
+     "IMG_4131.mov",
+     "IMG_4135.mov",
+     "IMG_4140.mov"
+    ],
+    "giornata_del": "2026-10-22",
+    "secondi_montaggio": 635,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "io",
+     "forma": "una",
+     "parole": 18
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_10.flac",
+    "musica_instagram": "Nice Move - Global Genius [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "LRQgiFbe3r0"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18104823038357888",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Se oggi non mollo è perché mi hai insegnato a resistere anche nei giorni in cui volevo sparire."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-05 10:00",
   "2026-11-05 12:00",
   "2026-11-05 14:00",
   "2026-11-05 16:00",
@@ -14720,10 +14801,10 @@
   "2026-11-12 22:00",
   "2026-11-13 00:00",
   "2026-11-13 06:00",
-  "2026-11-13 08:00"
+  "2026-11-13 08:00",
+  "2026-11-13 10:00"
  ],
  "musica_recenti": [
-  "duty_calls_2.m4a",
   "stake_out_2.m4a",
   "cartier_1.m4a",
   "fire_in_the_sky_1.m4a",
@@ -14782,7 +14863,8 @@
   "ancient_civilisations_2.m4a",
   "i_might_be_late_3.m4a",
   "death_duel_3.m4a",
-  "break_ya_neck_1.m4a"
+  "break_ya_neck_1.m4a",
+  "sweaty_staredown_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -15137,7 +15219,8 @@
   "MIE-900bad6a",
   "MIE-2a2aefe4",
   "MIE-320916ff",
-  "MIE-3ef7a5bf"
+  "MIE-3ef7a5bf",
+  "MIE-6956041c"
  ],
  "temi_recenti": [
   "mentalita",
@@ -15148,8 +15231,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
-  "famiglia"
+  "famiglia",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-11-13",
@@ -15524,8 +15607,9 @@
    "ultimo": "2026-10-26"
   },
   "1t2HdsGs2qhC9CeBp31JACRAZz9LjJwdV": {
-   "usi": 3,
-   "ultimo": "2026-11-05"
+   "usi": 4,
+   "ultimo": "2026-11-13",
+   "orizzontale": false
   },
   "1wIAA5bkWDLakZogTG-ehlMTtvzDMKN7q": {
    "usi": 2,
@@ -15715,7 +15799,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_15.flac",
   "deciso_08.flac",
   "phonk_05.flac",
   "trap_02.flac",
@@ -15734,7 +15817,8 @@
   "trap_16.flac",
   "phonk_01.flac",
   "energia_06.flac",
-  "deciso_07.flac"
+  "deciso_07.flac",
+  "phonk_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -15769,7 +15853,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "loop",
+ "formato_ultimo": "giornata",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -15785,7 +15869,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1354603606762864",
   "888162299407391",
   "552615862069907",
   "2242687643238503",
@@ -15844,11 +15927,11 @@
   "283066584103655",
   "605055452330912",
   "1029338276527053",
-  "313517751444003"
+  "313517751444003",
+  "3605912576363284"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jamie West-Oram",
   "Chela Rivas",
   "Lyle Workman",
   "Apesaw",
@@ -15857,10 +15940,10 @@
   "Dhruv Goel",
   "NINI, The Red Collective",
   "Summer Islands",
-  "half.cool"
+  "half.cool",
+  "Global Genius"
  ],
  "ig_titoli_recenti": [
-  "marching",
   "your legacy",
   "move ur body",
   "i ll let you run",
@@ -15899,7 +15982,8 @@
   "go go go",
   "beast mode",
   "spanish fire",
-  "sentimental motion"
+  "sentimental motion",
+  "nice move"
  ],
  "ig_tendenze_riserva": [
   {
@@ -15917,38 +16001,24 @@
    "libreria": false
   },
   {
-   "audio_id": "1036027239348051",
-   "title": "Main Character March",
-   "display_artist": "cloud cover",
-   "duration_in_ms": 59140,
+   "audio_id": "813449818396457",
+   "title": "When I'm In Motion",
+   "display_artist": "Baegod",
+   "duration_in_ms": 179622,
    "libreria": true
   },
   {
-   "audio_id": "1612124633494978",
-   "title": "Você Me Deixa (Move That Body Round) (feat. dontkillrose) (Instrumental)",
-   "display_artist": "Kolektivo",
-   "duration_in_ms": 190765,
+   "audio_id": "820220974302825",
+   "title": "Success (Instrumental)",
+   "display_artist": "stereogully",
+   "duration_in_ms": 123870,
    "libreria": true
   },
   {
-   "audio_id": "279294248187225",
-   "title": "The Willow's Fight",
-   "display_artist": "Symphonic Planet",
-   "duration_in_ms": 207900,
-   "libreria": true
-  },
-  {
-   "audio_id": "522339937196006",
-   "title": "Epic Proportions",
-   "display_artist": "Symphonic Planet",
-   "duration_in_ms": 185880,
-   "libreria": true
-  },
-  {
-   "audio_id": "313517751444003",
-   "title": "Sentimental Motion (Instrumental)",
-   "display_artist": "half.cool",
-   "duration_in_ms": 192050,
+   "audio_id": "3605912576363284",
+   "title": "Nice Move",
+   "display_artist": "Global Genius",
+   "duration_in_ms": 177422,
    "libreria": true
   }
  ]
