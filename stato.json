@@ -14926,7 +14926,9 @@
      "ok": true,
      "id": "17930794266183827",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -14988,7 +14990,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "pesRy4Mqbis"
+     "id": "pesRy4Mqbis",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -14999,11 +15002,76 @@
    },
    "spinto": true,
    "testo": "Sinceramente, in questo momento la mia unica priorità è rimettere in sesto la mia vita e diventare la migliore versione "
+  },
+  {
+   "quando": "2026-11-13T19:01",
+   "slot": "2026-11-13 20:00",
+   "video": "IMG_4272.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-fb16ea4a",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 10.0,
+    "musica": "visions_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 1,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 6.25,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 127,
+     "righe": 3,
+     "scurito": 0.31,
+     "luce": 0.31,
+     "sfumatura": 0.22,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 229,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 9
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_11.flac",
+    "musica_instagram": "Punk Power! - TrackTribe [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "9lFmy8EHRXs"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18122648158963070",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Tutto si supera. Solo che prima ti deve distruggere."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-05 20:00",
   "2026-11-05 22:00",
   "2026-11-06 00:00",
   "2026-11-06 06:00",
@@ -15082,10 +15150,10 @@
   "2026-11-13 12:00",
   "2026-11-13 14:00",
   "2026-11-13 16:00",
-  "2026-11-13 18:00"
+  "2026-11-13 18:00",
+  "2026-11-13 20:00"
  ],
  "musica_recenti": [
-  "majestic_12_1.m4a",
   "rubberband_3.m4a",
   "ten_1.m4a",
   "final_boss_battle_3.m4a",
@@ -15144,7 +15212,8 @@
   "kick_it_1.m4a",
   "cutscene_crush_1.m4a",
   "turn_in_the_sun_3.m4a",
-  "the_light_2.m4a"
+  "the_light_2.m4a",
+  "visions_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -15504,10 +15573,10 @@
   "MIE-c903f303",
   "MIE-21592181",
   "MIE-a65325e2",
-  "MIE-526a38eb"
+  "MIE-526a38eb",
+  "MIE-fb16ea4a"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -15516,6 +15585,7 @@
   "mentalita",
   "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -15943,8 +16013,9 @@
    "orizzontale": false
   },
   "1b6jLZrzSs8YwKhy4QEb382s6yYZIdhzZ": {
-   "usi": 3,
-   "ultimo": "2026-11-06"
+   "usi": 4,
+   "ultimo": "2026-11-13",
+   "orizzontale": false
   },
   "1OKyRxbpEUPABWJM5Ey1cGm-BG7E-Rv9h": {
    "usi": 3,
@@ -16092,7 +16163,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_04.flac",
   "drive_16.flac",
   "trap_07.flac",
   "deciso_03.flac",
@@ -16111,7 +16181,8 @@
   "drive_13.flac",
   "trap_15.flac",
   "phonk_05.flac",
-  "drive_03.flac"
+  "drive_03.flac",
+  "trap_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -16146,7 +16217,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "rallenty",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -16162,7 +16233,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1495460624383703",
   "23939038495769960",
   "1716216946466764",
   "1868754054118430",
@@ -16221,11 +16291,11 @@
   "1354603606762864",
   "850390349975783",
   "920880257688447",
-  "393903371411311"
+  "393903371411311",
+  "1085647872473097"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Adam Griffith",
   "Dhruv Goel",
   "NINI, The Red Collective",
   "Summer Islands",
@@ -16234,10 +16304,10 @@
   "Blues369",
   "Tony Dark Eyes",
   "Giulio Cercato",
-  "Elad Marish"
+  "Elad Marish",
+  "TrackTribe"
  ],
  "ig_titoli_recenti": [
-  "not phonk",
   "cave fight",
   "stronger than you think",
   "rise of the brave",
@@ -16276,7 +16346,8 @@
   "work hard dream big",
   "move",
   "heroes",
-  "the nerve"
+  "the nerve",
+  "punk power"
  ],
  "ig_tendenze_riserva": [
   {
@@ -16287,24 +16358,38 @@
    "libreria": false
   },
   {
-   "audio_id": "768339039520368",
-   "title": "Silent Spring (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 163638,
+   "audio_id": "744011543289259",
+   "title": "Winners Take All (feat. Briana Tyson)",
+   "display_artist": "Jonny Houlihan",
+   "duration_in_ms": 213980,
    "libreria": true
   },
   {
-   "audio_id": "795179878894620",
-   "title": "Move Me",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 151967,
+   "audio_id": "1085647872473097",
+   "title": "Punk Power!",
+   "display_artist": "TrackTribe",
+   "duration_in_ms": 61948,
    "libreria": true
   },
   {
-   "audio_id": "601112655997356",
-   "title": "Orbiting (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 165490,
+   "audio_id": "595861529686311",
+   "title": "Hero",
+   "display_artist": "Chela Rivas",
+   "duration_in_ms": 146716,
+   "libreria": true
+  },
+  {
+   "audio_id": "856221358845766",
+   "title": "What Now (feat. Dawson Gnewikow, Dawson March, Jacquire King)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 157400,
+   "libreria": true
+  },
+  {
+   "audio_id": "1186003979031011",
+   "title": "Hype Track",
+   "display_artist": "bbox",
+   "duration_in_ms": 171478,
    "libreria": true
   }
  ]
