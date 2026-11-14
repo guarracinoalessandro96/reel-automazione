@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Andamento social</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Social">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../icona-32.png">
+<link rel="apple-touch-icon" href="../icona-180.png">
+<style>
+  /* Andamento social: pagina pubblica di Alessandro, dati in dati.json (aggiornati ogni mattina da GitHub) */
+  :root { --bg:#f6f5f2; --fg:#1b1b1b; --mute:#6b6b6b; --line:#e2dfd8; --card:#fff; --ok:#1f8a4c; --bad:#c0392b;
+          --yt:#e62117; --ig:#c13584; --tt:#111111; --fb:#1877f2; --grid:#ebe8e2; color-scheme: light; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#121212; --fg:#f0f0f0; --mute:#9a9a9a; --line:#2c2c2c; --card:#1b1b1b;
+          --ok:#4cc27e; --bad:#ff6b5b; --yt:#ff4b42; --ig:#e05aa8; --tt:#e8e8e8; --fb:#4a95ff; --grid:#242424; color-scheme: dark; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         padding: max(14px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
+  main { max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+  h1 { font: 600 1.7rem/1.15 Georgia, "Times New Roman", serif; margin: 0 0 6px; }
+  h2 { font-size: 1.1rem; margin: 0; }
+  .take { margin: 0; color: var(--mute); max-width: 68ch; }
+  .take b { color: var(--fg); }
+  .agg { font-size: .78rem; color: var(--mute); margin: 6px 0 0; }
+  .sec { display: flex; flex-direction: column; gap: 12px; }
+  .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .card.tot { border: 2px solid var(--fg); }
+  .card h3 { margin: 0; font-size: .74rem; letter-spacing: .05em; text-transform: uppercase; color: var(--mute); display: flex; align-items: center; gap: 6px; font-weight: 600; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; display: inline-block; }
+  .big { font: 600 1.9rem/1.1 Georgia, serif; font-variant-numeric: tabular-nums; }
+  .day { font-size: .78rem; color: var(--mute); }
+  .cmp { list-style: none; margin: 4px 0 0; padding: 8px 0 0; border-top: 1px solid var(--line); display: grid; gap: 3px; font-size: .8rem; }
+  .cmp li { display: flex; justify-content: space-between; gap: 8px; color: var(--mute); }
+  .cmp b { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .su { color: var(--ok); } .giu { color: var(--bad); }
+  .tabs { display: flex; gap: 4px; }
+  .tabs button { font: inherit; font-size: .8rem; padding: 5px 11px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--mute); cursor: pointer; }
+  .tabs button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: .8rem; color: var(--mute); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .chart { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 10px 8px 4px; }
+  .chart svg { display: block; width: 100%; height: 280px; touch-action: pan-y; }
+  .chart text { fill: var(--mute); font-size: 11px; }
+  .tip { position: absolute; top: 10px; pointer-events: none; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font-size: .8rem; box-shadow: 0 4px 16px rgba(0,0,0,.12); min-width: 150px; }
+  .tip div { display: flex; justify-content: space-between; gap: 12px; font-variant-numeric: tabular-nums; }
+  .tip .t { font-weight: 600; margin-bottom: 3px; display: block; }
+  .wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+  table { border-collapse: collapse; width: 100%; font-size: .82rem; font-variant-numeric: tabular-nums; }
+  th, td { padding: 7px 10px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  th { color: var(--mute); font-weight: 600; }
+  td:last-child { font-weight: 600; }
+  .note { font-size: .78rem; color: var(--mute); margin: 0; max-width: 75ch; }
+  @media (max-width: 520px) {
+    .grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .card { padding: 11px; border-radius: 12px; }
+    .card.tot { grid-column: 1 / -1; }
+    .big { font-size: 1.55rem; }
+    .cmp li { flex-direction: column; gap: 0; }
+    h1 { font-size: 1.45rem; }
+    .chart svg { height: 230px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Andamento social</h1>
+    <p class="take" id="take">Caricamento dei numeri…</p>
+    <p class="agg" id="agg"></p>
+  </header>
+
+  <section class="sec">
+    <h2>Visualizzazioni</h2>
+    <div class="grid" id="schede-vis"></div>
+  </section>
+
+  <section class="sec">
+    <div class="head">
+      <h2>Visualizzazioni giorno per giorno</h2>
+      <div class="tabs" role="group" aria-label="Periodo">
+        <button type="button" data-g="14" aria-pressed="false">14 giorni</button>
+        <button type="button" data-g="30" aria-pressed="true">30 giorni</button>
+        <button type="button" data-g="90" aria-pressed="false">90 giorni</button>
+      </div>
+    </div>
+    <div class="legend" id="legenda"></div>
+    <div class="chart" id="grafico"></div>
+  </section>
+
+  <section class="sec">
+    <h2>Follower</h2>
+    <div class="grid" id="schede-fol"></div>
+  </section>
+
+  <section class="sec">
+    <h2>Ultimi 30 giorni</h2>
+    <div class="wrap"><table>
+      <thead><tr><th>Giorno</th><th>YouTube</th><th>Instagram</th><th>TikTok</th><th>Facebook</th><th>Totale</th></tr></thead>
+      <tbody id="righe"></tbody>
+    </table></div>
+  </section>
+
+  <p class="note">Visualizzazioni di ogni giorno, dalle piattaforme. TikTok dà i numeri con circa 2 giorni di ritardo: la sua scheda può riferirsi a un giorno prima degli altri, e il totale usa l'ultimo giorno che ha tutti e 4 i social. I confronti a 7 e 30 giorni compaiono quando ci sono tutti i giorni dei due periodi. Follower a fine giornata: i numeri veri si salvano ogni sera dal 23 settembre (TikTok dal 13 novembre); prima di allora YouTube e Facebook vengono dai dati delle piattaforme e Instagram è ricostruito dai nuovi follower di ogni giorno. Si aggiorna da solo ogni mattina.</p>
+</main>
+
+<script>
+const SOC = [["YouTube","--yt"],["Instagram","--ig"],["TikTok","--tt"],["Facebook","--fb"]];
+const MESI = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+const GIORNI = ["domenica","lunedì","martedì","mercoledì","giovedì","venerdì","sabato"];
+const fmt = (v) => v === null || v === undefined ? "—" : Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const dat = (iso) => { const d = new Date(iso + "T00:00:00Z"); return GIORNI[d.getUTCDay()] + " " + d.getUTCDate() + " " + MESI[d.getUTCMonth()]; };
+const indietro = (iso, k) => { const d = new Date(iso + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() - k); return d.toISOString().slice(0, 10); };
+const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; };
+let VIS = {}, FOL = {}, GIORNI_GRAF = 30;
+
+function conTotale(tab) {
+  const out = {};
+  Object.keys(tab).sort().forEach((g) => {
+    const r = Object.assign({}, tab[g]);
+    const t = SOC.map(([s]) => r[s]);
+    r.Totale = t.every((v) => v !== undefined && v !== null) ? t.reduce((a, b) => a + b, 0) : undefined;
+    out[g] = r;
+  });
+  return out;
+}
+function riepilogo(tab, s) {
+  const giorni = Object.keys(tab).filter((g) => tab[g][s] !== undefined).sort();
+  if (!giorni.length) return null;
+  const u = giorni[giorni.length - 1], val = (g) => (tab[g] || {})[s];
+  const somma = (da, n) => { let t = 0; for (let i = 0; i < n; i++) { const v = val(indietro(u, da + i)); if (v === undefined) return null; t += v; } return t; };
+  return { giorno: u, valore: val(u), prima: val(indietro(u, 1)), v7: val(indietro(u, 7)), v30: val(indietro(u, 30)),
+           s7: somma(0, 7), p7: somma(7, 7), s30: somma(0, 30), p30: somma(30, 30) };
+}
+function pct(a, b) {
+  if (a === null || a === undefined || !b) return ["—", ""];
+  const p = a / b - 1, n = Math.round(p * 100);
+  return [(n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n) + "%", n > 0 ? "su" : n < 0 ? "giu" : ""];
+}
+function diff(a, b) {
+  if (a === undefined || b === undefined || a === null || b === null) return ["—", ""];
+  const d = a - b;
+  return [(d > 0 ? "+" : d < 0 ? "−" : "") + fmt(Math.abs(d)), d > 0 ? "su" : d < 0 ? "giu" : ""];
+}
+function scheda(nome, colore, r, righe, prefisso) {
+  const c = el("article", "card" + (nome === "Totale" ? " tot" : ""));
+  const h = el("h3"); const d = el("span", "dot"); d.style.background = colore; h.append(d, nome); c.append(h);
+  c.append(el("div", "big", r ? fmt(r.valore) : "—"));
+  c.append(el("div", "day", r ? prefisso + dat(r.giorno) : "nessun dato"));
+  const ul = el("ul", "cmp");
+  righe.forEach(([etichetta, [testo, classe]]) => { const li = el("li", "", etichetta); const b = el("b", classe, testo); li.append(b); ul.append(li); });
+  c.append(ul);
+  return c;
+}
+function disegnaSchede() {
+  const v = conTotale(VIS), f = conTotale(FOL);
+  const sv = document.getElementById("schede-vis"), sf = document.getElementById("schede-fol");
+  sv.replaceChildren(); sf.replaceChildren();
+  [["Totale", "var(--fg)"]].concat(SOC.map(([s, c]) => [s, "var(" + c + ")"])).forEach(([s, col]) => {
+    const r = riepilogo(v, s);
+    sv.append(scheda(s, col, r, r ? [["vs giorno prima", pct(r.valore, r.prima)], ["7 giorni vs 7 prima", pct(r.s7, r.p7)], ["30 giorni vs 30 prima", pct(r.s30, r.p30)]] : [], ""));
+    const q = riepilogo(f, s);
+    sf.append(scheda(s, col, q, q ? [["vs giorno prima", diff(q.valore, q.prima)], ["in 7 giorni", diff(q.valore, q.v7)], ["in 30 giorni", diff(q.valore, q.v30)]] : [], "a fine "));
+  });
+  const r = riepilogo(v, "Totale");
+  const t = document.getElementById("take"); t.replaceChildren();
+  if (r) {
+    const [p] = pct(r.valore, r.prima), n = r.prima ? Math.round((r.valore / r.prima - 1) * 100) : null;
+    const b1 = el("b", "", dat(r.giorno)), b2 = el("b", "", fmt(r.valore));
+    t.append("Ultimo giorno completo, ", b1, ": ", b2, " visualizzazioni sui 4 social" +
+      (n === null ? "." : n >= 0 ? ", in crescita del " + Math.abs(n) + "% rispetto al giorno prima." : ", in calo del " + Math.abs(n) + "% rispetto al giorno prima."));
+  } else t.textContent = "Nessun dato ancora.";
+}
+function disegnaTabella() {
+  const v = conTotale(VIS), tb = document.getElementById("righe"); tb.replaceChildren();
+  Object.keys(v).sort().slice(-30).reverse().forEach((g) => {
+    const tr = el("tr"); tr.append(el("td", "", dat(g)));
+    SOC.map(([s]) => s).concat(["Totale"]).forEach((s) => tr.append(el("td", "", fmt(v[g][s]))));
+    tb.append(tr);
+  });
+}
+const NS = "http://www.w3.org/2000/svg";
+const sv = (tag, at) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); return e; };
+function disegnaGrafico() {
+  const box = document.getElementById("grafico"); box.replaceChildren();
+  const giorni = Object.keys(VIS).sort().slice(-GIORNI_GRAF);
+  if (!giorni.length) { box.textContent = "Nessun dato"; return; }
+  const W = Math.max(300, box.clientWidth - 16), H = box.clientWidth < 520 ? 230 : 280;
+  const max = Math.max(1, ...giorni.flatMap((g) => SOC.map(([s]) => VIS[g][s] || 0)));
+  const passo = Math.pow(10, Math.floor(Math.log10(max))), top = Math.ceil(max / passo) * passo;
+  const ticks = [0, top / 4, top / 2, top * 3 / 4, top];
+  const L = 8 + Math.max(...ticks.map((t) => fmt(t).length)) * 6.5, R = 10, T = 8, B = 22;
+  const x = (i) => L + (giorni.length === 1 ? 0 : i * (W - L - R) / (giorni.length - 1));
+  const y = (v) => T + (H - T - B) * (1 - v / top);
+  const svg = sv("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Visualizzazioni giornaliere dei 4 social negli ultimi " + giorni.length + " giorni" });
+  ticks.forEach((t) => {
+    svg.append(sv("line", { x1: L, x2: W - R, y1: y(t), y2: y(t), stroke: "var(--grid)" }));
+    const tx = sv("text", { x: L - 6, y: y(t) + 4, "text-anchor": "end" }); tx.textContent = fmt(t); svg.append(tx);
+  });
+  const nEt = Math.max(2, Math.min(giorni.length, Math.floor((W - L) / 60)));
+  for (let k = 0; k < nEt; k++) {
+    const i = Math.round(k * (giorni.length - 1) / Math.max(1, nEt - 1)), d = new Date(giorni[i] + "T00:00:00Z");
+    const tx = sv("text", { x: x(i), y: H - 6, "text-anchor": k === 0 ? "start" : k === nEt - 1 ? "end" : "middle" });
+    tx.textContent = d.getUTCDate() + "/" + (d.getUTCMonth() + 1); svg.append(tx);
+  }
+  SOC.forEach(([s, c]) => {
+    let dpath = "", su = false, ult = null;
+    giorni.forEach((g, i) => { const v = VIS[g][s]; if (v === undefined) { su = false; return; } dpath += (su ? "L" : "M") + x(i).toFixed(1) + "," + y(v).toFixed(1); su = true; ult = i; });
+    svg.append(sv("path", { d: dpath, fill: "none", stroke: `var(${c})`, "stroke-width": 2, "stroke-linejoin": "round" }));
+    if (ult !== null) svg.append(sv("circle", { cx: x(ult), cy: y(VIS[giorni[ult]][s]), r: 3.5, fill: `var(${c})` }));
+  });
+  const guida = sv("line", { y1: T, y2: H - B, stroke: "var(--mute)", "stroke-dasharray": "3 3", opacity: 0 }); svg.append(guida);
+  box.append(svg);
+  const tip = el("div", "tip"); tip.hidden = true; box.append(tip);
+  const muovi = (ev) => {
+    const rc = svg.getBoundingClientRect(), sx = (ev.clientX - rc.left) * W / rc.width;
+    const i = Math.max(0, Math.min(giorni.length - 1, Math.round((sx - L) / ((W - L - R) / Math.max(1, giorni.length - 1)))));
+    const g = giorni[i]; guida.setAttribute("x1", x(i)); guida.setAttribute("x2", x(i)); guida.setAttribute("opacity", 1);
+    tip.replaceChildren(el("span", "t", dat(g)));
+    let tot = 0, tutti = true;
+    SOC.forEach(([s, c]) => { const r = el("div"); const a = el("span", "", s); a.style.color = `var(${c})`; r.append(a, el("span", "", fmt(VIS[g][s]))); tip.append(r); if (VIS[g][s] === undefined) tutti = false; else tot += VIS[g][s]; });
+    const r = el("div"); r.append(el("span", "", "Totale"), el("span", "", tutti ? fmt(tot) : "—")); tip.append(r);
+    tip.hidden = false;
+    const px = x(i) * rc.width / W + 8; let lx = px + 12;
+    if (lx + tip.offsetWidth > box.clientWidth) lx = px - tip.offsetWidth - 12;
+    tip.style.left = Math.max(4, lx) + "px";
+  };
+  svg.addEventListener("pointermove", muovi); svg.addEventListener("pointerdown", muovi);
+  svg.addEventListener("pointerleave", () => { tip.hidden = true; guida.setAttribute("opacity", 0); });
+}
+document.getElementById("legenda").append(...SOC.map(([s, c]) => { const sp = el("span"); const d = el("span", "dot"); d.style.background = `var(${c})`; sp.append(d, s); return sp; }));
+document.querySelectorAll(".tabs button").forEach((b) => b.addEventListener("click", () => {
+  GIORNI_GRAF = +b.dataset.g;
+  document.querySelectorAll(".tabs button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  disegnaGrafico();
+}));
+let largh = 0;
+window.addEventListener("resize", () => { if (Math.abs(window.innerWidth - largh) > 30) { largh = window.innerWidth; disegnaGrafico(); } });
+fetch("dati.json?v=" + Date.now(), { cache: "no-store" }).then((r) => r.json()).then((d) => {
+  VIS = d.visualizzazioni || {}; FOL = d.follower || {}; largh = window.innerWidth;
+  if (d.aggiornato) document.getElementById("agg").textContent = "Aggiornato: " + d.aggiornato.slice(8, 10) + "/" + d.aggiornato.slice(5, 7) + " alle " + d.aggiornato.slice(11);
+  disegnaSchede(); disegnaGrafico(); disegnaTabella();
+}).catch(() => { document.getElementById("take").textContent = "Numeri non caricati: riprova tra poco."; });
+</script>
+</body>
+</html>
