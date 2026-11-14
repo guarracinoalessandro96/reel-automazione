@@ -29,12 +29,10 @@
          background: radial-gradient(120% 60% at 50% -10%, rgba(255, 183, 3, .22), transparent 60%),
                      radial-gradient(80% 50% at 100% 100%, rgba(251, 133, 0, .12), transparent 60%), var(--bg);
          background-attachment: fixed;
-         padding: max(18px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(28px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
+         padding: calc(env(safe-area-inset-top, 0px) + 28px) max(16px, env(safe-area-inset-right)) max(28px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
   #stelle { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
   main { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
-  h2 { font: 800 1.5rem/1.1 var(--serif); margin: 0; letter-spacing: .01em;
-       background: linear-gradient(180deg, var(--crema), var(--oro) 55%, var(--oro2)); -webkit-background-clip: text; background-clip: text; color: transparent;
-       filter: drop-shadow(0 2px 12px rgba(255, 200, 0, .35)); }
+  h2 { font: 800 1.5rem/1.15 var(--serif); margin: 0; letter-spacing: .01em; color: var(--oro); text-shadow: 0 0 18px rgba(255, 190, 0, .45); }
   .sec { display: flex; flex-direction: column; gap: 14px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; perspective: 900px; }
 
@@ -59,6 +57,25 @@
   .card.tot .cmp li { flex-direction: column; gap: 2px; }
   .cmp li { display: flex; justify-content: space-between; gap: 8px; color: var(--mute); }
   .cmp b { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; color: var(--testo); }
+  .confronta { display: flex; flex-direction: column; gap: 8px; }
+  .confronta span { font-size: .78rem; color: var(--mute); letter-spacing: .04em; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; padding: 6px 12px 6px 9px; border-radius: 999px;
+           font: 700 1rem/1 var(--sans); font-variant-numeric: tabular-nums; transform: translateZ(30px); }
+  .badge .fr { font-size: 1.05rem; }
+  .badge.su { background: rgba(184, 241, 113, .14); border: 1px solid rgba(184, 241, 113, .5); box-shadow: 0 0 16px rgba(184, 241, 113, .25); }
+  .badge.giu { background: rgba(255, 138, 122, .14); border: 1px solid rgba(255, 138, 122, .5); box-shadow: 0 0 16px rgba(255, 138, 122, .25); }
+  .badge.pari { background: rgba(255, 243, 176, .08); border: 1px solid rgba(255, 243, 176, .3); color: var(--crema); }
+  .badge.nd { background: transparent; border: 1px dashed rgba(255, 214, 10, .3); color: var(--mute); font: 500 .76rem/1.2 var(--sans); }
+  .card.tot .badge { font-size: 1.25rem; padding: 8px 14px 8px 11px; }
+  .card.tot .badge.nd { font-size: .8rem; padding: 6px 12px; }
+  .frase { font-size: .8rem; color: var(--mute); transform: translateZ(10px); }
+  .frase b { color: var(--testo); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .duo { display: grid; gap: 5px; margin-top: 4px; transform: translateZ(14px); }
+  .duo div { display: grid; grid-template-columns: 74px 1fr; align-items: center; gap: 8px; font-size: .7rem; color: var(--mute); }
+  .duo em { display: block; height: 8px; border-radius: 99px; background: rgba(255, 243, 176, .07); overflow: hidden; }
+  .duo i { display: block; height: 100%; border-radius: 99px; min-width: 3px; }
+  .duo .p { background: rgba(255, 243, 176, .28); }
+  .duo .o { background: linear-gradient(90deg, var(--oro2), var(--oro)); box-shadow: 0 0 10px rgba(255, 200, 0, .5); }
   .su { color: var(--su) !important; } .giu { color: var(--giu) !important; }
 
   .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -119,6 +136,12 @@
 <main>
   <section class="sec">
     <h2>Visualizzazioni</h2>
+    <div class="confronta"><span>Confronta con</span>
+      <div class="tabs" role="group" aria-label="Confronta con" data-conf="vis">
+        <button type="button" data-c="1" aria-pressed="true">Giorno prima</button>
+        <button type="button" data-c="7" aria-pressed="false">Settimana prima</button>
+        <button type="button" data-c="30" aria-pressed="false">Mese prima</button>
+      </div></div>
     <div class="grid" id="schede-vis"></div>
   </section>
 
@@ -137,6 +160,12 @@
 
   <section class="sec">
     <h2>Follower</h2>
+    <div class="confronta"><span>Confronta con</span>
+      <div class="tabs" role="group" aria-label="Confronta con" data-conf="fol">
+        <button type="button" data-c="1" aria-pressed="true">Giorno prima</button>
+        <button type="button" data-c="7" aria-pressed="false">Settimana prima</button>
+        <button type="button" data-c="30" aria-pressed="false">Mese prima</button>
+      </div></div>
     <div class="grid" id="schede-fol"></div>
   </section>
 
@@ -189,27 +218,68 @@ function inclina(c) {
   c.addEventListener("pointermove", muovi); c.addEventListener("pointerdown", muovi);
   c.addEventListener("pointerleave", () => { c.style.transform = ""; });
 }
-function scheda(nome, colore, r, righe, prefisso) {
-  const c = el("article", "card" + (nome === "Totale" ? " tot" : ""));
-  const h = el("h3"); const d = el("span", "dot"); d.style.background = colore; d.style.color = colore; h.append(d, nome); c.append(h);
-  c.append(el("div", "big", r ? fmt(r.valore) : "—"));
-  c.append(el("div", "day", r ? prefisso + dat(r.giorno) : "nessun dato"));
-  const ul = el("ul", "cmp");
-  righe.forEach(([etichetta, [testo, classe]]) => { const li = el("li", "", etichetta); li.append(el("b", classe, testo)); ul.append(li); });
-  c.append(ul); inclina(c);
-  return c;
+let CONF = { vis: "1", fol: "1" };
+const NOMI_C = { "1": ["ieri", "il giorno prima"], "7": ["la settimana prima", "nei 7 giorni prima"], "30": ["il mese prima", "nei 30 giorni prima"] };
+function confrontoVis(tab, s, c) {
+  const r = riepilogo(tab, s); if (!r) return null;
+  if (c === "1") return { ora: r.valore, prima: r.prima, quando: dat(r.giorno), etOra: "ultimo giorno", etPrima: "giorno prima" };
+  if (c === "7") return { ora: r.s7, prima: r.p7, quando: "ultimi 7 giorni, fino a " + dat(r.giorno), etOra: "questi 7 gg", etPrima: "7 gg prima" };
+  return { ora: r.s30, prima: r.p30, quando: "ultimi 30 giorni, fino a " + dat(r.giorno), etOra: "questi 30 gg", etPrima: "30 gg prima" };
+}
+function confrontoFol(tab, s, c) {
+  const r = riepilogo(tab, s); if (!r) return null;
+  const prima = c === "1" ? r.prima : c === "7" ? r.v7 : r.v30;
+  return { ora: r.valore, prima, quando: "a fine " + dat(r.giorno), etOra: "adesso", etPrima: c === "1" ? "ieri" : c === "7" ? "7 gg fa" : "30 gg fa" };
+}
+function scheda(nome, colore, x, c, follower) {
+  const card = el("article", "card" + (nome === "Totale" ? " tot" : ""));
+  const h = el("h3"); const d = el("span", "dot"); d.style.background = colore; d.style.color = colore; h.append(d, nome); card.append(h);
+  const ok = x && x.ora !== null && x.ora !== undefined;
+  card.append(el("div", "big", ok ? fmt(x.ora) : "—"));
+  card.append(el("div", "day", x ? x.quando : "nessun dato"));
+  const confronto = ok && x.prima !== null && x.prima !== undefined;
+  if (!confronto) {
+    card.append(el("div", "badge nd", "confronto non ancora disponibile"));
+  } else {
+    const diffN = x.ora - x.prima, p = x.prima ? Math.round((x.ora / x.prima - 1) * 100) : null;
+    const cls = diffN > 0 ? "su" : diffN < 0 ? "giu" : "pari";
+    const b = el("div", "badge " + cls);
+    b.append(el("span", "fr", diffN > 0 ? "▲" : diffN < 0 ? "▼" : "="));
+    b.append(follower ? (diffN > 0 ? "+" : diffN < 0 ? "−" : "") + fmt(Math.abs(diffN)) + (diffN === 1 || diffN === -1 ? " follower" : " follower")
+                      : (p === null ? "nuovo" : (p > 0 ? "+" : p < 0 ? "−" : "") + Math.abs(p) + "%"));
+    card.append(b);
+    const fr = el("div", "frase");
+    if (follower) {
+      fr.append(diffN === 0 ? "uguale a " : diffN > 0 ? "in più rispetto a " : "in meno rispetto a ", NOMI_C[c][0] === "ieri" ? "ieri" : NOMI_C[c][0], " (", el("b", "", fmt(x.prima)), ")");
+    } else {
+      fr.append(diffN === 0 ? "uguale " : diffN > 0 ? el("b", "", "+" + fmt(diffN)) : el("b", "", "−" + fmt(-diffN)), diffN === 0 ? "" : " visualizzazioni ", "rispetto a ", NOMI_C[c][0], " (", el("b", "", fmt(x.prima)), ")");
+    }
+    card.append(fr);
+    const max = Math.max(x.ora, x.prima, 1), duo = el("div", "duo");
+    [[x.etPrima, x.prima, "p"], [x.etOra, x.ora, "o"]].forEach(([et, v, k]) => {
+      const riga = el("div"); riga.append(el("span", "", et)); const pista = el("em"); const barra = el("i", k); pista.append(barra); riga.append(pista); duo.append(riga);
+      const w = follower ? 30 + 70 * (v - Math.min(x.ora, x.prima)) / Math.max(1, Math.abs(x.ora - x.prima)) : (v / max) * 100;
+      barra.style.width = Math.max(3, Math.min(100, w)) + "%";
+    });
+    card.append(duo);
+  }
+  inclina(card);
+  return card;
 }
 function disegnaSchede() {
   const v = conTotale(VIS), f = conTotale(FOL);
   const sv = document.getElementById("schede-vis"), sf = document.getElementById("schede-fol");
   sv.replaceChildren(); sf.replaceChildren();
   [["Totale", "#fff8e1"]].concat(SOC.map(([s, c]) => [s, c])).forEach(([s, col]) => {
-    const r = riepilogo(v, s);
-    sv.append(scheda(s, col, r, r ? [["vs giorno prima", pct(r.valore, r.prima)], ["7 giorni vs 7 prima", pct(r.s7, r.p7)], ["30 giorni vs 30 prima", pct(r.s30, r.p30)]] : [], ""));
-    const q = riepilogo(f, s);
-    sf.append(scheda(s, col, q, q ? [["vs giorno prima", diff(q.valore, q.prima)], ["in 7 giorni", diff(q.valore, q.v7)], ["in 30 giorni", diff(q.valore, q.v30)]] : [], "a fine "));
+    sv.append(scheda(s, col, confrontoVis(v, s, CONF.vis), CONF.vis, false));
+    sf.append(scheda(s, col, confrontoFol(f, s, CONF.fol), CONF.fol, true));
   });
 }
+document.querySelectorAll("[data-conf]").forEach((g) => g.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
+  CONF[g.dataset.conf] = b.dataset.c;
+  g.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  disegnaSchede();
+})));
 
 /* oggi / ieri: barre 3D dei 4 social. "Oggi" = l'ultimo giorno che le piattaforme hanno gia' dato per intero */
 function giornoDi(p) {
@@ -324,9 +394,9 @@ function disegnaGrafico() {
 })();
 
 document.getElementById("legenda").append(...SOC.map(([s, c]) => { const sp = el("span"); const d = el("span", "dot"); d.style.background = c; d.style.color = c; sp.append(d, s); return sp; }));
-document.querySelectorAll(".tabs button").forEach((b) => b.addEventListener("click", () => {
+document.querySelectorAll(".tabs[aria-label=Periodo] button").forEach((b) => b.addEventListener("click", () => {
   PERIODO = b.dataset.p;
-  document.querySelectorAll(".tabs button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  document.querySelectorAll(".tabs[aria-label=Periodo] button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
   disegnaGrafico();
 }));
 let largh = 0;
