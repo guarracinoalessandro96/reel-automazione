@@ -15549,7 +15549,9 @@
      "ok": true,
      "id": "18423278782080619",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -15610,7 +15612,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "xZAA1EUIa8o"
+     "id": "xZAA1EUIa8o",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -15621,11 +15624,77 @@
    },
    "spinto": true,
    "testo": "Alcune persone non si rendono conto di quanta luce portino nella vita degli altri semplicemente essendo sé stesse. Tu se"
+  },
+  {
+   "quando": "2026-11-14T17:00",
+   "slot": "2026-11-14 18:00",
+   "video": "IMG_4302.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-47e564b9",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "loop",
+    "durata": 10.0,
+    "musica": "taking_flight_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 4,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.117,
+     "movimento": 7.11,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 112,
+     "righe": 8,
+     "scurito": 0.37,
+     "luce": 0.34,
+     "sfumatura": 0.24,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 163,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "due",
+     "parole": 23
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_12.flac",
+    "musica_instagram": "Epica - Tony Dark Eyes"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "x_ADzQVduQs"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17985834794903762",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Una delle benedizioni più sottovalutate è incontrare persone che vogliono davvero vederti vincere. Nessuna competizione,"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-06 18:00",
   "2026-11-06 20:00",
   "2026-11-06 22:00",
   "2026-11-07 00:00",
@@ -15704,10 +15773,10 @@
   "2026-11-14 10:00",
   "2026-11-14 12:00",
   "2026-11-14 14:00",
-  "2026-11-14 16:00"
+  "2026-11-14 16:00",
+  "2026-11-14 18:00"
  ],
  "musica_recenti": [
-  "keep_it_movin_3.m4a",
   "intergalactic_3.m4a",
   "horizons_2.m4a",
   "moon_vision_1.m4a",
@@ -15766,7 +15835,8 @@
   "rubberband_1.m4a",
   "delirium_3.m4a",
   "whoop_1.m4a",
-  "ten_1.m4a"
+  "ten_1.m4a",
+  "taking_flight_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -16135,7 +16205,8 @@
   "MIE-67a269f1",
   "MIE-58f6ed51",
   "MIE-8432cd82",
-  "MIE-ed389b29"
+  "MIE-ed389b29",
+  "MIE-47e564b9"
  ],
  "temi_recenti": [
   "mentalita",
@@ -16145,8 +16216,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -16618,8 +16689,9 @@
    "orizzontale": false
   },
   "1UefrogLKDdOKHxCBjQOsFjEsNFOeSefT": {
-   "usi": 3,
-   "ultimo": "2026-11-06"
+   "usi": 4,
+   "ultimo": "2026-11-14",
+   "orizzontale": false
   },
   "1pHaSrw5l22--hj6mculM4Wx5XnAw4U-3": {
    "usi": 3,
@@ -16731,7 +16803,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_06.flac",
   "deciso_01.flac",
   "trap_16.flac",
   "phonk_01.flac",
@@ -16750,7 +16821,8 @@
   "phonk_09.flac",
   "trap_06.flac",
   "drive_01.flac",
-  "phonk_02.flac"
+  "phonk_02.flac",
+  "trap_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -16785,7 +16857,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio3",
+ "formato_ultimo": "loop",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -16801,7 +16873,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1546581635764552",
   "1377485917727304",
   "612291812716191",
   "1372666635060078",
@@ -16860,11 +16931,11 @@
   "727931292858890",
   "605387610085051",
   "774667642107625",
-  "2242687643238503"
+  "2242687643238503",
+  "620334183626298"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Elad Marish",
   "TrackTribe",
   "Ross Lara",
   "Trout Recording",
@@ -16873,10 +16944,10 @@
   "The K Club",
   "Vault 49",
   "Sam Marshall",
-  "Fellow Travelers"
+  "Fellow Travelers",
+  "Tony Dark Eyes"
  ],
  "ig_titoli_recenti": [
-  "can t run away remix",
   "main character energy",
   "energy",
   "winners take all",
@@ -16915,7 +16986,8 @@
   "copacetic",
   "glory",
   "battle",
-  "family food fight"
+  "family food fight",
+  "epica"
  ],
  "ig_tendenze_riserva": [
   {
