@@ -15619,7 +15619,9 @@
      "ok": true,
      "id": "18084305141713938",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -15680,7 +15682,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "x_ADzQVduQs"
+     "id": "x_ADzQVduQs",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -15691,11 +15694,78 @@
    },
    "spinto": true,
    "testo": "Una delle benedizioni più sottovalutate è incontrare persone che vogliono davvero vederti vincere. Nessuna competizione,"
+  },
+  {
+   "quando": "2026-11-14T19:00",
+   "slot": "2026-11-14 20:00",
+   "video": "IMG_4305.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-4aaef203",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "rallenty",
+    "durata": 10.0,
+    "musica": "wrangle_the_crazy_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.253,
+     "movimento": 17.39,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "velocita": 0.75,
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 7,
+     "scurito": 0.33,
+     "luce": 0.32,
+     "sfumatura": 0.22,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 148,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 26
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_08.flac",
+    "musica_instagram": "Just Can't Believe (Instrumental) - Shanice [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "d74CzfLzD10"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18114110906631487",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Amo le persone che fanno sembrare normali i grandi sogni. Che ti ricordano che niente è impossibile. Che ampliano la tua"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-06 20:00",
   "2026-11-06 22:00",
   "2026-11-07 00:00",
   "2026-11-07 06:00",
@@ -15774,10 +15844,10 @@
   "2026-11-14 12:00",
   "2026-11-14 14:00",
   "2026-11-14 16:00",
-  "2026-11-14 18:00"
+  "2026-11-14 18:00",
+  "2026-11-14 20:00"
  ],
  "musica_recenti": [
-  "intergalactic_3.m4a",
   "horizons_2.m4a",
   "moon_vision_1.m4a",
   "survival_mode_3.m4a",
@@ -15836,7 +15906,8 @@
   "delirium_3.m4a",
   "whoop_1.m4a",
   "ten_1.m4a",
-  "taking_flight_1.m4a"
+  "taking_flight_1.m4a",
+  "wrangle_the_crazy_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -16206,7 +16277,8 @@
   "MIE-58f6ed51",
   "MIE-8432cd82",
   "MIE-ed389b29",
-  "MIE-47e564b9"
+  "MIE-47e564b9",
+  "MIE-4aaef203"
  ],
  "temi_recenti": [
   "mentalita",
@@ -16215,8 +16287,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -16694,8 +16766,9 @@
    "orizzontale": false
   },
   "1pHaSrw5l22--hj6mculM4Wx5XnAw4U-3": {
-   "usi": 3,
-   "ultimo": "2026-11-07"
+   "usi": 4,
+   "ultimo": "2026-11-14",
+   "orizzontale": false
   },
   "1XySlsRReGeTwlbVlIctzRJDJBUZ2yHi0": {
    "usi": 2,
@@ -16803,7 +16876,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_01.flac",
   "trap_16.flac",
   "phonk_01.flac",
   "energia_06.flac",
@@ -16822,7 +16894,8 @@
   "trap_06.flac",
   "drive_01.flac",
   "phonk_02.flac",
-  "trap_12.flac"
+  "trap_12.flac",
+  "deciso_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -16857,7 +16930,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "loop",
+ "formato_ultimo": "rallenty",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -16873,7 +16946,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1377485917727304",
   "612291812716191",
   "1372666635060078",
   "739108178545320",
@@ -16932,11 +17004,11 @@
   "605387610085051",
   "774667642107625",
   "2242687643238503",
-  "620334183626298"
+  "620334183626298",
+  "1354806896501272"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "TrackTribe",
   "Ross Lara",
   "Trout Recording",
   "Swell Sound",
@@ -16945,10 +17017,10 @@
   "Vault 49",
   "Sam Marshall",
   "Fellow Travelers",
-  "Tony Dark Eyes"
+  "Tony Dark Eyes",
+  "Shanice"
  ],
  "ig_titoli_recenti": [
-  "main character energy",
   "energy",
   "winners take all",
   "fire",
@@ -16987,7 +17059,8 @@
   "glory",
   "battle",
   "family food fight",
-  "epica"
+  "epica",
+  "just can t believe"
  ],
  "ig_tendenze_riserva": [
   {
@@ -16998,17 +17071,17 @@
    "libreria": false
   },
   {
-   "audio_id": "762434402313350",
-   "title": "Vice City (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 140450,
+   "audio_id": "1781233772812838",
+   "title": "Epic Thoughts",
+   "display_artist": "JB Eckl",
+   "duration_in_ms": 192818,
    "libreria": true
   },
   {
-   "audio_id": "2242687643238503",
-   "title": "Family Food Fight",
-   "display_artist": "Fellow Travelers",
-   "duration_in_ms": 63576,
+   "audio_id": "1354806896501272",
+   "title": "Just Can't Believe (Instrumental)",
+   "display_artist": "Shanice",
+   "duration_in_ms": 164651,
    "libreria": true
   }
  ]
