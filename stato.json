@@ -15269,7 +15269,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "oh_lnlBIXMI"
+     "id": "oh_lnlBIXMI",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -15280,11 +15281,76 @@
    },
    "spinto": true,
    "testo": "Non avevo mai dato così tanto valore alla vita finché non cominciai ad osservare ciò che mi circondava e capii una cosa:"
+  },
+  {
+   "quando": "2026-11-14T07:00",
+   "slot": "2026-11-14 08:00",
+   "video": "IMG_4293.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-86754336",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 10.0,
+    "musica": "mirror_mirror_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 3,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 42.13,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 3,
+     "scurito": 0.49,
+     "luce": 0.46,
+     "sfumatura": 0.34,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 162,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 12
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_09.flac",
+    "musica_instagram": "Knockout - Adam Griffith"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "EqKrjnpTcWE"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18122143232319570",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Smetti di cercare di piacere a tutti, non ti piacciono nemmeno tutti."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-06 08:00",
   "2026-11-06 10:00",
   "2026-11-06 12:00",
   "2026-11-06 14:00",
@@ -15363,10 +15429,10 @@
   "2026-11-13 20:00",
   "2026-11-13 22:00",
   "2026-11-14 00:00",
-  "2026-11-14 06:00"
+  "2026-11-14 06:00",
+  "2026-11-14 08:00"
  ],
  "musica_recenti": [
-  "ego_chall_2.m4a",
   "visions_1.m4a",
   "cutscene_crush_2.m4a",
   "van_life_rager_1.m4a",
@@ -15425,7 +15491,8 @@
   "visions_2.m4a",
   "duty_calls_3.m4a",
   "the_road_to_mordor_2.m4a",
-  "fire_in_the_sky_1.m4a"
+  "fire_in_the_sky_1.m4a",
+  "mirror_mirror_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -15789,14 +15856,15 @@
   "MIE-fb16ea4a",
   "MIE-ad1b0703",
   "MIE-b3b979d4",
-  "MIE-77bc321f"
+  "MIE-77bc321f",
+  "MIE-86754336"
  ],
  "temi_recenti": [
-  "famiglia",
   "mentalita",
   "mentalita",
   "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -16253,8 +16321,9 @@
    "orizzontale": false
   },
   "1imtjdovSsU7sfZ2CRaJTwVN1ETpo_8z3": {
-   "usi": 3,
-   "ultimo": "2026-11-06"
+   "usi": 4,
+   "ultimo": "2026-11-14",
+   "orizzontale": false
   },
   "1doFy-IdLUGnZn_FuQyyUK5OqHf6xPX08": {
    "usi": 3,
@@ -16381,7 +16450,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_15.flac",
   "drive_04.flac",
   "energia_07.flac",
   "deciso_10.flac",
@@ -16400,7 +16468,8 @@
   "trap_11.flac",
   "deciso_02.flac",
   "phonk_16.flac",
-  "energia_11.flac"
+  "energia_11.flac",
+  "deciso_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -16435,7 +16504,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio1",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -16451,7 +16520,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1774121270615760",
   "605387610085051",
   "485127744365118",
   "1204148475203672",
@@ -16510,11 +16578,11 @@
   "1085647872473097",
   "602890775391410",
   "5301582899854512",
-  "1100130857775330"
+  "1100130857775330",
+  "1108285910189784"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "half.cool",
   "Global Genius",
   "Blues369",
   "Tony Dark Eyes",
@@ -16523,10 +16591,10 @@
   "TrackTribe",
   "Ross Lara",
   "Trout Recording",
-  "Swell Sound"
+  "Swell Sound",
+  "Adam Griffith"
  ],
  "ig_titoli_recenti": [
-  "reflect and rise",
   "you can t always get what you want",
   "getting strong",
   "rise",
@@ -16565,7 +16633,8 @@
   "punk power",
   "will you believe",
   "epic battles",
-  "good fight"
+  "good fight",
+  "knockout"
  ],
  "ig_tendenze_riserva": [
   {
@@ -16576,10 +16645,10 @@
    "libreria": false
   },
   {
-   "audio_id": "1100130857775330",
-   "title": "Good Fight (feat. Dipzy)",
-   "display_artist": "Swell Sound",
-   "duration_in_ms": 179830,
+   "audio_id": "800297207899385",
+   "title": "Heros Journey",
+   "display_artist": "Abby Posner",
+   "duration_in_ms": 149047,
    "libreria": true
   }
  ]
