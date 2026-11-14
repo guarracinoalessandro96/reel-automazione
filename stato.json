@@ -15479,7 +15479,9 @@
      "ok": true,
      "id": "18124274677942685",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -15540,7 +15542,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "fV9d5DNQ9xU"
+     "id": "fV9d5DNQ9xU",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -15551,11 +15554,77 @@
    },
    "spinto": true,
    "testo": "Se vuoi sapere chi sono i tuoi amici e la tua famiglia, perdi il lavoro, ammalati o attraversa un periodo difficile. Ved"
+  },
+  {
+   "quando": "2026-11-14T15:01",
+   "slot": "2026-11-14 16:00",
+   "video": "IMG_4300.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-ed389b29",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio3",
+    "durata": 10.0,
+    "musica": "ten_1.m4a",
+    "stacchi": 3,
+    "testi": 1,
+    "scene_dal_video": 3,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.123,
+     "movimento": 13.22,
+     "primo_piano_fermo": false,
+     "soglia_moto": 8.52,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 8,
+     "scurito": 0.3,
+     "luce": 0.27,
+     "sfumatura": 0.16,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 214,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 27
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_02.flac",
+    "musica_instagram": "Family Food Fight - Fellow Travelers [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "xZAA1EUIa8o"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18084305141713938",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Alcune persone non si rendono conto di quanta luce portino nella vita degli altri semplicemente essendo sé stesse. Tu se"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-06 16:00",
   "2026-11-06 18:00",
   "2026-11-06 20:00",
   "2026-11-06 22:00",
@@ -15634,10 +15703,10 @@
   "2026-11-14 08:00",
   "2026-11-14 10:00",
   "2026-11-14 12:00",
-  "2026-11-14 14:00"
+  "2026-11-14 14:00",
+  "2026-11-14 16:00"
  ],
  "musica_recenti": [
-  "wrangle_the_crazy_1.m4a",
   "keep_it_movin_3.m4a",
   "intergalactic_3.m4a",
   "horizons_2.m4a",
@@ -15696,7 +15765,8 @@
   "mirror_mirror_1.m4a",
   "rubberband_1.m4a",
   "delirium_3.m4a",
-  "whoop_1.m4a"
+  "whoop_1.m4a",
+  "ten_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -16064,10 +16134,10 @@
   "MIE-86754336",
   "MIE-67a269f1",
   "MIE-58f6ed51",
-  "MIE-8432cd82"
+  "MIE-8432cd82",
+  "MIE-ed389b29"
  ],
  "temi_recenti": [
-  "imprenditore",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -16076,7 +16146,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "famiglia"
+  "famiglia",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-11-14",
@@ -16542,8 +16613,9 @@
    "ultimo": "2026-10-30"
   },
   "1NIAZGYq8oNsRCLyLOzwG8nRh_hWHpjGa": {
-   "usi": 2,
-   "ultimo": "2026-11-06"
+   "usi": 3,
+   "ultimo": "2026-11-14",
+   "orizzontale": false
   },
   "1UefrogLKDdOKHxCBjQOsFjEsNFOeSefT": {
    "usi": 3,
@@ -16659,7 +16731,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_01.flac",
   "phonk_06.flac",
   "deciso_01.flac",
   "trap_16.flac",
@@ -16678,7 +16749,8 @@
   "deciso_09.flac",
   "phonk_09.flac",
   "trap_06.flac",
-  "drive_01.flac"
+  "drive_01.flac",
+  "phonk_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -16713,7 +16785,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "loop",
+ "formato_ultimo": "taglio3",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -16729,7 +16801,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "522339937196006",
   "1546581635764552",
   "1377485917727304",
   "612291812716191",
@@ -16788,11 +16859,11 @@
   "1108285910189784",
   "727931292858890",
   "605387610085051",
-  "774667642107625"
+  "774667642107625",
+  "2242687643238503"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Giulio Cercato",
   "Elad Marish",
   "TrackTribe",
   "Ross Lara",
@@ -16801,10 +16872,10 @@
   "Adam Griffith",
   "The K Club",
   "Vault 49",
-  "Sam Marshall"
+  "Sam Marshall",
+  "Fellow Travelers"
  ],
  "ig_titoli_recenti": [
-  "the power",
   "can t run away remix",
   "main character energy",
   "energy",
@@ -16843,7 +16914,8 @@
   "knockout",
   "copacetic",
   "glory",
-  "battle"
+  "battle",
+  "family food fight"
  ],
  "ig_tendenze_riserva": [
   {
@@ -16852,6 +16924,20 @@
    "display_artist": "Blues369",
    "duration_in_ms": 274920,
    "libreria": false
+  },
+  {
+   "audio_id": "762434402313350",
+   "title": "Vice City (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 140450,
+   "libreria": true
+  },
+  {
+   "audio_id": "2242687643238503",
+   "title": "Family Food Fight",
+   "display_artist": "Fellow Travelers",
+   "duration_in_ms": 63576,
+   "libreria": true
   }
  ]
 }
