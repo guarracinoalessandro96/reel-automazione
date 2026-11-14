@@ -15135,7 +15135,9 @@
      "ok": true,
      "id": "17978826873185054",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -15196,22 +15198,92 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "EnljJi9DHoI"
+     "id": "EnljJi9DHoI",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18114838019151172",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
    "testo": "Se le persone dubitano di quanto lontano puoi arrivare, spingiti così lontano in modo da non sentirle più."
+  },
+  {
+   "quando": "2026-11-14T05:01",
+   "slot": "2026-11-14 06:00",
+   "video": "IMG_4291.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-77bc321f",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio1",
+    "durata": 10.0,
+    "musica": "fire_in_the_sky_1.m4a",
+    "stacchi": 10,
+    "testi": 1,
+    "scene_dal_video": 10,
+    "viso_prima_scena": 3,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.245,
+     "movimento": 25.97,
+     "primo_piano_fermo": false,
+     "soglia_moto": 16.59,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro Semibold",
+     "corpo": 92,
+     "righe": 12,
+     "scurito": 0.43,
+     "luce": 0.37,
+     "sfumatura": 0.27,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 297,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "io",
+     "forma": "due",
+     "parole": 68
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_11.flac",
+    "musica_instagram": "Good Fight (feat. Dipzy) - Swell Sound [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "oh_lnlBIXMI"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17901253200610913",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non avevo mai dato così tanto valore alla vita finché non cominciai ad osservare ciò che mi circondava e capii una cosa:"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-06 06:00",
   "2026-11-06 08:00",
   "2026-11-06 10:00",
   "2026-11-06 12:00",
@@ -15290,10 +15362,10 @@
   "2026-11-13 18:00",
   "2026-11-13 20:00",
   "2026-11-13 22:00",
-  "2026-11-14 00:00"
+  "2026-11-14 00:00",
+  "2026-11-14 06:00"
  ],
  "musica_recenti": [
-  "final_boss_battle_3.m4a",
   "ego_chall_2.m4a",
   "visions_1.m4a",
   "cutscene_crush_2.m4a",
@@ -15352,7 +15424,8 @@
   "the_light_2.m4a",
   "visions_2.m4a",
   "duty_calls_3.m4a",
-  "the_road_to_mordor_2.m4a"
+  "the_road_to_mordor_2.m4a",
+  "fire_in_the_sky_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -15715,10 +15788,10 @@
   "MIE-526a38eb",
   "MIE-fb16ea4a",
   "MIE-ad1b0703",
-  "MIE-b3b979d4"
+  "MIE-b3b979d4",
+  "MIE-77bc321f"
  ],
  "temi_recenti": [
-  "mentalita",
   "famiglia",
   "mentalita",
   "mentalita",
@@ -15727,10 +15800,11 @@
   "mentalita",
   "mentalita",
   "mentalita",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-13",
+ "pulizia": "2026-11-14",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -16169,8 +16243,9 @@
    "orizzontale": false
   },
   "1sS5KtmGf3aPo3O8udU6R6rADRrUb-zMb": {
-   "usi": 3,
-   "ultimo": "2026-11-06"
+   "usi": 4,
+   "ultimo": "2026-11-14",
+   "orizzontale": false
   },
   "1qg9QOoyt2IXIx0udqWcfdBdqz_RdzVo4": {
    "usi": 4,
@@ -16306,7 +16381,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_03.flac",
   "phonk_15.flac",
   "drive_04.flac",
   "energia_07.flac",
@@ -16325,7 +16399,8 @@
   "drive_03.flac",
   "trap_11.flac",
   "deciso_02.flac",
-  "phonk_16.flac"
+  "phonk_16.flac",
+  "energia_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -16360,7 +16435,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "loop",
+ "formato_ultimo": "taglio1",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -16376,7 +16451,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1868754054118430",
   "1774121270615760",
   "605387610085051",
   "485127744365118",
@@ -16435,11 +16509,11 @@
   "393903371411311",
   "1085647872473097",
   "602890775391410",
-  "5301582899854512"
+  "5301582899854512",
+  "1100130857775330"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Summer Islands",
   "half.cool",
   "Global Genius",
   "Blues369",
@@ -16448,10 +16522,10 @@
   "Elad Marish",
   "TrackTribe",
   "Ross Lara",
-  "Trout Recording"
+  "Trout Recording",
+  "Swell Sound"
  ],
  "ig_titoli_recenti": [
-  "rise of the brave",
   "reflect and rise",
   "you can t always get what you want",
   "getting strong",
@@ -16490,7 +16564,8 @@
   "the nerve",
   "punk power",
   "will you believe",
-  "epic battles"
+  "epic battles",
+  "good fight"
  ],
  "ig_tendenze_riserva": [
   {
@@ -16501,10 +16576,10 @@
    "libreria": false
   },
   {
-   "audio_id": "5814774055297093",
-   "title": "Running Waves",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 150594,
+   "audio_id": "1100130857775330",
+   "title": "Good Fight (feat. Dipzy)",
+   "display_artist": "Swell Sound",
+   "duration_in_ms": 179830,
    "libreria": true
   }
  ]
