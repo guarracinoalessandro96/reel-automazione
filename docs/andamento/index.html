@@ -7,91 +7,132 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Social">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0b0906">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../icona-32.png">
 <link rel="apple-touch-icon" href="../icona-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* Andamento social: pagina pubblica di Alessandro, dati in dati.json (aggiornati ogni mattina da GitHub) */
-  :root { --bg:#f6f5f2; --fg:#1b1b1b; --mute:#6b6b6b; --line:#e2dfd8; --card:#fff; --ok:#1f8a4c; --bad:#c0392b;
-          --yt:#e62117; --ig:#c13584; --tt:#111111; --fb:#1877f2; --grid:#ebe8e2; color-scheme: light; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#121212; --fg:#f0f0f0; --mute:#9a9a9a; --line:#2c2c2c; --card:#1b1b1b;
-          --ok:#4cc27e; --bad:#ff6b5b; --yt:#ff4b42; --ig:#e05aa8; --tt:#e8e8e8; --fb:#4a95ff; --grid:#242424; color-scheme: dark; } }
+  /* Notte dorata: fondo scuro caldo, oro che brilla, schede di vetro in 3D */
+  :root {
+    --bg: #0b0906; --bg2: #17120a; --glass: rgba(255, 214, 10, .055); --edge: rgba(255, 214, 10, .28);
+    --oro: #ffd60a; --oro2: #ffb703; --crema: #fff3b0; --ambra: #fb8500; --testo: #fff8e1; --mute: #b9ab86;
+    --su: #b8f171; --giu: #ff8a7a;
+    --serif: "Fraunces", Georgia, serif; --sans: "Inter", -apple-system, "Segoe UI", sans-serif;
+    color-scheme: dark;
+  }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-         padding: max(14px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
-  main { max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
-  h1 { font: 600 1.7rem/1.15 Georgia, "Times New Roman", serif; margin: 0 0 6px; }
-  h2 { font-size: 1.1rem; margin: 0; }
-  .take { margin: 0; color: var(--mute); max-width: 68ch; }
-  .take b { color: var(--fg); }
-  .agg { font-size: .78rem; color: var(--mute); margin: 6px 0 0; }
-  .sec { display: flex; flex-direction: column; gap: 12px; }
-  .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-  .card.tot { border: 2px solid var(--fg); }
-  .card h3 { margin: 0; font-size: .74rem; letter-spacing: .05em; text-transform: uppercase; color: var(--mute); display: flex; align-items: center; gap: 6px; font-weight: 600; }
-  .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; display: inline-block; }
-  .big { font: 600 1.9rem/1.1 Georgia, serif; font-variant-numeric: tabular-nums; }
-  .day { font-size: .78rem; color: var(--mute); }
-  .cmp { list-style: none; margin: 4px 0 0; padding: 8px 0 0; border-top: 1px solid var(--line); display: grid; gap: 3px; font-size: .8rem; }
+  html { background: var(--bg); }
+  body { margin: 0; min-height: 100vh; color: var(--testo); font: 15px/1.45 var(--sans);
+         background: radial-gradient(120% 60% at 50% -10%, rgba(255, 183, 3, .22), transparent 60%),
+                     radial-gradient(80% 50% at 100% 100%, rgba(251, 133, 0, .12), transparent 60%), var(--bg);
+         background-attachment: fixed;
+         padding: max(18px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(28px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
+  #stelle { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+  main { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
+  h2 { font: 800 1.5rem/1.1 var(--serif); margin: 0; letter-spacing: .01em;
+       background: linear-gradient(180deg, var(--crema), var(--oro) 55%, var(--oro2)); -webkit-background-clip: text; background-clip: text; color: transparent;
+       filter: drop-shadow(0 2px 12px rgba(255, 200, 0, .35)); }
+  .sec { display: flex; flex-direction: column; gap: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; perspective: 900px; }
+
+  .card { position: relative; border-radius: 20px; padding: 16px; min-width: 0; display: flex; flex-direction: column; gap: 6px;
+          background: linear-gradient(160deg, rgba(255, 230, 120, .10), rgba(255, 214, 10, .02) 45%, rgba(0, 0, 0, .25)), var(--bg2);
+          border: 1px solid var(--edge);
+          box-shadow: 0 1px 0 rgba(255, 240, 180, .25) inset, 0 18px 40px -18px rgba(0, 0, 0, .9), 0 0 0 1px rgba(0, 0, 0, .4);
+          transform-style: preserve-3d; transition: transform .25s ease-out, box-shadow .25s; will-change: transform; overflow: hidden; }
+  .card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+                 background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 0%), rgba(255, 230, 120, .16), transparent 60%); }
+  .card.tot { grid-column: 1 / -1; padding: 20px; border-color: rgba(255, 214, 10, .55);
+              box-shadow: 0 1px 0 rgba(255, 240, 180, .35) inset, 0 0 40px -6px rgba(255, 183, 3, .35), 0 22px 50px -20px rgba(0, 0, 0, .9); }
+  .card h3 { margin: 0; font: 600 .72rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--mute); display: flex; align-items: center; gap: 7px; transform: translateZ(20px); }
+  .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; box-shadow: 0 0 10px currentColor; }
+  .big { font: 800 2.1rem/1.05 var(--serif); font-variant-numeric: tabular-nums; transform: translateZ(40px);
+         background: linear-gradient(180deg, #fffbe6, var(--oro) 60%, var(--oro2)); -webkit-background-clip: text; background-clip: text; color: transparent;
+         filter: drop-shadow(0 3px 10px rgba(255, 190, 0, .35)); }
+  .card.tot .big { font-size: 3.1rem; }
+  .day { font-size: .78rem; color: var(--mute); transform: translateZ(15px); }
+  .cmp { list-style: none; margin: 6px 0 0; padding: 10px 0 0; border-top: 1px solid rgba(255, 214, 10, .15); display: grid; gap: 4px; font-size: .8rem; transform: translateZ(10px); }
+  .card.tot .cmp { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .card.tot .cmp li { flex-direction: column; gap: 2px; }
   .cmp li { display: flex; justify-content: space-between; gap: 8px; color: var(--mute); }
-  .cmp b { font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .su { color: var(--ok); } .giu { color: var(--bad); }
-  .tabs { display: flex; gap: 4px; }
-  .tabs button { font: inherit; font-size: .8rem; padding: 5px 11px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--mute); cursor: pointer; }
-  .tabs button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .cmp b { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; color: var(--testo); }
+  .su { color: var(--su) !important; } .giu { color: var(--giu) !important; }
+
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tabs button { font: 600 .82rem/1 var(--sans); padding: 9px 14px; border-radius: 999px; cursor: pointer; color: var(--mute);
+                 background: rgba(255, 214, 10, .06); border: 1px solid rgba(255, 214, 10, .22); transition: all .2s; }
+  .tabs button[aria-pressed="true"] { color: #2a1d00; background: linear-gradient(180deg, var(--crema), var(--oro) 50%, var(--oro2)); border-color: var(--oro);
+                 box-shadow: 0 0 18px rgba(255, 200, 0, .45), 0 2px 0 rgba(255, 255, 255, .5) inset; }
+  .tabs button:focus-visible { outline: 2px solid var(--crema); outline-offset: 2px; }
   .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: .8rem; color: var(--mute); }
+  .legend[hidden] { display: none; }
   .legend span { display: inline-flex; align-items: center; gap: 6px; }
-  .chart { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 10px 8px 4px; }
-  .chart svg { display: block; width: 100%; height: 280px; touch-action: pan-y; }
-  .chart text { fill: var(--mute); font-size: 11px; }
-  .tip { position: absolute; top: 10px; pointer-events: none; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font-size: .8rem; box-shadow: 0 4px 16px rgba(0,0,0,.12); min-width: 150px; }
+  .quando { font-size: .8rem; color: var(--mute); margin: -4px 0 0; }
+  .palco { position: relative; border-radius: 22px; padding: 14px 10px 8px; min-height: 290px;
+           background: linear-gradient(180deg, rgba(255, 214, 10, .07), rgba(0, 0, 0, .3)), var(--bg2); border: 1px solid var(--edge);
+           box-shadow: 0 0 50px -20px rgba(255, 183, 3, .4) inset, 0 20px 50px -25px #000; overflow: hidden; }
+  .palco svg { display: block; width: 100%; height: 270px; touch-action: pan-y; overflow: visible; }
+  .palco svg text { fill: var(--mute); font: 11px var(--sans); }
+
+  /* barre 3D (oggi / ieri) */
+  .barre { display: flex; justify-content: space-around; align-items: flex-end; gap: 6px; height: 270px; padding: 30px 4px 34px; perspective: 700px; }
+  .colonna { flex: 1; max-width: 120px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; position: relative; }
+  .valore { font: 800 1rem var(--serif); color: var(--crema); margin-bottom: 10px; text-shadow: 0 0 12px rgba(255, 200, 0, .6); font-variant-numeric: tabular-nums; }
+  .prisma { position: relative; width: 58%; min-width: 34px; transform-style: preserve-3d; transform: rotateX(-14deg) rotateY(-24deg); height: 0; transition: height 1s cubic-bezier(.2, .9, .2, 1); }
+  .prisma i { position: absolute; display: block; }
+  .prisma .fronte { inset: 0; background: linear-gradient(180deg, var(--c1), var(--c2)); box-shadow: 0 0 24px var(--glow); border-radius: 3px 3px 0 0; }
+  .prisma .lato { top: 0; bottom: 0; right: 0; width: 22px; transform-origin: right; transform: rotateY(90deg); background: linear-gradient(180deg, var(--c2), #6b4300); filter: brightness(.7); }
+  .prisma .cima { left: 0; right: 0; top: 0; height: 22px; transform-origin: top; transform: rotateX(90deg); background: var(--c1); filter: brightness(1.25); }
+  .nome { position: absolute; bottom: -26px; font-size: .74rem; color: var(--mute); white-space: nowrap; }
+
+  .tip { position: absolute; top: 12px; pointer-events: none; background: rgba(23, 18, 10, .92); border: 1px solid var(--edge); border-radius: 12px;
+         padding: 9px 11px; font-size: .8rem; box-shadow: 0 0 24px rgba(255, 183, 3, .25); min-width: 150px; backdrop-filter: blur(6px); }
   .tip div { display: flex; justify-content: space-between; gap: 12px; font-variant-numeric: tabular-nums; }
-  .tip .t { font-weight: 600; margin-bottom: 3px; display: block; }
-  .wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
-  table { border-collapse: collapse; width: 100%; font-size: .82rem; font-variant-numeric: tabular-nums; }
-  th, td { padding: 7px 10px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
-  th:first-child, td:first-child { text-align: left; }
-  th { color: var(--mute); font-weight: 600; }
-  td:last-child { font-weight: 600; }
-  .note { font-size: .78rem; color: var(--mute); margin: 0; max-width: 75ch; }
+  .tip .t { font-weight: 600; margin-bottom: 4px; display: block; color: var(--oro); }
+  .agg { text-align: center; font-size: .74rem; color: var(--mute); margin: 0; opacity: .8; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .card { animation: sali .7s cubic-bezier(.2, .9, .2, 1) both; }
+    .grid .card:nth-child(2) { animation-delay: .06s; } .grid .card:nth-child(3) { animation-delay: .12s; }
+    .grid .card:nth-child(4) { animation-delay: .18s; } .grid .card:nth-child(5) { animation-delay: .24s; }
+    @keyframes sali { from { transform: translateY(14px) rotateX(10deg); } }
+  }
   @media (max-width: 520px) {
-    .grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-    .card { padding: 11px; border-radius: 12px; }
-    .card.tot { grid-column: 1 / -1; }
-    .big { font-size: 1.55rem; }
+    main { gap: 26px; }
+    .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .card { padding: 13px; border-radius: 16px; }
+    .big { font-size: 1.6rem; }
+    .card.tot .big { font-size: 2.6rem; }
     .cmp li { flex-direction: column; gap: 0; }
-    h1 { font-size: 1.45rem; }
-    .chart svg { height: 230px; }
+    .card.tot .cmp { grid-template-columns: 1fr; gap: 4px; }
+    .card.tot .cmp li { flex-direction: row; }
+    .tabs button { padding: 8px 11px; font-size: .78rem; }
+    .palco svg { height: 230px; } .barre { height: 240px; }
   }
 </style>
 </head>
 <body>
+<canvas id="stelle" aria-hidden="true"></canvas>
 <main>
-  <header>
-    <h1>Andamento social</h1>
-    <p class="take" id="take">Caricamento dei numeri…</p>
-    <p class="agg" id="agg"></p>
-  </header>
-
   <section class="sec">
     <h2>Visualizzazioni</h2>
     <div class="grid" id="schede-vis"></div>
   </section>
 
   <section class="sec">
-    <div class="head">
-      <h2>Visualizzazioni giorno per giorno</h2>
-      <div class="tabs" role="group" aria-label="Periodo">
-        <button type="button" data-g="14" aria-pressed="false">14 giorni</button>
-        <button type="button" data-g="30" aria-pressed="true">30 giorni</button>
-        <button type="button" data-g="90" aria-pressed="false">90 giorni</button>
-      </div>
+    <h2>Giorno per giorno</h2>
+    <div class="tabs" role="group" aria-label="Periodo">
+      <button type="button" data-p="oggi" aria-pressed="false">Oggi</button>
+      <button type="button" data-p="ieri" aria-pressed="false">Ieri</button>
+      <button type="button" data-p="7" aria-pressed="true">Questa settimana</button>
+      <button type="button" data-p="30" aria-pressed="false">Ultimi 30 giorni</button>
     </div>
+    <p class="quando" id="quando"></p>
     <div class="legend" id="legenda"></div>
-    <div class="chart" id="grafico"></div>
+    <div class="palco" id="grafico"></div>
   </section>
 
   <section class="sec">
@@ -99,34 +140,25 @@
     <div class="grid" id="schede-fol"></div>
   </section>
 
-  <section class="sec">
-    <h2>Ultimi 30 giorni</h2>
-    <div class="wrap"><table>
-      <thead><tr><th>Giorno</th><th>YouTube</th><th>Instagram</th><th>TikTok</th><th>Facebook</th><th>Totale</th></tr></thead>
-      <tbody id="righe"></tbody>
-    </table></div>
-  </section>
-
-  <p class="note">Visualizzazioni di ogni giorno, dalle piattaforme. TikTok dà i numeri con circa 2 giorni di ritardo: la sua scheda può riferirsi a un giorno prima degli altri, e il totale usa l'ultimo giorno che ha tutti e 4 i social. I confronti a 7 e 30 giorni compaiono quando ci sono tutti i giorni dei due periodi. Follower a fine giornata: i numeri veri si salvano ogni sera dal 23 settembre (TikTok dal 13 novembre); prima di allora YouTube e Facebook vengono dai dati delle piattaforme e Instagram è ricostruito dai nuovi follower di ogni giorno. Si aggiorna da solo ogni mattina.</p>
+  <p class="agg" id="agg"></p>
 </main>
 
 <script>
-const SOC = [["YouTube","--yt"],["Instagram","--ig"],["TikTok","--tt"],["Facebook","--fb"]];
+const SOC = [["YouTube", "#ffd60a", "#e0a800"], ["Instagram", "#fff3b0", "#e8cf6a"], ["TikTok", "#ffb703", "#c77800"], ["Facebook", "#fb8500", "#a34f00"]];
 const MESI = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
 const GIORNI = ["domenica","lunedì","martedì","mercoledì","giovedì","venerdì","sabato"];
 const fmt = (v) => v === null || v === undefined ? "—" : Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const dat = (iso) => { const d = new Date(iso + "T00:00:00Z"); return GIORNI[d.getUTCDay()] + " " + d.getUTCDate() + " " + MESI[d.getUTCMonth()]; };
 const indietro = (iso, k) => { const d = new Date(iso + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() - k); return d.toISOString().slice(0, 10); };
 const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; };
-let VIS = {}, FOL = {}, GIORNI_GRAF = 30;
+const MOTO = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let VIS = {}, FOL = {}, PERIODO = "7";
 
 function conTotale(tab) {
   const out = {};
   Object.keys(tab).sort().forEach((g) => {
-    const r = Object.assign({}, tab[g]);
-    const t = SOC.map(([s]) => r[s]);
-    r.Totale = t.every((v) => v !== undefined && v !== null) ? t.reduce((a, b) => a + b, 0) : undefined;
-    out[g] = r;
+    const r = Object.assign({}, tab[g]); const t = SOC.map(([s]) => r[s]);
+    r.Totale = t.every((v) => v !== undefined) ? t.reduce((a, b) => a + b, 0) : undefined; out[g] = r;
   });
   return out;
 }
@@ -140,82 +172,116 @@ function riepilogo(tab, s) {
 }
 function pct(a, b) {
   if (a === null || a === undefined || !b) return ["—", ""];
-  const p = a / b - 1, n = Math.round(p * 100);
+  const n = Math.round((a / b - 1) * 100);
   return [(n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n) + "%", n > 0 ? "su" : n < 0 ? "giu" : ""];
 }
 function diff(a, b) {
   if (a === undefined || b === undefined || a === null || b === null) return ["—", ""];
-  const d = a - b;
-  return [(d > 0 ? "+" : d < 0 ? "−" : "") + fmt(Math.abs(d)), d > 0 ? "su" : d < 0 ? "giu" : ""];
+  const d = a - b; return [(d > 0 ? "+" : d < 0 ? "−" : "") + fmt(Math.abs(d)), d > 0 ? "su" : d < 0 ? "giu" : ""];
+}
+function inclina(c) {
+  if (!MOTO) return;
+  const muovi = (ev) => {
+    const r = c.getBoundingClientRect(), px = (ev.clientX - r.left) / r.width, py = (ev.clientY - r.top) / r.height;
+    c.style.transform = `rotateX(${(0.5 - py) * 10}deg) rotateY(${(px - 0.5) * 12}deg) translateZ(6px)`;
+    c.style.setProperty("--mx", px * 100 + "%"); c.style.setProperty("--my", py * 100 + "%");
+  };
+  c.addEventListener("pointermove", muovi); c.addEventListener("pointerdown", muovi);
+  c.addEventListener("pointerleave", () => { c.style.transform = ""; });
 }
 function scheda(nome, colore, r, righe, prefisso) {
   const c = el("article", "card" + (nome === "Totale" ? " tot" : ""));
-  const h = el("h3"); const d = el("span", "dot"); d.style.background = colore; h.append(d, nome); c.append(h);
+  const h = el("h3"); const d = el("span", "dot"); d.style.background = colore; d.style.color = colore; h.append(d, nome); c.append(h);
   c.append(el("div", "big", r ? fmt(r.valore) : "—"));
   c.append(el("div", "day", r ? prefisso + dat(r.giorno) : "nessun dato"));
   const ul = el("ul", "cmp");
-  righe.forEach(([etichetta, [testo, classe]]) => { const li = el("li", "", etichetta); const b = el("b", classe, testo); li.append(b); ul.append(li); });
-  c.append(ul);
+  righe.forEach(([etichetta, [testo, classe]]) => { const li = el("li", "", etichetta); li.append(el("b", classe, testo)); ul.append(li); });
+  c.append(ul); inclina(c);
   return c;
 }
 function disegnaSchede() {
   const v = conTotale(VIS), f = conTotale(FOL);
   const sv = document.getElementById("schede-vis"), sf = document.getElementById("schede-fol");
   sv.replaceChildren(); sf.replaceChildren();
-  [["Totale", "var(--fg)"]].concat(SOC.map(([s, c]) => [s, "var(" + c + ")"])).forEach(([s, col]) => {
+  [["Totale", "#fff8e1"]].concat(SOC.map(([s, c]) => [s, c])).forEach(([s, col]) => {
     const r = riepilogo(v, s);
     sv.append(scheda(s, col, r, r ? [["vs giorno prima", pct(r.valore, r.prima)], ["7 giorni vs 7 prima", pct(r.s7, r.p7)], ["30 giorni vs 30 prima", pct(r.s30, r.p30)]] : [], ""));
     const q = riepilogo(f, s);
     sf.append(scheda(s, col, q, q ? [["vs giorno prima", diff(q.valore, q.prima)], ["in 7 giorni", diff(q.valore, q.v7)], ["in 30 giorni", diff(q.valore, q.v30)]] : [], "a fine "));
   });
-  const r = riepilogo(v, "Totale");
-  const t = document.getElementById("take"); t.replaceChildren();
-  if (r) {
-    const [p] = pct(r.valore, r.prima), n = r.prima ? Math.round((r.valore / r.prima - 1) * 100) : null;
-    const b1 = el("b", "", dat(r.giorno)), b2 = el("b", "", fmt(r.valore));
-    t.append("Ultimo giorno completo, ", b1, ": ", b2, " visualizzazioni sui 4 social" +
-      (n === null ? "." : n >= 0 ? ", in crescita del " + Math.abs(n) + "% rispetto al giorno prima." : ", in calo del " + Math.abs(n) + "% rispetto al giorno prima."));
-  } else t.textContent = "Nessun dato ancora.";
 }
-function disegnaTabella() {
-  const v = conTotale(VIS), tb = document.getElementById("righe"); tb.replaceChildren();
-  Object.keys(v).sort().slice(-30).reverse().forEach((g) => {
-    const tr = el("tr"); tr.append(el("td", "", dat(g)));
-    SOC.map(([s]) => s).concat(["Totale"]).forEach((s) => tr.append(el("td", "", fmt(v[g][s]))));
-    tb.append(tr);
+
+/* oggi / ieri: barre 3D dei 4 social. "Oggi" = l'ultimo giorno che le piattaforme hanno gia' dato per intero */
+function giornoDi(p) {
+  const tutti = Object.keys(VIS).sort(), ult = tutti[tutti.length - 1];
+  return p === "oggi" ? ult : indietro(ult, 1);
+}
+function disegnaBarre(box, g) {
+  const r = VIS[g] || {}; const max = Math.max(1, ...SOC.map(([s]) => r[s] || 0));
+  const wrap = el("div", "barre");
+  const prismi = [];
+  SOC.forEach(([s, c1, c2]) => {
+    const col = el("div", "colonna");
+    col.append(el("div", "valore", r[s] === undefined ? "in arrivo" : fmt(r[s])));
+    const p = el("div", "prisma"); p.style.setProperty("--c1", c1); p.style.setProperty("--c2", c2); p.style.setProperty("--glow", c1 + "66");
+    p.append(el("i", "fronte"), el("i", "lato"), el("i", "cima"));
+    col.append(p, el("div", "nome", s)); wrap.append(col);
+    prismi.push([p, r[s] === undefined ? 0 : Math.max(4, (r[s] / max) * 100)]);
   });
+  box.append(wrap);
+  const alza = () => prismi.forEach(([p, h]) => { p.style.height = `calc(${h}% - 40px)`; });
+  if (MOTO) requestAnimationFrame(() => requestAnimationFrame(alza)); else alza();
+  const tot = SOC.every(([s]) => r[s] !== undefined) ? SOC.reduce((a, [s]) => a + r[s], 0) : null;
+  document.getElementById("quando").textContent = dat(g) + (tot !== null ? " · totale " + fmt(tot) : "") + " · le piattaforme danno il giorno intero la mattina dopo";
 }
+
 const NS = "http://www.w3.org/2000/svg";
 const sv = (tag, at) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); return e; };
-function disegnaGrafico() {
-  const box = document.getElementById("grafico"); box.replaceChildren();
-  const giorni = Object.keys(VIS).sort().slice(-GIORNI_GRAF);
-  if (!giorni.length) { box.textContent = "Nessun dato"; return; }
-  const W = Math.max(300, box.clientWidth - 16), H = box.clientWidth < 520 ? 230 : 280;
+function disegnaLinee(box, n) {
+  const giorni = Object.keys(VIS).sort().slice(-n);
+  document.getElementById("quando").textContent = giorni.length ? "dal " + dat(giorni[0]) + " al " + dat(giorni[giorni.length - 1]) : "";
+  const W = Math.max(300, box.clientWidth - 20), H = box.clientWidth < 520 ? 230 : 270;
   const max = Math.max(1, ...giorni.flatMap((g) => SOC.map(([s]) => VIS[g][s] || 0)));
-  const passo = Math.pow(10, Math.floor(Math.log10(max))), top = Math.ceil(max / passo) * passo;
-  const ticks = [0, top / 4, top / 2, top * 3 / 4, top];
-  const L = 8 + Math.max(...ticks.map((t) => fmt(t).length)) * 6.5, R = 10, T = 8, B = 22;
+  const passo = Math.pow(10, Math.floor(Math.log10(max))) / 2, top = Math.ceil(max / passo) * passo;
+  const ticks = [0, top / 2, top];
+  const L = 10 + Math.max(...ticks.map((t) => fmt(t).length)) * 6.5, R = 12, T = 12, B = 24;
   const x = (i) => L + (giorni.length === 1 ? 0 : i * (W - L - R) / (giorni.length - 1));
   const y = (v) => T + (H - T - B) * (1 - v / top);
-  const svg = sv("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Visualizzazioni giornaliere dei 4 social negli ultimi " + giorni.length + " giorni" });
-  ticks.forEach((t) => {
-    svg.append(sv("line", { x1: L, x2: W - R, y1: y(t), y2: y(t), stroke: "var(--grid)" }));
-    const tx = sv("text", { x: L - 6, y: y(t) + 4, "text-anchor": "end" }); tx.textContent = fmt(t); svg.append(tx);
+  const svg = sv("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Visualizzazioni giornaliere dei 4 social, " + giorni.length + " giorni" });
+  const defs = sv("defs", {});
+  const glow = sv("filter", { id: "bagliore", x: "-20%", y: "-50%", width: "140%", height: "200%" });
+  glow.append(sv("feGaussianBlur", { stdDeviation: "3.5", result: "b" }));
+  const mg = sv("feMerge", {}); mg.append(sv("feMergeNode", { in: "b" }), sv("feMergeNode", { in: "SourceGraphic" })); glow.append(mg); defs.append(glow);
+  SOC.forEach(([s, c1], k) => {
+    const lg = sv("linearGradient", { id: "area" + k, x1: 0, x2: 0, y1: 0, y2: 1 });
+    lg.append(sv("stop", { offset: "0%", "stop-color": c1, "stop-opacity": ".32" }), sv("stop", { offset: "100%", "stop-color": c1, "stop-opacity": "0" }));
+    defs.append(lg);
   });
-  const nEt = Math.max(2, Math.min(giorni.length, Math.floor((W - L) / 60)));
+  svg.append(defs);
+  ticks.forEach((t) => {
+    svg.append(sv("line", { x1: L, x2: W - R, y1: y(t), y2: y(t), stroke: "rgba(255,214,10,.12)", "stroke-dasharray": t ? "2 4" : "" }));
+    const tx = sv("text", { x: L - 7, y: y(t) + 4, "text-anchor": "end" }); tx.textContent = fmt(t); svg.append(tx);
+  });
+  const nEt = Math.max(2, Math.min(giorni.length, Math.floor((W - L) / 58)));
   for (let k = 0; k < nEt; k++) {
     const i = Math.round(k * (giorni.length - 1) / Math.max(1, nEt - 1)), d = new Date(giorni[i] + "T00:00:00Z");
     const tx = sv("text", { x: x(i), y: H - 6, "text-anchor": k === 0 ? "start" : k === nEt - 1 ? "end" : "middle" });
     tx.textContent = d.getUTCDate() + "/" + (d.getUTCMonth() + 1); svg.append(tx);
   }
-  SOC.forEach(([s, c]) => {
-    let dpath = "", su = false, ult = null;
-    giorni.forEach((g, i) => { const v = VIS[g][s]; if (v === undefined) { su = false; return; } dpath += (su ? "L" : "M") + x(i).toFixed(1) + "," + y(v).toFixed(1); su = true; ult = i; });
-    svg.append(sv("path", { d: dpath, fill: "none", stroke: `var(${c})`, "stroke-width": 2, "stroke-linejoin": "round" }));
-    if (ult !== null) svg.append(sv("circle", { cx: x(ult), cy: y(VIS[giorni[ult]][s]), r: 3.5, fill: `var(${c})` }));
+  SOC.forEach(([s, c1], k) => {
+    const punti = giorni.map((g, i) => [i, VIS[g][s]]).filter(([, v]) => v !== undefined);
+    if (!punti.length) return;
+    const d = punti.map(([i, v], j) => (j ? "L" : "M") + x(i).toFixed(1) + "," + y(v).toFixed(1)).join("");
+    const area = d + "L" + x(punti[punti.length - 1][0]).toFixed(1) + "," + y(0) + "L" + x(punti[0][0]).toFixed(1) + "," + y(0) + "Z";
+    svg.append(sv("path", { d: area, fill: `url(#area${k})` }));
+    const linea = sv("path", { d, fill: "none", stroke: c1, "stroke-width": 2.4, "stroke-linejoin": "round", "stroke-linecap": "round", filter: "url(#bagliore)" });
+    svg.append(linea);
+    if (MOTO) { const len = 4000; linea.setAttribute("stroke-dasharray", len); linea.setAttribute("stroke-dashoffset", len);
+      linea.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }], { duration: 1400, delay: k * 120, easing: "cubic-bezier(.2,.9,.2,1)", fill: "forwards" }); }
+    const [ui, uv] = punti[punti.length - 1];
+    svg.append(sv("circle", { cx: x(ui), cy: y(uv), r: 4.5, fill: c1, filter: "url(#bagliore)" }));
   });
-  const guida = sv("line", { y1: T, y2: H - B, stroke: "var(--mute)", "stroke-dasharray": "3 3", opacity: 0 }); svg.append(guida);
+  const guida = sv("line", { y1: T, y2: H - B, stroke: "rgba(255,243,176,.6)", "stroke-dasharray": "3 3", opacity: 0 }); svg.append(guida);
   box.append(svg);
   const tip = el("div", "tip"); tip.hidden = true; box.append(tip);
   const muovi = (ev) => {
@@ -224,29 +290,52 @@ function disegnaGrafico() {
     const g = giorni[i]; guida.setAttribute("x1", x(i)); guida.setAttribute("x2", x(i)); guida.setAttribute("opacity", 1);
     tip.replaceChildren(el("span", "t", dat(g)));
     let tot = 0, tutti = true;
-    SOC.forEach(([s, c]) => { const r = el("div"); const a = el("span", "", s); a.style.color = `var(${c})`; r.append(a, el("span", "", fmt(VIS[g][s]))); tip.append(r); if (VIS[g][s] === undefined) tutti = false; else tot += VIS[g][s]; });
+    SOC.forEach(([s, c1]) => { const r = el("div"); const a = el("span", "", s); a.style.color = c1; r.append(a, el("span", "", fmt(VIS[g][s]))); tip.append(r); if (VIS[g][s] === undefined) tutti = false; else tot += VIS[g][s]; });
     const r = el("div"); r.append(el("span", "", "Totale"), el("span", "", tutti ? fmt(tot) : "—")); tip.append(r);
     tip.hidden = false;
-    const px = x(i) * rc.width / W + 8; let lx = px + 12;
+    const px = x(i) * rc.width / W + 10; let lx = px + 12;
     if (lx + tip.offsetWidth > box.clientWidth) lx = px - tip.offsetWidth - 12;
     tip.style.left = Math.max(4, lx) + "px";
   };
   svg.addEventListener("pointermove", muovi); svg.addEventListener("pointerdown", muovi);
   svg.addEventListener("pointerleave", () => { tip.hidden = true; guida.setAttribute("opacity", 0); });
 }
-document.getElementById("legenda").append(...SOC.map(([s, c]) => { const sp = el("span"); const d = el("span", "dot"); d.style.background = `var(${c})`; sp.append(d, s); return sp; }));
+function disegnaGrafico() {
+  const box = document.getElementById("grafico"); box.replaceChildren();
+  if (!Object.keys(VIS).length) { box.textContent = "Nessun dato"; return; }
+  document.getElementById("legenda").hidden = PERIODO === "oggi" || PERIODO === "ieri";
+  if (PERIODO === "oggi" || PERIODO === "ieri") disegnaBarre(box, giornoDi(PERIODO)); else disegnaLinee(box, +PERIODO);
+}
+
+/* polvere d'oro che sale lenta sullo sfondo */
+(function stelle() {
+  const cv = document.getElementById("stelle"), cx = cv.getContext("2d"); let W, H, P = [];
+  const misura = () => { const d = Math.min(2, window.devicePixelRatio || 1); W = cv.width = innerWidth * d; H = cv.height = innerHeight * d;
+    P = Array.from({ length: Math.round(innerWidth * innerHeight / 9000) }, () => ({ x: Math.random() * W, y: Math.random() * H, r: (Math.random() * 1.6 + .3) * d, v: (Math.random() * .25 + .05) * d, f: Math.random() * 6.28 })); };
+  misura(); addEventListener("resize", misura);
+  const passo = (t) => {
+    cx.clearRect(0, 0, W, H);
+    P.forEach((p) => { const a = .35 + .45 * Math.sin(t / 900 + p.f);
+      cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 6.28); cx.fillStyle = `rgba(255, 214, 10, ${a})`; cx.shadowBlur = 8 * p.r; cx.shadowColor = "#ffd60a"; cx.fill();
+      if (MOTO) { p.y -= p.v; p.x += Math.sin(t / 2000 + p.f) * .15; if (p.y < -5) { p.y = H + 5; p.x = Math.random() * W; } } });
+    if (MOTO) requestAnimationFrame(passo);
+  };
+  requestAnimationFrame(passo);
+})();
+
+document.getElementById("legenda").append(...SOC.map(([s, c]) => { const sp = el("span"); const d = el("span", "dot"); d.style.background = c; d.style.color = c; sp.append(d, s); return sp; }));
 document.querySelectorAll(".tabs button").forEach((b) => b.addEventListener("click", () => {
-  GIORNI_GRAF = +b.dataset.g;
+  PERIODO = b.dataset.p;
   document.querySelectorAll(".tabs button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
   disegnaGrafico();
 }));
 let largh = 0;
-window.addEventListener("resize", () => { if (Math.abs(window.innerWidth - largh) > 30) { largh = window.innerWidth; disegnaGrafico(); } });
+addEventListener("resize", () => { if (Math.abs(innerWidth - largh) > 30) { largh = innerWidth; disegnaGrafico(); } });
 fetch("dati.json?v=" + Date.now(), { cache: "no-store" }).then((r) => r.json()).then((d) => {
-  VIS = d.visualizzazioni || {}; FOL = d.follower || {}; largh = window.innerWidth;
-  if (d.aggiornato) document.getElementById("agg").textContent = "Aggiornato: " + d.aggiornato.slice(8, 10) + "/" + d.aggiornato.slice(5, 7) + " alle " + d.aggiornato.slice(11);
-  disegnaSchede(); disegnaGrafico(); disegnaTabella();
-}).catch(() => { document.getElementById("take").textContent = "Numeri non caricati: riprova tra poco."; });
+  VIS = d.visualizzazioni || {}; FOL = d.follower || {}; largh = innerWidth;
+  if (d.aggiornato) document.getElementById("agg").textContent = "Aggiornato il " + d.aggiornato.slice(8, 10) + "/" + d.aggiornato.slice(5, 7) + " alle " + d.aggiornato.slice(11);
+  disegnaSchede(); disegnaGrafico();
+}).catch(() => { document.getElementById("agg").textContent = "Numeri non caricati: riprova tra poco."; });
 </script>
 </body>
 </html>
