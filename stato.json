@@ -15760,7 +15760,9 @@
      "ok": true,
      "id": "18114110906631487",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -15824,7 +15826,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "_M6AG9YHKww"
+     "id": "_M6AG9YHKww",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -15835,11 +15838,79 @@
    },
    "spinto": true,
    "testo": "Chiedi scusa in fretta, perdona in fretta e vai avanti in fretta. I rancori occupano un sacco di spazio nella testa, e t"
+  },
+  {
+   "quando": "2026-11-14T23:00",
+   "slot": "2026-11-15 00:00",
+   "video": "IMG_3330.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-622bd2fe",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "majestic_12_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.435,
+     "movimento": 19.09,
+     "primo_piano_fermo": false,
+     "soglia_moto": 13.22,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 6,
+     "scurito": 0.51,
+     "luce": 0.44,
+     "sfumatura": 0.33,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 116,
+    "scritta": "centro_serif",
+    "estratto": "rallenty",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 24
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_06.flac",
+    "musica_instagram": "Run - Jumbo [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "bBYiMVajoIU"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18172264312481906",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Puoi sentirlo nell'anima quando è il momento di allontanarti da certe persone, di cambiare la tua vita, di volere di più"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-07 00:00",
   "2026-11-07 06:00",
   "2026-11-07 08:00",
   "2026-11-07 10:00",
@@ -15918,10 +15989,10 @@
   "2026-11-14 16:00",
   "2026-11-14 18:00",
   "2026-11-14 20:00",
-  "2026-11-14 22:00"
+  "2026-11-14 22:00",
+  "2026-11-15 00:00"
  ],
  "musica_recenti": [
-  "moon_vision_1.m4a",
   "survival_mode_3.m4a",
   "vibe_check_2.m4a",
   "ancient_civilisations_1.m4a",
@@ -15980,7 +16051,8 @@
   "ten_1.m4a",
   "taking_flight_1.m4a",
   "wrangle_the_crazy_1.m4a",
-  "cartier_3.m4a"
+  "cartier_3.m4a",
+  "majestic_12_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -16352,15 +16424,16 @@
   "MIE-ed389b29",
   "MIE-47e564b9",
   "MIE-4aaef203",
-  "MIE-ca459a13"
+  "MIE-ca459a13",
+  "MIE-622bd2fe"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -16384,8 +16457,8 @@
    "ultimo": "2026-10-27"
   },
   "1ssTZiPaSjGA63iZMxhUEOD6wWT-dqCLz": {
-   "usi": 3,
-   "ultimo": "2026-11-03",
+   "usi": 4,
+   "ultimo": "2026-11-14",
    "orizzontale": false
   },
   "1HKv05Wh_t_gsHvCIkHBJFaKlY4mxyEy2": {
@@ -16951,7 +17024,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_01.flac",
   "energia_06.flac",
   "deciso_07.flac",
   "phonk_10.flac",
@@ -16970,7 +17042,8 @@
   "phonk_02.flac",
   "trap_12.flac",
   "deciso_08.flac",
-  "phonk_08.flac"
+  "phonk_08.flac",
+  "drive_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -17005,7 +17078,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio2",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -17021,7 +17094,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1372666635060078",
   "739108178545320",
   "1383912545569665",
   "1346975640096385",
@@ -17080,11 +17152,11 @@
   "2242687643238503",
   "620334183626298",
   "1354806896501272",
-  "522339937196006"
+  "522339937196006",
+  "2065054100581983"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Trout Recording",
   "Swell Sound",
   "Adam Griffith",
   "The K Club",
@@ -17093,10 +17165,10 @@
   "Fellow Travelers",
   "Tony Dark Eyes",
   "Shanice",
-  "Symphonic Planet"
+  "Symphonic Planet",
+  "Jumbo"
  ],
  "ig_titoli_recenti": [
-  "winners take all",
   "fire",
   "rock your world",
   "heros journey",
@@ -17135,7 +17207,8 @@
   "family food fight",
   "epica",
   "just can t believe",
-  "epic proportions"
+  "epic proportions",
+  "run"
  ],
  "ig_tendenze_riserva": [
   {
@@ -17144,6 +17217,34 @@
    "display_artist": "Blues369",
    "duration_in_ms": 274920,
    "libreria": false
+  },
+  {
+   "audio_id": "241840291972862",
+   "title": "Action Hero",
+   "display_artist": "Sam Marshall",
+   "duration_in_ms": 202751,
+   "libreria": true
+  },
+  {
+   "audio_id": "856221358845766",
+   "title": "What Now (feat. Dawson Gnewikow, Dawson March, Jacquire King)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 157400,
+   "libreria": true
+  },
+  {
+   "audio_id": "2065054100581983",
+   "title": "Run",
+   "display_artist": "Jumbo",
+   "duration_in_ms": 68050,
+   "libreria": true
+  },
+  {
+   "audio_id": "5795007423919848",
+   "title": "Motion",
+   "display_artist": "Mike Floss",
+   "duration_in_ms": 145762,
+   "libreria": true
   }
  ]
 }
