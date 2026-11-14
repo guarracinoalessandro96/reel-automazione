@@ -1,15 +1,15 @@
 {
  "temi": {
-  "amicizia": 1.04,
-  "imprenditore": 1.14,
-  "mentalita": 0.93,
-  "palestra": 1.1,
-  "dieta": 1.06,
-  "regole": 1.23,
-  "storia": 1.11,
+  "amicizia": 1.05,
+  "imprenditore": 1.17,
+  "mentalita": 0.92,
+  "palestra": 1.13,
+  "dieta": 1.07,
+  "regole": 1.27,
+  "storia": 1.14,
   "famiglia": 0.91
  },
- "aggiornato": "2026-11-13",
+ "aggiornato": "2026-11-14",
  "frasi_vincenti": [
   "MIE-02d87ee7",
   "MIE-043e8cf1",
@@ -48,12 +48,14 @@
   "MIE-93d891c5",
   "MIE-94ebbc50",
   "MIE-95c3c510",
+  "MIE-95e45457",
   "MIE-96cb5cca",
   "MIE-98f390fa",
   "MIE-9b789797",
   "MIE-9dd49640",
   "MIE-a56f1caf",
   "MIE-a9f47ec7",
+  "MIE-b8b94c79",
   "MIE-ba88ba7b",
   "MIE-bd40bf0d",
   "MIE-bd41cc60",
@@ -73,12 +75,13 @@
   "STO-20"
  ],
  "formati": {
-  "frase": 1.09,
-  "regole": 1.08,
-  "montaggio": 0.95,
-  "frase8": 1.06,
-  "dieci_due": 0.71,
-  "dieci": 0.91
+  "frase": 1.18,
+  "regole": 1.17,
+  "montaggio": 1.04,
+  "frase8": 1.16,
+  "dieci_due": 0.4,
+  "dieci": 0.99,
+  "taglio2": 0.4
  },
  "esperimento_formati": {
   "regole": 1.6
@@ -86,15 +89,15 @@
  "esperimento_nota": "Agente 25/10/2026: regole x1,6 (12 Short dal 18/10: mediana 954, 2 sopra 1.200; frase 935 e 0 su 13; montaggio 770 e 1 su 14). Verifica 1/11/2026: se le regole rendono meno della mediana degli altri formati si toglie.",
  "brani_forti": [
   "taking_flight",
-  "break_ya_neck",
-  "intergalactic",
   "the_road_to_mordor",
   "sweaty_staredown",
   "way_back_home",
   "wrangle_the_crazy",
+  "van_life_rager",
   "fire_in_the_sky",
   "rubberband",
-  "van_life_rager"
+  "ancient_civilisations",
+  "locked_in"
  ],
  "clip_forti": [
   "IMG_4037.MOV",
@@ -107,24 +110,25 @@
   "IMG_4061.MOV",
   "Alessandro Guarracino sta trasmettendo dal vivo..MOV",
   "IMG_3972.MOV",
-  "IMG_3974.MOV",
   "IMG_4126.MOV",
-  "IMG_3606.mov",
-  "IMG_3952.mov",
   "IMG_3611.mov",
-  "IMG_4044.MOV",
+  "IMG_3606.mov",
   "IMG_3790.mov",
   "IMG_4118.mov",
   "IMG_4121.mov",
-  "IMG_3762.mov"
+  "IMG_3762.mov",
+  "IMG_3974.MOV",
+  "IMG_3952.mov",
+  "IMG_4044.MOV"
  ],
  "brani_forti_ig": [
   "deciso_05",
   "trap",
   "deciso_12",
-  "deciso",
   "drive",
-  "energia",
-  "phonk"
+  "deciso",
+  "deciso_06",
+  "phonk",
+  "phonk_05"
  ]
 }
