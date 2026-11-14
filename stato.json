@@ -15415,7 +15415,9 @@
      "ok": true,
      "id": "18424634950156432",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -15470,7 +15472,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "lj4UBqzPoWE"
+     "id": "lj4UBqzPoWE",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -15481,11 +15484,77 @@
    },
    "spinto": true,
    "testo": "Il motivo per cui alcune persone sono così gentili è che il mondo è stato così duro con loro che non vogliono che nessun"
+  },
+  {
+   "quando": "2026-11-14T13:00",
+   "slot": "2026-11-14 14:00",
+   "video": "IMG_4286.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-8432cd82",
+   "tema": "famiglia",
+   "montaggio": {
+    "formato": "loop",
+    "durata": 10.0,
+    "musica": "whoop_1.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.182,
+     "movimento": 25.47,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 6,
+     "scurito": 0.5,
+     "luce": 0.44,
+     "sfumatura": 0.33,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 176,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 25
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_01.flac",
+    "musica_instagram": "Battle - Sam Marshall"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "fV9d5DNQ9xU"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18423278782080619",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Se vuoi sapere chi sono i tuoi amici e la tua famiglia, perdi il lavoro, ammalati o attraversa un periodo difficile. Ved"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-06 14:00",
   "2026-11-06 16:00",
   "2026-11-06 18:00",
   "2026-11-06 20:00",
@@ -15564,10 +15633,10 @@
   "2026-11-14 06:00",
   "2026-11-14 08:00",
   "2026-11-14 10:00",
-  "2026-11-14 12:00"
+  "2026-11-14 12:00",
+  "2026-11-14 14:00"
  ],
  "musica_recenti": [
-  "van_life_rager_1.m4a",
   "wrangle_the_crazy_1.m4a",
   "keep_it_movin_3.m4a",
   "intergalactic_3.m4a",
@@ -15626,7 +15695,8 @@
   "fire_in_the_sky_1.m4a",
   "mirror_mirror_1.m4a",
   "rubberband_1.m4a",
-  "delirium_3.m4a"
+  "delirium_3.m4a",
+  "whoop_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -15993,10 +16063,10 @@
   "MIE-77bc321f",
   "MIE-86754336",
   "MIE-67a269f1",
-  "MIE-58f6ed51"
+  "MIE-58f6ed51",
+  "MIE-8432cd82"
  ],
  "temi_recenti": [
-  "mentalita",
   "imprenditore",
   "mentalita",
   "mentalita",
@@ -16005,7 +16075,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "famiglia"
  ],
  "analisi": {},
  "pulizia": "2026-11-14",
@@ -16487,8 +16558,9 @@
    "ultimo": "2026-11-07"
   },
   "1Dvdi1PK-wTKhXcDuM6STB2Mq6FUojSqR": {
-   "usi": 3,
-   "ultimo": "2026-11-07"
+   "usi": 4,
+   "ultimo": "2026-11-14",
+   "orizzontale": false
   },
   "1-wXfeOgo9aVpjZBQjqJopT9L84ZIWVcr": {
    "usi": 3,
@@ -16587,7 +16659,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_10.flac",
   "trap_01.flac",
   "phonk_06.flac",
   "deciso_01.flac",
@@ -16606,7 +16677,8 @@
   "energia_11.flac",
   "deciso_09.flac",
   "phonk_09.flac",
-  "trap_06.flac"
+  "trap_06.flac",
+  "drive_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -16641,7 +16713,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_foto",
+ "formato_ultimo": "loop",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -16657,7 +16729,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1204148475203672",
   "522339937196006",
   "1546581635764552",
   "1377485917727304",
@@ -16716,11 +16787,11 @@
   "1100130857775330",
   "1108285910189784",
   "727931292858890",
-  "605387610085051"
+  "605387610085051",
+  "774667642107625"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Tony Dark Eyes",
   "Giulio Cercato",
   "Elad Marish",
   "TrackTribe",
@@ -16729,10 +16800,10 @@
   "Swell Sound",
   "Adam Griffith",
   "The K Club",
-  "Vault 49"
+  "Vault 49",
+  "Sam Marshall"
  ],
  "ig_titoli_recenti": [
-  "rise",
   "the power",
   "can t run away remix",
   "main character energy",
@@ -16771,7 +16842,8 @@
   "good fight",
   "knockout",
   "copacetic",
-  "glory"
+  "glory",
+  "battle"
  ],
  "ig_tendenze_riserva": [
   {
@@ -16780,13 +16852,6 @@
    "display_artist": "Blues369",
    "duration_in_ms": 274920,
    "libreria": false
-  },
-  {
-   "audio_id": "1377485917727304",
-   "title": "Fighter",
-   "display_artist": "LAVLO",
-   "duration_in_ms": 58745,
-   "libreria": true
   }
  ]
 }
