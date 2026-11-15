@@ -16185,7 +16185,9 @@
      "ok": true,
      "id": "18103383200663309",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -16250,7 +16252,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "z8R0p3PRaLc"
+     "id": "z8R0p3PRaLc",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -16261,11 +16264,76 @@
    },
    "spinto": true,
    "testo": "Ti garantisco che concentrarti sulla palestra, migliorare il tuo guardaroba e pulire la tua alimentazione renderà la tua"
+  },
+  {
+   "quando": "2026-11-15T15:00",
+   "slot": "2026-11-15 16:00",
+   "video": "IMG_5277.MOV",
+   "md5": "75843bfaeefbc2e3ff5c0b4e34f6caa7",
+   "da_archivio": false,
+   "scena": "lavoro",
+   "registrato": "2026-11-15T13:44+01:00",
+   "frase": "MIE-2dfaf33f",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 10.0,
+    "musica": "vibe_check_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 1,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 4.29,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 8,
+     "scurito": 0.0,
+     "luce": 0.18,
+     "sfumatura": 0.0,
+     "intatto": true,
+     "scene_intatte": 1
+    },
+    "secondi_montaggio": 89,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "due",
+     "parole": 26
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_07.flac",
+    "musica_instagram": "Running (Instrumental) - Julia Gartha [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "F2UCq83SiCs"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17922486999530800",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Le persone carismatiche fanno complimenti. Le persone felici incoraggiano. Le persone di successo sostengono. E quelle c"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-07 16:00",
   "2026-11-07 18:00",
   "2026-11-07 20:00",
   "2026-11-07 22:00",
@@ -16344,10 +16412,10 @@
   "2026-11-15 08:00",
   "2026-11-15 10:00",
   "2026-11-15 12:00",
-  "2026-11-15 14:00"
+  "2026-11-15 14:00",
+  "2026-11-15 16:00"
  ],
  "musica_recenti": [
-  "kick_it_3.m4a",
   "death_duel_1.m4a",
   "i_might_be_late_2.m4a",
   "break_ya_neck_3.m4a",
@@ -16406,7 +16474,8 @@
   "intergalactic_3.m4a",
   "moon_vision_1.m4a",
   "horizons_3.m4a",
-  "final_boss_battle_1.m4a"
+  "final_boss_battle_1.m4a",
+  "vibe_check_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -16784,7 +16853,8 @@
   "MIE-0e2e720c",
   "MIE-6a3f23f2",
   "MIE-95f293ca",
-  "MIE-1a8cbedd"
+  "MIE-1a8cbedd",
+  "MIE-2dfaf33f"
  ],
  "temi_recenti": [
   "mentalita",
@@ -16794,11 +16864,54 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
-  "palestra"
+  "palestra",
+  "mentalita"
  ],
- "analisi": {},
+ "analisi": {
+  "1Q-g_--WvnGEdpudkxwU_yXI4qSv9tteg": {
+   "nome": "IMG_5275.MOV",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-15T13:40+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-15T13:23:47.484Z",
+   "parlato": null,
+   "momento": null
+  },
+  "12XJ31-yzyaXlNCSzxTpaztbEXpOLstDr": {
+   "nome": "IMG_5279.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.97,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-15T13:46+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-15T13:26:34.458Z",
+   "parlato": null,
+   "momento": null
+  },
+  "11ifFF0-NdArVfA5OkQH9RcDN2JXsB1_m": {
+   "nome": "IMG_5281.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.56,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-15T13:50+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-15T13:29:17.101Z",
+   "parlato": null,
+   "momento": null
+  }
+ },
  "pulizia": "2026-11-15",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -17384,10 +17497,14 @@
    "usi": 1,
    "ultimo": "2026-11-13",
    "orizzontale": false
+  },
+  "1iHJKTqo5OtPmpH1aQbZz5IpG1MchuX3H": {
+   "usi": 1,
+   "ultimo": "2026-11-15",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "phonk_05.flac",
   "drive_03.flac",
   "trap_11.flac",
   "deciso_02.flac",
@@ -17406,7 +17523,8 @@
   "deciso_11.flac",
   "phonk_06.flac",
   "energia_02.flac",
-  "trap_05.flac"
+  "trap_05.flac",
+  "deciso_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -17441,7 +17559,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio2",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -17457,7 +17575,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1593403817732751",
   "1050254964075544",
   "576850318404245",
   "921570148849598",
@@ -17516,11 +17633,11 @@
   "1716216946466764",
   "1340308050325459",
   "825305559687149",
-  "1042846574390974"
+  "1042846574390974",
+  "3240401969456886"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Fellow Travelers",
   "Tony Dark Eyes",
   "Shanice",
   "Symphonic Planet",
@@ -17529,10 +17646,10 @@
   "Afterlight",
   "Paul Fowler",
   "Trout Recording",
-  "Jumbo [screenshot]"
+  "Jumbo [screenshot]",
+  "Julia Gartha"
  ],
  "ig_titoli_recenti": [
-  "voices of victory",
   "redux",
   "in motion",
   "hype track",
@@ -17571,7 +17688,8 @@
   "join the movement",
   "willow run",
   "ready to run",
-  "vision"
+  "vision",
+  "running"
  ],
  "ig_tendenze_riserva": [
   {
@@ -17582,17 +17700,10 @@
    "libreria": false
   },
   {
-   "audio_id": "1050254964075544",
-   "title": "Peaceful Motion",
-   "display_artist": "Lightbox Music",
-   "duration_in_ms": 65330,
-   "libreria": true
-  },
-  {
-   "audio_id": "825305559687149",
-   "title": "Ready To Run (feat. Brooklyn Basics)",
-   "display_artist": "Trout Recording",
-   "duration_in_ms": 141410,
+   "audio_id": "3240401969456886",
+   "title": "Running (Instrumental)",
+   "display_artist": "Julia Gartha",
+   "duration_in_ms": 128407,
    "libreria": true
   }
  ]
