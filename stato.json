@@ -16469,7 +16469,9 @@
      "ok": true,
      "id": "18091357832509919",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -16530,7 +16532,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "yFZDazA9vFg"
+     "id": "yFZDazA9vFg",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -16541,11 +16544,76 @@
    },
    "spinto": true,
    "testo": "La vita è troppo breve per vivere con una mentalità negativa, quindi sii felice, lascia andare le cose, sii libero, rima"
+  },
+  {
+   "quando": "2026-11-15T23:00",
+   "slot": "2026-11-16 00:00",
+   "video": "IMG_5275.MOV",
+   "md5": "f4d5bfb45784e5168a04b23b3d3492c7",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-15T13:40+01:00",
+   "frase": "MIE-69cdf0dd",
+   "tema": "famiglia",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 8.0,
+    "musica": "ancient_civilisations_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 2,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 10.8,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 5,
+     "scurito": 0.0,
+     "luce": 0.17,
+     "sfumatura": 0.0,
+     "intatto": true,
+     "scene_intatte": 1
+    },
+    "secondi_montaggio": 97,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "io",
+     "forma": "una",
+     "parole": 22
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_14.flac",
+    "musica_instagram": "Epic Adventure - Bloom"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "n4BdKC0GGYU"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18582687889076912",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Mi sono capitati un papà e una mamma che muovono mari e cieli per vedermi stare bene, non posso accontentarmi di meno."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-08 00:00",
   "2026-11-08 06:00",
   "2026-11-08 08:00",
   "2026-11-08 10:00",
@@ -16624,10 +16692,10 @@
   "2026-11-15 16:00",
   "2026-11-15 18:00",
   "2026-11-15 20:00",
-  "2026-11-15 22:00"
+  "2026-11-15 22:00",
+  "2026-11-16 00:00"
  ],
  "musica_recenti": [
-  "sweaty_staredown_1.m4a",
   "mirror_mirror_3.m4a",
   "whoop_2.m4a",
   "the_light_1.m4a",
@@ -16686,7 +16754,8 @@
   "vibe_check_1.m4a",
   "locked_in_3.m4a",
   "keep_it_movin_3.m4a",
-  "van_life_rager_3.m4a"
+  "van_life_rager_3.m4a",
+  "ancient_civilisations_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -17068,10 +17137,10 @@
   "MIE-2dfaf33f",
   "MIE-ad9dcdb0",
   "MIE-bc59f2ed",
-  "MIE-9abf2819"
+  "MIE-9abf2819",
+  "MIE-69cdf0dd"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -17080,24 +17149,10 @@
   "mentalita",
   "dieta",
   "famiglia",
-  "mentalita"
+  "mentalita",
+  "famiglia"
  ],
- "analisi": {
-  "1Q-g_--WvnGEdpudkxwU_yXI4qSv9tteg": {
-   "nome": "IMG_5275.MOV",
-   "scena": "palestra",
-   "sicurezza": 1.0,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-15T13:40+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-11-15T13:23:47.484Z",
-   "parlato": null,
-   "momento": null
-  }
- },
+ "analisi": {},
  "pulizia": "2026-11-15",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -17698,10 +17753,14 @@
    "usi": 1,
    "ultimo": "2026-11-15",
    "orizzontale": false
+  },
+  "1Q-g_--WvnGEdpudkxwU_yXI4qSv9tteg": {
+   "usi": 1,
+   "ultimo": "2026-11-15",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "phonk_16.flac",
   "energia_11.flac",
   "deciso_09.flac",
   "phonk_09.flac",
@@ -17720,7 +17779,8 @@
   "deciso_07.flac",
   "phonk_05.flac",
   "trap_15.flac",
-  "energia_12.flac"
+  "energia_12.flac",
+  "phonk_14.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -17755,7 +17815,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio3",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -17771,7 +17831,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1341809783805885",
   "845285864683880",
   "1232530197323594",
   "1478915717468599",
@@ -17830,11 +17889,11 @@
   "3240401969456886",
   "3509829325973401",
   "1068592065620532",
-  "565118654020261"
+  "565118654020261",
+  "4489870934582584"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jumbo",
   "Giulio Cercato",
   "Afterlight",
   "Paul Fowler",
@@ -17843,10 +17902,10 @@
   "Julia Gartha",
   "Ross Lara",
   "LAVLO",
-  "Global Genius"
+  "Global Genius",
+  "Bloom"
  ],
  "ig_titoli_recenti": [
-  "adrenalina was her name",
   "running out of heaven tonight",
   "road warriors",
   "battle ska",
@@ -17885,7 +17944,8 @@
   "running",
   "crush",
   "legendary",
-  "inspired to shine"
+  "inspired to shine",
+  "epic adventure"
  ],
  "ig_tendenze_riserva": [
   {
@@ -17894,20 +17954,6 @@
    "display_artist": "Blues369",
    "duration_in_ms": 274920,
    "libreria": false
-  },
-  {
-   "audio_id": "2623141041391037",
-   "title": "Running",
-   "display_artist": "Julia Gartha",
-   "duration_in_ms": 128407,
-   "libreria": true
-  },
-  {
-   "audio_id": "795179878894620",
-   "title": "Move Me",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 151967,
-   "libreria": true
   }
  ]
 }
