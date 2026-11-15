@@ -8,6 +8,10 @@ on:
   # ora UTC e minuti "strani" (meno affollati): se GitHub ne salta qualcuna, la successiva recupera.
   schedule:
     - cron: "23 */2 * * *"
+  # 15/11 sera: anche gli orari ogni 2 ore non partivano. Allora parte anche dopo i lavori che GitHub esegue davvero.
+  workflow_run:
+    workflows: ["Report", "Controllo salute", "Statistiche di riserva"]
+    types: [completed]
   workflow_dispatch: {}
 
 concurrency: andamento
