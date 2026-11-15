@@ -15975,7 +15975,9 @@
      "ok": true,
      "id": "18107644000996595",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -16036,7 +16038,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "49Dymf5uGWw"
+     "id": "49Dymf5uGWw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -16047,11 +16050,81 @@
    },
    "spinto": true,
    "testo": "Dicono che il tempo guarisce tutto. Mentono. Ci insegna soltanto ad adattarci al dolore e a convivere con cicatrici che "
+  },
+  {
+   "quando": "2026-11-15T09:01",
+   "slot": "2026-11-15 10:00",
+   "video": "IMG_4610.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-6a3f23f2",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio2",
+    "durata": 10.0,
+    "musica": "moon_vision_1.m4a",
+    "stacchi": 5,
+    "testi": 1,
+    "scene_dal_video": 3,
+    "viso_prima_scena": 2,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 24.77,
+     "primo_piano_fermo": false,
+     "soglia_moto": 18.17,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 10,
+     "scurito": 0.46,
+     "luce": 0.37,
+     "sfumatura": 0.28,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "ripiego_da": "giornata",
+    "ripiego_motivo": "giornata: solo 3 momenti diversi (ne servono 4)",
+    "secondi_montaggio": 436,
+    "scritta": "centro_serif",
+    "estratto": "giornata",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 44
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_06.flac",
+    "musica_instagram": "Willow Run - Paul Fowler [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "0Z2sCYi4Txs"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18137372374737287",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non essere sposati a 30 anni non è un fallimento. È una vittoria. Hai evitato la persona sbagliata. La casa sbagliata. L"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-07 10:00",
   "2026-11-07 12:00",
   "2026-11-07 14:00",
   "2026-11-07 16:00",
@@ -16130,10 +16203,10 @@
   "2026-11-14 22:00",
   "2026-11-15 00:00",
   "2026-11-15 06:00",
-  "2026-11-15 08:00"
+  "2026-11-15 08:00",
+  "2026-11-15 10:00"
  ],
  "musica_recenti": [
-  "ancient_civilisations_1.m4a",
   "locked_in_3.m4a",
   "way_back_home_2.m4a",
   "kick_it_3.m4a",
@@ -16192,7 +16265,8 @@
   "cartier_3.m4a",
   "majestic_12_3.m4a",
   "stake_out_1.m4a",
-  "intergalactic_3.m4a"
+  "intergalactic_3.m4a",
+  "moon_vision_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -16567,12 +16641,13 @@
   "MIE-ca459a13",
   "MIE-622bd2fe",
   "MIE-99cfa451",
-  "MIE-0e2e720c"
+  "MIE-0e2e720c",
+  "MIE-6a3f23f2"
  ],
  "temi_recenti": [
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -16899,7 +16974,8 @@
   },
   "1DZL18CieQkswHol6kNuSGv_Xs1MM7rGP": {
    "usi": 2,
-   "ultimo": "2026-10-23"
+   "ultimo": "2026-10-23",
+   "orizzontale": false
   },
   "1bWl3dJYdM96InBjDiVmdmRMF52U91gvK": {
    "usi": 2,
@@ -17089,8 +17165,9 @@
    "ultimo": "2026-11-03"
   },
   "1N4fn6HE4aPH6EdZzDx8nkg0AsbsCT23E": {
-   "usi": 1,
-   "ultimo": "2026-11-04"
+   "usi": 2,
+   "ultimo": "2026-11-15",
+   "orizzontale": false
   },
   "1FhrjVfAVErgd_8w9xxvmzHE3Yopn1VNm": {
    "usi": 1,
@@ -17168,7 +17245,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_10.flac",
   "drive_13.flac",
   "trap_15.flac",
   "phonk_05.flac",
@@ -17187,7 +17263,8 @@
   "phonk_08.flac",
   "drive_06.flac",
   "trap_04.flac",
-  "deciso_11.flac"
+  "deciso_11.flac",
+  "phonk_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -17222,7 +17299,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "taglio2",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -17238,7 +17315,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1346975640096385",
   "226975706443939",
   "1127106596130760",
   "1593403817732751",
@@ -17297,11 +17373,11 @@
   "522339937196006",
   "2065054100581983",
   "1372666635060078",
-  "1716216946466764"
+  "1716216946466764",
+  "1340308050325459"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "The K Club",
   "Vault 49",
   "Sam Marshall",
   "Fellow Travelers",
@@ -17310,10 +17386,10 @@
   "Symphonic Planet",
   "Jumbo",
   "Giulio Cercato",
-  "Afterlight"
+  "Afterlight",
+  "Paul Fowler"
  ],
  "ig_titoli_recenti": [
-  "heros journey",
   "energy in motion",
   "rockstar anthem",
   "voices of victory",
@@ -17352,7 +17428,8 @@
   "epic proportions",
   "run",
   "breathtaker",
-  "join the movement"
+  "join the movement",
+  "willow run"
  ],
  "ig_tendenze_riserva": [
   {
@@ -17363,24 +17440,17 @@
    "libreria": false
   },
   {
-   "audio_id": "593371403855914",
-   "title": "Go Go Go",
-   "display_artist": "T.H.E.",
-   "duration_in_ms": 121050,
+   "audio_id": "1340308050325459",
+   "title": "Willow Run",
+   "display_artist": "Paul Fowler",
+   "duration_in_ms": 248272,
    "libreria": true
   },
   {
-   "audio_id": "1716216946466764",
-   "title": "Join The Movement",
-   "display_artist": "Afterlight",
-   "duration_in_ms": 61611,
-   "libreria": true
-  },
-  {
-   "audio_id": "226975706443939",
-   "title": "Your Legacy",
-   "display_artist": "Alex Blue",
-   "duration_in_ms": 188680,
+   "audio_id": "744011543289259",
+   "title": "Winners Take All (feat. Briana Tyson)",
+   "display_artist": "Jonny Houlihan",
+   "duration_in_ms": 213980,
    "libreria": true
   }
  ]
