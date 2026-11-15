@@ -16045,7 +16045,9 @@
      "ok": true,
      "id": "17919757605531375",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -16110,7 +16112,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "0Z2sCYi4Txs"
+     "id": "0Z2sCYi4Txs",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -16121,11 +16124,73 @@
    },
    "spinto": true,
    "testo": "Non essere sposati a 30 anni non è un fallimento. È una vittoria. Hai evitato la persona sbagliata. La casa sbagliata. L"
+  },
+  {
+   "quando": "2026-11-15T11:00",
+   "slot": "2026-11-15 12:00",
+   "video": "Foto della giornata",
+   "md5": null,
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-95f293ca",
+   "tema": "dieta",
+   "montaggio": {
+    "formato": "dieci_foto",
+    "durata": 10.0,
+    "musica": "horizons_3.m4a",
+    "stacchi": 4,
+    "testi": 1,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 112,
+     "righe": 4,
+     "scurito": 0.0,
+     "luce": 0.56,
+     "sfumatura": 0.39,
+     "intatto": true,
+     "scene_intatte": 4
+    },
+    "foto_ids": [
+     "1aufo4tZ2DLYowiZZ_Vtk7FrJdILNCfLS",
+     "1S2XywqutWnrDGK0Wev9O7_NHcQNqyHy9",
+     "1jfIIvi-6K0XGNJktnCxqMsmS0D6ramHK",
+     "1dpxjLyE6gR2Rqow7UjTep3VRzr6c7YiG"
+    ],
+    "foto_doppie": 0,
+    "foto_giorno": "2026-11-14",
+    "estratto": "foto_rapide",
+    "secondi_montaggio": 118,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {},
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "due",
+     "parole": 22
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_02.flac",
+    "musica_instagram": "Ready To Run (feat. Brooklyn Basics) - Trout Recording [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "8gvINxSaJiU"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18103383200663309",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "La palestra è la parte più facile. Mangiare sano, tracciare il cibo e dire di no alle voglie è la vera disciplina."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-07 12:00",
   "2026-11-07 14:00",
   "2026-11-07 16:00",
   "2026-11-07 18:00",
@@ -16204,10 +16269,10 @@
   "2026-11-15 00:00",
   "2026-11-15 06:00",
   "2026-11-15 08:00",
-  "2026-11-15 10:00"
+  "2026-11-15 10:00",
+  "2026-11-15 12:00"
  ],
  "musica_recenti": [
-  "locked_in_3.m4a",
   "way_back_home_2.m4a",
   "kick_it_3.m4a",
   "death_duel_1.m4a",
@@ -16266,7 +16331,8 @@
   "majestic_12_3.m4a",
   "stake_out_1.m4a",
   "intergalactic_3.m4a",
-  "moon_vision_1.m4a"
+  "moon_vision_1.m4a",
+  "horizons_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -16642,10 +16708,10 @@
   "MIE-622bd2fe",
   "MIE-99cfa451",
   "MIE-0e2e720c",
-  "MIE-6a3f23f2"
+  "MIE-6a3f23f2",
+  "MIE-95f293ca"
  ],
  "temi_recenti": [
-  "mentalita",
   "famiglia",
   "mentalita",
   "mentalita",
@@ -16654,7 +16720,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "dieta"
  ],
  "analisi": {},
  "pulizia": "2026-11-15",
@@ -17245,7 +17312,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_13.flac",
   "trap_15.flac",
   "phonk_05.flac",
   "drive_03.flac",
@@ -17264,7 +17330,8 @@
   "drive_06.flac",
   "trap_04.flac",
   "deciso_11.flac",
-  "phonk_06.flac"
+  "phonk_06.flac",
+  "energia_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -17299,7 +17366,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio2",
+ "formato_ultimo": "dieci_foto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -17315,7 +17382,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "226975706443939",
   "1127106596130760",
   "1593403817732751",
   "1050254964075544",
@@ -17374,11 +17440,11 @@
   "2065054100581983",
   "1372666635060078",
   "1716216946466764",
-  "1340308050325459"
+  "1340308050325459",
+  "825305559687149"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Vault 49",
   "Sam Marshall",
   "Fellow Travelers",
   "Tony Dark Eyes",
@@ -17387,10 +17453,10 @@
   "Jumbo",
   "Giulio Cercato",
   "Afterlight",
-  "Paul Fowler"
+  "Paul Fowler",
+  "Trout Recording"
  ],
  "ig_titoli_recenti": [
-  "energy in motion",
   "rockstar anthem",
   "voices of victory",
   "redux",
@@ -17429,7 +17495,8 @@
   "run",
   "breathtaker",
   "join the movement",
-  "willow run"
+  "willow run",
+  "ready to run"
  ],
  "ig_tendenze_riserva": [
   {
@@ -17440,17 +17507,17 @@
    "libreria": false
   },
   {
-   "audio_id": "1340308050325459",
-   "title": "Willow Run",
-   "display_artist": "Paul Fowler",
-   "duration_in_ms": 248272,
+   "audio_id": "1050254964075544",
+   "title": "Peaceful Motion",
+   "display_artist": "Lightbox Music",
+   "duration_in_ms": 65330,
    "libreria": true
   },
   {
-   "audio_id": "744011543289259",
-   "title": "Winners Take All (feat. Briana Tyson)",
-   "display_artist": "Jonny Houlihan",
-   "duration_in_ms": 213980,
+   "audio_id": "825305559687149",
+   "title": "Ready To Run (feat. Brooklyn Basics)",
+   "display_artist": "Trout Recording",
+   "duration_in_ms": 141410,
    "libreria": true
   }
  ]
