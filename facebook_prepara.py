@@ -18,7 +18,10 @@ CARTELLA_PC = os.path.join(os.path.expanduser("~"), "Facebook da programmare")
 VECCHIO_GIORNI = 2
 # 6/11/2026 (analisi dei numeri, Alessandro: "fai tu"): su Facebook i reel delle 14-20 fanno 142 riproduzioni di
 # mediana, quelli tra le 22 e le 08 da 1 a 6: gli stessi 10 al giorno escono dalle 12 alle 21, uno ogni ora
-ORE_FACEBOOK = tuple(range(12, 22))
+# 15/11/2026 (Alessandro: "ok fai tutte e due"): dall'11/11 nessun reel Facebook supera le 50 riproduzioni e quelli
+# delle 18-21 (uno all'ora, uno dietro l'altro) ne fanno 0-5. Ora piu' distanziati: 10 al giorno dalle 9 alle 23,
+# a 1-2 ore l'uno dall'altro (in 9-23 a 2 ore precise ne stanno solo 8)
+ORE_FACEBOOK = (9, 11, 12, 14, 15, 17, 18, 20, 21, 23)
 
 
 def prepara(massimo=4):
