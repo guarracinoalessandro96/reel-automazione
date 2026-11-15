@@ -6,10 +6,10 @@ il prima possibile quale format funziona"). Tutti in 4K 60 come gli altri, con l
 - broll2 : 10 s, 5 stacchi da 2 s, la frase divisa in pezzi: cambia a ogni stacco
 - broll3 : 12 s, 4 stacchi da 3 s, la frase divisa in pezzi: cambia a ogni stacco
 - storia : ~22 s, un racconto a schermate (titolo + 3 righe di una lista, una schermata alla volta) su 2-3 clip
-- dieci / dieci_due / dieci_broll (29/10/2026): 10 s, frase in due tempi, 1 / 2 / 4 inquadrature
+- dieci / dieci_due / dieci_broll (29/10/2026): 10 s, dal 15/11/2026 8 s (DIECI_SECONDI), 1 / 2 / 4 inquadrature
 - taglio1/2/3, intero (6/11/2026): scene da 1/2/3 s tagliate dal SUO video (piano_scene), o il video intero
 - cinema / post / rallenty / loop (6/11/2026): fascia nera da film o fascia bianca da post con la frase fuori dal
-  video, rallentatore, 10 s avanti-indietro che riparte senza stacco
+  video, rallentatore, avanti-indietro che riparte senza stacco (tutti 8 s dal 15/11/2026, prima 10 s)
 
 make_sequenza() e' il motore comune: pezzi di video tagliati netti + testi che compaiono a tempo + musica.
 7/11/2026 (overlay.STILE_CENTRO): la frase sempre al centro, bianca, anche sul viso (stile_centro.py); niente piu'
@@ -17,6 +17,12 @@ VisoCoperto, quindi niente ripieghi cinema/post/fascia; scene troppo chiare un p
 """
 import functools, os, re, shutil, subprocess, tempfile, time
 import overlay as ov
+
+# 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): tutti i reel della famiglia "dieci"
+# durano DIECI_SECONDI = overlay.DURATA_REEL = 8 s (il nome resta per non cambiare tutto il codice; prima 10 s, dal
+# 12/11/2026 Alessandro: "tutti i video devono essere di 10 secondi"). Gli stacchi sotto sono in proporzione.
+DIECI_SECONDI = ov.DURATA_REEL
+_D = DIECI_SECONDI
 
 FORMATI = {
     "broll1": {"stacchi": [1.0] * 8, "testo": "fisso"},
@@ -30,26 +36,30 @@ FORMATI = {
     "racconto_lento": {"stacchi": [10.0] * 3},       # SENZA b-roll: solo il video del giorno, 3 inquadrature lunghe
     # 29/10/2026 (Alessandro: "passiamo a 10 secondi"; i 30 s erano visti al 35%, quelli da 8-13 s al 90-100%):
     # frase in DUE TEMPI (gancio forte nei primi 3,5 s, poi la risposta), 10 s, si riguarda volentieri da capo
-    "dieci": {"stacchi": [10.0]},                    # una sola inquadratura: il video del giorno
-    "dieci_due": {"stacchi": [5.0, 5.0]},            # due inquadrature (video del giorno + una clip di vita normale)
-    "dieci_broll": {"stacchi": [2.5] * 4},           # quattro stacchi veloci
+    # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): 8 s, stacchi in proporzione
+    "dieci": {"stacchi": [_D]},                      # una sola inquadratura: il video del giorno (8 s)
+    "dieci_due": {"stacchi": [_D / 2] * 2},          # due inquadrature da 4 s (video del giorno + una clip)
+    "dieci_broll": {"stacchi": [_D / 4] * 4},        # quattro stacchi veloci da 2 s
     # 6/11/2026 (Alessandro: "sfruttare diversi tipi di format... scene di un secondo, due, tre, cinque o il video per
     # intero di 10 o 15 secondi"): i suoi video nuovi (10-20 s, tagliati da lui) a scene di lunghezza diversa
-    "taglio1": {"stacchi": [1.0] * 10},              # 10 scene da 1 s
-    "taglio2": {"stacchi": [2.0] * 5},               # 5 scene da 2 s
-    "taglio3": {"stacchi": [3.0, 3.5, 3.5]},         # 3 scene da ~3 s
-    "intero": {"stacchi": [20.0]},                   # il suo video com'e', per intero (10-20 s: lo accorcia make_dieci)
+    # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): stesse scene da 1/2/~3 s, meno scene
+    "taglio1": {"stacchi": [1.0] * round(_D)},       # 8 scene da 1 s (prima 10)
+    "taglio2": {"stacchi": [2.0] * round(_D / 2)},   # 4 scene da 2 s (prima 5)
+    "taglio3": {"stacchi": [round(_D * x, 3) for x in (0.3, 0.35, 0.35)]},   # 2,4 + 2,8 + 2,8 s (prima 3 + 3,5 + 3,5)
+    "intero": {"stacchi": [20.0]},                   # il suo video com'e' (durate_formato lo porta a DIECI_SECONDI)
     # 6/11/2026 (Alessandro: "studia 10 format di video diversi"): 4 formati diversi per impaginazione o ritmo.
     # cinema/post: la frase sta FUORI dal video (mai sul viso per costruzione)
-    "cinema": {"stacchi": [10.0], "layout": "cinema"},   # fascia nera da film in alto con la frase gialla, video sotto
-    "post": {"stacchi": [10.0], "layout": "post"},       # come un post: frase nera su bianco sopra, il video sotto
-    "rallenty": {"stacchi": [2.0, 8.0], "rallenty": True},   # 2 s normali, poi il momento migliore al rallentatore
+    "cinema": {"stacchi": [_D], "layout": "cinema"},   # fascia nera da film in alto con la frase gialla, video sotto
+    "post": {"stacchi": [_D], "layout": "post"},       # come un post: frase nera su bianco sopra, il video sotto
+    # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): 1,6 s normali + 6,4 s al rallentatore (prima 2 + 8)
+    "rallenty": {"stacchi": [_D * 0.2, _D * 0.8], "rallenty": True},   # poi il momento migliore al rallentatore
     # 6/11/2026 (revisione): 10 s come gli altri (dal 29/10 reel da 10 s; da 7 s il brano YouTube da 10,5 s veniva
     # tagliato e ripartiva di colpo a ogni giro)
-    "loop": {"stacchi": [5.0, 5.0], "loop": True},       # 5 s avanti e gli stessi all'indietro: riparte senza stacco
+    # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): 4 s avanti e 4 indietro (prima 5 + 5)
+    "loop": {"stacchi": [_D / 2] * 2, "loop": True},     # avanti e gli stessi all'indietro: riparte senza stacco
     # 6/11/2026 (Alessandro: "lavoro dalle 9 alle 19... registro video di 10 secondi... barba, barbiere, macchina,
     # ufficio, pacchi, ascensore, borsa, quando mangio"): la sua GIORNATA, un momento diverso per scena (make_giornata)
-    "giornata": {"stacchi": [round(10.0 / 6, 3)] * 6},
+    "giornata": {"stacchi": [round(_D / 6, 3)] * 6},    # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): 6 scene da 1,33 s (prima 1,67)
 }
 # formati della famiglia "dieci" (scritta gialla, colori, viso controllato), oltre ai nomi che iniziano con "dieci"
 DIECI_NOMI = ("taglio1", "taglio2", "taglio3", "intero", "cinema", "post", "rallenty", "loop", "giornata")
@@ -61,9 +71,9 @@ MARGINE_S = 0.2      # secondi lasciati all'inizio e alla fine di ogni video
 STACCO_MIN, STACCO_QUOTA, STACCO_MAX = 0.75, 0.6, 2.0
 SPOSTA_MAX = 1.0     # la prima scena (il momento piu' forte) si sposta al massimo di 1 s per far entrare le altre
 DURATA_RACCONTO = 30.0
-DIECI_SECONDI = 10.0   # 12/11/2026 (Alessandro: "tutti i video devono essere di 10 secondi")
-GANCIO_S = 3.5
-ENTRATA_S = 0      # 3/11/2026: frase FISSA dal primo fotogramma (Alessandro non vuole che salga; prima 0.18)        # formati da 10 s: il gancio da solo per 3,5 s, poi la frase intera
+# DIECI_SECONDI e' definito in alto (= overlay.DURATA_REEL, 8 s dal 15/11/2026)
+GANCIO_S = round(3.5 * DIECI_SECONDI / 10.0, 2)   # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): 2,8 s (prima 3,5; oggi la frase e' intera dal primo fotogramma)
+ENTRATA_S = 0      # 3/11/2026: frase FISSA dal primo fotogramma (Alessandro non vuole che salga; prima 0.18)
 
 
 def dividi_in(testo, n):
@@ -140,9 +150,10 @@ def durate_formato(nome, secondi):
     durate = list(FORMATI[nome]["stacchi"])
     if nome == "intero":                       # 6/11/2026: tutta la clip, tra 10 e 20 s
         # 12/11/2026 (Alessandro: "tutti i video devono essere di 10 secondi"): anche "intero" dura 10 s
+        # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): DIECI_SECONDI = 8 s
         durate = [DIECI_SECONDI]
-    elif FORMATI[nome].get("layout") and secondi < durate[0] + 0.5:   # video corto: due scene da 5 s
-        durate = [5.0, 5.0]
+    elif FORMATI[nome].get("layout") and secondi < durate[0] + 0.5:   # video corto: due scene da 4 s (15/11/2026)
+        durate = [DIECI_SECONDI / 2] * 2
     return durate
 
 
@@ -832,7 +843,7 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
         info["scene_dal_video"] = sum(1 for p in pezzi if p["c"] == clips[0])
     if dieci and nome not in ("dieci_foto", "foto_rapide"):
         # 6/11/2026 (integrazione, revisione del gruppo 2): in quanti fotogrammi della prima scena (su 5, 3 senza il
-        # controllo del viso) si vede il viso, per tutti i formati video da 10 s (anche quelli a una scena), per il 16/11
+        # controllo del viso) si vede il viso, per tutti i formati video da 8 s (10 s fino al 15/11) (anche quelli a una scena), per il 16/11
         info["viso_prima_scena"] = int(pezzi[0].get("visi") or 0)
         # 7/11/2026 (studio della sera): l'apertura misurata sui due lati della prova (montaggio.apertura, per il 16/11):
         # con piu' scene la soglia del movimento e' la mediana delle scene del reel, con una scena MOTO_FERMO
@@ -898,10 +909,12 @@ def make_racconto(nome, clips, righe, dst, musiche=(), serie=None):
 
 
 def make_lista(clips, titolo, righe, dst, musiche=(), serie=None):
-    """31/10/2026: lista da 10 s: titolo, poi una regola alla volta, 2,5 s ciascuno (un'inquadratura per ogni testo)."""
-    testi = [(0.0, 2.5, titolo)] + [(2.5 * (i + 1), 2.5 * (i + 2), f"{i + 1}. {r}") for i, r in enumerate(righe[:3])]
+    """31/10/2026: lista da 10 s: titolo, poi una regola alla volta, 2,5 s ciascuno (un'inquadratura per ogni testo).
+    15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): 8 s, titolo + 3 regole da 2 s ciascuno."""
+    passo = DIECI_SECONDI / 4
+    testi = [(0.0, passo, titolo)] + [(passo * (i + 1), passo * (i + 2), f"{i + 1}. {r}") for i, r in enumerate(righe[:3])]
     CONTROLLO.clear()
-    return make_sequenza(clips, [2.5] * 4, testi, dst, musiche, serie, "dieci_lista")
+    return make_sequenza(clips, [passo] * 4, testi, dst, musiche, serie, "dieci_lista")
 
 
 def tagli_a_tempo(musica, durate):
@@ -936,7 +949,7 @@ def _rallenty(c, durate):
         v = 0.75
     norm, lento = durate[0], durate[1]
     lento = min(lento, (secondi - 2 * MARGINE_S - norm) / v)     # video corto: rallentatore piu' breve
-    if norm + lento < 6.0:
+    if norm + lento < 0.6 * DIECI_SECONDI:      # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): 4,8 s (prima 6 s su 10)
         raise ValueError(f"rallenty: video troppo corto ({secondi:.1f} s)")
     serve = norm + lento * v + 0.2
     inizio = MARGINE_S
@@ -953,17 +966,17 @@ def _rallenty(c, durate):
 
 def _intero_pulito(c, durate):
     """6/11/2026 (punto 14): 'intero' usa tutta la clip e parte da 0-0,1 s (come make_sequenza). Se il primo secondo
-    non e' pulito si parte dal punto pulito piu' vicino e il reel si accorcia (mai sotto i 10 s). Restituisce (piano o
+    non e' pulito si parte dal punto pulito piu' vicino e il reel si accorcia (mai sotto DIECI_SECONDI, 8 s dal 15/11). Restituisce (piano o
     None per lasciar fare a make_sequenza come prima, durate)."""
     try:
         S = ov.probe(c)[0]
         if not PRIMO_CONTROLLO or durate[0] < S - 0.35:    # clip oltre i 20 s: c'e' margine, ci pensa make_sequenza
             return None, durate
         t_def = 0.1 if S <= 12 else 0.0
-        t = _controlla_primo(c, t_def, 0.0, max(0.0, S - 10.3), PRIMO_S)
+        t = _controlla_primo(c, t_def, 0.0, max(0.0, S - DIECI_SECONDI - 0.3), PRIMO_S)   # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi")
         if abs(t - t_def) < 1e-3:
             return None, durate
-        return [(c, t)], [DIECI_SECONDI]          # 12/11/2026: sempre 10 s (Alessandro)
+        return [(c, t)], [DIECI_SECONDI]          # 12/11/2026: sempre 10 s (Alessandro); dal 15/11/2026 8 s
     except Exception as e:
         print("intero: controllo del primo secondo non riuscito, la clip resta com'era:", e)
         return None, durate
@@ -1217,7 +1230,7 @@ def _primo_pezzo(pezzi, durate):
 
 
 def make_dieci(nome, clips, frase, dst, musiche=(), serie=None, controlla_viso=False):
-    """dieci / dieci_due / dieci_broll: 10 s. 1/11/2026: la frase intera dal primo fotogramma (Instagram: la gente se ne
+    """dieci / dieci_due / dieci_broll: DIECI_SECONDI (8 s dal 15/11/2026, prima 10 s). 1/11/2026: la frase intera dal primo fotogramma (Instagram: la gente se ne
     va dopo 4 s) e niente "GIORNO X / 365" sul video: lo spazio del primo secondo e' della frase, la serie e' in descrizione.
     6/11/2026: taglio1/2/3, dieci_due, cinema e post tagliano le scene dal video principale (piano_scene); cinema e post
     mettono la frase fuori dal video; rallenty e loop giocano con la velocita' dello stesso momento."""
@@ -1274,11 +1287,11 @@ def make_storia(clips, titolo, righe, dst, musiche=(), serie=None):
 # ------------------------------------------------------------------ formato GIORNATA (6/11/2026)
 # Alessandro lavora dalle 9 alle 19 e durante il giorno gira ~10 clip mute da 10 s di momenti diversi (barba, barbiere,
 # macchina, ufficio, pacchi, ascensore, borsa, pranzo, allenamento). GIORNATA le mette in fila come la sua giornata:
-# una scena per momento (4-7 scene sui 10 s), stacchi sul colpo della musica, la frase fissa dal primo fotogramma.
+# una scena per momento (4-7 scene sui 10 s; 8 s dal 15/11/2026), stacchi sul colpo della musica, la frase fissa dal primo fotogramma.
 # La prima scena e' il momento piu' forte con il suo viso (3 persone su 4 vanno via nei primi secondi: rapporto del
 # 6/11), poi la giornata dalla mattina alla sera. Mai la stessa clip due volte, mai due clip quasi uguali.
 GIORNATA_MIN, GIORNATA_MAX = 4, 7     # momenti diversi in un reel
-GIORNATA_DURATA = 10.0
+GIORNATA_DURATA = DIECI_SECONDI      # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi") (prima 10 s)
 GIORNATA_SCENA_MIN = 1.0              # nessuna scena sotto 1 s, anche dopo lo spostamento sul colpo della musica
 # differenza media delle miniature (0-255) sotto cui due clip sono lo stesso momento (prove del 6/11: stesso video 0,
 # due clip diverse 39-100, anche due selfie allo specchio di giorni diversi 39)

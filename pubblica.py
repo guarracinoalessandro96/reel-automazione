@@ -518,6 +518,8 @@ def musiche_brano(music, n=3):
         return []
     base = re.sub(r"_\d+$", "", os.path.splitext(os.path.basename(music))[0])
     d = os.path.dirname(music)
+    # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): i reel da 8 s usano i primi 8 s dello stesso
+    # pezzo (make_sequenza taglia a DUR): stessa musica, nessun pezzo nuovo da preparare
     if os.path.basename(d) == "yt_dieci":      # 1/11/2026: pezzo unico da 10 s: si usa quello scelto, non sempre il primo
         # 6/11/2026: la versione da 20,5 s dello stesso pezzo (prepara_dieci.py lunghi): nel formato "intero" (fino a
         # 20 s) il pezzo da 10,5 s ripartiva da capo a 10 s. Stesso inizio e stesso guadagno, e prepara_dieci controlla
@@ -535,6 +537,8 @@ TUTTO_30S = False            # 29/10/2026: finita (visti al 35% contro il 90-100
 FORMATI_30 = ("racconto", "racconto_broll", "racconto_lento")
 # 29/10/2026 (Alessandro: "passiamo a 10 secondi", "cambiamo un po' il format"): TUTTI da 10 s, frase in due tempi,
 # tre varianti a turno (formati_nuovi.py). Momento e parlato restano.
+# 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): il nome resta TUTTO_10S (e FORMATI_10), ma ogni
+# reel dura overlay.DURATA_REEL = 8 s; sempre 10 reel al giorno
 TUTTO_10S = True
 # 6/11/2026 (Alessandro: "studia 10 format di video diversi"): 10 formati diversi per ritmo o impaginazione:
 # una scena (dieci), il video intero, scene da 1/2/3/5 s tagliate dal SUO video (taglio1/2/3, dieci_due), bande da
@@ -691,7 +695,8 @@ def monta_momento(an, src, out, music, serie, nome):
     secondi, _ = overlay.probe(src)
     famiglia = an.get("compagnia") == "famiglia"
     # 12/11/2026 (Alessandro: "tutti i video devono essere di 10 secondi"): anche i momenti al massimo 10 s
-    durata = round(min(secondi, 10.0), 2)
+    # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): al massimo overlay.DURATA_REEL (8 s)
+    durata = round(min(secondi, overlay.DURATA_REEL), 2)
     info = overlay.make_video(src, titolo, out, music=music if famiglia else None, serie=serie,
                               colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an.get("scena"),
                               formato={"nome": "momento", "inizio": 0.0, "durata": durata,
@@ -772,22 +777,24 @@ def scegli_storia(state):
 
 
 def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, ultimo=None):
-    """Reel da 10 s (formati_nuovi.make_dieci). 'dieci' usa solo il video dell'orario: se e' piu' corto di 10 s
-    si passa a 'dieci_due' (video dell'orario + una clip). Si usano TUTTI i suoi video, anche quelli in palestra
+    """Reel da 8 s (formati_nuovi.make_dieci; 10 s fino al 15/11/2026). 'dieci' usa solo il video dell'orario: se e'
+    piu' corto di 8,5 s si passa a 'dieci_due' (video dell'orario + una clip). Si usano TUTTI i suoi video, anche quelli in palestra
     (29/10/2026: "i video della palestra vanno bene"; e' solo la PAROLA palestra nei testi a essere vietata)."""
     import formati_nuovi
     if formato == "giornata":        # 6/11/2026: ha il suo montaggio (da qui senza la coda: solo l'archivio)
         return monta_giornata(frase, src, out, music, serie, drive, work, clip, {}, {"formato_ultimo": ultimo})
-    if formato in ("dieci", "intero") and overlay.probe(src)[0] < 10.5:
+    D = formati_nuovi.DIECI_SECONDI   # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): 8 s (prima 10 s)
+    if formato in ("dieci", "intero") and overlay.probe(src)[0] < D + 0.5:      # 8,5 s (prima 10,5)
         formato = "dieci_due"
-    if formato in ("rallenty", "loop") and overlay.probe(src)[0] < 6.5:     # 6/11/2026: troppo corto per giocarci
+    if formato in ("rallenty", "loop") and overlay.probe(src)[0] < D / 2 + 1.5:     # 6/11/2026: troppo corto; 5,5 s (prima 6,5)
         formato = "dieci_due"
     if formato == "rallenty":        # 6/11/2026 (revisione): 2,4 s + 8 s rallentati, a 0,5x (60 fps) o 0,75x (30 fps)
         try:
             v = 0.5 if float(overlay.fps(src)) >= 50 else 0.75
         except Exception:
             v = 0.75
-        if overlay.probe(src)[0] < 2.4 + 8 * v:
+        norm, lento = formati_nuovi.FORMATI["rallenty"]["stacchi"]    # 15/11/2026: 1,6 s + 6,4 s (2 * margine in piu')
+        if overlay.probe(src)[0] < 2 * formati_nuovi.MARGINE_S + norm + lento * v:
             formato = "dieci_due"
     # 6/11/2026: le altre scene PRIMA dallo stesso giorno (i video della stessa palestra), poi a caso
     giorno = str((clip or {}).get("registrato") or overlay.data_ripresa(src) or "")[:10] or None
@@ -1013,7 +1020,7 @@ def monta_racconto(formato, src, out, music, serie, drive, work, clip, state):
 
 
 def monta_dieci_lista(lista, src, out, music, serie, drive, work, clip):
-    """Lista da 10 s con il video dell'orario + 3 clip dell'archivio. Restituisce (frase, info)."""
+    """Lista da 8 s (10 s fino al 15/11/2026) con il video dell'orario + 3 clip dell'archivio. Restituisce (frase, info)."""
     import formati_nuovi
     clips = [src] + clip_extra(drive, work, clip, 3)
     info = formati_nuovi.make_lista(clips, lista["titolo"], lista["righe"], out, musiche_brano(music, 3), serie)
@@ -2275,7 +2282,7 @@ def reel_di_prova(slot, state=None):
 
 
 def copertina_reel(path, durata=None):
-    """6/11/2026: copertina di Instagram (thumb_offset, ms) per i reel da 10 s: il fotogramma piu' nitido e ben
+    """6/11/2026: copertina di Instagram (thumb_offset, ms) per i reel da 8 s (10 s fino al 15/11/2026): il fotogramma piu' nitido e ben
     esposto CON IL VISO (overlay.scegli_copertina); la frase c'e' sempre. Prima questi reel non la sceglievano e la
     copertina era il primo fotogramma. None se non riesce (resta il primo fotogramma, come prima)."""
     try:
@@ -3386,7 +3393,7 @@ def main():
             log(f"Formato {formato} non riuscito, faccio il reel normale:", e)
             info = None
             overlay.APERTURA = lato_ap   # 7/11/2026: il ripiego e' un reel col video (anche dopo le foto)
-            if TUTTO_10S:                # 1/11/2026: il ripiego resta nello stile scelto (10 s, scritta gialla)
+            if TUTTO_10S:                # 1/11/2026: il ripiego resta nello stile scelto (8 s dal 15/11, scritta gialla)
                 try:
                     # 6/11/2026: prima qui formati_nuovi non era importato (NameError: il ripiego non partiva mai).
                     # monta_dieci gestisce i video corti (dieci_due) e la scritta sul viso (cinema/post, controllo
@@ -3396,7 +3403,7 @@ def main():
                     info["ripiego_da"] = formato
                 except Exception as e2:
                     log("Anche il ripiego da 10 s non riuscito:", e2)
-        if info is None:
+        if info is None:      # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): anche questo ripiego dura 8 s (overlay.DURATA_MAX = DURATA_REEL)
             info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"),
                                       music=music, serie=serie,
                                       autore=frase.get("autore") if MOSTRA_AUTORE else None,

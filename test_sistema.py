@@ -45,7 +45,7 @@ def misura(path):
 
 def main():
     musica = sorted(glob.glob(os.path.join(HERE, "musica", "phonk", "*.flac")))[0]
-    D_ = overlay.DURATA_MAX        # 5 s dal 13/10/2026
+    D_ = overlay.DURATA_MAX        # 5 s dal 13/10/2026, 8 s dal 15/11/2026 (= overlay.DURATA_REEL)
     casi = [("orizzontale", 1280, 720, 30, 11, True, D_), ("quadrato", 720, 720, 30, 11, True, D_),
             ("verticale_60fps_muto", 720, 1280, 60, 11, False, D_), ("cortissimo", 720, 1280, 30, 2.5, True, 2.5),
             ("verticale_720p", 720, 1280, 30, 12, True, D_)]
@@ -107,10 +107,13 @@ def main():
         check(audio_ig.nome_audio("phonk_03.flac") == "Phonk motivazione", "audio Instagram: nome dell'audio")
     except Exception as e:
         check(False, f"audio Instagram: non riuscito ({e})")
-    # clip d'archivio da 8 s: il reel ne prende 5 in un punto a caso
-    st = [overlay.segmento_archivio(8.0) for _ in range(20)]
-    check(all(0 <= a <= 3.0 and l == overlay.DURATA_MAX for a, l in st) and len({a for a, _ in st}) > 3,
-          "archivio: pezzo da 5 s in un punto diverso a ogni riuso")
+    # clip d'archivio: il reel ne prende DURATA_MAX secondi in un punto a caso. 15/11/2026 (Alessandro: "impostiamo la
+    # durata dei reel di 8 secondi"): DURATA_MAX = 8 s, la clip di prova e' da 12 s (prima 8 s -> pezzi da 5 s)
+    st = [overlay.segmento_archivio(12.0) for _ in range(20)]
+    check(all(0 <= a <= 12.0 - overlay.DURATA_MAX - overlay.LOOP_SFUMATURA + 1e-6 and l == overlay.DURATA_MAX
+              for a, l in st) and len({a for a, _ in st}) > 3,
+          f"archivio: pezzo da {overlay.DURATA_MAX:g} s in un punto diverso a ogni riuso")
+    check(overlay.DURATA_REEL == 8.0 and overlay.DURATA_MAX == overlay.DURATA_REEL, "reel da 8 s (dal 15/11/2026)")
     # PARLATO (18/10/2026): la sua voce (qui un tono) con i sottotitoli e la serie in alto, niente musica
     try:
         import parlato

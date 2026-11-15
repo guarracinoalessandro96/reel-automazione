@@ -744,7 +744,7 @@ def _scritta_centro(W, H, text):
 
 
 def build_testo_giallo(W, H, text, faces, mappa=None):
-    """Scritta dei reel da 10 s nello stile STILE_SCRITTA, nella posizione senza visi e con meno dettagli.
+    """Scritta dei reel da 8 s (10 s fino al 15/11/2026) nello stile STILE_SCRITTA, nella posizione senza visi e con meno dettagli.
     Restituisce (immagine, y in frazione, punti). Se il nuovo stile fallisce: lo stile di prima, cosi' il reel esce.
     7/11/2026: con STILE_CENTRO la frase al centro (anche sul viso: visi e dettagli non contano piu')."""
     global ULTIMO_STILE
@@ -785,7 +785,7 @@ def ha_audio(path):
 
 def build_overlay(W, H, text, faces, stile=None, autore=None, serie=None):
     """serie: piccola etichetta sopra la frase (es. "GIORNO 12 / 365"), la "serie" che da' un motivo per seguire.
-    7/11/2026: con STILE_CENTRO la frase al centro come nei reel da 10 s (niente etichetta ne' autore: dal 1/11 la serie
+    7/11/2026: con STILE_CENTRO la frase al centro come nei reel da 8 s (niente etichetta ne' autore: dal 1/11 la serie
     e' in descrizione e gli autori non si mostrano)."""
     if STILE_CENTRO and text and text.strip():
         risultato = _scritta_centro(W, H, text)
@@ -872,7 +872,12 @@ LIMITATORE = "alimiter=limit=0.89:level=disabled"   # picchi sotto -1 dB: niente
 
 
 TAGLIO_INIZIO = 0.0      # 25/10/2026: niente piu' taglio automatico dell'inizio: i video li taglia gia' Alessandro
-DURATA_MAX = 5.0         # dal 13/10/2026 reel da 5 secondi (prima 8): es. video da 12 s -> si usa da 2 a 7
+# 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): DURATA_REEL e' la durata di OGNI reel
+# (unica fonte: formati_nuovi.DIECI_SECONDI, momento, parlato, foto e ripieghi la leggono da qui). Prima 10 s
+DURATA_REEL = 8.0
+# dal 13/10/2026 reel da 5 secondi (prima 8); 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"):
+# anche il reel "frase" (il ripiego finale di make_video senza formato) dura DURATA_REEL
+DURATA_MAX = DURATA_REEL
 LOOP_SFUMATURA = 0.3     # secondi di sfumatura fine -> inizio (loop senza stacco)
 DURATA_ARCHIVIO = 15.0   # 18/10: all'archivio 15 s (prima 8): con uno Short ogni ora servono piu' pezzi diversi per video
 
@@ -884,7 +889,7 @@ def segmento(seconds, durata=None):
 
 
 def segmento_migliore(src, seconds, vf=None, durata=None, a_caso=False):
-    """(inizio, durata) dei 5 secondi PIU' FORTI del video (16/10/2026): viso visibile, movimento, immagine nitida,
+    """(inizio, durata) dei DURATA_MAX secondi (8 dal 15/11/2026) PIU' FORTI del video (16/10/2026): viso visibile, movimento, immagine nitida,
     niente primo secondo (quando si preme "registra"). Video corti: come segmento().
     a_caso=True (riuso dall'archivio): uno dei pezzi migliori scelto a caso, cosi' ogni riuso e' diverso."""
     durata = durata or DURATA_MAX
@@ -1050,7 +1055,7 @@ def cambia_musica(src, music, dst, inizio=0.0):
 
 def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", scena_rilevata=None, autore=None,
                da_archivio=False, serie=None, formato=None):
-    """formato (18/10/2026): None/"frase" = 5 s; {"nome": "gancio", "durata": 8, "seconda": testo, "t": 3.0};
+    """formato (18/10/2026): None/"frase" = DURATA_MAX (8 s dal 15/11/2026, prima 5 s); {"nome": "gancio", "durata": 8, "seconda": testo, "t": 3.0};
     {"nome": "ambiente", "durata": 6, "audio_originale": 0.35} (suono vero della ripresa sotto la musica)."""
     """Come _make_video, ma con piani di riserva: se ffmpeg fallisce si riprova togliendo, nell'ordine,
     zoom e loop, la color correction e la musica. Cosi' un problema su un effetto non blocca mai la pubblicazione."""

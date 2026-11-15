@@ -64,7 +64,9 @@ def taglio(parole, durata_video):
     """(inizio, durata) del reel: dalla prima all'ultima parola (massimo MAX_SECONDI)."""
     inizio = max(0.0, parole[0]["s"] - 0.3)
     # 12/11/2026 (Alessandro: "tutti i video devono essere di 10 secondi"): il reel parlato si ferma a 10 s
-    fine = min(durata_video, parole[-1]["e"] + 0.6, inizio + 10.0)
+    # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): si ferma a overlay.DURATA_REEL (8 s)
+    import overlay
+    fine = min(durata_video, parole[-1]["e"] + 0.6, inizio + overlay.DURATA_REEL)
     return round(float(inizio), 2), round(float(max(fine - inizio, 3.0)), 2)
 
 

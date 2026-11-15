@@ -1,7 +1,8 @@
 """
 Reel con le foto della giornata (1/11/2026, richiesta di Alessandro): le foto dell'iPhone arrivano nella cartella Drive
-"Foto della giornata", si sistemano come fa l'iPhone (luce, contrasto, colori, nitidezza) e diventano un reel da 10 s
+"Foto della giornata", si sistemano come fa l'iPhone (luce, contrasto, colori, nitidezza) e diventano un reel da 8 s
 con un movimento leggero, la musica e la scritta. Agli orari ORARIO_FOTO di pubblica.py, finche' ci sono foto.
+15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): 8 s (overlay.DURATA_REEL), prima 10 s.
 Le foto arrivano anche dal bot Telegram (ricevi_telegram.py); quelle uscite vanno in "Foto usate".
 6/11/2026 (Alessandro: "ogni giorno produco 10 video, 100 foto"): due formati a meta' negli orari delle foto,
 "dieci_foto" (6 foto che scorrono piano) e "foto_rapide" (photo dump: 12-18 foto ferme, una a ogni colpo della musica);
@@ -496,10 +497,12 @@ def in_clip(img, dst, secondi, verso, intatta=False):
 
 
 def make_foto(foto, frase, dst, musiche=()):
-    """Reel da 10 s: le foto una dopo l'altra, frase intera dal primo fotogramma, stacchi sul colpo della musica."""
+    """Reel da 8 s (10 s fino al 15/11/2026): le foto una dopo l'altra, frase intera dal primo fotogramma, stacchi sul
+    colpo della musica. 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): D = overlay.DURATA_REEL."""
     tmp = tempfile.mkdtemp()
+    D = ov.DURATA_REEL
     try:
-        durate = [round(10.0 / len(foto), 3)] * len(foto)
+        durate = [round(D / len(foto), 3)] * len(foto)
         if musiche and os.path.exists(musiche[0]):
             durate = fn.tagli_a_tempo(musiche[0], durate)
         clips, area = [], []
@@ -510,31 +513,32 @@ def make_foto(foto, frase, dst, musiche=()):
             in_clip(img, clip, d + 1.0, i % 2 if info.get("verso") is None else info["verso"], info.get("intatta"))
             clips.append(clip)
             area.append(sum((v[2] - v[0]) * (v[3] - v[1]) for v in info.get("visi", [])))
-        # la scritta resta ferma per 10 s: se copre un viso si riprova con meno foto, altrimenti esce comunque nel punto migliore.
+        # la scritta resta ferma per tutto il reel (8 s): se copre un viso si riprova con meno foto, altrimenti esce comunque nel punto migliore.
         # 6/11/2026: si tolgono prima le foto coi visi piu' grandi (prima le ultime); la prima, il gancio, resta sempre
         via = sorted(range(1, len(clips)), key=lambda i: -area[i])
         for n in range(len(clips), 2, -1):
             fn.CONTROLLO.clear()     # 6/11/2026 (revisione): niente dati di un tentativo scartato nel montaggio
             try:
                 tenute = sorted(set(range(len(clips))) - set(via[:len(clips) - n]))
-                d = durate if n == len(clips) else [round(10.0 / n, 3)] * n     # 6/11: stacchi a tempo anche qui
-                return fn.make_sequenza([clips[i] for i in tenute], d, [(0.0, 10.0, frase)], dst, musiche, None,
+                d = durate if n == len(clips) else [round(D / n, 3)] * n     # 6/11: stacchi a tempo anche qui
+                return fn.make_sequenza([clips[i] for i in tenute], d, [(0.0, D, frase)], dst, musiche, None,
                                         "dieci_foto", True)
             except fn.VisoCoperto:
                 pass
         fn.CONTROLLO.clear()
-        return fn.make_sequenza(clips, durate, [(0.0, 10.0, frase)], dst, musiche, None, "dieci_foto")
+        return fn.make_sequenza(clips, durate, [(0.0, D, frase)], dst, musiche, None, "dieci_foto")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
 
-def ritmo(musica, secondi=10.0):
+def ritmo(musica, secondi=None):     # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): overlay.DURATA_REEL
     """6/11/2026 (foto_rapide): i colpi del brano. -> (forza, battito, fase, fiducia): forza = quanto "colpisce" la
     musica in ogni centesimo di secondo (flusso spettrale, 0-1); battito = secondi tra due battiti (autocorrelazione,
     preferenza intorno a 120 BPM); fase = secondi del primo battito; fiducia = 0-1 (quanto il battito e' regolare)."""
     import numpy as np
     sr, hop, nfft = 12000, 120, 1024                        # 100 analisi al secondo
-    pcm = subprocess.run([ov.FFMPEG, "-v", "error", "-i", musica, "-t", f"{secondi + 0.5:.2f}", "-ac", "1",
+    secondi = float(secondi or ov.DURATA_REEL)
+    pcm =subprocess.run([ov.FFMPEG, "-v", "error", "-i", musica, "-t", f"{secondi + 0.5:.2f}", "-ac", "1",
                           "-ar", str(sr), "-f", "s16le", "-"], capture_output=True, timeout=60).stdout
     x = np.frombuffer(pcm, dtype=np.int16).astype(np.float32) / 32768
     if len(x) < sr * 2:
@@ -588,7 +592,7 @@ def _sul_passo(colpo, griglia, passo, m, T, primo=0.75):
     return [0] + tagli[::-1]
 
 
-def tempi_rapide(musica, n, durata=10.0):
+def tempi_rapide(musica, n, durata=None):     # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): durata = overlay.DURATA_REEL (prima 10 s)
     """6/11/2026 (foto_rapide): quanto dura ogni foto (secondi, a fotogrammi interi), con gli stacchi a tempo.
     Revisione 6/11 (sera): con un battito chiaro (fiducia >= RAPIDE_FIDUCIA) gli stacchi cadono SOLO sui battiti: passo
     di 1 o 2 battiti (o mezzo battito sotto i 63 BPM) tra 0,42 e 0,95 s, ogni foto 1 o 2 passi, il gancio e l'ultima
@@ -597,6 +601,7 @@ def tempi_rapide(musica, n, durata=10.0):
     prima, foto da 0,5-0,8 s sui colpi piu' forti. -> (durate, ritmo). Senza musica o se l'analisi non riesce: uguali."""
     import numpy as np
     fps = ov.FPS_MULTI
+    durata = float(durata or ov.DURATA_REEL)
     T = int(round(durata * fps))
     dmin, dmax = int(round(RAPIDE_DURATA[0] * fps)), int(round(RAPIDE_DURATA[1] * fps))
     try:
@@ -698,7 +703,7 @@ def _vero(f):
 
 
 def _testo_libero(W, H, frase, visi, mappa, ganci=(0,)):
-    """6/11/2026 (foto_rapide): la frase ferma per 10 s in un posto libero su TUTTE le foto (Alessandro: mai sul viso).
+    """6/11/2026 (foto_rapide): la frase ferma per tutto il reel (8 s dal 15/11/2026) in un posto libero su TUTTE le foto (Alessandro: mai sul viso).
     Si prova con tutte; se una foto resterebbe col viso coperto si toglie (prima quella coperta di piu') e si riprova.
     Il gancio (la prima foto) non si toglie mai: i suoi visi pesano 20 volte tanto; se resta coperto lo stesso, si
     prova come gancio la foto dopo in ganci (in ordine di voto). -> (scritta, indici delle foto nell'ordine del reel)
@@ -731,7 +736,7 @@ def _testo_libero(W, H, frase, visi, mappa, ganci=(0,)):
 
 
 def make_rapide(foto, frase, dst, musiche=(), ganci=(0,)):
-    """6/11/2026 (Alessandro: "ogni giorno produco 10 video, 100 foto"): reel "foto_rapide", un photo dump da 10 s.
+    """6/11/2026 (Alessandro: "ogni giorno produco 10 video, 100 foto"): reel "foto_rapide", un photo dump da 8 s (10 s fino al 15/11/2026).
     Le foto della giornata FERME (niente scorrimento ne' zoom), 0,5-0,8 s l'una con lo stacco sul colpo della musica
     (tempi_rapide): la prima e' il gancio, le altre in ordine di scatto. Stessa sistemazione delle foto di dieci_foto
     (migliora: dritta, taglio sul viso, stile "virale"). La frase ferma dal primo fotogramma in un posto libero su

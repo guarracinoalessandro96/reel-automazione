@@ -267,7 +267,10 @@ def _inizio(x, y, sr=8000):
 
 
 def _confronto(a, b, sr=8000):
-    """(correlazione, differenza in dB) dei primi 9,5 s di due pezzi: 1 e 0 = stesso audio, stesso volume."""
+    """(correlazione, differenza in dB) dei primi 9,5 s di due pezzi: 1 e 0 = stesso audio, stesso volume.
+    15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): i reel usano i primi 8 s dello stesso
+    pezzo (yt_venti, o yt_dieci se manca): i 9,5 s confrontati li comprendono, quindi il controllo resta com'e' e i
+    pezzi gia' fatti valgono anche per gli 8 s (nessuna libreria da rifare)."""
     import numpy as np
     n = int(9.5 * sr)
     if min(len(a), len(b)) < n:
