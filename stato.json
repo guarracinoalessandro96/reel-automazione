@@ -15968,7 +15968,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "ZdZmB-5gnt0"
+     "id": "ZdZmB-5gnt0",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -15979,11 +15980,77 @@
    },
    "spinto": true,
    "testo": "La vera forza è restare gentili anche quando la vita ti dà motivi per non esserlo."
+  },
+  {
+   "quando": "2026-11-15T07:00",
+   "slot": "2026-11-15 08:00",
+   "video": "Alessandro Guarracino sta trasmettendo dal vivo..MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "specchio",
+   "registrato": null,
+   "frase": "MIE-0e2e720c",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "intergalactic_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.607,
+     "movimento": 54.32,
+     "primo_piano_fermo": false,
+     "soglia_moto": 49.05,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 6,
+     "scurito": 0.46,
+     "luce": 0.44,
+     "sfumatura": 0.33,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 153,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "due",
+     "parole": 23
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_11.flac",
+    "musica_instagram": "Join The Movement - Afterlight [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "49Dymf5uGWw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17919757605531375",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Dicono che il tempo guarisce tutto. Mentono. Ci insegna soltanto ad adattarci al dolore e a convivere con cicatrici che "
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-07 08:00",
   "2026-11-07 10:00",
   "2026-11-07 12:00",
   "2026-11-07 14:00",
@@ -16062,10 +16129,10 @@
   "2026-11-14 20:00",
   "2026-11-14 22:00",
   "2026-11-15 00:00",
-  "2026-11-15 06:00"
+  "2026-11-15 06:00",
+  "2026-11-15 08:00"
  ],
  "musica_recenti": [
-  "vibe_check_2.m4a",
   "ancient_civilisations_1.m4a",
   "locked_in_3.m4a",
   "way_back_home_2.m4a",
@@ -16124,7 +16191,8 @@
   "wrangle_the_crazy_1.m4a",
   "cartier_3.m4a",
   "majestic_12_3.m4a",
-  "stake_out_1.m4a"
+  "stake_out_1.m4a",
+  "intergalactic_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -16498,13 +16566,14 @@
   "MIE-4aaef203",
   "MIE-ca459a13",
   "MIE-622bd2fe",
-  "MIE-99cfa451"
+  "MIE-99cfa451",
+  "MIE-0e2e720c"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -16869,8 +16938,9 @@
    "orizzontale": false
   },
   "1y59kJ0xjsyIN9aCTP_yAw2eVeS32oQwv": {
-   "usi": 2,
-   "ultimo": "2026-10-24"
+   "usi": 3,
+   "ultimo": "2026-11-15",
+   "orizzontale": false
   },
   "1RffuiBvFRbbbwuF-Qy2QfHTSEOUDPE8a": {
    "usi": 4,
@@ -17098,7 +17168,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_07.flac",
   "phonk_10.flac",
   "drive_13.flac",
   "trap_15.flac",
@@ -17117,7 +17186,8 @@
   "deciso_08.flac",
   "phonk_08.flac",
   "drive_06.flac",
-  "trap_04.flac"
+  "trap_04.flac",
+  "deciso_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -17152,7 +17222,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "loop",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -17168,7 +17238,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1383912545569665",
   "1346975640096385",
   "226975706443939",
   "1127106596130760",
@@ -17227,11 +17296,11 @@
   "1354806896501272",
   "522339937196006",
   "2065054100581983",
-  "1372666635060078"
+  "1372666635060078",
+  "1716216946466764"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Adam Griffith",
   "The K Club",
   "Vault 49",
   "Sam Marshall",
@@ -17240,10 +17309,10 @@
   "Shanice",
   "Symphonic Planet",
   "Jumbo",
-  "Giulio Cercato"
+  "Giulio Cercato",
+  "Afterlight"
  ],
  "ig_titoli_recenti": [
-  "rock your world",
   "heros journey",
   "energy in motion",
   "rockstar anthem",
@@ -17282,7 +17351,8 @@
   "just can t believe",
   "epic proportions",
   "run",
-  "breathtaker"
+  "breathtaker",
+  "join the movement"
  ],
  "ig_tendenze_riserva": [
   {
@@ -17291,6 +17361,27 @@
    "display_artist": "Blues369",
    "duration_in_ms": 274920,
    "libreria": false
+  },
+  {
+   "audio_id": "593371403855914",
+   "title": "Go Go Go",
+   "display_artist": "T.H.E.",
+   "duration_in_ms": 121050,
+   "libreria": true
+  },
+  {
+   "audio_id": "1716216946466764",
+   "title": "Join The Movement",
+   "display_artist": "Afterlight",
+   "duration_in_ms": 61611,
+   "libreria": true
+  },
+  {
+   "audio_id": "226975706443939",
+   "title": "Your Legacy",
+   "display_artist": "Alex Blue",
+   "duration_in_ms": 188680,
+   "libreria": true
   }
  ]
 }
