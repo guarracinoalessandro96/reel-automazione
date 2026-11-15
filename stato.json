@@ -16119,7 +16119,9 @@
      "ok": true,
      "id": "18137372374737287",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -16176,7 +16178,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "8gvINxSaJiU"
+     "id": "8gvINxSaJiU",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -16187,11 +16190,81 @@
    },
    "spinto": true,
    "testo": "La palestra è la parte più facile. Mangiare sano, tracciare il cibo e dire di no alle voglie è la vera disciplina."
+  },
+  {
+   "quando": "2026-11-15T13:00",
+   "slot": "2026-11-15 14:00",
+   "video": "IMG_4945.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-1a8cbedd",
+   "tema": "palestra",
+   "montaggio": {
+    "formato": "taglio2",
+    "durata": 10.0,
+    "musica": "final_boss_battle_1.m4a",
+    "stacchi": 5,
+    "testi": 1,
+    "scene_dal_video": 5,
+    "viso_prima_scena": 1,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 1.71,
+     "primo_piano_fermo": false,
+     "soglia_moto": 1.42,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 112,
+     "righe": 9,
+     "scurito": 0.0,
+     "luce": 0.07,
+     "sfumatura": 0.0,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "ripiego_da": "giornata",
+    "ripiego_motivo": "giornata: solo 3 momenti diversi (ne servono 4)",
+    "secondi_montaggio": 224,
+    "scritta": "centro_serif",
+    "estratto": "giornata",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 41
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_05.flac",
+    "musica_instagram": "Vision (feat. Plum Soul) - Jumbo [screenshot]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "z8R0p3PRaLc"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18640053478008684",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Ti garantisco che concentrarti sulla palestra, migliorare il tuo guardaroba e pulire la tua alimentazione renderà la tua"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-07 14:00",
   "2026-11-07 16:00",
   "2026-11-07 18:00",
   "2026-11-07 20:00",
@@ -16270,10 +16343,10 @@
   "2026-11-15 06:00",
   "2026-11-15 08:00",
   "2026-11-15 10:00",
-  "2026-11-15 12:00"
+  "2026-11-15 12:00",
+  "2026-11-15 14:00"
  ],
  "musica_recenti": [
-  "way_back_home_2.m4a",
   "kick_it_3.m4a",
   "death_duel_1.m4a",
   "i_might_be_late_2.m4a",
@@ -16332,7 +16405,8 @@
   "stake_out_1.m4a",
   "intergalactic_3.m4a",
   "moon_vision_1.m4a",
-  "horizons_3.m4a"
+  "horizons_3.m4a",
+  "final_boss_battle_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -16709,10 +16783,10 @@
   "MIE-99cfa451",
   "MIE-0e2e720c",
   "MIE-6a3f23f2",
-  "MIE-95f293ca"
+  "MIE-95f293ca",
+  "MIE-1a8cbedd"
  ],
  "temi_recenti": [
-  "famiglia",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -16721,7 +16795,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "dieta"
+  "dieta",
+  "palestra"
  ],
  "analisi": {},
  "pulizia": "2026-11-15",
@@ -17241,8 +17316,8 @@
    "ultimo": "2026-11-07"
   },
   "1MQ4NH4oNcZ7HsOU1T-R9FPkQ1yy9pa2u": {
-   "usi": 1,
-   "ultimo": "2026-11-07",
+   "usi": 2,
+   "ultimo": "2026-11-15",
    "orizzontale": false
   },
   "120-zV-uuyXnc76Vb0qhngDGOr0ak2EGs": {
@@ -17312,7 +17387,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_15.flac",
   "phonk_05.flac",
   "drive_03.flac",
   "trap_11.flac",
@@ -17331,7 +17405,8 @@
   "trap_04.flac",
   "deciso_11.flac",
   "phonk_06.flac",
-  "energia_02.flac"
+  "energia_02.flac",
+  "trap_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -17366,7 +17441,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_foto",
+ "formato_ultimo": "taglio2",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -17382,7 +17457,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1127106596130760",
   "1593403817732751",
   "1050254964075544",
   "576850318404245",
@@ -17441,11 +17515,11 @@
   "1372666635060078",
   "1716216946466764",
   "1340308050325459",
-  "825305559687149"
+  "825305559687149",
+  "1042846574390974"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Sam Marshall",
   "Fellow Travelers",
   "Tony Dark Eyes",
   "Shanice",
@@ -17454,10 +17528,10 @@
   "Giulio Cercato",
   "Afterlight",
   "Paul Fowler",
-  "Trout Recording"
+  "Trout Recording",
+  "Jumbo [screenshot]"
  ],
  "ig_titoli_recenti": [
-  "rockstar anthem",
   "voices of victory",
   "redux",
   "in motion",
@@ -17496,7 +17570,8 @@
   "breathtaker",
   "join the movement",
   "willow run",
-  "ready to run"
+  "ready to run",
+  "vision"
  ],
  "ig_tendenze_riserva": [
   {
