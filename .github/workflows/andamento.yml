@@ -4,11 +4,10 @@ name: Andamento social
 # ogni mattina, dopo il messaggio delle 8, aggiorna docs/andamento/dati.json (pagina docs/andamento/ su GitHub Pages).
 # Due orari perche' GitHub a volte salta le esecuzioni programmate.
 on:
+  # 15/11: le due esecuzioni delle 8:45 e 11:45 non sono mai partite (pagina ferma al 14/11). Ora ogni 2 ore,
+  # ora UTC e minuti "strani" (meno affollati): se GitHub ne salta qualcuna, la successiva recupera.
   schedule:
-    - cron: "45 8 * * *"
-      timezone: "Europe/Rome"
-    - cron: "45 11 * * *"
-      timezone: "Europe/Rome"
+    - cron: "23 */2 * * *"
   workflow_dispatch: {}
 
 concurrency: andamento

@@ -136,23 +136,14 @@
 <main>
   <section class="sec">
     <h2>Visualizzazioni</h2>
-    <div class="confronta"><span>Confronta con</span>
-      <div class="tabs" role="group" aria-label="Confronta con" data-conf="vis">
-        <button type="button" data-c="1" aria-pressed="true">Giorno prima</button>
-        <button type="button" data-c="7" aria-pressed="false">Settimana prima</button>
-        <button type="button" data-c="30" aria-pressed="false">Mese prima</button>
-      </div></div>
-    <div class="grid" id="schede-vis"></div>
-  </section>
-
-  <section class="sec">
-    <h2>Giorno per giorno</h2>
     <div class="tabs" role="group" aria-label="Periodo">
-      <button type="button" data-p="oggi" aria-pressed="false">Oggi</button>
+      <button type="button" data-p="oggi" aria-pressed="true">Oggi</button>
       <button type="button" data-p="ieri" aria-pressed="false">Ieri</button>
-      <button type="button" data-p="7" aria-pressed="true">Questa settimana</button>
+      <button type="button" data-p="sett" aria-pressed="false">Questa settimana</button>
+      <button type="button" data-p="mese" aria-pressed="false">Questo mese</button>
       <button type="button" data-p="30" aria-pressed="false">Ultimi 30 giorni</button>
     </div>
+    <div class="grid" id="schede-vis"></div>
     <p class="quando" id="quando"></p>
     <div class="legend" id="legenda"></div>
     <div class="palco" id="grafico"></div>
@@ -181,7 +172,7 @@ const dat = (iso) => { const d = new Date(iso + "T00:00:00Z"); return GIORNI[d.g
 const indietro = (iso, k) => { const d = new Date(iso + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() - k); return d.toISOString().slice(0, 10); };
 const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; };
 const MOTO = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-let VIS = {}, FOL = {}, PERIODO = "7";
+let VIS = {}, FOL = {}, PERIODO = "oggi";
 
 function conTotale(tab) {
   const out = {};
@@ -219,12 +210,42 @@ function inclina(c) {
   c.addEventListener("pointerleave", () => { c.style.transform = ""; });
 }
 let CONF = { vis: "1", fol: "1" };
-const NOMI_C = { "1": ["ieri", "il giorno prima"], "7": ["la settimana prima", "nei 7 giorni prima"], "30": ["il mese prima", "nei 30 giorni prima"] };
-function confrontoVis(tab, s, c) {
-  const r = riepilogo(tab, s); if (!r) return null;
-  if (c === "1") return { ora: r.valore, prima: r.prima, quando: dat(r.giorno), etOra: "ultimo giorno", etPrima: "giorno prima" };
-  if (c === "7") return { ora: r.s7, prima: r.p7, quando: "ultimi 7 giorni, fino a " + dat(r.giorno), etOra: "questi 7 gg", etPrima: "7 gg prima" };
-  return { ora: r.s30, prima: r.p30, quando: "ultimi 30 giorni, fino a " + dat(r.giorno), etOra: "questi 30 gg", etPrima: "30 gg prima" };
+const NOMI_C = { "1": ["ieri", "al giorno prima"], "7": ["la settimana prima", "nei 7 giorni prima"], "30": ["il mese prima", "nei 30 giorni prima"] };
+/* 15/11: periodi in alto (Oggi, Ieri, Questa settimana, Questo mese, Ultimi 30 giorni), ognuno confrontato con lo
+   stesso periodo prima. "Oggi" = l'ultimo giorno che le piattaforme hanno gia' dato per intero (lo danno la mattina
+   dopo; TikTok 2 giorni dopo). Ogni social si ferma al suo ultimo giorno arrivato. */
+const ULTIMO = () => { const t = Object.keys(VIS).sort(); return t[t.length - 1]; };
+const tra = (a, b) => Math.round((new Date(b + "T00:00:00Z") - new Date(a + "T00:00:00Z")) / 864e5);
+function intervallo(p, ult) {          // [inizio, fine, inizio prima, nome del confronto]
+  if (p === "oggi") return [ult, ult, indietro(ult, 1), "al giorno prima"];
+  if (p === "ieri") { const g = indietro(ult, 1); return [g, g, indietro(g, 1), "al giorno prima"]; }
+  if (p === "sett") { const d = new Date(ult + "T00:00:00Z"), lun = indietro(ult, (d.getUTCDay() + 6) % 7); return [lun, ult, indietro(lun, 7), "agli stessi giorni della settimana scorsa"]; }
+  if (p === "mese") { const ini = ult.slice(0, 8) + "01", d = new Date(ini + "T00:00:00Z"); d.setUTCMonth(d.getUTCMonth() - 1);
+    return [ini, ult, d.toISOString().slice(0, 10), "agli stessi giorni del mese scorso"]; }
+  return [indietro(ult, 29), ult, indietro(ult, 59), "ai 30 giorni prima"];
+}
+function sommaDa(tab, s, da, n) { let t = 0; for (let i = 0; i < n; i++) { const v = (tab[indietro(da, -i)] || {})[s]; if (v === undefined) return null; t += v; } return t; }
+function confrontoVis(tab, s, p) {
+  const ult = ULTIMO(); if (!ult) return null;
+  const [ini, fine, iniP, nome] = intervallo(p, ult);
+  const giorno = ini === fine;
+  let fineS = fine; while (fineS >= ini && (tab[fineS] || {})[s] === undefined) fineS = indietro(fineS, 1);
+  if (fineS < ini) return { ora: null, quando: (giorno ? dat(fine) : "") + (s === "TikTok" ? " · TikTok dà i numeri 2 giorni dopo" : " · in arrivo"), nome };
+  const n = tra(ini, fineS) + 1;
+  const quando = giorno ? dat(fineS) : "da " + dat(ini) + " a " + dat(fineS) + (fineS < fine && s === "TikTok" ? " (TikTok arriva 2 giorni dopo)" : "");
+  let ora = 0, buchi = 0; for (let i = 0; i < n; i++) { const v = (tab[indietro(ini, -i)] || {})[s]; if (v === undefined) buchi++; else ora += v; }
+  return { ora, prima: buchi ? null : sommaDa(tab, s, iniP, n), quando: quando + (buchi ? " · mancano i numeri di " + buchi + (buchi === 1 ? " giorno" : " giorni") : ""), nome,
+           etOra: giorno ? "questo giorno" : "adesso", etPrima: giorno ? "giorno prima" : "prima" };
+}
+function confrontoTotale(tab, p) {
+  const parti = SOC.map(([s]) => [s, confrontoVis(tab, s, p)]), ok = parti.filter(([, x]) => x && x.ora !== null);
+  if (!ok.length) return null;
+  const mancano = parti.filter(([, x]) => !x || x.ora === null).map(([s]) => s);
+  const [ini, fine, , nome] = intervallo(p, ULTIMO());
+  const conf = ok.filter(([, x]) => x.prima !== null && x.prima !== undefined), fuori = ok.filter(([, x]) => x.prima === null || x.prima === undefined).map(([s]) => s);
+  return { ora: ok.reduce((a, [, x]) => a + x.ora, 0), oraC: conf.reduce((a, [, x]) => a + x.ora, 0), prima: conf.length ? conf.reduce((a, [, x]) => a + x.prima, 0) : null,
+           nota: fuori.length ? " · confronto senza " + fuori.join(", ") + " (mancano i suoi numeri di prima)" : "", nome, etOra: ok[0][1].etOra, etPrima: ok[0][1].etPrima,
+           quando: (ini === fine ? dat(fine) : "da " + dat(ini) + " a " + dat(fine)) + (mancano.length ? " · senza " + mancano.join(", ") + " (in arrivo)" : "") };
 }
 function confrontoFol(tab, s, c) {
   const r = riepilogo(tab, s); if (!r) return null;
@@ -241,7 +262,8 @@ function scheda(nome, colore, x, c, follower) {
   if (!confronto) {
     card.append(el("div", "badge nd", "confronto non ancora disponibile"));
   } else {
-    const diffN = x.ora - x.prima, p = x.prima ? Math.round((x.ora / x.prima - 1) * 100) : null;
+    const oc = x.oraC !== undefined ? x.oraC : x.ora;
+    const diffN = oc - x.prima, p = x.prima ? Math.round((oc / x.prima - 1) * 100) : null;
     const cls = diffN > 0 ? "su" : diffN < 0 ? "giu" : "pari";
     const b = el("div", "badge " + cls);
     b.append(el("span", "fr", diffN > 0 ? "▲" : diffN < 0 ? "▼" : "="));
@@ -252,11 +274,11 @@ function scheda(nome, colore, x, c, follower) {
     if (follower) {
       fr.append(diffN === 0 ? "uguale a " : diffN > 0 ? "in più rispetto a " : "in meno rispetto a ", NOMI_C[c][0] === "ieri" ? "ieri" : NOMI_C[c][0], " (", el("b", "", fmt(x.prima)), ")");
     } else {
-      fr.append(diffN === 0 ? "uguale " : diffN > 0 ? el("b", "", "+" + fmt(diffN)) : el("b", "", "−" + fmt(-diffN)), diffN === 0 ? "" : " visualizzazioni ", "rispetto a ", NOMI_C[c][0], " (", el("b", "", fmt(x.prima)), ")");
+      fr.append(diffN === 0 ? "uguale " : diffN > 0 ? el("b", "", "+" + fmt(diffN)) : el("b", "", "−" + fmt(-diffN)), diffN === 0 ? "" : " visualizzazioni ", "rispetto ", x.nome || ("a " + NOMI_C[c][0]), " (", el("b", "", fmt(x.prima)), ")", x.nota || "");
     }
     card.append(fr);
-    const max = Math.max(x.ora, x.prima, 1), duo = el("div", "duo");
-    [[x.etPrima, x.prima, "p"], [x.etOra, x.ora, "o"]].forEach(([et, v, k]) => {
+    const max = Math.max(oc, x.prima, 1), duo = el("div", "duo");
+    [[x.etPrima, x.prima, "p"], [x.etOra, oc, "o"]].forEach(([et, v, k]) => {
       const riga = el("div"); riga.append(el("span", "", et)); const pista = el("em"); const barra = el("i", k); pista.append(barra); riga.append(pista); duo.append(riga);
       const w = follower ? 30 + 70 * (v - Math.min(x.ora, x.prima)) / Math.max(1, Math.abs(x.ora - x.prima)) : (v / max) * 100;
       barra.style.width = Math.max(3, Math.min(100, w)) + "%";
@@ -271,7 +293,7 @@ function disegnaSchede() {
   const sv = document.getElementById("schede-vis"), sf = document.getElementById("schede-fol");
   sv.replaceChildren(); sf.replaceChildren();
   [["Totale", "#fff8e1"]].concat(SOC.map(([s, c]) => [s, c])).forEach(([s, col]) => {
-    sv.append(scheda(s, col, confrontoVis(v, s, CONF.vis), CONF.vis, false));
+    sv.append(scheda(s, col, s === "Totale" ? confrontoTotale(v, PERIODO) : confrontoVis(v, s, PERIODO), "1", false));
     sf.append(scheda(s, col, confrontoFol(f, s, CONF.fol), CONF.fol, true));
   });
 }
@@ -282,10 +304,8 @@ document.querySelectorAll("[data-conf]").forEach((g) => g.querySelectorAll("butt
 })));
 
 /* oggi / ieri: barre 3D dei 4 social. "Oggi" = l'ultimo giorno che le piattaforme hanno gia' dato per intero */
-function giornoDi(p) {
-  const tutti = Object.keys(VIS).sort(), ult = tutti[tutti.length - 1];
-  return p === "oggi" ? ult : indietro(ult, 1);
-}
+function giornoDi(p) { const ult = ULTIMO(); return p === "oggi" ? ult : indietro(ult, 1); }
+function giorniDi(p) { const [ini, fine] = intervallo(p, ULTIMO()); return Object.keys(VIS).sort().filter((g) => g >= ini && g <= fine); }
 function disegnaBarre(box, g) {
   const r = VIS[g] || {}; const max = Math.max(1, ...SOC.map(([s]) => r[s] || 0));
   const wrap = el("div", "barre");
@@ -302,14 +322,13 @@ function disegnaBarre(box, g) {
   const alza = () => prismi.forEach(([p, h]) => { p.style.height = `calc(${h}% - 40px)`; });
   if (MOTO) requestAnimationFrame(() => requestAnimationFrame(alza)); else alza();
   const tot = SOC.every(([s]) => r[s] !== undefined) ? SOC.reduce((a, [s]) => a + r[s], 0) : null;
-  document.getElementById("quando").textContent = dat(g) + (tot !== null ? " · totale " + fmt(tot) : "") + " · le piattaforme danno il giorno intero la mattina dopo";
+  document.getElementById("quando").textContent = "Le piattaforme danno i numeri del giorno intero la mattina dopo (TikTok 2 giorni dopo): \"Oggi\" è l'ultimo giorno già arrivato.";
 }
 
 const NS = "http://www.w3.org/2000/svg";
 const sv = (tag, at) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); return e; };
-function disegnaLinee(box, n) {
-  const giorni = Object.keys(VIS).sort().slice(-n);
-  document.getElementById("quando").textContent = giorni.length ? "dal " + dat(giorni[0]) + " al " + dat(giorni[giorni.length - 1]) : "";
+function disegnaLinee(box, giorni) {
+  document.getElementById("quando").textContent = "Giorno per giorno, da " + dat(giorni[0]) + " a " + dat(giorni[giorni.length - 1]);
   const W = Math.max(300, box.clientWidth - 20), H = box.clientWidth < 520 ? 230 : 270;
   const max = Math.max(1, ...giorni.flatMap((g) => SOC.map(([s]) => VIS[g][s] || 0)));
   const passo = Math.pow(10, Math.floor(Math.log10(max))) / 2, top = Math.ceil(max / passo) * passo;
@@ -374,7 +393,10 @@ function disegnaGrafico() {
   const box = document.getElementById("grafico"); box.replaceChildren();
   if (!Object.keys(VIS).length) { box.textContent = "Nessun dato"; return; }
   document.getElementById("legenda").hidden = PERIODO === "oggi" || PERIODO === "ieri";
-  if (PERIODO === "oggi" || PERIODO === "ieri") disegnaBarre(box, giornoDi(PERIODO)); else disegnaLinee(box, +PERIODO);
+  const giorni = PERIODO === "oggi" || PERIODO === "ieri" ? [] : giorniDi(PERIODO);
+  const linee = giorni.length >= 2;
+  document.getElementById("legenda").hidden = !linee;
+  if (linee) disegnaLinee(box, giorni); else disegnaBarre(box, giornoDi(PERIODO === "ieri" ? "ieri" : "oggi"));
 }
 
 /* polvere d'oro che sale lenta sullo sfondo */
@@ -397,7 +419,7 @@ document.getElementById("legenda").append(...SOC.map(([s, c]) => { const sp = el
 document.querySelectorAll(".tabs[aria-label=Periodo] button").forEach((b) => b.addEventListener("click", () => {
   PERIODO = b.dataset.p;
   document.querySelectorAll(".tabs[aria-label=Periodo] button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
-  disegnaGrafico();
+  disegnaSchede(); disegnaGrafico();
 }));
 let largh = 0;
 addEventListener("resize", () => { if (Math.abs(innerWidth - largh) > 30) { largh = innerWidth; disegnaGrafico(); } });
