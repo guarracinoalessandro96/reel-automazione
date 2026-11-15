@@ -16259,7 +16259,9 @@
      "ok": true,
      "id": "18640053478008684",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -16319,7 +16321,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "F2UCq83SiCs"
+     "id": "F2UCq83SiCs",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -16330,11 +16333,75 @@
    },
    "spinto": true,
    "testo": "Le persone carismatiche fanno complimenti. Le persone felici incoraggiano. Le persone di successo sostengono. E quelle c"
+  },
+  {
+   "quando": "2026-11-15T17:00",
+   "slot": "2026-11-15 18:00",
+   "video": "Foto della giornata",
+   "md5": null,
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-ad9dcdb0",
+   "tema": "dieta",
+   "montaggio": {
+    "formato": "dieci_foto",
+    "durata": 10.002,
+    "musica": "locked_in_3.m4a",
+    "stacchi": 6,
+    "testi": 1,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 10,
+     "scurito": 0.51,
+     "luce": 0.41,
+     "sfumatura": 0.31,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "foto_ids": [
+     "1FF_UeM1T5fAjm6fB-wj_nm82Rkbq5dQv",
+     "1h-qHYVvq53m37HkSB5MMeoog5u_jvM63",
+     "1eFxvzbd8wgpVgXML3ZNb9swwoqvQNhWb",
+     "1deeJzCThJDNJ-C-fxMMTQg65DogzmOxG",
+     "1FcEFi9zU4YshCHayCw6Voir7ZI5GyXEq",
+     "1k0vGrBgNhLzs3-C0c0eITZNYaX_BKDek"
+    ],
+    "foto_doppie": 0,
+    "foto_giorno": "2026-11-04",
+    "foto_riuso": true,
+    "secondi_montaggio": 153,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {},
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 52
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_05.flac",
+    "musica_instagram": "Crush (feat. My City Glory) - Ross Lara [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "NTa7g_AHNJs"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18508636924096352",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "I segreti per essere in forma: bevi acqua. Sii socievole. Esci e cammina. Vai a letto presto. Pratica la gratitudine. Pr"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-07 18:00",
   "2026-11-07 20:00",
   "2026-11-07 22:00",
   "2026-11-08 00:00",
@@ -16413,10 +16480,10 @@
   "2026-11-15 10:00",
   "2026-11-15 12:00",
   "2026-11-15 14:00",
-  "2026-11-15 16:00"
+  "2026-11-15 16:00",
+  "2026-11-15 18:00"
  ],
  "musica_recenti": [
-  "death_duel_1.m4a",
   "i_might_be_late_2.m4a",
   "break_ya_neck_3.m4a",
   "sweaty_staredown_1.m4a",
@@ -16475,7 +16542,8 @@
   "moon_vision_1.m4a",
   "horizons_3.m4a",
   "final_boss_battle_1.m4a",
-  "vibe_check_1.m4a"
+  "vibe_check_1.m4a",
+  "locked_in_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -16854,7 +16922,8 @@
   "MIE-6a3f23f2",
   "MIE-95f293ca",
   "MIE-1a8cbedd",
-  "MIE-2dfaf33f"
+  "MIE-2dfaf33f",
+  "MIE-ad9dcdb0"
  ],
  "temi_recenti": [
   "mentalita",
@@ -16863,10 +16932,10 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
   "palestra",
-  "mentalita"
+  "mentalita",
+  "dieta"
  ],
  "analisi": {
   "1Q-g_--WvnGEdpudkxwU_yXI4qSv9tteg": {
@@ -17505,7 +17574,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_03.flac",
   "trap_11.flac",
   "deciso_02.flac",
   "phonk_16.flac",
@@ -17524,7 +17592,8 @@
   "phonk_06.flac",
   "energia_02.flac",
   "trap_05.flac",
-  "deciso_07.flac"
+  "deciso_07.flac",
+  "phonk_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -17559,7 +17628,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_foto",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -17575,7 +17644,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1050254964075544",
   "576850318404245",
   "921570148849598",
   "1341809783805885",
@@ -17634,11 +17702,11 @@
   "1340308050325459",
   "825305559687149",
   "1042846574390974",
-  "3240401969456886"
+  "3240401969456886",
+  "3509829325973401"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Tony Dark Eyes",
   "Shanice",
   "Symphonic Planet",
   "Jumbo",
@@ -17647,10 +17715,10 @@
   "Paul Fowler",
   "Trout Recording",
   "Jumbo [screenshot]",
-  "Julia Gartha"
+  "Julia Gartha",
+  "Ross Lara"
  ],
  "ig_titoli_recenti": [
-  "redux",
   "in motion",
   "hype track",
   "adrenalina was her name",
@@ -17689,7 +17757,8 @@
   "willow run",
   "ready to run",
   "vision",
-  "running"
+  "running",
+  "crush"
  ],
  "ig_tendenze_riserva": [
   {
@@ -17700,10 +17769,24 @@
    "libreria": false
   },
   {
-   "audio_id": "3240401969456886",
-   "title": "Running (Instrumental)",
-   "display_artist": "Julia Gartha",
-   "duration_in_ms": 128407,
+   "audio_id": "1765359430669153",
+   "title": "Rock Your World",
+   "display_artist": "Company Money",
+   "duration_in_ms": 119170,
+   "libreria": true
+  },
+  {
+   "audio_id": "3509829325973401",
+   "title": "Crush (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 153282,
+   "libreria": true
+  },
+  {
+   "audio_id": "1219987162925594",
+   "title": "Run (Instrumental)",
+   "display_artist": "Tony Dark Eyes",
+   "duration_in_ms": 206337,
    "libreria": true
   }
  ]
