@@ -1,6 +1,444 @@
 {
-  "aggiornato": "2026-11-08",
+  "aggiornato": "2026-11-15",
   "brani": [
+    {
+      "titolo": "Bliss",
+      "artista": "Klsr",
+      "fonte": "tiktok",
+      "reel_visti": 5
+    },
+    {
+      "titolo": "do i clench my fists? (slowed + reverb)",
+      "artista": "ridgeclub",
+      "fonte": "tiktok",
+      "reel_visti": 4
+    },
+    {
+      "titolo": "Altezza cielo (feat. Kid Yugi)",
+      "artista": "Bresh",
+      "fonte": "tiktok",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "Slide da Treme Melódica v2 - Ultra Slowed",
+      "artista": "DJ FNK & Polaris",
+      "fonte": "tiktok",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "Experience (Slowed)",
+      "artista": "noel.smt",
+      "fonte": "tiktok",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "Personal",
+      "artista": "Da Africa Deep & Kali Mija",
+      "fonte": "tiktok",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "FUNK UNIVERSO - Super Slowed",
+      "artista": "Irokz",
+      "fonte": "tiktok",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "Winter Arc Theme",
+      "artista": "The Late Night Project",
+      "fonte": "tiktok",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "Black and Yellow (Slowed Down Version)",
+      "artista": "Slow-fi Classics",
+      "fonte": "tiktok",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "BLADETEKK - Super Slowed",
+      "artista": "angelhard & TRVXER",
+      "fonte": "tiktok",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "Formidable (Orchestral Instrumental)",
+      "artista": "YarondoPiano",
+      "fonte": "tiktok",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "Way Too Self Aware",
+      "artista": "Ian Asher",
+      "fonte": "instagram",
+      "reel_visti": 2
+    },
+    {
+      "titolo": "S.T.A.Y.",
+      "artista": "Hans Zimmer",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Why Do We Fall?",
+      "artista": "Hans Zimmer",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "End of Beginning",
+      "artista": "Djo",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "FINE DAY HARDTEKK (SLOWED)",
+      "artista": "DJ HARDWICK",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Fine Day (HARDTEKK) - Slowed",
+      "artista": "ALYX.",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "TILL I DIE",
+      "artista": "SXMPRA & 1nonly",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Touch",
+      "artista": "Mattia Cupelli",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Self Aware",
+      "artista": "Temper City",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "My Life is Going On",
+      "artista": "tamer & V9P & Vanessa Doll",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Beck the Monster",
+      "artista": "Денис Пакрушов",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Petrunko",
+      "artista": "EGOPIUM",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "ECLIPSER (Super Slowed)",
+      "artista": "PINKY SMASH",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "We Do What We Want - Edit",
+      "artista": "Alan Fitzpatrick",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "On The Floor",
+      "artista": "Jennifer Lopez & Pitbull",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Can't Be Touched",
+      "artista": "Body Head Bangerz & Roy Jones Jr & Mr. Magic & Trouble",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "CRYST4L - slowed",
+      "artista": "DARKXHAWK",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Booma Yee - Slowed",
+      "artista": "Septum",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "ULTRAS (Slowed)",
+      "artista": "STXSTN",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "GLADIATOR",
+      "artista": "SAPFIR MADE IT",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "E.T. (Hardstyle) (Slowed)",
+      "artista": "PANDEMXNIUM & GoldZoro",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Lost.exe (Slowed)",
+      "artista": "Slixshøt & elysian.",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "DOOMTEKK (Slowed)",
+      "artista": "Vincce",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Stoic Solitude",
+      "artista": "Sabedoria",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Shelby",
+      "artista": "sergionabeat",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Sand Drawing",
+      "artista": "Judah Earl",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Glide",
+      "artista": "NEIKED & Portugal. The Man",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Locrian Dominant",
+      "artista": "Aloboi",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "NO BATIDÃO - Super Slowed",
+      "artista": "ZXKAI & slxughter",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "LA MUSICA (Slowed)",
+      "artista": "QMIIR & Akhmedov",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "LUNACY (Nightcore)",
+      "artista": "Atic & elysian.",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "180db_ [130] (Super Slowed)",
+      "artista": "Akuran",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "MONTAGEM PENSAR",
+      "artista": "Phonknight",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "DARK AURA FUNK (Slowed)",
+      "artista": "ZAYLO & elude & IMARO",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "pyro - slowed",
+      "artista": "ZERTAL",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "LUMINOUS (Slowed)",
+      "artista": "PHNKR & dnvn & Phonk King",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "win (Super Slowed)",
+      "artista": "snxff & kito",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "tesla (slowed electro mix)",
+      "artista": "Fixupboy",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Chasing Cities",
+      "artista": "Tyron",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "ILUSÃO (Slowed)",
+      "artista": "nashi & MXRCIZ & Mc Jamil & Phonk King",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "ZUMA JUMP - SUPER SLOWED",
+      "artista": "ONNMEE & Anar",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Stargazing (Slowed + Reverb)",
+      "artista": "Marcelo De Carvalho",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Aren't You Tired of Fighting",
+      "artista": "NFL Stomp",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Shook Ones, Pt. II (Instrumental)",
+      "artista": "Mobb Deep",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Brighter Days",
+      "artista": "Gabriel Albuquerqüe & Renzyx",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Cinematic Pulse",
+      "artista": "8teen Smokes",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Epic Emotional",
+      "artista": "AShamaluevMusic",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Pathos",
+      "artista": "Ludovico Einaudi",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Leave a Light On (feat. Tom Walker)",
+      "artista": "Red Hot Chilli Pipers",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "TILL I COME VOLT-MIX",
+      "artista": "DjPablo MG",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Winner",
+      "artista": "AShamaluevMusic",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "High Hopes",
+      "artista": "Panic! At The Disco",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Succeed",
+      "artista": "AShamaluevMusic",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "AKAI - Slowed",
+      "artista": "UdieNnx & HXVSAGE & Mc Luizinho",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Runaway - Piano Rendition",
+      "artista": "The Blue Notes & L'Orchestra Cinematique",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Halo - Instrumental",
+      "artista": "Joy Miranda",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "The Champion",
+      "artista": "Lux-Inspira",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Epic Motivational",
+      "artista": "StereojamMusic",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Imperium (Slowed)",
+      "artista": "Caleb Bryant",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "I'm Still Here",
+      "artista": "Sia",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Free Mind",
+      "artista": "Tems",
+      "fonte": "tiktok",
+      "reel_visti": 1
+    },
+    {
+      "titolo": "Intro",
+      "artista": "The xx",
+      "fonte": "instagram",
+      "reel_visti": 1
+    },
     {
       "titolo": "TURAN",
       "artista": "ASTXR & MC ETERNA",
