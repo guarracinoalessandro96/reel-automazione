@@ -1,15 +1,15 @@
 {
  "temi": {
-  "amicizia": 1.05,
-  "imprenditore": 1.17,
+  "amicizia": 1.06,
+  "imprenditore": 1.18,
   "mentalita": 0.92,
-  "palestra": 1.13,
-  "dieta": 1.07,
-  "regole": 1.27,
-  "storia": 1.14,
-  "famiglia": 0.91
+  "palestra": 1.14,
+  "dieta": 1.08,
+  "regole": 1.29,
+  "storia": 1.15,
+  "famiglia": 0.83
  },
- "aggiornato": "2026-11-14",
+ "aggiornato": "2026-11-15",
  "frasi_vincenti": [
   "MIE-02d87ee7",
   "MIE-043e8cf1",
@@ -19,6 +19,7 @@
   "MIE-1f097e9f",
   "MIE-22f623e2",
   "MIE-239a782a",
+  "MIE-3532228a",
   "MIE-373e069a",
   "MIE-3d86a685",
   "MIE-3fec417d",
@@ -31,6 +32,7 @@
   "MIE-54fb5833",
   "MIE-578492d5",
   "MIE-5a99bac4",
+  "MIE-643bdfb5",
   "MIE-6ac2e2c0",
   "MIE-6bd471d6",
   "MIE-6e420549",
@@ -62,6 +64,7 @@
   "MIE-be160ed8",
   "MIE-c2cfd80e",
   "MIE-c42d8782",
+  "MIE-c903f303",
   "MIE-d7cc734e",
   "MIE-d860fe71",
   "MIE-d8f3e08c",
@@ -75,12 +78,14 @@
   "STO-20"
  ],
  "formati": {
-  "frase": 1.18,
-  "regole": 1.17,
-  "montaggio": 1.04,
-  "frase8": 1.16,
+  "frase": 1.23,
+  "regole": 1.21,
+  "montaggio": 1.07,
+  "frase8": 1.2,
   "dieci_due": 0.4,
-  "dieci": 0.99,
+  "dieci": 1.02,
+  "loop": 0.4,
+  "giornata": 0.4,
   "taglio2": 0.4
  },
  "esperimento_formati": {
@@ -89,46 +94,48 @@
  "esperimento_nota": "Agente 25/10/2026: regole x1,6 (12 Short dal 18/10: mediana 954, 2 sopra 1.200; frase 935 e 0 su 13; montaggio 770 e 1 su 14). Verifica 1/11/2026: se le regole rendono meno della mediana degli altri formati si toglie.",
  "brani_forti": [
   "taking_flight",
-  "turn_in_the_sun",
-  "delirium",
+  "wrangle_the_crazy",
   "fire_in_the_sky",
+  "rubberband",
   "locked_in",
   "van_life_rager",
-  "cutscene_crush",
   "ancient_civilisations",
-  "cartier",
-  "death_duel"
+  "death_duel",
+  "cutscene_crush",
+  "final_boss_battle"
  ],
  "clip_forti": [
   "IMG_4037.MOV",
   "IMG_4286.MOV",
   "IMG_4029.MOV",
+  "IMG_3971.MOV",
   "IMG_4294.MOV",
+  "IMG_4120.mov",
   "IMG_4032.MOV",
-  "IMG_3833.mov",
-  "IMG_3832.mov",
   "IMG_4061.MOV",
   "Alessandro Guarracino sta trasmettendo dal vivo..MOV",
   "IMG_3972.MOV",
   "IMG_4126.MOV",
   "IMG_3611.mov",
+  "IMG_4129.mov",
   "IMG_3606.mov",
   "IMG_3790.mov",
   "IMG_4118.mov",
   "IMG_4121.mov",
+  "IMG_3935.mov",
   "IMG_3762.mov",
-  "IMG_3974.MOV",
-  "IMG_3952.mov",
-  "IMG_4044.MOV"
+  "IMG_3974.MOV"
  ],
  "brani_forti_ig": [
+  "energia_06",
   "deciso_05",
   "trap",
+  "phonk_06",
+  "deciso_07",
   "deciso_12",
-  "drive",
   "deciso",
+  "drive",
   "deciso_06",
-  "phonk",
   "phonk_05"
  ]
 }
