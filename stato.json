@@ -16396,7 +16396,9 @@
      "ok": true,
      "id": "18508636924096352",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -16460,7 +16462,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "97nw2RLgJB4"
+     "id": "97nw2RLgJB4",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -16471,11 +16474,77 @@
    },
    "spinto": true,
    "testo": "Non posso arrendermi. Mamma e papà hanno dato tutto perché avessi la possibilità di vivere la vita che desideravo, e mer"
+  },
+  {
+   "quando": "2026-11-15T21:00",
+   "slot": "2026-11-15 22:00",
+   "video": "IMG_5279.MOV",
+   "md5": "5a773161fa61673d3fd7a8e8ce9a8673",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-15T13:46+01:00",
+   "frase": "MIE-9abf2819",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio3",
+    "durata": 10.0,
+    "musica": "van_life_rager_3.m4a",
+    "stacchi": 3,
+    "testi": 1,
+    "scene_dal_video": 3,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 4.95,
+     "primo_piano_fermo": false,
+     "soglia_moto": 4.95,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 8,
+     "scurito": 0.0,
+     "luce": 0.23,
+     "sfumatura": 0.09,
+     "intatto": true,
+     "scene_intatte": 3
+    },
+    "secondi_montaggio": 100,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 35
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_12.flac",
+    "musica_instagram": "Inspired To Shine - Global Genius"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "yFZDazA9vFg"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18012486402003404",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "La vita è troppo breve per vivere con una mentalità negativa, quindi sii felice, lascia andare le cose, sii libero, rima"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-07 22:00",
   "2026-11-08 00:00",
   "2026-11-08 06:00",
   "2026-11-08 08:00",
@@ -16554,10 +16623,10 @@
   "2026-11-15 14:00",
   "2026-11-15 16:00",
   "2026-11-15 18:00",
-  "2026-11-15 20:00"
+  "2026-11-15 20:00",
+  "2026-11-15 22:00"
  ],
  "musica_recenti": [
-  "break_ya_neck_3.m4a",
   "sweaty_staredown_1.m4a",
   "mirror_mirror_3.m4a",
   "whoop_2.m4a",
@@ -16616,7 +16685,8 @@
   "final_boss_battle_1.m4a",
   "vibe_check_1.m4a",
   "locked_in_3.m4a",
-  "keep_it_movin_3.m4a"
+  "keep_it_movin_3.m4a",
+  "van_life_rager_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -16997,10 +17067,10 @@
   "MIE-1a8cbedd",
   "MIE-2dfaf33f",
   "MIE-ad9dcdb0",
-  "MIE-bc59f2ed"
+  "MIE-bc59f2ed",
+  "MIE-9abf2819"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -17009,7 +17079,8 @@
   "palestra",
   "mentalita",
   "dieta",
-  "famiglia"
+  "famiglia",
+  "mentalita"
  ],
  "analisi": {
   "1Q-g_--WvnGEdpudkxwU_yXI4qSv9tteg": {
@@ -17023,20 +17094,6 @@
    "registrato": "2026-11-15T13:40+01:00",
    "fascia": "palestra",
    "caricato": "2026-11-15T13:23:47.484Z",
-   "parlato": null,
-   "momento": null
-  },
-  "12XJ31-yzyaXlNCSzxTpaztbEXpOLstDr": {
-   "nome": "IMG_5279.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.97,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-15T13:46+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-11-15T13:26:34.458Z",
    "parlato": null,
    "momento": null
   }
@@ -17636,10 +17693,14 @@
    "usi": 1,
    "ultimo": "2026-11-15",
    "orizzontale": false
+  },
+  "12XJ31-yzyaXlNCSzxTpaztbEXpOLstDr": {
+   "usi": 1,
+   "ultimo": "2026-11-15",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "deciso_02.flac",
   "phonk_16.flac",
   "energia_11.flac",
   "deciso_09.flac",
@@ -17658,7 +17719,8 @@
   "trap_05.flac",
   "deciso_07.flac",
   "phonk_05.flac",
-  "trap_15.flac"
+  "trap_15.flac",
+  "energia_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -17693,7 +17755,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "taglio3",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -17709,7 +17771,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "921570148849598",
   "1341809783805885",
   "845285864683880",
   "1232530197323594",
@@ -17768,11 +17829,11 @@
   "1042846574390974",
   "3240401969456886",
   "3509829325973401",
-  "1068592065620532"
+  "1068592065620532",
+  "565118654020261"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Symphonic Planet",
   "Jumbo",
   "Giulio Cercato",
   "Afterlight",
@@ -17781,10 +17842,10 @@
   "Jumbo [screenshot]",
   "Julia Gartha",
   "Ross Lara",
-  "LAVLO"
+  "LAVLO",
+  "Global Genius"
  ],
  "ig_titoli_recenti": [
-  "hype track",
   "adrenalina was her name",
   "running out of heaven tonight",
   "road warriors",
@@ -17823,7 +17884,8 @@
   "vision",
   "running",
   "crush",
-  "legendary"
+  "legendary",
+  "inspired to shine"
  ],
  "ig_tendenze_riserva": [
   {
@@ -17834,24 +17896,17 @@
    "libreria": false
   },
   {
-   "audio_id": "1765359430669153",
-   "title": "Rock Your World",
-   "display_artist": "Company Money",
-   "duration_in_ms": 119170,
+   "audio_id": "2623141041391037",
+   "title": "Running",
+   "display_artist": "Julia Gartha",
+   "duration_in_ms": 128407,
    "libreria": true
   },
   {
-   "audio_id": "3509829325973401",
-   "title": "Crush (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 153282,
-   "libreria": true
-  },
-  {
-   "audio_id": "1219987162925594",
-   "title": "Run (Instrumental)",
-   "display_artist": "Tony Dark Eyes",
-   "duration_in_ms": 206337,
+   "audio_id": "795179878894620",
+   "title": "Move Me",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 151967,
    "libreria": true
   }
  ]
