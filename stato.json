@@ -16328,7 +16328,9 @@
      "ok": true,
      "id": "17922486999530800",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -16387,7 +16389,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "NTa7g_AHNJs"
+     "id": "NTa7g_AHNJs",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -16398,11 +16401,80 @@
    },
    "spinto": true,
    "testo": "I segreti per essere in forma: bevi acqua. Sii socievole. Esci e cammina. Vai a letto presto. Pratica la gratitudine. Pr"
+  },
+  {
+   "quando": "2026-11-15T19:00",
+   "slot": "2026-11-15 20:00",
+   "video": "IMG_5281.MOV",
+   "md5": "9c32f70f16ab3f869d46dde9717e2e18",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-15T13:50+01:00",
+   "frase": "MIE-bc59f2ed",
+   "tema": "famiglia",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 10.0,
+    "musica": "keep_it_movin_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.147,
+     "movimento": 5.7,
+     "primo_piano_fermo": false,
+     "soglia_moto": 4.97,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "scena_azione_prima": true,
+    "scene_riguardate": 1,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 6,
+     "scurito": 0.0,
+     "luce": 0.43,
+     "sfumatura": 0.32,
+     "intatto": true,
+     "scene_intatte": 2
+    },
+    "secondi_montaggio": 97,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "io",
+     "forma": "due",
+     "parole": 24
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_15.flac",
+    "musica_instagram": "Legendary - LAVLO"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "97nw2RLgJB4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18091357832509919",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non posso arrendermi. Mamma e papà hanno dato tutto perché avessi la possibilità di vivere la vita che desideravo, e mer"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-07 20:00",
   "2026-11-07 22:00",
   "2026-11-08 00:00",
   "2026-11-08 06:00",
@@ -16481,10 +16553,10 @@
   "2026-11-15 12:00",
   "2026-11-15 14:00",
   "2026-11-15 16:00",
-  "2026-11-15 18:00"
+  "2026-11-15 18:00",
+  "2026-11-15 20:00"
  ],
  "musica_recenti": [
-  "i_might_be_late_2.m4a",
   "break_ya_neck_3.m4a",
   "sweaty_staredown_1.m4a",
   "mirror_mirror_3.m4a",
@@ -16543,7 +16615,8 @@
   "horizons_3.m4a",
   "final_boss_battle_1.m4a",
   "vibe_check_1.m4a",
-  "locked_in_3.m4a"
+  "locked_in_3.m4a",
+  "keep_it_movin_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -16923,10 +16996,10 @@
   "MIE-95f293ca",
   "MIE-1a8cbedd",
   "MIE-2dfaf33f",
-  "MIE-ad9dcdb0"
+  "MIE-ad9dcdb0",
+  "MIE-bc59f2ed"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -16935,7 +17008,8 @@
   "dieta",
   "palestra",
   "mentalita",
-  "dieta"
+  "dieta",
+  "famiglia"
  ],
  "analisi": {
   "1Q-g_--WvnGEdpudkxwU_yXI4qSv9tteg": {
@@ -16963,20 +17037,6 @@
    "registrato": "2026-11-15T13:46+01:00",
    "fascia": "palestra",
    "caricato": "2026-11-15T13:26:34.458Z",
-   "parlato": null,
-   "momento": null
-  },
-  "11ifFF0-NdArVfA5OkQH9RcDN2JXsB1_m": {
-   "nome": "IMG_5281.MOV",
-   "scena": "palestra",
-   "sicurezza": 0.56,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-15T13:50+01:00",
-   "fascia": "palestra",
-   "caricato": "2026-11-15T13:29:17.101Z",
    "parlato": null,
    "momento": null
   }
@@ -17571,10 +17631,14 @@
    "usi": 1,
    "ultimo": "2026-11-15",
    "orizzontale": false
+  },
+  "11ifFF0-NdArVfA5OkQH9RcDN2JXsB1_m": {
+   "usi": 1,
+   "ultimo": "2026-11-15",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "trap_11.flac",
   "deciso_02.flac",
   "phonk_16.flac",
   "energia_11.flac",
@@ -17593,7 +17657,8 @@
   "energia_02.flac",
   "trap_05.flac",
   "deciso_07.flac",
-  "phonk_05.flac"
+  "phonk_05.flac",
+  "trap_15.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -17628,7 +17693,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_foto",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -17644,7 +17709,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "576850318404245",
   "921570148849598",
   "1341809783805885",
   "845285864683880",
@@ -17703,11 +17767,11 @@
   "825305559687149",
   "1042846574390974",
   "3240401969456886",
-  "3509829325973401"
+  "3509829325973401",
+  "1068592065620532"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Shanice",
   "Symphonic Planet",
   "Jumbo",
   "Giulio Cercato",
@@ -17716,10 +17780,10 @@
   "Trout Recording",
   "Jumbo [screenshot]",
   "Julia Gartha",
-  "Ross Lara"
+  "Ross Lara",
+  "LAVLO"
  ],
  "ig_titoli_recenti": [
-  "in motion",
   "hype track",
   "adrenalina was her name",
   "running out of heaven tonight",
@@ -17758,7 +17822,8 @@
   "ready to run",
   "vision",
   "running",
-  "crush"
+  "crush",
+  "legendary"
  ],
  "ig_tendenze_riserva": [
   {
