@@ -16890,7 +16890,9 @@
      "ok": true,
      "id": "18100597979109466",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -16953,7 +16955,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "FRGj0rCAlJM"
+     "id": "FRGj0rCAlJM",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -16964,11 +16967,76 @@
    },
    "spinto": true,
    "testo": "La vita è per il 90% una questione di testa. La maggior parte dei giorni non combatti contro la vita, ma contro i tuoi p"
+  },
+  {
+   "quando": "2026-11-16T15:01",
+   "slot": "2026-11-16 16:00",
+   "video": "IMG_4029.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-be389ba1",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "kick_it_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 4,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.135,
+     "movimento": 20.27,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 112,
+     "righe": 8,
+     "scurito": 0.35,
+     "luce": 0.36,
+     "sfumatura": 0.27,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 148,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 39
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_10.flac",
+    "musica_instagram": "Unstoppable - Sia [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "AEQFp2lF02A"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18170287747471632",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Diventi la versione migliore di te stesso quando investi in ciò che nessuno potrà mai toglierti: la tua mentalità, il tu"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-08 16:00",
   "2026-11-08 18:00",
   "2026-11-08 20:00",
   "2026-11-08 22:00",
@@ -17047,10 +17115,10 @@
   "2026-11-16 08:00",
   "2026-11-16 10:00",
   "2026-11-16 12:00",
-  "2026-11-16 14:00"
+  "2026-11-16 14:00",
+  "2026-11-16 16:00"
  ],
  "musica_recenti": [
-  "stake_out_3.m4a",
   "cartier_2.m4a",
   "the_road_to_mordor_1.m4a",
   "fire_in_the_sky_2.m4a",
@@ -17109,7 +17177,8 @@
   "death_duel_1.m4a",
   "monthaholic_2.m4a",
   "way_back_home_2.m4a",
-  "break_ya_neck_2.m4a"
+  "break_ya_neck_2.m4a",
+  "kick_it_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -17497,10 +17566,10 @@
   "MIE-ce6347eb",
   "MIE-6e38dcec",
   "MIE-ece9a1a7",
-  "MIE-815920dc"
+  "MIE-815920dc",
+  "MIE-be389ba1"
  ],
  "temi_recenti": [
-  "mentalita",
   "dieta",
   "famiglia",
   "mentalita",
@@ -17508,6 +17577,7 @@
   "palestra",
   "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -17745,8 +17815,8 @@
    "orizzontale": false
   },
   "1uc6eTA1H5KSzsqTsVNgk6Rzto2V2Wq3y": {
-   "usi": 4,
-   "ultimo": "2026-11-09",
+   "usi": 5,
+   "ultimo": "2026-11-16",
    "orizzontale": false
   },
   "1SViXJGWyrXZIxEMyHGwykElbvGkiJSxW": {
@@ -18121,7 +18191,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_02.flac",
   "trap_12.flac",
   "deciso_08.flac",
   "phonk_08.flac",
@@ -18140,7 +18209,8 @@
   "deciso_05.flac",
   "trap_03.flac",
   "drive_05.flac",
-  "phonk_11.flac"
+  "phonk_11.flac",
+  "trap_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -18175,7 +18245,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -18191,7 +18261,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "3528656724045832",
   "1131466168211650",
   "27850712597869154",
   "1223134719013093",
@@ -18250,11 +18319,11 @@
   "925982985305806",
   "925982985305806",
   "925982985305806",
-  "925982985305806"
+  "925982985305806",
+  "834026479668975"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Julia Gartha",
   "Ross Lara",
   "LAVLO",
   "Global Genius",
@@ -18263,10 +18332,10 @@
   "ROMderful [screenshot]",
   "ROMderful [screenshot]",
   "ROMderful [screenshot]",
-  "ROMderful [screenshot]"
+  "ROMderful [screenshot]",
+  "Sia"
  ],
  "ig_titoli_recenti": [
-  "the beast",
   "beast",
   "champion",
   "go go go",
@@ -18305,21 +18374,43 @@
   "superman",
   "superman",
   "superman",
-  "superman"
+  "superman",
+  "unstoppable"
  ],
  "ig_tendenze_riserva": [
   {
-   "audio_id": "1354603606762864",
-   "title": "Work hard, dream big",
-   "display_artist": "Blues369",
-   "duration_in_ms": 274920,
+   "audio_id": "834026479668975",
+   "title": "Unstoppable",
+   "display_artist": "Sia",
+   "duration_in_ms": 217746,
    "libreria": false
   },
   {
-   "audio_id": "851155007623622",
-   "title": "Battle",
-   "display_artist": "Shanice",
-   "duration_in_ms": 127850,
+   "audio_id": "1552659642157024",
+   "title": "Running Through Gold",
+   "display_artist": "The Poison Oaks",
+   "duration_in_ms": 193934,
+   "libreria": true
+  },
+  {
+   "audio_id": "724855936571258",
+   "title": "Hidden Sun (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 158450,
+   "libreria": true
+  },
+  {
+   "audio_id": "27908405255457112",
+   "title": "When It Sparks",
+   "display_artist": "Magnetic Sirens",
+   "duration_in_ms": 61340,
+   "libreria": true
+  },
+  {
+   "audio_id": "1386871190037063",
+   "title": "Running",
+   "display_artist": "Summer Islands",
+   "duration_in_ms": 70064,
    "libreria": true
   }
  ]
