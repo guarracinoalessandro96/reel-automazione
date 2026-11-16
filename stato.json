@@ -17182,7 +17182,9 @@
      "ok": true,
      "id": "18109888004264142",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -17245,7 +17247,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "lUdUqBdfaNc"
+     "id": "lUdUqBdfaNc",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -17256,11 +17259,79 @@
    },
    "spinto": true,
    "testo": "La lezione più grande di quest'anno è che, a volte, devi smettere di vedere il buono nelle persone e iniziare a vedere c"
+  },
+  {
+   "quando": "2026-11-16T23:00",
+   "slot": "2026-11-17 00:00",
+   "video": "IMG_5395.MOV",
+   "md5": "d9a10b09f2ab3ff439afb73d9b3a3897",
+   "da_archivio": false,
+   "scena": "palestra",
+   "registrato": "2026-11-16T22:14+01:00",
+   "frase": "MIE-9015361f",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio3",
+    "durata": 8.0,
+    "musica": "turn_in_the_sun_1.m4a",
+    "stacchi": 3,
+    "testi": 1,
+    "scene_dal_video": 3,
+    "viso_prima_scena": 0,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 14.8,
+     "primo_piano_fermo": false,
+     "soglia_moto": 22.47,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "scena_viso_prima": true,
+    "scene_riguardate": 1,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 10,
+     "scurito": 0.0,
+     "luce": 0.23,
+     "sfumatura": 0.07,
+     "intatto": true,
+     "scene_intatte": 3
+    },
+    "secondi_montaggio": 98,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 39
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_09.flac",
+    "musica_instagram": "Move On - Summer Islands [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Al0QXoBA9Lw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18646314616045573",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "La costanza è più difficile quando nessuno applaude per te. Devi essere tu il primo a credere in te stesso, soprattutto "
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-09 00:00",
   "2026-11-09 06:00",
   "2026-11-09 08:00",
   "2026-11-09 10:00",
@@ -17339,10 +17410,10 @@
   "2026-11-16 16:00",
   "2026-11-16 18:00",
   "2026-11-16 20:00",
-  "2026-11-16 22:00"
+  "2026-11-16 22:00",
+  "2026-11-17 00:00"
  ],
  "musica_recenti": [
-  "rubberband_2.m4a",
   "delirium_2.m4a",
   "ten_3.m4a",
   "taking_flight_2.m4a",
@@ -17401,7 +17472,8 @@
   "kick_it_2.m4a",
   "cutscene_crush_3.m4a",
   "the_light_3.m4a",
-  "i_might_be_late_2.m4a"
+  "i_might_be_late_2.m4a",
+  "turn_in_the_sun_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -17793,10 +17865,10 @@
   "MIE-be389ba1",
   "MIE-5a3f3c23",
   "MIE-1171a49b",
-  "MIE-4e9c5ff7"
+  "MIE-4e9c5ff7",
+  "MIE-9015361f"
  ],
  "temi_recenti": [
-  "famiglia",
   "palestra",
   "mentalita",
   "dieta",
@@ -17805,9 +17877,25 @@
   "mentalita",
   "mentalita",
   "dieta",
+  "mentalita",
   "mentalita"
  ],
- "analisi": {},
+ "analisi": {
+  "1tqDsXuGMf-rygmyUgcZV_4cCt1H2JR2M": {
+   "nome": "IMG_5393.MOV",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-16T21:49+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-16T21:18:24.290Z",
+   "parlato": null,
+   "momento": null
+  }
+ },
  "pulizia": "2026-11-16",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -18414,10 +18502,14 @@
    "usi": 1,
    "ultimo": "2026-11-15",
    "orizzontale": false
+  },
+  "1Ldm-U_FkF7LvCFgTKDJaKabHjxjyON-C": {
+   "usi": 1,
+   "ultimo": "2026-11-16",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "drive_06.flac",
   "trap_04.flac",
   "deciso_11.flac",
   "phonk_06.flac",
@@ -18436,7 +18528,8 @@
   "trap_10.flac",
   "drive_16.flac",
   "phonk_10.flac",
-  "deciso_06.flac"
+  "deciso_06.flac",
+  "trap_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -18471,7 +18564,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "rallenty",
+ "formato_ultimo": "taglio3",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -18487,7 +18580,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "744011543289259",
   "930354837134154",
   "1765359430669153",
   "800297207899385",
@@ -18546,11 +18638,11 @@
   "834026479668975",
   "1232530197323594",
   "1201635935516260",
-  "1155586068813210"
+  "1155586068813210",
+  "1582326450151974"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Bloom",
   "JB Eckl",
   "ROMderful [screenshot]",
   "ROMderful [screenshot]",
@@ -18559,10 +18651,10 @@
   "Sia",
   "Abby Posner",
   "Lady Jazmon [screenshot]",
-  "Chela Rivas"
+  "Chela Rivas",
+  "Summer Islands"
  ],
  "ig_titoli_recenti": [
-  "beast mode",
   "spanish fire",
   "sentimental motion",
   "nice move",
@@ -18601,7 +18693,8 @@
   "unstoppable",
   "reflect and rise",
   "love me",
-  "warrior"
+  "warrior",
+  "move on"
  ],
  "ig_tendenze_riserva": [
   {
@@ -18612,17 +18705,17 @@
    "libreria": false
   },
   {
-   "audio_id": "1155586068813210",
-   "title": "Warrior",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 152750,
+   "audio_id": "1582326450151974",
+   "title": "Move On",
+   "display_artist": "Summer Islands",
+   "duration_in_ms": 64310,
    "libreria": true
   },
   {
-   "audio_id": "2269705013766100",
-   "title": "Move Forever",
-   "display_artist": "Fellow Travelers",
-   "duration_in_ms": 61456,
+   "audio_id": "2818493204964733",
+   "title": "Marathon Weekend Warriors",
+   "display_artist": "Lyle Workman",
+   "duration_in_ms": 251290,
    "libreria": true
   }
  ]
