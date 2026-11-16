@@ -16539,7 +16539,9 @@
      "ok": true,
      "id": "18012486402003404",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -16599,22 +16601,92 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "n4BdKC0GGYU"
+     "id": "n4BdKC0GGYU",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18582687889076912",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "Mi sono capitati un papà e una mamma che muovono mari e cieli per vedermi stare bene, non posso accontentarmi di meno."
+  },
+  {
+   "quando": "2026-11-16T05:00",
+   "slot": "2026-11-16 06:00",
+   "video": "IMG_3611.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-a5c96b75",
+   "tema": "palestra",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 8.0,
+    "musica": "ego_chall_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.422,
+     "movimento": 35.11,
+     "primo_piano_fermo": true,
+     "soglia_moto": 35.59,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 4,
+     "scurito": 0.46,
+     "luce": 0.46,
+     "sfumatura": 0.34,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 108,
+    "scritta": "centro_serif",
+    "estratto": "intero",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 13
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_03.flac",
+    "musica_instagram": "Epic Thoughts - JB Eckl"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "u5IoJPwm6JY"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18132143462480158",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "La palestra non ha mai trasformato una brutta giornata in una giornata peggiore."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-08 06:00",
   "2026-11-08 08:00",
   "2026-11-08 10:00",
   "2026-11-08 12:00",
@@ -16693,10 +16765,10 @@
   "2026-11-15 18:00",
   "2026-11-15 20:00",
   "2026-11-15 22:00",
-  "2026-11-16 00:00"
+  "2026-11-16 00:00",
+  "2026-11-16 06:00"
  ],
  "musica_recenti": [
-  "mirror_mirror_3.m4a",
   "whoop_2.m4a",
   "the_light_1.m4a",
   "turn_in_the_sun_2.m4a",
@@ -16755,7 +16827,8 @@
   "locked_in_3.m4a",
   "keep_it_movin_3.m4a",
   "van_life_rager_3.m4a",
-  "ancient_civilisations_3.m4a"
+  "ancient_civilisations_3.m4a",
+  "ego_chall_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -17138,10 +17211,10 @@
   "MIE-ad9dcdb0",
   "MIE-bc59f2ed",
   "MIE-9abf2819",
-  "MIE-69cdf0dd"
+  "MIE-69cdf0dd",
+  "MIE-a5c96b75"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "dieta",
@@ -17150,10 +17223,11 @@
   "dieta",
   "famiglia",
   "mentalita",
-  "famiglia"
+  "famiglia",
+  "palestra"
  ],
  "analisi": {},
- "pulizia": "2026-11-15",
+ "pulizia": "2026-11-16",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -17278,11 +17352,12 @@
   },
   "1X37GK_cN0RxuzC0UYRmVlSUUrJUgw0WY": {
    "usi": 2,
-   "ultimo": "2026-10-31"
+   "ultimo": "2026-10-31",
+   "orizzontale": false
   },
   "1cws0l3N3pW2EVUmkD-GxH5nLIIh0UE-c": {
-   "usi": 3,
-   "ultimo": "2026-11-08",
+   "usi": 4,
+   "ultimo": "2026-11-16",
    "orizzontale": false
   },
   "1a3hFaj1fQm1AuYdIv6iY-TZDvDdPOmOp": {
@@ -17761,7 +17836,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_11.flac",
   "deciso_09.flac",
   "phonk_09.flac",
   "trap_06.flac",
@@ -17780,7 +17854,8 @@
   "phonk_05.flac",
   "trap_15.flac",
   "energia_12.flac",
-  "phonk_14.flac"
+  "phonk_14.flac",
+  "drive_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -17815,7 +17890,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -17831,7 +17906,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "845285864683880",
   "1232530197323594",
   "1478915717468599",
   "1324542209262772",
@@ -17890,11 +17964,11 @@
   "3509829325973401",
   "1068592065620532",
   "565118654020261",
-  "4489870934582584"
+  "4489870934582584",
+  "1781233772812838"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Giulio Cercato",
   "Afterlight",
   "Paul Fowler",
   "Trout Recording",
@@ -17903,10 +17977,10 @@
   "Ross Lara",
   "LAVLO",
   "Global Genius",
-  "Bloom"
+  "Bloom",
+  "JB Eckl"
  ],
  "ig_titoli_recenti": [
-  "running out of heaven tonight",
   "road warriors",
   "battle ska",
   "storm",
@@ -17945,7 +18019,8 @@
   "crush",
   "legendary",
   "inspired to shine",
-  "epic adventure"
+  "epic adventure",
+  "epic thoughts"
  ],
  "ig_tendenze_riserva": [
   {
@@ -17954,6 +18029,13 @@
    "display_artist": "Blues369",
    "duration_in_ms": 274920,
    "libreria": false
+  },
+  {
+   "audio_id": "851155007623622",
+   "title": "Battle",
+   "display_artist": "Shanice",
+   "duration_in_ms": 127850,
+   "libreria": true
   }
  ]
 }
