@@ -16819,7 +16819,9 @@
      "ok": true,
      "id": "18120618238799155",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -16881,7 +16883,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "qQwm7jR0ILE"
+     "id": "qQwm7jR0ILE",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -16892,11 +16895,79 @@
    },
    "spinto": true,
    "testo": "Quando hai solo il 40% delle energie e dai tutto quel 40%, hai dato il 100% di quello che avevi."
+  },
+  {
+   "quando": "2026-11-16T13:00",
+   "slot": "2026-11-16 14:00",
+   "video": "IMG_3832.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-815920dc",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 8.0,
+    "musica": "break_ya_neck_2.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 3,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 34.57,
+     "primo_piano_fermo": false,
+     "soglia_moto": 21.95,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 102,
+     "righe": 11,
+     "scurito": 0.43,
+     "luce": 0.41,
+     "sfumatura": 0.31,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 111,
+    "scritta": "centro_serif",
+    "estratto": "intero",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 60
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_11.flac",
+    "musica_instagram": "Superman (Instrumental) - ROMderful [screenshot]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "FRGj0rCAlJM"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18040502153891074",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "La vita è per il 90% una questione di testa. La maggior parte dei giorni non combatti contro la vita, ma contro i tuoi p"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-08 14:00",
   "2026-11-08 16:00",
   "2026-11-08 18:00",
   "2026-11-08 20:00",
@@ -16975,10 +17046,10 @@
   "2026-11-16 06:00",
   "2026-11-16 08:00",
   "2026-11-16 10:00",
-  "2026-11-16 12:00"
+  "2026-11-16 12:00",
+  "2026-11-16 14:00"
  ],
  "musica_recenti": [
-  "duty_calls_1.m4a",
   "stake_out_3.m4a",
   "cartier_2.m4a",
   "the_road_to_mordor_1.m4a",
@@ -17037,7 +17108,8 @@
   "ego_chall_3.m4a",
   "death_duel_1.m4a",
   "monthaholic_2.m4a",
-  "way_back_home_2.m4a"
+  "way_back_home_2.m4a",
+  "break_ya_neck_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -17424,10 +17496,10 @@
   "MIE-a5c96b75",
   "MIE-ce6347eb",
   "MIE-6e38dcec",
-  "MIE-ece9a1a7"
+  "MIE-ece9a1a7",
+  "MIE-815920dc"
  ],
  "temi_recenti": [
-  "palestra",
   "mentalita",
   "dieta",
   "famiglia",
@@ -17436,6 +17508,7 @@
   "palestra",
   "mentalita",
   "dieta",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -17635,8 +17708,8 @@
    "orizzontale": false
   },
   "12Fo5vh8JbpmRDWSzG5Ro-KcD-bCBRZH_": {
-   "usi": 4,
-   "ultimo": "2026-11-09",
+   "usi": 5,
+   "ultimo": "2026-11-16",
    "orizzontale": false
   },
   "1dS3dJuren-0gwioBQEQ4MkMFmJH5kMNx": {
@@ -18048,7 +18121,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_01.flac",
   "phonk_02.flac",
   "trap_12.flac",
   "deciso_08.flac",
@@ -18067,7 +18139,8 @@
   "drive_03.flac",
   "deciso_05.flac",
   "trap_03.flac",
-  "drive_05.flac"
+  "drive_05.flac",
+  "phonk_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -18102,7 +18175,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "rallenty",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -18118,7 +18191,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "269408148764736",
   "3528656724045832",
   "1131466168211650",
   "27850712597869154",
@@ -18177,11 +18249,11 @@
   "1781233772812838",
   "925982985305806",
   "925982985305806",
+  "925982985305806",
   "925982985305806"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jumbo [screenshot]",
   "Julia Gartha",
   "Ross Lara",
   "LAVLO",
@@ -18190,10 +18262,10 @@
   "JB Eckl",
   "ROMderful [screenshot]",
   "ROMderful [screenshot]",
+  "ROMderful [screenshot]",
   "ROMderful [screenshot]"
  ],
  "ig_titoli_recenti": [
-  "marathon weekend warriors",
   "the beast",
   "beast",
   "champion",
@@ -18230,6 +18302,7 @@
   "inspired to shine",
   "epic adventure",
   "epic thoughts",
+  "superman",
   "superman",
   "superman",
   "superman"
