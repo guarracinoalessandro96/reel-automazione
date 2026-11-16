@@ -17031,7 +17031,9 @@
      "ok": true,
      "id": "18170287747471632",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -17104,7 +17106,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "EPat_35mlOM"
+     "id": "EPat_35mlOM",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -17115,11 +17118,76 @@
    },
    "spinto": true,
    "testo": "Se fosse facile, lo farebbero tutti. Se non richiedesse disciplina e sacrificio, lo farebbero tutti. Quindi smettila di "
+  },
+  {
+   "quando": "2026-11-16T19:00",
+   "slot": "2026-11-16 20:00",
+   "video": "IMG_3972.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-1171a49b",
+   "tema": "dieta",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "the_light_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.14,
+     "movimento": 19.2,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 121,
+     "righe": 12,
+     "scurito": 0.48,
+     "luce": 0.44,
+     "sfumatura": 0.33,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 176,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 28
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_10.flac",
+    "musica_instagram": "Love Me - Lady Jazmon [screenshot]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "JCLEPnIUtIA"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18109888004264142",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Rimani riservato. Lavora sodo. Allenati. Vestiti bene. Mangia sano. Parla poco. Fai di più. Vivi la vita. Sii gentile. R"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-08 20:00",
   "2026-11-08 22:00",
   "2026-11-09 00:00",
   "2026-11-09 06:00",
@@ -17198,10 +17266,10 @@
   "2026-11-16 12:00",
   "2026-11-16 14:00",
   "2026-11-16 16:00",
-  "2026-11-16 18:00"
+  "2026-11-16 18:00",
+  "2026-11-16 20:00"
  ],
  "musica_recenti": [
-  "the_road_to_mordor_1.m4a",
   "fire_in_the_sky_2.m4a",
   "rubberband_2.m4a",
   "delirium_2.m4a",
@@ -17260,7 +17328,8 @@
   "way_back_home_2.m4a",
   "break_ya_neck_2.m4a",
   "kick_it_2.m4a",
-  "cutscene_crush_3.m4a"
+  "cutscene_crush_3.m4a",
+  "the_light_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -17650,10 +17719,10 @@
   "MIE-ece9a1a7",
   "MIE-815920dc",
   "MIE-be389ba1",
-  "MIE-5a3f3c23"
+  "MIE-5a3f3c23",
+  "MIE-1171a49b"
  ],
  "temi_recenti": [
-  "famiglia",
   "mentalita",
   "famiglia",
   "palestra",
@@ -17662,7 +17731,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "dieta"
  ],
  "analisi": {},
  "pulizia": "2026-11-16",
@@ -17908,8 +17978,8 @@
    "orizzontale": false
   },
   "1NqfCjngnUsLcNgPGLaYs302aM3bRveLK": {
-   "usi": 4,
-   "ultimo": "2026-11-09",
+   "usi": 5,
+   "ultimo": "2026-11-16",
    "orizzontale": false
   },
   "1O5XL-iS65p-rWSE6IHKTNDsSp1HIG9a1": {
@@ -18274,7 +18344,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_08.flac",
   "phonk_08.flac",
   "drive_06.flac",
   "trap_04.flac",
@@ -18293,7 +18362,8 @@
   "drive_05.flac",
   "phonk_11.flac",
   "trap_10.flac",
-  "drive_16.flac"
+  "drive_16.flac",
+  "phonk_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -18328,7 +18398,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "giornata",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -18344,7 +18414,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "27850712597869154",
   "1223134719013093",
   "744011543289259",
   "930354837134154",
@@ -18403,11 +18472,11 @@
   "925982985305806",
   "925982985305806",
   "834026479668975",
-  "1232530197323594"
+  "1232530197323594",
+  "1201635935516260"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "LAVLO",
   "Global Genius",
   "Bloom",
   "JB Eckl",
@@ -18416,10 +18485,10 @@
   "ROMderful [screenshot]",
   "ROMderful [screenshot]",
   "Sia",
-  "Abby Posner"
+  "Abby Posner",
+  "Lady Jazmon [screenshot]"
  ],
  "ig_titoli_recenti": [
-  "champion",
   "go go go",
   "beast mode",
   "spanish fire",
@@ -18458,7 +18527,8 @@
   "superman",
   "superman",
   "unstoppable",
-  "reflect and rise"
+  "reflect and rise",
+  "love me"
  ],
  "ig_tendenze_riserva": [
   {
