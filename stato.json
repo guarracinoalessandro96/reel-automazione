@@ -16962,7 +16962,9 @@
      "ok": true,
      "id": "18040502153891074",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -17022,7 +17024,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "AEQFp2lF02A"
+     "id": "AEQFp2lF02A",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -17033,11 +17036,89 @@
    },
    "spinto": true,
    "testo": "Diventi la versione migliore di te stesso quando investi in ciò che nessuno potrà mai toglierti: la tua mentalità, il tu"
+  },
+  {
+   "quando": "2026-11-16T17:00",
+   "slot": "2026-11-16 18:00",
+   "video": "IMG_3764.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "specchio",
+   "registrato": null,
+   "frase": "MIE-5a3f3c23",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "giornata",
+    "durata": 8.0,
+    "musica": "cutscene_crush_3.m4a",
+    "stacchi": 7,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.4,
+     "movimento": 28.69,
+     "primo_piano_fermo": false,
+     "soglia_moto": 21.46
+    },
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 11,
+     "scurito": 0.56,
+     "luce": 0.65,
+     "sfumatura": 0.41,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scene": 7,
+    "con_viso": 7,
+    "viso_primo_secondo": true,
+    "secondi_analisi": 144,
+    "stesso_giorno": 7,
+    "clip_scene": [
+     "IMG_3770.mov",
+     "IMG_3762.mov",
+     "IMG_3766.mov",
+     "IMG_3768.mov",
+     "IMG_3787.mov",
+     "IMG_3794.mov"
+    ],
+    "giornata_del": "2026-10-09",
+    "secondi_montaggio": 334,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 47
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_16.flac",
+    "musica_instagram": "Reflect And Rise - Abby Posner"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "EPat_35mlOM"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18120353966106572",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Se fosse facile, lo farebbero tutti. Se non richiedesse disciplina e sacrificio, lo farebbero tutti. Quindi smettila di "
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-08 18:00",
   "2026-11-08 20:00",
   "2026-11-08 22:00",
   "2026-11-09 00:00",
@@ -17116,10 +17197,10 @@
   "2026-11-16 10:00",
   "2026-11-16 12:00",
   "2026-11-16 14:00",
-  "2026-11-16 16:00"
+  "2026-11-16 16:00",
+  "2026-11-16 18:00"
  ],
  "musica_recenti": [
-  "cartier_2.m4a",
   "the_road_to_mordor_1.m4a",
   "fire_in_the_sky_2.m4a",
   "rubberband_2.m4a",
@@ -17178,7 +17259,8 @@
   "monthaholic_2.m4a",
   "way_back_home_2.m4a",
   "break_ya_neck_2.m4a",
-  "kick_it_2.m4a"
+  "kick_it_2.m4a",
+  "cutscene_crush_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -17567,16 +17649,17 @@
   "MIE-6e38dcec",
   "MIE-ece9a1a7",
   "MIE-815920dc",
-  "MIE-be389ba1"
+  "MIE-be389ba1",
+  "MIE-5a3f3c23"
  ],
  "temi_recenti": [
-  "dieta",
   "famiglia",
   "mentalita",
   "famiglia",
   "palestra",
   "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -17604,8 +17687,8 @@
    "orizzontale": false
   },
   "1HKv05Wh_t_gsHvCIkHBJFaKlY4mxyEy2": {
-   "usi": 4,
-   "ultimo": "2026-11-09",
+   "usi": 5,
+   "ultimo": "2026-11-16",
    "orizzontale": false
   },
   "1q_-2Z0Nxs0rzY0eRiS5kJ9hteaPWK_as": {
@@ -18191,7 +18274,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_12.flac",
   "deciso_08.flac",
   "phonk_08.flac",
   "drive_06.flac",
@@ -18210,7 +18292,8 @@
   "trap_03.flac",
   "drive_05.flac",
   "phonk_11.flac",
-  "trap_10.flac"
+  "trap_10.flac",
+  "drive_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -18245,7 +18328,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "giornata",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -18261,7 +18344,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1131466168211650",
   "27850712597869154",
   "1223134719013093",
   "744011543289259",
@@ -18320,11 +18402,11 @@
   "925982985305806",
   "925982985305806",
   "925982985305806",
-  "834026479668975"
+  "834026479668975",
+  "1232530197323594"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Ross Lara",
   "LAVLO",
   "Global Genius",
   "Bloom",
@@ -18333,10 +18415,10 @@
   "ROMderful [screenshot]",
   "ROMderful [screenshot]",
   "ROMderful [screenshot]",
-  "Sia"
+  "Sia",
+  "Abby Posner"
  ],
  "ig_titoli_recenti": [
-  "beast",
   "champion",
   "go go go",
   "beast mode",
@@ -18375,7 +18457,8 @@
   "superman",
   "superman",
   "superman",
-  "unstoppable"
+  "unstoppable",
+  "reflect and rise"
  ],
  "ig_tendenze_riserva": [
   {
@@ -18386,31 +18469,17 @@
    "libreria": false
   },
   {
-   "audio_id": "1552659642157024",
-   "title": "Running Through Gold",
-   "display_artist": "The Poison Oaks",
-   "duration_in_ms": 193934,
+   "audio_id": "1587323168468356",
+   "title": "Go Go Go",
+   "display_artist": "Company Money",
+   "duration_in_ms": 116330,
    "libreria": true
   },
   {
-   "audio_id": "724855936571258",
-   "title": "Hidden Sun (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 158450,
-   "libreria": true
-  },
-  {
-   "audio_id": "27908405255457112",
-   "title": "When It Sparks",
-   "display_artist": "Magnetic Sirens",
-   "duration_in_ms": 61340,
-   "libreria": true
-  },
-  {
-   "audio_id": "1386871190037063",
-   "title": "Running",
-   "display_artist": "Summer Islands",
-   "duration_in_ms": 70064,
+   "audio_id": "1781233772812838",
+   "title": "Epic Thoughts",
+   "display_artist": "JB Eckl",
+   "duration_in_ms": 192818,
    "libreria": true
   }
  ]
