@@ -1,8 +1,8 @@
 {
- "data": "2026-11-15",
- "reel_analizzati": 186,
+ "data": "2026-11-16",
+ "reel_analizzati": 196,
  "facebook": {
-  "reel": 62,
+  "reel": 58,
   "riproduzioni": 13,
   "media": 0.2,
   "ultimi": [
@@ -51,13 +51,13 @@
  "instagram": {
   "reel": 30,
   "con_musica_instagram": 30,
-  "views": 21245,
-  "salvati": 82,
-  "condivisi": 59
+  "views": 29293,
+  "salvati": 105,
+  "condivisi": 67
  },
- "media_views": 740,
- "spinti": 181,
- "like_totali": 1178,
+ "media_views": 747,
+ "spinti": 191,
+ "like_totali": 1295,
  "per_tema": {
   "amicizia": {
    "reel": 2,
@@ -65,27 +65,27 @@
   },
   "dieta": {
    "reel": 2,
-   "media_views": 963
+   "media_views": 964
   },
   "famiglia": {
    "reel": 2,
-   "media_views": 308
+   "media_views": 312
   },
   "imprenditore": {
-   "reel": 9,
-   "media_views": 978
+   "reel": 10,
+   "media_views": 992
   },
   "mentalita": {
-   "reel": 137,
-   "media_views": 697
+   "reel": 146,
+   "media_views": 707
   },
   "palestra": {
    "reel": 7,
-   "media_views": 937
+   "media_views": 938
   },
   "regole": {
    "reel": 14,
-   "media_views": 1055
+   "media_views": 1056
   },
   "storia": {
    "reel": 8,
@@ -99,27 +99,27 @@
   },
   "casa": {
    "reel": 11,
-   "media_views": 747
+   "media_views": 748
   },
   "cibo": {
    "reel": 4,
-   "media_views": 790
+   "media_views": 791
   },
   "lavoro": {
-   "reel": 15,
-   "media_views": 601
+   "reel": 16,
+   "media_views": 634
   },
   "macchina": {
    "reel": 32,
    "media_views": 895
   },
   "palestra": {
-   "reel": 88,
-   "media_views": 682
+   "reel": 96,
+   "media_views": 695
   },
   "specchio": {
-   "reel": 11,
-   "media_views": 921
+   "reel": 12,
+   "media_views": 930
   },
   "uscita": {
    "reel": 19,
@@ -128,8 +128,8 @@
  },
  "per_orario": {
   "00": {
-   "reel": 8,
-   "media_views": 507
+   "reel": 9,
+   "media_views": 544
   },
   "01": {
    "reel": 1,
@@ -137,7 +137,7 @@
   },
   "02": {
    "reel": 5,
-   "media_views": 1103
+   "media_views": 1104
   },
   "03": {
    "reel": 1,
@@ -152,68 +152,68 @@
    "media_views": 1128
   },
   "06": {
-   "reel": 19,
-   "media_views": 725
+   "reel": 20,
+   "media_views": 746
   },
   "07": {
    "reel": 2,
    "media_views": 965
   },
   "08": {
-   "reel": 17,
-   "media_views": 602
+   "reel": 18,
+   "media_views": 630
   },
   "09": {
    "reel": 7,
-   "media_views": 1021
+   "media_views": 1022
   },
   "10": {
-   "reel": 12,
-   "media_views": 610
+   "reel": 13,
+   "media_views": 595
   },
   "11": {
    "reel": 3,
    "media_views": 920
   },
   "12": {
-   "reel": 14,
-   "media_views": 727
+   "reel": 15,
+   "media_views": 755
   },
   "13": {
    "reel": 6,
    "media_views": 1094
   },
   "14": {
-   "reel": 10,
-   "media_views": 508
+   "reel": 11,
+   "media_views": 556
   },
   "15": {
    "reel": 3,
    "media_views": 1196
   },
   "16": {
-   "reel": 14,
-   "media_views": 698
+   "reel": 15,
+   "media_views": 726
   },
   "17": {
    "reel": 4,
    "media_views": 984
   },
   "18": {
-   "reel": 14,
-   "media_views": 762
+   "reel": 15,
+   "media_views": 751
   },
   "20": {
-   "reel": 13,
-   "media_views": 689
+   "reel": 14,
+   "media_views": 665
   },
   "21": {
    "reel": 6,
-   "media_views": 1053
+   "media_views": 1054
   },
   "22": {
-   "reel": 13,
-   "media_views": 659
+   "reel": 14,
+   "media_views": 692
   },
   "23": {
    "reel": 4,
@@ -227,31 +227,31 @@
   },
   "Break Ya Neck": {
    "reel": 4,
-   "media_views": 620
+   "media_views": 622
   },
   "Cartier": {
    "reel": 6,
    "media_views": 834
   },
   "Cutscene Crush": {
-   "reel": 5,
-   "media_views": 926
+   "reel": 6,
+   "media_views": 944
   },
   "Death Duel": {
    "reel": 7,
    "media_views": 758
   },
   "Delirium": {
-   "reel": 5,
-   "media_views": 827
+   "reel": 6,
+   "media_views": 880
   },
   "Dusty Road Magic": {
    "reel": 6,
-   "media_views": 746
+   "media_views": 747
   },
   "Duty Calls": {
-   "reel": 3,
-   "media_views": 434
+   "reel": 4,
+   "media_views": 606
   },
   "Ego Chall": {
    "reel": 4,
@@ -259,15 +259,15 @@
   },
   "Final Boss Battle": {
    "reel": 5,
-   "media_views": 729
+   "media_views": 730
   },
   "Fire In The Sky": {
-   "reel": 6,
-   "media_views": 832
+   "reel": 7,
+   "media_views": 876
   },
   "Horizons": {
    "reel": 4,
-   "media_views": 589
+   "media_views": 590
   },
   "I Might Be Late": {
    "reel": 2,
@@ -279,7 +279,7 @@
   },
   "Keep It Movin": {
    "reel": 5,
-   "media_views": 481
+   "media_views": 482
   },
   "Kick It": {
    "reel": 6,
@@ -294,8 +294,8 @@
    "media_views": 592
   },
   "Mirror Mirror": {
-   "reel": 4,
-   "media_views": 724
+   "reel": 5,
+   "media_views": 801
   },
   "Monthaholic": {
    "reel": 2,
@@ -306,8 +306,8 @@
    "media_views": 702
   },
   "Rubberband": {
-   "reel": 5,
-   "media_views": 807
+   "reel": 6,
+   "media_views": 741
   },
   "Stake Out": {
    "reel": 3,
@@ -315,11 +315,11 @@
   },
   "Survival Mode": {
    "reel": 4,
-   "media_views": 677
+   "media_views": 678
   },
   "Sweaty Staredown": {
    "reel": 5,
-   "media_views": 901
+   "media_views": 905
   },
   "Taking Flight": {
    "reel": 4,
@@ -330,16 +330,16 @@
    "media_views": 323
   },
   "The Light": {
-   "reel": 5,
-   "media_views": 754
+   "reel": 6,
+   "media_views": 728
   },
   "The Road To Mordor": {
-   "reel": 5,
-   "media_views": 747
+   "reel": 6,
+   "media_views": 763
   },
   "Turn In The Sun": {
-   "reel": 4,
-   "media_views": 821
+   "reel": 5,
+   "media_views": 879
   },
   "Van Life Rager": {
    "reel": 5,
@@ -350,8 +350,8 @@
    "media_views": 751
   },
   "Visions": {
-   "reel": 3,
-   "media_views": 518
+   "reel": 4,
+   "media_views": 476
   },
   "Way Back Home": {
    "reel": 10,
@@ -384,18 +384,18 @@
  },
  "per_origine": {
   "archivio": {
-   "reel": 96,
-   "media_views": 662
+   "reel": 104,
+   "media_views": 676
   },
   "video nuovo": {
-   "reel": 85,
-   "media_views": 870
+   "reel": 87,
+   "media_views": 875
   }
  },
  "per_frase_virale": {
   "frase normale": {
-   "reel": 149,
-   "media_views": 717
+   "reel": 159,
+   "media_views": 728
   },
   "frase virale": {
    "reel": 32,
@@ -420,20 +420,20 @@
    "media_views": 199
   },
   "dieci": {
-   "reel": 10,
-   "media_views": 671
+   "reel": 12,
+   "media_views": 745
   },
   "dieci_broll": {
    "reel": 1,
    "media_views": 1014
   },
   "dieci_due": {
-   "reel": 23,
-   "media_views": 521
+   "reel": 24,
+   "media_views": 543
   },
   "dieci_foto": {
-   "reel": 3,
-   "media_views": 432
+   "reel": 4,
+   "media_views": 610
   },
   "frase": {
    "reel": 11,
@@ -441,7 +441,7 @@
   },
   "frase 5 s": {
    "reel": 13,
-   "media_views": 1022
+   "media_views": 1023
   },
   "frase 8 s": {
    "reel": 29,
@@ -457,15 +457,15 @@
   },
   "giornata": {
    "reel": 7,
-   "media_views": 226
+   "media_views": 227
   },
   "intero": {
-   "reel": 3,
-   "media_views": 688
+   "reel": 5,
+   "media_views": 705
   },
   "loop": {
-   "reel": 6,
-   "media_views": 331
+   "reel": 8,
+   "media_views": 405
   },
   "montaggio": {
    "reel": 12,
@@ -488,24 +488,24 @@
    "media_views": 1032
   },
   "rallenty": {
-   "reel": 5,
-   "media_views": 405
+   "reel": 6,
+   "media_views": 437
   },
   "regole": {
    "reel": 13,
-   "media_views": 1067
+   "media_views": 1068
   },
   "storia": {
    "reel": 1,
    "media_views": 903
   },
   "taglio1": {
-   "reel": 4,
-   "media_views": 228
+   "reel": 5,
+   "media_views": 411
   },
   "taglio2": {
    "reel": 8,
-   "media_views": 323
+   "media_views": 324
   },
   "taglio3": {
    "reel": 5,
@@ -514,21 +514,22 @@
  },
  "pesi_temi": {
   "amicizia": 1.06,
-  "imprenditore": 1.18,
+  "imprenditore": 1.2,
   "mentalita": 0.92,
-  "palestra": 1.14,
-  "dieta": 1.08,
-  "regole": 1.29,
+  "palestra": 1.13,
+  "dieta": 1.07,
+  "regole": 1.28,
   "storia": 1.15,
   "famiglia": 0.83
  },
  "pesi_formati": {
-  "frase": 1.23,
-  "regole": 1.21,
-  "montaggio": 1.07,
-  "frase8": 1.2,
-  "dieci_due": 0.4,
-  "dieci": 1.02,
+  "frase": 1.19,
+  "regole": 1.18,
+  "montaggio": 1.05,
+  "frase8": 1.17,
+  "dieci_due": 0.48,
+  "dieci": 1.19,
+  "rallenty": 0.45,
   "loop": 0.4,
   "giornata": 0.4,
   "taglio2": 0.4
@@ -570,7 +571,7 @@
    "origine": "archivio",
    "frase_virale": "frase normale",
    "formato": "regole",
-   "views": 1518,
+   "views": 1530,
    "like": 15
   },
   {
@@ -596,7 +597,7 @@
    "origine": "video nuovo",
    "frase_virale": "frase normale",
    "formato": "frase 8 s",
-   "views": 1403,
+   "views": 1404,
    "like": 9
   }
  ],
