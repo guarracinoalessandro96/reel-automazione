@@ -16672,7 +16672,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "u5IoJPwm6JY"
+     "id": "u5IoJPwm6JY",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -16683,11 +16684,77 @@
    },
    "spinto": true,
    "testo": "La palestra non ha mai trasformato una brutta giornata in una giornata peggiore."
+  },
+  {
+   "quando": "2026-11-16T07:01",
+   "slot": "2026-11-16 08:00",
+   "video": "IMG_4287.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-ce6347eb",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "taglio1",
+    "durata": 8.0,
+    "musica": "death_duel_1.m4a",
+    "stacchi": 8,
+    "testi": 1,
+    "scene_dal_video": 8,
+    "viso_prima_scena": 3,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 14.84,
+     "primo_piano_fermo": false,
+     "soglia_moto": 15.24,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 112,
+     "righe": 4,
+     "scurito": 0.39,
+     "luce": 0.42,
+     "sfumatura": 0.32,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 207,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 19
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_05.flac",
+    "musica_instagram": "Superman (Instrumental) - ROMderful [screenshot]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "EiMZ4MdS3_M"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17997399093112525",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non sentirti mai a disagio nel pubblicare i tuoi progressi. Ricordati che c'è chi flexa di ubriacarsi ogni weekend."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-08 08:00",
   "2026-11-08 10:00",
   "2026-11-08 12:00",
   "2026-11-08 14:00",
@@ -16766,10 +16833,10 @@
   "2026-11-15 20:00",
   "2026-11-15 22:00",
   "2026-11-16 00:00",
-  "2026-11-16 06:00"
+  "2026-11-16 06:00",
+  "2026-11-16 08:00"
  ],
  "musica_recenti": [
-  "whoop_2.m4a",
   "the_light_1.m4a",
   "turn_in_the_sun_2.m4a",
   "duty_calls_1.m4a",
@@ -16828,7 +16895,8 @@
   "keep_it_movin_3.m4a",
   "van_life_rager_3.m4a",
   "ancient_civilisations_3.m4a",
-  "ego_chall_3.m4a"
+  "ego_chall_3.m4a",
+  "death_duel_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -17212,10 +17280,10 @@
   "MIE-bc59f2ed",
   "MIE-9abf2819",
   "MIE-69cdf0dd",
-  "MIE-a5c96b75"
+  "MIE-a5c96b75",
+  "MIE-ce6347eb"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "dieta",
   "palestra",
@@ -17224,7 +17292,8 @@
   "famiglia",
   "mentalita",
   "famiglia",
-  "palestra"
+  "palestra",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-11-16",
@@ -17719,8 +17788,8 @@
    "orizzontale": false
   },
   "1-wXfeOgo9aVpjZBQjqJopT9L84ZIWVcr": {
-   "usi": 3,
-   "ultimo": "2026-11-08",
+   "usi": 4,
+   "ultimo": "2026-11-16",
    "orizzontale": false
   },
   "1icAhByFdodzmuGNrSAXVrb0tCLCv80Lx": {
@@ -17836,7 +17905,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_09.flac",
   "phonk_09.flac",
   "trap_06.flac",
   "drive_01.flac",
@@ -17855,7 +17923,8 @@
   "trap_15.flac",
   "energia_12.flac",
   "phonk_14.flac",
-  "drive_03.flac"
+  "drive_03.flac",
+  "deciso_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -17890,7 +17959,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "taglio1",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -17906,7 +17975,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1232530197323594",
   "1478915717468599",
   "1324542209262772",
   "269408148764736",
@@ -17965,11 +18033,11 @@
   "1068592065620532",
   "565118654020261",
   "4489870934582584",
-  "1781233772812838"
+  "1781233772812838",
+  "925982985305806"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Afterlight",
   "Paul Fowler",
   "Trout Recording",
   "Jumbo [screenshot]",
@@ -17978,10 +18046,10 @@
   "LAVLO",
   "Global Genius",
   "Bloom",
-  "JB Eckl"
+  "JB Eckl",
+  "ROMderful [screenshot]"
  ],
  "ig_titoli_recenti": [
-  "road warriors",
   "battle ska",
   "storm",
   "marathon weekend warriors",
@@ -18020,7 +18088,8 @@
   "legendary",
   "inspired to shine",
   "epic adventure",
-  "epic thoughts"
+  "epic thoughts",
+  "superman"
  ],
  "ig_tendenze_riserva": [
   {
