@@ -16679,7 +16679,9 @@
      "ok": true,
      "id": "18132143462480158",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -16740,7 +16742,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "EiMZ4MdS3_M"
+     "id": "EiMZ4MdS3_M",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -16751,11 +16754,77 @@
    },
    "spinto": true,
    "testo": "Non sentirti mai a disagio nel pubblicare i tuoi progressi. Ricordati che c'è chi flexa di ubriacarsi ogni weekend."
+  },
+  {
+   "quando": "2026-11-16T09:00",
+   "slot": "2026-11-16 10:00",
+   "video": "IMG_3359.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-6e38dcec",
+   "tema": "dieta",
+   "montaggio": {
+    "formato": "loop",
+    "durata": 8.0,
+    "musica": "monthaholic_2.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.393,
+     "movimento": 6.77,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 4,
+     "scurito": 0.51,
+     "luce": 0.4,
+     "sfumatura": 0.3,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 109,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 15
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_03.flac",
+    "musica_instagram": "Superman (Instrumental) - ROMderful [screenshot]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "6yg9MhMnorc"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18120618238799155",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Mangiare sano è noioso finché non indossi quel vestito... e ti ricordi perché lo fai."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-08 10:00",
   "2026-11-08 12:00",
   "2026-11-08 14:00",
   "2026-11-08 16:00",
@@ -16834,10 +16903,10 @@
   "2026-11-15 22:00",
   "2026-11-16 00:00",
   "2026-11-16 06:00",
-  "2026-11-16 08:00"
+  "2026-11-16 08:00",
+  "2026-11-16 10:00"
  ],
  "musica_recenti": [
-  "the_light_1.m4a",
   "turn_in_the_sun_2.m4a",
   "duty_calls_1.m4a",
   "stake_out_3.m4a",
@@ -16896,7 +16965,8 @@
   "van_life_rager_3.m4a",
   "ancient_civilisations_3.m4a",
   "ego_chall_3.m4a",
-  "death_duel_1.m4a"
+  "death_duel_1.m4a",
+  "monthaholic_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -17281,10 +17351,10 @@
   "MIE-9abf2819",
   "MIE-69cdf0dd",
   "MIE-a5c96b75",
-  "MIE-ce6347eb"
+  "MIE-ce6347eb",
+  "MIE-6e38dcec"
  ],
  "temi_recenti": [
-  "mentalita",
   "dieta",
   "palestra",
   "mentalita",
@@ -17293,7 +17363,8 @@
   "mentalita",
   "famiglia",
   "palestra",
-  "mentalita"
+  "mentalita",
+  "dieta"
  ],
  "analisi": {},
  "pulizia": "2026-11-16",
@@ -17709,8 +17780,8 @@
    "ultimo": "2026-10-26"
   },
   "154DEQH3JaEBg95Z01YeNC0Bu_KyTq1XR": {
-   "usi": 2,
-   "ultimo": "2026-11-08",
+   "usi": 3,
+   "ultimo": "2026-11-16",
    "orizzontale": false
   },
   "1VEPb54Y1oSgn1WwoX7EtQNTsLCC7CB4u": {
@@ -17905,7 +17976,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_09.flac",
   "trap_06.flac",
   "drive_01.flac",
   "phonk_02.flac",
@@ -17924,7 +17994,8 @@
   "energia_12.flac",
   "phonk_14.flac",
   "drive_03.flac",
-  "deciso_05.flac"
+  "deciso_05.flac",
+  "trap_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -17959,7 +18030,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "taglio1",
+ "formato_ultimo": "loop",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -17975,7 +18046,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1478915717468599",
   "1324542209262772",
   "269408148764736",
   "3528656724045832",
@@ -18034,11 +18104,11 @@
   "565118654020261",
   "4489870934582584",
   "1781233772812838",
+  "925982985305806",
   "925982985305806"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Paul Fowler",
   "Trout Recording",
   "Jumbo [screenshot]",
   "Julia Gartha",
@@ -18047,10 +18117,10 @@
   "Global Genius",
   "Bloom",
   "JB Eckl",
+  "ROMderful [screenshot]",
   "ROMderful [screenshot]"
  ],
  "ig_titoli_recenti": [
-  "battle ska",
   "storm",
   "marathon weekend warriors",
   "the beast",
@@ -18089,6 +18159,7 @@
   "inspired to shine",
   "epic adventure",
   "epic thoughts",
+  "superman",
   "superman"
  ],
  "ig_tendenze_riserva": [
