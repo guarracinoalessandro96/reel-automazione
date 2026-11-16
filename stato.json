@@ -17113,7 +17113,9 @@
      "ok": true,
      "id": "18120353966106572",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -17173,7 +17175,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "JCLEPnIUtIA"
+     "id": "JCLEPnIUtIA",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -17184,11 +17187,79 @@
    },
    "spinto": true,
    "testo": "Rimani riservato. Lavora sodo. Allenati. Vestiti bene. Mangia sano. Parla poco. Fai di più. Vivi la vita. Sii gentile. R"
+  },
+  {
+   "quando": "2026-11-16T21:00",
+   "slot": "2026-11-16 22:00",
+   "video": "IMG_4032.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "MIE-4e9c5ff7",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "rallenty",
+    "durata": 8.0,
+    "musica": "i_might_be_late_2.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 2,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.547,
+     "movimento": 70.55,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "velocita": 0.75,
+    "primo_controllo": "mosso",
+    "inizio_spostato": 0.2,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 119,
+     "righe": 6,
+     "scurito": 0.54,
+     "luce": 0.37,
+     "sfumatura": 0.28,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 106,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 27
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_06.flac",
+    "musica_instagram": "Warrior - Chela Rivas [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "lUdUqBdfaNc"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18109909796206512",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "La lezione più grande di quest'anno è che, a volte, devi smettere di vedere il buono nelle persone e iniziare a vedere c"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-08 22:00",
   "2026-11-09 00:00",
   "2026-11-09 06:00",
   "2026-11-09 08:00",
@@ -17267,10 +17338,10 @@
   "2026-11-16 14:00",
   "2026-11-16 16:00",
   "2026-11-16 18:00",
-  "2026-11-16 20:00"
+  "2026-11-16 20:00",
+  "2026-11-16 22:00"
  ],
  "musica_recenti": [
-  "fire_in_the_sky_2.m4a",
   "rubberband_2.m4a",
   "delirium_2.m4a",
   "ten_3.m4a",
@@ -17329,7 +17400,8 @@
   "break_ya_neck_2.m4a",
   "kick_it_2.m4a",
   "cutscene_crush_3.m4a",
-  "the_light_3.m4a"
+  "the_light_3.m4a",
+  "i_might_be_late_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -17720,10 +17792,10 @@
   "MIE-815920dc",
   "MIE-be389ba1",
   "MIE-5a3f3c23",
-  "MIE-1171a49b"
+  "MIE-1171a49b",
+  "MIE-4e9c5ff7"
  ],
  "temi_recenti": [
-  "mentalita",
   "famiglia",
   "palestra",
   "mentalita",
@@ -17732,7 +17804,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "dieta"
+  "dieta",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-11-16",
@@ -17998,8 +18071,8 @@
    "orizzontale": true
   },
   "1UoUWHyHwCuON4BVs4SSdx-6x-4H6CKw9": {
-   "usi": 4,
-   "ultimo": "2026-11-09",
+   "usi": 5,
+   "ultimo": "2026-11-16",
    "orizzontale": false
   },
   "1KWHsB3C0gOYpMsl2sVukkzMm7VQeRgh5": {
@@ -18344,7 +18417,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_08.flac",
   "drive_06.flac",
   "trap_04.flac",
   "deciso_11.flac",
@@ -18363,7 +18435,8 @@
   "phonk_11.flac",
   "trap_10.flac",
   "drive_16.flac",
-  "phonk_10.flac"
+  "phonk_10.flac",
+  "deciso_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -18398,7 +18471,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "rallenty",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -18414,7 +18487,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1223134719013093",
   "744011543289259",
   "930354837134154",
   "1765359430669153",
@@ -18473,11 +18545,11 @@
   "925982985305806",
   "834026479668975",
   "1232530197323594",
-  "1201635935516260"
+  "1201635935516260",
+  "1155586068813210"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Global Genius",
   "Bloom",
   "JB Eckl",
   "ROMderful [screenshot]",
@@ -18486,10 +18558,10 @@
   "ROMderful [screenshot]",
   "Sia",
   "Abby Posner",
-  "Lady Jazmon [screenshot]"
+  "Lady Jazmon [screenshot]",
+  "Chela Rivas"
  ],
  "ig_titoli_recenti": [
-  "go go go",
   "beast mode",
   "spanish fire",
   "sentimental motion",
@@ -18528,7 +18600,8 @@
   "superman",
   "unstoppable",
   "reflect and rise",
-  "love me"
+  "love me",
+  "warrior"
  ],
  "ig_tendenze_riserva": [
   {
@@ -18539,17 +18612,17 @@
    "libreria": false
   },
   {
-   "audio_id": "1587323168468356",
-   "title": "Go Go Go",
-   "display_artist": "Company Money",
-   "duration_in_ms": 116330,
+   "audio_id": "1155586068813210",
+   "title": "Warrior",
+   "display_artist": "Chela Rivas",
+   "duration_in_ms": 152750,
    "libreria": true
   },
   {
-   "audio_id": "1781233772812838",
-   "title": "Epic Thoughts",
-   "display_artist": "JB Eckl",
-   "duration_in_ms": 192818,
+   "audio_id": "2269705013766100",
+   "title": "Move Forever",
+   "display_artist": "Fellow Travelers",
+   "duration_in_ms": 61456,
    "libreria": true
   }
  ]
