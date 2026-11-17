@@ -17607,7 +17607,9 @@
      "ok": true,
      "id": "18136033681666575",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -17670,7 +17672,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "hMp-5k3hEZk"
+     "id": "hMp-5k3hEZk",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -17681,11 +17684,76 @@
    },
    "spinto": true,
    "testo": "L'abilità più importante che puoi sviluppare è quella del reset veloce. Una brutta conversazione? Volta pagina. Una brut"
+  },
+  {
+   "quando": "2026-11-17T15:00",
+   "slot": "2026-11-17 16:00",
+   "video": "IMG_4126.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-b25c7f93",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 8.0,
+    "musica": "visions_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.233,
+     "movimento": 18.05,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 4,
+     "scurito": 0.48,
+     "luce": 0.46,
+     "sfumatura": 0.34,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 208,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 14
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_08.flac",
+    "musica_instagram": "Looking Glass (feat. Dawson March, Jacquire King) - The K Club [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "iyncgbxcBxo"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18033765677684760",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Niente è più bello che vederti diventare lentamente la versione migliore di te stesso."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-09 16:00",
   "2026-11-09 18:00",
   "2026-11-09 20:00",
   "2026-11-09 22:00",
@@ -17764,10 +17832,10 @@
   "2026-11-17 08:00",
   "2026-11-17 10:00",
   "2026-11-17 12:00",
-  "2026-11-17 14:00"
+  "2026-11-17 14:00",
+  "2026-11-17 16:00"
  ],
  "musica_recenti": [
-  "dusty_road_magic_1.m4a",
   "wrangle_the_crazy_2.m4a",
   "majestic_12_2.m4a",
   "intergalactic_1.m4a",
@@ -17826,7 +17894,8 @@
   "fire_in_the_sky_3.m4a",
   "mirror_mirror_2.m4a",
   "rubberband_2.m4a",
-  "delirium_1.m4a"
+  "delirium_1.m4a",
+  "visions_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -18224,10 +18293,10 @@
   "MIE-d5a9b99a",
   "MIE-6eeafb96",
   "MIE-4b9fff97",
-  "MIE-cef55248"
+  "MIE-cef55248",
+  "MIE-b25c7f93"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "dieta",
   "mentalita",
@@ -18236,7 +18305,8 @@
   "mentalita",
   "palestra",
   "mentalita",
-  "palestra"
+  "palestra",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-11-17",
@@ -18638,8 +18708,8 @@
    "orizzontale": false
   },
   "1-ciPqgzhDOKWA7FElGzwRc9htypB_2u3": {
-   "usi": 4,
-   "ultimo": "2026-11-10",
+   "usi": 5,
+   "ultimo": "2026-11-17",
    "orizzontale": false
   },
   "1Tyefc-vEJZrdzNqOTaUh2yXtSQjsP7fg": {
@@ -18863,7 +18933,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_07.flac",
   "phonk_05.flac",
   "trap_15.flac",
   "energia_12.flac",
@@ -18882,7 +18951,8 @@
   "energia_06.flac",
   "deciso_11.flac",
   "trap_07.flac",
-  "drive_15.flac"
+  "drive_15.flac",
+  "phonk_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -18917,7 +18987,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -18933,7 +19003,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1030263145726523",
   "819743797457783",
   "751793197912868",
   "1186003979031011",
@@ -18992,11 +19061,11 @@
   "1383912545569665",
   "3243337306057458",
   "974432747187721",
-  "1068776575596252"
+  "1068776575596252",
+  "491460439584707"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Sia",
   "Abby Posner",
   "Lady Jazmon [screenshot]",
   "Chela Rivas",
@@ -19005,10 +19074,10 @@
   "Global Genius",
   "Ross Lara",
   "Giulio Cercato",
-  "LAVLO"
+  "LAVLO",
+  "The K Club"
  ],
  "ig_titoli_recenti": [
-  "heroes",
   "the nerve",
   "punk power",
   "will you believe",
@@ -19047,7 +19116,8 @@
   "you can do it",
   "photocopy",
   "road warriors",
-  "stop motion"
+  "stop motion",
+  "looking glass"
  ],
  "ig_tendenze_riserva": [
   {
@@ -19058,59 +19128,24 @@
    "libreria": false
   },
   {
-   "audio_id": "1917637308769695",
-   "title": "What Heroes Do (prod. by Jonny Houlihan)",
-   "display_artist": "Sofie Tabesh",
-   "duration_in_ms": 217130,
+   "audio_id": "491460439584707",
+   "title": "Looking Glass (feat. Dawson March, Jacquire King)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 146973,
    "libreria": true
   },
   {
-   "audio_id": "1068776575596252",
-   "title": "Stop Motion",
-   "display_artist": "LAVLO",
-   "duration_in_ms": 57100,
+   "audio_id": "727931292858890",
+   "title": "Copacetic (feat. Dawson March)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 136490,
    "libreria": true
   },
   {
-   "audio_id": "6931473226905938",
-   "title": "Running Out Of Heaven Tonight",
-   "display_artist": "Trout Recording",
-   "duration_in_ms": 219888,
-   "libreria": true
-  },
-  {
-   "audio_id": "1858297981729030",
-   "title": "Make A Move (Instrumental)",
-   "display_artist": "Global Genius",
-   "duration_in_ms": 178557,
-   "libreria": true
-  },
-  {
-   "audio_id": "27848170894843876",
-   "title": "Time Moves Gently",
-   "display_artist": "Afterlight",
-   "duration_in_ms": 63402,
-   "libreria": true
-  },
-  {
-   "audio_id": "907634520516585",
-   "title": "Beast",
-   "display_artist": "Jumbo",
-   "duration_in_ms": 165764,
-   "libreria": true
-  },
-  {
-   "audio_id": "449434754227407",
-   "title": "Climbing The Ladder",
-   "display_artist": "Cameron Rasmussen",
-   "duration_in_ms": 190500,
-   "libreria": true
-  },
-  {
-   "audio_id": "845285864683880",
-   "title": "Rise Of The Brave",
-   "display_artist": "Daria Novo",
-   "duration_in_ms": 216086,
+   "audio_id": "846729664516192",
+   "title": "Chops (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 171070,
    "libreria": true
   }
  ]
