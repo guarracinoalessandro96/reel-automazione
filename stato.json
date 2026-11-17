@@ -17748,7 +17748,9 @@
      "ok": true,
      "id": "18033765677684760",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -17808,7 +17810,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "G-nqFftun-U"
+     "id": "G-nqFftun-U",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -17819,11 +17822,76 @@
    },
    "spinto": true,
    "testo": "Morirai in un giorno qualsiasi, lascerai progetti incompiuti ed il mondo continuerà anche senza di te. Perciò concediti "
+  },
+  {
+   "quando": "2026-11-17T19:01",
+   "slot": "2026-11-17 20:00",
+   "video": "IMG_5416.MOV",
+   "md5": "a55383c12384e9325679894a55854256",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-11-17T15:57+01:00",
+   "frase": "MIE-e86dcf58",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 8.0,
+    "musica": "the_road_to_mordor_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.135,
+     "movimento": 34.4,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 3,
+     "scurito": 0.0,
+     "luce": 0.37,
+     "sfumatura": 0.27,
+     "intatto": true,
+     "scene_intatte": 1
+    },
+    "secondi_montaggio": 73,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 13
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_07.flac",
+    "musica_instagram": "Hot Mess Anthem - Lightbox Music [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "YDt-y9tHO50"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18122192446765268",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non rinunciare a qualcosa a cui non puoi passare un giorno senza pensare."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-09 20:00",
   "2026-11-09 22:00",
   "2026-11-10 00:00",
   "2026-11-10 06:00",
@@ -17902,10 +17970,10 @@
   "2026-11-17 12:00",
   "2026-11-17 14:00",
   "2026-11-17 16:00",
-  "2026-11-17 18:00"
+  "2026-11-17 18:00",
+  "2026-11-17 20:00"
  ],
  "musica_recenti": [
-  "majestic_12_2.m4a",
   "intergalactic_1.m4a",
   "final_boss_battle_2.m4a",
   "moon_vision_2.m4a",
@@ -17964,7 +18032,8 @@
   "rubberband_2.m4a",
   "delirium_1.m4a",
   "visions_3.m4a",
-  "ten_3.m4a"
+  "ten_3.m4a",
+  "the_road_to_mordor_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -18364,10 +18433,10 @@
   "MIE-4b9fff97",
   "MIE-cef55248",
   "MIE-b25c7f93",
-  "MIE-e25f267f"
+  "MIE-e25f267f",
+  "MIE-e86dcf58"
  ],
  "temi_recenti": [
-  "dieta",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -18375,6 +18444,7 @@
   "palestra",
   "mentalita",
   "palestra",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -18390,20 +18460,6 @@
    "registrato": "2026-11-17T16:03+01:00",
    "fascia": "ufficio",
    "caricato": "2026-11-17T15:47:29.553Z",
-   "parlato": null,
-   "momento": null
-  },
-  "1Z__RHxgn9BhgEAQaGJsx5OiZ5tn20oBY": {
-   "nome": "IMG_5416.MOV",
-   "scena": "specchio",
-   "sicurezza": 0.99,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-17T15:57+01:00",
-   "fascia": "ufficio",
-   "caricato": "2026-11-17T15:47:47.162Z",
    "parlato": null,
    "momento": null
   }
@@ -19034,10 +19090,14 @@
    "usi": 1,
    "ultimo": "2026-11-17",
    "orizzontale": false
+  },
+  "1Z__RHxgn9BhgEAQaGJsx5OiZ5tn20oBY": {
+   "usi": 1,
+   "ultimo": "2026-11-17",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "trap_15.flac",
   "energia_12.flac",
   "phonk_14.flac",
   "drive_03.flac",
@@ -19056,7 +19116,8 @@
   "trap_07.flac",
   "drive_15.flac",
   "phonk_08.flac",
-  "trap_14.flac"
+  "trap_14.flac",
+  "energia_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -19091,7 +19152,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -19107,7 +19168,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "751793197912868",
   "1186003979031011",
   "936174714667779",
   "6931473226905938",
@@ -19166,11 +19226,11 @@
   "974432747187721",
   "1068776575596252",
   "491460439584707",
-  "1546581635764552"
+  "1546581635764552",
+  "1308898424418438"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Lady Jazmon [screenshot]",
   "Chela Rivas",
   "Summer Islands",
   "The Death Beats",
@@ -19179,10 +19239,10 @@
   "Giulio Cercato",
   "LAVLO",
   "The K Club",
-  "Genticorum"
+  "Genticorum",
+  "Lightbox Music"
  ],
  "ig_titoli_recenti": [
-  "punk power",
   "will you believe",
   "epic battles",
   "good fight",
@@ -19221,7 +19281,8 @@
   "road warriors",
   "stop motion",
   "looking glass",
-  "la marche des commis voyageurs"
+  "la marche des commis voyageurs",
+  "hot mess anthem"
  ],
  "ig_tendenze_riserva": [
   {
@@ -19232,31 +19293,24 @@
    "libreria": false
   },
   {
-   "audio_id": "1327478284628085",
-   "title": "Melancholia (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 200780,
+   "audio_id": "1308898424418438",
+   "title": "Hot Mess Anthem",
+   "display_artist": "Lightbox Music",
+   "duration_in_ms": 59300,
    "libreria": true
   },
   {
-   "audio_id": "1546581635764552",
-   "title": "La Marche des Commis Voyageurs",
-   "display_artist": "Genticorum",
-   "duration_in_ms": 182512,
+   "audio_id": "3995438863924821",
+   "title": "Climbing The Ladder",
+   "display_artist": "Auralux",
+   "duration_in_ms": 61791,
    "libreria": true
   },
   {
-   "audio_id": "3846481242297548",
-   "title": "Power Drift",
-   "display_artist": "Adam Griffith",
-   "duration_in_ms": 162120,
-   "libreria": true
-  },
-  {
-   "audio_id": "1276884473388491",
-   "title": "Miracle (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 166470,
+   "audio_id": "487292243908544",
+   "title": "Pink Lemonade (feat. Dawson March)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 141290,
    "libreria": true
   }
  ]
