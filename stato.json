@@ -17679,7 +17679,9 @@
      "ok": true,
      "id": "18025687646957498",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -17739,7 +17741,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "iyncgbxcBxo"
+     "id": "iyncgbxcBxo",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -17750,11 +17753,76 @@
    },
    "spinto": true,
    "testo": "Niente è più bello che vederti diventare lentamente la versione migliore di te stesso."
+  },
+  {
+   "quando": "2026-11-17T17:00",
+   "slot": "2026-11-17 18:00",
+   "video": "IMG_5413.MOV",
+   "md5": "730095c100a2ab539486c2266082f23e",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-11-17T15:55+01:00",
+   "frase": "MIE-e25f267f",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "ten_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 0,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 27.33,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 7,
+     "scurito": 0.0,
+     "luce": 0.32,
+     "sfumatura": 0.22,
+     "intatto": true,
+     "scene_intatte": 1
+    },
+    "secondi_montaggio": 72,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 22
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_14.flac",
+    "musica_instagram": "La Marche des Commis Voyageurs - Genticorum [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "G-nqFftun-U"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17959026531277799",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Morirai in un giorno qualsiasi, lascerai progetti incompiuti ed il mondo continuerà anche senza di te. Perciò concediti "
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-09 18:00",
   "2026-11-09 20:00",
   "2026-11-09 22:00",
   "2026-11-10 00:00",
@@ -17833,10 +17901,10 @@
   "2026-11-17 10:00",
   "2026-11-17 12:00",
   "2026-11-17 14:00",
-  "2026-11-17 16:00"
+  "2026-11-17 16:00",
+  "2026-11-17 18:00"
  ],
  "musica_recenti": [
-  "wrangle_the_crazy_2.m4a",
   "majestic_12_2.m4a",
   "intergalactic_1.m4a",
   "final_boss_battle_2.m4a",
@@ -17895,7 +17963,8 @@
   "mirror_mirror_2.m4a",
   "rubberband_2.m4a",
   "delirium_1.m4a",
-  "visions_3.m4a"
+  "visions_3.m4a",
+  "ten_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -18294,10 +18363,10 @@
   "MIE-6eeafb96",
   "MIE-4b9fff97",
   "MIE-cef55248",
-  "MIE-b25c7f93"
+  "MIE-b25c7f93",
+  "MIE-e25f267f"
  ],
  "temi_recenti": [
-  "mentalita",
   "dieta",
   "mentalita",
   "mentalita",
@@ -18306,9 +18375,39 @@
   "palestra",
   "mentalita",
   "palestra",
+  "mentalita",
   "mentalita"
  ],
- "analisi": {},
+ "analisi": {
+  "1NH5HrJwUBoulkcqyvsH06ySTvgK0QzOJ": {
+   "nome": "IMG_5417.MOV",
+   "scena": "specchio",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-17T16:03+01:00",
+   "fascia": "ufficio",
+   "caricato": "2026-11-17T15:47:29.553Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1Z__RHxgn9BhgEAQaGJsx5OiZ5tn20oBY": {
+   "nome": "IMG_5416.MOV",
+   "scena": "specchio",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-17T15:57+01:00",
+   "fascia": "ufficio",
+   "caricato": "2026-11-17T15:47:47.162Z",
+   "parlato": null,
+   "momento": null
+  }
+ },
  "pulizia": "2026-11-17",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -18930,10 +19029,14 @@
    "usi": 1,
    "ultimo": "2026-11-17",
    "orizzontale": false
+  },
+  "1DGjwSCiLjkfKjwHl-n3BY_n3pUkgzmEf": {
+   "usi": 1,
+   "ultimo": "2026-11-17",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "phonk_05.flac",
   "trap_15.flac",
   "energia_12.flac",
   "phonk_14.flac",
@@ -18952,7 +19055,8 @@
   "deciso_11.flac",
   "trap_07.flac",
   "drive_15.flac",
-  "phonk_08.flac"
+  "phonk_08.flac",
+  "trap_14.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -18987,7 +19091,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -19003,7 +19107,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "819743797457783",
   "751793197912868",
   "1186003979031011",
   "936174714667779",
@@ -19062,11 +19165,11 @@
   "3243337306057458",
   "974432747187721",
   "1068776575596252",
-  "491460439584707"
+  "491460439584707",
+  "1546581635764552"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Abby Posner",
   "Lady Jazmon [screenshot]",
   "Chela Rivas",
   "Summer Islands",
@@ -19075,10 +19178,10 @@
   "Ross Lara",
   "Giulio Cercato",
   "LAVLO",
-  "The K Club"
+  "The K Club",
+  "Genticorum"
  ],
  "ig_titoli_recenti": [
-  "the nerve",
   "punk power",
   "will you believe",
   "epic battles",
@@ -19117,7 +19220,8 @@
   "photocopy",
   "road warriors",
   "stop motion",
-  "looking glass"
+  "looking glass",
+  "la marche des commis voyageurs"
  ],
  "ig_tendenze_riserva": [
   {
@@ -19128,24 +19232,31 @@
    "libreria": false
   },
   {
-   "audio_id": "491460439584707",
-   "title": "Looking Glass (feat. Dawson March, Jacquire King)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 146973,
-   "libreria": true
-  },
-  {
-   "audio_id": "727931292858890",
-   "title": "Copacetic (feat. Dawson March)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 136490,
-   "libreria": true
-  },
-  {
-   "audio_id": "846729664516192",
-   "title": "Chops (feat. My City Glory) (Instrumental)",
+   "audio_id": "1327478284628085",
+   "title": "Melancholia (feat. My City Glory)",
    "display_artist": "Ross Lara",
-   "duration_in_ms": 171070,
+   "duration_in_ms": 200780,
+   "libreria": true
+  },
+  {
+   "audio_id": "1546581635764552",
+   "title": "La Marche des Commis Voyageurs",
+   "display_artist": "Genticorum",
+   "duration_in_ms": 182512,
+   "libreria": true
+  },
+  {
+   "audio_id": "3846481242297548",
+   "title": "Power Drift",
+   "display_artist": "Adam Griffith",
+   "duration_in_ms": 162120,
+   "libreria": true
+  },
+  {
+   "audio_id": "1276884473388491",
+   "title": "Miracle (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 166470,
    "libreria": true
   }
  ]
