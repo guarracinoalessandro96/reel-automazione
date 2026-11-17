@@ -230,9 +230,9 @@ function confrontoVis(tab, s, p) {
   const [ini, fine, iniP, nome] = intervallo(p, ult);
   const giorno = ini === fine;
   let fineS = fine; while (fineS >= ini && (tab[fineS] || {})[s] === undefined) fineS = indietro(fineS, 1);
-  if (fineS < ini) return { ora: null, quando: (giorno ? dat(fine) : "") + (s === "TikTok" ? " · TikTok dà i numeri 2 giorni dopo" : " · in arrivo"), nome };
+  if (fineS < ini) return { ora: null, quando: (giorno ? dat(fine) : "") + (s === "TikTok" ? " · TikTok dà i numeri la sera del giorno dopo" : " · in arrivo"), nome };
   const n = tra(ini, fineS) + 1;
-  const quando = giorno ? dat(fineS) : "da " + dat(ini) + " a " + dat(fineS) + (fineS < fine && s === "TikTok" ? " (TikTok arriva 2 giorni dopo)" : "");
+  const quando = giorno ? dat(fineS) : "da " + dat(ini) + " a " + dat(fineS) + (fineS < fine && s === "TikTok" ? " (TikTok arriva la sera del giorno dopo)" : "");
   let ora = 0, buchi = 0; for (let i = 0; i < n; i++) { const v = (tab[indietro(ini, -i)] || {})[s]; if (v === undefined) buchi++; else ora += v; }
   return { ora, prima: buchi ? null : sommaDa(tab, s, iniP, n), quando: quando + (buchi ? " · mancano i numeri di " + buchi + (buchi === 1 ? " giorno" : " giorni") : ""), nome,
            etOra: giorno ? "questo giorno" : "adesso", etPrima: giorno ? "giorno prima" : "prima" };
@@ -322,7 +322,7 @@ function disegnaBarre(box, g) {
   const alza = () => prismi.forEach(([p, h]) => { p.style.height = `calc(${h}% - 40px)`; });
   if (MOTO) requestAnimationFrame(() => requestAnimationFrame(alza)); else alza();
   const tot = SOC.every(([s]) => r[s] !== undefined) ? SOC.reduce((a, [s]) => a + r[s], 0) : null;
-  document.getElementById("quando").textContent = "Le piattaforme danno i numeri del giorno intero la mattina dopo (TikTok 2 giorni dopo): \"Oggi\" è l'ultimo giorno già arrivato.";
+  document.getElementById("quando").textContent = "Le piattaforme danno i numeri del giorno intero la mattina dopo (TikTok la sera del giorno dopo): \"Oggi\" è l'ultimo giorno già arrivato.";
 }
 
 const NS = "http://www.w3.org/2000/svg";

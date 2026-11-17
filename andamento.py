@@ -80,6 +80,11 @@ def main():
         dopo = (datetime.date.fromisoformat(g) + datetime.timedelta(days=1)).isoformat()
         if dopo in tot and tot[dopo] >= tot[g] and g >= gg(5):      # il giorno g (8:00 -> 8:00 del giorno dopo)
             metti(vis, prima(dopo), "YouTube", tot[dopo] - tot[g])
+    # 17/11/2026 (Alessandro: vedere anche TikTok di ieri): numero letto la SERA (tiktok_sera.py sul PC), provvisorio;
+    # prima questo, poi quelli del messaggio delle 8 (definitivi) che lo sostituiscono quando arrivano
+    for g, n in (reg.get("tiktok_sera") or {}).items():
+        if isinstance(n, int):
+            metti(vis, g, "TikTok", n)
     for g, v in giorni.items():
         tt = v.get("tiktok") if isinstance(v, dict) else None
         if isinstance(tt, dict) and tt.get("data") and isinstance(tt.get("views"), int):
