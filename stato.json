@@ -17467,7 +17467,9 @@
      "ok": true,
      "id": "17981472240131002",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -17527,7 +17529,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "4WAD44tvnug"
+     "id": "4WAD44tvnug",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -17538,11 +17541,78 @@
    },
    "spinto": true,
    "testo": "Allena la tua mente a vedere possibilità dove altri vedono problemi. La positività è una scelta e la felicità della tua "
+  },
+  {
+   "quando": "2026-11-17T11:00",
+   "slot": "2026-11-17 12:00",
+   "video": "IMG_5402.MOV",
+   "md5": "0806eb598748b1112f651a82455c998f",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-11-17T08:50+01:00",
+   "frase": "MIE-4b9fff97",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "rubberband_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 4,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.2,
+     "movimento": 21.98,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "velocita": 0.9912,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 6,
+     "scurito": 0.0,
+     "luce": 0.55,
+     "sfumatura": 0.38,
+     "intatto": true,
+     "scene_intatte": 1
+    },
+    "scena_unica": "rallentata",
+    "secondi_montaggio": 43,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 24
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_07.flac",
+    "musica_instagram": "Road Warriors - Giulio Cercato [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "FQaEOeHTfYw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18136033681666575",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Tra sei mesi sarai ancora spaventato a farlo oppure tra sei mesi sarai fiero di averlo fatto. In ogni caso, sei mesi pas"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-09 12:00",
   "2026-11-09 14:00",
   "2026-11-09 16:00",
   "2026-11-09 18:00",
@@ -17621,10 +17691,10 @@
   "2026-11-17 00:00",
   "2026-11-17 06:00",
   "2026-11-17 08:00",
-  "2026-11-17 10:00"
+  "2026-11-17 10:00",
+  "2026-11-17 12:00"
  ],
  "musica_recenti": [
-  "monthaholic_3.m4a",
   "ego_chall_1.m4a",
   "dusty_road_magic_1.m4a",
   "wrangle_the_crazy_2.m4a",
@@ -17683,7 +17753,8 @@
   "turn_in_the_sun_1.m4a",
   "dusty_road_magic_3.m4a",
   "fire_in_the_sky_3.m4a",
-  "mirror_mirror_2.m4a"
+  "mirror_mirror_2.m4a",
+  "rubberband_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -18079,10 +18150,10 @@
   "MIE-9015361f",
   "MIE-fb174d63",
   "MIE-d5a9b99a",
-  "MIE-6eeafb96"
+  "MIE-6eeafb96",
+  "MIE-4b9fff97"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -18091,7 +18162,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "palestra"
+  "palestra",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-11-17",
@@ -18710,10 +18782,14 @@
    "usi": 1,
    "ultimo": "2026-11-17",
    "orizzontale": false
+  },
+  "1sk14Q5cWIJSdGZa_8JBIxYr-T0rDPDuj": {
+   "usi": 1,
+   "ultimo": "2026-11-17",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "energia_02.flac",
   "trap_05.flac",
   "deciso_07.flac",
   "phonk_05.flac",
@@ -18732,7 +18808,8 @@
   "trap_09.flac",
   "phonk_16.flac",
   "energia_06.flac",
-  "deciso_11.flac"
+  "deciso_11.flac",
+  "trap_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -18767,7 +18844,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -18783,7 +18860,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "923490770808517",
   "1763628994746804",
   "1030263145726523",
   "819743797457783",
@@ -18842,11 +18918,11 @@
   "1582326450151974",
   "5293714980852628",
   "1383912545569665",
-  "3243337306057458"
+  "3243337306057458",
+  "974432747187721"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "ROMderful [screenshot]",
   "ROMderful [screenshot]",
   "Sia",
   "Abby Posner",
@@ -18855,10 +18931,10 @@
   "Summer Islands",
   "The Death Beats",
   "Global Genius",
-  "Ross Lara"
+  "Ross Lara",
+  "Giulio Cercato"
  ],
  "ig_titoli_recenti": [
-  "work hard dream big",
   "move",
   "heroes",
   "the nerve",
@@ -18897,7 +18973,8 @@
   "move on",
   "shadows in motion",
   "you can do it",
-  "photocopy"
+  "photocopy",
+  "road warriors"
  ],
  "ig_tendenze_riserva": [
   {
@@ -18908,24 +18985,10 @@
    "libreria": false
   },
   {
-   "audio_id": "3243337306057458",
-   "title": "Photocopy (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 167521,
-   "libreria": true
-  },
-  {
-   "audio_id": "2192533544901491",
-   "title": "Energy (Instrumental)",
-   "display_artist": "Tony Dark Eyes",
-   "duration_in_ms": 193175,
-   "libreria": true
-  },
-  {
-   "audio_id": "973337210661310",
-   "title": "You Can Do It",
-   "display_artist": "E-Turn",
-   "duration_in_ms": 164400,
+   "audio_id": "974432747187721",
+   "title": "Road Warriors",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 108029,
    "libreria": true
   }
  ]
