@@ -17817,7 +17817,9 @@
      "ok": true,
      "id": "17959026531277799",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -17877,7 +17879,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "YDt-y9tHO50"
+     "id": "YDt-y9tHO50",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -17888,11 +17891,76 @@
    },
    "spinto": true,
    "testo": "Non rinunciare a qualcosa a cui non puoi passare un giorno senza pensare."
+  },
+  {
+   "quando": "2026-11-17T21:01",
+   "slot": "2026-11-17 22:00",
+   "video": "IMG_5417.MOV",
+   "md5": "f033e0b7335e78759f5306cb72f738ef",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-11-17T16:03+01:00",
+   "frase": "MIE-28474cd3",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "wrangle_the_crazy_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.282,
+     "movimento": 45.19,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 3,
+     "scurito": 0.0,
+     "luce": 0.35,
+     "sfumatura": 0.26,
+     "intatto": true,
+     "scene_intatte": 1
+    },
+    "secondi_montaggio": 57,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "due",
+     "parole": 13
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_08.flac",
+    "musica_instagram": "Voices Of Victory (feat. Plum Soul) - Jumbo"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "mggNRInhJRU"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18014492375770468",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Odiare è gratis. È per questo che i poveri lo fanno così bene."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-09 22:00",
   "2026-11-10 00:00",
   "2026-11-10 06:00",
   "2026-11-10 08:00",
@@ -17971,10 +18039,10 @@
   "2026-11-17 14:00",
   "2026-11-17 16:00",
   "2026-11-17 18:00",
-  "2026-11-17 20:00"
+  "2026-11-17 20:00",
+  "2026-11-17 22:00"
  ],
  "musica_recenti": [
-  "intergalactic_1.m4a",
   "final_boss_battle_2.m4a",
   "moon_vision_2.m4a",
   "keep_it_movin_2.m4a",
@@ -18033,7 +18101,8 @@
   "delirium_1.m4a",
   "visions_3.m4a",
   "ten_3.m4a",
-  "the_road_to_mordor_3.m4a"
+  "the_road_to_mordor_3.m4a",
+  "wrangle_the_crazy_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -18434,36 +18503,22 @@
   "MIE-cef55248",
   "MIE-b25c7f93",
   "MIE-e25f267f",
-  "MIE-e86dcf58"
+  "MIE-e86dcf58",
+  "MIE-28474cd3"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "palestra",
   "mentalita",
   "palestra",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
  ],
- "analisi": {
-  "1NH5HrJwUBoulkcqyvsH06ySTvgK0QzOJ": {
-   "nome": "IMG_5417.MOV",
-   "scena": "specchio",
-   "sicurezza": 0.99,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-17T16:03+01:00",
-   "fascia": "ufficio",
-   "caricato": "2026-11-17T15:47:29.553Z",
-   "parlato": null,
-   "momento": null
-  }
- },
+ "analisi": {},
  "pulizia": "2026-11-17",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -19095,10 +19150,14 @@
    "usi": 1,
    "ultimo": "2026-11-17",
    "orizzontale": false
+  },
+  "1NH5HrJwUBoulkcqyvsH06ySTvgK0QzOJ": {
+   "usi": 1,
+   "ultimo": "2026-11-17",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "energia_12.flac",
   "phonk_14.flac",
   "drive_03.flac",
   "deciso_05.flac",
@@ -19117,7 +19176,8 @@
   "drive_15.flac",
   "phonk_08.flac",
   "trap_14.flac",
-  "energia_07.flac"
+  "energia_07.flac",
+  "deciso_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -19152,7 +19212,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -19168,7 +19228,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1186003979031011",
   "936174714667779",
   "6931473226905938",
   "974432747187721",
@@ -19227,11 +19286,11 @@
   "1068776575596252",
   "491460439584707",
   "1546581635764552",
-  "1308898424418438"
+  "1308898424418438",
+  "1030263145726523"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Chela Rivas",
   "Summer Islands",
   "The Death Beats",
   "Global Genius",
@@ -19240,10 +19299,10 @@
   "LAVLO",
   "The K Club",
   "Genticorum",
-  "Lightbox Music"
+  "Lightbox Music",
+  "Jumbo"
  ],
  "ig_titoli_recenti": [
-  "will you believe",
   "epic battles",
   "good fight",
   "knockout",
@@ -19282,7 +19341,8 @@
   "stop motion",
   "looking glass",
   "la marche des commis voyageurs",
-  "hot mess anthem"
+  "hot mess anthem",
+  "voices of victory"
  ],
  "ig_tendenze_riserva": [
   {
@@ -19293,24 +19353,31 @@
    "libreria": false
   },
   {
-   "audio_id": "1308898424418438",
-   "title": "Hot Mess Anthem",
-   "display_artist": "Lightbox Music",
-   "duration_in_ms": 59300,
+   "audio_id": "1654540342871209",
+   "title": "Rise (Instrumental)",
+   "display_artist": "Beni Haze",
+   "duration_in_ms": 160046,
    "libreria": true
   },
   {
-   "audio_id": "3995438863924821",
-   "title": "Climbing The Ladder",
-   "display_artist": "Auralux",
-   "duration_in_ms": 61791,
+   "audio_id": "413152290918119",
+   "title": "People Mover",
+   "display_artist": "Brent Bourgeois",
+   "duration_in_ms": 151554,
    "libreria": true
   },
   {
-   "audio_id": "487292243908544",
-   "title": "Pink Lemonade (feat. Dawson March)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 141290,
+   "audio_id": "2475524415980310",
+   "title": "Dream Big",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 119030,
+   "libreria": true
+  },
+  {
+   "audio_id": "1160020348806776",
+   "title": "Seattle Skies (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 186070,
    "libreria": true
   }
  ]
