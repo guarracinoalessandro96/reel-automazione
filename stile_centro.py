@@ -13,6 +13,8 @@ tipografico e i simboli che il carattere non sa disegnare, come le emoji).
 Il video sotto la frase, se e' troppo chiaro, diventa piu' scuro fino a obiettivi misurati (zona della frase <= 0,20,
 fotogramma <= 0,26): come un'esposizione piu' bassa (niente neri schiacciati, niente dominanti), piu' un'ombra rotonda
 morbidissima dietro la frase; mai piu' chiaro.
+17/11/2026 (Alessandro: "il copy e il font... leggermente piu' piccoli"): le grandezze sopra sono quelle da cui si
+impagina; la frase si disegna poi al SCALA_TESTO (90%), con le stesse righe.
 Non importa overlay (overlay importa questo modulo): si puo' provare da solo.
 """
 import os, re
@@ -73,6 +75,10 @@ DEBOLI = set("il lo la i gli le un uno una di a da in con su per tra fra e ed o 
 _FINE_FRASE = re.compile(r"[.!?…]['’\"”»)]*$")
 _FINE_PEZZO = re.compile(r"[,;:—–]['’\"”»)]*$")
 ULTIMO = {}                          # l'ultima scritta: font, corpo (px), righe (per montaggio.stile_centro)
+# 17/11/2026, Alessandro: "voglio che il copy e il font siano un po' piu' piccoli, leggermente piu' piccoli": la frase
+# si impagina come prima (stesse righe, stessi a capo, stesse regole sopra) e poi si disegna al 90% (-10%), sempre
+# centrata al CENTRO_Y. Vale per tutte le scritte al centro (video, ripieghi, foto). Lo puo' cambiare solo Alessandro
+SCALA_TESTO = 0.90
 
 
 # ------------------------------------------------------------------ carattere
@@ -332,6 +338,17 @@ def impagina(W, H, testo):
         if corpo <= CORPO_ULTIMO + 1e-9 or (not troppo and (alto <= H * ALTEZZA_MAX or corpo <= CORPO_FONDO + 1e-9)):
             break
         corpo = max(CORPO_ULTIMO if troppo else CORPO_FONDO, corpo * 0.95)
+    if SCALA_TESTO and abs(SCALA_TESTO - 1.0) > 1e-6:
+        # 17/11/2026, Alessandro: "il copy e il font un po' piu' piccoli": stesse righe (gli a capo scelti sopra restano
+        # buoni: piu' piccole ci stanno sempre nella colonna), stesso carattere (Regular o Semibold), corpo al 90%
+        px = max(8, int(round(px * SCALA_TESTO)))
+        font = _font(px, os.path.basename(getattr(font, "percorso", "")).startswith("SourceSerifPro-Semibold"))
+        lun = font.getlength
+        lh = px * INTERLINEA
+        _, cima, _, _ = font.getbbox("H", anchor="ls")
+        _, _, _, fondo = font.getbbox("gjpqy", anchor="ls")
+        alto = -cima + (len(righe) - 1) * lh + 0.25 * fondo
+        larga = max(lun(r) for r in righe)
     top = H * CENTRO_Y - alto / 2
     top = min(max(top, H * ZONA_SICURA[0]), H * ZONA_SICURA[1] - alto)
     return {"font": font, "corpo": px, "righe": righe, "lh": lh, "base0": top - cima, "top": top, "alto": alto,

@@ -982,6 +982,39 @@ def _intero_pulito(c, durate):
         return None, durate
 
 
+# 17/11/2026, Alessandro: "voglio che tu peschi un solo video... niente piu' stacchi di diverse scene": ogni reel e'
+# UNA scena continua di DIECI_SECONDI (8 s) da UN solo video. Un video piu' corto di 8 s non si allunga piu' con una
+# seconda clip (prima dieci_due): si usa TUTTO, dall'inizio, rallentato quanto basta (mai sotto 0,5x sui 60 fps, 0,75x
+# sui 30 fps, se no scatta). Solo se neanche cosi' arriva a 8 s: lo stesso video avanti e poi all'indietro (come il
+# loop, nessuno stacco, nessun'altra scena). Sotto anche a quello: errore (ripiego di pubblica)
+SCENA_UNICA_NOMI = ("dieci", "intero")
+CODA_S = 0.1         # secondi lasciati alla fine del video corto (l'ultimo fotogramma a volte manca)
+
+
+def scena_unica_corta(c, durata=None):
+    """17/11/2026 (Alessandro: una scena sola di 8 s): per un video troppo corto per 8 s a velocita' normale
+    -> (durate, piano, velocita, indietro) per make_sequenza; None se il video basta (ci pensa il montaggio normale:
+    gli 8 s migliori, primo secondo pulito, niente nero)."""
+    durata = float(durata or DIECI_SECONDI)
+    S = ov.probe(c)[0]
+    usabile = S - CODA_S
+    if usabile >= durata + 0.05:
+        return None
+    try:
+        v_min = 0.5 if float(ov.fps(c)) >= 50 else 0.75
+    except Exception:
+        v_min = 0.75
+    v = usabile / durata
+    if v >= v_min:            # tutto il video, una scena, un po' piu' lento
+        v = round(min(1.0, v), 4)
+        return [round(durata, 3)], [(c, 0.0)], [v], None
+    meta = durata / 2         # avanti e indietro dallo stesso punto: riparte senza stacco
+    v2 = round(min(1.0, usabile / meta), 4)
+    if v2 < v_min:
+        raise ValueError(f"scena unica: video troppo corto ({S:.1f} s) anche rallentato e avanti-indietro")
+    return [round(meta, 3)] * 2, [(c, 0.0), (c, 0.0)], [v2, v2], [False, True]
+
+
 def _guarda(p, sorgente, W, H, quanti, dieci, controlli, lato=None):
     """I fotogrammi del pezzo p, gia' nel taglio 9:16 del reel: volti (29/10/2026, Alessandro: "le scritte non devono
     mai coprire il viso"), in quanti fotogrammi si vede il viso (6/11: uno alla volta, stessi riquadri di prima),
@@ -1236,6 +1269,17 @@ def make_dieci(nome, clips, frase, dst, musiche=(), serie=None, controlla_viso=F
     mettono la frase fuori dal video; rallenty e loop giocano con la velocita' dello stesso momento."""
     CONTROLLO.clear()
     d = FORMATI[nome]
+    if nome in SCENA_UNICA_NOMI:
+        # 17/11/2026 (Alessandro: "se il video e' di 8 secondi... una scena singola"): UN video solo (mai clip extra)
+        # e, se e' piu' corto di 8 s, tutto il video rallentato (scena_unica_corta) invece di una seconda scena
+        corta = scena_unica_corta(clips[0])
+        if corta:
+            durate, piano, velocita, indietro = corta
+            info = make_sequenza(clips[:1], durate, [(0.0, sum(durate), frase)], dst, musiche, None, nome,
+                                 controlla_viso, piano=piano, velocita=velocita, indietro=indietro)
+            info["scena_unica"] = "rallentata" if not indietro else "avanti_indietro"
+            return info
+        clips = clips[:1]
     durate = durate_formato(nome, ov.probe(clips[0])[0])
     piano = velocita = indietro = layout = None
     testi = [(0.0, sum(durate), frase)]

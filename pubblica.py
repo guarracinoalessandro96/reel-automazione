@@ -397,7 +397,8 @@ def scegli_formato(slot, state, frase, an, spinto=True):
         return "momento"
     if an.get("parlato"):            # video in cui parla: sempre con la sua voce e i sottotitoli
         return "parlato"
-    if TUTTO_10S and str(slot).endswith(ORARIO_LISTA) and lista_regole(slot, state):   # 31/10/2026: una lista al giorno
+    # 17/11/2026 (Alessandro: una scena sola da un video): con SCENA_UNICA niente lista a schermate
+    if TUTTO_10S and not SCENA_UNICA and str(slot).endswith(ORARIO_LISTA) and lista_regole(slot, state):   # 31/10/2026: una lista al giorno
         return "dieci_lista"
     if TUTTO_10S:                    # 29/10/2026: tutti da 10 s, a turno (mai lo stesso due volte di fila)
         scelte = [f for f in FORMATI_10 if f != state.get("formato_ultimo")] or list(FORMATI_10)
@@ -551,6 +552,16 @@ if overlay.STILE_CENTRO:
     # 7/11/2026 (Alessandro: "scene di video o foto e frase al centro"): cinema e post mettono la frase su una fascia
     # fuori dal video, il contrario del nuovo stile: escono dal giro (la prova degli altri formati va avanti al 16/11)
     FORMATI_10 = tuple(f for f in FORMATI_10 if f not in ("cinema", "post"))
+# 17/11/2026, Alessandro: "Non voglio diverse scene, ma voglio che tu peschi un solo video. Se il video e' di 8 secondi,
+# voglio che riproponi una scena singola... se io ti mando un video di 30 secondi, prendi 8 secondi qualsiasi da quel
+# video... niente piu' stacchi di diverse scene". Con SCENA_UNICA ogni reel e' UNA scena continua di 8 s
+# (overlay.DURATA_REEL) da UN solo video: in giro solo "dieci" (gli 8 s migliori del video: primo secondo pulito,
+# niente nero) e "intero" (il video dall'inizio; oltre 8,35 s come "dieci"). Fuori dal giro taglio1/2/3, dieci_due,
+# dieci_broll, loop, rallenty, giornata, le foto e la lista. Un video piu' corto di 8 s esce intero e rallentato
+# (formati_nuovi.scena_unica_corta), mai con una seconda clip. Lo puo' cambiare solo Alessandro
+SCENA_UNICA = True
+if SCENA_UNICA:
+    FORMATI_10 = ("dieci", "intero")
 # 6/11/2026 (Alessandro: "sfruttare diversi tipi di format per capire quali video possano funzionare, poi faremo solo
 # quelle"): fino a FORMATI_PROVA_FINO tutti i formati da 10 s con la STESSA probabilita' (niente pesi vecchi), mai lo
 # stesso due volte di fila; poi report.py/l'agente delle 18:30 tengono i migliori
@@ -781,11 +792,18 @@ def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, ultim
     piu' corto di 8,5 s si passa a 'dieci_due' (video dell'orario + una clip). Si usano TUTTI i suoi video, anche quelli in palestra
     (29/10/2026: "i video della palestra vanno bene"; e' solo la PAROLA palestra nei testi a essere vietata)."""
     import formati_nuovi
+    if SCENA_UNICA and formato not in ("dieci", "intero"):
+        # 17/11/2026, Alessandro: "niente piu' stacchi di diverse scene": qualsiasi formato a scene (anche un ripiego,
+        # es. il taglio2 della giornata, o FORMATO=... a mano) esce come UNA scena da 8 s dello stesso video
+        log(f"Scena unica (Alessandro, 17/11/2026): {formato} -> dieci")
+        formato = "dieci"
     if formato == "giornata":        # 6/11/2026: ha il suo montaggio (da qui senza la coda: solo l'archivio)
         return monta_giornata(frase, src, out, music, serie, drive, work, clip, {}, {"formato_ultimo": ultimo})
     D = formati_nuovi.DIECI_SECONDI   # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): 8 s (prima 10 s)
     if formato in ("dieci", "intero") and overlay.probe(src)[0] < D + 0.5:      # 8,5 s (prima 10,5)
-        formato = "dieci_due"
+        # 17/11/2026 (Alessandro: una scena singola): il video corto esce intero (rallentato se serve), non piu'
+        # dieci_due con una seconda clip
+        formato = "intero" if SCENA_UNICA else "dieci_due"
     if formato in ("rallenty", "loop") and overlay.probe(src)[0] < D / 2 + 1.5:     # 6/11/2026: troppo corto; 5,5 s (prima 6,5)
         formato = "dieci_due"
     if formato == "rallenty":        # 6/11/2026 (revisione): 2,4 s + 8 s rallentati, a 0,5x (60 fps) o 0,75x (30 fps)
@@ -818,7 +836,8 @@ def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, ultim
     # tentativo scartato non finisce in montaggio.scritta (se si arriva a dieci_broll, la sua scritta lo rimette)
     overlay.ULTIMO_STILE = None
     try:
-        if len(clips) == 1 and formati_nuovi.scene_mancanti(ripiego, src, musiche) > 0:   # video corto: 2 scene da 5 s
+        # 17/11/2026 (Alessandro: scena unica): mai una seconda clip
+        if not SCENA_UNICA and len(clips) == 1 and formati_nuovi.scene_mancanti(ripiego, src, musiche) > 0:   # video corto: 2 scene da 5 s
             clips += clip_extra(drive, work, clip, 1, giorno)
         info = formati_nuovi.make_dieci(ripiego, clips, frase["gancio"], out, musiche, serie, True)
         info["scritta"] = None
@@ -3327,7 +3346,10 @@ def main():
         t_montaggio = time.time()       # 7/11/2026 (revisione, tempi): montaggio.secondi_montaggio
         info, formato = None, scegli_formato(slot, state, frase, an, spinto)
         foto_oggi, foto_riuso, voluto = [], False, None
-        if TUTTO_10S and formato in FORMATI_10 and str(slot).endswith(ORARIO_FOTO) and str(slot)[:10] >= FOTO_DAL:
+        # 17/11/2026, Alessandro: "voglio che tu peschi un solo video": con SCENA_UNICA niente reel di foto (piu' foto
+        # = piu' scene); le foto restano nella loro cartella, non si toccano
+        if TUTTO_10S and not SCENA_UNICA and formato in FORMATI_10 and str(slot).endswith(ORARIO_FOTO) \
+                and str(slot)[:10] >= FOTO_DAL:
             formato_f = None
             try:
                 import foto_giornata
