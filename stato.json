@@ -17395,7 +17395,9 @@
      "ok": true,
      "id": "18081590033742989",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -17458,7 +17460,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "o6sEZkX8gA4"
+     "id": "o6sEZkX8gA4",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -17469,11 +17472,76 @@
    },
    "spinto": true,
    "testo": "Ricordati che tra un anno, in questa stessa data, potresti vivere una vita completamente diversa e tutto ciò che ti preo"
+  },
+  {
+   "quando": "2026-11-17T09:00",
+   "slot": "2026-11-17 10:00",
+   "video": "IMG_4061.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-6eeafb96",
+   "tema": "palestra",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 8.0,
+    "musica": "mirror_mirror_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.425,
+     "movimento": 25.83,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 7,
+     "scurito": 0.46,
+     "luce": 0.35,
+     "sfumatura": 0.25,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 144,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 28
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_11.flac",
+    "musica_instagram": "Photocopy (feat. My City Glory) - Ross Lara [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "4WAD44tvnug"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18166432468495767",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Allena la tua mente a vedere possibilità dove altri vedono problemi. La positività è una scelta e la felicità della tua "
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-09 10:00",
   "2026-11-09 12:00",
   "2026-11-09 14:00",
   "2026-11-09 16:00",
@@ -17552,10 +17620,10 @@
   "2026-11-16 22:00",
   "2026-11-17 00:00",
   "2026-11-17 06:00",
-  "2026-11-17 08:00"
+  "2026-11-17 08:00",
+  "2026-11-17 10:00"
  ],
  "musica_recenti": [
-  "taking_flight_2.m4a",
   "monthaholic_3.m4a",
   "ego_chall_1.m4a",
   "dusty_road_magic_1.m4a",
@@ -17614,7 +17682,8 @@
   "i_might_be_late_2.m4a",
   "turn_in_the_sun_1.m4a",
   "dusty_road_magic_3.m4a",
-  "fire_in_the_sky_3.m4a"
+  "fire_in_the_sky_3.m4a",
+  "mirror_mirror_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -18009,10 +18078,10 @@
   "MIE-4e9c5ff7",
   "MIE-9015361f",
   "MIE-fb174d63",
-  "MIE-d5a9b99a"
+  "MIE-d5a9b99a",
+  "MIE-6eeafb96"
  ],
  "temi_recenti": [
-  "dieta",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -18021,7 +18090,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "mentalita",
+  "palestra"
  ],
  "analisi": {},
  "pulizia": "2026-11-17",
@@ -18354,8 +18424,8 @@
    "ultimo": "2026-10-23"
   },
   "1120zEipzyBfScy4IMkZ_264cYRRj4_wC": {
-   "usi": 4,
-   "ultimo": "2026-11-09",
+   "usi": 5,
+   "ultimo": "2026-11-17",
    "orizzontale": false
   },
   "1Ysgny_QvDeVi4Yc1fvcAP2jh-Qv2xZgx": {
@@ -18643,7 +18713,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_06.flac",
   "energia_02.flac",
   "trap_05.flac",
   "deciso_07.flac",
@@ -18662,7 +18731,8 @@
   "deciso_06.flac",
   "trap_09.flac",
   "phonk_16.flac",
-  "energia_06.flac"
+  "energia_06.flac",
+  "deciso_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -18697,7 +18767,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci_due",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -18713,7 +18783,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "800297207899385",
   "923490770808517",
   "1763628994746804",
   "1030263145726523",
@@ -18772,11 +18841,11 @@
   "1155586068813210",
   "1582326450151974",
   "5293714980852628",
-  "1383912545569665"
+  "1383912545569665",
+  "3243337306057458"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "ROMderful [screenshot]",
   "ROMderful [screenshot]",
   "ROMderful [screenshot]",
   "Sia",
@@ -18785,10 +18854,10 @@
   "Chela Rivas",
   "Summer Islands",
   "The Death Beats",
-  "Global Genius"
+  "Global Genius",
+  "Ross Lara"
  ],
  "ig_titoli_recenti": [
-  "nice move",
   "work hard dream big",
   "move",
   "heroes",
@@ -18827,7 +18896,8 @@
   "warrior",
   "move on",
   "shadows in motion",
-  "you can do it"
+  "you can do it",
+  "photocopy"
  ],
  "ig_tendenze_riserva": [
   {
@@ -18836,6 +18906,27 @@
    "display_artist": "Sia",
    "duration_in_ms": 217746,
    "libreria": false
+  },
+  {
+   "audio_id": "3243337306057458",
+   "title": "Photocopy (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 167521,
+   "libreria": true
+  },
+  {
+   "audio_id": "2192533544901491",
+   "title": "Energy (Instrumental)",
+   "display_artist": "Tony Dark Eyes",
+   "duration_in_ms": 193175,
+   "libreria": true
+  },
+  {
+   "audio_id": "973337210661310",
+   "title": "You Can Do It",
+   "display_artist": "E-Turn",
+   "duration_in_ms": 164400,
+   "libreria": true
   }
  ]
 }
