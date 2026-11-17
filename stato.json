@@ -17536,7 +17536,9 @@
      "ok": true,
      "id": "18166432468495767",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -17598,7 +17600,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "FQaEOeHTfYw"
+     "id": "FQaEOeHTfYw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -17609,11 +17612,79 @@
    },
    "spinto": true,
    "testo": "Tra sei mesi sarai ancora spaventato a farlo oppure tra sei mesi sarai fiero di averlo fatto. In ogni caso, sei mesi pas"
+  },
+  {
+   "quando": "2026-11-17T13:00",
+   "slot": "2026-11-17 14:00",
+   "video": "IMG_3770.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-cef55248",
+   "tema": "palestra",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "delirium_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.367,
+     "movimento": 28.59,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "velocita": 0.9963,
+    "stile_centro": {
+     "font": "Source Serif Pro Semibold",
+     "corpo": 78,
+     "righe": 11,
+     "scurito": 0.45,
+     "luce": 0.38,
+     "sfumatura": 0.28,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scena_unica": "rallentata",
+    "secondi_montaggio": 78,
+    "scritta": "centro_serif",
+    "estratto": "dieci",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 57
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_15.flac",
+    "musica_instagram": "Stop Motion - LAVLO [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "hMp-5k3hEZk"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18025687646957498",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "L'abilità più importante che puoi sviluppare è quella del reset veloce. Una brutta conversazione? Volta pagina. Una brut"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-09 14:00",
   "2026-11-09 16:00",
   "2026-11-09 18:00",
   "2026-11-09 20:00",
@@ -17692,10 +17763,10 @@
   "2026-11-17 06:00",
   "2026-11-17 08:00",
   "2026-11-17 10:00",
-  "2026-11-17 12:00"
+  "2026-11-17 12:00",
+  "2026-11-17 14:00"
  ],
  "musica_recenti": [
-  "ego_chall_1.m4a",
   "dusty_road_magic_1.m4a",
   "wrangle_the_crazy_2.m4a",
   "majestic_12_2.m4a",
@@ -17754,7 +17825,8 @@
   "dusty_road_magic_3.m4a",
   "fire_in_the_sky_3.m4a",
   "mirror_mirror_2.m4a",
-  "rubberband_2.m4a"
+  "rubberband_2.m4a",
+  "delirium_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -18151,10 +18223,10 @@
   "MIE-fb174d63",
   "MIE-d5a9b99a",
   "MIE-6eeafb96",
-  "MIE-4b9fff97"
+  "MIE-4b9fff97",
+  "MIE-cef55248"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "dieta",
@@ -18163,7 +18235,8 @@
   "mentalita",
   "mentalita",
   "palestra",
-  "mentalita"
+  "mentalita",
+  "palestra"
  ],
  "analisi": {},
  "pulizia": "2026-11-17",
@@ -18193,8 +18266,8 @@
    "orizzontale": false
   },
   "1q_-2Z0Nxs0rzY0eRiS5kJ9hteaPWK_as": {
-   "usi": 4,
-   "ultimo": "2026-11-09",
+   "usi": 5,
+   "ultimo": "2026-11-17",
    "orizzontale": false
   },
   "1Eit9vgbQEwd_RXA_ujWUx9-QNboc7VIg": {
@@ -18790,7 +18863,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_05.flac",
   "deciso_07.flac",
   "phonk_05.flac",
   "trap_15.flac",
@@ -18809,7 +18881,8 @@
   "phonk_16.flac",
   "energia_06.flac",
   "deciso_11.flac",
-  "trap_07.flac"
+  "trap_07.flac",
+  "drive_15.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -18860,7 +18933,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1763628994746804",
   "1030263145726523",
   "819743797457783",
   "751793197912868",
@@ -18919,11 +18991,11 @@
   "5293714980852628",
   "1383912545569665",
   "3243337306057458",
-  "974432747187721"
+  "974432747187721",
+  "1068776575596252"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "ROMderful [screenshot]",
   "Sia",
   "Abby Posner",
   "Lady Jazmon [screenshot]",
@@ -18932,10 +19004,10 @@
   "The Death Beats",
   "Global Genius",
   "Ross Lara",
-  "Giulio Cercato"
+  "Giulio Cercato",
+  "LAVLO"
  ],
  "ig_titoli_recenti": [
-  "move",
   "heroes",
   "the nerve",
   "punk power",
@@ -18974,7 +19046,8 @@
   "shadows in motion",
   "you can do it",
   "photocopy",
-  "road warriors"
+  "road warriors",
+  "stop motion"
  ],
  "ig_tendenze_riserva": [
   {
@@ -18985,10 +19058,59 @@
    "libreria": false
   },
   {
-   "audio_id": "974432747187721",
-   "title": "Road Warriors",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 108029,
+   "audio_id": "1917637308769695",
+   "title": "What Heroes Do (prod. by Jonny Houlihan)",
+   "display_artist": "Sofie Tabesh",
+   "duration_in_ms": 217130,
+   "libreria": true
+  },
+  {
+   "audio_id": "1068776575596252",
+   "title": "Stop Motion",
+   "display_artist": "LAVLO",
+   "duration_in_ms": 57100,
+   "libreria": true
+  },
+  {
+   "audio_id": "6931473226905938",
+   "title": "Running Out Of Heaven Tonight",
+   "display_artist": "Trout Recording",
+   "duration_in_ms": 219888,
+   "libreria": true
+  },
+  {
+   "audio_id": "1858297981729030",
+   "title": "Make A Move (Instrumental)",
+   "display_artist": "Global Genius",
+   "duration_in_ms": 178557,
+   "libreria": true
+  },
+  {
+   "audio_id": "27848170894843876",
+   "title": "Time Moves Gently",
+   "display_artist": "Afterlight",
+   "duration_in_ms": 63402,
+   "libreria": true
+  },
+  {
+   "audio_id": "907634520516585",
+   "title": "Beast",
+   "display_artist": "Jumbo",
+   "duration_in_ms": 165764,
+   "libreria": true
+  },
+  {
+   "audio_id": "449434754227407",
+   "title": "Climbing The Ladder",
+   "display_artist": "Cameron Rasmussen",
+   "duration_in_ms": 190500,
+   "libreria": true
+  },
+  {
+   "audio_id": "845285864683880",
+   "title": "Rise Of The Brave",
+   "display_artist": "Daria Novo",
+   "duration_in_ms": 216086,
    "libreria": true
   }
  ]
