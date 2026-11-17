@@ -17388,7 +17388,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "mMFuz3rBQJU"
+     "id": "mMFuz3rBQJU",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -17399,11 +17400,79 @@
    },
    "spinto": true,
    "testo": "Essere pronti è un mito. Inizi. Fai schifo. Impari strada facendo. Migliori. Cadi. Ti rialzi. Sbagli ancora. Finché non "
+  },
+  {
+   "quando": "2026-11-17T07:00",
+   "slot": "2026-11-17 08:00",
+   "video": "IMG_3833.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-d5a9b99a",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci_due",
+    "durata": 8.0,
+    "musica": "fire_in_the_sky_3.m4a",
+    "stacchi": 2,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.122,
+     "movimento": 8.59,
+     "primo_piano_fermo": false,
+     "soglia_moto": 8.91,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "apertura_fermo_prima": false,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 112,
+     "righe": 6,
+     "scurito": 0.48,
+     "luce": 0.41,
+     "sfumatura": 0.31,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 115,
+    "scritta": "centro_serif",
+    "estratto": "dieci",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 26
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_06.flac",
+    "musica_instagram": "You Can Do It - Global Genius"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "o6sEZkX8gA4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17981472240131002",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Ricordati che tra un anno, in questa stessa data, potresti vivere una vita completamente diversa e tutto ciò che ti preo"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-09 08:00",
   "2026-11-09 10:00",
   "2026-11-09 12:00",
   "2026-11-09 14:00",
@@ -17482,10 +17551,10 @@
   "2026-11-16 20:00",
   "2026-11-16 22:00",
   "2026-11-17 00:00",
-  "2026-11-17 06:00"
+  "2026-11-17 06:00",
+  "2026-11-17 08:00"
  ],
  "musica_recenti": [
-  "ten_3.m4a",
   "taking_flight_2.m4a",
   "monthaholic_3.m4a",
   "ego_chall_1.m4a",
@@ -17544,7 +17613,8 @@
   "the_light_3.m4a",
   "i_might_be_late_2.m4a",
   "turn_in_the_sun_1.m4a",
-  "dusty_road_magic_3.m4a"
+  "dusty_road_magic_3.m4a",
+  "fire_in_the_sky_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -17938,16 +18008,17 @@
   "MIE-1171a49b",
   "MIE-4e9c5ff7",
   "MIE-9015361f",
-  "MIE-fb174d63"
+  "MIE-fb174d63",
+  "MIE-d5a9b99a"
  ],
  "temi_recenti": [
-  "mentalita",
   "dieta",
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -18154,8 +18225,8 @@
    "orizzontale": false
   },
   "1dS3dJuren-0gwioBQEQ4MkMFmJH5kMNx": {
-   "usi": 4,
-   "ultimo": "2026-11-09",
+   "usi": 5,
+   "ultimo": "2026-11-17",
    "orizzontale": false
   },
   "1a2POnx-7OaYCvRXrpkTO6Qw_dTZ4CN-d": {
@@ -18572,7 +18643,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_11.flac",
   "phonk_06.flac",
   "energia_02.flac",
   "trap_05.flac",
@@ -18591,7 +18661,8 @@
   "phonk_10.flac",
   "deciso_06.flac",
   "trap_09.flac",
-  "phonk_16.flac"
+  "phonk_16.flac",
+  "energia_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -18626,7 +18697,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci_due",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -18642,7 +18713,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1765359430669153",
   "800297207899385",
   "923490770808517",
   "1763628994746804",
@@ -18701,11 +18771,11 @@
   "1201635935516260",
   "1155586068813210",
   "1582326450151974",
-  "5293714980852628"
+  "5293714980852628",
+  "1383912545569665"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "ROMderful [screenshot]",
   "ROMderful [screenshot]",
   "ROMderful [screenshot]",
   "ROMderful [screenshot]",
@@ -18714,10 +18784,10 @@
   "Lady Jazmon [screenshot]",
   "Chela Rivas",
   "Summer Islands",
-  "The Death Beats"
+  "The Death Beats",
+  "Global Genius"
  ],
  "ig_titoli_recenti": [
-  "sentimental motion",
   "nice move",
   "work hard dream big",
   "move",
@@ -18756,7 +18826,8 @@
   "love me",
   "warrior",
   "move on",
-  "shadows in motion"
+  "shadows in motion",
+  "you can do it"
  ],
  "ig_tendenze_riserva": [
   {
@@ -18765,13 +18836,6 @@
    "display_artist": "Sia",
    "duration_in_ms": 217746,
    "libreria": false
-  },
-  {
-   "audio_id": "5293714980852628",
-   "title": "Shadows In Motion",
-   "display_artist": "The Death Beats",
-   "duration_in_ms": 59940,
-   "libreria": true
   }
  ]
 }
