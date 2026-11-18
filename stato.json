@@ -18587,7 +18587,9 @@
      "ok": true,
      "id": "18098779016693760",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -18647,7 +18649,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "f9Kf7t-JxIc"
+     "id": "f9Kf7t-JxIc",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -18658,11 +18661,77 @@
    },
    "spinto": true,
    "testo": "Oggi è il tuo giorno per iniziare freschi, per mangiare sano, per allenarti duro, per vivere sano, per essere fieri."
+  },
+  {
+   "quando": "2026-11-18T23:00",
+   "slot": "2026-11-19 00:00",
+   "video": "IMG_3768.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-37737cbe",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "moon_vision_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.44,
+     "movimento": 4.77,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 125,
+     "righe": 2,
+     "scurito": 0.56,
+     "luce": 0.65,
+     "sfumatura": 0.42,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scena_unica": "rallentata",
+    "secondi_montaggio": 78,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 6
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_04.flac",
+    "musica_instagram": "Move My Body (Instrumental) - Ella Joy Meir [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "L-AzCStvc5s"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18102077174439794",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Perdere persone tossiche è una vittoria."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-11 00:00",
   "2026-11-11 06:00",
   "2026-11-11 08:00",
   "2026-11-11 10:00",
@@ -18741,10 +18810,10 @@
   "2026-11-18 16:00",
   "2026-11-18 18:00",
   "2026-11-18 20:00",
-  "2026-11-18 22:00"
+  "2026-11-18 22:00",
+  "2026-11-19 00:00"
  ],
  "musica_recenti": [
-  "i_might_be_late_3.m4a",
   "death_duel_3.m4a",
   "break_ya_neck_1.m4a",
   "sweaty_staredown_3.m4a",
@@ -18803,7 +18872,8 @@
   "stake_out_3.m4a",
   "duty_calls_2.m4a",
   "locked_in_1.m4a",
-  "keep_it_movin_1.m4a"
+  "keep_it_movin_1.m4a",
+  "moon_vision_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -19215,7 +19285,8 @@
   "MIE-9765ce1a",
   "MIE-44cdc6ff",
   "MIE-8d7e7d51",
-  "MIE-9423ee74"
+  "MIE-9423ee74",
+  "MIE-37737cbe"
  ],
  "temi_recenti": [
   "mentalita",
@@ -19226,8 +19297,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
-  "dieta"
+  "dieta",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-11-18",
@@ -19294,8 +19365,8 @@
    "orizzontale": false
   },
   "1J6rUreSm_Mrsbua06uFjE1b4xu8-pRpL": {
-   "usi": 4,
-   "ultimo": "2026-11-10",
+   "usi": 5,
+   "ultimo": "2026-11-18",
    "orizzontale": false
   },
   "1hvbjqvKs_ADW2bi_kJP0H1fxpKUzd-nq": {
@@ -19899,7 +19970,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_09.flac",
   "phonk_16.flac",
   "energia_06.flac",
   "deciso_11.flac",
@@ -19918,7 +19988,8 @@
   "deciso_02.flac",
   "trap_15.flac",
   "drive_09.flac",
-  "phonk_06.flac"
+  "phonk_06.flac",
+  "deciso_04.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -19953,7 +20024,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -19969,7 +20040,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "605055452330912",
   "1029338276527053",
   "313517751444003",
   "3605912576363284",
@@ -20028,11 +20098,11 @@
   "1046631240870078",
   "2422994201393793",
   "1428954698111653",
-  "1469205655054044"
+  "1469205655054044",
+  "739108178545320"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Lyle Workman",
   "Sam Marshall",
   "bbox",
   "ill Think in ink",
@@ -20041,10 +20111,10 @@
   "half.cool",
   "Giulio Cercato",
   "Lance Taber",
-  "Beni Haze"
+  "Beni Haze",
+  "Ella Joy Meir"
  ],
  "ig_titoli_recenti": [
-  "run",
   "breathtaker",
   "join the movement",
   "willow run",
@@ -20083,7 +20153,8 @@
   "move ur body",
   "power on",
   "in motion",
-  "rise"
+  "rise",
+  "move my body"
  ],
  "ig_tendenze_riserva": [
   {
@@ -20094,52 +20165,24 @@
    "libreria": false
   },
   {
-   "audio_id": "1469205655054044",
-   "title": "Rise",
-   "display_artist": "Beni Haze",
-   "duration_in_ms": 160046,
+   "audio_id": "739108178545320",
+   "title": "Move My Body (Instrumental)",
+   "display_artist": "Ella Joy Meir",
+   "duration_in_ms": 114620,
    "libreria": true
   },
   {
-   "audio_id": "660029496086919",
-   "title": "Project Power",
-   "display_artist": "Trout Recording",
-   "duration_in_ms": 214876,
+   "audio_id": "1015255657240675",
+   "title": "The Running (Instrumental)",
+   "display_artist": "bbox",
+   "duration_in_ms": 179320,
    "libreria": true
   },
   {
-   "audio_id": "1428954698111653",
-   "title": "In Motion",
-   "display_artist": "Lance Taber",
-   "duration_in_ms": 152940,
-   "libreria": true
-  },
-  {
-   "audio_id": "139421689171943",
-   "title": "Enigma (feat. My City Glory)",
+   "audio_id": "1321862862745838",
+   "title": "Adrift (feat. My City Glory)",
    "display_artist": "Ross Lara",
-   "duration_in_ms": 153256,
-   "libreria": true
-  },
-  {
-   "audio_id": "601112655997356",
-   "title": "Orbiting (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 165490,
-   "libreria": true
-  },
-  {
-   "audio_id": "888162299407391",
-   "title": "Winner",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 149760,
-   "libreria": true
-  },
-  {
-   "audio_id": "2269705013766100",
-   "title": "Move Forever",
-   "display_artist": "Fellow Travelers",
-   "duration_in_ms": 61456,
+   "duration_in_ms": 133666,
    "libreria": true
   }
  ]
