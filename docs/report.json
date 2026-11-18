@@ -1,9 +1,9 @@
 {
- "data": "2026-11-17",
- "reel_analizzati": 207,
+ "data": "2026-11-18",
+ "reel_analizzati": 217,
  "facebook": {
-  "reel": 54,
-  "riproduzioni": 13,
+  "reel": 41,
+  "riproduzioni": 7,
   "media": 0.2,
   "ultimi": [
    {
@@ -51,37 +51,37 @@
  "instagram": {
   "reel": 30,
   "con_musica_instagram": 30,
-  "views": 22974,
-  "salvati": 79,
-  "condivisi": 57
+  "views": 20726,
+  "salvati": 81,
+  "condivisi": 16
  },
- "media_views": 915,
- "spinti": 202,
- "like_totali": 1700,
+ "media_views": 942,
+ "spinti": 212,
+ "like_totali": 1866,
  "per_tema": {
   "amicizia": {
    "reel": 2,
    "media_views": 917
   },
   "dieta": {
-   "reel": 3,
-   "media_views": 1016
+   "reel": 5,
+   "media_views": 1037
   },
   "famiglia": {
-   "reel": 3,
-   "media_views": 762
+   "reel": 5,
+   "media_views": 1204
   },
   "imprenditore": {
    "reel": 10,
-   "media_views": 994
+   "media_views": 995
   },
   "mentalita": {
-   "reel": 154,
-   "media_views": 923
+   "reel": 159,
+   "media_views": 945
   },
   "palestra": {
-   "reel": 8,
-   "media_views": 956
+   "reel": 9,
+   "media_views": 973
   },
   "regole": {
    "reel": 14,
@@ -106,20 +106,20 @@
    "media_views": 791
   },
   "lavoro": {
-   "reel": 16,
-   "media_views": 638
+   "reel": 18,
+   "media_views": 704
   },
   "macchina": {
-   "reel": 33,
-   "media_views": 901
+   "reel": 35,
+   "media_views": 910
   },
   "palestra": {
-   "reel": 104,
-   "media_views": 1013
+   "reel": 110,
+   "media_views": 1052
   },
   "specchio": {
    "reel": 13,
-   "media_views": 1018
+   "media_views": 1020
   },
   "uscita": {
    "reel": 20,
@@ -128,8 +128,8 @@
  },
  "per_orario": {
   "00": {
-   "reel": 10,
-   "media_views": 596
+   "reel": 11,
+   "media_views": 784
   },
   "01": {
    "reel": 1,
@@ -137,7 +137,7 @@
   },
   "02": {
    "reel": 5,
-   "media_views": 1108
+   "media_views": 1109
   },
   "03": {
    "reel": 1,
@@ -152,68 +152,68 @@
    "media_views": 1128
   },
   "06": {
-   "reel": 21,
-   "media_views": 763
+   "reel": 22,
+   "media_views": 776
   },
   "07": {
    "reel": 2,
    "media_views": 965
   },
   "08": {
-   "reel": 19,
-   "media_views": 706
+   "reel": 20,
+   "media_views": 721
   },
   "09": {
    "reel": 7,
    "media_views": 1023
   },
   "10": {
-   "reel": 14,
-   "media_views": 2771
+   "reel": 15,
+   "media_views": 2764
   },
   "11": {
    "reel": 3,
    "media_views": 920
   },
   "12": {
-   "reel": 16,
-   "media_views": 778
+   "reel": 17,
+   "media_views": 792
   },
   "13": {
    "reel": 6,
    "media_views": 1096
   },
   "14": {
-   "reel": 13,
-   "media_views": 682
+   "reel": 14,
+   "media_views": 729
   },
   "15": {
    "reel": 3,
-   "media_views": 1196
+   "media_views": 1197
   },
   "16": {
-   "reel": 16,
-   "media_views": 744
+   "reel": 17,
+   "media_views": 785
   },
   "17": {
    "reel": 4,
    "media_views": 984
   },
   "18": {
-   "reel": 16,
-   "media_views": 773
+   "reel": 17,
+   "media_views": 792
   },
   "20": {
-   "reel": 15,
-   "media_views": 642
+   "reel": 16,
+   "media_views": 668
   },
   "21": {
    "reel": 6,
    "media_views": 1054
   },
   "22": {
-   "reel": 15,
-   "media_views": 724
+   "reel": 16,
+   "media_views": 784
   },
   "23": {
    "reel": 4,
@@ -222,28 +222,28 @@
  },
  "per_musica": {
   "Ancient Civilisations": {
-   "reel": 4,
-   "media_views": 1019
+   "reel": 5,
+   "media_views": 1336
   },
   "Break Ya Neck": {
-   "reel": 4,
-   "media_views": 623
+   "reel": 5,
+   "media_views": 737
   },
   "Cartier": {
    "reel": 7,
-   "media_views": 874
+   "media_views": 878
   },
   "Cutscene Crush": {
    "reel": 6,
    "media_views": 946
   },
   "Death Duel": {
-   "reel": 7,
-   "media_views": 758
+   "reel": 8,
+   "media_views": 783
   },
   "Delirium": {
    "reel": 6,
-   "media_views": 881
+   "media_views": 882
   },
   "Dusty Road Magic": {
    "reel": 6,
@@ -251,23 +251,23 @@
   },
   "Duty Calls": {
    "reel": 4,
-   "media_views": 618
+   "media_views": 621
   },
   "Ego Chall": {
-   "reel": 4,
-   "media_views": 465
+   "reel": 5,
+   "media_views": 579
   },
   "Final Boss Battle": {
    "reel": 6,
-   "media_views": 793
+   "media_views": 806
   },
   "Fire In The Sky": {
    "reel": 7,
-   "media_views": 883
+   "media_views": 885
   },
   "Horizons": {
    "reel": 5,
-   "media_views": 694
+   "media_views": 695
   },
   "I Might Be Late": {
    "reel": 2,
@@ -275,35 +275,35 @@
   },
   "Intergalactic": {
    "reel": 6,
-   "media_views": 969
+   "media_views": 973
   },
   "Keep It Movin": {
-   "reel": 5,
-   "media_views": 482
+   "reel": 6,
+   "media_views": 578
   },
   "Kick It": {
    "reel": 6,
    "media_views": 790
   },
   "Locked In": {
-   "reel": 7,
-   "media_views": 966
+   "reel": 8,
+   "media_views": 983
   },
   "Majestic 12": {
    "reel": 5,
-   "media_views": 685
+   "media_views": 698
   },
   "Mirror Mirror": {
    "reel": 5,
-   "media_views": 803
+   "media_views": 806
   },
   "Monthaholic": {
-   "reel": 2,
-   "media_views": 614
+   "reel": 3,
+   "media_views": 754
   },
   "Moon Vision": {
    "reel": 7,
-   "media_views": 5038
+   "media_views": 5270
   },
   "Rubberband": {
    "reel": 6,
@@ -311,7 +311,7 @@
   },
   "Stake Out": {
    "reel": 4,
-   "media_views": 582
+   "media_views": 584
   },
   "Survival Mode": {
    "reel": 4,
@@ -319,15 +319,15 @@
   },
   "Sweaty Staredown": {
    "reel": 5,
-   "media_views": 908
+   "media_views": 907
   },
   "Taking Flight": {
    "reel": 5,
-   "media_views": 1049
+   "media_views": 1047
   },
   "Ten": {
    "reel": 4,
-   "media_views": 490
+   "media_views": 491
   },
   "The Light": {
    "reel": 6,
@@ -339,27 +339,27 @@
   },
   "Turn In The Sun": {
    "reel": 5,
-   "media_views": 884
+   "media_views": 885
   },
   "Van Life Rager": {
-   "reel": 5,
-   "media_views": 793
+   "reel": 6,
+   "media_views": 935
   },
   "Vibe Check": {
-   "reel": 7,
-   "media_views": 751
+   "reel": 8,
+   "media_views": 835
   },
   "Visions": {
    "reel": 4,
    "media_views": 478
   },
   "Way Back Home": {
-   "reel": 10,
-   "media_views": 798
+   "reel": 11,
+   "media_views": 818
   },
   "Whoop": {
    "reel": 4,
-   "media_views": 850
+   "media_views": 868
   },
   "Wrangle The Crazy": {
    "reel": 8,
@@ -384,18 +384,18 @@
  },
  "per_origine": {
   "archivio": {
-   "reel": 114,
-   "media_views": 982
+   "reel": 119,
+   "media_views": 1001
   },
   "video nuovo": {
-   "reel": 88,
-   "media_views": 879
+   "reel": 93,
+   "media_views": 916
   }
  },
  "per_frase_virale": {
   "frase normale": {
-   "reel": 170,
-   "media_views": 933
+   "reel": 180,
+   "media_views": 964
   },
   "frase virale": {
    "reel": 32,
@@ -413,27 +413,27 @@
   },
   "broll3": {
    "reel": 1,
-   "media_views": 798
+   "media_views": 800
   },
   "cinema": {
    "reel": 1,
-   "media_views": 199
+   "media_views": 200
   },
   "dieci": {
-   "reel": 12,
-   "media_views": 752
+   "reel": 14,
+   "media_views": 933
   },
   "dieci_broll": {
    "reel": 1,
    "media_views": 1014
   },
   "dieci_due": {
-   "reel": 26,
-   "media_views": 622
+   "reel": 29,
+   "media_views": 674
   },
   "dieci_foto": {
-   "reel": 5,
-   "media_views": 711
+   "reel": 6,
+   "media_views": 778
   },
   "frase": {
    "reel": 11,
@@ -457,15 +457,15 @@
   },
   "giornata": {
    "reel": 7,
-   "media_views": 228
+   "media_views": 227
   },
   "intero": {
    "reel": 5,
-   "media_views": 708
+   "media_views": 710
   },
   "loop": {
-   "reel": 11,
-   "media_views": 643
+   "reel": 12,
+   "media_views": 681
   },
   "montaggio": {
    "reel": 12,
@@ -488,8 +488,8 @@
    "media_views": 1032
   },
   "rallenty": {
-   "reel": 7,
-   "media_views": 420
+   "reel": 8,
+   "media_views": 494
   },
   "regole": {
    "reel": 13,
@@ -497,46 +497,48 @@
   },
   "ripiego taglio2": {
    "reel": 2,
-   "media_views": 16068
+   "media_views": 16916
   },
   "storia": {
    "reel": 1,
    "media_views": 903
   },
   "taglio1": {
-   "reel": 5,
-   "media_views": 420
+   "reel": 6,
+   "media_views": 512
   },
   "taglio2": {
    "reel": 9,
-   "media_views": 412
+   "media_views": 415
   },
   "taglio3": {
-   "reel": 6,
-   "media_views": 357
+   "reel": 7,
+   "media_views": 541
   }
  },
  "pesi_temi": {
   "amicizia": 0.99,
-  "imprenditore": 1.04,
-  "mentalita": 0.99,
+  "imprenditore": 1.02,
+  "mentalita": 0.98,
   "palestra": 1.01,
-  "dieta": 1.03,
-  "regole": 1.09,
-  "storia": 1.01,
-  "famiglia": 0.93
+  "dieta": 1.04,
+  "regole": 1.07,
+  "storia": 0.99,
+  "famiglia": 1.12
  },
  "pesi_formati": {
-  "frase": 1.09,
-  "regole": 1.08,
-  "montaggio": 0.96,
-  "frase8": 1.07,
-  "dieci_due": 0.63,
-  "dieci": 1.09,
-  "rallenty": 0.4,
-  "loop": 0.44,
+  "frase": 1.07,
+  "regole": 1.06,
+  "montaggio": 0.93,
+  "frase8": 1.04,
+  "dieci_due": 0.72,
+  "dieci": 1.08,
+  "rallenty": 0.45,
+  "loop": 0.66,
+  "dieci_foto": 1.14,
   "giornata": 0.4,
   "taglio2": 0.4,
+  "taglio1": 0.4,
   "taglio3": 0.4
  },
  "migliori": [
@@ -550,8 +552,21 @@
    "origine": "archivio",
    "frase_virale": "frase normale",
    "formato": "ripiego taglio2",
-   "views": 31052,
-   "like": 216
+   "views": 32676,
+   "like": 225
+  },
+  {
+   "quando": "2026-11-15T23:00",
+   "frase": "Mi sono capitati un papà e una mamma che muovono mari e cieli per vedermi stare bene, non posso accontentarmi di meno.",
+   "tema": "famiglia",
+   "scena": "palestra",
+   "orario": "00",
+   "musica": "Ancient Civilisations",
+   "origine": "video nuovo",
+   "frase_virale": "frase normale",
+   "formato": "dieci",
+   "views": 2604,
+   "like": 25
   },
   {
    "quando": "2026-11-15T07:00",
@@ -563,7 +578,7 @@
    "origine": "archivio",
    "frase_virale": "frase normale",
    "formato": "dieci_due",
-   "views": 2055,
+   "views": 2082,
    "like": 58
   },
   {
@@ -589,21 +604,8 @@
    "origine": "archivio",
    "frase_virale": "frase normale",
    "formato": "loop",
-   "views": 1660,
+   "views": 1730,
    "like": 28
-  },
-  {
-   "quando": "2026-10-08T21:48",
-   "frase": "Nessuno lavora più duro di un uomo che sa che nessuno lo sostiene.",
-   "tema": "mentalita",
-   "scena": "macchina",
-   "orario": "23",
-   "musica": "Taking Flight",
-   "origine": "archivio",
-   "frase_virale": "frase normale",
-   "formato": "frase 8 s",
-   "views": 1556,
-   "like": 25
   }
  ],
  "nota": "Solo YouTube; non contati gli Shorts usciti da meno di 2 giorni."
