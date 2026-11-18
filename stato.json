@@ -17955,7 +17955,9 @@
      "ok": true,
      "id": "18014492375770468",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -18018,22 +18020,90 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "AXThPq0INc0"
+     "id": "AXThPq0INc0",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18226859743345419",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "Hai uno sguardo più felice da quando hai iniziato a darti l'amore che hai sempre dato agli altri."
+  },
+  {
+   "quando": "2026-11-18T05:00",
+   "slot": "2026-11-18 06:00",
+   "video": "IMG_4121.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-97137b41",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 8.0,
+    "musica": "cartier_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.167,
+     "movimento": 58.71,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 130,
+     "righe": 2,
+     "scurito": 0.52,
+     "luce": 0.46,
+     "sfumatura": 0.34,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 210,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 6
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_07.flac",
+    "musica_instagram": "Not Phonk - Sam Marshall [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "0utxxazo1ko"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18107229266644056",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Il successo è la migliore vendetta."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-10 06:00",
   "2026-11-10 08:00",
   "2026-11-10 10:00",
   "2026-11-10 12:00",
@@ -18112,10 +18182,10 @@
   "2026-11-17 18:00",
   "2026-11-17 20:00",
   "2026-11-17 22:00",
-  "2026-11-18 00:00"
+  "2026-11-18 00:00",
+  "2026-11-18 06:00"
  ],
  "musica_recenti": [
-  "moon_vision_2.m4a",
   "keep_it_movin_2.m4a",
   "horizons_1.m4a",
   "vibe_check_3.m4a",
@@ -18174,7 +18244,8 @@
   "ten_3.m4a",
   "the_road_to_mordor_3.m4a",
   "wrangle_the_crazy_2.m4a",
-  "taking_flight_2.m4a"
+  "taking_flight_2.m4a",
+  "cartier_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -18577,14 +18648,15 @@
   "MIE-e25f267f",
   "MIE-e86dcf58",
   "MIE-28474cd3",
-  "MIE-5364bed1"
+  "MIE-5364bed1",
+  "MIE-97137b41"
  ],
  "temi_recenti": [
   "mentalita",
-  "mentalita",
   "palestra",
   "mentalita",
   "palestra",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -18592,7 +18664,7 @@
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-17",
+ "pulizia": "2026-11-18",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -18986,8 +19058,8 @@
    "ultimo": "2026-10-26"
   },
   "1Ec9__ctnSkN9Cj2-_GnGAOPpY6a3V57S": {
-   "usi": 4,
-   "ultimo": "2026-11-10",
+   "usi": 5,
+   "ultimo": "2026-11-18",
    "orizzontale": false
   },
   "1-ciPqgzhDOKWA7FElGzwRc9htypB_2u3": {
@@ -19231,7 +19303,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_03.flac",
   "deciso_05.flac",
   "trap_03.flac",
   "drive_05.flac",
@@ -19250,7 +19321,8 @@
   "trap_14.flac",
   "energia_07.flac",
   "deciso_08.flac",
-  "trap_06.flac"
+  "trap_06.flac",
+  "phonk_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -19285,7 +19357,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -19301,7 +19373,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "6931473226905938",
   "974432747187721",
   "556944786364191",
   "3643996589148382",
@@ -19360,11 +19431,11 @@
   "1546581635764552",
   "1308898424418438",
   "1030263145726523",
-  "1058481142047930"
+  "1058481142047930",
+  "576850318404245"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "The Death Beats",
   "Global Genius",
   "Ross Lara",
   "Giulio Cercato",
@@ -19373,10 +19444,10 @@
   "Genticorum",
   "Lightbox Music",
   "Jumbo",
-  "Lyle Workman"
+  "Lyle Workman",
+  "Sam Marshall"
  ],
  "ig_titoli_recenti": [
-  "good fight",
   "knockout",
   "copacetic",
   "glory",
@@ -19415,7 +19486,8 @@
   "la marche des commis voyageurs",
   "hot mess anthem",
   "voices of victory",
-  "hero s journey"
+  "hero s journey",
+  "not phonk"
  ],
  "ig_tendenze_riserva": [
   {
@@ -19426,31 +19498,31 @@
    "libreria": false
   },
   {
-   "audio_id": "1058481142047930",
-   "title": "Hero's Journey",
-   "display_artist": "Lyle Workman",
-   "duration_in_ms": 256230,
-   "libreria": true
-  },
-  {
-   "audio_id": "413152290918119",
-   "title": "People Mover",
-   "display_artist": "Brent Bourgeois",
-   "duration_in_ms": 151554,
-   "libreria": true
-  },
-  {
-   "audio_id": "2475524415980310",
-   "title": "Dream Big",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 119030,
-   "libreria": true
-  },
-  {
-   "audio_id": "1160020348806776",
-   "title": "Seattle Skies (feat. My City Glory)",
+   "audio_id": "1321862862745838",
+   "title": "Adrift (feat. My City Glory)",
    "display_artist": "Ross Lara",
-   "duration_in_ms": 186070,
+   "duration_in_ms": 133666,
+   "libreria": true
+  },
+  {
+   "audio_id": "576850318404245",
+   "title": "Not Phonk",
+   "display_artist": "Sam Marshall",
+   "duration_in_ms": 188462,
+   "libreria": true
+  },
+  {
+   "audio_id": "819743797457783",
+   "title": "Redux (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 243803,
+   "libreria": true
+  },
+  {
+   "audio_id": "912431483574563",
+   "title": "Morning Rise",
+   "display_artist": "Sugartapes",
+   "duration_in_ms": 167878,
    "libreria": true
   }
  ]
