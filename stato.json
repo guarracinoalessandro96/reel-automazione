@@ -18167,7 +18167,9 @@
      "ok": true,
      "id": "18012445101003451",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -18230,7 +18232,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "9RLAvmvAFxs"
+     "id": "9RLAvmvAFxs",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -18241,11 +18244,76 @@
    },
    "spinto": true,
    "testo": "Le risposte che cercavo le ho sempre trovate nei comportamenti. Non nelle parole. Perché parlare è facile. Promettere an"
+  },
+  {
+   "quando": "2026-11-18T11:00",
+   "slot": "2026-11-18 12:00",
+   "video": "IMG_5433.mov",
+   "md5": "9a02a4181e4b97e52c6a2fd79d1fcdd3",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-11-18T09:12+01:00",
+   "frase": "MIE-aac3f471",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 8.0,
+    "musica": "intergalactic_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.412,
+     "movimento": 54.55,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 6,
+     "scurito": 0.0,
+     "luce": 0.46,
+     "sfumatura": 0.34,
+     "intatto": true,
+     "scene_intatte": 1
+    },
+    "secondi_montaggio": 59,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 20
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_02.flac",
+    "musica_instagram": "Project Power - Trout Recording [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "2Qursz2qZIU"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18247828444312255",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Se ti rende felice, corri il rischio. Nel peggiore dei casi imparerai. Nel migliore dei casi cambierai la tua vita."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-10 12:00",
   "2026-11-10 14:00",
   "2026-11-10 16:00",
   "2026-11-10 18:00",
@@ -18324,10 +18392,10 @@
   "2026-11-18 00:00",
   "2026-11-18 06:00",
   "2026-11-18 08:00",
-  "2026-11-18 10:00"
+  "2026-11-18 10:00",
+  "2026-11-18 12:00"
  ],
  "musica_recenti": [
-  "vibe_check_3.m4a",
   "survival_mode_1.m4a",
   "locked_in_2.m4a",
   "way_back_home_3.m4a",
@@ -18386,7 +18454,8 @@
   "taking_flight_2.m4a",
   "cartier_1.m4a",
   "survival_mode_2.m4a",
-  "whoop_2.m4a"
+  "whoop_2.m4a",
+  "intergalactic_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -18792,11 +18861,12 @@
   "MIE-5364bed1",
   "MIE-97137b41",
   "MIE-ee301934",
-  "MIE-f0b63240"
+  "MIE-f0b63240",
+  "MIE-aac3f471"
  ],
  "temi_recenti": [
-  "mentalita",
   "palestra",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -18806,7 +18876,22 @@
   "mentalita",
   "mentalita"
  ],
- "analisi": {},
+ "analisi": {
+  "1Zia6q9eOhzVkM89f7pmurvjFJ87dKqLB": {
+   "nome": "IMG_5428.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-17T22:36+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-18T09:02:55.877Z",
+   "parlato": null,
+   "momento": null
+  }
+ },
  "pulizia": "2026-11-18",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -19443,10 +19528,14 @@
    "usi": 1,
    "ultimo": "2026-11-17",
    "orizzontale": false
+  },
+  "19UJofE0UHHukhe3ZSqxk0R7bnpPYZJTm": {
+   "usi": 1,
+   "ultimo": "2026-11-18",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "drive_05.flac",
   "phonk_11.flac",
   "trap_10.flac",
   "drive_16.flac",
@@ -19465,7 +19554,8 @@
   "trap_06.flac",
   "phonk_07.flac",
   "drive_06.flac",
-  "deciso_05.flac"
+  "deciso_05.flac",
+  "trap_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -19500,7 +19590,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -19516,7 +19606,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "3643996589148382",
   "2818493204964733",
   "873920756997122",
   "907634520516585",
@@ -19575,11 +19664,11 @@
   "1058481142047930",
   "576850318404245",
   "1186003979031011",
-  "1763628994746804"
+  "1763628994746804",
+  "660029496086919"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Giulio Cercato",
   "LAVLO",
   "The K Club",
   "Genticorum",
@@ -19588,10 +19677,10 @@
   "Lyle Workman",
   "Sam Marshall",
   "bbox",
-  "ill Think in ink"
+  "ill Think in ink",
+  "Trout Recording"
  ],
  "ig_titoli_recenti": [
-  "glory",
   "battle",
   "family food fight",
   "epica",
@@ -19630,7 +19719,8 @@
   "hero s journey",
   "not phonk",
   "hype track",
-  "rockstar anthem"
+  "rockstar anthem",
+  "project power"
  ],
  "ig_tendenze_riserva": [
   {
@@ -19641,10 +19731,66 @@
    "libreria": false
   },
   {
-   "audio_id": "1763628994746804",
-   "title": "Rockstar Anthem (feat. YawnyBlew) (Instrumental)",
-   "display_artist": "ill Think in ink",
-   "duration_in_ms": 144050,
+   "audio_id": "660029496086919",
+   "title": "Project Power",
+   "display_artist": "Trout Recording",
+   "duration_in_ms": 214876,
+   "libreria": true
+  },
+  {
+   "audio_id": "850390349975783",
+   "title": "Move (Instrumental)",
+   "display_artist": "Tony Dark Eyes",
+   "duration_in_ms": 103760,
+   "libreria": true
+  },
+  {
+   "audio_id": "1108285910189784",
+   "title": "Knockout",
+   "display_artist": "Adam Griffith",
+   "duration_in_ms": 137167,
+   "libreria": true
+  },
+  {
+   "audio_id": "2044207116351520",
+   "title": "Running High (Instrumental)",
+   "display_artist": "bbox",
+   "duration_in_ms": 187084,
+   "libreria": true
+  },
+  {
+   "audio_id": "1036422432422410",
+   "title": "Believe",
+   "display_artist": "LAVLO",
+   "duration_in_ms": 53590,
+   "libreria": true
+  },
+  {
+   "audio_id": "1469205655054044",
+   "title": "Rise",
+   "display_artist": "Beni Haze",
+   "duration_in_ms": 160046,
+   "libreria": true
+  },
+  {
+   "audio_id": "556944786364191",
+   "title": "Battle Ska",
+   "display_artist": "Jamie West-Oram",
+   "duration_in_ms": 181510,
+   "libreria": true
+  },
+  {
+   "audio_id": "849342490718599",
+   "title": "Level Up",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 162569,
+   "libreria": true
+  },
+  {
+   "audio_id": "1858297981729030",
+   "title": "Make A Move (Instrumental)",
+   "display_artist": "Global Genius",
+   "duration_in_ms": 178557,
    "libreria": true
   }
  ]
