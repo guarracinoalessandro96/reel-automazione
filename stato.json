@@ -18096,7 +18096,9 @@
      "ok": true,
      "id": "18107229266644056",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -18158,7 +18160,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "mdX4w9SJRl4"
+     "id": "mdX4w9SJRl4",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -18169,11 +18172,79 @@
    },
    "spinto": true,
    "testo": "Fai sempre ciò che ti senti perché i rimpianti pesano più degli errori, la vita è una sola."
+  },
+  {
+   "quando": "2026-11-18T09:01",
+   "slot": "2026-11-18 10:00",
+   "video": "IMG_3792.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-f0b63240",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "whoop_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 9.19,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "velocita": 0.9988,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 96,
+     "righe": 10,
+     "scurito": 0.57,
+     "luce": 0.66,
+     "sfumatura": 0.42,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scena_unica": "rallentata",
+    "secondi_montaggio": 104,
+    "scritta": "centro_serif",
+    "estratto": "dieci",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "io",
+     "forma": "due",
+     "parole": 40
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_05.flac",
+    "musica_instagram": "Rockstar Anthem (feat. YawnyBlew) (Instrumental) - ill Think in ink [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "9RLAvmvAFxs"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17990368826880357",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Le risposte che cercavo le ho sempre trovate nei comportamenti. Non nelle parole. Perché parlare è facile. Promettere an"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-10 10:00",
   "2026-11-10 12:00",
   "2026-11-10 14:00",
   "2026-11-10 16:00",
@@ -18252,10 +18323,10 @@
   "2026-11-17 22:00",
   "2026-11-18 00:00",
   "2026-11-18 06:00",
-  "2026-11-18 08:00"
+  "2026-11-18 08:00",
+  "2026-11-18 10:00"
  ],
  "musica_recenti": [
-  "horizons_1.m4a",
   "vibe_check_3.m4a",
   "survival_mode_1.m4a",
   "locked_in_2.m4a",
@@ -18314,7 +18385,8 @@
   "wrangle_the_crazy_2.m4a",
   "taking_flight_2.m4a",
   "cartier_1.m4a",
-  "survival_mode_2.m4a"
+  "survival_mode_2.m4a",
+  "whoop_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -18719,12 +18791,13 @@
   "MIE-28474cd3",
   "MIE-5364bed1",
   "MIE-97137b41",
-  "MIE-ee301934"
+  "MIE-ee301934",
+  "MIE-f0b63240"
  ],
  "temi_recenti": [
-  "palestra",
   "mentalita",
   "palestra",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -18788,8 +18861,8 @@
    "orizzontale": false
   },
   "1mIxav-KbU3ZL_NU9MF4Z-Vcww6fOPwR4": {
-   "usi": 4,
-   "ultimo": "2026-11-10",
+   "usi": 5,
+   "ultimo": "2026-11-18",
    "orizzontale": false
   },
   "1ehg1VD_Xtwd5ysGegtBXVLxxyo6vHs0U": {
@@ -19373,7 +19446,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_03.flac",
   "drive_05.flac",
   "phonk_11.flac",
   "trap_10.flac",
@@ -19392,7 +19464,8 @@
   "deciso_08.flac",
   "trap_06.flac",
   "phonk_07.flac",
-  "drive_06.flac"
+  "drive_06.flac",
+  "deciso_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -19443,7 +19516,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "556944786364191",
   "3643996589148382",
   "2818493204964733",
   "873920756997122",
@@ -19502,11 +19574,11 @@
   "1030263145726523",
   "1058481142047930",
   "576850318404245",
-  "1186003979031011"
+  "1186003979031011",
+  "1763628994746804"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Ross Lara",
   "Giulio Cercato",
   "LAVLO",
   "The K Club",
@@ -19515,10 +19587,10 @@
   "Jumbo",
   "Lyle Workman",
   "Sam Marshall",
-  "bbox"
+  "bbox",
+  "ill Think in ink"
  ],
  "ig_titoli_recenti": [
-  "copacetic",
   "glory",
   "battle",
   "family food fight",
@@ -19557,7 +19629,8 @@
   "voices of victory",
   "hero s journey",
   "not phonk",
-  "hype track"
+  "hype track",
+  "rockstar anthem"
  ],
  "ig_tendenze_riserva": [
   {
@@ -19566,6 +19639,13 @@
    "display_artist": "Sia",
    "duration_in_ms": 217746,
    "libreria": false
+  },
+  {
+   "audio_id": "1763628994746804",
+   "title": "Rockstar Anthem (feat. YawnyBlew) (Instrumental)",
+   "display_artist": "ill Think in ink",
+   "duration_in_ms": 144050,
+   "libreria": true
   }
  ]
 }
