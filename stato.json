@@ -18377,7 +18377,9 @@
      "ok": true,
      "id": "18098520266159831",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -18437,7 +18439,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "T2Zoynm-tak"
+     "id": "T2Zoynm-tak",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -18448,11 +18451,76 @@
    },
    "spinto": true,
    "testo": "Ciò che consuma la tua mente controlla la tua vita."
+  },
+  {
+   "quando": "2026-11-18T17:01",
+   "slot": "2026-11-18 18:00",
+   "video": "IMG_5460.MOV",
+   "md5": "d767df63372077d97b88bf99caa85f97",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-11-18T12:25+01:00",
+   "frase": "MIE-44cdc6ff",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "duty_calls_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 2.08,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 3,
+     "scurito": 0.0,
+     "luce": 0.13,
+     "sfumatura": 0.0,
+     "intatto": true,
+     "scene_intatte": 1
+    },
+    "secondi_montaggio": 31,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 13
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_15.flac",
+    "musica_instagram": "Power On - Giulio Cercato"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Lj_Hu2X3M1s"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17945563839381307",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Puoi vincere solo quando la tua mente è più forte delle tue emozioni."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-10 18:00",
   "2026-11-10 20:00",
   "2026-11-10 22:00",
   "2026-11-11 00:00",
@@ -18531,10 +18599,10 @@
   "2026-11-18 10:00",
   "2026-11-18 12:00",
   "2026-11-18 14:00",
-  "2026-11-18 16:00"
+  "2026-11-18 16:00",
+  "2026-11-18 18:00"
  ],
  "musica_recenti": [
-  "way_back_home_3.m4a",
   "van_life_rager_2.m4a",
   "ancient_civilisations_2.m4a",
   "i_might_be_late_3.m4a",
@@ -18593,7 +18661,8 @@
   "whoop_2.m4a",
   "intergalactic_1.m4a",
   "horizons_2.m4a",
-  "stake_out_3.m4a"
+  "stake_out_3.m4a",
+  "duty_calls_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -19002,7 +19071,8 @@
   "MIE-f0b63240",
   "MIE-aac3f471",
   "MIE-a00bf0c4",
-  "MIE-9765ce1a"
+  "MIE-9765ce1a",
+  "MIE-44cdc6ff"
  ],
  "temi_recenti": [
   "mentalita",
@@ -19042,20 +19112,6 @@
    "registrato": "2026-11-18T12:26+01:00",
    "fascia": "pranzo",
    "caricato": "2026-11-18T11:31:39.867Z",
-   "parlato": null,
-   "momento": null
-  },
-  "1SCGeLXho8yc0EDFbPU1s4OBzkVCUvaZh": {
-   "nome": "IMG_5460.MOV",
-   "scena": "specchio",
-   "sicurezza": 0.44,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-18T12:25+01:00",
-   "fascia": "ufficio",
-   "caricato": "2026-11-18T11:31:39.938Z",
    "parlato": null,
    "momento": null
   }
@@ -19711,10 +19767,14 @@
    "usi": 1,
    "ultimo": "2026-11-18",
    "orizzontale": false
+  },
+  "1SCGeLXho8yc0EDFbPU1s4OBzkVCUvaZh": {
+   "usi": 1,
+   "ultimo": "2026-11-18",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "drive_16.flac",
   "phonk_10.flac",
   "deciso_06.flac",
   "trap_09.flac",
@@ -19733,7 +19793,8 @@
   "deciso_05.flac",
   "trap_02.flac",
   "drive_12.flac",
-  "deciso_02.flac"
+  "deciso_02.flac",
+  "trap_15.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -19768,7 +19829,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -19784,7 +19845,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "907634520516585",
   "672409740985213",
   "283066584103655",
   "605055452330912",
@@ -19843,11 +19903,11 @@
   "1763628994746804",
   "660029496086919",
   "1520634330105846",
-  "1046631240870078"
+  "1046631240870078",
+  "2422994201393793"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Genticorum",
   "Lightbox Music",
   "Jumbo",
   "Lyle Workman",
@@ -19856,10 +19916,10 @@
   "ill Think in ink",
   "Trout Recording",
   "Fellow Travelers",
-  "half.cool"
+  "half.cool",
+  "Giulio Cercato"
  ],
  "ig_titoli_recenti": [
-  "epica",
   "just can t believe",
   "epic proportions",
   "run",
@@ -19898,7 +19958,8 @@
   "rockstar anthem",
   "project power",
   "good run",
-  "move ur body"
+  "move ur body",
+  "power on"
  ],
  "ig_tendenze_riserva": [
   {
@@ -19907,34 +19968,6 @@
    "display_artist": "Sia",
    "duration_in_ms": 217746,
    "libreria": false
-  },
-  {
-   "audio_id": "4027732330853406",
-   "title": "Success",
-   "display_artist": "Jordan Olmos",
-   "duration_in_ms": 67510,
-   "libreria": true
-  },
-  {
-   "audio_id": "888162299407391",
-   "title": "Winner",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 149760,
-   "libreria": true
-  },
-  {
-   "audio_id": "1046631240870078",
-   "title": "Move Ur Body",
-   "display_artist": "half.cool",
-   "duration_in_ms": 143018,
-   "libreria": true
-  },
-  {
-   "audio_id": "863843869658726",
-   "title": "Você Me Deixa (Move That Body Round) (feat. dontkillrose)",
-   "display_artist": "Kolektivo",
-   "duration_in_ms": 190765,
-   "libreria": true
   }
  ]
 }
