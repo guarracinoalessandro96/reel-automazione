@@ -18446,7 +18446,9 @@
      "ok": true,
      "id": "18122888863956314",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -18506,7 +18508,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "Lj_Hu2X3M1s"
+     "id": "Lj_Hu2X3M1s",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -18517,11 +18520,79 @@
    },
    "spinto": true,
    "testo": "Puoi vincere solo quando la tua mente è più forte delle tue emozioni."
+  },
+  {
+   "quando": "2026-11-18T19:01",
+   "slot": "2026-11-18 20:00",
+   "video": "IMG_5462.MOV",
+   "md5": "91e26c3e688acd98571316c140597ebe",
+   "da_archivio": false,
+   "scena": "macchina",
+   "registrato": "2026-11-18T12:26+01:00",
+   "frase": "MIE-8d7e7d51",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "locked_in_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 2.4,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "velocita": 0.8713,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 114,
+     "righe": 2,
+     "scurito": 0.0,
+     "luce": 0.08,
+     "sfumatura": 0.0,
+     "intatto": true,
+     "scene_intatte": 1
+    },
+    "scena_unica": "rallentata",
+    "secondi_montaggio": 24,
+    "scritta": "centro_serif",
+    "estratto": "dieci",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 6
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_09.flac",
+    "musica_instagram": "In Motion - Lance Taber [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "JozCnF9fTR8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18098779016693760",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Crescere significa lasciare indietro alcune persone."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-10 20:00",
   "2026-11-10 22:00",
   "2026-11-11 00:00",
   "2026-11-11 06:00",
@@ -18600,10 +18671,10 @@
   "2026-11-18 12:00",
   "2026-11-18 14:00",
   "2026-11-18 16:00",
-  "2026-11-18 18:00"
+  "2026-11-18 18:00",
+  "2026-11-18 20:00"
  ],
  "musica_recenti": [
-  "van_life_rager_2.m4a",
   "ancient_civilisations_2.m4a",
   "i_might_be_late_3.m4a",
   "death_duel_3.m4a",
@@ -18662,7 +18733,8 @@
   "intergalactic_1.m4a",
   "horizons_2.m4a",
   "stake_out_3.m4a",
-  "duty_calls_2.m4a"
+  "duty_calls_2.m4a",
+  "locked_in_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -19072,7 +19144,8 @@
   "MIE-aac3f471",
   "MIE-a00bf0c4",
   "MIE-9765ce1a",
-  "MIE-44cdc6ff"
+  "MIE-44cdc6ff",
+  "MIE-8d7e7d51"
  ],
  "temi_recenti": [
   "mentalita",
@@ -19098,20 +19171,6 @@
    "registrato": "2026-11-17T22:36+01:00",
    "fascia": "palestra",
    "caricato": "2026-11-18T09:02:55.877Z",
-   "parlato": null,
-   "momento": null
-  },
-  "1oTleM3GgPNBNkJZPKtM1H2sDH3ZxlasI": {
-   "nome": "IMG_5462.MOV",
-   "scena": "macchina",
-   "sicurezza": 0.45,
-   "motivo": "riconosciuta dalle immagini",
-   "lato_corto": 2160,
-   "orizzontale": false,
-   "compagnia": "solo",
-   "registrato": "2026-11-18T12:26+01:00",
-   "fascia": "pranzo",
-   "caricato": "2026-11-18T11:31:39.867Z",
    "parlato": null,
    "momento": null
   }
@@ -19772,10 +19831,14 @@
    "usi": 1,
    "ultimo": "2026-11-18",
    "orizzontale": false
+  },
+  "1oTleM3GgPNBNkJZPKtM1H2sDH3ZxlasI": {
+   "usi": 1,
+   "ultimo": "2026-11-18",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "phonk_10.flac",
   "deciso_06.flac",
   "trap_09.flac",
   "phonk_16.flac",
@@ -19794,7 +19857,8 @@
   "trap_02.flac",
   "drive_12.flac",
   "deciso_02.flac",
-  "trap_15.flac"
+  "trap_15.flac",
+  "drive_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -19845,7 +19909,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "672409740985213",
   "283066584103655",
   "605055452330912",
   "1029338276527053",
@@ -19904,11 +19967,11 @@
   "660029496086919",
   "1520634330105846",
   "1046631240870078",
-  "2422994201393793"
+  "2422994201393793",
+  "1428954698111653"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Lightbox Music",
   "Jumbo",
   "Lyle Workman",
   "Sam Marshall",
@@ -19917,10 +19980,10 @@
   "Trout Recording",
   "Fellow Travelers",
   "half.cool",
-  "Giulio Cercato"
+  "Giulio Cercato",
+  "Lance Taber"
  ],
  "ig_titoli_recenti": [
-  "just can t believe",
   "epic proportions",
   "run",
   "breathtaker",
@@ -19959,7 +20022,8 @@
   "project power",
   "good run",
   "move ur body",
-  "power on"
+  "power on",
+  "in motion"
  ],
  "ig_tendenze_riserva": [
   {
@@ -19968,6 +20032,48 @@
    "display_artist": "Sia",
    "duration_in_ms": 217746,
    "libreria": false
+  },
+  {
+   "audio_id": "1469205655054044",
+   "title": "Rise",
+   "display_artist": "Beni Haze",
+   "duration_in_ms": 160046,
+   "libreria": true
+  },
+  {
+   "audio_id": "660029496086919",
+   "title": "Project Power",
+   "display_artist": "Trout Recording",
+   "duration_in_ms": 214876,
+   "libreria": true
+  },
+  {
+   "audio_id": "1428954698111653",
+   "title": "In Motion",
+   "display_artist": "Lance Taber",
+   "duration_in_ms": 152940,
+   "libreria": true
+  },
+  {
+   "audio_id": "139421689171943",
+   "title": "Enigma (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 153256,
+   "libreria": true
+  },
+  {
+   "audio_id": "1308182259794076",
+   "title": "Hopscotch (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 147316,
+   "libreria": true
+  },
+  {
+   "audio_id": "27908405255457112",
+   "title": "When It Sparks",
+   "display_artist": "Magnetic Sirens",
+   "duration_in_ms": 61340,
+   "libreria": true
   }
  ]
 }
