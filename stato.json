@@ -18089,7 +18089,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "0utxxazo1ko"
+     "id": "0utxxazo1ko",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -18100,11 +18101,78 @@
    },
    "spinto": true,
    "testo": "Il successo è la migliore vendetta."
+  },
+  {
+   "quando": "2026-11-18T07:00",
+   "slot": "2026-11-18 08:00",
+   "video": "IMG_3765.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-ee301934",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "survival_mode_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 4,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.467,
+     "movimento": 9.49,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "velocita": 0.9963,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 4,
+     "scurito": 0.5,
+     "luce": 0.43,
+     "sfumatura": 0.32,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scena_unica": "rallentata",
+    "secondi_montaggio": 103,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 18
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_06.flac",
+    "musica_instagram": "Hype Track - bbox"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "mdX4w9SJRl4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18012445101003451",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Fai sempre ciò che ti senti perché i rimpianti pesano più degli errori, la vita è una sola."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-10 08:00",
   "2026-11-10 10:00",
   "2026-11-10 12:00",
   "2026-11-10 14:00",
@@ -18183,10 +18251,10 @@
   "2026-11-17 20:00",
   "2026-11-17 22:00",
   "2026-11-18 00:00",
-  "2026-11-18 06:00"
+  "2026-11-18 06:00",
+  "2026-11-18 08:00"
  ],
  "musica_recenti": [
-  "keep_it_movin_2.m4a",
   "horizons_1.m4a",
   "vibe_check_3.m4a",
   "survival_mode_1.m4a",
@@ -18245,7 +18313,8 @@
   "the_road_to_mordor_3.m4a",
   "wrangle_the_crazy_2.m4a",
   "taking_flight_2.m4a",
-  "cartier_1.m4a"
+  "cartier_1.m4a",
+  "survival_mode_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -18649,13 +18718,14 @@
   "MIE-e86dcf58",
   "MIE-28474cd3",
   "MIE-5364bed1",
-  "MIE-97137b41"
+  "MIE-97137b41",
+  "MIE-ee301934"
  ],
  "temi_recenti": [
-  "mentalita",
   "palestra",
   "mentalita",
   "palestra",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -18713,8 +18783,8 @@
    "ultimo": "2026-10-19"
   },
   "1mOygaNSLk3zVyQOFm3atEW61_fUGn_3z": {
-   "usi": 4,
-   "ultimo": "2026-11-10",
+   "usi": 5,
+   "ultimo": "2026-11-18",
    "orizzontale": false
   },
   "1mIxav-KbU3ZL_NU9MF4Z-Vcww6fOPwR4": {
@@ -19303,7 +19373,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_05.flac",
   "trap_03.flac",
   "drive_05.flac",
   "phonk_11.flac",
@@ -19322,7 +19391,8 @@
   "energia_07.flac",
   "deciso_08.flac",
   "trap_06.flac",
-  "phonk_07.flac"
+  "phonk_07.flac",
+  "drive_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -19357,7 +19427,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -19373,7 +19443,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "974432747187721",
   "556944786364191",
   "3643996589148382",
   "2818493204964733",
@@ -19432,11 +19501,11 @@
   "1308898424418438",
   "1030263145726523",
   "1058481142047930",
-  "576850318404245"
+  "576850318404245",
+  "1186003979031011"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Global Genius",
   "Ross Lara",
   "Giulio Cercato",
   "LAVLO",
@@ -19445,10 +19514,10 @@
   "Lightbox Music",
   "Jumbo",
   "Lyle Workman",
-  "Sam Marshall"
+  "Sam Marshall",
+  "bbox"
  ],
  "ig_titoli_recenti": [
-  "knockout",
   "copacetic",
   "glory",
   "battle",
@@ -19487,7 +19556,8 @@
   "hot mess anthem",
   "voices of victory",
   "hero s journey",
-  "not phonk"
+  "not phonk",
+  "hype track"
  ],
  "ig_tendenze_riserva": [
   {
@@ -19496,34 +19566,6 @@
    "display_artist": "Sia",
    "duration_in_ms": 217746,
    "libreria": false
-  },
-  {
-   "audio_id": "1321862862745838",
-   "title": "Adrift (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 133666,
-   "libreria": true
-  },
-  {
-   "audio_id": "576850318404245",
-   "title": "Not Phonk",
-   "display_artist": "Sam Marshall",
-   "duration_in_ms": 188462,
-   "libreria": true
-  },
-  {
-   "audio_id": "819743797457783",
-   "title": "Redux (feat. My City Glory) (Instrumental)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 243803,
-   "libreria": true
-  },
-  {
-   "audio_id": "912431483574563",
-   "title": "Morning Rise",
-   "display_artist": "Sugartapes",
-   "duration_in_ms": 167878,
-   "libreria": true
   }
  ]
 }
