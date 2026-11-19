@@ -19149,7 +19149,9 @@
      "ok": true,
      "id": "18438838279145100",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -19212,7 +19214,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "2Xa_sdxC3ew"
+     "id": "2Xa_sdxC3ew",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -19223,11 +19226,79 @@
    },
    "spinto": true,
    "testo": "Quando sei fiero dell'uomo che stai diventando, ma ti sta costando essere il figlio impegnato, il fratello distante e l'"
+  },
+  {
+   "quando": "2026-11-19T19:00",
+   "slot": "2026-11-19 20:00",
+   "video": "IMG_3952.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-55b16021",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "break_ya_neck_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.625,
+     "movimento": 28.69,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "velocita": 0.9963,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 136,
+     "righe": 2,
+     "scurito": 0.49,
+     "luce": 0.44,
+     "sfumatura": 0.32,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scena_unica": "rallentata",
+    "secondi_montaggio": 92,
+    "scritta": "centro_serif",
+    "estratto": "dieci",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 5
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_03.flac",
+    "musica_instagram": "Electric Movement (Instrumental) - Sam Marshall [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "tbxt6ZG42C4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17914566408578826",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "A quelli che sono rimasti."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-11 20:00",
   "2026-11-11 22:00",
   "2026-11-12 00:00",
   "2026-11-12 06:00",
@@ -19306,10 +19377,10 @@
   "2026-11-19 12:00",
   "2026-11-19 14:00",
   "2026-11-19 16:00",
-  "2026-11-19 18:00"
+  "2026-11-19 18:00",
+  "2026-11-19 20:00"
  ],
  "musica_recenti": [
-  "visions_2.m4a",
   "duty_calls_3.m4a",
   "the_road_to_mordor_2.m4a",
   "fire_in_the_sky_1.m4a",
@@ -19368,7 +19439,8 @@
   "monthaholic_1.m4a",
   "way_back_home_3.m4a",
   "final_boss_battle_3.m4a",
-  "kick_it_3.m4a"
+  "kick_it_3.m4a",
+  "break_ya_neck_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -19788,10 +19860,10 @@
   "MIE-8173f25d",
   "MIE-a0fd4e0c",
   "MIE-c093f1ec",
-  "MIE-0ed5acf3"
+  "MIE-0ed5acf3",
+  "MIE-55b16021"
  ],
  "temi_recenti": [
-  "mentalita",
   "dieta",
   "mentalita",
   "mentalita",
@@ -19800,7 +19872,8 @@
   "mentalita",
   "mentalita",
   "dieta",
-  "famiglia"
+  "famiglia",
+  "mentalita"
  ],
  "analisi": {},
  "pulizia": "2026-11-19",
@@ -20014,8 +20087,8 @@
    "orizzontale": false
   },
   "1psghsoVp3I-dU4RMW8CuX7jIIkUpjvLc": {
-   "usi": 4,
-   "ultimo": "2026-11-11",
+   "usi": 5,
+   "ultimo": "2026-11-19",
    "orizzontale": false
   },
   "1KrAS_uFNheClKfLJbtUvGGJ16dNqCs2z": {
@@ -20472,7 +20545,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_07.flac",
   "deciso_08.flac",
   "trap_06.flac",
   "phonk_07.flac",
@@ -20491,7 +20563,8 @@
   "energia_08.flac",
   "drive_13.flac",
   "phonk_14.flac",
-  "deciso_11.flac"
+  "deciso_11.flac",
+  "energia_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -20542,7 +20615,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1085647872473097",
   "602890775391410",
   "5301582899854512",
   "1100130857775330",
@@ -20601,11 +20673,11 @@
   "1615649653514803",
   "3643996589148382",
   "460517589578363",
-  "612291812716191"
+  "612291812716191",
+  "1488842099008011"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Lance Taber",
   "Beni Haze",
   "Ella Joy Meir",
   "Magnetic Sirens",
@@ -20614,10 +20686,10 @@
   "LAVLO",
   "Chela Rivas",
   "The K Club",
-  "Jumbo"
+  "Jumbo",
+  "Sam Marshall"
  ],
  "ig_titoli_recenti": [
-  "legendary",
   "inspired to shine",
   "epic adventure",
   "epic thoughts",
@@ -20656,14 +20728,29 @@
   "stronger",
   "storm",
   "need to talk",
-  "hype beast"
+  "hype beast",
+  "electric movement"
  ],
  "ig_tendenze_riserva": [
   {
-   "audio_id": "595861529686311",
-   "title": "Hero",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 146716,
+   "audio_id": "888166387285417",
+   "title": "Thunder Train",
+   "display_artist": "The Sonic Hijackers",
+   "duration_in_ms": 73124,
+   "libreria": true
+  },
+  {
+   "audio_id": "2082990731893350",
+   "title": "La Marche des Commis Voyageurs (Vintage 78RPM)",
+   "display_artist": "Genticorum",
+   "duration_in_ms": 183013,
+   "libreria": true
+  },
+  {
+   "audio_id": "1488842099008011",
+   "title": "Electric Movement (Instrumental)",
+   "display_artist": "Sam Marshall",
+   "duration_in_ms": 187894,
    "libreria": true
   }
  ]
