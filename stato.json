@@ -18790,7 +18790,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "8dwjS0ZQSBc"
+     "id": "8dwjS0ZQSBc",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -18801,11 +18802,78 @@
    },
    "spinto": true,
    "testo": "Essere odiati dagli idioti è il prezzo da pagare per non essere uno di loro."
+  },
+  {
+   "quando": "2026-11-19T07:00",
+   "slot": "2026-11-19 08:00",
+   "video": "IMG_3790.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-9b6039d5",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "van_life_rager_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.458,
+     "movimento": 6.21,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 4,
+     "scurito": 0.54,
+     "luce": 0.61,
+     "sfumatura": 0.4,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scena_unica": "rallentata",
+    "secondi_montaggio": 78,
+    "scritta": "centro_serif",
+    "estratto": "dieci",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 12
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_05.flac",
+    "musica_instagram": "Adrenaline Juicebox - PiNKSHGRFNGR [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "sAXDwLnM9BQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18122177041971864",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Puoi letteralmente rialzarti da qualsiasi cosa. È tutta una questione di mentalità."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-11 08:00",
   "2026-11-11 10:00",
   "2026-11-11 12:00",
   "2026-11-11 14:00",
@@ -18884,10 +18952,10 @@
   "2026-11-18 20:00",
   "2026-11-18 22:00",
   "2026-11-19 00:00",
-  "2026-11-19 06:00"
+  "2026-11-19 06:00",
+  "2026-11-19 08:00"
  ],
  "musica_recenti": [
-  "break_ya_neck_1.m4a",
   "sweaty_staredown_3.m4a",
   "kick_it_1.m4a",
   "cutscene_crush_1.m4a",
@@ -18946,7 +19014,8 @@
   "locked_in_1.m4a",
   "keep_it_movin_1.m4a",
   "moon_vision_3.m4a",
-  "ancient_civilisations_1.m4a"
+  "ancient_civilisations_1.m4a",
+  "van_life_rager_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -19360,7 +19429,8 @@
   "MIE-8d7e7d51",
   "MIE-9423ee74",
   "MIE-37737cbe",
-  "MIE-097a6f82"
+  "MIE-097a6f82",
+  "MIE-9b6039d5"
  ],
  "temi_recenti": [
   "mentalita",
@@ -19369,8 +19439,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -19449,8 +19519,8 @@
    "orizzontale": false
   },
   "1667Zix1tBrgfPEpOlI9dHiGVISZp0i8L": {
-   "usi": 4,
-   "ultimo": "2026-11-10",
+   "usi": 5,
+   "ultimo": "2026-11-19",
    "orizzontale": false
   },
   "1pehUAXM-ECFcfP-KX5ZvviOGvc64zvgA": {
@@ -20044,7 +20114,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_06.flac",
   "deciso_11.flac",
   "trap_07.flac",
   "drive_15.flac",
@@ -20063,7 +20132,8 @@
   "drive_09.flac",
   "phonk_06.flac",
   "deciso_04.flac",
-  "drive_08.flac"
+  "drive_08.flac",
+  "phonk_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -20114,7 +20184,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "313517751444003",
   "3605912576363284",
   "1354603606762864",
   "850390349975783",
@@ -20173,11 +20242,11 @@
   "1428954698111653",
   "1469205655054044",
   "739108178545320",
-  "923490770808517"
+  "923490770808517",
+  "2197248934147643"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "bbox",
   "ill Think in ink",
   "Trout Recording",
   "Fellow Travelers",
@@ -20186,10 +20255,10 @@
   "Lance Taber",
   "Beni Haze",
   "Ella Joy Meir",
-  "Magnetic Sirens"
+  "Magnetic Sirens",
+  "PiNKSHGRFNGR"
  ],
  "ig_titoli_recenti": [
-  "join the movement",
   "willow run",
   "ready to run",
   "vision",
@@ -20228,7 +20297,8 @@
   "in motion",
   "rise",
   "move my body",
-  "energy in motion"
+  "energy in motion",
+  "adrenaline juicebox"
  ],
  "ig_tendenze_riserva": [
   {
@@ -20239,45 +20309,38 @@
    "libreria": false
   },
   {
-   "audio_id": "813449818396457",
-   "title": "When I'm In Motion",
-   "display_artist": "Baegod",
-   "duration_in_ms": 179622,
-   "libreria": true
-  },
-  {
-   "audio_id": "1058481142047930",
-   "title": "Hero's Journey",
-   "display_artist": "Lyle Workman",
-   "duration_in_ms": 256230,
-   "libreria": true
-  },
-  {
-   "audio_id": "923490770808517",
-   "title": "Energy In Motion",
-   "display_artist": "Magnetic Sirens",
-   "duration_in_ms": 62182,
-   "libreria": true
-  },
-  {
-   "audio_id": "1240723221207329",
-   "title": "On Fire",
+   "audio_id": "1223134719013093",
+   "title": "Energy",
    "display_artist": "Giulio Cercato",
-   "duration_in_ms": 197861,
+   "duration_in_ms": 122020,
    "libreria": true
   },
   {
-   "audio_id": "195769363102013",
-   "title": "Run",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 165268,
+   "audio_id": "2056751264850857",
+   "title": "Fight",
+   "display_artist": "Sugartapes",
+   "duration_in_ms": 126896,
    "libreria": true
   },
   {
-   "audio_id": "3240401969456886",
-   "title": "Running (Instrumental)",
-   "display_artist": "Julia Gartha",
-   "duration_in_ms": 128407,
+   "audio_id": "933091696547992",
+   "title": "Rockstar Anthem (feat. YawnyBlew)",
+   "display_artist": "ill Think in ink",
+   "duration_in_ms": 144050,
+   "libreria": true
+  },
+  {
+   "audio_id": "2197248934147643",
+   "title": "Adrenaline Juicebox",
+   "display_artist": "PiNKSHGRFNGR",
+   "duration_in_ms": 58284,
+   "libreria": true
+  },
+  {
+   "audio_id": "1225414062944578",
+   "title": "Obrchime (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 172418,
    "libreria": true
   }
  ]
