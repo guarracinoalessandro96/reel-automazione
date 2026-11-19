@@ -19221,7 +19221,9 @@
      "ok": true,
      "id": "18153288907539003",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -19284,7 +19286,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "tbxt6ZG42C4"
+     "id": "tbxt6ZG42C4",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -19295,11 +19298,78 @@
    },
    "spinto": true,
    "testo": "A quelli che sono rimasti."
+  },
+  {
+   "quando": "2026-11-19T21:00",
+   "slot": "2026-11-19 22:00",
+   "video": "IMG_3830.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-226e85f9",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "majestic_12_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.147,
+     "movimento": 9.88,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 3,
+     "scurito": 0.37,
+     "luce": 0.41,
+     "sfumatura": 0.31,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scena_unica": "rallentata",
+    "secondi_montaggio": 76,
+    "scritta": "centro_serif",
+    "estratto": "dieci",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 12
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_08.flac",
+    "musica_instagram": "Adrenalina Was Her Name - Ecklectic Music [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "r_VBFJbRSO8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17912393574583511",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non smettere di essere una brava persona a causa delle persone cattive."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-11 22:00",
   "2026-11-12 00:00",
   "2026-11-12 06:00",
   "2026-11-12 08:00",
@@ -19378,10 +19448,10 @@
   "2026-11-19 14:00",
   "2026-11-19 16:00",
   "2026-11-19 18:00",
-  "2026-11-19 20:00"
+  "2026-11-19 20:00",
+  "2026-11-19 22:00"
  ],
  "musica_recenti": [
-  "duty_calls_3.m4a",
   "the_road_to_mordor_2.m4a",
   "fire_in_the_sky_1.m4a",
   "mirror_mirror_1.m4a",
@@ -19440,7 +19510,8 @@
   "way_back_home_3.m4a",
   "final_boss_battle_3.m4a",
   "kick_it_3.m4a",
-  "break_ya_neck_1.m4a"
+  "break_ya_neck_1.m4a",
+  "majestic_12_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -19861,10 +19932,10 @@
   "MIE-a0fd4e0c",
   "MIE-c093f1ec",
   "MIE-0ed5acf3",
-  "MIE-55b16021"
+  "MIE-55b16021",
+  "MIE-226e85f9"
  ],
  "temi_recenti": [
-  "dieta",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -19873,6 +19944,7 @@
   "mentalita",
   "dieta",
   "famiglia",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
@@ -20043,8 +20115,8 @@
    "ultimo": "2026-10-19"
   },
   "1xaei2HIO4jSmSPuSxzKQ0VLbkh-c4iJO": {
-   "usi": 4,
-   "ultimo": "2026-11-11",
+   "usi": 5,
+   "ultimo": "2026-11-19",
    "orizzontale": false
   },
   "10Y6I2Km1UMianq9Mqd4A_PibNK36A1KR": {
@@ -20545,7 +20617,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_08.flac",
   "trap_06.flac",
   "phonk_07.flac",
   "drive_06.flac",
@@ -20564,7 +20635,8 @@
   "drive_13.flac",
   "phonk_14.flac",
   "deciso_11.flac",
-  "energia_03.flac"
+  "energia_03.flac",
+  "phonk_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -20615,7 +20687,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "602890775391410",
   "5301582899854512",
   "1100130857775330",
   "1108285910189784",
@@ -20674,11 +20745,11 @@
   "3643996589148382",
   "460517589578363",
   "612291812716191",
-  "1488842099008011"
+  "1488842099008011",
+  "936174714667779"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Beni Haze",
   "Ella Joy Meir",
   "Magnetic Sirens",
   "PiNKSHGRFNGR",
@@ -20687,10 +20758,10 @@
   "Chela Rivas",
   "The K Club",
   "Jumbo",
-  "Sam Marshall"
+  "Sam Marshall",
+  "Ecklectic Music"
  ],
  "ig_titoli_recenti": [
-  "inspired to shine",
   "epic adventure",
   "epic thoughts",
   "superman",
@@ -20729,28 +20800,36 @@
   "storm",
   "need to talk",
   "hype beast",
-  "electric movement"
+  "electric movement",
+  "adrenalina was her name"
  ],
  "ig_tendenze_riserva": [
   {
-   "audio_id": "888166387285417",
-   "title": "Thunder Train",
-   "display_artist": "The Sonic Hijackers",
-   "duration_in_ms": 73124,
+   "audio_id": "1058481142047930",
+   "title": "Hero's Journey",
+   "display_artist": "Lyle Workman",
+   "duration_in_ms": 256230,
    "libreria": true
   },
   {
-   "audio_id": "2082990731893350",
-   "title": "La Marche des Commis Voyageurs (Vintage 78RPM)",
-   "display_artist": "Genticorum",
-   "duration_in_ms": 183013,
+   "audio_id": "962542785866784",
+   "title": "What Heroes Do (Instrumental)",
+   "display_artist": "Sofie Tabesh",
+   "duration_in_ms": 217130,
    "libreria": true
   },
   {
-   "audio_id": "1488842099008011",
-   "title": "Electric Movement (Instrumental)",
-   "display_artist": "Sam Marshall",
-   "duration_in_ms": 187894,
+   "audio_id": "1716216946466764",
+   "title": "Join The Movement",
+   "display_artist": "Afterlight",
+   "duration_in_ms": 61611,
+   "libreria": true
+  },
+  {
+   "audio_id": "936174714667779",
+   "title": "Adrenalina Was Her Name",
+   "display_artist": "Ecklectic Music",
+   "duration_in_ms": 158890,
    "libreria": true
   }
  ]
