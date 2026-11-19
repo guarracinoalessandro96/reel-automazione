@@ -18868,7 +18868,9 @@
      "ok": true,
      "id": "18122177041971864",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -18928,7 +18930,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "N7_sMxocEl0"
+     "id": "N7_sMxocEl0",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -18939,11 +18942,77 @@
    },
    "spinto": true,
    "testo": "Un giorno ti guarderai indietro e capirai che questo periodo non ti stava distruggendo, ti stava formando."
+  },
+  {
+   "quando": "2026-11-19T11:00",
+   "slot": "2026-11-19 12:00",
+   "video": "IMG_3794.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-8173f25d",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "monthaholic_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 3,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 16.56,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 101,
+     "righe": 5,
+     "scurito": 0.48,
+     "luce": 0.48,
+     "sfumatura": 0.35,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scena_unica": "rallentata",
+    "secondi_montaggio": 62,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "io",
+     "forma": "due",
+     "parole": 23
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_08.flac",
+    "musica_instagram": "Stronger - LAVLO"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "83TxvmubkyE"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18201593518389182",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Ho letto una frase che diceva: forse non ti accorgi dei tuoi progressi perché alzi l'asticella in continuazione. Un po' "
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-11 12:00",
   "2026-11-11 14:00",
   "2026-11-11 16:00",
   "2026-11-11 18:00",
@@ -19022,10 +19091,10 @@
   "2026-11-19 00:00",
   "2026-11-19 06:00",
   "2026-11-19 08:00",
-  "2026-11-19 10:00"
+  "2026-11-19 10:00",
+  "2026-11-19 12:00"
  ],
  "musica_recenti": [
-  "kick_it_1.m4a",
   "cutscene_crush_1.m4a",
   "turn_in_the_sun_3.m4a",
   "the_light_2.m4a",
@@ -19084,7 +19153,8 @@
   "moon_vision_3.m4a",
   "ancient_civilisations_1.m4a",
   "van_life_rager_2.m4a",
-  "death_duel_3.m4a"
+  "death_duel_3.m4a",
+  "monthaholic_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -19500,15 +19570,16 @@
   "MIE-37737cbe",
   "MIE-097a6f82",
   "MIE-9b6039d5",
-  "MIE-aa45644e"
+  "MIE-aa45644e",
+  "MIE-8173f25d"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -19604,8 +19675,8 @@
    "orizzontale": false
   },
   "1fiTj8eVYumSNhYT3V8Few0omcOH62Olm": {
-   "usi": 4,
-   "ultimo": "2026-11-10",
+   "usi": 5,
+   "ultimo": "2026-11-19",
    "orizzontale": false
   },
   "1PQ4fQcv7i5uxq-1id98LKGmYVNXmunzk": {
@@ -20184,7 +20255,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_07.flac",
   "drive_15.flac",
   "phonk_08.flac",
   "trap_14.flac",
@@ -20203,7 +20273,8 @@
   "deciso_04.flac",
   "drive_08.flac",
   "phonk_05.flac",
-  "trap_01.flac"
+  "trap_01.flac",
+  "energia_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -20238,7 +20309,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -20254,7 +20325,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1354603606762864",
   "850390349975783",
   "920880257688447",
   "393903371411311",
@@ -20313,11 +20383,11 @@
   "739108178545320",
   "923490770808517",
   "2197248934147643",
-  "1552659642157024"
+  "1552659642157024",
+  "1615649653514803"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Trout Recording",
   "Fellow Travelers",
   "half.cool",
   "Giulio Cercato",
@@ -20326,10 +20396,10 @@
   "Ella Joy Meir",
   "Magnetic Sirens",
   "PiNKSHGRFNGR",
-  "The Poison Oaks"
+  "The Poison Oaks",
+  "LAVLO"
  ],
  "ig_titoli_recenti": [
-  "ready to run",
   "vision",
   "running",
   "crush",
@@ -20368,35 +20438,15 @@
   "move my body",
   "energy in motion",
   "adrenaline juicebox",
-  "running through gold"
+  "running through gold",
+  "stronger"
  ],
  "ig_tendenze_riserva": [
   {
-   "audio_id": "834026479668975",
-   "title": "Unstoppable",
-   "display_artist": "Sia",
-   "duration_in_ms": 217746,
-   "libreria": false
-  },
-  {
-   "audio_id": "3679159392392793",
-   "title": "Luxe Motion",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 112680,
-   "libreria": true
-  },
-  {
-   "audio_id": "1917637308769695",
-   "title": "What Heroes Do (prod. by Jonny Houlihan)",
-   "display_artist": "Sofie Tabesh",
-   "duration_in_ms": 217130,
-   "libreria": true
-  },
-  {
-   "audio_id": "1552659642157024",
-   "title": "Running Through Gold",
-   "display_artist": "The Poison Oaks",
-   "duration_in_ms": 193934,
+   "audio_id": "1582326450151974",
+   "title": "Move On",
+   "display_artist": "Summer Islands",
+   "duration_in_ms": 64310,
    "libreria": true
   }
  ]
