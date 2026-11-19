@@ -18797,7 +18797,9 @@
      "ok": true,
      "id": "17867352960688059",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -18859,7 +18861,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "sAXDwLnM9BQ"
+     "id": "sAXDwLnM9BQ",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -18870,11 +18873,76 @@
    },
    "spinto": true,
    "testo": "Puoi letteralmente rialzarti da qualsiasi cosa. È tutta una questione di mentalità."
+  },
+  {
+   "quando": "2026-11-19T09:00",
+   "slot": "2026-11-19 10:00",
+   "video": "IMG_4294.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-aa45644e",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 8.0,
+    "musica": "death_duel_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.208,
+     "movimento": 36.62,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 5,
+     "scurito": 0.53,
+     "luce": 0.35,
+     "sfumatura": 0.26,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 131,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 17
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_01.flac",
+    "musica_instagram": "Running Through Gold - The Poison Oaks [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "N7_sMxocEl0"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18136045006802835",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Un giorno ti guarderai indietro e capirai che questo periodo non ti stava distruggendo, ti stava formando."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-11 10:00",
   "2026-11-11 12:00",
   "2026-11-11 14:00",
   "2026-11-11 16:00",
@@ -18953,10 +19021,10 @@
   "2026-11-18 22:00",
   "2026-11-19 00:00",
   "2026-11-19 06:00",
-  "2026-11-19 08:00"
+  "2026-11-19 08:00",
+  "2026-11-19 10:00"
  ],
  "musica_recenti": [
-  "sweaty_staredown_3.m4a",
   "kick_it_1.m4a",
   "cutscene_crush_1.m4a",
   "turn_in_the_sun_3.m4a",
@@ -19015,7 +19083,8 @@
   "keep_it_movin_1.m4a",
   "moon_vision_3.m4a",
   "ancient_civilisations_1.m4a",
-  "van_life_rager_2.m4a"
+  "van_life_rager_2.m4a",
+  "death_duel_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -19430,7 +19499,8 @@
   "MIE-9423ee74",
   "MIE-37737cbe",
   "MIE-097a6f82",
-  "MIE-9b6039d5"
+  "MIE-9b6039d5",
+  "MIE-aa45644e"
  ],
  "temi_recenti": [
   "mentalita",
@@ -19438,8 +19508,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -19893,8 +19963,8 @@
    "orizzontale": false
   },
   "1qg9QOoyt2IXIx0udqWcfdBdqz_RdzVo4": {
-   "usi": 4,
-   "ultimo": "2026-11-12",
+   "usi": 5,
+   "ultimo": "2026-11-19",
    "orizzontale": false
   },
   "1imtjdovSsU7sfZ2CRaJTwVN1ETpo_8z3": {
@@ -20114,7 +20184,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_11.flac",
   "trap_07.flac",
   "drive_15.flac",
   "phonk_08.flac",
@@ -20133,7 +20202,8 @@
   "phonk_06.flac",
   "deciso_04.flac",
   "drive_08.flac",
-  "phonk_05.flac"
+  "phonk_05.flac",
+  "trap_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -20168,7 +20238,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -20184,7 +20254,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "3605912576363284",
   "1354603606762864",
   "850390349975783",
   "920880257688447",
@@ -20243,11 +20312,11 @@
   "1469205655054044",
   "739108178545320",
   "923490770808517",
-  "2197248934147643"
+  "2197248934147643",
+  "1552659642157024"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "ill Think in ink",
   "Trout Recording",
   "Fellow Travelers",
   "half.cool",
@@ -20256,10 +20325,10 @@
   "Beni Haze",
   "Ella Joy Meir",
   "Magnetic Sirens",
-  "PiNKSHGRFNGR"
+  "PiNKSHGRFNGR",
+  "The Poison Oaks"
  ],
  "ig_titoli_recenti": [
-  "willow run",
   "ready to run",
   "vision",
   "running",
@@ -20298,7 +20367,8 @@
   "rise",
   "move my body",
   "energy in motion",
-  "adrenaline juicebox"
+  "adrenaline juicebox",
+  "running through gold"
  ],
  "ig_tendenze_riserva": [
   {
@@ -20309,38 +20379,24 @@
    "libreria": false
   },
   {
-   "audio_id": "1223134719013093",
-   "title": "Energy",
+   "audio_id": "3679159392392793",
+   "title": "Luxe Motion",
    "display_artist": "Giulio Cercato",
-   "duration_in_ms": 122020,
+   "duration_in_ms": 112680,
    "libreria": true
   },
   {
-   "audio_id": "2056751264850857",
-   "title": "Fight",
-   "display_artist": "Sugartapes",
-   "duration_in_ms": 126896,
+   "audio_id": "1917637308769695",
+   "title": "What Heroes Do (prod. by Jonny Houlihan)",
+   "display_artist": "Sofie Tabesh",
+   "duration_in_ms": 217130,
    "libreria": true
   },
   {
-   "audio_id": "933091696547992",
-   "title": "Rockstar Anthem (feat. YawnyBlew)",
-   "display_artist": "ill Think in ink",
-   "duration_in_ms": 144050,
-   "libreria": true
-  },
-  {
-   "audio_id": "2197248934147643",
-   "title": "Adrenaline Juicebox",
-   "display_artist": "PiNKSHGRFNGR",
-   "duration_in_ms": 58284,
-   "libreria": true
-  },
-  {
-   "audio_id": "1225414062944578",
-   "title": "Obrchime (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 172418,
+   "audio_id": "1552659642157024",
+   "title": "Running Through Gold",
+   "display_artist": "The Poison Oaks",
+   "duration_in_ms": 193934,
    "libreria": true
   }
  ]
