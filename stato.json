@@ -18937,7 +18937,9 @@
      "ok": true,
      "id": "18136045006802835",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -18998,7 +19000,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "83TxvmubkyE"
+     "id": "83TxvmubkyE",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -19009,11 +19012,78 @@
    },
    "spinto": true,
    "testo": "Ho letto una frase che diceva: forse non ti accorgi dei tuoi progressi perché alzi l'asticella in continuazione. Un po' "
+  },
+  {
+   "quando": "2026-11-19T13:00",
+   "slot": "2026-11-19 14:00",
+   "video": "IMG_3815.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-a0fd4e0c",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "way_back_home_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.44,
+     "movimento": 25.89,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 7,
+     "scurito": 0.5,
+     "luce": 0.5,
+     "sfumatura": 0.36,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scena_unica": "rallentata",
+    "secondi_montaggio": 60,
+    "scritta": "centro_serif",
+    "estratto": "dieci",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 26
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_13.flac",
+    "musica_instagram": "Storm - Chela Rivas"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "tNtkMqDhbXE"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18659991133044426",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Qualunque cosa tu faccia nella vita, assicurati che alla fine della giornata tu sia felice. La vita è troppo breve per s"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-11 14:00",
   "2026-11-11 16:00",
   "2026-11-11 18:00",
   "2026-11-11 20:00",
@@ -19092,10 +19162,10 @@
   "2026-11-19 06:00",
   "2026-11-19 08:00",
   "2026-11-19 10:00",
-  "2026-11-19 12:00"
+  "2026-11-19 12:00",
+  "2026-11-19 14:00"
  ],
  "musica_recenti": [
-  "cutscene_crush_1.m4a",
   "turn_in_the_sun_3.m4a",
   "the_light_2.m4a",
   "visions_2.m4a",
@@ -19154,7 +19224,8 @@
   "ancient_civilisations_1.m4a",
   "van_life_rager_2.m4a",
   "death_duel_3.m4a",
-  "monthaholic_1.m4a"
+  "monthaholic_1.m4a",
+  "way_back_home_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -19571,14 +19642,15 @@
   "MIE-097a6f82",
   "MIE-9b6039d5",
   "MIE-aa45644e",
-  "MIE-8173f25d"
+  "MIE-8173f25d",
+  "MIE-a0fd4e0c"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -19729,8 +19801,8 @@
    "ultimo": "2026-10-31"
   },
   "1vOgmkuZ-zKENaS1fagQc3J6w_396E-JX": {
-   "usi": 4,
-   "ultimo": "2026-11-10",
+   "usi": 5,
+   "ultimo": "2026-11-19",
    "orizzontale": false
   },
   "1fKbWVgrVrxr5Ecx1pZo_uFBf-CoX_0G5": {
@@ -20255,7 +20327,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_15.flac",
   "phonk_08.flac",
   "trap_14.flac",
   "energia_07.flac",
@@ -20274,7 +20345,8 @@
   "drive_08.flac",
   "phonk_05.flac",
   "trap_01.flac",
-  "energia_08.flac"
+  "energia_08.flac",
+  "drive_13.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -20325,7 +20397,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "850390349975783",
   "920880257688447",
   "393903371411311",
   "1085647872473097",
@@ -20384,11 +20455,11 @@
   "923490770808517",
   "2197248934147643",
   "1552659642157024",
-  "1615649653514803"
+  "1615649653514803",
+  "3643996589148382"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Fellow Travelers",
   "half.cool",
   "Giulio Cercato",
   "Lance Taber",
@@ -20397,10 +20468,10 @@
   "Magnetic Sirens",
   "PiNKSHGRFNGR",
   "The Poison Oaks",
-  "LAVLO"
+  "LAVLO",
+  "Chela Rivas"
  ],
  "ig_titoli_recenti": [
-  "vision",
   "running",
   "crush",
   "legendary",
@@ -20439,15 +20510,8 @@
   "energy in motion",
   "adrenaline juicebox",
   "running through gold",
-  "stronger"
+  "stronger",
+  "storm"
  ],
- "ig_tendenze_riserva": [
-  {
-   "audio_id": "1582326450151974",
-   "title": "Move On",
-   "display_artist": "Summer Islands",
-   "duration_in_ms": 64310,
-   "libreria": true
-  }
- ]
+ "ig_tendenze_riserva": []
 }
