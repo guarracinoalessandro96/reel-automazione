@@ -18656,7 +18656,9 @@
      "ok": true,
      "id": "17995550574070033",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -18717,22 +18719,92 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "L-AzCStvc5s"
+     "id": "L-AzCStvc5s",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18102077174439794",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": null
     }
    },
    "spinto": true,
    "testo": "Perdere persone tossiche è una vittoria."
+  },
+  {
+   "quando": "2026-11-19T05:01",
+   "slot": "2026-11-19 06:00",
+   "video": "IMG_3800.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "MIE-097a6f82",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "ancient_civilisations_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.515,
+     "movimento": 10.6,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "velocita": 0.9912,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 3,
+     "scurito": 0.53,
+     "luce": 0.6,
+     "sfumatura": 0.4,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scena_unica": "rallentata",
+    "secondi_montaggio": 77,
+    "scritta": "centro_serif",
+    "estratto": "dieci",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 15
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_08.flac",
+    "musica_instagram": "Energy In Motion - Magnetic Sirens [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "8dwjS0ZQSBc"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17867352960688059",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Essere odiati dagli idioti è il prezzo da pagare per non essere uno di loro."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-11 06:00",
   "2026-11-11 08:00",
   "2026-11-11 10:00",
   "2026-11-11 12:00",
@@ -18811,10 +18883,10 @@
   "2026-11-18 18:00",
   "2026-11-18 20:00",
   "2026-11-18 22:00",
-  "2026-11-19 00:00"
+  "2026-11-19 00:00",
+  "2026-11-19 06:00"
  ],
  "musica_recenti": [
-  "death_duel_3.m4a",
   "break_ya_neck_1.m4a",
   "sweaty_staredown_3.m4a",
   "kick_it_1.m4a",
@@ -18873,7 +18945,8 @@
   "duty_calls_2.m4a",
   "locked_in_1.m4a",
   "keep_it_movin_1.m4a",
-  "moon_vision_3.m4a"
+  "moon_vision_3.m4a",
+  "ancient_civilisations_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -19286,7 +19359,8 @@
   "MIE-44cdc6ff",
   "MIE-8d7e7d51",
   "MIE-9423ee74",
-  "MIE-37737cbe"
+  "MIE-37737cbe",
+  "MIE-097a6f82"
  ],
  "temi_recenti": [
   "mentalita",
@@ -19296,12 +19370,12 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-18",
+ "pulizia": "2026-11-19",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -19370,8 +19444,8 @@
    "orizzontale": false
   },
   "1hvbjqvKs_ADW2bi_kJP0H1fxpKUzd-nq": {
-   "usi": 4,
-   "ultimo": "2026-11-10",
+   "usi": 5,
+   "ultimo": "2026-11-19",
    "orizzontale": false
   },
   "1667Zix1tBrgfPEpOlI9dHiGVISZp0i8L": {
@@ -19970,7 +20044,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_16.flac",
   "energia_06.flac",
   "deciso_11.flac",
   "trap_07.flac",
@@ -19989,7 +20062,8 @@
   "trap_15.flac",
   "drive_09.flac",
   "phonk_06.flac",
-  "deciso_04.flac"
+  "deciso_04.flac",
+  "drive_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -20040,7 +20114,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1029338276527053",
   "313517751444003",
   "3605912576363284",
   "1354603606762864",
@@ -20099,11 +20172,11 @@
   "2422994201393793",
   "1428954698111653",
   "1469205655054044",
-  "739108178545320"
+  "739108178545320",
+  "923490770808517"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Sam Marshall",
   "bbox",
   "ill Think in ink",
   "Trout Recording",
@@ -20112,10 +20185,10 @@
   "Giulio Cercato",
   "Lance Taber",
   "Beni Haze",
-  "Ella Joy Meir"
+  "Ella Joy Meir",
+  "Magnetic Sirens"
  ],
  "ig_titoli_recenti": [
-  "breathtaker",
   "join the movement",
   "willow run",
   "ready to run",
@@ -20154,7 +20227,8 @@
   "power on",
   "in motion",
   "rise",
-  "move my body"
+  "move my body",
+  "energy in motion"
  ],
  "ig_tendenze_riserva": [
   {
@@ -20165,24 +20239,45 @@
    "libreria": false
   },
   {
-   "audio_id": "739108178545320",
-   "title": "Move My Body (Instrumental)",
-   "display_artist": "Ella Joy Meir",
-   "duration_in_ms": 114620,
+   "audio_id": "813449818396457",
+   "title": "When I'm In Motion",
+   "display_artist": "Baegod",
+   "duration_in_ms": 179622,
    "libreria": true
   },
   {
-   "audio_id": "1015255657240675",
-   "title": "The Running (Instrumental)",
-   "display_artist": "bbox",
-   "duration_in_ms": 179320,
+   "audio_id": "1058481142047930",
+   "title": "Hero's Journey",
+   "display_artist": "Lyle Workman",
+   "duration_in_ms": 256230,
    "libreria": true
   },
   {
-   "audio_id": "1321862862745838",
-   "title": "Adrift (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 133666,
+   "audio_id": "923490770808517",
+   "title": "Energy In Motion",
+   "display_artist": "Magnetic Sirens",
+   "duration_in_ms": 62182,
+   "libreria": true
+  },
+  {
+   "audio_id": "1240723221207329",
+   "title": "On Fire",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 197861,
+   "libreria": true
+  },
+  {
+   "audio_id": "195769363102013",
+   "title": "Run",
+   "display_artist": "Chela Rivas",
+   "duration_in_ms": 165268,
+   "libreria": true
+  },
+  {
+   "audio_id": "3240401969456886",
+   "title": "Running (Instrumental)",
+   "display_artist": "Julia Gartha",
+   "duration_in_ms": 128407,
    "libreria": true
   }
  ]
