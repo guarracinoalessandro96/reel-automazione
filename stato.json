@@ -19078,7 +19078,9 @@
      "ok": true,
      "id": "18659991133044426",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -19140,7 +19142,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "7PGCu0P25hI"
+     "id": "7PGCu0P25hI",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -19151,11 +19154,79 @@
    },
    "spinto": true,
    "testo": "Solo chi ha davvero fame riesce a lavorare tutto il giorno, faticare tutta la notte, essere deriso dalla famiglia, messo"
+  },
+  {
+   "quando": "2026-11-19T17:00",
+   "slot": "2026-11-19 18:00",
+   "video": "IMG_3834.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-0ed5acf3",
+   "tema": "famiglia",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "kick_it_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.43,
+     "movimento": 12.06,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "velocita": 0.7588,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 5,
+     "scurito": 0.53,
+     "luce": 0.52,
+     "sfumatura": 0.37,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scena_unica": "rallentata",
+    "secondi_montaggio": 76,
+    "scritta": "centro_serif",
+    "estratto": "dieci",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 21
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_11.flac",
+    "musica_instagram": "Hype Beast - Jumbo"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "2Xa_sdxC3ew"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18153288907539003",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Quando sei fiero dell'uomo che stai diventando, ma ti sta costando essere il figlio impegnato, il fratello distante e l'"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-11 18:00",
   "2026-11-11 20:00",
   "2026-11-11 22:00",
   "2026-11-12 00:00",
@@ -19234,10 +19305,10 @@
   "2026-11-19 10:00",
   "2026-11-19 12:00",
   "2026-11-19 14:00",
-  "2026-11-19 16:00"
+  "2026-11-19 16:00",
+  "2026-11-19 18:00"
  ],
  "musica_recenti": [
-  "the_light_2.m4a",
   "visions_2.m4a",
   "duty_calls_3.m4a",
   "the_road_to_mordor_2.m4a",
@@ -19296,7 +19367,8 @@
   "death_duel_3.m4a",
   "monthaholic_1.m4a",
   "way_back_home_3.m4a",
-  "final_boss_battle_3.m4a"
+  "final_boss_battle_3.m4a",
+  "kick_it_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -19715,10 +19787,10 @@
   "MIE-aa45644e",
   "MIE-8173f25d",
   "MIE-a0fd4e0c",
-  "MIE-c093f1ec"
+  "MIE-c093f1ec",
+  "MIE-0ed5acf3"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "dieta",
   "mentalita",
@@ -19727,7 +19799,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "dieta"
+  "dieta",
+  "famiglia"
  ],
  "analisi": {},
  "pulizia": "2026-11-19",
@@ -19883,8 +19956,8 @@
    "orizzontale": false
   },
   "1HrgxYw6jMJ5qXxx8j5ZWOVhPdqD7b1fH": {
-   "usi": 4,
-   "ultimo": "2026-11-11",
+   "usi": 5,
+   "ultimo": "2026-11-19",
    "orizzontale": false
   },
   "1MGwGXNeSO9_CxJf-b3fdJUiJRRsBRTMw": {
@@ -20399,7 +20472,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_14.flac",
   "energia_07.flac",
   "deciso_08.flac",
   "trap_06.flac",
@@ -20418,7 +20490,8 @@
   "trap_01.flac",
   "energia_08.flac",
   "drive_13.flac",
-  "phonk_14.flac"
+  "phonk_14.flac",
+  "deciso_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -20469,7 +20542,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "393903371411311",
   "1085647872473097",
   "602890775391410",
   "5301582899854512",
@@ -20528,11 +20600,11 @@
   "1552659642157024",
   "1615649653514803",
   "3643996589148382",
-  "460517589578363"
+  "460517589578363",
+  "612291812716191"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Giulio Cercato",
   "Lance Taber",
   "Beni Haze",
   "Ella Joy Meir",
@@ -20541,10 +20613,10 @@
   "The Poison Oaks",
   "LAVLO",
   "Chela Rivas",
-  "The K Club"
+  "The K Club",
+  "Jumbo"
  ],
  "ig_titoli_recenti": [
-  "crush",
   "legendary",
   "inspired to shine",
   "epic adventure",
@@ -20583,35 +20655,15 @@
   "running through gold",
   "stronger",
   "storm",
-  "need to talk"
+  "need to talk",
+  "hype beast"
  ],
  "ig_tendenze_riserva": [
   {
-   "audio_id": "2082990731893350",
-   "title": "La Marche des Commis Voyageurs (Vintage 78RPM)",
-   "display_artist": "Genticorum",
-   "duration_in_ms": 183013,
-   "libreria": true
-  },
-  {
-   "audio_id": "1763628994746804",
-   "title": "Rockstar Anthem (feat. YawnyBlew) (Instrumental)",
-   "display_artist": "ill Think in ink",
-   "duration_in_ms": 144050,
-   "libreria": true
-  },
-  {
-   "audio_id": "460517589578363",
-   "title": "Need To Talk (feat. Dawson March, Jacquire King)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 188250,
-   "libreria": true
-  },
-  {
-   "audio_id": "1781233772812838",
-   "title": "Epic Thoughts",
-   "display_artist": "JB Eckl",
-   "duration_in_ms": 192818,
+   "audio_id": "595861529686311",
+   "title": "Hero",
+   "display_artist": "Chela Rivas",
+   "duration_in_ms": 146716,
    "libreria": true
   }
  ]
