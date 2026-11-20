@@ -19904,7 +19904,9 @@
      "ok": true,
      "id": "17922265671462894",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -19991,7 +19993,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "sl630w9wbsc"
+     "id": "sl630w9wbsc",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -20002,11 +20005,103 @@
    },
    "spinto": true,
    "testo": "Se lavori solo quando è facile, non aspettarti di vincere quando è difficile."
+  },
+  {
+   "quando": "2026-11-20T19:00",
+   "slot": "2026-11-20 20:00",
+   "video": "IMG_5543.MOV",
+   "md5": "964bbba69b2a89515f3ac6375d126fa5",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-11-20T18:34+01:00",
+   "frase": "MIE-8fd9259f",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 7.0,
+    "musica": "the_light_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 4,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 7.93,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro Semibold",
+     "corpo": 65,
+     "righe": 1,
+     "viso": {
+      "visi": 5,
+      "corpo_base": 136,
+      "posizione": "alto",
+      "y": 0.106,
+      "scala": 0.478,
+      "corpo": 65,
+      "righe": 1
+     },
+     "scurito": 0.0,
+     "luce": 0.43,
+     "sfumatura": 0.32,
+     "intatto": true,
+     "scene_intatte": 1
+    },
+    "testo_viso": {
+     "visi": 5,
+     "corpo_base": 136,
+     "posizione": "alto",
+     "y": 0.106,
+     "scala": 0.478,
+     "corpo": 65,
+     "righe": 1,
+     "fotogrammi": 20,
+     "con_viso": 19,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 48,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 3
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_09.flac",
+    "musica_instagram": "You Won't Believe - PiNKSHGRFNGR [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Q4qseebiDxQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18076738904505448",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "La vita continua."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-12 20:00",
   "2026-11-12 22:00",
   "2026-11-13 00:00",
   "2026-11-13 06:00",
@@ -20085,10 +20180,10 @@
   "2026-11-20 12:00",
   "2026-11-20 14:00",
   "2026-11-20 16:00",
-  "2026-11-20 18:00"
+  "2026-11-20 18:00",
+  "2026-11-20 20:00"
  ],
  "musica_recenti": [
-  "wrangle_the_crazy_1.m4a",
   "cartier_3.m4a",
   "majestic_12_3.m4a",
   "stake_out_1.m4a",
@@ -20147,7 +20242,8 @@
   "ego_chall_2.m4a",
   "mirror_mirror_1.m4a",
   "i_might_be_late_1.m4a",
-  "delirium_3.m4a"
+  "delirium_3.m4a",
+  "the_light_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -20577,7 +20673,8 @@
   "MIE-d7a9721f",
   "MIE-d177be4a",
   "MIE-abb45d33",
-  "MIE-081c1331"
+  "MIE-081c1331",
+  "MIE-8fd9259f"
  ],
  "temi_recenti": [
   "mentalita",
@@ -21258,10 +21355,14 @@
    "usi": 1,
    "ultimo": "2026-11-18",
    "orizzontale": false
+  },
+  "1V0O1E9pREtJKW0xUrd-m8r4lKycZzfUI": {
+   "usi": 1,
+   "ultimo": "2026-11-20",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "drive_09.flac",
   "phonk_06.flac",
   "deciso_04.flac",
   "drive_08.flac",
@@ -21280,7 +21381,8 @@
   "deciso_10.flac",
   "phonk_15.flac",
   "energia_06.flac",
-  "trap_11.flac"
+  "trap_11.flac",
+  "phonk_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -21315,7 +21417,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -21331,7 +21433,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1354806896501272",
   "522339937196006",
   "2065054100581983",
   "1372666635060078",
@@ -21390,11 +21491,11 @@
   "1145314397662753",
   "849342490718599",
   "529367193511753",
-  "1108285910189784"
+  "1108285910189784",
+  "887391107399210"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Sam Marshall",
   "Ecklectic Music",
   "Ross Lara",
   "Jonny Houlihan",
@@ -21403,10 +21504,10 @@
   "Otis McDonald",
   "Giulio Cercato",
   "TRC Orchestral, Vestevent",
-  "Adam Griffith"
+  "Adam Griffith",
+  "PiNKSHGRFNGR"
  ],
  "ig_titoli_recenti": [
-  "love me",
   "warrior",
   "move on",
   "shadows in motion",
@@ -21445,7 +21546,8 @@
   "move it or lose it",
   "level up",
   "move like this",
-  "knockout"
+  "knockout",
+  "you won t believe"
  ],
  "ig_tendenze_riserva": [
   {
@@ -21470,10 +21572,17 @@
    "libreria": true
   },
   {
-   "audio_id": "139421689171943",
-   "title": "Enigma (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 153256,
+   "audio_id": "491460439584707",
+   "title": "Looking Glass (feat. Dawson March, Jacquire King)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 146973,
+   "libreria": true
+  },
+  {
+   "audio_id": "887391107399210",
+   "title": "You Won't Believe",
+   "display_artist": "PiNKSHGRFNGR",
+   "duration_in_ms": 60050,
    "libreria": true
   }
  ]
