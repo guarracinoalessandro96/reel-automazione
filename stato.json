@@ -19809,7 +19809,8 @@
      "ok": true,
      "id": "18116904911331239",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": null
     }
    },
    "spinto": true,
@@ -19896,7 +19897,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "vqvelPVruY8"
+     "id": "vqvelPVruY8",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -19907,11 +19909,103 @@
    },
    "spinto": true,
    "testo": "Non ti sentirai mai pronto. Pronto non è una sensazione, è una decisione."
+  },
+  {
+   "quando": "2026-11-20T17:00",
+   "slot": "2026-11-20 18:00",
+   "video": "IMG_4118.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-081c1331",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 7.0,
+    "musica": "delirium_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 1,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 12.32,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 101,
+     "righe": 3,
+     "viso": {
+      "visi": 1,
+      "corpo_base": 101,
+      "posizione": "basso",
+      "y": 0.558,
+      "scala": 1.0,
+      "corpo": 101,
+      "righe": 3
+     },
+     "scurito": 0.4,
+     "luce": 0.41,
+     "sfumatura": 0.31,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 1,
+     "corpo_base": 101,
+     "posizione": "basso",
+     "y": 0.558,
+     "scala": 1.0,
+     "corpo": 101,
+     "righe": 3,
+     "fotogrammi": 20,
+     "con_viso": 1,
+     "guardato": [
+      [
+       5.5,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 194,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 13
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_11.flac",
+    "musica_instagram": "Knockout - Adam Griffith"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "sl630w9wbsc"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18419266948089793",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Se lavori solo quando è facile, non aspettarti di vincere quando è difficile."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-12 18:00",
   "2026-11-12 20:00",
   "2026-11-12 22:00",
   "2026-11-13 00:00",
@@ -19990,10 +20084,10 @@
   "2026-11-20 10:00",
   "2026-11-20 12:00",
   "2026-11-20 14:00",
-  "2026-11-20 16:00"
+  "2026-11-20 16:00",
+  "2026-11-20 18:00"
  ],
  "musica_recenti": [
-  "taking_flight_1.m4a",
   "wrangle_the_crazy_1.m4a",
   "cartier_3.m4a",
   "majestic_12_3.m4a",
@@ -20052,7 +20146,8 @@
   "fire_in_the_sky_1.m4a",
   "ego_chall_2.m4a",
   "mirror_mirror_1.m4a",
-  "i_might_be_late_1.m4a"
+  "i_might_be_late_1.m4a",
+  "delirium_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -20481,10 +20576,11 @@
   "MIE-28e1c2c7",
   "MIE-d7a9721f",
   "MIE-d177be4a",
-  "MIE-abb45d33"
+  "MIE-abb45d33",
+  "MIE-081c1331"
  ],
  "temi_recenti": [
-  "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -20849,8 +20945,8 @@
    "orizzontale": false
   },
   "1UqKiP8I1uDBOGIlQ6FOiFV8glkTIPDqY": {
-   "usi": 4,
-   "ultimo": "2026-11-12",
+   "usi": 5,
+   "ultimo": "2026-11-20",
    "orizzontale": false
   },
   "1y59kJ0xjsyIN9aCTP_yAw2eVeS32oQwv": {
@@ -21165,7 +21261,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_15.flac",
   "drive_09.flac",
   "phonk_06.flac",
   "deciso_04.flac",
@@ -21184,7 +21279,8 @@
   "trap_07.flac",
   "deciso_10.flac",
   "phonk_15.flac",
-  "energia_06.flac"
+  "energia_06.flac",
+  "trap_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -21219,7 +21315,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -21235,7 +21331,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "620334183626298",
   "1354806896501272",
   "522339937196006",
   "2065054100581983",
@@ -21294,11 +21389,11 @@
   "1274149560124013",
   "1145314397662753",
   "849342490718599",
-  "529367193511753"
+  "529367193511753",
+  "1108285910189784"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jumbo",
   "Sam Marshall",
   "Ecklectic Music",
   "Ross Lara",
@@ -21307,10 +21402,10 @@
   "Abby Posner",
   "Otis McDonald",
   "Giulio Cercato",
-  "TRC Orchestral, Vestevent"
+  "TRC Orchestral, Vestevent",
+  "Adam Griffith"
  ],
  "ig_titoli_recenti": [
-  "reflect and rise",
   "love me",
   "warrior",
   "move on",
@@ -21349,21 +21444,36 @@
   "heros journey",
   "move it or lose it",
   "level up",
-  "move like this"
+  "move like this",
+  "knockout"
  ],
  "ig_tendenze_riserva": [
   {
-   "audio_id": "1383912545569665",
-   "title": "You Can Do It",
-   "display_artist": "Global Genius",
-   "duration_in_ms": 157357,
+   "audio_id": "1223134719013093",
+   "title": "Energy",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 122020,
    "libreria": true
   },
   {
-   "audio_id": "529367193511753",
-   "title": "Move Like This",
-   "display_artist": "TRC Orchestral, Vestevent",
-   "duration_in_ms": 74695,
+   "audio_id": "825305559687149",
+   "title": "Ready To Run (feat. Brooklyn Basics)",
+   "display_artist": "Trout Recording",
+   "duration_in_ms": 141410,
+   "libreria": true
+  },
+  {
+   "audio_id": "576850318404245",
+   "title": "Not Phonk",
+   "display_artist": "Sam Marshall",
+   "duration_in_ms": 188462,
+   "libreria": true
+  },
+  {
+   "audio_id": "139421689171943",
+   "title": "Enigma (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 153256,
    "libreria": true
   }
  ]
