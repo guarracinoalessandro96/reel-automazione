@@ -19646,7 +19646,9 @@
      "ok": true,
      "id": "17950459230348542",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -19708,7 +19710,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "JLSPTgaj8NY"
+     "id": "JLSPTgaj8NY",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -19719,11 +19722,97 @@
    },
    "spinto": true,
    "testo": "Tutti penseranno che sei pazzo finché non funziona. Poi sei un genio."
+  },
+  {
+   "quando": "2026-11-20T13:00",
+   "slot": "2026-11-20 14:00",
+   "video": "IMG_4129.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-d177be4a",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 7.0,
+    "musica": "mirror_mirror_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 2,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 8.12,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 120,
+     "righe": 3,
+     "viso": {
+      "visi": 0,
+      "corpo_base": 120,
+      "posizione": "centro",
+      "scala": 1.0
+     },
+     "scurito": 0.5,
+     "luce": 0.43,
+     "sfumatura": 0.32,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 0,
+     "corpo_base": 120,
+     "posizione": "centro",
+     "scala": 1.0,
+     "fotogrammi": 20,
+     "con_viso": 0,
+     "guardato": [
+      [
+       5.5,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 145,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 7
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_15.flac",
+    "musica_instagram": "Level Up - Giulio Cercato"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "16XjCUckEN8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18116904911331239",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non piangere. Di' solo \"vaffanculo\" e sorridi."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-12 14:00",
   "2026-11-12 16:00",
   "2026-11-12 18:00",
   "2026-11-12 20:00",
@@ -19802,10 +19891,10 @@
   "2026-11-20 06:00",
   "2026-11-20 08:00",
   "2026-11-20 10:00",
-  "2026-11-20 12:00"
+  "2026-11-20 12:00",
+  "2026-11-20 14:00"
  ],
  "musica_recenti": [
-  "whoop_1.m4a",
   "ten_1.m4a",
   "taking_flight_1.m4a",
   "wrangle_the_crazy_1.m4a",
@@ -19864,7 +19953,8 @@
   "cutscene_crush_1.m4a",
   "turn_in_the_sun_2.m4a",
   "fire_in_the_sky_1.m4a",
-  "ego_chall_2.m4a"
+  "ego_chall_2.m4a",
+  "mirror_mirror_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -20291,12 +20381,13 @@
   "MIE-94622b38",
   "MIE-a7ce6fa5",
   "MIE-28e1c2c7",
-  "MIE-d7a9721f"
+  "MIE-d7a9721f",
+  "MIE-d177be4a"
  ],
  "temi_recenti": [
-  "mentalita",
   "dieta",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -20683,8 +20774,8 @@
    "ultimo": "2026-10-26"
   },
   "1t2HdsGs2qhC9CeBp31JACRAZz9LjJwdV": {
-   "usi": 4,
-   "ultimo": "2026-11-13",
+   "usi": 5,
+   "ultimo": "2026-11-20",
    "orizzontale": false
   },
   "1wIAA5bkWDLakZogTG-ehlMTtvzDMKN7q": {
@@ -20975,7 +21066,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_12.flac",
   "deciso_02.flac",
   "trap_15.flac",
   "drive_09.flac",
@@ -20994,7 +21084,8 @@
   "drive_10.flac",
   "energia_04.flac",
   "trap_07.flac",
-  "deciso_10.flac"
+  "deciso_10.flac",
+  "phonk_15.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -21029,7 +21120,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -21045,7 +21136,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "774667642107625",
   "2242687643238503",
   "620334183626298",
   "1354806896501272",
@@ -21104,11 +21194,11 @@
   "744011543289259",
   "5301582899854512",
   "1274149560124013",
-  "1145314397662753"
+  "1145314397662753",
+  "849342490718599"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Chela Rivas",
   "The K Club",
   "Jumbo",
   "Sam Marshall",
@@ -21117,10 +21207,10 @@
   "Jonny Houlihan",
   "Trout Recording",
   "Abby Posner",
-  "Otis McDonald"
+  "Otis McDonald",
+  "Giulio Cercato"
  ],
  "ig_titoli_recenti": [
-  "superman",
   "unstoppable",
   "reflect and rise",
   "love me",
@@ -21159,35 +21249,22 @@
   "winners take all",
   "epic battles",
   "heros journey",
-  "move it or lose it"
+  "move it or lose it",
+  "level up"
  ],
  "ig_tendenze_riserva": [
   {
-   "audio_id": "1145314397662753",
-   "title": "Move It Or Lose It (Instrumental)",
-   "display_artist": "Otis McDonald",
-   "duration_in_ms": 156810,
+   "audio_id": "1533332147140863",
+   "title": "Something's In The Movement",
+   "display_artist": "Trout Recording",
+   "duration_in_ms": 197923,
    "libreria": true
   },
   {
-   "audio_id": "867574485949511",
-   "title": "Legends (Instrumental)",
-   "display_artist": "stereogully",
-   "duration_in_ms": 123840,
-   "libreria": true
-  },
-  {
-   "audio_id": "1085647872473097",
-   "title": "Punk Power!",
-   "display_artist": "TrackTribe",
-   "duration_in_ms": 61948,
-   "libreria": true
-  },
-  {
-   "audio_id": "646173398313799",
-   "title": "Move It Or Lose It",
-   "display_artist": "Otis McDonald",
-   "duration_in_ms": 166370,
+   "audio_id": "819743797457783",
+   "title": "Redux (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 243803,
    "libreria": true
   }
  ]
