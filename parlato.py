@@ -67,6 +67,13 @@ def taglio(parole, durata_video):
     # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): si ferma a overlay.DURATA_REEL (8 s)
     import overlay
     fine = min(durata_video, parole[-1]["e"] + 0.6, inizio + overlay.DURATA_REEL)
+    # 20/11/2026, Alessandro: "tutti i video devono essere di 7 secondi": il reel parlato dura SEMPRE overlay.DURATA_REEL
+    # (7 s) se il video e' lungo almeno 7 s: se le parole finiscono prima si tiene il video fino a 7 s (prima o dopo le
+    # parole, dentro il video). Un video piu' corto di 7 s non esce come parlato (pubblica.monta_parlato -> ripiego)
+    D = float(overlay.DURATA_REEL)
+    if durata_video >= D:
+        inizio = min(inizio, max(0.0, durata_video - D))
+        return round(float(inizio), 2), round(D, 2)
     return round(float(inizio), 2), round(float(max(fine - inizio, 3.0)), 2)
 
 
@@ -92,19 +99,52 @@ def _tempo(t):
     return f"{int(t // 3600)}:{int(t % 3600 // 60):02d}:{t % 60:05.2f}"
 
 
-def file_ass(blocchi_, inizio, path, larghezza=1080, altezza=1920):
-    """Scrive il file .ass: testo bianco grassetto con contorno nero, centrato nel terzo basso."""
+# 20/11/2026 (Alessandro: "voglio che le scritte non stiano mai sulla mia faccia"): anche i sottotitoli dei parlati.
+# Si parte dal posto di sempre (terzo basso); se la fascia dei sottotitoli tocca un viso del pezzo si sposta (dentro il
+# 10%-80% dell'altezza) nel punto libero piu' vicino; se non c'e' si rimpicciolisce (fino al 60%); se neanche cosi':
+# SottotitoliSulViso (il reel esce col ripiego, una scena da 7 s con la frase, anche quella mai sul viso)
+FASCIA_RIGHE = 2.6       # altezza della fascia dei sottotitoli in corpi (fino a 2 righe con il contorno)
+
+
+class SottotitoliSulViso(Exception):
+    pass
+
+
+def posto_sottotitoli(visi, larghezza=1080, altezza=1920):
+    """(MarginV, corpo) dei sottotitoli che non toccano i visi (frazioni). Alza SottotitoliSulViso se non c'e' posto."""
+    f = larghezza / 1080
+    corpo0, margine0 = round(86 * f), round(560 * f)
+    lati = round(70 * f)
+    for k in (1.0, 0.9, 0.8, 0.7, 0.6):
+        corpo = round(corpo0 * k)
+        alto = corpo * FASCIA_RIGHE
+        fondi = [altezza - margine0] + sorted(range(int(altezza * 0.10 + alto), int(altezza * 0.80) + 1,
+                                                    max(1, altezza // 200)), key=lambda y: abs(y - (altezza - margine0)))
+        for fondo in fondi:
+            y0, y1 = fondo - alto, fondo
+            if y0 < altezza * 0.10 or y1 > altezza * 0.80 + 1:
+                continue
+            if not any(min(larghezza - lati, v[2] * larghezza) > max(lati, v[0] * larghezza)
+                       and min(y1, v[3] * altezza) > max(y0, v[1] * altezza) for v in visi or []):
+                return altezza - fondo, corpo
+    raise SottotitoliSulViso(f"{len(visi or [])} riquadri di visi")
+
+
+def file_ass(blocchi_, inizio, path, larghezza=1080, altezza=1920, visi=None):
+    """Scrive il file .ass: testo bianco grassetto con contorno nero, centrato nel terzo basso.
+    20/11/2026: con visi (frazioni) la fascia non li tocca mai (posto_sottotitoli). -> (path, MarginV, corpo)."""
     f = larghezza / 1080                     # misure pensate per 1080 (4K dal 25/10/2026)
+    margine, corpo = (round(560 * f), round(86 * f)) if visi is None else posto_sottotitoli(visi, larghezza, altezza)
     righe = ["[Script Info]", "ScriptType: v4.00+", f"PlayResX: {larghezza}", f"PlayResY: {altezza}", "",
              "[V4+ Styles]",
              "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, "
              "Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, "
              "MarginR, MarginV, Encoding",
-             f"Style: Sub,Poppins,{round(86 * f)},&H00FFFFFF,&H000000FF,&H00000000,&H78000000,-1,0,0,0,100,100,0,0,1,"
-             f"{round(6 * f)},{round(2 * f)},2,{round(70 * f)},{round(70 * f)},{round(560 * f)},1",
+             f"Style: Sub,Poppins,{corpo},&H00FFFFFF,&H000000FF,&H00000000,&H78000000,-1,0,0,0,100,100,0,0,1,"
+             f"{round(6 * f)},{round(2 * f)},2,{round(70 * f)},{round(70 * f)},{margine},1",
              "", "[Events]", "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text"]
     for a, b, t in blocchi_:
         t = re.sub(r"[{}\\]", "", t)
         righe.append(f"Dialogue: 0,{_tempo(a - inizio)},{_tempo(b - inizio)},Sub,,0,0,0,,{t}")
     open(path, "w", encoding="utf-8").write("\n".join(righe) + "\n")
-    return path
+    return path, margine, corpo

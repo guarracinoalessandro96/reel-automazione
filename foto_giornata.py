@@ -712,7 +712,14 @@ def _testo_libero(W, H, frase, visi, mappa, ganci=(0,)):
     if getattr(ov, "STILE_CENTRO", False):
         # 7/11/2026 (Alessandro: "testo al centro anche se copre il viso"): la frase al centro su tutte le foto, nessuna
         # foto tolta per il viso; l'ordine e' quello del primo gancio
-        img, _, _ = ov.build_testo_giallo(W, H, frase, [], mappa)
+        # 20/11/2026 (Alessandro: "le scritte non stiano mai sulla mia faccia"): i visi di TUTTE le foto contano di
+        # nuovo (stile_centro: la frase si sposta o si rimpicciolisce; se non c'e' posto VisoCoperto, mai sul viso)
+        try:
+            img, _, _ = ov.build_testo_giallo(W, H, frase, [f for v in visi for f in v], mappa)
+        except Exception as e:
+            if type(e).__name__ == "TestoSulViso":
+                raise fn.VisoCoperto(frase) from e
+            raise
         g = list(ganci)[0] if ganci else 0
         return img, [g] + [i for i in range(len(visi)) if i != g]
     viso_gancio = False

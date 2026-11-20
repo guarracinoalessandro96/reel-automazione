@@ -21,6 +21,8 @@ import overlay as ov
 # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): tutti i reel della famiglia "dieci"
 # durano DIECI_SECONDI = overlay.DURATA_REEL = 8 s (il nome resta per non cambiare tutto il codice; prima 10 s, dal
 # 12/11/2026 Alessandro: "tutti i video devono essere di 10 secondi"). Gli stacchi sotto sono in proporzione.
+# 20/11/2026, Alessandro: "voglio che tutti i video siano di 7 secondi": DIECI_SECONDI = overlay.DURATA_REEL = 7 s
+# (prima 8 s); tutti gli stacchi qui sotto sono in proporzione e sommano sempre a 7 s
 DIECI_SECONDI = ov.DURATA_REEL
 _D = DIECI_SECONDI
 
@@ -44,7 +46,8 @@ FORMATI = {
     # intero di 10 o 15 secondi"): i suoi video nuovi (10-20 s, tagliati da lui) a scene di lunghezza diversa
     # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): stesse scene da 1/2/~3 s, meno scene
     "taglio1": {"stacchi": [1.0] * round(_D)},       # 8 scene da 1 s (prima 10)
-    "taglio2": {"stacchi": [2.0] * round(_D / 2)},   # 4 scene da 2 s (prima 5)
+    # 20/11/2026 (Alessandro: "tutti i video di 7 secondi"): 4 scene da 1,75 s (con 2.0 * round(7 / 2) uscivano 8 s)
+    "taglio2": {"stacchi": [round(_D / round(_D / 2), 3)] * round(_D / 2)},
     "taglio3": {"stacchi": [round(_D * x, 3) for x in (0.3, 0.35, 0.35)]},   # 2,4 + 2,8 + 2,8 s (prima 3 + 3,5 + 3,5)
     "intero": {"stacchi": [20.0]},                   # il suo video com'e' (durate_formato lo porta a DIECI_SECONDI)
     # 6/11/2026 (Alessandro: "studia 10 format di video diversi"): 4 formati diversi per impaginazione o ritmo.
@@ -101,6 +104,16 @@ def dividi_in(testo, n):
 
 class VisoCoperto(Exception):
     """31/10/2026: la scritta finirebbe sul viso anche nella posizione migliore: si riprova con altre clip."""
+
+
+def mai_sul_viso():
+    """20/11/2026 (Alessandro: "voglio che le scritte non stiano mai sulla mia faccia nei video"): True se la frase al
+    centro deve evitare i visi (stile_centro.MAI_SUL_VISO, con lo stile al centro)."""
+    try:
+        import stile_centro
+        return bool(ov.STILE_CENTRO and stile_centro.MAI_SUL_VISO)
+    except Exception:
+        return False
 
 
 def viso_coperto(img, sotto, W, H):
@@ -778,15 +791,38 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
     tagli = [sum(durate[:i]) for i in range(n + 1)]
     for k, (a, b, t) in enumerate(testi):
         sotto = [f for i in range(n) if tagli[i] < b and tagli[i + 1] > a for f in volti[i]]   # pezzi sotto il testo
-        if dieci:
-            piene = [mappe[i] for i in range(n) if tagli[i] < b and tagli[i + 1] > a and mappe[i] is not None]
-            img, _, _ = ov.build_testo_giallo(W, H, t, sotto, sum(piene) / len(piene) if piene else None)
-        else:
-            img, _, _ = ov.build_overlay(W, H, t, sotto, serie=serie)
+        if mai_sul_viso() and any(pezzi[i].get("viso_errore") for i in range(n) if tagli[i] < b and tagli[i + 1] > a):
+            # 20/11/2026 (Alessandro: mai sul viso): un pezzo sotto la frase non si e' potuto guardare: si ferma qui
+            shutil.rmtree(tmp, ignore_errors=True)
+            vc = VisoCoperto(t)
+            vc.inizi = [float(p["inizio"]) for p in pezzi]
+            raise vc
+        try:
+            if dieci:
+                piene = [mappe[i] for i in range(n) if tagli[i] < b and tagli[i + 1] > a and mappe[i] is not None]
+                img, _, _ = ov.build_testo_giallo(W, H, t, sotto, sum(piene) / len(piene) if piene else None)
+            else:
+                img, _, _ = ov.build_overlay(W, H, t, sotto, serie=serie)
+        except Exception as e:      # 20/11/2026: la frase non trova posto senza toccare il viso (stile_centro)
+            if type(e).__name__ == "TestoSulViso":
+                shutil.rmtree(tmp, ignore_errors=True)
+                vc = VisoCoperto(t)
+                vc.inizi = [float(p["inizio"]) for p in pezzi]
+                raise vc from e
+            raise
         # 7/11/2026 (Alessandro: "testo al centro anche se copre il viso, non ci sono problemi"): con lo stile al centro
         # il viso sotto la frase va bene, niente piu' VisoCoperto (ne' i ripieghi cinema/post/fascia che ne seguivano)
         if controlla_viso and not ov.STILE_CENTRO and viso_coperto(img, sotto, W, H):
             raise VisoCoperto(t)
+        # 20/11/2026 (Alessandro: "mai le scritte sulla mia faccia"): controllo finale, lettera per lettera, su tutti i
+        # visi del tratto della frase; vale per ogni formato e ripiego che passa di qui
+        if mai_sul_viso():
+            import viso_testo
+            if viso_testo.lettere_sul_viso(img, sotto):
+                shutil.rmtree(tmp, ignore_errors=True)
+                vc = VisoCoperto(t)
+                vc.inizi = [float(p["inizio"]) for p in pezzi]
+                raise vc
         if sfuma and ov.ULTIMO_STILE == "centro_serif":
             try:     # 7/11/2026: sotto la frase l'ombra rotonda morbidissima (nessun bordo): il bianco risalta sempre
                 import stile_centro
@@ -878,6 +914,20 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
             info["stile_centro"]["scene_intatte"] = sum(1 for x in intatti if x)
         except Exception as e:
             print("Dati dello stile al centro non scritti:", str(e)[:150])
+    if mai_sul_viso() and testi:
+        # 20/11/2026 (Alessandro: "mai le scritte sulla mia faccia"): per l'agente del giorno, in montaggio.testo_viso:
+        # fotogrammi guardati e con un viso, riquadri della zona vietata, dove e' finita la frase e a che scala
+        try:
+            import stile_centro
+            tv = dict((info.get("stile_centro") or {}).get("viso") or stile_centro.ULTIMO.get("viso") or {})
+            tv["fotogrammi"] = sum(int((p.get("viso_dati") or {}).get("fotogrammi", 0)) for p in pezzi)
+            tv["con_viso"] = sum(int((p.get("viso_dati") or {}).get("con_viso", 0)) for p in pezzi)
+            tv["guardato"] = [[round(float(p["inizio"]), 2), round(float(d) * (float(velocita[i]) if velocita else 1.0), 2)]
+                              for i, (p, d) in enumerate(zip(pezzi, durate))]
+            tv["controllo"] = "lettere_fuori_dai_visi"
+            info["testo_viso"] = tv
+        except Exception as e:
+            print("Dati del testo e dei visi non scritti:", str(e)[:150])
     return info
 
 
@@ -1023,12 +1073,36 @@ def _guarda(p, sorgente, W, H, quanti, dieci, controlli, lato=None):
     per _riguarda; lato = (w, h) dei fotogrammi se non W x H (i riquadri sono in frazioni: stesso taglio 9:16)."""
     p.update(volti=[], visi=0, mappa=None, schiarisci="", nero=False)
     p.pop("guardato", None)
+    p.pop("viso_dati", None)
+    p.pop("viso_errore", None)
     try:
         w, h = lato or (W, H)
-        fr = ov.extract_frames(p["c"], sorgente, n=quanti, start=p["inizio"],
-                               vf=f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h}")
+        fr = None
+        if mai_sul_viso():
+            # 20/11/2026 (Alessandro: "le scritte non stiano mai sulla mia faccia"): i visi di TUTTO il pezzo, un
+            # fotogramma ogni viso_testo.PASSO s (0,35), nel taglio 9:16 finale, con una lettura sola di ffmpeg
+            # (fotogrammi piccoli, piu' veloce dei `quanti` PNG a piena risoluzione di prima). Le altre misure (visi
+            # "su quanti", dettagli, luce, nero) si fanno su `quanti` di questi fotogrammi, come prima. Se non riesce:
+            # i fotogrammi e i visi di prima (mai nessun viso per un errore)
+            try:
+                import viso_testo
+                zona, dati, fitti = viso_testo.visi_pezzo(p["c"], p["inizio"], sorgente, ruotati=dieci,
+                                                          ffmpeg=ov.FFMPEG)
+                if fitti:
+                    fr = [fitti[min(len(fitti) - 1, int((k + 0.5) * len(fitti) / quanti))] for k in range(quanti)]
+                    p["zona_visi"], p["viso_dati"] = zona, dati
+            except Exception as e:
+                print("Visi fitti non cercati (restano quelli di prima):", str(e)[:150], flush=True)
+                fr = None
+        if fr is None:
+            fr = ov.extract_frames(p["c"], sorgente, n=quanti, start=p["inizio"],
+                                   vf=f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h}")
         per = [ov.detect_faces([x], ruotati=dieci) for x in fr]
         p["volti"], p["visi"] = [b for x in per for b in x], sum(1 for x in per if x)
+        if p.get("viso_dati") is not None:
+            # 20/11/2026: la zona vietata alla frase = i visi fitti (viso_testo, gia' filtrati); i riquadri di prima
+            # (detect_faces sui fotogrammi ruotati, senza filtro) restano solo per "visi"
+            p["volti"] = list(p["zona_visi"])
         p["mappa"] = ov.mappa_dettagli(fr)
         p["schiarisci"] = ov.schiarita(fr) if dieci else ""
         p["nero"] = bool(controlli) and _pezzo_nero(fr)
@@ -1038,7 +1112,9 @@ def _guarda(p, sorgente, W, H, quanti, dieci, controlli, lato=None):
             import stile_centro
             p["luce"], p["luce_tutto"], p["luce_alte"] = stile_centro.misura(fr)
     except Exception:
-        pass
+        # 20/11/2026: se i visi non si sono potuti guardare, la frase non va su questo pezzo alla cieca (make_sequenza)
+        if not p.get("volti") and p.get("viso_dati") is None:
+            p["viso_errore"] = True
     return p
 
 
@@ -1310,8 +1386,51 @@ def make_dieci(nome, clips, frase, dst, musiche=(), serie=None, controlla_viso=F
             W = ov.LATO_USCITA
             layout = cornice(W, int(W * 16 / 9), d["layout"], frase)
             testi = []                             # la frase e' gia' nella cornice, fuori dal video
-    return make_sequenza(clips, durate, testi, dst, musiche, None, nome, controlla_viso,
-                         piano=piano, velocita=velocita, indietro=indietro, layout=layout)
+    try:
+        return make_sequenza(clips, durate, testi, dst, musiche, None, nome, controlla_viso,
+                             piano=piano, velocita=velocita, indietro=indietro, layout=layout)
+    except VisoCoperto as e:
+        if not (nome in SCENA_UNICA_NOMI and mai_sul_viso() and testi and len(durate) == 1 and not velocita):
+            raise
+        return _altra_finestra(clips[0], durate[0], testi, dst, musiche, nome, controlla_viso, e)
+
+
+# 20/11/2026 (Alessandro: "mai le scritte sulla mia faccia"): se la frase non trova posto senza toccare il viso neanche
+# rimpicciolita (stile_centro.CORPO_VISO_MIN) nei 7 s scelti, si provano fino ad ALTRE_FINESTRE altri tratti da 7 s
+# dello STESSO video (lontani almeno FINESTRA_DISTANZA s da quelli gia' provati); poi VisoCoperto (pubblica.monta_dieci
+# prova un altro video). Mai la frase sul viso.
+ALTRE_FINESTRE, FINESTRA_DISTANZA = 3, 1.5
+POCO_TEMPO_S = 240           # sotto i 4 minuti alla scadenza del reel non si provano altri tratti ne' altri video
+
+
+def _altra_finestra(c, durata, testi, dst, musiche, nome, controlla_viso, errore):
+    S = ov.probe(c)[0]
+    fine = S - durata - 0.15
+    provati = list(getattr(errore, "inizi", None) or [])
+    if fine <= 0.1:
+        raise errore
+    candidati = [round(0.1 + (fine - 0.1) * k / 8, 2) for k in range(9)]
+    for _ in range(ALTRE_FINESTRE):
+        r = secondi_rimasti()
+        if r is not None and r < POCO_TEMPO_S:      # vicino alla scadenza del reel: niente altre prove
+            print("Poco tempo alla scadenza: niente altri tratti del video", flush=True)
+            break
+        lontani = [t for t in candidati if all(abs(t - q) >= FINESTRA_DISTANZA for q in provati)]
+        if not lontani:
+            break
+        t = max(lontani, key=lambda x: (min([abs(x - q) for q in provati] or [S]), -x))
+        t = _controlla_primo(c, t, 0.0, max(0.0, fine), min(durata, PRIMO_S))
+        provati.append(t)
+        print(f"Frase sul viso in ogni posizione: provo il tratto da {t:.2f} s dello stesso video", flush=True)
+        try:
+            info = make_sequenza([c], [durata], testi, dst, musiche, None, nome, controlla_viso, piano=[(c, t)])
+            info.setdefault("testo_viso", {})["altra_finestra"] = len(provati) - 1
+            return info
+        except VisoCoperto as e:
+            errore = e
+    errore.inizi = provati
+    errore.tutti = True
+    raise errore
 
 
 def make_storia(clips, titolo, righe, dst, musiche=(), serie=None):

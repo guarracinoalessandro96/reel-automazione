@@ -355,6 +355,123 @@ def impagina(W, H, testo):
             "larga": larga, "lista": lista, "testo": testo}
 
 
+# ------------------------------------------------------------------ mai sul viso (20/11/2026)
+# Alessandro (20/11/2026): "voglio che le scritte non stiano mai sulla mia faccia nei video. Quando il testo non riesce a
+# stare sullo schermo perche' copre la mia faccia, allora procedere a rimpicciolire il font del copy, ma mai le scritte
+# sulla mia faccia". (Il 7/11 aveva detto "testo al centro anche se copre il viso": da oggi non vale piu'.) Con i visi
+# di tutto il pezzo del reel (viso_testo.py) la frase: (1) resta al centro come sempre se li' non tocca nessun viso;
+# (2) se no si sposta in su o in giu', dentro la zona sicura (ZONA_SICURA: niente nel 10% in alto ne' nel 20% in basso,
+# dove ci sono nome, didascalia e pulsanti), alla posizione libera piu' vicina al centro; (3) solo se nessuna posizione
+# e' libera il corpo scende a passi di RIDUCI_VISO (righe rifatte con lo stesso a capo) fino a CORPO_VISO_MIN; (4) se
+# neanche cosi' c'e' posto: TestoSulViso (si prova un altro tratto del video o un altro video, mai la frase sul viso).
+# Lo puo' cambiare solo Alessandro
+MAI_SUL_VISO = True
+RIDUCI_VISO = 0.92                   # ogni passo il corpo scende dell'8%
+CORPO_VISO_MIN = 0.030               # mai sotto il 3% della larghezza (65 px in 4K, 32 px in 1080): si legge sul telefono
+PASSO_Y = 0.005                      # posizioni provate: ogni 0,5% dell'altezza
+SPAZIO_VISO = 0.20                   # spazio tra lettere e riquadro del viso (in em, oltre ai margini del viso)
+
+
+class TestoSulViso(Exception):
+    """20/11/2026: la frase non trova posto senza toccare il viso neanche al corpo minimo."""
+
+
+def _righe_rect(imp, top, W):
+    """Rettangoli (in pixel) delle righe della frase con il blocco che parte da `top`: dalla cima delle maiuscole (o
+    degli accenti) al fondo delle discendenti, larghi quanto ogni riga, con SPAZIO_VISO intorno."""
+    font, lh, px = imp["font"], imp["lh"], imp["corpo"]
+    _, cima, _, _ = font.getbbox("ÀH", anchor="ls")
+    _, _, _, fondo = font.getbbox("gjpqy", anchor="ls")
+    _, cima_h, _, _ = font.getbbox("H", anchor="ls")
+    base0 = top - cima_h
+    sp = SPAZIO_VISO * px
+    out = []
+    for i, r in enumerate(imp["righe"]):
+        w = font.getlength(r)
+        b = base0 + i * lh
+        out.append(((W - w) / 2 - sp, b + cima - sp, (W + w) / 2 + sp, b + fondo + sp))
+    return out
+
+
+def _tocca(rects, visi, W, H):
+    for (x0, y0, x1, y1) in rects:
+        for v in visi:
+            if min(x1, v[2] * W) > max(x0, v[0] * W) and min(y1, v[3] * H) > max(y0, v[1] * H):
+                return True
+    return False
+
+
+def _posto(imp, visi, W, H):
+    """La posizione (top in px) libera dai visi piu' vicina al centro (prima il centro), None se non c'e'."""
+    alto = imp["alto"]
+    lo, hi = H * ZONA_SICURA[0], H * ZONA_SICURA[1] - alto
+    if hi < lo:
+        return None
+    centro = min(max(H * CENTRO_Y - alto / 2, lo), hi)
+    passo = H * PASSO_Y
+    tops = [centro] + sorted({round(lo + k * passo, 2) for k in range(int((hi - lo) / passo) + 1)} | {round(hi, 2)},
+                             key=lambda t: (abs(t - centro), t))
+    for t in tops:
+        if not _tocca(_righe_rect(imp, t, W), visi, W, H):
+            return t
+    return None
+
+
+def _ricalcola(imp, top):
+    imp = dict(imp)
+    font = imp["font"]
+    _, cima, _, _ = font.getbbox("H", anchor="ls")
+    imp.update(top=top, base0=top - cima)
+    return imp
+
+
+def _impagina_corpo(W, H, imp0, px):
+    """La stessa frase a `px` (corpo disegnato): righe rifatte con lo stesso a capo (una lista resta una frase per riga
+    se ci sta), stesso carattere (Semibold sotto la soglia di PIENO_SOTTO, come impagina)."""
+    testo = imp0["testo"]
+    pieno = px < W * PIENO_SOTTO * (SCALA_TESTO or 1.0) - 0.5 or \
+        os.path.basename(getattr(imp0["font"], "percorso", "")).startswith("SourceSerifPro-Semibold")
+    font = _font(px, pieno)
+    max_px = W * COLONNA
+    righe = _frasi(testo) if imp0["lista"] else None
+    if not righe or max(font.getlength(r) for r in righe) > max_px:
+        righe = righe_e_costo(testo, font.getlength, max_px)[1]
+    lh = px * INTERLINEA
+    _, cima, _, _ = font.getbbox("H", anchor="ls")
+    _, _, _, fondo = font.getbbox("gjpqy", anchor="ls")
+    alto = -cima + (len(righe) - 1) * lh + 0.25 * fondo
+    larga = max(font.getlength(r) for r in righe)
+    return {"font": font, "corpo": px, "righe": righe, "lh": lh, "base0": 0.0, "top": 0.0, "alto": alto,
+            "larga": larga, "lista": imp0["lista"] and righe == _frasi(testo), "testo": testo}
+
+
+def impagina_senza_visi(W, H, testo, visi):
+    """impagina + mai sul viso (vedi sopra). -> (imp, dati per stato.json). Alza TestoSulViso se non c'e' posto."""
+    imp = impagina(W, H, testo)
+    px0 = imp["corpo"]
+    visi = [tuple(float(x) for x in v) for v in visi or []]
+    dati = {"visi": len(visi), "corpo_base": int(px0)}
+    if not visi:
+        dati.update(posizione="centro", scala=1.0)
+        return imp, dati
+    px, prove = px0, 0
+    minimo = min(px0, max(8, int(round(W * CORPO_VISO_MIN))))
+    while True:
+        prove += 1
+        t = _posto(imp, visi, W, H)
+        if t is not None:
+            imp = _ricalcola(imp, t)
+            centro = H * CENTRO_Y - imp["alto"] / 2
+            cy = (t + imp["alto"] / 2) / H
+            dati.update(posizione="centro" if abs(t - centro) < 1 else ("alto" if t < centro else "basso"),
+                        y=round(cy, 3), scala=round(px / px0, 3), corpo=int(px), righe=len(imp["righe"]))
+            return imp, dati
+        if px <= minimo:
+            raise TestoSulViso(f"nessun posto senza viso anche a {px} px ({len(visi)} riquadri di visi)")
+        px = max(minimo, int(px * RIDUCI_VISO))
+        imp = _impagina_corpo(W, H, imp, px)
+
+
 def disegna(W, H, imp):
     """Immagine trasparente W x H con la frase: bianco, centrato riga per riga, ombra morbida leggerissima."""
     font, righe, lh, base0 = imp["font"], imp["righe"], imp["lh"], imp["base0"]
@@ -381,13 +498,21 @@ def disegna(W, H, imp):
     return img
 
 
-def scritta(W, H, testo):
-    """La frase nello stile al centro. Stessa forma di overlay.build_testo_giallo: (immagine, y in frazione, punti)."""
-    imp = impagina(W, H, testo)
+def scritta(W, H, testo, visi=None):
+    """La frase nello stile al centro. Stessa forma di overlay.build_testo_giallo: (immagine, y in frazione, punti).
+    20/11/2026 (Alessandro: mai sul viso): visi = riquadri dei visi di tutto il pezzo (frazioni); con MAI_SUL_VISO la
+    frase non li tocca mai (impagina_senza_visi: si sposta, poi si rimpicciolisce; TestoSulViso se non c'e' posto)."""
+    if MAI_SUL_VISO and visi is not None:
+        imp, viso = impagina_senza_visi(W, H, testo, visi)
+    else:
+        imp, viso = impagina(W, H, testo), None
     img = disegna(W, H, imp)
     ULTIMO.clear()
     ULTIMO.update(font=nome_font(getattr(imp["font"], "percorso", None)), corpo=int(imp["corpo"]),
-                  righe=len(imp["righe"]), lista=bool(imp["lista"]))
+                  righe=len(imp["righe"]), lista=bool(imp["lista"]),
+                  centro_y=(imp["top"] + imp["alto"] / 2) / H)
+    if viso is not None:
+        ULTIMO["viso"] = viso
     return img, imp["top"] / H, 0.0
 
 
@@ -395,6 +520,8 @@ def dati(scurito=0.0, luce=None, sfuma=0.0):
     """montaggio.stile_centro: carattere, corpo in px, righe, quanto e' stato scurito il video (0 = per niente), luce
     misurata prima nella zona della frase, opacita' dell'ombra dietro la frase (0 = niente)."""
     d = {k: ULTIMO[k] for k in ("font", "corpo", "righe") if k in ULTIMO}
+    if "viso" in ULTIMO:     # 20/11/2026 (mai sul viso): visi trovati, posizione, scala del corpo (1 = non rimpicciolita)
+        d["viso"] = dict(ULTIMO["viso"])
     d["scurito"] = round(float(scurito or 0.0), 2)
     if luce is not None:
         d["luce"] = round(float(luce), 2)
@@ -463,11 +590,12 @@ def luce_immagine(img, zona=ZONA_LUCE):
     return misura_immagine(img, zona)[0]
 
 
-def _profilo(W, H):
-    """L'ombra dietro la frase a opacita' 1 (W x H, 0-1): gaussiana centrata sulla frase, separabile (veloce a 4K)."""
+def _profilo(W, H, cy=None):
+    """L'ombra dietro la frase a opacita' 1 (W x H, 0-1): gaussiana centrata sulla frase, separabile (veloce a 4K).
+    20/11/2026: cy = centro della frase (frazione dell'altezza) se e' stata spostata per non coprire il viso."""
     import numpy as np
     x = (np.arange(W, dtype=np.float32) + 0.5) / W - 0.5
-    y = (np.arange(H, dtype=np.float32) + 0.5) / H - CENTRO_Y
+    y = (np.arange(H, dtype=np.float32) + 0.5) / H - (CENTRO_Y if cy is None else float(cy))
     return np.exp(-0.5 * (y / SFUMA_SY) ** 2)[:, None] * np.exp(-0.5 * (x / SFUMA_SX) ** 2)[None, :]
 
 
@@ -510,14 +638,16 @@ def fattore(luce, tutto=None, sfuma=0.0, alte=None):
     return round(max(FATTORE_MIN, min(1.0, m)), 3)
 
 
-def con_sfumatura(img, sfuma):
+def con_sfumatura(img, sfuma, cy=None):
     """L'immagine della scritta (RGBA W x H) con sotto l'ombra rotonda dietro la frase (opacita' sfuma al centro).
     Un filo di rumore (mezzo livello) evita gli scalini della sfumatura sui fondi uniformi."""
     if not sfuma or sfuma <= 0.005:
         return img
     import numpy as np
     W, H = img.size
-    a = _profilo(W, H) * np.float32(255.0 * sfuma) + np.random.default_rng(7).random((H, W), dtype=np.float32)
+    if cy is None:     # 20/11/2026: l'ombra segue la frase (spostata sopra o sotto il viso)
+        cy = ULTIMO.get("centro_y")
+    a = _profilo(W, H, cy) * np.float32(255.0 * sfuma) + np.random.default_rng(7).random((H, W), dtype=np.float32)
     ombra = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     ombra.putalpha(Image.fromarray(np.clip(a, 0, 255).astype(np.uint8)))
     ombra.alpha_composite(img)

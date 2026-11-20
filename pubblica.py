@@ -119,7 +119,7 @@ FORMATI = {"frase": 1.0, "frase8": 1.0, "gancio": 1.0, "montaggio": 0.8, "regole
            "broll1": 1.0, "broll2": 1.0, "broll3": 1.0, "storia": 1.0}   # 25/10: formati_nuovi.py
 # frase8 (21/10/2026): la frase da 8 s. Tra gli Short spinti da YouTube, quelli da 8 s hanno superato 1.200 views
 # 10 volte su 47, quelli da 5 s 0 su 24 (stessa mediana ~1.000): si rimette in gara contro il 5 s
-GANCIO = {"nome": "gancio", "durata": 8.0, "t": 3.0}          # frase in 2 tempi: la seconda parte dopo 3 s
+GANCIO = {"nome": "gancio", "durata": overlay.DURATA_REEL, "t": 3.0}   # 20/11/2026: 7 s come ogni reel (prima 8.0 fisso)          # frase in 2 tempi: la seconda parte dopo 3 s
 AMBIENTE = {"nome": "ambiente", "durata": 6.0, "audio_originale": 0.35}   # suono vero della palestra sotto la musica
 LIMITE_YT = re.compile(r"uploadLimitExceeded|quotaExceeded|dailyLimitExceeded|exceeded the number of videos", re.I)
 SERIE_INIZIO = datetime.date(2026, 10, 16)   # "GIORNO 1 / 365": serie riconoscibile = un motivo per seguire
@@ -708,7 +708,16 @@ def monta_momento(an, src, out, music, serie, nome):
     # 12/11/2026 (Alessandro: "tutti i video devono essere di 10 secondi"): anche i momenti al massimo 10 s
     # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): al massimo overlay.DURATA_REEL (8 s)
     durata = round(min(secondi, overlay.DURATA_REEL), 2)
-    info = overlay.make_video(src, titolo, out, music=music if famiglia else None, serie=serie,
+    if secondi < overlay.DURATA_REEL - 0.05:
+        # 20/11/2026, Alessandro: "tutti i video devono essere di 7 secondi": un momento piu' corto di 7 s esce come UNA
+        # scena da 7 s dello stesso video (formati_nuovi.scena_unica_corta: rallentato), con il SUO titolo come frase
+        # (mai sul viso) e la musica: il suono vero rallentato non si puo' usare
+        import formati_nuovi
+        info = formati_nuovi.make_dieci("intero", [src], titolo, out, musiche_brano(music, 3), None, True)
+        info["momento_corto"] = round(float(secondi), 2)
+    else:
+        info = None
+    info = info or overlay.make_video(src, titolo, out, music=music if famiglia else None, serie=serie,
                               colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an.get("scena"),
                               formato={"nome": "momento", "inizio": 0.0, "durata": durata,
                                        "audio_originale": 0 if famiglia else 1.0})
@@ -723,6 +732,10 @@ def monta_parlato(an, src, out, serie, nome):
     import parlato
     parole = an["parlato"]["parole"]
     secondi, _ = overlay.probe(src)
+    if secondi < overlay.DURATA_REEL - 0.05:
+        # 20/11/2026, Alessandro: "tutti i video devono essere di 7 secondi": la sua voce non si rallenta, quindi un
+        # parlato piu' corto di 7 s esce col ripiego (una scena da 7 s, rallentata, con la frase e la musica)
+        raise ValueError(f"parlato piu' corto di {overlay.DURATA_REEL:g} s ({secondi:.1f} s)")
     inizio, durata = parlato.taglio(parole, secondi)
     dentro = [w for w in parole if inizio <= w["s"] < inizio + durata]
     info = overlay.make_video(src, "", out, music=None, serie=serie, colore=ENV("SENZA_COLORE") != "1", nome=nome,
@@ -800,11 +813,11 @@ def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, ultim
     if formato == "giornata":        # 6/11/2026: ha il suo montaggio (da qui senza la coda: solo l'archivio)
         return monta_giornata(frase, src, out, music, serie, drive, work, clip, {}, {"formato_ultimo": ultimo})
     D = formati_nuovi.DIECI_SECONDI   # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): 8 s (prima 10 s)
-    if formato in ("dieci", "intero") and overlay.probe(src)[0] < D + 0.5:      # 8,5 s (prima 10,5)
+    if formato in ("dieci", "intero") and overlay.probe(src)[0] < D + 0.5:      # 7,5 s dal 20/11/2026 (8,5 s, prima 10,5)
         # 17/11/2026 (Alessandro: una scena singola): il video corto esce intero (rallentato se serve), non piu'
         # dieci_due con una seconda clip
         formato = "intero" if SCENA_UNICA else "dieci_due"
-    if formato in ("rallenty", "loop") and overlay.probe(src)[0] < D / 2 + 1.5:     # 6/11/2026: troppo corto; 5,5 s (prima 6,5)
+    if formato in ("rallenty", "loop") and overlay.probe(src)[0] < D / 2 + 1.5:     # 6/11/2026: troppo corto; 5 s dal 20/11/2026 (5,5 s, prima 6,5)
         formato = "dieci_due"
     if formato == "rallenty":        # 6/11/2026 (revisione): 2,4 s + 8 s rallentati, a 0,5x (60 fps) o 0,75x (30 fps)
         try:
@@ -824,8 +837,9 @@ def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, ultim
     # 31/10/2026: controllo PRIMA di pubblicare: la scritta non deve coprire il viso
     try:
         return formati_nuovi.make_dieci(formato, clips, frase["gancio"], out, musiche, serie, True)
-    except formati_nuovi.VisoCoperto:
-        pass
+    except formati_nuovi.VisoCoperto as e:
+        if SCENA_UNICA and formati_nuovi.mai_sul_viso():
+            return _altro_video_senza_viso(formato, frase, out, musiche, serie, drive, work, clip, e)
     # 6/11/2026 (revisione): se la scritta coprirebbe il viso, lo STESSO video esce in 'cinema' o 'post' (la frase sta
     # sulla fascia, fuori dal video: mai sul viso). Prima si passava a dieci_broll con 4 clip d'archivio a caso: il suo
     # video spariva, e dopo 2 prove l'ultimo montaggio partiva senza controllo del viso
@@ -853,6 +867,38 @@ def monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, ultim
                                         out, musiche, serie, True)
     info["ripiego_da"] = formato             # per report.py: questo reel non e' uscito nel formato estratto
     return info
+
+
+# 20/11/2026, Alessandro: "voglio che le scritte non stiano mai sulla mia faccia... rimpicciolire il font del copy, ma
+# mai le scritte sulla mia faccia": se in nessun tratto da 7 s del video dell'orario la frase trova posto senza toccare
+# il viso (neanche rimpicciolita), il reel esce con un ALTRO video (fino a ALTRI_VIDEO_VISO clip dell'archivio, una
+# scena da 7 s ciascuna). Niente cinema/post (la frase fuori dal video non e' lo stile scelto). Se neanche cosi': errore
+# (il ripiego "frase" prova ancora; mai la frase sul viso)
+ALTRI_VIDEO_VISO = 2
+
+
+def _altro_video_senza_viso(formato, frase, out, musiche, serie, drive, work, clip, errore):
+    import formati_nuovi
+    altro = os.path.join(work, "senza_viso")
+    os.makedirs(altro, exist_ok=True)
+    r = formati_nuovi.secondi_rimasti()
+    if r is not None and r < formati_nuovi.POCO_TEMPO_S:     # vicino alla scadenza: niente altri video
+        log("Scritta sul viso in ogni tratto e poco tempo alla scadenza: niente altri video")
+        errore.tutti = True
+        raise errore
+    for c in clip_extra(drive, altro, clip, ALTRI_VIDEO_VISO):
+        log(f"Scritta sul viso in ogni tratto del video: provo {os.path.basename(c)} dall'archivio")
+        try:
+            info = formati_nuovi.make_dieci("dieci", [c], frase["gancio"], out, musiche, serie, True)
+            info["ripiego_da"] = formato
+            info.setdefault("testo_viso", {})["altro_video"] = os.path.basename(c)
+            return info
+        except formati_nuovi.VisoCoperto as e:
+            errore = e
+        except Exception as e:
+            log(f"Video {os.path.basename(c)} non montato:", e)
+    errore.tutti = True
+    raise errore
 
 
 def _stem_clip(n):
@@ -3406,7 +3452,7 @@ def main():
             elif formato == "frase8":
                 info = overlay.make_video(src, frase["gancio"], out, music=music, serie=serie,
                                           colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
-                                          da_archivio=bool(clip), formato={"nome": "frase8", "durata": 8.0})
+                                          da_archivio=bool(clip), formato={"nome": "frase8", "durata": overlay.DURATA_REEL})   # 20/11/2026: 7 s
             elif formato == "ambiente":
                 info = overlay.make_video(src, frase["gancio"], out, music=music, serie=serie,
                                           colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
@@ -3415,7 +3461,11 @@ def main():
             log(f"Formato {formato} non riuscito, faccio il reel normale:", e)
             info = None
             overlay.APERTURA = lato_ap   # 7/11/2026: il ripiego e' un reel col video (anche dopo le foto)
-            if TUTTO_10S:                # 1/11/2026: il ripiego resta nello stile scelto (8 s dal 15/11, scritta gialla)
+            if TUTTO_10S and getattr(e, "tutti", False):
+                # 20/11/2026: la frase toccava il viso in ogni tratto e in ogni video provato: monta_dieci rifarebbe le
+                # stesse prove, si passa subito al ripiego "frase" (anche li' mai sul viso)
+                log("Frase sul viso in ogni video provato: niente secondo giro di monta_dieci")
+            elif TUTTO_10S:                # 1/11/2026: il ripiego resta nello stile scelto (7 s dal 20/11, 8 s dal 15/11)
                 try:
                     # 6/11/2026: prima qui formati_nuovi non era importato (NameError: il ripiego non partiva mai).
                     # monta_dieci gestisce i video corti (dieci_due) e la scritta sul viso (cinema/post, controllo

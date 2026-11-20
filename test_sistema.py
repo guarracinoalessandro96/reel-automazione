@@ -45,9 +45,11 @@ def misura(path):
 
 def main():
     musica = sorted(glob.glob(os.path.join(HERE, "musica", "phonk", "*.flac")))[0]
-    D_ = overlay.DURATA_MAX        # 5 s dal 13/10/2026, 8 s dal 15/11/2026 (= overlay.DURATA_REEL)
+    D_ = overlay.DURATA_MAX        # 5 s dal 13/10/2026, 8 s dal 15/11/2026, 7 s dal 20/11/2026 (= overlay.DURATA_REEL)
+    # 20/11/2026 (Alessandro: "tutti i video devono essere di 7 secondi"): anche il video cortissimo (2,5 s) esce da 7 s
+    # (rallentato fino a 0,5x, poi l'ultimo fotogramma fermo); prima usciva da 2,5 s
     casi = [("orizzontale", 1280, 720, 30, 11, True, D_), ("quadrato", 720, 720, 30, 11, True, D_),
-            ("verticale_60fps_muto", 720, 1280, 60, 11, False, D_), ("cortissimo", 720, 1280, 30, 2.5, True, 2.5),
+            ("verticale_60fps_muto", 720, 1280, 60, 11, False, D_), ("cortissimo", 720, 1280, 30, 2.5, True, D_),
             ("verticale_720p", 720, 1280, 30, 12, True, D_)]
     if "--veloce" in sys.argv:      # PC lento: un solo caso di montaggio + tutti gli altri controlli
         casi = casi[:1]
@@ -113,7 +115,32 @@ def main():
     check(all(0 <= a <= 12.0 - overlay.DURATA_MAX - overlay.LOOP_SFUMATURA + 1e-6 and l == overlay.DURATA_MAX
               for a, l in st) and len({a for a, _ in st}) > 3,
           f"archivio: pezzo da {overlay.DURATA_MAX:g} s in un punto diverso a ogni riuso")
-    check(overlay.DURATA_REEL == 8.0 and overlay.DURATA_MAX == overlay.DURATA_REEL, "reel da 8 s (dal 15/11/2026)")
+    # 20/11/2026 (Alessandro: "voglio che tutti i video siano di 7 secondi"): 7 s (8 s dal 15/11, prima 10 s)
+    check(overlay.DURATA_REEL == 7.0 and overlay.DURATA_MAX == overlay.DURATA_REEL, "reel da 7 s (dal 20/11/2026)")
+    # 20/11/2026 (Alessandro: "le scritte non stiano mai sulla mia faccia"): la frase si sposta, poi si rimpicciolisce,
+    # mai sul viso; senza posto TestoSulViso
+    try:
+        import stile_centro as sc, viso_testo as vt
+        frase = "Non mollare mai: quello che costruisci oggi e' la liberta' che avrai domani."
+        img0, _, _ = sc.scritta(1080, 1920, frase, [])
+        imp0 = sc.ULTIMO.get("corpo")
+        viso = [(0.25, 0.30, 0.75, 0.62)]                 # un viso grande proprio dove va la frase
+        img1, y1, _ = sc.scritta(1080, 1920, frase, viso)
+        v1 = dict(sc.ULTIMO.get("viso") or {})
+        check(not vt.lettere_sul_viso(img1, viso) and v1.get("posizione") in ("alto", "basso")
+              and sc.ULTIMO.get("corpo") == imp0, f"testo mai sul viso: spostato in {v1.get('posizione')}, stesso corpo")
+        viso = [(0.0, 0.16, 1.0, 0.725)]                  # resta solo una fascia stretta in basso: piu' piccola
+        img2, _, _ = sc.scritta(1080, 1920, frase, viso)
+        v2 = dict(sc.ULTIMO.get("viso") or {})
+        check(not vt.lettere_sul_viso(img2, viso) and v2.get("scala", 1) < 1
+              and sc.ULTIMO.get("corpo") >= round(1080 * sc.CORPO_VISO_MIN), f"testo mai sul viso: rimpicciolito {v2}")
+        try:
+            sc.scritta(1080, 1920, frase, [(0.0, 0.05, 1.0, 0.95)])
+            check(False, "testo mai sul viso: senza posto doveva fermarsi")
+        except sc.TestoSulViso:
+            check(True, "testo mai sul viso: senza posto TestoSulViso (mai sul viso)")
+    except Exception as e:
+        check(False, f"testo mai sul viso: non riuscito ({e})")
     # PARLATO (18/10/2026): la sua voce (qui un tono) con i sottotitoli e la serie in alto, niente musica
     try:
         import parlato

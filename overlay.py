@@ -729,15 +729,28 @@ def _scritta(W, H, text, faces, mappa, st):
 ULTIMO_STILE = None     # 6/11/2026: lo stile usato davvero dall'ultima scritta (montaggio.scritta in stato.json)
 
 
-def _scritta_centro(W, H, text):
-    """7/11/2026: la frase nello stile al centro (stile_centro.scritta); None se non riesce (allora lo stile di prima,
-    cosi' il reel esce comunque)."""
-    global ULTIMO_STILE
+def _mai_sul_viso():
+    """20/11/2026 (Alessandro: "mai le scritte sulla mia faccia"): True con lo stile al centro e stile_centro.MAI_SUL_VISO."""
     try:
         import stile_centro
-        risultato = stile_centro.scritta(W, H, text)
+        return bool(STILE_CENTRO and stile_centro.MAI_SUL_VISO)
+    except Exception:
+        return False
+
+
+def _scritta_centro(W, H, text, faces=None):
+    """7/11/2026: la frase nello stile al centro (stile_centro.scritta); None se non riesce (allora lo stile di prima,
+    cosi' il reel esce comunque). 20/11/2026 (Alessandro: "le scritte non stiano mai sulla mia faccia"): faces = visi
+    di tutto il pezzo; se la frase non trova posto neanche rimpicciolita, stile_centro.TestoSulViso arriva a chi monta
+    (che prova un altro tratto o un altro video): mai la frase sul viso, mai lo stile di prima al suo posto."""
+    global ULTIMO_STILE
+    import stile_centro
+    try:
+        risultato = stile_centro.scritta(W, H, text, faces)
         ULTIMO_STILE = stile_centro.NOME_STILE
         return risultato
+    except stile_centro.TestoSulViso:
+        raise
     except Exception as e:
         print("Scritta al centro non riuscita, uso lo stile di prima:", str(e)[:200], flush=True)
         return None
@@ -746,10 +759,11 @@ def _scritta_centro(W, H, text):
 def build_testo_giallo(W, H, text, faces, mappa=None):
     """Scritta dei reel da 8 s (10 s fino al 15/11/2026) nello stile STILE_SCRITTA, nella posizione senza visi e con meno dettagli.
     Restituisce (immagine, y in frazione, punti). Se il nuovo stile fallisce: lo stile di prima, cosi' il reel esce.
-    7/11/2026: con STILE_CENTRO la frase al centro (anche sul viso: visi e dettagli non contano piu')."""
+    7/11/2026: con STILE_CENTRO la frase al centro (anche sul viso: visi e dettagli non contano piu').
+    20/11/2026 (Alessandro): di nuovo MAI sul viso: i visi contano (stile_centro.impagina_senza_visi)."""
     global ULTIMO_STILE
     if STILE_CENTRO:
-        risultato = _scritta_centro(W, H, text)
+        risultato = _scritta_centro(W, H, text, faces)     # 20/11/2026: con i visi (mai sul viso)
         if risultato:
             return risultato
     st = STILI_SCRITTA.get(STILE_SCRITTA)
@@ -788,7 +802,7 @@ def build_overlay(W, H, text, faces, stile=None, autore=None, serie=None):
     7/11/2026: con STILE_CENTRO la frase al centro come nei reel da 8 s (niente etichetta ne' autore: dal 1/11 la serie
     e' in descrizione e gli autori non si mostrano)."""
     if STILE_CENTRO and text and text.strip():
-        risultato = _scritta_centro(W, H, text)
+        risultato = _scritta_centro(W, H, text, faces)     # 20/11/2026: con i visi (mai sul viso)
         if risultato:
             return risultato
     stile = stile or STILE
@@ -874,7 +888,9 @@ LIMITATORE = "alimiter=limit=0.89:level=disabled"   # picchi sotto -1 dB: niente
 TAGLIO_INIZIO = 0.0      # 25/10/2026: niente piu' taglio automatico dell'inizio: i video li taglia gia' Alessandro
 # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): DURATA_REEL e' la durata di OGNI reel
 # (unica fonte: formati_nuovi.DIECI_SECONDI, momento, parlato, foto e ripieghi la leggono da qui). Prima 10 s
-DURATA_REEL = 8.0
+# 20/11/2026, Alessandro: "voglio che tutti i video siano di 7 secondi": DURATA_REEL = 7 s (prima 8 s dal 15/11, prima
+# ancora 10 s). Lo puo' cambiare solo Alessandro
+DURATA_REEL = 7.0
 # dal 13/10/2026 reel da 5 secondi (prima 8); 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"):
 # anche il reel "frase" (il ripiego finale di make_video senza formato) dura DURATA_REEL
 DURATA_MAX = DURATA_REEL
@@ -889,7 +905,7 @@ def segmento(seconds, durata=None):
 
 
 def segmento_migliore(src, seconds, vf=None, durata=None, a_caso=False):
-    """(inizio, durata) dei DURATA_MAX secondi (8 dal 15/11/2026) PIU' FORTI del video (16/10/2026): viso visibile, movimento, immagine nitida,
+    """(inizio, durata) dei DURATA_MAX secondi (7 dal 20/11/2026, 8 dal 15/11) PIU' FORTI del video (16/10/2026): viso visibile, movimento, immagine nitida,
     niente primo secondo (quando si preme "registra"). Video corti: come segmento().
     a_caso=True (riuso dall'archivio): uno dei pezzi migliori scelto a caso, cosi' ogni riuso e' diverso."""
     durata = durata or DURATA_MAX
@@ -1055,7 +1071,7 @@ def cambia_musica(src, music, dst, inizio=0.0):
 
 def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", scena_rilevata=None, autore=None,
                da_archivio=False, serie=None, formato=None):
-    """formato (18/10/2026): None/"frase" = DURATA_MAX (8 s dal 15/11/2026, prima 5 s); {"nome": "gancio", "durata": 8, "seconda": testo, "t": 3.0};
+    """formato (18/10/2026): None/"frase" = DURATA_MAX (7 s dal 20/11/2026, 8 s dal 15/11, prima 5 s); {"nome": "gancio", "durata": 8, "seconda": testo, "t": 3.0};
     {"nome": "ambiente", "durata": 6, "audio_originale": 0.35} (suono vero della ripresa sotto la musica)."""
     """Come _make_video, ma con piani di riserva: se ffmpeg fallisce si riprova togliendo, nell'ordine,
     zoom e loop, la color correction e la musica. Cosi' un problema su un effetto non blocca mai la pubblicazione."""
@@ -1074,6 +1090,8 @@ def make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", s
                 info["ripiego"] = {"senza": [k for k in ("zoom", "colore", "music") if not p[k]], "errori": errori}
             return info
         except Exception as e:
+            if type(e).__name__ in ("TestoSulViso", "SottotitoliSulViso"):    # 20/11/2026: il viso resta li'
+                raise
             errori.append(str(e)[:300])
     raise RuntimeError("montaggio fallito: " + " | ".join(errori))
 
@@ -1099,6 +1117,12 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     frames = extract_frames(src, length, start=start, vf=HDR_TO_SDR if hdr else None)
     if not frames:
         raise RuntimeError("video illeggibile")
+    # 20/11/2026, Alessandro: "tutti i video devono essere di 7 secondi": anche il ripiego "frase" (e gancio, ambiente)
+    # di un video piu' corto di 7 s dura DURATA_REEL: il video si rallenta (mai sotto 0,5x) e, se non basta, l'ultimo
+    # fotogramma resta fermo fino a 7 s. Parlato e momento hanno la loro durata (pubblica.monta_parlato/monta_momento)
+    lento = None
+    if not (parlato or momento) and length < DURATA_REEL - 0.05:
+        lento = max(0.5, length / DURATA_REEL)
     H, W = frames[0].shape[:2]
     faces = detect_faces(frames)
     taglio_x = None
@@ -1116,8 +1140,17 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     if abs(W0 / H0 - 9 / 16) < 0.03:     # quasi 9:16 (es. dopo il ritaglio): esattamente 9:16
         H = lato * 16 // 9
     png2, t2 = None, None
+    viso_dati = None        # 20/11/2026: visi e posizione della frase (montaggio.testo_viso)
     if parlato:                     # il testo sono i sottotitoli: in alto solo la serie
         overlay, y_frac, score = build_overlay_serie(W, H, serie), 0.08, 0
+        if _mai_sul_viso():
+            # 20/11/2026 (Alessandro: mai scritte sulla faccia): i visi del pezzo per i sottotitoli (parlato.file_ass);
+            # l'etichetta in alto, se c'e' e tocca un viso, non si mette
+            import viso_testo
+            zona_sub, viso_dati = viso_testo.visi_frames(frames)
+            zona_sub = zona_sub + list(faces)
+            if viso_testo.lettere_sul_viso(overlay, zona_sub):
+                overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     elif formato.get("seconda") and not STILE_CENTRO:   # GANCIO: prima parte subito, la seconda dopo t secondi
         ov1, ov2, y_frac, score = build_overlay_2tempi(W, H, hook, formato["seconda"], faces, serie)
         png2 = os.path.join(tempfile.gettempdir(), "overlay_reel_2.png")
@@ -1126,7 +1159,21 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     else:
         # 7/11/2026: con lo stile al centro anche il GANCIO ha la frase intera e ferma dal primo fotogramma
         testo = f"{hook} {formato['seconda']}" if formato.get("seconda") else hook
-        overlay, y_frac, score = build_overlay(W, H, testo, faces, autore=autore, serie=serie)
+        zona = faces
+        if _mai_sul_viso():
+            # 20/11/2026 (Alessandro: "le scritte non stiano mai sulla mia faccia"): i visi dei 16 fotogrammi del pezzo
+            # (uno ogni ~0,45 s) cercati come in viso_testo (piu' classificatori, testa inclinata, margini), piu' quelli
+            # di prima: la frase non li tocca mai (si sposta, poi si rimpicciolisce; se non c'e' posto: errore)
+            import viso_testo
+            zona, viso_dati = viso_testo.visi_frames(frames)
+            zona = zona + list(faces)
+        overlay, y_frac, score = build_overlay(W, H, testo, zona, autore=autore, serie=serie)
+        if viso_dati is not None and testo.strip():
+            import viso_testo, stile_centro
+            if viso_testo.lettere_sul_viso(overlay, zona):
+                raise stile_centro.TestoSulViso("lettere della frase sul viso")
+            viso_dati.update(stile_centro.ULTIMO.get("viso") or {})
+            viso_dati["controllo"] = "lettere_fuori_dai_visi"
     png = os.path.join(tempfile.gettempdir(), "overlay_reel.png")
     overlay.save(png)
     cmd = [FFMPEG, "-y", "-v", "error", "-display_rotation", "0", "-ss", f"{start:.3f}", "-i", src, "-i", png]
@@ -1151,6 +1198,9 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
         chain.append(f"zoompan=z='{z}':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=1:s={W}x{H}:fps={fr}")
     elif (W, H) != (W0, H0):
         chain.append(f"scale={W}:{H}:flags=lanczos")
+    if lento:          # 20/11/2026: video corto -> 7 s (vedi sopra)
+        chain += [f"setpts=(PTS-STARTPTS)/{lento:.4f}", "tpad=stop_mode=clone:stop_duration=7"]
+        length = float(DURATA_REEL)
     grade_info = None
     # 7/11/2026 (Alessandro: "non li devi piu' modificare"): sui suoi video da INTATTI_DAL niente color correction ne'
     # scurimento; l'ombra dietro la frase si', fa parte della scritta
@@ -1189,7 +1239,7 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     # (fotogrammi 0..X): l'ultimo fotogramma coincide con il primo, quando lo Short ricomincia non si vede lo stacco.
     # L'inizio si legge con un SECONDO ingresso dello stesso file (con "split" ffmpeg 7.1 si bloccava). Durata invariata.
     # (solo al primo tentativo: se ffmpeg fallisce, il piano di riserva riprova SENZA loop, poi senza colore...)
-    X = (LOOP_SFUMATURA if zoom and not (parlato or momento) and seconds - start >= length + LOOP_SFUMATURA
+    X = (LOOP_SFUMATURA if zoom and not (parlato or momento or lento) and seconds - start >= length + LOOP_SFUMATURA
          and length > 2 else 0)
     filtri = ",".join(chain)
     if X:
@@ -1231,7 +1281,11 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
     if formato.get("sottotitoli"):      # PARLATO: sottotitoli bruciati nel video (file .ass + font nella stessa cartella)
         import parlato as parlato_mod
         cartella_sub = tempfile.mkdtemp()
-        parlato_mod.file_ass(formato["sottotitoli"], start, os.path.join(cartella_sub, "sub.ass"), W, H)
+        _, mv, corpo_sub = parlato_mod.file_ass(formato["sottotitoli"], start, os.path.join(cartella_sub, "sub.ass"),
+                                                W, H, zona_sub if viso_dati is not None else None)
+        if viso_dati is not None:     # 20/11/2026: dove sono finiti i sottotitoli (montaggio.testo_viso)
+            viso_dati.update(sottotitoli_margine=int(mv), sottotitoli_corpo=int(corpo_sub),
+                             scala=round(corpo_sub / max(1, round(86 * W / 1080)), 3))
         shutil.copy(FONT, os.path.join(cartella_sub, os.path.basename(FONT)))
         i = graph.rfind("format=yuv420p[v]")
         graph = graph[:i] + "format=yuv420p,subtitles=sub.ass:fontsdir=.[v]" + graph[i + len("format=yuv420p[v]"):]
@@ -1255,6 +1309,8 @@ def _make_video(src, hook, dst, preview=None, music=None, colore=True, nome="", 
             "audio_originale": vol_orig or None}
     if centro:          # 7/11/2026: frase al centro (montaggio.stile_centro)
         info.update(testo="centro", stile_centro=centro)
+    if viso_dati is not None:
+        info["testo_viso"] = viso_dati      # 20/11/2026: per l'agente del giorno (montaggio.testo_viso)
     return info
 
 
@@ -1360,7 +1416,7 @@ def make_regole(clips, titolo, righe, dst, musiche=(), serie=None):
 
 
 # ------------------------------------------------------------------ formato "MONTAGGIO" (18/10/2026)
-MONTAGGIO_DURATA = 8.0
+MONTAGGIO_DURATA = DURATA_REEL     # 20/11/2026 (Alessandro: "tutti i video di 7 secondi"): prima 8.0 fisso
 
 
 def make_montaggio(clips, frase, dst, musiche=(), serie=None):
