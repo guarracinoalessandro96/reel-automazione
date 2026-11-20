@@ -460,6 +460,15 @@ def frase_forzata(mie, state, spinto=True):
     return None
 
 
+def frasi_escluse():
+    """20/11/2026: id delle frasi che Alessandro ha tolto (frasi_escluse.json); set vuoto se il file manca."""
+    try:
+        with open(os.path.join(HERE, "frasi_escluse.json"), encoding="utf-8") as f:
+            return {v["id"] for v in json.load(f)}
+    except Exception:
+        return set()
+
+
 def coda_screenshot():
     """7/11/2026 (Alessandro: "pubblica quelle che non sono state utilizzate privilegiando sempre quelle che ti ho
     salvato per prima"): le frasi dei suoi screenshot in fila, dalla piu' vecchia (notte/ordine_screenshot.json:
@@ -3219,6 +3228,9 @@ def main():
                and not CRINGE.search(f["gancio"]) and not FAMIGLIA.search(f["gancio"])
                and not CONFRONTO.search(f["gancio"])] or mie  # 29/10
         mie += [f for f in scelte_da_lui if f not in mie]
+        # 20/11/2026 (Alessandro, sulla lista delle prossime frasi: "queste le voglio togliere"): frasi_escluse.json
+        # ([{"id", "dal", "frase"}]) non escono MAI piu', nemmeno come forzate, vincenti o riusate
+        mie = [f for f in mie if f["id"] not in frasi_escluse()]
         frasi = [f for f in mie if f["id"] not in usi]
         log(f"'{DOC_MIE}': {len(mie)} citazioni, {len(frasi)} ancora da usare.")
         # reel da 5 s: anche le frasi lunghe (scelta di Alessandro 13/10/2026: se non si fa in tempo a leggere,
