@@ -19717,7 +19717,9 @@
      "ok": true,
      "id": "18107551982574037",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -19798,7 +19800,10 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "16XjCUckEN8"
+     "id": "16XjCUckEN8",
+     "controllo": [
+      "video non trovato su YouTube"
+     ]
     },
     "instagram": {
      "ok": true,
@@ -19809,11 +19814,103 @@
    },
    "spinto": true,
    "testo": "Non piangere. Di' solo \"vaffanculo\" e sorridi."
+  },
+  {
+   "quando": "2026-11-20T15:00",
+   "slot": "2026-11-20 16:00",
+   "video": "IMG_4120.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-abb45d33",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 7.0,
+    "musica": "i_might_be_late_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.18,
+     "movimento": 10.36,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 101,
+     "righe": 3,
+     "viso": {
+      "visi": 11,
+      "corpo_base": 101,
+      "posizione": "centro",
+      "y": 0.47,
+      "scala": 1.0,
+      "corpo": 101,
+      "righe": 3
+     },
+     "scurito": 0.47,
+     "luce": 0.4,
+     "sfumatura": 0.3,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 11,
+     "corpo_base": 101,
+     "posizione": "centro",
+     "y": 0.47,
+     "scala": 1.0,
+     "corpo": 101,
+     "righe": 3,
+     "fotogrammi": 20,
+     "con_viso": 18,
+     "guardato": [
+      [
+       29.0,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 169,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 13
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_06.flac",
+    "musica_instagram": "Move Like This - TRC Orchestral, Vestevent [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "vqvelPVruY8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17922265671462894",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non ti sentirai mai pronto. Pronto non è una sensazione, è una decisione."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-12 16:00",
   "2026-11-12 18:00",
   "2026-11-12 20:00",
   "2026-11-12 22:00",
@@ -19892,10 +19989,10 @@
   "2026-11-20 08:00",
   "2026-11-20 10:00",
   "2026-11-20 12:00",
-  "2026-11-20 14:00"
+  "2026-11-20 14:00",
+  "2026-11-20 16:00"
  ],
  "musica_recenti": [
-  "ten_1.m4a",
   "taking_flight_1.m4a",
   "wrangle_the_crazy_1.m4a",
   "cartier_3.m4a",
@@ -19954,7 +20051,8 @@
   "turn_in_the_sun_2.m4a",
   "fire_in_the_sky_1.m4a",
   "ego_chall_2.m4a",
-  "mirror_mirror_1.m4a"
+  "mirror_mirror_1.m4a",
+  "i_might_be_late_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -20382,11 +20480,12 @@
   "MIE-a7ce6fa5",
   "MIE-28e1c2c7",
   "MIE-d7a9721f",
-  "MIE-d177be4a"
+  "MIE-d177be4a",
+  "MIE-abb45d33"
  ],
  "temi_recenti": [
-  "dieta",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -20801,8 +20900,8 @@
    "orizzontale": false
   },
   "1Tyefc-vEJZrdzNqOTaUh2yXtSQjsP7fg": {
-   "usi": 4,
-   "ultimo": "2026-11-13",
+   "usi": 5,
+   "ultimo": "2026-11-20",
    "orizzontale": false
   },
   "1pDAftR96LYxUz7ZfUjOC4rrX4qrn3DF5": {
@@ -21066,7 +21165,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_02.flac",
   "trap_15.flac",
   "drive_09.flac",
   "phonk_06.flac",
@@ -21085,7 +21183,8 @@
   "energia_04.flac",
   "trap_07.flac",
   "deciso_10.flac",
-  "phonk_15.flac"
+  "phonk_15.flac",
+  "energia_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -21120,7 +21219,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -21136,7 +21235,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2242687643238503",
   "620334183626298",
   "1354806896501272",
   "522339937196006",
@@ -21195,11 +21293,11 @@
   "5301582899854512",
   "1274149560124013",
   "1145314397662753",
-  "849342490718599"
+  "849342490718599",
+  "529367193511753"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "The K Club",
   "Jumbo",
   "Sam Marshall",
   "Ecklectic Music",
@@ -21208,10 +21306,10 @@
   "Trout Recording",
   "Abby Posner",
   "Otis McDonald",
-  "Giulio Cercato"
+  "Giulio Cercato",
+  "TRC Orchestral, Vestevent"
  ],
  "ig_titoli_recenti": [
-  "unstoppable",
   "reflect and rise",
   "love me",
   "warrior",
@@ -21250,21 +21348,22 @@
   "epic battles",
   "heros journey",
   "move it or lose it",
-  "level up"
+  "level up",
+  "move like this"
  ],
  "ig_tendenze_riserva": [
   {
-   "audio_id": "1533332147140863",
-   "title": "Something's In The Movement",
-   "display_artist": "Trout Recording",
-   "duration_in_ms": 197923,
+   "audio_id": "1383912545569665",
+   "title": "You Can Do It",
+   "display_artist": "Global Genius",
+   "duration_in_ms": 157357,
    "libreria": true
   },
   {
-   "audio_id": "819743797457783",
-   "title": "Redux (feat. My City Glory) (Instrumental)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 243803,
+   "audio_id": "529367193511753",
+   "title": "Move Like This",
+   "display_artist": "TRC Orchestral, Vestevent",
+   "duration_in_ms": 74695,
    "libreria": true
   }
  ]
