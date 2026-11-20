@@ -19499,7 +19499,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "XCxqldWG43M"
+     "id": "XCxqldWG43M",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -19510,11 +19511,78 @@
    },
    "spinto": true,
    "testo": "Il panorama migliore arriva dopo la salita più dura."
+  },
+  {
+   "quando": "2026-11-20T07:00",
+   "slot": "2026-11-20 08:00",
+   "video": "IMG_3905.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-a7ce6fa5",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 8.0,
+    "musica": "turn_in_the_sun_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.455,
+     "movimento": 20.86,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "velocita": 0.9963,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 101,
+     "righe": 4,
+     "scurito": 0.57,
+     "luce": 0.59,
+     "sfumatura": 0.4,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "scena_unica": "rallentata",
+    "secondi_montaggio": 78,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "io",
+     "forma": "due",
+     "parole": 16
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_04.flac",
+    "musica_instagram": "Epic Battles - Trout Recording"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Eqrdvw_qKs8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18099256502480516",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Molte cose mi hanno spezzato il cuore ma mi hanno aggiustato la visione. Leggilo di nuovo."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-12 08:00",
   "2026-11-12 10:00",
   "2026-11-12 12:00",
   "2026-11-12 14:00",
@@ -19593,10 +19661,10 @@
   "2026-11-19 20:00",
   "2026-11-19 22:00",
   "2026-11-20 00:00",
-  "2026-11-20 06:00"
+  "2026-11-20 06:00",
+  "2026-11-20 08:00"
  ],
  "musica_recenti": [
-  "mirror_mirror_1.m4a",
   "rubberband_1.m4a",
   "delirium_3.m4a",
   "whoop_1.m4a",
@@ -19655,7 +19723,8 @@
   "break_ya_neck_1.m4a",
   "majestic_12_2.m4a",
   "sweaty_staredown_2.m4a",
-  "cutscene_crush_1.m4a"
+  "cutscene_crush_1.m4a",
+  "turn_in_the_sun_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -20079,15 +20148,16 @@
   "MIE-55b16021",
   "MIE-226e85f9",
   "MIE-06385051",
-  "MIE-94622b38"
+  "MIE-94622b38",
+  "MIE-a7ce6fa5"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -20280,8 +20350,8 @@
    "ultimo": "2026-11-01"
   },
   "1Pnwa-lAv7b6BxxAB-L0Kp3azuB15R43F": {
-   "usi": 4,
-   "ultimo": "2026-11-11",
+   "usi": 5,
+   "ultimo": "2026-11-20",
    "orizzontale": false
   },
   "1H_I6VC3vZgQwOjIWlcuhjr4OiNQ3Fpvl": {
@@ -20763,7 +20833,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_06.flac",
   "deciso_05.flac",
   "trap_02.flac",
   "drive_12.flac",
@@ -20782,7 +20851,8 @@
   "energia_03.flac",
   "phonk_08.flac",
   "deciso_08.flac",
-  "drive_10.flac"
+  "drive_10.flac",
+  "energia_04.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -20817,7 +20887,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -20833,7 +20903,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1108285910189784",
   "727931292858890",
   "605387610085051",
   "774667642107625",
@@ -20892,11 +20961,11 @@
   "1488842099008011",
   "936174714667779",
   "843173497227558",
-  "744011543289259"
+  "744011543289259",
+  "5301582899854512"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "PiNKSHGRFNGR",
   "The Poison Oaks",
   "LAVLO",
   "Chela Rivas",
@@ -20905,10 +20974,10 @@
   "Sam Marshall",
   "Ecklectic Music",
   "Ross Lara",
-  "Jonny Houlihan"
+  "Jonny Houlihan",
+  "Trout Recording"
  ],
  "ig_titoli_recenti": [
-  "superman",
   "superman",
   "superman",
   "superman",
@@ -20947,29 +21016,8 @@
   "electric movement",
   "adrenalina was her name",
   "forever",
-  "winners take all"
+  "winners take all",
+  "epic battles"
  ],
- "ig_tendenze_riserva": [
-  {
-   "audio_id": "3240401969456886",
-   "title": "Running (Instrumental)",
-   "display_artist": "Julia Gartha",
-   "duration_in_ms": 128407,
-   "libreria": true
-  },
-  {
-   "audio_id": "1764087140836610",
-   "title": "Horizon (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 128850,
-   "libreria": true
-  },
-  {
-   "audio_id": "744011543289259",
-   "title": "Winners Take All (feat. Briana Tyson)",
-   "display_artist": "Jonny Houlihan",
-   "duration_in_ms": 213980,
-   "libreria": true
-  }
- ]
+ "ig_tendenze_riserva": []
 }
