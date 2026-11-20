@@ -132,8 +132,28 @@ def main():
         viso = [(0.0, 0.16, 1.0, 0.725)]                  # resta solo una fascia stretta in basso: piu' piccola
         img2, _, _ = sc.scritta(1080, 1920, frase, viso)
         v2 = dict(sc.ULTIMO.get("viso") or {})
-        check(not vt.lettere_sul_viso(img2, viso) and v2.get("scala", 1) < 1
-              and sc.ULTIMO.get("corpo") >= round(1080 * sc.CORPO_VISO_MIN), f"testo mai sul viso: rimpicciolito {v2}")
+        # 20/11/2026 sera (Alessandro: "le scritte non devono essere troppo piccole"): mai sotto l'80% del corpo normale
+        check(not vt.lettere_sul_viso(img2, viso) and v2.get("scala", 1) < 1 and sc.SCALA_VISO_MIN >= 0.8
+              and sc.ULTIMO.get("corpo") >= imp0 * sc.SCALA_VISO_MIN - 0.5, f"testo mai sul viso: rimpicciolito {v2}")
+        try:      # per starci dovrebbe scendere sotto l'80%: non si rimpicciolisce, si ferma (altro tratto o video)
+            sc.scritta(1080, 1920, frase, [(0.0, 0.12, 1.0, 0.785)])
+            check(False, f"testo mai sotto l'80%: uscita a {sc.ULTIMO.get('viso')}")
+        except sc.TestoSulViso:
+            check(True, "testo mai sotto l'80%: senza posto TestoSulViso")
+        # 20/11/2026 sera: YuNet (modello nel repo) e i riquadri dei fotogrammi ruotati che tornano al posto giusto
+        import cv2, numpy as np
+        check(os.path.exists(vt.MODELLO_YN) and hasattr(cv2, "FaceDetectorYN")
+              and vt.visi_yunet(np.zeros((1280, 720, 3), np.uint8)) == [], "visi: YuNet nel repo e funzionante")
+        m = np.zeros((160, 90), np.uint8)
+        m[20:50, 10:40] = 255                                     # x 10-40 su 90, y 20-50 su 160
+        giusti = True
+        for rot, ritorna in vt._ROTAZIONI:
+            r = m if rot is None else cv2.rotate(m, rot)
+            ys, xs = np.nonzero(r)
+            h, w = r.shape
+            b = ritorna(xs.min() / w, ys.min() / h, (xs.max() + 1) / w, (ys.max() + 1) / h)
+            giusti &= max(abs(b[0] - 10 / 90), abs(b[1] - 20 / 160), abs(b[2] - 40 / 90), abs(b[3] - 50 / 160)) < 1e-6
+        check(giusti, "visi: i riquadri di YuNet sui fotogrammi ruotati tornano al posto giusto")
         try:
             sc.scritta(1080, 1920, frase, [(0.0, 0.05, 1.0, 0.95)])
             check(False, "testo mai sul viso: senza posto doveva fermarsi")

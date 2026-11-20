@@ -922,6 +922,11 @@ def make_sequenza(clips, durate, testi, dst, musiche=(), serie=None, nome="seque
             tv = dict((info.get("stile_centro") or {}).get("viso") or stile_centro.ULTIMO.get("viso") or {})
             tv["fotogrammi"] = sum(int((p.get("viso_dati") or {}).get("fotogrammi", 0)) for p in pezzi)
             tv["con_viso"] = sum(int((p.get("viso_dati") or {}).get("con_viso", 0)) for p in pezzi)
+            # 20/11/2026 sera: quanti visti da YuNet e con quale rilevatore (controlli.py)
+            tv["con_viso_yunet"] = sum(int((p.get("viso_dati") or {}).get("con_viso_yunet", 0)) for p in pezzi)
+            ril = {(p.get("viso_dati") or {}).get("rilevatore") for p in pezzi} - {None}
+            if ril:
+                tv["rilevatore"] = "+".join(sorted(ril)) if len(ril) > 1 else ril.pop()
             tv["guardato"] = [[round(float(p["inizio"]), 2), round(float(d) * (float(velocita[i]) if velocita else 1.0), 2)]
                               for i, (p, d) in enumerate(zip(pezzi, durate))]
             tv["controllo"] = "lettere_fuori_dai_visi"
@@ -1080,7 +1085,7 @@ def _guarda(p, sorgente, W, H, quanti, dieci, controlli, lato=None):
         fr = None
         if mai_sul_viso():
             # 20/11/2026 (Alessandro: "le scritte non stiano mai sulla mia faccia"): i visi di TUTTO il pezzo, un
-            # fotogramma ogni viso_testo.PASSO s (0,35), nel taglio 9:16 finale, con una lettura sola di ffmpeg
+            # fotogramma ogni viso_testo.PASSO s (0,25 dal 20/11 sera, con YuNet), nel taglio 9:16 finale, con una lettura sola di ffmpeg
             # (fotogrammi piccoli, piu' veloce dei `quanti` PNG a piena risoluzione di prima). Le altre misure (visi
             # "su quanti", dettagli, luce, nero) si fanno su `quanti` di questi fotogrammi, come prima. Se non riesce:
             # i fotogrammi e i visi di prima (mai nessun viso per un errore)
@@ -1396,7 +1401,7 @@ def make_dieci(nome, clips, frase, dst, musiche=(), serie=None, controlla_viso=F
 
 
 # 20/11/2026 (Alessandro: "mai le scritte sulla mia faccia"): se la frase non trova posto senza toccare il viso neanche
-# rimpicciolita (stile_centro.CORPO_VISO_MIN) nei 7 s scelti, si provano fino ad ALTRE_FINESTRE altri tratti da 7 s
+# rimpicciolita (stile_centro.SCALA_VISO_MIN, 80% dal 20/11 sera) nei 7 s scelti, si provano fino ad ALTRE_FINESTRE altri tratti da 7 s
 # dello STESSO video (lontani almeno FINESTRA_DISTANZA s da quelli gia' provati); poi VisoCoperto (pubblica.monta_dieci
 # prova un altro video). Mai la frase sul viso.
 ALTRE_FINESTRE, FINESTRA_DISTANZA = 3, 1.5

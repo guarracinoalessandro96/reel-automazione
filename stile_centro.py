@@ -17,7 +17,7 @@ morbidissima dietro la frase; mai piu' chiaro.
 impagina; la frase si disegna poi al SCALA_TESTO (90%), con le stesse righe.
 Non importa overlay (overlay importa questo modulo): si puo' provare da solo.
 """
-import os, re
+import math, os, re
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 _DIR = os.path.dirname(os.path.abspath(__file__))
@@ -362,12 +362,17 @@ def impagina(W, H, testo):
 # di tutto il pezzo del reel (viso_testo.py) la frase: (1) resta al centro come sempre se li' non tocca nessun viso;
 # (2) se no si sposta in su o in giu', dentro la zona sicura (ZONA_SICURA: niente nel 10% in alto ne' nel 20% in basso,
 # dove ci sono nome, didascalia e pulsanti), alla posizione libera piu' vicina al centro; (3) solo se nessuna posizione
-# e' libera il corpo scende a passi di RIDUCI_VISO (righe rifatte con lo stesso a capo) fino a CORPO_VISO_MIN; (4) se
+# e' libera il corpo scende a passi di RIDUCI_VISO (righe rifatte con lo stesso a capo) fino a SCALA_VISO_MIN; (4) se
 # neanche cosi' c'e' posto: TestoSulViso (si prova un altro tratto del video o un altro video, mai la frase sul viso).
 # Lo puo' cambiare solo Alessandro
+# 20/11/2026 sera (Alessandro: "le scritte non devono essere troppo piccole, negli ultimi video li ha rimpiccioliti
+# tantissimo": il reel delle 20:00 era al 48%, 65 px in 4K): mai sotto SCALA_VISO_MIN (80%) del corpo normale della
+# frase. Prima la frase si sposta (puo' stare sul busto, sul corpo e sullo sfondo, mai sul viso coi suoi margini, che
+# con YuNet sono piu' stretti: viso_testo.MARGINI_YN), poi scende al massimo all'80%, poi un altro tratto o un altro video
 MAI_SUL_VISO = True
-RIDUCI_VISO = 0.92                   # ogni passo il corpo scende dell'8%
-CORPO_VISO_MIN = 0.030               # mai sotto il 3% della larghezza (65 px in 4K, 32 px in 1080): si legge sul telefono
+RIDUCI_VISO = 0.95                   # ogni passo il corpo scende del 5%
+SCALA_VISO_MIN = 0.80                # mai sotto l'80% del corpo normale (~81 px in 4K su ~101; prima 3% della larghezza)
+CORPO_VISO_MIN = 0.030               # (fino al 20/11 sera) solo come pavimento assoluto per frasi gia' piccole
 PASSO_Y = 0.005                      # posizioni provate: ogni 0,5% dell'altezza
 SPAZIO_VISO = 0.20                   # spazio tra lettere e riquadro del viso (in em, oltre ai margini del viso)
 
@@ -455,7 +460,7 @@ def impagina_senza_visi(W, H, testo, visi):
         dati.update(posizione="centro", scala=1.0)
         return imp, dati
     px, prove = px0, 0
-    minimo = min(px0, max(8, int(round(W * CORPO_VISO_MIN))))
+    minimo = min(px0, max(8, int(math.ceil(px0 * SCALA_VISO_MIN))))     # 20/11 sera: mai sotto l'80%
     while True:
         prove += 1
         t = _posto(imp, visi, W, H)
