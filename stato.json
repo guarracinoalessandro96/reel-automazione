@@ -19364,7 +19364,9 @@
      "ok": true,
      "id": "17912393574583511",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -19427,22 +19429,91 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "ig-MvzU1aIs"
+     "id": "ig-MvzU1aIs",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18650512888013491",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "Quest'anno scegli la crescita al posto della comodità."
+  },
+  {
+   "quando": "2026-11-20T05:01",
+   "slot": "2026-11-20 06:00",
+   "video": "IMG_3974.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "MIE-94622b38",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 8.0,
+    "musica": "cutscene_crush_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.502,
+     "movimento": 52.06,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "mosso",
+    "inizio_spostato": 0.3,
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 114,
+     "righe": 3,
+     "scurito": 0.45,
+     "luce": 0.48,
+     "sfumatura": 0.35,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 183,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 9
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_10.flac",
+    "musica_instagram": "Winners Take All (feat. Briana Tyson) - Jonny Houlihan [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "XCxqldWG43M"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18115255532178859",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Il panorama migliore arriva dopo la salita più dura."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-12 06:00",
   "2026-11-12 08:00",
   "2026-11-12 10:00",
   "2026-11-12 12:00",
@@ -19521,10 +19592,10 @@
   "2026-11-19 18:00",
   "2026-11-19 20:00",
   "2026-11-19 22:00",
-  "2026-11-20 00:00"
+  "2026-11-20 00:00",
+  "2026-11-20 06:00"
  ],
  "musica_recenti": [
-  "fire_in_the_sky_1.m4a",
   "mirror_mirror_1.m4a",
   "rubberband_1.m4a",
   "delirium_3.m4a",
@@ -19583,7 +19654,8 @@
   "kick_it_3.m4a",
   "break_ya_neck_1.m4a",
   "majestic_12_2.m4a",
-  "sweaty_staredown_2.m4a"
+  "sweaty_staredown_2.m4a",
+  "cutscene_crush_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -20006,10 +20078,10 @@
   "MIE-0ed5acf3",
   "MIE-55b16021",
   "MIE-226e85f9",
-  "MIE-06385051"
+  "MIE-06385051",
+  "MIE-94622b38"
  ],
  "temi_recenti": [
-  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -20018,10 +20090,11 @@
   "famiglia",
   "mentalita",
   "mentalita",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-19",
+ "pulizia": "2026-11-20",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -20274,8 +20347,8 @@
    "orizzontale": false
   },
   "1I2nAz0Ao_a1cbEPktFKRTPpswByM6NKZ": {
-   "usi": 4,
-   "ultimo": "2026-11-11",
+   "usi": 5,
+   "ultimo": "2026-11-20",
    "orizzontale": false
   },
   "1zw12S9166ROtTo6gXbB8osWAiBXUjT0Q": {
@@ -20690,7 +20763,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_07.flac",
   "drive_06.flac",
   "deciso_05.flac",
   "trap_02.flac",
@@ -20709,7 +20781,8 @@
   "deciso_11.flac",
   "energia_03.flac",
   "phonk_08.flac",
-  "deciso_08.flac"
+  "deciso_08.flac",
+  "drive_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -20744,7 +20817,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -20760,7 +20833,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1100130857775330",
   "1108285910189784",
   "727931292858890",
   "605387610085051",
@@ -20819,11 +20891,11 @@
   "612291812716191",
   "1488842099008011",
   "936174714667779",
-  "843173497227558"
+  "843173497227558",
+  "744011543289259"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Magnetic Sirens",
   "PiNKSHGRFNGR",
   "The Poison Oaks",
   "LAVLO",
@@ -20832,10 +20904,10 @@
   "Jumbo",
   "Sam Marshall",
   "Ecklectic Music",
-  "Ross Lara"
+  "Ross Lara",
+  "Jonny Houlihan"
  ],
  "ig_titoli_recenti": [
-  "epic thoughts",
   "superman",
   "superman",
   "superman",
@@ -20874,42 +20946,29 @@
   "hype beast",
   "electric movement",
   "adrenalina was her name",
-  "forever"
+  "forever",
+  "winners take all"
  ],
  "ig_tendenze_riserva": [
   {
-   "audio_id": "1058481142047930",
-   "title": "Hero's Journey",
-   "display_artist": "Lyle Workman",
-   "duration_in_ms": 256230,
+   "audio_id": "3240401969456886",
+   "title": "Running (Instrumental)",
+   "display_artist": "Julia Gartha",
+   "duration_in_ms": 128407,
    "libreria": true
   },
   {
-   "audio_id": "962542785866784",
-   "title": "What Heroes Do (Instrumental)",
-   "display_artist": "Sofie Tabesh",
-   "duration_in_ms": 217130,
-   "libreria": true
-  },
-  {
-   "audio_id": "1716216946466764",
-   "title": "Join The Movement",
-   "display_artist": "Afterlight",
-   "duration_in_ms": 61611,
-   "libreria": true
-  },
-  {
-   "audio_id": "936174714667779",
-   "title": "Adrenalina Was Her Name",
-   "display_artist": "Ecklectic Music",
-   "duration_in_ms": 158890,
-   "libreria": true
-  },
-  {
-   "audio_id": "843173497227558",
-   "title": "Forever (feat. My City Glory)",
+   "audio_id": "1764087140836610",
+   "title": "Horizon (feat. My City Glory)",
    "display_artist": "Ross Lara",
-   "duration_in_ms": 193604,
+   "duration_in_ms": 128850,
+   "libreria": true
+  },
+  {
+   "audio_id": "744011543289259",
+   "title": "Winners Take All (feat. Briana Tyson)",
+   "display_artist": "Jonny Houlihan",
+   "duration_in_ms": 213980,
    "libreria": true
   }
  ]
