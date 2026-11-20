@@ -19506,7 +19506,9 @@
      "ok": true,
      "id": "18115255532178859",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -19568,7 +19570,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "Eqrdvw_qKs8"
+     "id": "Eqrdvw_qKs8",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -19579,11 +19582,76 @@
    },
    "spinto": true,
    "testo": "Molte cose mi hanno spezzato il cuore ma mi hanno aggiustato la visione. Leggilo di nuovo."
+  },
+  {
+   "quando": "2026-11-20T09:00",
+   "slot": "2026-11-20 10:00",
+   "video": "IMG_4044.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-28e1c2c7",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 8.0,
+    "musica": "fire_in_the_sky_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 0,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 38.64,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 98,
+     "righe": 2,
+     "scurito": 0.4,
+     "luce": 0.31,
+     "sfumatura": 0.22,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "secondi_montaggio": 161,
+    "scritta": "centro_serif",
+    "orizzontale": true,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 6
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_07.flac",
+    "musica_instagram": "Heros Journey (Instrumental) - Abby Posner"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Uix09ynypr8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17950459230348542",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Concentrati sul miglioramento, non sulla dimostrazione."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-12 10:00",
   "2026-11-12 12:00",
   "2026-11-12 14:00",
   "2026-11-12 16:00",
@@ -19662,10 +19730,10 @@
   "2026-11-19 22:00",
   "2026-11-20 00:00",
   "2026-11-20 06:00",
-  "2026-11-20 08:00"
+  "2026-11-20 08:00",
+  "2026-11-20 10:00"
  ],
  "musica_recenti": [
-  "rubberband_1.m4a",
   "delirium_3.m4a",
   "whoop_1.m4a",
   "ten_1.m4a",
@@ -19724,7 +19792,8 @@
   "majestic_12_2.m4a",
   "sweaty_staredown_2.m4a",
   "cutscene_crush_1.m4a",
-  "turn_in_the_sun_2.m4a"
+  "turn_in_the_sun_2.m4a",
+  "fire_in_the_sky_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -20149,14 +20218,15 @@
   "MIE-226e85f9",
   "MIE-06385051",
   "MIE-94622b38",
-  "MIE-a7ce6fa5"
+  "MIE-a7ce6fa5",
+  "MIE-28e1c2c7"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
-  "mentalita",
   "dieta",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -20432,8 +20502,8 @@
    "orizzontale": false
   },
   "1KWHsB3C0gOYpMsl2sVukkzMm7VQeRgh5": {
-   "usi": 4,
-   "ultimo": "2026-11-11",
+   "usi": 5,
+   "ultimo": "2026-11-20",
    "orizzontale": true
   },
   "1PMBub0TfO5ny81j1Z7XXxvf01HLU8e9j": {
@@ -20833,7 +20903,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_05.flac",
   "trap_02.flac",
   "drive_12.flac",
   "deciso_02.flac",
@@ -20852,7 +20921,8 @@
   "phonk_08.flac",
   "deciso_08.flac",
   "drive_10.flac",
-  "energia_04.flac"
+  "energia_04.flac",
+  "trap_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -20887,7 +20957,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -20903,7 +20973,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "727931292858890",
   "605387610085051",
   "774667642107625",
   "2242687643238503",
@@ -20962,11 +21031,11 @@
   "936174714667779",
   "843173497227558",
   "744011543289259",
-  "5301582899854512"
+  "5301582899854512",
+  "1274149560124013"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "The Poison Oaks",
   "LAVLO",
   "Chela Rivas",
   "The K Club",
@@ -20975,10 +21044,10 @@
   "Ecklectic Music",
   "Ross Lara",
   "Jonny Houlihan",
-  "Trout Recording"
+  "Trout Recording",
+  "Abby Posner"
  ],
  "ig_titoli_recenti": [
-  "superman",
   "superman",
   "superman",
   "unstoppable",
@@ -21017,7 +21086,37 @@
   "adrenalina was her name",
   "forever",
   "winners take all",
-  "epic battles"
+  "epic battles",
+  "heros journey"
  ],
- "ig_tendenze_riserva": []
+ "ig_tendenze_riserva": [
+  {
+   "audio_id": "1321862862745838",
+   "title": "Adrift (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 133666,
+   "libreria": true
+  },
+  {
+   "audio_id": "888166387285417",
+   "title": "Thunder Train",
+   "display_artist": "The Sonic Hijackers",
+   "duration_in_ms": 73124,
+   "libreria": true
+  },
+  {
+   "audio_id": "1415626095700405",
+   "title": "Game To Win (feat. G7MBL3)",
+   "display_artist": "d.higgs",
+   "duration_in_ms": 102770,
+   "libreria": true
+  },
+  {
+   "audio_id": "672409740985213",
+   "title": "Champion",
+   "display_artist": "Adam Griffith",
+   "duration_in_ms": 141051,
+   "libreria": true
+  }
+ ]
 }
