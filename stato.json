@@ -20000,7 +20000,9 @@
      "ok": true,
      "id": "18419266948089793",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -20087,7 +20089,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "Q4qseebiDxQ"
+     "id": "Q4qseebiDxQ",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -20098,11 +20101,103 @@
    },
    "spinto": true,
    "testo": "La vita continua."
+  },
+  {
+   "quando": "2026-11-20T21:00",
+   "slot": "2026-11-20 22:00",
+   "video": "IMG_3935.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-a8051a35",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 7.0,
+    "musica": "the_road_to_mordor_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.405,
+     "movimento": 32.49,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 3,
+     "viso": {
+      "visi": 1,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "y": 0.666,
+      "scala": 1.0,
+      "corpo": 107,
+      "righe": 3
+     },
+     "scurito": 0.53,
+     "luce": 0.44,
+     "sfumatura": 0.33,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 1,
+     "corpo_base": 107,
+     "posizione": "basso",
+     "y": 0.666,
+     "scala": 1.0,
+     "corpo": 107,
+     "righe": 3,
+     "fotogrammi": 20,
+     "con_viso": 20,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 69,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 10
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_06.flac",
+    "musica_instagram": "Fire - YoungPop [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "QyD7T7EbIW8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17918684880491231",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non dimenticare mai quello che ti sei promesso quella notte."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-12 22:00",
   "2026-11-13 00:00",
   "2026-11-13 06:00",
   "2026-11-13 08:00",
@@ -20181,10 +20276,10 @@
   "2026-11-20 14:00",
   "2026-11-20 16:00",
   "2026-11-20 18:00",
-  "2026-11-20 20:00"
+  "2026-11-20 20:00",
+  "2026-11-20 22:00"
  ],
  "musica_recenti": [
-  "cartier_3.m4a",
   "majestic_12_3.m4a",
   "stake_out_1.m4a",
   "intergalactic_3.m4a",
@@ -20243,7 +20338,8 @@
   "mirror_mirror_1.m4a",
   "i_might_be_late_1.m4a",
   "delirium_3.m4a",
-  "the_light_1.m4a"
+  "the_light_1.m4a",
+  "the_road_to_mordor_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -20674,7 +20770,8 @@
   "MIE-d177be4a",
   "MIE-abb45d33",
   "MIE-081c1331",
-  "MIE-8fd9259f"
+  "MIE-8fd9259f",
+  "MIE-a8051a35"
  ],
  "temi_recenti": [
   "mentalita",
@@ -20895,8 +20992,8 @@
    "orizzontale": false
   },
   "1a2POnx-7OaYCvRXrpkTO6Qw_dTZ4CN-d": {
-   "usi": 4,
-   "ultimo": "2026-11-12",
+   "usi": 5,
+   "ultimo": "2026-11-20",
    "orizzontale": false
   },
   "1psghsoVp3I-dU4RMW8CuX7jIIkUpjvLc": {
@@ -21363,7 +21460,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_06.flac",
   "deciso_04.flac",
   "drive_08.flac",
   "phonk_05.flac",
@@ -21382,7 +21478,8 @@
   "phonk_15.flac",
   "energia_06.flac",
   "trap_11.flac",
-  "phonk_09.flac"
+  "phonk_09.flac",
+  "deciso_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -21417,7 +21514,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -21433,7 +21530,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "522339937196006",
   "2065054100581983",
   "1372666635060078",
   "1716216946466764",
@@ -21492,11 +21588,11 @@
   "849342490718599",
   "529367193511753",
   "1108285910189784",
-  "887391107399210"
+  "887391107399210",
+  "930354837134154"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Ecklectic Music",
   "Ross Lara",
   "Jonny Houlihan",
   "Trout Recording",
@@ -21505,10 +21601,10 @@
   "Giulio Cercato",
   "TRC Orchestral, Vestevent",
   "Adam Griffith",
-  "PiNKSHGRFNGR"
+  "PiNKSHGRFNGR",
+  "YoungPop"
  ],
  "ig_titoli_recenti": [
-  "warrior",
   "move on",
   "shadows in motion",
   "you can do it",
@@ -21547,42 +21643,29 @@
   "level up",
   "move like this",
   "knockout",
-  "you won t believe"
+  "you won t believe",
+  "fire"
  ],
  "ig_tendenze_riserva": [
   {
-   "audio_id": "1223134719013093",
-   "title": "Energy",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 122020,
-   "libreria": true
-  },
-  {
-   "audio_id": "825305559687149",
-   "title": "Ready To Run (feat. Brooklyn Basics)",
-   "display_artist": "Trout Recording",
-   "duration_in_ms": 141410,
-   "libreria": true
-  },
-  {
-   "audio_id": "576850318404245",
-   "title": "Not Phonk",
+   "audio_id": "4279708355594989",
+   "title": "In Motion",
    "display_artist": "Sam Marshall",
-   "duration_in_ms": 188462,
+   "duration_in_ms": 188848,
    "libreria": true
   },
   {
-   "audio_id": "491460439584707",
-   "title": "Looking Glass (feat. Dawson March, Jacquire King)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 146973,
+   "audio_id": "930354837134154",
+   "title": "Fire",
+   "display_artist": "YoungPop",
+   "duration_in_ms": 183434,
    "libreria": true
   },
   {
-   "audio_id": "887391107399210",
-   "title": "You Won't Believe",
-   "display_artist": "PiNKSHGRFNGR",
-   "duration_in_ms": 60050,
+   "audio_id": "2269322619892125",
+   "title": "Run Away (feat. Kianna)",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 155302,
    "libreria": true
   }
  ]
