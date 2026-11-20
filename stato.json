@@ -20096,7 +20096,8 @@
      "ok": true,
      "id": "18076738904505448",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": null
     }
    },
    "spinto": true,
@@ -20183,7 +20184,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "QyD7T7EbIW8"
+     "id": "QyD7T7EbIW8",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -20194,11 +20196,105 @@
    },
    "spinto": true,
    "testo": "Non dimenticare mai quello che ti sei promesso quella notte."
+  },
+  {
+   "quando": "2026-11-20T23:00",
+   "slot": "2026-11-21 00:00",
+   "video": "IMG_3971.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-cb91b04f",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 7.0,
+    "musica": "wrangle_the_crazy_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.322,
+     "movimento": 56.76,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 3,
+     "viso": {
+      "visi": 29,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "y": 0.681,
+      "scala": 1.0,
+      "corpo": 107,
+      "righe": 3
+     },
+     "scurito": 0.32,
+     "luce": 0.27,
+     "sfumatura": 0.15,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 29,
+     "corpo_base": 107,
+     "posizione": "basso",
+     "y": 0.681,
+     "scala": 1.0,
+     "corpo": 107,
+     "righe": 3,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       3.5,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 135,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 10
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_04.flac",
+    "musica_instagram": "Play To Win - Giulio Cercato [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "09oohhffeM8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18621945148066499",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Le persone che aspettano sempre il momento giusto muoiono aspettando."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-13 00:00",
   "2026-11-13 06:00",
   "2026-11-13 08:00",
   "2026-11-13 10:00",
@@ -20277,10 +20373,10 @@
   "2026-11-20 16:00",
   "2026-11-20 18:00",
   "2026-11-20 20:00",
-  "2026-11-20 22:00"
+  "2026-11-20 22:00",
+  "2026-11-21 00:00"
  ],
  "musica_recenti": [
-  "majestic_12_3.m4a",
   "stake_out_1.m4a",
   "intergalactic_3.m4a",
   "moon_vision_1.m4a",
@@ -20339,7 +20435,8 @@
   "i_might_be_late_1.m4a",
   "delirium_3.m4a",
   "the_light_1.m4a",
-  "the_road_to_mordor_1.m4a"
+  "the_road_to_mordor_1.m4a",
+  "wrangle_the_crazy_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -20771,7 +20868,8 @@
   "MIE-abb45d33",
   "MIE-081c1331",
   "MIE-8fd9259f",
-  "MIE-a8051a35"
+  "MIE-a8051a35",
+  "MIE-cb91b04f"
  ],
  "temi_recenti": [
   "mentalita",
@@ -21014,8 +21112,8 @@
    "ultimo": "2026-10-20"
   },
   "1NfvRrrvtikqSvJNkOOpi9sOBXs09blgz": {
-   "usi": 4,
-   "ultimo": "2026-11-12",
+   "usi": 5,
+   "ultimo": "2026-11-20",
    "orizzontale": false
   },
   "1uc6eTA1H5KSzsqTsVNgk6Rzto2V2Wq3y": {
@@ -21460,7 +21558,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_04.flac",
   "drive_08.flac",
   "phonk_05.flac",
   "trap_01.flac",
@@ -21479,7 +21576,8 @@
   "energia_06.flac",
   "trap_11.flac",
   "phonk_09.flac",
-  "deciso_06.flac"
+  "deciso_06.flac",
+  "trap_04.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -21514,7 +21612,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -21530,7 +21628,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2065054100581983",
   "1372666635060078",
   "1716216946466764",
   "1340308050325459",
@@ -21589,11 +21686,11 @@
   "529367193511753",
   "1108285910189784",
   "887391107399210",
-  "930354837134154"
+  "930354837134154",
+  "665857722143060"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Ross Lara",
   "Jonny Houlihan",
   "Trout Recording",
   "Abby Posner",
@@ -21602,10 +21699,10 @@
   "TRC Orchestral, Vestevent",
   "Adam Griffith",
   "PiNKSHGRFNGR",
-  "YoungPop"
+  "YoungPop",
+  "Giulio Cercato"
  ],
  "ig_titoli_recenti": [
-  "move on",
   "shadows in motion",
   "you can do it",
   "photocopy",
@@ -21644,28 +21741,15 @@
   "move like this",
   "knockout",
   "you won t believe",
-  "fire"
+  "fire",
+  "play to win"
  ],
  "ig_tendenze_riserva": [
   {
-   "audio_id": "4279708355594989",
-   "title": "In Motion",
-   "display_artist": "Sam Marshall",
-   "duration_in_ms": 188848,
-   "libreria": true
-  },
-  {
-   "audio_id": "930354837134154",
-   "title": "Fire",
-   "display_artist": "YoungPop",
-   "duration_in_ms": 183434,
-   "libreria": true
-  },
-  {
-   "audio_id": "2269322619892125",
-   "title": "Run Away (feat. Kianna)",
+   "audio_id": "665857722143060",
+   "title": "Play To Win",
    "display_artist": "Giulio Cercato",
-   "duration_in_ms": 155302,
+   "duration_in_ms": 107550,
    "libreria": true
   }
  ]
