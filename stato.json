@@ -20485,7 +20485,9 @@
      "ok": true,
      "id": "18121879840763833",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -20574,7 +20576,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "GpEGeTFMiE8"
+     "id": "GpEGeTFMiE8",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -20585,11 +20588,105 @@
    },
    "spinto": true,
    "testo": "Immagina spegnerti solo perché qualcuno ti ha convinto di non brillare abbastanza. Che spreco, lasciare ad altri l'inter"
+  },
+  {
+   "quando": "2026-11-21T11:01",
+   "slot": "2026-11-21 12:00",
+   "video": "IMG_5529.mov",
+   "md5": "97bcf50269e406051ae71f7c66018f06",
+   "da_archivio": false,
+   "scena": "specchio",
+   "registrato": "2026-11-20T09:05+01:00",
+   "frase": "MIE-809e41cf",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 7.0,
+    "musica": "cartier_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 4,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 30.43,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 101,
+     "righe": 3,
+     "viso": {
+      "visi": 16,
+      "corpo_base": 101,
+      "posizione": "basso",
+      "y": 0.733,
+      "scala": 1.0,
+      "corpo": 101,
+      "righe": 3
+     },
+     "scurito": 0.0,
+     "luce": 0.51,
+     "sfumatura": 0.36,
+     "intatto": true,
+     "scene_intatte": 1
+    },
+    "testo_viso": {
+     "visi": 16,
+     "corpo_base": 101,
+     "posizione": "basso",
+     "y": 0.733,
+     "scala": 1.0,
+     "corpo": 101,
+     "righe": 3,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 65,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 15
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_03.flac",
+    "musica_instagram": "GTA 6 Main Theme (EPIC Version) - Apex Sound Odyssey [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "z353M_Xiis4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18135734728685702",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Il tuo futuro è plasmato dalle abitudini che ripeti, non dagli obiettivi che ti poni."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-13 12:00",
   "2026-11-13 14:00",
   "2026-11-13 16:00",
   "2026-11-13 18:00",
@@ -20668,10 +20765,10 @@
   "2026-11-21 00:00",
   "2026-11-21 06:00",
   "2026-11-21 08:00",
-  "2026-11-21 10:00"
+  "2026-11-21 10:00",
+  "2026-11-21 12:00"
  ],
  "musica_recenti": [
-  "horizons_3.m4a",
   "final_boss_battle_1.m4a",
   "vibe_check_1.m4a",
   "locked_in_3.m4a",
@@ -20730,7 +20827,8 @@
   "wrangle_the_crazy_1.m4a",
   "vibe_check_2.m4a",
   "taking_flight_1.m4a",
-  "dusty_road_magic_2.m4a"
+  "dusty_road_magic_2.m4a",
+  "cartier_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -21166,7 +21264,8 @@
   "MIE-cb91b04f",
   "MIE-f08851f1",
   "MIE-7c687188",
-  "MIE-b1b822ad"
+  "MIE-b1b822ad",
+  "MIE-809e41cf"
  ],
  "temi_recenti": [
   "mentalita",
@@ -21852,10 +21951,14 @@
    "usi": 1,
    "ultimo": "2026-11-20",
    "orizzontale": false
+  },
+  "1zpgctRXbQHYr0gO5xjsJC7R_R3XRMCOD": {
+   "usi": 1,
+   "ultimo": "2026-11-21",
+   "orizzontale": false
   }
  },
  "musica_recenti_meta": [
-  "energia_08.flac",
   "drive_13.flac",
   "phonk_14.flac",
   "deciso_11.flac",
@@ -21874,7 +21977,8 @@
   "trap_04.flac",
   "phonk_06.flac",
   "energia_11.flac",
-  "drive_12.flac"
+  "drive_12.flac",
+  "trap_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -21909,7 +22013,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -21925,7 +22029,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "825305559687149",
   "1042846574390974",
   "3240401969456886",
   "3509829325973401",
@@ -21984,11 +22087,11 @@
   "665857722143060",
   "867574485949511",
   "663866025342759",
-  "1267635733842081"
+  "1267635733842081",
+  "1124230547275731"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Otis McDonald",
   "Giulio Cercato",
   "TRC Orchestral, Vestevent",
   "Adam Griffith",
@@ -21997,10 +22100,10 @@
   "Giulio Cercato",
   "stereogully",
   "Julia Gartha",
-  "Lucid Mantra"
+  "Lucid Mantra",
+  "Apex Sound Odyssey"
  ],
  "ig_titoli_recenti": [
-  "road warriors",
   "stop motion",
   "looking glass",
   "la marche des commis voyageurs",
@@ -22039,28 +22142,43 @@
   "play to win",
   "legends",
   "don t run from me",
-  "flow motion"
+  "flow motion",
+  "gta 6 main theme"
  ],
  "ig_tendenze_riserva": [
   {
-   "audio_id": "2623141041391037",
-   "title": "Running",
-   "display_artist": "Julia Gartha",
-   "duration_in_ms": 128407,
+   "audio_id": "1124230547275731",
+   "title": "GTA 6 Main Theme (EPIC Version)",
+   "display_artist": "Apex Sound Odyssey",
+   "duration_in_ms": 134920,
+   "libreria": false
+  },
+  {
+   "audio_id": "1029338276527053",
+   "title": "Spanish Fire",
+   "display_artist": "Summer Islands",
+   "duration_in_ms": 61390,
    "libreria": true
   },
   {
-   "audio_id": "3679159392392793",
-   "title": "Luxe Motion",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 112680,
+   "audio_id": "1068776575596252",
+   "title": "Stop Motion",
+   "display_artist": "LAVLO",
+   "duration_in_ms": 57100,
    "libreria": true
   },
   {
-   "audio_id": "1267635733842081",
-   "title": "Flow Motion",
-   "display_artist": "Lucid Mantra",
-   "duration_in_ms": 183675,
+   "audio_id": "1668588423964275",
+   "title": "Inferno Boss Battle",
+   "display_artist": "TrackTribe",
+   "duration_in_ms": 102311,
+   "libreria": true
+  },
+  {
+   "audio_id": "930354837134154",
+   "title": "Fire",
+   "display_artist": "YoungPop",
+   "duration_in_ms": 183434,
    "libreria": true
   }
  ]
