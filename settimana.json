@@ -1,0 +1,55 @@
+{
+ "slot": {
+  "2026-11-23 10:00": {
+   "da_archivio": true,
+   "file": {},
+   "fonte_id": "13Mbzphz708QlBEv9Bq_CNQzZaM4WplJL",
+   "formato": "dieci",
+   "frase": "MIE-792949f7",
+   "generato": "2026-11-21T12:41",
+   "lotto": "Lotto 2026-11-23",
+   "musica": "survival_mode_3.m4a",
+   "registrato": null,
+   "scena": "palestra",
+   "stato": "in_preparazione",
+   "tema": "mentalita",
+   "testo": "La tua prossima mossa è più importante del tuo ultimo errore.",
+   "versione": 1,
+   "video": "IMG_4055.mov"
+  },
+  "2026-11-23 12:00": {
+   "da_archivio": true,
+   "file": {},
+   "fonte_id": "1OKyRxbpEUPABWJM5Ey1cGm-BG7E-Rv9h",
+   "formato": "intero",
+   "frase": "MIE-bb67a611",
+   "generato": "2026-11-21T12:41",
+   "lotto": "Lotto 2026-11-23",
+   "musica": "visions_2.m4a",
+   "registrato": null,
+   "scena": "lavoro",
+   "stato": "in_preparazione",
+   "tema": "mentalita",
+   "testo": "Come fai a vincere se hai paura di prenderti il rischio?",
+   "versione": 1,
+   "video": "IMG_4285.MOV"
+  },
+  "2026-11-23 14:00": {
+   "da_archivio": true,
+   "file": {},
+   "fonte_id": "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW",
+   "formato": "dieci",
+   "frase": "MIE-8880555c",
+   "generato": "2026-11-21T12:41",
+   "lotto": "Lotto 2026-11-23",
+   "musica": "intergalactic_2.m4a",
+   "registrato": null,
+   "scena": "palestra",
+   "stato": "in_preparazione",
+   "tema": "mentalita",
+   "testo": "Non è mai troppo tardi per diventare la persona che hai sempre voluto essere.",
+   "versione": 1,
+   "video": "IMG_4269.MOV"
+  }
+ }
+}
