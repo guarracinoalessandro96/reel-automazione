@@ -113,6 +113,7 @@ jobs:
           TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
           TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
+          ANDAMENTO_TOKEN: ${{ github.token }}
           YOUTUBE_PRIVACY: ${{ vars.YOUTUBE_PRIVACY || 'public' }}
           TIKTOK_PRIVACY: ${{ vars.TIKTOK_PRIVACY || 'SELF_ONLY' }}
           TIKTOK_MODO: ${{ vars.TIKTOK_MODO || 'bozze' }}
@@ -132,9 +133,15 @@ jobs:
             git add stato.json; git diff --cached --quiet && return 0
             git commit -q -m "Reel $1"
             for i in 1 2 3 4 5; do
-              git pull --rebase -q && git push -q && return 0
+              git pull --rebase -q && git push -q && andamento && return 0
               git rebase --abort 2>/dev/null || true; sleep $((i * 5))
             done
+          }
+          # 21/11/2026: dopo ogni reel salvato fa ripartire la pagina "Andamento social" (lavoro leggero, ~1 minuto).
+          # Mai bloccante: se la chiamata non riesce, la pagina si aggiorna al giro orario.
+          andamento() {
+            curl -s -o /dev/null -m 20 -X POST -H "Authorization: Bearer $ANDAMENTO_TOKEN" -H "Accept: application/vnd.github+json"               "https://api.github.com/repos/${{ github.repository }}/actions/workflows/andamento.yml/dispatches"               -d '{"ref":"main"}' || true
+            return 0
           }
           SLOT="${{ steps.orario.outputs.slot }}"
           FINE=$((SECONDS + 280 * 60))   # 30/10/2026: era 320; uno slot iniziato vicino alla fine (si prepara 50 min prima) sforava il limite di 355 e veniva ucciso

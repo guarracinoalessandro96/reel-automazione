@@ -84,31 +84,24 @@
   .tabs button[aria-pressed="true"] { color: #2a1d00; background: linear-gradient(180deg, var(--crema), var(--oro) 50%, var(--oro2)); border-color: var(--oro);
                  box-shadow: 0 0 18px rgba(255, 200, 0, .45), 0 2px 0 rgba(255, 255, 255, .5) inset; }
   .tabs button:focus-visible { outline: 2px solid var(--crema); outline-offset: 2px; }
-  .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: .8rem; color: var(--mute); }
-  .legend[hidden] { display: none; }
-  .legend span { display: inline-flex; align-items: center; gap: 6px; }
-  .quando { font-size: .8rem; color: var(--mute); margin: -4px 0 0; }
-  .palco { position: relative; border-radius: 22px; padding: 14px 10px 8px; min-height: 290px;
-           background: linear-gradient(180deg, rgba(255, 214, 10, .07), rgba(0, 0, 0, .3)), var(--bg2); border: 1px solid var(--edge);
-           box-shadow: 0 0 50px -20px rgba(255, 183, 3, .4) inset, 0 20px 50px -25px #000; overflow: hidden; }
-  .palco svg { display: block; width: 100%; height: 270px; touch-action: pan-y; overflow: visible; }
-  .palco svg text { fill: var(--mute); font: 11px var(--sans); }
+  .tabs.piccole button { padding: 7px 11px; font-size: .76rem; }
+  .quando { font-size: .76rem; color: var(--mute); margin: -4px 0 0; }
 
-  /* barre 3D (oggi / ieri) */
-  .barre { display: flex; justify-content: space-around; align-items: flex-end; gap: 6px; height: 270px; padding: 30px 4px 34px; perspective: 700px; }
-  .colonna { flex: 1; max-width: 120px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; position: relative; }
-  .valore { font: 800 1rem var(--serif); color: var(--crema); margin-bottom: 10px; text-shadow: 0 0 12px rgba(255, 200, 0, .6); font-variant-numeric: tabular-nums; }
-  .prisma { position: relative; width: 58%; min-width: 34px; transform-style: preserve-3d; transform: rotateX(-14deg) rotateY(-24deg); height: 0; transition: height 1s cubic-bezier(.2, .9, .2, 1); }
-  .prisma i { position: absolute; display: block; }
-  .prisma .fronte { inset: 0; background: linear-gradient(180deg, var(--c1), var(--c2)); box-shadow: 0 0 24px var(--glow); border-radius: 3px 3px 0 0; }
-  .prisma .lato { top: 0; bottom: 0; right: 0; width: 22px; transform-origin: right; transform: rotateY(90deg); background: linear-gradient(180deg, var(--c2), #6b4300); filter: brightness(.7); }
-  .prisma .cima { left: 0; right: 0; top: 0; height: 22px; transform-origin: top; transform: rotateX(90deg); background: var(--c1); filter: brightness(1.25); }
-  .nome { position: absolute; bottom: -26px; font-size: .74rem; color: var(--mute); white-space: nowrap; }
-
-  .tip { position: absolute; top: 12px; pointer-events: none; background: rgba(23, 18, 10, .92); border: 1px solid var(--edge); border-radius: 12px;
-         padding: 9px 11px; font-size: .8rem; box-shadow: 0 0 24px rgba(255, 183, 3, .25); min-width: 150px; backdrop-filter: blur(6px); }
-  .tip div { display: flex; justify-content: space-between; gap: 12px; font-variant-numeric: tabular-nums; }
-  .tip .t { font-weight: 600; margin-bottom: 4px; display: block; color: var(--oro); }
+  /* 21/11: follower in alto, una striscia piccola (niente riquadri grandi) */
+  .testa { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .folbox { border-radius: 16px; padding: 4px 14px; border: 1px solid var(--edge);
+            background: linear-gradient(160deg, rgba(255, 230, 120, .08), rgba(0, 0, 0, .25)), var(--bg2);
+            box-shadow: 0 1px 0 rgba(255, 240, 180, .2) inset, 0 14px 30px -18px rgba(0, 0, 0, .9); }
+  table.fol { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  table.fol td { padding: 7px 0; border-top: 1px solid rgba(255, 214, 10, .12); vertical-align: middle; }
+  table.fol tr:first-child td { border-top: 0; }
+  table.fol td.s { display: flex; align-items: center; gap: 7px; color: var(--testo); white-space: nowrap; }
+  table.fol td.n { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; padding-left: 8px; }
+  table.fol td.d { text-align: right; width: 1%; white-space: nowrap; padding-left: 12px; font-variant-numeric: tabular-nums; font-weight: 600; color: var(--mute); }
+  table.fol tr.tot td { font: 800 1.15rem/1.2 var(--serif); color: var(--oro); }
+  table.fol tr.tot td.d { font: 700 .95rem var(--sans); }
+  table.fol small { font: 400 .68rem var(--sans); color: var(--mute); }
+  .nota { font-size: .7rem; color: var(--mute); margin: 0; line-height: 1.4; }
   .agg { text-align: center; font-size: .74rem; color: var(--mute); margin: 0; opacity: .8; }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -127,13 +120,24 @@
     .card.tot .cmp { grid-template-columns: 1fr; gap: 4px; }
     .card.tot .cmp li { flex-direction: row; }
     .tabs button { padding: 8px 11px; font-size: .78rem; }
-    .palco svg { height: 230px; } .barre { height: 240px; }
+    .tabs.piccole button { padding: 7px 9px; font-size: .72rem; }
   }
 </style>
 </head>
 <body>
 <canvas id="stelle" aria-hidden="true"></canvas>
 <main>
+  <section class="sec">
+    <div class="testa"><h2>Follower</h2>
+      <div class="tabs piccole" role="group" aria-label="Confronta i follower con" data-conf="fol">
+        <button type="button" data-c="1" aria-pressed="true">Giorno prima</button>
+        <button type="button" data-c="7" aria-pressed="false">Settimana prima</button>
+        <button type="button" data-c="30" aria-pressed="false">Mese prima</button>
+      </div></div>
+    <div class="folbox"><table class="fol" id="tab-fol"></table></div>
+    <p class="nota" id="nota-fol"></p>
+  </section>
+
   <section class="sec">
     <h2>Visualizzazioni</h2>
     <div class="tabs" role="group" aria-label="Periodo">
@@ -145,258 +149,168 @@
     </div>
     <div class="grid" id="schede-vis"></div>
     <p class="quando" id="quando"></p>
-    <div class="legend" id="legenda"></div>
-    <div class="palco" id="grafico"></div>
-  </section>
-
-  <section class="sec">
-    <h2>Follower</h2>
-    <div class="confronta"><span>Confronta con</span>
-      <div class="tabs" role="group" aria-label="Confronta con" data-conf="fol">
-        <button type="button" data-c="1" aria-pressed="true">Giorno prima</button>
-        <button type="button" data-c="7" aria-pressed="false">Settimana prima</button>
-        <button type="button" data-c="30" aria-pressed="false">Mese prima</button>
-      </div></div>
-    <div class="grid" id="schede-fol"></div>
   </section>
 
   <p class="agg" id="agg"></p>
 </main>
 
 <script>
-const SOC = [["YouTube", "#ffd60a", "#e0a800"], ["Instagram", "#fff3b0", "#e8cf6a"], ["TikTok", "#ffb703", "#c77800"], ["Facebook", "#fb8500", "#a34f00"]];
+const SOC = [["YouTube", "#ffd60a"], ["Instagram", "#fff3b0"], ["TikTok", "#ffb703"], ["Facebook", "#fb8500"]];
 const MESI = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
 const GIORNI = ["domenica","lunedì","martedì","mercoledì","giovedì","venerdì","sabato"];
 const fmt = (v) => v === null || v === undefined ? "—" : Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const dat = (iso) => { const d = new Date(iso + "T00:00:00Z"); return GIORNI[d.getUTCDay()] + " " + d.getUTCDate() + " " + MESI[d.getUTCMonth()]; };
+const corta = (iso) => { const d = new Date(iso + "T00:00:00Z"); return d.getUTCDate() + "/" + (d.getUTCMonth() + 1); };
 const indietro = (iso, k) => { const d = new Date(iso + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() - k); return d.toISOString().slice(0, 10); };
-const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; };
-const MOTO = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-let VIS = {}, FOL = {}, PERIODO = "oggi";
-
-function conTotale(tab) {
-  const out = {};
-  Object.keys(tab).sort().forEach((g) => {
-    const r = Object.assign({}, tab[g]); const t = SOC.map(([s]) => r[s]);
-    r.Totale = t.every((v) => v !== undefined) ? t.reduce((a, b) => a + b, 0) : undefined; out[g] = r;
-  });
-  return out;
-}
-function riepilogo(tab, s) {
-  const giorni = Object.keys(tab).filter((g) => tab[g][s] !== undefined).sort();
-  if (!giorni.length) return null;
-  const u = giorni[giorni.length - 1], val = (g) => (tab[g] || {})[s];
-  const somma = (da, n) => { let t = 0; for (let i = 0; i < n; i++) { const v = val(indietro(u, da + i)); if (v === undefined) return null; t += v; } return t; };
-  return { giorno: u, valore: val(u), prima: val(indietro(u, 1)), v7: val(indietro(u, 7)), v30: val(indietro(u, 30)),
-           s7: somma(0, 7), p7: somma(7, 7), s30: somma(0, 30), p30: somma(30, 30) };
-}
-function pct(a, b) {
-  if (a === null || a === undefined || !b) return ["—", ""];
-  const n = Math.round((a / b - 1) * 100);
-  return [(n > 0 ? "+" : n < 0 ? "−" : "") + Math.abs(n) + "%", n > 0 ? "su" : n < 0 ? "giu" : ""];
-}
-function diff(a, b) {
-  if (a === undefined || b === undefined || a === null || b === null) return ["—", ""];
-  const d = a - b; return [(d > 0 ? "+" : d < 0 ? "−" : "") + fmt(Math.abs(d)), d > 0 ? "su" : d < 0 ? "giu" : ""];
-}
-function inclina(c) {
-  if (!MOTO) return;
-  const muovi = (ev) => {
-    const r = c.getBoundingClientRect(), px = (ev.clientX - r.left) / r.width, py = (ev.clientY - r.top) / r.height;
-    c.style.transform = `rotateX(${(0.5 - py) * 10}deg) rotateY(${(px - 0.5) * 12}deg) translateZ(6px)`;
-    c.style.setProperty("--mx", px * 100 + "%"); c.style.setProperty("--my", py * 100 + "%");
-  };
-  c.addEventListener("pointermove", muovi); c.addEventListener("pointerdown", muovi);
-  c.addEventListener("pointerleave", () => { c.style.transform = ""; });
-}
-let CONF = { vis: "1", fol: "1" };
-const NOMI_C = { "1": ["ieri", "al giorno prima"], "7": ["la settimana prima", "nei 7 giorni prima"], "30": ["il mese prima", "nei 30 giorni prima"] };
-/* 15/11: periodi in alto (Oggi, Ieri, Questa settimana, Questo mese, Ultimi 30 giorni), ognuno confrontato con lo
-   stesso periodo prima. "Oggi" = l'ultimo giorno che le piattaforme hanno gia' dato per intero (lo danno la mattina
-   dopo; TikTok 2 giorni dopo). Ogni social si ferma al suo ultimo giorno arrivato. */
-const ULTIMO = () => { const t = Object.keys(VIS).sort(); return t[t.length - 1]; };
 const tra = (a, b) => Math.round((new Date(b + "T00:00:00Z") - new Date(a + "T00:00:00Z")) / 864e5);
-function intervallo(p, ult) {          // [inizio, fine, inizio prima, nome del confronto]
-  if (p === "oggi") return [ult, ult, indietro(ult, 1), "al giorno prima"];
-  if (p === "ieri") { const g = indietro(ult, 1); return [g, g, indietro(g, 1), "al giorno prima"]; }
-  if (p === "sett") { const d = new Date(ult + "T00:00:00Z"), lun = indietro(ult, (d.getUTCDay() + 6) % 7); return [lun, ult, indietro(lun, 7), "agli stessi giorni della settimana scorsa"]; }
-  if (p === "mese") { const ini = ult.slice(0, 8) + "01", d = new Date(ini + "T00:00:00Z"); d.setUTCMonth(d.getUTCMonth() - 1);
-    return [ini, ult, d.toISOString().slice(0, 10), "agli stessi giorni del mese scorso"]; }
+const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; };
+const c = (v) => v !== null && v !== undefined;
+const segno = (d) => (d > 0 ? "+" : d < 0 ? "−" : "±") + fmt(Math.abs(d));
+const MOTO = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let VIS = {}, FOL = {}, OGGI = {}, ADESSO = {}, PROVV = {}, PERIODO = "oggi", CONF_FOL = "1";
+
+/* ---- follower (21/11/2026, Alessandro: in alto, una volta sola, piccoli, con giorno/settimana/mese prima) ---- */
+function folPrima(s, g, k) {        // follower a fine giornata k giorni prima (o il giorno disponibile piu' vicino prima)
+  const t = indietro(g, k);
+  for (let j = 0; j < 4; j++) { const d = indietro(t, j), v = (FOL[d] || {})[s]; if (c(v)) return [v, d]; }
+  return null;
+}
+function folAdesso(s) {
+  if (ADESSO[s] && c(ADESSO[s].v)) return ADESSO[s];
+  const g = Object.keys(FOL).filter((d) => c(FOL[d][s])).sort().pop();
+  return g ? { v: FOL[g][s], g } : null;
+}
+function disegnaFollower() {
+  const tab = document.getElementById("tab-fol"); tab.replaceChildren();
+  const k = +CONF_FOL, oggiR = ADESSO.Instagram ? ADESSO.Instagram.g : null, righe = [], senza = [];
+  let tot = 0, totD = 0, conD = 0;
+  SOC.forEach(([s, col]) => {
+    const a = folAdesso(s); if (!a) { senza.push(s); righe.push([s, col, null, null, ""]); return; }
+    const p = folPrima(s, a.g, k);
+    tot += a.v; if (p) { totD += a.v - p[0]; conD++; } else senza.push(s);
+    righe.push([s, col, a.v, p ? a.v - p[0] : null, a.g !== oggiR ? "al " + corta(a.g) : ""]);
+  });
+  const riga = (cls, nome, col, v, d, al) => {
+    const tr = el("tr", cls), ts = el("td", "s");
+    if (col) { const dt = el("span", "dot"); dt.style.background = col; dt.style.color = col; ts.append(dt); }
+    ts.append(nome); if (al) ts.append(el("small", "", al));
+    const td = el("td", "d" + (c(d) ? (d > 0 ? " su" : d < 0 ? " giu" : "") : ""), c(d) ? segno(d) : "—");
+    tr.append(ts, el("td", "n", fmt(v)), td); tab.append(tr);
+  };
+  riga("tot", "Totale", null, tot, conD ? totD : null, "");
+  righe.forEach(([s, col, v, d, al]) => riga("", s, col, v, d, al));
+  const nomeK = k === 1 ? "il giorno prima" : k === 7 ? "7 giorni prima" : "30 giorni prima";
+  const note = ["Differenza con " + nomeK + (senza.length ? " (totale senza " + senza.join(", ") + ")" : "") + "."];
+  const yt = ADESSO.YouTube;
+  if (yt && c(yt.arrotondato) && yt.arrotondato !== yt.v) note.push("YouTube esatto al " + corta(yt.g) + ": lo dà con 3 giorni di ritardo, il numero di adesso è arrotondato (" + fmt(yt.arrotondato) + ").");
+  if (ADESSO.TikTok) note.push("TikTok: aggiornato la sera.");
+  document.getElementById("nota-fol").textContent = note.join(" ");
+}
+
+/* ---- visualizzazioni ---- */
+const IERI = () => indietro(OGGI.giorno, 1);
+function intervallo(p) {          // [inizio, fine, inizio del periodo prima, nome del confronto]; fine = ieri (giornate intere)
+  const ult = IERI();
+  if (p === "sett") { const o = OGGI.giorno, d = new Date(o + "T00:00:00Z"), lun = indietro(o, (d.getUTCDay() + 6) % 7); return [lun, ult, indietro(lun, 7), "agli stessi giorni della settimana prima"]; }
+  if (p === "mese") { const ini = OGGI.giorno.slice(0, 8) + "01", d = new Date(ini + "T00:00:00Z"); d.setUTCMonth(d.getUTCMonth() - 1);
+    return [ini, ult, d.toISOString().slice(0, 10), "agli stessi giorni del mese prima"]; }
   return [indietro(ult, 29), ult, indietro(ult, 59), "ai 30 giorni prima"];
 }
-function sommaDa(tab, s, da, n) { let t = 0; for (let i = 0; i < n; i++) { const v = (tab[indietro(da, -i)] || {})[s]; if (v === undefined) return null; t += v; } return t; }
-function confrontoVis(tab, s, p) {
-  const ult = ULTIMO(); if (!ult) return null;
-  const [ini, fine, iniP, nome] = intervallo(p, ult);
-  const giorno = ini === fine;
-  let fineS = fine; while (fineS >= ini && (tab[fineS] || {})[s] === undefined) fineS = indietro(fineS, 1);
-  if (fineS < ini) return { ora: null, quando: (giorno ? dat(fine) : "") + (s === "TikTok" ? " · TikTok dà i numeri la sera del giorno dopo" : " · in arrivo"), nome };
-  const n = tra(ini, fineS) + 1;
-  const quando = giorno ? dat(fineS) : "da " + dat(ini) + " a " + dat(fineS) + (fineS < fine && s === "TikTok" ? " (TikTok arriva la sera del giorno dopo)" : "");
-  let ora = 0, buchi = 0; for (let i = 0; i < n; i++) { const v = (tab[indietro(ini, -i)] || {})[s]; if (v === undefined) buchi++; else ora += v; }
-  return { ora, prima: buchi ? null : sommaDa(tab, s, iniP, n), quando: quando + (buchi ? " · mancano i numeri di " + buchi + (buchi === 1 ? " giorno" : " giorni") : ""), nome,
-           etOra: giorno ? "questo giorno" : "adesso", etPrima: giorno ? "giorno prima" : "prima" };
+const val = (g, s) => (VIS[g] || {})[s];
+const ultimoDi = (s) => Object.keys(VIS).filter((g) => c(VIS[g][s])).sort().pop();
+function visOggi(s) {
+  if (s === "TikTok") { const u = ultimoDi(s); return { ora: null, nd: "aggiornato la sera", quando: u ? "ultimo giorno: " + dat(u) + ", " + fmt(val(u, s)) : "" }; }
+  const ora = (OGGI.finora || {})[s], prima = (OGGI.ieri_stessa_ora || {})[s], ieri = val(IERI(), s);
+  if (!c(ora)) return { ora: null, nd: "in aggiornamento", quando: "" };
+  const da = (OGGI.dalle_social || {})[s] || OGGI.dalle;
+  return { ora, prima: c(prima) ? prima : null, nome: "a ieri alla stessa ora", quando: "dalle " + da + " alle " + OGGI.ora,
+           nd: c(ieri) ? "ieri in tutto: " + fmt(ieri) : "" };
 }
-function confrontoTotale(tab, p) {
-  const parti = SOC.map(([s]) => [s, confrontoVis(tab, s, p)]), ok = parti.filter(([, x]) => x && x.ora !== null);
-  if (!ok.length) return null;
-  const mancano = parti.filter(([, x]) => !x || x.ora === null).map(([s]) => s);
-  const [ini, fine, , nome] = intervallo(p, ULTIMO());
-  const conf = ok.filter(([, x]) => x.prima !== null && x.prima !== undefined), fuori = ok.filter(([, x]) => x.prima === null || x.prima === undefined).map(([s]) => s);
-  return { ora: ok.reduce((a, [, x]) => a + x.ora, 0), oraC: conf.reduce((a, [, x]) => a + x.ora, 0), prima: conf.length ? conf.reduce((a, [, x]) => a + x.prima, 0) : null,
-           nota: fuori.length ? " · confronto senza " + fuori.join(", ") + " (mancano i suoi numeri di prima)" : "", nome, etOra: ok[0][1].etOra, etPrima: ok[0][1].etPrima,
-           quando: (ini === fine ? dat(fine) : "da " + dat(ini) + " a " + dat(fine)) + (mancano.length ? " · senza " + mancano.join(", ") + " (in arrivo)" : "") };
+function visIeri(s) {
+  let g = IERI();
+  if (!c(val(g, s))) { const u = ultimoDi(s); if (!u) return { ora: null, nd: "nessun dato", quando: "" }; g = u; }
+  const rit = g !== IERI() ? (s === "TikTok" ? " · ieri arriva la sera" : " · ieri in arrivo") : "";
+  const prov = (PROVV[s] || []).includes(g) ? " · provvisorio" : "";
+  const p = val(indietro(g, 1), s);
+  return { ora: val(g, s), prima: c(p) ? p : null, nome: "al giorno prima", quando: dat(g) + rit + prov, nd: "manca il giorno prima", giorno: g };
 }
-function confrontoFol(tab, s, c) {
-  const r = riepilogo(tab, s); if (!r) return null;
-  const prima = c === "1" ? r.prima : c === "7" ? r.v7 : r.v30;
-  return { ora: r.valore, prima, quando: "a fine " + dat(r.giorno), etOra: "adesso", etPrima: c === "1" ? "ieri" : c === "7" ? "7 gg fa" : "30 gg fa" };
+function visPeriodo(s, p) {
+  const [ini, fine, iniP, nome] = intervallo(p);
+  if (fine < ini) return { ora: null, nd: "periodo appena cominciato: guarda Oggi", quando: "" };
+  const n = tra(ini, fine) + 1;
+  let ora = 0, oraC = 0, prima = 0, conta = 0, pari = 0, ultimo = null;
+  for (let i = 0; i < n; i++) {
+    const v = val(indietro(ini, -i), s), vp = val(indietro(iniP, -i), s);
+    if (!c(v)) continue; ora += v; conta++; ultimo = indietro(ini, -i);
+    if (c(vp)) { oraC += v; prima += vp; pari++; }
+  }
+  if (!conta) return { ora: null, nd: s === "TikTok" ? "aggiornato la sera" : "in arrivo", quando: "" };
+  let quando = "da " + dat(ini) + " a " + dat(ultimo);
+  if (conta < n) quando += " · " + conta + " giorni su " + n + (s === "TikTok" ? " (TikTok aggiornato la sera)" : "");
+  const nota = pari && pari < conta ? " · confronto sui " + pari + " giorni con i numeri di prima" : "";
+  return { ora, oraC, prima: pari ? prima : null, nome, quando, nota, nd: "mancano i numeri di prima" };
 }
-function scheda(nome, colore, x, c, follower) {
+function visDi(s, p) { return p === "oggi" ? visOggi(s) : p === "ieri" ? visIeri(s) : visPeriodo(s, p); }
+function visTotale(p) {
+  const parti = SOC.map(([s]) => [s, visDi(s, p)]);
+  /* Ieri: nel totale solo i social con il numero di ieri (TikTok arriva la sera) */
+  const ok = parti.filter(([, x]) => c(x.ora) && (p !== "ieri" || x.giorno === IERI()));
+  if (!ok.length) return { ora: null, nd: parti[0][1].nd, quando: "" };
+  const fuori = parti.filter(([s]) => !ok.some(([t]) => t === s)).map(([s]) => s);
+  const conf = ok.filter(([, x]) => c(x.prima)), senzaConf = ok.filter(([, x]) => !c(x.prima)).map(([s]) => s);
+  let quando = p === "oggi" ? "dalle " + OGGI.dalle + " alle " + OGGI.ora : p === "ieri" ? dat(IERI()) : "da " + dat(intervallo(p)[0]) + " a " + dat(IERI());
+  if (fuori.length) quando += " · senza " + fuori.join(", ");
+  const tardi = p === "oggi" ? ok.filter(([t]) => (OGGI.dalle_social || {})[t]).map(([t]) => t + " dalle " + OGGI.dalle_social[t]) : [];
+  if (tardi.length) quando += " · " + tardi.join(", ");
+  return { ora: ok.reduce((a, [, x]) => a + x.ora, 0), oraC: conf.reduce((a, [, x]) => a + (c(x.oraC) ? x.oraC : x.ora), 0),
+           prima: conf.length ? conf.reduce((a, [, x]) => a + x.prima, 0) : null, nome: ok[0][1].nome,
+           nota: senzaConf.length && conf.length ? " · confronto senza " + senzaConf.join(", ") : "", quando,
+           nd: p === "oggi" ? "confronto con ieri alla stessa ora da domani" : "mancano i numeri di prima" };
+}
+function inclina(card) {
+  if (!MOTO) return;
+  const muovi = (ev) => {
+    const r = card.getBoundingClientRect(), px = (ev.clientX - r.left) / r.width, py = (ev.clientY - r.top) / r.height;
+    card.style.transform = `rotateX(${(0.5 - py) * 10}deg) rotateY(${(px - 0.5) * 12}deg) translateZ(6px)`;
+    card.style.setProperty("--mx", px * 100 + "%"); card.style.setProperty("--my", py * 100 + "%");
+  };
+  card.addEventListener("pointermove", muovi); card.addEventListener("pointerdown", muovi);
+  card.addEventListener("pointerleave", () => { card.style.transform = ""; });
+}
+function scheda(nome, colore, x) {
   const card = el("article", "card" + (nome === "Totale" ? " tot" : ""));
   const h = el("h3"); const d = el("span", "dot"); d.style.background = colore; d.style.color = colore; h.append(d, nome); card.append(h);
-  const ok = x && x.ora !== null && x.ora !== undefined;
+  const ok = c(x.ora);
   card.append(el("div", "big", ok ? fmt(x.ora) : "—"));
-  card.append(el("div", "day", x ? x.quando : "nessun dato"));
-  const confronto = ok && x.prima !== null && x.prima !== undefined;
-  if (!confronto) {
-    card.append(el("div", "badge nd", "confronto non ancora disponibile"));
+  if (x.quando) card.append(el("div", "day", x.quando));
+  if (!ok || !c(x.prima)) {
+    if (x.nd) card.append(el("div", "badge nd", x.nd));
   } else {
-    const oc = x.oraC !== undefined ? x.oraC : x.ora;
+    const oc = c(x.oraC) ? x.oraC : x.ora;
     const diffN = oc - x.prima, p = x.prima ? Math.round((oc / x.prima - 1) * 100) : null;
-    const cls = diffN > 0 ? "su" : diffN < 0 ? "giu" : "pari";
-    const b = el("div", "badge " + cls);
-    b.append(el("span", "fr", diffN > 0 ? "▲" : diffN < 0 ? "▼" : "="));
-    b.append(follower ? (diffN > 0 ? "+" : diffN < 0 ? "−" : "") + fmt(Math.abs(diffN)) + (diffN === 1 || diffN === -1 ? " follower" : " follower")
-                      : (p === null ? "nuovo" : (p > 0 ? "+" : p < 0 ? "−" : "") + Math.abs(p) + "%"));
+    const b = el("div", "badge " + (diffN > 0 ? "su" : diffN < 0 ? "giu" : "pari"));
+    b.append(el("span", "fr", diffN > 0 ? "▲" : diffN < 0 ? "▼" : "="), p === null ? "nuovo" : (p > 0 ? "+" : p < 0 ? "−" : "") + Math.abs(p) + "%");
     card.append(b);
     const fr = el("div", "frase");
-    if (follower) {
-      fr.append(diffN === 0 ? "uguale a " : diffN > 0 ? "in più rispetto a " : "in meno rispetto a ", NOMI_C[c][0] === "ieri" ? "ieri" : NOMI_C[c][0], " (", el("b", "", fmt(x.prima)), ")");
-    } else {
-      fr.append(diffN === 0 ? "uguale " : diffN > 0 ? el("b", "", "+" + fmt(diffN)) : el("b", "", "−" + fmt(-diffN)), diffN === 0 ? "" : " visualizzazioni ", "rispetto ", x.nome || ("a " + NOMI_C[c][0]), " (", el("b", "", fmt(x.prima)), ")", x.nota || "");
-    }
+    fr.append(diffN === 0 ? "uguale " : el("b", "", segno(diffN)), " rispetto " + x.nome + " (", el("b", "", fmt(x.prima)), ")" + (x.nota || ""));
     card.append(fr);
     const max = Math.max(oc, x.prima, 1), duo = el("div", "duo");
-    [[x.etPrima, x.prima, "p"], [x.etOra, oc, "o"]].forEach(([et, v, k]) => {
-      const riga = el("div"); riga.append(el("span", "", et)); const pista = el("em"); const barra = el("i", k); pista.append(barra); riga.append(pista); duo.append(riga);
-      const w = follower ? 30 + 70 * (v - Math.min(x.ora, x.prima)) / Math.max(1, Math.abs(x.ora - x.prima)) : (v / max) * 100;
-      barra.style.width = Math.max(3, Math.min(100, w)) + "%";
+    [[PERIODO === "oggi" ? "ieri" : "prima", x.prima, "p"], [PERIODO === "oggi" ? "oggi" : "adesso", oc, "o"]].forEach(([et, v, k]) => {
+      const r = el("div"); r.append(el("span", "", et)); const pista = el("em"), barra = el("i", k); pista.append(barra); r.append(pista); duo.append(r);
+      barra.style.width = Math.max(3, Math.min(100, (v / max) * 100)) + "%";
     });
     card.append(duo);
   }
   inclina(card);
   return card;
 }
-function disegnaSchede() {
-  const v = conTotale(VIS), f = conTotale(FOL);
-  const sv = document.getElementById("schede-vis"), sf = document.getElementById("schede-fol");
-  sv.replaceChildren(); sf.replaceChildren();
-  [["Totale", "#fff8e1"]].concat(SOC.map(([s, c]) => [s, c])).forEach(([s, col]) => {
-    sv.append(scheda(s, col, s === "Totale" ? confrontoTotale(v, PERIODO) : confrontoVis(v, s, PERIODO), "1", false));
-    sf.append(scheda(s, col, confrontoFol(f, s, CONF.fol), CONF.fol, true));
-  });
-}
-document.querySelectorAll("[data-conf]").forEach((g) => g.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
-  CONF[g.dataset.conf] = b.dataset.c;
-  g.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
-  disegnaSchede();
-})));
-
-/* oggi / ieri: barre 3D dei 4 social. "Oggi" = l'ultimo giorno che le piattaforme hanno gia' dato per intero */
-function giornoDi(p) { const ult = ULTIMO(); return p === "oggi" ? ult : indietro(ult, 1); }
-function giorniDi(p) { const [ini, fine] = intervallo(p, ULTIMO()); return Object.keys(VIS).sort().filter((g) => g >= ini && g <= fine); }
-function disegnaBarre(box, g) {
-  const r = VIS[g] || {}; const max = Math.max(1, ...SOC.map(([s]) => r[s] || 0));
-  const wrap = el("div", "barre");
-  const prismi = [];
-  SOC.forEach(([s, c1, c2]) => {
-    const col = el("div", "colonna");
-    col.append(el("div", "valore", r[s] === undefined ? "in arrivo" : fmt(r[s])));
-    const p = el("div", "prisma"); p.style.setProperty("--c1", c1); p.style.setProperty("--c2", c2); p.style.setProperty("--glow", c1 + "66");
-    p.append(el("i", "fronte"), el("i", "lato"), el("i", "cima"));
-    col.append(p, el("div", "nome", s)); wrap.append(col);
-    prismi.push([p, r[s] === undefined ? 0 : Math.max(4, (r[s] / max) * 100)]);
-  });
-  box.append(wrap);
-  const alza = () => prismi.forEach(([p, h]) => { p.style.height = `calc(${h}% - 40px)`; });
-  if (MOTO) requestAnimationFrame(() => requestAnimationFrame(alza)); else alza();
-  const tot = SOC.every(([s]) => r[s] !== undefined) ? SOC.reduce((a, [s]) => a + r[s], 0) : null;
-  document.getElementById("quando").textContent = "Le piattaforme danno i numeri del giorno intero la mattina dopo (TikTok la sera del giorno dopo): \"Oggi\" è l'ultimo giorno già arrivato.";
-}
-
-const NS = "http://www.w3.org/2000/svg";
-const sv = (tag, at) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); return e; };
-function disegnaLinee(box, giorni) {
-  document.getElementById("quando").textContent = "Giorno per giorno, da " + dat(giorni[0]) + " a " + dat(giorni[giorni.length - 1]);
-  const W = Math.max(300, box.clientWidth - 20), H = box.clientWidth < 520 ? 230 : 270;
-  const max = Math.max(1, ...giorni.flatMap((g) => SOC.map(([s]) => VIS[g][s] || 0)));
-  const passo = Math.pow(10, Math.floor(Math.log10(max))) / 2, top = Math.ceil(max / passo) * passo;
-  const ticks = [0, top / 2, top];
-  const L = 10 + Math.max(...ticks.map((t) => fmt(t).length)) * 6.5, R = 12, T = 12, B = 24;
-  const x = (i) => L + (giorni.length === 1 ? 0 : i * (W - L - R) / (giorni.length - 1));
-  const y = (v) => T + (H - T - B) * (1 - v / top);
-  const svg = sv("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Visualizzazioni giornaliere dei 4 social, " + giorni.length + " giorni" });
-  const defs = sv("defs", {});
-  const glow = sv("filter", { id: "bagliore", x: "-20%", y: "-50%", width: "140%", height: "200%" });
-  glow.append(sv("feGaussianBlur", { stdDeviation: "3.5", result: "b" }));
-  const mg = sv("feMerge", {}); mg.append(sv("feMergeNode", { in: "b" }), sv("feMergeNode", { in: "SourceGraphic" })); glow.append(mg); defs.append(glow);
-  SOC.forEach(([s, c1], k) => {
-    const lg = sv("linearGradient", { id: "area" + k, x1: 0, x2: 0, y1: 0, y2: 1 });
-    lg.append(sv("stop", { offset: "0%", "stop-color": c1, "stop-opacity": ".32" }), sv("stop", { offset: "100%", "stop-color": c1, "stop-opacity": "0" }));
-    defs.append(lg);
-  });
-  svg.append(defs);
-  ticks.forEach((t) => {
-    svg.append(sv("line", { x1: L, x2: W - R, y1: y(t), y2: y(t), stroke: "rgba(255,214,10,.12)", "stroke-dasharray": t ? "2 4" : "" }));
-    const tx = sv("text", { x: L - 7, y: y(t) + 4, "text-anchor": "end" }); tx.textContent = fmt(t); svg.append(tx);
-  });
-  const nEt = Math.max(2, Math.min(giorni.length, Math.floor((W - L) / 58)));
-  for (let k = 0; k < nEt; k++) {
-    const i = Math.round(k * (giorni.length - 1) / Math.max(1, nEt - 1)), d = new Date(giorni[i] + "T00:00:00Z");
-    const tx = sv("text", { x: x(i), y: H - 6, "text-anchor": k === 0 ? "start" : k === nEt - 1 ? "end" : "middle" });
-    tx.textContent = d.getUTCDate() + "/" + (d.getUTCMonth() + 1); svg.append(tx);
-  }
-  SOC.forEach(([s, c1], k) => {
-    const punti = giorni.map((g, i) => [i, VIS[g][s]]).filter(([, v]) => v !== undefined);
-    if (!punti.length) return;
-    const d = punti.map(([i, v], j) => (j ? "L" : "M") + x(i).toFixed(1) + "," + y(v).toFixed(1)).join("");
-    const area = d + "L" + x(punti[punti.length - 1][0]).toFixed(1) + "," + y(0) + "L" + x(punti[0][0]).toFixed(1) + "," + y(0) + "Z";
-    svg.append(sv("path", { d: area, fill: `url(#area${k})` }));
-    const linea = sv("path", { d, fill: "none", stroke: c1, "stroke-width": 2.4, "stroke-linejoin": "round", "stroke-linecap": "round", filter: "url(#bagliore)" });
-    svg.append(linea);
-    if (MOTO) { const len = 4000; linea.setAttribute("stroke-dasharray", len); linea.setAttribute("stroke-dashoffset", len);
-      linea.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }], { duration: 1400, delay: k * 120, easing: "cubic-bezier(.2,.9,.2,1)", fill: "forwards" }); }
-    const [ui, uv] = punti[punti.length - 1];
-    svg.append(sv("circle", { cx: x(ui), cy: y(uv), r: 4.5, fill: c1, filter: "url(#bagliore)" }));
-  });
-  const guida = sv("line", { y1: T, y2: H - B, stroke: "rgba(255,243,176,.6)", "stroke-dasharray": "3 3", opacity: 0 }); svg.append(guida);
-  box.append(svg);
-  const tip = el("div", "tip"); tip.hidden = true; box.append(tip);
-  const muovi = (ev) => {
-    const rc = svg.getBoundingClientRect(), sx = (ev.clientX - rc.left) * W / rc.width;
-    const i = Math.max(0, Math.min(giorni.length - 1, Math.round((sx - L) / ((W - L - R) / Math.max(1, giorni.length - 1)))));
-    const g = giorni[i]; guida.setAttribute("x1", x(i)); guida.setAttribute("x2", x(i)); guida.setAttribute("opacity", 1);
-    tip.replaceChildren(el("span", "t", dat(g)));
-    let tot = 0, tutti = true;
-    SOC.forEach(([s, c1]) => { const r = el("div"); const a = el("span", "", s); a.style.color = c1; r.append(a, el("span", "", fmt(VIS[g][s]))); tip.append(r); if (VIS[g][s] === undefined) tutti = false; else tot += VIS[g][s]; });
-    const r = el("div"); r.append(el("span", "", "Totale"), el("span", "", tutti ? fmt(tot) : "—")); tip.append(r);
-    tip.hidden = false;
-    const px = x(i) * rc.width / W + 10; let lx = px + 12;
-    if (lx + tip.offsetWidth > box.clientWidth) lx = px - tip.offsetWidth - 12;
-    tip.style.left = Math.max(4, lx) + "px";
-  };
-  svg.addEventListener("pointermove", muovi); svg.addEventListener("pointerdown", muovi);
-  svg.addEventListener("pointerleave", () => { tip.hidden = true; guida.setAttribute("opacity", 0); });
-}
-function disegnaGrafico() {
-  const box = document.getElementById("grafico"); box.replaceChildren();
-  if (!Object.keys(VIS).length) { box.textContent = "Nessun dato"; return; }
-  document.getElementById("legenda").hidden = PERIODO === "oggi" || PERIODO === "ieri";
-  const giorni = PERIODO === "oggi" || PERIODO === "ieri" ? [] : giorniDi(PERIODO);
-  const linee = giorni.length >= 2;
-  document.getElementById("legenda").hidden = !linee;
-  if (linee) disegnaLinee(box, giorni); else disegnaBarre(box, giornoDi(PERIODO === "ieri" ? "ieri" : "oggi"));
+function disegnaVis() {
+  const sv = document.getElementById("schede-vis"); sv.replaceChildren();
+  sv.append(scheda("Totale", "#fff8e1", visTotale(PERIODO)));
+  SOC.forEach(([s, col]) => sv.append(scheda(s, col, visDi(s, PERIODO))));
+  document.getElementById("quando").textContent = PERIODO === "oggi"
+    ? "Oggi finora, confrontato con ieri alla stessa ora. TikTok non ha un collegamento diretto: i suoi numeri arrivano la sera."
+    : "Giornate intere, confrontate con lo stesso periodo prima.";
 }
 
 /* polvere d'oro che sale lenta sullo sfondo */
@@ -415,19 +329,29 @@ function disegnaGrafico() {
   requestAnimationFrame(passo);
 })();
 
-document.getElementById("legenda").append(...SOC.map(([s, c]) => { const sp = el("span"); const d = el("span", "dot"); d.style.background = c; d.style.color = c; sp.append(d, s); return sp; }));
+document.querySelectorAll("[data-conf=fol] button").forEach((b) => b.addEventListener("click", () => {
+  CONF_FOL = b.dataset.c;
+  document.querySelectorAll("[data-conf=fol] button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  disegnaFollower();
+}));
 document.querySelectorAll(".tabs[aria-label=Periodo] button").forEach((b) => b.addEventListener("click", () => {
   PERIODO = b.dataset.p;
   document.querySelectorAll(".tabs[aria-label=Periodo] button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
-  disegnaSchede(); disegnaGrafico();
+  disegnaVis();
 }));
-let largh = 0;
-addEventListener("resize", () => { if (Math.abs(innerWidth - largh) > 30) { largh = innerWidth; disegnaGrafico(); } });
-fetch("dati.json?v=" + Date.now(), { cache: "no-store" }).then((r) => r.json()).then((d) => {
-  VIS = d.visualizzazioni || {}; FOL = d.follower || {}; largh = innerWidth;
-  if (d.aggiornato) document.getElementById("agg").textContent = "Aggiornato il " + d.aggiornato.slice(8, 10) + "/" + d.aggiornato.slice(5, 7) + " alle " + d.aggiornato.slice(11);
-  disegnaSchede(); disegnaGrafico();
-}).catch(() => { document.getElementById("agg").textContent = "Numeri non caricati: riprova tra poco."; });
+function carica() {
+  return fetch("dati.json?v=" + Date.now(), { cache: "no-store" }).then((r) => r.json()).then((d) => {
+    VIS = d.visualizzazioni || {}; FOL = d.follower || {}; ADESSO = d.adesso || {}; PROVV = d.provvisori || {};
+    const ult = Object.keys(VIS).sort().pop();
+    OGGI = d.oggi || { giorno: ult ? indietro(ult, -1) : new Date().toISOString().slice(0, 10), finora: {}, ieri_stessa_ora: {} };
+    if (d.aggiornato) document.getElementById("agg").textContent = "Aggiornato il " + d.aggiornato.slice(8, 10) + "/" + d.aggiornato.slice(5, 7) + " alle " + d.aggiornato.slice(11)
+      + " · le giornate vanno dalle 9:00 alle 9:00 (ora italiana), come le contano Instagram, Facebook e YouTube";
+    disegnaFollower(); disegnaVis();
+  });
+}
+carica().catch(() => { document.getElementById("agg").textContent = "Numeri non caricati: riprova tra poco."; });
+/* 21/11: la pagina aperta si ricarica i numeri da sola ogni 10 minuti */
+setInterval(() => { if (!document.hidden) carica().catch(() => {}); }, 600000);
 </script>
 </body>
 </html>

@@ -6,8 +6,10 @@ name: Andamento social
 on:
   # 15/11: le due esecuzioni delle 8:45 e 11:45 non sono mai partite (pagina ferma al 14/11). Ora ogni 2 ore,
   # ora UTC e minuti "strani" (meno affollati): se GitHub ne salta qualcuna, la successiva recupera.
+  # 21/11/2026 (Alessandro: confronto il piu' vicino possibile al tempo reale): ogni ora (le istantanee servono per
+  # "oggi finora" e "ieri alla stessa ora"); in piu' parte dopo ogni reel (pubblica.yml) e dopo i lavori qui sotto.
   schedule:
-    - cron: "23 */2 * * *"
+    - cron: "23 * * * *"
   # 15/11 sera: anche gli orari ogni 2 ore non partivano. Allora parte anche dopo i lavori che GitHub esegue davvero.
   workflow_run:
     workflows: ["Report", "Controllo salute", "Statistiche di riserva"]
@@ -22,7 +24,7 @@ permissions:
 jobs:
   andamento:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
