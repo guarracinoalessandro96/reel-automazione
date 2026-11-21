@@ -168,9 +168,22 @@ def video_riservati(state, escludi=None, lotto=None, scarti=None):
             and _attivo(s, v, scarti)}
 
 
-def uscita_altrove(slot, frase_id, state):
-    """La frase e' gia' uscita in un ALTRO slot (storico vero)? Allora il reel pronto non si usa (mai doppioni)."""
-    return any(h.get("frase") == frase_id and h.get("slot") != slot and not h.get("in_corso")
+def _scelto(v):
+    """Quando la frase dello slot e' stata scelta: "scelto" (dal piano) o, per le voci di prima, "generato" meno 2 ore
+    (il montaggio di un lotto dura meno di un'ora)."""
+    if v.get("scelto"):
+        return v["scelto"]
+    try:
+        return (datetime.datetime.fromisoformat(v["generato"]) - datetime.timedelta(hours=2)).isoformat(timespec="minutes")
+    except Exception:
+        return ""
+
+
+def uscita_altrove(slot, frase_id, state, dopo=""):
+    """La frase e' uscita in un ALTRO slot DOPO la scelta del lotto (`dopo` = la voce "generato" dello slot)? Allora il
+    reel pronto non si usa (mai doppioni: pubblica.py l'ha presa mentre il lotto si preparava). Le frasi riproposte
+    apposta (frasi vincenti, orari fermi: uscite prima della scelta) restano buone, come allo slot dal vivo."""
+    return any(h.get("frase") == frase_id and h.get("slot") != slot and str(h.get("quando") or "") >= (dopo or "")
                for h in state.get("storico", []))
 
 
@@ -189,7 +202,7 @@ def reel_per_slot(slot, state, drive, work, videos):
             pubblica.log(f"Reel della settimana per {slot}: {voce.get('stato')}"
                          + (" e scartato" if scartato(slot, voce, carica_scarti()) else "") + ": lo monto adesso")
         return None
-    if uscita_altrove(slot, v.get("frase"), state):
+    if uscita_altrove(slot, v.get("frase"), state, _scelto(v)):
         pubblica.log(f"Reel della settimana per {slot}: la frase {v.get('frase')} e' gia' uscita, lo monto adesso")
         return None
     os.makedirs(work, exist_ok=True)
@@ -398,9 +411,9 @@ def pianifica(da=None, a=None, gruppi=GRUPPI, solo_scarti=False, prova=None):
                       "frase_via": sc["frase_via"], "frase": sc["frase"],
                       "music": os.path.relpath(sc["music"], HERE) if sc["music"] else None,
                       "md5": (sc["video"] or {}).get("md5Checksum")})
+        ora = datetime.datetime.now().isoformat(timespec="minutes")
         lotto["slot"][s] = dict(voce, stato="in_preparazione", versione=versione, lotto=lotto_nome,
-                                fonte_id=sc["fonte_id"], generato=datetime.datetime.now().isoformat(timespec="minutes"),
-                                file={})
+                                fonte_id=sc["fonte_id"], generato=ora, scelto=ora, file={})
         nomi[s] = sc["frase"]["id"]
         log(f"{s}: {sc['frase']['id']} su {sc['nome']} ({'archivio' if sc['clip'] else 'nuovo'}), {formato}")
     # la cartella del lotto la crea solo questo lavoro (i lavori in parallelo ne creerebbero piu' d'una)
@@ -560,9 +573,11 @@ def registra():
         vecchia = lotto["slot"].get(s) or {}
         if int(vecchia.get("versione") or 0) > p["versione"]:
             continue                           # nel frattempo e' arrivata una versione piu' nuova
-        if r.get("stato") == "pronto" and uscita_altrove(s, r.get("frase"), state):
+        if r.get("stato") == "pronto" and uscita_altrove(s, r.get("frase"), state, vecchia.get("generato") or ""):
             r = dict(r, stato="fallito", errore="frase uscita nel frattempo in un altro slot")
         voce = {k: v for k, v in r.items() if k not in ("slot",)}
+        if vecchia.get("scelto") and int(vecchia.get("versione") or 0) == p["versione"]:
+            voce["scelto"] = vecchia["scelto"]
         voce.setdefault("versione", p["versione"])
         voce.setdefault("lotto", p["lotto"])
         lotto["slot"][s] = voce
@@ -664,7 +679,7 @@ def controlla(slot):
         voce = carica_lotto()["slot"].get(slot)
         print(f"{slot}: nessun reel pronto ({voce and voce.get('stato')}) -> pubblica.py monta come prima")
         return None
-    if uscita_altrove(slot, v.get("frase"), state):
+    if uscita_altrove(slot, v.get("frase"), state, _scelto(v)):
         print(f"{slot}: frase gia' uscita altrove -> pubblica.py monta come prima")
         return None
     print(f"{slot}: pubblica.py usa {v['file']['youtube']} ({v.get('frase')}: {v.get('testo')}); durata "

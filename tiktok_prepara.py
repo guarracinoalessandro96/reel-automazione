@@ -374,7 +374,7 @@ def prepara_settimana(fatto="tiktok_fatto", quando="tiktok_quando", cartella_pc=
             motivo = "oltre 10 giorni"
         elif "STO-" in f.get("name", ""):
             motivo = "racconto"
-        elif any(h.get("frase") == v.get("frase") and h.get("slot") != s for h in storico):
+        elif settimana.uscita_altrove(s, v.get("frase"), {"storico": storico}, settimana._scelto(v)):
             motivo = "frase gia' uscita in un altro slot"
         if motivo:
             saltati[motivo] = saltati.get(motivo, 0) + 1
