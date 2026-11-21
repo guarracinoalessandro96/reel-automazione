@@ -8,9 +8,11 @@ name: Reel della settimana
 # Uno slot scartato (python settimana.py scarta ..., che cambia settimana_scarti.json) riparte da qui: sostituto.
 on:
   schedule:
-    - cron: "20 19 * * 5"        # venerdi' 19:20 ora di Roma (dopo la scelta del reel delle 20:00)
+    # venerdi' 20:15 ora di Roma: il reel delle 20 e' gia' salvato e quello delle 22 si sceglie alle 21:10 (se pubblica.py
+    # sta preparando uno slot, settimana.py aspetta che lo salvi: mai la stessa frase)
+    - cron: "15 20 * * 5"
       timezone: "Europe/Rome"
-    - cron: "40 20 * * 5"        # riserva: se il primo e' gia' passato non c'e' niente da fare (finisce in 1 minuto)
+    - cron: "45 20 * * 5"        # riserva: se il primo e' gia' passato non c'e' niente da fare (finisce in 1 minuto)
       timezone: "Europe/Rome"
   push:
     paths: ["settimana_scarti.json"]
@@ -51,7 +53,7 @@ env:
 jobs:
   pianifica:
     runs-on: ubuntu-24.04
-    timeout-minutes: 40
+    timeout-minutes: 100
     outputs:
       n: ${{ steps.piano.outputs.n }}
       gruppi: ${{ steps.piano.outputs.gruppi }}

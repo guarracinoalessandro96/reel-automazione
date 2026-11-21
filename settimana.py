@@ -335,11 +335,42 @@ def _corto(c):
                                   "orizzontale", "parlato", "fallimenti", "nera") if c.get(k) is not None}
 
 
+def slot_in_corso(adesso=None, fatti=()):
+    """Lo slot che pubblica.py sta preparando adesso (sceglie la frase ~50 minuti prima e la salva su GitHub solo dopo
+    l'uscita): None se non ce n'e'. Il 21/11 un piano fatto in quel momento ha preso la stessa frase del reel delle 14."""
+    import orario
+    adesso = adesso or ora_roma()
+    for ore in (0, 1):
+        t = (adesso + datetime.timedelta(hours=ore)).replace(minute=0, second=0, microsecond=0)
+        k = f"{t:%Y-%m-%d %H:%M}"
+        if t.hour in orario.ORE and k not in fatti and \
+                t - datetime.timedelta(minutes=orario.ANTICIPO + 10) <= adesso <= t + datetime.timedelta(minutes=45):
+            return k
+    return None
+
+
+def aspetta_slot_in_corso(massimo_minuti=75):
+    """Su GitHub, prima di scegliere: se pubblica.py sta preparando uno slot, si aspetta che lo salvi (git pull ogni
+    minuto) per non scegliere la sua stessa frase. Al massimo `massimo_minuti`, poi si va avanti (registra e lo slot
+    ricontrollano comunque i doppioni)."""
+    fine = time.time() + massimo_minuti * 60
+    while time.time() < fine:
+        s = slot_in_corso(fatti=set(_stato().get("slot_fatti", [])))
+        if not s:
+            return
+        log(f"pubblica.py sta preparando lo slot {s}: aspetto che lo salvi prima di scegliere")
+        time.sleep(60)
+        subprocess.run(["git", "-C", HERE, "pull", "-q", "--rebase", "--autostash"], capture_output=True, timeout=120)
+    log("Attesa finita: scelgo lo stesso (i doppioni si ricontrollano dopo)")
+
+
 def pianifica(da=None, a=None, gruppi=GRUPPI, solo_scarti=False, prova=None):
     """Sceglie in ordine (come farebbe pubblica.py slot dopo slot) video, frase, musica e formato di ogni slot da
     preparare; scrive _settimana/piano.json e mette gli slot "in_preparazione" in settimana.json (prenotano subito frasi e
     video, cosi' pubblica.py non li riprende mentre si monta). Restituisce il numero di slot da montare."""
     import pubblica
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        aspetta_slot_in_corso()
     if solo_scarti:     # prima: manifest e file delle versioni scartate (dopo, la voce dello slot cambia)
         segna_scartati_su_drive()
     state, lotto, scarti = _stato(), carica_lotto(), carica_scarti()
