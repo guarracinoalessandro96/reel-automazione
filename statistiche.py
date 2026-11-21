@@ -46,6 +46,15 @@ REPO = "guarracinoalessandro96/reel-automazione"
 REGISTRO = "statistiche_inviate.json"
 API_REGISTRO = f"https://api.github.com/repos/{REPO}/contents/{REGISTRO}"
 RISERVA_DALLE, RISERVA_FINO = (8, 20), (12, 0)     # ora di Roma in cui GitHub puo' mandare al posto del PC
+# 21/11/2026 (il PC resta SPENTO dal lunedi' al venerdi'): dal lunedi' al venerdi' il messaggio delle 8 lo manda GitHub
+# alle 8:00 (TikTok dall'ultimo numero salvato nel registro, con la data se non e' di ieri, "non disponibile" se ha
+# piu' di 2 giorni: formato di sempre). Sabato e domenica GitHub aspetta ancora le 8:20, cosi' se il PC e' acceso
+# manda lui (con il TikTok appena scaricato). Il registro impedisce sempre due messaggi nello stesso giorno.
+FERIALI_DALLE = (8, 0)
+
+
+def riserva_dalle(ora):
+    return FERIALI_DALLE if ora.weekday() < 5 else RISERVA_DALLE
 PC_DALLE, PC_FINO = (7, 30), (23, 0)    # il PC acceso di notte recupera il giro saltato: mai un messaggio di notte
 # 6/11/2026 (revisione): ogni chiamata al registro riprova per SECONDI_GITHUB, con attese crescenti, gli errori di
 # rete, i timeout e queste risposte di GitHub (prima un solo 502 faceva fallire la scrittura)
@@ -452,7 +461,7 @@ def main():
             fermo = "registro non letto"
         elif not registro.get("pc_dal"):
             fermo = "il PC non scrive ancora nel registro"
-        elif not RISERVA_DALLE <= (ora.hour, ora.minute) < RISERVA_FINO:
+        elif not riserva_dalle(ora) <= (ora.hour, ora.minute) < RISERVA_FINO:
             fermo = f"fuori orario ({ora:%H:%M})"
         elif gia_partito(reg_oggi, giro):
             fermo = "messaggio di oggi " + gia_partito(reg_oggi, giro)

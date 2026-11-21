@@ -1,0 +1,669 @@
+"""
+REEL DELLA SETTIMANA (21/11/2026, decisione di Alessandro: il PC resta SPENTO dal lunedi' al venerdi'; lo accende venerdi'
+a mezzanotte e il sabato 00:00-09:00 le attivita' di Claude in Chrome programmano su TikTok Studio e su Meta Business
+Suite (Pagina Facebook) TUTTI i reel della settimana dopo. YouTube e Instagram restano automatici su GitHub).
+
+Il venerdi' sera GitHub (.github/workflows/settimana.yml) prepara in anticipo i reel degli slot da sabato 10:00 al
+lunedi' della settimana dopo compreso (~97 reel), con le STESSE scelte di pubblica.py (scegli_reel / monta_reel: 7 s,
+scena unica, frase mai sul viso, frasi escluse, screenshot per primi, varieta' dei video...). Per ogni slot salva su Drive,
+in "0. Reel Alessandro/Sistema (non toccare)/Settimana - reel pronti/<lotto>/":
+  "AAAA-MM-GG HHMM - <frase>.mp4"              versione TikTok/Facebook (1080p, < 10 MB, senza musica, didascalia
+                                               nella descrizione, tiktok_slot in appProperties come oggi)
+  "AAAA-MM-GG HHMM - <frase> - youtube.mp4"    versione YouTube/Instagram (quella che pubblica.py userebbe)
+  "AAAA-MM-GG HHMM - <frase> - anteprima.jpg"  striscia di 3 fotogrammi
+  "AAAA-MM-GG HHMM - <frase> - manifest.json"  slot, frase, didascalia, video, musica_screenshot, testo_viso, stato
+Il registro e' settimana.json (nel repository, lo scrive solo il workflow): slot -> stato "in_preparazione" | "pronto" |
+"fallito". Gli scarti di Alessandro sono in settimana_scarti.json (lo scrive "scarta", anche dal PC): uno slot scartato
+torna a GitHub, che prepara un sostituto (versione + 1). stato.json NON lo tocca il workflow (lo scrive solo pubblica.py:
+niente conflitti): le frasi e i video gia' presi dal lotto contano come usati con prenotati() / video_riservati().
+
+Allo slot pubblica.py usa il reel pronto (reel_per_slot) per YouTube e Instagram (Instagram sceglie il brano di tendenza
+in quel momento, come prima); se manca, e' scartato, e' fallito o la sua frase e' gia' uscita, monta come prima.
+
+  python settimana.py pianifica [--da "AAAA-MM-GG HH:MM"] [--a "AAAA-MM-GG HH:MM"] [--gruppi 12] [--scarti]
+  python settimana.py monta --gruppo N               (GitHub, un pezzo della matrice)
+  python settimana.py registra                       (GitHub, dopo la matrice: settimana.json)
+  python settimana.py scarta AAAA-MM-GG HH:MM [motivo]   segna lo slot scartato e lo manda a GitHub (sostituto)
+  python settimana.py stato [AAAA-MM-GG]             elenco degli slot del lotto
+  python settimana.py controlla "AAAA-MM-GG HH:MM"   cosa userebbe pubblica.py a quello slot (senza pubblicare)
+"""
+import datetime, json, os, re, subprocess, sys, time
+from zoneinfo import ZoneInfo
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+LOTTO = os.path.join(HERE, "settimana.json")
+SCARTI = os.path.join(HERE, "settimana_scarti.json")
+LAVORO = os.path.join(HERE, "_settimana")
+CARTELLA = "Settimana - reel pronti"        # dentro "Sistema (non toccare)" (cartelle.py)
+ROMA = ZoneInfo("Europe/Rome")
+GRUPPI = 12                  # lavori in parallelo su GitHub (~2 minuti a reel: ~97 reel in ~20-25 minuti)
+MINUTI_REEL = 25             # scadenza del montaggio di un reel (allo slot vero ce ne sono ~35)
+DURATA = 7.0                 # 20/11/2026: tutti i reel da 7 s (lo cambia solo Alessandro)
+MB_TIKTOK = 9.5              # Chrome carica fino a 10 MB
+PREPARAZIONE_ORE = 6         # un "in_preparazione" piu' vecchio di cosi' (workflow interrotto) non prenota piu' niente
+ANTICIPO_MIN = 90            # si preparano solo slot ad almeno 90 minuti da adesso
+
+
+def log(*a):
+    print(datetime.datetime.now().strftime("%H:%M:%S"), *a, flush=True)
+
+
+def ora_roma():
+    return datetime.datetime.now(ROMA)
+
+
+def t_slot(slot):
+    return datetime.datetime.strptime(slot, "%Y-%m-%d %H:%M").replace(tzinfo=ROMA)
+
+
+def slot_tra(da, a):
+    """Gli slot di orario.ORE da 'da' ad 'a' compresi ("AAAA-MM-GG HH:MM")."""
+    import orario
+    t, fine, out = t_slot(da).replace(minute=0), t_slot(a), []
+    while t <= fine:
+        if t.hour in orario.ORE:
+            out.append(f"{t:%Y-%m-%d %H:%M}")
+        t += datetime.timedelta(hours=1)
+    return out
+
+
+def intervallo_settimana(adesso=None):
+    """Da sabato 10:00 (il prossimo; il venerdi' sera = domani) al lunedi' della settimana dopo alle 22:00."""
+    adesso = adesso or ora_roma()
+    giorni = (5 - adesso.weekday()) % 7 or 7          # 5 = sabato
+    if adesso.weekday() == 5 and adesso.hour < 8:
+        giorni = 0
+    sab = (adesso + datetime.timedelta(days=giorni)).date()
+    lun = sab + datetime.timedelta(days=9)
+    return f"{sab} 10:00", f"{lun} 22:00"
+
+
+# ------------------------------------------------------------------------------------------------ registro
+
+def _leggi(path, vuoto):
+    try:
+        with open(path, encoding="utf-8-sig") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return vuoto
+    except ValueError as e:
+        log(f"{os.path.basename(path)} illeggibile ({e}): lo considero vuoto")
+        return vuoto
+
+
+def carica_lotto():
+    d = _leggi(LOTTO, {})
+    d.setdefault("slot", {})
+    return d
+
+
+def carica_scarti():
+    return _leggi(SCARTI, [])
+
+
+def _scrivi(path, dati):
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(dati, f, ensure_ascii=False, indent=1, sort_keys=isinstance(dati, dict))
+        f.write("\n")
+    os.replace(tmp, path)
+
+
+def scartato(slot, voce, scarti):
+    """True se questa versione dello slot e' stata scartata da Alessandro."""
+    return any(s.get("slot") == slot and int(s.get("versione") or 0) == int(voce.get("versione") or 0) for s in scarti)
+
+
+def _attivo(slot, voce, scarti, adesso=None):
+    """Lo slot tiene prenotati frase e video? pronto, oppure in preparazione da poco; mai se scartato."""
+    if scartato(slot, voce, scarti):
+        return False
+    if voce.get("stato") == "pronto":
+        return True
+    if voce.get("stato") == "in_preparazione":
+        quando = voce.get("generato") or ""
+        limite = (adesso or datetime.datetime.now()) - datetime.timedelta(hours=PREPARAZIONE_ORE)
+        return quando >= limite.isoformat(timespec="minutes")
+    return False
+
+
+def pronto(slot, lotto=None, scarti=None):
+    """La voce del lotto per lo slot, se e' pronta e non scartata; se no None."""
+    lotto = lotto if lotto is not None else carica_lotto()
+    scarti = scarti if scarti is not None else carica_scarti()
+    v = lotto["slot"].get(slot)
+    if v and v.get("stato") == "pronto" and not scartato(slot, v, scarti) and (v.get("file") or {}).get("youtube"):
+        return v
+    return None
+
+
+def finta(slot, v):
+    """La voce finta dello storico per uno slot del lotto non ancora uscito (per le scelte di pubblica.scegli_reel)."""
+    return {"quando": slot.replace(" ", "T"), "slot": slot, "video": v.get("video"), "frase": v.get("frase"),
+            "tema": v.get("tema"), "testo": (v.get("testo") or "")[:120], "da_archivio": v.get("da_archivio"),
+            "registrato": v.get("registrato"), "scena": v.get("scena"), "settimana": True,
+            "montaggio": {"formato": v.get("formato"), "musica": v.get("musica")}}
+
+
+def prenotati(state, escludi=None, lotto=None, scarti=None):
+    """Voci finte dello storico per gli slot del lotto pronti (o in preparazione) e non ancora usciti: le loro frasi e i
+    loro video contano come usati quel giorno. escludi = lo slot che si sta scegliendo."""
+    lotto = lotto if lotto is not None else carica_lotto()
+    scarti = scarti if scarti is not None else carica_scarti()
+    fatti = set(state.get("slot_fatti", []))
+    return [finta(s, v) for s, v in sorted(lotto["slot"].items())
+            if s != escludi and s not in fatti and _attivo(s, v, scarti)]
+
+
+def video_riservati(state, escludi=None, lotto=None, scarti=None):
+    """Id dei video NUOVI (ancora in coda) gia' presi da uno slot del lotto non ancora uscito."""
+    lotto = lotto if lotto is not None else carica_lotto()
+    scarti = scarti if scarti is not None else carica_scarti()
+    fatti = set(state.get("slot_fatti", []))
+    return {v.get("fonte_id") for s, v in lotto["slot"].items()
+            if s != escludi and s not in fatti and not v.get("da_archivio") and v.get("fonte_id")
+            and _attivo(s, v, scarti)}
+
+
+def uscita_altrove(slot, frase_id, state):
+    """La frase e' gia' uscita in un ALTRO slot (storico vero)? Allora il reel pronto non si usa (mai doppioni)."""
+    return any(h.get("frase") == frase_id and h.get("slot") != slot and not h.get("in_corso")
+               for h in state.get("storico", []))
+
+
+# ------------------------------------------------------------------------------------------------ allo slot
+
+def reel_per_slot(slot, state, drive, work, videos):
+    """pubblica.py: il reel gia' pronto per questo slot, nel formato che main usa dopo il montaggio; None = monta come
+    prima. Mai un errore che fermi lo slot: chi chiama tiene il percorso di prima se qui qualcosa va storto."""
+    import pubblica, overlay
+    if not slot or "manuale" in slot:
+        return None
+    v = pronto(slot)
+    if not v:
+        voce = carica_lotto()["slot"].get(slot)
+        if voce:
+            pubblica.log(f"Reel della settimana per {slot}: {voce.get('stato')}"
+                         + (" e scartato" if scartato(slot, voce, carica_scarti()) else "") + ": lo monto adesso")
+        return None
+    if uscita_altrove(slot, v.get("frase"), state):
+        pubblica.log(f"Reel della settimana per {slot}: la frase {v.get('frase')} e' gia' uscita, lo monto adesso")
+        return None
+    os.makedirs(work, exist_ok=True)
+    out = os.path.join(work, "reel.mp4")
+    pubblica.con_tentativi(lambda: drive.download(v["file"]["youtube"], out, folder="Settimana"),
+                           "Download del reel della settimana", drive)
+    durata = overlay.probe(out)[0]
+    if os.path.getsize(out) < 100_000 or (v.get("formato") != "parlato" and abs(durata - DURATA) > 0.3):
+        pubblica.log(f"Reel della settimana per {slot}: file non valido ({os.path.getsize(out)} byte, {durata:.2f} s)")
+        return None
+    in_coda = {x["id"]: x for x in videos}
+    video = None if v.get("da_archivio") else in_coda.get(v.get("fonte_id"))
+    clip = {"id": v.get("fonte_id"), "nome": v.get("video")} if v.get("da_archivio") else None
+    info = dict(v.get("montaggio") or {})
+    info["settimana"] = {"lotto": v.get("lotto"), "versione": v.get("versione"), "generato": v.get("generato")}
+    pubblica.log(f"Reel della settimana per {slot}: {v.get('frase')} su {v.get('video')} (versione {v.get('versione')},"
+                 f" preparato il {v.get('generato')})")
+    return {"out": out, "src": os.path.join(work, "originale_non_scaricato"), "frase": dict(v["frase_dati"]),
+            "info": info, "an": dict(v.get("an") or {"scena": v.get("scena")}), "nome": v.get("video"),
+            "video": video, "clip": clip, "spinto": True, "oriz": info.get("orizzontale"), "con_foto": False,
+            "settimana": dict(v, slot=slot)}
+
+
+def segna_pubblicato(drive, pre, results):
+    """Dopo lo slot: manifest su Drive -> pubblicato; la versione YouTube del lotto nel cestino (resta quella TikTok)."""
+    v = pre["settimana"]
+    if drive.local or not (v.get("file") or {}).get("manifest"):
+        return
+    m = _scarica_json(drive, v["file"]["manifest"])
+    m["stato"] = "pubblicato"
+    m["pubblicato"] = {"quando": datetime.datetime.now().isoformat(timespec="minutes"),
+                       **{p: r.get("id") for p, r in results.items() if r.get("ok")}}
+    _aggiorna_json(drive, v["file"]["manifest"], m)
+    if all(r.get("ok") for p, r in results.items() if p in ("youtube", "instagram")):
+        drive.api.files().update(fileId=v["file"]["youtube"], body={"trashed": True}, fields="id").execute()
+
+
+# ------------------------------------------------------------------------------------------------ Drive
+
+def _cartella_lotto(drive, nome):
+    """La cartella del lotto dentro "Settimana - reel pronti" (creata se manca, una sola)."""
+    import cartelle
+    base = drive.cartella(CARTELLA)
+    q = cartelle.query(nome, [base])
+    trovate = drive.api.files().list(q=q, fields=f"files({cartelle.CAMPI})").execute().get("files", [])
+    fid = cartelle.scegli(trovate, nome, log)
+    if fid:
+        return fid
+    return drive.api.files().create(body={"name": nome, "parents": [base], "mimeType": cartelle.CARTELLA},
+                                    fields="id").execute()["id"]
+
+
+def _carica(drive, path, nome, cartella, mime, descrizione=None, props=None):
+    from googleapiclient.http import MediaFileUpload
+    body = {"name": nome, "parents": [cartella]}
+    if descrizione:
+        body["description"] = descrizione
+    if props:
+        body["appProperties"] = props
+    return drive.api.files().create(body=body, media_body=MediaFileUpload(path, mimetype=mime),
+                                    fields="id").execute()["id"]
+
+
+def _scarica_json(drive, fid):
+    return json.loads(drive.api.files().get_media(fileId=fid).execute().decode("utf-8"))
+
+
+def _aggiorna_json(drive, fid, dati):
+    import io
+    from googleapiclient.http import MediaIoBaseUpload
+    media = MediaIoBaseUpload(io.BytesIO(json.dumps(dati, ensure_ascii=False, indent=1).encode("utf-8")),
+                              mimetype="application/json")
+    drive.api.files().update(fileId=fid, media_body=media).execute()
+
+
+def _drive():
+    import pubblica
+    return pubblica.Drive(pubblica.google_creds())
+
+
+# ------------------------------------------------------------------------------------------------ pianifica
+
+def _stato():
+    import pubblica
+    state = pubblica.carica_stato()
+    for k, v in (("usate", []), ("storico", []), ("riprova", []), ("slot_fatti", []), ("musica_recenti", []),
+                 ("frasi_usate", []), ("temi_recenti", []), ("analisi", {}), ("archivio_usi", {})):
+        state.setdefault(k, v)
+    return state
+
+
+def _video_in_coda(drive, state):
+    """I video nuovi in coda che pubblica.py userebbe: gia' analizzati da lui (lo fa a ogni slot), non troppo piccoli,
+    non neri, non doppioni di video usciti. Qui non si sposta e non si cestina niente."""
+    import pubblica
+    vids = pubblica.con_tentativi(drive.list_videos, "Lettura della coda", drive)
+    visti = {h["md5"] for h in state["storico"] if h.get("md5")}
+    out = []
+    for v in vids:
+        a = state["analisi"].get(v["id"])
+        if not a or a.get("analisi_fallita") or int(a.get("fallimenti", 0) or 0) >= 2 or a.get("nero"):
+            continue
+        if 0 < a.get("lato_corto", 9999) < pubblica.QUALITA_MINIMA or (v.get("md5Checksum") in visti):
+            continue
+        out.append(v)
+    return out
+
+
+def _corto(c):
+    return {k: c.get(k) for k in ("id", "nome", "scena", "fascia", "compagnia", "registrato", "size", "usi", "ultimo",
+                                  "orizzontale", "parlato", "fallimenti", "nera") if c.get(k) is not None}
+
+
+def pianifica(da=None, a=None, gruppi=GRUPPI, solo_scarti=False, prova=None):
+    """Sceglie in ordine (come farebbe pubblica.py slot dopo slot) video, frase, musica e formato di ogni slot da
+    preparare; scrive _settimana/piano.json e mette gli slot "in_preparazione" in settimana.json (prenotano subito frasi e
+    video, cosi' pubblica.py non li riprende mentre si monta). Restituisce il numero di slot da montare."""
+    import pubblica
+    if solo_scarti:     # prima: manifest e file delle versioni scartate (dopo, la voce dello slot cambia)
+        segna_scartati_su_drive()
+    state, lotto, scarti = _stato(), carica_lotto(), carica_scarti()
+    adesso = ora_roma()
+    fatti = set(state["slot_fatti"])
+    if solo_scarti:     # sostituti: gli slot la cui ultima versione e' scartata
+        slots = sorted(s for s, v in lotto["slot"].items() if scartato(s, v, scarti))
+    else:
+        if not (da and a):
+            da, a = intervallo_settimana(adesso)
+        slots = [s for s in slot_tra(da, a) if not pronto(s, lotto, scarti)
+                 and not _attivo(s, lotto["slot"].get(s) or {}, scarti)]
+    slots = [s for s in slots if s not in fatti and t_slot(s) > adesso + datetime.timedelta(minutes=ANTICIPO_MIN)]
+    log(f"Slot da preparare: {len(slots)}" + (f" ({slots[0]} -> {slots[-1]})" if slots else ""))
+    os.makedirs(LAVORO, exist_ok=True)
+    if not slots:
+        _scrivi(os.path.join(LAVORO, "piano.json"), {"slot": [], "gruppi": []})
+        return 0
+    creds = pubblica.google_creds()
+    drive = pubblica.Drive(creds)
+    videos = _video_in_coda(drive, state)
+    frasi = json.load(open(pubblica.FRASI, encoding="utf-8"))
+    # una sola lettura del Doc e dell'archivio per tutto il piano (sono uguali per tutti gli slot)
+    testo = pubblica.con_tentativi(drive.testo_mie_citazioni, "Lettura di 'Le mie citazioni'", drive)
+    archivio = pubblica.con_tentativi(drive.lista_archivio, "Lettura dell'archivio", drive)
+    drive.testo_mie_citazioni = lambda: testo
+    drive.lista_archivio = lambda: [dict(c) for c in archivio]
+    pubblica.ORIENTAMENTI_NOTI.update(state.get("archivio_usi", {}))
+    finte = prenotati(state, lotto=lotto, scarti=scarti)
+    finte = [f for f in finte if f["slot"] not in slots]
+    # i sostituti non riprendono la frase ne' il video della versione scartata
+    finte += [finta(s, lotto["slot"][s]) for s in slots if s in lotto["slot"] and scartato(s, lotto["slot"][s], scarti)]
+    riservati = set(video_riservati(state, lotto=lotto, scarti=scarti))
+    for s in slots:
+        v = lotto["slot"].get(s)
+        if v and scartato(s, v, scarti) and not v.get("da_archivio") and v.get("fonte_id"):
+            riservati.add(v["fonte_id"])
+    vista = json.loads(json.dumps({k: state[k] for k in ("musica_recenti", "temi_recenti", "formato_ultimo")
+                                   if k in state}))
+    vista = dict(state, **vista)
+    piano, nomi = [], {}
+    nuovo_lotto = prova or f"Lotto {slots[0][:10]}"
+    for i, s in enumerate(slots):
+        t = t_slot(s).replace(tzinfo=None)
+        sc = pubblica.scegli_reel(vista, drive, creds, videos, s, frasi, finte, riservati, adesso=t)
+        if sc is None:
+            log(f"{s}: niente da preparare (pubblica.py lo montera' allo slot)")
+            continue
+        formato = pubblica.scegli_formato(s, dict(vista, storico=vista["storico"] + finte), sc["frase"], sc["an"],
+                                          sc["spinto"])
+        vista["formato_ultimo"] = formato
+        if sc["music"]:
+            vista["musica_recenti"] = (vista["musica_recenti"] + [os.path.basename(sc["music"])])[-60:]
+        vista["temi_recenti"] = (vista["temi_recenti"] + [sc["frase"].get("tema")])[-10:]
+        if sc["video"]:
+            riservati.add(sc["video"]["id"])
+        voce = {"video": sc["nome"], "frase": sc["frase"]["id"], "tema": sc["frase"].get("tema"),
+                "testo": sc["frase"].get("gancio"), "da_archivio": bool(sc["clip"]),
+                "registrato": sc["an"].get("registrato"), "scena": sc["an"].get("scena"), "formato": formato,
+                "musica": os.path.basename(sc["music"]) if sc["music"] else None}
+        finte.append(finta(s, voce))
+        vecchia = lotto["slot"].get(s) or {}
+        versione = int(vecchia.get("versione") or 0) + 1
+        lotto_nome = vecchia.get("lotto") if vecchia.get("lotto") and solo_scarti else nuovo_lotto
+        piano.append({"slot": s, "gruppo": i % gruppi, "versione": versione, "lotto": lotto_nome, "formato": formato,
+                      "spinto": sc["spinto"], "video": sc["video"], "clip": sc["clip"] and _corto(sc["clip"]),
+                      "riserva_arch": [[_corto(c) for c in g[:8]] for g in sc["riserva_arch"]],
+                      "an": sc["an"], "nome": sc["nome"], "fonte_id": sc["fonte_id"], "lato_frase": sc["lato_frase"],
+                      "frase_via": sc["frase_via"], "frase": sc["frase"],
+                      "music": os.path.relpath(sc["music"], HERE) if sc["music"] else None,
+                      "md5": (sc["video"] or {}).get("md5Checksum")})
+        lotto["slot"][s] = dict(voce, stato="in_preparazione", versione=versione, lotto=lotto_nome,
+                                fonte_id=sc["fonte_id"], generato=datetime.datetime.now().isoformat(timespec="minutes"),
+                                file={})
+        nomi[s] = sc["frase"]["id"]
+        log(f"{s}: {sc['frase']['id']} su {sc['nome']} ({'archivio' if sc['clip'] else 'nuovo'}), {formato}")
+    usati = sorted({p["gruppo"] for p in piano})
+    _scrivi(os.path.join(LAVORO, "piano.json"), {"slot": piano, "gruppi": usati})
+    _scrivi(LOTTO, lotto)
+    doppie = len(nomi) - len(set(nomi.values()))
+    log(f"Piano: {len(piano)} reel in {len(usati)} gruppi; frasi ripetute nel piano: {doppie}")
+    return len(piano)
+
+
+# ------------------------------------------------------------------------------------------------ monta
+
+def anteprima(path, dst, durata=DURATA):
+    """Striscia jpg di 3 fotogrammi (a 1 s, a meta', alla fine)."""
+    import overlay
+    tempi = [1.0, durata / 2, max(0.5, durata - 0.6)]
+    ins = []
+    for t in tempi:
+        ins += ["-ss", f"{t:.2f}", "-i", path]
+    filtro = ";".join(f"[{i}:v]scale=-2:640,setsar=1[v{i}]" for i in range(3)) + ";[v0][v1][v2]hstack=inputs=3"
+    r = subprocess.run([overlay.FFMPEG, "-y", "-v", "error", *ins, "-filter_complex", filtro, "-frames:v", "1",
+                        "-q:v", "3", dst], capture_output=True, text=True, errors="ignore", timeout=120)
+    if r.returncode != 0 or not os.path.exists(dst):
+        raise RuntimeError("anteprima: " + r.stderr[-300:])
+    return dst
+
+
+def verifica(info, out, tt):
+    """I controlli di Alessandro su un reel pronto: 7 s, testo mai sul viso (YuNet, scala >= 0,8), TikTok < 10 MB."""
+    import overlay
+    male = []
+    durata = overlay.probe(out)[0]
+    parlato = (info or {}).get("formato") == "parlato"
+    if not parlato and abs(durata - DURATA) > 0.15:
+        male.append(f"durata {durata:.2f} s")
+    tv = (info or {}).get("testo_viso") or {}
+    if not parlato:
+        if tv.get("controllo") != "lettere_fuori_dai_visi":
+            male.append("testo_viso mancante")
+        if tv.get("fotogrammi") and tv.get("rilevatore") != "yunet+haar":
+            male.append(f"rilevatore {tv.get('rilevatore')}")
+        if tv.get("scala") is not None and float(tv["scala"]) < 0.8 - 1e-3:
+            male.append(f"scala {tv['scala']}")
+    if os.path.getsize(tt) > MB_TIKTOK * 1e6:
+        male.append(f"TikTok {os.path.getsize(tt) / 1e6:.1f} MB")
+    return male, round(durata, 3)
+
+
+def monta(gruppo):
+    """Un pezzo della matrice: monta gli slot del gruppo, li salva su Drive, scrive _settimana/risultati/<slot>.json."""
+    import pubblica, overlay
+    piano = _leggi(os.path.join(LAVORO, "piano.json"), {"slot": []})
+    miei = [p for p in piano["slot"] if p["gruppo"] == gruppo]
+    log(f"Gruppo {gruppo}: {len(miei)} reel")
+    state = _stato()
+    pubblica.ORIENTAMENTI_NOTI.update(state.get("archivio_usi", {}))
+    drive = _drive()
+    cartelle_lotto = {}
+    os.makedirs(os.path.join(LAVORO, "risultati"), exist_ok=True)
+    for p in miei:
+        s = p["slot"]
+        chiave = s.replace(":", "").replace(" ", "_")
+        work = os.path.join(HERE, "_lavoro_settimana", chiave)
+        os.makedirs(work, exist_ok=True)
+        ris = {"slot": s, "versione": p["versione"], "lotto": p["lotto"], "stato": "fallito"}
+        t0 = time.time()
+        try:
+            sc = dict(p, music=os.path.join(HERE, p["music"]) if p.get("music") else None)
+            vista = dict(state, formato_ultimo=None)
+            m = pubblica.monta_reel(sc, vista, drive, work, [], s, lambda: None, formato=p["formato"],
+                                    scadenza=time.time() + MINUTI_REEL * 60)
+            frase, info, out = m["frase"], m["info"], m["out"]
+            info["orizzontale"] = False if m["con_foto"] else m["oriz"] is True
+            voce = info.get("formato") == "parlato" or (info.get("formato") == "momento" and info.get("audio_originale"))
+            tt = overlay.versione_tiktok(out, os.path.join(work, "tiktok.mp4"), audio=bool(voce))
+            male, durata = verifica(info, out, tt)
+            jpg = anteprima(out, os.path.join(work, "anteprima.jpg"), durata)
+            didascalia = pubblica.testo_breve(frase)
+            import musica_screenshot
+            brano = musica_screenshot.di(frase.get("id"))
+            base = f"{t_slot(s):%Y-%m-%d %H%M} - {frase['id']}"
+            if p["lotto"] not in cartelle_lotto:
+                cartelle_lotto[p["lotto"]] = pubblica.con_tentativi(lambda: _cartella_lotto(drive, p["lotto"]),
+                                                                    "Cartella del lotto", drive)
+            cart = cartelle_lotto[p["lotto"]]
+            props = {"tiktok_slot": s, "tiktok_voce": "1" if voce else "0", "settimana_slot": s,
+                     "settimana_versione": str(p["versione"])}
+            file = {}
+            file["youtube"] = pubblica.con_tentativi(lambda: _carica(drive, out, base + " - youtube.mp4", cart,
+                                                                     "video/mp4"), "Salvataggio YouTube", drive)
+            file["tiktok"] = pubblica.con_tentativi(lambda: _carica(drive, tt, base + ".mp4", cart, "video/mp4",
+                                                                    didascalia, props), "Salvataggio TikTok", drive)
+            file["anteprima"] = pubblica.con_tentativi(lambda: _carica(drive, jpg, base + " - anteprima.jpg", cart,
+                                                                       "image/jpeg"), "Salvataggio anteprima", drive)
+            frase_dati = {k: frase.get(k) for k in ("id", "tema", "gancio", "righe", "autore", "hashtag", "serie",
+                                                    "titolo", "virale", "copertina_ms") if frase.get(k) is not None}
+            ris.update(stato="fallito" if male else "pronto", problemi=male, durata=durata, frase=frase["id"],
+                       testo=frase.get("gancio"), tema=frase.get("tema"), didascalia=didascalia, video=m["nome"],
+                       fonte_id=(m["clip"] or m["video"] or {}).get("id"), da_archivio=bool(m["clip"]),
+                       md5=(m["video"] or {}).get("md5Checksum"), registrato=m["an"].get("registrato"),
+                       scena=m["an"].get("scena"), an={k: m["an"].get(k) for k in ("scena", "compagnia", "fascia",
+                                                                                     "registrato", "momento", "parlato")
+                                                       if m["an"].get(k) is not None},
+                       formato=info.get("formato"), musica=info.get("musica"), musica_screenshot=brano,
+                       voce=bool(voce), testo_viso=info.get("testo_viso"), montaggio=info, frase_dati=frase_dati,
+                       mb_tiktok=round(os.path.getsize(tt) / 1e6, 2), cartella=cart, file=file,
+                       generato=datetime.datetime.now().isoformat(timespec="minutes"),
+                       secondi=round(time.time() - t0))
+            manifest = {k: ris.get(k) for k in ("slot", "versione", "lotto", "stato", "problemi", "frase", "testo",
+                                                "didascalia", "video", "fonte_id", "da_archivio", "scena", "formato",
+                                                "durata", "musica", "musica_screenshot", "voce", "testo_viso",
+                                                "mb_tiktok", "generato", "file")}
+            mpath = os.path.join(work, "manifest.json")
+            with open(mpath, "w", encoding="utf-8") as f:
+                json.dump(manifest, f, ensure_ascii=False, indent=1)
+            ris["file"]["manifest"] = pubblica.con_tentativi(lambda: _carica(drive, mpath, base + " - manifest.json",
+                                                                             cart, "application/json"),
+                                                             "Salvataggio manifest", drive)
+            log(f"{s}: {ris['stato']} {frase['id']} {durata} s, TikTok {ris['mb_tiktok']} MB, "
+                f"{ris['secondi']} s" + (f" PROBLEMI {male}" if male else ""))
+        except BaseException as e:
+            if isinstance(e, KeyboardInterrupt):
+                raise
+            ris["errore"] = str(e)[:300]
+            log(f"{s}: NON preparato ({e}); pubblica.py lo montera' allo slot")
+        _scrivi(os.path.join(LAVORO, "risultati", chiave + ".json"), ris)
+        import shutil
+        shutil.rmtree(work, ignore_errors=True)
+
+
+# ------------------------------------------------------------------------------------------------ registra
+
+def registra():
+    """Dopo la matrice: i risultati in settimana.json; gli slot del piano senza risultato -> fallito; una frase uscita
+    nel frattempo in un altro slot (pubblica.py durante il montaggio) -> fallito (allo slot si monta come prima)."""
+    lotto, state = carica_lotto(), _stato()
+    piano = _leggi(os.path.join(LAVORO, "piano.json"), {"slot": []})
+    d = os.path.join(LAVORO, "risultati")
+    ris = {}
+    for f in sorted(os.listdir(d)) if os.path.isdir(d) else []:
+        r = _leggi(os.path.join(d, f), {})
+        if r.get("slot"):
+            ris[r["slot"]] = r
+    conta = {"pronto": 0, "fallito": 0}
+    for p in piano["slot"]:
+        s = p["slot"]
+        r = ris.get(s) or {"stato": "fallito", "errore": "nessun risultato (lavoro interrotto?)"}
+        vecchia = lotto["slot"].get(s) or {}
+        if int(vecchia.get("versione") or 0) > p["versione"]:
+            continue                           # nel frattempo e' arrivata una versione piu' nuova
+        if r.get("stato") == "pronto" and uscita_altrove(s, r.get("frase"), state):
+            r = dict(r, stato="fallito", errore="frase uscita nel frattempo in un altro slot")
+        voce = {k: v for k, v in r.items() if k not in ("slot",)}
+        voce.setdefault("versione", p["versione"])
+        voce.setdefault("lotto", p["lotto"])
+        lotto["slot"][s] = voce
+        conta[voce["stato"]] = conta.get(voce["stato"], 0) + 1
+    _scrivi(LOTTO, lotto)
+    log(f"Registrati: {conta}")
+    return conta
+
+
+def segna_scartati_su_drive():
+    """Le versioni scartate: manifest -> scartato e i loro file nel cestino (recuperabili 30 giorni)."""
+    lotto, scarti = carica_lotto(), carica_scarti()
+    drive = None
+    for s, v in lotto["slot"].items():
+        if not scartato(s, v, scarti) or v.get("drive_scartato"):
+            continue
+        drive = drive or _drive()
+        f = v.get("file") or {}
+        try:
+            if f.get("manifest"):
+                m = _scarica_json(drive, f["manifest"])
+                m["stato"] = "scartato"
+                _aggiorna_json(drive, f["manifest"], m)
+            for k in ("youtube", "tiktok"):
+                if f.get(k):
+                    drive.api.files().update(fileId=f[k], body={"trashed": True}, fields="id").execute()
+            v["drive_scartato"] = True
+            log(f"{s}: versione {v.get('versione')} scartata (file nel cestino di Drive)")
+        except Exception as e:
+            log(f"{s}: scarto non segnato su Drive:", e)
+    _scrivi(LOTTO, lotto)
+
+
+# ------------------------------------------------------------------------------------------------ PC / prove
+
+def ora_di_push(adesso=None):
+    """Mai un push tra :50 e :15 delle ore pari (si costruiscono i reel)."""
+    adesso = adesso or ora_roma()
+    m, h = adesso.minute, adesso.hour
+    return not ((h % 2 == 1 and m >= 50) or (h % 2 == 0 and m < 15))
+
+
+def scarta(slot, motivo="", invia=True):
+    """Segna scartata la versione attuale dello slot (settimana_scarti.json) e, con invia, la manda a GitHub (commit +
+    push): il workflow prepara il sostituto. Il venerdi' sera, dopo che Alessandro ha visto le anteprime."""
+    if invia:
+        subprocess.run(["git", "-C", HERE, "pull", "-q", "--ff-only"], capture_output=True, timeout=120)
+    lotto, scarti = carica_lotto(), carica_scarti()
+    v = lotto["slot"].get(slot)
+    if not v:
+        raise SystemExit(f"{slot}: non c'e' nel lotto")
+    if scartato(slot, v, scarti):
+        print(f"{slot}: versione {v.get('versione')} gia' scartata")
+    else:
+        scarti.append({"slot": slot, "versione": v.get("versione"), "frase": v.get("frase"), "motivo": motivo,
+                       "quando": datetime.datetime.now().isoformat(timespec="minutes")})
+        _scrivi(SCARTI, scarti)
+        print(f"{slot}: versione {v.get('versione')} ({v.get('frase')}: {v.get('testo')}) scartata")
+    if not invia:
+        return
+    while not ora_di_push():
+        print("Adesso non si puo' fare il push (tra :50 e :15 delle ore pari): aspetto 1 minuto")
+        time.sleep(60)
+    subprocess.run(["git", "-C", HERE, "add", "settimana_scarti.json"], check=True)
+    r = subprocess.run(["git", "-C", HERE, "commit", "-q", "-m", f"Settimana: scartato {slot}"], capture_output=True)
+    for i in range(4):
+        env = dict(os.environ, GIT_TERMINAL_PROMPT="0")
+        if subprocess.run(["git", "-C", HERE, "pull", "-q", "--rebase"], env=env).returncode == 0 and \
+                subprocess.run(["git", "-C", HERE, "push", "-q", "origin", "HEAD:main"], env=env).returncode == 0:
+            print("Mandato a GitHub: il sostituto si prepara da solo (~15 minuti), poi 'python settimana.py stato'")
+            return
+        time.sleep(10 * (i + 1))
+    raise SystemExit("Push non riuscito: rilancia il comando (lo scarto e' gia' salvato in locale)")
+
+
+def stato(giorno=None):
+    lotto, scarti = carica_lotto(), carica_scarti()
+    try:
+        fatti = set(json.load(open(os.path.join(HERE, "stato.json"), encoding="utf-8")).get("slot_fatti", []))
+    except Exception:
+        fatti = set()
+    righe = []
+    for s, v in sorted(lotto["slot"].items()):
+        if giorno and not s.startswith(giorno):
+            continue
+        st = "pubblicato" if s in fatti else ("scartato" if scartato(s, v, scarti) else v.get("stato"))
+        righe.append(f"{s}  v{v.get('versione')}  {st:15} {v.get('frase')}  {str(v.get('video'))[:16]:16} "
+                     f"{v.get('durata')} s  {v.get('mb_tiktok')} MB  {(v.get('testo') or '')[:60]}"
+                     + (f"  [{v.get('errore') or v.get('problemi')}]" if v.get("errore") or v.get("problemi") else ""))
+    print("\n".join(righe) or "lotto vuoto")
+    return righe
+
+
+def controlla(slot):
+    """Cosa userebbe pubblica.py allo slot (senza scaricare e senza pubblicare)."""
+    state = _stato()
+    v = pronto(slot)
+    if not v:
+        voce = carica_lotto()["slot"].get(slot)
+        print(f"{slot}: nessun reel pronto ({voce and voce.get('stato')}) -> pubblica.py monta come prima")
+        return None
+    if uscita_altrove(slot, v.get("frase"), state):
+        print(f"{slot}: frase gia' uscita altrove -> pubblica.py monta come prima")
+        return None
+    print(f"{slot}: pubblica.py usa {v['file']['youtube']} ({v.get('frase')}: {v.get('testo')}); durata "
+          f"{v.get('durata')} s; testo_viso {((v.get('testo_viso') or {}).get('rilevatore'))} scala "
+          f"{(v.get('testo_viso') or {}).get('scala')}; TikTok {v.get('mb_tiktok')} MB")
+    return v
+
+
+if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.path.insert(0, HERE)
+    a = sys.argv[1:]
+
+    def opz(nome, std=None):
+        return a[a.index(nome) + 1] if nome in a else std
+
+    cmd = a[0] if a else ""
+    if cmd == "pianifica":
+        n = pianifica(opz("--da"), opz("--a"), int(opz("--gruppi", GRUPPI)), "--scarti" in a, opz("--lotto"))
+        print(f"DA_MONTARE={n}")
+    elif cmd == "monta":
+        monta(int(opz("--gruppo", "0")))
+    elif cmd == "registra":
+        registra()
+        segna_scartati_su_drive()
+    elif cmd == "scarta" and len(a) >= 3:
+        scarta(f"{a[1]} {a[2]}", " ".join(a[3:]).replace("--locale", "").strip(), invia="--locale" not in a)
+    elif cmd == "stato":
+        stato(a[1] if len(a) > 1 else None)
+    elif cmd == "controlla" and len(a) >= 2:
+        controlla(" ".join(a[1:3]) if len(a) >= 3 else a[1])
+    else:
+        print(__doc__)

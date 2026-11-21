@@ -1,0 +1,174 @@
+name: Reel della settimana
+
+# 21/11/2026 (Alessandro: il PC resta spento dal lunedi' al venerdi'; il sabato 00:00-09:00 il PC programma su TikTok
+# Studio e su Meta Business Suite tutti i reel della settimana dopo). Il venerdi' sera questo lavoro prepara in anticipo
+# i reel da sabato 10:00 al lunedi' della settimana dopo compreso (settimana.py): stesse scelte di pubblica.py, montati in
+# parallelo (matrice), salvati su Drive in "Sistema (non toccare)/Settimana - reel pronti" e registrati in settimana.json.
+# Allo slot pubblica.py usa il reel pronto per YouTube e Instagram (se manca, monta come prima).
+# Uno slot scartato (python settimana.py scarta ..., che cambia settimana_scarti.json) riparte da qui: sostituto.
+on:
+  schedule:
+    - cron: "20 19 * * 5"        # venerdi' 19:20 ora di Roma (dopo la scelta del reel delle 20:00)
+      timezone: "Europe/Rome"
+    - cron: "40 20 * * 5"        # riserva: se il primo e' gia' passato non c'e' niente da fare (finisce in 1 minuto)
+      timezone: "Europe/Rome"
+  push:
+    paths: ["settimana_scarti.json"]
+  workflow_dispatch:
+    inputs:
+      da:
+        description: "Primo slot (AAAA-MM-GG HH:MM, ora di Roma). Vuoto = sabato 10:00"
+        type: string
+        default: ""
+      a:
+        description: "Ultimo slot (AAAA-MM-GG HH:MM). Vuoto = lunedi' della settimana dopo 22:00"
+        type: string
+        default: ""
+      gruppi:
+        description: "Lavori in parallelo"
+        type: string
+        default: "12"
+      scarti:
+        description: "Solo i sostituti degli slot scartati"
+        type: boolean
+        default: false
+
+concurrency:
+  group: settimana
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+  GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+  GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+  DRIVE_FOLDER_DA_PUBBLICARE: ${{ secrets.DRIVE_FOLDER_DA_PUBBLICARE }}
+  DRIVE_FOLDER_PRONTI: ${{ secrets.DRIVE_FOLDER_PRONTI }}
+  DRIVE_FOLDER_PUBBLICATI: ${{ secrets.DRIVE_FOLDER_PUBBLICATI }}
+
+jobs:
+  pianifica:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    outputs:
+      n: ${{ steps.piano.outputs.n }}
+      gruppi: ${{ steps.piano.outputs.gruppi }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      # la scelta non monta niente: basta il necessario per importare pubblica.py (niente torch)
+      - run: pip install "opencv-python-headless<5" numpy Pillow pillow-heif imageio-ffmpeg==0.6.0 requests google-api-python-client google-auth
+      - name: Scelta di frasi, video e formati (in ordine di slot)
+        id: piano
+        env:
+          DA: ${{ inputs.da }}
+          A: ${{ inputs.a }}
+          GRUPPI: ${{ inputs.gruppi || '12' }}
+          SCARTI: ${{ (github.event_name == 'push' || inputs.scarti) && '1' || '' }}
+        run: |
+          ARGS=(--gruppi "$GRUPPI")
+          [ -n "$DA" ] && ARGS+=(--da "$DA")
+          [ -n "$A" ] && ARGS+=(--a "$A")
+          [ -n "$SCARTI" ] && ARGS+=(--scarti)
+          python settimana.py pianifica "${ARGS[@]}" | tee piano.log
+          N=$(grep -o 'DA_MONTARE=[0-9]*' piano.log | cut -d= -f2)
+          echo "n=${N:-0}" >> "$GITHUB_OUTPUT"
+          echo "gruppi=$(python -c "import json;print(json.dumps(json.load(open('_settimana/piano.json'))['gruppi']))")" >> "$GITHUB_OUTPUT"
+      - name: Prenota subito frasi e video (settimana.json)
+        run: |
+          git config user.name "reel-bot"; git config user.email "reel-bot@users.noreply.github.com"
+          git add settimana.json
+          git diff --cached --quiet && exit 0
+          git commit -q -m "Settimana: in preparazione"
+          for i in 1 2 3 4 5; do git pull --rebase -q && git push -q && exit 0; git rebase --abort 2>/dev/null || true; sleep $((i * 5)); done
+          exit 1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: piano
+          path: _settimana/piano.json
+
+  monta:
+    needs: pianifica
+    if: needs.pianifica.outputs.n != '0' && needs.pianifica.outputs.n != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        gruppo: ${{ fromJson(needs.pianifica.outputs.gruppi) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Memoria del modello di riconoscimento scene
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: clip-vit-b-32-openai
+      - name: Installa
+        run: |
+          pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: piano
+          path: _settimana
+      - name: Monta e salva su Drive
+        run: python settimana.py monta --gruppo ${{ matrix.gruppo }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: risultati-${{ matrix.gruppo }}
+          path: _settimana/risultati/
+          if-no-files-found: ignore
+
+  registra:
+    needs: [pianifica, monta]
+    if: always() && needs.pianifica.outputs.n != '0' && needs.pianifica.outputs.n != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install "opencv-python-headless<5" numpy Pillow pillow-heif imageio-ffmpeg==0.6.0 requests google-api-python-client google-auth
+      - uses: actions/download-artifact@v4
+        with:
+          name: piano
+          path: _settimana
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: risultati-*
+          path: _settimana/risultati
+          merge-multiple: true
+      - name: Registra in settimana.json
+        run: |
+          git config user.name "reel-bot"; git config user.email "reel-bot@users.noreply.github.com"
+          for i in 1 2 3 4 5; do
+            git pull -q --rebase --autostash || git rebase --abort 2>/dev/null || true
+            git checkout -- settimana.json 2>/dev/null || true
+            python settimana.py registra
+            python settimana.py stato | tail -n 200
+            git add settimana.json
+            git diff --cached --quiet && exit 0
+            git commit -q -m "Settimana: reel pronti"
+            git push -q && exit 0
+            git reset -q --hard HEAD~1; sleep $((i * 5))
+          done
+          exit 1

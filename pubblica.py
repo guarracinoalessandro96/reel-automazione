@@ -2971,6 +2971,433 @@ def recupera_instagram(state, drive, work, save):
         save()
 
 
+def scegli_reel(state, drive, creds, videos, slot, frasi, prenotati=(), riservati=(), adesso=None):
+    """21/11/2026 (reel della settimana): la scelta di video, frase e musica per uno slot, uguale a prima (era dentro
+    main). prenotati = voci finte dello storico per gli slot gia' preparati e non ancora usciti (settimana.py): le loro
+    frasi e i loro video contano come gia' usati; riservati = id dei video nuovi gia' presi da quegli slot.
+    adesso = l'ora con cui si sceglie (pre-generazione: l'ora dello slot; None = adesso, come prima).
+    Restituisce un dizionario, o None se non c'e' niente da pubblicare."""
+    adesso = adesso or datetime.datetime.now()
+    giorno = adesso.date()
+    slot_ora = None if "manuale" in slot else slot.split()[-1]
+    state = dict(state, storico=list(state["storico"]) + list(prenotati))   # vista: lo stato vero non cambia
+    videos = [v for v in videos if v["id"] not in set(riservati)]
+    # 2. il video giusto per questo orario: prima i video NUOVI, se la coda e' vuota una clip dall'archivio.
+    # Orario FERMO (20/10/2026): il video nuovo aspetta un orario che YouTube spinge (MOMENTO no: esce subito)
+    spinto = orario_spinto(state, slot, creds)
+    # 6/11/2026 (punto 34): un video orizzontale negli ultimi 10 reel -> prima i verticali (in coda e in archivio).
+    # 6/11/2026 (revisione; Alessandro: "dai sempre priorita' ai nuovi contenuti piuttosto che ai vecchi"): un video
+    # NUOVO orizzontale non lascia mai il posto a una clip d'archivio. Aspetta solo dietro i video nuovi verticali; se in
+    # coda ci sono solo orizzontali esce lo stesso (montaggio.orizzontale lo segna)
+    try:
+        evita_oriz = orizzontale_recente(state)
+        ORIENTAMENTI_NOTI.update(state.get("archivio_usi", {}))
+    except Exception as e:
+        log("Controllo dei video orizzontali non riuscito (scelta come prima):", e)
+        evita_oriz = False
+    video = scegli_video(videos, state["analisi"], slot_ora, evita_oriz)
+    tenuto = None
+    if (video and not spinto and len(videos) <= VIDEO_DA_TENERE
+            and not state["analisi"].get(video["id"], {}).get("momento")):
+        tenuto, video = video, None
+    clip, riserva_arch = None, []
+    if video is None:
+        usi_arch = state.setdefault("archivio_usi", {})
+        try:
+            # 4/11/2026: con nuovi tentativi: un archivio "vuoto" per la rete faceva saltare l'orario
+            archivio = [dict(c, **usi_arch.get(c["id"], {}))
+                        for c in con_tentativi(drive.lista_archivio, "Lettura dell'archivio", drive)]
+        except Exception as e:
+            log("Lettura dell'archivio non riuscita:", e)
+            archivio = []
+        # i video PARLATI non si riusano con la musica sopra (si vedrebbe la bocca muoversi senza voce)
+        qualita = clip_voti()
+        archivio = [c for c in archivio if c.get("fallimenti", 0) < 2 and c.get("parlato") != "1"
+                    and c.get("nome") not in qualita["escluse"]]
+        # quante volte e quando ogni video e' gia' uscito (anche come video nuovo, prima di entrare in archivio)
+        stem = lambda n: os.path.splitext(n or "")[0].lower()
+        for c in archivio:
+            usciti = [h["quando"][:16] for h in state["storico"] if h.get("video") and stem(h["video"]) == stem(c["nome"])]
+            c["usi"] = max(int(c.get("usi", 0)), len(usciti))
+            c["ultimo"] = max([c.get("ultimo", "")] + usciti)
+        limite = (adesso - datetime.timedelta(days=7)).isoformat(timespec="minutes")
+        riposati = [c for c in archivio if c.get("ultimo", "") < limite]     # 1/11/2026: niente clip uscite negli ultimi 7 giorni
+        belle = [c for c in riposati if qualita["voti"].get(c.get("nome"), 0) >= 10]   # prima le clip migliori
+        gruppo = belle or riposati or archivio
+        if evita_oriz:     # 6/11/2026 (punto 34): prima le clip non orizzontali; mai bloccare
+            # 6/11/2026 (revisione): senza ripescare le clip uscite negli ultimi 7 giorni (regola del 1/11) se ce ne
+            # sono di riposate
+            vert = lambda l: [c for c in l if _orizz(c) is not True]
+            gruppo = vert(belle) or vert(riposati) or vert(gruppo) or gruppo
+        riserva_arch = [gruppo, archivio]     # 6/11/2026 (revisione): per cambiare clip se e' tutta nera
+        clip = scegli_archivio(gruppo, slot_ora)
+        if clip is None and tenuto:           # archivio vuoto: esce comunque il video nuovo
+            video, tenuto = tenuto, None
+        elif clip is None:
+            log(f"Nessun video nuovo e archivio vuoto per l'orario {slot}.")
+            return None
+    if clip:
+        if tenuto:
+            log(f"Orario fermo: {tenuto['name']} aspetta un orario spinto, adesso riuso dall'archivio {clip['nome']}")
+        else:
+            log(f"Nessun video nuovo: riuso dall'archivio {clip['nome']} (usato {clip.get('usi', 0)} volte)")
+        an = {"scena": clip.get("scena"), "compagnia": clip.get("compagnia"), "fascia": clip.get("fascia")}
+        nome, fonte_id = clip["nome"], clip["id"]
+    else:
+        an = state["analisi"][video["id"]]
+        nome, fonte_id = video["name"], video["id"]
+
+    # 3. frase e musica adatte
+    pesi_file = os.path.join(HERE, "pesi.json")
+    pesi = json.load(open(pesi_file, encoding="utf-8")).get("temi", {}) if os.path.exists(pesi_file) else {}
+    usi = {h["frase"]: h["quando"][:10] for h in state["storico"] if h.get("frase") and h.get("quando")}
+    # 7/11/2026 (studio della sera, modifica 4): prova a meta' sulla frase (montaggio.prove.frase, montaggio.frase_via):
+    # "forzata" = la frase non viene dalla scelta libera in classifica (sua richiesta, suo screenshot, titolo del
+    # MOMENTO, orario fermo, frase vincente riproposta; 7/11, revisione: anche un suo screenshot tra le candidate): li'
+    # la prova non tocca niente, su tutti e due i lati, e prove.frase non si scrive (segna_prove)
+    lato_frase, frase_via = lato_prova("frase", slot), "forzata"
+    if SOLO_MIE:    # solo le citazioni del Google Doc di Alessandro: prima quelle mai uscite, a caso
+        try:
+            # 4/11/2026: con nuovi tentativi: senza il Doc l'orario saltava ("documento vuoto")
+            mie = mie_frasi(con_tentativi(drive.testo_mie_citazioni, "Lettura di 'Le mie citazioni'", drive) or "")
+        except Exception as e:
+            log("Lettura di 'Le mie citazioni' non riuscita:", e)
+            mie = []
+        import classifica_frasi
+        foto_punti = classifica_frasi.carica()
+        scelte_da_lui = [f for f in mie if foto_punti.get(f["id"]) == 100]   # 1/11/2026: le frasi delle sue foto passano sempre
+        if random.random() >= TRADIMENTO_QUOTA:   # 25/10/2026: di tradimento si parla poco (1 volta su 10)
+            mie = [f for f in mie if not TRADIMENTO.search(f["gancio"])] or mie
+        mie = [f for f in mie if not DONNE.search(f["gancio"])] or mie       # 26/10/2026: mai frasi sulle donne
+        mie = [f for f in mie if not NEGATIVO.search(f["gancio"]) and not PALESTRA.search(f["gancio"])
+               and not CRINGE.search(f["gancio"]) and not FAMIGLIA.search(f["gancio"])
+               and not CONFRONTO.search(f["gancio"])] or mie  # 29/10
+        mie += [f for f in scelte_da_lui if f not in mie]
+        # 20/11/2026 (Alessandro, sulla lista delle prossime frasi: "queste le voglio togliere"): frasi_escluse.json
+        # ([{"id", "dal", "frase"}]) non escono MAI piu', nemmeno come forzate, vincenti o riusate
+        mie = [f for f in mie if f["id"] not in frasi_escluse()]
+        frasi = [f for f in mie if f["id"] not in usi]
+        log(f"'{DOC_MIE}': {len(mie)} citazioni, {len(frasi)} ancora da usare.")
+        # reel da 5 s: anche le frasi lunghe (scelta di Alessandro 13/10/2026: se non si fa in tempo a leggere,
+        # si riguarda il video -> piu' visualizzazioni). Nessun filtro sulla lunghezza.
+        # dati YouTube 16/10/2026 (53 Shorts): frasi fino a 6 parole ~340 views mediane, 7-10 parole ~1.020,
+        # 11-15 parole ~1.255 -> 9 volte su 10 si sceglie una frase di almeno 7 parole (1 su 10 resta "esperimento")
+        # 31/10/2026 (Alessandro): prima TUTTE le frasi delle sue foto (classifica 100); imprenditoria sospesa (0)
+        frasi = [f for f in frasi if foto_punti.get(f["id"]) != 0] or frasi
+        foto_rimaste = any(foto_punti.get(f["id"]) == 100 for f in frasi)
+        lunghe = [f for f in frasi if len(f["gancio"].split()) >= MIN_PAROLE]
+        virali = [f for f in frasi if f.get("virale")]       # prima quelle andate virali in altri video
+        # come MoreMozi (18/10/2026): 1 volta su 4 si ripropone su un altro video una frase che ha gia' funzionato
+        # (frasi_vincenti da report.py, ferma da almeno 7 giorni)
+        try:
+            vinc_id = set(json.load(open(pesi_file, encoding="utf-8")).get("frasi_vincenti", []))
+        except Exception:
+            vinc_id = set()
+        sette = (giorno - datetime.timedelta(days=7)).isoformat()
+        vincenti = [f for f in mie if f["id"] in vinc_id and usi.get(f["id"], "") < sette]
+        vecchie_lim = (giorno - datetime.timedelta(days=GIORNI_RIUSO_FRASE)).isoformat()
+        vecchie = [f for f in mie if f["id"] in usi and usi[f["id"]] < vecchie_lim]
+        forzata = frase_forzata(mie, state, spinto)
+        if not forzata and not spinto and frase_forzata(mie, state):
+            log("Orario fermo: le frasi scelte aspettano il prossimo orario spinto")
+        if forzata:
+            frase = forzata
+            log("Frase richiesta da Alessandro:", frase["gancio"])
+        elif not spinto and vecchie and not foto_rimaste:   # orario fermo: si riusa la frase uscita da piu' tempo
+            frase = min(vecchie, key=lambda f: usi[f["id"]])
+            log("Orario fermo: riuso una frase uscita il", usi[frase["id"]])
+        elif vincenti and random.random() < 0.25 and not foto_rimaste:
+            frase = random.choice(vincenti)
+            log("Ripropongo una frase che ha gia' funzionato:", frase["gancio"])
+        elif frasi:
+            # 20/10/2026 (98 Short): 11-15 parole mediana 1.014 views, 7-10 parole 862, fino a 6 parole 443
+            # 26/10/2026 (Alessandro): frasi piu' lunghe (la gente si ferma a leggere) e PRIMA quelle che pensiamo
+            # vadano piu' virali: classifica_frasi.json (0-100, 50 se manca; lunghezza, temi sulle persone, [virale],
+            # giudizio di Claude). Si sceglie a caso tra le prime 3, cosi' i reel vicini non sono sempre uguali.
+            punti = foto_punti
+            # 7/11/2026 (Alessandro: "privilegiando sempre quelle che ti ho salvato per prima"): a parita' di
+            # punteggio le frasi dei suoi screenshot nell'ordine della coda, dalla piu' vecchia
+            coda = coda_screenshot()
+            # 6/11/2026 (67 reel dal 29/10): a parita' di punteggio prima le frasi da 11-17 parole: YouTube ne ha
+            # spinte il 39% (13 su 33), di quelle fino a 10 parole solo il 10% (3 su 31)
+            giusta = lambda f: 11 <= len(f["gancio"].split()) <= 17
+            # 12/11/2026 (Alessandro: "dai priorita' alle frasi in italiano non tradotte, dai priorita' alle frasi con
+            # la musica che si vede dagli screenshot che puoi utilizzare"): 0 = suo screenshot con il brano,
+            # 1 = suo screenshot, 2 = frase italiana non tradotta, 3 = [virale] (spesso presa da video stranieri)
+            try:
+                import musica_screenshot
+                con_brano = set(k for k in musica_screenshot.leggi() if musica_screenshot.di(k))
+            except Exception:
+                con_brano = set()
+            def fascia(f):
+                if punti.get(f["id"]) == 100 or f["id"] in coda:
+                    return 0 if f["id"] in con_brano else 1
+                return 3 if f.get("virale") else 2
+            ordinate = sorted(frasi, key=lambda f: (fascia(f),
+                                                    -punti.get(f["id"], classifica_frasi.stima(f["gancio"], f.get("virale"))),
+                                                    coda.get(f["id"], len(coda)), not giusta(f)))
+            # 3/11/2026: mai due frasi con le stesse prime parole nello stesso giorno
+            inizio = lambda t: " ".join(re.findall(r"\w+", (t or "").lower())[:2])
+            oggi = {inizio(h.get("testo")) for h in state["storico"] if h.get("quando", "")[:10] == giorno.isoformat()}
+            # 3/11/2026: niente frase quasi uguale a una uscita negli ultimi 30 giorni (stesse parole per il 60%)
+            # e niente stesso tema dei 2 reel precedenti
+            parole = lambda t: {w for w in re.findall(r"\w{4,}", (t or "").lower())}
+            mese = (giorno - datetime.timedelta(days=30)).isoformat()
+            uscite = [parole(h.get("testo")) for h in state["storico"] if h.get("quando", "") >= mese and h.get("testo")]
+            simile = lambda t: any(len(parole(t) & u) >= 0.6 * max(1, min(len(parole(t)), len(u))) for u in uscite if u)
+            tema_di = {f["id"]: f.get("tema") for f in mie}
+            temi_vicini = {tema_di.get(h.get("frase")) for h in state["storico"][-2:]} - {None}
+            # 7/11/2026: le frasi della coda dei suoi screenshot non aspettano per 'simile' e per il tema (la coda e'
+            # stata controllata contro le frasi gia' uscite; quelle uscite restano fuori per id)
+            # 11/11/2026 (Alessandro: "tutte le frasi screenshot che ti metto nella cartella devono essere pubblicate"):
+            # anche quelle a 100 aggiunte dopo la coda (attivita' delle 06:15) sono in fila, dopo la coda
+            sua = lambda f: f["id"] in coda or punti.get(f["id"]) == 100
+            adatte = [f for f in ordinate[:12] if inizio(f["gancio"]) not in oggi and (sua(f) or not simile(f["gancio"]))]
+            adatte = [f for f in adatte if f.get("tema") not in temi_vicini or sua(f)] or adatte
+            frase = random.choice(adatte[:3] or [f for f in ordinate[:8] if inizio(f["gancio"]) not in oggi][:3] or ordinate[:3])
+            in_fila = [f for f in adatte if punti.get(f["id"]) == 100]
+            if in_fila:          # la prima in fila, senza sorteggio (il random sopra resta per non cambiare il resto)
+                frase = in_fila[0]
+                log(f"Frase dei suoi screenshot, posto {coda.get(frase['id'], len(coda)) + 1} della coda:", frase["gancio"])
+            else:
+                log(f"Frase dalla classifica ({punti.get(frase['id'], 'stima')}):", frase["gancio"])
+            # 7/11/2026 (studio della sera, modifica 4): sul lato "aforisma", tra le STESSE candidate di oggi (adatte)
+            # l'aforisma (una frase sola, voce generale, 9-20 parole) meglio piazzato, se c'e'. Le frasi dei suoi
+            # screenshot (classifica 100) restano davanti su tutti e due i lati. La scelta di oggi resta fatta prima
+            # (stesso random per il resto del reel)
+            frase_via = "forzata" if punti.get(frase["id"]) == 100 else "classifica"
+            # 7/11/2026 (revisione): con una frase dei suoi screenshot (100) tra le candidate la prova non puo' agire (le
+            # sue frasi restano davanti su tutti e due i lati): "forzata" anche qui, deciso prima della moneta e uguale
+            # sui due lati (segna_prove allora non scrive prove.frase: la tabella non confronta reel trattati uguali)
+            if frase_via == "classifica" and any(punti.get(f["id"]) == 100 for f in adatte):
+                log("Prova della frase: restano davanti le frasi dei suoi screenshot (la prova non agisce)")
+                frase_via = "forzata"
+            if lato_frase == "aforisma" and frase_via == "classifica":
+                try:
+                    afo = next((f for f in adatte if aforisma(f["gancio"])), None)
+                    frase_via = "aforisma" if afo else "nessun_aforisma"
+                    if afo and afo is not frase:
+                        log(f"Prova della frase (aforisma): {afo['gancio']} (al posto di {frase['gancio']})")
+                    frase = afo or frase
+                except Exception as e:
+                    log("Prova della frase non riuscita (resta la scelta di oggi):", e)
+                    frase_via = "classifica"
+        elif mie:            # finite: si riusa quella uscita da piu' tempo (mai fermarsi); salute.py avvisa
+            frase = min(mie, key=lambda f: usi.get(f["id"], ""))
+            log("Citazioni nuove finite: riuso la meno recente. Aggiungerne altre al documento!")
+        else:
+            log(f"Documento '{DOC_MIE}' vuoto o non leggibile: niente da pubblicare.")
+            return None
+    else:
+        frase = scegli_frase(frasi, an["scena"], usi, state["temi_recenti"], pesi, an.get("compagnia"))
+    music = None if ENV("SENZA_MUSICA") == "1" else scegli_musica(frase["tema"], state["musica_recenti"], an["scena"])
+    log(f"Slot {slot} | {nome} | scena {an['scena']} | frase {frase['id']}: {frase['gancio']}")
+
+    return {"spinto": spinto, "video": video, "clip": clip, "riserva_arch": riserva_arch, "an": an, "nome": nome,
+            "fonte_id": fonte_id, "lato_frase": lato_frase, "frase_via": frase_via, "frase": frase, "music": music}
+
+
+def monta_reel(sc, state, drive, work, videos, slot, save, formato=None, scadenza=None):
+    """21/11/2026 (reel della settimana): il montaggio del reel scelto da scegli_reel, uguale a prima (era dentro main).
+    formato = gia' deciso (pre-generazione, in ordine di slot); scadenza = time.time() entro cui montare (None = come
+    prima, dall'orario dello slot). Restituisce un dizionario con il reel montato; gli errori escono come prima."""
+    slot_ora = None if "manuale" in slot else slot.split()[-1]
+    spinto, video, clip, riserva_arch, an, nome, fonte_id = (sc[k] for k in ("spinto", "video", "clip", "riserva_arch",
+                                                                          "an", "nome", "fonte_id"))
+    lato_frase, frase_via, frase, music = sc["lato_frase"], sc["frase_via"], sc["frase"], sc["music"]
+    # 4. montaggio e pubblicazione
+    # 7/11/2026 (revisione, tempi): la scadenza unica del reel (vedi SCADENZA_MINUTI), per OGNI reel; a mano nessuna
+    try:
+        import formati_nuovi
+        t_orario = ora_slot(slot)
+        formati_nuovi.SCADENZA = ((t_orario - datetime.timedelta(minutes=SCADENZA_MINUTI)).timestamp()
+                                  if t_orario else None)
+        if scadenza:         # 21/11/2026: pre-generazione, la scadenza la decide settimana.py (lo slot e' fra giorni)
+            formati_nuovi.SCADENZA = scadenza
+            t_orario = datetime.datetime.fromtimestamp(scadenza + SCADENZA_MINUTI * 60, ora_roma().tzinfo)
+        if t_orario:
+            log(f"Scadenza del montaggio: {t_orario - datetime.timedelta(minutes=SCADENZA_MINUTI):%H:%M} "
+                f"({formati_nuovi.secondi_rimasti() / 60:.0f} minuti)")
+    except Exception as e:
+        log("Scadenza del reel non impostata (nessun limite, come prima):", e)
+    src = os.path.join(work, "originale" + (os.path.splitext(nome)[1] or ".mov"))
+    out = os.path.join(work, "reel.mp4")
+    try:     # 4/11/2026: fuori dal montaggio: un errore di rete non e' colpa del video (2 "fallimenti" lo spostavano
+        # in "Da controllare" e non usciva piu'); il video resta in coda per il prossimo orario
+        con_tentativi(lambda: drive.download(fonte_id, src, folder="Archivio" if clip else "Da pubblicare"),
+                      "Download del video", drive)
+    except Exception as e:
+        log(f"Download di {nome} non riuscito (rete): resta in coda, nessun tentativo contato:", e)
+        shutil.rmtree(work, ignore_errors=True)
+        raise
+    nera_tolta = None
+    if clip:
+        # 6/11/2026 (revisione, punto 14): una clip d'archivio tutta nera (IMG_4508.MOV: 3,3 s di nero, il reel del 1/11
+        # alle 06:00) non esce piu'. Si mette da parte senza cancellare niente (archivio_usi: nera e 2 fallimenti, come
+        # una clip che non si monta) e al suo posto un'altra clip dell'archivio; se non c'e' o non si scarica, come prima
+        try:
+            if _nera(src):
+                u = state.setdefault("archivio_usi", {}).setdefault(clip["id"], {})
+                u["nera"], u["fallimenti"] = True, max(2, int(u.get("fallimenti", 0)))
+                NERE.add(clip["id"])     # 6/11/2026 (integrazione): neanche come clip extra in questo giro
+                altre = [[c for c in g if c["id"] != clip["id"] and not c.get("nera")] for g in riserva_arch]
+                altra = scegli_archivio(next((g for g in altre if g), []), slot_ora)
+                log(f"La clip d'archivio {nome} e' tutta nera: messa da parte, non torna nei reel"
+                    + (f"; al suo posto {altra['nome']}" if altra else "; nessun'altra clip, resta questa"))
+                save()
+                if altra:
+                    src2 = os.path.join(work, "altra" + (os.path.splitext(altra["nome"])[1] or ".mov"))
+                    con_tentativi(lambda: drive.download(altra["id"], src2, folder="Archivio"), "Download del video", drive)
+                    nera_tolta, clip, src, nome, fonte_id = nome, altra, src2, altra["nome"], altra["id"]
+                    an = {"scena": clip.get("scena"), "compagnia": clip.get("compagnia"), "fascia": clip.get("fascia")}
+        except Exception as e:
+            log("Controllo della clip nera non riuscito (resta la clip scelta):", e)
+    oriz = orizzontale(src)          # 6/11/2026 (punto 34): montaggio.orizzontale in stato.json
+    try:
+        serie = etichetta_serie(slot)
+        frase = dict(frase, serie=serie)
+        # 7/11/2026: con lo stile al centro la prova a meta' delle scritte finisce (decisione di Alessandro): ogni reel
+        # ha montaggio.scritta = centro_serif e montaggio.stile_centro (carattere, corpo, righe, quanto e' scurito)
+        if str(slot)[:10] < FORMATI_PROVA_FINO and not overlay.STILE_CENTRO:
+            overlay.STILE_SCRITTA = random.Random(f"scritta {slot}").choice(SCRITTE_PROVA)
+        overlay.ULTIMO_STILE = None
+        t_montaggio = time.time()       # 7/11/2026 (revisione, tempi): montaggio.secondi_montaggio
+        info, formato = None, (formato or scegli_formato(slot, state, frase, an, spinto))
+        foto_oggi, foto_riuso, voluto = [], False, None
+        # 17/11/2026, Alessandro: "voglio che tu peschi un solo video": con SCENA_UNICA niente reel di foto (piu' foto
+        # = piu' scene); le foto restano nella loro cartella, non si toccano
+        if TUTTO_10S and not SCENA_UNICA and formato in FORMATI_10 and str(slot).endswith(ORARIO_FOTO) \
+                and str(slot)[:10] >= FOTO_DAL:
+            formato_f = None
+            try:
+                import foto_giornata
+                # 6/11/2026: meta' degli orari il photo dump (foto_rapide); prima le foto nuove, senza foto nuove si
+                # riusano quelle di una giornata gia' uscita (Alessandro: "se non ci sono foto in coda... quelle vecchie")
+                voluto = formato_foto(slot)
+                foto_oggi, formato_f, foto_riuso = con_tentativi(
+                    lambda: foto_giornata.foto_per_slot(drive, state, voluto), "Lettura delle foto", drive)
+                if foto_oggi:
+                    log(f"Foto: {len(foto_oggi)} {'gia uscite (riuso)' if foto_riuso else 'nuove'}, formato "
+                        f"{formato_f} (estratto {voluto})")
+            except Exception as e:
+                log("Foto della giornata non lette:", e)
+            formato = (formato_f or "dieci_foto") if foto_oggi else formato
+        log(f"Formato: {formato}")
+        # 7/11/2026 (studio della sera, modifiche 1 e 7): il lato della prova dell'apertura, deciso per OGNI reel (mai
+        # quello del reel prima). Le foto no: li' non cambia niente e resta "viso" (com'era); un ripiego col video si'
+        lato_ap = lato_prova("apertura", slot) or "viso"
+        overlay.APERTURA = "viso" if formato in FORMATI_FOTO else lato_ap
+        scelta_frase = (frase.get("id"), frase.get("gancio"))
+        log(f"Prove a meta': apertura {overlay.APERTURA if formato not in FORMATI_FOTO else '-'}, frase {lato_frase}"
+            f" ({frase_via})")
+        try:                            # se un formato non riesce esce il reel normale (frase da 5 s)
+            if formato == "momento":
+                frase, info = monta_momento(an, src, out, music, serie, nome)
+            elif formato == "parlato":
+                frase, info = monta_parlato(an, src, out, serie, nome)
+            elif formato == "regole":
+                frase, info = monta_regole(lista_regole(slot, state), src, out, music, serie, drive, work, clip)
+            elif formato == "montaggio":
+                info = monta_montaggio(frase, src, out, music, serie, drive, work, clip,
+                                       str(an.get("registrato") or (clip or {}).get("registrato") or "")[:10] or None)
+            elif formato == "gancio" and overlay.dividi_frase(frase["gancio"]):
+                prima, seconda = overlay.dividi_frase(frase["gancio"])
+                info = overlay.make_video(src, prima, out, music=music, serie=serie,
+                                          colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
+                                          da_archivio=bool(clip), formato=dict(GANCIO, seconda=seconda))
+            elif formato in FORMATI_FOTO:
+                monta_foto = foto_giornata.monta_rapide if formato == "foto_rapide" else foto_giornata.monta
+                info = monta_foto(foto_oggi, frase["gancio"], out, musiche_brano(music, 3), drive, work,
+                                  riuso=foto_riuso)
+                if voluto and voluto != formato:     # estratto foto_rapide, ma la giornata aveva poche foto nuove
+                    info.setdefault("estratto", voluto)
+            elif formato == "dieci_lista":
+                frase, info = monta_dieci_lista(lista_regole(slot, state), src, out, music, serie, drive, work, clip)
+            elif formato == "giornata":     # 6/11/2026: i momenti della sua giornata, anche quelli ancora in coda
+                info = monta_giornata(frase, src, out, music, serie, drive, work, clip, an, state, videos, video)
+            elif formato in FORMATI_10:
+                info = monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, state.get("formato_ultimo"))
+            elif formato in FORMATI_30:
+                frase, info = monta_racconto(formato, src, out, music, serie, drive, work, clip, state)
+            elif formato in ("broll1", "broll2", "broll3", "storia"):
+                frase, info = monta_nuovo(formato, frase, src, out, music, serie, drive, work, clip, slot, state)
+            elif formato == "frase8":
+                info = overlay.make_video(src, frase["gancio"], out, music=music, serie=serie,
+                                          colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
+                                          da_archivio=bool(clip), formato={"nome": "frase8", "durata": overlay.DURATA_REEL})   # 20/11/2026: 7 s
+            elif formato == "ambiente":
+                info = overlay.make_video(src, frase["gancio"], out, music=music, serie=serie,
+                                          colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
+                                          da_archivio=bool(clip), formato=dict(AMBIENTE))
+        except Exception as e:
+            log(f"Formato {formato} non riuscito, faccio il reel normale:", e)
+            info = None
+            overlay.APERTURA = lato_ap   # 7/11/2026: il ripiego e' un reel col video (anche dopo le foto)
+            if TUTTO_10S and getattr(e, "tutti", False):
+                # 20/11/2026: la frase toccava il viso in ogni tratto e in ogni video provato: monta_dieci rifarebbe le
+                # stesse prove, si passa subito al ripiego "frase" (anche li' mai sul viso)
+                log("Frase sul viso in ogni video provato: niente secondo giro di monta_dieci")
+            elif TUTTO_10S:                # 1/11/2026: il ripiego resta nello stile scelto (7 s dal 20/11, 8 s dal 15/11)
+                try:
+                    # 6/11/2026: prima qui formati_nuovi non era importato (NameError: il ripiego non partiva mai).
+                    # monta_dieci gestisce i video corti (dieci_due) e la scritta sul viso (cinema/post, controllo
+                    # del viso sempre acceso)
+                    info = monta_dieci("dieci", frase, src, out, music, serie, drive, work, clip,
+                                       state.get("formato_ultimo"))
+                    info["ripiego_da"] = formato
+                except Exception as e2:
+                    log("Anche il ripiego da 10 s non riuscito:", e2)
+        if info is None:      # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): anche questo ripiego dura 8 s (overlay.DURATA_MAX = DURATA_REEL)
+            info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"),
+                                      music=music, serie=serie,
+                                      autore=frase.get("autore") if MOSTRA_AUTORE else None,
+                                      colore=ENV("SENZA_COLORE") != "1", nome=nome,
+                                      scena_rilevata=an["scena"], da_archivio=bool(clip))
+        if isinstance(info, dict):      # 7/11/2026 (revisione, tempi): per misurare i primi reel su GitHub
+            info["secondi_montaggio"] = round(time.time() - t_montaggio)
+    except Exception as e:      # un video "rotto" non deve bloccare la coda
+        if clip:
+            u = state["archivio_usi"].setdefault(clip["id"], {})
+            u["fallimenti"] = u.get("fallimenti", 0) + 1
+            log(f"Montaggio fallito per la clip d'archivio {nome}: {e}")
+        else:
+            an["fallimenti"] = an.get("fallimenti", 0) + 1
+            an["errore"] = str(e)[:300]
+            log(f"Montaggio fallito per {nome} (tentativo {an['fallimenti']}): {e}")
+            if an["fallimenti"] >= 2:        # dopo 2 tentativi va in "Da controllare"
+                try:
+                    drive.sposta_in_sottocartella(video["id"], "Da controllare")
+                    state["analisi"].pop(video["id"], None)
+                    log(f"{nome} spostato in 'Da controllare': la coda prosegue con gli altri video.")
+                except Exception as e2:
+                    log("spostamento non riuscito:", e2)
+        save()
+        shutil.rmtree(work, ignore_errors=True)
+        raise
+    if overlay.ULTIMO_STILE and isinstance(info, dict):      # 6/11/2026: quale scritta e' uscita davvero
+        info.setdefault("scritta", overlay.ULTIMO_STILE)
+    if isinstance(info, dict) and info.get("formato") and info["formato"] != formato:
+        info.setdefault("estratto", formato)     # 6/11/2026 (analisi): formato estratto, se e' uscito un altro (clip corta...)
+    log("Montato:", info)
+    # 5/11/2026: il reel con le foto NON usa il video scelto (resta solo come ripiego se le foto non si montano): quel
+    # video non va segnato come pubblicato ne' spostato nell'archivio, e la clip d'archivio non conta come usata
+    con_foto = info.get("formato") in FORMATI_FOTO
+    if con_foto:
+        video, clip, nome = None, None, "Foto della giornata"
+        an = dict(an, registrato=None)
+    # 6/11/2026 (punto 34): il video di partenza era orizzontale? (al massimo 1 ogni ORIZZONTALI_OGNI reel)
+    # 6/11/2026 (integrazione): scritto per OGNI reel. Vuol dire: il video dell'orario (quello che risulta pubblicato,
+    # la prima clip di ogni montaggio, anche nei formati a piu' clip e in giornata) e' orizzontale; e' quello che la
+    # regola dei 10 reel controlla. Le clip extra orizzontali vanno gia' per ultime (clip_extra) e giornata le toglie
+    # finche' restano 4 momenti (montaggio.scene_orizzontali conta quelle rimaste). Foto: sempre False
+    info["orizzontale"] = False if con_foto else oriz is True
+    if nera_tolta and not con_foto:     # 6/11/2026 (revisione): la clip tutta nera scartata prima del montaggio
+        info["clip_nera_tolta"] = nera_tolta
+    segna_prove(info, con_foto, lato_frase, frase_via, scelta_frase, frase, src)
+    return {"out": out, "src": src, "frase": frase, "info": info, "an": an, "nome": nome, "fonte_id": fonte_id,
+            "video": video, "clip": clip, "spinto": spinto, "oriz": oriz, "con_foto": con_foto}
+
+
 def carica_stato():
     """4/11/2026: stato.json illeggibile (rovinato) -> l'ultima versione salvata su GitHub, mai uno stato vuoto
     (che ripubblicherebbe frasi, video e orari gia' usciti)."""
@@ -3137,403 +3564,29 @@ def main():
         log(f"Orario {slot}: nessuna piattaforma attiva in questo momento (tutte in pausa?), salto.")
         return
 
-    # 2. il video giusto per questo orario: prima i video NUOVI, se la coda e' vuota una clip dall'archivio.
-    # Orario FERMO (20/10/2026): il video nuovo aspetta un orario che YouTube spinge (MOMENTO no: esce subito)
-    spinto = orario_spinto(state, slot, creds)
-    # 6/11/2026 (punto 34): un video orizzontale negli ultimi 10 reel -> prima i verticali (in coda e in archivio).
-    # 6/11/2026 (revisione; Alessandro: "dai sempre priorita' ai nuovi contenuti piuttosto che ai vecchi"): un video
-    # NUOVO orizzontale non lascia mai il posto a una clip d'archivio. Aspetta solo dietro i video nuovi verticali; se in
-    # coda ci sono solo orizzontali esce lo stesso (montaggio.orizzontale lo segna)
+    # 2-4. 21/11/2026 (reel della settimana, settimana.py): se questo slot ha il reel gia' pronto su Drive si usa quello
+    # (YouTube e Instagram; il brano di Instagram si sceglie adesso, come prima); se manca, e' scartato o qualcosa non
+    # va, si sceglie e si monta adesso, come prima (riserva). Mai bloccare lo slot per il lotto della settimana.
+    pre, prenotati, riservati = None, (), ()
     try:
-        evita_oriz = orizzontale_recente(state)
-        ORIENTAMENTI_NOTI.update(state.get("archivio_usi", {}))
+        import settimana
+        pre = settimana.reel_per_slot(slot, state, drive, work, videos)
     except Exception as e:
-        log("Controllo dei video orizzontali non riuscito (scelta come prima):", e)
-        evita_oriz = False
-    video = scegli_video(videos, state["analisi"], slot_ora, evita_oriz)
-    tenuto = None
-    if (video and not spinto and len(videos) <= VIDEO_DA_TENERE
-            and not state["analisi"].get(video["id"], {}).get("momento")):
-        tenuto, video = video, None
-    clip, riserva_arch = None, []
-    if video is None:
-        usi_arch = state.setdefault("archivio_usi", {})
+        log("Reel della settimana non usato (lo monto adesso):", e)
+        pre = None
+    if pre is None:
         try:
-            # 4/11/2026: con nuovi tentativi: un archivio "vuoto" per la rete faceva saltare l'orario
-            archivio = [dict(c, **usi_arch.get(c["id"], {}))
-                        for c in con_tentativi(drive.lista_archivio, "Lettura dell'archivio", drive)]
+            prenotati, riservati = settimana.prenotati(state, escludi=slot), settimana.video_riservati(state, escludi=slot)
         except Exception as e:
-            log("Lettura dell'archivio non riuscita:", e)
-            archivio = []
-        # i video PARLATI non si riusano con la musica sopra (si vedrebbe la bocca muoversi senza voce)
-        qualita = clip_voti()
-        archivio = [c for c in archivio if c.get("fallimenti", 0) < 2 and c.get("parlato") != "1"
-                    and c.get("nome") not in qualita["escluse"]]
-        # quante volte e quando ogni video e' gia' uscito (anche come video nuovo, prima di entrare in archivio)
-        stem = lambda n: os.path.splitext(n or "")[0].lower()
-        for c in archivio:
-            usciti = [h["quando"][:16] for h in state["storico"] if h.get("video") and stem(h["video"]) == stem(c["nome"])]
-            c["usi"] = max(int(c.get("usi", 0)), len(usciti))
-            c["ultimo"] = max([c.get("ultimo", "")] + usciti)
-        limite = (datetime.datetime.now() - datetime.timedelta(days=7)).isoformat(timespec="minutes")
-        riposati = [c for c in archivio if c.get("ultimo", "") < limite]     # 1/11/2026: niente clip uscite negli ultimi 7 giorni
-        belle = [c for c in riposati if qualita["voti"].get(c.get("nome"), 0) >= 10]   # prima le clip migliori
-        gruppo = belle or riposati or archivio
-        if evita_oriz:     # 6/11/2026 (punto 34): prima le clip non orizzontali; mai bloccare
-            # 6/11/2026 (revisione): senza ripescare le clip uscite negli ultimi 7 giorni (regola del 1/11) se ce ne
-            # sono di riposate
-            vert = lambda l: [c for c in l if _orizz(c) is not True]
-            gruppo = vert(belle) or vert(riposati) or vert(gruppo) or gruppo
-        riserva_arch = [gruppo, archivio]     # 6/11/2026 (revisione): per cambiare clip se e' tutta nera
-        clip = scegli_archivio(gruppo, slot_ora)
-        if clip is None and tenuto:           # archivio vuoto: esce comunque il video nuovo
-            video, tenuto = tenuto, None
-        elif clip is None:
-            log(f"Nessun video nuovo e archivio vuoto per l'orario {slot}.")
+            log("Slot della settimana non letti (scelta come prima):", e)
+            prenotati, riservati = (), ()
+        sc = scegli_reel(state, drive, creds, videos, slot, frasi, prenotati, riservati)
+        if sc is None:
             return
-    if clip:
-        if tenuto:
-            log(f"Orario fermo: {tenuto['name']} aspetta un orario spinto, adesso riuso dall'archivio {clip['nome']}")
-        else:
-            log(f"Nessun video nuovo: riuso dall'archivio {clip['nome']} (usato {clip.get('usi', 0)} volte)")
-        an = {"scena": clip.get("scena"), "compagnia": clip.get("compagnia"), "fascia": clip.get("fascia")}
-        nome, fonte_id = clip["nome"], clip["id"]
-    else:
-        an = state["analisi"][video["id"]]
-        nome, fonte_id = video["name"], video["id"]
-
-    # 3. frase e musica adatte
-    pesi_file = os.path.join(HERE, "pesi.json")
-    pesi = json.load(open(pesi_file, encoding="utf-8")).get("temi", {}) if os.path.exists(pesi_file) else {}
-    usi = {h["frase"]: h["quando"][:10] for h in state["storico"] if h.get("frase") and h.get("quando")}
-    # 7/11/2026 (studio della sera, modifica 4): prova a meta' sulla frase (montaggio.prove.frase, montaggio.frase_via):
-    # "forzata" = la frase non viene dalla scelta libera in classifica (sua richiesta, suo screenshot, titolo del
-    # MOMENTO, orario fermo, frase vincente riproposta; 7/11, revisione: anche un suo screenshot tra le candidate): li'
-    # la prova non tocca niente, su tutti e due i lati, e prove.frase non si scrive (segna_prove)
-    lato_frase, frase_via = lato_prova("frase", slot), "forzata"
-    if SOLO_MIE:    # solo le citazioni del Google Doc di Alessandro: prima quelle mai uscite, a caso
-        try:
-            # 4/11/2026: con nuovi tentativi: senza il Doc l'orario saltava ("documento vuoto")
-            mie = mie_frasi(con_tentativi(drive.testo_mie_citazioni, "Lettura di 'Le mie citazioni'", drive) or "")
-        except Exception as e:
-            log("Lettura di 'Le mie citazioni' non riuscita:", e)
-            mie = []
-        import classifica_frasi
-        foto_punti = classifica_frasi.carica()
-        scelte_da_lui = [f for f in mie if foto_punti.get(f["id"]) == 100]   # 1/11/2026: le frasi delle sue foto passano sempre
-        if random.random() >= TRADIMENTO_QUOTA:   # 25/10/2026: di tradimento si parla poco (1 volta su 10)
-            mie = [f for f in mie if not TRADIMENTO.search(f["gancio"])] or mie
-        mie = [f for f in mie if not DONNE.search(f["gancio"])] or mie       # 26/10/2026: mai frasi sulle donne
-        mie = [f for f in mie if not NEGATIVO.search(f["gancio"]) and not PALESTRA.search(f["gancio"])
-               and not CRINGE.search(f["gancio"]) and not FAMIGLIA.search(f["gancio"])
-               and not CONFRONTO.search(f["gancio"])] or mie  # 29/10
-        mie += [f for f in scelte_da_lui if f not in mie]
-        # 20/11/2026 (Alessandro, sulla lista delle prossime frasi: "queste le voglio togliere"): frasi_escluse.json
-        # ([{"id", "dal", "frase"}]) non escono MAI piu', nemmeno come forzate, vincenti o riusate
-        mie = [f for f in mie if f["id"] not in frasi_escluse()]
-        frasi = [f for f in mie if f["id"] not in usi]
-        log(f"'{DOC_MIE}': {len(mie)} citazioni, {len(frasi)} ancora da usare.")
-        # reel da 5 s: anche le frasi lunghe (scelta di Alessandro 13/10/2026: se non si fa in tempo a leggere,
-        # si riguarda il video -> piu' visualizzazioni). Nessun filtro sulla lunghezza.
-        # dati YouTube 16/10/2026 (53 Shorts): frasi fino a 6 parole ~340 views mediane, 7-10 parole ~1.020,
-        # 11-15 parole ~1.255 -> 9 volte su 10 si sceglie una frase di almeno 7 parole (1 su 10 resta "esperimento")
-        # 31/10/2026 (Alessandro): prima TUTTE le frasi delle sue foto (classifica 100); imprenditoria sospesa (0)
-        frasi = [f for f in frasi if foto_punti.get(f["id"]) != 0] or frasi
-        foto_rimaste = any(foto_punti.get(f["id"]) == 100 for f in frasi)
-        lunghe = [f for f in frasi if len(f["gancio"].split()) >= MIN_PAROLE]
-        virali = [f for f in frasi if f.get("virale")]       # prima quelle andate virali in altri video
-        # come MoreMozi (18/10/2026): 1 volta su 4 si ripropone su un altro video una frase che ha gia' funzionato
-        # (frasi_vincenti da report.py, ferma da almeno 7 giorni)
-        try:
-            vinc_id = set(json.load(open(pesi_file, encoding="utf-8")).get("frasi_vincenti", []))
-        except Exception:
-            vinc_id = set()
-        sette = (datetime.date.today() - datetime.timedelta(days=7)).isoformat()
-        vincenti = [f for f in mie if f["id"] in vinc_id and usi.get(f["id"], "") < sette]
-        vecchie_lim = (datetime.date.today() - datetime.timedelta(days=GIORNI_RIUSO_FRASE)).isoformat()
-        vecchie = [f for f in mie if f["id"] in usi and usi[f["id"]] < vecchie_lim]
-        forzata = frase_forzata(mie, state, spinto)
-        if not forzata and not spinto and frase_forzata(mie, state):
-            log("Orario fermo: le frasi scelte aspettano il prossimo orario spinto")
-        if forzata:
-            frase = forzata
-            log("Frase richiesta da Alessandro:", frase["gancio"])
-        elif not spinto and vecchie and not foto_rimaste:   # orario fermo: si riusa la frase uscita da piu' tempo
-            frase = min(vecchie, key=lambda f: usi[f["id"]])
-            log("Orario fermo: riuso una frase uscita il", usi[frase["id"]])
-        elif vincenti and random.random() < 0.25 and not foto_rimaste:
-            frase = random.choice(vincenti)
-            log("Ripropongo una frase che ha gia' funzionato:", frase["gancio"])
-        elif frasi:
-            # 20/10/2026 (98 Short): 11-15 parole mediana 1.014 views, 7-10 parole 862, fino a 6 parole 443
-            # 26/10/2026 (Alessandro): frasi piu' lunghe (la gente si ferma a leggere) e PRIMA quelle che pensiamo
-            # vadano piu' virali: classifica_frasi.json (0-100, 50 se manca; lunghezza, temi sulle persone, [virale],
-            # giudizio di Claude). Si sceglie a caso tra le prime 3, cosi' i reel vicini non sono sempre uguali.
-            punti = foto_punti
-            # 7/11/2026 (Alessandro: "privilegiando sempre quelle che ti ho salvato per prima"): a parita' di
-            # punteggio le frasi dei suoi screenshot nell'ordine della coda, dalla piu' vecchia
-            coda = coda_screenshot()
-            # 6/11/2026 (67 reel dal 29/10): a parita' di punteggio prima le frasi da 11-17 parole: YouTube ne ha
-            # spinte il 39% (13 su 33), di quelle fino a 10 parole solo il 10% (3 su 31)
-            giusta = lambda f: 11 <= len(f["gancio"].split()) <= 17
-            # 12/11/2026 (Alessandro: "dai priorita' alle frasi in italiano non tradotte, dai priorita' alle frasi con
-            # la musica che si vede dagli screenshot che puoi utilizzare"): 0 = suo screenshot con il brano,
-            # 1 = suo screenshot, 2 = frase italiana non tradotta, 3 = [virale] (spesso presa da video stranieri)
-            try:
-                import musica_screenshot
-                con_brano = set(k for k in musica_screenshot.leggi() if musica_screenshot.di(k))
-            except Exception:
-                con_brano = set()
-            def fascia(f):
-                if punti.get(f["id"]) == 100 or f["id"] in coda:
-                    return 0 if f["id"] in con_brano else 1
-                return 3 if f.get("virale") else 2
-            ordinate = sorted(frasi, key=lambda f: (fascia(f),
-                                                    -punti.get(f["id"], classifica_frasi.stima(f["gancio"], f.get("virale"))),
-                                                    coda.get(f["id"], len(coda)), not giusta(f)))
-            # 3/11/2026: mai due frasi con le stesse prime parole nello stesso giorno
-            inizio = lambda t: " ".join(re.findall(r"\w+", (t or "").lower())[:2])
-            oggi = {inizio(h.get("testo")) for h in state["storico"] if h.get("quando", "")[:10] == datetime.date.today().isoformat()}
-            # 3/11/2026: niente frase quasi uguale a una uscita negli ultimi 30 giorni (stesse parole per il 60%)
-            # e niente stesso tema dei 2 reel precedenti
-            parole = lambda t: {w for w in re.findall(r"\w{4,}", (t or "").lower())}
-            mese = (datetime.date.today() - datetime.timedelta(days=30)).isoformat()
-            uscite = [parole(h.get("testo")) for h in state["storico"] if h.get("quando", "") >= mese and h.get("testo")]
-            simile = lambda t: any(len(parole(t) & u) >= 0.6 * max(1, min(len(parole(t)), len(u))) for u in uscite if u)
-            tema_di = {f["id"]: f.get("tema") for f in mie}
-            temi_vicini = {tema_di.get(h.get("frase")) for h in state["storico"][-2:]} - {None}
-            # 7/11/2026: le frasi della coda dei suoi screenshot non aspettano per 'simile' e per il tema (la coda e'
-            # stata controllata contro le frasi gia' uscite; quelle uscite restano fuori per id)
-            # 11/11/2026 (Alessandro: "tutte le frasi screenshot che ti metto nella cartella devono essere pubblicate"):
-            # anche quelle a 100 aggiunte dopo la coda (attivita' delle 06:15) sono in fila, dopo la coda
-            sua = lambda f: f["id"] in coda or punti.get(f["id"]) == 100
-            adatte = [f for f in ordinate[:12] if inizio(f["gancio"]) not in oggi and (sua(f) or not simile(f["gancio"]))]
-            adatte = [f for f in adatte if f.get("tema") not in temi_vicini or sua(f)] or adatte
-            frase = random.choice(adatte[:3] or [f for f in ordinate[:8] if inizio(f["gancio"]) not in oggi][:3] or ordinate[:3])
-            in_fila = [f for f in adatte if punti.get(f["id"]) == 100]
-            if in_fila:          # la prima in fila, senza sorteggio (il random sopra resta per non cambiare il resto)
-                frase = in_fila[0]
-                log(f"Frase dei suoi screenshot, posto {coda.get(frase['id'], len(coda)) + 1} della coda:", frase["gancio"])
-            else:
-                log(f"Frase dalla classifica ({punti.get(frase['id'], 'stima')}):", frase["gancio"])
-            # 7/11/2026 (studio della sera, modifica 4): sul lato "aforisma", tra le STESSE candidate di oggi (adatte)
-            # l'aforisma (una frase sola, voce generale, 9-20 parole) meglio piazzato, se c'e'. Le frasi dei suoi
-            # screenshot (classifica 100) restano davanti su tutti e due i lati. La scelta di oggi resta fatta prima
-            # (stesso random per il resto del reel)
-            frase_via = "forzata" if punti.get(frase["id"]) == 100 else "classifica"
-            # 7/11/2026 (revisione): con una frase dei suoi screenshot (100) tra le candidate la prova non puo' agire (le
-            # sue frasi restano davanti su tutti e due i lati): "forzata" anche qui, deciso prima della moneta e uguale
-            # sui due lati (segna_prove allora non scrive prove.frase: la tabella non confronta reel trattati uguali)
-            if frase_via == "classifica" and any(punti.get(f["id"]) == 100 for f in adatte):
-                log("Prova della frase: restano davanti le frasi dei suoi screenshot (la prova non agisce)")
-                frase_via = "forzata"
-            if lato_frase == "aforisma" and frase_via == "classifica":
-                try:
-                    afo = next((f for f in adatte if aforisma(f["gancio"])), None)
-                    frase_via = "aforisma" if afo else "nessun_aforisma"
-                    if afo and afo is not frase:
-                        log(f"Prova della frase (aforisma): {afo['gancio']} (al posto di {frase['gancio']})")
-                    frase = afo or frase
-                except Exception as e:
-                    log("Prova della frase non riuscita (resta la scelta di oggi):", e)
-                    frase_via = "classifica"
-        elif mie:            # finite: si riusa quella uscita da piu' tempo (mai fermarsi); salute.py avvisa
-            frase = min(mie, key=lambda f: usi.get(f["id"], ""))
-            log("Citazioni nuove finite: riuso la meno recente. Aggiungerne altre al documento!")
-        else:
-            log(f"Documento '{DOC_MIE}' vuoto o non leggibile: niente da pubblicare.")
-            return
-    else:
-        frase = scegli_frase(frasi, an["scena"], usi, state["temi_recenti"], pesi, an.get("compagnia"))
-    music = None if ENV("SENZA_MUSICA") == "1" else scegli_musica(frase["tema"], state["musica_recenti"], an["scena"])
-    log(f"Slot {slot} | {nome} | scena {an['scena']} | frase {frase['id']}: {frase['gancio']}")
-
-    # 4. montaggio e pubblicazione
-    # 7/11/2026 (revisione, tempi): la scadenza unica del reel (vedi SCADENZA_MINUTI), per OGNI reel; a mano nessuna
-    try:
-        import formati_nuovi
-        t_orario = ora_slot(slot)
-        formati_nuovi.SCADENZA = ((t_orario - datetime.timedelta(minutes=SCADENZA_MINUTI)).timestamp()
-                                  if t_orario else None)
-        if t_orario:
-            log(f"Scadenza del montaggio: {t_orario - datetime.timedelta(minutes=SCADENZA_MINUTI):%H:%M} "
-                f"({formati_nuovi.secondi_rimasti() / 60:.0f} minuti)")
-    except Exception as e:
-        log("Scadenza del reel non impostata (nessun limite, come prima):", e)
-    src = os.path.join(work, "originale" + (os.path.splitext(nome)[1] or ".mov"))
-    out = os.path.join(work, "reel.mp4")
-    try:     # 4/11/2026: fuori dal montaggio: un errore di rete non e' colpa del video (2 "fallimenti" lo spostavano
-        # in "Da controllare" e non usciva piu'); il video resta in coda per il prossimo orario
-        con_tentativi(lambda: drive.download(fonte_id, src, folder="Archivio" if clip else "Da pubblicare"),
-                      "Download del video", drive)
-    except Exception as e:
-        log(f"Download di {nome} non riuscito (rete): resta in coda, nessun tentativo contato:", e)
-        shutil.rmtree(work, ignore_errors=True)
-        raise
-    nera_tolta = None
-    if clip:
-        # 6/11/2026 (revisione, punto 14): una clip d'archivio tutta nera (IMG_4508.MOV: 3,3 s di nero, il reel del 1/11
-        # alle 06:00) non esce piu'. Si mette da parte senza cancellare niente (archivio_usi: nera e 2 fallimenti, come
-        # una clip che non si monta) e al suo posto un'altra clip dell'archivio; se non c'e' o non si scarica, come prima
-        try:
-            if _nera(src):
-                u = state.setdefault("archivio_usi", {}).setdefault(clip["id"], {})
-                u["nera"], u["fallimenti"] = True, max(2, int(u.get("fallimenti", 0)))
-                NERE.add(clip["id"])     # 6/11/2026 (integrazione): neanche come clip extra in questo giro
-                altre = [[c for c in g if c["id"] != clip["id"] and not c.get("nera")] for g in riserva_arch]
-                altra = scegli_archivio(next((g for g in altre if g), []), slot_ora)
-                log(f"La clip d'archivio {nome} e' tutta nera: messa da parte, non torna nei reel"
-                    + (f"; al suo posto {altra['nome']}" if altra else "; nessun'altra clip, resta questa"))
-                save()
-                if altra:
-                    src2 = os.path.join(work, "altra" + (os.path.splitext(altra["nome"])[1] or ".mov"))
-                    con_tentativi(lambda: drive.download(altra["id"], src2, folder="Archivio"), "Download del video", drive)
-                    nera_tolta, clip, src, nome, fonte_id = nome, altra, src2, altra["nome"], altra["id"]
-                    an = {"scena": clip.get("scena"), "compagnia": clip.get("compagnia"), "fascia": clip.get("fascia")}
-        except Exception as e:
-            log("Controllo della clip nera non riuscito (resta la clip scelta):", e)
-    oriz = orizzontale(src)          # 6/11/2026 (punto 34): montaggio.orizzontale in stato.json
-    try:
-        serie = etichetta_serie(slot)
-        frase = dict(frase, serie=serie)
-        # 7/11/2026: con lo stile al centro la prova a meta' delle scritte finisce (decisione di Alessandro): ogni reel
-        # ha montaggio.scritta = centro_serif e montaggio.stile_centro (carattere, corpo, righe, quanto e' scurito)
-        if str(slot)[:10] < FORMATI_PROVA_FINO and not overlay.STILE_CENTRO:
-            overlay.STILE_SCRITTA = random.Random(f"scritta {slot}").choice(SCRITTE_PROVA)
-        overlay.ULTIMO_STILE = None
-        t_montaggio = time.time()       # 7/11/2026 (revisione, tempi): montaggio.secondi_montaggio
-        info, formato = None, scegli_formato(slot, state, frase, an, spinto)
-        foto_oggi, foto_riuso, voluto = [], False, None
-        # 17/11/2026, Alessandro: "voglio che tu peschi un solo video": con SCENA_UNICA niente reel di foto (piu' foto
-        # = piu' scene); le foto restano nella loro cartella, non si toccano
-        if TUTTO_10S and not SCENA_UNICA and formato in FORMATI_10 and str(slot).endswith(ORARIO_FOTO) \
-                and str(slot)[:10] >= FOTO_DAL:
-            formato_f = None
-            try:
-                import foto_giornata
-                # 6/11/2026: meta' degli orari il photo dump (foto_rapide); prima le foto nuove, senza foto nuove si
-                # riusano quelle di una giornata gia' uscita (Alessandro: "se non ci sono foto in coda... quelle vecchie")
-                voluto = formato_foto(slot)
-                foto_oggi, formato_f, foto_riuso = con_tentativi(
-                    lambda: foto_giornata.foto_per_slot(drive, state, voluto), "Lettura delle foto", drive)
-                if foto_oggi:
-                    log(f"Foto: {len(foto_oggi)} {'gia uscite (riuso)' if foto_riuso else 'nuove'}, formato "
-                        f"{formato_f} (estratto {voluto})")
-            except Exception as e:
-                log("Foto della giornata non lette:", e)
-            formato = (formato_f or "dieci_foto") if foto_oggi else formato
-        log(f"Formato: {formato}")
-        # 7/11/2026 (studio della sera, modifiche 1 e 7): il lato della prova dell'apertura, deciso per OGNI reel (mai
-        # quello del reel prima). Le foto no: li' non cambia niente e resta "viso" (com'era); un ripiego col video si'
-        lato_ap = lato_prova("apertura", slot) or "viso"
-        overlay.APERTURA = "viso" if formato in FORMATI_FOTO else lato_ap
-        scelta_frase = (frase.get("id"), frase.get("gancio"))
-        log(f"Prove a meta': apertura {overlay.APERTURA if formato not in FORMATI_FOTO else '-'}, frase {lato_frase}"
-            f" ({frase_via})")
-        try:                            # se un formato non riesce esce il reel normale (frase da 5 s)
-            if formato == "momento":
-                frase, info = monta_momento(an, src, out, music, serie, nome)
-            elif formato == "parlato":
-                frase, info = monta_parlato(an, src, out, serie, nome)
-            elif formato == "regole":
-                frase, info = monta_regole(lista_regole(slot, state), src, out, music, serie, drive, work, clip)
-            elif formato == "montaggio":
-                info = monta_montaggio(frase, src, out, music, serie, drive, work, clip,
-                                       str(an.get("registrato") or (clip or {}).get("registrato") or "")[:10] or None)
-            elif formato == "gancio" and overlay.dividi_frase(frase["gancio"]):
-                prima, seconda = overlay.dividi_frase(frase["gancio"])
-                info = overlay.make_video(src, prima, out, music=music, serie=serie,
-                                          colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
-                                          da_archivio=bool(clip), formato=dict(GANCIO, seconda=seconda))
-            elif formato in FORMATI_FOTO:
-                monta_foto = foto_giornata.monta_rapide if formato == "foto_rapide" else foto_giornata.monta
-                info = monta_foto(foto_oggi, frase["gancio"], out, musiche_brano(music, 3), drive, work,
-                                  riuso=foto_riuso)
-                if voluto and voluto != formato:     # estratto foto_rapide, ma la giornata aveva poche foto nuove
-                    info.setdefault("estratto", voluto)
-            elif formato == "dieci_lista":
-                frase, info = monta_dieci_lista(lista_regole(slot, state), src, out, music, serie, drive, work, clip)
-            elif formato == "giornata":     # 6/11/2026: i momenti della sua giornata, anche quelli ancora in coda
-                info = monta_giornata(frase, src, out, music, serie, drive, work, clip, an, state, videos, video)
-            elif formato in FORMATI_10:
-                info = monta_dieci(formato, frase, src, out, music, serie, drive, work, clip, state.get("formato_ultimo"))
-            elif formato in FORMATI_30:
-                frase, info = monta_racconto(formato, src, out, music, serie, drive, work, clip, state)
-            elif formato in ("broll1", "broll2", "broll3", "storia"):
-                frase, info = monta_nuovo(formato, frase, src, out, music, serie, drive, work, clip, slot, state)
-            elif formato == "frase8":
-                info = overlay.make_video(src, frase["gancio"], out, music=music, serie=serie,
-                                          colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
-                                          da_archivio=bool(clip), formato={"nome": "frase8", "durata": overlay.DURATA_REEL})   # 20/11/2026: 7 s
-            elif formato == "ambiente":
-                info = overlay.make_video(src, frase["gancio"], out, music=music, serie=serie,
-                                          colore=ENV("SENZA_COLORE") != "1", nome=nome, scena_rilevata=an["scena"],
-                                          da_archivio=bool(clip), formato=dict(AMBIENTE))
-        except Exception as e:
-            log(f"Formato {formato} non riuscito, faccio il reel normale:", e)
-            info = None
-            overlay.APERTURA = lato_ap   # 7/11/2026: il ripiego e' un reel col video (anche dopo le foto)
-            if TUTTO_10S and getattr(e, "tutti", False):
-                # 20/11/2026: la frase toccava il viso in ogni tratto e in ogni video provato: monta_dieci rifarebbe le
-                # stesse prove, si passa subito al ripiego "frase" (anche li' mai sul viso)
-                log("Frase sul viso in ogni video provato: niente secondo giro di monta_dieci")
-            elif TUTTO_10S:                # 1/11/2026: il ripiego resta nello stile scelto (7 s dal 20/11, 8 s dal 15/11)
-                try:
-                    # 6/11/2026: prima qui formati_nuovi non era importato (NameError: il ripiego non partiva mai).
-                    # monta_dieci gestisce i video corti (dieci_due) e la scritta sul viso (cinema/post, controllo
-                    # del viso sempre acceso)
-                    info = monta_dieci("dieci", frase, src, out, music, serie, drive, work, clip,
-                                       state.get("formato_ultimo"))
-                    info["ripiego_da"] = formato
-                except Exception as e2:
-                    log("Anche il ripiego da 10 s non riuscito:", e2)
-        if info is None:      # 15/11/2026 (Alessandro: "impostiamo la durata dei reel di 8 secondi"): anche questo ripiego dura 8 s (overlay.DURATA_MAX = DURATA_REEL)
-            info = overlay.make_video(src, frase["gancio"], out, preview=os.path.join(work, "anteprima.jpg"),
-                                      music=music, serie=serie,
-                                      autore=frase.get("autore") if MOSTRA_AUTORE else None,
-                                      colore=ENV("SENZA_COLORE") != "1", nome=nome,
-                                      scena_rilevata=an["scena"], da_archivio=bool(clip))
-        if isinstance(info, dict):      # 7/11/2026 (revisione, tempi): per misurare i primi reel su GitHub
-            info["secondi_montaggio"] = round(time.time() - t_montaggio)
-    except Exception as e:      # un video "rotto" non deve bloccare la coda
-        if clip:
-            u = state["archivio_usi"].setdefault(clip["id"], {})
-            u["fallimenti"] = u.get("fallimenti", 0) + 1
-            log(f"Montaggio fallito per la clip d'archivio {nome}: {e}")
-        else:
-            an["fallimenti"] = an.get("fallimenti", 0) + 1
-            an["errore"] = str(e)[:300]
-            log(f"Montaggio fallito per {nome} (tentativo {an['fallimenti']}): {e}")
-            if an["fallimenti"] >= 2:        # dopo 2 tentativi va in "Da controllare"
-                try:
-                    drive.sposta_in_sottocartella(video["id"], "Da controllare")
-                    state["analisi"].pop(video["id"], None)
-                    log(f"{nome} spostato in 'Da controllare': la coda prosegue con gli altri video.")
-                except Exception as e2:
-                    log("spostamento non riuscito:", e2)
-        save()
-        shutil.rmtree(work, ignore_errors=True)
-        raise
-    if overlay.ULTIMO_STILE and isinstance(info, dict):      # 6/11/2026: quale scritta e' uscita davvero
-        info.setdefault("scritta", overlay.ULTIMO_STILE)
-    if isinstance(info, dict) and info.get("formato") and info["formato"] != formato:
-        info.setdefault("estratto", formato)     # 6/11/2026 (analisi): formato estratto, se e' uscito un altro (clip corta...)
-    log("Montato:", info)
-    # 5/11/2026: il reel con le foto NON usa il video scelto (resta solo come ripiego se le foto non si montano): quel
-    # video non va segnato come pubblicato ne' spostato nell'archivio, e la clip d'archivio non conta come usata
-    con_foto = info.get("formato") in FORMATI_FOTO
-    if con_foto:
-        video, clip, nome = None, None, "Foto della giornata"
-        an = dict(an, registrato=None)
-    # 6/11/2026 (punto 34): il video di partenza era orizzontale? (al massimo 1 ogni ORIZZONTALI_OGNI reel)
-    # 6/11/2026 (integrazione): scritto per OGNI reel. Vuol dire: il video dell'orario (quello che risulta pubblicato,
-    # la prima clip di ogni montaggio, anche nei formati a piu' clip e in giornata) e' orizzontale; e' quello che la
-    # regola dei 10 reel controlla. Le clip extra orizzontali vanno gia' per ultime (clip_extra) e giornata le toglie
-    # finche' restano 4 momenti (montaggio.scene_orizzontali conta quelle rimaste). Foto: sempre False
-    info["orizzontale"] = False if con_foto else oriz is True
-    if nera_tolta and not con_foto:     # 6/11/2026 (revisione): la clip tutta nera scartata prima del montaggio
-        info["clip_nera_tolta"] = nera_tolta
-    segna_prove(info, con_foto, lato_frase, frase_via, scelta_frase, frase, src)
+        pre = monta_reel(sc, state, drive, work, videos, slot, save)
+    out, src, frase, info, an, nome, video, clip, spinto, oriz, con_foto = (pre[k] for k in (
+        "out", "src", "frase", "info", "an", "nome", "video", "clip", "spinto", "oriz", "con_foto"))
+    dalla_settimana = bool(pre.get("settimana"))
     frase = dict(frase, copertina_ms=info.get("copertina_ms"),   # volte: per un titolo YouTube diverso se la frase torna
                  volte=sum(1 for h in state["storico"] if h.get("frase") == frase.get("id")))
     out_meta = None
@@ -3604,7 +3657,8 @@ def main():
             tt = overlay.versione_tiktok(out, os.path.join(work, "reel_tt.mp4"), audio=bool(voce))
         except Exception as e:
             log("Versione per TikTok non preparata:", e)
-    if TIKTOK_STUDIO and target:     # 25/10/2026: versione per TikTok Studio, programmata la sera prima dal PC
+    # 21/11/2026: un reel della settimana ha gia' la sua versione TikTok/Facebook nel lotto (la programma il PC il sabato)
+    if TIKTOK_STUDIO and target and not dalla_settimana:     # 25/10/2026: versione per TikTok Studio, programmata la sera prima dal PC
         nome_tt = f"{target:%Y-%m-%d %H%M} - {frase['id']}.mp4"
         dati_tt = {"testo": testo_breve(frase), "slot": f"{target:%Y-%m-%d %H:%M}", "voce": bool(voce)}
         try:
@@ -3667,6 +3721,7 @@ def main():
     # 5. archivio e stato
     oggi = datetime.date.today().isoformat()
     if con_foto and not DRY and not info.get("foto_riuso"):     # 6/11: le foto riusate sono gia' in "Foto usate"
+        import foto_giornata
         foto_giornata.segna_usate(drive, info.get("foto_ids", []))
     if clip:
         u = state["archivio_usi"].setdefault(clip["id"], {})
@@ -3687,7 +3742,8 @@ def main():
                      "orizzontale": None if oriz is None else ("1" if oriz else "0")}   # 6/11/2026 (punto 34)
         stem = os.path.splitext(nome)[0]
         try:
-            if os.path.getsize(src) <= MAX_ORIGINALE_MB * 1024 * 1024:   # l'originale intero va nell'archivio
+            # 21/11/2026: reel della settimana: l'originale non e' stato scaricato (src manca): si sposta intero
+            if not os.path.exists(src) or os.path.getsize(src) <= MAX_ORIGINALE_MB * 1024 * 1024:   # l'originale intero va nell'archivio
                 # 4/11/2026: con nuovi tentativi: se lo spostamento falliva, l'originale finiva nel cestino
                 cid = con_tentativi(lambda: drive.sposta_in_archivio(video["id"], nome, meta_arch),
                                     "Spostamento nell'archivio", drive)
@@ -3752,6 +3808,11 @@ def main():
             log("Riassunto dei commenti non mandato:", e)
     save()
     shutil.rmtree(work, ignore_errors=True)
+    if dalla_settimana and not DRY:     # 21/11/2026: manifest su Drive -> pubblicato (mai bloccante)
+        try:
+            settimana.segna_pubblicato(drive, pre, results)
+        except Exception as e:
+            log("Reel della settimana: manifest non aggiornato (il reel e' uscito):", e)
     log("Fatto." + (f" Da riprovare: {failed}" if failed else ""))
 
 if __name__ == "__main__":

@@ -8,6 +8,10 @@ didascalia nella descrizione e l'orario YouTube in appProperties) e segna su Dri
 
   python facebook_prepara.py [--max 4]          scarica i prossimi video e scrive "Facebook da programmare/elenco_facebook.json"
   python facebook_prepara.py segna ID "AAAA-MM-GG HH:MM"
+
+21/11/2026 (il PC resta spento dal lunedi' al venerdi'): il SABATO tutti i reel del lotto della settimana (settimana.py),
+ognuno allo STESSO giorno e ora di YouTube/Instagram (per il lotto non si usano le ORE_FACEBOOK):
+  python facebook_prepara.py --settimana [--max 8] [--a-secco]   scrive elenco_facebook_settimana.json
 """
 import datetime, json, os, re, sys
 import requests
@@ -106,6 +110,18 @@ def segna(fid, quando):
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
+    if "--settimana" in sys.argv:
+        n = int(sys.argv[sys.argv.index("--max") + 1]) if "--max" in sys.argv else 8
+        secco = "--a-secco" in sys.argv
+        el, att, salt = tp.prepara_settimana("fb_fatto", "fb_quando", CARTELLA_PC, "elenco_facebook_settimana.json", n,
+                                             True if secco else False, os.path.join(CARTELLA_PC, "registro.txt"))
+        for x in el:      # la didascalia come prima per Facebook (pulisci di questo file)
+            x["didascalia"] = pulisci(x["didascalia"])
+        if not secco:
+            json.dump(el, open(os.path.join(CARTELLA_PC, "elenco_facebook_settimana.json"), "w", encoding="utf-8"),
+                      ensure_ascii=False, indent=1)
+        tp.stampa_settimana(el, att, salt, CARTELLA_PC, "elenco_facebook_settimana.json")
+        sys.exit(0)
     if len(sys.argv) > 2 and sys.argv[1] == "segna":
         segna(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else "")
         print("segnato", sys.argv[2])

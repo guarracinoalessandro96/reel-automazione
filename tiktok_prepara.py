@@ -14,6 +14,10 @@ senza musica salvo parlato/momento) con la didascalia nella descrizione e l'orar
   python tiktok_prepara.py [--max 4]      scarica i prossimi video in CARTELLA_PC\\<data> e scrive elenco.json
   python tiktok_prepara.py segna ID "AAAA-MM-GG HH:MM"   segna su Drive che il video ID e' programmato a quell'ora
 
+21/11/2026 (il PC resta spento dal lunedi' al venerdi'): il SABATO si programmano tutti i reel del lotto della settimana
+(settimana.py, cartella "Settimana - reel pronti"), ognuno allo STESSO giorno e ora di YouTube/Instagram:
+  python tiktok_prepara.py --settimana [--max 8] [--a-secco]   scrive elenco_settimana.json (--a-secco: non scarica)
+
 I video gia' programmati da piu' di 3 giorni vanno nel cestino di Drive (lo svuota Alessandro).
 """
 import datetime, json, os, re, sys
@@ -264,8 +268,116 @@ def segna(fid, quando):
                    timeout=30).raise_for_status()
 
 
+# ------------------------------------------------------------------ lotto della settimana (21/11/2026)
+MAX_GIORNI_AVANTI = 9.9      # TikTok Studio programma al massimo 10 giorni avanti
+
+
+def file_del_lotto(H, cartelle_lotto):
+    """Tutti i video delle cartelle del lotto: id -> file (con appProperties, size, description)."""
+    out = {}
+    for c in sorted(cartelle_lotto):
+        out.update({f["id"]: f for f in elenca(H, c)})
+    return out
+
+
+def prepara_settimana(fatto="tiktok_fatto", quando="tiktok_quando", cartella_pc=CARTELLA_PC,
+                      nome_elenco="elenco_settimana.json", massimo=8, a_secco=False, registro=None, adesso=None):
+    """Il sabato: i reel PRONTI del lotto (settimana.json), non scartati, non ancora programmati su questa piattaforma
+    (fatto/quando nelle appProperties del file, come prima), con orario = lo slot di YouTube/Instagram. Prima i piu'
+    vicini; al massimo `massimo` per giro. Stesse regole di prima per l'audio: brano dello screenshot prima,
+    suoni_da_evitare = gli ultimi 30 del registro, una parola di ricerca diversa per video.
+    a_secco: non scarica niente e non scrive l'elenco (file = dove andrebbe, mb = quelli su Drive): per le prove."""
+    import subprocess
+    qui = os.path.dirname(os.path.abspath(__file__))
+    if not a_secco:      # l'ultimo settimana.json (lo scrive GitHub); se non riesce si usa quello che c'e'
+        subprocess.run(["git", "-C", qui, "pull", "-q", "--ff-only"], capture_output=True, timeout=120)
+    if qui not in sys.path:
+        sys.path.insert(0, qui)
+    import settimana
+    lotto, scarti = settimana.carica_lotto(), settimana.carica_scarti()
+    try:
+        storico = json.load(open(os.path.join(qui, "stato.json"), encoding="utf-8")).get("storico", [])
+    except Exception:
+        storico = []
+    adesso = adesso or ora_roma()
+    H, _ = collega()
+    pronti = {s: v for s, v in lotto["slot"].items()
+              if settimana.pronto(s, lotto, scarti) and (v.get("file") or {}).get("tiktok")}
+    files = file_del_lotto(H, {v.get("cartella") for v in pronti.values() if v.get("cartella")})
+    attesa, saltati = [], {}
+    for s, v in sorted(pronti.items()):
+        t = datetime.datetime.strptime(s, "%Y-%m-%d %H:%M")
+        f = files.get(v["file"]["tiktok"])
+        p = (f or {}).get("appProperties") or {}
+        motivo = None
+        if not f:
+            motivo = "file non trovato su Drive"
+        elif p.get(fatto) == "1":
+            motivo = "gia' programmato"
+        elif t < adesso + datetime.timedelta(minutes=ANTICIPO_MIN):
+            motivo = "troppo vicino o passato"
+        elif t > adesso + datetime.timedelta(days=MAX_GIORNI_AVANTI):
+            motivo = "oltre 10 giorni"
+        elif "STO-" in f.get("name", ""):
+            motivo = "racconto"
+        elif any(h.get("frase") == v.get("frase") and h.get("slot") != s for h in storico):
+            motivo = "frase gia' uscita in un altro slot"
+        if motivo:
+            saltati[motivo] = saltati.get(motivo, 0) + 1
+            continue
+        attesa.append((t, s, v, f))
+    elenco = []
+    for t, s, v, f in attesa[:massimo]:
+        d = os.path.join(cartella_pc, f"{t:%Y-%m-%d}")
+        dest = os.path.join(d, f["name"])
+        if not a_secco:
+            os.makedirs(d, exist_ok=True)
+            if not os.path.exists(dest):
+                with requests.get(f"{API}/{f['id']}", params={"alt": "media"}, headers=H, stream=True,
+                                  timeout=600) as r:
+                    r.raise_for_status()
+                    with open(dest, "wb") as out:
+                        for pezzo in r.iter_content(4 * 1024 * 1024):
+                            out.write(pezzo)
+            rimpicciolisci(dest)
+        mb = os.path.getsize(dest) / 1e6 if os.path.exists(dest) else int(f.get("size") or 0) / 1e6
+        elenco.append({"id": f["id"], "file": dest, "mb": round(mb, 1), "orario": s, "youtube": s,
+                       "voce": (f.get("appProperties") or {}).get("tiktok_voce") == "1",
+                       "didascalia": pulisci(f.get("description", "")), "frase": v.get("frase")})
+    try:
+        evita = suoni_recenti(30, registro)
+        for x in elenco:
+            x["suoni_da_evitare"] = evita
+        metti_ricerche(elenco)
+    except Exception as e:
+        print("suoni da evitare non aggiunti:", e)
+    metti_musica_screenshot(elenco)
+    if not a_secco:
+        os.makedirs(cartella_pc, exist_ok=True)
+        json.dump(elenco, open(os.path.join(cartella_pc, nome_elenco), "w", encoding="utf-8"), ensure_ascii=False,
+                  indent=1)
+    return elenco, len(attesa), saltati
+
+
+def stampa_settimana(elenco, in_attesa, saltati, cartella_pc, nome_elenco):
+    for x in elenco:
+        print(x["orario"], f"{x['mb']} MB", "voce" if x["voce"] else "muto", x["file"],
+              f"| screenshot: {x.get('musica_screenshot') or '-'} | cerca: {x.get('cerca')}")
+        print("    didascalia:", " / ".join(x["didascalia"].splitlines()))
+    print(f"in attesa in tutto: {in_attesa} | in questo giro: {len(elenco)} | rimasti dopo questo giro: "
+          f"{max(0, in_attesa - len(elenco))}")
+    if saltati:
+        print("saltati:", ", ".join(f"{k}: {n}" for k, n in sorted(saltati.items())))
+    print("elenco:", os.path.join(cartella_pc, nome_elenco))
+
+
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
+    if "--settimana" in sys.argv:
+        n = int(sys.argv[sys.argv.index("--max") + 1]) if "--max" in sys.argv else 8
+        el, att, salt = prepara_settimana(massimo=n, a_secco="--a-secco" in sys.argv)
+        stampa_settimana(el, att, salt, CARTELLA_PC, "elenco_settimana.json")
+        sys.exit(0)
     if len(sys.argv) > 2 and sys.argv[1] == "segna":
         segna(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else "")
         print("segnato", sys.argv[2])
