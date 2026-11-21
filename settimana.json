@@ -416,141 +416,22 @@
    "voce": false
   },
   "2026-11-23 10:00": {
-   "an": {
-    "compagnia": "solo",
-    "fascia": "palestra",
-    "scena": "palestra"
-   },
-   "cartella": "1YeT-u0fEH-DOcbDgaO_q1bR_OpNXFEv8",
    "da_archivio": true,
-   "didascalia": "La tua prossima mossa è più importante del tuo ultimo errore",
-   "durata": 7.0,
-   "file": {
-    "anteprima": "1ebm8ieHjaaZ6qWvgmkOzBBGLtjHgJgpL",
-    "manifest": "16mCamYNIvnCbJepfnZ1j1PGodonsVC2J",
-    "tiktok": "14J2F-Rd5Eqd9qk3Dczyw4z1a3Y9ZNWt8",
-    "youtube": "1OFyzagvtVmCec9HvwN_ZUKOm6pEN3aNJ"
-   },
-   "fonte_id": "13Mbzphz708QlBEv9Bq_CNQzZaM4WplJL",
-   "formato": "dieci",
-   "frase": "MIE-792949f7",
-   "frase_dati": {
-    "autore": "",
-    "gancio": "La tua prossima mossa è più importante del tuo ultimo errore.",
-    "hashtag": [
-     "#citazioni",
-     "#motivazione",
-     "#mentalita"
-    ],
-    "id": "MIE-792949f7",
-    "serie": "GIORNO 327 / 365",
-    "tema": "mentalita",
-    "virale": false
-   },
-   "generato": "2026-11-21T12:45",
+   "file": {},
+   "fonte_id": "1iHJKTqo5OtPmpH1aQbZz5IpG1MchuX3H",
+   "formato": "intero",
+   "frase": "MIE-37826361",
+   "generato": "2026-11-21T13:24",
    "lotto": "Lotto 2026-11-23",
-   "mb_tiktok": 8.13,
-   "md5": null,
-   "montaggio": {
-    "apertura": {
-     "da_archivio": false,
-     "lato": "viso",
-     "movimento": 10.41,
-     "primo_piano_fermo": false,
-     "soglia_moto": 17.0,
-     "viso_alto": 0.0
-    },
-    "durata": 7.0,
-    "formato": "dieci",
-    "frase_forma": {
-     "forma": "una",
-     "parole": 11,
-     "voce": "tu"
-    },
-    "frase_via": "forzata",
-    "musica": "survival_mode_3.m4a",
-    "orizzontale": false,
-    "primo_controllo": "buono",
-    "prove": {
-     "apertura": "viso"
-    },
-    "scritta": "centro_serif",
-    "secondi_montaggio": 136,
-    "stacchi": 1,
-    "stile_centro": {
-     "corpo": 107,
-     "font": "Source Serif Pro",
-     "intatto": false,
-     "luce": 0.35,
-     "righe": 3,
-     "scene_intatte": 0,
-     "scurito": 0.35,
-     "sfumatura": 0.26,
-     "viso": {
-      "corpo": 107,
-      "corpo_base": 107,
-      "posizione": "basso",
-      "righe": 3,
-      "scala": 1.0,
-      "visi": 8,
-      "y": 0.506
-     }
-    },
-    "testi": 1,
-    "testo_viso": {
-     "con_viso": 26,
-     "con_viso_yunet": 26,
-     "controllo": "lettere_fuori_dai_visi",
-     "corpo": 107,
-     "corpo_base": 107,
-     "fotogrammi": 28,
-     "guardato": [
-      [
-       0.5,
-       7.0
-      ]
-     ],
-     "posizione": "basso",
-     "righe": 3,
-     "rilevatore": "yunet+haar",
-     "scala": 1.0,
-     "visi": 8,
-     "y": 0.506
-    },
-    "viso_prima_scena": 3
-   },
-   "musica": "survival_mode_3.m4a",
-   "musica_screenshot": null,
-   "problemi": [],
+   "musica": "rubberband_1.m4a",
    "registrato": null,
-   "scena": "palestra",
-   "secondi": 158,
-   "stato": "pronto",
+   "scelto": "2026-11-21T13:24",
+   "scena": "lavoro",
+   "stato": "in_preparazione",
    "tema": "mentalita",
-   "testo": "La tua prossima mossa è più importante del tuo ultimo errore.",
-   "testo_viso": {
-    "con_viso": 26,
-    "con_viso_yunet": 26,
-    "controllo": "lettere_fuori_dai_visi",
-    "corpo": 107,
-    "corpo_base": 107,
-    "fotogrammi": 28,
-    "guardato": [
-     [
-      0.5,
-      7.0
-     ]
-    ],
-    "posizione": "basso",
-    "righe": 3,
-    "rilevatore": "yunet+haar",
-    "scala": 1.0,
-    "visi": 8,
-    "y": 0.506
-   },
-   "versione": 1,
-   "video": "IMG_4055.mov",
-   "voce": false
+   "testo": "Chi semina adesso raccoglie dopo. Continua a seminare anche se non vedi niente.",
+   "versione": 2,
+   "video": "IMG_5277.MOV"
   },
   "2026-11-23 12:00": {
    "an": {
