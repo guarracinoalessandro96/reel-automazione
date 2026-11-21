@@ -20191,7 +20191,9 @@
      "ok": true,
      "id": "17918684880491231",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -20280,22 +20282,119 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "09oohhffeM8"
+     "id": "09oohhffeM8",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18621945148066499",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
    "testo": "Le persone che aspettano sempre il momento giusto muoiono aspettando."
+  },
+  {
+   "quando": "2026-11-21T05:00",
+   "slot": "2026-11-21 06:00",
+   "video": "IMG_4052.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-f08851f1",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 7.0,
+    "musica": "vibe_check_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 2,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.13,
+     "movimento": 10.35,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 112,
+     "righe": 3,
+     "viso": {
+      "visi": 32,
+      "corpo_base": 112,
+      "posizione": "basso",
+      "y": 0.503,
+      "scala": 1.0,
+      "corpo": 112,
+      "righe": 3
+     },
+     "scurito": 0.4,
+     "luce": 0.34,
+     "sfumatura": 0.24,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 32,
+     "corpo_base": 112,
+     "posizione": "basso",
+     "y": 0.503,
+     "scala": 1.0,
+     "corpo": 112,
+     "righe": 3,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       1.0,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 129,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 9
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_06.flac",
+    "musica_instagram": "Legends (Instrumental) - stereogully [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "L_Oa1Vj23Sg"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17866902171692363",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Scegli persone che fanno bene alla tua salute mentale."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-13 06:00",
   "2026-11-13 08:00",
   "2026-11-13 10:00",
   "2026-11-13 12:00",
@@ -20374,10 +20473,10 @@
   "2026-11-20 18:00",
   "2026-11-20 20:00",
   "2026-11-20 22:00",
-  "2026-11-21 00:00"
+  "2026-11-21 00:00",
+  "2026-11-21 06:00"
  ],
  "musica_recenti": [
-  "stake_out_1.m4a",
   "intergalactic_3.m4a",
   "moon_vision_1.m4a",
   "horizons_3.m4a",
@@ -20436,7 +20535,8 @@
   "delirium_3.m4a",
   "the_light_1.m4a",
   "the_road_to_mordor_1.m4a",
-  "wrangle_the_crazy_1.m4a"
+  "wrangle_the_crazy_1.m4a",
+  "vibe_check_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -20869,7 +20969,8 @@
   "MIE-081c1331",
   "MIE-8fd9259f",
   "MIE-a8051a35",
-  "MIE-cb91b04f"
+  "MIE-cb91b04f",
+  "MIE-f08851f1"
  ],
  "temi_recenti": [
   "mentalita",
@@ -20884,7 +20985,7 @@
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-20",
+ "pulizia": "2026-11-21",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -21157,8 +21258,8 @@
    "orizzontale": true
   },
   "1PMBub0TfO5ny81j1Z7XXxvf01HLU8e9j": {
-   "usi": 4,
-   "ultimo": "2026-11-12",
+   "usi": 5,
+   "ultimo": "2026-11-21",
    "orizzontale": false
   },
   "1SGGMjRnx6n1zbId63P80hrjMQDvxV6E7": {
@@ -21558,7 +21659,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_08.flac",
   "phonk_05.flac",
   "trap_01.flac",
   "energia_08.flac",
@@ -21577,7 +21677,8 @@
   "trap_11.flac",
   "phonk_09.flac",
   "deciso_06.flac",
-  "trap_04.flac"
+  "trap_04.flac",
+  "phonk_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -21612,7 +21713,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -21628,7 +21729,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1372666635060078",
   "1716216946466764",
   "1340308050325459",
   "825305559687149",
@@ -21687,11 +21787,11 @@
   "1108285910189784",
   "887391107399210",
   "930354837134154",
-  "665857722143060"
+  "665857722143060",
+  "867574485949511"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jonny Houlihan",
   "Trout Recording",
   "Abby Posner",
   "Otis McDonald",
@@ -21700,10 +21800,10 @@
   "Adam Griffith",
   "PiNKSHGRFNGR",
   "YoungPop",
-  "Giulio Cercato"
+  "Giulio Cercato",
+  "stereogully"
  ],
  "ig_titoli_recenti": [
-  "shadows in motion",
   "you can do it",
   "photocopy",
   "road warriors",
@@ -21742,14 +21842,29 @@
   "knockout",
   "you won t believe",
   "fire",
-  "play to win"
+  "play to win",
+  "legends"
  ],
  "ig_tendenze_riserva": [
   {
-   "audio_id": "665857722143060",
-   "title": "Play To Win",
+   "audio_id": "867574485949511",
+   "title": "Legends (Instrumental)",
+   "display_artist": "stereogully",
+   "duration_in_ms": 123840,
+   "libreria": true
+  },
+  {
+   "audio_id": "1615649653514803",
+   "title": "Stronger",
+   "display_artist": "LAVLO",
+   "duration_in_ms": 63194,
+   "libreria": true
+  },
+  {
+   "audio_id": "602734618692954",
+   "title": "Forever In Motion",
    "display_artist": "Giulio Cercato",
-   "duration_in_ms": 107550,
+   "duration_in_ms": 116693,
    "libreria": true
   }
  ]
