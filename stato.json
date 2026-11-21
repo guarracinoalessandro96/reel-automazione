@@ -20681,7 +20681,9 @@
      "ok": true,
      "id": "18135734728685702",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -20770,7 +20772,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "m-9X7yr_C40"
+     "id": "m-9X7yr_C40",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -20781,11 +20784,109 @@
    },
    "spinto": true,
    "testo": "La tua prossima mossa è più importante del tuo ultimo errore."
+  },
+  {
+   "quando": "2026-11-21T15:00",
+   "slot": "2026-11-21 16:00",
+   "video": "IMG_3791.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-51b9581b",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 7.0,
+    "musica": "whoop_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 1,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 12.32,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 3,
+     "viso": {
+      "visi": 8,
+      "corpo_base": 107,
+      "posizione": "alto",
+      "y": 0.436,
+      "scala": 1.0,
+      "corpo": 107,
+      "righe": 3
+     },
+     "scurito": 0.4,
+     "luce": 0.41,
+     "sfumatura": 0.31,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 8,
+     "corpo_base": 107,
+     "posizione": "alto",
+     "y": 0.436,
+     "scala": 1.0,
+     "corpo": 107,
+     "righe": 3,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       5.5,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi",
+     "altro_video": "extra_0.mov"
+    },
+    "ripiego_da": "intero",
+    "secondi_montaggio": 269,
+    "scritta": "centro_serif",
+    "estratto": "intero",
+    "orizzontale": false,
+    "prove": {
+     "frase": "aforisma",
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "una",
+     "parole": 14
+    },
+    "frase_via": "aforisma",
+    "musica_meta": "drive_14.flac",
+    "musica_instagram": "Copacetic (feat. Dawson March) - The K Club [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "gRv1D_thPpU"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18136527025761074",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Ogni sforzo che nessuno nota sta preparando il giorno in cui ce la farai."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-13 16:00",
   "2026-11-13 18:00",
   "2026-11-13 20:00",
   "2026-11-13 22:00",
@@ -20864,10 +20965,10 @@
   "2026-11-21 08:00",
   "2026-11-21 10:00",
   "2026-11-21 12:00",
-  "2026-11-21 14:00"
+  "2026-11-21 14:00",
+  "2026-11-21 16:00"
  ],
  "musica_recenti": [
-  "vibe_check_1.m4a",
   "locked_in_3.m4a",
   "keep_it_movin_3.m4a",
   "van_life_rager_3.m4a",
@@ -20926,7 +21027,8 @@
   "taking_flight_1.m4a",
   "dusty_road_magic_2.m4a",
   "cartier_3.m4a",
-  "intergalactic_2.m4a"
+  "intergalactic_2.m4a",
+  "whoop_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -21364,7 +21466,8 @@
   "MIE-7c687188",
   "MIE-b1b822ad",
   "MIE-809e41cf",
-  "MIE-792949f7"
+  "MIE-792949f7",
+  "MIE-51b9581b"
  ],
  "temi_recenti": [
   "mentalita",
@@ -21424,8 +21527,9 @@
    "ultimo": "2026-11-01"
   },
   "1iQ6-TvLD1lzHJvyT62JoJV1Irrcmlths": {
-   "usi": 2,
-   "ultimo": "2026-10-19"
+   "usi": 3,
+   "ultimo": "2026-11-21",
+   "orizzontale": false
   },
   "1mOygaNSLk3zVyQOFm3atEW61_fUGn_3z": {
    "usi": 5,
@@ -22058,7 +22162,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_14.flac",
   "deciso_11.flac",
   "energia_03.flac",
   "phonk_08.flac",
@@ -22077,7 +22180,8 @@
   "energia_11.flac",
   "drive_12.flac",
   "trap_03.flac",
-  "deciso_04.flac"
+  "deciso_04.flac",
+  "drive_14.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -22128,7 +22232,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "3240401969456886",
   "3509829325973401",
   "1068592065620532",
   "565118654020261",
@@ -22187,11 +22290,11 @@
   "663866025342759",
   "1267635733842081",
   "1124230547275731",
-  "397890202830542"
+  "397890202830542",
+  "727931292858890"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "TRC Orchestral, Vestevent",
   "Adam Griffith",
   "PiNKSHGRFNGR",
   "YoungPop",
@@ -22200,10 +22303,10 @@
   "Julia Gartha",
   "Lucid Mantra",
   "Apex Sound Odyssey",
-  "Global Genius"
+  "Global Genius",
+  "The K Club"
  ],
  "ig_titoli_recenti": [
-  "looking glass",
   "la marche des commis voyageurs",
   "hot mess anthem",
   "voices of victory",
@@ -22242,7 +22345,8 @@
   "don t run from me",
   "flow motion",
   "gta 6 main theme",
-  "carry the motion"
+  "carry the motion",
+  "copacetic"
  ],
  "ig_tendenze_riserva": [
   {
@@ -22253,10 +22357,24 @@
    "libreria": false
   },
   {
-   "audio_id": "924391826094049",
-   "title": "Time For You To March (feat. Kiki Muñoz)",
-   "display_artist": "Neko Fuzz",
-   "duration_in_ms": 229460,
+   "audio_id": "413152290918119",
+   "title": "People Mover",
+   "display_artist": "Brent Bourgeois",
+   "duration_in_ms": 151554,
+   "libreria": true
+  },
+  {
+   "audio_id": "727931292858890",
+   "title": "Copacetic (feat. Dawson March)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 136490,
+   "libreria": true
+  },
+  {
+   "audio_id": "1386871190037063",
+   "title": "Running",
+   "display_artist": "Summer Islands",
+   "duration_in_ms": 70064,
    "libreria": true
   },
   {
