@@ -224,6 +224,25 @@ def segna_pubblicato(drive, pre, results):
         drive.api.files().update(fileId=v["file"]["youtube"], body={"trashed": True}, fields="id").execute()
 
 
+def copia_per_giro_di_sempre(drive, v, nome, testo, slot, voce):
+    """Allo slot: copia la versione TikTok del lotto in "TikTok - da pubblicare" (come i reel montati allo slot), per le
+    attivita' di sempre del PC (TikTok e Facebook la sera, programmano i reel gia' usciti). Sulla copia si segnano fatte
+    le piattaforme gia' programmate dal giro del sabato (tiktok_fatto / fb_fatto del file del lotto): mai doppioni. Se
+    tutte e due sono gia' fatte non si copia niente."""
+    import pubblica
+    f = drive.api.files().get(fileId=v["file"]["tiktok"], fields="appProperties").execute()
+    p = f.get("appProperties") or {}
+    if p.get("tiktok_fatto") == "1" and p.get("fb_fatto") == "1":
+        return "gia' programmato su TikTok e Facebook dal giro del sabato: nessuna copia"
+    props = {"tiktok_slot": slot, "tiktok_voce": "1" if voce else "0", "settimana_slot": slot}
+    props.update({k: p[k] for k in ("tiktok_fatto", "tiktok_quando", "fb_fatto", "fb_quando") if p.get(k)})
+    drive.api.files().copy(fileId=v["file"]["tiktok"], fields="id", body={
+        "name": nome, "parents": [drive.cartella(pubblica.CARTELLA_TIKTOK)], "description": testo,
+        "appProperties": props}).execute()
+    fatte = [x for x in ("tiktok", "fb") if p.get(f"{x}_fatto") == "1"]
+    return f"copiato in {pubblica.CARTELLA_TIKTOK}/{nome}" + (f" (gia' fatto: {', '.join(fatte)})" if fatte else "")
+
+
 # ------------------------------------------------------------------------------------------------ Drive
 
 def _cartella_lotto(drive, nome):

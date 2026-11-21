@@ -16,7 +16,8 @@ senza musica salvo parlato/momento) con la didascalia nella descrizione e l'orar
 
 21/11/2026 (il PC resta spento dal lunedi' al venerdi'): il SABATO si programmano tutti i reel del lotto della settimana
 (settimana.py, cartella "Settimana - reel pronti"), ognuno allo STESSO giorno e ora di YouTube/Instagram:
-  python tiktok_prepara.py --settimana [--max 8] [--a-secco]   scrive elenco_settimana.json (--a-secco: non scarica)
+  python tiktok_prepara.py --settimana [--max 8] [--a-secco] [--giorno AAAA-MM-GG]   scrive elenco_settimana.json
+  (--a-secco: non scarica e non scrive niente; --giorno: solo gli slot di quel giorno, per la prova generale)
 
 I video gia' programmati da piu' di 3 giorni vanno nel cestino di Drive (lo svuota Alessandro).
 """
@@ -281,12 +282,14 @@ def file_del_lotto(H, cartelle_lotto):
 
 
 def prepara_settimana(fatto="tiktok_fatto", quando="tiktok_quando", cartella_pc=CARTELLA_PC,
-                      nome_elenco="elenco_settimana.json", massimo=8, a_secco=False, registro=None, adesso=None):
+                      nome_elenco="elenco_settimana.json", massimo=8, a_secco=False, registro=None, adesso=None,
+                      giorno=None):
     """Il sabato: i reel PRONTI del lotto (settimana.json), non scartati, non ancora programmati su questa piattaforma
     (fatto/quando nelle appProperties del file, come prima), con orario = lo slot di YouTube/Instagram. Prima i piu'
     vicini; al massimo `massimo` per giro. Stesse regole di prima per l'audio: brano dello screenshot prima,
     suoni_da_evitare = gli ultimi 30 del registro, una parola di ricerca diversa per video.
-    a_secco: non scarica niente e non scrive l'elenco (file = dove andrebbe, mb = quelli su Drive): per le prove."""
+    a_secco: non scarica niente e non scrive l'elenco (file = dove andrebbe, mb = quelli su Drive): per le prove.
+    giorno: solo gli slot di quel giorno ("AAAA-MM-GG", per la prova generale con un lotto piccolo)."""
     import subprocess
     qui = os.path.dirname(os.path.abspath(__file__))
     if not a_secco:      # l'ultimo settimana.json (lo scrive GitHub); se non riesce si usa quello che c'e'
@@ -302,7 +305,8 @@ def prepara_settimana(fatto="tiktok_fatto", quando="tiktok_quando", cartella_pc=
     adesso = adesso or ora_roma()
     H, _ = collega()
     pronti = {s: v for s, v in lotto["slot"].items()
-              if settimana.pronto(s, lotto, scarti) and (v.get("file") or {}).get("tiktok")}
+              if settimana.pronto(s, lotto, scarti) and (v.get("file") or {}).get("tiktok")
+              and (not giorno or s.startswith(giorno))}
     files = file_del_lotto(H, {v.get("cartella") for v in pronti.values() if v.get("cartella")})
     attesa, saltati = [], {}
     for s, v in sorted(pronti.items()):
@@ -375,7 +379,8 @@ if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     if "--settimana" in sys.argv:
         n = int(sys.argv[sys.argv.index("--max") + 1]) if "--max" in sys.argv else 8
-        el, att, salt = prepara_settimana(massimo=n, a_secco="--a-secco" in sys.argv)
+        g = sys.argv[sys.argv.index("--giorno") + 1] if "--giorno" in sys.argv else None
+        el, att, salt = prepara_settimana(massimo=n, a_secco="--a-secco" in sys.argv, giorno=g)
         stampa_settimana(el, att, salt, CARTELLA_PC, "elenco_settimana.json")
         sys.exit(0)
     if len(sys.argv) > 2 and sys.argv[1] == "segna":

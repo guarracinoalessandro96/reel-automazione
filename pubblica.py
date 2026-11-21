@@ -3657,7 +3657,7 @@ def main():
             tt = overlay.versione_tiktok(out, os.path.join(work, "reel_tt.mp4"), audio=bool(voce))
         except Exception as e:
             log("Versione per TikTok non preparata:", e)
-    # 21/11/2026: un reel della settimana ha gia' la sua versione TikTok/Facebook nel lotto (la programma il PC il sabato)
+    # 21/11/2026: un reel della settimana ha gia' la sua versione TikTok/Facebook nel lotto (vedi sotto)
     if TIKTOK_STUDIO and target and not dalla_settimana:     # 25/10/2026: versione per TikTok Studio, programmata la sera prima dal PC
         nome_tt = f"{target:%Y-%m-%d %H%M} - {frase['id']}.mp4"
         dati_tt = {"testo": testo_breve(frase), "slot": f"{target:%Y-%m-%d %H:%M}", "voce": bool(voce)}
@@ -3670,6 +3670,15 @@ def main():
         except Exception as e:
             log("Versione per TikTok Studio non salvata su Drive:", e)
             metti_in_sospeso(tt, nome_tt, dati_tt)
+    elif TIKTOK_STUDIO and target and dalla_settimana and not DRY:
+        # 21/11/2026: finche' le attivita' di sempre del PC (giro della sera) sono accese, il reel della settimana va
+        # anche nella cartella "TikTok - da pubblicare" (copia su Drive della sua versione TikTok, niente da montare).
+        # Le piattaforme gia' programmate dal giro del sabato sono segnate fatte anche sulla copia: mai doppioni.
+        try:
+            log("TikTok Studio:", settimana.copia_per_giro_di_sempre(drive, pre["settimana"], f"{target:%Y-%m-%d %H%M} - {frase['id']}.mp4",
+                                                                     testo_breve(frase), f"{target:%Y-%m-%d %H:%M}", bool(voce)))
+        except Exception as e:
+            log("Copia del reel della settimana in TikTok - da pubblicare non riuscita:", e)
     ig_nativo = None
     # 3/11/2026: Instagram con un brano DI INSTAGRAM (Alessandro: "voglio gli audio delle piattaforme", mai i nostri).
     # Instagram applica il brano (audio_configuration) solo se il video caricato HA una traccia audio: dal 25/10 al 2/11
