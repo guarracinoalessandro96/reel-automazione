@@ -20881,7 +20881,9 @@
      "ok": true,
      "id": "18136527025761074",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -20970,7 +20972,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "pS1wvToFgv4"
+     "id": "pS1wvToFgv4",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -20981,11 +20984,109 @@
    },
    "spinto": false,
    "testo": "Parla meno, agisci di più."
+  },
+  {
+   "quando": "2026-11-21T19:00",
+   "slot": "2026-11-21 20:00",
+   "video": "IMG_3793.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-8a2c841c",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 7.0,
+    "musica": "horizons_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.205,
+     "movimento": 2.13,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 109,
+     "righe": 3,
+     "viso": {
+      "visi": 19,
+      "corpo_base": 109,
+      "posizione": "basso",
+      "y": 0.597,
+      "scala": 1.0,
+      "corpo": 109,
+      "righe": 3
+     },
+     "scurito": 0.48,
+     "luce": 0.4,
+     "sfumatura": 0.3,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 19,
+     "corpo_base": 109,
+     "posizione": "basso",
+     "y": 0.597,
+     "scala": 1.0,
+     "corpo": 109,
+     "righe": 3,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       8.47,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi",
+     "altra_finestra": 2,
+     "altro_video": "extra_0.MOV"
+    },
+    "ripiego_da": "dieci",
+    "secondi_montaggio": 188,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 10
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_14.flac",
+    "musica_instagram": "I Am The Fire - Daria Novo [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "k4If8pyKS4g"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18110275652193923",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Fai finta di essere già chi vuoi diventare. Poi diventalo."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-13 20:00",
   "2026-11-13 22:00",
   "2026-11-14 00:00",
   "2026-11-14 06:00",
@@ -21064,10 +21165,10 @@
   "2026-11-21 12:00",
   "2026-11-21 14:00",
   "2026-11-21 16:00",
-  "2026-11-21 18:00"
+  "2026-11-21 18:00",
+  "2026-11-21 20:00"
  ],
  "musica_recenti": [
-  "keep_it_movin_3.m4a",
   "van_life_rager_3.m4a",
   "ancient_civilisations_3.m4a",
   "ego_chall_3.m4a",
@@ -21126,7 +21227,8 @@
   "cartier_3.m4a",
   "intergalactic_2.m4a",
   "whoop_3.m4a",
-  "stake_out_2.m4a"
+  "stake_out_2.m4a",
+  "horizons_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -21566,7 +21668,8 @@
   "MIE-809e41cf",
   "MIE-792949f7",
   "MIE-51b9581b",
-  "MIE-86216122"
+  "MIE-86216122",
+  "MIE-8a2c841c"
  ],
  "temi_recenti": [
   "mentalita",
@@ -21666,8 +21769,8 @@
    "orizzontale": false
   },
   "1fr7r7gFPOa5mMg3NCHBo-KO8j4yxbprb": {
-   "usi": 2,
-   "ultimo": "2026-10-19",
+   "usi": 3,
+   "ultimo": "2026-11-21",
    "orizzontale": false
   },
   "1fiTj8eVYumSNhYT3V8Few0omcOH62Olm": {
@@ -22046,7 +22149,8 @@
   },
   "1Ks5dKBFsfm1KcBBN6VD0JeN6IDjWWTZu": {
    "usi": 2,
-   "ultimo": "2026-10-30"
+   "ultimo": "2026-10-30",
+   "orizzontale": false
   },
   "1NIAZGYq8oNsRCLyLOzwG8nRh_hWHpjGa": {
    "usi": 3,
@@ -22261,7 +22365,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_03.flac",
   "phonk_08.flac",
   "deciso_08.flac",
   "drive_10.flac",
@@ -22280,7 +22383,8 @@
   "trap_03.flac",
   "deciso_04.flac",
   "drive_14.flac",
-  "trap_01.flac"
+  "trap_01.flac",
+  "phonk_14.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -22315,7 +22419,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -22331,7 +22435,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1068592065620532",
   "565118654020261",
   "4489870934582584",
   "1781233772812838",
@@ -22390,11 +22493,11 @@
   "1124230547275731",
   "397890202830542",
   "727931292858890",
-  "2173371459664032"
+  "2173371459664032",
+  "702088267960095"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "PiNKSHGRFNGR",
   "YoungPop",
   "Giulio Cercato",
   "stereogully",
@@ -22403,10 +22506,10 @@
   "Apex Sound Odyssey",
   "Global Genius",
   "The K Club",
-  "Trout Recording"
+  "Trout Recording",
+  "Daria Novo"
  ],
  "ig_titoli_recenti": [
-  "hot mess anthem",
   "voices of victory",
   "hero s journey",
   "not phonk",
@@ -22445,7 +22548,8 @@
   "gta 6 main theme",
   "carry the motion",
   "copacetic",
-  "fighting back a flight of stairs"
+  "fighting back a flight of stairs",
+  "i am the fire"
  ],
  "ig_tendenze_riserva": [
   {
@@ -22463,31 +22567,10 @@
    "libreria": true
   },
   {
-   "audio_id": "1449501010135619",
-   "title": "When I'm In Motion (Instrumental)",
-   "display_artist": "Baegod",
-   "duration_in_ms": 177438,
-   "libreria": true
-  },
-  {
-   "audio_id": "762068171980920",
-   "title": "Born To Be Champions",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 125177,
-   "libreria": true
-  },
-  {
-   "audio_id": "212037205296438",
-   "title": "Sparks Fly",
-   "display_artist": "BLACK DOVES",
-   "duration_in_ms": 162231,
-   "libreria": true
-  },
-  {
-   "audio_id": "2269705013766100",
-   "title": "Move Forever",
-   "display_artist": "Fellow Travelers",
-   "duration_in_ms": 61456,
+   "audio_id": "702088267960095",
+   "title": "I Am The Fire",
+   "display_artist": "Daria Novo",
+   "duration_in_ms": 182266,
    "libreria": true
   }
  ]
