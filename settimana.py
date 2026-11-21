@@ -42,6 +42,9 @@ DURATA = 7.0                 # 20/11/2026: tutti i reel da 7 s (lo cambia solo A
 MB_TIKTOK = 9.5              # Chrome carica fino a 10 MB
 PREPARAZIONE_ORE = 6         # un "in_preparazione" piu' vecchio di cosi' (workflow interrotto) non prenota piu' niente
 ANTICIPO_MIN = 90            # si preparano solo slot ad almeno 90 minuti da adesso
+# 21/11/2026 (Alessandro): da lunedi' 23 TikTok e Facebook vengono SOLO dal lotto (il percorso di sempre salta i reel dal
+# 22/11, tiktok_prepara.FINE_PERCORSO_VECCHIO): la copia in "TikTok - da pubblicare" allo slot e' spenta
+COPIA_GIRO_DI_SEMPRE = False
 
 
 def log(*a):
@@ -400,6 +403,13 @@ def pianifica(da=None, a=None, gruppi=GRUPPI, solo_scarti=False, prova=None):
                                 file={})
         nomi[s] = sc["frase"]["id"]
         log(f"{s}: {sc['frase']['id']} su {sc['nome']} ({'archivio' if sc['clip'] else 'nuovo'}), {formato}")
+    # la cartella del lotto la crea solo questo lavoro (i lavori in parallelo ne creerebbero piu' d'una)
+    cartelle_lotto = {}
+    for p in piano:
+        if p["lotto"] not in cartelle_lotto:
+            cartelle_lotto[p["lotto"]] = pubblica.con_tentativi(lambda: _cartella_lotto(drive, p["lotto"]),
+                                                                "Cartella del lotto", drive)
+        p["cartella"] = cartelle_lotto[p["lotto"]]
     usati = sorted({p["gruppo"] for p in piano})
     _scrivi(os.path.join(LAVORO, "piano.json"), {"slot": piano, "gruppi": usati})
     _scrivi(LOTTO, lotto)
@@ -479,6 +489,8 @@ def monta(gruppo):
             import musica_screenshot
             brano = musica_screenshot.di(frase.get("id"))
             base = f"{t_slot(s):%Y-%m-%d %H%M} - {frase['id']}"
+            if p.get("cartella"):
+                cartelle_lotto[p["lotto"]] = p["cartella"]
             if p["lotto"] not in cartelle_lotto:
                 cartelle_lotto[p["lotto"]] = pubblica.con_tentativi(lambda: _cartella_lotto(drive, p["lotto"]),
                                                                     "Cartella del lotto", drive)
@@ -618,7 +630,7 @@ def scarta(slot, motivo="", invia=True):
     r = subprocess.run(["git", "-C", HERE, "commit", "-q", "-m", f"Settimana: scartato {slot}"], capture_output=True)
     for i in range(4):
         env = dict(os.environ, GIT_TERMINAL_PROMPT="0")
-        if subprocess.run(["git", "-C", HERE, "pull", "-q", "--rebase"], env=env).returncode == 0 and \
+        if subprocess.run(["git", "-C", HERE, "pull", "-q", "--rebase", "--autostash"], env=env).returncode == 0 and \
                 subprocess.run(["git", "-C", HERE, "push", "-q", "origin", "HEAD:main"], env=env).returncode == 0:
             print("Mandato a GitHub: il sostituto si prepara da solo (~15 minuti), poi 'python settimana.py stato'")
             return

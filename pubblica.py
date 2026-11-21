@@ -3670,7 +3670,7 @@ def main():
         except Exception as e:
             log("Versione per TikTok Studio non salvata su Drive:", e)
             metti_in_sospeso(tt, nome_tt, dati_tt)
-    elif TIKTOK_STUDIO and target and dalla_settimana and not DRY:
+    elif TIKTOK_STUDIO and target and dalla_settimana and not DRY and settimana.COPIA_GIRO_DI_SEMPRE:
         # 21/11/2026: finche' le attivita' di sempre del PC (giro della sera) sono accese, il reel della settimana va
         # anche nella cartella "TikTok - da pubblicare" (copia su Drive della sua versione TikTok, niente da montare).
         # Le piattaforme gia' programmate dal giro del sabato sono segnate fatte anche sulla copia: mai doppioni.

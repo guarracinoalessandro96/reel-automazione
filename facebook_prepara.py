@@ -45,6 +45,8 @@ def prepara(massimo=4):
             continue
         if "STO-" in f["name"]:
             continue                                     # 29/10/2026: niente racconti ("storie inventate")
+        if p["tiktok_slot"] >= tp.FINE_PERCORSO_VECCHIO:
+            continue                                     # 21/11/2026: da domenica 22 Facebook viene dal lotto
         if slot > adesso + datetime.timedelta(hours=1) or slot < adesso - datetime.timedelta(days=VECCHIO_GIORNI):
             continue
         fr = tp.frase_di(f.get("description"))
@@ -115,7 +117,8 @@ if __name__ == "__main__":
         secco = "--a-secco" in sys.argv
         el, att, salt = tp.prepara_settimana("fb_fatto", "fb_quando", CARTELLA_PC, "elenco_facebook_settimana.json", n,
                                              secco, os.path.join(CARTELLA_PC, "registro.txt"),
-                                             giorno=sys.argv[sys.argv.index("--giorno") + 1] if "--giorno" in sys.argv else None)
+                                             giorno=sys.argv[sys.argv.index("--giorno") + 1] if "--giorno" in sys.argv else None,
+                                             ore_vecchie=ORE_FACEBOOK)
         for x in el:      # la didascalia come prima per Facebook (pulisci di questo file)
             x["didascalia"] = pulisci(x["didascalia"])
         if not secco:

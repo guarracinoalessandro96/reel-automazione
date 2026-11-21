@@ -32,6 +32,10 @@ from orario import ORE      # stessi orari di YouTube (29/10/2026: 10 al giorno)
 MAX_MB = 9.0
 VECCHIO_GIORNI = 2           # 29/10/2026: con 10 al giorno Chrome ne programma 2-8 a sera: si pubblicano i piu' nuovi
 ANTICIPO_MIN = 40            # TikTok vuole almeno 15' di anticipo: si tiene margine per il caricamento
+# 21/11/2026 (Alessandro): da lunedi' 23/11 TikTok e Facebook prendono i reel dal LOTTO della settimana (settimana.py),
+# allo stesso slot di YouTube. I reel montati dal vivo da domenica 22/11 in poi (cartella "TikTok - da pubblicare")
+# non vanno piu' su TikTok/Facebook: il percorso di sempre li salta (mai doppioni con il lotto)
+FINE_PERCORSO_VECCHIO = "2026-11-22 00:00"
 
 
 def ora_roma():
@@ -124,6 +128,8 @@ def prepara(massimo=4):
             continue
         if slot > adesso:
             continue                                     # non ancora uscito su YouTube
+        if p["tiktok_slot"] >= FINE_PERCORSO_VECCHIO:
+            continue                                     # 21/11/2026: da domenica 22 TikTok viene dal lotto
         if "STO-" in f["name"]:
             continue                                     # 29/10/2026: niente racconti ("storie inventate, non su di me")
         if slot < adesso - datetime.timedelta(days=VECCHIO_GIORNI):
@@ -281,15 +287,59 @@ def file_del_lotto(H, cartelle_lotto):
     return out
 
 
+def coda_vecchia(H, fatto, quando, ore, adesso, fino, solo_usciti_da=None):
+    """I reel della cartella "TikTok - da pubblicare" (percorso di sempre) ancora da programmare su questa piattaforma,
+    con l'orario che darebbe il percorso di sempre (prossimo orario libero di `ore`), ma solo PRIMA di `fino` (il primo
+    slot del lotto: mai due reel alla stessa ora). Stesse regole di prepara() / facebook_prepara.prepara():
+    reel gia' usciti su YouTube, non piu' vecchi di VECCHIO_GIORNI, niente racconti, stessa frase mai 2 volte in 7
+    giorni, niente reel dal FINE_PERCORSO_VECCHIO in poi. -> [(orario, file, appProperties)]"""
+    cart = cartelle.trova(CARTELLA_TIKTOK, requests.get(f"{API}/{json.load(open(SEGRETI, encoding='utf-8'))['DRIVE_FOLDER_DA_PUBBLICARE']}",
+                                                        params={"fields": "parents"}, headers=H, timeout=30).json()["parents"][0],
+                          lambda q: elenca_cartelle(H, q))
+    if not cart:
+        return []
+    files = elenca(H, cart)
+    doppie = gia_programmate(files, fatto, quando)
+    attesa, occupati = [], set()
+    for f in files:
+        p = f.get("appProperties") or {}
+        if "tiktok_slot" not in p:
+            continue
+        slot = datetime.datetime.strptime(p["tiktok_slot"], "%Y-%m-%d %H:%M")
+        if p.get(fatto) == "1":
+            if p.get(quando):
+                occupati.add(datetime.datetime.strptime(p[quando], "%Y-%m-%d %H:%M"))
+            continue
+        if slot > adesso or p["tiktok_slot"] >= FINE_PERCORSO_VECCHIO or "STO-" in f["name"] \
+                or slot < adesso - datetime.timedelta(days=VECCHIO_GIORNI) or p.get("settimana_slot"):
+            continue
+        fr = frase_di(f.get("description"))
+        if fr and fr in doppie:
+            continue
+        doppie.add(fr)
+        attesa.append((slot, f, p))
+    attesa.sort(key=lambda x: x[0], reverse=True)       # prima i piu' nuovi, come prima
+    liberi = orari_liberi(occupati, adesso, ore)
+    out = []
+    for slot, f, p in attesa:
+        t = next(liberi)
+        if t >= fino:
+            break
+        out.append((t, f, p))
+    return sorted(out, key=lambda x: x[0])
+
+
 def prepara_settimana(fatto="tiktok_fatto", quando="tiktok_quando", cartella_pc=CARTELLA_PC,
                       nome_elenco="elenco_settimana.json", massimo=8, a_secco=False, registro=None, adesso=None,
-                      giorno=None):
+                      giorno=None, ore_vecchie=None, con_vecchi=True):
     """Il sabato: i reel PRONTI del lotto (settimana.json), non scartati, non ancora programmati su questa piattaforma
     (fatto/quando nelle appProperties del file, come prima), con orario = lo slot di YouTube/Instagram. Prima i piu'
     vicini; al massimo `massimo` per giro. Stesse regole di prima per l'audio: brano dello screenshot prima,
     suoni_da_evitare = gli ultimi 30 del registro, una parola di ricerca diversa per video.
     a_secco: non scarica niente e non scrive l'elenco (file = dove andrebbe, mb = quelli su Drive): per le prove.
-    giorno: solo gli slot di quel giorno ("AAAA-MM-GG", per la prova generale con un lotto piccolo)."""
+    giorno: solo gli slot di quel giorno ("AAAA-MM-GG", per la prova generale con un lotto piccolo).
+    con_vecchi (21/11/2026, un solo flusso su Chrome): PRIMA i reel del percorso di sempre ancora da programmare
+    (coda_vecchia, orari prima del primo slot del lotto), poi il lotto."""
     import subprocess
     qui = os.path.dirname(os.path.abspath(__file__))
     if not a_secco:      # l'ultimo settimana.json (lo scrive GitHub); se non riesce si usa quello che c'e'
@@ -330,6 +380,17 @@ def prepara_settimana(fatto="tiktok_fatto", quando="tiktok_quando", cartella_pc=
             saltati[motivo] = saltati.get(motivo, 0) + 1
             continue
         attesa.append((t, s, v, f))
+    if con_vecchi and not giorno:
+        fino = min([t for t, *_ in attesa] or [adesso + datetime.timedelta(days=1)])
+        try:
+            vecchi = coda_vecchia(H, fatto, quando, ORE if ore_vecchie is None else ore_vecchie, adesso, fino)
+        except Exception as e:
+            print("coda di sempre non letta (solo il lotto):", e)
+            vecchi = []
+        if vecchi:
+            saltati["(prima) reel di sempre in questo elenco"] = len(vecchi)
+        attesa = [(t, f"{t:%Y-%m-%d %H:%M}", {"frase": None, "vecchio": p.get("tiktok_slot")}, f)
+                  for t, f, p in vecchi] + attesa
     elenco = []
     for t, s, v, f in attesa[:massimo]:
         d = os.path.join(cartella_pc, f"{t:%Y-%m-%d}")
@@ -345,9 +406,10 @@ def prepara_settimana(fatto="tiktok_fatto", quando="tiktok_quando", cartella_pc=
                             out.write(pezzo)
             rimpicciolisci(dest)
         mb = os.path.getsize(dest) / 1e6 if os.path.exists(dest) else int(f.get("size") or 0) / 1e6
-        elenco.append({"id": f["id"], "file": dest, "mb": round(mb, 1), "orario": s, "youtube": s,
+        elenco.append({"id": f["id"], "file": dest, "mb": round(mb, 1), "orario": s, "youtube": v.get("vecchio") or s,
                        "voce": (f.get("appProperties") or {}).get("tiktok_voce") == "1",
-                       "didascalia": pulisci(f.get("description", "")), "frase": v.get("frase")})
+                       "didascalia": pulisci(f.get("description", "")), "frase": v.get("frase"),
+                       "da": "sempre" if v.get("vecchio") else "lotto"})
     try:
         evita = suoni_recenti(30, registro)
         for x in elenco:
@@ -366,7 +428,7 @@ def prepara_settimana(fatto="tiktok_fatto", quando="tiktok_quando", cartella_pc=
 def stampa_settimana(elenco, in_attesa, saltati, cartella_pc, nome_elenco):
     for x in elenco:
         print(x["orario"], f"{x['mb']} MB", "voce" if x["voce"] else "muto", x["file"],
-              f"| screenshot: {x.get('musica_screenshot') or '-'} | cerca: {x.get('cerca')}")
+              f"| {x.get('da')} (YouTube {x.get('youtube')}) | screenshot: {x.get('musica_screenshot') or '-'} | cerca: {x.get('cerca')}")
         print("    didascalia:", " / ".join(x["didascalia"].splitlines()))
     print(f"in attesa in tutto: {in_attesa} | in questo giro: {len(elenco)} | rimasti dopo questo giro: "
           f"{max(0, in_attesa - len(elenco))}")
