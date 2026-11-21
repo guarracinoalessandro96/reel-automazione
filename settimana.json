@@ -416,22 +416,134 @@
    "voce": false
   },
   "2026-11-23 10:00": {
+   "an": {
+    "compagnia": "solo",
+    "fascia": "ufficio",
+    "scena": "lavoro"
+   },
+   "cartella": "1YeT-u0fEH-DOcbDgaO_q1bR_OpNXFEv8",
    "da_archivio": true,
-   "file": {},
+   "didascalia": "Chi semina adesso raccoglie dopo. Continua a seminare anche se non vedi niente",
+   "durata": 7.0,
+   "file": {
+    "anteprima": "1OzpMNNXCrhJUnVQzGsx_ccyGEfsgC6WE",
+    "manifest": "1Mx6-fLNRyAyuKM4544qqhKLcZjqUQJel",
+    "tiktok": "1M1yNM8eYUuYt9zcbMBJE9J9xPBurPY1s",
+    "youtube": "1y0sgodCZriNYohAoWcZG3Dz_gWSaJ4q3"
+   },
    "fonte_id": "1iHJKTqo5OtPmpH1aQbZz5IpG1MchuX3H",
    "formato": "intero",
    "frase": "MIE-37826361",
-   "generato": "2026-11-21T13:24",
+   "frase_dati": {
+    "autore": "",
+    "gancio": "Chi semina adesso raccoglie dopo. Continua a seminare anche se non vedi niente.",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "id": "MIE-37826361",
+    "serie": "GIORNO 327 / 365",
+    "tema": "mentalita",
+    "virale": false
+   },
+   "generato": "2026-11-21T13:27",
    "lotto": "Lotto 2026-11-23",
+   "mb_tiktok": 7.87,
+   "md5": null,
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 4.09,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 13,
+     "voce": "generale"
+    },
+    "frase_via": "classifica",
+    "musica": "rubberband_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso",
+     "frase": "classifica"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 85,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": true,
+     "luce": 0.18,
+     "righe": 4,
+     "scene_intatte": 1,
+     "scurito": 0.0,
+     "sfumatura": 0.0,
+     "viso": {
+      "corpo_base": 107,
+      "posizione": "centro",
+      "scala": 1.0,
+      "visi": 0
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 0,
+     "con_viso_yunet": 0,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       8.5,
+       7.0
+      ]
+     ],
+     "posizione": "centro",
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 0
+    },
+    "viso_prima_scena": 3
+   },
    "musica": "rubberband_1.m4a",
+   "musica_screenshot": null,
+   "problemi": [],
    "registrato": null,
    "scelto": "2026-11-21T13:24",
    "scena": "lavoro",
-   "stato": "in_preparazione",
+   "secondi": 106,
+   "stato": "pronto",
    "tema": "mentalita",
    "testo": "Chi semina adesso raccoglie dopo. Continua a seminare anche se non vedi niente.",
+   "testo_viso": {
+    "con_viso": 0,
+    "con_viso_yunet": 0,
+    "controllo": "lettere_fuori_dai_visi",
+    "corpo_base": 107,
+    "fotogrammi": 28,
+    "guardato": [
+     [
+      8.5,
+      7.0
+     ]
+    ],
+    "posizione": "centro",
+    "rilevatore": "yunet+haar",
+    "scala": 1.0,
+    "visi": 0
+   },
    "versione": 2,
-   "video": "IMG_5277.MOV"
+   "video": "IMG_5277.MOV",
+   "voce": false
   },
   "2026-11-23 12:00": {
    "an": {
