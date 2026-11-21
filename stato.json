@@ -20979,7 +20979,9 @@
      "ok": true,
      "id": "18114248609268087",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": false,
@@ -21072,7 +21074,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "k4If8pyKS4g"
+     "id": "k4If8pyKS4g",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -21083,11 +21086,106 @@
    },
    "spinto": true,
    "testo": "Fai finta di essere già chi vuoi diventare. Poi diventalo."
+  },
+  {
+   "quando": "2026-11-21T21:00",
+   "slot": "2026-11-21 22:00",
+   "video": "IMG_3827.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-0e8716e1",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 7.0,
+    "musica": "locked_in_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 3,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 2.15,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 101,
+     "righe": 3,
+     "viso": {
+      "visi": 17,
+      "corpo_base": 101,
+      "posizione": "basso",
+      "y": 0.478,
+      "scala": 1.0,
+      "corpo": 101,
+      "righe": 3
+     },
+     "scurito": 0.39,
+     "luce": 0.42,
+     "sfumatura": 0.32,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 17,
+     "corpo_base": 101,
+     "posizione": "basso",
+     "y": 0.478,
+     "scala": 1.0,
+     "corpo": 101,
+     "righe": 3,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 81,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "frase": "aforisma",
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 12
+    },
+    "frase_via": "nessun_aforisma",
+    "musica_meta": "deciso_01.flac",
+    "musica_instagram": "Money & Power (feat. G7MBL3) - d.higgs [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "-3W6V9VquXQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17869086222678139",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Continua. Anche piano, anche stanco, anche se non ti vede nessuno. Continua."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-13 22:00",
   "2026-11-14 00:00",
   "2026-11-14 06:00",
   "2026-11-14 08:00",
@@ -21166,10 +21264,10 @@
   "2026-11-21 14:00",
   "2026-11-21 16:00",
   "2026-11-21 18:00",
-  "2026-11-21 20:00"
+  "2026-11-21 20:00",
+  "2026-11-21 22:00"
  ],
  "musica_recenti": [
-  "van_life_rager_3.m4a",
   "ancient_civilisations_3.m4a",
   "ego_chall_3.m4a",
   "death_duel_1.m4a",
@@ -21228,7 +21326,8 @@
   "intergalactic_2.m4a",
   "whoop_3.m4a",
   "stake_out_2.m4a",
-  "horizons_3.m4a"
+  "horizons_3.m4a",
+  "locked_in_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -21669,7 +21768,8 @@
   "MIE-792949f7",
   "MIE-51b9581b",
   "MIE-86216122",
-  "MIE-8a2c841c"
+  "MIE-8a2c841c",
+  "MIE-0e8716e1"
  ],
  "temi_recenti": [
   "mentalita",
@@ -21843,8 +21943,8 @@
    "orizzontale": false
   },
   "1MGwGXNeSO9_CxJf-b3fdJUiJRRsBRTMw": {
-   "usi": 2,
-   "ultimo": "2026-10-19",
+   "usi": 3,
+   "ultimo": "2026-11-21",
    "orizzontale": false
   },
   "1dwrjfUDcgUEtMKQ_1I0bVcET8o1a2N_E": {
@@ -22365,7 +22465,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_08.flac",
   "deciso_08.flac",
   "drive_10.flac",
   "energia_04.flac",
@@ -22384,7 +22483,8 @@
   "deciso_04.flac",
   "drive_14.flac",
   "trap_01.flac",
-  "phonk_14.flac"
+  "phonk_14.flac",
+  "deciso_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -22419,7 +22519,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -22435,7 +22535,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "565118654020261",
   "4489870934582584",
   "1781233772812838",
   "925982985305806",
@@ -22494,11 +22593,11 @@
   "397890202830542",
   "727931292858890",
   "2173371459664032",
-  "702088267960095"
+  "702088267960095",
+  "604290701766493"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "YoungPop",
   "Giulio Cercato",
   "stereogully",
   "Julia Gartha",
@@ -22507,10 +22606,10 @@
   "Global Genius",
   "The K Club",
   "Trout Recording",
-  "Daria Novo"
+  "Daria Novo",
+  "d.higgs"
  ],
  "ig_titoli_recenti": [
-  "voices of victory",
   "hero s journey",
   "not phonk",
   "hype track",
@@ -22549,7 +22648,8 @@
   "carry the motion",
   "copacetic",
   "fighting back a flight of stairs",
-  "i am the fire"
+  "i am the fire",
+  "money power"
  ],
  "ig_tendenze_riserva": [
   {
@@ -22560,17 +22660,24 @@
    "libreria": false
   },
   {
-   "audio_id": "2173371459664032",
-   "title": "Fighting Back A Flight Of Stairs",
+   "audio_id": "1533332147140863",
+   "title": "Something's In The Movement",
    "display_artist": "Trout Recording",
-   "duration_in_ms": 175107,
+   "duration_in_ms": 197923,
    "libreria": true
   },
   {
-   "audio_id": "702088267960095",
-   "title": "I Am The Fire",
-   "display_artist": "Daria Novo",
-   "duration_in_ms": 182266,
+   "audio_id": "604290701766493",
+   "title": "Money & Power (feat. G7MBL3)",
+   "display_artist": "d.higgs",
+   "duration_in_ms": 130952,
+   "libreria": true
+  },
+  {
+   "audio_id": "1340308050325459",
+   "title": "Willow Run",
+   "display_artist": "Paul Fowler",
+   "duration_in_ms": 248272,
    "libreria": true
   }
  ]
