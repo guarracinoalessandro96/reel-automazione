@@ -1,55 +1,415 @@
 {
  "slot": {
   "2026-11-23 10:00": {
+   "an": {
+    "compagnia": "solo",
+    "fascia": "palestra",
+    "scena": "palestra"
+   },
+   "cartella": "1YeT-u0fEH-DOcbDgaO_q1bR_OpNXFEv8",
    "da_archivio": true,
-   "file": {},
+   "didascalia": "La tua prossima mossa è più importante del tuo ultimo errore",
+   "durata": 7.0,
+   "file": {
+    "anteprima": "1ebm8ieHjaaZ6qWvgmkOzBBGLtjHgJgpL",
+    "manifest": "16mCamYNIvnCbJepfnZ1j1PGodonsVC2J",
+    "tiktok": "14J2F-Rd5Eqd9qk3Dczyw4z1a3Y9ZNWt8",
+    "youtube": "1OFyzagvtVmCec9HvwN_ZUKOm6pEN3aNJ"
+   },
    "fonte_id": "13Mbzphz708QlBEv9Bq_CNQzZaM4WplJL",
    "formato": "dieci",
    "frase": "MIE-792949f7",
-   "generato": "2026-11-21T12:41",
+   "frase_dati": {
+    "autore": "",
+    "gancio": "La tua prossima mossa è più importante del tuo ultimo errore.",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "id": "MIE-792949f7",
+    "serie": "GIORNO 327 / 365",
+    "tema": "mentalita",
+    "virale": false
+   },
+   "generato": "2026-11-21T12:45",
    "lotto": "Lotto 2026-11-23",
+   "mb_tiktok": 8.13,
+   "md5": null,
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 10.41,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 11,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "survival_mode_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 136,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.35,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.35,
+     "sfumatura": 0.26,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 8,
+      "y": 0.506
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 26,
+     "con_viso_yunet": 26,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 8,
+     "y": 0.506
+    },
+    "viso_prima_scena": 3
+   },
    "musica": "survival_mode_3.m4a",
+   "musica_screenshot": null,
+   "problemi": [],
    "registrato": null,
    "scena": "palestra",
-   "stato": "in_preparazione",
+   "secondi": 158,
+   "stato": "pronto",
    "tema": "mentalita",
    "testo": "La tua prossima mossa è più importante del tuo ultimo errore.",
+   "testo_viso": {
+    "con_viso": 26,
+    "con_viso_yunet": 26,
+    "controllo": "lettere_fuori_dai_visi",
+    "corpo": 107,
+    "corpo_base": 107,
+    "fotogrammi": 28,
+    "guardato": [
+     [
+      0.5,
+      7.0
+     ]
+    ],
+    "posizione": "basso",
+    "righe": 3,
+    "rilevatore": "yunet+haar",
+    "scala": 1.0,
+    "visi": 8,
+    "y": 0.506
+   },
    "versione": 1,
-   "video": "IMG_4055.mov"
+   "video": "IMG_4055.mov",
+   "voce": false
   },
   "2026-11-23 12:00": {
+   "an": {
+    "compagnia": "solo",
+    "fascia": "ufficio",
+    "scena": "lavoro"
+   },
+   "cartella": "1YeT-u0fEH-DOcbDgaO_q1bR_OpNXFEv8",
    "da_archivio": true,
-   "file": {},
+   "didascalia": "Come fai a vincere se hai paura di prenderti il rischio?",
+   "durata": 7.0,
+   "file": {
+    "anteprima": "12vcddYik_xEta8d0NEZDC5aMQKpybJxa",
+    "manifest": "1HGdd2WQOF9i-ceMxWGUURvwCP7gZjhQY",
+    "tiktok": "1snC8wpZ1DOU0hPK0E5XXWiJyrAvQiFDw",
+    "youtube": "1s2a1h82YcOD8BWa1FDz00Cs9R52HNhHe"
+   },
    "fonte_id": "1OKyRxbpEUPABWJM5Ey1cGm-BG7E-Rv9h",
    "formato": "intero",
    "frase": "MIE-bb67a611",
-   "generato": "2026-11-21T12:41",
+   "frase_dati": {
+    "autore": "",
+    "gancio": "Come fai a vincere se hai paura di prenderti il rischio?",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "id": "MIE-bb67a611",
+    "serie": "GIORNO 327 / 365",
+    "tema": "mentalita",
+    "virale": false
+   },
+   "generato": "2026-11-21T12:46",
    "lotto": "Lotto 2026-11-23",
+   "mb_tiktok": 7.56,
+   "md5": null,
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 15.43,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.342
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 11,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "visions_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 158,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 111,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.63,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.55,
+     "sfumatura": 0.41,
+     "viso": {
+      "corpo": 111,
+      "corpo_base": 111,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 1,
+      "y": 0.637
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 111,
+     "corpo_base": 111,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       23.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 1,
+     "y": 0.637
+    },
+    "viso_prima_scena": 5
+   },
    "musica": "visions_2.m4a",
+   "musica_screenshot": null,
+   "problemi": [],
    "registrato": null,
    "scena": "lavoro",
-   "stato": "in_preparazione",
+   "secondi": 184,
+   "stato": "pronto",
    "tema": "mentalita",
    "testo": "Come fai a vincere se hai paura di prenderti il rischio?",
+   "testo_viso": {
+    "con_viso": 28,
+    "con_viso_yunet": 28,
+    "controllo": "lettere_fuori_dai_visi",
+    "corpo": 111,
+    "corpo_base": 111,
+    "fotogrammi": 28,
+    "guardato": [
+     [
+      23.5,
+      7.0
+     ]
+    ],
+    "posizione": "basso",
+    "righe": 3,
+    "rilevatore": "yunet+haar",
+    "scala": 1.0,
+    "visi": 1,
+    "y": 0.637
+   },
    "versione": 1,
-   "video": "IMG_4285.MOV"
+   "video": "IMG_4285.MOV",
+   "voce": false
   },
   "2026-11-23 14:00": {
+   "an": {
+    "compagnia": "solo",
+    "fascia": "palestra",
+    "scena": "palestra"
+   },
+   "cartella": "1YeT-u0fEH-DOcbDgaO_q1bR_OpNXFEv8",
    "da_archivio": true,
-   "file": {},
+   "didascalia": "Non è mai troppo tardi per diventare la persona che hai sempre voluto essere",
+   "durata": 7.0,
+   "file": {
+    "anteprima": "1bm6fDXxCeI7ZAvo-1tWBKbj045AnhyXI",
+    "manifest": "1dfvzmdm_9gr9J2pDS0Ar4L6lftFSs6EN",
+    "tiktok": "1fjG1iR9XnSwXcMbCG7O9Xl4X6OwYBwab",
+    "youtube": "1dU1V8WRhFhEVJMMpjkMSeKiY-WvXgg_-"
+   },
    "fonte_id": "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW",
    "formato": "dieci",
    "frase": "MIE-8880555c",
-   "generato": "2026-11-21T12:41",
+   "frase_dati": {
+    "autore": "",
+    "gancio": "Non è mai troppo tardi per diventare la persona che hai sempre voluto essere.",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "id": "MIE-8880555c",
+    "serie": "GIORNO 327 / 365",
+    "tema": "mentalita",
+    "virale": false
+   },
+   "generato": "2026-11-21T12:45",
    "lotto": "Lotto 2026-11-23",
+   "mb_tiktok": 8.0,
+   "md5": null,
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 7.35,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.108
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 14,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "intergalactic_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 116,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 101,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.39,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.42,
+     "sfumatura": 0.29,
+     "viso": {
+      "corpo": 101,
+      "corpo_base": 101,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 23,
+      "y": 0.563
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 101,
+     "corpo_base": 101,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       1.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 23,
+     "y": 0.563
+    },
+    "viso_prima_scena": 5
+   },
    "musica": "intergalactic_2.m4a",
+   "musica_screenshot": null,
+   "problemi": [],
    "registrato": null,
    "scena": "palestra",
-   "stato": "in_preparazione",
+   "secondi": 137,
+   "stato": "pronto",
    "tema": "mentalita",
    "testo": "Non è mai troppo tardi per diventare la persona che hai sempre voluto essere.",
+   "testo_viso": {
+    "con_viso": 28,
+    "con_viso_yunet": 28,
+    "controllo": "lettere_fuori_dai_visi",
+    "corpo": 101,
+    "corpo_base": 101,
+    "fotogrammi": 28,
+    "guardato": [
+     [
+      1.5,
+      7.0
+     ]
+    ],
+    "posizione": "basso",
+    "righe": 3,
+    "rilevatore": "yunet+haar",
+    "scala": 1.0,
+    "visi": 23,
+    "y": 0.563
+   },
    "versione": 1,
-   "video": "IMG_4269.MOV"
+   "video": "IMG_4269.MOV",
+   "voce": false
   }
  }
 }
