@@ -22,6 +22,9 @@ Pagina pubblica: docs/andamento/index.html (GitHub Pages), dati in docs/andament
   cifre (1.270), quindi si usano iscritti guadagnati - persi da YouTube Analytics dall'inizio del canale: esatti fino
   a ~3 giorni fa. Facebook: page_follows (storico). TikTok: registro ("tiktok_follower" la mattina = fine del giorno
   prima, "tiktok_follower_sera" la sera = fine di quel giorno).
+22/11/2026 (Alessandro): "Oggi" e "Ieri" della pagina vanno da MEZZANOTTE a mezzanotte (ora italiana): differenze tra
+  le istantanee piu' vicine alle 0:00 (chiave "roma"; Facebook = somma delle views dei video/reel della Pagina, perche'
+  page_media_view esiste solo per la giornata del Pacifico). Settimana, mese, 30 giorni restano sulle giornate 9-9.
 Non stampa mai segreti (statistiche.pulito).
   python andamento.py                 (GitHub: segreti dalle variabili)
   python andamento.py --pc            (PC: reel-segreti.json)
@@ -85,9 +88,9 @@ def youtube(k):
     return tot, int(ch["statistics"]["subscriberCount"])
 
 
-def somma_media(url, campo, T):
+def somma_media(url, campo, T, limite=100):
     """Somma di un numero su tutti gli elementi di un elenco della Graph API (con le pagine)."""
-    tot, p = 0, {"fields": campo, "limit": 100, "access_token": T}
+    tot, p = 0, {"fields": campo, "limit": limite, "access_token": T}
     while url:
         r = requests.get(url, params=p, timeout=60).json()
         p = None
@@ -161,10 +164,6 @@ def main():
             metti(vis, g, "Instagram", r["data"][0]["total_value"]["value"])
         except Exception as e:
             print("Instagram", g, S.pulito(e)[:150])
-    try:
-        ist["ig"] = somma_media(f"{S.GRAPH}/{k['IG_USER_ID']}/media", "insights.metric(views)", T)
-    except Exception as e:
-        print("Instagram media:", S.pulito(e))
     for s, chi in (("Instagram", "IG_USER_ID"), ("Facebook", "FB_PAGE_ID")):
         try:
             n = requests.get(f"{S.GRAPH}/{k[chi]}", timeout=30, params={"fields": "followers_count",
@@ -172,12 +171,22 @@ def main():
             adesso[s] = {"v": int(n), "g": oggiR.isoformat()}
         except Exception as e:
             print(s, "follower:", S.pulito(e))
-    # YouTube: istantanea del totale e iscritti
+    # istantanee (insieme, per stare sotto il minuto): YouTube somma dei video, Instagram somma dei post, Facebook
+    # somma delle "views" dei video/reel della Pagina (22/11: per i giorni da mezzanotte; ~15 s, una richiesta sola)
     yt_arrotondati = yt_esatti = None
-    try:
-        ist["yt"], yt_arrotondati = youtube(k)
-    except Exception as e:
-        print("YouTube:", S.pulito(e)[:200])
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(3) as ex:
+        lavori = {"yt": ex.submit(youtube, k),
+                  "ig": ex.submit(somma_media, f"{S.GRAPH}/{k['IG_USER_ID']}/media", "insights.metric(views)", T),
+                  "fbv": ex.submit(somma_media, f"{S.GRAPH}/{k['FB_PAGE_ID']}/videos", "views", T, 500)}
+        for c, f in lavori.items():
+            try:
+                if c == "yt":
+                    ist["yt"], yt_arrotondati = f.result()
+                else:
+                    ist[c] = f.result()
+            except Exception as e:
+                print("istantanea", c, S.pulito(e)[:200])
 
     # registro: totali del canale del messaggio delle 8 (riserva, provvisori), TikTok
     try:
@@ -196,7 +205,7 @@ def main():
     if len(ist) > 1:
         lista.append(ist)
     dati["istantanee"] = lista
-    punti = {c: [(x["t"], x[c]) for x in lista if isinstance(x.get(c), int)] for c in ("yt", "ig")}
+    punti = {c: [(x["t"], x[c]) for x in lista if isinstance(x.get(c), int)] for c in ("yt", "ig", "fbv")}
     for n in range(1, YT_ANALYTICS_RITARDO + 2):
         d = oggiP - datetime.timedelta(days=n)
         v = tra(punti["yt"], inizio(d), inizio(d + datetime.timedelta(days=1)))
@@ -262,29 +271,34 @@ def main():
     if tt:
         adesso["TikTok"] = {"v": fol[max(tt)]["TikTok"], "g": max(tt)}
 
-    # oggi finora (dalle 0:00 del Pacifico = 9:00 italiane) e ieri alla stessa ora
-    i0, i1 = inizio(oggiP), inizio(oggiP - datetime.timedelta(days=1))
-    pari = i1 + (adesso_t - i0)
-    finora, ieri, dalle = {}, {}, {}
-    for s, c in (("YouTube", "yt"), ("Instagram", "ig")):
-        finora[s] = tra(punti[c], i0, adesso_t) if isinstance(ist.get(c), int) else None
-        ieri[s] = tra(punti[c], i1, pari)
-        dopo = [t for t, _ in punti[c] if i0 <= t < adesso_t]
-        if finora[s] is None and dopo and isinstance(ist.get(c), int):
-            # manca l'istantanea delle 9:00 (primo giro, o GitHub ha saltato): da la prima istantanea della giornata
-            finora[s] = tra(punti[c], dopo[0], adesso_t)
-            dalle[s] = datetime.datetime.fromtimestamp(dopo[0], S.ROMA).strftime("%H:%M")
-            ieri[s] = tra(punti[c], i1 + (dopo[0] - i0), pari)
-    if "fb" in ist:
-        finora["Facebook"] = ist["fb"]
-    fbieri = [(i1, 0)] + [(x["t"], x["fb"]) for x in lista if x.get("fbg") == gg(1) and isinstance(x.get("fb"), int)]
-    ieri["Facebook"] = tra(fbieri, i1, pari) if len(fbieri) > 1 else None
-    dati["oggi"] = {"giorno": oggiP.isoformat(),
-                    "dalle": datetime.datetime.fromtimestamp(i0, S.ROMA).strftime("%H:%M"),
-                    "ora": ora.strftime("%H:%M"),
-                    "finora": {s: v for s, v in finora.items() if v is not None},
-                    "ieri_stessa_ora": {s: v for s, v in ieri.items() if v is not None},
-                    "dalle_social": dalle}
+    # 22/11/2026 (Alessandro): "Oggi" e "Ieri" da MEZZANOTTE a mezzanotte, ora italiana, dalle istantanee.
+    # Mezzanotte = l'istantanea piu' vicina alle 0:00 (cron dedicati alle 23:50 e 0:05); se e' lontana piu' di 20 minuti
+    # la pagina scrive l'ora vera. roma[giorno][social] = [visualizzazioni, ora istantanea inizio, ora istantanea fine]
+    def vicina(pt, t, entro=3 * 3600):
+        p = min(pt, key=lambda x: abs(x[0] - t), default=None)
+        return p if p and abs(p[0] - t) <= entro else None
+    mezz = lambda d: datetime.datetime(d.year, d.month, d.day, tzinfo=S.ROMA).timestamp()
+    roma = {}
+    for n in range(0, GIORNI_ISTANTANEE):
+        d = oggiR - datetime.timedelta(days=n)
+        for s, c in (("YouTube", "yt"), ("Instagram", "ig"), ("Facebook", "fbv")):
+            a = vicina(punti[c], mezz(d))
+            if not a and n == 0:        # oggi senza istantanea di mezzanotte: dalla prima di oggi (la pagina lo scrive)
+                a = next((x for x in punti[c] if x[0] >= mezz(d)), None)
+            b = (punti[c][-1] if punti[c] and punti[c][-1][0] > mezz(d) else None) if n == 0                 else vicina(punti[c], mezz(d + datetime.timedelta(days=1)))
+            if a and b and b[0] > a[0] and b[1] >= a[1] - 500:
+                roma.setdefault(d.isoformat(), {})[s] = [max(0, b[1] - a[1]), int(a[0]), int(b[0])]
+    dati["roma"] = dict(sorted(roma.items()))
+    # oggi rispetto a ieri alla stessa ora (da mezzanotte di ieri all'ora di adesso meno un giorno)
+    ieri = {}
+    m0, m1 = mezz(oggiR), mezz(oggiR - datetime.timedelta(days=1))
+    for s, c in (("YouTube", "yt"), ("Instagram", "ig"), ("Facebook", "fbv")):
+        a = vicina(punti[c], m1)
+        v = valore_a(punti[c], m1 + (adesso_t - m0))
+        if a and v is not None and v >= a[1] - 500:
+            ieri[s] = max(0, round(v - a[1]))
+    dati["oggi"] = {"giorno": oggiR.isoformat(), "giornataP": oggiP.isoformat(), "ora": ora.strftime("%H:%M"),
+                    "ieri_stessa_ora": ieri}
     dati["adesso"] = adesso
 
     for g in [g for g in vis if g >= oggiP.isoformat()]:
@@ -296,13 +310,14 @@ def main():
     dati["follower"] = dict(sorted((g, v) for g, v in fol.items() if v))
     dati["aggiornato"] = ora.strftime("%Y-%m-%d %H:%M")
     os.makedirs(os.path.dirname(DATI), exist_ok=True)
-    ordine = ["aggiornato", "oggi", "adesso", "provvisori", "visualizzazioni", "follower", "istantanee"]
+    ordine = ["aggiornato", "oggi", "roma", "adesso", "provvisori", "visualizzazioni", "follower", "istantanee"]
     dati = {c: dati[c] for c in ordine if c in dati}
     with open(DATI, "w", encoding="utf-8") as f:
         json.dump(dati, f, ensure_ascii=False, separators=(",", ":"))
     ult = max(dati["visualizzazioni"]) if dati["visualizzazioni"] else "-"
-    print("Andamento aggiornato:", len(dati["visualizzazioni"]), "giorni, ultimo", ult, "| oggi finora",
-          dati["oggi"]["finora"], "| ieri alla stessa ora", dati["oggi"]["ieri_stessa_ora"])
+    print("Andamento aggiornato:", len(dati["visualizzazioni"]), "giorni, ultimo", ult, "| da mezzanotte:",
+          {g: {s: v[0] for s, v in x.items()} for g, x in dati.get("roma", {}).items()},
+          "| ieri alla stessa ora", dati["oggi"]["ieri_stessa_ora"])
 
 
 if __name__ == "__main__":

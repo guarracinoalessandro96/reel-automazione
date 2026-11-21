@@ -167,7 +167,7 @@ const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) 
 const c = (v) => v !== null && v !== undefined;
 const segno = (d) => (d > 0 ? "+" : d < 0 ? "−" : "±") + fmt(Math.abs(d));
 const MOTO = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-let VIS = {}, FOL = {}, OGGI = {}, ADESSO = {}, PROVV = {}, PERIODO = "oggi", CONF_FOL = "1";
+let VIS = {}, FOL = {}, OGGI = {}, ROMA = {}, ADESSO = {}, PROVV = {}, PERIODO = "oggi", CONF_FOL = "1";
 
 /* ---- follower (21/11/2026, Alessandro: in alto, una volta sola, piccoli, con giorno/settimana/mese prima) ---- */
 function folPrima(s, g, k) {        // follower a fine giornata k giorni prima (o il giorno disponibile piu' vicino prima)
@@ -208,31 +208,46 @@ function disegnaFollower() {
 }
 
 /* ---- visualizzazioni ---- */
+/* 22/11/2026 (Alessandro): Oggi e Ieri da mezzanotte a mezzanotte (ora italiana), dalle istantanee orarie;
+   settimana, mese e 30 giorni sulle giornate ufficiali delle piattaforme (dalle 9 alle 9) */
 const IERI = () => indietro(OGGI.giorno, 1);
-function intervallo(p) {          // [inizio, fine, inizio del periodo prima, nome del confronto]; fine = ieri (giornate intere)
-  const ult = IERI();
-  if (p === "sett") { const o = OGGI.giorno, d = new Date(o + "T00:00:00Z"), lun = indietro(o, (d.getUTCDay() + 6) % 7); return [lun, ult, indietro(lun, 7), "agli stessi giorni della settimana prima"]; }
-  if (p === "mese") { const ini = OGGI.giorno.slice(0, 8) + "01", d = new Date(ini + "T00:00:00Z"); d.setUTCMonth(d.getUTCMonth() - 1);
+const IERIP = () => indietro(OGGI.giornataP || OGGI.giorno, 1);
+const oraDi = (t) => new Date(t * 1000).toLocaleTimeString("it-IT", { timeZone: "Europe/Rome", hour: "2-digit", minute: "2-digit" });
+const lontana = (t) => { const [h, m] = oraDi(t).split(":").map(Number), x = h * 60 + m; return Math.min(x, 1440 - x) > 20; };
+function intervallo(p) {          // [inizio, fine, inizio del periodo prima, nome del confronto]; fine = ultima giornata intera 9-9
+  const ult = IERIP(), o = OGGI.giornataP || OGGI.giorno;
+  if (p === "sett") { const d = new Date(o + "T00:00:00Z"), lun = indietro(o, (d.getUTCDay() + 6) % 7); return [lun, ult, indietro(lun, 7), "agli stessi giorni della settimana prima"]; }
+  if (p === "mese") { const ini = o.slice(0, 8) + "01", d = new Date(ini + "T00:00:00Z"); d.setUTCMonth(d.getUTCMonth() - 1);
     return [ini, ult, d.toISOString().slice(0, 10), "agli stessi giorni del mese prima"]; }
   return [indietro(ult, 29), ult, indietro(ult, 59), "ai 30 giorni prima"];
 }
 const val = (g, s) => (VIS[g] || {})[s];
+const rom = (g, s) => (ROMA[g] || {})[s];
 const ultimoDi = (s) => Object.keys(VIS).filter((g) => c(VIS[g][s])).sort().pop();
 function visOggi(s) {
   if (s === "TikTok") { const u = ultimoDi(s); return { ora: null, nd: "aggiornato la sera", quando: u ? "ultimo giorno: " + dat(u) + ", " + fmt(val(u, s)) : "" }; }
-  const ora = (OGGI.finora || {})[s], prima = (OGGI.ieri_stessa_ora || {})[s], ieri = val(IERI(), s);
-  if (!c(ora)) return { ora: null, nd: "in aggiornamento", quando: "" };
-  const da = (OGGI.dalle_social || {})[s] || OGGI.dalle;
-  return { ora, prima: c(prima) ? prima : null, nome: "a ieri alla stessa ora", quando: "dalle " + da + " alle " + OGGI.ora,
-           nd: c(ieri) ? "ieri in tutto: " + fmt(ieri) : "" };
+  const r = rom(OGGI.giorno, s), prima = (OGGI.ieri_stessa_ora || {})[s];
+  if (!r) return { ora: null, nd: "da mezzanotte: parte con l'istantanea delle 0:00", quando: "" };
+  const da = lontana(r[1]) ? "dalle " + oraDi(r[1]) + " (prima istantanea)" : "da mezzanotte";
+  return { ora: r[0], prima: c(prima) ? prima : null, nome: "a ieri alla stessa ora", quando: da + " alle " + oraDi(r[2]),
+           nd: rom(IERI(), s) ? "ieri in tutto: " + fmt(rom(IERI(), s)[0]) : "" };
 }
 function visIeri(s) {
-  let g = IERI();
-  if (!c(val(g, s))) { const u = ultimoDi(s); if (!u) return { ora: null, nd: "nessun dato", quando: "" }; g = u; }
-  const rit = g !== IERI() ? (s === "TikTok" ? " · ieri arriva la sera" : " · ieri in arrivo") : "";
-  const prov = (PROVV[s] || []).includes(g) ? " · provvisorio" : "";
-  const p = val(indietro(g, 1), s);
-  return { ora: val(g, s), prima: c(p) ? p : null, nome: "al giorno prima", quando: dat(g) + rit + prov, nd: "manca il giorno prima", giorno: g };
+  const g = IERI(), p0 = indietro(g, 1);
+  if (s === "TikTok") {
+    if (!c(val(g, s))) return { ora: null, nd: "arriva stasera", quando: dat(g) };
+    return { ora: val(g, s), prima: c(val(p0, s)) ? val(p0, s) : null, nome: "al giorno prima", quando: dat(g) + " · giornata di TikTok", nd: "manca il giorno prima", giorno: g };
+  }
+  const r = rom(g, s);
+  if (r) {
+    const pr = rom(p0, s), ist = lontana(r[1]) || lontana(r[2]) ? " · istantanee delle " + oraDi(r[1]) + " e delle " + oraDi(r[2]) : "";
+    return { ora: r[0], prima: pr ? pr[0] : null, nome: "al giorno prima", quando: dat(g) + ", da mezzanotte a mezzanotte" + ist,
+             nd: "il giorno prima da mezzanotte non c'è ancora", giorno: g };
+  }
+  /* manca l'istantanea di mezzanotte (i primi giorni): la giornata ufficiale dalle 9 alle 9 */
+  if (c(val(g, s))) { const prov = (PROVV[s] || []).includes(g) ? ", provvisorio" : "";
+    return { ora: val(g, s), prima: c(val(p0, s)) ? val(p0, s) : null, nome: "al giorno prima", quando: dat(g) + ", dalle 9 alle 9" + prov, nd: "manca il giorno prima", giorno: g }; }
+  return { ora: null, nd: "in arrivo", quando: dat(g) };
 }
 function visPeriodo(s, p) {
   const [ini, fine, iniP, nome] = intervallo(p);
@@ -258,14 +273,12 @@ function visTotale(p) {
   if (!ok.length) return { ora: null, nd: parti[0][1].nd, quando: "" };
   const fuori = parti.filter(([s]) => !ok.some(([t]) => t === s)).map(([s]) => s);
   const conf = ok.filter(([, x]) => c(x.prima)), senzaConf = ok.filter(([, x]) => !c(x.prima)).map(([s]) => s);
-  let quando = p === "oggi" ? "dalle " + OGGI.dalle + " alle " + OGGI.ora : p === "ieri" ? dat(IERI()) : "da " + dat(intervallo(p)[0]) + " a " + dat(IERI());
+  let quando = p === "oggi" ? "da mezzanotte alle " + OGGI.ora : p === "ieri" ? dat(IERI()) : "da " + dat(intervallo(p)[0]) + " a " + dat(IERIP());
   if (fuori.length) quando += " · senza " + fuori.join(", ");
-  const tardi = p === "oggi" ? ok.filter(([t]) => (OGGI.dalle_social || {})[t]).map(([t]) => t + " dalle " + OGGI.dalle_social[t]) : [];
-  if (tardi.length) quando += " · " + tardi.join(", ");
   return { ora: ok.reduce((a, [, x]) => a + x.ora, 0), oraC: conf.reduce((a, [, x]) => a + (c(x.oraC) ? x.oraC : x.ora), 0),
            prima: conf.length ? conf.reduce((a, [, x]) => a + x.prima, 0) : null, nome: ok[0][1].nome,
            nota: senzaConf.length && conf.length ? " · confronto senza " + senzaConf.join(", ") : "", quando,
-           nd: p === "oggi" ? "confronto con ieri alla stessa ora da domani" : "mancano i numeri di prima" };
+           nd: p === "oggi" ? "confronto con ieri alla stessa ora appena c'è un giorno intero di istantanee" : "mancano i numeri di prima" };
 }
 function inclina(card) {
   if (!MOTO) return;
@@ -309,8 +322,8 @@ function disegnaVis() {
   sv.append(scheda("Totale", "#fff8e1", visTotale(PERIODO)));
   SOC.forEach(([s, col]) => sv.append(scheda(s, col, visDi(s, PERIODO))));
   document.getElementById("quando").textContent = PERIODO === "oggi"
-    ? "Oggi finora, confrontato con ieri alla stessa ora. TikTok non ha un collegamento diretto: i suoi numeri arrivano la sera."
-    : "Giornate intere, confrontate con lo stesso periodo prima.";
+    ? "Oggi da mezzanotte, confrontato con ieri alla stessa ora. TikTok non ha un collegamento diretto: i suoi numeri arrivano la sera."
+    : PERIODO === "ieri" ? "Ieri da mezzanotte a mezzanotte, confrontato con il giorno prima." : "Giornate ufficiali delle piattaforme (dalle 9 alle 9), confrontate con lo stesso periodo prima.";
 }
 
 /* polvere d'oro che sale lenta sullo sfondo */
@@ -341,11 +354,11 @@ document.querySelectorAll(".tabs[aria-label=Periodo] button").forEach((b) => b.a
 }));
 function carica() {
   return fetch("dati.json?v=" + Date.now(), { cache: "no-store" }).then((r) => r.json()).then((d) => {
-    VIS = d.visualizzazioni || {}; FOL = d.follower || {}; ADESSO = d.adesso || {}; PROVV = d.provvisori || {};
+    VIS = d.visualizzazioni || {}; ROMA = d.roma || {}; FOL = d.follower || {}; ADESSO = d.adesso || {}; PROVV = d.provvisori || {};
     const ult = Object.keys(VIS).sort().pop();
     OGGI = d.oggi || { giorno: ult ? indietro(ult, -1) : new Date().toISOString().slice(0, 10), finora: {}, ieri_stessa_ora: {} };
     if (d.aggiornato) document.getElementById("agg").textContent = "Aggiornato il " + d.aggiornato.slice(8, 10) + "/" + d.aggiornato.slice(5, 7) + " alle " + d.aggiornato.slice(11)
-      + " · le giornate vanno dalle 9:00 alle 9:00 (ora italiana), come le contano Instagram, Facebook e YouTube";
+      + ". Oggi e Ieri: da mezzanotte a mezzanotte (ora italiana). Settimana, mese e 30 giorni: giornate ufficiali di Instagram, Facebook e YouTube, dalle 9 alle 9. TikTok: giornate di TikTok Studio, arrivano la sera.";
     disegnaFollower(); disegnaVis();
   });
 }

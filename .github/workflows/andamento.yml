@@ -10,6 +10,11 @@ on:
   # "oggi finora" e "ieri alla stessa ora"); in piu' parte dopo ogni reel (pubblica.yml) e dopo i lavori qui sotto.
   schedule:
     - cron: "23 * * * *"
+    # 22/11/2026: istantanea vicinissima alla MEZZANOTTE italiana ("Oggi"/"Ieri" da mezzanotte). Due orari perche'
+    # GitHub ritarda i cron; si usa quella piu' vicina alle 0:00. Ora UTC: d'inverno 22:50/23:05 = 23:50/0:05 italiane,
+    # d'estate 21:50/22:05 = 23:50/0:05 (le altre due capitano a 0:50/1:05 o 22:50/23:05: innocue).
+    - cron: "50 21,22 * * *"
+    - cron: "5 22,23 * * *"
   # 15/11 sera: anche gli orari ogni 2 ore non partivano. Allora parte anche dopo i lavori che GitHub esegue davvero.
   workflow_run:
     workflows: ["Report", "Controllo salute", "Statistiche di riserva"]
