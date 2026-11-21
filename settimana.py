@@ -26,6 +26,11 @@ in quel momento, come prima); se manca, e' scartato, e' fallito o la sua frase e
   python settimana.py scarta AAAA-MM-GG HH:MM [motivo]   segna lo slot scartato e lo manda a GitHub (sostituto)
   python settimana.py stato [AAAA-MM-GG]             elenco degli slot del lotto
   python settimana.py controlla "AAAA-MM-GG HH:MM"   cosa userebbe pubblica.py a quello slot (senza pubblicare)
+  python settimana.py foto [AAAA-MM-GG] [giorni]     gli slot con il reel FOTO (una sua foto ferma, vedi FOTO_OGNI)
+  pianifica --solo-foto: solo gli slot foto; con SETTIMANA_PROVA=1 il registro e' _settimana/lotto_prova.json (prove)
+
+21/11/2026 (Alessandro): reel FOTO, uno slot ogni tre (slot_foto): una sua foto nuova di "Foto da pubblicare", ferma e
+mai modificata, con la frase sopra (foto_giornata.make_singola); finite le foto, reel col video.
 """
 import datetime, json, os, re, subprocess, sys, time
 from zoneinfo import ZoneInfo
@@ -45,6 +50,21 @@ ANTICIPO_MIN = 90            # si preparano solo slot ad almeno 90 minuti da ade
 # 21/11/2026 (Alessandro): da lunedi' 23 TikTok e Facebook vengono SOLO dal lotto (il percorso di sempre salta i reel dal
 # 22/11, tiktok_prepara.FINE_PERCORSO_VECCHIO): la copia in "TikTok - da pubblicare" allo slot e' spenta
 COPIA_GIRO_DI_SEMPRE = False
+# 21/11/2026 (Alessandro: "ogni 2 reel con i video, 1 reel con la foto"): reel con UNA sua foto (foto_giornata,
+# FORMATO_SINGOLA) negli slot foto. Schema fisso: gli slot di orario.ORE contati in fila da FOTO_DAL alle 00:00
+# (0, 1, 2, ...), e' foto ogni slot con numero % FOTO_OGNI == FOTO_OGNI - 1 (il 3o, il 6o, il 9o...). Con 10 slot al
+# giorno lo schema si ripete ogni 3 giorni: 1o giorno 08, 14, 20; 2o giorno 06, 12, 18; 3o giorno 00, 10, 16, 22
+# (10 foto ogni 3 giorni, 3-4 al giorno). Dal 01/12/2026 (martedi'): il 23-30/11 e' gia' pronto e approvato.
+# Se le foto nuove finiscono (o nessuna va bene per la frase) lo slot resta un reel col video. FOTO_ACCESE = False:
+# tutto come prima. (python settimana.py foto AAAA-MM-GG [giorni]: gli slot foto di quei giorni)
+FOTO_ACCESE = True
+FOTO_DAL = "2026-12-01"
+FOTO_OGNI = 3
+# 21/11/2026: prove su GitHub senza toccare il lotto vero: con SETTIMANA_PROVA il registro e' _settimana/lotto_prova.json
+# (parte da una copia di settimana.json, mai salvato nel repository) e il workflow non fa commit
+PROVA = os.environ.get("SETTIMANA_PROVA", "") not in ("", "0")
+if PROVA:
+    LOTTO = os.path.join(LAVORO, "lotto_prova.json")
 
 
 def log(*a):
@@ -95,9 +115,39 @@ def _leggi(path, vuoto):
 
 
 def carica_lotto():
-    d = _leggi(LOTTO, {})
+    d = _leggi(LOTTO, None)
+    if d is None:       # prova: si parte dal registro vero (le sue prenotazioni contano), che non si tocca
+        d = _leggi(os.path.join(HERE, "settimana.json"), {}) if PROVA else {}
     d.setdefault("slot", {})
     return d
+
+
+def slot_foto(slot):
+    """True se lo slot ("AAAA-MM-GG HH:MM") e' per il reel con una foto (schema fisso: vedi FOTO_OGNI)."""
+    import orario
+    try:
+        if not FOTO_ACCESE or "manuale" in str(slot):
+            return False
+        t = datetime.datetime.strptime(str(slot)[:16], "%Y-%m-%d %H:%M")
+        giorni = (t.date() - datetime.date.fromisoformat(FOTO_DAL)).days
+        if giorni < 0 or t.minute or t.hour not in orario.ORE:
+            return False
+        return (giorni * len(orario.ORE) + orario.ORE.index(t.hour)) % FOTO_OGNI == FOTO_OGNI - 1
+    except Exception:
+        return False
+
+
+def foto_riservate(state, escludi=None, lotto=None, scarti=None):
+    """Id delle foto gia' prese da uno slot del lotto non ancora uscito (pronto o in preparazione), piu' quelle uscite
+    (montaggio.foto_ids dello storico): un'altra foto per gli altri slot."""
+    lotto = lotto if lotto is not None else carica_lotto()
+    scarti = scarti if scarti is not None else carica_scarti()
+    fatti = set(state.get("slot_fatti", []))
+    out = {v.get("foto_id") for s, v in lotto["slot"].items()
+           if s != escludi and s not in fatti and v.get("foto_id") and _attivo(s, v, scarti)}
+    for h in state.get("storico", []):
+        out |= set((h.get("montaggio") or {}).get("foto_ids") or [])
+    return out - {None}
 
 
 def carica_scarti():
@@ -145,7 +195,8 @@ def finta(slot, v):
     return {"quando": slot.replace(" ", "T"), "slot": slot, "video": v.get("video"), "frase": v.get("frase"),
             "tema": v.get("tema"), "testo": (v.get("testo") or "")[:120], "da_archivio": v.get("da_archivio"),
             "registrato": v.get("registrato"), "scena": v.get("scena"), "settimana": True,
-            "montaggio": {"formato": v.get("formato"), "musica": v.get("musica")}}
+            "montaggio": {"formato": v.get("formato"), "musica": v.get("musica"),
+                          **({"foto_ids": [v["foto_id"]]} if v.get("foto_id") else {})}}
 
 
 def prenotati(state, escludi=None, lotto=None, scarti=None):
@@ -189,6 +240,8 @@ def uscita_altrove(slot, frase_id, state, dopo=""):
 
 # ------------------------------------------------------------------------------------------------ allo slot
 
+_FOTO = "foto_singola"       # = foto_giornata.FORMATO_SINGOLA (qui senza importare foto_giornata, che carica OpenCV)
+
 def reel_per_slot(slot, state, drive, work, videos):
     """pubblica.py: il reel gia' pronto per questo slot, nel formato che main usa dopo il montaggio; None = monta come
     prima. Mai un errore che fermi lo slot: chi chiama tiene il percorso di prima se qui qualcosa va storto."""
@@ -204,6 +257,10 @@ def reel_per_slot(slot, state, drive, work, videos):
         return None
     if uscita_altrove(slot, v.get("frase"), state, _scelto(v)):
         pubblica.log(f"Reel della settimana per {slot}: la frase {v.get('frase')} e' gia' uscita, lo monto adesso")
+        return None
+    if v.get("foto_id") and any(v["foto_id"] in ((h.get("montaggio") or {}).get("foto_ids") or [])
+                                for h in state.get("storico", []) if h.get("slot") != slot):
+        pubblica.log(f"Reel della settimana per {slot}: la foto {v.get('video')} e' gia' uscita, lo monto adesso")
         return None
     os.makedirs(work, exist_ok=True)
     out = os.path.join(work, "reel.mp4")
@@ -222,7 +279,8 @@ def reel_per_slot(slot, state, drive, work, videos):
                  f" preparato il {v.get('generato')})")
     return {"out": out, "src": os.path.join(work, "originale_non_scaricato"), "frase": dict(v["frase_dati"]),
             "info": info, "an": dict(v.get("an") or {"scena": v.get("scena")}), "nome": v.get("video"),
-            "video": video, "clip": clip, "spinto": True, "oriz": info.get("orizzontale"), "con_foto": False,
+            "video": video, "clip": clip, "spinto": True, "oriz": info.get("orizzontale"),
+            "con_foto": v.get("formato") == _FOTO,     # 21/11/2026: reel con una foto (foto_ids in montaggio)
             "settimana": dict(v, slot=slot)}
 
 
@@ -364,12 +422,57 @@ def aspetta_slot_in_corso(massimo_minuti=75):
     log("Attesa finita: scelgo lo stesso (i doppioni si ricontrollano dopo)")
 
 
-def pianifica(da=None, a=None, gruppi=GRUPPI, solo_scarti=False, prova=None):
+def _foto_disponibili(drive, state, lotto, scarti, slots):
+    """21/11/2026: le foto nuove per gli slot foto del piano (foto_giornata.candidate_singole), senza quelle gia' prese
+    da altri slot del lotto o uscite (e le loro raffiche), ne' quelle delle versioni scartate degli slot da rifare.
+    None se nel piano non ci sono slot foto o se l'elenco non si legge (allora reel col video, come prima)."""
+    if not any(slot_foto(s) for s in slots):
+        return None
+    try:
+        import foto_giornata
+        escl = foto_riservate(state, lotto=lotto, scarti=scarti)
+        escl |= {v.get("foto_id") for s, v in lotto["slot"].items() if s in slots and v.get("foto_id")}
+        quando = [v.get("foto_quando") for v in lotto["slot"].values() if v.get("foto_id") in escl]
+        cand = foto_giornata.candidate_singole(drive, escl - {None}, quando)
+        log(f"Foto nuove per gli slot foto: {len(cand)} (una per raffica)")
+        return cand
+    except Exception as e:
+        log("Foto non lette: gli slot foto restano reel col video:", e)
+        return None
+
+
+FOTO_STESSA_SESSIONE = 15 * 60    # secondi: foto scattate a meno di 15 minuti = stessa sessione (stessa posa, stesso posto)
+FOTO_SESSIONE_DISTANZA = 3        # una sessione non torna nei 3 slot foto dopo (circa un giorno), se ci sono altre foto
+
+
+def _scegli_foto(drive, cand, frase, s, scelte=None):
+    """La prima foto nuova adatta alla frase (mai sul viso, leggibile, taglio senza tagliare il viso) per lo slot s;
+    la toglie (con la sua raffica) da cand. Prima le foto di sessioni diverse da quelle degli ultimi
+    FOTO_SESSIONE_DISTANZA slot foto (scelte: le foto gia' scelte, in ordine). -> il file di Drive o None."""
+    import foto_giornata
+    cartella = os.path.join(LAVORO, "foto")
+    vicine = [foto_giornata._secondi(foto_giornata._quando(g)) for g in (scelte or [])[-FOTO_SESSIONE_DISTANZA:]]
+    stessa = lambda f: any(t and abs(foto_giornata._secondi(foto_giornata._quando(f)) - t) < FOTO_STESSA_SESSIONE
+                           for t in vicine)
+    ordine = sorted(cand, key=stessa)        # stabile: dentro i due gruppi resta "prima le piu' recenti"
+    f, _, _ = foto_giornata.prova_candidate(ordine, frase["gancio"],
+                                            lambda f: foto_giornata.scarica_singola(drive, f, cartella),
+                                            log=lambda *x: log(f"{s}:", *x))
+    if f:
+        cand[:] = [g for g in cand if g["id"] != f["id"] and not foto_giornata.stessa_raffica(f, g)]
+        if scelte is not None:
+            scelte.append(f)
+    return f
+
+
+def pianifica(da=None, a=None, gruppi=GRUPPI, solo_scarti=False, prova=None, solo_foto=False):
     """Sceglie in ordine (come farebbe pubblica.py slot dopo slot) video, frase, musica e formato di ogni slot da
     preparare; scrive _settimana/piano.json e mette gli slot "in_preparazione" in settimana.json (prenotano subito frasi e
-    video, cosi' pubblica.py non li riprende mentre si monta). Restituisce il numero di slot da montare."""
+    video, cosi' pubblica.py non li riprende mentre si monta). Restituisce il numero di slot da montare.
+    21/11/2026: negli slot foto (slot_foto) il reel con una foto nuova, se ce n'e' una adatta alla frase; solo_foto =
+    solo gli slot foto dell'intervallo (prove)."""
     import pubblica
-    if os.environ.get("GITHUB_ACTIONS") == "true":
+    if os.environ.get("GITHUB_ACTIONS") == "true" and not PROVA:
         aspetta_slot_in_corso()
     if solo_scarti:     # prima: manifest e file delle versioni scartate (dopo, la voce dello slot cambia)
         segna_scartati_su_drive()
@@ -384,6 +487,8 @@ def pianifica(da=None, a=None, gruppi=GRUPPI, solo_scarti=False, prova=None):
         slots = [s for s in slot_tra(da, a) if not pronto(s, lotto, scarti)
                  and not _attivo(s, lotto["slot"].get(s) or {}, scarti)]
     slots = [s for s in slots if s not in fatti and t_slot(s) > adesso + datetime.timedelta(minutes=ANTICIPO_MIN)]
+    if solo_foto:
+        slots = [s for s in slots if slot_foto(s)]
     log(f"Slot da preparare: {len(slots)}" + (f" ({slots[0]} -> {slots[-1]})" if slots else ""))
     os.makedirs(LAVORO, exist_ok=True)
     if not slots:
@@ -411,6 +516,8 @@ def pianifica(da=None, a=None, gruppi=GRUPPI, solo_scarti=False, prova=None):
     vista = json.loads(json.dumps({k: state[k] for k in ("musica_recenti", "temi_recenti", "formato_ultimo")
                                    if k in state}))
     vista = dict(state, **vista)
+    foto_cand = _foto_disponibili(drive, state, lotto, scarti, slots)
+    foto_scelte = []
     piano, nomi = [], {}
     nuovo_lotto = prova or f"Lotto {slots[0][:10]}"
     for i, s in enumerate(slots):
@@ -419,9 +526,18 @@ def pianifica(da=None, a=None, gruppi=GRUPPI, solo_scarti=False, prova=None):
         if sc is None:
             log(f"{s}: niente da preparare (pubblica.py lo montera' allo slot)")
             continue
-        formato = pubblica.scegli_formato(s, dict(vista, storico=vista["storico"] + finte), sc["frase"], sc["an"],
-                                          sc["spinto"])
-        vista["formato_ultimo"] = formato
+        foto = _scegli_foto(drive, foto_cand, sc["frase"], s, foto_scelte) if foto_cand and slot_foto(s) else None
+        if foto:             # 21/11/2026: reel con una foto; il video scelto resta in coda per gli slot dopo
+            import foto_giornata
+            nome_f = f"Foto {foto.get('name')}"
+            sc = dict(sc, video=None, clip=None, riserva_arch=[], an={"scena": None}, nome=nome_f, fonte_id=None)
+            formato = _FOTO
+        else:
+            if slot_foto(s):
+                log(f"{s}: slot foto, ma nessuna foto nuova adatta: reel col video")
+            formato = pubblica.scegli_formato(s, dict(vista, storico=vista["storico"] + finte), sc["frase"], sc["an"],
+                                              sc["spinto"])
+            vista["formato_ultimo"] = formato
         if sc["music"]:
             vista["musica_recenti"] = (vista["musica_recenti"] + [os.path.basename(sc["music"])])[-60:]
         vista["temi_recenti"] = (vista["temi_recenti"] + [sc["frase"].get("tema")])[-10:]
@@ -431,6 +547,8 @@ def pianifica(da=None, a=None, gruppi=GRUPPI, solo_scarti=False, prova=None):
                 "testo": sc["frase"].get("gancio"), "da_archivio": bool(sc["clip"]),
                 "registrato": sc["an"].get("registrato"), "scena": sc["an"].get("scena"), "formato": formato,
                 "musica": os.path.basename(sc["music"]) if sc["music"] else None}
+        if foto:
+            voce.update(foto_id=foto["id"], foto_quando=foto_giornata._quando(foto) or None)
         finte.append(finta(s, voce))
         vecchia = lotto["slot"].get(s) or {}
         versione = int(vecchia.get("versione") or 0) + 1
@@ -441,12 +559,15 @@ def pianifica(da=None, a=None, gruppi=GRUPPI, solo_scarti=False, prova=None):
                       "an": sc["an"], "nome": sc["nome"], "fonte_id": sc["fonte_id"], "lato_frase": sc["lato_frase"],
                       "frase_via": sc["frase_via"], "frase": sc["frase"],
                       "music": os.path.relpath(sc["music"], HERE) if sc["music"] else None,
-                      "md5": (sc["video"] or {}).get("md5Checksum")})
+                      "md5": (sc["video"] or {}).get("md5Checksum"),
+                      "foto": foto and {k: foto.get(k) for k in ("id", "name", "createdTime", "imageMediaMetadata",
+                                                                  "appProperties")}})
         ora = datetime.datetime.now().isoformat(timespec="minutes")
         lotto["slot"][s] = dict(voce, stato="in_preparazione", versione=versione, lotto=lotto_nome,
                                 fonte_id=sc["fonte_id"], generato=ora, scelto=ora, file={})
         nomi[s] = sc["frase"]["id"]
-        log(f"{s}: {sc['frase']['id']} su {sc['nome']} ({'archivio' if sc['clip'] else 'nuovo'}), {formato}")
+        log(f"{s}: {sc['frase']['id']} su {sc['nome']} ({'foto' if foto else 'archivio' if sc['clip'] else 'nuovo'}),"
+            f" {formato}")
     # la cartella del lotto la crea solo questo lavoro (i lavori in parallelo ne creerebbero piu' d'una)
     cartelle_lotto = {}
     for p in piano:
@@ -497,7 +618,31 @@ def verifica(info, out, tt):
             male.append(f"scala {tv['scala']}")
     if os.path.getsize(tt) > MB_TIKTOK * 1e6:
         male.append(f"TikTok {os.path.getsize(tt) / 1e6:.1f} MB")
+    if (info or {}).get("formato") == _FOTO:     # 21/11/2026: la sua foto mai modificata, ferma, una sola
+        fo = info.get("foto") or {}
+        if not (fo.get("intatta") is True and fo.get("modifiche") == [] and fo.get("movimento") == "nessuno"):
+            male.append("foto modificata o in movimento")
+        if fo.get("differenza") is None or float(fo["differenza"]) > 3.0:
+            male.append(f"foto diversa dall'originale ({fo.get('differenza')})")
+        if len(info.get("foto_ids") or []) != 1:
+            male.append(f"foto: {len(info.get('foto_ids') or [])} invece di una")
+        if (info.get("stile_centro") or {}).get("scurito"):
+            male.append("foto scurita")
     return male, round(durata, 3)
+
+
+def _monta_foto(sc, drive, work, slot):
+    """21/11/2026: il reel con la foto scelta dal piano (sc["foto"]), nello stesso formato di pubblica.monta_reel."""
+    import pubblica, foto_giornata
+    f = sc["foto"]
+    frase = dict(sc["frase"], serie=pubblica.etichetta_serie(slot))
+    src = pubblica.con_tentativi(lambda: foto_giornata.scarica_singola(drive, f, work), "Download della foto", drive)
+    out = os.path.join(work, "reel.mp4")
+    info = foto_giornata.make_singola(src, frase["gancio"], out, sc.get("music"), f)
+    pubblica.segna_prove(info, True, sc.get("lato_frase"), sc.get("frase_via"), (frase.get("id"), frase.get("gancio")),
+                         frase, src)
+    return {"out": out, "src": src, "frase": frase, "info": info, "an": {"scena": None}, "nome": sc["nome"],
+            "fonte_id": None, "video": None, "clip": None, "spinto": sc.get("spinto"), "oriz": False, "con_foto": True}
 
 
 def monta(gruppo):
@@ -521,8 +666,11 @@ def monta(gruppo):
         try:
             sc = dict(p, music=os.path.join(HERE, p["music"]) if p.get("music") else None)
             vista = dict(state, formato_ultimo=None)
-            m = pubblica.monta_reel(sc, vista, drive, work, [], s, lambda: None, formato=p["formato"],
-                                    scadenza=time.time() + MINUTI_REEL * 60)
+            if p["formato"] == _FOTO:      # 21/11/2026: reel con una foto (foto_giornata.make_singola)
+                m = _monta_foto(sc, drive, work, s)
+            else:
+                m = pubblica.monta_reel(sc, vista, drive, work, [], s, lambda: None, formato=p["formato"],
+                                        scadenza=time.time() + MINUTI_REEL * 60)
             frase, info, out = m["frase"], m["info"], m["out"]
             info["orizzontale"] = False if m["con_foto"] else m["oriz"] is True
             voce = info.get("formato") == "parlato" or (info.get("formato") == "momento" and info.get("audio_originale"))
@@ -560,12 +708,15 @@ def monta(gruppo):
                        formato=info.get("formato"), musica=info.get("musica"), musica_screenshot=brano,
                        voce=bool(voce), testo_viso=info.get("testo_viso"), montaggio=info, frase_dati=frase_dati,
                        mb_tiktok=round(os.path.getsize(tt) / 1e6, 2), cartella=cart, file=file,
+                       **({"foto_id": info["foto"].get("id"), "foto_quando": info["foto"].get("quando"),
+                           "foto": info["foto"]} if info.get("formato") == _FOTO else {}),
                        generato=datetime.datetime.now().isoformat(timespec="minutes"),
                        secondi=round(time.time() - t0))
             manifest = {k: ris.get(k) for k in ("slot", "versione", "lotto", "stato", "problemi", "frase", "testo",
                                                 "didascalia", "video", "fonte_id", "da_archivio", "scena", "formato",
                                                 "durata", "musica", "musica_screenshot", "voce", "testo_viso",
-                                                "mb_tiktok", "generato", "file")}
+                                                "mb_tiktok", "generato", "file")
+                        + (("foto",) if ris.get("foto") else ())}
             mpath = os.path.join(work, "manifest.json")
             with open(mpath, "w", encoding="utf-8") as f:
                 json.dump(manifest, f, ensure_ascii=False, indent=1)
@@ -729,13 +880,21 @@ if __name__ == "__main__":
 
     cmd = a[0] if a else ""
     if cmd == "pianifica":
-        n = pianifica(opz("--da"), opz("--a"), int(opz("--gruppi", GRUPPI)), "--scarti" in a, opz("--lotto"))
+        n = pianifica(opz("--da"), opz("--a"), int(opz("--gruppi", GRUPPI)), "--scarti" in a, opz("--lotto"),
+                      "--solo-foto" in a)
         print(f"DA_MONTARE={n}")
     elif cmd == "monta":
         monta(int(opz("--gruppo", "0")))
     elif cmd == "registra":
         registra()
-        segna_scartati_su_drive()
+        if not PROVA:        # prova: il registro vero e i suoi file su Drive non si toccano
+            segna_scartati_su_drive()
+    elif cmd == "foto":      # gli slot foto: python settimana.py foto [AAAA-MM-GG] [giorni]
+        g0 = datetime.date.fromisoformat(a[1]) if len(a) > 1 else ora_roma().date()
+        for k in range(int(a[2]) if len(a) > 2 else 7):
+            g = g0 + datetime.timedelta(days=k)
+            ss = [x[11:] for x in slot_tra(f"{g} 00:00", f"{g} 23:00") if slot_foto(x)]
+            print(f"{g} ({'lun mar mer gio ven sab dom'.split()[g.weekday()]}): {', '.join(ss) or '-'}")
     elif cmd == "scarta" and len(a) >= 3:
         scarta(f"{a[1]} {a[2]}", " ".join(a[3:]).replace("--locale", "").strip(), invia="--locale" not in a)
     elif cmd == "stato":

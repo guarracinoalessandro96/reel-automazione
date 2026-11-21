@@ -1268,3 +1268,250 @@ def segna_usate(drive, ids):
                 break
             except Exception:
                 time.sleep(5)
+
+
+# ------------------------------------------------------------------ UNA FOTO SOLA (21/11/2026)
+# 21/11/2026 (Alessandro: nei reel della settimana anche reel FOTO, "ogni 2 reel con i video, 1 reel con la foto"): UNA
+# sua foto della cartella CARTELLA, ferma per 7 s (overlay.DURATA_REEL), la frase intera sopra nello stile al centro
+# (Source Serif Pro al 90%) e la musica come i video (YouTube: Audio Library; Instagram: brano di tendenza scelto allo
+# slot; TikTok/Facebook: audio nativo scelto quando si programma). Quali slot: settimana.slot_foto.
+# LA FOTO NON SI MODIFICA MAI (memoria "media-mai-modificati"): niente raddrizzatura, filtri, "migliora", "virale",
+# scurimento o schiarita; solo il taglio 9:16 (spostato quanto basta per non tagliare il viso) e il ridimensionamento.
+# Niente zoom ne' scorrimento: foto ferma. Sopra, come sui suoi video intatti (overlay.INTATTI_DAL), solo la scritta con
+# la sua ombra morbida (stile_centro.con_sfumatura: fa parte della scritta). Il montaggio confronta poi tre fotogrammi
+# del reel con la foto tagliata fuori dalla scritta (differenza media <= SINGOLA_DIFFERENZA_MAX livelli su 255).
+# La frase MAI sul viso: gli stessi rilevatori dei video (viso_testo.visi_frames, YuNet + Haar, piu' overlay.
+# detect_faces) sulla foto tagliata, vista come un video fermo (lo stesso fotogramma SINGOLA_FOTOGRAMMI volte); la frase
+# si sposta, poi si rimpicciolisce fino all'80% (stile_centro.SCALA_VISO_MIN); se non basta: un'altra foto.
+# Foto mai riusate: escono solo foto nuove (dopo l'uscita vanno in USATE, segna_usate); finite le foto, lo slot torna
+# a un reel col video. Delle foto della stessa raffica (meno di SINGOLA_RAFFICA s) ne esce una sola.
+FORMATO_SINGOLA = "foto_singola"
+SINGOLA_FOTOGRAMMI = 3        # una foto ferma = un video fermo: ogni viso trovato e' "confermato" (viso_testo)
+SINGOLA_RAFFICA = 10          # secondi: due scatti piu' vicini sono la stessa foto (raffica dell'iPhone)
+SINGOLA_FPS = 30
+SINGOLA_DIFFERENZA_MAX = 3.0  # livelli (0-255) di differenza media ammessi fuori dalla scritta (compressione video)
+SINGOLA_LEGGIBILE_MAX = 0.62  # luce media (0-1) dietro le lettere, con l'ombra: oltre la frase bianca non si legge
+SINGOLA_COPERTINA_MS = 3500
+
+
+class FotoNonAdatta(Exception):
+    """La foto non va bene per questa frase (viso tagliato, foto troppo piccola, testo illeggibile...)."""
+
+
+def _quando(f):
+    return ((f.get("imageMediaMetadata") or {}).get("time", "") or "").replace(":", "-", 2) or f.get("createdTime", "")
+
+
+def stessa_raffica(f, g):
+    t, u = _secondi(_quando(f)), _secondi(_quando(g))
+    return bool(t and u and abs(t - u) < SINGOLA_RAFFICA)
+
+
+def candidate_singole(drive, escludi=(), escludi_quando=()):
+    """Le foto NUOVE per i reel con una foto: in CARTELLA, non usate, non scartate (mosse), non fallite 2 volte, non in
+    `escludi` (id gia' presi da uno slot del lotto o gia' usciti) e non della stessa raffica di una foto esclusa
+    (escludi_quando = loro date di scatto). Dalla piu' recente ("prima i contenuti nuovi"); una sola per raffica."""
+    escludi = set(escludi)
+    tutte = [f for fs in _per_giorno(_elenco(drive)).values() for f in fs]
+    vietati = [t for t in [_secondi(q) for q in escludi_quando if q] +
+               [_secondi(_quando(f)) for f in tutte if f["id"] in escludi] if t]
+    out = []
+    for f in sorted(tutte, key=lambda f: (_quando(f), f.get("name", "")), reverse=True):
+        t = _secondi(_quando(f))
+        if f["id"] in escludi or (t and any(abs(t - v) < SINGOLA_RAFFICA for v in vietati)):
+            continue
+        if any(stessa_raffica(f, g) for g in out):
+            continue
+        out.append(f)
+    return out
+
+
+def _visi_taglio(im):
+    """I visi per decidere il taglio 9:16 (frazioni della foto intera): visi_foto (con un occhio, anche inclinati) piu'
+    i visi sicuri di YuNet (punteggio >= viso_testo.SOGLIA_YN_SOLO, in ogni verso). Mai un errore: [] se non riesce."""
+    visi = []
+    try:
+        visi += visi_foto(im, ruotati=False, occhi=True, inclinati=True)
+    except Exception as e:
+        print("Foto: visi per il taglio non cercati (visi_foto):", str(e)[:150])
+    try:
+        import cv2, numpy as np, viso_testo
+        p = ImageOps.contain(im, (1280, 1280))
+        bgr = cv2.cvtColor(np.asarray(p), cv2.COLOR_RGB2BGR)
+        for b, sc, _ in viso_testo.visi_yunet(bgr):
+            b = tuple(max(0.0, min(1.0, float(x))) for x in b)
+            if sc >= viso_testo.SOGLIA_YN_SOLO and not any(ov._overlap(b, v) > 0 for v in visi):
+                visi.append(b)
+    except Exception as e:
+        print("Foto: visi per il taglio non cercati (YuNet):", str(e)[:150])
+    return sorted(visi, key=lambda g: -(g[2] - g[0]) * (g[3] - g[1]))
+
+
+def prepara_singola(src):
+    """La foto -> (immagine RGB 9:16 a ov.LATO_USCITA, dati del taglio). Solo taglio e ridimensionamento: niente
+    raddrizzatura, niente colore, niente luce. FotoNonAdatta se e' troppo piccola o se il taglio taglierebbe il viso."""
+    W, H = ov.LATO_USCITA, int(ov.LATO_USCITA * 16 / 9)
+    im = ImageOps.exif_transpose(Image.open(src)).convert("RGB")
+    if min(im.size) < LATO_MINIMO:
+        raise FotoNonAdatta(f"foto troppo piccola ({im.width}x{im.height})")
+    visi = _visi_taglio(im)
+    x0, y0, w, h, intero = taglio(im.width, im.height, 0.0, visi, 1.0)
+    if not intero:
+        raise FotoNonAdatta("il taglio 9:16 taglierebbe il viso")
+    img = im.resize((W, H), Image.LANCZOS, box=(x0, y0, x0 + w, y0 + h))
+    return img, {"originale": [im.width, im.height], "taglio": [round(x0), round(y0), round(w), round(h)],
+                 "visi_taglio": len(visi)}
+
+
+def testo_singola(img, frase):
+    """La frase sulla foto tagliata, mai sul viso, come sui video. -> (scritta RGBA con la sua ombra, testo_viso,
+    stile_centro). Alza stile_centro.TestoSulViso se non c'e' posto (anche all'80%) e FotoNonAdatta se dietro le lettere
+    la foto e' troppo chiara per leggerle."""
+    import cv2, numpy as np, stile_centro, viso_testo
+    W, H = img.size
+    if not (ov.STILE_CENTRO and stile_centro.MAI_SUL_VISO):
+        raise FotoNonAdatta("stile al centro o 'mai sul viso' spenti: niente reel con la foto")
+    bgr = cv2.cvtColor(np.asarray(img.resize(viso_testo.LATO, Image.BILINEAR)), cv2.COLOR_RGB2BGR)
+    zona, tv = viso_testo.visi_frames([bgr] * SINGOLA_FOTOGRAMMI)
+    zona = list(zona) + [tuple(float(x) for x in b) for b in ov.detect_faces([bgr])]
+    ov.ULTIMO_STILE = None
+    scritta, _, _ = ov.build_overlay(W, H, frase, zona)
+    if ov.ULTIMO_STILE != stile_centro.NOME_STILE:
+        raise FotoNonAdatta(f"scritta non nello stile al centro ({ov.ULTIMO_STILE})")
+    if viso_testo.lettere_sul_viso(scritta, zona):
+        raise stile_centro.TestoSulViso("lettere della frase sul viso")
+    tv.update(stile_centro.ULTIMO.get("viso") or {})
+    tv.update(controllo="lettere_fuori_dai_visi", foto_ferma=SINGOLA_FOTOGRAMMI)
+    luce, tutto, alte = stile_centro.misura_immagine(img)
+    sfuma = stile_centro.sfumatura_per([luce])
+    centro = stile_centro.dati(0.0, luce, sfuma)
+    centro["intatto"] = True
+    scritta = stile_centro.con_sfumatura(scritta, sfuma)
+    # leggibile? la luce della foto (con l'ombra sopra) tra le lettere, dentro il riquadro della frase
+    a = np.asarray(scritta.getchannel("A"))
+    lettere = a >= 200
+    ys, xs = np.nonzero(lettere)
+    if len(xs):
+        x0, x1, y0, y1 = int(xs.min()), int(xs.max()) + 1, int(ys.min()), int(ys.max()) + 1
+        sotto = Image.alpha_composite(img.crop((x0, y0, x1, y1)).convert("RGBA"), scritta.crop((x0, y0, x1, y1)))
+        luma = np.asarray(sotto.convert("L"), dtype=np.float32) / 255
+        fondo = luma[~lettere[y0:y1, x0:x1]]
+        chiaro = float(fondo.mean()) if fondo.size else 0.0
+        centro["luce_dietro_lettere"] = round(chiaro, 3)
+        if chiaro > SINGOLA_LEGGIBILE_MAX:
+            raise FotoNonAdatta(f"frase poco leggibile (luce dietro le lettere {chiaro:.2f})")
+    return scritta, tv, centro
+
+
+def adatta_singola(src, frase):
+    """Prova se la foto va bene per la frase (taglio + scritta), senza montare. -> (immagine, scritta, dati)."""
+    img, taglio_d = prepara_singola(src)
+    scritta, tv, centro = testo_singola(img, frase)
+    return img, scritta, {"taglio": taglio_d, "testo_viso": tv, "stile_centro": centro}
+
+
+def _differenza(dst, img, scritta, t):
+    """Differenza media (livelli 0-255) tra il fotogramma del reel al secondo t e la foto tagliata, dove la scritta (con
+    la sua ombra) non c'e': la foto deve essere la stessa."""
+    import numpy as np
+    W, H = img.size
+    r = subprocess.run([ov.FFMPEG, "-v", "error", "-ss", f"{t:.2f}", "-i", dst, "-frames:v", "1", "-vf",
+                        f"scale={W}:{H}:in_color_matrix=bt709:in_range=tv:flags=lanczos+accurate_rnd+full_chroma_int,"
+                        "format=rgb24", "-f", "rawvideo", "-"], capture_output=True, timeout=120)
+    fr = np.frombuffer(r.stdout, dtype=np.uint8)
+    if fr.size != W * H * 3:
+        raise RuntimeError("fotogramma del reel non letto")
+    fr = fr.reshape(H, W, 3).astype(np.int16)
+    fuori = np.asarray(scritta.getchannel("A")) < 3
+    d = np.abs(fr - np.asarray(img, dtype=np.int16)).mean(axis=2)[fuori]
+    return round(float(d.mean()), 2) if d.size else 0.0
+
+
+def make_singola(src, frase, dst, music=None, foto=None, pronta=None):
+    """Il reel con UNA foto: 7 s, foto ferma e intatta, frase al centro mai sul viso, musica (YouTube: Audio Library).
+    foto = il file di Drive (id, name, imageMediaMetadata...); pronta = (immagine, scritta, dati) di adatta_singola.
+    -> info per montaggio (stato.json / settimana.json). Errori: FotoNonAdatta, TestoSulViso, RuntimeError."""
+    import stile_centro
+    foto = foto or {}
+    img, scritta, dati = pronta or adatta_singola(src, frase)
+    W, H = img.size
+    D = float(ov.DURATA_REEL)
+    tmp = tempfile.mkdtemp()
+    try:
+        p_img, p_testo = os.path.join(tmp, "foto.png"), os.path.join(tmp, "testo.png")
+        img.save(p_img, compress_level=1)
+        scritta.save(p_testo, compress_level=1)
+        cmd = [ov.FFMPEG, "-y", "-v", "error", "-loop", "1", "-framerate", str(SINGOLA_FPS), "-t", f"{D + 0.5:.2f}",
+               "-i", p_img, "-loop", "1", "-framerate", str(SINGOLA_FPS), "-t", f"{D + 0.5:.2f}", "-i", p_testo]
+        g = ("[0:v]format=rgba[f];[1:v]format=rgba[t];[f][t]overlay=0:0:format=rgb[o];"
+             "[o]scale=out_color_matrix=bt709:out_range=tv:flags=lanczos+accurate_rnd+full_chroma_int,"
+             "format=yuv420p,setsar=1[v]")
+        amap = ["-an"]
+        if music and os.path.exists(music):
+            cmd += ["-stream_loop", "-1", "-i", music]
+            g += f";[2:a]volume={ov.MUSIC_VOL},{ov.LIMITATORE},afade=t=out:st={D - 0.3:.2f}:d=0.3[a]"
+            amap = ["-map", "[a]"]
+        cmd += ["-filter_complex", g, "-map", "[v]", *amap, "-t", f"{D:.3f}", "-r", str(SINGOLA_FPS),
+                "-c:v", "libx264", "-preset", "medium", "-tune", "stillimage", "-crf", "17", "-profile:v", "high",
+                "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709", "-color_range", "tv",
+                "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-movflags", "+faststart", dst]
+        r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore", timeout=ov.TEMPO_MAX_MONTAGGIO)
+        if r.returncode != 0 or not os.path.exists(dst) or os.path.getsize(dst) < 50_000:
+            raise RuntimeError("foto_singola: " + r.stderr[-400:])
+        diff = max(_differenza(dst, img, scritta, t) for t in (0.5, D / 2, D - 0.3))
+        if diff > SINGOLA_DIFFERENZA_MAX:
+            raise RuntimeError(f"foto_singola: la foto nel reel non e' quella originale (differenza {diff})")
+        durata = ov.probe(dst)[0]
+        tv = dati["testo_viso"]
+        return {"formato": FORMATO_SINGOLA, "durata": round(durata, 2),
+                "musica": os.path.basename(music) if music else None,
+                "testo": tv.get("posizione") or "centro", "testo_viso": tv, "stile_centro": dati["stile_centro"],
+                "scritta": stile_centro.NOME_STILE, "stacchi": 1, "testi": 1, "risoluzione": f"{W}x{H}",
+                "copertina_ms": SINGOLA_COPERTINA_MS, "orizzontale": False,
+                "foto": dict(dati["taglio"], id=foto.get("id"), nome=foto.get("name"), quando=_quando(foto) or None,
+                             intatta=True, modifiche=[], movimento="nessuno", differenza=diff),
+                "foto_ids": [foto["id"]] if foto.get("id") else [], "foto_doppie": 0,
+                "foto_giorno": (_quando(foto) or "")[:10] or None}
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def prova_candidate(candidate, frase, scarica, quante=None, log=print):
+    """La prima foto di `candidate` che va bene per la frase (adatta_singola). scarica(f) -> percorso locale.
+    -> (foto, percorso, pronta) oppure (None, None, None). Le foto che non vanno per QUESTA frase restano in coda."""
+    for f in list(candidate)[:quante or len(candidate)]:
+        try:
+            p = scarica(f)
+            return f, p, adatta_singola(p, frase)
+        except FotoNonAdatta as e:
+            log(f"Foto {f.get('name')}: {e}")
+        except Exception as e:
+            if type(e).__name__ == "TestoSulViso":
+                log(f"Foto {f.get('name')}: la frase toccherebbe il viso anche all'80%")
+            else:
+                log(f"Foto {f.get('name')}: non usata ({str(e)[:150]})")
+    return None, None, None
+
+
+def scarica_singola(drive, f, work):
+    """Scarica la foto f di CARTELLA in work (una volta sola) -> percorso."""
+    os.makedirs(work, exist_ok=True)
+    p = os.path.join(work, "foto_" + f["id"] + (os.path.splitext(f.get("name") or "")[1].lower() or ".jpg"))
+    if not os.path.exists(p) or os.path.getsize(p) == 0:
+        drive.download(f["id"], p, folder=CARTELLA)
+    return p
+
+
+def reel_singola(drive, frase, dst, music, work, escludi=(), escludi_quando=(), quante=8, log=print):
+    """pubblica.py allo slot (riserva, se il reel pronto della settimana manca): sceglie e monta il reel con una foto.
+    -> info, oppure None (nessuna foto adatta: allora il reel col video, come prima)."""
+    cand = candidate_singole(drive, escludi, escludi_quando)
+    if not cand:
+        log("Foto: nessuna foto nuova in 'Foto da pubblicare': reel col video")
+        return None
+    f, p, pronta = prova_candidate(cand, frase, lambda f: scarica_singola(drive, f, work), quante, log)
+    if not f:
+        log("Foto: nessuna foto adatta a questa frase: reel col video")
+        return None
+    log(f"Foto: {f.get('name')} ({_quando(f)})")
+    return make_singola(p, frase, dst, music, f, pronta)

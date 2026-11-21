@@ -34,9 +34,19 @@ on:
         description: "Solo i sostituti degli slot scartati"
         type: boolean
         default: false
+      # 21/11/2026: PROVA (es. "Prova foto 2026-12-02"): codice del ramo scelto, registro a parte
+      # (_settimana/lotto_prova.json, mai salvato), file in quella cartella di "Settimana - reel pronti", nessun commit
+      prova:
+        description: "Prova: nome della cartella di prova (vuoto = lotto vero)"
+        type: string
+        default: ""
+      solo_foto:
+        description: "Solo gli slot foto dell'intervallo"
+        type: boolean
+        default: false
 
 concurrency:
-  group: settimana
+  group: ${{ inputs.prova && 'settimana-prova' || 'settimana' }}
   cancel-in-progress: false
 
 permissions:
@@ -49,6 +59,7 @@ env:
   DRIVE_FOLDER_DA_PUBBLICARE: ${{ secrets.DRIVE_FOLDER_DA_PUBBLICARE }}
   DRIVE_FOLDER_PRONTI: ${{ secrets.DRIVE_FOLDER_PRONTI }}
   DRIVE_FOLDER_PUBBLICATI: ${{ secrets.DRIVE_FOLDER_PUBBLICATI }}
+  SETTIMANA_PROVA: ${{ inputs.prova && '1' || '' }}
 
 jobs:
   pianifica:
@@ -60,7 +71,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ inputs.prova && github.ref_name || 'main' }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -74,16 +85,21 @@ jobs:
           A: ${{ inputs.a }}
           GRUPPI: ${{ inputs.gruppi || '12' }}
           SCARTI: ${{ (github.event_name == 'push' || inputs.scarti) && '1' || '' }}
+          PROVA: ${{ inputs.prova }}
+          SOLO_FOTO: ${{ inputs.solo_foto && '1' || '' }}
         run: |
           ARGS=(--gruppi "$GRUPPI")
           [ -n "$DA" ] && ARGS+=(--da "$DA")
           [ -n "$A" ] && ARGS+=(--a "$A")
           [ -n "$SCARTI" ] && ARGS+=(--scarti)
+          [ -n "$PROVA" ] && ARGS+=(--lotto "$PROVA")
+          [ -n "$SOLO_FOTO" ] && ARGS+=(--solo-foto)
           python settimana.py pianifica "${ARGS[@]}" | tee piano.log
           N=$(grep -o 'DA_MONTARE=[0-9]*' piano.log | cut -d= -f2)
           echo "n=${N:-0}" >> "$GITHUB_OUTPUT"
           echo "gruppi=$(python -c "import json;print(json.dumps(json.load(open('_settimana/piano.json'))['gruppi']))")" >> "$GITHUB_OUTPUT"
       - name: Prenota subito frasi e video (settimana.json)
+        if: ${{ !inputs.prova }}
         run: |
           git config user.name "reel-bot"; git config user.email "reel-bot@users.noreply.github.com"
           git add settimana.json
@@ -94,7 +110,9 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: piano
-          path: _settimana/piano.json
+          path: |
+            _settimana/piano.json
+            _settimana/lotto_prova.json
 
   monta:
     needs: pianifica
@@ -109,7 +127,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ inputs.prova && github.ref_name || 'main' }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -144,7 +162,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ inputs.prova && github.ref_name || 'main' }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -159,7 +177,18 @@ jobs:
           pattern: risultati-*
           path: _settimana/risultati
           merge-multiple: true
+      - name: Registra la prova (registro a parte, nessun commit)
+        if: ${{ inputs.prova }}
+        run: |
+          python settimana.py registra
+          python settimana.py stato | tail -n 200
+      - uses: actions/upload-artifact@v4
+        if: ${{ inputs.prova }}
+        with:
+          name: lotto-prova
+          path: _settimana/lotto_prova.json
       - name: Registra in settimana.json
+        if: ${{ !inputs.prova }}
         run: |
           git config user.name "reel-bot"; git config user.email "reel-bot@users.noreply.github.com"
           for i in 1 2 3 4 5; do
