@@ -412,174 +412,1382 @@
    "voce": false
   },
   "2026-11-24 00:00": {
+   "an": {
+    "compagnia": "solo",
+    "fascia": "palestra",
+    "scena": "palestra"
+   },
+   "cartella": "1y0Zk0ikmgvjpjsPhhU-2kEn4ta_v2U6j",
    "da_archivio": true,
-   "file": {},
+   "didascalia": "Se non controlli la tua mente, qualcun altro lo farà",
+   "durata": 7.0,
+   "file": {
+    "anteprima": "1nP1I9dAutqf8MxtpfLTWuATZu5OYkVkw",
+    "manifest": "1_hhmAQiL3zsJnc3s80PpvKmAz1Bn28j2",
+    "tiktok": "1QhIvQ7ZP0sl7aXi7IYwN80wQ1LkpczJu",
+    "youtube": "1OjtfnRfWWztYhYr-h49U5qO822keOpDj"
+   },
    "fonte_id": "1Dvdi1PK-wTKhXcDuM6STB2Mq6FUojSqR",
    "formato": "dieci",
    "frase": "MIE-5b68cb77",
-   "generato": "2026-11-21T12:48",
+   "frase_dati": {
+    "autore": "",
+    "gancio": "Se non controlli la tua mente, qualcun altro lo farà.",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "id": "MIE-5b68cb77",
+    "serie": "GIORNO 328 / 365",
+    "tema": "mentalita",
+    "virale": false
+   },
+   "generato": "2026-11-21T12:53",
    "lotto": "Lotto 2026-11-24",
+   "mb_tiktok": 7.75,
+   "md5": null,
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 44.17,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.173
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 10,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "whoop_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 181,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 113,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.42,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.5,
+     "sfumatura": 0.31,
+     "viso": {
+      "corpo": 113,
+      "corpo_base": 113,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 25,
+      "y": 0.708
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 113,
+     "corpo_base": 113,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.0,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 25,
+     "y": 0.708
+    },
+    "viso_prima_scena": 4
+   },
    "musica": "whoop_1.m4a",
+   "musica_screenshot": null,
+   "problemi": [],
    "registrato": null,
    "scena": "palestra",
-   "stato": "in_preparazione",
+   "secondi": 212,
+   "stato": "pronto",
    "tema": "mentalita",
    "testo": "Se non controlli la tua mente, qualcun altro lo farà.",
+   "testo_viso": {
+    "con_viso": 28,
+    "con_viso_yunet": 28,
+    "controllo": "lettere_fuori_dai_visi",
+    "corpo": 113,
+    "corpo_base": 113,
+    "fotogrammi": 28,
+    "guardato": [
+     [
+      0.0,
+      7.0
+     ]
+    ],
+    "posizione": "basso",
+    "righe": 3,
+    "rilevatore": "yunet+haar",
+    "scala": 1.0,
+    "visi": 25,
+    "y": 0.708
+   },
    "versione": 1,
-   "video": "IMG_4286.MOV"
+   "video": "IMG_4286.MOV",
+   "voce": false
   },
   "2026-11-24 06:00": {
+   "an": {
+    "compagnia": "solo",
+    "fascia": "palestra",
+    "scena": "palestra"
+   },
+   "cartella": "1y0Zk0ikmgvjpjsPhhU-2kEn4ta_v2U6j",
    "da_archivio": true,
-   "file": {},
+   "didascalia": "Sii orgoglioso di te per tutte le volte in cui sei andato avanti anche quando dentro di te stavi combattendo battaglie di cui nessuno conosceva l'esistenza. Per ciò che hai attraversato in silenzio. Per le ferite che hai imparato a custodire. Per tutte le volte in cui hai trovato la forza proprio quando pensavi di averla finita. Forse nessuno sa quanto ti è costato arrivare fin qui. Ma tu sì. E questo dovrebbe bastare per essere fiero di te",
+   "durata": 7.0,
+   "file": {
+    "anteprima": "1dH_JYmcDBUGCRPcWdiQbkvMF63tmE16z",
+    "manifest": "16786NEM7e8XQ8QsLFAuOCEO8RKSc0lI4",
+    "tiktok": "1n5dpuwJiaDSV36AEMkb1gQ3Og1E5My5Z",
+    "youtube": "1JVkPikgtEn4fU6HJl46SOdLO28Ku5HC2"
+   },
    "fonte_id": "1XySlsRReGeTwlbVlIctzRJDJBUZ2yHi0",
    "formato": "intero",
    "frase": "MIE-11bed9d2",
-   "generato": "2026-11-21T12:48",
+   "frase_dati": {
+    "autore": "",
+    "gancio": "Sii orgoglioso di te per tutte le volte in cui sei andato avanti anche quando dentro di te stavi combattendo battaglie di cui nessuno conosceva l'esistenza. Per ciò che hai attraversato in silenzio. Per le ferite che hai imparato a custodire. Per tutte le volte in cui hai trovato la forza proprio quando pensavi di averla finita. Forse nessuno sa quanto ti è costato arrivare fin qui. Ma tu sì. E questo dovrebbe bastare per essere fiero di te.",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "id": "MIE-11bed9d2",
+    "serie": "GIORNO 328 / 365",
+    "tema": "mentalita",
+    "virale": false
+   },
+   "generato": "2026-11-21T12:53",
    "lotto": "Lotto 2026-11-24",
+   "mb_tiktok": 7.84,
+   "md5": null,
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 8.26,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.173
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 79,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "intergalactic_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 200,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 78,
+     "font": "Source Serif Pro Semibold",
+     "intatto": false,
+     "luce": 0.32,
+     "righe": 13,
+     "scene_intatte": 0,
+     "scurito": 0.35,
+     "sfumatura": 0.22,
+     "viso": {
+      "corpo": 78,
+      "corpo_base": 78,
+      "posizione": "basso",
+      "righe": 13,
+      "scala": 1.0,
+      "visi": 9,
+      "y": 0.562
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 78,
+     "corpo_base": 78,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       14.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 13,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 9,
+     "y": 0.562
+    },
+    "viso_prima_scena": 5
+   },
    "musica": "intergalactic_3.m4a",
+   "musica_screenshot": null,
+   "problemi": [],
    "registrato": null,
    "scena": "palestra",
-   "stato": "in_preparazione",
+   "secondi": 237,
+   "stato": "pronto",
    "tema": "mentalita",
    "testo": "Sii orgoglioso di te per tutte le volte in cui sei andato avanti anche quando dentro di te stavi combattendo battaglie di cui nessuno conosceva l'esistenza. Per ciò che hai attraversato in silenzio. Per le ferite che hai imparato a custodire. Per tutte le volte in cui hai trovato la forza proprio quando pensavi di averla finita. Forse nessuno sa quanto ti è costato arrivare fin qui. Ma tu sì. E questo dovrebbe bastare per essere fiero di te.",
+   "testo_viso": {
+    "con_viso": 28,
+    "con_viso_yunet": 28,
+    "controllo": "lettere_fuori_dai_visi",
+    "corpo": 78,
+    "corpo_base": 78,
+    "fotogrammi": 28,
+    "guardato": [
+     [
+      14.5,
+      7.0
+     ]
+    ],
+    "posizione": "basso",
+    "righe": 13,
+    "rilevatore": "yunet+haar",
+    "scala": 1.0,
+    "visi": 9,
+    "y": 0.562
+   },
    "versione": 1,
-   "video": "IMG_4307.MOV"
+   "video": "IMG_4307.MOV",
+   "voce": false
   },
   "2026-11-24 08:00": {
+   "an": {
+    "compagnia": "solo",
+    "fascia": "palestra",
+    "scena": "palestra"
+   },
+   "cartella": "1y0Zk0ikmgvjpjsPhhU-2kEn4ta_v2U6j",
    "da_archivio": true,
-   "file": {},
+   "didascalia": "Ricorda: «Se ti dicono che è impossibile stanno parlando dei loro limiti, non dei tuoi.»",
+   "durata": 7.0,
+   "file": {
+    "anteprima": "18rJegzVGC82pIO12nxa-VUGAsJe0KzHT",
+    "manifest": "1OPyJ4ZMsRGhDBj0Ti74oVC-0W8eEmmC1",
+    "tiktok": "19smaTrUq0ZX1YEJYv7JCUC_-EpHKnJG0",
+    "youtube": "1olgzdim9zxmrSnZ9ueudaFuOxacI62iL"
+   },
    "fonte_id": "1pRzrCnxNrpVE44ol_vENtqhmbuRc2YAN",
    "formato": "dieci",
    "frase": "MIE-b7f45815",
-   "generato": "2026-11-21T12:48",
+   "frase_dati": {
+    "autore": "",
+    "gancio": "Ricorda: «Se ti dicono che è impossibile stanno parlando dei loro limiti, non dei tuoi.»",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "id": "MIE-b7f45815",
+    "serie": "GIORNO 328 / 365",
+    "tema": "mentalita",
+    "virale": false
+   },
+   "generato": "2026-11-21T12:53",
    "lotto": "Lotto 2026-11-24",
+   "mb_tiktok": 8.0,
+   "md5": null,
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 27.43,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.39
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 15,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "visions_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 168,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.36,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.47,
+     "sfumatura": 0.27,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 3,
+      "y": 0.686
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       1.0,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 3,
+     "y": 0.686
+    },
+    "viso_prima_scena": 5
+   },
    "musica": "visions_1.m4a",
+   "musica_screenshot": null,
+   "problemi": [],
    "registrato": null,
    "scena": "palestra",
-   "stato": "in_preparazione",
+   "secondi": 198,
+   "stato": "pronto",
    "tema": "mentalita",
    "testo": "Ricorda: «Se ti dicono che è impossibile stanno parlando dei loro limiti, non dei tuoi.»",
+   "testo_viso": {
+    "con_viso": 28,
+    "con_viso_yunet": 28,
+    "controllo": "lettere_fuori_dai_visi",
+    "corpo": 107,
+    "corpo_base": 107,
+    "fotogrammi": 28,
+    "guardato": [
+     [
+      1.0,
+      7.0
+     ]
+    ],
+    "posizione": "basso",
+    "righe": 3,
+    "rilevatore": "yunet+haar",
+    "scala": 1.0,
+    "visi": 3,
+    "y": 0.686
+   },
    "versione": 1,
-   "video": "IMG_4063.MOV"
+   "video": "IMG_4063.MOV",
+   "voce": false
   },
   "2026-11-24 10:00": {
+   "an": {
+    "compagnia": "famiglia",
+    "fascia": "pranzo",
+    "scena": "cibo"
+   },
+   "cartella": "1y0Zk0ikmgvjpjsPhhU-2kEn4ta_v2U6j",
    "da_archivio": true,
-   "file": {},
+   "didascalia": "Uno dei più grandi piaceri della vita è portare a termine ciò che gli altri dicevano che non saresti riuscito a fare",
+   "durata": 7.0,
+   "file": {
+    "anteprima": "1HKoz0c4pTRkqCLqwoJwgP3IdaoHc63pM",
+    "manifest": "19fW0GMsFEZPL7ETYIyEaW8q-QBBtlOwM",
+    "tiktok": "1RsxL5HRQA9hkJe_d9HBfkV-C7NLx-3B9",
+    "youtube": "1X-YdOROLNaNEy8DUR6Lyy-Ure59CYR08"
+   },
    "fonte_id": "1evT1w3QaDK7AVRQtw_S2gz-hZLf5O6q_",
-   "formato": "intero",
+   "formato": "dieci",
    "frase": "MIE-440a5510",
-   "generato": "2026-11-21T12:48",
+   "frase_dati": {
+    "autore": "",
+    "gancio": "Uno dei più grandi piaceri della vita è portare a termine ciò che gli altri dicevano che non saresti riuscito a fare.",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "id": "MIE-440a5510",
+    "serie": "GIORNO 328 / 365",
+    "tema": "mentalita",
+    "virale": false
+   },
+   "generato": "2026-11-21T12:54",
    "lotto": "Lotto 2026-11-24",
+   "mb_tiktok": 8.13,
+   "md5": null,
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 18.05,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.233
+    },
+    "durata": 7.0,
+    "estratto": "intero",
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 22,
+     "voce": "generale"
+    },
+    "frase_via": "forzata",
+    "musica": "ten_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "ripiego_da": "intero",
+    "scritta": "centro_serif",
+    "secondi_montaggio": 237,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 101,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.47,
+     "righe": 4,
+     "scene_intatte": 0,
+     "scurito": 0.48,
+     "sfumatura": 0.34,
+     "viso": {
+      "corpo": 101,
+      "corpo_base": 101,
+      "posizione": "centro",
+      "righe": 4,
+      "scala": 1.0,
+      "visi": 6,
+      "y": 0.47
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "altro_video": "extra_0.MOV",
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 101,
+     "corpo_base": 101,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       33.5,
+       7.0
+      ]
+     ],
+     "posizione": "centro",
+     "righe": 4,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 6,
+     "y": 0.47
+    },
+    "viso_prima_scena": 5
+   },
    "musica": "ten_2.m4a",
+   "musica_screenshot": null,
+   "problemi": [],
    "registrato": null,
    "scena": "cibo",
-   "stato": "in_preparazione",
+   "secondi": 258,
+   "stato": "pronto",
    "tema": "mentalita",
    "testo": "Uno dei più grandi piaceri della vita è portare a termine ciò che gli altri dicevano che non saresti riuscito a fare.",
+   "testo_viso": {
+    "altro_video": "extra_0.MOV",
+    "con_viso": 28,
+    "con_viso_yunet": 28,
+    "controllo": "lettere_fuori_dai_visi",
+    "corpo": 101,
+    "corpo_base": 101,
+    "fotogrammi": 28,
+    "guardato": [
+     [
+      33.5,
+      7.0
+     ]
+    ],
+    "posizione": "centro",
+    "righe": 4,
+    "rilevatore": "yunet+haar",
+    "scala": 1.0,
+    "visi": 6,
+    "y": 0.47
+   },
    "versione": 1,
-   "video": "IMG_3606.mov"
+   "video": "IMG_3606.mov",
+   "voce": false
   },
   "2026-11-24 12:00": {
+   "an": {
+    "compagnia": "solo",
+    "fascia": "palestra",
+    "scena": "palestra"
+   },
+   "cartella": "1y0Zk0ikmgvjpjsPhhU-2kEn4ta_v2U6j",
    "da_archivio": true,
-   "file": {},
+   "didascalia": "È solo una stupida frase... A un certo punto arriverai alla consapevolezza del tuo valore. Da quel momento, la vita ti darà tutto quello che hai sempre sognato. O forse ancora di più. Perché quando capisci ciò che meriti, inizi ad attrarre ciò che ti rende felice",
+   "durata": 7.0,
+   "file": {
+    "anteprima": "1NIyFAE66jYmohROpdnP1Ig_jAT-S_uUB",
+    "manifest": "1MHU63AlGSkybZ0nCdzYeIV2bE1pa3Q7v",
+    "tiktok": "1YY7WOp90TWd0bflJSxDLOneSYecvWfah",
+    "youtube": "1CjOKqRVsh2z-e2MGRcA0aS9P_WQKkaED"
+   },
    "fonte_id": "19lxUacEH3cLJ4agkgVgo3o7ErjaxO3My",
    "formato": "dieci",
    "frase": "MIE-d3c99665",
-   "generato": "2026-11-21T12:48",
+   "frase_dati": {
+    "autore": "",
+    "gancio": "È solo una stupida frase... A un certo punto arriverai alla consapevolezza del tuo valore. Da quel momento, la vita ti darà tutto quello che hai sempre sognato. O forse ancora di più. Perché quando capisci ciò che meriti, inizi ad attrarre ciò che ti rende felice.",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "id": "MIE-d3c99665",
+    "serie": "GIORNO 328 / 365",
+    "tema": "mentalita",
+    "virale": false
+   },
+   "generato": "2026-11-21T12:53",
    "lotto": "Lotto 2026-11-24",
+   "mb_tiktok": 8.01,
+   "md5": null,
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 2.14,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 47,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "locked_in_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 172,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 91,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.42,
+     "righe": 8,
+     "scene_intatte": 0,
+     "scurito": 0.49,
+     "sfumatura": 0.32,
+     "viso": {
+      "corpo": 91,
+      "corpo_base": 96,
+      "posizione": "alto",
+      "righe": 8,
+      "scala": 0.948,
+      "visi": 19,
+      "y": 0.285
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 91,
+     "corpo_base": 96,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       6.0,
+       7.0
+      ]
+     ],
+     "posizione": "alto",
+     "righe": 8,
+     "rilevatore": "yunet+haar",
+     "scala": 0.948,
+     "visi": 19,
+     "y": 0.285
+    },
+    "viso_prima_scena": 5
+   },
    "musica": "locked_in_2.m4a",
+   "musica_screenshot": null,
+   "problemi": [],
    "registrato": null,
    "scena": "palestra",
-   "stato": "in_preparazione",
+   "secondi": 201,
+   "stato": "pronto",
    "tema": "mentalita",
    "testo": "È solo una stupida frase... A un certo punto arriverai alla consapevolezza del tuo valore. Da quel momento, la vita ti darà tutto quello che hai sempre sognato. O forse ancora di più. Perché quando capisci ciò che meriti, inizi ad attrarre ciò che ti rende felice.",
+   "testo_viso": {
+    "con_viso": 28,
+    "con_viso_yunet": 28,
+    "controllo": "lettere_fuori_dai_visi",
+    "corpo": 91,
+    "corpo_base": 96,
+    "fotogrammi": 28,
+    "guardato": [
+     [
+      6.0,
+      7.0
+     ]
+    ],
+    "posizione": "alto",
+    "righe": 8,
+    "rilevatore": "yunet+haar",
+    "scala": 0.948,
+    "visi": 19,
+    "y": 0.285
+   },
    "versione": 1,
-   "video": "IMG_4065.mov"
+   "video": "IMG_4065.mov",
+   "voce": false
   },
   "2026-11-24 14:00": {
+   "an": {
+    "compagnia": "solo",
+    "fascia": "pranzo",
+    "scena": "macchina"
+   },
+   "cartella": "1y0Zk0ikmgvjpjsPhhU-2kEn4ta_v2U6j",
    "da_archivio": true,
-   "file": {},
+   "didascalia": "Non devi avere tutto sotto controllo per meritare pace. Puoi respirare anche in mezzo al caos. Puoi sorridere anche se non hai tutte le risposte. La vita non si risolve: si vive, un giorno alla volta",
+   "durata": 7.0,
+   "file": {
+    "anteprima": "1EZTQFktX2N7vD7sSzYD80ASBfv7DN9TH",
+    "manifest": "1YySkxAW35DmbHflMztUTNa8T0FEGZJVq",
+    "tiktok": "1gSBiRmAX-zQ4FK0BnpWNhR2VHVvEhMWY",
+    "youtube": "16bCvzgvWhcYOEeOdQELY3tmwOBgGFKak"
+   },
    "fonte_id": "1ssTZiPaSjGA63iZMxhUEOD6wWT-dqCLz",
-   "formato": "intero",
+   "formato": "dieci",
    "frase": "MIE-a854da50",
-   "generato": "2026-11-21T12:48",
+   "frase_dati": {
+    "autore": "",
+    "gancio": "Non devi avere tutto sotto controllo per meritare pace. Puoi respirare anche in mezzo al caos. Puoi sorridere anche se non hai tutte le risposte. La vita non si risolve: si vive, un giorno alla volta.",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "id": "MIE-a854da50",
+    "serie": "GIORNO 328 / 365",
+    "tema": "mentalita",
+    "virale": false
+   },
+   "generato": "2026-11-21T12:53",
    "lotto": "Lotto 2026-11-24",
+   "mb_tiktok": 7.65,
+   "md5": null,
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 35.71,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.153
+    },
+    "durata": 7.0,
+    "estratto": "intero",
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 36,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "keep_it_movin_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "ripiego_da": "intero",
+    "scritta": "centro_serif",
+    "secondi_montaggio": 192,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.49,
+     "righe": 8,
+     "scene_intatte": 0,
+     "scurito": 0.45,
+     "sfumatura": 0.35,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 8,
+      "scala": 1.0,
+      "visi": 31,
+      "y": 0.613
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "altro_video": "extra_1.MOV",
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       3.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 8,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 31,
+     "y": 0.613
+    },
+    "viso_prima_scena": 5
+   },
    "musica": "keep_it_movin_3.m4a",
+   "musica_screenshot": null,
+   "problemi": [],
    "registrato": null,
    "scena": "macchina",
-   "stato": "in_preparazione",
+   "secondi": 213,
+   "stato": "pronto",
    "tema": "mentalita",
    "testo": "Non devi avere tutto sotto controllo per meritare pace. Puoi respirare anche in mezzo al caos. Puoi sorridere anche se non hai tutte le risposte. La vita non si risolve: si vive, un giorno alla volta.",
+   "testo_viso": {
+    "altro_video": "extra_1.MOV",
+    "con_viso": 28,
+    "con_viso_yunet": 28,
+    "controllo": "lettere_fuori_dai_visi",
+    "corpo": 107,
+    "corpo_base": 107,
+    "fotogrammi": 28,
+    "guardato": [
+     [
+      3.5,
+      7.0
+     ]
+    ],
+    "posizione": "basso",
+    "righe": 8,
+    "rilevatore": "yunet+haar",
+    "scala": 1.0,
+    "visi": 31,
+    "y": 0.613
+   },
    "versione": 1,
-   "video": "IMG_3330.mov"
+   "video": "IMG_3330.mov",
+   "voce": false
   },
   "2026-11-24 16:00": {
+   "an": {
+    "compagnia": "solo",
+    "fascia": "palestra",
+    "scena": "palestra"
+   },
+   "cartella": "1y0Zk0ikmgvjpjsPhhU-2kEn4ta_v2U6j",
    "da_archivio": true,
-   "file": {},
+   "didascalia": "Non c'è bisogno di forzare le cose, perché ognuno è dove vuole essere e perde ciò che vuole perdere",
+   "durata": 7.0,
+   "file": {
+    "anteprima": "182IsTyJZVCrnlXPsFKDrUXpekzW4taUd",
+    "manifest": "1-pz86DXeTkLx0ebfwPB_B9LpCt-3OYKg",
+    "tiktok": "1YLIQ3Ip-7cmGEUqqxM6LGgy1tgvHRqWb",
+    "youtube": "11sJAC_nmoTL1nYnCcD5AH3FEweumh990"
+   },
    "fonte_id": "1RffuiBvFRbbbwuF-Qy2QfHTSEOUDPE8a",
    "formato": "dieci",
    "frase": "MIE-6a3c122b",
-   "generato": "2026-11-21T12:48",
+   "frase_dati": {
+    "autore": "",
+    "gancio": "Non c'è bisogno di forzare le cose, perché ognuno è dove vuole essere e perde ciò che vuole perdere.",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "id": "MIE-6a3c122b",
+    "serie": "GIORNO 328 / 365",
+    "tema": "mentalita",
+    "virale": false
+   },
+   "generato": "2026-11-21T12:54",
    "lotto": "Lotto 2026-11-24",
+   "mb_tiktok": 7.91,
+   "md5": null,
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 9.38,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 19,
+     "voce": "generale"
+    },
+    "frase_via": "forzata",
+    "musica": "horizons_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 230,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.39,
+     "righe": 4,
+     "scene_intatte": 0,
+     "scurito": 0.46,
+     "sfumatura": 0.29,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "centro",
+      "righe": 4,
+      "scala": 1.0,
+      "visi": 29,
+      "y": 0.47
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       1.0,
+       7.0
+      ]
+     ],
+     "posizione": "centro",
+     "righe": 4,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 29,
+     "y": 0.47
+    },
+    "viso_prima_scena": 3
+   },
    "musica": "horizons_3.m4a",
+   "musica_screenshot": null,
+   "problemi": [],
    "registrato": null,
    "scena": "palestra",
-   "stato": "in_preparazione",
+   "secondi": 261,
+   "stato": "pronto",
    "tema": "mentalita",
    "testo": "Non c'è bisogno di forzare le cose, perché ognuno è dove vuole essere e perde ciò che vuole perdere.",
+   "testo_viso": {
+    "con_viso": 28,
+    "con_viso_yunet": 28,
+    "controllo": "lettere_fuori_dai_visi",
+    "corpo": 107,
+    "corpo_base": 107,
+    "fotogrammi": 28,
+    "guardato": [
+     [
+      1.0,
+      7.0
+     ]
+    ],
+    "posizione": "centro",
+    "righe": 4,
+    "rilevatore": "yunet+haar",
+    "scala": 1.0,
+    "visi": 29,
+    "y": 0.47
+   },
    "versione": 1,
-   "video": "IMG_4116.mov"
+   "video": "IMG_4116.mov",
+   "voce": false
   },
   "2026-11-24 18:00": {
+   "an": {
+    "compagnia": "solo",
+    "fascia": "palestra",
+    "scena": "palestra"
+   },
+   "cartella": "1y0Zk0ikmgvjpjsPhhU-2kEn4ta_v2U6j",
    "da_archivio": true,
-   "file": {},
+   "didascalia": "Un giorno ho letto una frase, ma non l'avevo capita. Poi l'ho riletta e diceva: «A volte bisogna attraversare l'oscurità per vedere la luce, ogni tempesta lascia spazio ad un cielo più sereno.»",
+   "durata": 7.0,
+   "file": {
+    "anteprima": "1CoYYw1s9em77f2oGt2VcVKRSk0-bPOOK",
+    "manifest": "19hPnGHnAiugu1U8iNGFexniPONQ2Awf3",
+    "tiktok": "1ALytPRTXIqMn7ojiLt4gSERbL5ZK7okg",
+    "youtube": "1j1FwUQIbMIRHQfIyyVAx11GZd-lz3m5e"
+   },
    "fonte_id": "1EIkrvNWHYfhUXhSzzqvvdiEFEPhXxmSi",
    "formato": "intero",
    "frase": "MIE-9d031a51",
-   "generato": "2026-11-21T12:48",
+   "frase_dati": {
+    "autore": "",
+    "gancio": "Un giorno ho letto una frase, ma non l'avevo capita. Poi l'ho riletta e diceva: «A volte bisogna attraversare l'oscurità per vedere la luce, ogni tempesta lascia spazio ad un cielo più sereno.»",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "id": "MIE-9d031a51",
+    "serie": "GIORNO 328 / 365",
+    "tema": "mentalita",
+    "virale": false
+   },
+   "generato": "2026-11-21T12:53",
    "lotto": "Lotto 2026-11-24",
+   "mb_tiktok": 7.94,
+   "md5": null,
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 4.43,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 33,
+     "voce": "io"
+    },
+    "frase_via": "forzata",
+    "musica": "ancient_civilisations_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 198,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.4,
+     "righe": 7,
+     "scene_intatte": 0,
+     "scurito": 0.45,
+     "sfumatura": 0.3,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 7,
+      "scala": 1.0,
+      "visi": 12,
+      "y": 0.532
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       7.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 7,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 12,
+     "y": 0.532
+    },
+    "viso_prima_scena": 2
+   },
    "musica": "ancient_civilisations_2.m4a",
+   "musica_screenshot": null,
+   "problemi": [],
    "registrato": null,
    "scena": "palestra",
-   "stato": "in_preparazione",
+   "secondi": 221,
+   "stato": "pronto",
    "tema": "mentalita",
    "testo": "Un giorno ho letto una frase, ma non l'avevo capita. Poi l'ho riletta e diceva: «A volte bisogna attraversare l'oscurità per vedere la luce, ogni tempesta lascia spazio ad un cielo più sereno.»",
+   "testo_viso": {
+    "con_viso": 28,
+    "con_viso_yunet": 28,
+    "controllo": "lettere_fuori_dai_visi",
+    "corpo": 107,
+    "corpo_base": 107,
+    "fotogrammi": 28,
+    "guardato": [
+     [
+      7.5,
+      7.0
+     ]
+    ],
+    "posizione": "basso",
+    "righe": 7,
+    "rilevatore": "yunet+haar",
+    "scala": 1.0,
+    "visi": 12,
+    "y": 0.532
+   },
    "versione": 1,
-   "video": "IMG_4135.mov"
+   "video": "IMG_4135.mov",
+   "voce": false
   },
   "2026-11-24 20:00": {
+   "an": {
+    "compagnia": "solo",
+    "fascia": "pranzo",
+    "scena": "macchina"
+   },
+   "cartella": "1y0Zk0ikmgvjpjsPhhU-2kEn4ta_v2U6j",
    "da_archivio": true,
-   "file": {},
+   "didascalia": "Sarò per sempre la persona che sorride anche se il mondo le sta crollando addosso, perché spiegare a qualcuno come ci si sente è troppo difficile",
+   "durata": 7.0,
+   "file": {
+    "anteprima": "1cBjzSoYzrEIpqpykTJ6i625pypj6Y4_c",
+    "manifest": "1lYja_YSdMW09YGbQkOu2k-KR9I6EWSzG",
+    "tiktok": "1uc_v91wp7uJJW2gmN2448GqPrWAMYJIc",
+    "youtube": "1M29CSxnewnRd5El9BrlZl63MKZFjXdFC"
+   },
    "fonte_id": "1cws0l3N3pW2EVUmkD-GxH5nLIIh0UE-c",
    "formato": "dieci",
    "frase": "MIE-a6cc9a0e",
-   "generato": "2026-11-21T12:48",
+   "frase_dati": {
+    "autore": "",
+    "gancio": "Sarò per sempre la persona che sorride anche se il mondo le sta crollando addosso, perché spiegare a qualcuno come ci si sente è troppo difficile.",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "id": "MIE-a6cc9a0e",
+    "serie": "GIORNO 328 / 365",
+    "tema": "mentalita",
+    "virale": false
+   },
+   "generato": "2026-11-21T12:51",
    "lotto": "Lotto 2026-11-24",
+   "mb_tiktok": 8.24,
+   "md5": null,
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 18.19,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.388
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 26,
+     "voce": "generale"
+    },
+    "frase_via": "forzata",
+    "musica": "van_life_rager_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 103,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 86,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.45,
+     "righe": 4,
+     "scene_intatte": 0,
+     "scurito": 0.45,
+     "sfumatura": 0.34,
+     "viso": {
+      "corpo": 86,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 4,
+      "scala": 0.804,
+      "visi": 9,
+      "y": 0.74
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 86,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 4,
+     "rilevatore": "yunet+haar",
+     "scala": 0.804,
+     "visi": 9,
+     "y": 0.74
+    },
+    "viso_prima_scena": 5
+   },
    "musica": "van_life_rager_3.m4a",
+   "musica_screenshot": null,
+   "problemi": [],
    "registrato": null,
    "scena": "macchina",
-   "stato": "in_preparazione",
+   "secondi": 130,
+   "stato": "pronto",
    "tema": "mentalita",
    "testo": "Sarò per sempre la persona che sorride anche se il mondo le sta crollando addosso, perché spiegare a qualcuno come ci si sente è troppo difficile.",
+   "testo_viso": {
+    "con_viso": 28,
+    "con_viso_yunet": 28,
+    "controllo": "lettere_fuori_dai_visi",
+    "corpo": 86,
+    "corpo_base": 107,
+    "fotogrammi": 28,
+    "guardato": [
+     [
+      0.5,
+      7.0
+     ]
+    ],
+    "posizione": "basso",
+    "righe": 4,
+    "rilevatore": "yunet+haar",
+    "scala": 0.804,
+    "visi": 9,
+    "y": 0.74
+   },
    "versione": 1,
-   "video": "IMG_3611.mov"
+   "video": "IMG_3611.mov",
+   "voce": false
   },
   "2026-11-24 22:00": {
+   "an": {
+    "compagnia": "famiglia",
+    "fascia": "sera",
+    "scena": "uscita"
+   },
+   "cartella": "1y0Zk0ikmgvjpjsPhhU-2kEn4ta_v2U6j",
    "da_archivio": true,
-   "file": {},
+   "didascalia": "Non sapranno mai quanto dolore ci è voluto per essere così calmo",
+   "durata": 7.0,
+   "file": {
+    "anteprima": "1YdeQB0ZBYOXbsRwI1uAZ_aZY6joPIXud",
+    "manifest": "19buGsvTUKrMA-xY9_7mfntaGcP_jX6Lk",
+    "tiktok": "1AEwmdNaHvCo3fIZRXQbReI3FUSJAdlSE",
+    "youtube": "1i8EctOs-sFl1X30aY8DYFHGbdvFDM8bC"
+   },
    "fonte_id": "1uc6eTA1H5KSzsqTsVNgk6Rzto2V2Wq3y",
    "formato": "intero",
    "frase": "MIE-0caa72d5",
-   "generato": "2026-11-21T12:48",
+   "frase_dati": {
+    "autore": "",
+    "gancio": "Non sapranno mai quanto dolore ci è voluto per essere così calmo.",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "id": "MIE-0caa72d5",
+    "serie": "GIORNO 328 / 365",
+    "tema": "mentalita",
+    "virale": false
+   },
+   "generato": "2026-11-21T12:52",
    "lotto": "Lotto 2026-11-24",
+   "mb_tiktok": 7.62,
+   "md5": null,
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 20.27,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.135
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 12,
+     "voce": "generale"
+    },
+    "frase_via": "forzata",
+    "musica": "moon_vision_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 145,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.36,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.35,
+     "sfumatura": 0.27,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 47,
+      "y": 0.496
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       6.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 47,
+     "y": 0.496
+    },
+    "viso_prima_scena": 5
+   },
    "musica": "moon_vision_1.m4a",
+   "musica_screenshot": null,
+   "problemi": [],
    "registrato": null,
    "scena": "uscita",
-   "stato": "in_preparazione",
+   "secondi": 167,
+   "stato": "pronto",
    "tema": "mentalita",
    "testo": "Non sapranno mai quanto dolore ci è voluto per essere così calmo.",
+   "testo_viso": {
+    "con_viso": 28,
+    "con_viso_yunet": 28,
+    "controllo": "lettere_fuori_dai_visi",
+    "corpo": 107,
+    "corpo_base": 107,
+    "fotogrammi": 28,
+    "guardato": [
+     [
+      6.5,
+      7.0
+     ]
+    ],
+    "posizione": "basso",
+    "righe": 3,
+    "rilevatore": "yunet+haar",
+    "scala": 1.0,
+    "visi": 47,
+    "y": 0.496
+   },
    "versione": 1,
-   "video": "IMG_4029.MOV"
+   "video": "IMG_4029.MOV",
+   "voce": false
   }
  }
 }
