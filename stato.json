@@ -20779,7 +20779,9 @@
      "ok": true,
      "id": "18121506890329184",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -20872,7 +20874,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "gRv1D_thPpU"
+     "id": "gRv1D_thPpU",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -20883,11 +20886,105 @@
    },
    "spinto": true,
    "testo": "Ogni sforzo che nessuno nota sta preparando il giorno in cui ce la farai."
+  },
+  {
+   "quando": "2026-11-21T17:01",
+   "slot": "2026-11-21 18:00",
+   "video": "IMG_3766.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-86216122",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 7.0,
+    "musica": "stake_out_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.448,
+     "movimento": 11.12,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 136,
+     "righe": 2,
+     "viso": {
+      "visi": 8,
+      "corpo_base": 136,
+      "posizione": "basso",
+      "y": 0.718,
+      "scala": 1.0,
+      "corpo": 136,
+      "righe": 2
+     },
+     "scurito": 0.53,
+     "luce": 0.6,
+     "sfumatura": 0.4,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 8,
+     "corpo_base": 136,
+     "posizione": "basso",
+     "y": 0.718,
+     "scala": 1.0,
+     "corpo": 136,
+     "righe": 2,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 78,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 5
+    },
+    "frase_via": "forzata",
+    "musica_meta": "trap_01.flac",
+    "musica_instagram": "Fighting Back A Flight Of Stairs - Trout Recording [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "pS1wvToFgv4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18114248609268087",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": false,
+   "testo": "Parla meno, agisci di più."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-13 18:00",
   "2026-11-13 20:00",
   "2026-11-13 22:00",
   "2026-11-14 00:00",
@@ -20966,10 +21063,10 @@
   "2026-11-21 10:00",
   "2026-11-21 12:00",
   "2026-11-21 14:00",
-  "2026-11-21 16:00"
+  "2026-11-21 16:00",
+  "2026-11-21 18:00"
  ],
  "musica_recenti": [
-  "locked_in_3.m4a",
   "keep_it_movin_3.m4a",
   "van_life_rager_3.m4a",
   "ancient_civilisations_3.m4a",
@@ -21028,7 +21125,8 @@
   "dusty_road_magic_2.m4a",
   "cartier_3.m4a",
   "intergalactic_2.m4a",
-  "whoop_3.m4a"
+  "whoop_3.m4a",
+  "stake_out_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -21467,7 +21565,8 @@
   "MIE-b1b822ad",
   "MIE-809e41cf",
   "MIE-792949f7",
-  "MIE-51b9581b"
+  "MIE-51b9581b",
+  "MIE-86216122"
  ],
  "temi_recenti": [
   "mentalita",
@@ -21542,8 +21641,8 @@
    "orizzontale": false
   },
   "1ehg1VD_Xtwd5ysGegtBXVLxxyo6vHs0U": {
-   "usi": 2,
-   "ultimo": "2026-10-19",
+   "usi": 3,
+   "ultimo": "2026-11-21",
    "orizzontale": false
   },
   "1J6rUreSm_Mrsbua06uFjE1b4xu8-pRpL": {
@@ -22162,7 +22261,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_11.flac",
   "energia_03.flac",
   "phonk_08.flac",
   "deciso_08.flac",
@@ -22181,7 +22279,8 @@
   "drive_12.flac",
   "trap_03.flac",
   "deciso_04.flac",
-  "drive_14.flac"
+  "drive_14.flac",
+  "trap_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -22216,7 +22315,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -22232,7 +22331,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "3509829325973401",
   "1068592065620532",
   "565118654020261",
   "4489870934582584",
@@ -22291,11 +22389,11 @@
   "1267635733842081",
   "1124230547275731",
   "397890202830542",
-  "727931292858890"
+  "727931292858890",
+  "2173371459664032"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Adam Griffith",
   "PiNKSHGRFNGR",
   "YoungPop",
   "Giulio Cercato",
@@ -22304,10 +22402,10 @@
   "Lucid Mantra",
   "Apex Sound Odyssey",
   "Global Genius",
-  "The K Club"
+  "The K Club",
+  "Trout Recording"
  ],
  "ig_titoli_recenti": [
-  "la marche des commis voyageurs",
   "hot mess anthem",
   "voices of victory",
   "hero s journey",
@@ -22346,7 +22444,8 @@
   "flow motion",
   "gta 6 main theme",
   "carry the motion",
-  "copacetic"
+  "copacetic",
+  "fighting back a flight of stairs"
  ],
  "ig_tendenze_riserva": [
   {
@@ -22357,31 +22456,38 @@
    "libreria": false
   },
   {
-   "audio_id": "413152290918119",
-   "title": "People Mover",
-   "display_artist": "Brent Bourgeois",
-   "duration_in_ms": 151554,
+   "audio_id": "2173371459664032",
+   "title": "Fighting Back A Flight Of Stairs",
+   "display_artist": "Trout Recording",
+   "duration_in_ms": 175107,
    "libreria": true
   },
   {
-   "audio_id": "727931292858890",
-   "title": "Copacetic (feat. Dawson March)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 136490,
+   "audio_id": "1449501010135619",
+   "title": "When I'm In Motion (Instrumental)",
+   "display_artist": "Baegod",
+   "duration_in_ms": 177438,
    "libreria": true
   },
   {
-   "audio_id": "1386871190037063",
-   "title": "Running",
-   "display_artist": "Summer Islands",
-   "duration_in_ms": 70064,
+   "audio_id": "762068171980920",
+   "title": "Born To Be Champions",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 125177,
    "libreria": true
   },
   {
-   "audio_id": "397890202830542",
-   "title": "Carry The Motion",
-   "display_artist": "Global Genius",
-   "duration_in_ms": 194029,
+   "audio_id": "212037205296438",
+   "title": "Sparks Fly",
+   "display_artist": "BLACK DOVES",
+   "duration_in_ms": 162231,
+   "libreria": true
+  },
+  {
+   "audio_id": "2269705013766100",
+   "title": "Move Forever",
+   "display_artist": "Fellow Travelers",
+   "duration_in_ms": 61456,
    "libreria": true
   }
  ]
