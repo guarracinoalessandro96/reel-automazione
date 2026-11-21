@@ -10905,22 +10905,152 @@
    "voce": false
   },
   "2026-11-30 22:00": {
+   "an": {
+    "compagnia": "solo",
+    "fascia": "ufficio",
+    "scena": "specchio"
+   },
+   "cartella": "1YeT-u0fEH-DOcbDgaO_q1bR_OpNXFEv8",
    "da_archivio": true,
-   "file": {},
+   "didascalia": "Quello che adesso ti pesa, tra un po' sarà la tua forza più grande",
+   "durata": 7.0,
+   "file": {
+    "anteprima": "1L4WvcUg8nqNbGtjvMr_V0QsTBaQnDA0X",
+    "manifest": "1j65VfiVkJABmjcYTwJf1viFdEFNfkMwH",
+    "tiktok": "1LJiwpN0w-TeuaxtKTUtn28nvlpuMUhqq",
+    "youtube": "1khlFyN4Wkzt0Gs__PE763J3Pj8u-kBkp"
+   },
    "fonte_id": "1hsZNC-N_gcgdSXtWXXHXkwNpGILissxJ",
    "formato": "intero",
    "frase": "MIE-6e98ef04",
-   "generato": "2026-11-21T13:19",
+   "frase_dati": {
+    "autore": "",
+    "gancio": "Quello che adesso ti pesa, tra un po' sarà la tua forza più grande.",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "id": "MIE-6e98ef04",
+    "serie": "GIORNO 334 / 365",
+    "tema": "mentalita",
+    "virale": false
+   },
+   "generato": "2026-11-21T13:22",
    "lotto": "Lotto 2026-11-23",
+   "mb_tiktok": 8.19,
+   "md5": null,
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 67.16,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.402
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 14,
+     "voce": "tu"
+    },
+    "frase_via": "classifica",
+    "musica": "whoop_1.m4a",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso",
+     "frase": "classifica"
+    },
+    "scena_unica": "avanti_indietro",
+    "scene_dal_video": 2,
+    "scritta": "centro_serif",
+    "secondi_montaggio": 60,
+    "stacchi": 2,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": true,
+     "luce": 0.53,
+     "righe": 3,
+     "scene_intatte": 2,
+     "scurito": 0.0,
+     "sfumatura": 0.38,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 12,
+      "y": 0.671
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.0,
+       3.5
+      ],
+      [
+       0.0,
+       3.5
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 12,
+     "y": 0.671
+    },
+    "viso_prima_scena": 4
+   },
    "musica": "whoop_1.m4a",
+   "musica_screenshot": null,
+   "problemi": [],
    "registrato": null,
    "scelto": "2026-11-21T13:19",
    "scena": "specchio",
-   "stato": "in_preparazione",
+   "secondi": 80,
+   "stato": "pronto",
    "tema": "mentalita",
    "testo": "Quello che adesso ti pesa, tra un po' sarà la tua forza più grande.",
+   "testo_viso": {
+    "con_viso": 28,
+    "con_viso_yunet": 28,
+    "controllo": "lettere_fuori_dai_visi",
+    "corpo": 107,
+    "corpo_base": 107,
+    "fotogrammi": 28,
+    "guardato": [
+     [
+      0.0,
+      3.5
+     ],
+     [
+      0.0,
+      3.5
+     ]
+    ],
+    "posizione": "basso",
+    "righe": 3,
+    "rilevatore": "yunet+haar",
+    "scala": 1.0,
+    "visi": 12,
+    "y": 0.671
+   },
    "versione": 2,
-   "video": "IMG_5120.mov"
+   "video": "IMG_5120.mov",
+   "voce": false
   }
  }
 }
