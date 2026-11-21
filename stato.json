@@ -20380,7 +20380,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "L_Oa1Vj23Sg"
+     "id": "L_Oa1Vj23Sg",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -20391,11 +20392,105 @@
    },
    "spinto": true,
    "testo": "Scegli persone che fanno bene alla tua salute mentale."
+  },
+  {
+   "quando": "2026-11-21T07:00",
+   "slot": "2026-11-21 08:00",
+   "video": "IMG_4271.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-7c687188",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 7.0,
+    "musica": "taking_flight_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.115,
+     "movimento": 6.65,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 10,
+     "viso": {
+      "visi": 20,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "y": 0.652,
+      "scala": 1.0,
+      "corpo": 107,
+      "righe": 10
+     },
+     "scurito": 0.42,
+     "luce": 0.4,
+     "sfumatura": 0.3,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 20,
+     "corpo_base": 107,
+     "posizione": "basso",
+     "y": 0.652,
+     "scala": 1.0,
+     "corpo": 107,
+     "righe": 10,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       1.0,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 144,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 41
+    },
+    "frase_via": "forzata",
+    "musica_meta": "energia_11.flac",
+    "musica_instagram": "Don't Run From Me - Julia Gartha [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "swvM1vlEp-U"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18121879840763833",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Alla fine della giornata, nessuno sa quanto duramente ti impegni per i tuoi obiettivi, quanto ti senti solo a volte, qua"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-13 08:00",
   "2026-11-13 10:00",
   "2026-11-13 12:00",
   "2026-11-13 14:00",
@@ -20474,10 +20569,10 @@
   "2026-11-20 20:00",
   "2026-11-20 22:00",
   "2026-11-21 00:00",
-  "2026-11-21 06:00"
+  "2026-11-21 06:00",
+  "2026-11-21 08:00"
  ],
  "musica_recenti": [
-  "intergalactic_3.m4a",
   "moon_vision_1.m4a",
   "horizons_3.m4a",
   "final_boss_battle_1.m4a",
@@ -20536,7 +20631,8 @@
   "the_light_1.m4a",
   "the_road_to_mordor_1.m4a",
   "wrangle_the_crazy_1.m4a",
-  "vibe_check_2.m4a"
+  "vibe_check_2.m4a",
+  "taking_flight_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -20970,7 +21066,8 @@
   "MIE-8fd9259f",
   "MIE-a8051a35",
   "MIE-cb91b04f",
-  "MIE-f08851f1"
+  "MIE-f08851f1",
+  "MIE-7c687188"
  ],
  "temi_recenti": [
   "mentalita",
@@ -21408,8 +21505,8 @@
    "orizzontale": false
   },
   "1ihXK6xEsYtfnFtAgP15kNGGE71G07W-f": {
-   "usi": 4,
-   "ultimo": "2026-11-13",
+   "usi": 5,
+   "ultimo": "2026-11-21",
    "orizzontale": false
   },
   "1b6jLZrzSs8YwKhy4QEb382s6yYZIdhzZ": {
@@ -21659,7 +21756,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_05.flac",
   "trap_01.flac",
   "energia_08.flac",
   "drive_13.flac",
@@ -21678,7 +21774,8 @@
   "phonk_09.flac",
   "deciso_06.flac",
   "trap_04.flac",
-  "phonk_06.flac"
+  "phonk_06.flac",
+  "energia_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -21713,7 +21810,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -21729,7 +21826,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1716216946466764",
   "1340308050325459",
   "825305559687149",
   "1042846574390974",
@@ -21788,11 +21884,11 @@
   "887391107399210",
   "930354837134154",
   "665857722143060",
-  "867574485949511"
+  "867574485949511",
+  "663866025342759"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Trout Recording",
   "Abby Posner",
   "Otis McDonald",
   "Giulio Cercato",
@@ -21801,10 +21897,10 @@
   "PiNKSHGRFNGR",
   "YoungPop",
   "Giulio Cercato",
-  "stereogully"
+  "stereogully",
+  "Julia Gartha"
  ],
  "ig_titoli_recenti": [
-  "you can do it",
   "photocopy",
   "road warriors",
   "stop motion",
@@ -21843,28 +21939,36 @@
   "you won t believe",
   "fire",
   "play to win",
-  "legends"
+  "legends",
+  "don t run from me"
  ],
  "ig_tendenze_riserva": [
   {
-   "audio_id": "867574485949511",
-   "title": "Legends (Instrumental)",
-   "display_artist": "stereogully",
-   "duration_in_ms": 123840,
+   "audio_id": "663866025342759",
+   "title": "Don't Run From Me",
+   "display_artist": "Julia Gartha",
+   "duration_in_ms": 132680,
    "libreria": true
   },
   {
-   "audio_id": "1615649653514803",
-   "title": "Stronger",
-   "display_artist": "LAVLO",
-   "duration_in_ms": 63194,
+   "audio_id": "529367193511753",
+   "title": "Move Like This",
+   "display_artist": "TRC Orchestral, Vestevent",
+   "duration_in_ms": 74695,
    "libreria": true
   },
   {
-   "audio_id": "602734618692954",
-   "title": "Forever In Motion",
+   "audio_id": "727931292858890",
+   "title": "Copacetic (feat. Dawson March)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 136490,
+   "libreria": true
+  },
+  {
+   "audio_id": "1223134719013093",
+   "title": "Energy",
    "display_artist": "Giulio Cercato",
-   "duration_in_ms": 116693,
+   "duration_in_ms": 122020,
    "libreria": true
   }
  ]
