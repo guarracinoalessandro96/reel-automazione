@@ -20387,7 +20387,9 @@
      "ok": true,
      "id": "17866902171692363",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -20476,7 +20478,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "swvM1vlEp-U"
+     "id": "swvM1vlEp-U",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -20487,11 +20490,105 @@
    },
    "spinto": true,
    "testo": "Alla fine della giornata, nessuno sa quanto duramente ti impegni per i tuoi obiettivi, quanto ti senti solo a volte, qua"
+  },
+  {
+   "quando": "2026-11-21T09:00",
+   "slot": "2026-11-21 10:00",
+   "video": "IMG_4272.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-b1b822ad",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 7.0,
+    "musica": "dusty_road_magic_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 1,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 6.25,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 6,
+     "viso": {
+      "visi": 16,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "y": 0.602,
+      "scala": 1.0,
+      "corpo": 107,
+      "righe": 6
+     },
+     "scurito": 0.32,
+     "luce": 0.31,
+     "sfumatura": 0.22,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 16,
+     "corpo_base": 107,
+     "posizione": "basso",
+     "y": 0.602,
+     "scala": 1.0,
+     "corpo": 107,
+     "righe": 6,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       2.0,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 156,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 21
+    },
+    "frase_via": "forzata",
+    "musica_meta": "drive_12.flac",
+    "musica_instagram": "Flow Motion - Lucid Mantra [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "GpEGeTFMiE8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18357203038265033",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Immagina spegnerti solo perché qualcuno ti ha convinto di non brillare abbastanza. Che spreco, lasciare ad altri l'inter"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-13 10:00",
   "2026-11-13 12:00",
   "2026-11-13 14:00",
   "2026-11-13 16:00",
@@ -20570,10 +20667,10 @@
   "2026-11-20 22:00",
   "2026-11-21 00:00",
   "2026-11-21 06:00",
-  "2026-11-21 08:00"
+  "2026-11-21 08:00",
+  "2026-11-21 10:00"
  ],
  "musica_recenti": [
-  "moon_vision_1.m4a",
   "horizons_3.m4a",
   "final_boss_battle_1.m4a",
   "vibe_check_1.m4a",
@@ -20632,7 +20729,8 @@
   "the_road_to_mordor_1.m4a",
   "wrangle_the_crazy_1.m4a",
   "vibe_check_2.m4a",
-  "taking_flight_1.m4a"
+  "taking_flight_1.m4a",
+  "dusty_road_magic_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -21067,7 +21165,8 @@
   "MIE-a8051a35",
   "MIE-cb91b04f",
   "MIE-f08851f1",
-  "MIE-7c687188"
+  "MIE-7c687188",
+  "MIE-b1b822ad"
  ],
  "temi_recenti": [
   "mentalita",
@@ -21510,8 +21609,8 @@
    "orizzontale": false
   },
   "1b6jLZrzSs8YwKhy4QEb382s6yYZIdhzZ": {
-   "usi": 4,
-   "ultimo": "2026-11-13",
+   "usi": 5,
+   "ultimo": "2026-11-21",
    "orizzontale": false
   },
   "1OKyRxbpEUPABWJM5Ey1cGm-BG7E-Rv9h": {
@@ -21756,7 +21855,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_01.flac",
   "energia_08.flac",
   "drive_13.flac",
   "phonk_14.flac",
@@ -21775,7 +21873,8 @@
   "deciso_06.flac",
   "trap_04.flac",
   "phonk_06.flac",
-  "energia_11.flac"
+  "energia_11.flac",
+  "drive_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -21810,7 +21909,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -21826,7 +21925,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1340308050325459",
   "825305559687149",
   "1042846574390974",
   "3240401969456886",
@@ -21885,11 +21983,11 @@
   "930354837134154",
   "665857722143060",
   "867574485949511",
-  "663866025342759"
+  "663866025342759",
+  "1267635733842081"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Abby Posner",
   "Otis McDonald",
   "Giulio Cercato",
   "TRC Orchestral, Vestevent",
@@ -21898,10 +21996,10 @@
   "YoungPop",
   "Giulio Cercato",
   "stereogully",
-  "Julia Gartha"
+  "Julia Gartha",
+  "Lucid Mantra"
  ],
  "ig_titoli_recenti": [
-  "photocopy",
   "road warriors",
   "stop motion",
   "looking glass",
@@ -21940,35 +22038,29 @@
   "fire",
   "play to win",
   "legends",
-  "don t run from me"
+  "don t run from me",
+  "flow motion"
  ],
  "ig_tendenze_riserva": [
   {
-   "audio_id": "663866025342759",
-   "title": "Don't Run From Me",
+   "audio_id": "2623141041391037",
+   "title": "Running",
    "display_artist": "Julia Gartha",
-   "duration_in_ms": 132680,
+   "duration_in_ms": 128407,
    "libreria": true
   },
   {
-   "audio_id": "529367193511753",
-   "title": "Move Like This",
-   "display_artist": "TRC Orchestral, Vestevent",
-   "duration_in_ms": 74695,
-   "libreria": true
-  },
-  {
-   "audio_id": "727931292858890",
-   "title": "Copacetic (feat. Dawson March)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 136490,
-   "libreria": true
-  },
-  {
-   "audio_id": "1223134719013093",
-   "title": "Energy",
+   "audio_id": "3679159392392793",
+   "title": "Luxe Motion",
    "display_artist": "Giulio Cercato",
-   "duration_in_ms": 122020,
+   "duration_in_ms": 112680,
+   "libreria": true
+  },
+  {
+   "audio_id": "1267635733842081",
+   "title": "Flow Motion",
+   "display_artist": "Lucid Mantra",
+   "duration_in_ms": 183675,
    "libreria": true
   }
  ]
