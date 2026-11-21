@@ -21081,7 +21081,9 @@
      "ok": true,
      "id": "18110275652193923",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -21171,7 +21173,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "-3W6V9VquXQ"
+     "id": "-3W6V9VquXQ",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -21182,11 +21185,106 @@
    },
    "spinto": true,
    "testo": "Continua. Anche piano, anche stanco, anche se non ti vede nessuno. Continua."
+  },
+  {
+   "quando": "2026-11-21T23:00",
+   "slot": "2026-11-22 00:00",
+   "video": "IMG_3828.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-d49f4fad",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 7.0,
+    "musica": "rubberband_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 9.75,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 4,
+     "viso": {
+      "visi": 11,
+      "corpo_base": 107,
+      "posizione": "centro",
+      "y": 0.47,
+      "scala": 1.0,
+      "corpo": 107,
+      "righe": 4
+     },
+     "scurito": 0.38,
+     "luce": 0.42,
+     "sfumatura": 0.31,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 11,
+     "corpo_base": 107,
+     "posizione": "centro",
+     "y": 0.47,
+     "scala": 1.0,
+     "corpo": 107,
+     "righe": 4,
+     "fotogrammi": 28,
+     "con_viso": 22,
+     "con_viso_yunet": 22,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 77,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "frase": "aforisma",
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 17
+    },
+    "frase_via": "nessun_aforisma",
+    "musica_meta": "trap_09.flac",
+    "musica_instagram": "Nikkatha (Unstoppable) - 4 Staan [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "3eAWdhWYPDs"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17882788122554698",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "La sveglia suona e non hai voglia. Ti alzi lo stesso, ed è lì che cambia tutto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-14 00:00",
   "2026-11-14 06:00",
   "2026-11-14 08:00",
   "2026-11-14 10:00",
@@ -21265,10 +21363,10 @@
   "2026-11-21 16:00",
   "2026-11-21 18:00",
   "2026-11-21 20:00",
-  "2026-11-21 22:00"
+  "2026-11-21 22:00",
+  "2026-11-22 00:00"
  ],
  "musica_recenti": [
-  "ancient_civilisations_3.m4a",
   "ego_chall_3.m4a",
   "death_duel_1.m4a",
   "monthaholic_2.m4a",
@@ -21327,7 +21425,8 @@
   "whoop_3.m4a",
   "stake_out_2.m4a",
   "horizons_3.m4a",
-  "locked_in_2.m4a"
+  "locked_in_2.m4a",
+  "rubberband_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -21769,7 +21868,8 @@
   "MIE-51b9581b",
   "MIE-86216122",
   "MIE-8a2c841c",
-  "MIE-0e8716e1"
+  "MIE-0e8716e1",
+  "MIE-d49f4fad"
  ],
  "temi_recenti": [
   "mentalita",
@@ -21948,8 +22048,9 @@
    "orizzontale": false
   },
   "1dwrjfUDcgUEtMKQ_1I0bVcET8o1a2N_E": {
-   "usi": 2,
-   "ultimo": "2026-10-19"
+   "usi": 3,
+   "ultimo": "2026-11-21",
+   "orizzontale": false
   },
   "1xaei2HIO4jSmSPuSxzKQ0VLbkh-c4iJO": {
    "usi": 5,
@@ -22465,7 +22566,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_08.flac",
   "drive_10.flac",
   "energia_04.flac",
   "trap_07.flac",
@@ -22484,7 +22584,8 @@
   "drive_14.flac",
   "trap_01.flac",
   "phonk_14.flac",
-  "deciso_01.flac"
+  "deciso_01.flac",
+  "trap_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -22519,7 +22620,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -22535,7 +22636,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "4489870934582584",
   "1781233772812838",
   "925982985305806",
   "925982985305806",
@@ -22594,11 +22694,11 @@
   "727931292858890",
   "2173371459664032",
   "702088267960095",
-  "604290701766493"
+  "604290701766493",
+  "387139071011986"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Giulio Cercato",
   "stereogully",
   "Julia Gartha",
   "Lucid Mantra",
@@ -22607,10 +22707,10 @@
   "The K Club",
   "Trout Recording",
   "Daria Novo",
-  "d.higgs"
+  "d.higgs",
+  "4 Staan"
  ],
  "ig_titoli_recenti": [
-  "hero s journey",
   "not phonk",
   "hype track",
   "rockstar anthem",
@@ -22649,7 +22749,8 @@
   "copacetic",
   "fighting back a flight of stairs",
   "i am the fire",
-  "money power"
+  "money power",
+  "nikkatha"
  ],
  "ig_tendenze_riserva": [
   {
@@ -22660,24 +22761,10 @@
    "libreria": false
   },
   {
-   "audio_id": "1533332147140863",
-   "title": "Something's In The Movement",
-   "display_artist": "Trout Recording",
-   "duration_in_ms": 197923,
-   "libreria": true
-  },
-  {
-   "audio_id": "604290701766493",
-   "title": "Money & Power (feat. G7MBL3)",
-   "display_artist": "d.higgs",
-   "duration_in_ms": 130952,
-   "libreria": true
-  },
-  {
-   "audio_id": "1340308050325459",
-   "title": "Willow Run",
-   "display_artist": "Paul Fowler",
-   "duration_in_ms": 248272,
+   "audio_id": "387139071011986",
+   "title": "Nikkatha (Unstoppable)",
+   "display_artist": "4 Staan",
+   "duration_in_ms": 164060,
    "libreria": true
   }
  ]
