@@ -2279,7 +2279,12 @@ PROVA_IG_NON_IDONEO = re.compile(r"follower|eligib|maximum number of trial", re.
 # 6/11/2026 (Alessandro: "100 foto al giorno"): negli orari delle foto meta' e meta' (fisso per orario, come
 # SCRITTE_PROVA) il reel con 6 foto che scorrono e il photo dump a tempo di musica (foto_giornata.make_rapide)
 FORMATI_FOTO = ("dieci_foto", "foto_rapide")
-COPERTINA_FORMATI = tuple(FORMATI_10) + FORMATI_FOTO     # la frase c'e' dal primo all'ultimo fotogramma
+# 21/11/2026 (Alessandro: "ogni 2 reel con i video, 1 reel con la foto"): il reel con UNA sua foto ferma e intatta
+# (foto_giornata.make_singola) negli slot foto (settimana.slot_foto). Di solito arriva pronto dal lotto della settimana;
+# se manca, monta_reel lo prova qui allo slot (riserva) e, senza foto adatte, esce il reel col video come prima
+FOTO_SINGOLA = "foto_singola"
+CON_FOTO = FORMATI_FOTO + (FOTO_SINGOLA,)                 # reel che usano le foto e non il video scelto
+COPERTINA_FORMATI = tuple(FORMATI_10) + CON_FOTO     # la frase c'e' dal primo all'ultimo fotogramma
 
 
 def formato_foto(slot):
@@ -3262,6 +3267,7 @@ def monta_reel(sc, state, drive, work, videos, slot, save, formato=None, scadenz
             overlay.STILE_SCRITTA = random.Random(f"scritta {slot}").choice(SCRITTE_PROVA)
         overlay.ULTIMO_STILE = None
         t_montaggio = time.time()       # 7/11/2026 (revisione, tempi): montaggio.secondi_montaggio
+        dal_vivo = formato is None     # 21/11/2026: formato gia' deciso = lotto della settimana (foto gia' scelte li')
         info, formato = None, (formato or scegli_formato(slot, state, frase, an, spinto))
         foto_oggi, foto_riuso, voluto = [], False, None
         # 17/11/2026, Alessandro: "voglio che tu peschi un solo video": con SCENA_UNICA niente reel di foto (piu' foto
@@ -3282,16 +3288,33 @@ def monta_reel(sc, state, drive, work, videos, slot, save, formato=None, scadenz
             except Exception as e:
                 log("Foto della giornata non lette:", e)
             formato = (formato_f or "dieci_foto") if foto_oggi else formato
+        info_foto = None
+        try:     # 21/11/2026: slot foto senza reel pronto dal lotto: il reel con una foto nuova, se ce n'e' una adatta
+            import settimana
+            if dal_vivo and settimana.slot_foto(slot):
+                import foto_giornata
+                lotto_s = settimana.carica_lotto()
+                escl = settimana.foto_riservate(state, escludi=slot, lotto=lotto_s)
+                quando = [v.get("foto_quando") for v in lotto_s["slot"].values() if v.get("foto_id") in escl]
+                info_foto = foto_giornata.reel_singola(drive, frase["gancio"], out, music, os.path.join(work, "foto"),
+                                                       escl, quando, log=log)
+        except Exception as e:
+            log("Reel con la foto non riuscito, reel col video:", e)
+            info_foto = None
+        if info_foto:
+            formato = FOTO_SINGOLA
         log(f"Formato: {formato}")
         # 7/11/2026 (studio della sera, modifiche 1 e 7): il lato della prova dell'apertura, deciso per OGNI reel (mai
         # quello del reel prima). Le foto no: li' non cambia niente e resta "viso" (com'era); un ripiego col video si'
         lato_ap = lato_prova("apertura", slot) or "viso"
-        overlay.APERTURA = "viso" if formato in FORMATI_FOTO else lato_ap
+        overlay.APERTURA = "viso" if formato in CON_FOTO else lato_ap
         scelta_frase = (frase.get("id"), frase.get("gancio"))
-        log(f"Prove a meta': apertura {overlay.APERTURA if formato not in FORMATI_FOTO else '-'}, frase {lato_frase}"
+        log(f"Prove a meta': apertura {overlay.APERTURA if formato not in CON_FOTO else '-'}, frase {lato_frase}"
             f" ({frase_via})")
         try:                            # se un formato non riesce esce il reel normale (frase da 5 s)
-            if formato == "momento":
+            if formato == FOTO_SINGOLA and info_foto:      # 21/11/2026: gia' montato sopra
+                info = info_foto
+            elif formato == "momento":
                 frase, info = monta_momento(an, src, out, music, serie, nome)
             elif formato == "parlato":
                 frase, info = monta_parlato(an, src, out, serie, nome)
@@ -3381,9 +3404,10 @@ def monta_reel(sc, state, drive, work, videos, slot, save, formato=None, scadenz
     log("Montato:", info)
     # 5/11/2026: il reel con le foto NON usa il video scelto (resta solo come ripiego se le foto non si montano): quel
     # video non va segnato come pubblicato ne' spostato nell'archivio, e la clip d'archivio non conta come usata
-    con_foto = info.get("formato") in FORMATI_FOTO
+    con_foto = info.get("formato") in CON_FOTO
     if con_foto:
-        video, clip, nome = None, None, "Foto della giornata"
+        video, clip = None, None
+        nome = f"Foto {(info.get('foto') or {}).get('nome')}" if info.get("formato") == FOTO_SINGOLA else "Foto della giornata"
         an = dict(an, registrato=None)
     # 6/11/2026 (punto 34): il video di partenza era orizzontale? (al massimo 1 ogni ORIZZONTALI_OGNI reel)
     # 6/11/2026 (integrazione): scritto per OGNI reel. Vuol dire: il video dell'orario (quello che risulta pubblicato,
