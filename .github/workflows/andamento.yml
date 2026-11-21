@@ -37,7 +37,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install requests google-api-python-client google-auth
+      - run: pip install requests google-api-python-client google-auth openpyxl
       - env:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
@@ -45,6 +45,7 @@ jobs:
           META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          DRIVE_FOLDER_DA_PUBBLICARE: ${{ secrets.DRIVE_FOLDER_DA_PUBBLICARE }}   # 22/11: per trovare "0. Reel Alessandro" (foglio.py)
         run: python andamento.py
       - run: |
           git config user.name "reel-bot"

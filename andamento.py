@@ -314,6 +314,9 @@ def main():
     dati = {c: dati[c] for c in ordine if c in dati}
     with open(DATI, "w", encoding="utf-8") as f:
         json.dump(dati, f, ensure_ascii=False, separators=(",", ":"))
+    # 22/11/2026: il foglio "Andamento social" su Google Drive (foglio.py); se non riesce la pagina resta aggiornata
+    import foglio
+    foglio.aggiorna(k, dati)
     ult = max(dati["visualizzazioni"]) if dati["visualizzazioni"] else "-"
     print("Andamento aggiornato:", len(dati["visualizzazioni"]), "giorni, ultimo", ult, "| da mezzanotte:",
           {g: {s: v[0] for s, v in x.items()} for g, x in dati.get("roma", {}).items()},
