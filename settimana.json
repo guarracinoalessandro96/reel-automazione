@@ -10905,142 +10905,22 @@
    "voce": false
   },
   "2026-11-30 22:00": {
-   "an": {
-    "compagnia": "famiglia",
-    "fascia": "sera",
-    "scena": "uscita"
-   },
-   "cartella": "1YeT-u0fEH-DOcbDgaO_q1bR_OpNXFEv8",
    "da_archivio": true,
-   "didascalia": "Stringi i denti adesso. Un giorno guarderai indietro e sarai fiero di te",
-   "durata": 7.0,
-   "file": {
-    "anteprima": "1Jpf3qRVmhnM-fg326LbPer9OLeLQgPlh",
-    "manifest": "1ra802dglYN4oAw_ItMK_lFQ6uh4X-iQZ",
-    "tiktok": "1BDOyI6VrLRnbZWaswxnZAVd4nvXKY98Y",
-    "youtube": "1TIwEIBH-gwqHwZ6T3tJM4EKFxdMVy_bf"
-   },
-   "fonte_id": "1NqfCjngnUsLcNgPGLaYs302aM3bRveLK",
-   "formato": "dieci",
-   "frase": "MIE-7562def2",
-   "frase_dati": {
-    "autore": "",
-    "gancio": "Stringi i denti adesso. Un giorno guarderai indietro e sarai fiero di te.",
-    "hashtag": [
-     "#citazioni",
-     "#motivazione",
-     "#mentalita"
-    ],
-    "id": "MIE-7562def2",
-    "serie": "GIORNO 334 / 365",
-    "tema": "mentalita",
-    "virale": false
-   },
-   "generato": "2026-11-21T13:13",
+   "file": {},
+   "fonte_id": "1hsZNC-N_gcgdSXtWXXHXkwNpGILissxJ",
+   "formato": "intero",
+   "frase": "MIE-6e98ef04",
+   "generato": "2026-11-21T13:19",
    "lotto": "Lotto 2026-11-23",
-   "mb_tiktok": 7.29,
-   "md5": null,
-   "montaggio": {
-    "apertura": {
-     "da_archivio": false,
-     "lato": "viso",
-     "movimento": 19.2,
-     "primo_piano_fermo": false,
-     "soglia_moto": 17.0,
-     "viso_alto": 0.14
-    },
-    "durata": 7.0,
-    "formato": "dieci",
-    "frase_forma": {
-     "forma": "due",
-     "parole": 13,
-     "voce": "tu"
-    },
-    "frase_via": "classifica",
-    "musica": "locked_in_3.m4a",
-    "orizzontale": false,
-    "primo_controllo": "buono",
-    "prove": {
-     "apertura": "viso",
-     "frase": "classifica"
-    },
-    "scritta": "centro_serif",
-    "secondi_montaggio": 171,
-    "stacchi": 1,
-    "stile_centro": {
-     "corpo": 107,
-     "font": "Source Serif Pro",
-     "intatto": false,
-     "luce": 0.44,
-     "righe": 3,
-     "scene_intatte": 0,
-     "scurito": 0.48,
-     "sfumatura": 0.33,
-     "viso": {
-      "corpo": 107,
-      "corpo_base": 107,
-      "posizione": "basso",
-      "righe": 3,
-      "scala": 1.0,
-      "visi": 50,
-      "y": 0.551
-     }
-    },
-    "testi": 1,
-    "testo_viso": {
-     "con_viso": 28,
-     "con_viso_yunet": 28,
-     "controllo": "lettere_fuori_dai_visi",
-     "corpo": 107,
-     "corpo_base": 107,
-     "fotogrammi": 28,
-     "guardato": [
-      [
-       1.5,
-       7.0
-      ]
-     ],
-     "posizione": "basso",
-     "righe": 3,
-     "rilevatore": "yunet+haar",
-     "scala": 1.0,
-     "visi": 50,
-     "y": 0.551
-    },
-    "viso_prima_scena": 5
-   },
-   "musica": "locked_in_3.m4a",
-   "musica_screenshot": null,
-   "problemi": [],
+   "musica": "whoop_1.m4a",
    "registrato": null,
-   "scena": "uscita",
-   "secondi": 195,
-   "stato": "pronto",
+   "scelto": "2026-11-21T13:19",
+   "scena": "specchio",
+   "stato": "in_preparazione",
    "tema": "mentalita",
-   "testo": "Stringi i denti adesso. Un giorno guarderai indietro e sarai fiero di te.",
-   "testo_viso": {
-    "con_viso": 28,
-    "con_viso_yunet": 28,
-    "controllo": "lettere_fuori_dai_visi",
-    "corpo": 107,
-    "corpo_base": 107,
-    "fotogrammi": 28,
-    "guardato": [
-     [
-      1.5,
-      7.0
-     ]
-    ],
-    "posizione": "basso",
-    "righe": 3,
-    "rilevatore": "yunet+haar",
-    "scala": 1.0,
-    "visi": 50,
-    "y": 0.551
-   },
-   "versione": 1,
-   "video": "IMG_3972.MOV",
-   "voce": false
+   "testo": "Quello che adesso ti pesa, tra un po' sarà la tua forza più grande.",
+   "versione": 2,
+   "video": "IMG_5120.mov"
   }
  }
 }
