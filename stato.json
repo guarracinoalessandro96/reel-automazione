@@ -20583,7 +20583,9 @@
      "ok": true,
      "id": "18357203038265033",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -20672,7 +20674,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "z353M_Xiis4"
+     "id": "z353M_Xiis4",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -20683,11 +20686,105 @@
    },
    "spinto": true,
    "testo": "Il tuo futuro è plasmato dalle abitudini che ripeti, non dagli obiettivi che ti poni."
+  },
+  {
+   "quando": "2026-11-21T13:00",
+   "slot": "2026-11-21 14:00",
+   "video": "IMG_4285.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-792949f7",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 7.0,
+    "musica": "intergalactic_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.342,
+     "movimento": 15.43,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 3,
+     "viso": {
+      "visi": 1,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "y": 0.636,
+      "scala": 1.0,
+      "corpo": 107,
+      "righe": 3
+     },
+     "scurito": 0.55,
+     "luce": 0.63,
+     "sfumatura": 0.41,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 1,
+     "corpo_base": 107,
+     "posizione": "basso",
+     "y": 0.636,
+     "scala": 1.0,
+     "corpo": 107,
+     "righe": 3,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       23.5,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 156,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "una",
+     "parole": 11
+    },
+    "frase_via": "forzata",
+    "musica_meta": "deciso_04.flac",
+    "musica_instagram": "Carry The Motion - Global Genius [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "m-9X7yr_C40"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18121506890329184",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "La tua prossima mossa è più importante del tuo ultimo errore."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-13 14:00",
   "2026-11-13 16:00",
   "2026-11-13 18:00",
   "2026-11-13 20:00",
@@ -20766,10 +20863,10 @@
   "2026-11-21 06:00",
   "2026-11-21 08:00",
   "2026-11-21 10:00",
-  "2026-11-21 12:00"
+  "2026-11-21 12:00",
+  "2026-11-21 14:00"
  ],
  "musica_recenti": [
-  "final_boss_battle_1.m4a",
   "vibe_check_1.m4a",
   "locked_in_3.m4a",
   "keep_it_movin_3.m4a",
@@ -20828,7 +20925,8 @@
   "vibe_check_2.m4a",
   "taking_flight_1.m4a",
   "dusty_road_magic_2.m4a",
-  "cartier_3.m4a"
+  "cartier_3.m4a",
+  "intergalactic_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -21265,7 +21363,8 @@
   "MIE-f08851f1",
   "MIE-7c687188",
   "MIE-b1b822ad",
-  "MIE-809e41cf"
+  "MIE-809e41cf",
+  "MIE-792949f7"
  ],
  "temi_recenti": [
   "mentalita",
@@ -21713,8 +21812,8 @@
    "orizzontale": false
   },
   "1OKyRxbpEUPABWJM5Ey1cGm-BG7E-Rv9h": {
-   "usi": 4,
-   "ultimo": "2026-11-13",
+   "usi": 5,
+   "ultimo": "2026-11-21",
    "orizzontale": false
   },
   "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW": {
@@ -21959,7 +22058,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_13.flac",
   "phonk_14.flac",
   "deciso_11.flac",
   "energia_03.flac",
@@ -21978,7 +22076,8 @@
   "phonk_06.flac",
   "energia_11.flac",
   "drive_12.flac",
-  "trap_03.flac"
+  "trap_03.flac",
+  "deciso_04.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -22013,7 +22112,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -22029,7 +22128,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1042846574390974",
   "3240401969456886",
   "3509829325973401",
   "1068592065620532",
@@ -22088,11 +22186,11 @@
   "867574485949511",
   "663866025342759",
   "1267635733842081",
-  "1124230547275731"
+  "1124230547275731",
+  "397890202830542"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Giulio Cercato",
   "TRC Orchestral, Vestevent",
   "Adam Griffith",
   "PiNKSHGRFNGR",
@@ -22101,10 +22199,10 @@
   "stereogully",
   "Julia Gartha",
   "Lucid Mantra",
-  "Apex Sound Odyssey"
+  "Apex Sound Odyssey",
+  "Global Genius"
  ],
  "ig_titoli_recenti": [
-  "stop motion",
   "looking glass",
   "la marche des commis voyageurs",
   "hot mess anthem",
@@ -22143,7 +22241,8 @@
   "legends",
   "don t run from me",
   "flow motion",
-  "gta 6 main theme"
+  "gta 6 main theme",
+  "carry the motion"
  ],
  "ig_tendenze_riserva": [
   {
@@ -22154,31 +22253,17 @@
    "libreria": false
   },
   {
-   "audio_id": "1029338276527053",
-   "title": "Spanish Fire",
-   "display_artist": "Summer Islands",
-   "duration_in_ms": 61390,
+   "audio_id": "924391826094049",
+   "title": "Time For You To March (feat. Kiki Muñoz)",
+   "display_artist": "Neko Fuzz",
+   "duration_in_ms": 229460,
    "libreria": true
   },
   {
-   "audio_id": "1068776575596252",
-   "title": "Stop Motion",
-   "display_artist": "LAVLO",
-   "duration_in_ms": 57100,
-   "libreria": true
-  },
-  {
-   "audio_id": "1668588423964275",
-   "title": "Inferno Boss Battle",
-   "display_artist": "TrackTribe",
-   "duration_in_ms": 102311,
-   "libreria": true
-  },
-  {
-   "audio_id": "930354837134154",
-   "title": "Fire",
-   "display_artist": "YoungPop",
-   "duration_in_ms": 183434,
+   "audio_id": "397890202830542",
+   "title": "Carry The Motion",
+   "display_artist": "Global Genius",
+   "duration_in_ms": 194029,
    "libreria": true
   }
  ]
