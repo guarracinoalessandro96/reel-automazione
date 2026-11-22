@@ -21972,7 +21972,9 @@
      "ok": true,
      "id": "18140365435659308",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -22064,7 +22066,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "9QAldzje-Dw"
+     "id": "9QAldzje-Dw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -22075,11 +22078,106 @@
    },
    "spinto": true,
    "testo": "Il primo passo fa paura. Il secondo un po' meno. Il terzo è già abitudine."
+  },
+  {
+   "quando": "2026-11-22T21:00",
+   "slot": "2026-11-22 22:00",
+   "video": "IMG_5281.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-c95854f9",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 7.0,
+    "musica": "break_ya_neck_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.0,
+     "movimento": 6.22,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 4,
+     "viso": {
+      "visi": 18,
+      "corpo_base": 107,
+      "posizione": "centro",
+      "y": 0.47,
+      "scala": 1.0,
+      "corpo": 107,
+      "righe": 4
+     },
+     "scurito": 0.0,
+     "luce": 0.43,
+     "sfumatura": 0.32,
+     "intatto": true,
+     "scene_intatte": 1
+    },
+    "testo_viso": {
+     "visi": 18,
+     "corpo_base": 107,
+     "posizione": "centro",
+     "y": 0.47,
+     "scala": 1.0,
+     "corpo": 107,
+     "righe": 4,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       6.0,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 146,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "frase": "classifica",
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "io",
+     "forma": "due",
+     "parole": 13
+    },
+    "frase_via": "classifica",
+    "musica_meta": "trap_14.flac",
+    "musica_instagram": "Big Leagues (Instrumental) - Mike Floss"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "M06fNP3SUf0"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17999674272104523",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Sacrifici oggi, sorrisi domani. È un patto che ho fatto con me stesso."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-14 22:00",
   "2026-11-15 00:00",
   "2026-11-15 06:00",
   "2026-11-15 08:00",
@@ -22158,10 +22256,10 @@
   "2026-11-22 14:00",
   "2026-11-22 16:00",
   "2026-11-22 18:00",
-  "2026-11-22 20:00"
+  "2026-11-22 20:00",
+  "2026-11-22 22:00"
  ],
  "musica_recenti": [
-  "i_might_be_late_2.m4a",
   "turn_in_the_sun_1.m4a",
   "dusty_road_magic_3.m4a",
   "fire_in_the_sky_3.m4a",
@@ -22220,7 +22318,8 @@
   "ten_2.m4a",
   "duty_calls_1.m4a",
   "monthaholic_3.m4a",
-  "kick_it_1.m4a"
+  "kick_it_1.m4a",
+  "break_ya_neck_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -22671,7 +22770,8 @@
   "MIE-9dd49640",
   "MIE-5c294fa3",
   "MIE-7562def2",
-  "MIE-2248c091"
+  "MIE-2248c091",
+  "MIE-c95854f9"
  ],
  "temi_recenti": [
   "mentalita",
@@ -23287,8 +23387,8 @@
    "orizzontale": false
   },
   "11ifFF0-NdArVfA5OkQH9RcDN2JXsB1_m": {
-   "usi": 1,
-   "ultimo": "2026-11-15",
+   "usi": 2,
+   "ultimo": "2026-11-22",
    "orizzontale": false
   },
   "12XJ31-yzyaXlNCSzxTpaztbEXpOLstDr": {
@@ -23373,7 +23473,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_06.flac",
   "trap_04.flac",
   "phonk_06.flac",
   "energia_11.flac",
@@ -23392,7 +23491,8 @@
   "drive_08.flac",
   "deciso_02.flac",
   "phonk_05.flac",
-  "drive_09.flac"
+  "drive_09.flac",
+  "trap_14.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -23427,7 +23527,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -23443,7 +23543,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1155586068813210",
   "1582326450151974",
   "5293714980852628",
   "1383912545569665",
@@ -23502,11 +23601,11 @@
   "762434402313350",
   "969843681296214",
   "1223134719013093",
-  "212037205296438"
+  "212037205296438",
+  "523966117385305"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "d.higgs",
   "4 Staan",
   "Fellow Travelers",
   "Jackson Whalan",
@@ -23515,10 +23614,10 @@
   "Ross Lara",
   "Cy Curnin",
   "Giulio Cercato",
-  "BLACK DOVES"
+  "BLACK DOVES",
+  "Mike Floss"
  ],
  "ig_titoli_recenti": [
-  "rise",
   "move my body",
   "energy in motion",
   "adrenaline juicebox",
@@ -23557,7 +23656,8 @@
   "vice city",
   "anthem in black",
   "energy",
-  "sparks fly"
+  "sparks fly",
+  "big leagues"
  ],
  "ig_tendenze_riserva": [
   {
@@ -23580,34 +23680,6 @@
    "display_artist": "Sfera Ebbasta, Shiva, Geolier",
    "duration_in_ms": 211170,
    "libreria": false
-  },
-  {
-   "audio_id": "1488842099008011",
-   "title": "Electric Movement (Instrumental)",
-   "display_artist": "Sam Marshall",
-   "duration_in_ms": 187894,
-   "libreria": true
-  },
-  {
-   "audio_id": "856221358845766",
-   "title": "What Now (feat. Dawson Gnewikow, Dawson March, Jacquire King)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 157400,
-   "libreria": true
-  },
-  {
-   "audio_id": "212037205296438",
-   "title": "Sparks Fly",
-   "display_artist": "BLACK DOVES",
-   "duration_in_ms": 162231,
-   "libreria": true
-  },
-  {
-   "audio_id": "888166387285417",
-   "title": "Thunder Train",
-   "display_artist": "The Sonic Hijackers",
-   "duration_in_ms": 73124,
-   "libreria": true
   }
  ]
 }
