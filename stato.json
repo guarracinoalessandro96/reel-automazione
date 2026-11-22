@@ -21371,7 +21371,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "twmZ-XeOSnA"
+     "id": "twmZ-XeOSnA",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -21382,11 +21383,108 @@
    },
    "spinto": true,
    "testo": "Nessuno ti applaude mentre costruisci. Costruisci lo stesso, mattone dopo mattone."
+  },
+  {
+   "quando": "2026-11-22T07:00",
+   "slot": "2026-11-22 08:00",
+   "video": "IMG_3968.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-f36a2bf4",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 7.0,
+    "musica": "ancient_civilisations_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 2,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.13,
+     "movimento": 10.35,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 3,
+     "viso": {
+      "visi": 32,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "y": 0.501,
+      "scala": 1.0,
+      "corpo": 107,
+      "righe": 3
+     },
+     "scurito": 0.4,
+     "luce": 0.34,
+     "sfumatura": 0.24,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 32,
+     "corpo_base": 107,
+     "posizione": "basso",
+     "y": 0.501,
+     "scala": 1.0,
+     "corpo": 107,
+     "righe": 3,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       1.0,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi",
+     "altro_video": "extra_0.mov"
+    },
+    "ripiego_da": "dieci",
+    "secondi_montaggio": 153,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "frase": "classifica",
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "io",
+     "forma": "due",
+     "parole": 12
+    },
+    "frase_via": "classifica",
+    "musica_meta": "deciso_11.flac",
+    "musica_instagram": "Making Moves - Jackson Whalan [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "0BKom90dqhc"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17953475556347485",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Volevo mollare tante volte. Sono ancora qui, e questo dice già tutto."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-14 08:00",
   "2026-11-14 10:00",
   "2026-11-14 12:00",
   "2026-11-14 14:00",
@@ -21465,10 +21563,10 @@
   "2026-11-21 20:00",
   "2026-11-21 22:00",
   "2026-11-22 00:00",
-  "2026-11-22 06:00"
+  "2026-11-22 06:00",
+  "2026-11-22 08:00"
  ],
  "musica_recenti": [
-  "death_duel_1.m4a",
   "monthaholic_2.m4a",
   "way_back_home_2.m4a",
   "break_ya_neck_2.m4a",
@@ -21527,7 +21625,8 @@
   "horizons_3.m4a",
   "locked_in_2.m4a",
   "rubberband_1.m4a",
-  "moon_vision_2.m4a"
+  "moon_vision_2.m4a",
+  "ancient_civilisations_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -21971,7 +22070,8 @@
   "MIE-8a2c841c",
   "MIE-0e8716e1",
   "MIE-d49f4fad",
-  "MIE-16db69b6"
+  "MIE-16db69b6",
+  "MIE-f36a2bf4"
  ],
  "temi_recenti": [
   "mentalita",
@@ -22204,8 +22304,9 @@
    "orizzontale": false
   },
   "1KrAS_uFNheClKfLJbtUvGGJ16dNqCs2z": {
-   "usi": 2,
-   "ultimo": "2026-10-20"
+   "usi": 3,
+   "ultimo": "2026-11-22",
+   "orizzontale": false
   },
   "1C7dPpnBEXAtEz6B37kjIeLNrl5vyMEeb": {
    "usi": 2,
@@ -22668,7 +22769,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_04.flac",
   "trap_07.flac",
   "deciso_10.flac",
   "phonk_15.flac",
@@ -22687,7 +22787,8 @@
   "phonk_14.flac",
   "deciso_01.flac",
   "trap_09.flac",
-  "drive_07.flac"
+  "drive_07.flac",
+  "deciso_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -22722,7 +22823,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -22738,7 +22839,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "925982985305806",
   "925982985305806",
   "925982985305806",
   "925982985305806",
@@ -22797,11 +22897,11 @@
   "702088267960095",
   "604290701766493",
   "387139071011986",
-  "3808630162610430"
+  "3808630162610430",
+  "1010300205196687"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Julia Gartha",
   "Lucid Mantra",
   "Apex Sound Odyssey",
   "Global Genius",
@@ -22810,10 +22910,10 @@
   "Daria Novo",
   "d.higgs",
   "4 Staan",
-  "Fellow Travelers"
+  "Fellow Travelers",
+  "Jackson Whalan"
  ],
  "ig_titoli_recenti": [
-  "hype track",
   "rockstar anthem",
   "project power",
   "good run",
@@ -22852,7 +22952,8 @@
   "i am the fire",
   "money power",
   "nikkatha",
-  "get a move on"
+  "get a move on",
+  "making moves"
  ],
  "ig_tendenze_riserva": [
   {
@@ -22863,24 +22964,45 @@
    "libreria": false
   },
   {
-   "audio_id": "3643996589148382",
-   "title": "Storm",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 154693,
+   "audio_id": "3846481242297548",
+   "title": "Power Drift",
+   "display_artist": "Adam Griffith",
+   "duration_in_ms": 162120,
    "libreria": true
   },
   {
-   "audio_id": "3808630162610430",
-   "title": "Get A Move On",
-   "display_artist": "Fellow Travelers",
-   "duration_in_ms": 61985,
+   "audio_id": "1036027239348051",
+   "title": "Main Character March",
+   "display_artist": "cloud cover",
+   "duration_in_ms": 59140,
    "libreria": true
   },
   {
-   "audio_id": "4279708355594989",
-   "title": "In Motion",
+   "audio_id": "1488842099008011",
+   "title": "Electric Movement (Instrumental)",
    "display_artist": "Sam Marshall",
-   "duration_in_ms": 188848,
+   "duration_in_ms": 187894,
+   "libreria": true
+  },
+  {
+   "audio_id": "2113684212909650",
+   "title": "Only Stronger",
+   "display_artist": "Auralux",
+   "duration_in_ms": 63210,
+   "libreria": true
+  },
+  {
+   "audio_id": "1010300205196687",
+   "title": "Making Moves",
+   "display_artist": "Jackson Whalan",
+   "duration_in_ms": 61060,
+   "libreria": true
+  },
+  {
+   "audio_id": "317746227387387",
+   "title": "Worth Fighting For",
+   "display_artist": "Cameron Rasmussen",
+   "duration_in_ms": 141620,
    "libreria": true
   }
  ]
