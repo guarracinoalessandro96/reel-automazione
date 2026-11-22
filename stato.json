@@ -21676,7 +21676,9 @@
      "ok": true,
      "id": "17990658105088426",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -21765,7 +21767,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "5T2mcaxqekw"
+     "id": "5T2mcaxqekw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -21776,11 +21779,106 @@
    },
    "spinto": true,
    "testo": "Stanco? Anche io. Continuo lo stesso."
+  },
+  {
+   "quando": "2026-11-22T15:00",
+   "slot": "2026-11-22 16:00",
+   "video": "IMG_3975.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "MIE-5c294fa3",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 7.0,
+    "musica": "duty_calls_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.148,
+     "movimento": 42.22,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 4,
+     "viso": {
+      "visi": 101,
+      "corpo_base": 107,
+      "posizione": "alto",
+      "y": 0.296,
+      "scala": 1.0,
+      "corpo": 107,
+      "righe": 4
+     },
+     "scurito": 0.44,
+     "luce": 0.4,
+     "sfumatura": 0.3,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 101,
+     "corpo_base": 107,
+     "posizione": "alto",
+     "y": 0.296,
+     "scala": 1.0,
+     "corpo": 107,
+     "righe": 4,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       9.5,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 152,
+    "scritta": "centro_serif",
+    "orizzontale": true,
+    "prove": {
+     "frase": "aforisma",
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 15
+    },
+    "frase_via": "nessun_aforisma",
+    "musica_meta": "deciso_02.flac",
+    "musica_instagram": "Anthem In Black - Cy Curnin [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "L6P9gmsY5dw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17925994422225984",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Le gambe tremano, la testa dice basta. Fai ancora un passo e poi un altro."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-14 16:00",
   "2026-11-14 18:00",
   "2026-11-14 20:00",
   "2026-11-14 22:00",
@@ -21859,10 +21957,10 @@
   "2026-11-22 08:00",
   "2026-11-22 10:00",
   "2026-11-22 12:00",
-  "2026-11-22 14:00"
+  "2026-11-22 14:00",
+  "2026-11-22 16:00"
  ],
  "musica_recenti": [
-  "kick_it_2.m4a",
   "cutscene_crush_3.m4a",
   "the_light_3.m4a",
   "i_might_be_late_2.m4a",
@@ -21921,7 +22019,8 @@
   "ancient_civilisations_3.m4a",
   "visions_1.m4a",
   "death_duel_1.m4a",
-  "ten_2.m4a"
+  "ten_2.m4a",
+  "duty_calls_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -22369,7 +22468,8 @@
   "MIE-f36a2bf4",
   "MIE-bd41cc60",
   "MIE-ae20f601",
-  "MIE-9dd49640"
+  "MIE-9dd49640",
+  "MIE-5c294fa3"
  ],
  "temi_recenti": [
   "mentalita",
@@ -22647,8 +22747,8 @@
    "orizzontale": false
   },
   "1zw12S9166ROtTo6gXbB8osWAiBXUjT0Q": {
-   "usi": 2,
-   "ultimo": "2026-10-22",
+   "usi": 3,
+   "ultimo": "2026-11-22",
    "orizzontale": true
   },
   "1UoUWHyHwCuON4BVs4SSdx-6x-4H6CKw9": {
@@ -23069,7 +23169,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_06.flac",
   "trap_11.flac",
   "phonk_09.flac",
   "deciso_06.flac",
@@ -23088,7 +23187,8 @@
   "deciso_11.flac",
   "phonk_08.flac",
   "trap_02.flac",
-  "drive_08.flac"
+  "drive_08.flac",
+  "deciso_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -23123,7 +23223,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -23139,7 +23239,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "834026479668975",
   "1232530197323594",
   "1201635935516260",
   "1155586068813210",
@@ -23198,11 +23297,11 @@
   "1010300205196687",
   "1067193775733379",
   "1792089558671408",
-  "762434402313350"
+  "762434402313350",
+  "969843681296214"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "The K Club",
   "Trout Recording",
   "Daria Novo",
   "d.higgs",
@@ -23211,10 +23310,10 @@
   "Jackson Whalan",
   "LAVLO",
   "Sfera Ebbasta, Shiva, Geolier",
-  "Ross Lara"
+  "Ross Lara",
+  "Cy Curnin"
  ],
  "ig_titoli_recenti": [
-  "move ur body",
   "power on",
   "in motion",
   "rise",
@@ -23253,7 +23352,8 @@
   "making moves",
   "move",
   "victory lap",
-  "vice city"
+  "vice city",
+  "anthem in black"
  ],
  "ig_tendenze_riserva": [
   {
@@ -23285,10 +23385,10 @@
    "libreria": true
   },
   {
-   "audio_id": "1118640460336470",
-   "title": "Out Of Mind (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 144494,
+   "audio_id": "936174714667779",
+   "title": "Adrenalina Was Her Name",
+   "display_artist": "Ecklectic Music",
+   "duration_in_ms": 158890,
    "libreria": true
   }
  ]
