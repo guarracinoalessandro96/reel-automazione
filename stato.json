@@ -22073,7 +22073,9 @@
      "ok": true,
      "id": "18110659843958208",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -22163,7 +22165,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "M06fNP3SUf0"
+     "id": "M06fNP3SUf0",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -22174,11 +22177,110 @@
    },
    "spinto": true,
    "testo": "Sacrifici oggi, sorrisi domani. È un patto che ho fatto con me stesso."
+  },
+  {
+   "quando": "2026-11-22T23:00",
+   "slot": "2026-11-23 00:00",
+   "video": "IMG_4274.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-a82ff5e6",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 9.12,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.087
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 26,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "survival_mode_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 182,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 101,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.37,
+     "righe": 6,
+     "scene_intatte": 0,
+     "scurito": 0.4,
+     "sfumatura": 0.28,
+     "viso": {
+      "corpo": 101,
+      "corpo_base": 101,
+      "posizione": "basso",
+      "righe": 6,
+      "scala": 1.0,
+      "visi": 17,
+      "y": 0.612
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 101,
+     "corpo_base": 101,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       12.0,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 6,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 17,
+     "y": 0.612
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:00"
+    },
+    "musica_meta": "phonk_16.flac",
+    "musica_instagram": "Keep Climbing - Auralux [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "5NUPs-NwXX0"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18039806480658213",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Guardati. Esausto, sotto pressione, mentre combatti le tue battaglie silenziose, eppure ogni giorno ti rialzi e vai avan"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-15 00:00",
   "2026-11-15 06:00",
   "2026-11-15 08:00",
   "2026-11-15 10:00",
@@ -22257,10 +22359,10 @@
   "2026-11-22 16:00",
   "2026-11-22 18:00",
   "2026-11-22 20:00",
-  "2026-11-22 22:00"
+  "2026-11-22 22:00",
+  "2026-11-23 00:00"
  ],
  "musica_recenti": [
-  "turn_in_the_sun_1.m4a",
   "dusty_road_magic_3.m4a",
   "fire_in_the_sky_3.m4a",
   "mirror_mirror_2.m4a",
@@ -22319,7 +22421,8 @@
   "duty_calls_1.m4a",
   "monthaholic_3.m4a",
   "kick_it_1.m4a",
-  "break_ya_neck_2.m4a"
+  "break_ya_neck_2.m4a",
+  "survival_mode_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -22771,7 +22874,8 @@
   "MIE-5c294fa3",
   "MIE-7562def2",
   "MIE-2248c091",
-  "MIE-c95854f9"
+  "MIE-c95854f9",
+  "MIE-a82ff5e6"
  ],
  "temi_recenti": [
   "mentalita",
@@ -22785,7 +22889,50 @@
   "mentalita",
   "mentalita"
  ],
- "analisi": {},
+ "analisi": {
+  "1-XpSt4SspEfxthfpP3WOspSjVXChTq6f": {
+   "nome": "IMG_5577.MOV",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-22T11:03+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-22T21:31:51.236Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1DEHn2CYBTZOTUUSgcdgf3bRsyRyFI7d2": {
+   "nome": "IMG_5581.MOV",
+   "scena": "palestra",
+   "sicurezza": 0.99,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-22T11:07+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-22T21:31:56.410Z",
+   "parlato": null,
+   "momento": null
+  },
+  "1Dhd2qObnIbVXgkFTrfl64vUIe_5Dcca6": {
+   "nome": "IMG_5576.MOV",
+   "scena": "palestra",
+   "sicurezza": 1.0,
+   "motivo": "riconosciuta dalle immagini",
+   "lato_corto": 2160,
+   "orizzontale": false,
+   "compagnia": "solo",
+   "registrato": "2026-11-22T10:57+01:00",
+   "fascia": "palestra",
+   "caricato": "2026-11-22T21:32:02.305Z",
+   "parlato": null,
+   "momento": null
+  }
+ },
  "pulizia": "2026-11-22",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
@@ -23211,8 +23358,8 @@
    "orizzontale": false
   },
   "1VEPb54Y1oSgn1WwoX7EtQNTsLCC7CB4u": {
-   "usi": 4,
-   "ultimo": "2026-11-13",
+   "usi": 5,
+   "ultimo": "2026-11-22",
    "orizzontale": false
   },
   "1ihXK6xEsYtfnFtAgP15kNGGE71G07W-f": {
@@ -23473,7 +23620,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_04.flac",
   "phonk_06.flac",
   "energia_11.flac",
   "drive_12.flac",
@@ -23492,7 +23638,8 @@
   "deciso_02.flac",
   "phonk_05.flac",
   "drive_09.flac",
-  "trap_14.flac"
+  "trap_14.flac",
+  "phonk_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -23527,7 +23674,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -23543,7 +23690,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1582326450151974",
   "5293714980852628",
   "1383912545569665",
   "3243337306057458",
@@ -23602,11 +23748,11 @@
   "969843681296214",
   "1223134719013093",
   "212037205296438",
-  "523966117385305"
+  "523966117385305",
+  "1026654053480401"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "4 Staan",
   "Fellow Travelers",
   "Jackson Whalan",
   "LAVLO",
@@ -23615,10 +23761,10 @@
   "Cy Curnin",
   "Giulio Cercato",
   "BLACK DOVES",
-  "Mike Floss"
+  "Mike Floss",
+  "Auralux"
  ],
  "ig_titoli_recenti": [
-  "move my body",
   "energy in motion",
   "adrenaline juicebox",
   "running through gold",
@@ -23657,7 +23803,8 @@
   "anthem in black",
   "energy",
   "sparks fly",
-  "big leagues"
+  "big leagues",
+  "keep climbing"
  ],
  "ig_tendenze_riserva": [
   {
@@ -23680,6 +23827,13 @@
    "display_artist": "Sfera Ebbasta, Shiva, Geolier",
    "duration_in_ms": 211170,
    "libreria": false
+  },
+  {
+   "audio_id": "1026654053480401",
+   "title": "Keep Climbing",
+   "display_artist": "Auralux",
+   "duration_in_ms": 61737,
+   "libreria": true
   }
  ]
 }
