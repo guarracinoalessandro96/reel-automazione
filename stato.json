@@ -21378,7 +21378,9 @@
      "ok": true,
      "id": "18187211884425672",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -21470,7 +21472,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "0BKom90dqhc"
+     "id": "0BKom90dqhc",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -21481,11 +21484,105 @@
    },
    "spinto": true,
    "testo": "Volevo mollare tante volte. Sono ancora qui, e questo dice già tutto."
+  },
+  {
+   "quando": "2026-11-22T09:00",
+   "slot": "2026-11-22 10:00",
+   "video": "IMG_3969.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-bd41cc60",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 7.0,
+    "musica": "visions_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.44,
+     "movimento": 47.61,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 110,
+     "righe": 3,
+     "viso": {
+      "visi": 21,
+      "corpo_base": 110,
+      "posizione": "basso",
+      "y": 0.732,
+      "scala": 1.0,
+      "corpo": 110,
+      "righe": 3
+     },
+     "scurito": 0.5,
+     "luce": 0.44,
+     "sfumatura": 0.33,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 21,
+     "corpo_base": 110,
+     "posizione": "basso",
+     "y": 0.732,
+     "scala": 1.0,
+     "corpo": 110,
+     "righe": 3,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       1.5,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 126,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 9
+    },
+    "frase_via": "forzata",
+    "musica_meta": "phonk_08.flac",
+    "musica_instagram": "Move - LAVLO [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "ItqBxg9-sJE"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17953525548342527",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Stai creando problemi nella tua testa di nuovo. Smettila."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-14 10:00",
   "2026-11-14 12:00",
   "2026-11-14 14:00",
   "2026-11-14 16:00",
@@ -21564,10 +21661,10 @@
   "2026-11-21 22:00",
   "2026-11-22 00:00",
   "2026-11-22 06:00",
-  "2026-11-22 08:00"
+  "2026-11-22 08:00",
+  "2026-11-22 10:00"
  ],
  "musica_recenti": [
-  "monthaholic_2.m4a",
   "way_back_home_2.m4a",
   "break_ya_neck_2.m4a",
   "kick_it_2.m4a",
@@ -21626,7 +21723,8 @@
   "locked_in_2.m4a",
   "rubberband_1.m4a",
   "moon_vision_2.m4a",
-  "ancient_civilisations_3.m4a"
+  "ancient_civilisations_3.m4a",
+  "visions_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -22071,7 +22169,8 @@
   "MIE-0e8716e1",
   "MIE-d49f4fad",
   "MIE-16db69b6",
-  "MIE-f36a2bf4"
+  "MIE-f36a2bf4",
+  "MIE-bd41cc60"
  ],
  "temi_recenti": [
   "mentalita",
@@ -22309,8 +22408,9 @@
    "orizzontale": false
   },
   "1C7dPpnBEXAtEz6B37kjIeLNrl5vyMEeb": {
-   "usi": 2,
-   "ultimo": "2026-10-20"
+   "usi": 3,
+   "ultimo": "2026-11-22",
+   "orizzontale": false
   },
   "1gsbR0t4WbGx68YpuUH-LiqfvFqNVVPqW": {
    "usi": 2,
@@ -22769,7 +22869,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_07.flac",
   "deciso_10.flac",
   "phonk_15.flac",
   "energia_06.flac",
@@ -22788,7 +22887,8 @@
   "deciso_01.flac",
   "trap_09.flac",
   "drive_07.flac",
-  "deciso_11.flac"
+  "deciso_11.flac",
+  "phonk_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -22823,7 +22923,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -22839,7 +22939,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "925982985305806",
   "925982985305806",
   "925982985305806",
   "834026479668975",
@@ -22898,11 +22997,11 @@
   "604290701766493",
   "387139071011986",
   "3808630162610430",
-  "1010300205196687"
+  "1010300205196687",
+  "1067193775733379"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Lucid Mantra",
   "Apex Sound Odyssey",
   "Global Genius",
   "The K Club",
@@ -22911,10 +23010,10 @@
   "d.higgs",
   "4 Staan",
   "Fellow Travelers",
-  "Jackson Whalan"
+  "Jackson Whalan",
+  "LAVLO"
  ],
  "ig_titoli_recenti": [
-  "rockstar anthem",
   "project power",
   "good run",
   "move ur body",
@@ -22953,7 +23052,8 @@
   "money power",
   "nikkatha",
   "get a move on",
-  "making moves"
+  "making moves",
+  "move"
  ],
  "ig_tendenze_riserva": [
   {
@@ -22964,17 +23064,24 @@
    "libreria": false
   },
   {
-   "audio_id": "3846481242297548",
-   "title": "Power Drift",
-   "display_artist": "Adam Griffith",
-   "duration_in_ms": 162120,
+   "audio_id": "1582326450151974",
+   "title": "Move On",
+   "display_artist": "Summer Islands",
+   "duration_in_ms": 64310,
    "libreria": true
   },
   {
-   "audio_id": "1036027239348051",
-   "title": "Main Character March",
-   "display_artist": "cloud cover",
-   "duration_in_ms": 59140,
+   "audio_id": "1383912545569665",
+   "title": "You Can Do It",
+   "display_artist": "Global Genius",
+   "duration_in_ms": 157357,
+   "libreria": true
+  },
+  {
+   "audio_id": "1067193775733379",
+   "title": "Move",
+   "display_artist": "LAVLO",
+   "duration_in_ms": 57574,
    "libreria": true
   },
   {
@@ -22996,6 +23103,13 @@
    "title": "Making Moves",
    "display_artist": "Jackson Whalan",
    "duration_in_ms": 61060,
+   "libreria": true
+  },
+  {
+   "audio_id": "1036027239348051",
+   "title": "Main Character March",
+   "display_artist": "cloud cover",
+   "duration_in_ms": 59140,
    "libreria": true
   },
   {
