@@ -21873,7 +21873,9 @@
      "ok": true,
      "id": "17925994422225984",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -21963,7 +21965,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "2qKFoeIchhU"
+     "id": "2qKFoeIchhU",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -21974,11 +21977,108 @@
    },
    "spinto": true,
    "testo": "Stringi i denti adesso. Un giorno guarderai indietro e sarai fiero di te."
+  },
+  {
+   "quando": "2026-11-22T19:00",
+   "slot": "2026-11-22 20:00",
+   "video": "IMG_4054.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-2248c091",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 7.0,
+    "musica": "kick_it_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "scene_dal_video": 1,
+    "viso_prima_scena": 3,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.0,
+     "movimento": 9.34,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 126,
+     "righe": 3,
+     "viso": {
+      "visi": 2,
+      "corpo_base": 126,
+      "posizione": "basso",
+      "y": 0.548,
+      "scala": 1.0,
+      "corpo": 126,
+      "righe": 3
+     },
+     "scurito": 0.39,
+     "luce": 0.34,
+     "sfumatura": 0.25,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 2,
+     "corpo_base": 126,
+     "posizione": "basso",
+     "y": 0.548,
+     "scala": 1.0,
+     "corpo": 126,
+     "righe": 3,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       7.92,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi",
+     "altra_finestra": 1
+    },
+    "secondi_montaggio": 146,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "frase": "classifica",
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "generale",
+     "forma": "due",
+     "parole": 15
+    },
+    "frase_via": "classifica",
+    "musica_meta": "drive_09.flac",
+    "musica_instagram": "Sparks Fly - BLACK DOVES [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "9QAldzje-Dw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18110659843958208",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Il primo passo fa paura. Il secondo un po' meno. Il terzo è già abitudine."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-14 20:00",
   "2026-11-14 22:00",
   "2026-11-15 00:00",
   "2026-11-15 06:00",
@@ -22057,10 +22157,10 @@
   "2026-11-22 12:00",
   "2026-11-22 14:00",
   "2026-11-22 16:00",
-  "2026-11-22 18:00"
+  "2026-11-22 18:00",
+  "2026-11-22 20:00"
  ],
  "musica_recenti": [
-  "the_light_3.m4a",
   "i_might_be_late_2.m4a",
   "turn_in_the_sun_1.m4a",
   "dusty_road_magic_3.m4a",
@@ -22119,7 +22219,8 @@
   "death_duel_1.m4a",
   "ten_2.m4a",
   "duty_calls_1.m4a",
-  "monthaholic_3.m4a"
+  "monthaholic_3.m4a",
+  "kick_it_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -22569,7 +22670,8 @@
   "MIE-ae20f601",
   "MIE-9dd49640",
   "MIE-5c294fa3",
-  "MIE-7562def2"
+  "MIE-7562def2",
+  "MIE-2248c091"
  ],
  "temi_recenti": [
   "mentalita",
@@ -22872,8 +22974,9 @@
    "orizzontale": false
   },
   "1_YtfVKfv3LHrn3h-627VTGjeZMlzcU1b": {
-   "usi": 2,
-   "ultimo": "2026-10-22"
+   "usi": 3,
+   "ultimo": "2026-11-22",
+   "orizzontale": false
   },
   "13Mbzphz708QlBEv9Bq_CNQzZaM4WplJL": {
    "usi": 4,
@@ -23270,7 +23373,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_09.flac",
   "deciso_06.flac",
   "trap_04.flac",
   "phonk_06.flac",
@@ -23289,7 +23391,8 @@
   "trap_02.flac",
   "drive_08.flac",
   "deciso_02.flac",
-  "phonk_05.flac"
+  "phonk_05.flac",
+  "drive_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -23324,7 +23427,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -23340,7 +23443,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1201635935516260",
   "1155586068813210",
   "1582326450151974",
   "5293714980852628",
@@ -23399,11 +23501,11 @@
   "1792089558671408",
   "762434402313350",
   "969843681296214",
-  "1223134719013093"
+  "1223134719013093",
+  "212037205296438"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Daria Novo",
   "d.higgs",
   "4 Staan",
   "Fellow Travelers",
@@ -23412,10 +23514,10 @@
   "Sfera Ebbasta, Shiva, Geolier",
   "Ross Lara",
   "Cy Curnin",
-  "Giulio Cercato"
+  "Giulio Cercato",
+  "BLACK DOVES"
  ],
  "ig_titoli_recenti": [
-  "in motion",
   "rise",
   "move my body",
   "energy in motion",
@@ -23454,7 +23556,8 @@
   "victory lap",
   "vice city",
   "anthem in black",
-  "energy"
+  "energy",
+  "sparks fly"
  ],
  "ig_tendenze_riserva": [
   {
@@ -23493,10 +23596,17 @@
    "libreria": true
   },
   {
-   "audio_id": "1223134719013093",
-   "title": "Energy",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 122020,
+   "audio_id": "212037205296438",
+   "title": "Sparks Fly",
+   "display_artist": "BLACK DOVES",
+   "duration_in_ms": 162231,
+   "libreria": true
+  },
+  {
+   "audio_id": "888166387285417",
+   "title": "Thunder Train",
+   "display_artist": "The Sonic Hijackers",
+   "duration_in_ms": 73124,
    "libreria": true
   }
  ]
