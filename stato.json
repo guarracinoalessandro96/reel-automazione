@@ -21479,7 +21479,9 @@
      "ok": true,
      "id": "17953475556347485",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -21568,7 +21570,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "ItqBxg9-sJE"
+     "id": "ItqBxg9-sJE",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -21579,11 +21582,106 @@
    },
    "spinto": true,
    "testo": "Stai creando problemi nella tua testa di nuovo. Smettila."
+  },
+  {
+   "quando": "2026-11-22T11:00",
+   "slot": "2026-11-22 12:00",
+   "video": "IMG_4030.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-ae20f601",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "dieci",
+    "durata": 7.0,
+    "musica": "death_duel_1.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.103,
+     "movimento": 26.15,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 3,
+     "viso": {
+      "visi": 37,
+      "corpo_base": 107,
+      "posizione": "centro",
+      "y": 0.47,
+      "scala": 1.0,
+      "corpo": 107,
+      "righe": 3
+     },
+     "scurito": 0.36,
+     "luce": 0.33,
+     "sfumatura": 0.23,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 37,
+     "corpo_base": 107,
+     "posizione": "centro",
+     "y": 0.47,
+     "scala": 1.0,
+     "corpo": 107,
+     "righe": 3,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       7.0,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 147,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "frase": "aforisma",
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "io",
+     "forma": "due",
+     "parole": 13
+    },
+    "frase_via": "nessun_aforisma",
+    "musica_meta": "trap_02.flac",
+    "musica_instagram": "Victory Lap - Sfera Ebbasta, Shiva, Geolier [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "D2uv5_NVfTE"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17990658105088426",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Stanco sì, arreso mai. C'è una bella differenza e io la conosco bene."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-14 12:00",
   "2026-11-14 14:00",
   "2026-11-14 16:00",
   "2026-11-14 18:00",
@@ -21662,10 +21760,10 @@
   "2026-11-22 00:00",
   "2026-11-22 06:00",
   "2026-11-22 08:00",
-  "2026-11-22 10:00"
+  "2026-11-22 10:00",
+  "2026-11-22 12:00"
  ],
  "musica_recenti": [
-  "way_back_home_2.m4a",
   "break_ya_neck_2.m4a",
   "kick_it_2.m4a",
   "cutscene_crush_3.m4a",
@@ -21724,7 +21822,8 @@
   "rubberband_1.m4a",
   "moon_vision_2.m4a",
   "ancient_civilisations_3.m4a",
-  "visions_1.m4a"
+  "visions_1.m4a",
+  "death_duel_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -22170,7 +22269,8 @@
   "MIE-d49f4fad",
   "MIE-16db69b6",
   "MIE-f36a2bf4",
-  "MIE-bd41cc60"
+  "MIE-bd41cc60",
+  "MIE-ae20f601"
  ],
  "temi_recenti": [
   "mentalita",
@@ -22413,8 +22513,9 @@
    "orizzontale": false
   },
   "1gsbR0t4WbGx68YpuUH-LiqfvFqNVVPqW": {
-   "usi": 2,
-   "ultimo": "2026-10-20"
+   "usi": 3,
+   "ultimo": "2026-11-22",
+   "orizzontale": false
   },
   "1NfvRrrvtikqSvJNkOOpi9sOBXs09blgz": {
    "usi": 5,
@@ -22869,7 +22970,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_10.flac",
   "phonk_15.flac",
   "energia_06.flac",
   "trap_11.flac",
@@ -22888,7 +22988,8 @@
   "trap_09.flac",
   "drive_07.flac",
   "deciso_11.flac",
-  "phonk_08.flac"
+  "phonk_08.flac",
+  "trap_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -22923,7 +23024,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -22939,7 +23040,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "925982985305806",
   "925982985305806",
   "834026479668975",
   "1232530197323594",
@@ -22998,11 +23098,11 @@
   "387139071011986",
   "3808630162610430",
   "1010300205196687",
-  "1067193775733379"
+  "1067193775733379",
+  "1792089558671408"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Apex Sound Odyssey",
   "Global Genius",
   "The K Club",
   "Trout Recording",
@@ -23011,10 +23111,10 @@
   "4 Staan",
   "Fellow Travelers",
   "Jackson Whalan",
-  "LAVLO"
+  "LAVLO",
+  "Sfera Ebbasta, Shiva, Geolier"
  ],
  "ig_titoli_recenti": [
-  "project power",
   "good run",
   "move ur body",
   "power on",
@@ -23053,7 +23153,8 @@
   "nikkatha",
   "get a move on",
   "making moves",
-  "move"
+  "move",
+  "victory lap"
  ],
  "ig_tendenze_riserva": [
   {
@@ -23064,59 +23165,24 @@
    "libreria": false
   },
   {
-   "audio_id": "1582326450151974",
-   "title": "Move On",
-   "display_artist": "Summer Islands",
-   "duration_in_ms": 64310,
+   "audio_id": "762434402313350",
+   "title": "Vice City (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 140450,
    "libreria": true
   },
   {
-   "audio_id": "1383912545569665",
-   "title": "You Can Do It",
-   "display_artist": "Global Genius",
-   "duration_in_ms": 157357,
-   "libreria": true
+   "audio_id": "1792089558671408",
+   "title": "Victory Lap",
+   "display_artist": "Sfera Ebbasta, Shiva, Geolier",
+   "duration_in_ms": 211170,
+   "libreria": false
   },
   {
-   "audio_id": "1067193775733379",
-   "title": "Move",
+   "audio_id": "1068592065620532",
+   "title": "Legendary",
    "display_artist": "LAVLO",
-   "duration_in_ms": 57574,
-   "libreria": true
-  },
-  {
-   "audio_id": "1488842099008011",
-   "title": "Electric Movement (Instrumental)",
-   "display_artist": "Sam Marshall",
-   "duration_in_ms": 187894,
-   "libreria": true
-  },
-  {
-   "audio_id": "2113684212909650",
-   "title": "Only Stronger",
-   "display_artist": "Auralux",
-   "duration_in_ms": 63210,
-   "libreria": true
-  },
-  {
-   "audio_id": "1010300205196687",
-   "title": "Making Moves",
-   "display_artist": "Jackson Whalan",
-   "duration_in_ms": 61060,
-   "libreria": true
-  },
-  {
-   "audio_id": "1036027239348051",
-   "title": "Main Character March",
-   "display_artist": "cloud cover",
-   "duration_in_ms": 59140,
-   "libreria": true
-  },
-  {
-   "audio_id": "317746227387387",
-   "title": "Worth Fighting For",
-   "display_artist": "Cameron Rasmussen",
-   "duration_in_ms": 141620,
+   "duration_in_ms": 67490,
    "libreria": true
   }
  ]
