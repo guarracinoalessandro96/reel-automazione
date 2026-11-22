@@ -21180,7 +21180,9 @@
      "ok": true,
      "id": "17869086222678139",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -21270,22 +21272,120 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "3eAWdhWYPDs"
+     "id": "3eAWdhWYPDs",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "17882788122554698",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "La sveglia suona e non hai voglia. Ti alzi lo stesso, ed è lì che cambia tutto."
+  },
+  {
+   "quando": "2026-11-22T05:00",
+   "slot": "2026-11-22 06:00",
+   "video": "IMG_3903.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-16db69b6",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 7.0,
+    "musica": "moon_vision_2.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 5,
+    "apertura": {
+     "lato": "viso",
+     "viso_alto": 0.44,
+     "movimento": 3.65,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 4,
+     "viso": {
+      "visi": 3,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "y": 0.736,
+      "scala": 1.0,
+      "corpo": 107,
+      "righe": 4
+     },
+     "scurito": 0.54,
+     "luce": 0.6,
+     "sfumatura": 0.4,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 3,
+     "corpo_base": 107,
+     "posizione": "basso",
+     "y": 0.736,
+     "scala": 1.0,
+     "corpo": 107,
+     "righe": 4,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 72,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "frase": "aforisma",
+     "apertura": "viso"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 11
+    },
+    "frase_via": "nessun_aforisma",
+    "musica_meta": "drive_07.flac",
+    "musica_instagram": "Get A Move On - Fellow Travelers [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "twmZ-XeOSnA"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18187211884425672",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Nessuno ti applaude mentre costruisci. Costruisci lo stesso, mattone dopo mattone."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-14 06:00",
   "2026-11-14 08:00",
   "2026-11-14 10:00",
   "2026-11-14 12:00",
@@ -21364,10 +21464,10 @@
   "2026-11-21 18:00",
   "2026-11-21 20:00",
   "2026-11-21 22:00",
-  "2026-11-22 00:00"
+  "2026-11-22 00:00",
+  "2026-11-22 06:00"
  ],
  "musica_recenti": [
-  "ego_chall_3.m4a",
   "death_duel_1.m4a",
   "monthaholic_2.m4a",
   "way_back_home_2.m4a",
@@ -21426,7 +21526,8 @@
   "stake_out_2.m4a",
   "horizons_3.m4a",
   "locked_in_2.m4a",
-  "rubberband_1.m4a"
+  "rubberband_1.m4a",
+  "moon_vision_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -21869,7 +21970,8 @@
   "MIE-86216122",
   "MIE-8a2c841c",
   "MIE-0e8716e1",
-  "MIE-d49f4fad"
+  "MIE-d49f4fad",
+  "MIE-16db69b6"
  ],
  "temi_recenti": [
   "mentalita",
@@ -21884,7 +21986,7 @@
   "mentalita"
  ],
  "analisi": {},
- "pulizia": "2026-11-21",
+ "pulizia": "2026-11-22",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -22063,8 +22165,8 @@
    "orizzontale": false
   },
   "17a5fFwJj8p33vlSv-Y6jRBPmRGJLzC1Q": {
-   "usi": 2,
-   "ultimo": "2026-10-20",
+   "usi": 3,
+   "ultimo": "2026-11-22",
    "orizzontale": false
   },
   "1Me9XwPdk7-kx_j_4Y_9YpSyy48oLrBIM": {
@@ -22566,7 +22668,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_10.flac",
   "energia_04.flac",
   "trap_07.flac",
   "deciso_10.flac",
@@ -22585,7 +22686,8 @@
   "trap_01.flac",
   "phonk_14.flac",
   "deciso_01.flac",
-  "trap_09.flac"
+  "trap_09.flac",
+  "drive_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -22620,7 +22722,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -22636,7 +22738,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1781233772812838",
   "925982985305806",
   "925982985305806",
   "925982985305806",
@@ -22695,11 +22796,11 @@
   "2173371459664032",
   "702088267960095",
   "604290701766493",
-  "387139071011986"
+  "387139071011986",
+  "3808630162610430"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "stereogully",
   "Julia Gartha",
   "Lucid Mantra",
   "Apex Sound Odyssey",
@@ -22708,10 +22809,10 @@
   "Trout Recording",
   "Daria Novo",
   "d.higgs",
-  "4 Staan"
+  "4 Staan",
+  "Fellow Travelers"
  ],
  "ig_titoli_recenti": [
-  "not phonk",
   "hype track",
   "rockstar anthem",
   "project power",
@@ -22750,7 +22851,8 @@
   "fighting back a flight of stairs",
   "i am the fire",
   "money power",
-  "nikkatha"
+  "nikkatha",
+  "get a move on"
  ],
  "ig_tendenze_riserva": [
   {
@@ -22761,10 +22863,24 @@
    "libreria": false
   },
   {
-   "audio_id": "387139071011986",
-   "title": "Nikkatha (Unstoppable)",
-   "display_artist": "4 Staan",
-   "duration_in_ms": 164060,
+   "audio_id": "3643996589148382",
+   "title": "Storm",
+   "display_artist": "Chela Rivas",
+   "duration_in_ms": 154693,
+   "libreria": true
+  },
+  {
+   "audio_id": "3808630162610430",
+   "title": "Get A Move On",
+   "display_artist": "Fellow Travelers",
+   "duration_in_ms": 61985,
+   "libreria": true
+  },
+  {
+   "audio_id": "4279708355594989",
+   "title": "In Motion",
+   "display_artist": "Sam Marshall",
+   "duration_in_ms": 188848,
    "libreria": true
   }
  ]
