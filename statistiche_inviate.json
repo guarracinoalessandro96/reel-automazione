@@ -203,10 +203,18 @@
    }
   },
   "2026-11-22": {
-   "invio": {
-    "da": "pc",
-    "ora": "2026-11-22T08:02:19+01:00",
-    "giro": "pc-14992-646a54"
+   "inviato": "08:02",
+   "da": "pc",
+   "numeri": {
+    "YouTube": 1907,
+    "Instagram": 5681,
+    "Facebook": 183,
+    "TikTok": 2879
+   },
+   "youtube_totale": 2030550,
+   "tiktok": {
+    "data": "2026-11-20",
+    "views": 2879
    }
   }
  },
