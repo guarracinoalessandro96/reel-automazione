@@ -21774,7 +21774,9 @@
      "ok": true,
      "id": "18018188075967681",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -21864,7 +21866,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "L6P9gmsY5dw"
+     "id": "L6P9gmsY5dw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -21875,11 +21878,106 @@
    },
    "spinto": true,
    "testo": "Le gambe tremano, la testa dice basta. Fai ancora un passo e poi un altro."
+  },
+  {
+   "quando": "2026-11-22T17:00",
+   "slot": "2026-11-22 18:00",
+   "video": "IMG_4053.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-7562def2",
+   "tema": "mentalita",
+   "montaggio": {
+    "formato": "intero",
+    "durata": 7.0,
+    "musica": "monthaholic_3.m4a",
+    "stacchi": 1,
+    "testi": 1,
+    "viso_prima_scena": 3,
+    "apertura": {
+     "lato": "azione",
+     "viso_alto": 0.172,
+     "movimento": 9.85,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "da_archivio": false
+    },
+    "primo_controllo": "buono",
+    "stile_centro": {
+     "font": "Source Serif Pro",
+     "corpo": 107,
+     "righe": 3,
+     "viso": {
+      "visi": 14,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "y": 0.526,
+      "scala": 1.0,
+      "corpo": 107,
+      "righe": 3
+     },
+     "scurito": 0.43,
+     "luce": 0.36,
+     "sfumatura": 0.27,
+     "intatto": false,
+     "scene_intatte": 0
+    },
+    "testo_viso": {
+     "visi": 14,
+     "corpo_base": 107,
+     "posizione": "basso",
+     "y": 0.526,
+     "scala": 1.0,
+     "corpo": 107,
+     "righe": 3,
+     "fotogrammi": 28,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "rilevatore": "yunet+haar",
+     "guardato": [
+      [
+       5.0,
+       7.0
+      ]
+     ],
+     "controllo": "lettere_fuori_dai_visi"
+    },
+    "secondi_montaggio": 129,
+    "scritta": "centro_serif",
+    "orizzontale": false,
+    "prove": {
+     "frase": "aforisma",
+     "apertura": "azione"
+    },
+    "frase_forma": {
+     "voce": "tu",
+     "forma": "due",
+     "parole": 13
+    },
+    "frase_via": "nessun_aforisma",
+    "musica_meta": "phonk_05.flac",
+    "musica_instagram": "Energy - Giulio Cercato [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "2qKFoeIchhU"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18140365435659308",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Stringi i denti adesso. Un giorno guarderai indietro e sarai fiero di te."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-14 18:00",
   "2026-11-14 20:00",
   "2026-11-14 22:00",
   "2026-11-15 00:00",
@@ -21958,10 +22056,10 @@
   "2026-11-22 10:00",
   "2026-11-22 12:00",
   "2026-11-22 14:00",
-  "2026-11-22 16:00"
+  "2026-11-22 16:00",
+  "2026-11-22 18:00"
  ],
  "musica_recenti": [
-  "cutscene_crush_3.m4a",
   "the_light_3.m4a",
   "i_might_be_late_2.m4a",
   "turn_in_the_sun_1.m4a",
@@ -22020,7 +22118,8 @@
   "visions_1.m4a",
   "death_duel_1.m4a",
   "ten_2.m4a",
-  "duty_calls_1.m4a"
+  "duty_calls_1.m4a",
+  "monthaholic_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -22469,7 +22568,8 @@
   "MIE-bd41cc60",
   "MIE-ae20f601",
   "MIE-9dd49640",
-  "MIE-5c294fa3"
+  "MIE-5c294fa3",
+  "MIE-7562def2"
  ],
  "temi_recenti": [
   "mentalita",
@@ -22767,8 +22867,9 @@
    "orizzontale": false
   },
   "1SGGMjRnx6n1zbId63P80hrjMQDvxV6E7": {
-   "usi": 2,
-   "ultimo": "2026-10-22"
+   "usi": 3,
+   "ultimo": "2026-11-22",
+   "orizzontale": false
   },
   "1_YtfVKfv3LHrn3h-627VTGjeZMlzcU1b": {
    "usi": 2,
@@ -23169,7 +23270,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_11.flac",
   "phonk_09.flac",
   "deciso_06.flac",
   "trap_04.flac",
@@ -23188,7 +23288,8 @@
   "phonk_08.flac",
   "trap_02.flac",
   "drive_08.flac",
-  "deciso_02.flac"
+  "deciso_02.flac",
+  "phonk_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -23223,7 +23324,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -23239,7 +23340,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1232530197323594",
   "1201635935516260",
   "1155586068813210",
   "1582326450151974",
@@ -23298,11 +23398,11 @@
   "1067193775733379",
   "1792089558671408",
   "762434402313350",
-  "969843681296214"
+  "969843681296214",
+  "1223134719013093"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Trout Recording",
   "Daria Novo",
   "d.higgs",
   "4 Staan",
@@ -23311,10 +23411,10 @@
   "LAVLO",
   "Sfera Ebbasta, Shiva, Geolier",
   "Ross Lara",
-  "Cy Curnin"
+  "Cy Curnin",
+  "Giulio Cercato"
  ],
  "ig_titoli_recenti": [
-  "power on",
   "in motion",
   "rise",
   "move my body",
@@ -23353,7 +23453,8 @@
   "move",
   "victory lap",
   "vice city",
-  "anthem in black"
+  "anthem in black",
+  "energy"
  ],
  "ig_tendenze_riserva": [
   {
@@ -23378,17 +23479,24 @@
    "libreria": false
   },
   {
-   "audio_id": "969843681296214",
-   "title": "Anthem In Black",
-   "display_artist": "Cy Curnin",
-   "duration_in_ms": 240476,
+   "audio_id": "1488842099008011",
+   "title": "Electric Movement (Instrumental)",
+   "display_artist": "Sam Marshall",
+   "duration_in_ms": 187894,
    "libreria": true
   },
   {
-   "audio_id": "936174714667779",
-   "title": "Adrenalina Was Her Name",
-   "display_artist": "Ecklectic Music",
-   "duration_in_ms": 158890,
+   "audio_id": "856221358845766",
+   "title": "What Now (feat. Dawson Gnewikow, Dawson March, Jacquire King)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 157400,
+   "libreria": true
+  },
+  {
+   "audio_id": "1223134719013093",
+   "title": "Energy",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 122020,
    "libreria": true
   }
  ]
