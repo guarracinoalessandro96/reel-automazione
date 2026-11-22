@@ -500,9 +500,10 @@ def pianifica(da=None, a=None, gruppi=GRUPPI, solo_scarti=False, prova=None, sol
     frasi = json.load(open(pubblica.FRASI, encoding="utf-8"))
     # una sola lettura del Doc e dell'archivio per tutto il piano (sono uguali per tutti gli slot)
     testo = pubblica.con_tentativi(drive.testo_mie_citazioni, "Lettura di 'Le mie citazioni'", drive)
-    archivio = pubblica.con_tentativi(drive.lista_archivio, "Lettura dell'archivio", drive)
+    archivio = pubblica.con_tentativi(drive._lista_archivio_tutta, "Lettura dell'archivio", drive)
     drive.testo_mie_citazioni = lambda: testo
-    drive.lista_archivio = lambda: [dict(c) for c in archivio]
+    # 22/11/2026: regola del mese rispetto all'ora dello slot (pubblica.ORA_RIFERIMENTO)
+    drive.lista_archivio = lambda: [dict(c) for c in archivio if pubblica.fresco(c)]
     pubblica.ORIENTAMENTI_NOTI.update(state.get("archivio_usi", {}))
     finte = prenotati(state, lotto=lotto, scarti=scarti)
     finte = [f for f in finte if f["slot"] not in slots]
@@ -669,6 +670,7 @@ def monta(gruppo):
             if p["formato"] == _FOTO:      # 21/11/2026: reel con una foto (foto_giornata.make_singola)
                 m = _monta_foto(sc, drive, work, s)
             else:
+                pubblica.ORA_RIFERIMENTO = t_slot(s).replace(tzinfo=None)    # 22/11/2026: regola del mese
                 m = pubblica.monta_reel(sc, vista, drive, work, [], s, lambda: None, formato=p["formato"],
                                         scadenza=time.time() + MINUTI_REEL * 60)
             frase, info, out = m["frase"], m["info"], m["out"]

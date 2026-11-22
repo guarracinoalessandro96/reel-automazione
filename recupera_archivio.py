@@ -15,7 +15,7 @@ drive = pubblica.Drive(pubblica.google_creds())
 api = drive.api
 q = f"trashed = true and mimeType contains 'video/' and '{os.environ['DRIVE_FOLDER_DA_PUBBLICARE']}' in parents"
 cestino = api.files().list(q=q, fields="files(id,name,size,createdTime)", pageSize=500).execute().get("files", [])
-gia = {c["nome"].rsplit(".", 1)[0] for c in drive.lista_archivio()}
+gia = {c["nome"].rsplit(".", 1)[0] for c in drive._lista_archivio_tutta()}
 print(len(cestino), "originali nel cestino,", len(gia), "gia' in archivio")
 if "--solo-elenco" in sys.argv:
     for f in sorted(cestino, key=lambda x: x["createdTime"]):

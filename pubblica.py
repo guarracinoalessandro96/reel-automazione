@@ -31,6 +31,35 @@ DRY = ENV("DRY_RUN") == "1"
 from piattaforme import PLATFORMS, TIKTOK_A_MANO, TIKTOK_STUDIO, TIKTOK_BOZZE  # 19/10/2026: SOLO YOUTUBE (si cambia in piattaforme.py)
 MAX_TENTATIVI = 3
 GIORNI_PRONTI = 7             # reel montati (solo quelli da riprovare) tenuti 7 giorni, poi nel Cestino
+# 22/11/2026 (Alessandro: "le scene dei video che pubblichi non devono essere piu' vecchie di un mese; se sono finiti
+# ripeti i video, ma senza far uscire video che ho caricato sul Drive piu' di un mese fa"): un video (in coda o
+# nell'archivio) esce solo se girato E caricato al massimo ETA_MAX_GIORNI giorni prima del giorno in cui esce.
+# ORA_RIFERIMENTO = l'ora dello slot che si sta scegliendo/montando (None = adesso); scegli_reel e settimana.py la impostano.
+ETA_MAX_GIORNI = 30
+ORA_RIFERIMENTO = None
+
+
+def eta_giorni(c, quando=None):
+    """Giorni passati (al giorno di quando, o di ORA_RIFERIMENTO, o di oggi) dalla data piu' vecchia tra ripresa
+    ('registrato') e caricamento su Drive ('caricato'/'createdTime'). None se il video non ha nessuna data."""
+    rif = (quando or ORA_RIFERIMENTO or datetime.datetime.now()).date()
+    eta = None
+    for k in ("registrato", "caricato", "createdTime"):
+        v = str((c or {}).get(k) or "")[:10]
+        try:
+            d = (rif - datetime.date.fromisoformat(v)).days
+        except ValueError:
+            continue
+        eta = d if eta is None else max(eta, d)
+    return eta
+
+
+def fresco(c, quando=None):
+    """True se il video puo' uscire per la regola del mese (senza date: True, es. le prove in locale)."""
+    e = eta_giorni(c, quando)
+    return e is None or e <= ETA_MAX_GIORNI
+
+
 MAX_ORIGINALE_MB = 100000     # 25/10/2026: l'originale va SEMPRE intero nell'archivio (massima risoluzione, niente cestino)
 # 25/10/2026 notte: Drive (100 GB) mai pieno. Sotto i 6 GB liberi le clip d'archivio meno utili scendono sul PC
 # (Drive.libera_spazio + sposta_su_pc.py) fino a tornare a 10 GB liberi; su Drive restano almeno 40 clip.
@@ -965,8 +994,8 @@ def clip_giornata(drive, work, clip, an, src, state, videos=(), video=None):
     cand = []
     for v in videos or []:               # la coda: i video nuovi, gia' analizzati (scena, ora di ripresa)
         a = state.get("analisi", {}).get(v["id"], {})
-        if v["id"] != mio_id and not (a.get("parlato") or a.get("momento") or a.get("analisi_fallita")
-                                      or a.get("fallimenti")):
+        if v["id"] != mio_id and fresco(dict(a, createdTime=v.get("createdTime"))) and not (
+                a.get("parlato") or a.get("momento") or a.get("analisi_fallita") or a.get("fallimenti")):
             cand.append({"id": v["id"], "nome": v["name"], "scena": a.get("scena"), "registrato": a.get("registrato"),
                          "compagnia": a.get("compagnia"), "cartella": "Da pubblicare", "nuova": True})
     try:
@@ -1367,7 +1396,11 @@ class Drive:
         return file_id
 
     def lista_archivio(self):
-        """Clip dell'archivio: [{id, nome, scena, fascia, compagnia, registrato, size}].
+        """22/11/2026: solo le clip che rispettano la regola del mese (fresco), vedi _lista_archivio_tutta."""
+        return [c for c in self._lista_archivio_tutta() if fresco(c)]
+
+    def _lista_archivio_tutta(self):
+        """Clip dell'archivio: [{id, nome, scena, fascia, compagnia, registrato, size, caricato}].
         7/11/2026 (revisione, tempi): anche size (byte del file, 0 se non si sa) per clip_giornata."""
         if self.local:
             d = os.path.join(self.local, "Archivio")
@@ -1378,9 +1411,10 @@ class Drive:
         q = f"'{self.cartella('Archivio')}' in parents and trashed = false and mimeType contains 'video/'"
         out, token = [], None
         while True:
-            res = self.api.files().list(q=q, fields="nextPageToken,files(id,name,size,appProperties)", pageSize=500,
+            res = self.api.files().list(q=q, fields="nextPageToken,files(id,name,size,createdTime,appProperties)", pageSize=500,
                                         pageToken=token).execute()
-            out += [dict(f.get("appProperties") or {}, id=f["id"], nome=f["name"], size=_byte(f.get("size")))
+            out += [dict(f.get("appProperties") or {}, id=f["id"], nome=f["name"], size=_byte(f.get("size")),
+                         caricato=(f.get("appProperties") or {}).get("caricato") or f.get("createdTime"))
                     for f in res.get("files", [])]
             token = res.get("nextPageToken")
             if not token:
@@ -2983,10 +3017,17 @@ def scegli_reel(state, drive, creds, videos, slot, frasi, prenotati=(), riservat
     adesso = l'ora con cui si sceglie (pre-generazione: l'ora dello slot; None = adesso, come prima).
     Restituisce un dizionario, o None se non c'e' niente da pubblicare."""
     adesso = adesso or datetime.datetime.now()
+    global ORA_RIFERIMENTO
+    ORA_RIFERIMENTO = adesso          # 22/11/2026: regola del mese, anche per le clip extra del montaggio
     giorno = adesso.date()
     slot_ora = None if "manuale" in slot else slot.split()[-1]
     state = dict(state, storico=list(state["storico"]) + list(prenotati))   # vista: lo stato vero non cambia
     videos = [v for v in videos if v["id"] not in set(riservati)]
+    vecchi = [v for v in videos if not fresco(dict(state["analisi"].get(v["id"], {}), createdTime=v.get("createdTime")),
+                                              adesso)]
+    if vecchi:            # 22/11/2026: regola del mese (restano in coda, non escono)
+        log(f"Regola del mese: {len(vecchi)} video in coda girati o caricati da piu' di {ETA_MAX_GIORNI} giorni, saltati")
+        videos = [v for v in videos if v not in vecchi]
     # 2. il video giusto per questo orario: prima i video NUOVI, se la coda e' vuota una clip dall'archivio.
     # Orario FERMO (20/10/2026): il video nuovo aspetta un orario che YouTube spinge (MOMENTO no: esce subito)
     spinto = orario_spinto(state, slot, creds)
