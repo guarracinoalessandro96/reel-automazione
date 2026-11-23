@@ -22788,7 +22788,9 @@
      "ok": true,
      "id": "17891116800485806",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -22882,7 +22884,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "AIKF_cRvtUo"
+     "id": "AIKF_cRvtUo",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -22893,11 +22896,110 @@
    },
    "spinto": true,
    "testo": "Non ho mai saputo celebrare i miei successi perché nella mia mente erano semplicemente cose che dovevano essere fatte."
+  },
+  {
+   "quando": "2026-11-23T17:00",
+   "slot": "2026-11-23 18:00",
+   "video": "IMG_4300.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-f8d7d2fd",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 13.39,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.117
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 16,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "locked_in_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 155,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.27,
+     "righe": 4,
+     "scene_intatte": 0,
+     "scurito": 0.3,
+     "sfumatura": 0.16,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 4,
+      "scala": 1.0,
+      "visi": 25,
+      "y": 0.486
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       27.0,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 4,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 25,
+     "y": 0.486
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T12:59"
+    },
+    "musica_meta": "phonk_01.flac",
+    "musica_instagram": "Rock Your World - Company Money [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "hsELXUMQ7_k"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18030701171698638",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "L'arte di non essere pronti ad affrontare qualcosa, ma farlo ugualmente, ti porterà lontano nella vita."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-15 18:00",
   "2026-11-15 20:00",
   "2026-11-15 22:00",
   "2026-11-16 00:00",
@@ -22976,10 +23078,10 @@
   "2026-11-23 10:00",
   "2026-11-23 12:00",
   "2026-11-23 14:00",
-  "2026-11-23 16:00"
+  "2026-11-23 16:00",
+  "2026-11-23 18:00"
  ],
  "musica_recenti": [
-  "ten_3.m4a",
   "the_road_to_mordor_3.m4a",
   "wrangle_the_crazy_2.m4a",
   "taking_flight_2.m4a",
@@ -23038,7 +23140,8 @@
   "rubberband_1.m4a",
   "visions_2.m4a",
   "intergalactic_2.m4a",
-  "whoop_1.m4a"
+  "whoop_1.m4a",
+  "locked_in_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -23497,15 +23600,16 @@
   "MIE-37826361",
   "MIE-bb67a611",
   "MIE-8880555c",
-  "MIE-49f3b7f3"
+  "MIE-49f3b7f3",
+  "MIE-f8d7d2fd"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "palestra",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -24030,8 +24134,8 @@
    "orizzontale": false
   },
   "1NIAZGYq8oNsRCLyLOzwG8nRh_hWHpjGa": {
-   "usi": 3,
-   "ultimo": "2026-11-14",
+   "usi": 4,
+   "ultimo": "2026-11-23",
    "orizzontale": false
   },
   "1UefrogLKDdOKHxCBjQOsFjEsNFOeSefT": {
@@ -24242,7 +24346,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_01.flac",
   "phonk_14.flac",
   "deciso_01.flac",
   "trap_09.flac",
@@ -24261,7 +24364,8 @@
   "drive_05.flac",
   "phonk_06.flac",
   "trap_03.flac",
-  "energia_05.flac"
+  "energia_05.flac",
+  "phonk_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -24296,7 +24400,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -24312,7 +24416,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1546581635764552",
   "1308898424418438",
   "1030263145726523",
   "1058481142047930",
@@ -24371,11 +24474,11 @@
   "751793197912868",
   "863843869658726",
   "590318976107395",
-  "907634520516585"
+  "907634520516585",
+  "1765359430669153"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Giulio Cercato",
   "BLACK DOVES",
   "Mike Floss",
   "Auralux",
@@ -24384,10 +24487,10 @@
   "Sam Marshall",
   "Kolektivo",
   "Dhruv Goel",
-  "Jumbo"
+  "Jumbo",
+  "Company Money"
  ],
  "ig_titoli_recenti": [
-  "hype beast",
   "electric movement",
   "adrenalina was her name",
   "forever",
@@ -24426,7 +24529,8 @@
   "in motion",
   "voce me deixa",
   "running",
-  "beast"
+  "beast",
+  "rock your world"
  ],
  "ig_tendenze_riserva": [
   {
@@ -24444,24 +24548,38 @@
    "libreria": false
   },
   {
-   "audio_id": "3308688216039200",
-   "title": "You Can't Have It",
-   "display_artist": "Otis McDonald",
-   "duration_in_ms": 154336,
+   "audio_id": "880659894299230",
+   "title": "Faded (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 209714,
    "libreria": true
   },
   {
-   "audio_id": "370987356030042",
-   "title": "Show Me Your Fire",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 148010,
+   "audio_id": "27908405255457112",
+   "title": "When It Sparks",
+   "display_artist": "Magnetic Sirens",
+   "duration_in_ms": 61340,
    "libreria": true
   },
   {
-   "audio_id": "907634520516585",
-   "title": "Beast",
-   "display_artist": "Jumbo",
-   "duration_in_ms": 165764,
+   "audio_id": "5795007423919848",
+   "title": "Motion",
+   "display_artist": "Mike Floss",
+   "duration_in_ms": 145762,
+   "libreria": true
+  },
+  {
+   "audio_id": "3363832787194927",
+   "title": "Move (prod. by Jonny Houlihan)",
+   "display_artist": "Lauren Zoeller",
+   "duration_in_ms": 265936,
+   "libreria": true
+  },
+  {
+   "audio_id": "1765359430669153",
+   "title": "Rock Your World",
+   "display_artist": "Company Money",
+   "duration_in_ms": 119170,
    "libreria": true
   }
  ]
