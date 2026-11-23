@@ -22484,7 +22484,9 @@
      "ok": true,
      "id": "18115719812614149",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -22573,7 +22575,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "5RGS8kxLGxE"
+     "id": "5RGS8kxLGxE",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -22584,11 +22587,110 @@
    },
    "spinto": true,
    "testo": "Chi semina adesso raccoglie dopo. Continua a seminare anche se non vedi niente."
+  },
+  {
+   "quando": "2026-11-23T11:01",
+   "slot": "2026-11-23 12:00",
+   "video": "IMG_4285.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-bb67a611",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 15.43,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.342
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 11,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "visions_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 158,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 111,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.63,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.55,
+     "sfumatura": 0.41,
+     "viso": {
+      "corpo": 111,
+      "corpo_base": 111,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 1,
+      "y": 0.637
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 111,
+     "corpo_base": 111,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       23.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 1,
+     "y": 0.637
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T12:46"
+    },
+    "musica_meta": "phonk_06.flac",
+    "musica_instagram": "Você Me Deixa (Move That Body Round) (feat. dontkillrose) - Kolektivo [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "rrm_iwTZOEY"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18031020107860716",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Come fai a vincere se hai paura di prenderti il rischio?"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-15 12:00",
   "2026-11-15 14:00",
   "2026-11-15 16:00",
   "2026-11-15 18:00",
@@ -22667,10 +22769,10 @@
   "2026-11-23 00:00",
   "2026-11-23 06:00",
   "2026-11-23 08:00",
-  "2026-11-23 10:00"
+  "2026-11-23 10:00",
+  "2026-11-23 12:00"
  ],
  "musica_recenti": [
-  "rubberband_2.m4a",
   "delirium_1.m4a",
   "visions_3.m4a",
   "ten_3.m4a",
@@ -22729,7 +22831,8 @@
   "survival_mode_1.m4a",
   "intergalactic_3.m4a",
   "ten_1.m4a",
-  "rubberband_1.m4a"
+  "rubberband_1.m4a",
+  "visions_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -23185,7 +23288,8 @@
   "MIE-a82ff5e6",
   "MIE-98a07492",
   "MIE-5ccd3322",
-  "MIE-37826361"
+  "MIE-37826361",
+  "MIE-bb67a611"
  ],
  "temi_recenti": [
   "mentalita",
@@ -23194,9 +23298,9 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "palestra",
   "famiglia",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
@@ -23683,8 +23787,8 @@
    "orizzontale": false
   },
   "1OKyRxbpEUPABWJM5Ey1cGm-BG7E-Rv9h": {
-   "usi": 5,
-   "ultimo": "2026-11-21",
+   "usi": 6,
+   "ultimo": "2026-11-23",
    "orizzontale": false
   },
   "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW": {
@@ -23930,7 +24034,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_03.flac",
   "deciso_04.flac",
   "drive_14.flac",
   "trap_01.flac",
@@ -23949,7 +24052,8 @@
   "phonk_16.flac",
   "energia_06.flac",
   "deciso_06.flac",
-  "drive_05.flac"
+  "drive_05.flac",
+  "phonk_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -24000,7 +24104,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "974432747187721",
   "1068776575596252",
   "491460439584707",
   "1546581635764552",
@@ -24059,11 +24162,11 @@
   "1026654053480401",
   "1232530197323594",
   "1533332147140863",
-  "751793197912868"
+  "751793197912868",
+  "863843869658726"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Sfera Ebbasta, Shiva, Geolier",
   "Ross Lara",
   "Cy Curnin",
   "Giulio Cercato",
@@ -24072,10 +24175,10 @@
   "Auralux",
   "Abby Posner",
   "Trout Recording",
-  "Sam Marshall"
+  "Sam Marshall",
+  "Kolektivo"
  ],
  "ig_titoli_recenti": [
-  "stronger",
   "storm",
   "need to talk",
   "hype beast",
@@ -24114,23 +24217,10 @@
   "keep climbing",
   "reflect and rise",
   "something s in the movement",
-  "in motion"
+  "in motion",
+  "voce me deixa"
  ],
  "ig_tendenze_riserva": [
-  {
-   "audio_id": "1124230547275731",
-   "title": "GTA 6 Main Theme (EPIC Version)",
-   "display_artist": "Apex Sound Odyssey",
-   "duration_in_ms": 134920,
-   "libreria": false
-  },
-  {
-   "audio_id": "762434402313350",
-   "title": "Vice City (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 140450,
-   "libreria": true
-  },
   {
    "audio_id": "1792089558671408",
    "title": "Victory Lap",
@@ -24139,31 +24229,45 @@
    "libreria": false
   },
   {
-   "audio_id": "6931473226905938",
-   "title": "Running Out Of Heaven Tonight",
-   "display_artist": "Trout Recording",
-   "duration_in_ms": 219888,
+   "audio_id": "1124230547275731",
+   "title": "GTA 6 Main Theme (EPIC Version)",
+   "display_artist": "Apex Sound Odyssey",
+   "duration_in_ms": 134920,
+   "libreria": false
+  },
+  {
+   "audio_id": "1520634330105846",
+   "title": "Good Run",
+   "display_artist": "Fellow Travelers",
+   "duration_in_ms": 60060,
    "libreria": true
   },
   {
-   "audio_id": "791711906519334",
-   "title": "Fight (Instrumental)",
-   "display_artist": "Sugartapes",
-   "duration_in_ms": 125990,
+   "audio_id": "1428954698111653",
+   "title": "In Motion",
+   "display_artist": "Lance Taber",
+   "duration_in_ms": 152940,
    "libreria": true
   },
   {
-   "audio_id": "1108940537791690",
-   "title": "Handycam (feat. My City Glory) (Instrumental)",
+   "audio_id": "156774090838394",
+   "title": "Star Chasers (feat. My City Glory)",
    "display_artist": "Ross Lara",
-   "duration_in_ms": 136240,
+   "duration_in_ms": 138383,
    "libreria": true
   },
   {
-   "audio_id": "751793197912868",
-   "title": "In Motion (Instrumental)",
-   "display_artist": "Sam Marshall",
-   "duration_in_ms": 188848,
+   "audio_id": "702088267960095",
+   "title": "I Am The Fire",
+   "display_artist": "Daria Novo",
+   "duration_in_ms": 182266,
+   "libreria": true
+  },
+  {
+   "audio_id": "863843869658726",
+   "title": "Você Me Deixa (Move That Body Round) (feat. dontkillrose)",
+   "display_artist": "Kolektivo",
+   "duration_in_ms": 190765,
    "libreria": true
   }
  ]
