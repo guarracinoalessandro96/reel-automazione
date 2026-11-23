@@ -22582,7 +22582,9 @@
      "ok": true,
      "id": "18120489134331612",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -22676,7 +22678,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "rrm_iwTZOEY"
+     "id": "rrm_iwTZOEY",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -22687,11 +22690,110 @@
    },
    "spinto": true,
    "testo": "Come fai a vincere se hai paura di prenderti il rischio?"
+  },
+  {
+   "quando": "2026-11-23T13:00",
+   "slot": "2026-11-23 14:00",
+   "video": "IMG_4269.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-8880555c",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 7.35,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.108
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 14,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "intergalactic_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 116,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 101,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.39,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.42,
+     "sfumatura": 0.29,
+     "viso": {
+      "corpo": 101,
+      "corpo_base": 101,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 23,
+      "y": 0.563
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 101,
+     "corpo_base": 101,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       1.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 23,
+     "y": 0.563
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T12:45"
+    },
+    "musica_meta": "trap_03.flac",
+    "musica_instagram": "Running - Dhruv Goel [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "b4Zvcw9gEqw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17891116800485806",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non è mai troppo tardi per diventare la persona che hai sempre voluto essere."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-15 14:00",
   "2026-11-15 16:00",
   "2026-11-15 18:00",
   "2026-11-15 20:00",
@@ -22770,10 +22872,10 @@
   "2026-11-23 06:00",
   "2026-11-23 08:00",
   "2026-11-23 10:00",
-  "2026-11-23 12:00"
+  "2026-11-23 12:00",
+  "2026-11-23 14:00"
  ],
  "musica_recenti": [
-  "delirium_1.m4a",
   "visions_3.m4a",
   "ten_3.m4a",
   "the_road_to_mordor_3.m4a",
@@ -22832,7 +22934,8 @@
   "intergalactic_3.m4a",
   "ten_1.m4a",
   "rubberband_1.m4a",
-  "visions_2.m4a"
+  "visions_2.m4a",
+  "intergalactic_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -23289,7 +23392,8 @@
   "MIE-98a07492",
   "MIE-5ccd3322",
   "MIE-37826361",
-  "MIE-bb67a611"
+  "MIE-bb67a611",
+  "MIE-8880555c"
  ],
  "temi_recenti": [
   "mentalita",
@@ -23297,9 +23401,9 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "palestra",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -23792,8 +23896,8 @@
    "orizzontale": false
   },
   "1buI3RRkof_5ETI1th4cc1LKYo9QO0hpW": {
-   "usi": 4,
-   "ultimo": "2026-11-13",
+   "usi": 5,
+   "ultimo": "2026-11-23",
    "orizzontale": false
   },
   "1sS5KtmGf3aPo3O8udU6R6rADRrUb-zMb": {
@@ -24034,7 +24138,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_04.flac",
   "drive_14.flac",
   "trap_01.flac",
   "phonk_14.flac",
@@ -24053,7 +24156,8 @@
   "energia_06.flac",
   "deciso_06.flac",
   "drive_05.flac",
-  "phonk_06.flac"
+  "phonk_06.flac",
+  "trap_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -24088,7 +24192,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -24104,7 +24208,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1068776575596252",
   "491460439584707",
   "1546581635764552",
   "1308898424418438",
@@ -24163,11 +24266,11 @@
   "1232530197323594",
   "1533332147140863",
   "751793197912868",
-  "863843869658726"
+  "863843869658726",
+  "590318976107395"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Ross Lara",
   "Cy Curnin",
   "Giulio Cercato",
   "BLACK DOVES",
@@ -24176,10 +24279,10 @@
   "Abby Posner",
   "Trout Recording",
   "Sam Marshall",
-  "Kolektivo"
+  "Kolektivo",
+  "Dhruv Goel"
  ],
  "ig_titoli_recenti": [
-  "storm",
   "need to talk",
   "hype beast",
   "electric movement",
@@ -24218,7 +24321,8 @@
   "reflect and rise",
   "something s in the movement",
   "in motion",
-  "voce me deixa"
+  "voce me deixa",
+  "running"
  ],
  "ig_tendenze_riserva": [
   {
@@ -24236,38 +24340,38 @@
    "libreria": false
   },
   {
-   "audio_id": "1520634330105846",
-   "title": "Good Run",
-   "display_artist": "Fellow Travelers",
-   "duration_in_ms": 60060,
+   "audio_id": "590318976107395",
+   "title": "Running",
+   "display_artist": "Dhruv Goel",
+   "duration_in_ms": 146769,
    "libreria": true
   },
   {
-   "audio_id": "1428954698111653",
-   "title": "In Motion",
-   "display_artist": "Lance Taber",
-   "duration_in_ms": 152940,
+   "audio_id": "28748477811406397",
+   "title": "You Can Do This",
+   "display_artist": "Afterlight",
+   "duration_in_ms": 64289,
    "libreria": true
   },
   {
-   "audio_id": "156774090838394",
-   "title": "Star Chasers (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 138383,
+   "audio_id": "851155007623622",
+   "title": "Battle",
+   "display_artist": "Shanice",
+   "duration_in_ms": 127850,
    "libreria": true
   },
   {
-   "audio_id": "702088267960095",
-   "title": "I Am The Fire",
-   "display_artist": "Daria Novo",
-   "duration_in_ms": 182266,
+   "audio_id": "660029496086919",
+   "title": "Project Power",
+   "display_artist": "Trout Recording",
+   "duration_in_ms": 214876,
    "libreria": true
   },
   {
-   "audio_id": "863843869658726",
-   "title": "Você Me Deixa (Move That Body Round) (feat. dontkillrose)",
-   "display_artist": "Kolektivo",
-   "duration_in_ms": 190765,
+   "audio_id": "791711906519334",
+   "title": "Fight (Instrumental)",
+   "display_artist": "Sugartapes",
+   "duration_in_ms": 125990,
    "libreria": true
   }
  ]
