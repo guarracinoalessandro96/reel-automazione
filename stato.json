@@ -22994,7 +22994,9 @@
      "ok": true,
      "id": "18030701171698638",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -23088,7 +23090,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "4p3MHzRjmiE"
+     "id": "4p3MHzRjmiE",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -23099,11 +23102,112 @@
    },
    "spinto": true,
    "testo": "Puoi essere bella quanto vuoi però dimmi, se il mondo fosse cieco, quanta gente riusciresti ad impressionare?"
+  },
+  {
+   "quando": "2026-11-23T21:00",
+   "slot": "2026-11-23 22:00",
+   "video": "IMG_4032.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "MIE-00e066f9",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 2.13,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.205
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 15,
+     "voce": "generale"
+    },
+    "frase_via": "forzata",
+    "musica": "duty_calls_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scene_dal_video": 1,
+    "scritta": "centro_serif",
+    "secondi_montaggio": 195,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.4,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.48,
+     "sfumatura": 0.3,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 19,
+      "y": 0.596
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "altra_finestra": 2,
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       8.47,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 19,
+     "y": 0.596
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:00"
+    },
+    "musica_meta": "deciso_05.flac",
+    "musica_instagram": "Coast (feat. My City Glory) - Ross Lara [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "qN3iazB1bIE"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17916958014287270",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Per essere felice elimina due cose: l'ansia per il futuro e il peso del passato."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-15 22:00",
   "2026-11-16 00:00",
   "2026-11-16 06:00",
   "2026-11-16 08:00",
@@ -23182,10 +23286,10 @@
   "2026-11-23 14:00",
   "2026-11-23 16:00",
   "2026-11-23 18:00",
-  "2026-11-23 20:00"
+  "2026-11-23 20:00",
+  "2026-11-23 22:00"
  ],
  "musica_recenti": [
-  "wrangle_the_crazy_2.m4a",
   "taking_flight_2.m4a",
   "cartier_1.m4a",
   "survival_mode_2.m4a",
@@ -23244,7 +23348,8 @@
   "intergalactic_2.m4a",
   "whoop_1.m4a",
   "locked_in_2.m4a",
-  "keep_it_movin_3.m4a"
+  "keep_it_movin_3.m4a",
+  "duty_calls_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -23705,13 +23810,14 @@
   "MIE-8880555c",
   "MIE-49f3b7f3",
   "MIE-f8d7d2fd",
-  "MIE-bc41aec6"
+  "MIE-bc41aec6",
+  "MIE-00e066f9"
  ],
  "temi_recenti": [
   "mentalita",
-  "mentalita",
   "palestra",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -24031,8 +24137,8 @@
    "orizzontale": true
   },
   "1UoUWHyHwCuON4BVs4SSdx-6x-4H6CKw9": {
-   "usi": 5,
-   "ultimo": "2026-11-16",
+   "usi": 6,
+   "ultimo": "2026-11-23",
    "orizzontale": false
   },
   "1KWHsB3C0gOYpMsl2sVukkzMm7VQeRgh5": {
@@ -24450,7 +24556,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_01.flac",
   "trap_09.flac",
   "drive_07.flac",
   "deciso_11.flac",
@@ -24469,7 +24574,8 @@
   "trap_03.flac",
   "energia_05.flac",
   "phonk_01.flac",
-  "trap_13.flac"
+  "trap_13.flac",
+  "deciso_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -24504,7 +24610,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -24520,7 +24626,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1030263145726523",
   "1058481142047930",
   "576850318404245",
   "1186003979031011",
@@ -24579,11 +24684,11 @@
   "590318976107395",
   "907634520516585",
   "1765359430669153",
-  "1546581635764552"
+  "1546581635764552",
+  "2124507781316211"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Mike Floss",
   "Auralux",
   "Abby Posner",
   "Trout Recording",
@@ -24592,10 +24697,10 @@
   "Dhruv Goel",
   "Jumbo",
   "Company Money",
-  "Genticorum"
+  "Genticorum",
+  "Ross Lara"
  ],
  "ig_titoli_recenti": [
-  "adrenalina was her name",
   "forever",
   "winners take all",
   "epic battles",
@@ -24634,7 +24739,8 @@
   "running",
   "beast",
   "rock your world",
-  "la marche des commis voyageurs"
+  "la marche des commis voyageurs",
+  "coast"
  ],
  "ig_tendenze_riserva": [
   {
@@ -24652,45 +24758,17 @@
    "libreria": false
   },
   {
-   "audio_id": "843173497227558",
-   "title": "Forever (feat. My City Glory)",
+   "audio_id": "2124507781316211",
+   "title": "Coast (feat. My City Glory)",
    "display_artist": "Ross Lara",
-   "duration_in_ms": 193604,
+   "duration_in_ms": 220060,
    "libreria": true
   },
   {
-   "audio_id": "1108285910189784",
-   "title": "Knockout",
-   "display_artist": "Adam Griffith",
-   "duration_in_ms": 137167,
-   "libreria": true
-  },
-  {
-   "audio_id": "1546581635764552",
-   "title": "La Marche des Commis Voyageurs",
-   "display_artist": "Genticorum",
-   "duration_in_ms": 182512,
-   "libreria": true
-  },
-  {
-   "audio_id": "800297207899385",
-   "title": "Heros Journey",
-   "display_artist": "Abby Posner",
-   "duration_in_ms": 149047,
-   "libreria": true
-  },
-  {
-   "audio_id": "1308182259794076",
-   "title": "Hopscotch (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 147316,
-   "libreria": true
-  },
-  {
-   "audio_id": "2754720771336314",
-   "title": "Desert Fire",
-   "display_artist": "Golden Braid Productions",
-   "duration_in_ms": 194550,
+   "audio_id": "461389463230596",
+   "title": "Fire",
+   "display_artist": "GEEZ",
+   "duration_in_ms": 212462,
    "libreria": true
   }
  ]
