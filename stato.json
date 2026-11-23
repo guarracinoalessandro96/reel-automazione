@@ -23097,7 +23097,9 @@
      "ok": true,
      "id": "18083274935769701",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -23193,7 +23195,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "qN3iazB1bIE"
+     "id": "qN3iazB1bIE",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -23204,11 +23207,110 @@
    },
    "spinto": true,
    "testo": "Per essere felice elimina due cose: l'ansia per il futuro e il peso del passato."
+  },
+  {
+   "quando": "2026-11-23T23:00",
+   "slot": "2026-11-24 00:00",
+   "video": "IMG_4286.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-5b68cb77",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 44.17,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.173
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 10,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "whoop_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 181,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 113,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.42,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.5,
+     "sfumatura": 0.31,
+     "viso": {
+      "corpo": 113,
+      "corpo_base": 113,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 25,
+      "y": 0.708
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 113,
+     "corpo_base": 113,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.0,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 25,
+     "y": 0.708
+    },
+    "viso_prima_scena": 4,
+    "settimana": {
+     "lotto": "Lotto 2026-11-24",
+     "versione": 1,
+     "generato": "2026-11-21T12:53"
+    },
+    "musica_meta": "phonk_02.flac",
+    "musica_instagram": "Sentimental Motion (Instrumental) - half.cool [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "6EXAkkVOReM"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18103644428552306",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Se non controlli la tua mente, qualcun altro lo farà."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-16 00:00",
   "2026-11-16 06:00",
   "2026-11-16 08:00",
   "2026-11-16 10:00",
@@ -23287,10 +23389,10 @@
   "2026-11-23 16:00",
   "2026-11-23 18:00",
   "2026-11-23 20:00",
-  "2026-11-23 22:00"
+  "2026-11-23 22:00",
+  "2026-11-24 00:00"
  ],
  "musica_recenti": [
-  "taking_flight_2.m4a",
   "cartier_1.m4a",
   "survival_mode_2.m4a",
   "whoop_2.m4a",
@@ -23349,7 +23451,8 @@
   "whoop_1.m4a",
   "locked_in_2.m4a",
   "keep_it_movin_3.m4a",
-  "duty_calls_3.m4a"
+  "duty_calls_3.m4a",
+  "whoop_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -23811,12 +23914,13 @@
   "MIE-49f3b7f3",
   "MIE-f8d7d2fd",
   "MIE-bc41aec6",
-  "MIE-00e066f9"
+  "MIE-00e066f9",
+  "MIE-5b68cb77"
  ],
  "temi_recenti": [
-  "mentalita",
   "palestra",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -24364,8 +24468,8 @@
    "orizzontale": false
   },
   "1Dvdi1PK-wTKhXcDuM6STB2Mq6FUojSqR": {
-   "usi": 4,
-   "ultimo": "2026-11-14",
+   "usi": 5,
+   "ultimo": "2026-11-23",
    "orizzontale": false
   },
   "1-wXfeOgo9aVpjZBQjqJopT9L84ZIWVcr": {
@@ -24556,7 +24660,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_09.flac",
   "drive_07.flac",
   "deciso_11.flac",
   "phonk_08.flac",
@@ -24575,7 +24678,8 @@
   "energia_05.flac",
   "phonk_01.flac",
   "trap_13.flac",
-  "deciso_05.flac"
+  "deciso_05.flac",
+  "phonk_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -24626,7 +24730,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1058481142047930",
   "576850318404245",
   "1186003979031011",
   "1763628994746804",
@@ -24685,11 +24788,11 @@
   "907634520516585",
   "1765359430669153",
   "1546581635764552",
-  "2124507781316211"
+  "2124507781316211",
+  "313517751444003"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Auralux",
   "Abby Posner",
   "Trout Recording",
   "Sam Marshall",
@@ -24698,10 +24801,10 @@
   "Jumbo",
   "Company Money",
   "Genticorum",
-  "Ross Lara"
+  "Ross Lara",
+  "half.cool"
  ],
  "ig_titoli_recenti": [
-  "forever",
   "winners take all",
   "epic battles",
   "heros journey",
@@ -24740,7 +24843,8 @@
   "beast",
   "rock your world",
   "la marche des commis voyageurs",
-  "coast"
+  "coast",
+  "sentimental motion"
  ],
  "ig_tendenze_riserva": [
   {
@@ -24758,17 +24862,24 @@
    "libreria": false
   },
   {
-   "audio_id": "2124507781316211",
-   "title": "Coast (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 220060,
+   "audio_id": "2242687643238503",
+   "title": "Family Food Fight",
+   "display_artist": "Fellow Travelers",
+   "duration_in_ms": 63576,
    "libreria": true
   },
   {
-   "audio_id": "461389463230596",
-   "title": "Fire",
-   "display_artist": "GEEZ",
-   "duration_in_ms": 212462,
+   "audio_id": "819743797457783",
+   "title": "Redux (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 243803,
+   "libreria": true
+  },
+  {
+   "audio_id": "313517751444003",
+   "title": "Sentimental Motion (Instrumental)",
+   "display_artist": "half.cool",
+   "duration_in_ms": 192050,
    "libreria": true
   }
  ]
