@@ -22685,7 +22685,9 @@
      "ok": true,
      "id": "18031020107860716",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -22779,7 +22781,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "b4Zvcw9gEqw"
+     "id": "b4Zvcw9gEqw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -22790,11 +22793,110 @@
    },
    "spinto": true,
    "testo": "Non è mai troppo tardi per diventare la persona che hai sempre voluto essere."
+  },
+  {
+   "quando": "2026-11-23T15:00",
+   "slot": "2026-11-23 16:00",
+   "video": "IMG_4292.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-49f3b7f3",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 17.84,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 19,
+     "voce": "io"
+    },
+    "frase_via": "forzata",
+    "musica": "whoop_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 178,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.35,
+     "righe": 5,
+     "scene_intatte": 0,
+     "scurito": 0.41,
+     "sfumatura": 0.26,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 5,
+      "scala": 1.0,
+      "visi": 15,
+      "y": 0.652
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 23,
+     "con_viso_yunet": 22,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       4.0,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 5,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 15,
+     "y": 0.652
+    },
+    "viso_prima_scena": 2,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:00"
+    },
+    "musica_meta": "energia_05.flac",
+    "musica_instagram": "Beast - Jumbo [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "AIKF_cRvtUo"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18030718700699215",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non ho mai saputo celebrare i miei successi perché nella mia mente erano semplicemente cose che dovevano essere fatte."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-15 16:00",
   "2026-11-15 18:00",
   "2026-11-15 20:00",
   "2026-11-15 22:00",
@@ -22873,10 +22975,10 @@
   "2026-11-23 08:00",
   "2026-11-23 10:00",
   "2026-11-23 12:00",
-  "2026-11-23 14:00"
+  "2026-11-23 14:00",
+  "2026-11-23 16:00"
  ],
  "musica_recenti": [
-  "visions_3.m4a",
   "ten_3.m4a",
   "the_road_to_mordor_3.m4a",
   "wrangle_the_crazy_2.m4a",
@@ -22935,7 +23037,8 @@
   "ten_1.m4a",
   "rubberband_1.m4a",
   "visions_2.m4a",
-  "intergalactic_2.m4a"
+  "intergalactic_2.m4a",
+  "whoop_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -23393,16 +23496,17 @@
   "MIE-5ccd3322",
   "MIE-37826361",
   "MIE-bb67a611",
-  "MIE-8880555c"
+  "MIE-8880555c",
+  "MIE-49f3b7f3"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "palestra",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -23916,8 +24020,8 @@
    "orizzontale": false
   },
   "1doFy-IdLUGnZn_FuQyyUK5OqHf6xPX08": {
-   "usi": 4,
-   "ultimo": "2026-11-14",
+   "usi": 5,
+   "ultimo": "2026-11-23",
    "orizzontale": false
   },
   "1Ks5dKBFsfm1KcBBN6VD0JeN6IDjWWTZu": {
@@ -24138,7 +24242,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_14.flac",
   "trap_01.flac",
   "phonk_14.flac",
   "deciso_01.flac",
@@ -24157,7 +24260,8 @@
   "deciso_06.flac",
   "drive_05.flac",
   "phonk_06.flac",
-  "trap_03.flac"
+  "trap_03.flac",
+  "energia_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -24192,7 +24296,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -24208,7 +24312,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "491460439584707",
   "1546581635764552",
   "1308898424418438",
   "1030263145726523",
@@ -24267,11 +24370,11 @@
   "1533332147140863",
   "751793197912868",
   "863843869658726",
-  "590318976107395"
+  "590318976107395",
+  "907634520516585"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Cy Curnin",
   "Giulio Cercato",
   "BLACK DOVES",
   "Mike Floss",
@@ -24280,10 +24383,10 @@
   "Trout Recording",
   "Sam Marshall",
   "Kolektivo",
-  "Dhruv Goel"
+  "Dhruv Goel",
+  "Jumbo"
  ],
  "ig_titoli_recenti": [
-  "need to talk",
   "hype beast",
   "electric movement",
   "adrenalina was her name",
@@ -24322,7 +24425,8 @@
   "something s in the movement",
   "in motion",
   "voce me deixa",
-  "running"
+  "running",
+  "beast"
  ],
  "ig_tendenze_riserva": [
   {
@@ -24340,38 +24444,24 @@
    "libreria": false
   },
   {
-   "audio_id": "590318976107395",
-   "title": "Running",
-   "display_artist": "Dhruv Goel",
-   "duration_in_ms": 146769,
+   "audio_id": "3308688216039200",
+   "title": "You Can't Have It",
+   "display_artist": "Otis McDonald",
+   "duration_in_ms": 154336,
    "libreria": true
   },
   {
-   "audio_id": "28748477811406397",
-   "title": "You Can Do This",
-   "display_artist": "Afterlight",
-   "duration_in_ms": 64289,
+   "audio_id": "370987356030042",
+   "title": "Show Me Your Fire",
+   "display_artist": "Chela Rivas",
+   "duration_in_ms": 148010,
    "libreria": true
   },
   {
-   "audio_id": "851155007623622",
-   "title": "Battle",
-   "display_artist": "Shanice",
-   "duration_in_ms": 127850,
-   "libreria": true
-  },
-  {
-   "audio_id": "660029496086919",
-   "title": "Project Power",
-   "display_artist": "Trout Recording",
-   "duration_in_ms": 214876,
-   "libreria": true
-  },
-  {
-   "audio_id": "791711906519334",
-   "title": "Fight (Instrumental)",
-   "display_artist": "Sugartapes",
-   "duration_in_ms": 125990,
+   "audio_id": "907634520516585",
+   "title": "Beast",
+   "display_artist": "Jumbo",
+   "duration_in_ms": 165764,
    "libreria": true
   }
  ]
