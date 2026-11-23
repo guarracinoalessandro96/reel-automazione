@@ -22374,7 +22374,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "bKj5KjTLQcs"
+     "id": "bKj5KjTLQcs",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -22385,11 +22386,110 @@
    },
    "spinto": true,
    "testo": "Il tuo allenamento è un appuntamento con te stesso. Non disdire con la persona che stai cercando di diventare."
+  },
+  {
+   "quando": "2026-11-23T07:00",
+   "slot": "2026-11-23 08:00",
+   "video": "IMG_4293.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-5ccd3322",
+   "tema": "famiglia",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 71.77,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 96,
+     "voce": "io"
+    },
+    "frase_via": "forzata",
+    "musica": "ten_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 133,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 74,
+     "font": "Source Serif Pro Semibold",
+     "intatto": false,
+     "luce": 0.43,
+     "righe": 15,
+     "scene_intatte": 0,
+     "scurito": 0.49,
+     "sfumatura": 0.32,
+     "viso": {
+      "corpo": 74,
+      "corpo_base": 74,
+      "posizione": "basso",
+      "righe": 15,
+      "scala": 1.0,
+      "visi": 27,
+      "y": 0.555
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 26,
+     "con_viso_yunet": 25,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 74,
+     "corpo_base": 74,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       8.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 15,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 27,
+     "y": 0.555
+    },
+    "viso_prima_scena": 3,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T12:59"
+    },
+    "musica_meta": "deciso_06.flac",
+    "musica_instagram": "Something's In The Movement - Trout Recording [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "emNEgWG-Pbw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18115719812614149",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Impegnatevi. Fate soldi. Diventate ricchi. Ma non per il Rolex. Non per la macchina da €200.000. Non per fare vedere agl"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-15 08:00",
   "2026-11-15 10:00",
   "2026-11-15 12:00",
   "2026-11-15 14:00",
@@ -22468,10 +22568,10 @@
   "2026-11-22 20:00",
   "2026-11-22 22:00",
   "2026-11-23 00:00",
-  "2026-11-23 06:00"
+  "2026-11-23 06:00",
+  "2026-11-23 08:00"
  ],
  "musica_recenti": [
-  "fire_in_the_sky_3.m4a",
   "mirror_mirror_2.m4a",
   "rubberband_2.m4a",
   "delirium_1.m4a",
@@ -22530,7 +22630,8 @@
   "kick_it_1.m4a",
   "break_ya_neck_2.m4a",
   "survival_mode_1.m4a",
-  "intergalactic_3.m4a"
+  "intergalactic_3.m4a",
+  "ten_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -22984,7 +23085,8 @@
   "MIE-2248c091",
   "MIE-c95854f9",
   "MIE-a82ff5e6",
-  "MIE-98a07492"
+  "MIE-98a07492",
+  "MIE-5ccd3322"
  ],
  "temi_recenti": [
   "mentalita",
@@ -22995,8 +23097,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
-  "palestra"
+  "palestra",
+  "famiglia"
  ],
  "analisi": {
   "1-XpSt4SspEfxthfpP3WOspSjVXChTq6f": {
@@ -23502,8 +23604,8 @@
    "orizzontale": false
   },
   "1imtjdovSsU7sfZ2CRaJTwVN1ETpo_8z3": {
-   "usi": 4,
-   "ultimo": "2026-11-14",
+   "usi": 5,
+   "ultimo": "2026-11-23",
    "orizzontale": false
   },
   "1doFy-IdLUGnZn_FuQyyUK5OqHf6xPX08": {
@@ -23729,7 +23831,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_11.flac",
   "drive_12.flac",
   "trap_03.flac",
   "deciso_04.flac",
@@ -23748,7 +23849,8 @@
   "drive_09.flac",
   "trap_14.flac",
   "phonk_16.flac",
-  "energia_06.flac"
+  "energia_06.flac",
+  "deciso_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -23799,7 +23901,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1383912545569665",
   "3243337306057458",
   "974432747187721",
   "1068776575596252",
@@ -23858,11 +23959,11 @@
   "212037205296438",
   "523966117385305",
   "1026654053480401",
-  "1232530197323594"
+  "1232530197323594",
+  "1533332147140863"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jackson Whalan",
   "LAVLO",
   "Sfera Ebbasta, Shiva, Geolier",
   "Ross Lara",
@@ -23871,10 +23972,10 @@
   "BLACK DOVES",
   "Mike Floss",
   "Auralux",
-  "Abby Posner"
+  "Abby Posner",
+  "Trout Recording"
  ],
  "ig_titoli_recenti": [
-  "adrenaline juicebox",
   "running through gold",
   "stronger",
   "storm",
@@ -23913,7 +24014,8 @@
   "sparks fly",
   "big leagues",
   "keep climbing",
-  "reflect and rise"
+  "reflect and rise",
+  "something s in the movement"
  ],
  "ig_tendenze_riserva": [
   {
@@ -23938,38 +24040,10 @@
    "libreria": false
   },
   {
-   "audio_id": "744011543289259",
-   "title": "Winners Take All (feat. Briana Tyson)",
-   "display_artist": "Jonny Houlihan",
-   "duration_in_ms": 213980,
-   "libreria": true
-  },
-  {
-   "audio_id": "1108940537791690",
-   "title": "Handycam (feat. My City Glory) (Instrumental)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 136240,
-   "libreria": true
-  },
-  {
-   "audio_id": "893506731941053",
-   "title": "Can't Run Away",
-   "display_artist": "Otis McDonald",
-   "duration_in_ms": 153511,
-   "libreria": true
-  },
-  {
-   "audio_id": "1029576439693978",
-   "title": "Peaceful Storm",
-   "display_artist": "erloom",
-   "duration_in_ms": 67374,
-   "libreria": true
-  },
-  {
-   "audio_id": "28748477811406397",
-   "title": "You Can Do This",
-   "display_artist": "Afterlight",
-   "duration_in_ms": 64289,
+   "audio_id": "1533332147140863",
+   "title": "Something's In The Movement",
+   "display_artist": "Trout Recording",
+   "duration_in_ms": 197923,
    "libreria": true
   }
  ]
