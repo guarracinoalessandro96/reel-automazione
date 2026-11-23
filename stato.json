@@ -22172,7 +22172,9 @@
      "ok": true,
      "id": "17999674272104523",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -22266,22 +22268,127 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "5NUPs-NwXX0"
+     "id": "5NUPs-NwXX0",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18039806480658213",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "Guardati. Esausto, sotto pressione, mentre combatti le tue battaglie silenziose, eppure ogni giorno ti rialzi e vai avan"
+  },
+  {
+   "quando": "2026-11-23T05:00",
+   "slot": "2026-11-23 06:00",
+   "video": "IMG_4291.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-98a07492",
+   "tema": "palestra",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 56.91,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "estratto": "intero",
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 19,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "intergalactic_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "ripiego_da": "intero",
+    "scritta": "centro_serif",
+    "secondi_montaggio": 263,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.45,
+     "righe": 6,
+     "scene_intatte": 0,
+     "scurito": 0.52,
+     "sfumatura": 0.33,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 6,
+      "scala": 1.0,
+      "visi": 9,
+      "y": 0.547
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "altro_video": "extra_0.mov",
+     "con_viso": 16,
+     "con_viso_yunet": 16,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       1.0,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 6,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 9,
+     "y": 0.547
+    },
+    "viso_prima_scena": 1,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:01"
+    },
+    "musica_meta": "energia_06.flac",
+    "musica_instagram": "Reflect And Rise - Abby Posner"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "bKj5KjTLQcs"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18037008806908998",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Il tuo allenamento è un appuntamento con te stesso. Non disdire con la persona che stai cercando di diventare."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-15 06:00",
   "2026-11-15 08:00",
   "2026-11-15 10:00",
   "2026-11-15 12:00",
@@ -22360,10 +22467,10 @@
   "2026-11-22 18:00",
   "2026-11-22 20:00",
   "2026-11-22 22:00",
-  "2026-11-23 00:00"
+  "2026-11-23 00:00",
+  "2026-11-23 06:00"
  ],
  "musica_recenti": [
-  "dusty_road_magic_3.m4a",
   "fire_in_the_sky_3.m4a",
   "mirror_mirror_2.m4a",
   "rubberband_2.m4a",
@@ -22422,7 +22529,8 @@
   "monthaholic_3.m4a",
   "kick_it_1.m4a",
   "break_ya_neck_2.m4a",
-  "survival_mode_1.m4a"
+  "survival_mode_1.m4a",
+  "intergalactic_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -22875,7 +22983,8 @@
   "MIE-7562def2",
   "MIE-2248c091",
   "MIE-c95854f9",
-  "MIE-a82ff5e6"
+  "MIE-a82ff5e6",
+  "MIE-98a07492"
  ],
  "temi_recenti": [
   "mentalita",
@@ -22887,7 +22996,7 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "palestra"
  ],
  "analisi": {
   "1-XpSt4SspEfxthfpP3WOspSjVXChTq6f": {
@@ -22933,7 +23042,7 @@
    "momento": null
   }
  },
- "pulizia": "2026-11-22",
+ "pulizia": "2026-11-23",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -23383,8 +23492,8 @@
    "orizzontale": false
   },
   "1sS5KtmGf3aPo3O8udU6R6rADRrUb-zMb": {
-   "usi": 4,
-   "ultimo": "2026-11-14",
+   "usi": 5,
+   "ultimo": "2026-11-23",
    "orizzontale": false
   },
   "1qg9QOoyt2IXIx0udqWcfdBdqz_RdzVo4": {
@@ -23620,7 +23729,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_06.flac",
   "energia_11.flac",
   "drive_12.flac",
   "trap_03.flac",
@@ -23639,7 +23747,8 @@
   "phonk_05.flac",
   "drive_09.flac",
   "trap_14.flac",
-  "phonk_16.flac"
+  "phonk_16.flac",
+  "energia_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -23690,7 +23799,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "5293714980852628",
   "1383912545569665",
   "3243337306057458",
   "974432747187721",
@@ -23749,11 +23857,11 @@
   "1223134719013093",
   "212037205296438",
   "523966117385305",
-  "1026654053480401"
+  "1026654053480401",
+  "1232530197323594"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Fellow Travelers",
   "Jackson Whalan",
   "LAVLO",
   "Sfera Ebbasta, Shiva, Geolier",
@@ -23762,10 +23870,10 @@
   "Giulio Cercato",
   "BLACK DOVES",
   "Mike Floss",
-  "Auralux"
+  "Auralux",
+  "Abby Posner"
  ],
  "ig_titoli_recenti": [
-  "energy in motion",
   "adrenaline juicebox",
   "running through gold",
   "stronger",
@@ -23804,7 +23912,8 @@
   "energy",
   "sparks fly",
   "big leagues",
-  "keep climbing"
+  "keep climbing",
+  "reflect and rise"
  ],
  "ig_tendenze_riserva": [
   {
@@ -23829,10 +23938,38 @@
    "libreria": false
   },
   {
-   "audio_id": "1026654053480401",
-   "title": "Keep Climbing",
-   "display_artist": "Auralux",
-   "duration_in_ms": 61737,
+   "audio_id": "744011543289259",
+   "title": "Winners Take All (feat. Briana Tyson)",
+   "display_artist": "Jonny Houlihan",
+   "duration_in_ms": 213980,
+   "libreria": true
+  },
+  {
+   "audio_id": "1108940537791690",
+   "title": "Handycam (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 136240,
+   "libreria": true
+  },
+  {
+   "audio_id": "893506731941053",
+   "title": "Can't Run Away",
+   "display_artist": "Otis McDonald",
+   "duration_in_ms": 153511,
+   "libreria": true
+  },
+  {
+   "audio_id": "1029576439693978",
+   "title": "Peaceful Storm",
+   "display_artist": "erloom",
+   "duration_in_ms": 67374,
+   "libreria": true
+  },
+  {
+   "audio_id": "28748477811406397",
+   "title": "You Can Do This",
+   "display_artist": "Afterlight",
+   "duration_in_ms": 64289,
    "libreria": true
   }
  ]
