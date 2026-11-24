@@ -23720,7 +23720,9 @@
      "ok": true,
      "id": "17901435006681108",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -23817,7 +23819,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "HQWjPEkJ0Og"
+     "id": "HQWjPEkJ0Og",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -23828,11 +23831,110 @@
    },
    "spinto": true,
    "testo": "Non devi avere tutto sotto controllo per meritare pace. Puoi respirare anche in mezzo al caos. Puoi sorridere anche se n"
+  },
+  {
+   "quando": "2026-11-24T15:00",
+   "slot": "2026-11-24 16:00",
+   "video": "IMG_4116.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-6a3c122b",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 9.38,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 19,
+     "voce": "generale"
+    },
+    "frase_via": "forzata",
+    "musica": "horizons_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 230,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.39,
+     "righe": 4,
+     "scene_intatte": 0,
+     "scurito": 0.46,
+     "sfumatura": 0.29,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "centro",
+      "righe": 4,
+      "scala": 1.0,
+      "visi": 29,
+      "y": 0.47
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       1.0,
+       7.0
+      ]
+     ],
+     "posizione": "centro",
+     "righe": 4,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 29,
+     "y": 0.47
+    },
+    "viso_prima_scena": 3,
+    "settimana": {
+     "lotto": "Lotto 2026-11-24",
+     "versione": 1,
+     "generato": "2026-11-21T12:54"
+    },
+    "musica_meta": "phonk_09.flac",
+    "musica_instagram": "Steady Motion - Neon Avenue [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "_qfXfYaMozY"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17880466878650871",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non c'è bisogno di forzare le cose, perché ognuno è dove vuole essere e perde ciò che vuole perdere."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-16 16:00",
   "2026-11-16 18:00",
   "2026-11-16 20:00",
   "2026-11-16 22:00",
@@ -23911,10 +24013,10 @@
   "2026-11-24 08:00",
   "2026-11-24 10:00",
   "2026-11-24 12:00",
-  "2026-11-24 14:00"
+  "2026-11-24 14:00",
+  "2026-11-24 16:00"
  ],
  "musica_recenti": [
-  "stake_out_3.m4a",
   "duty_calls_2.m4a",
   "locked_in_1.m4a",
   "keep_it_movin_1.m4a",
@@ -23973,7 +24075,8 @@
   "visions_1.m4a",
   "ten_2.m4a",
   "locked_in_2.m4a",
-  "keep_it_movin_3.m4a"
+  "keep_it_movin_3.m4a",
+  "horizons_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -24441,7 +24544,8 @@
   "MIE-b7f45815",
   "MIE-440a5510",
   "MIE-d3c99665",
-  "MIE-a854da50"
+  "MIE-a854da50",
+  "MIE-6a3c122b"
  ],
  "temi_recenti": [
   "mentalita",
@@ -24869,8 +24973,8 @@
    "orizzontale": false
   },
   "1RffuiBvFRbbbwuF-Qy2QfHTSEOUDPE8a": {
-   "usi": 4,
-   "ultimo": "2026-11-13",
+   "usi": 5,
+   "ultimo": "2026-11-24",
    "orizzontale": false
   },
   "1EIkrvNWHYfhUXhSzzqvvdiEFEPhXxmSi": {
@@ -25186,7 +25290,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_02.flac",
   "phonk_05.flac",
   "drive_09.flac",
   "trap_14.flac",
@@ -25205,7 +25308,8 @@
   "drive_14.flac",
   "phonk_10.flac",
   "trap_08.flac",
-  "drive_12.flac"
+  "drive_12.flac",
+  "phonk_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -25256,7 +25360,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1046631240870078",
   "2422994201393793",
   "1428954698111653",
   "1469205655054044",
@@ -25315,11 +25418,11 @@
   "1145606523800710",
   "709218654262818",
   "1449501010135619",
-  "4489870934582584"
+  "4489870934582584",
+  "27900805162919864"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jumbo",
   "Company Money",
   "Genticorum",
   "Ross Lara",
@@ -25328,10 +25431,10 @@
   "Lyle Workman",
   "Otis McDonald",
   "Baegod",
-  "Bloom"
+  "Bloom",
+  "Neon Avenue"
  ],
  "ig_titoli_recenti": [
-  "move like this",
   "knockout",
   "you won t believe",
   "fire",
@@ -25370,7 +25473,8 @@
   "fight for freedom",
   "on the move",
   "when i m in motion",
-  "epic adventure"
+  "epic adventure",
+  "steady motion"
  ],
  "ig_tendenze_riserva": [
   {
@@ -25392,6 +25496,41 @@
    "title": "Fire",
    "display_artist": "YoungPop",
    "duration_in_ms": 183434,
+   "libreria": true
+  },
+  {
+   "audio_id": "27900805162919864",
+   "title": "Steady Motion",
+   "display_artist": "Neon Avenue",
+   "duration_in_ms": 62383,
+   "libreria": true
+  },
+  {
+   "audio_id": "1352337306404213",
+   "title": "Redux (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 243803,
+   "libreria": true
+  },
+  {
+   "audio_id": "1340308050325459",
+   "title": "Willow Run",
+   "display_artist": "Paul Fowler",
+   "duration_in_ms": 248272,
+   "libreria": true
+  },
+  {
+   "audio_id": "3188463141456618",
+   "title": "Sentimental Motion (feat. ZAB)",
+   "display_artist": "half.cool",
+   "duration_in_ms": 192050,
+   "libreria": true
+  },
+  {
+   "audio_id": "1234959381777711",
+   "title": "Chasing Granular (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 157349,
    "libreria": true
   }
  ]
