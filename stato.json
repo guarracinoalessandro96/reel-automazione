@@ -24135,7 +24135,9 @@
      "ok": true,
      "id": "18081273422726727",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -24229,7 +24231,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "cgHWQOeIqpw"
+     "id": "cgHWQOeIqpw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -24240,11 +24243,110 @@
    },
    "spinto": true,
    "testo": "Non sapranno mai quanto dolore ci è voluto per essere così calmo."
+  },
+  {
+   "quando": "2026-11-24T23:00",
+   "slot": "2026-11-25 00:00",
+   "video": "IMG_4126.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-42ae5e6a",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 16.48,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.227
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 18,
+     "voce": "generale"
+    },
+    "frase_via": "forzata",
+    "musica": "ancient_civilisations_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 214,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.47,
+     "righe": 6,
+     "scene_intatte": 0,
+     "scurito": 0.48,
+     "sfumatura": 0.34,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "alto",
+      "righe": 6,
+      "scala": 1.0,
+      "visi": 9,
+      "y": 0.377
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       10.5,
+       7.0
+      ]
+     ],
+     "posizione": "alto",
+     "righe": 6,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 9,
+     "y": 0.377
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:00"
+    },
+    "musica_meta": "phonk_05.flac",
+    "musica_instagram": "Fire - GEEZ [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "9oPWXDzvc3s"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18055663370811047",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non lasciatevi ingannare dalla nostalgia di quel che poteva essere. Non poteva essere nient'altro, altrimenti lo sarebbe"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-17 00:00",
   "2026-11-17 06:00",
   "2026-11-17 08:00",
   "2026-11-17 10:00",
@@ -24323,10 +24425,10 @@
   "2026-11-24 16:00",
   "2026-11-24 18:00",
   "2026-11-24 20:00",
-  "2026-11-24 22:00"
+  "2026-11-24 22:00",
+  "2026-11-25 00:00"
  ],
  "musica_recenti": [
-  "moon_vision_3.m4a",
   "ancient_civilisations_1.m4a",
   "van_life_rager_2.m4a",
   "death_duel_3.m4a",
@@ -24385,7 +24487,8 @@
   "horizons_3.m4a",
   "ancient_civilisations_2.m4a",
   "van_life_rager_3.m4a",
-  "moon_vision_1.m4a"
+  "moon_vision_1.m4a",
+  "ancient_civilisations_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -24857,7 +24960,8 @@
   "MIE-6a3c122b",
   "MIE-9d031a51",
   "MIE-a6cc9a0e",
-  "MIE-0caa72d5"
+  "MIE-0caa72d5",
+  "MIE-42ae5e6a"
  ],
  "temi_recenti": [
   "mentalita",
@@ -25321,8 +25425,8 @@
    "orizzontale": false
   },
   "1-ciPqgzhDOKWA7FElGzwRc9htypB_2u3": {
-   "usi": 5,
-   "ultimo": "2026-11-17",
+   "usi": 6,
+   "ultimo": "2026-11-24",
    "orizzontale": false
   },
   "1Tyefc-vEJZrdzNqOTaUh2yXtSQjsP7fg": {
@@ -25602,7 +25706,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_16.flac",
   "energia_06.flac",
   "deciso_06.flac",
   "drive_05.flac",
@@ -25621,7 +25724,8 @@
   "phonk_09.flac",
   "trap_16.flac",
   "drive_13.flac",
-  "deciso_07.flac"
+  "deciso_07.flac",
+  "phonk_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -25672,7 +25776,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "739108178545320",
   "923490770808517",
   "2197248934147643",
   "1552659642157024",
@@ -25731,11 +25834,11 @@
   "27900805162919864",
   "1324542209262772",
   "838674124312983",
-  "902974885110650"
+  "902974885110650",
+  "461389463230596"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "half.cool",
   "Giulio Cercato",
   "Lyle Workman",
   "Otis McDonald",
@@ -25744,10 +25847,10 @@
   "Neon Avenue",
   "Jackson Whalan",
   "Jumbo",
-  "The K Club"
+  "The K Club",
+  "GEEZ"
  ],
  "ig_titoli_recenti": [
-  "play to win",
   "legends",
   "don t run from me",
   "flow motion",
@@ -25786,7 +25889,8 @@
   "steady motion",
   "getting strong",
   "game winner",
-  "don t go"
+  "don t go",
+  "fire"
  ],
  "ig_tendenze_riserva": [
   {
@@ -25797,10 +25901,38 @@
    "libreria": false
   },
   {
-   "audio_id": "902974885110650",
-   "title": "Don't Go (feat. Dawson March)",
+   "audio_id": "2192533544901491",
+   "title": "Energy (Instrumental)",
+   "display_artist": "Tony Dark Eyes",
+   "duration_in_ms": 193175,
+   "libreria": true
+  },
+  {
+   "audio_id": "562869749636642",
+   "title": "Club Level (feat. Dawson March)",
    "display_artist": "The K Club",
-   "duration_in_ms": 134000,
+   "duration_in_ms": 152970,
+   "libreria": true
+  },
+  {
+   "audio_id": "485996590250718",
+   "title": "Running",
+   "display_artist": "Mani Draper",
+   "duration_in_ms": 131178,
+   "libreria": true
+  },
+  {
+   "audio_id": "461389463230596",
+   "title": "Fire",
+   "display_artist": "GEEZ",
+   "duration_in_ms": 212462,
+   "libreria": true
+  },
+  {
+   "audio_id": "4279708355594989",
+   "title": "In Motion",
+   "display_artist": "Sam Marshall",
+   "duration_in_ms": 188848,
    "libreria": true
   }
  ]
