@@ -24032,7 +24032,9 @@
      "ok": true,
      "id": "17894361480618573",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -24126,7 +24128,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "gC6TjvZEbXw"
+     "id": "gC6TjvZEbXw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -24137,11 +24140,110 @@
    },
    "spinto": true,
    "testo": "Sarò per sempre la persona che sorride anche se il mondo le sta crollando addosso, perché spiegare a qualcuno come ci si"
+  },
+  {
+   "quando": "2026-11-24T21:01",
+   "slot": "2026-11-24 22:00",
+   "video": "IMG_4029.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-0caa72d5",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 20.27,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.135
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 12,
+     "voce": "generale"
+    },
+    "frase_via": "forzata",
+    "musica": "moon_vision_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 145,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.36,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.35,
+     "sfumatura": 0.27,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 47,
+      "y": 0.496
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       6.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 47,
+     "y": 0.496
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-24",
+     "versione": 1,
+     "generato": "2026-11-21T12:52"
+    },
+    "musica_meta": "deciso_07.flac",
+    "musica_instagram": "Don't Go (feat. Dawson March) - The K Club [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "cgHWQOeIqpw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18168287980496174",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non sapranno mai quanto dolore ci è voluto per essere così calmo."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-16 22:00",
   "2026-11-17 00:00",
   "2026-11-17 06:00",
   "2026-11-17 08:00",
@@ -24220,10 +24322,10 @@
   "2026-11-24 14:00",
   "2026-11-24 16:00",
   "2026-11-24 18:00",
-  "2026-11-24 20:00"
+  "2026-11-24 20:00",
+  "2026-11-24 22:00"
  ],
  "musica_recenti": [
-  "keep_it_movin_1.m4a",
   "moon_vision_3.m4a",
   "ancient_civilisations_1.m4a",
   "van_life_rager_2.m4a",
@@ -24282,7 +24384,8 @@
   "keep_it_movin_3.m4a",
   "horizons_3.m4a",
   "ancient_civilisations_2.m4a",
-  "van_life_rager_3.m4a"
+  "van_life_rager_3.m4a",
+  "moon_vision_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -24753,7 +24856,8 @@
   "MIE-a854da50",
   "MIE-6a3c122b",
   "MIE-9d031a51",
-  "MIE-a6cc9a0e"
+  "MIE-a6cc9a0e",
+  "MIE-0caa72d5"
  ],
  "temi_recenti": [
   "mentalita",
@@ -25049,8 +25153,8 @@
    "orizzontale": false
   },
   "1uc6eTA1H5KSzsqTsVNgk6Rzto2V2Wq3y": {
-   "usi": 5,
-   "ultimo": "2026-11-16",
+   "usi": 6,
+   "ultimo": "2026-11-24",
    "orizzontale": false
   },
   "1SViXJGWyrXZIxEMyHGwykElbvGkiJSxW": {
@@ -25498,7 +25602,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_14.flac",
   "phonk_16.flac",
   "energia_06.flac",
   "deciso_06.flac",
@@ -25517,7 +25620,8 @@
   "drive_12.flac",
   "phonk_09.flac",
   "trap_16.flac",
-  "drive_13.flac"
+  "drive_13.flac",
+  "deciso_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -25552,7 +25656,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -25568,7 +25672,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1469205655054044",
   "739108178545320",
   "923490770808517",
   "2197248934147643",
@@ -25627,11 +25730,11 @@
   "4489870934582584",
   "27900805162919864",
   "1324542209262772",
-  "838674124312983"
+  "838674124312983",
+  "902974885110650"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Ross Lara",
   "half.cool",
   "Giulio Cercato",
   "Lyle Workman",
@@ -25640,10 +25743,10 @@
   "Bloom",
   "Neon Avenue",
   "Jackson Whalan",
-  "Jumbo"
+  "Jumbo",
+  "The K Club"
  ],
  "ig_titoli_recenti": [
-  "fire",
   "play to win",
   "legends",
   "don t run from me",
@@ -25682,7 +25785,8 @@
   "epic adventure",
   "steady motion",
   "getting strong",
-  "game winner"
+  "game winner",
+  "don t go"
  ],
  "ig_tendenze_riserva": [
   {
@@ -25693,38 +25797,10 @@
    "libreria": false
   },
   {
-   "audio_id": "838674124312983",
-   "title": "Game Winner",
-   "display_artist": "Jumbo",
-   "duration_in_ms": 158200,
-   "libreria": true
-  },
-  {
-   "audio_id": "1029576439693978",
-   "title": "Peaceful Storm",
-   "display_artist": "erloom",
-   "duration_in_ms": 67374,
-   "libreria": true
-  },
-  {
-   "audio_id": "566336025028596",
-   "title": "Fire",
-   "display_artist": "Tony Dark Eyes",
-   "duration_in_ms": 162580,
-   "libreria": true
-  },
-  {
-   "audio_id": "1108940537791690",
-   "title": "Handycam (feat. My City Glory) (Instrumental)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 136240,
-   "libreria": true
-  },
-  {
-   "audio_id": "601112655997356",
-   "title": "Orbiting (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 165490,
+   "audio_id": "902974885110650",
+   "title": "Don't Go (feat. Dawson March)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 134000,
    "libreria": true
   }
  ]
