@@ -23511,7 +23511,9 @@
      "ok": true,
      "id": "18135827317705955",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -23608,7 +23610,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "9GPpVKID3TI"
+     "id": "9GPpVKID3TI",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -23619,11 +23622,110 @@
    },
    "spinto": true,
    "testo": "Uno dei più grandi piaceri della vita è portare a termine ciò che gli altri dicevano che non saresti riuscito a fare."
+  },
+  {
+   "quando": "2026-11-24T11:00",
+   "slot": "2026-11-24 12:00",
+   "video": "IMG_4065.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-d3c99665",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 2.14,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 47,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "locked_in_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 172,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 91,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.42,
+     "righe": 8,
+     "scene_intatte": 0,
+     "scurito": 0.49,
+     "sfumatura": 0.32,
+     "viso": {
+      "corpo": 91,
+      "corpo_base": 96,
+      "posizione": "alto",
+      "righe": 8,
+      "scala": 0.948,
+      "visi": 19,
+      "y": 0.285
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 91,
+     "corpo_base": 96,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       6.0,
+       7.0
+      ]
+     ],
+     "posizione": "alto",
+     "righe": 8,
+     "rilevatore": "yunet+haar",
+     "scala": 0.948,
+     "visi": 19,
+     "y": 0.285
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-24",
+     "versione": 1,
+     "generato": "2026-11-21T12:53"
+    },
+    "musica_meta": "trap_08.flac",
+    "musica_instagram": "When I'm In Motion (Instrumental) - Baegod [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "qtxDoQRzdUk"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17901435006681108",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "È solo una stupida frase... A un certo punto arriverai alla consapevolezza del tuo valore. Da quel momento, la vita ti d"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-16 12:00",
   "2026-11-16 14:00",
   "2026-11-16 16:00",
   "2026-11-16 18:00",
@@ -23702,10 +23804,10 @@
   "2026-11-24 00:00",
   "2026-11-24 06:00",
   "2026-11-24 08:00",
-  "2026-11-24 10:00"
+  "2026-11-24 10:00",
+  "2026-11-24 12:00"
  ],
  "musica_recenti": [
-  "intergalactic_1.m4a",
   "horizons_2.m4a",
   "stake_out_3.m4a",
   "duty_calls_2.m4a",
@@ -23764,7 +23866,8 @@
   "whoop_1.m4a",
   "intergalactic_3.m4a",
   "visions_1.m4a",
-  "ten_2.m4a"
+  "ten_2.m4a",
+  "locked_in_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -24230,7 +24333,8 @@
   "MIE-5b68cb77",
   "MIE-11bed9d2",
   "MIE-b7f45815",
-  "MIE-440a5510"
+  "MIE-440a5510",
+  "MIE-d3c99665"
  ],
  "temi_recenti": [
   "mentalita",
@@ -24643,8 +24747,8 @@
    "ultimo": "2026-10-23"
   },
   "19lxUacEH3cLJ4agkgVgo3o7ErjaxO3My": {
-   "usi": 4,
-   "ultimo": "2026-11-12",
+   "usi": 5,
+   "ultimo": "2026-11-24",
    "orizzontale": false
   },
   "1UqKiP8I1uDBOGIlQ6FOiFV8glkTIPDqY": {
@@ -24975,7 +25079,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_02.flac",
   "drive_08.flac",
   "deciso_02.flac",
   "phonk_05.flac",
@@ -24994,7 +25097,8 @@
   "phonk_02.flac",
   "trap_15.flac",
   "drive_14.flac",
-  "phonk_10.flac"
+  "phonk_10.flac",
+  "trap_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -25045,7 +25149,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "660029496086919",
   "1520634330105846",
   "1046631240870078",
   "2422994201393793",
@@ -25104,11 +25207,11 @@
   "313517751444003",
   "1372666635060078",
   "1145606523800710",
-  "709218654262818"
+  "709218654262818",
+  "1449501010135619"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Kolektivo",
   "Dhruv Goel",
   "Jumbo",
   "Company Money",
@@ -25117,10 +25220,10 @@
   "half.cool",
   "Giulio Cercato",
   "Lyle Workman",
-  "Otis McDonald"
+  "Otis McDonald",
+  "Baegod"
  ],
  "ig_titoli_recenti": [
-  "move it or lose it",
   "level up",
   "move like this",
   "knockout",
@@ -25159,16 +25262,10 @@
   "sentimental motion",
   "breathtaker",
   "fight for freedom",
-  "on the move"
+  "on the move",
+  "when i m in motion"
  ],
  "ig_tendenze_riserva": [
-  {
-   "audio_id": "1792089558671408",
-   "title": "Victory Lap",
-   "display_artist": "Sfera Ebbasta, Shiva, Geolier",
-   "duration_in_ms": 211170,
-   "libreria": false
-  },
   {
    "audio_id": "1124230547275731",
    "title": "GTA 6 Main Theme (EPIC Version)",
@@ -25177,45 +25274,24 @@
    "libreria": false
   },
   {
-   "audio_id": "2623141041391037",
-   "title": "Running",
-   "display_artist": "Julia Gartha",
-   "duration_in_ms": 128407,
+   "audio_id": "1792089558671408",
+   "title": "Victory Lap",
+   "display_artist": "Sfera Ebbasta, Shiva, Geolier",
+   "duration_in_ms": 211170,
+   "libreria": false
+  },
+  {
+   "audio_id": "1449501010135619",
+   "title": "When I'm In Motion (Instrumental)",
+   "display_artist": "Baegod",
+   "duration_in_ms": 177438,
    "libreria": true
   },
   {
-   "audio_id": "709218654262818",
-   "title": "On The Move",
-   "display_artist": "Otis McDonald",
-   "duration_in_ms": 60750,
-   "libreria": true
-  },
-  {
-   "audio_id": "799096306452941",
-   "title": "Running High",
-   "display_artist": "bbox",
-   "duration_in_ms": 187084,
-   "libreria": true
-  },
-  {
-   "audio_id": "1100130857775330",
-   "title": "Good Fight (feat. Dipzy)",
-   "display_artist": "Swell Sound",
-   "duration_in_ms": 179830,
-   "libreria": true
-  },
-  {
-   "audio_id": "1176311740703360",
-   "title": "Hidden Sun (feat. My City Glory) (Instrumental)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 158450,
-   "libreria": true
-  },
-  {
-   "audio_id": "370987356030042",
-   "title": "Show Me Your Fire",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 148010,
+   "audio_id": "1617190099461786",
+   "title": "Energy",
+   "display_artist": "Tony Dark Eyes",
+   "duration_in_ms": 193175,
    "libreria": true
   }
  ]
