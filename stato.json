@@ -23617,7 +23617,9 @@
      "ok": true,
      "id": "18134540953686571",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -23711,7 +23713,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "qtxDoQRzdUk"
+     "id": "qtxDoQRzdUk",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -23722,11 +23725,113 @@
    },
    "spinto": true,
    "testo": "È solo una stupida frase... A un certo punto arriverai alla consapevolezza del tuo valore. Da quel momento, la vita ti d"
+  },
+  {
+   "quando": "2026-11-24T13:01",
+   "slot": "2026-11-24 14:00",
+   "video": "IMG_3330.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-a854da50",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 35.71,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.153
+    },
+    "durata": 7.0,
+    "estratto": "intero",
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 36,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "keep_it_movin_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "ripiego_da": "intero",
+    "scritta": "centro_serif",
+    "secondi_montaggio": 192,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.49,
+     "righe": 8,
+     "scene_intatte": 0,
+     "scurito": 0.45,
+     "sfumatura": 0.35,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 8,
+      "scala": 1.0,
+      "visi": 31,
+      "y": 0.613
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "altro_video": "extra_1.MOV",
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       3.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 8,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 31,
+     "y": 0.613
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-24",
+     "versione": 1,
+     "generato": "2026-11-21T12:53"
+    },
+    "musica_meta": "drive_12.flac",
+    "musica_instagram": "Epic Adventure - Bloom"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "HQWjPEkJ0Og"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18051047093823831",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non devi avere tutto sotto controllo per meritare pace. Puoi respirare anche in mezzo al caos. Puoi sorridere anche se n"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-16 14:00",
   "2026-11-16 16:00",
   "2026-11-16 18:00",
   "2026-11-16 20:00",
@@ -23805,10 +23910,10 @@
   "2026-11-24 06:00",
   "2026-11-24 08:00",
   "2026-11-24 10:00",
-  "2026-11-24 12:00"
+  "2026-11-24 12:00",
+  "2026-11-24 14:00"
  ],
  "musica_recenti": [
-  "horizons_2.m4a",
   "stake_out_3.m4a",
   "duty_calls_2.m4a",
   "locked_in_1.m4a",
@@ -23867,7 +23972,8 @@
   "intergalactic_3.m4a",
   "visions_1.m4a",
   "ten_2.m4a",
-  "locked_in_2.m4a"
+  "locked_in_2.m4a",
+  "keep_it_movin_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -24334,7 +24440,8 @@
   "MIE-11bed9d2",
   "MIE-b7f45815",
   "MIE-440a5510",
-  "MIE-d3c99665"
+  "MIE-d3c99665",
+  "MIE-a854da50"
  ],
  "temi_recenti": [
   "mentalita",
@@ -24409,8 +24516,8 @@
    "ultimo": "2026-10-27"
   },
   "1ssTZiPaSjGA63iZMxhUEOD6wWT-dqCLz": {
-   "usi": 4,
-   "ultimo": "2026-11-14",
+   "usi": 5,
+   "ultimo": "2026-11-24",
    "orizzontale": false
   },
   "1HKv05Wh_t_gsHvCIkHBJFaKlY4mxyEy2": {
@@ -25079,7 +25186,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_08.flac",
   "deciso_02.flac",
   "phonk_05.flac",
   "drive_09.flac",
@@ -25098,7 +25204,8 @@
   "trap_15.flac",
   "drive_14.flac",
   "phonk_10.flac",
-  "trap_08.flac"
+  "trap_08.flac",
+  "drive_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -25149,7 +25256,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1520634330105846",
   "1046631240870078",
   "2422994201393793",
   "1428954698111653",
@@ -25208,11 +25314,11 @@
   "1372666635060078",
   "1145606523800710",
   "709218654262818",
-  "1449501010135619"
+  "1449501010135619",
+  "4489870934582584"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Dhruv Goel",
   "Jumbo",
   "Company Money",
   "Genticorum",
@@ -25221,10 +25327,10 @@
   "Giulio Cercato",
   "Lyle Workman",
   "Otis McDonald",
-  "Baegod"
+  "Baegod",
+  "Bloom"
  ],
  "ig_titoli_recenti": [
-  "level up",
   "move like this",
   "knockout",
   "you won t believe",
@@ -25263,7 +25369,8 @@
   "breathtaker",
   "fight for freedom",
   "on the move",
-  "when i m in motion"
+  "when i m in motion",
+  "epic adventure"
  ],
  "ig_tendenze_riserva": [
   {
@@ -25281,17 +25388,10 @@
    "libreria": false
   },
   {
-   "audio_id": "1449501010135619",
-   "title": "When I'm In Motion (Instrumental)",
-   "display_artist": "Baegod",
-   "duration_in_ms": 177438,
-   "libreria": true
-  },
-  {
-   "audio_id": "1617190099461786",
-   "title": "Energy",
-   "display_artist": "Tony Dark Eyes",
-   "duration_in_ms": 193175,
+   "audio_id": "930354837134154",
+   "title": "Fire",
+   "display_artist": "YoungPop",
+   "duration_in_ms": 183434,
    "libreria": true
   }
  ]
