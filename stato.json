@@ -23929,7 +23929,9 @@
      "ok": true,
      "id": "17880466878650871",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -24023,7 +24025,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "kMX6ph6oIYw"
+     "id": "kMX6ph6oIYw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -24034,11 +24037,110 @@
    },
    "spinto": true,
    "testo": "Un giorno ho letto una frase, ma non l'avevo capita. Poi l'ho riletta e diceva: «A volte bisogna attraversare l'oscurità"
+  },
+  {
+   "quando": "2026-11-24T19:00",
+   "slot": "2026-11-24 20:00",
+   "video": "IMG_3611.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-a6cc9a0e",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 18.19,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.388
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 26,
+     "voce": "generale"
+    },
+    "frase_via": "forzata",
+    "musica": "van_life_rager_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 103,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 86,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.45,
+     "righe": 4,
+     "scene_intatte": 0,
+     "scurito": 0.45,
+     "sfumatura": 0.34,
+     "viso": {
+      "corpo": 86,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 4,
+      "scala": 0.804,
+      "visi": 9,
+      "y": 0.74
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 86,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 4,
+     "rilevatore": "yunet+haar",
+     "scala": 0.804,
+     "visi": 9,
+     "y": 0.74
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-24",
+     "versione": 1,
+     "generato": "2026-11-21T12:51"
+    },
+    "musica_meta": "drive_13.flac",
+    "musica_instagram": "Game Winner - Jumbo [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "gC6TjvZEbXw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18081273422726727",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Sarò per sempre la persona che sorride anche se il mondo le sta crollando addosso, perché spiegare a qualcuno come ci si"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-16 20:00",
   "2026-11-16 22:00",
   "2026-11-17 00:00",
   "2026-11-17 06:00",
@@ -24117,10 +24219,10 @@
   "2026-11-24 12:00",
   "2026-11-24 14:00",
   "2026-11-24 16:00",
-  "2026-11-24 18:00"
+  "2026-11-24 18:00",
+  "2026-11-24 20:00"
  ],
  "musica_recenti": [
-  "locked_in_1.m4a",
   "keep_it_movin_1.m4a",
   "moon_vision_3.m4a",
   "ancient_civilisations_1.m4a",
@@ -24179,7 +24281,8 @@
   "locked_in_2.m4a",
   "keep_it_movin_3.m4a",
   "horizons_3.m4a",
-  "ancient_civilisations_2.m4a"
+  "ancient_civilisations_2.m4a",
+  "van_life_rager_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -24649,7 +24752,8 @@
   "MIE-d3c99665",
   "MIE-a854da50",
   "MIE-6a3c122b",
-  "MIE-9d031a51"
+  "MIE-9d031a51",
+  "MIE-a6cc9a0e"
  ],
  "temi_recenti": [
   "mentalita",
@@ -24837,8 +24941,8 @@
    "orizzontale": false
   },
   "1cws0l3N3pW2EVUmkD-GxH5nLIIh0UE-c": {
-   "usi": 4,
-   "ultimo": "2026-11-16",
+   "usi": 5,
+   "ultimo": "2026-11-24",
    "orizzontale": false
   },
   "1a3hFaj1fQm1AuYdIv6iY-TZDvDdPOmOp": {
@@ -25394,7 +25498,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_09.flac",
   "trap_14.flac",
   "phonk_16.flac",
   "energia_06.flac",
@@ -25413,7 +25516,8 @@
   "trap_08.flac",
   "drive_12.flac",
   "phonk_09.flac",
-  "trap_16.flac"
+  "trap_16.flac",
+  "drive_13.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -25448,7 +25552,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -25464,7 +25568,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1428954698111653",
   "1469205655054044",
   "739108178545320",
   "923490770808517",
@@ -25523,11 +25626,11 @@
   "1449501010135619",
   "4489870934582584",
   "27900805162919864",
-  "1324542209262772"
+  "1324542209262772",
+  "838674124312983"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Genticorum",
   "Ross Lara",
   "half.cool",
   "Giulio Cercato",
@@ -25536,10 +25639,10 @@
   "Baegod",
   "Bloom",
   "Neon Avenue",
-  "Jackson Whalan"
+  "Jackson Whalan",
+  "Jumbo"
  ],
  "ig_titoli_recenti": [
-  "you won t believe",
   "fire",
   "play to win",
   "legends",
@@ -25578,7 +25681,8 @@
   "when i m in motion",
   "epic adventure",
   "steady motion",
-  "getting strong"
+  "getting strong",
+  "game winner"
  ],
  "ig_tendenze_riserva": [
   {
@@ -25589,45 +25693,38 @@
    "libreria": false
   },
   {
-   "audio_id": "1415626095700405",
-   "title": "Game To Win (feat. G7MBL3)",
-   "display_artist": "d.higgs",
-   "duration_in_ms": 102770,
+   "audio_id": "838674124312983",
+   "title": "Game Winner",
+   "display_artist": "Jumbo",
+   "duration_in_ms": 158200,
    "libreria": true
   },
   {
-   "audio_id": "837163227966628",
-   "title": "Glory",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 141612,
+   "audio_id": "1029576439693978",
+   "title": "Peaceful Storm",
+   "display_artist": "erloom",
+   "duration_in_ms": 67374,
    "libreria": true
   },
   {
-   "audio_id": "1917637308769695",
-   "title": "What Heroes Do (prod. by Jonny Houlihan)",
-   "display_artist": "Sofie Tabesh",
-   "duration_in_ms": 217130,
+   "audio_id": "566336025028596",
+   "title": "Fire",
+   "display_artist": "Tony Dark Eyes",
+   "duration_in_ms": 162580,
    "libreria": true
   },
   {
-   "audio_id": "1760751558294997",
-   "title": "Energy",
-   "display_artist": "Jordan Olmos",
-   "duration_in_ms": 69660,
+   "audio_id": "1108940537791690",
+   "title": "Handycam (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 136240,
    "libreria": true
   },
   {
-   "audio_id": "1131466168211650",
-   "title": "Can't Run Away Remix (Otis McDonald) (feat. DOSE)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 136390,
-   "libreria": true
-  },
-  {
-   "audio_id": "1324542209262772",
-   "title": "Getting Strong",
-   "display_artist": "Jackson Whalan",
-   "duration_in_ms": 66260,
+   "audio_id": "601112655997356",
+   "title": "Orbiting (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 165490,
    "libreria": true
   }
  ]
