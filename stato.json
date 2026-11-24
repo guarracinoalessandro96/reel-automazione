@@ -23826,7 +23826,9 @@
      "ok": true,
      "id": "18051047093823831",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -23920,7 +23922,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "_qfXfYaMozY"
+     "id": "_qfXfYaMozY",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -23931,11 +23934,110 @@
    },
    "spinto": true,
    "testo": "Non c'è bisogno di forzare le cose, perché ognuno è dove vuole essere e perde ciò che vuole perdere."
+  },
+  {
+   "quando": "2026-11-24T17:00",
+   "slot": "2026-11-24 18:00",
+   "video": "IMG_4135.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-9d031a51",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 4.43,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 33,
+     "voce": "io"
+    },
+    "frase_via": "forzata",
+    "musica": "ancient_civilisations_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 198,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.4,
+     "righe": 7,
+     "scene_intatte": 0,
+     "scurito": 0.45,
+     "sfumatura": 0.3,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 7,
+      "scala": 1.0,
+      "visi": 12,
+      "y": 0.532
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       7.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 7,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 12,
+     "y": 0.532
+    },
+    "viso_prima_scena": 2,
+    "settimana": {
+     "lotto": "Lotto 2026-11-24",
+     "versione": 1,
+     "generato": "2026-11-21T12:53"
+    },
+    "musica_meta": "trap_16.flac",
+    "musica_instagram": "Getting Strong - Jackson Whalan [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "kMX6ph6oIYw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17894361480618573",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Un giorno ho letto una frase, ma non l'avevo capita. Poi l'ho riletta e diceva: «A volte bisogna attraversare l'oscurità"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-16 18:00",
   "2026-11-16 20:00",
   "2026-11-16 22:00",
   "2026-11-17 00:00",
@@ -24014,10 +24116,10 @@
   "2026-11-24 10:00",
   "2026-11-24 12:00",
   "2026-11-24 14:00",
-  "2026-11-24 16:00"
+  "2026-11-24 16:00",
+  "2026-11-24 18:00"
  ],
  "musica_recenti": [
-  "duty_calls_2.m4a",
   "locked_in_1.m4a",
   "keep_it_movin_1.m4a",
   "moon_vision_3.m4a",
@@ -24076,7 +24178,8 @@
   "ten_2.m4a",
   "locked_in_2.m4a",
   "keep_it_movin_3.m4a",
-  "horizons_3.m4a"
+  "horizons_3.m4a",
+  "ancient_civilisations_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -24545,7 +24648,8 @@
   "MIE-440a5510",
   "MIE-d3c99665",
   "MIE-a854da50",
-  "MIE-6a3c122b"
+  "MIE-6a3c122b",
+  "MIE-9d031a51"
  ],
  "temi_recenti": [
   "mentalita",
@@ -24978,8 +25082,8 @@
    "orizzontale": false
   },
   "1EIkrvNWHYfhUXhSzzqvvdiEFEPhXxmSi": {
-   "usi": 4,
-   "ultimo": "2026-11-13",
+   "usi": 5,
+   "ultimo": "2026-11-24",
    "orizzontale": false
   },
   "1eFsX23f-gEnVKC5myas7iJmwUvbgQ-AX": {
@@ -25290,7 +25394,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_05.flac",
   "drive_09.flac",
   "trap_14.flac",
   "phonk_16.flac",
@@ -25309,7 +25412,8 @@
   "phonk_10.flac",
   "trap_08.flac",
   "drive_12.flac",
-  "phonk_09.flac"
+  "phonk_09.flac",
+  "trap_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -25344,7 +25448,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -25360,7 +25464,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2422994201393793",
   "1428954698111653",
   "1469205655054044",
   "739108178545320",
@@ -25419,11 +25522,11 @@
   "709218654262818",
   "1449501010135619",
   "4489870934582584",
-  "27900805162919864"
+  "27900805162919864",
+  "1324542209262772"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Company Money",
   "Genticorum",
   "Ross Lara",
   "half.cool",
@@ -25432,10 +25535,10 @@
   "Otis McDonald",
   "Baegod",
   "Bloom",
-  "Neon Avenue"
+  "Neon Avenue",
+  "Jackson Whalan"
  ],
  "ig_titoli_recenti": [
-  "knockout",
   "you won t believe",
   "fire",
   "play to win",
@@ -25474,16 +25577,10 @@
   "on the move",
   "when i m in motion",
   "epic adventure",
-  "steady motion"
+  "steady motion",
+  "getting strong"
  ],
  "ig_tendenze_riserva": [
-  {
-   "audio_id": "1124230547275731",
-   "title": "GTA 6 Main Theme (EPIC Version)",
-   "display_artist": "Apex Sound Odyssey",
-   "duration_in_ms": 134920,
-   "libreria": false
-  },
   {
    "audio_id": "1792089558671408",
    "title": "Victory Lap",
@@ -25492,45 +25589,45 @@
    "libreria": false
   },
   {
-   "audio_id": "930354837134154",
-   "title": "Fire",
-   "display_artist": "YoungPop",
-   "duration_in_ms": 183434,
+   "audio_id": "1415626095700405",
+   "title": "Game To Win (feat. G7MBL3)",
+   "display_artist": "d.higgs",
+   "duration_in_ms": 102770,
    "libreria": true
   },
   {
-   "audio_id": "27900805162919864",
-   "title": "Steady Motion",
-   "display_artist": "Neon Avenue",
-   "duration_in_ms": 62383,
+   "audio_id": "837163227966628",
+   "title": "Glory",
+   "display_artist": "Chela Rivas",
+   "duration_in_ms": 141612,
    "libreria": true
   },
   {
-   "audio_id": "1352337306404213",
-   "title": "Redux (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 243803,
+   "audio_id": "1917637308769695",
+   "title": "What Heroes Do (prod. by Jonny Houlihan)",
+   "display_artist": "Sofie Tabesh",
+   "duration_in_ms": 217130,
    "libreria": true
   },
   {
-   "audio_id": "1340308050325459",
-   "title": "Willow Run",
-   "display_artist": "Paul Fowler",
-   "duration_in_ms": 248272,
+   "audio_id": "1760751558294997",
+   "title": "Energy",
+   "display_artist": "Jordan Olmos",
+   "duration_in_ms": 69660,
    "libreria": true
   },
   {
-   "audio_id": "3188463141456618",
-   "title": "Sentimental Motion (feat. ZAB)",
-   "display_artist": "half.cool",
-   "duration_in_ms": 192050,
+   "audio_id": "1131466168211650",
+   "title": "Can't Run Away Remix (Otis McDonald) (feat. DOSE)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 136390,
    "libreria": true
   },
   {
-   "audio_id": "1234959381777711",
-   "title": "Chasing Granular (feat. My City Glory) (Instrumental)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 157349,
+   "audio_id": "1324542209262772",
+   "title": "Getting Strong",
+   "display_artist": "Jackson Whalan",
+   "duration_in_ms": 66260,
    "libreria": true
   }
  ]
