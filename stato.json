@@ -23401,7 +23401,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "gsjekHcxDmQ"
+     "id": "gsjekHcxDmQ",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -23412,11 +23413,110 @@
    },
    "spinto": true,
    "testo": "Sii orgoglioso di te per tutte le volte in cui sei andato avanti anche quando dentro di te stavi combattendo battaglie d"
+  },
+  {
+   "quando": "2026-11-24T07:00",
+   "slot": "2026-11-24 08:00",
+   "video": "IMG_4063.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-b7f45815",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 27.43,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.39
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 15,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "visions_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 168,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.36,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.47,
+     "sfumatura": 0.27,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 3,
+      "y": 0.686
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       1.0,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 3,
+     "y": 0.686
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-24",
+     "versione": 1,
+     "generato": "2026-11-21T12:53"
+    },
+    "musica_meta": "drive_14.flac",
+    "musica_instagram": "Fight For Freedom (Instrumental) - Lyle Workman [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "42-dCzTDvig"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18135827317705955",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Ricorda: «Se ti dicono che è impossibile stanno parlando dei loro limiti, non dei tuoi.»"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-16 08:00",
   "2026-11-16 10:00",
   "2026-11-16 12:00",
   "2026-11-16 14:00",
@@ -23495,10 +23595,10 @@
   "2026-11-23 20:00",
   "2026-11-23 22:00",
   "2026-11-24 00:00",
-  "2026-11-24 06:00"
+  "2026-11-24 06:00",
+  "2026-11-24 08:00"
  ],
  "musica_recenti": [
-  "survival_mode_2.m4a",
   "whoop_2.m4a",
   "intergalactic_1.m4a",
   "horizons_2.m4a",
@@ -23557,7 +23657,8 @@
   "keep_it_movin_3.m4a",
   "duty_calls_3.m4a",
   "whoop_1.m4a",
-  "intergalactic_3.m4a"
+  "intergalactic_3.m4a",
+  "visions_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -24021,10 +24122,11 @@
   "MIE-bc41aec6",
   "MIE-00e066f9",
   "MIE-5b68cb77",
-  "MIE-11bed9d2"
+  "MIE-11bed9d2",
+  "MIE-b7f45815"
  ],
  "temi_recenti": [
-  "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -24425,8 +24527,8 @@
    "ultimo": "2026-10-23"
   },
   "1pRzrCnxNrpVE44ol_vENtqhmbuRc2YAN": {
-   "usi": 4,
-   "ultimo": "2026-11-12",
+   "usi": 5,
+   "ultimo": "2026-11-24",
    "orizzontale": false
   },
   "1gE_FyJzF7yg-nilpN_tgldcTInZcTmkA": {
@@ -24766,7 +24868,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_11.flac",
   "phonk_08.flac",
   "trap_02.flac",
   "drive_08.flac",
@@ -24785,7 +24886,8 @@
   "trap_13.flac",
   "deciso_05.flac",
   "phonk_02.flac",
-  "trap_15.flac"
+  "trap_15.flac",
+  "drive_14.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -24820,7 +24922,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -24836,7 +24938,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1186003979031011",
   "1763628994746804",
   "660029496086919",
   "1520634330105846",
@@ -24895,11 +24996,11 @@
   "1546581635764552",
   "2124507781316211",
   "313517751444003",
-  "1372666635060078"
+  "1372666635060078",
+  "1145606523800710"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Trout Recording",
   "Sam Marshall",
   "Kolektivo",
   "Dhruv Goel",
@@ -24908,10 +25009,10 @@
   "Genticorum",
   "Ross Lara",
   "half.cool",
-  "Giulio Cercato"
+  "Giulio Cercato",
+  "Lyle Workman"
  ],
  "ig_titoli_recenti": [
-  "epic battles",
   "heros journey",
   "move it or lose it",
   "level up",
@@ -24950,7 +25051,8 @@
   "la marche des commis voyageurs",
   "coast",
   "sentimental motion",
-  "breathtaker"
+  "breathtaker",
+  "fight for freedom"
  ],
  "ig_tendenze_riserva": [
   {
@@ -24968,24 +25070,38 @@
    "libreria": false
   },
   {
-   "audio_id": "1577564943404773",
-   "title": "Actually Anthemic",
-   "display_artist": "Auralux",
-   "duration_in_ms": 62169,
-   "libreria": true
-  },
-  {
-   "audio_id": "2422994201393793",
-   "title": "Power On",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 116549,
-   "libreria": true
-  },
-  {
-   "audio_id": "1764087140836610",
-   "title": "Horizon (feat. My City Glory)",
+   "audio_id": "245071018407764",
+   "title": "Cygnus (feat. My City Glory)",
    "display_artist": "Ross Lara",
-   "duration_in_ms": 128850,
+   "duration_in_ms": 177400,
+   "libreria": true
+  },
+  {
+   "audio_id": "1538012034659030",
+   "title": "Glory",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 58370,
+   "libreria": true
+  },
+  {
+   "audio_id": "2173371459664032",
+   "title": "Fighting Back A Flight Of Stairs",
+   "display_artist": "Trout Recording",
+   "duration_in_ms": 175107,
+   "libreria": true
+  },
+  {
+   "audio_id": "1145606523800710",
+   "title": "Fight For Freedom (Instrumental)",
+   "display_artist": "Lyle Workman",
+   "duration_in_ms": 241850,
+   "libreria": true
+  },
+  {
+   "audio_id": "1372666635060078",
+   "title": "Breathtaker",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 60035,
    "libreria": true
   }
  ]
