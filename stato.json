@@ -23408,7 +23408,9 @@
      "ok": true,
      "id": "17957951541039759",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -23502,7 +23504,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "42-dCzTDvig"
+     "id": "42-dCzTDvig",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -23513,11 +23516,113 @@
    },
    "spinto": true,
    "testo": "Ricorda: «Se ti dicono che è impossibile stanno parlando dei loro limiti, non dei tuoi.»"
+  },
+  {
+   "quando": "2026-11-24T09:00",
+   "slot": "2026-11-24 10:00",
+   "video": "IMG_3606.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "cibo",
+   "registrato": null,
+   "frase": "MIE-440a5510",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 18.05,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.233
+    },
+    "durata": 7.0,
+    "estratto": "intero",
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 22,
+     "voce": "generale"
+    },
+    "frase_via": "forzata",
+    "musica": "ten_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "ripiego_da": "intero",
+    "scritta": "centro_serif",
+    "secondi_montaggio": 237,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 101,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.47,
+     "righe": 4,
+     "scene_intatte": 0,
+     "scurito": 0.48,
+     "sfumatura": 0.34,
+     "viso": {
+      "corpo": 101,
+      "corpo_base": 101,
+      "posizione": "centro",
+      "righe": 4,
+      "scala": 1.0,
+      "visi": 6,
+      "y": 0.47
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "altro_video": "extra_0.MOV",
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 101,
+     "corpo_base": 101,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       33.5,
+       7.0
+      ]
+     ],
+     "posizione": "centro",
+     "righe": 4,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 6,
+     "y": 0.47
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-24",
+     "versione": 1,
+     "generato": "2026-11-21T12:54"
+    },
+    "musica_meta": "phonk_10.flac",
+    "musica_instagram": "On The Move - Otis McDonald [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "9GPpVKID3TI"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18134540953686571",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Uno dei più grandi piaceri della vita è portare a termine ciò che gli altri dicevano che non saresti riuscito a fare."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-16 10:00",
   "2026-11-16 12:00",
   "2026-11-16 14:00",
   "2026-11-16 16:00",
@@ -23596,10 +23701,10 @@
   "2026-11-23 22:00",
   "2026-11-24 00:00",
   "2026-11-24 06:00",
-  "2026-11-24 08:00"
+  "2026-11-24 08:00",
+  "2026-11-24 10:00"
  ],
  "musica_recenti": [
-  "whoop_2.m4a",
   "intergalactic_1.m4a",
   "horizons_2.m4a",
   "stake_out_3.m4a",
@@ -23658,7 +23763,8 @@
   "duty_calls_3.m4a",
   "whoop_1.m4a",
   "intergalactic_3.m4a",
-  "visions_1.m4a"
+  "visions_1.m4a",
+  "ten_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -24123,7 +24229,8 @@
   "MIE-00e066f9",
   "MIE-5b68cb77",
   "MIE-11bed9d2",
-  "MIE-b7f45815"
+  "MIE-b7f45815",
+  "MIE-440a5510"
  ],
  "temi_recenti": [
   "mentalita",
@@ -24288,8 +24395,8 @@
    "ultimo": "2026-10-11"
   },
   "1evT1w3QaDK7AVRQtw_S2gz-hZLf5O6q_": {
-   "usi": 4,
-   "ultimo": "2026-11-12",
+   "usi": 5,
+   "ultimo": "2026-11-24",
    "orizzontale": false
   },
   "1OM78j2FpCSLtoEbMm8W45iXS3oPCaV-T": {
@@ -24868,7 +24975,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_08.flac",
   "trap_02.flac",
   "drive_08.flac",
   "deciso_02.flac",
@@ -24887,7 +24993,8 @@
   "deciso_05.flac",
   "phonk_02.flac",
   "trap_15.flac",
-  "drive_14.flac"
+  "drive_14.flac",
+  "phonk_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -24938,7 +25045,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1763628994746804",
   "660029496086919",
   "1520634330105846",
   "1046631240870078",
@@ -24997,11 +25103,11 @@
   "2124507781316211",
   "313517751444003",
   "1372666635060078",
-  "1145606523800710"
+  "1145606523800710",
+  "709218654262818"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Sam Marshall",
   "Kolektivo",
   "Dhruv Goel",
   "Jumbo",
@@ -25010,10 +25116,10 @@
   "Ross Lara",
   "half.cool",
   "Giulio Cercato",
-  "Lyle Workman"
+  "Lyle Workman",
+  "Otis McDonald"
  ],
  "ig_titoli_recenti": [
-  "heros journey",
   "move it or lose it",
   "level up",
   "move like this",
@@ -25052,7 +25158,8 @@
   "coast",
   "sentimental motion",
   "breathtaker",
-  "fight for freedom"
+  "fight for freedom",
+  "on the move"
  ],
  "ig_tendenze_riserva": [
   {
@@ -25070,38 +25177,45 @@
    "libreria": false
   },
   {
-   "audio_id": "245071018407764",
-   "title": "Cygnus (feat. My City Glory)",
+   "audio_id": "2623141041391037",
+   "title": "Running",
+   "display_artist": "Julia Gartha",
+   "duration_in_ms": 128407,
+   "libreria": true
+  },
+  {
+   "audio_id": "709218654262818",
+   "title": "On The Move",
+   "display_artist": "Otis McDonald",
+   "duration_in_ms": 60750,
+   "libreria": true
+  },
+  {
+   "audio_id": "799096306452941",
+   "title": "Running High",
+   "display_artist": "bbox",
+   "duration_in_ms": 187084,
+   "libreria": true
+  },
+  {
+   "audio_id": "1100130857775330",
+   "title": "Good Fight (feat. Dipzy)",
+   "display_artist": "Swell Sound",
+   "duration_in_ms": 179830,
+   "libreria": true
+  },
+  {
+   "audio_id": "1176311740703360",
+   "title": "Hidden Sun (feat. My City Glory) (Instrumental)",
    "display_artist": "Ross Lara",
-   "duration_in_ms": 177400,
+   "duration_in_ms": 158450,
    "libreria": true
   },
   {
-   "audio_id": "1538012034659030",
-   "title": "Glory",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 58370,
-   "libreria": true
-  },
-  {
-   "audio_id": "2173371459664032",
-   "title": "Fighting Back A Flight Of Stairs",
-   "display_artist": "Trout Recording",
-   "duration_in_ms": 175107,
-   "libreria": true
-  },
-  {
-   "audio_id": "1145606523800710",
-   "title": "Fight For Freedom (Instrumental)",
-   "display_artist": "Lyle Workman",
-   "duration_in_ms": 241850,
-   "libreria": true
-  },
-  {
-   "audio_id": "1372666635060078",
-   "title": "Breathtaker",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 60035,
+   "audio_id": "370987356030042",
+   "title": "Show Me Your Fire",
+   "display_artist": "Chela Rivas",
+   "duration_in_ms": 148010,
    "libreria": true
   }
  ]
