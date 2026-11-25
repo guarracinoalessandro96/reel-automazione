@@ -24437,7 +24437,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "0loQCqXpk0Q"
+     "id": "0loQCqXpk0Q",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -24448,11 +24449,110 @@
    },
    "spinto": true,
    "testo": "Senza offesa, ma la vita va avanti. O decidi di migliorarti ogni singolo giorno, o resti prigioniero della stessa mental"
+  },
+  {
+   "quando": "2026-11-25T07:00",
+   "slot": "2026-11-25 08:00",
+   "video": "IMG_4302.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-1ae53ade",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 6.44,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.115
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 36,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "horizons_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 190,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 101,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.33,
+     "righe": 7,
+     "scene_intatte": 0,
+     "scurito": 0.37,
+     "sfumatura": 0.24,
+     "viso": {
+      "corpo": 101,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 7,
+      "scala": 0.944,
+      "visi": 48,
+      "y": 0.641
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 101,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       1.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 7,
+     "rilevatore": "yunet+haar",
+     "scala": 0.944,
+     "visi": 48,
+     "y": 0.641
+    },
+    "viso_prima_scena": 1,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:00"
+    },
+    "musica_meta": "deciso_03.flac",
+    "musica_instagram": "Legends - stereogully [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "mAWhYU77bS4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18106406285034611",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Cambiare richiede tempo. A volte servono mesi, anni. O ferite. Ma a volte basta una notte. Uno sguardo allo specchio. Un"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-17 08:00",
   "2026-11-17 10:00",
   "2026-11-17 12:00",
   "2026-11-17 14:00",
@@ -24531,10 +24631,10 @@
   "2026-11-24 20:00",
   "2026-11-24 22:00",
   "2026-11-25 00:00",
-  "2026-11-25 06:00"
+  "2026-11-25 06:00",
+  "2026-11-25 08:00"
  ],
  "musica_recenti": [
-  "van_life_rager_2.m4a",
   "death_duel_3.m4a",
   "monthaholic_1.m4a",
   "way_back_home_3.m4a",
@@ -24593,7 +24693,8 @@
   "van_life_rager_3.m4a",
   "moon_vision_1.m4a",
   "ancient_civilisations_3.m4a",
-  "stake_out_2.m4a"
+  "stake_out_2.m4a",
+  "horizons_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -25067,7 +25168,8 @@
   "MIE-a6cc9a0e",
   "MIE-0caa72d5",
   "MIE-42ae5e6a",
-  "MIE-21b56275"
+  "MIE-21b56275",
+  "MIE-1ae53ade"
  ],
  "temi_recenti": [
   "mentalita",
@@ -25605,8 +25707,8 @@
    "orizzontale": false
   },
   "1UefrogLKDdOKHxCBjQOsFjEsNFOeSefT": {
-   "usi": 4,
-   "ultimo": "2026-11-14",
+   "usi": 5,
+   "ultimo": "2026-11-25",
    "orizzontale": false
   },
   "1pHaSrw5l22--hj6mculM4Wx5XnAw4U-3": {
@@ -25812,7 +25914,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_06.flac",
   "drive_05.flac",
   "phonk_06.flac",
   "trap_03.flac",
@@ -25831,7 +25932,8 @@
   "drive_13.flac",
   "deciso_07.flac",
   "phonk_05.flac",
-  "trap_05.flac"
+  "trap_05.flac",
+  "deciso_03.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -25866,7 +25968,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -25882,7 +25984,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2197248934147643",
   "1552659642157024",
   "1615649653514803",
   "3643996589148382",
@@ -25941,11 +26042,11 @@
   "838674124312983",
   "902974885110650",
   "461389463230596",
-  "1774121270615760"
+  "1774121270615760",
+  "1177466663826304"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Lyle Workman",
   "Otis McDonald",
   "Baegod",
   "Bloom",
@@ -25954,10 +26055,10 @@
   "Jumbo",
   "The K Club",
   "GEEZ",
-  "Sbvce"
+  "Sbvce",
+  "stereogully"
  ],
  "ig_titoli_recenti": [
-  "don t run from me",
   "flow motion",
   "gta 6 main theme",
   "carry the motion",
@@ -25996,7 +26097,8 @@
   "game winner",
   "don t go",
   "fire",
-  "unmatched energy"
+  "unmatched energy",
+  "legends"
  ],
  "ig_tendenze_riserva": [
   {
@@ -26007,24 +26109,38 @@
    "libreria": false
   },
   {
-   "audio_id": "1774121270615760",
-   "title": "Unmatched Energy",
-   "display_artist": "Sbvce",
-   "duration_in_ms": 53590,
+   "audio_id": "1177466663826304",
+   "title": "Legends",
+   "display_artist": "stereogully",
+   "duration_in_ms": 123840,
    "libreria": true
   },
   {
-   "audio_id": "3808630162610430",
-   "title": "Get A Move On",
-   "display_artist": "Fellow Travelers",
-   "duration_in_ms": 61985,
+   "audio_id": "449434754227407",
+   "title": "Climbing The Ladder",
+   "display_artist": "Cameron Rasmussen",
+   "duration_in_ms": 190500,
    "libreria": true
   },
   {
-   "audio_id": "702088267960095",
-   "title": "I Am The Fire",
-   "display_artist": "Daria Novo",
-   "duration_in_ms": 182266,
+   "audio_id": "566682361550021",
+   "title": "Thunder",
+   "display_artist": "Dirty Dave",
+   "duration_in_ms": 192603,
+   "libreria": true
+  },
+  {
+   "audio_id": "962542785866784",
+   "title": "What Heroes Do (Instrumental)",
+   "display_artist": "Sofie Tabesh",
+   "duration_in_ms": 217130,
+   "libreria": true
+  },
+  {
+   "audio_id": "1341809783805885",
+   "title": "Stronger Than You Think",
+   "display_artist": "Ruby Amanfu",
+   "duration_in_ms": 214420,
    "libreria": true
   }
  ]
