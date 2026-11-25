@@ -3332,7 +3332,8 @@ def monta_reel(sc, state, drive, work, videos, slot, save, formato=None, scadenz
         info_foto = None
         try:     # 21/11/2026: slot foto senza reel pronto dal lotto: il reel con una foto nuova, se ce n'e' una adatta
             import settimana
-            if dal_vivo and settimana.slot_foto(slot):
+            # 25/11/2026 (Alessandro): anche se il video sarebbe una clip d'archivio (riciclo): prima una foto nuova
+            if dal_vivo and (settimana.slot_foto(slot) or (clip and settimana.foto_possibile(slot))):
                 import foto_giornata
                 lotto_s = settimana.carica_lotto()
                 escl = settimana.foto_riservate(state, escludi=slot, lotto=lotto_s)

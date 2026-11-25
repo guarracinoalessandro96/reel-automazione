@@ -122,6 +122,22 @@ def carica_lotto():
     return d
 
 
+# 25/11/2026 (Alessandro: "voglio sempre contenuti nuovi"): l'ordine e' video nuovi -> foto nuove -> riciclo.
+# Uno slot col video che resterebbe una clip d'archivio (niente video nuovi) prende invece una foto nuova, se ce n'e'
+# una adatta; solo senza video nuovi e senza foto nuove si ripesca dall'archivio (regola del mese compresa).
+# Lo schema 2 video : 1 foto (slot_foto) resta per quando ci sono entrambi. FOTO_AL_POSTO_RICICLO = False: come prima.
+FOTO_AL_POSTO_RICICLO = True
+
+
+def foto_possibile(slot):
+    """True se lo slot puo' avere il reel con una foto nuova (foto accese, dal FOTO_DAL, slot non manuale)."""
+    try:
+        return bool(FOTO_ACCESE and FOTO_AL_POSTO_RICICLO and "manuale" not in str(slot)
+                    and str(slot)[:10] >= FOTO_DAL)
+    except Exception:
+        return False
+
+
 def slot_foto(slot):
     """True se lo slot ("AAAA-MM-GG HH:MM") e' per il reel con una foto (schema fisso: vedi FOTO_OGNI)."""
     import orario
@@ -426,7 +442,7 @@ def _foto_disponibili(drive, state, lotto, scarti, slots):
     """21/11/2026: le foto nuove per gli slot foto del piano (foto_giornata.candidate_singole), senza quelle gia' prese
     da altri slot del lotto o uscite (e le loro raffiche), ne' quelle delle versioni scartate degli slot da rifare.
     None se nel piano non ci sono slot foto o se l'elenco non si legge (allora reel col video, come prima)."""
-    if not any(slot_foto(s) for s in slots):
+    if not any(slot_foto(s) or foto_possibile(s) for s in slots):
         return None
     try:
         import foto_giornata
@@ -527,7 +543,11 @@ def pianifica(da=None, a=None, gruppi=GRUPPI, solo_scarti=False, prova=None, sol
         if sc is None:
             log(f"{s}: niente da preparare (pubblica.py lo montera' allo slot)")
             continue
-        foto = _scegli_foto(drive, foto_cand, sc["frase"], s, foto_scelte) if foto_cand and slot_foto(s) else None
+        # 25/11/2026: anche quando il video sarebbe una clip d'archivio (riciclo): prima le foto nuove
+        foto_qui = slot_foto(s) or (bool(sc["clip"]) and foto_possibile(s))
+        foto = _scegli_foto(drive, foto_cand, sc["frase"], s, foto_scelte) if foto_cand and foto_qui else None
+        if foto and not slot_foto(s):
+            log(f"{s}: niente video nuovi, foto nuova al posto del riciclo")
         if foto:             # 21/11/2026: reel con una foto; il video scelto resta in coda per gli slot dopo
             import foto_giornata
             nome_f = f"Foto {foto.get('name')}"
@@ -536,6 +556,8 @@ def pianifica(da=None, a=None, gruppi=GRUPPI, solo_scarti=False, prova=None, sol
         else:
             if slot_foto(s):
                 log(f"{s}: slot foto, ma nessuna foto nuova adatta: reel col video")
+            elif sc["clip"] and foto_possibile(s):
+                log(f"{s}: niente video nuovi e niente foto nuove adatte: riciclo dall'archivio")
             formato = pubblica.scegli_formato(s, dict(vista, storico=vista["storico"] + finte), sc["frase"], sc["an"],
                                               sc["spinto"])
             vista["formato_ultimo"] = formato
