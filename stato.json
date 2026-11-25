@@ -24753,7 +24753,9 @@
      "ok": true,
      "id": "18104219027551245",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -24847,7 +24849,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "Mov99HuKOxw"
+     "id": "Mov99HuKOxw",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -24858,11 +24861,118 @@
    },
    "spinto": true,
    "testo": "Senza mostrare tanto. Senza parlare molto. Senza festeggiare in anticipo. In silenzio. A basso profilo si vive meglio. I"
+  },
+  {
+   "quando": "2026-11-25T15:00",
+   "slot": "2026-11-25 16:00",
+   "video": "IMG_3633.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-da099c9a",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 67.16,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.402
+    },
+    "durata": 7.0,
+    "estratto": "intero",
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 60,
+     "voce": "io"
+    },
+    "frase_via": "forzata",
+    "musica": "rubberband_3.m4a",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso"
+    },
+    "ripiego_da": "intero",
+    "scena_unica": "avanti_indietro",
+    "scene_dal_video": 2,
+    "scritta": "centro_serif",
+    "secondi_montaggio": 178,
+    "stacchi": 2,
+    "stile_centro": {
+     "corpo": 73,
+     "font": "Source Serif Pro Semibold",
+     "intatto": true,
+     "luce": 0.53,
+     "righe": 8,
+     "scene_intatte": 2,
+     "scurito": 0.0,
+     "sfumatura": 0.38,
+     "viso": {
+      "corpo": 73,
+      "corpo_base": 87,
+      "posizione": "basso",
+      "righe": 8,
+      "scala": 0.839,
+      "visi": 12,
+      "y": 0.705
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "altro_video": "extra_1.mov",
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 73,
+     "corpo_base": 87,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.0,
+       3.5
+      ],
+      [
+       0.0,
+       3.5
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 8,
+     "rilevatore": "yunet+haar",
+     "scala": 0.839,
+     "visi": 12,
+     "y": 0.705
+    },
+    "viso_prima_scena": 4,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:04"
+    },
+    "musica_meta": "drive_16.flac",
+    "musica_instagram": "Move Ya Body - Lightbox Music [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "uLdsjbxMZr8"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18093179342265699",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Un giorno ho smesso di lottare contro ciò che non potevo cambiare. Quello che deve fare male, farà male. Quello che deve"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-17 16:00",
   "2026-11-17 18:00",
   "2026-11-17 20:00",
   "2026-11-17 22:00",
@@ -24941,10 +25051,10 @@
   "2026-11-25 08:00",
   "2026-11-25 10:00",
   "2026-11-25 12:00",
-  "2026-11-25 14:00"
+  "2026-11-25 14:00",
+  "2026-11-25 16:00"
  ],
  "musica_recenti": [
-  "final_boss_battle_3.m4a",
   "kick_it_3.m4a",
   "break_ya_neck_1.m4a",
   "majestic_12_2.m4a",
@@ -25003,7 +25113,8 @@
   "horizons_1.m4a",
   "monthaholic_2.m4a",
   "moon_vision_2.m4a",
-  "death_duel_1.m4a"
+  "death_duel_1.m4a",
+  "rubberband_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -25481,7 +25592,8 @@
   "MIE-1ae53ade",
   "MIE-a9ed43c6",
   "MIE-3d2d98fa",
-  "MIE-e0e0aa4c"
+  "MIE-e0e0aa4c",
+  "MIE-da099c9a"
  ],
  "temi_recenti": [
   "mentalita",
@@ -25674,8 +25786,8 @@
    "orizzontale": false
   },
   "1a3hFaj1fQm1AuYdIv6iY-TZDvDdPOmOp": {
-   "usi": 4,
-   "ultimo": "2026-11-16",
+   "usi": 5,
+   "ultimo": "2026-11-25",
    "orizzontale": false
   },
   "1zEPNZ20n1YmvIYS5sehdWmtTFzLNT8lO": {
@@ -26226,7 +26338,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_05.flac",
   "phonk_01.flac",
   "trap_13.flac",
   "deciso_05.flac",
@@ -26245,7 +26356,8 @@
   "deciso_03.flac",
   "phonk_16.flac",
   "energia_06.flac",
-  "deciso_09.flac"
+  "deciso_09.flac",
+  "drive_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -26296,7 +26408,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "460517589578363",
   "612291812716191",
   "1488842099008011",
   "936174714667779",
@@ -26355,11 +26466,11 @@
   "1177466663826304",
   "1520634330105846",
   "974432747187721",
-  "1119813952709524"
+  "1119813952709524",
+  "2234284524030237"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Neon Avenue",
   "Jackson Whalan",
   "Jumbo",
   "The K Club",
@@ -26368,10 +26479,10 @@
   "stereogully",
   "Fellow Travelers",
   "Giulio Cercato",
-  "Mike Block"
+  "Mike Block",
+  "Lightbox Music"
  ],
  "ig_titoli_recenti": [
-  "copacetic",
   "fighting back a flight of stairs",
   "i am the fire",
   "money power",
@@ -26410,7 +26521,8 @@
   "legends",
   "good run",
   "road warriors",
-  "night running"
+  "night running",
+  "move ya body"
  ],
  "ig_tendenze_riserva": [
   {
@@ -26421,45 +26533,17 @@
    "libreria": false
   },
   {
-   "audio_id": "2044207116351520",
-   "title": "Running High (Instrumental)",
-   "display_artist": "bbox",
-   "duration_in_ms": 187084,
-   "libreria": true
-  },
-  {
-   "audio_id": "491460439584707",
-   "title": "Looking Glass (feat. Dawson March, Jacquire King)",
+   "audio_id": "1131466168211650",
+   "title": "Can't Run Away Remix (Otis McDonald) (feat. DOSE)",
    "display_artist": "The K Club",
-   "duration_in_ms": 146973,
+   "duration_in_ms": 136390,
    "libreria": true
   },
   {
-   "audio_id": "1029576439693978",
-   "title": "Peaceful Storm",
-   "display_artist": "erloom",
-   "duration_in_ms": 67374,
-   "libreria": true
-  },
-  {
-   "audio_id": "1119813952709524",
-   "title": "Night Running",
-   "display_artist": "Mike Block",
-   "duration_in_ms": 145050,
-   "libreria": true
-  },
-  {
-   "audio_id": "2173371459664032",
-   "title": "Fighting Back A Flight Of Stairs",
-   "display_artist": "Trout Recording",
-   "duration_in_ms": 175107,
-   "libreria": true
-  },
-  {
-   "audio_id": "969843681296214",
-   "title": "Anthem In Black",
-   "display_artist": "Cy Curnin",
-   "duration_in_ms": 240476,
+   "audio_id": "2234284524030237",
+   "title": "Move Ya Body",
+   "display_artist": "Lightbox Music",
+   "duration_in_ms": 64587,
    "libreria": true
   }
  ]
