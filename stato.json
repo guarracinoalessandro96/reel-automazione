@@ -24856,7 +24856,9 @@
      "ok": true,
      "id": "18149520979578747",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -24958,7 +24960,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "uLdsjbxMZr8"
+     "id": "uLdsjbxMZr8",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -24969,11 +24972,110 @@
    },
    "spinto": true,
    "testo": "Un giorno ho smesso di lottare contro ciò che non potevo cambiare. Quello che deve fare male, farà male. Quello che deve"
+  },
+  {
+   "quando": "2026-11-25T17:00",
+   "slot": "2026-11-25 18:00",
+   "video": "IMG_3832.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-c8580e6c",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 34.57,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 30,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "final_boss_battle_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 77,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.39,
+     "righe": 8,
+     "scene_intatte": 0,
+     "scurito": 0.42,
+     "sfumatura": 0.29,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 8,
+      "scala": 1.0,
+      "visi": 41,
+      "y": 0.603
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 26,
+     "con_viso_yunet": 26,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 8,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 41,
+     "y": 0.603
+    },
+    "viso_prima_scena": 2,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:00"
+    },
+    "musica_meta": "phonk_08.flac",
+    "musica_instagram": "Time For You To March (feat. Kiki Muñoz) - Neko Fuzz [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "2Eg698K1lhA"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18177865831459125",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Nessuno vede quando ti alzi presto. Nessuno vede quando lavori fino a tardi. Nessuno vede quante volte hai fallito. Ness"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-17 18:00",
   "2026-11-17 20:00",
   "2026-11-17 22:00",
   "2026-11-18 00:00",
@@ -25052,10 +25154,10 @@
   "2026-11-25 10:00",
   "2026-11-25 12:00",
   "2026-11-25 14:00",
-  "2026-11-25 16:00"
+  "2026-11-25 16:00",
+  "2026-11-25 18:00"
  ],
  "musica_recenti": [
-  "kick_it_3.m4a",
   "break_ya_neck_1.m4a",
   "majestic_12_2.m4a",
   "sweaty_staredown_2.m4a",
@@ -25114,7 +25216,8 @@
   "monthaholic_2.m4a",
   "moon_vision_2.m4a",
   "death_duel_1.m4a",
-  "rubberband_3.m4a"
+  "rubberband_3.m4a",
+  "final_boss_battle_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -25593,7 +25696,8 @@
   "MIE-a9ed43c6",
   "MIE-3d2d98fa",
   "MIE-e0e0aa4c",
-  "MIE-da099c9a"
+  "MIE-da099c9a",
+  "MIE-c8580e6c"
  ],
  "temi_recenti": [
   "mentalita",
@@ -25849,8 +25953,8 @@
    "orizzontale": false
   },
   "12Fo5vh8JbpmRDWSzG5Ro-KcD-bCBRZH_": {
-   "usi": 5,
-   "ultimo": "2026-11-16",
+   "usi": 6,
+   "ultimo": "2026-11-25",
    "orizzontale": false
   },
   "1dS3dJuren-0gwioBQEQ4MkMFmJH5kMNx": {
@@ -26338,7 +26442,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_01.flac",
   "trap_13.flac",
   "deciso_05.flac",
   "phonk_02.flac",
@@ -26357,7 +26460,8 @@
   "phonk_16.flac",
   "energia_06.flac",
   "deciso_09.flac",
-  "drive_16.flac"
+  "drive_16.flac",
+  "phonk_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -26408,7 +26512,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "612291812716191",
   "1488842099008011",
   "936174714667779",
   "843173497227558",
@@ -26467,11 +26570,11 @@
   "1520634330105846",
   "974432747187721",
   "1119813952709524",
-  "2234284524030237"
+  "2234284524030237",
+  "924391826094049"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jackson Whalan",
   "Jumbo",
   "The K Club",
   "GEEZ",
@@ -26480,10 +26583,10 @@
   "Fellow Travelers",
   "Giulio Cercato",
   "Mike Block",
-  "Lightbox Music"
+  "Lightbox Music",
+  "Neko Fuzz"
  ],
  "ig_titoli_recenti": [
-  "fighting back a flight of stairs",
   "i am the fire",
   "money power",
   "nikkatha",
@@ -26522,7 +26625,8 @@
   "good run",
   "road warriors",
   "night running",
-  "move ya body"
+  "move ya body",
+  "time for you to march"
  ],
  "ig_tendenze_riserva": [
   {
@@ -26533,17 +26637,17 @@
    "libreria": false
   },
   {
-   "audio_id": "1131466168211650",
-   "title": "Can't Run Away Remix (Otis McDonald) (feat. DOSE)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 136390,
+   "audio_id": "924391826094049",
+   "title": "Time For You To March (feat. Kiki Muñoz)",
+   "display_artist": "Neko Fuzz",
+   "duration_in_ms": 229460,
    "libreria": true
   },
   {
-   "audio_id": "2234284524030237",
-   "title": "Move Ya Body",
-   "display_artist": "Lightbox Music",
-   "duration_in_ms": 64587,
+   "audio_id": "1449501010135619",
+   "title": "When I'm In Motion (Instrumental)",
+   "display_artist": "Baegod",
+   "duration_in_ms": 177438,
    "libreria": true
   }
  ]
