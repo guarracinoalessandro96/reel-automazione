@@ -24650,7 +24650,9 @@
      "ok": true,
      "id": "17954413800357550",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -24744,7 +24746,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "NC_L1H3r_co"
+     "id": "NC_L1H3r_co",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -24755,11 +24758,110 @@
    },
    "spinto": true,
    "testo": "Continua a camminare, anche quando non vedi la strada. Un giorno capirai perché dovevi attraversare proprio quel buio."
+  },
+  {
+   "quando": "2026-11-25T13:00",
+   "slot": "2026-11-25 14:00",
+   "video": "IMG_3359.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-e0e0aa4c",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 6.77,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.393
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 26,
+     "voce": "generale"
+    },
+    "frase_via": "forzata",
+    "musica": "death_duel_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 93,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.4,
+     "righe": 7,
+     "scene_intatte": 0,
+     "scurito": 0.51,
+     "sfumatura": 0.3,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 7,
+      "scala": 1.0,
+      "visi": 12,
+      "y": 0.667
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 7,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 12,
+     "y": 0.667
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:02"
+    },
+    "musica_meta": "deciso_09.flac",
+    "musica_instagram": "Night Running - Mike Block [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Mov99HuKOxw"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18149520979578747",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Senza mostrare tanto. Senza parlare molto. Senza festeggiare in anticipo. In silenzio. A basso profilo si vive meglio. I"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-17 14:00",
   "2026-11-17 16:00",
   "2026-11-17 18:00",
   "2026-11-17 20:00",
@@ -24838,10 +24940,10 @@
   "2026-11-25 06:00",
   "2026-11-25 08:00",
   "2026-11-25 10:00",
-  "2026-11-25 12:00"
+  "2026-11-25 12:00",
+  "2026-11-25 14:00"
  ],
  "musica_recenti": [
-  "way_back_home_3.m4a",
   "final_boss_battle_3.m4a",
   "kick_it_3.m4a",
   "break_ya_neck_1.m4a",
@@ -24900,7 +25002,8 @@
   "stake_out_2.m4a",
   "horizons_1.m4a",
   "monthaholic_2.m4a",
-  "moon_vision_2.m4a"
+  "moon_vision_2.m4a",
+  "death_duel_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -25377,7 +25480,8 @@
   "MIE-21b56275",
   "MIE-1ae53ade",
   "MIE-a9ed43c6",
-  "MIE-3d2d98fa"
+  "MIE-3d2d98fa",
+  "MIE-e0e0aa4c"
  ],
  "temi_recenti": [
   "mentalita",
@@ -25855,8 +25959,8 @@
    "ultimo": "2026-10-26"
   },
   "154DEQH3JaEBg95Z01YeNC0Bu_KyTq1XR": {
-   "usi": 3,
-   "ultimo": "2026-11-16",
+   "usi": 4,
+   "ultimo": "2026-11-25",
    "orizzontale": false
   },
   "1VEPb54Y1oSgn1WwoX7EtQNTsLCC7CB4u": {
@@ -26122,7 +26226,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_03.flac",
   "energia_05.flac",
   "phonk_01.flac",
   "trap_13.flac",
@@ -26141,7 +26244,8 @@
   "trap_05.flac",
   "deciso_03.flac",
   "phonk_16.flac",
-  "energia_06.flac"
+  "energia_06.flac",
+  "deciso_09.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -26176,7 +26280,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -26192,7 +26296,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "3643996589148382",
   "460517589578363",
   "612291812716191",
   "1488842099008011",
@@ -26251,11 +26354,11 @@
   "1774121270615760",
   "1177466663826304",
   "1520634330105846",
-  "974432747187721"
+  "974432747187721",
+  "1119813952709524"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Bloom",
   "Neon Avenue",
   "Jackson Whalan",
   "Jumbo",
@@ -26264,10 +26367,10 @@
   "Sbvce",
   "stereogully",
   "Fellow Travelers",
-  "Giulio Cercato"
+  "Giulio Cercato",
+  "Mike Block"
  ],
  "ig_titoli_recenti": [
-  "carry the motion",
   "copacetic",
   "fighting back a flight of stairs",
   "i am the fire",
@@ -26306,7 +26409,8 @@
   "unmatched energy",
   "legends",
   "good run",
-  "road warriors"
+  "road warriors",
+  "night running"
  ],
  "ig_tendenze_riserva": [
   {
@@ -26317,10 +26421,45 @@
    "libreria": false
   },
   {
-   "audio_id": "195769363102013",
-   "title": "Run",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 165268,
+   "audio_id": "2044207116351520",
+   "title": "Running High (Instrumental)",
+   "display_artist": "bbox",
+   "duration_in_ms": 187084,
+   "libreria": true
+  },
+  {
+   "audio_id": "491460439584707",
+   "title": "Looking Glass (feat. Dawson March, Jacquire King)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 146973,
+   "libreria": true
+  },
+  {
+   "audio_id": "1029576439693978",
+   "title": "Peaceful Storm",
+   "display_artist": "erloom",
+   "duration_in_ms": 67374,
+   "libreria": true
+  },
+  {
+   "audio_id": "1119813952709524",
+   "title": "Night Running",
+   "display_artist": "Mike Block",
+   "duration_in_ms": 145050,
+   "libreria": true
+  },
+  {
+   "audio_id": "2173371459664032",
+   "title": "Fighting Back A Flight Of Stairs",
+   "display_artist": "Trout Recording",
+   "duration_in_ms": 175107,
+   "libreria": true
+  },
+  {
+   "audio_id": "969843681296214",
+   "title": "Anthem In Black",
+   "display_artist": "Cy Curnin",
+   "duration_in_ms": 240476,
    "libreria": true
   }
  ]
