@@ -25176,7 +25176,9 @@
      "ok": true,
      "id": "18321960703303225",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -25270,7 +25272,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "nOqE3BbR5Xo"
+     "id": "nOqE3BbR5Xo",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -25281,11 +25284,110 @@
    },
    "spinto": true,
    "testo": "A volte hai solo bisogno di essere in un posto abbastanza tranquillo da riuscire ad ascoltare i tuoi pensieri."
+  },
+  {
+   "quando": "2026-11-25T23:01",
+   "slot": "2026-11-26 00:00",
+   "video": "IMG_4061.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-7c063c1b",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 22.48,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.355
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 55,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "cutscene_crush_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 134,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 87,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.35,
+     "righe": 11,
+     "scene_intatte": 0,
+     "scurito": 0.46,
+     "sfumatura": 0.25,
+     "viso": {
+      "corpo": 87,
+      "corpo_base": 87,
+      "posizione": "alto",
+      "righe": 11,
+      "scala": 1.0,
+      "visi": 5,
+      "y": 0.313
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 87,
+     "corpo_base": 87,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "alto",
+     "righe": 11,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 5,
+     "y": 0.313
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:01"
+    },
+    "musica_meta": "phonk_11.flac",
+    "musica_instagram": "You Can Do This - Afterlight [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "YZnr4jTVQeQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17920490226539159",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Hai UNA vita sola ca**o. Non sai quanto tempo hai davanti, né quanto tempo ti resta con le persone che ami. Quindi inseg"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-18 00:00",
   "2026-11-18 06:00",
   "2026-11-18 08:00",
   "2026-11-18 10:00",
@@ -25364,10 +25466,10 @@
   "2026-11-25 16:00",
   "2026-11-25 18:00",
   "2026-11-25 20:00",
-  "2026-11-25 22:00"
+  "2026-11-25 22:00",
+  "2026-11-26 00:00"
  ],
  "musica_recenti": [
-  "sweaty_staredown_2.m4a",
   "cutscene_crush_1.m4a",
   "turn_in_the_sun_2.m4a",
   "fire_in_the_sky_1.m4a",
@@ -25426,7 +25528,8 @@
   "rubberband_3.m4a",
   "final_boss_battle_1.m4a",
   "van_life_rager_3.m4a",
-  "majestic_12_3.m4a"
+  "majestic_12_3.m4a",
+  "cutscene_crush_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -25908,7 +26011,8 @@
   "MIE-da099c9a",
   "MIE-c8580e6c",
   "MIE-9b19a69c",
-  "MIE-370a0ba6"
+  "MIE-370a0ba6",
+  "MIE-7c063c1b"
  ],
  "temi_recenti": [
   "mentalita",
@@ -26303,8 +26407,8 @@
    "ultimo": "2026-10-23"
   },
   "1120zEipzyBfScy4IMkZ_264cYRRj4_wC": {
-   "usi": 5,
-   "ultimo": "2026-11-17",
+   "usi": 6,
+   "ultimo": "2026-11-25",
    "orizzontale": false
   },
   "1Ysgny_QvDeVi4Yc1fvcAP2jh-Qv2xZgx": {
@@ -26653,7 +26757,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_02.flac",
   "trap_15.flac",
   "drive_14.flac",
   "phonk_10.flac",
@@ -26672,7 +26775,8 @@
   "drive_16.flac",
   "phonk_08.flac",
   "trap_02.flac",
-  "deciso_11.flac"
+  "deciso_11.flac",
+  "phonk_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -26707,7 +26811,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -26723,7 +26827,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "843173497227558",
   "744011543289259",
   "5301582899854512",
   "1274149560124013",
@@ -26782,11 +26885,11 @@
   "2234284524030237",
   "924391826094049",
   "1083157182908914",
-  "28473683348895849"
+  "28473683348895849",
+  "28748477811406397"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "GEEZ",
   "Sbvce",
   "stereogully",
   "Fellow Travelers",
@@ -26795,10 +26898,10 @@
   "Lightbox Music",
   "Neko Fuzz",
   "Ross Lara",
-  "LAVLO"
+  "LAVLO",
+  "Afterlight"
  ],
  "ig_titoli_recenti": [
-  "nikkatha",
   "get a move on",
   "making moves",
   "move",
@@ -26837,7 +26940,8 @@
   "move ya body",
   "time for you to march",
   "immersive fire",
-  "rise up"
+  "rise up",
+  "you can do this"
  ],
  "ig_tendenze_riserva": [
   {
@@ -26848,31 +26952,59 @@
    "libreria": false
   },
   {
-   "audio_id": "1386871190037063",
-   "title": "Running",
-   "display_artist": "Summer Islands",
-   "duration_in_ms": 70064,
+   "audio_id": "523966117385305",
+   "title": "Big Leagues (Instrumental)",
+   "display_artist": "Mike Floss",
+   "duration_in_ms": 127863,
    "libreria": true
   },
   {
-   "audio_id": "886249782709175",
-   "title": "March Of Libertad",
-   "display_artist": "Symphonic Planet",
-   "duration_in_ms": 236050,
+   "audio_id": "1060743318649873",
+   "title": "Climb",
+   "display_artist": "Maxsickboy",
+   "duration_in_ms": 162310,
    "libreria": true
   },
   {
-   "audio_id": "550723776899092",
-   "title": "Power Is Relative",
-   "display_artist": "Trout Recording",
-   "duration_in_ms": 181850,
+   "audio_id": "665857722143060",
+   "title": "Play To Win",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 107550,
    "libreria": true
   },
   {
-   "audio_id": "28473683348895849",
-   "title": "Rise Up",
-   "display_artist": "LAVLO",
-   "duration_in_ms": 51860,
+   "audio_id": "28748477811406397",
+   "title": "You Can Do This",
+   "display_artist": "Afterlight",
+   "duration_in_ms": 64289,
+   "libreria": true
+  },
+  {
+   "audio_id": "729263029005564",
+   "title": "Move",
+   "display_artist": "Tony Dark Eyes",
+   "duration_in_ms": 105386,
+   "libreria": true
+  },
+  {
+   "audio_id": "601112655997356",
+   "title": "Orbiting (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 165490,
+   "libreria": true
+  },
+  {
+   "audio_id": "846729664516192",
+   "title": "Chops (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 171070,
+   "libreria": true
+  },
+  {
+   "audio_id": "881281317573621",
+   "title": "Like A Win",
+   "display_artist": "Phury",
+   "duration_in_ms": 204188,
    "libreria": true
   }
  ]
