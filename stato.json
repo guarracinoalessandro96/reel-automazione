@@ -24444,7 +24444,9 @@
      "ok": true,
      "id": "18005256635796605",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -24538,7 +24540,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "mAWhYU77bS4"
+     "id": "mAWhYU77bS4",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -24549,11 +24552,110 @@
    },
    "spinto": true,
    "testo": "Cambiare richiede tempo. A volte servono mesi, anni. O ferite. Ma a volte basta una notte. Uno sguardo allo specchio. Un"
+  },
+  {
+   "quando": "2026-11-25T09:00",
+   "slot": "2026-11-25 10:00",
+   "video": "IMG_4305.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-a9ed43c6",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 20.41,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.242
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 7,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "monthaholic_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 147,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 119,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.31,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.32,
+     "sfumatura": 0.22,
+     "viso": {
+      "corpo": 119,
+      "corpo_base": 119,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 20,
+      "y": 0.595
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 119,
+     "corpo_base": 119,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       7.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 20,
+     "y": 0.595
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T12:59"
+    },
+    "musica_meta": "phonk_16.flac",
+    "musica_instagram": "Good Run - Fellow Travelers [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Y7gwwg_hRRo"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17954413800357550",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Finché vivi, puoi ricominciare ancora e ancora."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-17 10:00",
   "2026-11-17 12:00",
   "2026-11-17 14:00",
   "2026-11-17 16:00",
@@ -24632,10 +24734,10 @@
   "2026-11-24 22:00",
   "2026-11-25 00:00",
   "2026-11-25 06:00",
-  "2026-11-25 08:00"
+  "2026-11-25 08:00",
+  "2026-11-25 10:00"
  ],
  "musica_recenti": [
-  "death_duel_3.m4a",
   "monthaholic_1.m4a",
   "way_back_home_3.m4a",
   "final_boss_battle_3.m4a",
@@ -24694,7 +24796,8 @@
   "moon_vision_1.m4a",
   "ancient_civilisations_3.m4a",
   "stake_out_2.m4a",
-  "horizons_1.m4a"
+  "horizons_1.m4a",
+  "monthaholic_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -25169,7 +25272,8 @@
   "MIE-0caa72d5",
   "MIE-42ae5e6a",
   "MIE-21b56275",
-  "MIE-1ae53ade"
+  "MIE-1ae53ade",
+  "MIE-a9ed43c6"
  ],
  "temi_recenti": [
   "mentalita",
@@ -25712,8 +25816,8 @@
    "orizzontale": false
   },
   "1pHaSrw5l22--hj6mculM4Wx5XnAw4U-3": {
-   "usi": 4,
-   "ultimo": "2026-11-14",
+   "usi": 5,
+   "ultimo": "2026-11-25",
    "orizzontale": false
   },
   "1XySlsRReGeTwlbVlIctzRJDJBUZ2yHi0": {
@@ -25914,7 +26018,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_05.flac",
   "phonk_06.flac",
   "trap_03.flac",
   "energia_05.flac",
@@ -25933,7 +26036,8 @@
   "deciso_07.flac",
   "phonk_05.flac",
   "trap_05.flac",
-  "deciso_03.flac"
+  "deciso_03.flac",
+  "phonk_16.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -25968,7 +26072,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -25984,7 +26088,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1552659642157024",
   "1615649653514803",
   "3643996589148382",
   "460517589578363",
@@ -26043,11 +26146,11 @@
   "902974885110650",
   "461389463230596",
   "1774121270615760",
-  "1177466663826304"
+  "1177466663826304",
+  "1520634330105846"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Otis McDonald",
   "Baegod",
   "Bloom",
   "Neon Avenue",
@@ -26056,10 +26159,10 @@
   "The K Club",
   "GEEZ",
   "Sbvce",
-  "stereogully"
+  "stereogully",
+  "Fellow Travelers"
  ],
  "ig_titoli_recenti": [
-  "flow motion",
   "gta 6 main theme",
   "carry the motion",
   "copacetic",
@@ -26098,7 +26201,8 @@
   "don t go",
   "fire",
   "unmatched energy",
-  "legends"
+  "legends",
+  "good run"
  ],
  "ig_tendenze_riserva": [
   {
@@ -26109,38 +26213,52 @@
    "libreria": false
   },
   {
-   "audio_id": "1177466663826304",
-   "title": "Legends",
+   "audio_id": "820220974302825",
+   "title": "Success (Instrumental)",
    "display_artist": "stereogully",
-   "duration_in_ms": 123840,
+   "duration_in_ms": 123870,
    "libreria": true
   },
   {
-   "audio_id": "449434754227407",
-   "title": "Climbing The Ladder",
-   "display_artist": "Cameron Rasmussen",
-   "duration_in_ms": 190500,
+   "audio_id": "1629473460916415",
+   "title": "Fighter",
+   "display_artist": "Chela Rivas",
+   "duration_in_ms": 138800,
    "libreria": true
   },
   {
-   "audio_id": "566682361550021",
-   "title": "Thunder",
-   "display_artist": "Dirty Dave",
-   "duration_in_ms": 192603,
+   "audio_id": "1520634330105846",
+   "title": "Good Run",
+   "display_artist": "Fellow Travelers",
+   "duration_in_ms": 60060,
    "libreria": true
   },
   {
-   "audio_id": "962542785866784",
-   "title": "What Heroes Do (Instrumental)",
-   "display_artist": "Sofie Tabesh",
-   "duration_in_ms": 217130,
+   "audio_id": "819743797457783",
+   "title": "Redux (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 243803,
    "libreria": true
   },
   {
-   "audio_id": "1341809783805885",
-   "title": "Stronger Than You Think",
-   "display_artist": "Ruby Amanfu",
-   "duration_in_ms": 214420,
+   "audio_id": "767274479802422",
+   "title": "Sparks Fly",
+   "display_artist": "Fellow Travelers",
+   "duration_in_ms": 157978,
+   "libreria": true
+  },
+  {
+   "audio_id": "702088267960095",
+   "title": "I Am The Fire",
+   "display_artist": "Daria Novo",
+   "duration_in_ms": 182266,
+   "libreria": true
+  },
+  {
+   "audio_id": "1681179019357274",
+   "title": "Fight For It All (feat. Poccex)",
+   "display_artist": "Jumbo",
+   "duration_in_ms": 168050,
    "libreria": true
   }
  ]
