@@ -24238,7 +24238,9 @@
      "ok": true,
      "id": "18168287980496174",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -24332,22 +24334,124 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "9oPWXDzvc3s"
+     "id": "9oPWXDzvc3s",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18055663370811047",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "Non lasciatevi ingannare dalla nostalgia di quel che poteva essere. Non poteva essere nient'altro, altrimenti lo sarebbe"
+  },
+  {
+   "quando": "2026-11-25T05:01",
+   "slot": "2026-11-25 06:00",
+   "video": "IMG_3762.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "specchio",
+   "registrato": null,
+   "frase": "MIE-21b56275",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 17.56,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.4
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 34,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "stake_out_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 100,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 90,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.58,
+     "righe": 6,
+     "scene_intatte": 0,
+     "scurito": 0.52,
+     "sfumatura": 0.39,
+     "viso": {
+      "corpo": 90,
+      "corpo_base": 107,
+      "posizione": "alto",
+      "righe": 6,
+      "scala": 0.841,
+      "visi": 1,
+      "y": 0.188
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 90,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "alto",
+     "righe": 6,
+     "rilevatore": "yunet+haar",
+     "scala": 0.841,
+     "visi": 1,
+     "y": 0.188
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T12:58"
+    },
+    "musica_meta": "trap_05.flac",
+    "musica_instagram": "Unmatched Energy - Sbvce [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "0loQCqXpk0Q"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18005256635796605",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Senza offesa, ma la vita va avanti. O decidi di migliorarti ogni singolo giorno, o resti prigioniero della stessa mental"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-17 06:00",
   "2026-11-17 08:00",
   "2026-11-17 10:00",
   "2026-11-17 12:00",
@@ -24426,10 +24530,10 @@
   "2026-11-24 18:00",
   "2026-11-24 20:00",
   "2026-11-24 22:00",
-  "2026-11-25 00:00"
+  "2026-11-25 00:00",
+  "2026-11-25 06:00"
  ],
  "musica_recenti": [
-  "ancient_civilisations_1.m4a",
   "van_life_rager_2.m4a",
   "death_duel_3.m4a",
   "monthaholic_1.m4a",
@@ -24488,7 +24592,8 @@
   "ancient_civilisations_2.m4a",
   "van_life_rager_3.m4a",
   "moon_vision_1.m4a",
-  "ancient_civilisations_3.m4a"
+  "ancient_civilisations_3.m4a",
+  "stake_out_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -24961,7 +25066,8 @@
   "MIE-9d031a51",
   "MIE-a6cc9a0e",
   "MIE-0caa72d5",
-  "MIE-42ae5e6a"
+  "MIE-42ae5e6a",
+  "MIE-21b56275"
  ],
  "temi_recenti": [
   "mentalita",
@@ -25019,7 +25125,7 @@
    "momento": null
   }
  },
- "pulizia": "2026-11-24",
+ "pulizia": "2026-11-25",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -25055,8 +25161,8 @@
    "ultimo": "2026-11-01"
   },
   "15jiV1pcQxInQYlwKdmhJ-oiXaPBuhCUQ": {
-   "usi": 4,
-   "ultimo": "2026-11-17",
+   "usi": 5,
+   "ultimo": "2026-11-25",
    "orizzontale": false
   },
   "1NgsmHHGD9Qdq4lQ_cY7_qoozFPSuqtJ4": {
@@ -25706,7 +25812,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_06.flac",
   "deciso_06.flac",
   "drive_05.flac",
   "phonk_06.flac",
@@ -25725,7 +25830,8 @@
   "trap_16.flac",
   "drive_13.flac",
   "deciso_07.flac",
-  "phonk_05.flac"
+  "phonk_05.flac",
+  "trap_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -25760,7 +25866,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -25776,7 +25882,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "923490770808517",
   "2197248934147643",
   "1552659642157024",
   "1615649653514803",
@@ -25835,11 +25940,11 @@
   "1324542209262772",
   "838674124312983",
   "902974885110650",
-  "461389463230596"
+  "461389463230596",
+  "1774121270615760"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Giulio Cercato",
   "Lyle Workman",
   "Otis McDonald",
   "Baegod",
@@ -25848,10 +25953,10 @@
   "Jackson Whalan",
   "Jumbo",
   "The K Club",
-  "GEEZ"
+  "GEEZ",
+  "Sbvce"
  ],
  "ig_titoli_recenti": [
-  "legends",
   "don t run from me",
   "flow motion",
   "gta 6 main theme",
@@ -25890,7 +25995,8 @@
   "getting strong",
   "game winner",
   "don t go",
-  "fire"
+  "fire",
+  "unmatched energy"
  ],
  "ig_tendenze_riserva": [
   {
@@ -25901,38 +26007,24 @@
    "libreria": false
   },
   {
-   "audio_id": "2192533544901491",
-   "title": "Energy (Instrumental)",
-   "display_artist": "Tony Dark Eyes",
-   "duration_in_ms": 193175,
+   "audio_id": "1774121270615760",
+   "title": "Unmatched Energy",
+   "display_artist": "Sbvce",
+   "duration_in_ms": 53590,
    "libreria": true
   },
   {
-   "audio_id": "562869749636642",
-   "title": "Club Level (feat. Dawson March)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 152970,
+   "audio_id": "3808630162610430",
+   "title": "Get A Move On",
+   "display_artist": "Fellow Travelers",
+   "duration_in_ms": 61985,
    "libreria": true
   },
   {
-   "audio_id": "485996590250718",
-   "title": "Running",
-   "display_artist": "Mani Draper",
-   "duration_in_ms": 131178,
-   "libreria": true
-  },
-  {
-   "audio_id": "461389463230596",
-   "title": "Fire",
-   "display_artist": "GEEZ",
-   "duration_in_ms": 212462,
-   "libreria": true
-  },
-  {
-   "audio_id": "4279708355594989",
-   "title": "In Motion",
-   "display_artist": "Sam Marshall",
-   "duration_in_ms": 188848,
+   "audio_id": "702088267960095",
+   "title": "I Am The Fire",
+   "display_artist": "Daria Novo",
+   "duration_in_ms": 182266,
    "libreria": true
   }
  ]
