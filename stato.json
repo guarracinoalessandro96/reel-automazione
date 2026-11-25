@@ -25070,7 +25070,9 @@
      "ok": true,
      "id": "18177865831459125",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -25167,7 +25169,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "kPhzHZnt8xc"
+     "id": "kPhzHZnt8xc",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -25178,11 +25181,110 @@
    },
    "spinto": true,
    "testo": "Non riesco mai ad applaudire ai miei traguardi, perché nella mia testa era solo il minimo da raggiungere e perché non è "
+  },
+  {
+   "quando": "2026-11-25T21:00",
+   "slot": "2026-11-25 22:00",
+   "video": "IMG_3833.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-370a0ba6",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 4.06,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.122
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 19,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "majestic_12_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 72,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.39,
+     "righe": 5,
+     "scene_intatte": 0,
+     "scurito": 0.48,
+     "sfumatura": 0.29,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "alto",
+      "righe": 5,
+      "scala": 1.0,
+      "visi": 5,
+      "y": 0.347
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "alto",
+     "righe": 5,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 5,
+     "y": 0.347
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:01"
+    },
+    "musica_meta": "deciso_11.flac",
+    "musica_instagram": "Rise Up - LAVLO [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "nOqE3BbR5Xo"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18139752994636923",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "A volte hai solo bisogno di essere in un posto abbastanza tranquillo da riuscire ad ascoltare i tuoi pensieri."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-17 22:00",
   "2026-11-18 00:00",
   "2026-11-18 06:00",
   "2026-11-18 08:00",
@@ -25261,10 +25363,10 @@
   "2026-11-25 14:00",
   "2026-11-25 16:00",
   "2026-11-25 18:00",
-  "2026-11-25 20:00"
+  "2026-11-25 20:00",
+  "2026-11-25 22:00"
  ],
  "musica_recenti": [
-  "majestic_12_2.m4a",
   "sweaty_staredown_2.m4a",
   "cutscene_crush_1.m4a",
   "turn_in_the_sun_2.m4a",
@@ -25323,7 +25425,8 @@
   "death_duel_1.m4a",
   "rubberband_3.m4a",
   "final_boss_battle_1.m4a",
-  "van_life_rager_3.m4a"
+  "van_life_rager_3.m4a",
+  "majestic_12_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -25804,7 +25907,8 @@
   "MIE-e0e0aa4c",
   "MIE-da099c9a",
   "MIE-c8580e6c",
-  "MIE-9b19a69c"
+  "MIE-9b19a69c",
+  "MIE-370a0ba6"
  ],
  "temi_recenti": [
   "mentalita",
@@ -26065,8 +26169,8 @@
    "orizzontale": false
   },
   "1dS3dJuren-0gwioBQEQ4MkMFmJH5kMNx": {
-   "usi": 5,
-   "ultimo": "2026-11-17",
+   "usi": 6,
+   "ultimo": "2026-11-25",
    "orizzontale": false
   },
   "1a2POnx-7OaYCvRXrpkTO6Qw_dTZ4CN-d": {
@@ -26549,7 +26653,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_05.flac",
   "phonk_02.flac",
   "trap_15.flac",
   "drive_14.flac",
@@ -26568,7 +26671,8 @@
   "deciso_09.flac",
   "drive_16.flac",
   "phonk_08.flac",
-  "trap_02.flac"
+  "trap_02.flac",
+  "deciso_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -26619,7 +26723,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "936174714667779",
   "843173497227558",
   "744011543289259",
   "5301582899854512",
@@ -26678,11 +26781,11 @@
   "1119813952709524",
   "2234284524030237",
   "924391826094049",
-  "1083157182908914"
+  "1083157182908914",
+  "28473683348895849"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "The K Club",
   "GEEZ",
   "Sbvce",
   "stereogully",
@@ -26691,10 +26794,10 @@
   "Mike Block",
   "Lightbox Music",
   "Neko Fuzz",
-  "Ross Lara"
+  "Ross Lara",
+  "LAVLO"
  ],
  "ig_titoli_recenti": [
-  "money power",
   "nikkatha",
   "get a move on",
   "making moves",
@@ -26733,7 +26836,8 @@
   "night running",
   "move ya body",
   "time for you to march",
-  "immersive fire"
+  "immersive fire",
+  "rise up"
  ],
  "ig_tendenze_riserva": [
   {
@@ -26744,31 +26848,31 @@
    "libreria": false
   },
   {
-   "audio_id": "1026434704699972",
-   "title": "Moments In Time (feat. Dawson Gnewikow, Dawson March, Jacquire King)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 154075,
+   "audio_id": "1386871190037063",
+   "title": "Running",
+   "display_artist": "Summer Islands",
+   "duration_in_ms": 70064,
    "libreria": true
   },
   {
-   "audio_id": "256140930133248",
-   "title": "We Rise In Peace",
-   "display_artist": "Mignon Geli",
-   "duration_in_ms": 209731,
+   "audio_id": "886249782709175",
+   "title": "March Of Libertad",
+   "display_artist": "Symphonic Planet",
+   "duration_in_ms": 236050,
    "libreria": true
   },
   {
-   "audio_id": "1355704320005214",
-   "title": "Hips Betta Move",
-   "display_artist": "cloud cover",
-   "duration_in_ms": 63924,
+   "audio_id": "550723776899092",
+   "title": "Power Is Relative",
+   "display_artist": "Trout Recording",
+   "duration_in_ms": 181850,
    "libreria": true
   },
   {
-   "audio_id": "1083157182908914",
-   "title": "Immersive Fire",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 158959,
+   "audio_id": "28473683348895849",
+   "title": "Rise Up",
+   "display_artist": "LAVLO",
+   "duration_in_ms": 51860,
    "libreria": true
   }
  ]
