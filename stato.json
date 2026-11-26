@@ -25590,7 +25590,9 @@
      "ok": true,
      "id": "18148513657593298",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -25684,7 +25686,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "lCv77vHzV-4"
+     "id": "lCv77vHzV-4",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -25695,11 +25698,110 @@
    },
    "spinto": true,
    "testo": "La maggior parte della famiglia e degli amici non desidera davvero la versione migliore di te, desidera la versione di t"
+  },
+  {
+   "quando": "2026-11-26T11:00",
+   "slot": "2026-11-26 12:00",
+   "video": "IMG_3792.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-8a89f479",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 5.32,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 42,
+     "voce": "generale"
+    },
+    "frase_via": "forzata",
+    "musica": "mirror_mirror_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 103,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 90,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.66,
+     "righe": 8,
+     "scene_intatte": 0,
+     "scurito": 0.57,
+     "sfumatura": 0.42,
+     "viso": {
+      "corpo": 90,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 8,
+      "scala": 0.841,
+      "visi": 7,
+      "y": 0.684
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 90,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 8,
+     "rilevatore": "yunet+haar",
+     "scala": 0.841,
+     "visi": 7,
+     "y": 0.684
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:02"
+    },
+    "musica_meta": "phonk_12.flac",
+    "musica_instagram": "Unstoppable - Dhruv Goel [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "G_pY6p_cSrI"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17935719495422895",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Lo so, il primo passo è sempre il più difficile, ma credimi: non mollare. Perché una volta trovato il coraggio di salire"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-18 12:00",
   "2026-11-18 14:00",
   "2026-11-18 16:00",
   "2026-11-18 18:00",
@@ -25778,10 +25880,10 @@
   "2026-11-26 00:00",
   "2026-11-26 06:00",
   "2026-11-26 08:00",
-  "2026-11-26 10:00"
+  "2026-11-26 10:00",
+  "2026-11-26 12:00"
  ],
  "musica_recenti": [
-  "ego_chall_2.m4a",
   "mirror_mirror_1.m4a",
   "i_might_be_late_1.m4a",
   "delirium_3.m4a",
@@ -25840,7 +25942,8 @@
   "cutscene_crush_3.m4a",
   "way_back_home_2.m4a",
   "fire_in_the_sky_3.m4a",
-  "sweaty_staredown_1.m4a"
+  "sweaty_staredown_1.m4a",
+  "mirror_mirror_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -26326,7 +26429,8 @@
   "MIE-7c063c1b",
   "MIE-58a977d3",
   "MIE-c2d2f81f",
-  "MIE-99e0ae54"
+  "MIE-99e0ae54",
+  "MIE-8a89f479"
  ],
  "temi_recenti": [
   "mentalita",
@@ -26337,8 +26441,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
-  "famiglia"
+  "famiglia",
+  "mentalita"
  ],
  "analisi": {
   "1-XpSt4SspEfxthfpP3WOspSjVXChTq6f": {
@@ -26439,8 +26543,8 @@
    "orizzontale": false
   },
   "1mIxav-KbU3ZL_NU9MF4Z-Vcww6fOPwR4": {
-   "usi": 5,
-   "ultimo": "2026-11-18",
+   "usi": 6,
+   "ultimo": "2026-11-26",
    "orizzontale": false
   },
   "1ehg1VD_Xtwd5ysGegtBXVLxxyo6vHs0U": {
@@ -27071,7 +27175,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_08.flac",
   "drive_12.flac",
   "phonk_09.flac",
   "trap_16.flac",
@@ -27090,7 +27193,8 @@
   "phonk_11.flac",
   "drive_08.flac",
   "energia_11.flac",
-  "trap_13.flac"
+  "trap_13.flac",
+  "phonk_12.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -27125,7 +27229,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -27141,7 +27245,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1145314397662753",
   "849342490718599",
   "529367193511753",
   "1108285910189784",
@@ -27200,11 +27303,11 @@
   "28748477811406397",
   "800297207899385",
   "269408148764736",
-  "2818493204964733"
+  "2818493204964733",
+  "981510330704369"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Giulio Cercato",
   "Mike Block",
   "Lightbox Music",
   "Neko Fuzz",
@@ -27213,10 +27316,10 @@
   "Afterlight",
   "Abby Posner",
   "Jumbo",
-  "Lyle Workman"
+  "Lyle Workman",
+  "Dhruv Goel"
  ],
  "ig_titoli_recenti": [
-  "victory lap",
   "vice city",
   "anthem in black",
   "energy",
@@ -27255,7 +27358,8 @@
   "you can do this",
   "heros journey",
   "rise",
-  "marathon weekend warriors"
+  "marathon weekend warriors",
+  "unstoppable"
  ],
  "ig_tendenze_riserva": [
   {
@@ -27266,52 +27370,17 @@
    "libreria": false
   },
   {
-   "audio_id": "1428954698111653",
-   "title": "In Motion",
-   "display_artist": "Lance Taber",
-   "duration_in_ms": 152940,
+   "audio_id": "981510330704369",
+   "title": "Unstoppable",
+   "display_artist": "Dhruv Goel",
+   "duration_in_ms": 122750,
    "libreria": true
   },
   {
-   "audio_id": "2818493204964733",
-   "title": "Marathon Weekend Warriors",
-   "display_artist": "Lyle Workman",
-   "duration_in_ms": 251290,
-   "libreria": true
-  },
-  {
-   "audio_id": "594550719516913",
-   "title": "Superhero Origin Story",
-   "display_artist": "Global Genius",
-   "duration_in_ms": 171114,
-   "libreria": true
-  },
-  {
-   "audio_id": "4279708355594989",
-   "title": "In Motion",
-   "display_artist": "Sam Marshall",
-   "duration_in_ms": 188848,
-   "libreria": true
-  },
-  {
-   "audio_id": "269408148764736",
-   "title": "Rise (feat. Plum Soul)",
-   "display_artist": "Jumbo",
-   "duration_in_ms": 210050,
-   "libreria": true
-  },
-  {
-   "audio_id": "9513789255356881",
-   "title": "Power On (Instrumental)",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 116549,
-   "libreria": true
-  },
-  {
-   "audio_id": "1917637308769695",
-   "title": "What Heroes Do (prod. by Jonny Houlihan)",
-   "display_artist": "Sofie Tabesh",
-   "duration_in_ms": 217130,
+   "audio_id": "850390349975783",
+   "title": "Move (Instrumental)",
+   "display_artist": "Tony Dark Eyes",
+   "duration_in_ms": 103760,
    "libreria": true
   }
  ]
