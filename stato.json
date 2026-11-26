@@ -25487,7 +25487,9 @@
      "ok": true,
      "id": "17926252710222323",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -25581,7 +25583,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "EXb2faqWuWM"
+     "id": "EXb2faqWuWM",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -25592,11 +25595,110 @@
    },
    "spinto": true,
    "testo": "E comunque, hai mai conosciuto una persona che è letteralmente un raggio di sole? Una di quelle persone che, ogni volta "
+  },
+  {
+   "quando": "2026-11-26T09:00",
+   "slot": "2026-11-26 10:00",
+   "video": "IMG_3765.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-99e0ae54",
+   "tema": "famiglia",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 5.95,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.463
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 25,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "sweaty_staredown_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 101,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 101,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.43,
+     "righe": 5,
+     "scene_intatte": 0,
+     "scurito": 0.5,
+     "sfumatura": 0.32,
+     "viso": {
+      "corpo": 101,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 5,
+      "scala": 0.944,
+      "visi": 21,
+      "y": 0.717
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 101,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 5,
+     "rilevatore": "yunet+haar",
+     "scala": 0.944,
+     "visi": 21,
+     "y": 0.717
+    },
+    "viso_prima_scena": 4,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:00"
+    },
+    "musica_meta": "trap_13.flac",
+    "musica_instagram": "Marathon Weekend Warriors - Lyle Workman [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "lCv77vHzV-4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18118526918613215",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "La maggior parte della famiglia e degli amici non desidera davvero la versione migliore di te, desidera la versione di t"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-18 10:00",
   "2026-11-18 12:00",
   "2026-11-18 14:00",
   "2026-11-18 16:00",
@@ -25675,10 +25777,10 @@
   "2026-11-25 22:00",
   "2026-11-26 00:00",
   "2026-11-26 06:00",
-  "2026-11-26 08:00"
+  "2026-11-26 08:00",
+  "2026-11-26 10:00"
  ],
  "musica_recenti": [
-  "fire_in_the_sky_1.m4a",
   "ego_chall_2.m4a",
   "mirror_mirror_1.m4a",
   "i_might_be_late_1.m4a",
@@ -25737,7 +25839,8 @@
   "majestic_12_3.m4a",
   "cutscene_crush_3.m4a",
   "way_back_home_2.m4a",
-  "fire_in_the_sky_3.m4a"
+  "fire_in_the_sky_3.m4a",
+  "sweaty_staredown_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -26222,7 +26325,8 @@
   "MIE-370a0ba6",
   "MIE-7c063c1b",
   "MIE-58a977d3",
-  "MIE-c2d2f81f"
+  "MIE-c2d2f81f",
+  "MIE-99e0ae54"
  ],
  "temi_recenti": [
   "mentalita",
@@ -26234,7 +26338,7 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "famiglia"
  ],
  "analisi": {
   "1-XpSt4SspEfxthfpP3WOspSjVXChTq6f": {
@@ -26330,8 +26434,8 @@
    "orizzontale": false
   },
   "1mOygaNSLk3zVyQOFm3atEW61_fUGn_3z": {
-   "usi": 5,
-   "ultimo": "2026-11-18",
+   "usi": 6,
+   "ultimo": "2026-11-26",
    "orizzontale": false
   },
   "1mIxav-KbU3ZL_NU9MF4Z-Vcww6fOPwR4": {
@@ -26967,7 +27071,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_10.flac",
   "trap_08.flac",
   "drive_12.flac",
   "phonk_09.flac",
@@ -26986,7 +27089,8 @@
   "deciso_11.flac",
   "phonk_11.flac",
   "drive_08.flac",
-  "energia_11.flac"
+  "energia_11.flac",
+  "trap_13.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -27021,7 +27125,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -27037,7 +27141,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1274149560124013",
   "1145314397662753",
   "849342490718599",
   "529367193511753",
@@ -27096,11 +27199,11 @@
   "28473683348895849",
   "28748477811406397",
   "800297207899385",
-  "269408148764736"
+  "269408148764736",
+  "2818493204964733"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Fellow Travelers",
   "Giulio Cercato",
   "Mike Block",
   "Lightbox Music",
@@ -27109,10 +27212,10 @@
   "LAVLO",
   "Afterlight",
   "Abby Posner",
-  "Jumbo"
+  "Jumbo",
+  "Lyle Workman"
  ],
  "ig_titoli_recenti": [
-  "move",
   "victory lap",
   "vice city",
   "anthem in black",
@@ -27151,7 +27254,8 @@
   "rise up",
   "you can do this",
   "heros journey",
-  "rise"
+  "rise",
+  "marathon weekend warriors"
  ],
  "ig_tendenze_riserva": [
   {
@@ -27204,17 +27308,10 @@
    "libreria": true
   },
   {
-   "audio_id": "1355704320005214",
-   "title": "Hips Betta Move",
-   "display_artist": "cloud cover",
-   "duration_in_ms": 63924,
-   "libreria": true
-  },
-  {
-   "audio_id": "1281077456837490",
-   "title": "Move It",
-   "display_artist": "half.cool",
-   "duration_in_ms": 160214,
+   "audio_id": "1917637308769695",
+   "title": "What Heroes Do (prod. by Jonny Houlihan)",
+   "display_artist": "Sofie Tabesh",
+   "duration_in_ms": 217130,
    "libreria": true
   }
  ]
