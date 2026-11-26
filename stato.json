@@ -25693,7 +25693,9 @@
      "ok": true,
      "id": "18118526918613215",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -25787,7 +25789,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "G_pY6p_cSrI"
+     "id": "G_pY6p_cSrI",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -25798,11 +25801,111 @@
    },
    "spinto": true,
    "testo": "Lo so, il primo passo è sempre il più difficile, ma credimi: non mollare. Perché una volta trovato il coraggio di salire"
+  },
+  {
+   "quando": "2026-11-26T13:00",
+   "slot": "2026-11-26 14:00",
+   "video": "IMG_4294.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-e62b9617",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 36.22,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.2
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 11,
+     "voce": "generale"
+    },
+    "frase_via": "aforisma",
+    "musica": "turn_in_the_sun_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione",
+     "frase": "aforisma"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 127,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.36,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.53,
+     "sfumatura": 0.26,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 110,
+      "y": 0.591
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       16.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 110,
+     "y": 0.591
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:02"
+    },
+    "musica_meta": "energia_05.flac",
+    "musica_instagram": "Secret Powers - Auralux [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "5P2e8QVUwjI"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18116048725895982",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Il successo è la somma di piccoli sforzi ripetuti ogni giorno."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-18 14:00",
   "2026-11-18 16:00",
   "2026-11-18 18:00",
   "2026-11-18 20:00",
@@ -25881,10 +25984,10 @@
   "2026-11-26 06:00",
   "2026-11-26 08:00",
   "2026-11-26 10:00",
-  "2026-11-26 12:00"
+  "2026-11-26 12:00",
+  "2026-11-26 14:00"
  ],
  "musica_recenti": [
-  "mirror_mirror_1.m4a",
   "i_might_be_late_1.m4a",
   "delirium_3.m4a",
   "the_light_1.m4a",
@@ -25943,7 +26046,8 @@
   "way_back_home_2.m4a",
   "fire_in_the_sky_3.m4a",
   "sweaty_staredown_1.m4a",
-  "mirror_mirror_2.m4a"
+  "mirror_mirror_2.m4a",
+  "turn_in_the_sun_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -26430,7 +26534,8 @@
   "MIE-58a977d3",
   "MIE-c2d2f81f",
   "MIE-99e0ae54",
-  "MIE-8a89f479"
+  "MIE-8a89f479",
+  "MIE-e62b9617"
  ],
  "temi_recenti": [
   "mentalita",
@@ -26440,8 +26545,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
@@ -26943,8 +27048,8 @@
    "orizzontale": false
   },
   "1qg9QOoyt2IXIx0udqWcfdBdqz_RdzVo4": {
-   "usi": 5,
-   "ultimo": "2026-11-19",
+   "usi": 6,
+   "ultimo": "2026-11-26",
    "orizzontale": false
   },
   "1imtjdovSsU7sfZ2CRaJTwVN1ETpo_8z3": {
@@ -27175,7 +27280,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_12.flac",
   "phonk_09.flac",
   "trap_16.flac",
   "drive_13.flac",
@@ -27194,7 +27298,8 @@
   "drive_08.flac",
   "energia_11.flac",
   "trap_13.flac",
-  "phonk_12.flac"
+  "phonk_12.flac",
+  "energia_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -27229,7 +27334,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -27245,7 +27350,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "849342490718599",
   "529367193511753",
   "1108285910189784",
   "887391107399210",
@@ -27304,11 +27408,11 @@
   "800297207899385",
   "269408148764736",
   "2818493204964733",
-  "981510330704369"
+  "981510330704369",
+  "1391428169578763"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Mike Block",
   "Lightbox Music",
   "Neko Fuzz",
   "Ross Lara",
@@ -27317,10 +27421,10 @@
   "Abby Posner",
   "Jumbo",
   "Lyle Workman",
-  "Dhruv Goel"
+  "Dhruv Goel",
+  "Auralux"
  ],
  "ig_titoli_recenti": [
-  "vice city",
   "anthem in black",
   "energy",
   "sparks fly",
@@ -27359,7 +27463,8 @@
   "heros journey",
   "rise",
   "marathon weekend warriors",
-  "unstoppable"
+  "unstoppable",
+  "secret powers"
  ],
  "ig_tendenze_riserva": [
   {
@@ -27370,17 +27475,38 @@
    "libreria": false
   },
   {
-   "audio_id": "981510330704369",
-   "title": "Unstoppable",
-   "display_artist": "Dhruv Goel",
-   "duration_in_ms": 122750,
+   "audio_id": "791711906519334",
+   "title": "Fight (Instrumental)",
+   "display_artist": "Sugartapes",
+   "duration_in_ms": 125990,
    "libreria": true
   },
   {
-   "audio_id": "850390349975783",
-   "title": "Move (Instrumental)",
-   "display_artist": "Tony Dark Eyes",
-   "duration_in_ms": 103760,
+   "audio_id": "1629473460916415",
+   "title": "Fighter",
+   "display_artist": "Chela Rivas",
+   "duration_in_ms": 138800,
+   "libreria": true
+  },
+  {
+   "audio_id": "5890184931105352",
+   "title": "Gospel Hype",
+   "display_artist": "bbox",
+   "duration_in_ms": 210050,
+   "libreria": true
+  },
+  {
+   "audio_id": "845285864683880",
+   "title": "Rise Of The Brave",
+   "display_artist": "Daria Novo",
+   "duration_in_ms": 216086,
+   "libreria": true
+  },
+  {
+   "audio_id": "1391428169578763",
+   "title": "Secret Powers",
+   "display_artist": "Auralux",
+   "duration_in_ms": 61600,
    "libreria": true
   }
  ]
