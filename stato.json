@@ -25279,7 +25279,9 @@
      "ok": true,
      "id": "18139752994636923",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -25373,22 +25375,126 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "YZnr4jTVQeQ"
+     "id": "YZnr4jTVQeQ",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "17920490226539159",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "Hai UNA vita sola ca**o. Non sai quanto tempo hai davanti, né quanto tempo ti resta con le persone che ami. Quindi inseg"
+  },
+  {
+   "quando": "2026-11-26T05:01",
+   "slot": "2026-11-26 06:00",
+   "video": "IMG_3770.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-58a977d3",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 5.71,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 39,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "way_back_home_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "ripiego_da": "dieci",
+    "scritta": "centro_serif",
+    "secondi_montaggio": 204,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.42,
+     "righe": 9,
+     "scene_intatte": 0,
+     "scurito": 0.38,
+     "sfumatura": 0.31,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "alto",
+      "righe": 9,
+      "scala": 1.0,
+      "visi": 11,
+      "y": 0.328
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "altro_video": "extra_0.MOV",
+     "con_viso": 11,
+     "con_viso_yunet": 8,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       1.0,
+       7.0
+      ]
+     ],
+     "posizione": "alto",
+     "righe": 9,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 11,
+     "y": 0.328
+    },
+    "viso_prima_scena": 2,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:04"
+    },
+    "musica_meta": "drive_08.flac",
+    "musica_instagram": "Heros Journey - Abby Posner [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "UyfWCcWUBzI"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17926252710222323",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Tutti parlano di quanto sia difficile chiudere i rapporti, ma nessuno parla di quanto sia difficile prendere una decisio"
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-18 06:00",
   "2026-11-18 08:00",
   "2026-11-18 10:00",
   "2026-11-18 12:00",
@@ -25467,10 +25573,10 @@
   "2026-11-25 18:00",
   "2026-11-25 20:00",
   "2026-11-25 22:00",
-  "2026-11-26 00:00"
+  "2026-11-26 00:00",
+  "2026-11-26 06:00"
  ],
  "musica_recenti": [
-  "cutscene_crush_1.m4a",
   "turn_in_the_sun_2.m4a",
   "fire_in_the_sky_1.m4a",
   "ego_chall_2.m4a",
@@ -25529,7 +25635,8 @@
   "final_boss_battle_1.m4a",
   "van_life_rager_3.m4a",
   "majestic_12_3.m4a",
-  "cutscene_crush_3.m4a"
+  "cutscene_crush_3.m4a",
+  "way_back_home_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -26012,7 +26119,8 @@
   "MIE-c8580e6c",
   "MIE-9b19a69c",
   "MIE-370a0ba6",
-  "MIE-7c063c1b"
+  "MIE-7c063c1b",
+  "MIE-58a977d3"
  ],
  "temi_recenti": [
   "mentalita",
@@ -26070,7 +26178,7 @@
    "momento": null
   }
  },
- "pulizia": "2026-11-25",
+ "pulizia": "2026-11-26",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -26097,8 +26205,8 @@
    "orizzontale": false
   },
   "1q_-2Z0Nxs0rzY0eRiS5kJ9hteaPWK_as": {
-   "usi": 5,
-   "ultimo": "2026-11-17",
+   "usi": 6,
+   "ultimo": "2026-11-26",
    "orizzontale": false
   },
   "1Eit9vgbQEwd_RXA_ujWUx9-QNboc7VIg": {
@@ -26757,7 +26865,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_15.flac",
   "drive_14.flac",
   "phonk_10.flac",
   "trap_08.flac",
@@ -26776,7 +26883,8 @@
   "phonk_08.flac",
   "trap_02.flac",
   "deciso_11.flac",
-  "phonk_11.flac"
+  "phonk_11.flac",
+  "drive_08.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -26811,7 +26919,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -26827,7 +26935,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "744011543289259",
   "5301582899854512",
   "1274149560124013",
   "1145314397662753",
@@ -26886,11 +26993,11 @@
   "924391826094049",
   "1083157182908914",
   "28473683348895849",
-  "28748477811406397"
+  "28748477811406397",
+  "800297207899385"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Sbvce",
   "stereogully",
   "Fellow Travelers",
   "Giulio Cercato",
@@ -26899,10 +27006,10 @@
   "Neko Fuzz",
   "Ross Lara",
   "LAVLO",
-  "Afterlight"
+  "Afterlight",
+  "Abby Posner"
  ],
  "ig_titoli_recenti": [
-  "get a move on",
   "making moves",
   "move",
   "victory lap",
@@ -26941,7 +27048,8 @@
   "time for you to march",
   "immersive fire",
   "rise up",
-  "you can do this"
+  "you can do this",
+  "heros journey"
  ],
  "ig_tendenze_riserva": [
   {
@@ -26952,59 +27060,45 @@
    "libreria": false
   },
   {
-   "audio_id": "523966117385305",
-   "title": "Big Leagues (Instrumental)",
-   "display_artist": "Mike Floss",
-   "duration_in_ms": 127863,
+   "audio_id": "800297207899385",
+   "title": "Heros Journey",
+   "display_artist": "Abby Posner",
+   "duration_in_ms": 149047,
    "libreria": true
   },
   {
-   "audio_id": "1060743318649873",
-   "title": "Climb",
-   "display_artist": "Maxsickboy",
-   "duration_in_ms": 162310,
+   "audio_id": "2234284524030237",
+   "title": "Move Ya Body",
+   "display_artist": "Lightbox Music",
+   "duration_in_ms": 64587,
    "libreria": true
   },
   {
-   "audio_id": "665857722143060",
-   "title": "Play To Win",
+   "audio_id": "1099523865724351",
+   "title": "Out Of Mind (feat. My City Glory) (Instrumental)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 144494,
+   "libreria": true
+  },
+  {
+   "audio_id": "1781233772812838",
+   "title": "Epic Thoughts",
+   "display_artist": "JB Eckl",
+   "duration_in_ms": 192818,
+   "libreria": true
+  },
+  {
+   "audio_id": "646173398313799",
+   "title": "Move It Or Lose It",
+   "display_artist": "Otis McDonald",
+   "duration_in_ms": 166370,
+   "libreria": true
+  },
+  {
+   "audio_id": "920880257688447",
+   "title": "Heroes",
    "display_artist": "Giulio Cercato",
-   "duration_in_ms": 107550,
-   "libreria": true
-  },
-  {
-   "audio_id": "28748477811406397",
-   "title": "You Can Do This",
-   "display_artist": "Afterlight",
-   "duration_in_ms": 64289,
-   "libreria": true
-  },
-  {
-   "audio_id": "729263029005564",
-   "title": "Move",
-   "display_artist": "Tony Dark Eyes",
-   "duration_in_ms": 105386,
-   "libreria": true
-  },
-  {
-   "audio_id": "601112655997356",
-   "title": "Orbiting (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 165490,
-   "libreria": true
-  },
-  {
-   "audio_id": "846729664516192",
-   "title": "Chops (feat. My City Glory) (Instrumental)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 171070,
-   "libreria": true
-  },
-  {
-   "audio_id": "881281317573621",
-   "title": "Like A Win",
-   "display_artist": "Phury",
-   "duration_in_ms": 204188,
+   "duration_in_ms": 52430,
    "libreria": true
   }
  ]
