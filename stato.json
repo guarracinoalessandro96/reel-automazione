@@ -25796,7 +25796,9 @@
      "ok": true,
      "id": "17935719495422895",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -25891,7 +25893,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "5P2e8QVUwjI"
+     "id": "5P2e8QVUwjI",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -25902,11 +25905,111 @@
    },
    "spinto": true,
    "testo": "Il successo è la somma di piccoli sforzi ripetuti ogni giorno."
+  },
+  {
+   "quando": "2026-11-26T15:00",
+   "slot": "2026-11-26 16:00",
+   "video": "IMG_3768.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-7e7899e8",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 9.26,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.455
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 15,
+     "voce": "generale"
+    },
+    "frase_via": "classifica",
+    "musica": "break_ya_neck_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso",
+     "frase": "classifica"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 81,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.65,
+     "righe": 4,
+     "scene_intatte": 0,
+     "scurito": 0.56,
+     "sfumatura": 0.42,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 4,
+      "scala": 1.0,
+      "visi": 3,
+      "y": 0.666
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 4,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 3,
+     "y": 0.666
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:01"
+    },
+    "musica_meta": "deciso_05.flac",
+    "musica_instagram": "Move My Body (Instrumental) - Ella Joy Meir [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "sdOmyHGUeTY"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18110239829208062",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Chi si dà da fare trova sempre una strada. Chi no, trova sempre una scusa."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-18 16:00",
   "2026-11-18 18:00",
   "2026-11-18 20:00",
   "2026-11-18 22:00",
@@ -25985,10 +26088,10 @@
   "2026-11-26 08:00",
   "2026-11-26 10:00",
   "2026-11-26 12:00",
-  "2026-11-26 14:00"
+  "2026-11-26 14:00",
+  "2026-11-26 16:00"
  ],
  "musica_recenti": [
-  "i_might_be_late_1.m4a",
   "delirium_3.m4a",
   "the_light_1.m4a",
   "the_road_to_mordor_1.m4a",
@@ -26047,7 +26150,8 @@
   "fire_in_the_sky_3.m4a",
   "sweaty_staredown_1.m4a",
   "mirror_mirror_2.m4a",
-  "turn_in_the_sun_3.m4a"
+  "turn_in_the_sun_3.m4a",
+  "break_ya_neck_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -26535,7 +26639,8 @@
   "MIE-c2d2f81f",
   "MIE-99e0ae54",
   "MIE-8a89f479",
-  "MIE-e62b9617"
+  "MIE-e62b9617",
+  "MIE-7e7899e8"
  ],
  "temi_recenti": [
   "mentalita",
@@ -26544,8 +26649,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -26658,8 +26763,8 @@
    "orizzontale": false
   },
   "1J6rUreSm_Mrsbua06uFjE1b4xu8-pRpL": {
-   "usi": 5,
-   "ultimo": "2026-11-18",
+   "usi": 6,
+   "ultimo": "2026-11-26",
    "orizzontale": false
   },
   "1hvbjqvKs_ADW2bi_kJP0H1fxpKUzd-nq": {
@@ -27280,7 +27385,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_09.flac",
   "trap_16.flac",
   "drive_13.flac",
   "deciso_07.flac",
@@ -27299,7 +27403,8 @@
   "energia_11.flac",
   "trap_13.flac",
   "phonk_12.flac",
-  "energia_05.flac"
+  "energia_05.flac",
+  "deciso_05.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -27334,7 +27439,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -27350,7 +27455,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "529367193511753",
   "1108285910189784",
   "887391107399210",
   "930354837134154",
@@ -27409,11 +27513,11 @@
   "269408148764736",
   "2818493204964733",
   "981510330704369",
-  "1391428169578763"
+  "1391428169578763",
+  "739108178545320"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Lightbox Music",
   "Neko Fuzz",
   "Ross Lara",
   "LAVLO",
@@ -27422,10 +27526,10 @@
   "Jumbo",
   "Lyle Workman",
   "Dhruv Goel",
-  "Auralux"
+  "Auralux",
+  "Ella Joy Meir"
  ],
  "ig_titoli_recenti": [
-  "anthem in black",
   "energy",
   "sparks fly",
   "big leagues",
@@ -27464,7 +27568,8 @@
   "rise",
   "marathon weekend warriors",
   "unstoppable",
-  "secret powers"
+  "secret powers",
+  "move my body"
  ],
  "ig_tendenze_riserva": [
   {
@@ -27475,38 +27580,17 @@
    "libreria": false
   },
   {
-   "audio_id": "791711906519334",
-   "title": "Fight (Instrumental)",
-   "display_artist": "Sugartapes",
-   "duration_in_ms": 125990,
+   "audio_id": "739108178545320",
+   "title": "Move My Body (Instrumental)",
+   "display_artist": "Ella Joy Meir",
+   "duration_in_ms": 114620,
    "libreria": true
   },
   {
-   "audio_id": "1629473460916415",
-   "title": "Fighter",
-   "display_artist": "Chela Rivas",
-   "duration_in_ms": 138800,
-   "libreria": true
-  },
-  {
-   "audio_id": "5890184931105352",
-   "title": "Gospel Hype",
-   "display_artist": "bbox",
-   "duration_in_ms": 210050,
-   "libreria": true
-  },
-  {
-   "audio_id": "845285864683880",
-   "title": "Rise Of The Brave",
-   "display_artist": "Daria Novo",
-   "duration_in_ms": 216086,
-   "libreria": true
-  },
-  {
-   "audio_id": "1391428169578763",
-   "title": "Secret Powers",
-   "display_artist": "Auralux",
-   "duration_in_ms": 61600,
+   "audio_id": "1494610041430613",
+   "title": "Weird Nights (feat. Dawson March)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 123540,
    "libreria": true
   }
  ]
