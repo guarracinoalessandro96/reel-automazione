@@ -26004,7 +26004,9 @@
      "ok": true,
      "id": "18110239829208062",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -26099,7 +26101,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "T9e_yiRa-k4"
+     "id": "T9e_yiRa-k4",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -26110,11 +26113,111 @@
    },
    "spinto": true,
    "testo": "Ogni passo, anche piccolo, è un passo verso la vita che voglio."
+  },
+  {
+   "quando": "2026-11-26T19:01",
+   "slot": "2026-11-26 20:00",
+   "video": "IMG_3790.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-531b9dd7",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 4.34,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.482
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 12,
+     "voce": "generale"
+    },
+    "frase_via": "aforisma",
+    "musica": "i_might_be_late_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione",
+     "frase": "aforisma"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 75,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 108,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.61,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.54,
+     "sfumatura": 0.4,
+     "viso": {
+      "corpo": 108,
+      "corpo_base": 108,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 13,
+      "y": 0.606
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 108,
+     "corpo_base": 108,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 13,
+     "y": 0.606
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:06"
+    },
+    "musica_meta": "energia_01.flac",
+    "musica_instagram": "We Rise In Peace - Mignon Geli [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Oi1DTEmhZJY"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18112500952901767",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Ogni giorno scelgo di essere una persona che si dà da fare."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-18 20:00",
   "2026-11-18 22:00",
   "2026-11-19 00:00",
   "2026-11-19 06:00",
@@ -26193,10 +26296,10 @@
   "2026-11-26 12:00",
   "2026-11-26 14:00",
   "2026-11-26 16:00",
-  "2026-11-26 18:00"
+  "2026-11-26 18:00",
+  "2026-11-26 20:00"
  ],
  "musica_recenti": [
-  "the_light_1.m4a",
   "the_road_to_mordor_1.m4a",
   "wrangle_the_crazy_1.m4a",
   "vibe_check_2.m4a",
@@ -26255,7 +26358,8 @@
   "mirror_mirror_2.m4a",
   "turn_in_the_sun_3.m4a",
   "break_ya_neck_3.m4a",
-  "ego_chall_1.m4a"
+  "ego_chall_1.m4a",
+  "i_might_be_late_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -26745,15 +26849,16 @@
   "MIE-8a89f479",
   "MIE-e62b9617",
   "MIE-7e7899e8",
-  "MIE-aabcbf43"
+  "MIE-aabcbf43",
+  "MIE-531b9dd7"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -26878,8 +26983,8 @@
    "orizzontale": false
   },
   "1667Zix1tBrgfPEpOlI9dHiGVISZp0i8L": {
-   "usi": 5,
-   "ultimo": "2026-11-19",
+   "usi": 6,
+   "ultimo": "2026-11-26",
    "orizzontale": false
   },
   "1pehUAXM-ECFcfP-KX5ZvviOGvc64zvgA": {
@@ -27490,7 +27595,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_13.flac",
   "deciso_07.flac",
   "phonk_05.flac",
   "trap_05.flac",
@@ -27509,7 +27613,8 @@
   "phonk_12.flac",
   "energia_05.flac",
   "deciso_05.flac",
-  "trap_15.flac"
+  "trap_15.flac",
+  "energia_01.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -27544,7 +27649,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -27560,7 +27665,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "887391107399210",
   "930354837134154",
   "665857722143060",
   "867574485949511",
@@ -27619,11 +27723,11 @@
   "981510330704369",
   "1391428169578763",
   "739108178545320",
-  "971529610468450"
+  "971529610468450",
+  "256140930133248"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Ross Lara",
   "LAVLO",
   "Afterlight",
   "Abby Posner",
@@ -27632,10 +27736,10 @@
   "Dhruv Goel",
   "Auralux",
   "Ella Joy Meir",
-  "Giulio Cercato"
+  "Giulio Cercato",
+  "Mignon Geli"
  ],
  "ig_titoli_recenti": [
-  "sparks fly",
   "big leagues",
   "keep climbing",
   "reflect and rise",
@@ -27674,7 +27778,8 @@
   "unstoppable",
   "secret powers",
   "move my body",
-  "soul on fire"
+  "soul on fire",
+  "we rise in peace"
  ],
  "ig_tendenze_riserva": [
   {
@@ -27685,38 +27790,52 @@
    "libreria": false
   },
   {
-   "audio_id": "1463029071233766",
-   "title": "Win The Game (feat. Barbasauce)",
-   "display_artist": "Neko Fuzz",
-   "duration_in_ms": 177260,
+   "audio_id": "1095672702230210",
+   "title": "Call Of The Climb",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 142290,
    "libreria": true
   },
   {
-   "audio_id": "2056751264850857",
-   "title": "Fight",
-   "display_artist": "Sugartapes",
-   "duration_in_ms": 126896,
+   "audio_id": "1434272665396478",
+   "title": "Don't Move",
+   "display_artist": "Summer Islands",
+   "duration_in_ms": 56050,
    "libreria": true
   },
   {
-   "audio_id": "1204148475203672",
-   "title": "Careful Believer",
-   "display_artist": "Auralux",
-   "duration_in_ms": 62684,
+   "audio_id": "1535317628245876",
+   "title": "Move Along",
+   "display_artist": "Izzy Strigel",
+   "duration_in_ms": 60000,
    "libreria": true
   },
   {
-   "audio_id": "702088267960095",
-   "title": "I Am The Fire",
-   "display_artist": "Daria Novo",
-   "duration_in_ms": 182266,
+   "audio_id": "1352337306404213",
+   "title": "Redux (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 243803,
    "libreria": true
   },
   {
-   "audio_id": "971529610468450",
-   "title": "Soul On Fire",
+   "audio_id": "256140930133248",
+   "title": "We Rise In Peace",
+   "display_artist": "Mignon Geli",
+   "duration_in_ms": 209731,
+   "libreria": true
+  },
+  {
+   "audio_id": "3679159392392793",
+   "title": "Luxe Motion",
    "display_artist": "Giulio Cercato",
-   "duration_in_ms": 142492,
+   "duration_in_ms": 112680,
+   "libreria": true
+  },
+  {
+   "audio_id": "1587323168468356",
+   "title": "Go Go Go",
+   "display_artist": "Company Money",
+   "duration_in_ms": 116330,
    "libreria": true
   }
  ]
