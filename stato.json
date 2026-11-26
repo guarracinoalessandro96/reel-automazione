@@ -26212,7 +26212,9 @@
      "ok": true,
      "id": "18112500952901767",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -26307,7 +26309,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "TO0mi69_yMk"
+     "id": "TO0mi69_yMk",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -26318,11 +26321,111 @@
    },
    "spinto": true,
    "testo": "Non c'è niente di più forte di uno che ha deciso di farcela."
+  },
+  {
+   "quando": "2026-11-26T23:00",
+   "slot": "2026-11-27 00:00",
+   "video": "IMG_3815.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-eed67faf",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 23.73,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.44
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 13,
+     "voce": "io"
+    },
+    "frase_via": "nessun_aforisma",
+    "musica": "the_road_to_mordor_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione",
+     "frase": "aforisma"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 103,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 90,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.5,
+     "righe": 2,
+     "scene_intatte": 0,
+     "scurito": 0.49,
+     "sfumatura": 0.36,
+     "viso": {
+      "corpo": 90,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 2,
+      "scala": 0.841,
+      "visi": 5,
+      "y": 0.767
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 90,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 2,
+     "rilevatore": "yunet+haar",
+     "scala": 0.841,
+     "visi": 5,
+     "y": 0.767
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:06"
+    },
+    "musica_meta": "drive_13.flac",
+    "musica_instagram": "To The Heroes - Vestevent [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "D7knM_oT63c"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18039205421851062",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non sto cercando di essere il migliore. Sto cercando di non fermarmi mai."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-19 00:00",
   "2026-11-19 06:00",
   "2026-11-19 08:00",
   "2026-11-19 10:00",
@@ -26401,10 +26504,10 @@
   "2026-11-26 16:00",
   "2026-11-26 18:00",
   "2026-11-26 20:00",
-  "2026-11-26 22:00"
+  "2026-11-26 22:00",
+  "2026-11-27 00:00"
  ],
  "musica_recenti": [
-  "wrangle_the_crazy_1.m4a",
   "vibe_check_2.m4a",
   "taking_flight_1.m4a",
   "dusty_road_magic_2.m4a",
@@ -26463,7 +26566,8 @@
   "break_ya_neck_3.m4a",
   "ego_chall_1.m4a",
   "i_might_be_late_3.m4a",
-  "visions_3.m4a"
+  "visions_3.m4a",
+  "the_road_to_mordor_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -26955,13 +27059,14 @@
   "MIE-7e7899e8",
   "MIE-aabcbf43",
   "MIE-531b9dd7",
-  "MIE-3eb03041"
+  "MIE-3eb03041",
+  "MIE-eed67faf"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -27157,8 +27262,8 @@
    "ultimo": "2026-10-31"
   },
   "1vOgmkuZ-zKENaS1fagQc3J6w_396E-JX": {
-   "usi": 5,
-   "ultimo": "2026-11-19",
+   "usi": 6,
+   "ultimo": "2026-11-26",
    "orizzontale": false
   },
   "1fKbWVgrVrxr5Ecx1pZo_uFBf-CoX_0G5": {
@@ -27700,7 +27805,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_05.flac",
   "trap_05.flac",
   "deciso_03.flac",
   "phonk_16.flac",
@@ -27719,7 +27823,8 @@
   "deciso_05.flac",
   "trap_15.flac",
   "energia_01.flac",
-  "phonk_10.flac"
+  "phonk_10.flac",
+  "drive_13.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -27754,7 +27859,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -27770,7 +27875,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "665857722143060",
   "867574485949511",
   "663866025342759",
   "1267635733842081",
@@ -27829,11 +27933,11 @@
   "739108178545320",
   "971529610468450",
   "256140930133248",
-  "2754720771336314"
+  "2754720771336314",
+  "28115832308013413"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Afterlight",
   "Abby Posner",
   "Jumbo",
   "Lyle Workman",
@@ -27842,10 +27946,10 @@
   "Ella Joy Meir",
   "Giulio Cercato",
   "Mignon Geli",
-  "Golden Braid Productions"
+  "Golden Braid Productions",
+  "Vestevent"
  ],
  "ig_titoli_recenti": [
-  "keep climbing",
   "reflect and rise",
   "something s in the movement",
   "in motion",
@@ -27884,7 +27988,8 @@
   "move my body",
   "soul on fire",
   "we rise in peace",
-  "desert fire"
+  "desert fire",
+  "to the heroes"
  ],
  "ig_tendenze_riserva": [
   {
@@ -27895,24 +28000,17 @@
    "libreria": false
   },
   {
-   "audio_id": "2754720771336314",
-   "title": "Desert Fire",
-   "display_artist": "Golden Braid Productions",
-   "duration_in_ms": 194550,
+   "audio_id": "1520634330105846",
+   "title": "Good Run",
+   "display_artist": "Fellow Travelers",
+   "duration_in_ms": 60060,
    "libreria": true
   },
   {
-   "audio_id": "1213574510462329",
-   "title": "Blurred Motion",
-   "display_artist": "Flow Loris",
-   "duration_in_ms": 136413,
-   "libreria": true
-  },
-  {
-   "audio_id": "529367193511753",
-   "title": "Move Like This",
-   "display_artist": "TRC Orchestral, Vestevent",
-   "duration_in_ms": 74695,
+   "audio_id": "28115832308013413",
+   "title": "To The Heroes",
+   "display_artist": "Vestevent",
+   "duration_in_ms": 64510,
    "libreria": true
   }
  ]
