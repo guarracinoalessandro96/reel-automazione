@@ -25480,7 +25480,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "UyfWCcWUBzI"
+     "id": "UyfWCcWUBzI",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -25491,11 +25492,110 @@
    },
    "spinto": true,
    "testo": "Tutti parlano di quanto sia difficile chiudere i rapporti, ma nessuno parla di quanto sia difficile prendere una decisio"
+  },
+  {
+   "quando": "2026-11-26T07:00",
+   "slot": "2026-11-26 08:00",
+   "video": "IMG_4121.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-c2d2f81f",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 58.71,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.167
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 38,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "fire_in_the_sky_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 215,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.44,
+     "righe": 9,
+     "scene_intatte": 0,
+     "scurito": 0.52,
+     "sfumatura": 0.33,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "centro",
+      "righe": 9,
+      "scala": 1.0,
+      "visi": 28,
+      "y": 0.47
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 27,
+     "con_viso_yunet": 27,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       19.0,
+       7.0
+      ]
+     ],
+     "posizione": "centro",
+     "righe": 9,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 28,
+     "y": 0.47
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:04"
+    },
+    "musica_meta": "energia_11.flac",
+    "musica_instagram": "Rise (feat. Plum Soul) - Jumbo [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "EXb2faqWuWM"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18148513657593298",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "E comunque, hai mai conosciuto una persona che è letteralmente un raggio di sole? Una di quelle persone che, ogni volta "
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-18 08:00",
   "2026-11-18 10:00",
   "2026-11-18 12:00",
   "2026-11-18 14:00",
@@ -25574,10 +25674,10 @@
   "2026-11-25 20:00",
   "2026-11-25 22:00",
   "2026-11-26 00:00",
-  "2026-11-26 06:00"
+  "2026-11-26 06:00",
+  "2026-11-26 08:00"
  ],
  "musica_recenti": [
-  "turn_in_the_sun_2.m4a",
   "fire_in_the_sky_1.m4a",
   "ego_chall_2.m4a",
   "mirror_mirror_1.m4a",
@@ -25636,7 +25736,8 @@
   "van_life_rager_3.m4a",
   "majestic_12_3.m4a",
   "cutscene_crush_3.m4a",
-  "way_back_home_2.m4a"
+  "way_back_home_2.m4a",
+  "fire_in_the_sky_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -26120,7 +26221,8 @@
   "MIE-9b19a69c",
   "MIE-370a0ba6",
   "MIE-7c063c1b",
-  "MIE-58a977d3"
+  "MIE-58a977d3",
+  "MIE-c2d2f81f"
  ],
  "temi_recenti": [
   "mentalita",
@@ -26579,8 +26681,8 @@
    "ultimo": "2026-10-26"
   },
   "1Ec9__ctnSkN9Cj2-_GnGAOPpY6a3V57S": {
-   "usi": 5,
-   "ultimo": "2026-11-18",
+   "usi": 6,
+   "ultimo": "2026-11-26",
    "orizzontale": false
   },
   "1-ciPqgzhDOKWA7FElGzwRc9htypB_2u3": {
@@ -26865,7 +26967,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_14.flac",
   "phonk_10.flac",
   "trap_08.flac",
   "drive_12.flac",
@@ -26884,7 +26985,8 @@
   "trap_02.flac",
   "deciso_11.flac",
   "phonk_11.flac",
-  "drive_08.flac"
+  "drive_08.flac",
+  "energia_11.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -26919,7 +27021,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -26935,7 +27037,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "5301582899854512",
   "1274149560124013",
   "1145314397662753",
   "849342490718599",
@@ -26994,11 +27095,11 @@
   "1083157182908914",
   "28473683348895849",
   "28748477811406397",
-  "800297207899385"
+  "800297207899385",
+  "269408148764736"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "stereogully",
   "Fellow Travelers",
   "Giulio Cercato",
   "Mike Block",
@@ -27007,10 +27108,10 @@
   "Ross Lara",
   "LAVLO",
   "Afterlight",
-  "Abby Posner"
+  "Abby Posner",
+  "Jumbo"
  ],
  "ig_titoli_recenti": [
-  "making moves",
   "move",
   "victory lap",
   "vice city",
@@ -27049,7 +27150,8 @@
   "immersive fire",
   "rise up",
   "you can do this",
-  "heros journey"
+  "heros journey",
+  "rise"
  ],
  "ig_tendenze_riserva": [
   {
@@ -27060,45 +27162,59 @@
    "libreria": false
   },
   {
-   "audio_id": "800297207899385",
-   "title": "Heros Journey",
-   "display_artist": "Abby Posner",
-   "duration_in_ms": 149047,
+   "audio_id": "1428954698111653",
+   "title": "In Motion",
+   "display_artist": "Lance Taber",
+   "duration_in_ms": 152940,
    "libreria": true
   },
   {
-   "audio_id": "2234284524030237",
-   "title": "Move Ya Body",
-   "display_artist": "Lightbox Music",
-   "duration_in_ms": 64587,
+   "audio_id": "2818493204964733",
+   "title": "Marathon Weekend Warriors",
+   "display_artist": "Lyle Workman",
+   "duration_in_ms": 251290,
    "libreria": true
   },
   {
-   "audio_id": "1099523865724351",
-   "title": "Out Of Mind (feat. My City Glory) (Instrumental)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 144494,
+   "audio_id": "594550719516913",
+   "title": "Superhero Origin Story",
+   "display_artist": "Global Genius",
+   "duration_in_ms": 171114,
    "libreria": true
   },
   {
-   "audio_id": "1781233772812838",
-   "title": "Epic Thoughts",
-   "display_artist": "JB Eckl",
-   "duration_in_ms": 192818,
+   "audio_id": "4279708355594989",
+   "title": "In Motion",
+   "display_artist": "Sam Marshall",
+   "duration_in_ms": 188848,
    "libreria": true
   },
   {
-   "audio_id": "646173398313799",
-   "title": "Move It Or Lose It",
-   "display_artist": "Otis McDonald",
-   "duration_in_ms": 166370,
+   "audio_id": "269408148764736",
+   "title": "Rise (feat. Plum Soul)",
+   "display_artist": "Jumbo",
+   "duration_in_ms": 210050,
    "libreria": true
   },
   {
-   "audio_id": "920880257688447",
-   "title": "Heroes",
+   "audio_id": "9513789255356881",
+   "title": "Power On (Instrumental)",
    "display_artist": "Giulio Cercato",
-   "duration_in_ms": 52430,
+   "duration_in_ms": 116549,
+   "libreria": true
+  },
+  {
+   "audio_id": "1355704320005214",
+   "title": "Hips Betta Move",
+   "display_artist": "cloud cover",
+   "duration_in_ms": 63924,
+   "libreria": true
+  },
+  {
+   "audio_id": "1281077456837490",
+   "title": "Move It",
+   "display_artist": "half.cool",
+   "duration_in_ms": 160214,
    "libreria": true
   }
  ]
