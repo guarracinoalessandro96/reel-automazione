@@ -25900,7 +25900,9 @@
      "ok": true,
      "id": "18116048725895982",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -25995,7 +25997,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "sdOmyHGUeTY"
+     "id": "sdOmyHGUeTY",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -26006,11 +26009,111 @@
    },
    "spinto": true,
    "testo": "Chi si dà da fare trova sempre una strada. Chi no, trova sempre una scusa."
+  },
+  {
+   "quando": "2026-11-26T17:01",
+   "slot": "2026-11-26 18:00",
+   "video": "IMG_3800.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "MIE-aabcbf43",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 4.81,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.525
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 12,
+     "voce": "io"
+    },
+    "frase_via": "classifica",
+    "musica": "ego_chall_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione",
+     "frase": "classifica"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 93,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.6,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.53,
+     "sfumatura": 0.4,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 6,
+      "y": 0.616
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 6,
+     "y": 0.616
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:03"
+    },
+    "musica_meta": "trap_15.flac",
+    "musica_instagram": "Soul On Fire - Giulio Cercato [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "T9e_yiRa-k4"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18139270735789829",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Ogni passo, anche piccolo, è un passo verso la vita che voglio."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-18 18:00",
   "2026-11-18 20:00",
   "2026-11-18 22:00",
   "2026-11-19 00:00",
@@ -26089,10 +26192,10 @@
   "2026-11-26 10:00",
   "2026-11-26 12:00",
   "2026-11-26 14:00",
-  "2026-11-26 16:00"
+  "2026-11-26 16:00",
+  "2026-11-26 18:00"
  ],
  "musica_recenti": [
-  "delirium_3.m4a",
   "the_light_1.m4a",
   "the_road_to_mordor_1.m4a",
   "wrangle_the_crazy_1.m4a",
@@ -26151,7 +26254,8 @@
   "sweaty_staredown_1.m4a",
   "mirror_mirror_2.m4a",
   "turn_in_the_sun_3.m4a",
-  "break_ya_neck_3.m4a"
+  "break_ya_neck_3.m4a",
+  "ego_chall_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -26640,7 +26744,8 @@
   "MIE-99e0ae54",
   "MIE-8a89f479",
   "MIE-e62b9617",
-  "MIE-7e7899e8"
+  "MIE-7e7899e8",
+  "MIE-aabcbf43"
  ],
  "temi_recenti": [
   "mentalita",
@@ -26648,8 +26753,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -26768,8 +26873,8 @@
    "orizzontale": false
   },
   "1hvbjqvKs_ADW2bi_kJP0H1fxpKUzd-nq": {
-   "usi": 5,
-   "ultimo": "2026-11-19",
+   "usi": 6,
+   "ultimo": "2026-11-26",
    "orizzontale": false
   },
   "1667Zix1tBrgfPEpOlI9dHiGVISZp0i8L": {
@@ -27385,7 +27490,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_16.flac",
   "drive_13.flac",
   "deciso_07.flac",
   "phonk_05.flac",
@@ -27404,7 +27508,8 @@
   "trap_13.flac",
   "phonk_12.flac",
   "energia_05.flac",
-  "deciso_05.flac"
+  "deciso_05.flac",
+  "trap_15.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -27439,7 +27544,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -27455,7 +27560,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1108285910189784",
   "887391107399210",
   "930354837134154",
   "665857722143060",
@@ -27514,11 +27618,11 @@
   "2818493204964733",
   "981510330704369",
   "1391428169578763",
-  "739108178545320"
+  "739108178545320",
+  "971529610468450"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Neko Fuzz",
   "Ross Lara",
   "LAVLO",
   "Afterlight",
@@ -27527,10 +27631,10 @@
   "Lyle Workman",
   "Dhruv Goel",
   "Auralux",
-  "Ella Joy Meir"
+  "Ella Joy Meir",
+  "Giulio Cercato"
  ],
  "ig_titoli_recenti": [
-  "energy",
   "sparks fly",
   "big leagues",
   "keep climbing",
@@ -27569,7 +27673,8 @@
   "marathon weekend warriors",
   "unstoppable",
   "secret powers",
-  "move my body"
+  "move my body",
+  "soul on fire"
  ],
  "ig_tendenze_riserva": [
   {
@@ -27580,17 +27685,38 @@
    "libreria": false
   },
   {
-   "audio_id": "739108178545320",
-   "title": "Move My Body (Instrumental)",
-   "display_artist": "Ella Joy Meir",
-   "duration_in_ms": 114620,
+   "audio_id": "1463029071233766",
+   "title": "Win The Game (feat. Barbasauce)",
+   "display_artist": "Neko Fuzz",
+   "duration_in_ms": 177260,
    "libreria": true
   },
   {
-   "audio_id": "1494610041430613",
-   "title": "Weird Nights (feat. Dawson March)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 123540,
+   "audio_id": "2056751264850857",
+   "title": "Fight",
+   "display_artist": "Sugartapes",
+   "duration_in_ms": 126896,
+   "libreria": true
+  },
+  {
+   "audio_id": "1204148475203672",
+   "title": "Careful Believer",
+   "display_artist": "Auralux",
+   "duration_in_ms": 62684,
+   "libreria": true
+  },
+  {
+   "audio_id": "702088267960095",
+   "title": "I Am The Fire",
+   "display_artist": "Daria Novo",
+   "duration_in_ms": 182266,
+   "libreria": true
+  },
+  {
+   "audio_id": "971529610468450",
+   "title": "Soul On Fire",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 142492,
    "libreria": true
   }
  ]
