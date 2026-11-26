@@ -26108,7 +26108,9 @@
      "ok": true,
      "id": "18139270735789829",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -26203,7 +26205,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "Oi1DTEmhZJY"
+     "id": "Oi1DTEmhZJY",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -26214,11 +26217,111 @@
    },
    "spinto": true,
    "testo": "Ogni giorno scelgo di essere una persona che si dà da fare."
+  },
+  {
+   "quando": "2026-11-26T21:00",
+   "slot": "2026-11-26 22:00",
+   "video": "IMG_3794.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-3eb03041",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 15.15,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 13,
+     "voce": "generale"
+    },
+    "frase_via": "aforisma",
+    "musica": "visions_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso",
+     "frase": "aforisma"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 81,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 101,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.48,
+     "righe": 2,
+     "scene_intatte": 0,
+     "scurito": 0.48,
+     "sfumatura": 0.35,
+     "viso": {
+      "corpo": 101,
+      "corpo_base": 101,
+      "posizione": "centro",
+      "righe": 2,
+      "scala": 1.0,
+      "visi": 34,
+      "y": 0.47
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 101,
+     "corpo_base": 101,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "centro",
+     "righe": 2,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 34,
+     "y": 0.47
+    },
+    "viso_prima_scena": 3,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:02"
+    },
+    "musica_meta": "phonk_10.flac",
+    "musica_instagram": "Desert Fire - Golden Braid Productions [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "TO0mi69_yMk"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17926495020452074",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non c'è niente di più forte di uno che ha deciso di farcela."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-18 22:00",
   "2026-11-19 00:00",
   "2026-11-19 06:00",
   "2026-11-19 08:00",
@@ -26297,10 +26400,10 @@
   "2026-11-26 14:00",
   "2026-11-26 16:00",
   "2026-11-26 18:00",
-  "2026-11-26 20:00"
+  "2026-11-26 20:00",
+  "2026-11-26 22:00"
  ],
  "musica_recenti": [
-  "the_road_to_mordor_1.m4a",
   "wrangle_the_crazy_1.m4a",
   "vibe_check_2.m4a",
   "taking_flight_1.m4a",
@@ -26359,7 +26462,8 @@
   "turn_in_the_sun_3.m4a",
   "break_ya_neck_3.m4a",
   "ego_chall_1.m4a",
-  "i_might_be_late_3.m4a"
+  "i_might_be_late_3.m4a",
+  "visions_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -26850,14 +26954,15 @@
   "MIE-e62b9617",
   "MIE-7e7899e8",
   "MIE-aabcbf43",
-  "MIE-531b9dd7"
+  "MIE-531b9dd7",
+  "MIE-3eb03041"
  ],
  "temi_recenti": [
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -26998,8 +27103,8 @@
    "orizzontale": false
   },
   "1fiTj8eVYumSNhYT3V8Few0omcOH62Olm": {
-   "usi": 5,
-   "ultimo": "2026-11-19",
+   "usi": 6,
+   "ultimo": "2026-11-26",
    "orizzontale": false
   },
   "1PQ4fQcv7i5uxq-1id98LKGmYVNXmunzk": {
@@ -27595,7 +27700,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_07.flac",
   "phonk_05.flac",
   "trap_05.flac",
   "deciso_03.flac",
@@ -27614,7 +27718,8 @@
   "energia_05.flac",
   "deciso_05.flac",
   "trap_15.flac",
-  "energia_01.flac"
+  "energia_01.flac",
+  "phonk_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -27649,7 +27754,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -27665,7 +27770,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "930354837134154",
   "665857722143060",
   "867574485949511",
   "663866025342759",
@@ -27724,11 +27828,11 @@
   "1391428169578763",
   "739108178545320",
   "971529610468450",
-  "256140930133248"
+  "256140930133248",
+  "2754720771336314"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "LAVLO",
   "Afterlight",
   "Abby Posner",
   "Jumbo",
@@ -27737,10 +27841,10 @@
   "Auralux",
   "Ella Joy Meir",
   "Giulio Cercato",
-  "Mignon Geli"
+  "Mignon Geli",
+  "Golden Braid Productions"
  ],
  "ig_titoli_recenti": [
-  "big leagues",
   "keep climbing",
   "reflect and rise",
   "something s in the movement",
@@ -27779,7 +27883,8 @@
   "secret powers",
   "move my body",
   "soul on fire",
-  "we rise in peace"
+  "we rise in peace",
+  "desert fire"
  ],
  "ig_tendenze_riserva": [
   {
@@ -27790,52 +27895,24 @@
    "libreria": false
   },
   {
-   "audio_id": "1095672702230210",
-   "title": "Call Of The Climb",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 142290,
+   "audio_id": "2754720771336314",
+   "title": "Desert Fire",
+   "display_artist": "Golden Braid Productions",
+   "duration_in_ms": 194550,
    "libreria": true
   },
   {
-   "audio_id": "1434272665396478",
-   "title": "Don't Move",
-   "display_artist": "Summer Islands",
-   "duration_in_ms": 56050,
+   "audio_id": "1213574510462329",
+   "title": "Blurred Motion",
+   "display_artist": "Flow Loris",
+   "duration_in_ms": 136413,
    "libreria": true
   },
   {
-   "audio_id": "1535317628245876",
-   "title": "Move Along",
-   "display_artist": "Izzy Strigel",
-   "duration_in_ms": 60000,
-   "libreria": true
-  },
-  {
-   "audio_id": "1352337306404213",
-   "title": "Redux (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 243803,
-   "libreria": true
-  },
-  {
-   "audio_id": "256140930133248",
-   "title": "We Rise In Peace",
-   "display_artist": "Mignon Geli",
-   "duration_in_ms": 209731,
-   "libreria": true
-  },
-  {
-   "audio_id": "3679159392392793",
-   "title": "Luxe Motion",
-   "display_artist": "Giulio Cercato",
-   "duration_in_ms": 112680,
-   "libreria": true
-  },
-  {
-   "audio_id": "1587323168468356",
-   "title": "Go Go Go",
-   "display_artist": "Company Money",
-   "duration_in_ms": 116330,
+   "audio_id": "529367193511753",
+   "title": "Move Like This",
+   "display_artist": "TRC Orchestral, Vestevent",
+   "duration_in_ms": 74695,
    "libreria": true
   }
  ]
