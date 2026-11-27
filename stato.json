@@ -26523,7 +26523,9 @@
      "ok": true,
      "id": "18202995445381720",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -26620,7 +26622,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "pTMBcpGsf-I"
+     "id": "pTMBcpGsf-I",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -26631,11 +26634,113 @@
    },
    "spinto": true,
    "testo": "Vincere nella vita non è una fortuna. È una scelta che rifai ogni giorno."
+  },
+  {
+   "quando": "2026-11-27T09:00",
+   "slot": "2026-11-27 10:00",
+   "video": "IMG_3952.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-8916ea93",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 2.15,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 13,
+     "voce": "io"
+    },
+    "frase_via": "nessun_aforisma",
+    "musica": "taking_flight_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso",
+     "frase": "aforisma"
+    },
+    "ripiego_da": "dieci",
+    "scritta": "centro_serif",
+    "secondi_montaggio": 124,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.42,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.39,
+     "sfumatura": 0.32,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "centro",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 17,
+      "y": 0.47
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "altro_video": "extra_0.mov",
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "centro",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 17,
+     "y": 0.47
+    },
+    "viso_prima_scena": 3,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:06"
+    },
+    "musica_meta": "phonk_02.flac",
+    "musica_instagram": "Voices Of Victory (feat. Plum Soul) - Jumbo"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "Wsg2CZYf7Kc"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18093409844308156",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Ogni sera mi chiedo: ho fatto abbastanza oggi? E domani faccio di più."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-19 10:00",
   "2026-11-19 12:00",
   "2026-11-19 14:00",
   "2026-11-19 16:00",
@@ -26714,10 +26819,10 @@
   "2026-11-26 22:00",
   "2026-11-27 00:00",
   "2026-11-27 06:00",
-  "2026-11-27 08:00"
+  "2026-11-27 08:00",
+  "2026-11-27 10:00"
  ],
  "musica_recenti": [
-  "dusty_road_magic_2.m4a",
   "cartier_3.m4a",
   "intergalactic_2.m4a",
   "whoop_3.m4a",
@@ -26776,7 +26881,8 @@
   "visions_3.m4a",
   "the_road_to_mordor_2.m4a",
   "wrangle_the_crazy_3.m4a",
-  "delirium_1.m4a"
+  "delirium_1.m4a",
+  "taking_flight_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -27271,10 +27377,11 @@
   "MIE-3eb03041",
   "MIE-eed67faf",
   "MIE-72a11d64",
-  "MIE-e630b80f"
+  "MIE-e630b80f",
+  "MIE-8916ea93"
  ],
  "temi_recenti": [
-  "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -27542,8 +27649,8 @@
    "orizzontale": false
   },
   "1psghsoVp3I-dU4RMW8CuX7jIIkUpjvLc": {
-   "usi": 5,
-   "ultimo": "2026-11-19",
+   "usi": 6,
+   "ultimo": "2026-11-27",
    "orizzontale": false
   },
   "1KrAS_uFNheClKfLJbtUvGGJ16dNqCs2z": {
@@ -28016,7 +28123,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_16.flac",
   "energia_06.flac",
   "deciso_09.flac",
   "drive_16.flac",
@@ -28035,7 +28141,8 @@
   "phonk_10.flac",
   "drive_13.flac",
   "energia_07.flac",
-  "deciso_10.flac"
+  "deciso_10.flac",
+  "phonk_02.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -28070,7 +28177,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -28086,7 +28193,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1267635733842081",
   "1124230547275731",
   "397890202830542",
   "727931292858890",
@@ -28145,11 +28251,11 @@
   "2754720771336314",
   "28115832308013413",
   "601112655997356",
-  "565118654020261"
+  "565118654020261",
+  "1030263145726523"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Lyle Workman",
   "Dhruv Goel",
   "Auralux",
   "Ella Joy Meir",
@@ -28158,10 +28264,10 @@
   "Golden Braid Productions",
   "Vestevent",
   "Ross Lara",
-  "Global Genius"
+  "Global Genius",
+  "Jumbo"
  ],
  "ig_titoli_recenti": [
-  "in motion",
   "voce me deixa",
   "running",
   "beast",
@@ -28200,7 +28306,8 @@
   "desert fire",
   "to the heroes",
   "orbiting",
-  "inspired to shine"
+  "inspired to shine",
+  "voices of victory"
  ],
  "ig_tendenze_riserva": [
   {
@@ -28218,10 +28325,17 @@
    "libreria": true
   },
   {
-   "audio_id": "2065054100581983",
-   "title": "Run",
-   "display_artist": "Jumbo",
-   "duration_in_ms": 68050,
+   "audio_id": "1587323168468356",
+   "title": "Go Go Go",
+   "display_artist": "Company Money",
+   "duration_in_ms": 116330,
+   "libreria": true
+  },
+  {
+   "audio_id": "1386871190037063",
+   "title": "Running",
+   "display_artist": "Summer Islands",
+   "duration_in_ms": 70064,
    "libreria": true
   }
  ]
