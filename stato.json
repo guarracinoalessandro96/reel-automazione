@@ -27050,7 +27050,9 @@
      "ok": true,
      "id": "17960834313278835",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -27146,7 +27148,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "0J1d0SJEOEk"
+     "id": "0J1d0SJEOEk",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -27157,11 +27160,111 @@
    },
    "spinto": true,
    "testo": "Smetti di cercare di piacere a tutti, non ti piacciono nemmeno tutti."
+  },
+  {
+   "quando": "2026-11-27T19:01",
+   "slot": "2026-11-27 20:00",
+   "video": "IMG_3905.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "macchina",
+   "registrato": null,
+   "frase": "MIE-8fd01c7c",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 18.55,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.433
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 9,
+     "voce": "io"
+    },
+    "frase_via": "nessun_aforisma",
+    "musica": "locked_in_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso",
+     "frase": "aforisma"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 77,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 93,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.59,
+     "righe": 2,
+     "scene_intatte": 0,
+     "scurito": 0.57,
+     "sfumatura": 0.4,
+     "viso": {
+      "corpo": 93,
+      "corpo_base": 110,
+      "posizione": "basso",
+      "righe": 2,
+      "scala": 0.845,
+      "visi": 4,
+      "y": 0.757
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 93,
+     "corpo_base": 110,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 2,
+     "rilevatore": "yunet+haar",
+     "scala": 0.845,
+     "visi": 4,
+     "y": 0.757
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:02"
+    },
+    "musica_meta": "drive_14.flac",
+    "musica_instagram": "Join The Movement - Afterlight [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "DQhrKQ_idkc"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17958960348326768",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Non mi accontento. Voglio vedere fin dove posso arrivare."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-19 20:00",
   "2026-11-19 22:00",
   "2026-11-20 00:00",
   "2026-11-20 06:00",
@@ -27240,10 +27343,10 @@
   "2026-11-27 12:00",
   "2026-11-27 14:00",
   "2026-11-27 16:00",
-  "2026-11-27 18:00"
+  "2026-11-27 18:00",
+  "2026-11-27 20:00"
  ],
  "musica_recenti": [
-  "horizons_3.m4a",
   "locked_in_2.m4a",
   "rubberband_1.m4a",
   "moon_vision_2.m4a",
@@ -27302,7 +27405,8 @@
   "the_light_2.m4a",
   "cartier_2.m4a",
   "intergalactic_1.m4a",
-  "whoop_2.m4a"
+  "whoop_2.m4a",
+  "locked_in_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -27802,7 +27906,8 @@
   "MIE-55aba2c8",
   "MIE-7542e75f",
   "MIE-21ba240b",
-  "MIE-86754336"
+  "MIE-86754336",
+  "MIE-8fd01c7c"
  ],
  "temi_recenti": [
   "mentalita",
@@ -27810,8 +27915,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita"
@@ -28048,8 +28153,8 @@
    "ultimo": "2026-11-01"
   },
   "1Pnwa-lAv7b6BxxAB-L0Kp3azuB15R43F": {
-   "usi": 5,
-   "ultimo": "2026-11-20",
+   "usi": 6,
+   "ultimo": "2026-11-27",
    "orizzontale": false
   },
   "1H_I6VC3vZgQwOjIWlcuhjr4OiNQ3Fpvl": {
@@ -28547,7 +28652,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_02.flac",
   "deciso_11.flac",
   "phonk_11.flac",
   "drive_08.flac",
@@ -28566,7 +28670,8 @@
   "drive_04.flac",
   "energia_06.flac",
   "deciso_06.flac",
-  "phonk_06.flac"
+  "phonk_06.flac",
+  "drive_14.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -28601,7 +28706,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -28617,7 +28722,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "702088267960095",
   "604290701766493",
   "387139071011986",
   "3808630162610430",
@@ -28676,11 +28780,11 @@
   "5890184931105352",
   "562869749636642",
   "620334183626298",
-  "663866025342759"
+  "663866025342759",
+  "1716216946466764"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Mignon Geli",
   "Golden Braid Productions",
   "Vestevent",
   "Ross Lara",
@@ -28689,10 +28793,10 @@
   "bbox",
   "The K Club",
   "Tony Dark Eyes",
-  "Julia Gartha"
+  "Julia Gartha",
+  "Afterlight"
  ],
  "ig_titoli_recenti": [
-  "la marche des commis voyageurs",
   "coast",
   "sentimental motion",
   "breathtaker",
@@ -28731,7 +28835,8 @@
   "gospel hype",
   "club level",
   "epica",
-  "don t run from me"
+  "don t run from me",
+  "join the movement"
  ],
  "ig_tendenze_riserva": [
   {
@@ -28742,38 +28847,38 @@
    "libreria": false
   },
   {
-   "audio_id": "663866025342759",
-   "title": "Don't Run From Me",
-   "display_artist": "Julia Gartha",
-   "duration_in_ms": 132680,
+   "audio_id": "962542785866784",
+   "title": "What Heroes Do (Instrumental)",
+   "display_artist": "Sofie Tabesh",
+   "duration_in_ms": 217130,
    "libreria": true
   },
   {
-   "audio_id": "886249782709175",
-   "title": "March Of Libertad",
-   "display_artist": "Symphonic Planet",
-   "duration_in_ms": 236050,
+   "audio_id": "1716216946466764",
+   "title": "Join The Movement",
+   "display_artist": "Afterlight",
+   "duration_in_ms": 61611,
    "libreria": true
   },
   {
-   "audio_id": "1858297981729030",
-   "title": "Make A Move (Instrumental)",
-   "display_artist": "Global Genius",
-   "duration_in_ms": 178557,
+   "audio_id": "665857722143060",
+   "title": "Play To Win",
+   "display_artist": "Giulio Cercato",
+   "duration_in_ms": 107550,
    "libreria": true
   },
   {
-   "audio_id": "724855936571258",
-   "title": "Hidden Sun (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 158450,
+   "audio_id": "241840291972862",
+   "title": "Action Hero",
+   "display_artist": "Sam Marshall",
+   "duration_in_ms": 202751,
    "libreria": true
   },
   {
-   "audio_id": "1587323168468356",
-   "title": "Go Go Go",
-   "display_artist": "Company Money",
-   "duration_in_ms": 116330,
+   "audio_id": "933091696547992",
+   "title": "Rockstar Anthem (feat. YawnyBlew)",
+   "display_artist": "ill Think in ink",
+   "duration_in_ms": 144050,
    "libreria": true
   }
  ]
