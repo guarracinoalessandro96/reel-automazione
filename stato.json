@@ -26629,7 +26629,9 @@
      "ok": true,
      "id": "18124187257820031",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -26726,7 +26728,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "Wsg2CZYf7Kc"
+     "id": "Wsg2CZYf7Kc",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -26737,11 +26740,111 @@
    },
    "spinto": true,
    "testo": "Ogni sera mi chiedo: ho fatto abbastanza oggi? E domani faccio di più."
+  },
+  {
+   "quando": "2026-11-27T11:00",
+   "slot": "2026-11-27 12:00",
+   "video": "IMG_3830.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-55aba2c8",
+   "tema": "imprenditore",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 8.76,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.147
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 15,
+     "voce": "tu"
+    },
+    "frase_via": "classifica",
+    "musica": "the_light_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione",
+     "frase": "classifica"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 78,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.41,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.37,
+     "sfumatura": 0.31,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "centro",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 21,
+      "y": 0.47
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "centro",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 21,
+     "y": 0.47
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:06"
+    },
+    "musica_meta": "drive_04.flac",
+    "musica_instagram": "Gospel Hype - bbox [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "tDxWcvS98Gs"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18122161979109714",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Il lavoro di adesso è il regalo più grande che puoi fare al tuo futuro."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-19 12:00",
   "2026-11-19 14:00",
   "2026-11-19 16:00",
   "2026-11-19 18:00",
@@ -26820,10 +26923,10 @@
   "2026-11-27 00:00",
   "2026-11-27 06:00",
   "2026-11-27 08:00",
-  "2026-11-27 10:00"
+  "2026-11-27 10:00",
+  "2026-11-27 12:00"
  ],
  "musica_recenti": [
-  "cartier_3.m4a",
   "intergalactic_2.m4a",
   "whoop_3.m4a",
   "stake_out_2.m4a",
@@ -26882,7 +26985,8 @@
   "the_road_to_mordor_2.m4a",
   "wrangle_the_crazy_3.m4a",
   "delirium_1.m4a",
-  "taking_flight_2.m4a"
+  "taking_flight_2.m4a",
+  "the_light_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -27378,7 +27482,8 @@
   "MIE-eed67faf",
   "MIE-72a11d64",
   "MIE-e630b80f",
-  "MIE-8916ea93"
+  "MIE-8916ea93",
+  "MIE-55aba2c8"
  ],
  "temi_recenti": [
   "mentalita",
@@ -27390,7 +27495,7 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita"
+  "imprenditore"
  ],
  "analisi": {
   "1-XpSt4SspEfxthfpP3WOspSjVXChTq6f": {
@@ -27605,8 +27710,8 @@
    "orizzontale": false
   },
   "1xaei2HIO4jSmSPuSxzKQ0VLbkh-c4iJO": {
-   "usi": 5,
-   "ultimo": "2026-11-19",
+   "usi": 6,
+   "ultimo": "2026-11-27",
    "orizzontale": false
   },
   "10Y6I2Km1UMianq9Mqd4A_PibNK36A1KR": {
@@ -28123,7 +28228,6 @@
   }
  },
  "musica_recenti_meta": [
-  "energia_06.flac",
   "deciso_09.flac",
   "drive_16.flac",
   "phonk_08.flac",
@@ -28142,7 +28246,8 @@
   "drive_13.flac",
   "energia_07.flac",
   "deciso_10.flac",
-  "phonk_02.flac"
+  "phonk_02.flac",
+  "drive_04.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -28177,7 +28282,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -28193,7 +28298,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "1124230547275731",
   "397890202830542",
   "727931292858890",
   "2173371459664032",
@@ -28252,11 +28356,11 @@
   "28115832308013413",
   "601112655997356",
   "565118654020261",
-  "1030263145726523"
+  "1030263145726523",
+  "5890184931105352"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Dhruv Goel",
   "Auralux",
   "Ella Joy Meir",
   "Giulio Cercato",
@@ -28265,10 +28369,10 @@
   "Vestevent",
   "Ross Lara",
   "Global Genius",
-  "Jumbo"
+  "Jumbo",
+  "bbox"
  ],
  "ig_titoli_recenti": [
-  "voce me deixa",
   "running",
   "beast",
   "rock your world",
@@ -28307,7 +28411,8 @@
   "to the heroes",
   "orbiting",
   "inspired to shine",
-  "voices of victory"
+  "voices of victory",
+  "gospel hype"
  ],
  "ig_tendenze_riserva": [
   {
@@ -28318,24 +28423,24 @@
    "libreria": false
   },
   {
-   "audio_id": "1067193775733379",
-   "title": "Move",
-   "display_artist": "LAVLO",
-   "duration_in_ms": 57574,
+   "audio_id": "867574485949511",
+   "title": "Legends (Instrumental)",
+   "display_artist": "stereogully",
+   "duration_in_ms": 123840,
    "libreria": true
   },
   {
-   "audio_id": "1587323168468356",
-   "title": "Go Go Go",
-   "display_artist": "Company Money",
-   "duration_in_ms": 116330,
+   "audio_id": "878487453608490",
+   "title": "Legend Of Castle Bran",
+   "display_artist": "Brent Bourgeois",
+   "duration_in_ms": 152621,
    "libreria": true
   },
   {
-   "audio_id": "1386871190037063",
-   "title": "Running",
-   "display_artist": "Summer Islands",
-   "duration_in_ms": 70064,
+   "audio_id": "5890184931105352",
+   "title": "Gospel Hype",
+   "display_artist": "bbox",
+   "duration_in_ms": 210050,
    "libreria": true
   }
  ]
