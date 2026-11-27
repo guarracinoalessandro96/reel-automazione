@@ -1,10 +1,10 @@
 {
- "data": "2026-11-26",
- "reel_analizzati": 296,
+ "data": "2026-11-27",
+ "reel_analizzati": 306,
  "facebook": {
-  "reel": 23,
+  "reel": 12,
   "riproduzioni": 2,
-  "media": 0.1,
+  "media": 0.2,
   "ultimi": [
    {
     "quando": "2026-10-28T19:00",
@@ -51,13 +51,13 @@
  "instagram": {
   "reel": 30,
   "con_musica_instagram": 30,
-  "views": 21374,
-  "salvati": 76,
-  "condivisi": 38
+  "views": 20832,
+  "salvati": 69,
+  "condivisi": 27
  },
- "media_views": 880,
- "spinti": 291,
- "like_totali": 2584,
+ "media_views": 890,
+ "spinti": 301,
+ "like_totali": 2713,
  "per_tema": {
   "amicizia": {
    "reel": 2,
@@ -65,19 +65,19 @@
   },
   "dieta": {
    "reel": 8,
-   "media_views": 1240
+   "media_views": 1242
   },
   "famiglia": {
    "reel": 7,
-   "media_views": 1065
+   "media_views": 1068
   },
   "imprenditore": {
    "reel": 10,
    "media_views": 996
   },
   "mentalita": {
-   "reel": 230,
-   "media_views": 865
+   "reel": 240,
+   "media_views": 878
   },
   "palestra": {
    "reel": 12,
@@ -99,37 +99,37 @@
   },
   "casa": {
    "reel": 16,
-   "media_views": 884
+   "media_views": 885
   },
   "cibo": {
    "reel": 5,
    "media_views": 739
   },
   "lavoro": {
-   "reel": 31,
-   "media_views": 607
+   "reel": 32,
+   "media_views": 624
   },
   "macchina": {
-   "reel": 44,
-   "media_views": 845
+   "reel": 45,
+   "media_views": 849
   },
   "palestra": {
-   "reel": 144,
-   "media_views": 949
+   "reel": 150,
+   "media_views": 963
   },
   "specchio": {
-   "reel": 23,
-   "media_views": 999
+   "reel": 24,
+   "media_views": 972
   },
   "uscita": {
-   "reel": 27,
-   "media_views": 952
+   "reel": 28,
+   "media_views": 969
   }
  },
  "per_orario": {
   "00": {
-   "reel": 19,
-   "media_views": 700
+   "reel": 20,
+   "media_views": 712
   },
   "01": {
    "reel": 1,
@@ -152,68 +152,68 @@
    "media_views": 1128
   },
   "06": {
-   "reel": 30,
-   "media_views": 747
+   "reel": 31,
+   "media_views": 735
   },
   "07": {
    "reel": 2,
    "media_views": 965
   },
   "08": {
-   "reel": 28,
-   "media_views": 710
+   "reel": 29,
+   "media_views": 693
   },
   "09": {
    "reel": 7,
    "media_views": 1023
   },
   "10": {
-   "reel": 23,
-   "media_views": 2087
+   "reel": 24,
+   "media_views": 2005
   },
   "11": {
    "reel": 3,
    "media_views": 920
   },
   "12": {
-   "reel": 25,
-   "media_views": 788
+   "reel": 26,
+   "media_views": 785
   },
   "13": {
    "reel": 6,
    "media_views": 1097
   },
   "14": {
-   "reel": 21,
-   "media_views": 631
+   "reel": 22,
+   "media_views": 654
   },
   "15": {
    "reel": 3,
    "media_views": 1197
   },
   "16": {
-   "reel": 25,
-   "media_views": 765
+   "reel": 26,
+   "media_views": 776
   },
   "17": {
    "reel": 4,
    "media_views": 984
   },
   "18": {
-   "reel": 25,
-   "media_views": 727
+   "reel": 26,
+   "media_views": 886
   },
   "20": {
-   "reel": 24,
-   "media_views": 785
+   "reel": 25,
+   "media_views": 794
   },
   "21": {
    "reel": 6,
    "media_views": 1054
   },
   "22": {
-   "reel": 24,
-   "media_views": 780
+   "reel": 25,
+   "media_views": 806
   },
   "23": {
    "reel": 4,
@@ -222,8 +222,8 @@
  },
  "per_musica": {
   "Ancient Civilisations": {
-   "reel": 7,
-   "media_views": 1124
+   "reel": 9,
+   "media_views": 1518
   },
   "Break Ya Neck": {
    "reel": 7,
@@ -238,8 +238,8 @@
    "media_views": 964
   },
   "Death Duel": {
-   "reel": 10,
-   "media_views": 836
+   "reel": 11,
+   "media_views": 861
   },
   "Delirium": {
    "reel": 8,
@@ -251,7 +251,7 @@
   },
   "Duty Calls": {
    "reel": 7,
-   "media_views": 773
+   "media_views": 774
   },
   "Ego Chall": {
    "reel": 6,
@@ -259,15 +259,15 @@
   },
   "Final Boss Battle": {
    "reel": 7,
-   "media_views": 875
+   "media_views": 876
   },
   "Fire In The Sky": {
    "reel": 9,
    "media_views": 853
   },
   "Horizons": {
-   "reel": 7,
-   "media_views": 715
+   "reel": 9,
+   "media_views": 693
   },
   "I Might Be Late": {
    "reel": 4,
@@ -279,11 +279,11 @@
   },
   "Keep It Movin": {
    "reel": 9,
-   "media_views": 584
+   "media_views": 587
   },
   "Kick It": {
    "reel": 9,
-   "media_views": 832
+   "media_views": 834
   },
   "Locked In": {
    "reel": 12,
@@ -298,20 +298,20 @@
    "media_views": 723
   },
   "Monthaholic": {
-   "reel": 5,
-   "media_views": 785
+   "reel": 6,
+   "media_views": 670
   },
   "Moon Vision": {
-   "reel": 9,
-   "media_views": 4274
+   "reel": 11,
+   "media_views": 3690
   },
   "Rubberband": {
    "reel": 9,
-   "media_views": 866
+   "media_views": 868
   },
   "Stake Out": {
-   "reel": 6,
-   "media_views": 435
+   "reel": 7,
+   "media_views": 424
   },
   "Survival Mode": {
    "reel": 6,
@@ -331,7 +331,7 @@
   },
   "The Light": {
    "reel": 8,
-   "media_views": 1075
+   "media_views": 1076
   },
   "The Road To Mordor": {
    "reel": 8,
@@ -342,8 +342,8 @@
    "media_views": 821
   },
   "Van Life Rager": {
-   "reel": 7,
-   "media_views": 869
+   "reel": 8,
+   "media_views": 885
   },
   "Vibe Check": {
    "reel": 9,
@@ -351,7 +351,7 @@
   },
   "Visions": {
    "reel": 8,
-   "media_views": 575
+   "media_views": 576
   },
   "Way Back Home": {
    "reel": 12,
@@ -359,7 +359,7 @@
   },
   "Whoop": {
    "reel": 8,
-   "media_views": 604
+   "media_views": 605
   },
   "Wrangle The Crazy": {
    "reel": 10,
@@ -384,8 +384,8 @@
  },
  "per_origine": {
   "archivio": {
-   "reel": 184,
-   "media_views": 896
+   "reel": 194,
+   "media_views": 911
   },
   "video nuovo": {
    "reel": 107,
@@ -394,8 +394,8 @@
  },
  "per_frase_virale": {
   "frase normale": {
-   "reel": 259,
-   "media_views": 887
+   "reel": 269,
+   "media_views": 898
   },
   "frase virale": {
    "reel": 32,
@@ -420,7 +420,7 @@
    "media_views": 200
   },
   "dieci": {
-   "reel": 41,
+   "reel": 46,
    "media_views": 722
   },
   "dieci_broll": {
@@ -460,8 +460,8 @@
    "media_views": 338
   },
   "intero": {
-   "reel": 47,
-   "media_views": 751
+   "reel": 52,
+   "media_views": 836
   },
   "loop": {
    "reel": 12,
@@ -497,7 +497,7 @@
   },
   "ripiego dieci": {
    "reel": 6,
-   "media_views": 491
+   "media_views": 496
   },
   "ripiego taglio2": {
    "reel": 2,
@@ -521,13 +521,13 @@
   }
  },
  "pesi_temi": {
-  "amicizia": 1.01,
+  "amicizia": 1.0,
   "imprenditore": 1.07,
   "mentalita": 0.97,
   "palestra": 0.95,
-  "dieta": 1.24,
-  "regole": 1.13,
-  "storia": 1.04,
+  "dieta": 1.23,
+  "regole": 1.12,
+  "storia": 1.03,
   "famiglia": 1.11
  },
  "pesi_formati": {
@@ -536,7 +536,7 @@
   "montaggio": 0.94,
   "frase8": 1.05,
   "dieci_due": 0.85,
-  "dieci": 0.89,
+  "dieci": 0.94,
   "rallenty": 0.57,
   "loop": 0.67,
   "dieci_foto": 1.15,
@@ -545,7 +545,7 @@
   "intero": 1.03,
   "taglio1": 0.4,
   "taglio3": 0.4,
-  "ripiego dieci": 0.58
+  "ripiego dieci": 0.6
  },
  "migliori": [
   {
@@ -562,6 +562,19 @@
    "like": 233
   },
   {
+   "quando": "2026-11-24T17:00",
+   "frase": "Un giorno ho letto una frase, ma non l'avevo capita. Poi l'ho riletta e diceva: «A volte bisogna attraversare l'oscurità per vedere la luce, ogni tempesta lascia spazio ad un cielo più sereno.»",
+   "tema": "mentalita",
+   "scena": "palestra",
+   "orario": "18",
+   "musica": "Ancient Civilisations",
+   "origine": "archivio",
+   "frase_virale": "frase normale",
+   "formato": "intero",
+   "views": 4856,
+   "like": 51
+  },
+  {
    "quando": "2026-11-16T19:00",
    "frase": "Rimani riservato. Lavora sodo. Allenati. Vestiti bene. Mangia sano. Parla poco. Fai di più. Vivi la vita. Sii gentile. Rimani umile. Evita i drammi. Insegui i tuoi obiettivi.",
    "tema": "dieta",
@@ -571,7 +584,7 @@
    "origine": "archivio",
    "frase_virale": "frase normale",
    "formato": "intero",
-   "views": 3227,
+   "views": 3234,
    "like": 66
   },
   {
@@ -584,7 +597,7 @@
    "origine": "video nuovo",
    "frase_virale": "frase normale",
    "formato": "dieci",
-   "views": 2705,
+   "views": 2708,
    "like": 25
   },
   {
@@ -599,19 +612,6 @@
    "formato": "dieci_due",
    "views": 2113,
    "like": 59
-  },
-  {
-   "quando": "2026-11-22T15:00",
-   "frase": "Le gambe tremano, la testa dice basta. Fai ancora un passo e poi un altro.",
-   "tema": "mentalita",
-   "scena": "casa",
-   "orario": "16",
-   "musica": "Duty Calls",
-   "origine": "archivio",
-   "frase_virale": "frase normale",
-   "formato": "dieci",
-   "views": 1911,
-   "like": 9
   }
  ],
  "nota": "Solo YouTube; non contati gli Shorts usciti da meno di 2 giorni."
