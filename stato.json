@@ -26516,7 +26516,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "_L6RMXZ-yKQ"
+     "id": "_L6RMXZ-yKQ",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -26527,11 +26528,113 @@
    },
    "spinto": true,
    "testo": "Una persona che ti valorizza non si metterebbe mai nella posizione di perderti."
+  },
+  {
+   "quando": "2026-11-27T07:00",
+   "slot": "2026-11-27 08:00",
+   "video": "IMG_3834.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-e630b80f",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 12.06,
+     "primo_piano_fermo": true,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.43
+    },
+    "durata": 7.0,
+    "formato": "intero",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 14,
+     "voce": "generale"
+    },
+    "frase_via": "classifica",
+    "musica": "delirium_1.m4a",
+    "orizzontale": false,
+    "prove": {
+     "apertura": "viso",
+     "frase": "classifica"
+    },
+    "scena_unica": "rallentata",
+    "scene_dal_video": 1,
+    "scritta": "centro_serif",
+    "secondi_montaggio": 72,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.52,
+     "righe": 4,
+     "scene_intatte": 0,
+     "scurito": 0.53,
+     "sfumatura": 0.37,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 4,
+      "scala": 1.0,
+      "visi": 1,
+      "y": 0.656
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 25,
+     "con_viso_yunet": 25,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 25,
+     "guardato": [
+      [
+       0.0,
+       6.07
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 4,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 1,
+     "y": 0.656
+    },
+    "velocita": 0.8671,
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:03"
+    },
+    "musica_meta": "deciso_10.flac",
+    "musica_instagram": "Inspired To Shine - Global Genius"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "pTMBcpGsf-I"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18124187257820031",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Vincere nella vita non è una fortuna. È una scelta che rifai ogni giorno."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-19 08:00",
   "2026-11-19 10:00",
   "2026-11-19 12:00",
   "2026-11-19 14:00",
@@ -26610,10 +26713,10 @@
   "2026-11-26 20:00",
   "2026-11-26 22:00",
   "2026-11-27 00:00",
-  "2026-11-27 06:00"
+  "2026-11-27 06:00",
+  "2026-11-27 08:00"
  ],
  "musica_recenti": [
-  "taking_flight_1.m4a",
   "dusty_road_magic_2.m4a",
   "cartier_3.m4a",
   "intergalactic_2.m4a",
@@ -26672,7 +26775,8 @@
   "i_might_be_late_3.m4a",
   "visions_3.m4a",
   "the_road_to_mordor_2.m4a",
-  "wrangle_the_crazy_3.m4a"
+  "wrangle_the_crazy_3.m4a",
+  "delirium_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -27166,11 +27270,12 @@
   "MIE-531b9dd7",
   "MIE-3eb03041",
   "MIE-eed67faf",
-  "MIE-72a11d64"
+  "MIE-72a11d64",
+  "MIE-e630b80f"
  ],
  "temi_recenti": [
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -27378,8 +27483,8 @@
    "orizzontale": false
   },
   "1HrgxYw6jMJ5qXxx8j5ZWOVhPdqD7b1fH": {
-   "usi": 5,
-   "ultimo": "2026-11-19",
+   "usi": 6,
+   "ultimo": "2026-11-27",
    "orizzontale": false
   },
   "1MGwGXNeSO9_CxJf-b3fdJUiJRRsBRTMw": {
@@ -27911,7 +28016,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_03.flac",
   "phonk_16.flac",
   "energia_06.flac",
   "deciso_09.flac",
@@ -27930,7 +28034,8 @@
   "energia_01.flac",
   "phonk_10.flac",
   "drive_13.flac",
-  "energia_07.flac"
+  "energia_07.flac",
+  "deciso_10.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -27965,7 +28070,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "dieci",
+ "formato_ultimo": "intero",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -27981,7 +28086,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "663866025342759",
   "1267635733842081",
   "1124230547275731",
   "397890202830542",
@@ -28040,11 +28144,11 @@
   "256140930133248",
   "2754720771336314",
   "28115832308013413",
-  "601112655997356"
+  "601112655997356",
+  "565118654020261"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Jumbo",
   "Lyle Workman",
   "Dhruv Goel",
   "Auralux",
@@ -28053,10 +28157,10 @@
   "Mignon Geli",
   "Golden Braid Productions",
   "Vestevent",
-  "Ross Lara"
+  "Ross Lara",
+  "Global Genius"
  ],
  "ig_titoli_recenti": [
-  "something s in the movement",
   "in motion",
   "voce me deixa",
   "running",
@@ -28095,7 +28199,8 @@
   "we rise in peace",
   "desert fire",
   "to the heroes",
-  "orbiting"
+  "orbiting",
+  "inspired to shine"
  ],
  "ig_tendenze_riserva": [
   {
@@ -28106,31 +28211,17 @@
    "libreria": false
   },
   {
-   "audio_id": "832983041880365",
-   "title": "Empowering Electro",
-   "display_artist": "bbox",
-   "duration_in_ms": 179610,
+   "audio_id": "1067193775733379",
+   "title": "Move",
+   "display_artist": "LAVLO",
+   "duration_in_ms": 57574,
    "libreria": true
   },
   {
-   "audio_id": "1219987162925594",
-   "title": "Run (Instrumental)",
-   "display_artist": "Tony Dark Eyes",
-   "duration_in_ms": 206337,
-   "libreria": true
-  },
-  {
-   "audio_id": "601112655997356",
-   "title": "Orbiting (feat. My City Glory)",
-   "display_artist": "Ross Lara",
-   "duration_in_ms": 165490,
-   "libreria": true
-  },
-  {
-   "audio_id": "1760751558294997",
-   "title": "Energy",
-   "display_artist": "Jordan Olmos",
-   "duration_in_ms": 69660,
+   "audio_id": "2065054100581983",
+   "title": "Run",
+   "display_artist": "Jumbo",
+   "duration_in_ms": 68050,
    "libreria": true
   }
  ]
