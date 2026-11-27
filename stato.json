@@ -26943,7 +26943,9 @@
      "ok": true,
      "id": "18107230262570810",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -27041,7 +27043,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "5suvmvUTPUI"
+     "id": "5suvmvUTPUI",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -27052,11 +27055,112 @@
    },
    "spinto": true,
    "testo": "Ogni giorno mi metto alla prova. È così che si cresce."
+  },
+  {
+   "quando": "2026-11-27T17:00",
+   "slot": "2026-11-27 18:00",
+   "video": "IMG_3974.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "casa",
+   "registrato": null,
+   "frase": "MIE-86754336",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "viso",
+     "movimento": 69.43,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 12,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "whoop_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "viso"
+    },
+    "ripiego_da": "dieci",
+    "scritta": "centro_serif",
+    "secondi_montaggio": 201,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.45,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.52,
+     "sfumatura": 0.34,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 7,
+      "y": 0.676
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "altro_video": "extra_0.mov",
+     "con_viso": 26,
+     "con_viso_yunet": 26,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 7,
+     "y": 0.676
+    },
+    "viso_prima_scena": 2,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:05"
+    },
+    "musica_meta": "phonk_06.flac",
+    "musica_instagram": "Don't Run From Me - Julia Gartha [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "0J1d0SJEOEk"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18186872956438282",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Smetti di cercare di piacere a tutti, non ti piacciono nemmeno tutti."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-19 18:00",
   "2026-11-19 20:00",
   "2026-11-19 22:00",
   "2026-11-20 00:00",
@@ -27135,10 +27239,10 @@
   "2026-11-27 10:00",
   "2026-11-27 12:00",
   "2026-11-27 14:00",
-  "2026-11-27 16:00"
+  "2026-11-27 16:00",
+  "2026-11-27 18:00"
  ],
  "musica_recenti": [
-  "stake_out_2.m4a",
   "horizons_3.m4a",
   "locked_in_2.m4a",
   "rubberband_1.m4a",
@@ -27197,7 +27301,8 @@
   "taking_flight_2.m4a",
   "the_light_2.m4a",
   "cartier_2.m4a",
-  "intergalactic_1.m4a"
+  "intergalactic_1.m4a",
+  "whoop_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -27696,7 +27801,8 @@
   "MIE-8916ea93",
   "MIE-55aba2c8",
   "MIE-7542e75f",
-  "MIE-21ba240b"
+  "MIE-21ba240b",
+  "MIE-86754336"
  ],
  "temi_recenti": [
   "mentalita",
@@ -27705,8 +27811,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita",
   "mentalita"
  ],
@@ -28012,8 +28118,8 @@
    "orizzontale": false
   },
   "1I2nAz0Ao_a1cbEPktFKRTPpswByM6NKZ": {
-   "usi": 5,
-   "ultimo": "2026-11-20",
+   "usi": 6,
+   "ultimo": "2026-11-27",
    "orizzontale": false
   },
   "1zw12S9166ROtTo6gXbB8osWAiBXUjT0Q": {
@@ -28441,7 +28547,6 @@
   }
  },
  "musica_recenti_meta": [
-  "phonk_08.flac",
   "trap_02.flac",
   "deciso_11.flac",
   "phonk_11.flac",
@@ -28460,7 +28565,8 @@
   "phonk_02.flac",
   "drive_04.flac",
   "energia_06.flac",
-  "deciso_06.flac"
+  "deciso_06.flac",
+  "phonk_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -28511,7 +28617,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "2173371459664032",
   "702088267960095",
   "604290701766493",
   "387139071011986",
@@ -28570,11 +28675,11 @@
   "1030263145726523",
   "5890184931105352",
   "562869749636642",
-  "620334183626298"
+  "620334183626298",
+  "663866025342759"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Giulio Cercato",
   "Mignon Geli",
   "Golden Braid Productions",
   "Vestevent",
@@ -28583,10 +28688,10 @@
   "Jumbo",
   "bbox",
   "The K Club",
-  "Tony Dark Eyes"
+  "Tony Dark Eyes",
+  "Julia Gartha"
  ],
  "ig_titoli_recenti": [
-  "rock your world",
   "la marche des commis voyageurs",
   "coast",
   "sentimental motion",
@@ -28625,7 +28730,8 @@
   "voices of victory",
   "gospel hype",
   "club level",
-  "epica"
+  "epica",
+  "don t run from me"
  ],
  "ig_tendenze_riserva": [
   {
@@ -28636,17 +28742,38 @@
    "libreria": false
   },
   {
-   "audio_id": "562869749636642",
-   "title": "Club Level (feat. Dawson March)",
-   "display_artist": "The K Club",
-   "duration_in_ms": 152970,
+   "audio_id": "663866025342759",
+   "title": "Don't Run From Me",
+   "display_artist": "Julia Gartha",
+   "duration_in_ms": 132680,
    "libreria": true
   },
   {
-   "audio_id": "1135635455433719",
-   "title": "Chops (feat. My City Glory)",
+   "audio_id": "886249782709175",
+   "title": "March Of Libertad",
+   "display_artist": "Symphonic Planet",
+   "duration_in_ms": 236050,
+   "libreria": true
+  },
+  {
+   "audio_id": "1858297981729030",
+   "title": "Make A Move (Instrumental)",
+   "display_artist": "Global Genius",
+   "duration_in_ms": 178557,
+   "libreria": true
+  },
+  {
+   "audio_id": "724855936571258",
+   "title": "Hidden Sun (feat. My City Glory)",
    "display_artist": "Ross Lara",
-   "duration_in_ms": 171070,
+   "duration_in_ms": 158450,
+   "libreria": true
+  },
+  {
+   "audio_id": "1587323168468356",
+   "title": "Go Go Go",
+   "display_artist": "Company Money",
+   "duration_in_ms": 116330,
    "libreria": true
   }
  ]
