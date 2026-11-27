@@ -27155,7 +27155,9 @@
      "ok": true,
      "id": "18186872956438282",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -27250,7 +27252,10 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "DQhrKQ_idkc"
+     "id": "DQhrKQ_idkc",
+     "controllo": [
+      "video non trovato su YouTube"
+     ]
     },
     "instagram": {
      "ok": true,
@@ -27261,11 +27266,118 @@
    },
    "spinto": true,
    "testo": "Non mi accontento. Voglio vedere fin dove posso arrivare."
+  },
+  {
+   "quando": "2026-11-27T20:11",
+   "slot": "2026-11-27 22:00",
+   "video": "IMG_4044.MOV",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "uscita",
+   "registrato": null,
+   "frase": "MIE-786376dc",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 20.09,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 10,
+     "voce": "io"
+    },
+    "frase_via": "classifica",
+    "musica": "kick_it_2.m4a",
+    "orizzontale": true,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione",
+     "frase": "classifica"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 193,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 108,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.33,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.38,
+     "sfumatura": 0.23,
+     "viso": {
+      "corpo": 108,
+      "corpo_base": 108,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 24,
+      "y": 0.676
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 27,
+     "con_viso_yunet": 27,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 108,
+     "corpo_base": 108,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       4.0,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 24,
+     "y": 0.676
+    },
+    "viso_prima_scena": 2,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:07"
+    },
+    "musica_meta": "trap_02.flac"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "0qDQShyI0Q0"
+    }
+   },
+   "in_corso": true,
+   "frase_dati": {
+    "id": "MIE-786376dc",
+    "tema": "mentalita",
+    "gancio": "La costanza mi ha portato più lontano di qualsiasi talento.",
+    "righe": null,
+    "autore": "",
+    "hashtag": [
+     "#citazioni",
+     "#motivazione",
+     "#mentalita"
+    ],
+    "serie": "GIORNO 331 / 365",
+    "copertina_ms": 2187,
+    "prova_ig": false
+   }
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-19 22:00",
   "2026-11-20 00:00",
   "2026-11-20 06:00",
   "2026-11-20 08:00",
@@ -27344,7 +27456,8 @@
   "2026-11-27 14:00",
   "2026-11-27 16:00",
   "2026-11-27 18:00",
-  "2026-11-27 20:00"
+  "2026-11-27 20:00",
+  "2026-11-27 22:00"
  ],
  "musica_recenti": [
   "locked_in_2.m4a",
