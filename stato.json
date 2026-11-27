@@ -26839,7 +26839,9 @@
      "ok": true,
      "id": "18122161979109714",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -26934,7 +26936,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "JVnUHo4vR2E"
+     "id": "JVnUHo4vR2E",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -26945,11 +26948,114 @@
    },
    "spinto": true,
    "testo": "Quello che oggi sembra impossibile, domani sarà il mio punto di partenza."
+  },
+  {
+   "quando": "2026-11-27T15:00",
+   "slot": "2026-11-27 16:00",
+   "video": "DJI_20261013_175341_505_video.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "lavoro",
+   "registrato": null,
+   "frase": "MIE-21ba240b",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 23.04,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "estratto": "intero",
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "due",
+     "parole": 11,
+     "voce": "io"
+    },
+    "frase_via": "nessun_aforisma",
+    "musica": "intergalactic_1.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione",
+     "frase": "aforisma"
+    },
+    "ripiego_da": "intero",
+    "scritta": "centro_serif",
+    "secondi_montaggio": 116,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 112,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.42,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.49,
+     "sfumatura": 0.32,
+     "viso": {
+      "corpo": 112,
+      "corpo_base": 112,
+      "posizione": "centro",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 16,
+      "y": 0.47
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "altro_video": "extra_0.mov",
+     "con_viso": 19,
+     "con_viso_yunet": 19,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 112,
+     "corpo_base": 112,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "centro",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 16,
+     "y": 0.47
+    },
+    "viso_prima_scena": 1,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:04"
+    },
+    "musica_meta": "deciso_06.flac",
+    "musica_instagram": "Epica - Tony Dark Eyes"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "5suvmvUTPUI"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "17960834313278835",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Ogni giorno mi metto alla prova. È così che si cresce."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-19 16:00",
   "2026-11-19 18:00",
   "2026-11-19 20:00",
   "2026-11-19 22:00",
@@ -27028,10 +27134,10 @@
   "2026-11-27 08:00",
   "2026-11-27 10:00",
   "2026-11-27 12:00",
-  "2026-11-27 14:00"
+  "2026-11-27 14:00",
+  "2026-11-27 16:00"
  ],
  "musica_recenti": [
-  "whoop_3.m4a",
   "stake_out_2.m4a",
   "horizons_3.m4a",
   "locked_in_2.m4a",
@@ -27090,7 +27196,8 @@
   "delirium_1.m4a",
   "taking_flight_2.m4a",
   "the_light_2.m4a",
-  "cartier_2.m4a"
+  "cartier_2.m4a",
+  "intergalactic_1.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -27588,7 +27695,8 @@
   "MIE-e630b80f",
   "MIE-8916ea93",
   "MIE-55aba2c8",
-  "MIE-7542e75f"
+  "MIE-7542e75f",
+  "MIE-21ba240b"
  ],
  "temi_recenti": [
   "mentalita",
@@ -27598,8 +27706,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
   "imprenditore",
+  "mentalita",
   "mentalita"
  ],
  "analisi": {
@@ -27820,8 +27928,8 @@
    "orizzontale": false
   },
   "10Y6I2Km1UMianq9Mqd4A_PibNK36A1KR": {
-   "usi": 5,
-   "ultimo": "2026-11-19",
+   "usi": 6,
+   "ultimo": "2026-11-27",
    "orizzontale": false
   },
   "17a5fFwJj8p33vlSv-Y6jRBPmRGJLzC1Q": {
@@ -28333,7 +28441,6 @@
   }
  },
  "musica_recenti_meta": [
-  "drive_16.flac",
   "phonk_08.flac",
   "trap_02.flac",
   "deciso_11.flac",
@@ -28352,7 +28459,8 @@
   "deciso_10.flac",
   "phonk_02.flac",
   "drive_04.flac",
-  "energia_06.flac"
+  "energia_06.flac",
+  "deciso_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -28403,7 +28511,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "727931292858890",
   "2173371459664032",
   "702088267960095",
   "604290701766493",
@@ -28462,11 +28569,11 @@
   "565118654020261",
   "1030263145726523",
   "5890184931105352",
-  "562869749636642"
+  "562869749636642",
+  "620334183626298"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Ella Joy Meir",
   "Giulio Cercato",
   "Mignon Geli",
   "Golden Braid Productions",
@@ -28475,10 +28582,10 @@
   "Global Genius",
   "Jumbo",
   "bbox",
-  "The K Club"
+  "The K Club",
+  "Tony Dark Eyes"
  ],
  "ig_titoli_recenti": [
-  "beast",
   "rock your world",
   "la marche des commis voyageurs",
   "coast",
@@ -28517,7 +28624,8 @@
   "inspired to shine",
   "voices of victory",
   "gospel hype",
-  "club level"
+  "club level",
+  "epica"
  ],
  "ig_tendenze_riserva": [
   {
