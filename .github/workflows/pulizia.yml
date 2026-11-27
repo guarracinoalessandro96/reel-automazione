@@ -1,0 +1,45 @@
+name: Pulizia reel sotto 1000
+
+# 27/11/2026 (Alessandro: "cancella tutti i video se non raggiungono 1000 views entro 24 ore"): ogni ora, lontano dagli
+# orari in cui si pubblica (i reel si caricano alle ore dispari :00), pulizia.py cancella su YouTube, Facebook e
+# Instagram i reel pubblici da almeno 24 ore sotto le 1000 visualizzazioni, e registra le loro visualizzazioni in
+# cancellati.json (per i totali della dashboard e del messaggio delle 8). TikTok lo fa il PC da TikTok Studio.
+on:
+  schedule:
+    - cron: "37 * * * *"
+  workflow_dispatch: {}
+
+concurrency: pulizia
+
+permissions:
+  contents: write
+
+jobs:
+  pulizia:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests google-api-python-client google-auth
+      - env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          META_TOKEN_CANCELLA: ${{ secrets.META_TOKEN_CANCELLA }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+        run: python pulizia.py
+      - run: |
+          git config user.name "reel-bot"
+          git config user.email "reel-bot@users.noreply.github.com"
+          git add cancellati.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Pulizia reel $(date +%F)"
+          for i in 1 2 3 4 5; do git pull --rebase -q && git push -q && exit 0; git rebase --abort 2>/dev/null || true; sleep $((i * 5)); done
+          exit 1

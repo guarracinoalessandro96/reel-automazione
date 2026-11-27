@@ -94,7 +94,10 @@ def youtube_totale(k):
     """Il totale del canale adesso: le 24 ore sono la differenza con quello di ieri (i report arrivano dopo 3 giorni)."""
     from googleapiclient.discovery import build
     api = build("youtube", "v3", credentials=credenziali(k), cache_discovery=False)
-    return int(api.channels().list(part="statistics", mine=True).execute()["items"][0]["statistics"]["viewCount"])
+    tot = int(api.channels().list(part="statistics", mine=True).execute()["items"][0]["statistics"]["viewCount"])
+    # 27/11/2026: piu' le visualizzazioni dei video cancellati (pulizia.py), se no il totale scende e il giorno e' negativo
+    import cancellati
+    return tot + cancellati.somma("youtube")
 
 
 def totali_youtube(storico, registro):

@@ -187,6 +187,13 @@ def main():
                     ist[c] = f.result()
             except Exception as e:
                 print("istantanea", c, S.pulito(e)[:200])
+    # 27/11/2026 (pulizia.py): i totali sono somme dei video ancora online; piu' le visualizzazioni dei reel cancellati,
+    # se no a ogni cancellazione il totale scende e il giorno non si calcola
+    import cancellati
+    reg_c = cancellati.carica()
+    for c, social in (("yt", "youtube"), ("ig", "instagram"), ("fbv", "facebook")):
+        if isinstance(ist.get(c), int):
+            ist[c] += cancellati.somma(social, reg_c)
 
     # registro: totali del canale del messaggio delle 8 (riserva, provvisori), TikTok
     try:
