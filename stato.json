@@ -26735,7 +26735,9 @@
      "ok": true,
      "id": "18093409844308156",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -26830,7 +26832,8 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "tDxWcvS98Gs"
+     "id": "tDxWcvS98Gs",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
@@ -26841,11 +26844,111 @@
    },
    "spinto": true,
    "testo": "Il lavoro di adesso è il regalo più grande che puoi fare al tuo futuro."
+  },
+  {
+   "quando": "2026-11-27T13:00",
+   "slot": "2026-11-27 14:00",
+   "video": "IMG_4129.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-7542e75f",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 8.12,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.0
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 12,
+     "voce": "io"
+    },
+    "frase_via": "classifica",
+    "musica": "cartier_2.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione",
+     "frase": "classifica"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 238,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.43,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.5,
+     "sfumatura": 0.32,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "basso",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 35,
+      "y": 0.581
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       5.5,
+       7.0
+      ]
+     ],
+     "posizione": "basso",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 35,
+     "y": 0.581
+    },
+    "viso_prima_scena": 2,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:05"
+    },
+    "musica_meta": "energia_06.flac",
+    "musica_instagram": "Club Level (feat. Dawson March) - The K Club [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "JVnUHo4vR2E"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18107230262570810",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Quello che oggi sembra impossibile, domani sarà il mio punto di partenza."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-19 14:00",
   "2026-11-19 16:00",
   "2026-11-19 18:00",
   "2026-11-19 20:00",
@@ -26924,10 +27027,10 @@
   "2026-11-27 06:00",
   "2026-11-27 08:00",
   "2026-11-27 10:00",
-  "2026-11-27 12:00"
+  "2026-11-27 12:00",
+  "2026-11-27 14:00"
  ],
  "musica_recenti": [
-  "intergalactic_2.m4a",
   "whoop_3.m4a",
   "stake_out_2.m4a",
   "horizons_3.m4a",
@@ -26986,7 +27089,8 @@
   "wrangle_the_crazy_3.m4a",
   "delirium_1.m4a",
   "taking_flight_2.m4a",
-  "the_light_2.m4a"
+  "the_light_2.m4a",
+  "cartier_2.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -27483,7 +27587,8 @@
   "MIE-72a11d64",
   "MIE-e630b80f",
   "MIE-8916ea93",
-  "MIE-55aba2c8"
+  "MIE-55aba2c8",
+  "MIE-7542e75f"
  ],
  "temi_recenti": [
   "mentalita",
@@ -27494,8 +27599,8 @@
   "mentalita",
   "mentalita",
   "mentalita",
-  "mentalita",
-  "imprenditore"
+  "imprenditore",
+  "mentalita"
  ],
  "analisi": {
   "1-XpSt4SspEfxthfpP3WOspSjVXChTq6f": {
@@ -27925,8 +28030,8 @@
    "ultimo": "2026-10-26"
   },
   "1t2HdsGs2qhC9CeBp31JACRAZz9LjJwdV": {
-   "usi": 5,
-   "ultimo": "2026-11-20",
+   "usi": 6,
+   "ultimo": "2026-11-27",
    "orizzontale": false
   },
   "1wIAA5bkWDLakZogTG-ehlMTtvzDMKN7q": {
@@ -28228,7 +28333,6 @@
   }
  },
  "musica_recenti_meta": [
-  "deciso_09.flac",
   "drive_16.flac",
   "phonk_08.flac",
   "trap_02.flac",
@@ -28247,7 +28351,8 @@
   "energia_07.flac",
   "deciso_10.flac",
   "phonk_02.flac",
-  "drive_04.flac"
+  "drive_04.flac",
+  "energia_06.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -28282,7 +28387,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -28298,7 +28403,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "397890202830542",
   "727931292858890",
   "2173371459664032",
   "702088267960095",
@@ -28357,11 +28461,11 @@
   "601112655997356",
   "565118654020261",
   "1030263145726523",
-  "5890184931105352"
+  "5890184931105352",
+  "562869749636642"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Auralux",
   "Ella Joy Meir",
   "Giulio Cercato",
   "Mignon Geli",
@@ -28370,10 +28474,10 @@
   "Ross Lara",
   "Global Genius",
   "Jumbo",
-  "bbox"
+  "bbox",
+  "The K Club"
  ],
  "ig_titoli_recenti": [
-  "running",
   "beast",
   "rock your world",
   "la marche des commis voyageurs",
@@ -28412,7 +28516,8 @@
   "orbiting",
   "inspired to shine",
   "voices of victory",
-  "gospel hype"
+  "gospel hype",
+  "club level"
  ],
  "ig_tendenze_riserva": [
   {
@@ -28423,24 +28528,17 @@
    "libreria": false
   },
   {
-   "audio_id": "867574485949511",
-   "title": "Legends (Instrumental)",
-   "display_artist": "stereogully",
-   "duration_in_ms": 123840,
+   "audio_id": "562869749636642",
+   "title": "Club Level (feat. Dawson March)",
+   "display_artist": "The K Club",
+   "duration_in_ms": 152970,
    "libreria": true
   },
   {
-   "audio_id": "878487453608490",
-   "title": "Legend Of Castle Bran",
-   "display_artist": "Brent Bourgeois",
-   "duration_in_ms": 152621,
-   "libreria": true
-  },
-  {
-   "audio_id": "5890184931105352",
-   "title": "Gospel Hype",
-   "display_artist": "bbox",
-   "duration_in_ms": 210050,
+   "audio_id": "1135635455433719",
+   "title": "Chops (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 171070,
    "libreria": true
   }
  ]
