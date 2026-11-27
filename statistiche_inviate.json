@@ -278,11 +278,15 @@
    }
   },
   "2026-11-27": {
-   "invio": {
-    "da": "pc",
-    "ora": "2026-11-27T20:31:45+01:00",
-    "giro": "pc-13920-7fdfb0"
-   }
+   "inviato": "20:32",
+   "da": "pc",
+   "numeri": {
+    "YouTube": 5700,
+    "Instagram": 5959,
+    "Facebook": 102,
+    "TikTok": 2328
+   },
+   "youtube_totale": 2079670
   }
  },
  "pc_dal": "2026-11-07",
