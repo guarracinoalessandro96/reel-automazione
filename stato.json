@@ -26316,7 +26316,9 @@
      "ok": true,
      "id": "17926495020452074",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
@@ -26411,22 +26413,124 @@
    "risultati": {
     "youtube": {
      "ok": true,
-     "id": "D7knM_oT63c"
+     "id": "D7knM_oT63c",
+     "controllo": []
     },
     "instagram": {
      "ok": true,
      "id": "18039205421851062",
      "prova": false,
-     "metodo": "link"
+     "metodo": "link",
+     "tipo_audio": "MUSIC",
+     "controllo": []
     }
    },
    "spinto": true,
    "testo": "Non sto cercando di essere il migliore. Sto cercando di non fermarmi mai."
+  },
+  {
+   "quando": "2026-11-27T05:01",
+   "slot": "2026-11-27 06:00",
+   "video": "IMG_3824.mov",
+   "md5": null,
+   "da_archivio": true,
+   "scena": "palestra",
+   "registrato": null,
+   "frase": "MIE-72a11d64",
+   "tema": "mentalita",
+   "montaggio": {
+    "apertura": {
+     "da_archivio": false,
+     "lato": "azione",
+     "movimento": 22.46,
+     "primo_piano_fermo": false,
+     "soglia_moto": 17.0,
+     "viso_alto": 0.23
+    },
+    "durata": 7.0,
+    "formato": "dieci",
+    "frase_forma": {
+     "forma": "una",
+     "parole": 13,
+     "voce": "tu"
+    },
+    "frase_via": "forzata",
+    "musica": "wrangle_the_crazy_3.m4a",
+    "orizzontale": false,
+    "primo_controllo": "buono",
+    "prove": {
+     "apertura": "azione"
+    },
+    "scritta": "centro_serif",
+    "secondi_montaggio": 76,
+    "stacchi": 1,
+    "stile_centro": {
+     "corpo": 107,
+     "font": "Source Serif Pro",
+     "intatto": false,
+     "luce": 0.46,
+     "righe": 3,
+     "scene_intatte": 0,
+     "scurito": 0.43,
+     "sfumatura": 0.34,
+     "viso": {
+      "corpo": 107,
+      "corpo_base": 107,
+      "posizione": "centro",
+      "righe": 3,
+      "scala": 1.0,
+      "visi": 24,
+      "y": 0.47
+     }
+    },
+    "testi": 1,
+    "testo_viso": {
+     "con_viso": 28,
+     "con_viso_yunet": 28,
+     "controllo": "lettere_fuori_dai_visi",
+     "corpo": 107,
+     "corpo_base": 107,
+     "fotogrammi": 28,
+     "guardato": [
+      [
+       0.5,
+       7.0
+      ]
+     ],
+     "posizione": "centro",
+     "righe": 3,
+     "rilevatore": "yunet+haar",
+     "scala": 1.0,
+     "visi": 24,
+     "y": 0.47
+    },
+    "viso_prima_scena": 5,
+    "settimana": {
+     "lotto": "Lotto 2026-11-23",
+     "versione": 1,
+     "generato": "2026-11-21T13:02"
+    },
+    "musica_meta": "energia_07.flac",
+    "musica_instagram": "Orbiting (feat. My City Glory) - Ross Lara [tendenza]"
+   },
+   "risultati": {
+    "youtube": {
+     "ok": true,
+     "id": "_L6RMXZ-yKQ"
+    },
+    "instagram": {
+     "ok": true,
+     "id": "18202995445381720",
+     "prova": false,
+     "metodo": "link"
+    }
+   },
+   "spinto": true,
+   "testo": "Una persona che ti valorizza non si metterebbe mai nella posizione di perderti."
   }
  ],
  "riprova": [],
  "slot_fatti": [
-  "2026-11-19 06:00",
   "2026-11-19 08:00",
   "2026-11-19 10:00",
   "2026-11-19 12:00",
@@ -26505,10 +26609,10 @@
   "2026-11-26 18:00",
   "2026-11-26 20:00",
   "2026-11-26 22:00",
-  "2026-11-27 00:00"
+  "2026-11-27 00:00",
+  "2026-11-27 06:00"
  ],
  "musica_recenti": [
-  "vibe_check_2.m4a",
   "taking_flight_1.m4a",
   "dusty_road_magic_2.m4a",
   "cartier_3.m4a",
@@ -26567,7 +26671,8 @@
   "ego_chall_1.m4a",
   "i_might_be_late_3.m4a",
   "visions_3.m4a",
-  "the_road_to_mordor_2.m4a"
+  "the_road_to_mordor_2.m4a",
+  "wrangle_the_crazy_3.m4a"
  ],
  "frasi_usate": [
   "QJ080",
@@ -27060,12 +27165,13 @@
   "MIE-aabcbf43",
   "MIE-531b9dd7",
   "MIE-3eb03041",
-  "MIE-eed67faf"
+  "MIE-eed67faf",
+  "MIE-72a11d64"
  ],
  "temi_recenti": [
   "mentalita",
-  "mentalita",
   "famiglia",
+  "mentalita",
   "mentalita",
   "mentalita",
   "mentalita",
@@ -27118,7 +27224,7 @@
    "momento": null
   }
  },
- "pulizia": "2026-11-26",
+ "pulizia": "2026-11-27",
  "archivio_usi": {
   "1eqa3_8Qa6sLAQNm37dQ4Vj360Jo4q14z": {
    "usi": 2,
@@ -27267,8 +27373,8 @@
    "orizzontale": false
   },
   "1fKbWVgrVrxr5Ecx1pZo_uFBf-CoX_0G5": {
-   "usi": 5,
-   "ultimo": "2026-11-19",
+   "usi": 6,
+   "ultimo": "2026-11-27",
    "orizzontale": false
   },
   "1HrgxYw6jMJ5qXxx8j5ZWOVhPdqD7b1fH": {
@@ -27805,7 +27911,6 @@
   }
  },
  "musica_recenti_meta": [
-  "trap_05.flac",
   "deciso_03.flac",
   "phonk_16.flac",
   "energia_06.flac",
@@ -27824,7 +27929,8 @@
   "trap_15.flac",
   "energia_01.flac",
   "phonk_10.flac",
-  "drive_13.flac"
+  "drive_13.flac",
+  "energia_07.flac"
  ],
  "playlist": {
   "Frasi motivazionali": "PLQogrDTCMIcY",
@@ -27859,7 +27965,7 @@
   "L21",
   "L22"
  ],
- "formato_ultimo": "intero",
+ "formato_ultimo": "dieci",
  "errori_di_fila": {
   "youtube": 0,
   "facebook": 0,
@@ -27875,7 +27981,6 @@
  ],
  "commenti_fino": "2026-10-31T19:00:32Z",
  "ig_audio_recenti": [
-  "867574485949511",
   "663866025342759",
   "1267635733842081",
   "1124230547275731",
@@ -27934,11 +28039,11 @@
   "971529610468450",
   "256140930133248",
   "2754720771336314",
-  "28115832308013413"
+  "28115832308013413",
+  "601112655997356"
  ],
  "ig_avviso_brano": "2026-11-04",
  "ig_artisti_recenti": [
-  "Abby Posner",
   "Jumbo",
   "Lyle Workman",
   "Dhruv Goel",
@@ -27947,10 +28052,10 @@
   "Giulio Cercato",
   "Mignon Geli",
   "Golden Braid Productions",
-  "Vestevent"
+  "Vestevent",
+  "Ross Lara"
  ],
  "ig_titoli_recenti": [
-  "reflect and rise",
   "something s in the movement",
   "in motion",
   "voce me deixa",
@@ -27989,7 +28094,8 @@
   "soul on fire",
   "we rise in peace",
   "desert fire",
-  "to the heroes"
+  "to the heroes",
+  "orbiting"
  ],
  "ig_tendenze_riserva": [
   {
@@ -28000,17 +28106,31 @@
    "libreria": false
   },
   {
-   "audio_id": "1520634330105846",
-   "title": "Good Run",
-   "display_artist": "Fellow Travelers",
-   "duration_in_ms": 60060,
+   "audio_id": "832983041880365",
+   "title": "Empowering Electro",
+   "display_artist": "bbox",
+   "duration_in_ms": 179610,
    "libreria": true
   },
   {
-   "audio_id": "28115832308013413",
-   "title": "To The Heroes",
-   "display_artist": "Vestevent",
-   "duration_in_ms": 64510,
+   "audio_id": "1219987162925594",
+   "title": "Run (Instrumental)",
+   "display_artist": "Tony Dark Eyes",
+   "duration_in_ms": 206337,
+   "libreria": true
+  },
+  {
+   "audio_id": "601112655997356",
+   "title": "Orbiting (feat. My City Glory)",
+   "display_artist": "Ross Lara",
+   "duration_in_ms": 165490,
+   "libreria": true
+  },
+  {
+   "audio_id": "1760751558294997",
+   "title": "Energy",
+   "display_artist": "Jordan Olmos",
+   "duration_in_ms": 69660,
    "libreria": true
   }
  ]
