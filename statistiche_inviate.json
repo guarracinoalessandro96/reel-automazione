@@ -289,10 +289,18 @@
    "youtube_totale": 2079670
   },
   "2026-11-28": {
-   "invio": {
-    "da": "pc",
-    "ora": "2026-11-28T14:05:21+01:00",
-    "giro": "pc-17932-f80c96"
+   "inviato": "14:05",
+   "da": "pc",
+   "numeri": {
+    "YouTube": 52654,
+    "Instagram": 1606,
+    "Facebook": 93,
+    "TikTok": 4020
+   },
+   "youtube_totale": 2132324,
+   "tiktok": {
+    "data": "2026-11-26",
+    "views": 4020
    }
   }
  },
